@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
+		6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0531AC196BB001AC4BA /* ViewController.swift */; };
+		6D31D0571AC196BB001AC4BA /* Jira_Logger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */; };
+		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
+		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
+		6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D31D0621AC196BC001AC4BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D31D0441AC196BB001AC4BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D31D04B1AC196BB001AC4BA;
+			remoteInfo = "Jira Logger";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D31D04C1AC196BB001AC4BA /* Jira Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6D31D0531AC196BB001AC4BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6D31D0561AC196BB001AC4BA /* Jira_Logger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jira_Logger.xcdatamodel; sourceTree = "<group>"; };
+		6D31D0581AC196BB001AC4BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6D31D05B1AC196BB001AC4BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jira LoggerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D31D0661AC196BC001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jira_LoggerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D31D0491AC196BB001AC4BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D31D05E1AC196BC001AC4BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D31D0431AC196BB001AC4BA = {
+			isa = PBXGroup;
+			children = (
+				6D31D04E1AC196BB001AC4BA /* Jira Logger */,
+				6D31D0641AC196BC001AC4BA /* Jira LoggerTests */,
+				6D31D04D1AC196BB001AC4BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6D31D04D1AC196BB001AC4BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D04C1AC196BB001AC4BA /* Jira Logger.app */,
+				6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D31D04E1AC196BB001AC4BA /* Jira Logger */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
+				6D31D0531AC196BB001AC4BA /* ViewController.swift */,
+				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
+				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
+				6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */,
+				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
+			);
+			path = "Jira Logger";
+			sourceTree = "<group>";
+		};
+		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0501AC196BB001AC4BA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D31D0641AC196BC001AC4BA /* Jira LoggerTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */,
+				6D31D0651AC196BC001AC4BA /* Supporting Files */,
+			);
+			path = "Jira LoggerTests";
+			sourceTree = "<group>";
+		};
+		6D31D0651AC196BC001AC4BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0661AC196BC001AC4BA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D31D04B1AC196BB001AC4BA /* Jira Logger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira Logger" */;
+			buildPhases = (
+				6D31D0481AC196BB001AC4BA /* Sources */,
+				6D31D0491AC196BB001AC4BA /* Frameworks */,
+				6D31D04A1AC196BB001AC4BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Jira Logger";
+			productName = "Jira Logger";
+			productReference = 6D31D04C1AC196BB001AC4BA /* Jira Logger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D31D0601AC196BC001AC4BA /* Jira LoggerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira LoggerTests" */;
+			buildPhases = (
+				6D31D05D1AC196BC001AC4BA /* Sources */,
+				6D31D05E1AC196BC001AC4BA /* Frameworks */,
+				6D31D05F1AC196BC001AC4BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D31D0631AC196BC001AC4BA /* PBXTargetDependency */,
+			);
+			name = "Jira LoggerTests";
+			productName = "Jira LoggerTests";
+			productReference = 6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D31D0441AC196BB001AC4BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Cristian Baluta";
+				TargetAttributes = {
+					6D31D04B1AC196BB001AC4BA = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					6D31D0601AC196BC001AC4BA = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 6D31D04B1AC196BB001AC4BA;
+					};
+				};
+			};
+			buildConfigurationList = 6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira Logger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6D31D0431AC196BB001AC4BA;
+			productRefGroup = 6D31D04D1AC196BB001AC4BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D31D04B1AC196BB001AC4BA /* Jira Logger */,
+				6D31D0601AC196BC001AC4BA /* Jira LoggerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D31D04A1AC196BB001AC4BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
+				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D31D05F1AC196BC001AC4BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D31D0481AC196BB001AC4BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */,
+				6D31D0571AC196BB001AC4BA /* Jira_Logger.xcdatamodeld in Sources */,
+				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D31D05D1AC196BC001AC4BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D31D0631AC196BC001AC4BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D31D04B1AC196BB001AC4BA /* Jira Logger */;
+			targetProxy = 6D31D0621AC196BC001AC4BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6D31D05A1AC196BB001AC4BA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D31D05B1AC196BB001AC4BA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D31D0691AC196BC001AC4BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6D31D06A1AC196BC001AC4BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6D31D06C1AC196BC001AC4BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Jira Logger/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6D31D06D1AC196BC001AC4BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Jira Logger/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6D31D06F1AC196BC001AC4BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Jira LoggerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira Logger.app/Contents/MacOS/Jira Logger";
+			};
+			name = Debug;
+		};
+		6D31D0701AC196BC001AC4BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Jira LoggerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira Logger.app/Contents/MacOS/Jira Logger";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira Logger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D31D0691AC196BC001AC4BA /* Debug */,
+				6D31D06A1AC196BC001AC4BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira Logger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D31D06C1AC196BC001AC4BA /* Debug */,
+				6D31D06D1AC196BC001AC4BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira LoggerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D31D06F1AC196BC001AC4BA /* Debug */,
+				6D31D0701AC196BC001AC4BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6D31D0561AC196BB001AC4BA /* Jira_Logger.xcdatamodel */,
+			);
+			currentVersion = 6D31D0561AC196BB001AC4BA /* Jira_Logger.xcdatamodel */;
+			path = Jira_Logger.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6D31D0441AC196BB001AC4BA /* Project object */;
+}
