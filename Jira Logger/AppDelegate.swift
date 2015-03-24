@@ -7,20 +7,26 @@
 //
 
 import Cocoa
+import AppKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
+    @IBOutlet var statusMenu :NSMenu?;
+    var statusItem :NSStatusItem?;
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        // Insert code here to initialize your application// NSSquareStatusItemLength
+        self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+        self.statusItem?.menu = self.statusMenu
+        self.statusItem?.title = "Jira Logger"
+        self.statusItem?.highlightMode = true
     }
-
+    
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
-
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {

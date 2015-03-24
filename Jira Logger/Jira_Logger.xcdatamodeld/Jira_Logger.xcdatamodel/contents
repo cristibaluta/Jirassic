@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="untitled.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="JiraData" syncable="YES">
+        <attribute name="date_end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="jira_issue_nr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="JiraData" positionX="-63" positionY="-18" width="128" height="90"/>
+    </elements>
 </model>
