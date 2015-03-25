@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class Panel: NSPanel {
+class JLPanel: NSPanel {
 
 }
