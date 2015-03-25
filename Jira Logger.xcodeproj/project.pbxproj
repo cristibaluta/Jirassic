@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2899989E1AC27C0900706824 /* PanelBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899989D1AC27C0900706824 /* PanelBackgroundView.swift */; };
+		289998A01AC291B500706824 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899989F1AC291B500706824 /* PanelController.swift */; };
+		289998A21AC2920200706824 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Panel.swift */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0531AC196BB001AC4BA /* ViewController.swift */; };
 		6D31D0571AC196BB001AC4BA /* Jira_Logger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */; };
@@ -26,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2899989D1AC27C0900706824 /* PanelBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBackgroundView.swift; sourceTree = "<group>"; };
+		2899989F1AC291B500706824 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
+		289998A11AC2920200706824 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jira Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +85,9 @@
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
 				6D31D0531AC196BB001AC4BA /* ViewController.swift */,
+				2899989F1AC291B500706824 /* PanelController.swift */,
+				289998A11AC2920200706824 /* Panel.swift */,
+				2899989D1AC27C0900706824 /* PanelBackgroundView.swift */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
 				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
 				6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */,
@@ -213,7 +222,10 @@
 			files = (
 				6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */,
 				6D31D0571AC196BB001AC4BA /* Jira_Logger.xcdatamodeld in Sources */,
+				289998A21AC2920200706824 /* Panel.swift in Sources */,
+				289998A01AC291B500706824 /* PanelController.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
+				2899989E1AC27C0900706824 /* PanelBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +413,7 @@
 				6D31D06D1AC196BC001AC4BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira LoggerTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +422,7 @@
 				6D31D0701AC196BC001AC4BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

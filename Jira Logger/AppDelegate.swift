@@ -12,6 +12,7 @@ import AppKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+	@IBOutlet weak var window: NSWindow!
     @IBOutlet var statusMenu :NSMenu?;
     var statusItem :NSStatusItem?;
     
@@ -21,7 +22,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.statusItem?.menu = self.statusMenu
         self.statusItem?.title = "Jira Logger"
         self.statusItem?.highlightMode = true
+		self.statusItem?.action = Selector("handleStatusItemToggle:");
+		self.window?.orderOut(self)
     }
+	
+	func handleStatusItemToggle(sender:NSStatusItem) {
+		println(sender);
+	}
     
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
