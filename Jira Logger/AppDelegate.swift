@@ -37,24 +37,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			println(error)
 		}
 		
-		var query = PFQuery(className: "JiraData")
-//		query.findObjectsInBackgroundWithBlock {
-//			(objects: Array<AnyObject>!, error: NSError!) -> Void in
-//			println(objects!)
-//			for obj in objects {
-//				let o = obj as JiraData
-//				println(o.date_task_finished)
-//				println(o.notes)
-//			}
-//		}
+		var query = PFQuery(className: JiraData.parseClassName())
+		query.findObjectsInBackgroundWithBlock {
+			(objects: Array<AnyObject>!, error: NSError!) -> Void in
+			RCLogO(objects!)
+			for obj in objects {
+				let o = obj as JiraData
+				RCLogO(o.date_task_finished)
+				RCLogO(o.notes)
+			}
+		}
+        
+        query = PFQuery(className: JiraData.parseClassName())
 		query.getObjectInBackgroundWithId("RNfW4Fgg5y") {
 			(data: PFObject!, error: NSError!) -> Void in
-			println(data["date_task_finished"])
-			println(data["notes"])
+			RCLogO(data["date_task_finished"])
+			RCLogO(data["notes"])
 			if error != nil {
-				println(data)
 			} else {
-				println(error)
 			}
 		}
 		
