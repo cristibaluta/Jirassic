@@ -13,8 +13,6 @@ import ParseOSX
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 	@IBOutlet weak var window: NSWindow?
-    @IBOutlet var statusMenu: NSMenu?
-    var statusItem: NSStatusItem?
 	var menubarController: MenuBarController?
 	var panelController: PanelController?
     
@@ -60,19 +58,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			}
 		}
 		
-        // Insert code here to initialize your application// NSSquareStatusItemLength
-        self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-        self.statusItem?.menu = self.statusMenu
-        self.statusItem?.title = "Jira"
-        self.statusItem?.highlightMode = true
-		self.statusItem?.action = Selector("handleStatusItemToggle:");
-		self.window?.orderOut(self)
+        menubarController = MenuBarController()
+		
+//		self.window?.orderOut(self)
     }
 	
-	func handleStatusItemToggle(sender: NSStatusItem) {
-		println(sender);
-	}
-    
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }

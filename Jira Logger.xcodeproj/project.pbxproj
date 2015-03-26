@@ -12,6 +12,8 @@
 		289998A21AC2920200706824 /* JLPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* JLPanel.swift */; };
 		289998A41AC3354900706824 /* JiraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* JiraData.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
+		289998AB1AC3DCD200706824 /* PanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289998AA1AC3DCD200706824 /* PanelView.xib */; };
+		289998AD1AC3DD6F00706824 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289998AC1AC3DD6F00706824 /* SettingsView.xib */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0531AC196BB001AC4BA /* ViewController.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
@@ -63,6 +65,8 @@
 		289998A11AC2920200706824 /* JLPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPanel.swift; sourceTree = "<group>"; };
 		289998A31AC3354900706824 /* JiraData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraData.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		289998AA1AC3DCD200706824 /* PanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanelView.xib; sourceTree = "<group>"; };
+		289998AC1AC3DD6F00706824 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jira Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,8 +140,11 @@
 		289998A71AC342AB00706824 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				289998A11AC2920200706824 /* JLPanel.swift */,
 				2899989D1AC27C0900706824 /* PanelBackgroundView.swift */,
 				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
+				289998AA1AC3DCD200706824 /* PanelView.xib */,
+				289998AC1AC3DD6F00706824 /* SettingsView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -166,7 +173,6 @@
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
 				289998A51AC3427100706824 /* Controller */,
-				289998A11AC2920200706824 /* JLPanel.swift */,
 				289998A61AC3429500706824 /* Data */,
 				289998A71AC342AB00706824 /* View */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
@@ -301,6 +307,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289998AB1AC3DCD200706824 /* PanelView.xib in Resources */,
+				289998AD1AC3DD6F00706824 /* SettingsView.xib in Resources */,
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
 			);

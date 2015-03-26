@@ -9,5 +9,20 @@
 import Cocoa
 
 class MenuBarController: NSObject {
-
+	
+//	@IBOutlet var statusMenu: NSMenu?
+	var statusItem: NSStatusItem?
+	
+	override init() {
+		self.statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+//		self.statusItem?.menu = self.statusMenu
+		self.statusItem?.title = "Jira"
+		self.statusItem?.highlightMode = true
+		self.statusItem?.action = Selector("handleStatusItemToggle:");
+	}
+	
+	func handleStatusItemToggle(sender: NSStatusItem) {
+		println(sender);
+	}
+	
 }
