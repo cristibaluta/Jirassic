@@ -10,8 +10,23 @@ import Cocoa
 
 public class JiraData: PFObject, PFSubclassing {
 
-	public var date_task_finished :NSDate?
-	public var notes :String?
+    dynamic public var date_task_finished :NSDate {
+        get {
+            return objectForKey("date_task_finished") as NSDate
+        }
+        set {
+            setObject(newValue, forKey: "date_task_finished")
+        }
+    }
+    
+    dynamic public var notes :String {
+        get {
+            return objectForKey("notes") as String
+        }
+        set {
+            setObject(newValue, forKey: "notes")
+        }
+    }
 	
 	public class func parseClassName() -> String {
 		return "JiraData"
