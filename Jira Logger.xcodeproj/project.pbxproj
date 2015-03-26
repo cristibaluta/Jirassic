@@ -10,9 +10,10 @@
 		2899989E1AC27C0900706824 /* PanelBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899989D1AC27C0900706824 /* PanelBackgroundView.swift */; };
 		289998A01AC291B500706824 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899989F1AC291B500706824 /* PanelController.swift */; };
 		289998A21AC2920200706824 /* JLPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* JLPanel.swift */; };
+		289998A41AC3354900706824 /* JiraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* JiraData.swift */; };
+		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0531AC196BB001AC4BA /* ViewController.swift */; };
-		6D31D0571AC196BB001AC4BA /* Jira_Logger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
 		6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */; };
@@ -26,9 +27,7 @@
 		6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */; };
 		6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
 		6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
-		6D31D0901AC2EC11001AC4BA /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0721AC2E420001AC4BA /* ParseOSX.framework */; };
 		6D31D0911AC2EC11001AC4BA /* ParseOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0721AC2E420001AC4BA /* ParseOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6D31D0941AC2EEE2001AC4BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0931AC2EEE2001AC4BA /* Bolts.framework */; };
 		6D31D0951AC2EF07001AC4BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0931AC2EEE2001AC4BA /* Bolts.framework */; };
 		6D31D0961AC2EF07001AC4BA /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0931AC2EEE2001AC4BA /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -62,26 +61,24 @@
 		2899989D1AC27C0900706824 /* PanelBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBackgroundView.swift; sourceTree = "<group>"; };
 		2899989F1AC291B500706824 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
 		289998A11AC2920200706824 /* JLPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPanel.swift; sourceTree = "<group>"; };
+		289998A31AC3354900706824 /* JiraData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraData.swift; sourceTree = "<group>"; };
+		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jira Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D31D0531AC196BB001AC4BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6D31D0561AC196BB001AC4BA /* Jira_Logger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jira_Logger.xcdatamodel; sourceTree = "<group>"; };
 		6D31D0581AC196BB001AC4BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D31D05B1AC196BB001AC4BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jira LoggerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0661AC196BC001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jira_LoggerTests.swift; sourceTree = "<group>"; };
 		6D31D0721AC2E420001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseOSX.framework; sourceTree = "<group>"; };
-		6D31D0751AC2E8A2001AC4BA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6D31D07B1AC2E8BF001AC4BA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6D31D07D1AC2E8C9001AC4BA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		6D31D07F1AC2E8E5001AC4BA /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D31D0831AC2E8F8001AC4BA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		6D31D0851AC2E901001AC4BA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6D31D0891AC2E966001AC4BA /* Jira Logger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jira Logger-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -95,16 +92,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D31D0731AC2E420001AC4BA /* ParseOSX.framework in Frameworks */,
+				6D31D0951AC2EF07001AC4BA /* Bolts.framework in Frameworks */,
 				6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */,
 				6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */,
-				6D31D0941AC2EEE2001AC4BA /* Bolts.framework in Frameworks */,
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
-				6D31D0951AC2EF07001AC4BA /* Bolts.framework in Frameworks */,
 				6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */,
 				6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */,
-				6D31D0901AC2EC11001AC4BA /* ParseOSX.framework in Frameworks */,
 				6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */,
 				6D31D07E1AC2E8C9001AC4BA /* libz.dylib in Frameworks */,
 			);
@@ -120,6 +115,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		289998A51AC3427100706824 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0531AC196BB001AC4BA /* ViewController.swift */,
+				2899989F1AC291B500706824 /* PanelController.swift */,
+				289998A81AC3BDF200706824 /* MenuBarController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		289998A61AC3429500706824 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				289998A31AC3354900706824 /* JiraData.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		289998A71AC342AB00706824 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2899989D1AC27C0900706824 /* PanelBackgroundView.swift */,
+				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6D31D0431AC196BB001AC4BA = {
 			isa = PBXGroup;
 			children = (
@@ -143,15 +165,12 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
-				6D31D0531AC196BB001AC4BA /* ViewController.swift */,
-				2899989F1AC291B500706824 /* PanelController.swift */,
+				289998A51AC3427100706824 /* Controller */,
 				289998A11AC2920200706824 /* JLPanel.swift */,
-				2899989D1AC27C0900706824 /* PanelBackgroundView.swift */,
+				289998A61AC3429500706824 /* Data */,
+				289998A71AC342AB00706824 /* View */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
-				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
-				6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
-				6D31D0891AC2E966001AC4BA /* Jira Logger-Bridging-Header.h */,
 			);
 			path = "Jira Logger";
 			sourceTree = "<group>";
@@ -159,6 +178,7 @@
 		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6D31D0891AC2E966001AC4BA /* Jira Logger-Bridging-Header.h */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -184,18 +204,15 @@
 		6D31D0741AC2E439001AC4BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */,
 				6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */,
-				6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */,
-				6D31D0851AC2E901001AC4BA /* StoreKit.framework */,
-				6D31D0831AC2E8F8001AC4BA /* Security.framework */,
-				6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */,
-				6D31D07F1AC2E8E5001AC4BA /* CoreServices.framework */,
 				6D31D07D1AC2E8C9001AC4BA /* libz.dylib */,
-				6D31D07B1AC2E8BF001AC4BA /* CoreLocation.framework */,
-				6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */,
+				6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */,
 				6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */,
-				6D31D0751AC2E8A2001AC4BA /* AudioToolbox.framework */,
+				6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */,
+				6D31D07B1AC2E8BF001AC4BA /* CoreLocation.framework */,
+				6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */,
+				6D31D0831AC2E8F8001AC4BA /* Security.framework */,
+				6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */,
 				6D31D0931AC2EEE2001AC4BA /* Bolts.framework */,
 				6D31D0721AC2E420001AC4BA /* ParseOSX.framework */,
 			);
@@ -303,12 +320,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289998A41AC3354900706824 /* JiraData.swift in Sources */,
 				6D31D0541AC196BB001AC4BA /* ViewController.swift in Sources */,
-				6D31D0571AC196BB001AC4BA /* Jira_Logger.xcdatamodeld in Sources */,
 				289998A21AC2920200706824 /* JLPanel.swift in Sources */,
 				289998A01AC291B500706824 /* PanelController.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				2899989E1AC27C0900706824 /* PanelBackgroundView.swift in Sources */,
+				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +447,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jira",
 					Logger,
+					"$(PROJECT_DIR)/Jira",
+					Logger,
 				);
 				INFOPLIST_FILE = "Jira Logger/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -446,6 +466,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Jira",
+					Logger,
 					"$(PROJECT_DIR)/Jira",
 					Logger,
 				);
@@ -523,19 +545,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6D31D0551AC196BB001AC4BA /* Jira_Logger.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6D31D0561AC196BB001AC4BA /* Jira_Logger.xcdatamodel */,
-			);
-			currentVersion = 6D31D0561AC196BB001AC4BA /* Jira_Logger.xcdatamodel */;
-			path = Jira_Logger.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6D31D0441AC196BB001AC4BA /* Project object */;
 }

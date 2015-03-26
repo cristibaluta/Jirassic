@@ -8,6 +8,9 @@
 
 import Cocoa
 
-class JLPanel: NSPanel {
-
+public class JLPanel: NSPanel {
+	
+	public func canBecomeKeyWindow() -> Bool {
+		return true; // Allow Search field to become the first responder
+	}
 }
