@@ -29,8 +29,6 @@
 		6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
 		6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
 		6D31D0991AC445CA001AC4BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; };
-		6D31D09A1AC445CA001AC4BA /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
-		6D31D09B1AC44613001AC4BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; };
 		6D31D09C1AC44613001AC4BA /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D31D09E1AC44619001AC4BA /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
 		6D31D09F1AC44619001AC4BA /* ParseOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -102,14 +100,12 @@
 				6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */,
 				6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */,
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
-				6D31D09B1AC44613001AC4BA /* Bolts.framework in Frameworks */,
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
-				6D31D0991AC445CA001AC4BA /* Bolts.framework in Frameworks */,
 				6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */,
+				6D31D0991AC445CA001AC4BA /* Bolts.framework in Frameworks */,
 				6D31D09E1AC44619001AC4BA /* ParseOSX.framework in Frameworks */,
 				6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */,
-				6D31D09A1AC445CA001AC4BA /* ParseOSX.framework in Frameworks */,
 				6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */,
 				6D31D07E1AC2E8C9001AC4BA /* libz.dylib in Frameworks */,
 			);
@@ -475,6 +471,8 @@
 					Logger,
 					"$(PROJECT_DIR)/Jira",
 					Logger,
+					"$(PROJECT_DIR)/Jira",
+					Logger,
 				);
 				INFOPLIST_FILE = "Jira Logger/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -492,6 +490,8 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Jira",
+					Logger,
 					"$(PROJECT_DIR)/Jira",
 					Logger,
 					"$(PROJECT_DIR)/Jira",
