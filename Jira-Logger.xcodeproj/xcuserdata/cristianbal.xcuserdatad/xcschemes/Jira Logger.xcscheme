@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D31D04B1AC196BB001AC4BA"
-               BuildableName = "Jira Logger.app"
-               BlueprintName = "Jira Logger"
-               ReferencedContainer = "container:Jira Logger.xcodeproj">
+               BuildableName = "Jira-Logger.app"
+               BlueprintName = "Jira-Logger"
+               ReferencedContainer = "container:Jira-Logger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D31D0601AC196BC001AC4BA"
-               BuildableName = "Jira LoggerTests.xctest"
-               BlueprintName = "Jira LoggerTests"
-               ReferencedContainer = "container:Jira Logger.xcodeproj">
+               BuildableName = "Jira-LoggerTests.xctest"
+               BlueprintName = "Jira-LoggerTests"
+               ReferencedContainer = "container:Jira-Logger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D31D0601AC196BC001AC4BA"
-               BuildableName = "Jira LoggerTests.xctest"
-               BlueprintName = "Jira LoggerTests"
-               ReferencedContainer = "container:Jira Logger.xcodeproj">
+               BuildableName = "Jira-LoggerTests.xctest"
+               BlueprintName = "Jira-LoggerTests"
+               ReferencedContainer = "container:Jira-Logger.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D31D04B1AC196BB001AC4BA"
-            BuildableName = "Jira Logger.app"
-            BlueprintName = "Jira Logger"
-            ReferencedContainer = "container:Jira Logger.xcodeproj">
+            BuildableName = "Jira-Logger.app"
+            BlueprintName = "Jira-Logger"
+            ReferencedContainer = "container:Jira-Logger.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D31D04B1AC196BB001AC4BA"
-            BuildableName = "Jira Logger.app"
-            BlueprintName = "Jira Logger"
-            ReferencedContainer = "container:Jira Logger.xcodeproj">
+            BuildableName = "Jira-Logger.app"
+            BlueprintName = "Jira-Logger"
+            ReferencedContainer = "container:Jira-Logger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D31D04B1AC196BB001AC4BA"
-            BuildableName = "Jira Logger.app"
-            BlueprintName = "Jira Logger"
-            ReferencedContainer = "container:Jira Logger.xcodeproj">
+            BuildableName = "Jira-Logger.app"
+            BlueprintName = "Jira-Logger"
+            ReferencedContainer = "container:Jira-Logger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

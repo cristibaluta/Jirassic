@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Jira Logger.xcodeproj">
+      location = "self:Jira-Logger.xcodeproj">
    </FileRef>
 </Workspace>

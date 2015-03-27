@@ -41,7 +41,7 @@
 			containerPortal = 6D31D0441AC196BB001AC4BA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6D31D04B1AC196BB001AC4BA;
-			remoteInfo = "Jira Logger";
+			remoteInfo = "Jira-Logger";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -68,13 +68,13 @@
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		289998AA1AC3DCD200706824 /* PanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanelView.xib; sourceTree = "<group>"; };
 		289998AC1AC3DD6F00706824 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
-		6D31D04C1AC196BB001AC4BA /* Jira Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D31D04C1AC196BB001AC4BA /* Jira-Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira-Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D31D0531AC196BB001AC4BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6D31D0581AC196BB001AC4BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D31D05B1AC196BB001AC4BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jira LoggerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D31D0611AC196BC001AC4BA /* Jira-LoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jira-LoggerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0661AC196BC001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jira_LoggerTests.swift; sourceTree = "<group>"; };
 		6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -84,7 +84,7 @@
 		6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D31D0831AC2E8F8001AC4BA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6D31D0891AC2E966001AC4BA /* Jira Logger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jira Logger-Bridging-Header.h"; sourceTree = "<group>"; };
+		6D31D0891AC2E966001AC4BA /* Jira-Logger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jira-Logger-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -154,9 +154,9 @@
 		6D31D0431AC196BB001AC4BA = {
 			isa = PBXGroup;
 			children = (
-				6D31D04E1AC196BB001AC4BA /* Jira Logger */,
+				6D31D04E1AC196BB001AC4BA /* Jira-Logger */,
 				6D31D0741AC2E439001AC4BA /* Frameworks */,
-				6D31D0641AC196BC001AC4BA /* Jira LoggerTests */,
+				6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */,
 				6D31D04D1AC196BB001AC4BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,13 +164,13 @@
 		6D31D04D1AC196BB001AC4BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D04C1AC196BB001AC4BA /* Jira Logger.app */,
-				6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */,
+				6D31D04C1AC196BB001AC4BA /* Jira-Logger.app */,
+				6D31D0611AC196BC001AC4BA /* Jira-LoggerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6D31D04E1AC196BB001AC4BA /* Jira Logger */ = {
+		6D31D04E1AC196BB001AC4BA /* Jira-Logger */ = {
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
@@ -181,25 +181,25 @@
 				6D31D0A21AC448FF001AC4BA /* Vendor */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
 			);
-			path = "Jira Logger";
+			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
 		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D0891AC2E966001AC4BA /* Jira Logger-Bridging-Header.h */,
+				6D31D0891AC2E966001AC4BA /* Jira-Logger-Bridging-Header.h */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6D31D0641AC196BC001AC4BA /* Jira LoggerTests */ = {
+		6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */ = {
 			isa = PBXGroup;
 			children = (
 				6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */,
 				6D31D0651AC196BC001AC4BA /* Supporting Files */,
 			);
-			path = "Jira LoggerTests";
+			path = "Jira-LoggerTests";
 			sourceTree = "<group>";
 		};
 		6D31D0651AC196BC001AC4BA /* Supporting Files */ = {
@@ -226,7 +226,7 @@
 				6D31D0981AC445CA001AC4BA /* ParseOSX.framework */,
 			);
 			name = Frameworks;
-			path = "Jira Logger";
+			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
 		6D31D0A21AC448FF001AC4BA /* Vendor */ = {
@@ -240,9 +240,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D31D04B1AC196BB001AC4BA /* Jira Logger */ = {
+		6D31D04B1AC196BB001AC4BA /* Jira-Logger */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira Logger" */;
+			buildConfigurationList = 6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira-Logger" */;
 			buildPhases = (
 				6D31D0481AC196BB001AC4BA /* Sources */,
 				6D31D0491AC196BB001AC4BA /* Frameworks */,
@@ -253,14 +253,14 @@
 			);
 			dependencies = (
 			);
-			name = "Jira Logger";
-			productName = "Jira Logger";
-			productReference = 6D31D04C1AC196BB001AC4BA /* Jira Logger.app */;
+			name = "Jira-Logger";
+			productName = "Jira-Logger";
+			productReference = 6D31D04C1AC196BB001AC4BA /* Jira-Logger.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D31D0601AC196BC001AC4BA /* Jira LoggerTests */ = {
+		6D31D0601AC196BC001AC4BA /* Jira-LoggerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira LoggerTests" */;
+			buildConfigurationList = 6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira-LoggerTests" */;
 			buildPhases = (
 				6D31D05D1AC196BC001AC4BA /* Sources */,
 				6D31D05E1AC196BC001AC4BA /* Frameworks */,
@@ -271,9 +271,9 @@
 			dependencies = (
 				6D31D0631AC196BC001AC4BA /* PBXTargetDependency */,
 			);
-			name = "Jira LoggerTests";
-			productName = "Jira LoggerTests";
-			productReference = 6D31D0611AC196BC001AC4BA /* Jira LoggerTests.xctest */;
+			name = "Jira-LoggerTests";
+			productName = "Jira-LoggerTests";
+			productReference = 6D31D0611AC196BC001AC4BA /* Jira-LoggerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -294,7 +294,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira Logger" */;
+			buildConfigurationList = 6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira-Logger" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -307,8 +307,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D31D04B1AC196BB001AC4BA /* Jira Logger */,
-				6D31D0601AC196BC001AC4BA /* Jira LoggerTests */,
+				6D31D04B1AC196BB001AC4BA /* Jira-Logger */,
+				6D31D0601AC196BC001AC4BA /* Jira-LoggerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -363,7 +363,7 @@
 /* Begin PBXTargetDependency section */
 		6D31D0631AC196BC001AC4BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D31D04B1AC196BB001AC4BA /* Jira Logger */;
+			target = 6D31D04B1AC196BB001AC4BA /* Jira-Logger */;
 			targetProxy = 6D31D0621AC196BC001AC4BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -465,19 +465,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Jira",
-					Logger,
-					"$(PROJECT_DIR)/Jira",
-					Logger,
-					"$(PROJECT_DIR)/Jira",
-					Logger,
-					"$(PROJECT_DIR)/Jira",
-					Logger,
+					"$(PROJECT_DIR)/Jira-Logger",
 				);
-				INFOPLIST_FILE = "Jira Logger/Info.plist";
+				INFOPLIST_FILE = "Jira-Logger/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Jira Logger/Jira Logger-Bridging-Header.h";
+				PRODUCT_NAME = "Jira-Logger";
+				SWIFT_OBJC_BRIDGING_HEADER = "Jira-Logger/Jira-Logger-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -490,19 +483,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Jira",
-					Logger,
-					"$(PROJECT_DIR)/Jira",
-					Logger,
-					"$(PROJECT_DIR)/Jira",
-					Logger,
-					"$(PROJECT_DIR)/Jira",
-					Logger,
+					"$(PROJECT_DIR)/Jira-Logger",
 				);
-				INFOPLIST_FILE = "Jira Logger/Info.plist";
+				INFOPLIST_FILE = "Jira-Logger/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Jira Logger/Jira Logger-Bridging-Header.h";
+				PRODUCT_NAME = "Jira-Logger";
+				SWIFT_OBJC_BRIDGING_HEADER = "Jira-Logger/Jira-Logger-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -519,10 +505,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Jira LoggerTests/Info.plist";
+				INFOPLIST_FILE = "Jira-LoggerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira Logger.app/Contents/MacOS/Jira Logger";
+				PRODUCT_NAME = "Jira-LoggerTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira-Logger.app/Contents/MacOS/Jira-Logger";
 			};
 			name = Debug;
 		};
@@ -535,17 +521,17 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Jira LoggerTests/Info.plist";
+				INFOPLIST_FILE = "Jira-LoggerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira Logger.app/Contents/MacOS/Jira Logger";
+				PRODUCT_NAME = "Jira-LoggerTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira-Logger.app/Contents/MacOS/Jira-Logger";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira Logger" */ = {
+		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira-Logger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D31D0691AC196BC001AC4BA /* Debug */,
@@ -554,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira Logger" */ = {
+		6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira-Logger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D31D06C1AC196BC001AC4BA /* Debug */,
@@ -563,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira LoggerTests" */ = {
+		6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira-LoggerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D31D06F1AC196BC001AC4BA /* Debug */,
