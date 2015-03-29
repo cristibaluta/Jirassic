@@ -28,6 +28,15 @@ public class JiraData: PFObject, PFSubclassing {
         }
     }
 	
+	dynamic public var issue_nr :String? {
+		get {
+			return objectForKey("issue_nr") as String?
+		}
+		set {
+			setObject(newValue, forKey: "issue_nr")
+		}
+	}
+	
 	public class func parseClassName() -> String {
 		return "JiraData"
 	}

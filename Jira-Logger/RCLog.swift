@@ -1,6 +1,5 @@
 //
 //  RCLog.swift
-//  Photography Places
 //
 //  Created by Baluta Cristian on 12/08/2014.
 //  Copyright (c) 2014 Baluta Cristian. All rights reserved.

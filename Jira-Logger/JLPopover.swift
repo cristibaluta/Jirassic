@@ -8,7 +8,20 @@
 
 import Cocoa
 
-public class JLPanel: NSPanel {
+public class JLPopover: NSPopover {
+	
+	public override init() {
+		super.init()
+	}
+
+	required public init?(coder: NSCoder) {
+	    println("popover with coder")
+		super.init()
+	}
+	
+	override public func awakeFromNib() {
+		
+	}
 	
 	public func canBecomeKeyWindow() -> Bool {
 		return true; // Allow Search field to become the first responder
