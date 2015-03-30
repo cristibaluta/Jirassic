@@ -11,35 +11,43 @@
             <rect key="frame" x="0.0" y="0.0" width="336" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                    <rect key="frame" x="83" y="0.0" width="255" height="70"/>
-                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="PIu-Xg-tz0">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                    <rect key="frame" x="90" y="0.0" width="247" height="70"/>
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="-2" y="0.0" width="79" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="75" id="xIb-vJ-6m8"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" id="dlI-ub-5hj">
+                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                    <rect key="frame" x="20" y="0.0" width="70" height="70"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" id="dlI-ub-5hj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
                 </textField>
+                <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-lw-vdV">
+                    <rect key="frame" x="8" y="0.0" width="5" height="70"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="wQt-Pf-e21"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" id="6Xl-Ji-Q3q"/>
                 <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" id="AUd-oY-UIp"/>
-                <constraint firstAttribute="bottom" secondItem="bpM-64-Faf" secondAttribute="bottom" id="Vjb-Ny-N6d"/>
-                <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="10" id="aX9-Y4-57U"/>
-                <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="10" id="cIh-6b-Kcd"/>
-                <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="cKf-Fa-qEd"/>
+                <constraint firstItem="iAi-8T-Cme" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="DkB-QX-71a"/>
+                <constraint firstAttribute="bottom" secondItem="iAi-8T-Cme" secondAttribute="bottom" id="QbW-am-apH"/>
+                <constraint firstItem="iAi-8T-Cme" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Y31-1l-0au"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="keu-jM-krQ"/>
-                <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="zHd-VK-8dW"/>
             </constraints>
             <connections>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
@@ -48,4 +56,7 @@
             <point key="canvasLocation" x="225" y="201"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSStatusAvailable" width="16" height="16"/>
+    </resources>
 </document>

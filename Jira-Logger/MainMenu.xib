@@ -668,6 +668,7 @@
         </menu>
         <viewController id="Mzr-YU-Yq5" userLabel="Popover View Controller" customClass="JLPopoverViewController" customModule="Jira_Logger" customModuleProvider="target">
             <connections>
+                <outlet property="_butDrawer" destination="ncf-3w-Koq" id="WGQ-Hk-kVt"/>
                 <outlet property="_dateLabel" destination="Ma3-Gy-AgP" id="3wX-Zt-DMF"/>
                 <outlet property="_datesScrollView" destination="5Rv-SU-X0P" id="WtV-Rp-nJ8"/>
                 <outlet property="_datesTableView" destination="GC5-kC-nNx" id="3Ne-Xo-csd"/>
@@ -717,7 +718,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInvalidDataFreestandingTemplate" id="G0B-wc-KXV"/>
+                                        <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="G0B-wc-KXV"/>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
                                 </tableColumns>
@@ -867,7 +868,7 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="NSInvalidDataFreestandingTemplate" width="14" height="14"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
 </document>

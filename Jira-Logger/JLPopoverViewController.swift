@@ -16,6 +16,7 @@ class JLPopoverViewController: NSViewController {
 	@IBOutlet var _tasksTableView: NSTableView?
 	@IBOutlet var _noTasksLabel: NSTextField?
 	@IBOutlet var _dateLabel: NSTextField?
+	@IBOutlet var _butDrawer: NSButton?
 	var _dateCellDatasource: DateCellDataSource?
 	var _taskCellDatasource: TaskCellDataSource?
 	var _state: Int = 1
@@ -74,13 +75,14 @@ class JLPopoverViewController: NSViewController {
 		
 		switch s {
 		case 0:
-			
+			_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
 			_datesScrollView?.hidden = false
 			_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
 				y: CGRectGetMinY(_tasksScrollView!.frame),
 				width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
 		case 1:
+			_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
 			_datesScrollView?.hidden = true
 			_tasksScrollView?.frame = NSRect(x: _gapX,
 				y: CGRectGetMinY(_datesScrollView!.frame),

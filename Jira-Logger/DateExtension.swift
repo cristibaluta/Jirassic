@@ -8,6 +8,8 @@
 
 import Foundation
 
+let ymdUnitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
+
 extension NSDate {
 	
 	func HHmmddMM () -> String {
@@ -16,16 +18,35 @@ extension NSDate {
 		return f.stringFromDate(self)
 	}
 	
+	func MMdd () -> String {
+		let f = NSDateFormatter()
+		f.dateFormat = "MMMM dd"
+		return f.stringFromDate(self)
+	}
+	
+	func HHmm () -> String {
+		let f = NSDateFormatter()
+		f.dateFormat = "HH:mm"
+		return f.stringFromDate(self)
+	}
+	
+	func DDMMdd () -> String {
+		let f = NSDateFormatter()
+		f.dateFormat = "DD, MMMM dd"
+		return f.stringFromDate(self)
+	}
+	
 	class func getMonthsBetween(startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
 	
-		var dates :[NSDate] = [NSDate]()
+		var dates: [NSDate] = [NSDate]()
 		let monthDifference = NSDateComponents()
-		var monthOffset :Int = 0
+		var monthOffset: Int = 0
 		var nextDate = startDate
 	
 		while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
 			monthDifference.month = monthOffset++
-			nextDate = NSCalendar.currentCalendar().dateByAddingComponents(monthDifference, toDate:startDate, options:nil)!
+			nextDate = NSCalendar.currentCalendar().dateByAddingComponents(monthDifference,
+				toDate: startDate, options: nil)!
 			dates.append(nextDate)
 		}
 		
@@ -35,13 +56,13 @@ extension NSDate {
 	func firstDayThisMonth() -> NSDate {
 	
 		let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-		let unitFlags : NSCalendarUnit = NSCalendarUnit.CalendarUnitYear |
+		let unitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitYear |
 			NSCalendarUnit.CalendarUnitMonth |
 			NSCalendarUnit.CalendarUnitDay |
 			NSCalendarUnit.CalendarUnitHour |
 			NSCalendarUnit.CalendarUnitMinute |
 			NSCalendarUnit.CalendarUnitSecond
-		let comps = gregorian!.components(unitFlags, fromDate:self)
+		let comps = gregorian!.components(unitFlags, fromDate: self)
 		comps.day = 1
 		comps.hour = 0
 		comps.minute = 0
@@ -56,40 +77,39 @@ extension NSDate {
 	
 	func isTheSameDayAs(date: NSDate) -> Bool {
 		
-		let unitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
 		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
-		let compsSelf = gregorian!.components(unitFlags, fromDate:self)
-		let compsRef = gregorian!.components(unitFlags, fromDate:date)
+		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
+		let compsRef = gregorian!.components(ymdUnitFlags, fromDate: date)
 		
-		return compsSelf.day == compsRef.day && compsSelf.month == compsRef.month && compsSelf.year == compsRef.year
+		return compsSelf.day == compsRef.day &&
+			compsSelf.month == compsRef.month &&
+			compsSelf.year == compsRef.year
 	}
 	
 	func daysInMonth() -> Int {
 	
 		let calendar = NSCalendar(identifier: NSGregorianCalendar)
-		let daysRange = calendar!.rangeOfUnit(NSCalendarUnit.CalendarUnitDay, inUnit:NSCalendarUnit.CalendarUnitMonth, forDate:self)
+		let daysRange = calendar!.rangeOfUnit(NSCalendarUnit.CalendarUnitDay,
+			inUnit: NSCalendarUnit.CalendarUnitMonth, forDate: self)
 		
 		return daysRange.length as Int
 	}
 	
 	func year() -> Int {
-		let unitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
 		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
-		let comps = gregorian!.components(unitFlags, fromDate:self)
+		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.year
 	}
 	
 	func month() -> Int {
-		let unitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
 		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
-		let comps = gregorian!.components(unitFlags, fromDate:self)
+		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.month
 	}
 	
 	func day() -> Int {
-		let unitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
 		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
-		let comps = gregorian!.components(unitFlags, fromDate:self)
+		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.day
 	}
 }

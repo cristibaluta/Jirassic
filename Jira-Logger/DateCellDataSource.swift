@@ -28,19 +28,18 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView!,
 		objectValueForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject! {
 			
-//			RCLog("\(tableColumn)  \(row)")
 			let object = data![row] as JiraData
 			
 			if (tableColumn.identifier == "date") {
-				return object.date_task_finished?.HHmmddMM()
+				return object.date_task_finished?.MMdd()
 			} else if (tableColumn.identifier == "progress") {
-				return NSImage(named: "Star")
+				return NSImage(named: NSImageNameStatusPartiallyAvailable)
 			}
 			return "..."
 	}
 	
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
-		RCLogO(aNotification)
+		
 		if let rowView: AnyObject = aNotification.object? {
 			if didSelectRow != nil {
 				didSelectRow!(row: rowView.selectedRow)

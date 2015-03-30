@@ -63,7 +63,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	}
 	
 	
-	// Actns
+	// Actions
 	
 	func addObjectWithDate(date: NSDate) {
 		
