@@ -23,7 +23,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	var didSelectRow: ((row: Int) -> ())?
 	
 	
-	func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
+	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		
 		if let d = data {
 			return d.count
@@ -31,11 +31,11 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		return 0
 	}
 	
-	func tableView(tableView: NSTableView!,
-		viewForTableColumn tableColumn: NSTableColumn!, row: Int) -> NSView! {
+	func tableView(tableView: NSTableView,
+		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
 			let object = data![row] as JiraData
-			let view = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as TaskCell
+			let view = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as! TaskCell
 			view.issueNrTextField?.stringValue = object.issue_nr!
 			view.notesTextField?.stringValue = object.notes!
 			
@@ -51,7 +51,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
 		
-		if let rowView: AnyObject = aNotification.object? {
+		if let rowView: AnyObject = aNotification.object {
 			if didSelectRow != nil {
 				didSelectRow!(row: rowView.selectedRow)
 			}

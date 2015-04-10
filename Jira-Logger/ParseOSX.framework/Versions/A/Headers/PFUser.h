@@ -18,6 +18,10 @@
 
 PF_ASSUME_NONNULL_BEGIN
 
+typedef void(^PFUserSessionUpgradeResultBlock)(NSError *PF_NULLABLE_S error);
+typedef void(^PFUserLogoutResultBlock)(NSError *PF_NULLABLE_S error);
+
+
 @class PFQuery;
 
 /*!
@@ -321,6 +325,33 @@ PF_ASSUME_NONNULL_BEGIN
 + (void)becomeInBackground:(NSString *)sessionToken block:(PF_NULLABLE PFUserResultBlock)block;
 
 ///--------------------------------------
+/// @name Revocable Session
+///--------------------------------------
+
+/*!
+ @abstract Enables revocable sessions and migrates the currentUser session token to use revocable session if needed.
+
+ @discussion This method is required if you want to use <PFSession> APIs
+ and you application's 'Require Revocable Session' setting is turned off on `http://parse.com` app settings.
+ After returned `BFTask` completes - <PFSession> class and APIs will be available for use.
+
+ @returns An instance of `BFTask` that is completed when
+ revocable sessions are enabled and currentUser token is migrated.
+ */
++ (BFTask *)enableRevocableSessionInBackground;
+
+/*!
+ @abstract Enables revocable sessions and upgrades the currentUser session token to use revocable session if needed.
+
+ @discussion This method is required if you want to use <PFSession> APIs
+ and legacy sessions are enabled in your application settings on `http://parse.com/`.
+ After returned `BFTask` completes - <PFSession> class and APIs will be available for use.
+
+ @param block Block that will be called when revocable sessions are enabled and currentUser token is migrated.
+ */
++ (void)enableRevocableSessionInBackgroundWithBlock:(PF_NULLABLE PFUserSessionUpgradeResultBlock)block;
+
+///--------------------------------------
 /// @name Logging Out
 ///--------------------------------------
 
@@ -328,6 +359,28 @@ PF_ASSUME_NONNULL_BEGIN
  @abstract *Synchronously* logs out the currently logged in user on disk.
  */
 + (void)logOut;
+
+/*!
+ @abstract *Asynchronously* logs out the currenlt logged in user.
+
+ @discussion This will also remove the session from disk, log out of linked services
+ and all future calls to <currentUser> will return `nil`. This is preferrable to using <logOut>,
+ unless your code is already running from a background thread.
+
+ @returns An instance of `BFTask`, that is resolved with `nil` result when logging out completes.
+ */
++ (BFTask *)logOutInBackground;
+
+/*!
+ @abstract *Asynchronously* logs out the currenlt logged in user.
+
+ @discussion This will also remove the session from disk, log out of linked services
+ and all future calls to <currentUser> will return `nil`. This is preferrable to using <logOut>,
+ unless your code is already running from a background thread.
+
+ @param block A block that will be called when logging out completes or fails.
+ */
++ (void)logOutInBackgroundWithBlock:(PF_NULLABLE PFUserLogoutResultBlock)block;
 
 ///--------------------------------------
 /// @name Requesting a Password Reset

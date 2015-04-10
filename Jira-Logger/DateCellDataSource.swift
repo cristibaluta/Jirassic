@@ -18,21 +18,21 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		
 	}
 	
-	func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
+	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		
 		let numberOfRows: Int = data!.count
 		RCLogI(numberOfRows)
 		return numberOfRows
 	}
 	
-	func tableView(tableView: NSTableView!,
-		objectValueForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject! {
+	func tableView(tableView: NSTableView,
+		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 			
 			let object = data![row] as JiraData
 			
-			if (tableColumn.identifier == "date") {
+			if (tableColumn?.identifier == "date") {
 				return object.date_task_finished?.MMdd()
-			} else if (tableColumn.identifier == "progress") {
+			} else if (tableColumn?.identifier == "progress") {
 				return NSImage(named: NSImageNameStatusPartiallyAvailable)
 			}
 			return "..."
@@ -40,7 +40,7 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
 		
-		if let rowView: AnyObject = aNotification.object? {
+		if let rowView: AnyObject = aNotification.object {
 			if didSelectRow != nil {
 				didSelectRow!(row: rowView.selectedRow)
 			}

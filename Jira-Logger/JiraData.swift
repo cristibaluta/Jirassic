@@ -10,30 +10,34 @@ import Cocoa
 
 public class JiraData: PFObject, PFSubclassing {
 
+	override init () {
+		super.init()
+	}
+	
     dynamic public var date_task_finished :NSDate? {
         get {
-            return objectForKey("date_task_finished") as NSDate?
+            return objectForKey("date_task_finished") as! NSDate?
         }
         set {
-            setObject(newValue, forKey: "date_task_finished")
+            setObject(newValue!, forKey: "date_task_finished")
         }
     }
     
     dynamic public var notes :String? {
         get {
-            return objectForKey("notes") as String?
+            return objectForKey("notes") as! String?
         }
         set {
-            setObject(newValue, forKey: "notes")
+            setObject(newValue!, forKey: "notes")
         }
     }
 	
 	dynamic public var issue_nr :String? {
 		get {
-			return objectForKey("issue_nr") as String?
+			return objectForKey("issue_nr") as! String?
 		}
 		set {
-			setObject(newValue, forKey: "issue_nr")
+			setObject(newValue!, forKey: "issue_nr")
 		}
 	}
 	

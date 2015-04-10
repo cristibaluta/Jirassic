@@ -9,6 +9,7 @@
 import Foundation
 
 let ymdUnitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
+let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
 	
@@ -54,8 +55,7 @@ extension NSDate {
 	}
 	
 	func firstDayThisMonth() -> NSDate {
-	
-		let gregorian = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+		
 		let unitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitYear |
 			NSCalendarUnit.CalendarUnitMonth |
 			NSCalendarUnit.CalendarUnitDay |
@@ -77,7 +77,6 @@ extension NSDate {
 	
 	func isTheSameDayAs(date: NSDate) -> Bool {
 		
-		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
 		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
 		let compsRef = gregorian!.components(ymdUnitFlags, fromDate: date)
 		
@@ -87,28 +86,24 @@ extension NSDate {
 	}
 	
 	func daysInMonth() -> Int {
-	
-		let calendar = NSCalendar(identifier: NSGregorianCalendar)
-		let daysRange = calendar!.rangeOfUnit(NSCalendarUnit.CalendarUnitDay,
+		
+		let daysRange = gregorian!.rangeOfUnit(NSCalendarUnit.CalendarUnitDay,
 			inUnit: NSCalendarUnit.CalendarUnitMonth, forDate: self)
 		
 		return daysRange.length as Int
 	}
 	
 	func year() -> Int {
-		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.year
 	}
 	
 	func month() -> Int {
-		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.month
 	}
 	
 	func day() -> Int {
-		let gregorian = NSCalendar(identifier: NSGregorianCalendar)
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.day
 	}

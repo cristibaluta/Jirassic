@@ -10,8 +10,7 @@ import Cocoa
 
 class MenuBarController: NSObject {
 	
-	let iconView: IconView?
-	
+	var iconView: IconView?
 	var onMouseDown: (() -> ())?
 	
 	override init() {
@@ -27,7 +26,5 @@ class MenuBarController: NSObject {
 			self.onMouseDown!()
 		}
 		item.view = iconView
-		
-		
 	}
 }

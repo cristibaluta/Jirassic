@@ -48,7 +48,7 @@ class DummyDataManager: NSObject {
 	class func dates() -> [JiraData] {
 		
 		var objects = data()
-		var currrentDate = NSDate.distantFuture() as NSDate
+		var currrentDate = NSDate.distantFuture() as! NSDate
 		objects = objects.filter { (object: JiraData) -> Bool in
 			RCLogO("> \(object.date_task_finished) isTheSameDayAs \(currrentDate) \(object.date_task_finished!.isTheSameDayAs(currrentDate))")
 			if object.date_task_finished!.isTheSameDayAs(currrentDate) == false {

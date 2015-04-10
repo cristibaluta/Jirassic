@@ -21,6 +21,7 @@
 #import <Parse/PFQuery.h>
 #import <Parse/PFRelation.h>
 #import <Parse/PFRole.h>
+#import <Parse/PFSession.h>
 #import <Parse/PFSubclassing.h>
 #import <Parse/PFUser.h>
 #import <Parse/PFInstallation.h>
@@ -47,6 +48,7 @@
 #import <ParseOSX/PFQuery.h>
 #import <ParseOSX/PFRelation.h>
 #import <ParseOSX/PFRole.h>
+#import <ParseOSX/PFSession.h>
 #import <ParseOSX/PFSubclassing.h>
 #import <ParseOSX/PFUser.h>
 

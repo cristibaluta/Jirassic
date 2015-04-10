@@ -17,7 +17,7 @@ PF_ASSUME_NONNULL_BEGIN
 
 @class PFGeoPoint;
 
-typedef void(^PFGeoPointResultBlock)(PF_NULLABLE_S PFGeoPoint *geoPoint, PF_NULLABLE_S NSError *error);
+typedef void(^PFGeoPointResultBlock)(PFGeoPoint *PF_NULLABLE_S geoPoint, NSError *PF_NULLABLE_S error);
 
 /*!
  `PFGeoPoint` may be used to embed a latitude / longitude point as the value for a key in a <PFObject>.

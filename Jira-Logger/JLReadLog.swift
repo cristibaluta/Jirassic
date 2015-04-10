@@ -29,13 +29,13 @@ class JLReadLog: NSObject {
 		
 		query = PFQuery(className: JiraData.parseClassName())
 		query.getObjectInBackgroundWithId("RNfW4Fgg5y") {
-			(data: PFObject!, error: NSError!) -> Void in
+			(data: PFObject?, error: NSError?) -> Void in
 			
 			if error != nil {
 				RCLogO(error)
 			} else {
-				RCLogO(data["date_task_finished"])
-				RCLogO(data["notes"])
+				RCLogO(data?["date_task_finished"])
+				RCLogO(data?["notes"])
 			}
 		}
 	}

@@ -6,6 +6,12 @@
 
 #import <Foundation/Foundation.h>
 
+#if PARSE_IOS_ONLY
+#import <Parse/PFNullability.h>
+#else
+#import <ParseOSX/PFNullability.h>
+#endif
+
 @class PFQuery;
 
 PF_ASSUME_NONNULL_BEGIN
