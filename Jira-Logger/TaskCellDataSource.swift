@@ -38,6 +38,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			let view = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as! TaskCell
 			view.issueNrTextField?.stringValue = object.issue_nr!
 			view.notesTextField?.stringValue = object.notes!
+			view.dateEndTextField?.stringValue = object.date_task_finished!.HHmm()
 			
 			return view
 	}
@@ -59,7 +60,11 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		return 70.0
+		return 90.0
+	}
+	
+	func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
+		
 	}
 	
 	
@@ -70,7 +75,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		let d = JiraData()
 		d.date_task_finished = date
 		d.issue_nr = "AN-0000"
-		d.notes = "......"
+		d.notes = "What did you do in this task?"
 		
 		data?.append( d )
 	}

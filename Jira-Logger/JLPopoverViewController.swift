@@ -8,6 +8,11 @@
 
 import Cocoa
 
+enum DrawerState: Int {
+	case Closed = 0
+	case Open = 1
+}
+
 class JLPopoverViewController: NSViewController {
 	
 	@IBOutlet var _datesScrollView: NSScrollView?
@@ -19,8 +24,9 @@ class JLPopoverViewController: NSViewController {
 	@IBOutlet var _butDrawer: NSButton?
 	var _dateCellDatasource: DateCellDataSource?
 	var _taskCellDatasource: TaskCellDataSource?
-	var _state: Int = 1
+	var _state: DrawerState = .Open
 	let _gapX = CGFloat(12)
+	let kDrawerStateKey = "DrawerStateKey"
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +40,13 @@ class JLPopoverViewController: NSViewController {
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		setState( _state)
+		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
+		RCLogO(previousState)
+		if previousState != self._state.rawValue {
+			self._state = .Open
+		}
+		RCLogO(self._state.rawValue)
+		setState( self._state)
 	}
 	
 	func setupDatesTableView() {
@@ -43,7 +55,9 @@ class JLPopoverViewController: NSViewController {
 		_dateCellDatasource!.tableView = _datesTableView
 		_dateCellDatasource!.data = DummyDataManager.dates()
 		_dateCellDatasource?.didSelectRow = { (row: Int) in
-			self.reloadDataForTasksOnDate( NSDate())
+			let theData = self._dateCellDatasource!.data![row]
+			RCLogO(theData)
+			self.reloadDataForTasksOnDate( theData.date_task_finished!)
 		}
 		
 //		_datesTableView?.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
@@ -56,7 +70,6 @@ class JLPopoverViewController: NSViewController {
 		_taskCellDatasource = TaskCellDataSource()
 		_taskCellDatasource!.tableView = _tasksTableView
 		
-		
 		_tasksTableView?.setDataSource( _taskCellDatasource )
 		_tasksTableView?.setDelegate( _taskCellDatasource )
 	}
@@ -65,23 +78,25 @@ class JLPopoverViewController: NSViewController {
 		
 		_noTasksLabel?.hidden = true
 		
-		_taskCellDatasource!.data = DummyDataManager.data()
+		_taskCellDatasource!.data = DummyDataManager.tasksForDate(date)
 		_tasksTableView?.reloadData()
+		
+		_dateLabel?.stringValue = date.EEEEMMdd()
 	}
 	
-	func setState (s: Int) {
+	func setState (s: DrawerState) {
 		
 		_state = s
 		
 		switch s {
-		case 0:
+		case .Closed:
 			_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
 			_datesScrollView?.hidden = false
 			_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
 				y: CGRectGetMinY(_tasksScrollView!.frame),
 				width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
-		case 1:
+		case .Open:
 			_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
 			_datesScrollView?.hidden = true
 			_tasksScrollView?.frame = NSRect(x: _gapX,
@@ -95,14 +110,18 @@ class JLPopoverViewController: NSViewController {
 	}
 	
 	
-	// Actions
+	// MARK: Actions
 	
 	@IBAction func handleColumnButton(sender: NSButton) {
-		setState( _state == 0 ? 1 : 0)
+		
+		setState( _state == .Closed ? .Open : .Closed)
+		
+		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
+		NSUserDefaults.standardUserDefaults().synchronize()
+		RCLogO(_state.rawValue)
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
-		RCLogO(sender)
 		_taskCellDatasource?.addObjectWithDate( NSDate())
 		_tasksTableView?.reloadData()
 		_tasksTableView?.scrollColumnToVisible( 0 )

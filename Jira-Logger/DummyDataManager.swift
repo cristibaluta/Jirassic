@@ -18,17 +18,17 @@ class DummyDataManager: NSObject {
 		d1.notes = "Finished the task by deleting the whole project..."
 		
 		let d1_1 = JiraData()
-		d1_1.date_task_finished = NSDate()
+		d1_1.date_task_finished = NSDate().dateByAddingTimeInterval(-500100)
 		d1_1.issue_nr = "AN-3425"
 		d1_1.notes = "Finished the task by deleting the whole project..."
 		
 		let d2 = JiraData()
-		d2.date_task_finished = NSDate().dateByAddingTimeInterval(-5000)
+		d2.date_task_finished = NSDate().dateByAddingTimeInterval(-500000)
 		d2.issue_nr = "AN-3423"
 		d2.notes = "Finished the task by deleting the whole project..."
 		
 		let d3 = JiraData()
-		d3.date_task_finished = NSDate().dateByAddingTimeInterval(-36000)
+		d3.date_task_finished = NSDate().dateByAddingTimeInterval(-369000)
 		d3.issue_nr = "AN-3423"
 		d3.notes = "Finished the task by deleting the whole project. Finished the task by deleting the whole project..."
 		
@@ -65,6 +65,9 @@ class DummyDataManager: NSObject {
 		
 		var objects = data()
 		objects = objects.filter { (object: JiraData) -> Bool in
+			RCLogO("tasks for date: \(date)")
+			RCLogO(object)
+			RCLogO(object.date_task_finished!.isTheSameDayAs( date ))
 			return object.date_task_finished!.isTheSameDayAs( date )
 		}
 		

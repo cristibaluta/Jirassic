@@ -13,27 +13,27 @@ let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
 	
-	func HHmmddMM () -> String {
+	func HHmmddMM() -> String {
 		let f = NSDateFormatter()
 		f.dateFormat = "HH:mm • dd MMM"
 		return f.stringFromDate(self)
 	}
 	
-	func MMdd () -> String {
+	func MMdd() -> String {
 		let f = NSDateFormatter()
 		f.dateFormat = "MMMM dd"
 		return f.stringFromDate(self)
 	}
 	
-	func HHmm () -> String {
+	func HHmm() -> String {
 		let f = NSDateFormatter()
 		f.dateFormat = "HH:mm"
 		return f.stringFromDate(self)
 	}
 	
-	func DDMMdd () -> String {
+	func EEEEMMdd() -> String {
 		let f = NSDateFormatter()
-		f.dateFormat = "DD, MMMM dd"
+		f.dateFormat = "EEEE, MMMM dd"
 		return f.stringFromDate(self)
 	}
 	
@@ -67,7 +67,7 @@ extension NSDate {
 		comps.hour = 0
 		comps.minute = 0
 		comps.second = 0
-	
+		
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
