@@ -84,7 +84,7 @@ class JLPopoverViewController: NSViewController {
 		
 		_noTasksLabel?.hidden = true
 		
-		_taskCellDatasource!.data = sharedData.tasksForDayOnDate(date)
+		_taskCellDatasource!.data = reverse(sharedData.tasksForDayOnDate(date))
 		_tasksTableView?.reloadData()
 		
 		_dateLabel?.stringValue = date.EEEEMMdd()
@@ -129,7 +129,14 @@ class JLPopoverViewController: NSViewController {
 	@IBAction func handlePlusButton(sender: NSButton) {
 		_taskCellDatasource?.addObjectWithDate( NSDate())
 		_tasksTableView?.reloadData()
-		_tasksTableView?.scrollColumnToVisible( 0 )
+//		let index = _taskCellDatasource!.numberOfRowsInTableView(_tasksTableView!) - 1
+//		_tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
+//		_tasksTableView?.scrollRowToVisible( index )
+	}
+	
+	@IBAction func handleRemoveButton(sender: NSButton) {
+		_taskCellDatasource?.addObjectWithDate( NSDate())
+		_tasksTableView?.removeRowsAtIndexes(NSIndexSet(index: 0), withAnimation: NSTableViewAnimationOptions.SlideRight)
 	}
 	
 	@IBAction func handleShareButton(sender: NSButton) {

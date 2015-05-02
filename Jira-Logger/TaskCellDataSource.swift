@@ -9,6 +9,8 @@
 import Cocoa
 
 let kTaskCellIdentifier = "TaskCellIdentifier"
+let kTaskCellMinHeight = CGFloat(70.0)
+let kTaskCellMaxHeight = CGFloat(90.0)
 
 class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
@@ -39,6 +41,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			view.issueNrTextField?.stringValue = object.task_nr!
 			view.notesTextField?.stringValue = object.notes!
 			view.dateEndTextField?.stringValue = object.date_task_finished!.HHmm()
+			view.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.SourceList
 			
 			return view
 	}
@@ -60,15 +63,15 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		return 90.0
+		return kTaskCellMaxHeight
 	}
 	
-	func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
-		
-	}
+//	func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
+//		
+//	}
 	
 	
-	// Actions
+	// MARK: Add and remove objects
 	
 	func addObjectWithDate(date: NSDate) {
 		
@@ -78,5 +81,9 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		d.notes = "What did you do in this task?"
 		
 		data?.append( d )
+	}
+	
+	func removeObject(task: Task) {
+		data?.removeAtIndex( 0 )
 	}
 }
