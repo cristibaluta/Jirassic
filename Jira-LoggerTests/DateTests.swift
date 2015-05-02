@@ -21,8 +21,23 @@ class DateTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testFirstDayThisMonth() {
+		let sndOfMay2015 = NSDate(timeIntervalSince1970: 1430589737)
+		let fstOfMay2015 = sndOfMay2015.firstDayThisMonth()
+		
+		let unitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitYear |
+			NSCalendarUnit.CalendarUnitMonth |
+			NSCalendarUnit.CalendarUnitDay |
+			NSCalendarUnit.CalendarUnitHour |
+			NSCalendarUnit.CalendarUnitMinute |
+			NSCalendarUnit.CalendarUnitSecond
+		let components = NSCalendar.currentCalendar().components(unitFlags, fromDate:fstOfMay2015)
+		
+		XCTAssertTrue(components.year == 2015, "Test failed, check firstDateThisMonth method")
+		XCTAssertTrue(components.month == 5, "Test failed, check firstDateThisMonth method")
+		XCTAssertTrue(components.day == 1, "Test failed, check firstDateThisMonth method")
+		XCTAssertTrue(components.hour == 0, "Test failed, check firstDateThisMonth method")
+		XCTAssertTrue(components.minute == 0, "Test failed, check firstDateThisMonth method")
+		XCTAssertTrue(components.second == 0, "Test failed, check firstDateThisMonth method")
     }
 }
