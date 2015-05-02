@@ -15,7 +15,7 @@ class InitParse: NSObject {
 		// [Optional] Power your app with Local Datastore. For more info, go to
 		// https://parse.com/docs/ios_guide#localdatastore/OSX
 		
-		JiraData.registerSubclass()
+		Task.registerSubclass()
 		
 		Parse.enableLocalDatastore()
 		

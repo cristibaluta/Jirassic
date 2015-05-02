@@ -11,7 +11,7 @@ import Cocoa
 class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
 	var tableView: NSTableView?
-	var data: [JiraData]?
+	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
 	
 	override init() {
@@ -28,7 +28,7 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 			
-			let object = data![row] as JiraData
+			let object = data![row] as Task
 			
 			if (tableColumn?.identifier == "date") {
 				return object.date_task_finished?.MMdd()

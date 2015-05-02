@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class JLReadLog: NSObject {
+class JLTaskReader: NSObject {
 
 	override init() {
 		
@@ -16,18 +16,18 @@ class JLReadLog: NSObject {
 	
 	func read() {
 		
-		var query = PFQuery(className: JiraData.parseClassName())
+		var query = PFQuery(className: Task.parseClassName())
 		/*query.findObjectsInBackgroundWithBlock {
 		(objects: Array<AnyObject>!, error: NSError!) -> Void in
 		RCLogO(objects!)
 		for obj in objects {
-		let o = obj as JiraData
+		let o = obj as Task
 		RCLogO(o.date_task_finished)
 		RCLogO(o.notes)
 		}
 		}*/
 		
-		query = PFQuery(className: JiraData.parseClassName())
+		query = PFQuery(className: Task.parseClassName())
 		query.getObjectInBackgroundWithId("RNfW4Fgg5y") {
 			(data: PFObject?, error: NSError?) -> Void in
 			

@@ -8,20 +8,20 @@
 
 import Cocoa
 
-class JLWriteLog: NSObject {
+class JLTaskWriter: NSObject {
 
 	override init() {
 		
 	}
 	
-	func write() {
-		let theData = JiraData()
+	func write(task_id: String, notes: String) -> Task {
+		let theData = Task()
 		theData.date_task_finished = NSDate()
-		theData.notes = "task 3452, fixed by deleting the project"
+		theData.notes = notes
+		theData.task_nr = task_id
 		theData.saveInBackgroundWithBlock { (success, error) -> Void in
-			println("saved")
-			println(success)
-			println(error)
+			println("saved task to Parse \(success) \(error)")
 		}
+		return theData
 	}
 }

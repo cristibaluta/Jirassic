@@ -12,7 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
-	@IBOutlet var popover : NSPopover?
+	@IBOutlet var popover: NSPopover?
 	
 	override init() {
 		

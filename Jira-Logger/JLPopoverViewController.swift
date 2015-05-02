@@ -15,37 +15,41 @@ enum DrawerState: Int {
 
 class JLPopoverViewController: NSViewController {
 	
-	@IBOutlet var _datesScrollView: NSScrollView?
-	@IBOutlet var _tasksScrollView: NSScrollView?
-	@IBOutlet var _datesTableView: NSTableView?
-	@IBOutlet var _tasksTableView: NSTableView?
-	@IBOutlet var _noTasksLabel: NSTextField?
-	@IBOutlet var _dateLabel: NSTextField?
-	@IBOutlet var _butDrawer: NSButton?
-	var _dateCellDatasource: DateCellDataSource?
-	var _taskCellDatasource: TaskCellDataSource?
-	var _state: DrawerState = .Open
-	let _gapX = CGFloat(12)
-	let kDrawerStateKey = "DrawerStateKey"
+	@IBOutlet private var _datesScrollView: NSScrollView?
+	@IBOutlet private var _tasksScrollView: NSScrollView?
+	@IBOutlet private var _datesTableView: NSTableView?
+	@IBOutlet private var _tasksTableView: NSTableView?
+	@IBOutlet private var _noTasksLabel: NSTextField?
+	@IBOutlet private var _dateLabel: NSTextField?
+	@IBOutlet private var _butDrawer: NSButton?
+	private var _dateCellDatasource: DateCellDataSource?
+	private var _taskCellDatasource: TaskCellDataSource?
+	private var _state: DrawerState = .Open
+	private let _gapX = CGFloat(12)
+	private let kDrawerStateKey = "DrawerStateKey"
 	
     override func viewDidLoad() {
+		RCLogO("viewDidLoad")
         super.viewDidLoad()
 		
-		// Setup delegates for all tableViews
-		setupDatesTableView()
-		setupTasksTableView()
-		
-		reloadDataForTasksOnDate( NSDate())
+		sharedData.allData { (tasks, error) -> Void in
+			RCLogO(tasks)
+			// Setup delegates for all tableViews
+			self.setupDatesTableView()
+			self.setupTasksTableView()
+			
+			self.reloadDataForTasksOnDate( NSDate())
+		}
     }
 	
 	override func viewDidAppear() {
+		RCLogO("viewDidAppear")
 		super.viewDidAppear()
+		
 		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
-		RCLogO(previousState)
 		if previousState != self._state.rawValue {
 			self._state = .Open
 		}
-		RCLogO(self._state.rawValue)
 		setState( self._state)
 	}
 	
@@ -53,11 +57,13 @@ class JLPopoverViewController: NSViewController {
 		
 		_dateCellDatasource = DateCellDataSource()
 		_dateCellDatasource!.tableView = _datesTableView
-		_dateCellDatasource!.data = DummyDataManager.dates()
+		_dateCellDatasource!.data = sharedData.days()
 		_dateCellDatasource?.didSelectRow = { (row: Int) in
-			let theData = self._dateCellDatasource!.data![row]
-			RCLogO(theData)
-			self.reloadDataForTasksOnDate( theData.date_task_finished!)
+			if row >= 0 {
+				let theData = self._dateCellDatasource!.data![row]
+				RCLogO(theData)
+				self.reloadDataForTasksOnDate( theData.date_task_finished!)
+			}
 		}
 		
 //		_datesTableView?.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
@@ -78,7 +84,7 @@ class JLPopoverViewController: NSViewController {
 		
 		_noTasksLabel?.hidden = true
 		
-		_taskCellDatasource!.data = DummyDataManager.tasksForDate(date)
+		_taskCellDatasource!.data = sharedData.tasksForDayOnDate(date)
 		_tasksTableView?.reloadData()
 		
 		_dateLabel?.stringValue = date.EEEEMMdd()
@@ -106,7 +112,6 @@ class JLPopoverViewController: NSViewController {
 		default:
 			_datesScrollView?.hidden = true
 		}
-		RCLogRect(_tasksScrollView?.frame)
 	}
 	
 	

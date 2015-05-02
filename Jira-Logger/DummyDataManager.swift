@@ -8,48 +8,48 @@
 
 import Cocoa
 
-class DummyDataManager: NSObject {
+class DummyDataManager: NSObject, DataManagerProtocol {
 
-	class func data() -> [JiraData] {
+	func allData(completion: ([Task], NSError?) -> Void) {
 		
-		let d1 = JiraData()
+		let d1 = Task()
 		d1.date_task_finished = NSDate()
-		d1.issue_nr = "AN-3422"
+		d1.task_nr = "AN-3422"
 		d1.notes = "Finished the task by deleting the whole project..."
 		
-		let d1_1 = JiraData()
+		let d1_1 = Task()
 		d1_1.date_task_finished = NSDate().dateByAddingTimeInterval(-500100)
-		d1_1.issue_nr = "AN-3425"
+		d1_1.task_nr = "AN-3425"
 		d1_1.notes = "Finished the task by deleting the whole project..."
 		
-		let d2 = JiraData()
+		let d2 = Task()
 		d2.date_task_finished = NSDate().dateByAddingTimeInterval(-500000)
-		d2.issue_nr = "AN-3423"
+		d2.task_nr = "AN-3423"
 		d2.notes = "Finished the task by deleting the whole project..."
 		
-		let d3 = JiraData()
+		let d3 = Task()
 		d3.date_task_finished = NSDate().dateByAddingTimeInterval(-369000)
-		d3.issue_nr = "AN-3423"
+		d3.task_nr = "AN-3423"
 		d3.notes = "Finished the task by deleting the whole project. Finished the task by deleting the whole project..."
 		
-		let d4 = JiraData()
+		let d4 = Task()
 		d4.date_task_finished = NSDate().dateByAddingTimeInterval(-106500)
-		d4.issue_nr = "AN-3423"
+		d4.task_nr = "AN-3423"
 		d4.notes = "Finished the task by deleting the whole project..."
 		
-		let d5 = JiraData()
+		let d5 = Task()
 		d5.date_task_finished = NSDate().dateByAddingTimeInterval(-90600)
-		d5.issue_nr = "AN-3323"
+		d5.task_nr = "AN-3323"
 		d5.notes = "Finished the task by deleting the whole project..."
 		
-		return [d1, d1_1, d2, d3, d4, d5]
+		completion([d1, d1_1, d2, d3, d4, d5], nil)
 	}
 	
-	class func dates() -> [JiraData] {
+	func days() -> [Task] {
 		
-		var objects = data()
+		var objects = [Task]()
 		var currrentDate = NSDate.distantFuture() as! NSDate
-		objects = objects.filter { (object: JiraData) -> Bool in
+		objects = objects.filter { (object: Task) -> Bool in
 			RCLogO("> \(object.date_task_finished) isTheSameDayAs \(currrentDate) \(object.date_task_finished!.isTheSameDayAs(currrentDate))")
 			if object.date_task_finished!.isTheSameDayAs(currrentDate) == false {
 				currrentDate = object.date_task_finished!
@@ -61,16 +61,17 @@ class DummyDataManager: NSObject {
 		return objects
 	}
 	
-	class func tasksForDate(date: NSDate) -> [JiraData] {
+	func tasksForDayOnDate(date: NSDate) -> [Task] {
 		
-		var objects = data()
-		objects = objects.filter { (object: JiraData) -> Bool in
-			RCLogO("tasks for date: \(date)")
-			RCLogO(object)
-			RCLogO(object.date_task_finished!.isTheSameDayAs( date ))
+		var objects = [Task]()
+		objects = objects.filter { (object: Task) -> Bool in
 			return object.date_task_finished!.isTheSameDayAs( date )
 		}
 		
 		return objects
+	}
+	
+	func addTask(task_id: String, notes: String) {
+		
 	}
 }

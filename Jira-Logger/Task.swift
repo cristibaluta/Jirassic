@@ -1,5 +1,5 @@
 //
-//  JiraData.swift
+//  Task.swift
 //  Jira Logger
 //
 //  Created by Baluta Cristian on 25/03/15.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class JiraData: PFObject, PFSubclassing {
+public class Task: PFObject, PFSubclassing {
 
 	override init () {
 		super.init()
@@ -32,16 +32,16 @@ public class JiraData: PFObject, PFSubclassing {
         }
     }
 	
-	dynamic public var issue_nr :String? {
+	dynamic public var task_nr :String? {
 		get {
-			return objectForKey("issue_nr") as! String?
+			return objectForKey("task_nr") as! String?
 		}
 		set {
-			setObject(newValue!, forKey: "issue_nr")
+			setObject(newValue!, forKey: "task_nr")
 		}
 	}
 	
 	public class func parseClassName() -> String {
-		return "JiraData"
+		return "Task"
 	}
 }

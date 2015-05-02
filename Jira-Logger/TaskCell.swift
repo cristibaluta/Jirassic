@@ -34,7 +34,7 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 	
 	override func drawSelectionInRect(dirtyRect: NSRect) {
 //		if (self.selectionHighlightStyle != NSTableViewSelectionHighlightStyle.None) {
-//			self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
+			self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 			let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
 			NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
 			NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()

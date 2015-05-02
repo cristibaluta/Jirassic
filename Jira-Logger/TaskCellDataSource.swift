@@ -19,7 +19,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			}
 		}
 	}
-	var data: [JiraData]?
+	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
 	
 	
@@ -34,9 +34,9 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-			let object = data![row] as JiraData
+			let object = data![row] as Task
 			let view = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as! TaskCell
-			view.issueNrTextField?.stringValue = object.issue_nr!
+			view.issueNrTextField?.stringValue = object.task_nr!
 			view.notesTextField?.stringValue = object.notes!
 			view.dateEndTextField?.stringValue = object.date_task_finished!.HHmm()
 			
@@ -72,9 +72,9 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	func addObjectWithDate(date: NSDate) {
 		
-		let d = JiraData()
+		let d = Task()
 		d.date_task_finished = date
-		d.issue_nr = "AN-0000"
+		d.task_nr = "AN-0000"
 		d.notes = "What did you do in this task?"
 		
 		data?.append( d )
