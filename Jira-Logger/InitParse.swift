@@ -12,15 +12,16 @@ class InitParse: NSObject {
 
 	override init() {
 		
+		assert(parseApplicationId != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			"You need to create your own Parse app in order to use this. After that put the keys in ParseCredentials")
+		
 		// [Optional] Power your app with Local Datastore. For more info, go to
 		// https://parse.com/docs/ios_guide#localdatastore/OSX
 		
 		Task.registerSubclass()
 		
 		Parse.enableLocalDatastore()
-		
-		Parse.setApplicationId("DFWPmEOCnRCody7tfeXjzNZAl6nKCaTZELWSEeyZ",
-			clientKey:"WdjHVrrPJexhd4nnFZyOx9GoqsBdOCMck5W2qdrd")
+		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
 		
 		PFAnalytics()
 	}

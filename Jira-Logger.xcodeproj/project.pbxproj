@@ -28,6 +28,7 @@
 		28E8390F1AF4974600602D33 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; };
 		28E839101AF4974A00602D33 /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
 		28E839111AF4974D00602D33 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
 		28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
 		28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
@@ -99,6 +100,7 @@
 		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
 		28E839001AF402B200602D33 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		28E839021AF4035900602D33 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
 		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTaskWriter.swift; sourceTree = "<group>"; };
 		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTaskReader.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0891AC2E966001AC4BA /* Jira-Logger-Bridging-Header.h */,
+				28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -459,6 +462,7 @@
 				28F51EB31AC6B6D800A69CDF /* JLPopoverViewController.swift in Sources */,
 				28F51EBB1AC6F5F200A69CDF /* DateCellDataSource.swift in Sources */,
 				289998A21AC2920200706824 /* JLPopover.swift in Sources */,
+				28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */,
 				28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */,
 				28F51EBF1AC6FB2100A69CDF /* JiraRaport.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */,
