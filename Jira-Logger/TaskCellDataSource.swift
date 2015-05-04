@@ -8,6 +8,7 @@
 
 import Cocoa
 
+let kTaskCellNibName = "TaskCell"
 let kTaskCellIdentifier = "TaskCellIdentifier"
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
@@ -16,7 +17,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	var tableView: NSTableView? {
 		didSet {
-			if let nib = NSNib(nibNamed: "TaskCell", bundle: NSBundle.mainBundle()) {
+			if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
 				tableView?.registerNib( nib, forIdentifier: kTaskCellIdentifier)
 			}
 		}
@@ -42,6 +43,9 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			view.notesTextField?.stringValue = object.notes!
 			view.dateEndTextField?.stringValue = object.date_task_finished!.HHmm()
 			view.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.SourceList
+			view.didEndEditingCell = { (cell: TaskCell) in
+				
+			}
 			
 			return view
 	}
@@ -54,10 +58,11 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	}
 	
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
-		
-		if let rowView: AnyObject = aNotification.object {
+		RCLogO(aNotification)
+		if let tableView: AnyObject = aNotification.object {
+			RCLogO(tableView.selectedRow)
 			if didSelectRow != nil {
-				didSelectRow!(row: rowView.selectedRow)
+				didSelectRow!(row: tableView.selectedRow)
 			}
 		}
 	}

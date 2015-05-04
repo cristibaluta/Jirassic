@@ -10,6 +10,10 @@ import Cocoa
 
 class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
+	let rowHeight = CGFloat(20)
+	let columnDateId = "date"
+	let columnProgressId = "progress"
+	
 	var tableView: NSTableView?
 	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
@@ -21,7 +25,6 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		
 		let numberOfRows: Int = data!.count
-		RCLogI(numberOfRows)
 		return numberOfRows
 	}
 	
@@ -30,9 +33,10 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			
 			let object = data![row] as Task
 			
-			if (tableColumn?.identifier == "date") {
+			if (tableColumn?.identifier == columnDateId) {
 				return object.date_task_finished?.MMdd()
-			} else if (tableColumn?.identifier == "progress") {
+			}
+			else if (tableColumn?.identifier == columnProgressId) {
 				return NSImage(named: NSImageNameStatusPartiallyAvailable)
 			}
 			return "..."
@@ -48,6 +52,6 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		return 30.0
+		return rowHeight
 	}
 }

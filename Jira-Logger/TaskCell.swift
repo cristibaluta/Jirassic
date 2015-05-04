@@ -14,11 +14,13 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 	@IBOutlet var dateEndTextField: NSTextField?
 	@IBOutlet var notesTextField: NSTextField?
 	
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-
-        // Drawing code here.
-    }
+	var didEndEditingCell: ((cell: TaskCell) -> ())?
+	
+//    override func drawRect(dirtyRect: NSRect) {
+//        super.drawRect(dirtyRect)
+//
+//        // Drawing code here.
+//    }
 	
 	override func controlTextDidBeginEditing(obj: NSNotification) {
 		RCLogO(obj.name)
@@ -26,6 +28,7 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 	
 	override func controlTextDidEndEditing(obj: NSNotification) {
 		RCLogO(obj.name)
+		self.didEndEditingCell!(cell: self)
 	}
 	
 	override func controlTextDidChange(obj: NSNotification) {

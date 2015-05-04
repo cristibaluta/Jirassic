@@ -29,6 +29,11 @@
 		28E839101AF4974A00602D33 /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
 		28E839111AF4974D00602D33 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
+		28EB90211AF60234008D5337 /* NoTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasksController.swift */; };
+		28EB90221AF60234008D5337 /* NoTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasksController.swift */; };
+		28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90231AF60250008D5337 /* NoTasksTests.swift */; };
+		28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* DummyDataManager.swift */; };
+		28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* DummyDataManager.swift */; };
 		28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
 		28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
@@ -101,6 +106,9 @@
 		28E839001AF402B200602D33 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		28E839021AF4035900602D33 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
+		28EB90201AF60234008D5337 /* NoTasksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksController.swift; sourceTree = "<group>"; };
+		28EB90231AF60250008D5337 /* NoTasksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksTests.swift; sourceTree = "<group>"; };
+		28EB90251AF6027D008D5337 /* DummyDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataManager.swift; sourceTree = "<group>"; };
 		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTaskWriter.swift; sourceTree = "<group>"; };
 		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTaskReader.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -114,7 +122,6 @@
 		28F51EBA1AC6F5F200A69CDF /* DateCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCellDataSource.swift; sourceTree = "<group>"; };
 		28F51EBC1AC6F67000A69CDF /* JLShareRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLShareRaport.swift; sourceTree = "<group>"; };
 		28F51EBE1AC6FB2100A69CDF /* JiraRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraRaport.swift; sourceTree = "<group>"; };
-		28F51EC11AC7FCF100A69CDF /* DummyDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyDataManager.swift; path = "../Jira-Logger/DummyDataManager.swift"; sourceTree = "<group>"; };
 		28F51EC51AC805B000A69CDF /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		28F51ECA1AC82B1600A69CDF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jira-Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira-Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +250,7 @@
 				28F51EBC1AC6F67000A69CDF /* JLShareRaport.swift */,
 				28F51EBA1AC6F5F200A69CDF /* DateCellDataSource.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TaskCellDataSource.swift */,
+				28EB90201AF60234008D5337 /* NoTasksController.swift */,
 			);
 			name = "Business Rules";
 			sourceTree = "<group>";
@@ -304,7 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */,
-				28F51EC11AC7FCF100A69CDF /* DummyDataManager.swift */,
+				28EB90251AF6027D008D5337 /* DummyDataManager.swift */,
+				28EB90231AF60250008D5337 /* NoTasksTests.swift */,
 				28E839001AF402B200602D33 /* DateTests.swift */,
 				6D31D0651AC196BC001AC4BA /* Supporting Files */,
 			);
@@ -464,7 +473,9 @@
 				289998A21AC2920200706824 /* JLPopover.swift in Sources */,
 				28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */,
 				28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */,
+				28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */,
 				28F51EBF1AC6FB2100A69CDF /* JiraRaport.swift in Sources */,
+				28EB90211AF60234008D5337 /* NoTasksController.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				28F51EC61AC805B000A69CDF /* DateExtension.swift in Sources */,
@@ -479,10 +490,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28EB90221AF60234008D5337 /* NoTasksController.swift in Sources */,
+				28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* DateExtension.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
 				6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,
+				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
