@@ -113,7 +113,14 @@ class JLPopoverViewController: NSViewController {
 			_noTasksContainer?.hidden = false
 			_butAdd?.hidden = true
 			_noTasksLabel?.stringValue = NoTasksController().showStartState()
-		} else {
+		}
+		else if _taskCellDatasource!.data?.count == 1 {
+			_noTasksContainer?.hidden = false
+			_butAdd?.hidden = false
+			_butStart?.hidden = true
+			_noTasksLabel?.stringValue = NoTasksController().showFirstTaskState()
+		}
+		else {
 			_noTasksContainer?.hidden = true
 			_butAdd?.hidden = false
 		}
@@ -164,6 +171,8 @@ class JLPopoverViewController: NSViewController {
 		let index = _taskCellDatasource!.data!.count - 1
 		_tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
 		_tasksTableView?.scrollRowToVisible( index )
+		
+		updateNoTasksState()
 	}
 	
 	@IBAction func handleRemoveButton(sender: NSButton) {

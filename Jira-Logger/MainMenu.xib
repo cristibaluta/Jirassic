@@ -808,12 +808,12 @@
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="Ej6-xv-yyB">
                                 <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-5B-6aQ">
-                            <rect key="frame" x="185" y="120" width="96" height="32"/>
+                            <rect key="frame" x="185" y="157" width="96" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="tWF-AK-ls1"/>
                                 <constraint firstAttribute="width" constant="84" id="tow-cN-eAB"/>
@@ -830,7 +830,7 @@
                     <constraints>
                         <constraint firstItem="aBu-qA-pK5" firstAttribute="leading" secondItem="yxw-5H-4UX" secondAttribute="leading" constant="2" id="SGZ-VO-u7s"/>
                         <constraint firstAttribute="centerY" secondItem="aBu-qA-pK5" secondAttribute="centerY" constant="18" id="Urm-6E-twq"/>
-                        <constraint firstItem="aBu-qA-pK5" firstAttribute="bottom" secondItem="7RQ-5B-6aQ" secondAttribute="bottom" constant="-71" id="WiS-2x-upA"/>
+                        <constraint firstItem="aBu-qA-pK5" firstAttribute="bottom" secondItem="7RQ-5B-6aQ" secondAttribute="bottom" constant="-34" id="WiS-2x-upA"/>
                         <constraint firstAttribute="trailing" secondItem="aBu-qA-pK5" secondAttribute="trailing" constant="2" id="fND-l2-baV"/>
                         <constraint firstAttribute="centerX" secondItem="7RQ-5B-6aQ" secondAttribute="centerX" constant="0.5" id="iho-Ma-hRx"/>
                     </constraints>
