@@ -39,7 +39,7 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			else if (tableColumn?.identifier == columnProgressId) {
 				return NSImage(named: NSImageNameStatusPartiallyAvailable)
 			}
-			return "..."
+			return ""
 	}
 	
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
@@ -54,4 +54,5 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		return rowHeight
 	}
+	
 }

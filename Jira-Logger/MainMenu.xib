@@ -668,6 +668,7 @@
         </menu>
         <viewController id="Mzr-YU-Yq5" userLabel="Popover View Controller" customClass="JLPopoverViewController" customModule="Jira_Logger" customModuleProvider="target">
             <connections>
+                <outlet property="_butAdd" destination="t9I-hI-JME" id="7OK-rV-AkP"/>
                 <outlet property="_butDrawer" destination="ncf-3w-Koq" id="WGQ-Hk-kVt"/>
                 <outlet property="_butStart" destination="7RQ-5B-6aQ" id="qsS-Fc-OUA"/>
                 <outlet property="_dateLabel" destination="Ma3-Gy-AgP" id="3wX-Zt-DMF"/>
@@ -797,10 +798,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxw-5H-4UX">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="yxw-5H-4UX">
                     <rect key="frame" x="12" y="0.0" width="467" height="382"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBu-qA-pK5">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aBu-qA-pK5">
                             <rect key="frame" x="0.0" y="198" width="467" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="NgX-te-hTx"/>
@@ -811,7 +812,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-5B-6aQ">
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-5B-6aQ">
                             <rect key="frame" x="185" y="120" width="96" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="tWF-AK-ls1"/>
@@ -827,7 +828,6 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="aBu-qA-pK5" secondAttribute="centerX" id="6ZA-8i-bB5"/>
                         <constraint firstItem="aBu-qA-pK5" firstAttribute="leading" secondItem="yxw-5H-4UX" secondAttribute="leading" constant="2" id="SGZ-VO-u7s"/>
                         <constraint firstAttribute="centerY" secondItem="aBu-qA-pK5" secondAttribute="centerY" constant="18" id="Urm-6E-twq"/>
                         <constraint firstItem="aBu-qA-pK5" firstAttribute="bottom" secondItem="7RQ-5B-6aQ" secondAttribute="bottom" constant="-71" id="WiS-2x-upA"/>
@@ -890,6 +890,12 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <constraints>
+                <constraint firstItem="yxw-5H-4UX" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="60" id="T18-SE-b9t"/>
+                <constraint firstAttribute="bottom" secondItem="yxw-5H-4UX" secondAttribute="bottom" id="Wbt-sP-x7R"/>
+                <constraint firstAttribute="trailing" secondItem="yxw-5H-4UX" secondAttribute="trailing" constant="12" id="gds-Cs-5cz"/>
+                <constraint firstItem="yxw-5H-4UX" firstAttribute="leading" secondItem="OBP-pT-3rU" secondAttribute="leading" constant="12" id="uQi-wn-Btm"/>
+            </constraints>
             <point key="canvasLocation" x="354.5" y="449"/>
         </customView>
         <arrayController id="8A0-Ws-K3v" userLabel="Tasks Array Controller">

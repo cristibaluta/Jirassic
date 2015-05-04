@@ -14,11 +14,10 @@ class DataManager: NSObject, DataManagerProtocol {
 
 	private var data = [Task]()
 	
-	func allData(completion: ([Task], NSError?) -> Void) {
+	func queryData(completion: ([Task], NSError?) -> Void) {
 		
 		var query = PFQuery(className: Task.parseClassName())
 		query.orderByDescending("date_task_finished")
-//		query.whereKey("location", nearGeoPoint: PFGeoPoint(location: QRLocationManager.sharedLocation().currentLocation))
 		query.findObjectsInBackgroundWithBlock( { (objects: [AnyObject]?, error: NSError?) in
 			if (error == nil) {
 				self.data = objects as! [Task]
@@ -52,9 +51,16 @@ class DataManager: NSObject, DataManagerProtocol {
 		return filteredData
 	}
 	
-	func addTask(task_id: String, notes: String) {
+	func addNewTask() -> Task {
 		
-		let task = JLTaskWriter().write(task_id, notes: notes)
-		data.insert(task, atIndex: 0)
+		let task = Task()
+		task.date_task_finished = NSDate()
+		task.task_nr = "AN-0000"
+		task.notes = "What did you do in this task?"
+		
+//		let task = JLTaskWriter().write(task_id, notes: notes)
+		data.append(task)
+		
+		return task
 	}
 }

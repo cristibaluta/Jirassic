@@ -10,8 +10,9 @@ import Cocoa
 
 @objc protocol DataManagerProtocol: NSObjectProtocol {
 	
-	func allData(completion: ([Task], NSError?) -> Void)
+	func queryData(completion: ([Task], NSError?) -> Void)
 	func days() -> [Task]
 	func tasksForDayOnDate(date: NSDate) -> [Task]
-	func addTask(task_id: String, notes: String)
+	func addNewTask() -> Task
+//	func updateTask(task_id: String, notes: String)
 }

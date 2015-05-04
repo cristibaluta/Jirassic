@@ -36,14 +36,10 @@ class JLPopoverViewController: NSViewController {
     override func viewDidLoad() {
 		
         super.viewDidLoad()
+		updateNoTasksState()
 		
-		sharedData.allData { (tasks, error) -> Void in
-			RCLogO(tasks)
-			// Setup delegates for all tableViews
-			self.setupDaysTableView()
-			self.setupTasksTableView()
-			
-			self.reloadTasksOnDay( NSDate())
+		sharedData.queryData { (tasks, error) -> Void in
+			self.reloadData()
 		}
     }
 	
@@ -64,35 +60,46 @@ class JLPopoverViewController: NSViewController {
 		
 	}
 	
+	func reloadData() {
+		self.setupDaysTableView()
+		self.setupTasksTableView()
+		self.reloadTasksOnDay( NSDate())
+	}
+	
 	func setupDaysTableView() {
 		
-		_dateCellDatasource = DateCellDataSource()
-		_dateCellDatasource!.tableView = _datesTableView
-		_dateCellDatasource!.data = sharedData.days()
-		_dateCellDatasource?.didSelectRow = { (row: Int) in
-			if row >= 0 {
-				let theData = self._dateCellDatasource!.data![row]
-				self.reloadTasksOnDay( theData.date_task_finished!)
+		if _dateCellDatasource == nil {
+			_dateCellDatasource = DateCellDataSource()
+			_dateCellDatasource!.tableView = _datesTableView
+			_dateCellDatasource!.data = sharedData.days()
+			_dateCellDatasource?.didSelectRow = { (row: Int) in
+				if row >= 0 {
+					let theData = self._dateCellDatasource!.data![row]
+					self.reloadTasksOnDay( theData.date_task_finished!)
+				}
 			}
+			
+			_datesTableView?.setDataSource( _dateCellDatasource )
+			_datesTableView?.setDelegate( _dateCellDatasource )
+		} else {
+			_dateCellDatasource!.data = sharedData.days()
 		}
-		
-//		_datesTableView?.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
-		_datesTableView?.setDataSource( _dateCellDatasource )
-		_datesTableView?.setDelegate( _dateCellDatasource )
 	}
 	
 	func setupTasksTableView() {
 		
-		_taskCellDatasource = TaskCellDataSource()
-		_taskCellDatasource!.tableView = _tasksTableView
-		
-		_tasksTableView?.setDataSource( _taskCellDatasource )
-		_tasksTableView?.setDelegate( _taskCellDatasource )
+		if _taskCellDatasource == nil {
+			_taskCellDatasource = TaskCellDataSource()
+			_taskCellDatasource!.tableView = _tasksTableView
+			
+			_tasksTableView?.setDataSource( _taskCellDatasource )
+			_tasksTableView?.setDelegate( _taskCellDatasource )
+		}
 	}
 	
 	func reloadTasksOnDay(date: NSDate) {
 		
-		_taskCellDatasource!.data = reverse(sharedData.tasksForDayOnDate(date))
+		_taskCellDatasource!.data = sharedData.tasksForDayOnDate(date).reverse()
 		_tasksTableView?.reloadData()
 		
 		_dateLabel?.stringValue = date.EEEEMMdd()
@@ -102,13 +109,14 @@ class JLPopoverViewController: NSViewController {
 	
 	func updateNoTasksState() {
 		
-		if _taskCellDatasource!.data?.count == 0 {
+		if _taskCellDatasource == nil || _taskCellDatasource!.data?.count == 0 {
 			_noTasksContainer?.hidden = false
+			_butAdd?.hidden = true
 			_noTasksLabel?.stringValue = NoTasksController().showStartState()
 		} else {
 			_noTasksContainer?.hidden = true
+			_butAdd?.hidden = false
 		}
-		
 	}
 	
 	func setState (s: DrawerState) {
@@ -149,15 +157,17 @@ class JLPopoverViewController: NSViewController {
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
-		_taskCellDatasource?.addObjectWithDate( NSDate())
-		_tasksTableView?.reloadData()
-//		let index = _taskCellDatasource!.numberOfRowsInTableView(_tasksTableView!) - 1
-//		_tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
-//		_tasksTableView?.scrollRowToVisible( index )
+		
+		let task = sharedData.addNewTask()
+		_taskCellDatasource?.addTask( task )
+		
+		let index = _taskCellDatasource!.data!.count - 1
+		_tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
+		_tasksTableView?.scrollRowToVisible( index )
 	}
 	
 	@IBAction func handleRemoveButton(sender: NSButton) {
-		_taskCellDatasource?.addObjectWithDate( NSDate())
+//		_taskCellDatasource?.addObjectWithDate( NSDate())
 		_tasksTableView?.removeRowsAtIndexes(NSIndexSet(index: 0), withAnimation: NSTableViewAnimationOptions.SlideRight)
 	}
 	
@@ -171,6 +181,11 @@ class JLPopoverViewController: NSViewController {
 	
 	@IBAction func handleStartButton(sender: NSButton) {
 		
+		let task = sharedData.addNewTask()
+		task.task_nr = "Start"
+		task.notes = "Working day started at \(NSDate())"
+		
+		self.reloadData()
 	}
 	
 }

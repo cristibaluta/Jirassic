@@ -9,8 +9,10 @@
 import Cocoa
 
 class DummyDataManager: NSObject, DataManagerProtocol {
-
-	func allData(completion: ([Task], NSError?) -> Void) {
+	
+	private var data = [Task]()
+	
+	func queryData(completion: ([Task], NSError?) -> Void) {
 		
 		let d1 = Task()
 		d1.date_task_finished = NSDate()
@@ -42,14 +44,16 @@ class DummyDataManager: NSObject, DataManagerProtocol {
 		d5.task_nr = "AN-3323"
 		d5.notes = "Finished the task by deleting the whole project..."
 		
-		completion([d1, d1_1, d2, d3, d4, d5], nil)
+		data = [d1, d1_1, d2, d3, d4, d5]
+		
+		completion(data, nil)
 	}
 	
 	func days() -> [Task] {
 		
 		var objects = [Task]()
 		var currrentDate = NSDate.distantFuture() as! NSDate
-		objects = objects.filter { (object: Task) -> Bool in
+		objects = data.filter { (object: Task) -> Bool in
 			RCLogO("> \(object.date_task_finished) isTheSameDayAs \(currrentDate) \(object.date_task_finished!.isTheSameDayAs(currrentDate))")
 			if object.date_task_finished!.isTheSameDayAs(currrentDate) == false {
 				currrentDate = object.date_task_finished!
@@ -71,7 +75,21 @@ class DummyDataManager: NSObject, DataManagerProtocol {
 		return objects
 	}
 	
-	func addTask(task_id: String, notes: String) {
+	func addNewTask() -> Task {
 		
+		let task = Task()
+		task.date_task_finished = NSDate()
+		task.task_nr = "AN-0000"
+		task.notes = "What did you do in this task?"
+		
+		//		let task = JLTaskWriter().write(task_id, notes: notes)
+		data.append(task)
+		
+		return task
+	}
+	
+	func addTask(task_id: String, notes: String) {
+		let task = JLTaskWriter().write(task_id, notes: notes)
+		data.append(task)
 	}
 }

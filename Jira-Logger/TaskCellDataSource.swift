@@ -44,7 +44,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			view.dateEndTextField?.stringValue = object.date_task_finished!.HHmm()
 			view.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.SourceList
 			view.didEndEditingCell = { (cell: TaskCell) in
-				
+				RCLogO(cell)
 			}
 			
 			return view
@@ -71,24 +71,14 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		return kTaskCellMaxHeight
 	}
 	
-//	func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
-//		
-//	}
-	
 	
 	// MARK: Add and remove objects
 	
-	func addObjectWithDate(date: NSDate) {
-		
-		let d = Task()
-		d.date_task_finished = date
-		d.task_nr = "AN-0000"
-		d.notes = "What did you do in this task?"
-		
-		data?.append( d )
+	func addTask(task: Task) {
+		data?.append( task )
 	}
 	
-	func removeObject(task: Task) {
+	func removeTask(task: Task) {
 		data?.removeAtIndex( 0 )
 	}
 }
