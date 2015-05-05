@@ -95,6 +95,13 @@ class JLPopoverViewController: NSViewController {
 		if _taskCellDatasource == nil {
 			_taskCellDatasource = TaskCellDataSource()
 			_taskCellDatasource!.tableView = _tasksTableView
+			_taskCellDatasource!.didRemoveRow = { (row: Int) in
+				RCLogO("remove \(row)")
+				if row >= 0 {
+					let theData = self._taskCellDatasource!.data![row]
+					RCLogO("remove \(theData)")
+				}
+			}
 			
 			_tasksTableView?.setDataSource( _taskCellDatasource )
 			_tasksTableView?.setDelegate( _taskCellDatasource )

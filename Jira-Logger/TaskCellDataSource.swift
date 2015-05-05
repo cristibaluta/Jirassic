@@ -24,6 +24,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	}
 	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
+	var didRemoveRow: ((row: Int) -> ())?
 	
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
@@ -48,6 +49,12 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 				theData.task_nr = cell.issueNrTextField?.stringValue
 				theData.notes = cell.notesTextField?.stringValue
 				JLTaskWriter().write( theData )
+			}
+			view.didRemoveCell = { (cell: TaskCell) in
+				RCLogO("remove cell \(self.didRemoveRow)")
+				if self.didRemoveRow != nil {
+					self.didRemoveRow!(row: tableView.rowForView(cell))
+				}
 			}
 			
 			return view

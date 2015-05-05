@@ -41,6 +41,16 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                     </connections>
                 </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
+                    <rect key="frame" x="11" y="14" width="42" height="30"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="oWe-AX-kJB"/>
+                    </connections>
+                </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
                     <rect key="frame" x="17" y="53" width="51" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
@@ -48,9 +58,6 @@
                         <color key="textColor" red="0.10582754791184269" green="0.81926688762626254" blue="0.23108835819567383" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="c22-O7-iKe" id="X2W-D3-aIZ"/>
-                    </connections>
                 </textField>
                 <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-lw-vdV">
                     <rect key="frame" x="8" y="0.0" width="4" height="70"/>
@@ -80,6 +87,7 @@
                 <constraint firstAttribute="bottom" secondItem="0b2-lw-vdV" secondAttribute="bottom" id="z0l-Sx-rdC"/>
             </constraints>
             <connections>
+                <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
                 <outlet property="dateEndTextField" destination="HS2-iB-3Ta" id="fDF-KM-JEr"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
                 <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
@@ -88,6 +96,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
 </document>

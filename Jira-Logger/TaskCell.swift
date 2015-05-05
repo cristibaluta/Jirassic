@@ -13,8 +13,10 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 	@IBOutlet var issueNrTextField: NSTextField?
 	@IBOutlet var dateEndTextField: NSTextField?
 	@IBOutlet var notesTextField: NSTextField?
+	@IBOutlet var butRemove: NSButton?
 	
 	var didEndEditingCell: ((cell: TaskCell) -> ())?
+	var didRemoveCell: ((cell: TaskCell) -> ())?
 	private var isEditing = false
 	private var wasEdited = false
 	
@@ -34,6 +36,11 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 			self.didEndEditingCell!(cell: self)
 			wasEdited = false
 		}
+	}
+	
+	@IBAction func handleRemoveButton(sender: NSButton) {
+		RCLogO("rremve cell");
+		self.didRemoveCell!(cell: self)
 	}
 	
 //	override func drawSelectionInRect(dirtyRect: NSRect) {
