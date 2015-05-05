@@ -15,7 +15,6 @@ public class JLPopover: NSPopover {
 	}
 
 	required public init?(coder: NSCoder) {
-	    println("popover with coder")
 		super.init()
 	}
 	

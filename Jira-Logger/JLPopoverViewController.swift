@@ -32,6 +32,7 @@ class JLPopoverViewController: NSViewController {
 	private var _state: DrawerState = .Open
 	private let _gapX = CGFloat(12)
 	private let kDrawerStateKey = "DrawerStateKey"
+	private let kLastStartDateKey = "LastStartDateKey"
 	
     override func viewDidLoad() {
 		
@@ -44,18 +45,21 @@ class JLPopoverViewController: NSViewController {
     }
 	
 	override func viewDidAppear() {
-		RCLogO("viewDidAppear")
 		super.viewDidAppear()
 		
 		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
 		if previousState != self._state.rawValue {
 			self._state = .Open
 		}
-		setState( self._state)
+		setDrawerState( self._state)
+		
+		let previousStartDate = NSUserDefaults.standardUserDefaults().objectForKey(kLastStartDateKey) as? NSDate
+		if previousStartDate != nil && previousStartDate!.isSameDayAs( NSDate()) {
+			reloadData()
+		}
 	}
 	
 	override func viewDidDisappear() {
-		RCLogO("viewDidDisappear")
 		super.viewDidDisappear()
 		
 	}
@@ -126,7 +130,7 @@ class JLPopoverViewController: NSViewController {
 		}
 	}
 	
-	func setState (s: DrawerState) {
+	func setDrawerState (s: DrawerState) {
 		
 		_state = s
 		
@@ -156,7 +160,7 @@ class JLPopoverViewController: NSViewController {
 	
 	@IBAction func handleColumnButton(sender: NSButton) {
 		
-		setState( _state == .Closed ? .Open : .Closed)
+		setDrawerState( _state == .Closed ? .Open : .Closed)
 		
 		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
 		NSUserDefaults.standardUserDefaults().synchronize()
@@ -167,7 +171,8 @@ class JLPopoverViewController: NSViewController {
 		
 		let task = sharedData.addNewTask()
 		_taskCellDatasource?.addTask( task )
-		
+		JLTaskWriter().write( task )
+
 		let index = _taskCellDatasource!.data!.count - 1
 		_tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
 		_tasksTableView?.scrollRowToVisible( index )
@@ -192,7 +197,9 @@ class JLPopoverViewController: NSViewController {
 		
 		let task = sharedData.addNewTask()
 		task.task_nr = "Start"
-		task.notes = "Working day started at \(NSDate())"
+		task.notes = "Working day started at \(NSDate().HHmm())"
+		
+		JLTaskWriter().write( task )
 		
 		self.reloadData()
 	}

@@ -71,11 +71,11 @@ extension NSDate {
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
-	func isTheSameMonthAs(month: NSDate) -> Bool {
+	func isSameMonthAs(month: NSDate) -> Bool {
 		return self.year() == month.year() && self.month() == month.month()
 	}
 	
-	func isTheSameDayAs(date: NSDate) -> Bool {
+	func isSameDayAs(date: NSDate) -> Bool {
 		
 		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
 		let compsRef = gregorian!.components(ymdUnitFlags, fromDate: date)

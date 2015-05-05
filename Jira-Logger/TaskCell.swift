@@ -15,36 +15,37 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 	@IBOutlet var notesTextField: NSTextField?
 	
 	var didEndEditingCell: ((cell: TaskCell) -> ())?
-	
-//    override func drawRect(dirtyRect: NSRect) {
-//        super.drawRect(dirtyRect)
-//
-//        // Drawing code here.
-//    }
+	private var isEditing = false
+	private var wasEdited = false
 	
 	override func controlTextDidBeginEditing(obj: NSNotification) {
 		RCLogO(obj.name)
+		isEditing = true
+	}
+	
+	override func controlTextDidChange(obj: NSNotification){
+		RCLogO(obj.name)
+		wasEdited = true
 	}
 	
 	override func controlTextDidEndEditing(obj: NSNotification) {
 		RCLogO(obj.name)
-		self.didEndEditingCell!(cell: self)
+		if wasEdited {
+			self.didEndEditingCell!(cell: self)
+			wasEdited = false
+		}
 	}
 	
-	override func controlTextDidChange(obj: NSNotification) {
-		RCLogO(obj.name)
-	}
-	
-	override func drawSelectionInRect(dirtyRect: NSRect) {
-//		if (self.selectionHighlightStyle != NSTableViewSelectionHighlightStyle.None) {
-			self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
-			let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
-			NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
-			NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()
-			let selectionPath = NSBezierPath(roundedRect: selectionRect,
-				xRadius: 6, yRadius: 6)
-			selectionPath.fill()
-			selectionPath.stroke()
-//		}
-	}
+//	override func drawSelectionInRect(dirtyRect: NSRect) {
+////		if (self.selectionHighlightStyle != NSTableViewSelectionHighlightStyle.None) {
+//			self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
+//			let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
+//			NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
+//			NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()
+//			let selectionPath = NSBezierPath(roundedRect: selectionRect,
+//				xRadius: 6, yRadius: 6)
+//			selectionPath.fill()
+//			selectionPath.stroke()
+////		}
+//	}
 }

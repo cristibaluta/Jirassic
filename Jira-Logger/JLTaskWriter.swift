@@ -14,14 +14,9 @@ class JLTaskWriter: NSObject {
 		
 	}
 	
-	func write(task_id: String, notes: String) -> Task {
-		let theData = Task()
-		theData.date_task_finished = NSDate()
-		theData.notes = notes
-		theData.task_nr = task_id
-		theData.saveInBackgroundWithBlock { (success, error) -> Void in
+	func write(task: Task) {
+		task.saveInBackgroundWithBlock { (success, error) -> Void in
 			println("saved task to Parse \(success) \(error)")
 		}
-		return theData
 	}
 }

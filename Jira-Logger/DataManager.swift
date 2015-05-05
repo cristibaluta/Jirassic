@@ -32,7 +32,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		
 		let filteredData = self.data.filter { (task: Task) -> Bool in
 			
-			if task.date_task_finished!.isTheSameDayAs(currrentDate) == false {
+			if task.date_task_finished!.isSameDayAs(currrentDate) == false {
 				currrentDate = task.date_task_finished!
 				return true
 			}
@@ -45,7 +45,7 @@ class DataManager: NSObject, DataManagerProtocol {
 	func tasksForDayOnDate(date: NSDate) -> [Task] {
 		
 		let filteredData = self.data.filter { (task: Task) -> Bool in
-			return task.date_task_finished!.isTheSameDayAs( date )
+			return task.date_task_finished!.isSameDayAs( date )
 		}
 		
 		return filteredData

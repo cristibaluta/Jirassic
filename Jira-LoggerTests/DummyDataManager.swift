@@ -54,8 +54,7 @@ class DummyDataManager: NSObject, DataManagerProtocol {
 		var objects = [Task]()
 		var currrentDate = NSDate.distantFuture() as! NSDate
 		objects = data.filter { (object: Task) -> Bool in
-			RCLogO("> \(object.date_task_finished) isTheSameDayAs \(currrentDate) \(object.date_task_finished!.isTheSameDayAs(currrentDate))")
-			if object.date_task_finished!.isTheSameDayAs(currrentDate) == false {
+			if object.date_task_finished!.isSameDayAs(currrentDate) == false {
 				currrentDate = object.date_task_finished!
 				return true
 			}
@@ -69,7 +68,7 @@ class DummyDataManager: NSObject, DataManagerProtocol {
 		
 		var objects = [Task]()
 		objects = objects.filter { (object: Task) -> Bool in
-			return object.date_task_finished!.isTheSameDayAs( date )
+			return object.date_task_finished!.isSameDayAs( date )
 		}
 		
 		return objects
@@ -89,7 +88,7 @@ class DummyDataManager: NSObject, DataManagerProtocol {
 	}
 	
 	func addTask(task_id: String, notes: String) {
-		let task = JLTaskWriter().write(task_id, notes: notes)
-		data.append(task)
+//		let task = JLTaskWriter().write(task_id, notes: notes)
+//		data.append(task)
 	}
 }

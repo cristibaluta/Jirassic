@@ -37,14 +37,17 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-			let object = data![row] as Task
+			let theData = data![row] as Task
 			let view = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as! TaskCell
-			view.issueNrTextField?.stringValue = object.task_nr!
-			view.notesTextField?.stringValue = object.notes!
-			view.dateEndTextField?.stringValue = object.date_task_finished!.HHmm()
+			view.issueNrTextField?.stringValue = theData.task_nr!
+			view.notesTextField?.stringValue = theData.notes!
+			view.dateEndTextField?.stringValue = theData.date_task_finished!.HHmm()
 			view.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.SourceList
 			view.didEndEditingCell = { (cell: TaskCell) in
 				RCLogO(cell)
+				theData.task_nr = cell.issueNrTextField?.stringValue
+				theData.notes = cell.notesTextField?.stringValue
+				JLTaskWriter().write( theData )
 			}
 			
 			return view

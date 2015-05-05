@@ -15,6 +15,6 @@ class NoTasksController: NSObject {
 	}
 	
 	func showFirstTaskState() -> (String) {
-		return ("When you finish tasks press +\nTime spent will be calculated for you automatically")
+		return ("When you finish tasks press +\nTime will be calculated for you automatically")
 	}
 }
