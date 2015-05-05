@@ -29,10 +29,10 @@ class JLPopoverViewController: NSViewController {
 	@IBOutlet private var _butAdd: NSButton?
 	private var _dateCellDatasource: DateCellDataSource?
 	private var _taskCellDatasource: TaskCellDataSource?
+	private var _newDayController = NewDayController()
 	private var _state: DrawerState = .Open
 	private let _gapX = CGFloat(12)
 	private let kDrawerStateKey = "DrawerStateKey"
-	private let kLastStartDateKey = "LastStartDateKey"
 	
     override func viewDidLoad() {
 		
@@ -53,8 +53,7 @@ class JLPopoverViewController: NSViewController {
 		}
 		setDrawerState( self._state)
 		
-		let previousStartDate = NSUserDefaults.standardUserDefaults().objectForKey(kLastStartDateKey) as? NSDate
-		if previousStartDate != nil && previousStartDate!.isSameDayAs( NSDate()) {
+		if _newDayController.isNewDay() {
 			reloadData()
 		}
 	}
@@ -208,6 +207,7 @@ class JLPopoverViewController: NSViewController {
 		
 		JLTaskWriter().write( task )
 		
+		_newDayController.setLastDay( NSDate())
 		self.reloadData()
 	}
 	
