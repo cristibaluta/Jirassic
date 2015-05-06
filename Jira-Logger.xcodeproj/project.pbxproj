@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		289998A21AC2920200706824 /* JLPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* JLPopover.swift */; };
+		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		28E838F91AF297FE00602D33 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F61AF297FE00602D33 /* Star.png */; };
@@ -34,27 +34,39 @@
 		28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90231AF60250008D5337 /* NoTasksTests.swift */; };
 		28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* DummyDataManager.swift */; };
 		28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* DummyDataManager.swift */; };
-		28EB905D1AF73FD4008D5337 /* EstimateLunchBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* EstimateLunchBreak.swift */; };
-		28EB905E1AF73FD4008D5337 /* EstimateLunchBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* EstimateLunchBreak.swift */; };
-		28EB90601AF73FFD008D5337 /* EstimateStartingDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905F1AF73FFD008D5337 /* EstimateStartingDay.swift */; };
-		28EB90611AF73FFD008D5337 /* EstimateStartingDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905F1AF73FFD008D5337 /* EstimateStartingDay.swift */; };
+		28EB905D1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* JLEstimateLunchBreak.swift */; };
+		28EB905E1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* JLEstimateLunchBreak.swift */; };
+		28EB90601AF73FFD008D5337 /* JLEstimateStartingDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905F1AF73FFD008D5337 /* JLEstimateStartingDay.swift */; };
+		28EB90611AF73FFD008D5337 /* JLEstimateStartingDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905F1AF73FFD008D5337 /* JLEstimateStartingDay.swift */; };
 		28EB90631AF948E3008D5337 /* NewDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDayController.swift */; };
 		28EB90641AF948E3008D5337 /* NewDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDayController.swift */; };
+		28EB906E1AF95C37008D5337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906D1AF95C37008D5337 /* AppDelegate.swift */; };
+		28EB90701AF95C37008D5337 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906F1AF95C37008D5337 /* MasterViewController.swift */; };
+		28EB90721AF95C37008D5337 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90711AF95C37008D5337 /* DetailViewController.swift */; };
+		28EB90751AF95C37008D5337 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90731AF95C37008D5337 /* Main.storyboard */; };
+		28EB90771AF95C37008D5337 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90761AF95C37008D5337 /* Images.xcassets */; };
+		28EB907A1AF95C37008D5337 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90781AF95C37008D5337 /* LaunchScreen.xib */; };
+		28EB90861AF95C37008D5337 /* ScrumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90851AF95C37008D5337 /* ScrumTests.swift */; };
+		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
+		28EB90931AF9754A008D5337 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90911AF9754A008D5337 /* SettingsViewController.xib */; };
+		28EB90941AF9D58D008D5337 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
+		28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
+		28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
 		28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
 		28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* IconView.swift */; };
 		28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
 		28F51EAF1AC6AB7A00A69CDF /* JLCreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */; };
-		28F51EB31AC6B6D800A69CDF /* JLPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB21AC6B6D800A69CDF /* JLPopoverViewController.swift */; };
+		28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */; };
 		28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
 		28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
 		28F51EB91AC6F4FA00A69CDF /* TaskCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TaskCellDataSource.swift */; };
 		28F51EBB1AC6F5F200A69CDF /* DateCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DateCellDataSource.swift */; };
 		28F51EBD1AC6F67000A69CDF /* JLShareRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBC1AC6F67000A69CDF /* JLShareRaport.swift */; };
 		28F51EBF1AC6FB2100A69CDF /* JiraRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBE1AC6FB2100A69CDF /* JiraRaport.swift */; };
-		28F51EC61AC805B000A69CDF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* DateExtension.swift */; };
-		28F51EC71AC805B000A69CDF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* DateExtension.swift */; };
+		28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
+		28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
 		28F51ECB1AC82B1600A69CDF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51ECA1AC82B1600A69CDF /* LoginView.xib */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
@@ -77,6 +89,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		28EB90801AF95C37008D5337 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D31D0441AC196BB001AC4BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28EB90681AF95C37008D5337;
+			remoteInfo = Scrum;
+		};
 		6D31D0621AC196BC001AC4BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6D31D0441AC196BB001AC4BA /* Project object */;
@@ -102,36 +121,51 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		289998A11AC2920200706824 /* JLPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPopover.swift; sourceTree = "<group>"; };
-		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
+		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		28E838F61AF297FE00602D33 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
-		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerProtocol.swift; sourceTree = "<group>"; };
+		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManagerProtocol.swift; path = ../Common/DataManagerProtocol.swift; sourceTree = "<group>"; };
 		28E839001AF402B200602D33 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
-		28E839021AF4035900602D33 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
-		28EB90201AF60234008D5337 /* NoTasksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksController.swift; sourceTree = "<group>"; };
+		28E839021AF4035900602D33 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = ../Common/DataManager.swift; sourceTree = "<group>"; };
+		28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseCredentials.swift; path = ../Common/ParseCredentials.swift; sourceTree = "<group>"; };
+		28EB90201AF60234008D5337 /* NoTasksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoTasksController.swift; path = ../Common/NoTasksController.swift; sourceTree = "<group>"; };
 		28EB90231AF60250008D5337 /* NoTasksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksTests.swift; sourceTree = "<group>"; };
 		28EB90251AF6027D008D5337 /* DummyDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataManager.swift; sourceTree = "<group>"; };
-		28EB905C1AF73FD4008D5337 /* EstimateLunchBreak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimateLunchBreak.swift; sourceTree = "<group>"; };
-		28EB905F1AF73FFD008D5337 /* EstimateStartingDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimateStartingDay.swift; sourceTree = "<group>"; };
-		28EB90621AF948E3008D5337 /* NewDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDayController.swift; sourceTree = "<group>"; };
-		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTaskWriter.swift; sourceTree = "<group>"; };
-		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTaskReader.swift; sourceTree = "<group>"; };
+		28EB905C1AF73FD4008D5337 /* JLEstimateLunchBreak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLEstimateLunchBreak.swift; path = ../Common/JLEstimateLunchBreak.swift; sourceTree = "<group>"; };
+		28EB905F1AF73FFD008D5337 /* JLEstimateStartingDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLEstimateStartingDay.swift; path = ../Common/JLEstimateStartingDay.swift; sourceTree = "<group>"; };
+		28EB90621AF948E3008D5337 /* NewDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDayController.swift; path = ../Common/NewDayController.swift; sourceTree = "<group>"; };
+		28EB90691AF95C37008D5337 /* Scrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28EB906C1AF95C37008D5337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28EB906D1AF95C37008D5337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28EB906F1AF95C37008D5337 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		28EB90711AF95C37008D5337 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		28EB90741AF95C37008D5337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28EB90761AF95C37008D5337 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		28EB90791AF95C37008D5337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		28EB907F1AF95C37008D5337 /* ScrumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28EB90841AF95C37008D5337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28EB90851AF95C37008D5337 /* ScrumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumTests.swift; sourceTree = "<group>"; };
+		28EB90901AF9754A008D5337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		28EB90911AF9754A008D5337 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLPredictiveTimeTyping.swift; path = ../Common/JLPredictiveTimeTyping.swift; sourceTree = "<group>"; };
+		28EB90981AF9DBE9008D5337 /* Jira-Logger-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Jira-Logger-Bridging-Header.h"; sourceTree = "<group>"; };
+		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskWriter.swift; path = ../Common/JLTaskWriter.swift; sourceTree = "<group>"; };
+		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskReader.swift; path = ../Common/JLTaskReader.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		28F51EA91AC6A3AE00A69CDF /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
-		28F51EAB1AC6A4F000A69CDF /* InitParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitParse.swift; sourceTree = "<group>"; };
-		28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLCreateRaport.swift; sourceTree = "<group>"; };
-		28F51EB21AC6B6D800A69CDF /* JLPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLPopoverViewController.swift; sourceTree = "<group>"; };
+		28F51EAB1AC6A4F000A69CDF /* InitParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitParse.swift; path = ../Common/InitParse.swift; sourceTree = "<group>"; };
+		28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLCreateRaport.swift; path = ../Common/JLCreateRaport.swift; sourceTree = "<group>"; };
+		28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28F51EB41AC6EE5200A69CDF /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		28F51EB61AC6EF1700A69CDF /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		28F51EB81AC6F4FA00A69CDF /* TaskCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellDataSource.swift; sourceTree = "<group>"; };
 		28F51EBA1AC6F5F200A69CDF /* DateCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCellDataSource.swift; sourceTree = "<group>"; };
 		28F51EBC1AC6F67000A69CDF /* JLShareRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLShareRaport.swift; sourceTree = "<group>"; };
-		28F51EBE1AC6FB2100A69CDF /* JiraRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraRaport.swift; sourceTree = "<group>"; };
-		28F51EC51AC805B000A69CDF /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		28F51EBE1AC6FB2100A69CDF /* JiraRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraRaport.swift; path = ../Common/JiraRaport.swift; sourceTree = "<group>"; };
+		28F51EC51AC805B000A69CDF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = ../Common/NSDateExtension.swift; sourceTree = "<group>"; };
 		28F51ECA1AC82B1600A69CDF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jira-Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jira-Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,15 +182,28 @@
 		6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6D31D0831AC2E8F8001AC4BA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6D31D0891AC2E966001AC4BA /* Jira-Logger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jira-Logger-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseOSX.framework; sourceTree = "<group>"; };
-		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
+		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Vendor/Bolts.framework; sourceTree = "<group>"; };
+		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseOSX.framework; path = ../Vendor/ParseOSX.framework; sourceTree = "<group>"; };
+		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		28EB90661AF95C37008D5337 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28EB907C1AF95C37008D5337 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D31D0491AC196BB001AC4BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -199,10 +246,13 @@
 		289998A51AC3427100706824 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
 				289998A81AC3BDF200706824 /* MenuBarController.swift */,
-				289998A11AC2920200706824 /* JLPopover.swift */,
+				289998A11AC2920200706824 /* Popover.swift */,
+				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
+				28EB908F1AF974DC008D5337 /* Settings */,
 				28E838FC1AF3372E00602D33 /* Tasks */,
-				289998A71AC342AB00706824 /* Views */,
+				289998A71AC342AB00706824 /* Login */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -211,23 +261,22 @@
 			isa = PBXGroup;
 			children = (
 				28F51EAB1AC6A4F000A69CDF /* InitParse.swift */,
+				28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */,
 				28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */,
 				28E839021AF4035900602D33 /* DataManager.swift */,
 				289998A31AC3354900706824 /* Task.swift */,
 				28F51EBE1AC6FB2100A69CDF /* JiraRaport.swift */,
 			);
 			name = Data;
+			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
-		289998A71AC342AB00706824 /* Views */ = {
+		289998A71AC342AB00706824 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
-				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
-				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				28F51ECA1AC82B1600A69CDF /* LoginView.xib */,
 			);
-			name = Views;
+			name = Login;
 			sourceTree = "<group>";
 		};
 		28E838F51AF297FE00602D33 /* Resources */ = {
@@ -243,7 +292,8 @@
 		28E838FC1AF3372E00602D33 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				28F51EB21AC6B6D800A69CDF /* JLPopoverViewController.swift */,
+				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
+				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				28F51EB41AC6EE5200A69CDF /* TaskCell.swift */,
 				28F51EB61AC6EF1700A69CDF /* TaskCell.xib */,
 			);
@@ -253,10 +303,60 @@
 		28EB905B1AF73F92008D5337 /* AI */ = {
 			isa = PBXGroup;
 			children = (
-				28EB905C1AF73FD4008D5337 /* EstimateLunchBreak.swift */,
-				28EB905F1AF73FFD008D5337 /* EstimateStartingDay.swift */,
+				28EB905C1AF73FD4008D5337 /* JLEstimateLunchBreak.swift */,
+				28EB905F1AF73FFD008D5337 /* JLEstimateStartingDay.swift */,
+				28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */,
 			);
 			name = AI;
+			path = "Jira-Logger";
+			sourceTree = "<group>";
+		};
+		28EB906A1AF95C37008D5337 /* IOS-Scrum */ = {
+			isa = PBXGroup;
+			children = (
+				28EB906D1AF95C37008D5337 /* AppDelegate.swift */,
+				28EB906F1AF95C37008D5337 /* MasterViewController.swift */,
+				28EB90711AF95C37008D5337 /* DetailViewController.swift */,
+				28EB90731AF95C37008D5337 /* Main.storyboard */,
+				28EB90761AF95C37008D5337 /* Images.xcassets */,
+				28EB90781AF95C37008D5337 /* LaunchScreen.xib */,
+				28EB906B1AF95C37008D5337 /* Supporting Files */,
+			);
+			path = "IOS-Scrum";
+			sourceTree = "<group>";
+		};
+		28EB906B1AF95C37008D5337 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28EB906C1AF95C37008D5337 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28EB90821AF95C37008D5337 /* ScrumTests */ = {
+			isa = PBXGroup;
+			children = (
+				28EB90851AF95C37008D5337 /* ScrumTests.swift */,
+				28EB90831AF95C37008D5337 /* Supporting Files */,
+			);
+			path = ScrumTests;
+			sourceTree = "<group>";
+		};
+		28EB90831AF95C37008D5337 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28EB90841AF95C37008D5337 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28EB908F1AF974DC008D5337 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				28EB90901AF9754A008D5337 /* SettingsViewController.swift */,
+				28EB90911AF9754A008D5337 /* SettingsViewController.xib */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		28F51E6C1AC68E6D00A69CDF /* Business Rules */ = {
@@ -272,22 +372,31 @@
 				28EB90621AF948E3008D5337 /* NewDayController.swift */,
 			);
 			name = "Business Rules";
+			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
 		28F51EC41AC8059400A69CDF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				28F51EC51AC805B000A69CDF /* DateExtension.swift */,
+				28F51EC51AC805B000A69CDF /* NSDateExtension.swift */,
 			);
 			name = Extensions;
+			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
 		6D31D0431AC196BB001AC4BA = {
 			isa = PBXGroup;
 			children = (
+				28F51E6C1AC68E6D00A69CDF /* Business Rules */,
+				289998A61AC3429500706824 /* Data */,
+				28EB905B1AF73F92008D5337 /* AI */,
+				28F51EC41AC8059400A69CDF /* Extensions */,
 				6D31D04E1AC196BB001AC4BA /* Jira-Logger */,
-				6D31D0741AC2E439001AC4BA /* Frameworks */,
+				28EB906A1AF95C37008D5337 /* IOS-Scrum */,
+				28EB90821AF95C37008D5337 /* ScrumTests */,
 				6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */,
+				6D31D0A21AC448FF001AC4BA /* Vendor */,
+				6D31D0741AC2E439001AC4BA /* Frameworks */,
 				6D31D04D1AC196BB001AC4BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -297,6 +406,8 @@
 			children = (
 				6D31D04C1AC196BB001AC4BA /* Jira-Logger.app */,
 				6D31D0611AC196BC001AC4BA /* Jira-LoggerTests.xctest */,
+				28EB90691AF95C37008D5337 /* Scrum.app */,
+				28EB907F1AF95C37008D5337 /* ScrumTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,24 +416,19 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
-				28F51E6C1AC68E6D00A69CDF /* Business Rules */,
-				289998A61AC3429500706824 /* Data */,
-				28EB905B1AF73F92008D5337 /* AI */,
 				289998A51AC3427100706824 /* Presentation */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
-				28F51EC41AC8059400A69CDF /* Extensions */,
 				28E838F51AF297FE00602D33 /* Resources */,
-				6D31D0A21AC448FF001AC4BA /* Vendor */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
 			);
+			name = "Jira-Logger";
 			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
 		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D0891AC2E966001AC4BA /* Jira-Logger-Bridging-Header.h */,
-				28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */,
+				28EB90981AF9DBE9008D5337 /* Jira-Logger-Bridging-Header.h */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -373,11 +479,47 @@
 				6D31D0A01AC44785001AC4BA /* RCLog.swift */,
 			);
 			name = Vendor;
+			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		28EB90681AF95C37008D5337 /* Scrum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28EB90871AF95C37008D5337 /* Build configuration list for PBXNativeTarget "Scrum" */;
+			buildPhases = (
+				28EB90651AF95C37008D5337 /* Sources */,
+				28EB90661AF95C37008D5337 /* Frameworks */,
+				28EB90671AF95C37008D5337 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scrum;
+			productName = Scrum;
+			productReference = 28EB90691AF95C37008D5337 /* Scrum.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28EB907E1AF95C37008D5337 /* ScrumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28EB908A1AF95C37008D5337 /* Build configuration list for PBXNativeTarget "ScrumTests" */;
+			buildPhases = (
+				28EB907B1AF95C37008D5337 /* Sources */,
+				28EB907C1AF95C37008D5337 /* Frameworks */,
+				28EB907D1AF95C37008D5337 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28EB90811AF95C37008D5337 /* PBXTargetDependency */,
+			);
+			name = ScrumTests;
+			productName = ScrumTests;
+			productReference = 28EB907F1AF95C37008D5337 /* ScrumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6D31D04B1AC196BB001AC4BA /* Jira-Logger */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jira-Logger" */;
@@ -423,6 +565,13 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Cristian Baluta";
 				TargetAttributes = {
+					28EB90681AF95C37008D5337 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					28EB907E1AF95C37008D5337 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 28EB90681AF95C37008D5337;
+					};
 					6D31D04B1AC196BB001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
 					};
@@ -447,11 +596,30 @@
 			targets = (
 				6D31D04B1AC196BB001AC4BA /* Jira-Logger */,
 				6D31D0601AC196BC001AC4BA /* Jira-LoggerTests */,
+				28EB90681AF95C37008D5337 /* Scrum */,
+				28EB907E1AF95C37008D5337 /* ScrumTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		28EB90671AF95C37008D5337 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28EB90751AF95C37008D5337 /* Main.storyboard in Resources */,
+				28EB907A1AF95C37008D5337 /* LaunchScreen.xib in Resources */,
+				28EB90771AF95C37008D5337 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28EB907D1AF95C37008D5337 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D31D04A1AC196BB001AC4BA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,6 +632,7 @@
 				28E838FA1AF297FE00602D33 /* Status.png in Resources */,
 				28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */,
 				28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */,
+				28EB90931AF9754A008D5337 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +646,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		28EB90651AF95C37008D5337 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28EB90721AF95C37008D5337 /* DetailViewController.swift in Sources */,
+				28EB90941AF9D58D008D5337 /* NSDateExtension.swift in Sources */,
+				28EB90701AF95C37008D5337 /* MasterViewController.swift in Sources */,
+				28EB906E1AF95C37008D5337 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28EB907B1AF95C37008D5337 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28EB90861AF95C37008D5337 /* ScrumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D31D0481AC196BB001AC4BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -485,14 +673,15 @@
 				28E839031AF4035900602D33 /* DataManager.swift in Sources */,
 				28EB90631AF948E3008D5337 /* NewDayController.swift in Sources */,
 				289998A41AC3354900706824 /* Task.swift in Sources */,
+				28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
-				28EB905D1AF73FD4008D5337 /* EstimateLunchBreak.swift in Sources */,
+				28EB905D1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* JLCreateRaport.swift in Sources */,
 				28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */,
 				28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */,
-				28F51EB31AC6B6D800A69CDF /* JLPopoverViewController.swift in Sources */,
+				28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */,
 				28F51EBB1AC6F5F200A69CDF /* DateCellDataSource.swift in Sources */,
-				289998A21AC2920200706824 /* JLPopover.swift in Sources */,
+				289998A21AC2920200706824 /* Popover.swift in Sources */,
 				28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */,
 				28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */,
 				28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */,
@@ -500,10 +689,11 @@
 				28EB90211AF60234008D5337 /* NoTasksController.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
-				28EB90601AF73FFD008D5337 /* EstimateStartingDay.swift in Sources */,
-				28F51EC61AC805B000A69CDF /* DateExtension.swift in Sources */,
+				28EB90601AF73FFD008D5337 /* JLEstimateStartingDay.swift in Sources */,
+				28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
 				28F51EB91AC6F4FA00A69CDF /* TaskCellDataSource.swift in Sources */,
+				28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */,
 				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
 				28F51EBD1AC6F67000A69CDF /* JLShareRaport.swift in Sources */,
 			);
@@ -513,15 +703,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28EB90611AF73FFD008D5337 /* EstimateStartingDay.swift in Sources */,
+				28EB90611AF73FFD008D5337 /* JLEstimateStartingDay.swift in Sources */,
 				28EB90221AF60234008D5337 /* NoTasksController.swift in Sources */,
 				28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */,
-				28F51EC71AC805B000A69CDF /* DateExtension.swift in Sources */,
+				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
+				28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */,
 				6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,
 				28EB90641AF948E3008D5337 /* NewDayController.swift in Sources */,
-				28EB905E1AF73FD4008D5337 /* EstimateLunchBreak.swift in Sources */,
+				28EB905E1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */,
 				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +720,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		28EB90811AF95C37008D5337 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28EB90681AF95C37008D5337 /* Scrum */;
+			targetProxy = 28EB90801AF95C37008D5337 /* PBXContainerItemProxy */;
+		};
 		6D31D0631AC196BC001AC4BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6D31D04B1AC196BB001AC4BA /* Jira-Logger */;
@@ -537,6 +733,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		28EB90731AF95C37008D5337 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28EB90741AF95C37008D5337 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		28EB90781AF95C37008D5337 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28EB90791AF95C37008D5337 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
 		6D31D05A1AC196BB001AC4BA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -548,6 +760,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		28EB90881AF95C37008D5337 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Scrum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		28EB90891AF95C37008D5337 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Scrum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28EB908B1AF95C37008D5337 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScrumTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum.app/Scrum";
+			};
+			name = Debug;
+		};
+		28EB908C1AF95C37008D5337 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ScrumTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum.app/Scrum";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		6D31D0691AC196BC001AC4BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -701,6 +991,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		28EB90871AF95C37008D5337 /* Build configuration list for PBXNativeTarget "Scrum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28EB90881AF95C37008D5337 /* Debug */,
+				28EB90891AF95C37008D5337 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28EB908A1AF95C37008D5337 /* Build configuration list for PBXNativeTarget "ScrumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28EB908B1AF95C37008D5337 /* Debug */,
+				28EB908C1AF95C37008D5337 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira-Logger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

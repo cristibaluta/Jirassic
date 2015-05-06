@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CA9180F6-2CB3-4C11-88A6-CEE7D3770281</string>
+	<string>917CD472-A683-42EA-8ED6-B2CEB2BAC2CA</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Jira-Logger</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0B796DD3257EC7820586F3B4A1641021EF01638C</key>
 		<string>https://github.com/ralcr/Jira-Logger.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Jira-Logger.xcodeproj/project.xcworkspace</string>
+	<string>Jira-Logger.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0B796DD3257EC7820586F3B4A1641021EF01638C</key>

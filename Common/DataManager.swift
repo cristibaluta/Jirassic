@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Cristian Baluta. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 let sharedData: DataManagerProtocol = DataManager()
 
@@ -57,8 +57,6 @@ class DataManager: NSObject, DataManagerProtocol {
 		task.date_task_finished = NSDate()
 		task.task_nr = "AN-0000"
 		task.notes = "What did you do in this task?"
-		
-//		let task = JLTaskWriter().write(task_id, notes: notes)
 		data.append(task)
 		
 		return task

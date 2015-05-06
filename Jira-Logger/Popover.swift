@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class JLPopover: NSPopover {
+public class Popover: NSPopover {
 	
 	public override init() {
 		super.init()

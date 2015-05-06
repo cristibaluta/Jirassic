@@ -1,5 +1,5 @@
 //
-//  JLPopoverViewController.swift
+//  TasksViewController.swift
 //  Jira-Logger
 //
 //  Created by Baluta Cristian on 28/03/15.
@@ -13,7 +13,7 @@ enum DrawerState: Int {
 	case Open = 1
 }
 
-class JLPopoverViewController: NSViewController {
+class TasksViewController: NSViewController {
 	
 	@IBOutlet private var _datesScrollView: NSScrollView?
 	@IBOutlet private var _tasksScrollView: NSScrollView?
@@ -46,7 +46,7 @@ class JLPopoverViewController: NSViewController {
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		
+		RCLogO("viewDidAppear")
 		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
 		if previousState != self._state.rawValue {
 			self._state = .Open
@@ -54,6 +54,7 @@ class JLPopoverViewController: NSViewController {
 		setDrawerState( self._state)
 		
 		if _newDayController.isNewDay() {
+			RCLogO("isNewDay")
 			reloadData()
 		}
 	}
@@ -64,6 +65,7 @@ class JLPopoverViewController: NSViewController {
 	}
 	
 	func reloadData() {
+		RCLogO("reloadData")
 		self.setupDaysTableView()
 		self.setupTasksTableView()
 		self.reloadTasksOnDay( NSDate())
@@ -170,7 +172,6 @@ class JLPopoverViewController: NSViewController {
 		
 		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
 		NSUserDefaults.standardUserDefaults().synchronize()
-		RCLogO(_state.rawValue)
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {

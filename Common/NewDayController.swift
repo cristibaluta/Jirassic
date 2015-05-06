@@ -13,11 +13,8 @@ class NewDayController: NSObject {
 	private let kLastStartDateKey = "LastStartDateKey"
 	
 	func isNewDay() -> Bool {
-		return lastDay() != nil && lastDay()!.isSameDayAs( today())
-	}
-	
-	func lastDay() -> NSDate? {
-		return NSUserDefaults.standardUserDefaults().objectForKey(kLastStartDateKey) as? NSDate
+		RCLogO(lastDay())
+		return lastDay() == nil || lastDay()!.isSameDayAs( today())
 	}
 	
 	func setLastDay(date: NSDate) {
@@ -25,7 +22,11 @@ class NewDayController: NSObject {
 		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
-	func today() -> NSDate {
+	private func lastDay() -> NSDate? {
+		return NSUserDefaults.standardUserDefaults().objectForKey(kLastStartDateKey) as? NSDate
+	}
+	
+	private func today() -> NSDate {
 		return NSDate()
 	}
 }

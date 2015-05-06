@@ -1,5 +1,5 @@
 //
-//  EstimateLunchBreak.swift
+//  EstimateStartingDay.swift
 //  Jira-Logger
 //
 //  Created by Baluta Cristian on 04/05/15.
@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class EstimateLunchBreak: NSObject {
+class JLEstimateStartingDay: NSObject {
 
 }

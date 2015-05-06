@@ -666,7 +666,7 @@
                 </menuItem>
             </items>
         </menu>
-        <viewController id="Mzr-YU-Yq5" userLabel="Popover View Controller" customClass="JLPopoverViewController" customModule="Jira_Logger" customModuleProvider="target">
+        <viewController id="Mzr-YU-Yq5" userLabel="Popover View Controller" customClass="TasksViewController" customModule="Jira_Logger" customModuleProvider="target">
             <connections>
                 <outlet property="_butAdd" destination="t9I-hI-JME" id="7OK-rV-AkP"/>
                 <outlet property="_butDrawer" destination="ncf-3w-Koq" id="WGQ-Hk-kVt"/>
@@ -681,7 +681,7 @@
                 <outlet property="view" destination="OBP-pT-3rU" id="ZFI-iN-lYr"/>
             </connections>
         </viewController>
-        <popover id="79J-8G-uar" customClass="JLPopover" customModule="Jira_Logger" customModuleProvider="target">
+        <popover id="79J-8G-uar" customClass="Popover" customModule="Jira_Logger" customModuleProvider="target">
             <connections>
                 <outlet property="contentViewController" destination="Mzr-YU-Yq5" id="osr-0q-X8O"/>
             </connections>
