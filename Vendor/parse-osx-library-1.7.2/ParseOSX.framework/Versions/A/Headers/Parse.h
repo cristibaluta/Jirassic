@@ -100,6 +100,51 @@ PF_ASSUME_NONNULL_BEGIN
  */
 + (BOOL)isLocalDatastoreEnabled;
 
+///--------------------------------------
+/// @name Enabling Extensions Data Sharing
+///--------------------------------------
+
+/*!
+ @abstract Enables data sharing with an application group identifier.
+
+ @discussion After enabling - Local Datastore, `currentUser`, `currentInstallation` and all eventually commands
+ are going to be available to every application/extension in a group that have the same Parse applicationId.
+
+ @warning This method is required to be called before <setApplicationId:clientKey:>.
+
+ @param groupIdentifier Application Group Identifier to share data with.
+ */
++ (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier PF_EXTENSION_UNAVAILABLE("Use `enableDataSharingWithApplicationGroupIdentifier:containingApplication:`.");
+
+/*!
+ @abstract Enables data sharing with an application group identifier.
+
+ @discussion After enabling - Local Datastore, `currentUser`, `currentInstallation` and all eventually commands
+ are going to be available to every application/extension in a group that have the same Parse applicationId.
+
+ @warning This method is required to be called before <setApplicationId:clientKey:>.
+ This method can only be used by application extensions.
+
+ @param groupIdentifier Application Group Identifier to share data with.
+ @param bundleIdentifier Bundle identifier of the containing application.
+ */
++ (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier
+                                  containingApplication:(NSString *)bundleIdentifier;
+
+/*!
+ @abstract Application Group Identifier for Data Sharing
+
+ @returns `NSString` value if data sharing is enabled, otherwise `nil`.
+ */
++ (NSString *)applicationGroupIdentifierForDataSharing;
+
+/*!
+ @abstract Containing application bundle identifier.
+
+ @returns `NSString` value if data sharing is enabled, otherwise `nil`.
+ */
++ (NSString *)containingApplicationBundleIdentifierForDataSharing;
+
 #if PARSE_IOS_ONLY
 
 ///--------------------------------------

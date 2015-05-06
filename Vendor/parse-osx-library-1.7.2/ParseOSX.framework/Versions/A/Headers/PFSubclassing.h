@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#if PARSE_IOS_ONLY
+#if TARGET_OS_IPHONE
 #import <Parse/PFNullability.h>
 #else
 #import <ParseOSX/PFNullability.h>

@@ -184,8 +184,8 @@
 		6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Vendor/Bolts.framework; sourceTree = "<group>"; };
-		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseOSX.framework; path = ../Vendor/ParseOSX.framework; sourceTree = "<group>"; };
+		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../Vendor/parse-osx-library-1.7.2/Bolts.framework"; sourceTree = "<group>"; };
+		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseOSX.framework; path = "../Vendor/parse-osx-library-1.7.2/ParseOSX.framework"; sourceTree = "<group>"; };
 		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,7 +311,7 @@
 			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
-		28EB906A1AF95C37008D5337 /* IOS-Scrum */ = {
+		28EB906A1AF95C37008D5337 /* Scrum */ = {
 			isa = PBXGroup;
 			children = (
 				28EB906D1AF95C37008D5337 /* AppDelegate.swift */,
@@ -322,7 +322,7 @@
 				28EB90781AF95C37008D5337 /* LaunchScreen.xib */,
 				28EB906B1AF95C37008D5337 /* Supporting Files */,
 			);
-			path = "IOS-Scrum";
+			path = "Scrum";
 			sourceTree = "<group>";
 		};
 		28EB906B1AF95C37008D5337 /* Supporting Files */ = {
@@ -392,7 +392,7 @@
 				28EB905B1AF73F92008D5337 /* AI */,
 				28F51EC41AC8059400A69CDF /* Extensions */,
 				6D31D04E1AC196BB001AC4BA /* Jira-Logger */,
-				28EB906A1AF95C37008D5337 /* IOS-Scrum */,
+				28EB906A1AF95C37008D5337 /* Scrum */,
 				28EB90821AF95C37008D5337 /* ScrumTests */,
 				6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */,
 				6D31D0A21AC448FF001AC4BA /* Vendor */,
@@ -421,7 +421,6 @@
 				28E838F51AF297FE00602D33 /* Resources */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
 			);
-			name = "Jira-Logger";
 			path = "Jira-Logger";
 			sourceTree = "<group>";
 		};
@@ -998,6 +997,7 @@
 				28EB90891AF95C37008D5337 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28EB908A1AF95C37008D5337 /* Build configuration list for PBXNativeTarget "ScrumTests" */ = {
 			isa = XCConfigurationList;
@@ -1006,6 +1006,7 @@
 				28EB908C1AF95C37008D5337 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira-Logger" */ = {
 			isa = XCConfigurationList;

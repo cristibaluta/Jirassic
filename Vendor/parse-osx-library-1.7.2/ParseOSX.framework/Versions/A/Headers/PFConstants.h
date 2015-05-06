@@ -16,7 +16,7 @@
 /// @name Version
 ///--------------------------------------
 
-#define PARSE_VERSION @"1.7.1"
+#define PARSE_VERSION @"1.7.2"
 
 extern NSInteger const PARSE_API_VERSION;
 
@@ -398,6 +398,26 @@ typedef void (^PFProgressBlock)(int percentDone);
 #      define PARSE_DEPRECATED(_MSG) __attribute__((deprecated))
 #    else
 #      define PARSE_DEPRECATED(_MSG)
+#    endif
+#  endif
+#endif
+
+///--------------------------------------
+/// @name Extensions Macros
+///--------------------------------------
+
+#ifndef PF_EXTENSION_UNAVAILABLE
+#  if PARSE_IOS_ONLY
+#    ifdef NS_EXTENSION_UNAVAILABLE_IOS
+#      define PF_EXTENSION_UNAVAILABLE(_msg) NS_EXTENSION_UNAVAILABLE_IOS(_msg)
+#    else
+#      define PF_EXTENSION_UNAVAILABLE(_msg)
+#    endif
+#  else
+#    ifdef NS_EXTENSION_UNAVAILABLE_MAC
+#      define PF_EXTENSION_UNAVAILABLE(_msg) NS_EXTENSION_UNAVAILABLE_MAC(_msg)
+#    else
+#      define PF_EXTENSION_UNAVAILABLE(_msg)
 #    endif
 #  endif
 #endif
