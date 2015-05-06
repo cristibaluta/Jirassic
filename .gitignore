@@ -5,3 +5,7 @@ Jira-Logger/ParseCredentials.swift
 *.xcuserstate
 
 .DS_Store
+
+*.xcworkspacedata
+
+*.xcscheme
