@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+/*
 class DummyDataManager: NSObject, DataManagerProtocol {
 	
 	private var data = [Task]()
@@ -91,4 +91,4 @@ class DummyDataManager: NSObject, DataManagerProtocol {
 //		let task = JLTaskWriter().write(task_id, notes: notes)
 //		data.append(task)
 	}
-}
+}*/

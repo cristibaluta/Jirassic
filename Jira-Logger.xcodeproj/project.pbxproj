@@ -10,6 +10,8 @@
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
+		28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
+		28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
 		28E838F91AF297FE00602D33 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F61AF297FE00602D33 /* Star.png */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
@@ -48,7 +50,6 @@
 		28EB907A1AF95C37008D5337 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90781AF95C37008D5337 /* LaunchScreen.xib */; };
 		28EB90861AF95C37008D5337 /* ScrumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90851AF95C37008D5337 /* ScrumTests.swift */; };
 		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
-		28EB90931AF9754A008D5337 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90911AF9754A008D5337 /* SettingsViewController.xib */; };
 		28EB90941AF9D58D008D5337 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
 		28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
 		28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
@@ -124,6 +125,9 @@
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		28B1F2AF1AFA78AA00D61472 /* Jira-Logger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jira-Logger-Bridging-Header.h"; sourceTree = "<group>"; };
+		28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksViewController.swift; sourceTree = "<group>"; };
+		28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		28E838F61AF297FE00602D33 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
@@ -149,9 +153,7 @@
 		28EB90841AF95C37008D5337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28EB90851AF95C37008D5337 /* ScrumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumTests.swift; sourceTree = "<group>"; };
 		28EB90901AF9754A008D5337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		28EB90911AF9754A008D5337 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLPredictiveTimeTyping.swift; path = ../Common/JLPredictiveTimeTyping.swift; sourceTree = "<group>"; };
-		28EB90981AF9DBE9008D5337 /* Jira-Logger-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Jira-Logger-Bridging-Header.h"; sourceTree = "<group>"; };
 		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskWriter.swift; path = ../Common/JLTaskWriter.swift; sourceTree = "<group>"; };
 		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskReader.swift; path = ../Common/JLTaskReader.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -250,8 +252,8 @@
 				289998A81AC3BDF200706824 /* MenuBarController.swift */,
 				289998A11AC2920200706824 /* Popover.swift */,
 				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
-				28EB908F1AF974DC008D5337 /* Settings */,
 				28E838FC1AF3372E00602D33 /* Tasks */,
+				28EB908F1AF974DC008D5337 /* Settings */,
 				289998A71AC342AB00706824 /* Login */,
 			);
 			name = Presentation;
@@ -293,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
+				28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */,
+				28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */,
 				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				28F51EB41AC6EE5200A69CDF /* TaskCell.swift */,
 				28F51EB61AC6EF1700A69CDF /* TaskCell.xib */,
@@ -322,7 +326,7 @@
 				28EB90781AF95C37008D5337 /* LaunchScreen.xib */,
 				28EB906B1AF95C37008D5337 /* Supporting Files */,
 			);
-			path = "Scrum";
+			path = Scrum;
 			sourceTree = "<group>";
 		};
 		28EB906B1AF95C37008D5337 /* Supporting Files */ = {
@@ -354,7 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				28EB90901AF9754A008D5337 /* SettingsViewController.swift */,
-				28EB90911AF9754A008D5337 /* SettingsViewController.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -427,8 +430,8 @@
 		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				28EB90981AF9DBE9008D5337 /* Jira-Logger-Bridging-Header.h */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
+				28B1F2AF1AFA78AA00D61472 /* Jira-Logger-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -631,7 +634,6 @@
 				28E838FA1AF297FE00602D33 /* Status.png in Resources */,
 				28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */,
 				28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */,
-				28EB90931AF9754A008D5337 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +676,7 @@
 				289998A41AC3354900706824 /* Task.swift in Sources */,
 				28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
+				28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* JLCreateRaport.swift in Sources */,
 				28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */,
@@ -692,6 +695,7 @@
 				28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
 				28F51EB91AC6F4FA00A69CDF /* TaskCellDataSource.swift in Sources */,
+				28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */,
 				28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */,
 				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
 				28F51EBD1AC6F67000A69CDF /* JLShareRaport.swift in Sources */,
@@ -923,6 +927,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jira-Logger",
+					"$(PROJECT_DIR)/Vendor/**",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Vendor/**",
 				);
 				INFOPLIST_FILE = "Jira-Logger/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -941,6 +951,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jira-Logger",
+					"$(PROJECT_DIR)/Vendor/**",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Vendor/**",
 				);
 				INFOPLIST_FILE = "Jira-Logger/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

@@ -670,12 +670,9 @@
             <connections>
                 <outlet property="_butAdd" destination="t9I-hI-JME" id="7OK-rV-AkP"/>
                 <outlet property="_butDrawer" destination="ncf-3w-Koq" id="WGQ-Hk-kVt"/>
-                <outlet property="_butStart" destination="7RQ-5B-6aQ" id="qsS-Fc-OUA"/>
                 <outlet property="_dateLabel" destination="Ma3-Gy-AgP" id="3wX-Zt-DMF"/>
                 <outlet property="_datesScrollView" destination="5Rv-SU-X0P" id="WtV-Rp-nJ8"/>
                 <outlet property="_datesTableView" destination="GC5-kC-nNx" id="3Ne-Xo-csd"/>
-                <outlet property="_noTasksContainer" destination="yxw-5H-4UX" id="2Vr-XB-DFN"/>
-                <outlet property="_noTasksLabel" destination="aBu-qA-pK5" id="Qbf-SY-tEV"/>
                 <outlet property="_tasksScrollView" destination="Yng-8a-hsj" id="ZKz-fv-tPv"/>
                 <outlet property="_tasksTableView" destination="TTh-Xv-XFj" id="pIF-DK-ddh"/>
                 <outlet property="view" destination="OBP-pT-3rU" id="ZFI-iN-lYr"/>
@@ -697,7 +694,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" id="GC5-kC-nNx">
-                                <rect key="frame" x="0.0" y="0.0" width="154" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="154" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="5"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -798,43 +795,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="yxw-5H-4UX">
-                    <rect key="frame" x="12" y="0.0" width="467" height="382"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aBu-qA-pK5">
-                            <rect key="frame" x="0.0" y="198" width="467" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="NgX-te-hTx"/>
-                            </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="Ej6-xv-yyB">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-5B-6aQ">
-                            <rect key="frame" x="185" y="157" width="96" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="tWF-AK-ls1"/>
-                                <constraint firstAttribute="width" constant="84" id="tow-cN-eAB"/>
-                            </constraints>
-                            <buttonCell key="cell" type="push" title="Start day" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pHO-7V-heF">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleStartButton:" target="Mzr-YU-Yq5" id="Xhj-sG-6mW"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="aBu-qA-pK5" firstAttribute="leading" secondItem="yxw-5H-4UX" secondAttribute="leading" constant="2" id="SGZ-VO-u7s"/>
-                        <constraint firstAttribute="centerY" secondItem="aBu-qA-pK5" secondAttribute="centerY" constant="18" id="Urm-6E-twq"/>
-                        <constraint firstItem="aBu-qA-pK5" firstAttribute="bottom" secondItem="7RQ-5B-6aQ" secondAttribute="bottom" constant="-34" id="WiS-2x-upA"/>
-                        <constraint firstAttribute="trailing" secondItem="aBu-qA-pK5" secondAttribute="trailing" constant="2" id="fND-l2-baV"/>
-                        <constraint firstAttribute="centerX" secondItem="7RQ-5B-6aQ" secondAttribute="centerX" constant="0.5" id="iho-Ma-hRx"/>
-                    </constraints>
-                </customView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t9I-hI-JME">
                     <rect key="frame" x="224" y="393" width="42" height="30"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="syH-FH-eGN">
@@ -890,12 +850,6 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <constraints>
-                <constraint firstItem="yxw-5H-4UX" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="60" id="T18-SE-b9t"/>
-                <constraint firstAttribute="bottom" secondItem="yxw-5H-4UX" secondAttribute="bottom" id="Wbt-sP-x7R"/>
-                <constraint firstAttribute="trailing" secondItem="yxw-5H-4UX" secondAttribute="trailing" constant="12" id="gds-Cs-5cz"/>
-                <constraint firstItem="yxw-5H-4UX" firstAttribute="leading" secondItem="OBP-pT-3rU" secondAttribute="leading" constant="12" id="uQi-wn-Btm"/>
-            </constraints>
             <point key="canvasLocation" x="354.5" y="449"/>
         </customView>
         <arrayController id="8A0-Ws-K3v" userLabel="Tasks Array Controller">

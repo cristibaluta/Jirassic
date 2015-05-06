@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D105g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -645,6 +645,189 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="0zN-Dv-kP5">
+            <objects>
+                <viewController id="J1c-ZL-C5e" customClass="SettingsViewController" customModule="Jira_Logger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="JAR-dh-Pss">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-iT-9TC">
+                                <rect key="frame" x="-2" y="178" width="467" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="wmy-zB-BQg"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Settings" id="GLz-DY-qQW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
+                                <rect key="frame" x="196" y="60" width="71" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tsy-gv-nNb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="C7k-Vd-XtM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="287"/>
+        </scene>
+        <!--No Tasks View Controller-->
+        <scene sceneID="qnk-He-sUt">
+            <objects>
+                <viewController storyboardIdentifier="NoTasksViewController" id="bVC-7U-s4Z" customClass="NoTasksViewController" customModule="Jira_Logger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="JCn-4d-cll">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-8Y-N3H">
+                                <rect key="frame" x="177" y="98" width="96" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="WFf-3D-D74"/>
+                                    <constraint firstAttribute="height" constant="21" id="ZxE-ET-YU7"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Start day" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNR-UV-oHT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleStartButton:" target="bVC-7U-s4Z" id="iuh-wp-mgt"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-ec-RHL">
+                                <rect key="frame" x="-2" y="139" width="454" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="yK8-kZ-ZiA"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="nbU-Rc-uag">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rbU-ec-RHL" firstAttribute="bottom" secondItem="eVC-8Y-N3H" secondAttribute="bottom" constant="-34" id="AgH-uo-3m6"/>
+                            <constraint firstAttribute="trailing" secondItem="rbU-ec-RHL" secondAttribute="trailing" id="GPF-o3-sAZ"/>
+                            <constraint firstItem="rbU-ec-RHL" firstAttribute="leading" secondItem="JCn-4d-cll" secondAttribute="leading" id="YSF-VA-WlY"/>
+                            <constraint firstAttribute="centerX" secondItem="eVC-8Y-N3H" secondAttribute="centerX" id="lrK-ul-V9G"/>
+                            <constraint firstAttribute="centerY" secondItem="rbU-ec-RHL" secondAttribute="centerY" id="n9K-Pa-rkC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_butStart" destination="eVC-8Y-N3H" id="BN2-47-3ds"/>
+                        <outlet property="_noTasksLabel" destination="rbU-ec-RHL" id="UkN-R1-ozi"/>
+                    </connections>
+                </viewController>
+                <customObject id="udK-4D-ctN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="649"/>
+        </scene>
+        <!--New Task View Controller-->
+        <scene sceneID="M3u-7D-JEH">
+            <objects>
+                <viewController storyboardIdentifier="NewTaskViewController" id="2VM-Zw-qp9" customClass="NewTaskViewController" customModule="Jira_Logger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="uNj-CH-ggG">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Fw-QM-PI1">
+                                <rect key="frame" x="62" y="115" width="119" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="dw0-gg-bFW"/>
+                                    <constraint firstAttribute="height" constant="21" id="q8c-fs-vdU"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Scrum begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vog-g8-0o1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-qM-o57">
+                                <rect key="frame" x="62" y="68" width="107" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="2P2-1G-q0M"/>
+                                    <constraint firstAttribute="height" constant="21" id="peZ-cY-dzN"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Scrum end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J2A-GE-JVu">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DXm-Fy-uZV">
+                                <rect key="frame" x="188" y="115" width="116" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="bRE-oo-2ri"/>
+                                    <constraint firstAttribute="width" constant="84" id="nxk-iX-gTH"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Lunch begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rWM-Dh-VMA">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqM-dt-X5J">
+                                <rect key="frame" x="188" y="68" width="105" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="461-tv-Dqy"/>
+                                    <constraint firstAttribute="height" constant="21" id="jVZ-vk-OKw"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Lunch end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jXD-1C-Vlr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Ec-guA">
+                                <rect key="frame" x="322" y="115" width="106" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Xve-er-g2J"/>
+                                    <constraint firstAttribute="width" constant="84" id="ZTL-Gz-xL6"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Task begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rDu-Be-c78">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP3-YD-zEj">
+                                <rect key="frame" x="322" y="68" width="95" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="3hF-ne-qlR"/>
+                                    <constraint firstAttribute="height" constant="21" id="zRG-0n-KUP"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Task end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zla-ZL-uDZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OOE-nz-1tq">
+                                <rect key="frame" x="-2" y="171" width="467" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Rbp-4t-Evo"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="What kind of task?" id="Xys-r8-a8n">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="OOE-nz-1tq" firstAttribute="bottom" secondItem="3Fw-QM-PI1" secondAttribute="bottom" constant="-34" id="7fw-Ym-e4X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_butStart" destination="3Fw-QM-PI1" id="WCF-6u-NNs"/>
+                        <outlet property="_noTasksLabel" destination="OOE-nz-1tq" id="rDB-NC-grM"/>
+                    </connections>
+                </viewController>
+                <customObject id="oRb-VE-hx2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="1057"/>
         </scene>
     </scenes>
 </document>

@@ -20,13 +20,13 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _datesTableView: NSTableView?
 	@IBOutlet private var _tasksTableView: NSTableView?
 	
-	@IBOutlet private var _noTasksContainer: NSView?
-	@IBOutlet private var _noTasksLabel: NSTextField?
-	@IBOutlet private var _butStart: NSButton?
+	private var _noTasksViewController: NoTasksViewController?
+	private var _newTaskViewController: NewTaskViewController?
 	
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butDrawer: NSButton?
 	@IBOutlet private var _butAdd: NSButton?
+	
 	private var _dateCellDatasource: DateCellDataSource?
 	private var _taskCellDatasource: TaskCellDataSource?
 	private var _newDayController = NewDayController()
@@ -122,20 +122,62 @@ class TasksViewController: NSViewController {
 	func updateNoTasksState() {
 		
 		if _taskCellDatasource == nil || _taskCellDatasource!.data?.count == 0 {
-			_noTasksContainer?.hidden = false
+			let controller = noTasksController()
+			controller.showStartState()
+			self.view.addSubview( controller.view)
 			_butAdd?.hidden = true
-			_noTasksLabel?.stringValue = NoTasksController().showStartState()
 		}
 		else if _taskCellDatasource!.data?.count == 1 {
-			_noTasksContainer?.hidden = false
+			let controller = noTasksController()
+			controller.showFirstTaskState()
 			_butAdd?.hidden = false
-			_butStart?.hidden = true
-			_noTasksLabel?.stringValue = NoTasksController().showFirstTaskState()
 		}
 		else {
-			_noTasksContainer?.hidden = true
+			if _noTasksViewController != nil {
+				noTasksController().removeFromSuperview()
+			}
 			_butAdd?.hidden = false
 		}
+	}
+	
+	func noTasksController() -> NoTasksViewController {
+		
+		if _noTasksViewController == nil {
+			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
+			_noTasksViewController?.view.frame = NSRect(x: 12, y: 379, width: 467, height: 379)
+			_noTasksViewController?.onButStartPressed = { () -> Void in
+				
+				let task = sharedData.addNewTask()
+				task.task_nr = "Start"
+				task.notes = "Working day started at \(NSDate().HHmm())"
+				
+				JLTaskWriter().write( task )
+				
+				self._newDayController.setLastDay( NSDate())
+				self.reloadData()
+			}
+		}
+		return _noTasksViewController!
+	}
+	
+	func newTaskController() -> NewTaskViewController {
+		
+		if _newTaskViewController == nil {
+			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
+			_newTaskViewController?.onOptionChosen = { (i: Int) -> Void in
+				
+				let task = sharedData.addNewTask()
+				self._taskCellDatasource?.addTask( task )
+				JLTaskWriter().write( task )
+				
+				let index = self._taskCellDatasource!.data!.count - 1
+				self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
+				self._tasksTableView?.scrollRowToVisible( index )
+				
+				self.updateNoTasksState()
+			}
+		}
+		return _newTaskViewController!
 	}
 	
 	func setDrawerState (s: DrawerState) {
@@ -167,24 +209,14 @@ class TasksViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleColumnButton(sender: NSButton) {
-		
 		setDrawerState( _state == .Closed ? .Open : .Closed)
-		
 		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
 		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
-		
-		let task = sharedData.addNewTask()
-		_taskCellDatasource?.addTask( task )
-		JLTaskWriter().write( task )
-
-		let index = _taskCellDatasource!.data!.count - 1
-		_tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
-		_tasksTableView?.scrollRowToVisible( index )
-		
-		updateNoTasksState()
+		let controller = newTaskController()
+		self.view.addSubview( controller.view)
 	}
 	
 	@IBAction func handleRemoveButton(sender: NSButton) {
@@ -199,17 +231,4 @@ class TasksViewController: NSViewController {
 	@IBAction func handleSettingsButton(sender: NSButton) {
 		
 	}
-	
-	@IBAction func handleStartButton(sender: NSButton) {
-		
-		let task = sharedData.addNewTask()
-		task.task_nr = "Start"
-		task.notes = "Working day started at \(NSDate().HHmm())"
-		
-		JLTaskWriter().write( task )
-		
-		_newDayController.setLastDay( NSDate())
-		self.reloadData()
-	}
-	
 }
