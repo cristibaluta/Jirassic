@@ -1,5 +1,3 @@
-*.xcuserstate
-.DS_Store
 Jira-Logger/ParseCredentials.swift
 
 *.xcuserstate
@@ -9,3 +7,5 @@ Jira-Logger/ParseCredentials.swift
 *.xcworkspacedata
 
 *.xcscheme
+
+*.xccheckout
