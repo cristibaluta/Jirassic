@@ -40,6 +40,15 @@ class DetailViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-
+	func login() {
+//		PFUser.logInWithUsernameInBackground("myname", password:"mypass") {
+//			(user: PFUser?, error: NSError?) -> Void in
+//			if user != nil {
+//				
+//			} else {
+//				
+//			}
+//		}
+	}
 }
 

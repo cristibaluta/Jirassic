@@ -13,6 +13,15 @@ enum DrawerState: Int {
 	case Open = 1
 }
 
+enum TaskType: Int {
+	case TaskIssueBegin = 0
+	case TaskIssueEnd = 1
+	case TaskScrumBegin = 2
+	case TaskScrumEnd = 3
+	case TaskLunchBegin = 4
+	case TaskLunchEnd = 5
+}
+
 class TasksViewController: NSViewController {
 	
 	@IBOutlet private var _datesScrollView: NSScrollView?
@@ -33,6 +42,7 @@ class TasksViewController: NSViewController {
 	private var _state: DrawerState = .Open
 	private let _gapX = CGFloat(12)
 	private let kDrawerStateKey = "DrawerStateKey"
+	private let kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
     override func viewDidLoad() {
 		
@@ -133,9 +143,7 @@ class TasksViewController: NSViewController {
 			_butAdd?.hidden = false
 		}
 		else {
-			if _noTasksViewController != nil {
-				noTasksController().removeFromSuperview()
-			}
+			removeNoTasksController()
 			_butAdd?.hidden = false
 		}
 	}
@@ -144,7 +152,7 @@ class TasksViewController: NSViewController {
 		
 		if _noTasksViewController == nil {
 			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
-			_noTasksViewController?.view.frame = NSRect(x: 12, y: 379, width: 467, height: 379)
+			_noTasksViewController?.view.frame = kSecondaryControllerFrame
 			_noTasksViewController?.onButStartPressed = { () -> Void in
 				
 				let task = sharedData.addNewTask()
@@ -160,24 +168,43 @@ class TasksViewController: NSViewController {
 		return _noTasksViewController!
 	}
 	
+	func removeNoTasksController() {
+		if _noTasksViewController != nil {
+			noTasksController().removeFromSuperview()
+		}
+	}
+	
 	func newTaskController() -> NewTaskViewController {
 		
 		if _newTaskViewController == nil {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
-			_newTaskViewController?.onOptionChosen = { (i: Int) -> Void in
+			_newTaskViewController?.view.frame = kSecondaryControllerFrame
+			_newTaskViewController?.onOptionChosen = { (i: TaskType) -> Void in
 				
-				let task = sharedData.addNewTask()
-				self._taskCellDatasource?.addTask( task )
-				JLTaskWriter().write( task )
-				
-				let index = self._taskCellDatasource!.data!.count - 1
-				self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
-				self._tasksTableView?.scrollRowToVisible( index )
-				
-				self.updateNoTasksState()
+				switch(i) {
+				case .TaskIssueBegin:
+					let task = sharedData.addNewTask()
+					self._taskCellDatasource?.addTask( task )
+					JLTaskWriter().write( task )
+					
+					let index = self._taskCellDatasource!.data!.count - 1
+					self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
+					self._tasksTableView?.scrollRowToVisible( index )
+					
+					self.updateNoTasksState()
+					self.removeNewTaskController()
+				default:
+					RCLogO("this case is not handled yet")
+				}
 			}
 		}
 		return _newTaskViewController!
+	}
+	
+	func removeNewTaskController() {
+		if _newTaskViewController != nil {
+			newTaskController().removeFromSuperview()
+		}
 	}
 	
 	func setDrawerState (s: DrawerState) {
@@ -215,6 +242,7 @@ class TasksViewController: NSViewController {
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
+		removeNoTasksController()
 		let controller = newTaskController()
 		self.view.addSubview( controller.view)
 	}

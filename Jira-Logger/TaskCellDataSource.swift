@@ -1,5 +1,5 @@
 //
-//  NotesCellDataSource.swift
+//  TaskCellDataSource.swift
 //  Jira-Logger
 //
 //  Created by Baluta Cristian on 28/03/15.
@@ -9,7 +9,12 @@
 import Cocoa
 
 let kTaskCellNibName = "TaskCell"
+let kScrumCellNibName = "ScrumCell"
+let kLunchCellNibName = "LunchCell"
 let kTaskCellIdentifier = "TaskCellIdentifier"
+let kScrumCellIdentifier = "ScrumCellIdentifier"
+let kLunchCellIdentifier = "LunchCellIdentifier"
+let kScrumCellHeight = CGFloat(30.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
 
@@ -19,6 +24,12 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		didSet {
 			if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
 				tableView?.registerNib( nib, forIdentifier: kTaskCellIdentifier)
+			}
+			if let nib = NSNib(nibNamed: kScrumCellNibName, bundle: NSBundle.mainBundle()) {
+				tableView?.registerNib( nib, forIdentifier: kScrumCellIdentifier)
+			}
+			if let nib = NSNib(nibNamed: kLunchCellNibName, bundle: NSBundle.mainBundle()) {
+				tableView?.registerNib( nib, forIdentifier: kLunchCellIdentifier)
 			}
 		}
 	}
@@ -67,15 +78,15 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 //			data?[row].setObject(object!, forKey: (tableColumn?.identifier)!)
 	}
 	
-	func tableViewSelectionDidChange(aNotification: NSNotification) {
-		RCLogO(aNotification)
-		if let tableView: AnyObject = aNotification.object {
-			RCLogO(tableView.selectedRow)
-			if didSelectRow != nil {
-				didSelectRow!(row: tableView.selectedRow)
-			}
-		}
-	}
+//	func tableViewSelectionDidChange(aNotification: NSNotification) {
+//		RCLogO(aNotification)
+//		if let tableView: AnyObject = aNotification.object {
+//			RCLogO(tableView.selectedRow)
+//			if didSelectRow != nil {
+//				didSelectRow!(row: tableView.selectedRow)
+//			}
+//		}
+//	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		return kTaskCellMaxHeight

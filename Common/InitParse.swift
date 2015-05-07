@@ -21,8 +21,49 @@ class InitParse: NSObject {
 		Task.registerSubclass()
 		
 		Parse.enableLocalDatastore()
-		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
 		
+		PFUser.enableAutomaticUser()
+//		PFUser.currentUser()!.incrementKey("RunCount")
+//		PFUser.currentUser()!.saveInBackground()
+		
+		let defaultACL = PFACL()
+		defaultACL.setPublicReadAccess(true)
+		PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+		
+		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
 		PFAnalytics()
+	}
+	
+	func login() {
+		var currentUser = PFUser.currentUser()
+		if currentUser != nil {
+			// Do stuff with the user
+		} else {
+			loginAnonymousUser()
+		}
+	}
+	
+	func loginAnonymousUser() {
+		PFAnonymousUtils.logInWithBlock {
+			(user: PFUser?, error: NSError?) -> Void in
+			if error != nil || user == nil {
+				RCLogO("Anonymous login failed.")
+			} else {
+				RCLogO("Anonymous user logged in.")
+			}
+		}
+	}
+	
+	func isAnonymousUser() {
+		if PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser()) {
+//			self.enableSignUpButton()
+		} else {
+//			self.enableLogOutButton()
+		}
+	}
+	
+	func logout() {
+		PFUser.logOut()
+		var currentUser = PFUser.currentUser() // this will now be nil
 	}
 }

@@ -10,7 +10,7 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
-	var onOptionChosen: ((i: Int) -> Void)?
+	var onOptionChosen: ((i: TaskType) -> Void)?
 	
 	class func instanceFromStoryboard() -> NewTaskViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
@@ -22,5 +22,33 @@ class NewTaskViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
-    
+	
+	func removeFromSuperview() {
+		self.view.removeFromSuperview()
+	}
+	
+	@IBAction func handleScrumBeginButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskScrumBegin)
+	}
+	
+	@IBAction func handleScrumEndButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskScrumEnd)
+	}
+	
+	@IBAction func handleLunchBeginButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskLunchBegin)
+	}
+	
+	@IBAction func handleLunchEndButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskLunchEnd)
+	}
+	
+	@IBAction func handleTaskBeginButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskIssueBegin)
+	}
+	
+	@IBAction func handleTaskEndButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskIssueEnd)
+	}
+	
 }

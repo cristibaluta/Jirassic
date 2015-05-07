@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="KOU-dp-rT9"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="263" id="tMF-ic-Iee"/>
                     </constraints>
-                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" id="PIu-Xg-tz0">
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

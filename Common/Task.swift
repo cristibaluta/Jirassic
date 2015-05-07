@@ -41,6 +41,24 @@ public class Task: PFObject, PFSubclassing {
 		}
 	}
 	
+	dynamic public var task_type :NSNumber? {
+		get {
+			return objectForKey("task_type") as! NSNumber?
+		}
+		set {
+			setObject(newValue!, forKey: "task_type")
+		}
+	}
+	
+	dynamic public var user: PFUser? {
+		get {
+			return objectForKey("user") as! PFUser?
+		}
+		set {
+			setObject(newValue!, forKey: "user")
+		}
+	}
+	
 	public class func parseClassName() -> String {
 		return "Task"
 	}
