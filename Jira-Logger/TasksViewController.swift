@@ -35,6 +35,7 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butDrawer: NSButton?
 	@IBOutlet private var _butAdd: NSButton?
+	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
 	private var _dateCellDatasource: DateCellDataSource?
 	private var _taskCellDatasource: TaskCellDataSource?
@@ -52,6 +53,8 @@ class TasksViewController: NSViewController {
 		sharedData.queryData { (tasks, error) -> Void in
 			self.reloadData()
 		}
+		
+		SleepNotifications()
     }
 	
 	override func viewDidAppear() {
@@ -121,8 +124,9 @@ class TasksViewController: NSViewController {
 	
 	func reloadTasksOnDay(date: NSDate) {
 		
-		_taskCellDatasource!.data = sharedData.tasksForDayOnDate(date).reverse()
+		_taskCellDatasource!.data = sharedData.tasksForDayOnDate(date)
 		_tasksTableView?.reloadData()
+		_tasksTableView?.hidden = false
 		
 		_dateLabel?.stringValue = date.EEEEMMdd()
 		
@@ -155,10 +159,7 @@ class TasksViewController: NSViewController {
 			_noTasksViewController?.view.frame = kSecondaryControllerFrame
 			_noTasksViewController?.onButStartPressed = { () -> Void in
 				
-				let task = sharedData.addNewTask()
-				task.task_nr = "Start"
-				task.notes = "Working day started at \(NSDate().HHmm())"
-				
+				let task = sharedData.addNewWorkingDayTask()
 				JLTaskWriter().write( task )
 				
 				self._newDayController.setLastDay( NSDate())
@@ -180,6 +181,9 @@ class TasksViewController: NSViewController {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
 			_newTaskViewController?.view.frame = kSecondaryControllerFrame
 			_newTaskViewController?.onOptionChosen = { (i: TaskType) -> Void in
+				
+				self._datesTableView?.hidden = false
+//				self._tasksTableView?.hidden = false
 				
 				switch(i) {
 				case .TaskIssueBegin:
@@ -243,6 +247,8 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
 		removeNoTasksController()
+		_datesTableView?.hidden = true
+//		_tasksTableView?.hidden = true
 		let controller = newTaskController()
 		self.view.addSubview( controller.view)
 	}

@@ -14,5 +14,8 @@ import Foundation
 	func days() -> [Task]
 	func tasksForDayOnDate(date: NSDate) -> [Task]
 	func addNewTask() -> Task
+	func addNewWorkingDayTask() -> Task
+	func addScrumSessionTask() -> Task
+	func addLunchBreakTask() -> Task
 //	func updateTask(task_id: String, notes: String)
 }

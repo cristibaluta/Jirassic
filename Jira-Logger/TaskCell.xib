@@ -8,11 +8,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="TaskCellIdentifier" id="c22-O7-iKe" customClass="TaskCell" customModule="Jira_Logger" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="5" width="336" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="70" y="52" width="267" height="18"/>
+                    <rect key="frame" x="70" y="52" width="276" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="kkS-Qs-fmO"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="263" id="qrH-jK-QSn"/>
@@ -26,8 +26,8 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                    <rect key="frame" x="70" y="0.0" width="267" height="50"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                    <rect key="frame" x="70" y="0.0" width="268" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="KOU-dp-rT9"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="263" id="tMF-ic-Iee"/>
@@ -41,8 +41,12 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                     </connections>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
-                    <rect key="frame" x="11" y="14" width="42" height="30"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
+                    <rect key="frame" x="324" y="52" width="19" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="19" id="Llh-x5-YiH"/>
+                        <constraint firstAttribute="height" constant="16" id="RFm-9k-fFR"/>
+                    </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -55,7 +59,7 @@
                     <rect key="frame" x="17" y="53" width="51" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" red="0.10582754791184269" green="0.81926688762626254" blue="0.23108835819567383" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
                 </textField>
@@ -79,11 +83,13 @@
                 <constraint firstItem="0b2-lw-vdV" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="2Bx-lm-qUN"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4LC-Du-N7a"/>
                 <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="1" id="IWa-Nv-FUv"/>
-                <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="1" id="LIn-sd-PKY"/>
+                <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="10" id="LIn-sd-PKY"/>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" id="Nf3-e9-nbf"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="top" constant="20" id="aCx-Q1-eHe"/>
                 <constraint firstItem="0b2-lw-vdV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="dS7-9H-GO9"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="dsC-7m-gMj"/>
+                <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="2" id="rjV-yO-bKe"/>
+                <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="2" id="xXu-v8-MmE"/>
                 <constraint firstAttribute="bottom" secondItem="0b2-lw-vdV" secondAttribute="bottom" id="z0l-Sx-rdC"/>
             </constraints>
             <connections>
@@ -92,7 +98,7 @@
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
                 <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
             </connections>
-            <point key="canvasLocation" x="225" y="253"/>
+            <point key="canvasLocation" x="224.5" y="253"/>
         </customView>
     </objects>
     <resources>

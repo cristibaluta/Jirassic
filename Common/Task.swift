@@ -8,6 +8,12 @@
 
 import Foundation
 
+let kDateKey = "date_task_finished"
+let kNotesKey = "notes"
+let kTaskNrKey = "task_nr"
+let kTypeKey = "task_type"
+let kUserKey = "user"
+
 public class Task: PFObject, PFSubclassing {
 
 	override init () {
@@ -16,46 +22,46 @@ public class Task: PFObject, PFSubclassing {
 	
     dynamic public var date_task_finished :NSDate? {
         get {
-            return objectForKey("date_task_finished") as! NSDate?
+            return objectForKey(kDateKey) as! NSDate?
         }
         set {
-            setObject(newValue!, forKey: "date_task_finished")
+            setObject(newValue!, forKey: kDateKey)
         }
     }
     
     dynamic public var notes :String? {
         get {
-            return objectForKey("notes") as! String?
+            return objectForKey(kNotesKey) as! String?
         }
         set {
-            setObject(newValue!, forKey: "notes")
+            setObject(newValue!, forKey: kNotesKey)
         }
     }
 	
 	dynamic public var task_nr :String? {
 		get {
-			return objectForKey("task_nr") as! String?
+			return objectForKey(kTaskNrKey) as! String?
 		}
 		set {
-			setObject(newValue!, forKey: "task_nr")
+			setObject(newValue!, forKey: kTaskNrKey)
 		}
 	}
 	
 	dynamic public var task_type :NSNumber? {
 		get {
-			return objectForKey("task_type") as! NSNumber?
+			return objectForKey(kTypeKey) as! NSNumber?
 		}
 		set {
-			setObject(newValue!, forKey: "task_type")
+			setObject(newValue!, forKey: kTypeKey)
 		}
 	}
 	
 	dynamic public var user: PFUser? {
 		get {
-			return objectForKey("user") as! PFUser?
+			return objectForKey(kUserKey) as! PFUser?
 		}
 		set {
-			setObject(newValue!, forKey: "user")
+			setObject(newValue!, forKey: kUserKey)
 		}
 	}
 	

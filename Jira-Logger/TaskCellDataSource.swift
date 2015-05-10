@@ -7,14 +7,13 @@
 //
 
 import Cocoa
+import Foundation
 
 let kTaskCellNibName = "TaskCell"
-let kScrumCellNibName = "ScrumCell"
-let kLunchCellNibName = "LunchCell"
+let kNonTaskCellNibName = "NonTaskCell"
 let kTaskCellIdentifier = "TaskCellIdentifier"
-let kScrumCellIdentifier = "ScrumCellIdentifier"
-let kLunchCellIdentifier = "LunchCellIdentifier"
-let kScrumCellHeight = CGFloat(30.0)
+let kNonTaskCellIdentifier = "NonTaskCellIdentifier"
+let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
 
@@ -22,14 +21,14 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	var tableView: NSTableView? {
 		didSet {
+			assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
+			assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
+			
 			if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
 				tableView?.registerNib( nib, forIdentifier: kTaskCellIdentifier)
 			}
-			if let nib = NSNib(nibNamed: kScrumCellNibName, bundle: NSBundle.mainBundle()) {
-				tableView?.registerNib( nib, forIdentifier: kScrumCellIdentifier)
-			}
-			if let nib = NSNib(nibNamed: kLunchCellNibName, bundle: NSBundle.mainBundle()) {
-				tableView?.registerNib( nib, forIdentifier: kLunchCellIdentifier)
+			if let nib = NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) {
+				tableView?.registerNib( nib, forIdentifier: kNonTaskCellIdentifier)
 			}
 		}
 	}
@@ -39,7 +38,7 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
-		
+		RCLogO(aTableView)
 		if let d = data {
 			return d.count
 		}
@@ -50,25 +49,33 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
 			let theData = data![row] as Task
-			let view = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as! TaskCell
-			view.issueNrTextField?.stringValue = theData.task_nr!
-			view.notesTextField?.stringValue = theData.notes!
-			view.dateEndTextField?.stringValue = theData.date_task_finished!.HHmm()
-			view.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.SourceList
-			view.didEndEditingCell = { (cell: TaskCell) in
+			var cell: TaskCellProtocol? = nil
+			if theData.task_type?.intValue == 0 {
+				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
+			} else {
+				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
+			}
+			assert(cell != nil, "Cell can't be nil, check the identifier")
+			cell?.data = (date: theData.date_task_finished!.HHmm(), task: theData.task_nr!, notes: theData.notes!)
+			cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 				RCLogO(cell)
-				theData.task_nr = cell.issueNrTextField?.stringValue
-				theData.notes = cell.notesTextField?.stringValue
+				let data = cell.data
+				theData.task_nr = data.1
+				theData.notes = data.2
 				JLTaskWriter().write( theData )
 			}
-			view.didRemoveCell = { (cell: TaskCell) in
+			cell?.didRemoveCell = { (cell: TaskCellProtocol) in
 				RCLogO("remove cell \(self.didRemoveRow)")
 				if self.didRemoveRow != nil {
-					self.didRemoveRow!(row: tableView.rowForView(cell))
+					self.didRemoveRow!(row: tableView.rowForView(cell as! TaskCell))
 				}
 			}
 			
-			return view
+			if theData.task_type?.intValue == 0 {
+				return cell as? TaskCell
+			} else {
+				return cell as? NonTaskCell
+			}
 	}
 	
 	func tableView(tableView: NSTableView, setObjectValue object: AnyObject?,
@@ -89,7 +96,8 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 //	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		return kTaskCellMaxHeight
+		let theData = data![row] as Task
+		return theData.task_type?.intValue == 0 ? kTaskCellMaxHeight : kNonTaskCellHeight
 	}
 	
 	

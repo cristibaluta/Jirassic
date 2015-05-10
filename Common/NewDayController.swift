@@ -14,7 +14,7 @@ class NewDayController: NSObject {
 	
 	func isNewDay() -> Bool {
 		RCLogO(lastDay())
-		return lastDay() == nil || lastDay()!.isSameDayAs( today())
+		return lastDay() == nil || !lastDay()!.isSameDayAs( today())
 	}
 	
 	func setLastDay(date: NSDate) {

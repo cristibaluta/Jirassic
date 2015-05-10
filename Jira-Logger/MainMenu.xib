@@ -673,6 +673,7 @@
                 <outlet property="_dateLabel" destination="Ma3-Gy-AgP" id="3wX-Zt-DMF"/>
                 <outlet property="_datesScrollView" destination="5Rv-SU-X0P" id="WtV-Rp-nJ8"/>
                 <outlet property="_datesTableView" destination="GC5-kC-nNx" id="3Ne-Xo-csd"/>
+                <outlet property="_progressIndicator" destination="PDd-Rh-WiK" id="ybz-Nw-qVJ"/>
                 <outlet property="_tasksScrollView" destination="Yng-8a-hsj" id="ZKz-fv-tPv"/>
                 <outlet property="_tasksTableView" destination="TTh-Xv-XFj" id="pIF-DK-ddh"/>
                 <outlet property="view" destination="OBP-pT-3rU" id="ZFI-iN-lYr"/>
@@ -784,7 +785,7 @@
                                 </tableColumns>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hog-Iv-FwC">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -849,6 +850,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PDd-Rh-WiK">
+                    <rect key="frame" x="386" y="403" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <point key="canvasLocation" x="354.5" y="449"/>
         </customView>

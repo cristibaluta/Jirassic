@@ -8,17 +8,30 @@
 
 import Cocoa
 
-class TaskCell: NSTableRowView, NSTextFieldDelegate {
+class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 
-	@IBOutlet var issueNrTextField: NSTextField?
-	@IBOutlet var dateEndTextField: NSTextField?
-	@IBOutlet var notesTextField: NSTextField?
-	@IBOutlet var butRemove: NSButton?
+	@IBOutlet private var dateEndTextField: NSTextField?
+	@IBOutlet private var issueNrTextField: NSTextField?
+	@IBOutlet private var notesTextField: NSTextField?
+	@IBOutlet private var butRemove: NSButton?
 	
-	var didEndEditingCell: ((cell: TaskCell) -> ())?
-	var didRemoveCell: ((cell: TaskCell) -> ())?
 	private var isEditing = false
 	private var wasEdited = false
+	
+	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
+	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
+	var data: (date: String, task: String, notes: String) {
+		get {
+			return (self.dateEndTextField!.stringValue,
+					self.issueNrTextField!.stringValue,
+					self.notesTextField!.stringValue)
+		}
+		set {
+			self.dateEndTextField!.stringValue = newValue.date
+			self.issueNrTextField!.stringValue = newValue.task
+			self.notesTextField!.stringValue = newValue.notes
+		}
+	}
 	
 	override func controlTextDidBeginEditing(obj: NSNotification) {
 		RCLogO(obj.name)
@@ -39,7 +52,6 @@ class TaskCell: NSTableRowView, NSTextFieldDelegate {
 	}
 	
 	@IBAction func handleRemoveButton(sender: NSButton) {
-		RCLogO("rremve cell");
 		self.didRemoveCell!(cell: self)
 	}
 	
