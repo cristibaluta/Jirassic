@@ -880,7 +880,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -892,10 +892,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Scrum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f4f8b6ab-07df-4335-818e-40bfd7bd3d97";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -908,17 +909,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Scrum",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Scrum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f4f8b6ab-07df-4335-818e-40bfd7bd3d97";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
