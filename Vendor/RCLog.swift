@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 func RCLog (message: String, file: String = __FILE__, line: Int = __LINE__) {
 	println("\(file.lastPathComponent):\(line): \(message)")

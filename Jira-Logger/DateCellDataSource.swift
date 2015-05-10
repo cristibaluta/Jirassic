@@ -31,7 +31,7 @@ class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 			
-			let object = data![row] as Task
+			let object = data![row]
 			
 			if (tableColumn?.identifier == columnDateId) {
 				return object.date_task_finished?.MMdd()

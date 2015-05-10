@@ -12,6 +12,25 @@
 		2846C90D1AFF882E00779357 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
 		2846C90E1AFF882E00779357 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
 		2846C90F1AFF88F600779357 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
+		2846C9121AFF8AEA00779357 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
+		2846C9131AFF8AED00779357 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
+		2846C9141AFF8AF200779357 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		2846C9151AFF8AF300779357 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		2846C9171AFF8FB100779357 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9161AFF8FB100779357 /* AudioToolbox.framework */; };
+		2846C9191AFF8FC700779357 /* Parse.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2846C91C1AFF8FFA00779357 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91B1AFF8FFA00779357 /* CFNetwork.framework */; };
+		2846C91E1AFF900400779357 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91D1AFF900400779357 /* CoreGraphics.framework */; };
+		2846C9201AFF901300779357 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91F1AFF901300779357 /* CoreLocation.framework */; };
+		2846C9221AFF901C00779357 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9211AFF901C00779357 /* MobileCoreServices.framework */; };
+		2846C9241AFF902600779357 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9231AFF902600779357 /* QuartzCore.framework */; };
+		2846C9261AFF903000779357 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9251AFF903000779357 /* Security.framework */; };
+		2846C92A1AFF904500779357 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9291AFF904500779357 /* SystemConfiguration.framework */; };
+		2846C92C1AFF905100779357 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C92B1AFF905100779357 /* libz.dylib */; };
+		2846C92E1AFF905D00779357 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C92D1AFF905D00779357 /* libsqlite3.dylib */; };
+		2846C9301AFF907400779357 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		285CECF91AFFB9DC003E969C /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
+		285CECFA1AFFBA34003E969C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839021AF4035900602D33 /* DataManager.swift */; };
+		285CECFB1AFFBA38003E969C /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
@@ -53,8 +72,8 @@
 		28EB90631AF948E3008D5337 /* NewDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDayController.swift */; };
 		28EB90641AF948E3008D5337 /* NewDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDayController.swift */; };
 		28EB906E1AF95C37008D5337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906D1AF95C37008D5337 /* AppDelegate.swift */; };
-		28EB90701AF95C37008D5337 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906F1AF95C37008D5337 /* MasterViewController.swift */; };
-		28EB90721AF95C37008D5337 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90711AF95C37008D5337 /* DetailViewController.swift */; };
+		28EB90701AF95C37008D5337 /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906F1AF95C37008D5337 /* DaysViewController.swift */; };
+		28EB90721AF95C37008D5337 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90711AF95C37008D5337 /* TasksViewController.swift */; };
 		28EB90751AF95C37008D5337 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90731AF95C37008D5337 /* Main.storyboard */; };
 		28EB90771AF95C37008D5337 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90761AF95C37008D5337 /* Images.xcassets */; };
 		28EB907A1AF95C37008D5337 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90781AF95C37008D5337 /* LaunchScreen.xib */; };
@@ -115,6 +134,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2846C91A1AFF8FC700779357 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2846C9191AFF8FC700779357 /* Parse.framework in Embed Frameworks */,
+				2846C9301AFF907400779357 /* Bolts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D31D09D1AC44613001AC4BA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +163,17 @@
 /* Begin PBXFileReference section */
 		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2846C90C1AFF882E00779357 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		2846C9161AFF8FB100779357 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		2846C91B1AFF8FFA00779357 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		2846C91D1AFF900400779357 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		2846C91F1AFF901300779357 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		2846C9211AFF901C00779357 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		2846C9231AFF902600779357 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		2846C9251AFF903000779357 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		2846C9291AFF904500779357 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
+		2846C9311AFF929000779357 /* Scrum-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scrum-Bridging-Header.h"; sourceTree = "<group>"; };
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
@@ -159,8 +201,8 @@
 		28EB90691AF95C37008D5337 /* Scrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EB906C1AF95C37008D5337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28EB906D1AF95C37008D5337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		28EB906F1AF95C37008D5337 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		28EB90711AF95C37008D5337 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		28EB906F1AF95C37008D5337 /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
+		28EB90711AF95C37008D5337 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28EB90741AF95C37008D5337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28EB90761AF95C37008D5337 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		28EB90791AF95C37008D5337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -209,6 +251,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2846C92E1AFF905D00779357 /* libsqlite3.dylib in Frameworks */,
+				2846C92C1AFF905100779357 /* libz.dylib in Frameworks */,
+				2846C92A1AFF904500779357 /* SystemConfiguration.framework in Frameworks */,
+				2846C9261AFF903000779357 /* Security.framework in Frameworks */,
+				2846C9241AFF902600779357 /* QuartzCore.framework in Frameworks */,
+				2846C9221AFF901C00779357 /* MobileCoreServices.framework in Frameworks */,
+				2846C9201AFF901300779357 /* CoreLocation.framework in Frameworks */,
+				2846C91E1AFF900400779357 /* CoreGraphics.framework in Frameworks */,
+				2846C91C1AFF8FFA00779357 /* CFNetwork.framework in Frameworks */,
+				2846C9171AFF8FB100779357 /* AudioToolbox.framework in Frameworks */,
 				2846C90E1AFF882E00779357 /* Parse.framework in Frameworks */,
 				2846C90D1AFF882E00779357 /* Bolts.framework in Frameworks */,
 			);
@@ -218,6 +270,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2846C9131AFF8AED00779357 /* Parse.framework in Frameworks */,
+				2846C9121AFF8AEA00779357 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +314,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2846C9101AFF8ABB00779357 /* parse-osx */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0971AC445CA001AC4BA /* Bolts.framework */,
+				6D31D0981AC445CA001AC4BA /* ParseOSX.framework */,
+			);
+			name = "parse-osx";
+			sourceTree = "<group>";
+		};
+		2846C9111AFF8AC800779357 /* parse-ios */ = {
+			isa = PBXGroup;
+			children = (
+				2846C90B1AFF882E00779357 /* Bolts.framework */,
+				2846C90C1AFF882E00779357 /* Parse.framework */,
+			);
+			name = "parse-ios";
+			path = ../Scrum;
+			sourceTree = "<group>";
+		};
 		289998A51AC3427100706824 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,11 +399,9 @@
 		28EB906A1AF95C37008D5337 /* Scrum */ = {
 			isa = PBXGroup;
 			children = (
-				2846C90B1AFF882E00779357 /* Bolts.framework */,
-				2846C90C1AFF882E00779357 /* Parse.framework */,
 				28EB906D1AF95C37008D5337 /* AppDelegate.swift */,
-				28EB906F1AF95C37008D5337 /* MasterViewController.swift */,
-				28EB90711AF95C37008D5337 /* DetailViewController.swift */,
+				28EB906F1AF95C37008D5337 /* DaysViewController.swift */,
+				28EB90711AF95C37008D5337 /* TasksViewController.swift */,
 				28EB90731AF95C37008D5337 /* Main.storyboard */,
 				28EB90761AF95C37008D5337 /* Images.xcassets */,
 				28EB90781AF95C37008D5337 /* LaunchScreen.xib */,
@@ -343,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				28EB906C1AF95C37008D5337 /* Info.plist */,
+				2846C9311AFF929000779357 /* Scrum-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -470,6 +542,16 @@
 		6D31D0741AC2E439001AC4BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2846C92D1AFF905D00779357 /* libsqlite3.dylib */,
+				2846C92B1AFF905100779357 /* libz.dylib */,
+				2846C9291AFF904500779357 /* SystemConfiguration.framework */,
+				2846C9251AFF903000779357 /* Security.framework */,
+				2846C9231AFF902600779357 /* QuartzCore.framework */,
+				2846C9211AFF901C00779357 /* MobileCoreServices.framework */,
+				2846C91F1AFF901300779357 /* CoreLocation.framework */,
+				2846C91D1AFF900400779357 /* CoreGraphics.framework */,
+				2846C91B1AFF8FFA00779357 /* CFNetwork.framework */,
+				2846C9161AFF8FB100779357 /* AudioToolbox.framework */,
 				6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */,
 				6D31D07D1AC2E8C9001AC4BA /* libz.dylib */,
 				6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */,
@@ -487,8 +569,8 @@
 		6D31D0A21AC448FF001AC4BA /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D0971AC445CA001AC4BA /* Bolts.framework */,
-				6D31D0981AC445CA001AC4BA /* ParseOSX.framework */,
+				2846C9101AFF8ABB00779357 /* parse-osx */,
+				2846C9111AFF8AC800779357 /* parse-ios */,
 				6D31D0A01AC44785001AC4BA /* RCLog.swift */,
 			);
 			name = Vendor;
@@ -505,6 +587,7 @@
 				28EB90651AF95C37008D5337 /* Sources */,
 				28EB90661AF95C37008D5337 /* Frameworks */,
 				28EB90671AF95C37008D5337 /* Resources */,
+				2846C91A1AFF8FC700779357 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -580,6 +663,12 @@
 				TargetAttributes = {
 					28EB90681AF95C37008D5337 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 5NHDC5EV44;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					28EB907E1AF95C37008D5337 = {
 						CreatedOnToolsVersion = 6.3;
@@ -663,12 +752,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2846C9091AFF845D00779357 /* ParseCredentials.swift in Sources */,
-				28EB90721AF95C37008D5337 /* DetailViewController.swift in Sources */,
+				285CECFA1AFFBA34003E969C /* DataManager.swift in Sources */,
+				28EB90721AF95C37008D5337 /* TasksViewController.swift in Sources */,
+				285CECFB1AFFBA38003E969C /* DataManagerProtocol.swift in Sources */,
 				28EB90941AF9D58D008D5337 /* NSDateExtension.swift in Sources */,
 				2846C90A1AFF87C800779357 /* JLTaskWriter.swift in Sources */,
-				28EB90701AF95C37008D5337 /* MasterViewController.swift in Sources */,
+				28EB90701AF95C37008D5337 /* DaysViewController.swift in Sources */,
+				2846C9141AFF8AF200779357 /* RCLog.swift in Sources */,
 				2846C90F1AFF88F600779357 /* Task.swift in Sources */,
 				28EB906E1AF95C37008D5337 /* AppDelegate.swift in Sources */,
+				285CECF91AFFB9DC003E969C /* InitParse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +770,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28EB90861AF95C37008D5337 /* ScrumTests.swift in Sources */,
+				2846C9151AFF8AF300779357 /* RCLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,7 +878,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -796,10 +892,13 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Scrum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f4f8b6ab-07df-4335-818e-40bfd7bd3d97";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -807,17 +906,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Scrum",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Scrum/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f4f8b6ab-07df-4335-818e-40bfd7bd3d97";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -831,6 +934,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -854,6 +958,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = ScrumTests/Info.plist;
