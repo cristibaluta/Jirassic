@@ -15,7 +15,7 @@ class JLTaskWriter: NSObject {
 	}
 	
 	func write(task: Task) {
-		task.saveInBackgroundWithBlock { (success, error) -> Void in
+		task.saveEventually { (success, error) -> Void in
 			println("saved task to Parse \(success) \(error)")
 		}
 	}

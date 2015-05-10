@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2846C9091AFF845D00779357 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
+		2846C90A1AFF87C800779357 /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
+		2846C90D1AFF882E00779357 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
+		2846C90E1AFF882E00779357 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
+		2846C90F1AFF88F600779357 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
@@ -126,6 +130,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		2846C90C1AFF882E00779357 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
@@ -193,8 +199,8 @@
 		6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../Vendor/parse-osx-library-1.7.2/Bolts.framework"; sourceTree = "<group>"; };
-		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseOSX.framework; path = "../Vendor/parse-osx-library-1.7.2/ParseOSX.framework"; sourceTree = "<group>"; };
+		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseOSX.framework; sourceTree = "<group>"; };
 		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +209,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2846C90E1AFF882E00779357 /* Parse.framework in Frameworks */,
+				2846C90D1AFF882E00779357 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +326,8 @@
 		28EB906A1AF95C37008D5337 /* Scrum */ = {
 			isa = PBXGroup;
 			children = (
+				2846C90B1AFF882E00779357 /* Bolts.framework */,
+				2846C90C1AFF882E00779357 /* Parse.framework */,
 				28EB906D1AF95C37008D5337 /* AppDelegate.swift */,
 				28EB906F1AF95C37008D5337 /* MasterViewController.swift */,
 				28EB90711AF95C37008D5337 /* DetailViewController.swift */,
@@ -655,7 +665,9 @@
 				2846C9091AFF845D00779357 /* ParseCredentials.swift in Sources */,
 				28EB90721AF95C37008D5337 /* DetailViewController.swift in Sources */,
 				28EB90941AF9D58D008D5337 /* NSDateExtension.swift in Sources */,
+				2846C90A1AFF87C800779357 /* JLTaskWriter.swift in Sources */,
 				28EB90701AF95C37008D5337 /* MasterViewController.swift in Sources */,
+				2846C90F1AFF88F600779357 /* Task.swift in Sources */,
 				28EB906E1AF95C37008D5337 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +786,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -792,6 +808,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Scrum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
