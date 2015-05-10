@@ -13,7 +13,7 @@ enum DrawerState: Int {
 	case Open = 1
 }
 
-enum TaskType: Int {
+enum TaskSubtype: Int {
 	case TaskIssueBegin = 0
 	case TaskIssueEnd = 1
 	case TaskScrumBegin = 2
@@ -59,26 +59,17 @@ class TasksViewController: NSViewController {
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		RCLogO("viewDidAppear")
-		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
-		if previousState != self._state.rawValue {
-			self._state = .Open
-		}
-		setDrawerState( self._state)
-		
+		self.setPreviousDrawerState()
 		if _newDayController.isNewDay() {
-			RCLogO("isNewDay")
 			reloadData()
 		}
 	}
 	
 	override func viewDidDisappear() {
 		super.viewDidDisappear()
-		
 	}
 	
 	func reloadData() {
-		RCLogO("reloadData")
 		self.setupDaysTableView()
 		self.setupTasksTableView()
 		self.reloadTasksOnDay( NSDate())
@@ -180,26 +171,31 @@ class TasksViewController: NSViewController {
 		if _newTaskViewController == nil {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
 			_newTaskViewController?.view.frame = kSecondaryControllerFrame
-			_newTaskViewController?.onOptionChosen = { (i: TaskType) -> Void in
+			_newTaskViewController?.onOptionChosen = { (i: TaskSubtype) -> Void in
 				
 				self._datesTableView?.hidden = false
-//				self._tasksTableView?.hidden = false
+				self._tasksTableView?.hidden = false
+				
+				var task: Task?
 				
 				switch(i) {
-				case .TaskIssueBegin:
-					let task = sharedData.addNewTask()
-					self._taskCellDatasource?.addTask( task )
-					JLTaskWriter().write( task )
-					
-					let index = self._taskCellDatasource!.data!.count - 1
-					self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideDown)
-					self._tasksTableView?.scrollRowToVisible( index )
-					
-					self.updateNoTasksState()
-					self.removeNewTaskController()
-				default:
-					RCLogO("this case is not handled yet")
+				case .TaskIssueBegin, .TaskIssueEnd:
+					task = sharedData.addNewTask()
+				case .TaskScrumBegin, .TaskScrumEnd:
+					task = sharedData.addScrumSessionTask()
+				case .TaskLunchBegin, .TaskLunchEnd:
+					task = sharedData.addLunchBreakTask()
 				}
+				RCLogO(task)
+				self._taskCellDatasource?.addTask( task! )
+				JLTaskWriter().write( task! )
+				
+				self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+					withAnimation: NSTableViewAnimationOptions.SlideUp)
+				self._tasksTableView?.scrollRowToVisible( 0 )
+				
+				self.updateNoTasksState()
+				self.removeNewTaskController()
 			}
 		}
 		return _newTaskViewController!
@@ -209,6 +205,11 @@ class TasksViewController: NSViewController {
 		if _newTaskViewController != nil {
 			newTaskController().removeFromSuperview()
 		}
+	}
+	
+	func setPreviousDrawerState() {
+		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
+		setDrawerState( previousState == 0 ? .Closed : .Open)
 	}
 	
 	func setDrawerState (s: DrawerState) {
@@ -234,6 +235,9 @@ class TasksViewController: NSViewController {
 		default:
 			_datesScrollView?.hidden = true
 		}
+		
+		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
+		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
 	
@@ -241,14 +245,12 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleColumnButton(sender: NSButton) {
 		setDrawerState( _state == .Closed ? .Open : .Closed)
-		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
-		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
 		removeNoTasksController()
 		_datesTableView?.hidden = true
-//		_tasksTableView?.hidden = true
+		_tasksTableView?.hidden = true
 		let controller = newTaskController()
 		self.view.addSubview( controller.view)
 	}

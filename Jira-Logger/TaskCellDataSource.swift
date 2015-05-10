@@ -104,10 +104,11 @@ class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	// MARK: Add and remove objects
 	
 	func addTask(task: Task) {
-		data?.append( task )
+//		data?.append( task )
+		data?.insert(task, atIndex: 0)
 	}
 	
 	func removeTask(task: Task) {
-		data?.removeAtIndex( 0 )
+//		data?.removeAtIndex( 0 )
 	}
 }

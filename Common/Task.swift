@@ -14,6 +14,13 @@ let kTaskNrKey = "task_nr"
 let kTypeKey = "task_type"
 let kUserKey = "user"
 
+enum TaskType: Int {
+	case Issue = 0
+	case Start = 1
+	case Scrum = 2
+	case Lunch = 3
+}
+
 public class Task: PFObject, PFSubclassing {
 
 	override init () {

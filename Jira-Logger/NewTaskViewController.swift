@@ -10,7 +10,7 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
-	var onOptionChosen: ((i: TaskType) -> Void)?
+	var onOptionChosen: ((i: TaskSubtype) -> Void)?
 	
 	class func instanceFromStoryboard() -> NewTaskViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)

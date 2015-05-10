@@ -60,7 +60,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		task.date_task_finished = NSDate()
 		task.task_nr = "AN-0000"
 		task.notes = "What did you do in this task?"
-		task.task_type = 0
+		task.task_type = TaskType.Issue.rawValue
 		data.append(task)
 		
 		return task
@@ -71,7 +71,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		let task = addNewTask()
 		task.task_nr = ""
 		task.notes = "Working day started at \(NSDate().HHmm())"
-		task.task_type = 1
+		task.task_type = TaskType.Start.rawValue
 		
 		return task
 	}
@@ -81,7 +81,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		let task = addNewTask()
 		task.task_nr = ""
 		task.notes = "Scrum session"
-		task.task_type = 2
+		task.task_type = TaskType.Scrum.rawValue
 		
 		return task
 	}
@@ -91,7 +91,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		let task = addNewTask()
 		task.task_nr = ""
 		task.notes = "Lunch break"
-		task.task_type = 3
+		task.task_type = TaskType.Lunch.rawValue
 		
 		return task
 	}
