@@ -37,8 +37,8 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _butAdd: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
-	private var _dateCellDatasource: DateCellDataSource?
-	private var _taskCellDatasource: TaskCellDataSource?
+	private var _daysDataSource: DateCellDataSource?
+	private var _tasksDataSource: TaskCellDataSource?
 	private var _newDayController = NewDayController()
 	private var _state: DrawerState = .Open
 	private let _gapX = CGFloat(12)
@@ -77,45 +77,46 @@ class TasksViewController: NSViewController {
 	
 	func setupDaysTableView() {
 		
-		if _dateCellDatasource == nil {
-			_dateCellDatasource = DateCellDataSource()
-			_dateCellDatasource!.tableView = _datesTableView
-			_dateCellDatasource!.data = sharedData.days()
-			_dateCellDatasource?.didSelectRow = { (row: Int) in
+		if _daysDataSource == nil {
+			_daysDataSource = DateCellDataSource()
+			_daysDataSource!.tableView = _datesTableView
+			_daysDataSource!.data = sharedData.days()
+			_daysDataSource?.didSelectRow = { (row: Int) in
 				if row >= 0 {
-					let theData = self._dateCellDatasource!.data![row]
+					let theData = self._daysDataSource!.data![row]
 					self.reloadTasksOnDay( theData.date_task_finished!)
 				}
 			}
 			
-			_datesTableView?.setDataSource( _dateCellDatasource )
-			_datesTableView?.setDelegate( _dateCellDatasource )
+			_datesTableView?.setDataSource( _daysDataSource )
+			_datesTableView?.setDelegate( _daysDataSource )
 		} else {
-			_dateCellDatasource!.data = sharedData.days()
+			_daysDataSource!.data = sharedData.days()
 		}
+		_datesTableView?.reloadData()
 	}
 	
 	func setupTasksTableView() {
 		
-		if _taskCellDatasource == nil {
-			_taskCellDatasource = TaskCellDataSource()
-			_taskCellDatasource!.tableView = _tasksTableView
-			_taskCellDatasource!.didRemoveRow = { (row: Int) in
+		if _tasksDataSource == nil {
+			_tasksDataSource = TaskCellDataSource()
+			_tasksDataSource!.tableView = _tasksTableView
+			_tasksDataSource!.didRemoveRow = { (row: Int) in
 				RCLogO("remove \(row)")
 				if row >= 0 {
-					let theData = self._taskCellDatasource!.data![row]
+					let theData = self._tasksDataSource!.data![row]
 					RCLogO("remove \(theData)")
 				}
 			}
 			
-			_tasksTableView?.setDataSource( _taskCellDatasource )
-			_tasksTableView?.setDelegate( _taskCellDatasource )
+			_tasksTableView?.setDataSource( _tasksDataSource )
+			_tasksTableView?.setDelegate( _tasksDataSource )
 		}
 	}
 	
 	func reloadTasksOnDay(date: NSDate) {
 		
-		_taskCellDatasource!.data = sharedData.tasksForDayOnDate(date)
+		_tasksDataSource!.data = sharedData.tasksForDayOnDate(date)
 		_tasksTableView?.reloadData()
 		_tasksTableView?.hidden = false
 		
@@ -126,13 +127,13 @@ class TasksViewController: NSViewController {
 	
 	func updateNoTasksState() {
 		
-		if _taskCellDatasource == nil || _taskCellDatasource!.data?.count == 0 {
+		if _tasksDataSource == nil || _tasksDataSource!.data?.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
 			self.view.addSubview( controller.view)
 			_butAdd?.hidden = true
 		}
-		else if _taskCellDatasource!.data?.count == 1 {
+		else if _tasksDataSource!.data?.count == 1 {
 			let controller = noTasksController()
 			controller.showFirstTaskState()
 			_butAdd?.hidden = false
@@ -187,9 +188,10 @@ class TasksViewController: NSViewController {
 					task = sharedData.addLunchBreakTask()
 				}
 				RCLogO(task)
-				self._taskCellDatasource?.addTask( task! )
+				self._tasksDataSource?.addTask( task! )
 				JLTaskWriter().write( task! )
 				
+				self.setupDaysTableView()
 				self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
 					withAnimation: NSTableViewAnimationOptions.SlideUp)
 				self._tasksTableView?.scrollRowToVisible( 0 )
@@ -256,7 +258,7 @@ class TasksViewController: NSViewController {
 	}
 	
 	@IBAction func handleRemoveButton(sender: NSButton) {
-//		_taskCellDatasource?.addObjectWithDate( NSDate())
+//		_tasksDataSource?.addObjectWithDate( NSDate())
 		_tasksTableView?.removeRowsAtIndexes(NSIndexSet(index: 0), withAnimation: NSTableViewAnimationOptions.SlideRight)
 	}
 	
