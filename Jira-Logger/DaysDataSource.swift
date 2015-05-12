@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DateCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
+class DaysDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
 	let rowHeight = CGFloat(20)
 	let columnDateId = "date"

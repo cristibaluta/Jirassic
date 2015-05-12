@@ -688,9 +688,9 @@
             <rect key="frame" x="0.0" y="0.0" width="491" height="442"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="5Rv-SU-X0P">
+                <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="5Rv-SU-X0P">
                     <rect key="frame" x="12" y="0.0" width="154" height="380"/>
-                    <clipView key="contentView" focusRingType="none" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="H7q-qg-oSP">
+                    <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="H7q-qg-oSP">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -728,6 +728,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </clipView>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="154" id="Y1K-1e-MNR"/>
+                    </constraints>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AJm-Gf-nDH">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -737,9 +740,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yng-8a-hsj">
+                <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yng-8a-hsj">
                     <rect key="frame" x="182" y="0.0" width="309" height="380"/>
-                    <clipView key="contentView" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="XgR-X4-8lF">
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="XgR-X4-8lF">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -816,18 +819,8 @@
                         <action selector="handleColumnButton:" target="Mzr-YU-Yq5" id="m8m-d5-B6T"/>
                     </connections>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pov-UN-OwY">
-                    <rect key="frame" x="449" y="400" width="22" height="22"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="lyM-DB-sot">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="handleShareButton:" target="Mzr-YU-Yq5" id="jt6-1j-W14"/>
-                    </connections>
-                </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uGw-IW-ZU1">
-                    <rect key="frame" x="417" y="400" width="22" height="22"/>
+                    <rect key="frame" x="460" y="400" width="22" height="22"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="gKi-n7-SZV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -851,9 +844,18 @@
                     </textFieldCell>
                 </textField>
                 <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PDd-Rh-WiK">
-                    <rect key="frame" x="386" y="403" width="16" height="16"/>
+                    <rect key="frame" x="438" y="403" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
+            <constraints>
+                <constraint firstItem="5Rv-SU-X0P" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="62" id="DYf-MA-rJn"/>
+                <constraint firstAttribute="trailing" secondItem="Yng-8a-hsj" secondAttribute="trailing" id="GsI-yh-Fso"/>
+                <constraint firstItem="Yng-8a-hsj" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="62" id="aMT-Bh-ELg"/>
+                <constraint firstAttribute="bottom" secondItem="Yng-8a-hsj" secondAttribute="bottom" id="iON-19-GZz"/>
+                <constraint firstAttribute="bottom" secondItem="5Rv-SU-X0P" secondAttribute="bottom" id="jxj-XQ-lw4"/>
+                <constraint firstItem="Yng-8a-hsj" firstAttribute="leading" secondItem="OBP-pT-3rU" secondAttribute="leading" constant="182" id="jxw-4V-Lvh"/>
+                <constraint firstItem="5Rv-SU-X0P" firstAttribute="leading" secondItem="OBP-pT-3rU" secondAttribute="leading" constant="12" id="uhp-Cl-AMT"/>
+            </constraints>
             <point key="canvasLocation" x="354.5" y="449"/>
         </customView>
         <arrayController id="8A0-Ws-K3v" userLabel="Tasks Array Controller">
@@ -866,7 +868,6 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
 </document>

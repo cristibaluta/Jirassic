@@ -17,7 +17,7 @@ let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
 
-class TaskCellDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
+class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	var tableView: NSTableView? {
 		didSet {

@@ -8,11 +8,6 @@
 
 import Cocoa
 
-enum DrawerState: Int {
-	case Closed = 0
-	case Open = 1
-}
-
 enum TaskSubtype: Int {
 	case TaskIssueBegin = 0
 	case TaskIssueEnd = 1
@@ -37,12 +32,10 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _butAdd: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
-	private var _daysDataSource: DateCellDataSource?
-	private var _tasksDataSource: TaskCellDataSource?
+	private var _daysDataSource: DaysDataSource?
+	private var _tasksDataSource: TasksDataSource?
 	private var _newDayController = NewDayController()
-	private var _state: DrawerState = .Open
 	private let _gapX = CGFloat(12)
-	private let kDrawerStateKey = "DrawerStateKey"
 	private let kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
     override func viewDidLoad() {
@@ -59,7 +52,7 @@ class TasksViewController: NSViewController {
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		self.setPreviousDrawerState()
+		self.restoreDaysTableState()
 		if _newDayController.isNewDay() {
 			reloadData()
 		}
@@ -67,6 +60,10 @@ class TasksViewController: NSViewController {
 	
 	override func viewDidDisappear() {
 		super.viewDidDisappear()
+	}
+	
+	override func viewDidLayout() {
+		RCLogO("func viewDidLayout()")
 	}
 	
 	func reloadData() {
@@ -78,7 +75,7 @@ class TasksViewController: NSViewController {
 	func setupDaysTableView() {
 		
 		if _daysDataSource == nil {
-			_daysDataSource = DateCellDataSource()
+			_daysDataSource = DaysDataSource()
 			_daysDataSource!.tableView = _datesTableView
 			_daysDataSource!.data = sharedData.days()
 			_daysDataSource?.didSelectRow = { (row: Int) in
@@ -99,7 +96,7 @@ class TasksViewController: NSViewController {
 	func setupTasksTableView() {
 		
 		if _tasksDataSource == nil {
-			_tasksDataSource = TaskCellDataSource()
+			_tasksDataSource = TasksDataSource()
 			_tasksDataSource!.tableView = _tasksTableView
 			_tasksDataSource!.didRemoveRow = { (row: Int) in
 				RCLogO("remove \(row)")
@@ -180,14 +177,11 @@ class TasksViewController: NSViewController {
 				var task: Task?
 				
 				switch(i) {
-				case .TaskIssueBegin, .TaskIssueEnd:
-					task = sharedData.addNewTask()
-				case .TaskScrumBegin, .TaskScrumEnd:
-					task = sharedData.addScrumSessionTask()
-				case .TaskLunchBegin, .TaskLunchEnd:
-					task = sharedData.addLunchBreakTask()
+					case .TaskIssueBegin, .TaskIssueEnd: task = sharedData.addNewTask()
+					case .TaskScrumBegin, .TaskScrumEnd: task = sharedData.addScrumSessionTask()
+					case .TaskLunchBegin, .TaskLunchEnd: task = sharedData.addLunchBreakTask()
 				}
-				RCLogO(task)
+				
 				self._tasksDataSource?.addTask( task! )
 				JLTaskWriter().write( task! )
 				
@@ -209,44 +203,48 @@ class TasksViewController: NSViewController {
 		}
 	}
 	
-	func setPreviousDrawerState() {
-		let previousState = NSUserDefaults.standardUserDefaults().integerForKey(kDrawerStateKey)
-		setDrawerState( previousState == 0 ? .Closed : .Open)
+	func restoreDaysTableState() {
+		setDaysTableState( JLDrawerState().previousState() )
 	}
 	
-	func setDrawerState (s: DrawerState) {
-		
-		_state = s
+	func setDaysTableState (s: DaysState) {
 		
 		switch s {
-		case .Closed:
+		case .DaysClosed:
 			_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
 			_datesScrollView?.hidden = false
 			_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
 				y: CGRectGetMinY(_tasksScrollView!.frame),
 				width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
+			self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+				toItem: self.view, attribute: NSLayoutAttribute.Leading,
+				multiplier: 1.0, constant: CGRectGetWidth(_datesScrollView!.frame) + _gapX))
 			
-		case .Open:
+		case .DaysOpen:
 			_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
 			_datesScrollView?.hidden = true
 			_tasksScrollView?.frame = NSRect(x: _gapX,
 				y: CGRectGetMinY(_datesScrollView!.frame),
 				width: self.view.frame.size.width - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
+			self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+				toItem: self.view, attribute: NSLayoutAttribute.Leading,
+				multiplier: 1.0, constant: _gapX))
 		default:
 			_datesScrollView?.hidden = true
 		}
 		
-		NSUserDefaults.standardUserDefaults().setInteger(_state.rawValue, forKey: kDrawerStateKey)
-		NSUserDefaults.standardUserDefaults().synchronize()
+		JLDrawerState().setState(s)
 	}
 	
 	
 	// MARK: Actions
 	
 	@IBAction func handleColumnButton(sender: NSButton) {
-		setDrawerState( _state == .Closed ? .Open : .Closed)
+		setDaysTableState( JLDrawerState().toggleState() )
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
@@ -254,16 +252,7 @@ class TasksViewController: NSViewController {
 		_datesTableView?.hidden = true
 		_tasksTableView?.hidden = true
 		let controller = newTaskController()
-		self.view.addSubview( controller.view)
-	}
-	
-	@IBAction func handleRemoveButton(sender: NSButton) {
-//		_tasksDataSource?.addObjectWithDate( NSDate())
-		_tasksTableView?.removeRowsAtIndexes(NSIndexSet(index: 0), withAnimation: NSTableViewAnimationOptions.SlideRight)
-	}
-	
-	@IBAction func handleShareButton(sender: NSButton) {
-		
+		self.view.addSubview( controller.view )
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {

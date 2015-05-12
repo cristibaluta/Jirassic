@@ -13,7 +13,6 @@ class NewDayController: NSObject {
 	private let kLastStartDateKey = "LastStartDateKey"
 	
 	func isNewDay() -> Bool {
-		RCLogO(lastDay())
 		return lastDay() == nil || !lastDay()!.isSameDayAs( today())
 	}
 	
