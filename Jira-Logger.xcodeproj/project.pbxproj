@@ -32,12 +32,46 @@
 		285CECFA1AFFBA34003E969C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839021AF4035900602D33 /* DataManager.swift */; };
 		285CECFB1AFFBA38003E969C /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
-		2865851B1B031D3A00352782 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865851A1B031D3A00352782 /* MasterViewController.swift */; };
-		2865851D1B031D3A00352782 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865851C1B031D3A00352782 /* DetailViewController.swift */; };
-		286585201B031D3A00352782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2865851E1B031D3A00352782 /* Main.storyboard */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
 		286585251B031D3A00352782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286585231B031D3A00352782 /* LaunchScreen.xib */; };
 		286585311B031D3A00352782 /* Scrum_MeetingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585301B031D3A00352782 /* Scrum_MeetingTests.swift */; };
+		286585381B03E5EA00352782 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C92D1AFF905D00779357 /* libsqlite3.dylib */; };
+		286585391B03E5ED00352782 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C92D1AFF905D00779357 /* libsqlite3.dylib */; };
+		2865853A1B03E5F100352782 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C92B1AFF905100779357 /* libz.dylib */; };
+		2865853B1B03E5F200352782 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C92B1AFF905100779357 /* libz.dylib */; };
+		2865853C1B03E5F600352782 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9291AFF904500779357 /* SystemConfiguration.framework */; };
+		2865853D1B03E5F600352782 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9291AFF904500779357 /* SystemConfiguration.framework */; };
+		2865853E1B03E5FC00352782 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9251AFF903000779357 /* Security.framework */; };
+		2865853F1B03E5FC00352782 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9251AFF903000779357 /* Security.framework */; };
+		286585401B03E60000352782 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9231AFF902600779357 /* QuartzCore.framework */; };
+		286585411B03E60100352782 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9231AFF902600779357 /* QuartzCore.framework */; };
+		286585421B03E60500352782 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9211AFF901C00779357 /* MobileCoreServices.framework */; };
+		286585431B03E60600352782 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9211AFF901C00779357 /* MobileCoreServices.framework */; };
+		286585441B03E60B00352782 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91F1AFF901300779357 /* CoreLocation.framework */; };
+		286585451B03E60C00352782 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91F1AFF901300779357 /* CoreLocation.framework */; };
+		286585461B03E61800352782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91D1AFF900400779357 /* CoreGraphics.framework */; };
+		286585471B03E61900352782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91D1AFF900400779357 /* CoreGraphics.framework */; };
+		286585481B03E61E00352782 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91B1AFF8FFA00779357 /* CFNetwork.framework */; };
+		286585491B03E61E00352782 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C91B1AFF8FFA00779357 /* CFNetwork.framework */; };
+		2865854A1B03E62300352782 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9161AFF8FB100779357 /* AudioToolbox.framework */; };
+		2865854B1B03E62400352782 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9161AFF8FB100779357 /* AudioToolbox.framework */; };
+		2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906F1AF95C37008D5337 /* DaysViewController.swift */; };
+		2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90711AF95C37008D5337 /* TasksViewController.swift */; };
+		2865854E1B03E6D900352782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28EB90731AF95C37008D5337 /* Main.storyboard */; };
+		2865854F1B03EA6100352782 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
+		286585501B03EA6200352782 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
+		286585511B03EA6700352782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
+		286585521B03EA6700352782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
+		286585531B03EA6B00352782 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		286585541B03EA6C00352782 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		286585551B03EAA900352782 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
+		286585561B03EAB600352782 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
+		286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
+		286585581B03EABE00352782 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839021AF4035900602D33 /* DataManager.swift */; };
+		286585591B03EAC200352782 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
+		2865855A1B03EAC700352782 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
+		2865855B1B03EAC900352782 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
+		2865855C1B03EACA00352782 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
@@ -191,14 +225,12 @@
 		286585141B031D3A00352782 /* Scrum Meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrum Meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286585181B031D3A00352782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2865851A1B031D3A00352782 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		2865851C1B031D3A00352782 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		2865851F1B031D3A00352782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		286585211B031D3A00352782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		286585241B031D3A00352782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2865852A1B031D3A00352782 /* Scrum MeetingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Scrum MeetingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2865852F1B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286585301B031D3A00352782 /* Scrum_MeetingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrum_MeetingTests.swift; sourceTree = "<group>"; };
+		2865855D1B03EB0F00352782 /* Scrum Meeting-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scrum Meeting-Bridging-Header.h"; sourceTree = "<group>"; };
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
@@ -276,6 +308,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286585481B03E61E00352782 /* CFNetwork.framework in Frameworks */,
+				286585401B03E60000352782 /* QuartzCore.framework in Frameworks */,
+				286585381B03E5EA00352782 /* libsqlite3.dylib in Frameworks */,
+				2865853C1B03E5F600352782 /* SystemConfiguration.framework in Frameworks */,
+				286585421B03E60500352782 /* MobileCoreServices.framework in Frameworks */,
+				286585461B03E61800352782 /* CoreGraphics.framework in Frameworks */,
+				286585441B03E60B00352782 /* CoreLocation.framework in Frameworks */,
+				2865854A1B03E62300352782 /* AudioToolbox.framework in Frameworks */,
+				2865854F1B03EA6100352782 /* Bolts.framework in Frameworks */,
+				2865853E1B03E5FC00352782 /* Security.framework in Frameworks */,
+				286585511B03EA6700352782 /* Parse.framework in Frameworks */,
+				2865853A1B03E5F100352782 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +327,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286585491B03E61E00352782 /* CFNetwork.framework in Frameworks */,
+				286585411B03E60100352782 /* QuartzCore.framework in Frameworks */,
+				286585391B03E5ED00352782 /* libsqlite3.dylib in Frameworks */,
+				2865853D1B03E5F600352782 /* SystemConfiguration.framework in Frameworks */,
+				286585431B03E60600352782 /* MobileCoreServices.framework in Frameworks */,
+				286585471B03E61900352782 /* CoreGraphics.framework in Frameworks */,
+				286585451B03E60C00352782 /* CoreLocation.framework in Frameworks */,
+				2865854B1B03E62400352782 /* AudioToolbox.framework in Frameworks */,
+				286585501B03EA6200352782 /* Bolts.framework in Frameworks */,
+				2865853F1B03E5FC00352782 /* Security.framework in Frameworks */,
+				286585521B03EA6700352782 /* Parse.framework in Frameworks */,
+				2865853B1B03E5F200352782 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,9 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				286585181B031D3A00352782 /* AppDelegate.swift */,
-				2865851A1B031D3A00352782 /* MasterViewController.swift */,
-				2865851C1B031D3A00352782 /* DetailViewController.swift */,
-				2865851E1B031D3A00352782 /* Main.storyboard */,
 				286585211B031D3A00352782 /* Images.xcassets */,
 				286585231B031D3A00352782 /* LaunchScreen.xib */,
 				286585161B031D3A00352782 /* Supporting Files */,
@@ -390,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				286585171B031D3A00352782 /* Info.plist */,
+				2865855D1B03EB0F00352782 /* Scrum Meeting-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -836,7 +890,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286585201B031D3A00352782 /* Main.storyboard in Resources */,
+				2865854E1B03E6D900352782 /* Main.storyboard in Resources */,
 				286585251B031D3A00352782 /* LaunchScreen.xib in Resources */,
 				286585221B031D3A00352782 /* Images.xcassets in Resources */,
 			);
@@ -895,9 +949,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2865851D1B031D3A00352782 /* DetailViewController.swift in Sources */,
-				2865851B1B031D3A00352782 /* MasterViewController.swift in Sources */,
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
+				286585581B03EABE00352782 /* DataManager.swift in Sources */,
+				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
+				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
+				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
+				286585551B03EAA900352782 /* InitParse.swift in Sources */,
+				2865855A1B03EAC700352782 /* NSDateExtension.swift in Sources */,
+				286585561B03EAB600352782 /* ParseCredentials.swift in Sources */,
+				286585591B03EAC200352782 /* Task.swift in Sources */,
+				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,7 +966,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2865855B1B03EAC900352782 /* NSDateExtension.swift in Sources */,
 				286585311B031D3A00352782 /* Scrum_MeetingTests.swift in Sources */,
+				286585541B03EA6C00352782 /* RCLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +994,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2865855C1B03EACA00352782 /* NSDateExtension.swift in Sources */,
 				28EB90861AF95C37008D5337 /* ScrumTests.swift in Sources */,
 				2846C9151AFF8AF300779357 /* RCLog.swift in Sources */,
 			);
@@ -1014,14 +1078,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2865851E1B031D3A00352782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2865851F1B031D3A00352782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		286585231B031D3A00352782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1061,9 +1117,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1073,8 +1134,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Scrum Meeting/Scrum Meeting-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1082,15 +1145,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Scrum Meeting/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Scrum Meeting/Scrum Meeting-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1099,10 +1168,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1113,6 +1184,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum Meeting.app/Scrum Meeting";
 			};
@@ -1122,15 +1194,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Scrum",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Scrum MeetingTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum Meeting.app/Scrum Meeting";
 				VALIDATE_PRODUCT = YES;
@@ -1142,8 +1217,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1159,7 +1234,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1171,8 +1246,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Scrum",
@@ -1183,7 +1258,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
@@ -1194,7 +1269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1210,6 +1285,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum.app/Scrum";
 			};
@@ -1219,7 +1295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1230,6 +1306,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum.app/Scrum";
 				VALIDATE_PRODUCT = YES;
