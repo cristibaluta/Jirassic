@@ -13,9 +13,9 @@ import Foundation
 	func queryData(completion: ([Task], NSError?) -> Void)
 	func days() -> [Task]
 	func tasksForDayOnDate(date: NSDate) -> [Task]
-	func addNewTask() -> Task
-	func addNewWorkingDayTask() -> Task
-	func addScrumSessionTask() -> Task
-	func addLunchBreakTask() -> Task
+	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
+	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
+	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
+	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
 //	func updateTask(task_id: String, notes: String)
 }

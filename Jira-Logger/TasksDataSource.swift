@@ -56,7 +56,15 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
 			}
 			assert(cell != nil, "Cell can't be nil, check the identifier")
-			cell?.data = (date: theData.date_task_finished!.HHmm(), task: theData.task_nr!, notes: theData.notes!)
+			var date = ""
+			if theData.date_task_started == nil {
+				date = "|\n\(theData.date_task_finished!.HHmm())"
+			} else if theData.date_task_finished == nil {
+				date = "\(theData.date_task_started!.HHmm())\n |"
+			} else {
+				date = "\(theData.date_task_started!.HHmm())\n |\n\(theData.date_task_finished!.HHmm())"
+			}
+			cell?.data = (date: date, task: theData.task_nr!, notes: theData.notes!)
 			cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 				RCLogO(cell)
 				let data = cell.data

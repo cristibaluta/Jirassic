@@ -148,7 +148,7 @@ class TasksViewController: NSViewController {
 			_noTasksViewController?.view.frame = kSecondaryControllerFrame
 			_noTasksViewController?.onButStartPressed = { () -> Void in
 				
-				let task = sharedData.addNewWorkingDayTask()
+				let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
 				JLTaskWriter().write( task )
 				
 				self._newDayController.setLastDay( NSDate())
@@ -177,9 +177,9 @@ class TasksViewController: NSViewController {
 				var task: Task?
 				
 				switch(i) {
-					case .TaskIssueBegin, .TaskIssueEnd: task = sharedData.addNewTask()
-					case .TaskScrumBegin, .TaskScrumEnd: task = sharedData.addScrumSessionTask()
-					case .TaskLunchBegin, .TaskLunchEnd: task = sharedData.addLunchBreakTask()
+					case .TaskIssueBegin, .TaskIssueEnd: task = sharedData.addNewTask(NSDate(), dateEnd:NSDate())
+					case .TaskScrumBegin, .TaskScrumEnd: task = sharedData.addScrumSessionTask(NSDate(), dateEnd:NSDate())
+					case .TaskLunchBegin, .TaskLunchEnd: task = sharedData.addLunchBreakTask(NSDate(), dateEnd:NSDate())
 				}
 				
 				self._tasksDataSource?.addTask( task! )

@@ -31,6 +31,13 @@
 		285CECF91AFFB9DC003E969C /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
 		285CECFA1AFFBA34003E969C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839021AF4035900602D33 /* DataManager.swift */; };
 		285CECFB1AFFBA38003E969C /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
+		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
+		2865851B1B031D3A00352782 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865851A1B031D3A00352782 /* MasterViewController.swift */; };
+		2865851D1B031D3A00352782 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865851C1B031D3A00352782 /* DetailViewController.swift */; };
+		286585201B031D3A00352782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2865851E1B031D3A00352782 /* Main.storyboard */; };
+		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
+		286585251B031D3A00352782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286585231B031D3A00352782 /* LaunchScreen.xib */; };
+		286585311B031D3A00352782 /* Scrum_MeetingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585301B031D3A00352782 /* Scrum_MeetingTests.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
@@ -117,6 +124,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2865852B1B031D3A00352782 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D31D0441AC196BB001AC4BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 286585131B031D3A00352782;
+			remoteInfo = "Scrum Meeting";
+		};
 		28EB90801AF95C37008D5337 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6D31D0441AC196BB001AC4BA /* Project object */;
@@ -174,6 +188,17 @@
 		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C9311AFF929000779357 /* Scrum-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scrum-Bridging-Header.h"; sourceTree = "<group>"; };
+		286585141B031D3A00352782 /* Scrum Meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrum Meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		286585181B031D3A00352782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2865851A1B031D3A00352782 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		2865851C1B031D3A00352782 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2865851F1B031D3A00352782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		286585211B031D3A00352782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		286585241B031D3A00352782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		2865852A1B031D3A00352782 /* Scrum MeetingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Scrum MeetingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2865852F1B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		286585301B031D3A00352782 /* Scrum_MeetingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrum_MeetingTests.swift; sourceTree = "<group>"; };
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
@@ -247,6 +272,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		286585111B031D3A00352782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		286585271B031D3A00352782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28EB90661AF95C37008D5337 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +370,45 @@
 			);
 			name = "parse-ios";
 			path = ../Scrum;
+			sourceTree = "<group>";
+		};
+		286585151B031D3A00352782 /* Scrum Meeting */ = {
+			isa = PBXGroup;
+			children = (
+				286585181B031D3A00352782 /* AppDelegate.swift */,
+				2865851A1B031D3A00352782 /* MasterViewController.swift */,
+				2865851C1B031D3A00352782 /* DetailViewController.swift */,
+				2865851E1B031D3A00352782 /* Main.storyboard */,
+				286585211B031D3A00352782 /* Images.xcassets */,
+				286585231B031D3A00352782 /* LaunchScreen.xib */,
+				286585161B031D3A00352782 /* Supporting Files */,
+			);
+			path = "Scrum Meeting";
+			sourceTree = "<group>";
+		};
+		286585161B031D3A00352782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				286585171B031D3A00352782 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2865852D1B031D3A00352782 /* Scrum MeetingTests */ = {
+			isa = PBXGroup;
+			children = (
+				286585301B031D3A00352782 /* Scrum_MeetingTests.swift */,
+				2865852E1B031D3A00352782 /* Supporting Files */,
+			);
+			path = "Scrum MeetingTests";
+			sourceTree = "<group>";
+		};
+		2865852E1B031D3A00352782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2865852F1B031D3A00352782 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		289998A51AC3427100706824 /* Presentation */ = {
@@ -482,6 +560,8 @@
 				28EB90821AF95C37008D5337 /* ScrumTests */,
 				6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */,
 				6D31D0A21AC448FF001AC4BA /* Vendor */,
+				286585151B031D3A00352782 /* Scrum Meeting */,
+				2865852D1B031D3A00352782 /* Scrum MeetingTests */,
 				6D31D0741AC2E439001AC4BA /* Frameworks */,
 				6D31D04D1AC196BB001AC4BA /* Products */,
 			);
@@ -494,6 +574,8 @@
 				6D31D0611AC196BC001AC4BA /* Jira-LoggerTests.xctest */,
 				28EB90691AF95C37008D5337 /* Scrum.app */,
 				28EB907F1AF95C37008D5337 /* ScrumTests.xctest */,
+				286585141B031D3A00352782 /* Scrum Meeting.app */,
+				2865852A1B031D3A00352782 /* Scrum MeetingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,6 +662,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		286585131B031D3A00352782 /* Scrum Meeting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 286585321B031D3A00352782 /* Build configuration list for PBXNativeTarget "Scrum Meeting" */;
+			buildPhases = (
+				286585101B031D3A00352782 /* Sources */,
+				286585111B031D3A00352782 /* Frameworks */,
+				286585121B031D3A00352782 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Scrum Meeting";
+			productName = "Scrum Meeting";
+			productReference = 286585141B031D3A00352782 /* Scrum Meeting.app */;
+			productType = "com.apple.product-type.application";
+		};
+		286585291B031D3A00352782 /* Scrum MeetingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 286585351B031D3A00352782 /* Build configuration list for PBXNativeTarget "Scrum MeetingTests" */;
+			buildPhases = (
+				286585261B031D3A00352782 /* Sources */,
+				286585271B031D3A00352782 /* Frameworks */,
+				286585281B031D3A00352782 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2865852C1B031D3A00352782 /* PBXTargetDependency */,
+			);
+			name = "Scrum MeetingTests";
+			productName = "Scrum MeetingTests";
+			productReference = 2865852A1B031D3A00352782 /* Scrum MeetingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		28EB90681AF95C37008D5337 /* Scrum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28EB90871AF95C37008D5337 /* Build configuration list for PBXNativeTarget "Scrum" */;
@@ -661,6 +778,14 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Cristian Baluta";
 				TargetAttributes = {
+					286585131B031D3A00352782 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5NHDC5EV44;
+					};
+					286585291B031D3A00352782 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 286585131B031D3A00352782;
+					};
 					28EB90681AF95C37008D5337 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = 5NHDC5EV44;
@@ -700,11 +825,30 @@
 				6D31D0601AC196BC001AC4BA /* Jira-LoggerTests */,
 				28EB90681AF95C37008D5337 /* Scrum */,
 				28EB907E1AF95C37008D5337 /* ScrumTests */,
+				286585131B031D3A00352782 /* Scrum Meeting */,
+				286585291B031D3A00352782 /* Scrum MeetingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		286585121B031D3A00352782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				286585201B031D3A00352782 /* Main.storyboard in Resources */,
+				286585251B031D3A00352782 /* LaunchScreen.xib in Resources */,
+				286585221B031D3A00352782 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		286585281B031D3A00352782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28EB90671AF95C37008D5337 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -747,6 +891,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		286585101B031D3A00352782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2865851D1B031D3A00352782 /* DetailViewController.swift in Sources */,
+				2865851B1B031D3A00352782 /* MasterViewController.swift in Sources */,
+				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		286585261B031D3A00352782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				286585311B031D3A00352782 /* Scrum_MeetingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28EB90651AF95C37008D5337 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -834,6 +996,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2865852C1B031D3A00352782 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 286585131B031D3A00352782 /* Scrum Meeting */;
+			targetProxy = 2865852B1B031D3A00352782 /* PBXContainerItemProxy */;
+		};
 		28EB90811AF95C37008D5337 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28EB90681AF95C37008D5337 /* Scrum */;
@@ -847,6 +1014,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2865851E1B031D3A00352782 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2865851F1B031D3A00352782 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		286585231B031D3A00352782 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				286585241B031D3A00352782 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
 		28EB90731AF95C37008D5337 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -874,12 +1057,92 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		286585331B031D3A00352782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Scrum Meeting/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		286585341B031D3A00352782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Scrum Meeting/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		286585361B031D3A00352782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Scrum MeetingTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum Meeting.app/Scrum Meeting";
+			};
+			name = Debug;
+		};
+		286585371B031D3A00352782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Scrum MeetingTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum Meeting.app/Scrum Meeting";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		28EB90881AF95C37008D5337 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -896,7 +1159,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -908,7 +1171,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -920,7 +1183,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b76c941f-3cf3-437b-a851-84c64f8f771f";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum/Scrum-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
@@ -1138,6 +1401,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		286585321B031D3A00352782 /* Build configuration list for PBXNativeTarget "Scrum Meeting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				286585331B031D3A00352782 /* Debug */,
+				286585341B031D3A00352782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		286585351B031D3A00352782 /* Build configuration list for PBXNativeTarget "Scrum MeetingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				286585361B031D3A00352782 /* Debug */,
+				286585371B031D3A00352782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		28EB90871AF95C37008D5337 /* Build configuration list for PBXNativeTarget "Scrum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

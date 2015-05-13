@@ -54,10 +54,11 @@ class DataManager: NSObject, DataManagerProtocol {
 		return filteredData
 	}
 	
-	func addNewTask() -> Task {
+	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
 		
 		let task = Task()
-		task.date_task_finished = NSDate()
+		task.date_task_started = dateSart
+		task.date_task_finished = dateEnd
 		task.task_nr = "AN-0000"
 		task.notes = "What did you do in this task?"
 		task.task_type = TaskType.Issue.rawValue
@@ -66,9 +67,9 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addNewWorkingDayTask() -> Task {
+	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
 		
-		let task = addNewTask()
+		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
 		task.notes = "Working day started at \(NSDate().HHmm())"
 		task.task_type = TaskType.Start.rawValue
@@ -76,9 +77,9 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addScrumSessionTask() -> Task {
+	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
 		
-		let task = addNewTask()
+		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
 		task.notes = "Scrum session"
 		task.task_type = TaskType.Scrum.rawValue
@@ -86,9 +87,9 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addLunchBreakTask() -> Task {
+	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
 		
-		let task = addNewTask()
+		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
 		task.notes = "Lunch break"
 		task.task_type = TaskType.Lunch.rawValue

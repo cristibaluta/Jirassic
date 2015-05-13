@@ -8,7 +8,8 @@
 
 import Foundation
 
-let kDateKey = "date_task_finished"
+let kDateStartKey = "date_task_started"
+let kDateFinishKey = "date_task_finished"
 let kNotesKey = "notes"
 let kTaskNrKey = "task_nr"
 let kTypeKey = "task_type"
@@ -27,12 +28,21 @@ public class Task: PFObject, PFSubclassing {
 		super.init()
 	}
 	
+	dynamic public var date_task_started :NSDate? {
+		get {
+			return objectForKey(kDateStartKey) as! NSDate?
+		}
+		set {
+			setObject(newValue!, forKey: kDateStartKey)
+		}
+	}
+	
     dynamic public var date_task_finished :NSDate? {
         get {
-            return objectForKey(kDateKey) as! NSDate?
+            return objectForKey(kDateFinishKey) as! NSDate?
         }
         set {
-            setObject(newValue!, forKey: kDateKey)
+            setObject(newValue!, forKey: kDateFinishKey)
         }
     }
     
