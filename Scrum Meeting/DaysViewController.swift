@@ -19,9 +19,18 @@ class DaysViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		let refreshControl = UIRefreshControl()
+		refreshControl.tintColor = UIColor.blueColor()
+		refreshControl.addTarget(self, action: Selector("reloadData"), forControlEvents: .ValueChanged)
+		self.refreshControl = refreshControl
+		reloadData()
+	}
+	
+	func reloadData() {
 		sharedData.queryData { (tasks, error) -> Void in
 			self.days = sharedData.days()
 			self.tableView.reloadData()
+			self.refreshControl?.endRefreshing()
 		}
 	}
 
