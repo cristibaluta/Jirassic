@@ -53,14 +53,32 @@ class TasksViewController: UITableViewController {
 		return tasks.count
 	}
 	
+	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		let theData = tasks[indexPath.row]
+		if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
+			return 170
+		} else {
+			return 50
+		}
+	}
+	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as! UITableViewCell
+		let theData = tasks[indexPath.row]
 		
-		let object = tasks[indexPath.row]
-		cell.textLabel!.text = object.task_nr
-		cell.detailTextLabel!.text = object.notes
-		return cell
+		if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
+			let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as! TaskCell
+			cell.taskNrLabel!.text = theData.task_nr
+			cell.dateLabel!.text = theData.date_task_finished?.HHmm()
+			cell.notesLabel!.text = theData.notes
+			return cell
+		}
+		else {
+			let cell = tableView.dequeueReusableCellWithIdentifier("NonTaskCell", forIndexPath: indexPath) as! NonTaskCell
+//			cell.dateLabel!.text = theData.date_task_finished?.HHmm()
+			cell.notesLabel!.text = theData.notes
+			return cell
+		}
 	}
 	
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
