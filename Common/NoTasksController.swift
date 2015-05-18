@@ -10,11 +10,11 @@ import Cocoa
 
 class NoTasksController: NSObject {
 	
-	func showStartState() -> (String) {
-		return ("Good morning! Ready for your first task?")
+	func showStartState() -> String {
+		return "Good morning! Ready for your first task?"
 	}
 	
-	func showFirstTaskState() -> (String) {
-		return ("When you finish tasks press +\nTime will be calculated for you automatically")
+	func showFirstTaskState() -> String {
+		return "When you finish tasks press +\nTime will be calculated for you automatically"
 	}
 }

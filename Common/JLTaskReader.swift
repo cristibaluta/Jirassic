@@ -27,7 +27,7 @@ class JLTaskReader: NSObject {
 		}
 		}*/
 		
-		query = PFQuery(className: Task.parseClassName())
+		query.cachePolicy = .NetworkElseCache
 		query.getObjectInBackgroundWithId("RNfW4Fgg5y") {
 			(data: PFObject?, error: NSError?) -> Void in
 			

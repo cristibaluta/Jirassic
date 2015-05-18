@@ -58,24 +58,25 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			assert(cell != nil, "Cell can't be nil, check the identifier")
 			var date = ""
 			if theData.date_task_started == nil {
-				date = "|\n\(theData.date_task_finished!.HHmm())"
+				date = theData.date_task_finished!.HHmm()
 			} else if theData.date_task_finished == nil {
-				date = "\(theData.date_task_started!.HHmm())\n |"
+				date = theData.date_task_started!.HHmm()
 			} else {
-				date = "\(theData.date_task_started!.HHmm())\n |\n\(theData.date_task_finished!.HHmm())"
+//				date = "\(theData.date_task_started!.HHmm())\n |\n\(theData.date_task_finished!.HHmm())"
+				date = theData.date_task_started!.HHmm()
 			}
 			cell?.data = (date: date, task: theData.task_nr!, notes: theData.notes!)
 			cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
-				RCLogO(cell)
-				let data = cell.data
-				theData.task_nr = data.1
-				theData.notes = data.2
+				theData.task_nr = cell.data.task
+				theData.notes = cell.data.notes
 				JLTaskWriter().write( theData )
 			}
 			cell?.didRemoveCell = { (cell: TaskCellProtocol) in
-				RCLogO("remove cell \(self.didRemoveRow)")
+				RCLogO("remove cell \(cell)")
 				if self.didRemoveRow != nil {
-					self.didRemoveRow!(row: tableView.rowForView(cell as! TaskCell))
+					let row2 = tableView.rowForView(cell as! TaskCell)
+					RCLogO("remove row \(row2)")
+					self.didRemoveRow!(row: row)
 				}
 			}
 			

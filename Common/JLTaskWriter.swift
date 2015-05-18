@@ -19,4 +19,10 @@ class JLTaskWriter: NSObject {
 			println("saved task to Parse \(success) \(error)")
 		}
 	}
+	
+	func delete(task: Task) {
+		task.deleteInBackgroundWithBlock({ (success, error) -> Void in
+			println("delete task from Parse \(success) \(error)")
+		})
+	}
 }

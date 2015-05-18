@@ -39,15 +39,12 @@ class TasksViewController: NSViewController {
 	private let kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
     override func viewDidLoad() {
-		
         super.viewDidLoad()
 		updateNoTasksState()
-		
+		SleepNotifications()
 		sharedData.queryData { (tasks, error) -> Void in
 			self.reloadData()
 		}
-		
-		SleepNotifications()
     }
 	
 	override func viewDidAppear() {
@@ -155,6 +152,7 @@ class TasksViewController: NSViewController {
 				self.reloadData()
 			}
 		}
+		
 		return _noTasksViewController!
 	}
 	
@@ -217,6 +215,10 @@ class TasksViewController: NSViewController {
 				y: CGRectGetMinY(_tasksScrollView!.frame),
 				width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
+			self.view.removeConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+				toItem: self.view, attribute: NSLayoutAttribute.Leading,
+				multiplier: 1.0, constant: _gapX))
 			self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
 				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
 				toItem: self.view, attribute: NSLayoutAttribute.Leading,
@@ -229,6 +231,10 @@ class TasksViewController: NSViewController {
 				y: CGRectGetMinY(_datesScrollView!.frame),
 				width: self.view.frame.size.width - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
+			self.view.removeConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+				toItem: self.view, attribute: NSLayoutAttribute.Leading,
+				multiplier: 1.0, constant: CGRectGetWidth(_datesScrollView!.frame) + _gapX))
 			self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
 				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
 				toItem: self.view, attribute: NSLayoutAttribute.Leading,

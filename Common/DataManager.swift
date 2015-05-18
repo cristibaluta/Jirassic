@@ -16,9 +16,9 @@ class DataManager: NSObject, DataManagerProtocol {
 	
 	func queryData(completion: ([Task], NSError?) -> Void) {
 		
-		var user = PFUser.currentUser()
-		RCLogO(user)
-		var query = PFQuery(className: Task.parseClassName())
+		let user = PFUser.currentUser()
+		let query = PFQuery(className: Task.parseClassName())
+		query.cachePolicy = .NetworkElseCache
 		query.orderByDescending("date_task_finished")
 //		query.whereKey("user", equalTo: user!)
 		query.findObjectsInBackgroundWithBlock( { (objects: [AnyObject]?, error: NSError?) in

@@ -50,6 +50,8 @@
 		286585651B053BE800352782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286585631B053BE800352782 /* Main.storyboard */; };
 		2865856A1B053CD300352782 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585691B053CD300352782 /* TaskCell.swift */; };
 		2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865856B1B054E3500352782 /* NonTaskCell.swift */; };
+		2894F1CA1B076EA30095DD17 /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
+		2894F1CB1B076EAE0095DD17 /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
@@ -388,20 +390,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		289998A51AC3427100706824 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
-				289998A81AC3BDF200706824 /* MenuBarController.swift */,
-				289998A11AC2920200706824 /* Popover.swift */,
-				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
-				28E838FC1AF3372E00602D33 /* Tasks */,
-				28EB908F1AF974DC008D5337 /* Settings */,
-				289998A71AC342AB00706824 /* Login */,
-			);
-			name = Presentation;
-			sourceTree = "<group>";
-		};
 		289998A61AC3429500706824 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,7 +505,13 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
-				289998A51AC3427100706824 /* Presentation */,
+				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
+				289998A81AC3BDF200706824 /* MenuBarController.swift */,
+				289998A11AC2920200706824 /* Popover.swift */,
+				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
+				28E838FC1AF3372E00602D33 /* Tasks */,
+				28EB908F1AF974DC008D5337 /* Settings */,
+				289998A71AC342AB00706824 /* Login */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
 				28E838F51AF297FE00602D33 /* Resources */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
@@ -764,6 +758,7 @@
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				286585581B03EABE00352782 /* DataManager.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
+				2894F1CA1B076EA30095DD17 /* JLTaskWriter.swift in Sources */,
 				2865856A1B053CD300352782 /* TaskCell.swift in Sources */,
 				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
@@ -771,6 +766,7 @@
 				286585551B03EAA900352782 /* InitParse.swift in Sources */,
 				2865855A1B03EAC700352782 /* NSDateExtension.swift in Sources */,
 				286585561B03EAB600352782 /* ParseCredentials.swift in Sources */,
+				2894F1CB1B076EAE0095DD17 /* JLTaskReader.swift in Sources */,
 				286585591B03EAC200352782 /* Task.swift in Sources */,
 				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
 			);
@@ -1157,6 +1153,7 @@
 				286585341B031D3A00352782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		286585351B031D3A00352782 /* Build configuration list for PBXNativeTarget "Scrum MeetingTests" */ = {
 			isa = XCConfigurationList;
@@ -1165,6 +1162,7 @@
 				286585371B031D3A00352782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jira-Logger" */ = {
 			isa = XCConfigurationList;

@@ -20,7 +20,7 @@ class InitParse: NSObject {
 		
 		Task.registerSubclass()
 		
-		Parse.enableLocalDatastore()
+//		Parse.enableLocalDatastore()
 		
 		PFUser.enableAutomaticUser()
 //		PFUser.currentUser()!.incrementKey("RunCount")
