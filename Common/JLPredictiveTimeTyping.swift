@@ -9,64 +9,64 @@
 import Cocoa
 
 class JLPredictiveTimeTyping: NSObject {
-
-    func timeByAdding(string: String) -> String {
+/*
+    func timeByAdding(string: String, to: String) -> String {
 	//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
 	
         if (string == "") {
             // Backspace
-            if (textField.text.length == 3) {
-                textField.text = [textField.text substringWithRange:NSMakeRange(0,1)];
+            if to.endIndex == 3 {
+                to = to.substringWithRange(NSMakeRange(0,1))
                 return false
             }
-            return  true
+            return  to
         }
 	
-        NSArray *comps = [textField.text componentsSeparatedByString:@":"];
+        let comps = to.componentsSeparatedByString(":")
         
-        if ([comps count] == 2) {
+        if comps.count == 2 {
         // Insert the minutes
         
-        int m;
-        NSString *min = [comps objectAtIndex:1];
+        var m = ""
+        var min = comps[1]
         
-        if (min.length >= 2) {
-        textField.text = [NSString stringWithFormat:@"%@:%@", [comps objectAtIndex:0], [min substringWithRange:NSMakeRange(0,1)]];
-        return YES;
+        if min.endIndex >= 2 {
+            to = "\(comps[0]):\(min.substringWithRange(NSMakeRange(0,1)))"
+            return YES;
         }
         else {
-        m = [self decimalValueOf:min newText:string];
+            m = [self decimalValueOf:min newText:string];
         }
         
         if (m >= 60) {
-        return NO;
+            return NO;
         }
         else if (m >= 10) {
-        return YES;
+            return YES;
         }
         else if (m >= 6) {
-        textField.text = [NSString stringWithFormat:@"%@:0%d", comps[0], m];
+            textField.text = [NSString stringWithFormat:@"%@:0%d", comps[0], m];
         }
         else if (m == 0) {
-        textField.text = [NSString stringWithFormat:@"%@:00", comps[0]];
+            textField.text = [NSString stringWithFormat:@"%@:00", comps[0]];
         }
         else if (m == 1) {
-        textField.text = [NSString stringWithFormat:@"%@:15", comps[0]];
+            textField.text = [NSString stringWithFormat:@"%@:15", comps[0]];
         }
         else if (m == 2) {
-        textField.text = [NSString stringWithFormat:@"%@:20", comps[0]];
+            textField.text = [NSString stringWithFormat:@"%@:20", comps[0]];
         }
         else if (m == 3) {
-        textField.text = [NSString stringWithFormat:@"%@:30", comps[0]];
+            textField.text = [NSString stringWithFormat:@"%@:30", comps[0]];
         }
         else if (m == 4) {
-        textField.text = [NSString stringWithFormat:@"%@:45", comps[0]];
+            textField.text = [NSString stringWithFormat:@"%@:45", comps[0]];
         }
         else if (m == 5) {
-        textField.text = [NSString stringWithFormat:@"%@:50", comps[0]];
+            textField.text = [NSString stringWithFormat:@"%@:50", comps[0]];
         }
         else return YES;
-        return NO;
+            return NO;
         }
         else {
         // Insert the hour
@@ -84,12 +84,12 @@ class JLPredictiveTimeTyping: NSObject {
         textField.text = [NSString stringWithFormat:@"0%d:", h];
         }
         else {
-        if (hr.length >= 1) {
-        textField.text = [NSString stringWithFormat:@"0%d:", h];
-        }
-        else {
-        return YES;
-        }
+            if (hr.length >= 1) {
+                textField.text = [NSString stringWithFormat:@"0%d:", h];
+            }
+            else {
+                return YES;
+            }
         }
         return NO;
         }
@@ -112,19 +112,20 @@ class JLPredictiveTimeTyping: NSObject {
             comps.hour = (hm.count == 1) ? hm[0].integerValue() : 19;
             comps.minute = 0
         }
-        NSUserDefaults.standardUserDefaults().setInteger(hm[0].integerValue(), forKey:KEY_LAST_TYPED_HOUR)
+        NSUserDefaults.standardUserDefaults().setInteger(hm[0].integerValue(), forKey:"KEY_LAST_TYPED_HOUR")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        return [gregorian dateFromComponents:comps];
+        return gregorian.dateFromComponents(comps)
     }
+    
+    let decimalValueOf(existingText: String, newText: String) -> Int {
         
-    - (int)decimalValueOf:(NSString *)existingText newText:(NSString *)newText {
-        
-        if ([existingText length] > 0) {
-        int i1 = [existingText intValue];
-        int i2 = [newText intValue];
-        return i1 * 10 + i2;
+        if existingText.endIndex > 0) {
+            int i1 = existingText.intValue()
+            int i2 = newText.intValue()
+            return i1 * 10 + i2;
         }
-        return [newText intValue];
-	}
+    
+        return newText.intValue()
+	}*/
 }
