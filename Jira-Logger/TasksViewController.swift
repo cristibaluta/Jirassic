@@ -208,39 +208,39 @@ class TasksViewController: NSViewController {
 	func setDaysTableState (s: DaysState) {
 		
 		switch s {
-		case .DaysClosed:
-			_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
-			_datesScrollView?.hidden = false
-			_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
-				y: CGRectGetMinY(_tasksScrollView!.frame),
-				width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
-				height: CGRectGetHeight(_datesScrollView!.frame))
-			self.view.removeConstraint(NSLayoutConstraint(item: _tasksScrollView!,
-				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
-				toItem: self.view, attribute: NSLayoutAttribute.Leading,
-				multiplier: 1.0, constant: _gapX))
-			self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
-				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
-				toItem: self.view, attribute: NSLayoutAttribute.Leading,
-				multiplier: 1.0, constant: CGRectGetWidth(_datesScrollView!.frame) + _gapX))
-			
-		case .DaysOpen:
-			_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
-			_datesScrollView?.hidden = true
-			_tasksScrollView?.frame = NSRect(x: _gapX,
-				y: CGRectGetMinY(_datesScrollView!.frame),
-				width: self.view.frame.size.width - _gapX,
-				height: CGRectGetHeight(_datesScrollView!.frame))
-			self.view.removeConstraint(NSLayoutConstraint(item: _tasksScrollView!,
-				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
-				toItem: self.view, attribute: NSLayoutAttribute.Leading,
-				multiplier: 1.0, constant: CGRectGetWidth(_datesScrollView!.frame) + _gapX))
-			self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
-				attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
-				toItem: self.view, attribute: NSLayoutAttribute.Leading,
-				multiplier: 1.0, constant: _gapX))
-		default:
-			_datesScrollView?.hidden = true
+			case .DaysClosed:
+				_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
+				_datesScrollView?.hidden = false
+				_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
+					y: CGRectGetMinY(_tasksScrollView!.frame),
+					width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
+					height: CGRectGetHeight(_datesScrollView!.frame))
+				self.view.removeConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+					attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+					toItem: self.view, attribute: NSLayoutAttribute.Leading,
+					multiplier: 1.0, constant: _gapX))
+				self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+					attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+					toItem: self.view, attribute: NSLayoutAttribute.Leading,
+					multiplier: 1.0, constant: CGRectGetWidth(_datesScrollView!.frame) + _gapX))
+				noTasksController().view.frame = _tasksScrollView!.frame
+				
+			case .DaysOpen:
+				_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
+				_datesScrollView?.hidden = true
+				_tasksScrollView?.frame = NSRect(x: _gapX,
+					y: CGRectGetMinY(_datesScrollView!.frame),
+					width: self.view.frame.size.width - _gapX,
+					height: CGRectGetHeight(_datesScrollView!.frame))
+				self.view.removeConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+					attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+					toItem: self.view, attribute: NSLayoutAttribute.Leading,
+					multiplier: 1.0, constant: CGRectGetWidth(_datesScrollView!.frame) + _gapX))
+				self.view.addConstraint(NSLayoutConstraint(item: _tasksScrollView!,
+					attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal,
+					toItem: self.view, attribute: NSLayoutAttribute.Leading,
+					multiplier: 1.0, constant: _gapX))
+				noTasksController().view.frame = _tasksScrollView!.frame
 		}
 		
 		JLDrawerState().setState(s)

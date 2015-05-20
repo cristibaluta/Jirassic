@@ -38,7 +38,6 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
-		RCLogO(aTableView)
 		if let d = data {
 			return d.count
 		}
@@ -48,43 +47,48 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-			let theData = data![row] as Task
-			var cell: TaskCellProtocol? = nil
-			if theData.task_type?.intValue == 0 {
-				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
+		let theData = data![row] as Task
+		var cell: TaskCellProtocol? = nil
+		if theData.task_type?.intValue == 0 {
+			cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
+		} else {
+			cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
+		}
+		assert(cell != nil, "Cell can't be nil, check the identifier")
+		var date = ""
+		if theData.date_task_finished == nil && theData.date_task_started != nil {
+			date = theData.date_task_started!.HHmm()
+			cell?.statusImage!.image = NSImage(named: NSImageNameStatusPartiallyAvailable)
+		} else {
+			if row > 0 {
+				let thePreviosData = data![row-1] as Task
+				let duration = theData.date_task_finished?.timeIntervalSinceDate(thePreviosData.date_task_finished!)
+				date = "\(theData.date_task_finished!.HHmm())\n\(NSDate(timeIntervalSince1970: duration!).HHmm())h"
 			} else {
-				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
-			}
-			assert(cell != nil, "Cell can't be nil, check the identifier")
-			var date = ""
-			if theData.date_task_started == nil {
 				date = theData.date_task_finished!.HHmm()
-			} else if theData.date_task_finished == nil {
-				date = theData.date_task_started!.HHmm()
-			} else {
-//				date = "\(theData.date_task_started!.HHmm())\n |\n\(theData.date_task_finished!.HHmm())"
-				date = theData.date_task_started!.HHmm()
 			}
-			cell?.data = (date: date, task: theData.task_nr!, notes: theData.notes!)
-			cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
-				theData.task_nr = cell.data.task
-				theData.notes = cell.data.notes
-				JLTaskWriter().write( theData )
+			cell?.statusImage!.image = NSImage(named: NSImageNameStatusAvailable)
+		}
+		cell?.data = (date: date, task: theData.task_nr!, notes: theData.notes!)
+		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
+			theData.task_nr = cell.data.task
+			theData.notes = cell.data.notes
+			JLTaskWriter().write( theData )
+		}
+		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
+			RCLogO("remove cell \(cell)")
+			if self.didRemoveRow != nil {
+				let row2 = tableView.rowForView(cell as! TaskCell)
+				RCLogO("remove row \(row2)")
+				self.didRemoveRow!(row: row)
 			}
-			cell?.didRemoveCell = { (cell: TaskCellProtocol) in
-				RCLogO("remove cell \(cell)")
-				if self.didRemoveRow != nil {
-					let row2 = tableView.rowForView(cell as! TaskCell)
-					RCLogO("remove row \(row2)")
-					self.didRemoveRow!(row: row)
-				}
-			}
-			
-			if theData.task_type?.intValue == 0 {
-				return cell as? TaskCell
-			} else {
-				return cell as? NonTaskCell
-			}
+		}
+		
+		if theData.task_type?.intValue == 0 {
+			return cell as? TaskCell
+		} else {
+			return cell as? NonTaskCell
+		}
 	}
 	
 	func tableView(tableView: NSTableView, setObjectValue object: AnyObject?,

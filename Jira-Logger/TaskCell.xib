@@ -15,7 +15,6 @@
                     <rect key="frame" x="70" y="52" width="276" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="kkS-Qs-fmO"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="263" id="qrH-jK-QSn"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="AN-0000" id="dlI-ub-5hj">
                         <font key="font" metaFont="systemBold"/>
@@ -26,12 +25,8 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                    <rect key="frame" x="70" y="0.0" width="268" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="KOU-dp-rT9"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="263" id="tMF-ic-Iee"/>
-                    </constraints>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                    <rect key="frame" x="70" y="0.0" width="267" height="50"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -97,6 +92,7 @@
                 <outlet property="dateEndTextField" destination="HS2-iB-3Ta" id="fDF-KM-JEr"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
                 <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
+                <outlet property="statusImage" destination="iAi-8T-Cme" id="kez-tX-mzz"/>
             </connections>
             <point key="canvasLocation" x="224.5" y="253"/>
         </customView>

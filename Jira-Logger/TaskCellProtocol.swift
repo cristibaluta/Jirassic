@@ -10,6 +10,7 @@ import Foundation
 
 protocol TaskCellProtocol: NSObjectProtocol {
 
+	var statusImage: NSImageView? {get}
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())? {get set}
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())? {get set}
 	var data: (date: String, task: String, notes: String) {get set}

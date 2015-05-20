@@ -31,15 +31,20 @@ class DaysDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 			
-			let object = data![row]
-			
-			if (tableColumn?.identifier == columnDateId) {
-				return object.date_task_finished?.MMdd()
+		let theData = data![row]
+		
+		if (tableColumn?.identifier == columnDateId) {
+			return theData.date_task_finished?.MMdd()
+		}
+		else if (tableColumn?.identifier == columnProgressId) {
+			if let date = theData.date_task_finished {
+				if date.isSameDayAs(NSDate()) {
+					return NSImage(named: NSImageNameStatusPartiallyAvailable)
+				}
 			}
-			else if (tableColumn?.identifier == columnProgressId) {
-				return NSImage(named: NSImageNameStatusPartiallyAvailable)
-			}
-			return ""
+			return NSImage(named: NSImageNameStatusAvailable)
+		}
+		return nil
 	}
 	
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
