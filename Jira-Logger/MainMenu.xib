@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -670,6 +670,7 @@
             <connections>
                 <outlet property="_butAdd" destination="t9I-hI-JME" id="7OK-rV-AkP"/>
                 <outlet property="_butDrawer" destination="ncf-3w-Koq" id="WGQ-Hk-kVt"/>
+                <outlet property="_butRefresh" destination="gTw-rC-RP1" id="vhU-m1-veb"/>
                 <outlet property="_dateLabel" destination="Ma3-Gy-AgP" id="3wX-Zt-DMF"/>
                 <outlet property="_datesScrollView" destination="5Rv-SU-X0P" id="WtV-Rp-nJ8"/>
                 <outlet property="_datesTableView" destination="GC5-kC-nNx" id="3Ne-Xo-csd"/>
@@ -846,6 +847,16 @@
                 <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PDd-Rh-WiK">
                     <rect key="frame" x="438" y="403" width="16" height="16"/>
                 </progressIndicator>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gTw-rC-RP1">
+                    <rect key="frame" x="435" y="400" width="22" height="22"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2Zh-SR-ktK">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleRefreshButton:" target="Mzr-YU-Yq5" id="Q9S-0F-ZrB"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="5Rv-SU-X0P" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="62" id="DYf-MA-rJn"/>
@@ -868,6 +879,7 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
 </document>

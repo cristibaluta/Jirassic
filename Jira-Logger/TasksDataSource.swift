@@ -60,10 +60,14 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			date = theData.date_task_started!.HHmm()
 			cell?.statusImage!.image = NSImage(named: NSImageNameStatusPartiallyAvailable)
 		} else {
-			if row > 0 {
-				let thePreviosData = data![row-1] as Task
+			if row < data!.count-1 {
+				let thePreviosData = data![row+1] as Task
 				let duration = theData.date_task_finished?.timeIntervalSinceDate(thePreviosData.date_task_finished!)
-				date = "\(theData.date_task_finished!.HHmm())\n\(NSDate(timeIntervalSince1970: duration!).HHmm())h"
+				RCLogO(duration)
+				RCLogO(theData.date_task_finished)
+				RCLogO(thePreviosData.date_task_finished)
+				RCLogO(NSDate(timeIntervalSince1970: duration!))
+				date = "\(theData.date_task_finished!.HHmm())\n\(NSDate(timeIntervalSince1970: duration!).HHmmGMT())h"
 			} else {
 				date = theData.date_task_finished!.HHmm()
 			}

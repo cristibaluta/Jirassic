@@ -30,6 +30,7 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butDrawer: NSButton?
 	@IBOutlet private var _butAdd: NSButton?
+	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
 	private var _daysDataSource: DaysDataSource?
@@ -42,9 +43,7 @@ class TasksViewController: NSViewController {
         super.viewDidLoad()
 		updateNoTasksState()
 		SleepNotifications()
-		sharedData.queryData { (tasks, error) -> Void in
-			self.reloadData()
-		}
+		reloadDataFromServer()
     }
 	
 	override func viewDidAppear() {
@@ -61,6 +60,16 @@ class TasksViewController: NSViewController {
 	
 	override func viewDidLayout() {
 		RCLogO("func viewDidLayout()")
+	}
+	
+	func reloadDataFromServer() {
+		self._progressIndicator?.startAnimation(nil)
+		self._butRefresh?.hidden = true
+		sharedData.queryData { (tasks, error) -> Void in
+			self.reloadData()
+			self._progressIndicator?.stopAnimation(nil)
+			self._butRefresh?.hidden = false
+		}
 	}
 	
 	func reloadData() {
@@ -263,5 +272,9 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {
 		
+	}
+	
+	@IBAction func handleRefreshButton(sender: NSButton) {
+		reloadDataFromServer()
 	}
 }

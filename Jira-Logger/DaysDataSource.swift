@@ -34,7 +34,7 @@ class DaysDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 		let theData = data![row]
 		
 		if (tableColumn?.identifier == columnDateId) {
-			return theData.date_task_finished?.MMdd()
+			return theData.date_task_finished?.EEMMdd()
 		}
 		else if (tableColumn?.identifier == columnProgressId) {
 			if let date = theData.date_task_finished {

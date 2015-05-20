@@ -31,6 +31,19 @@ extension NSDate {
 		return f.stringFromDate(self)
 	}
 	
+	func HHmmGMT() -> String {
+		let f = NSDateFormatter()
+		f.timeZone = NSTimeZone(abbreviation: "GMT")
+		f.dateFormat = "HH:mm"
+		return f.stringFromDate(self)
+	}
+	
+	func EEMMdd() -> String {
+		let f = NSDateFormatter()
+		f.dateFormat = "EE, MMMM dd"
+		return f.stringFromDate(self)
+	}
+	
 	func EEEEMMdd() -> String {
 		let f = NSDateFormatter()
 		f.dateFormat = "EEEE, MMMM dd"
