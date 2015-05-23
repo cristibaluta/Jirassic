@@ -60,7 +60,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		task.date_task_started = dateSart
 		task.date_task_finished = dateEnd
 		task.task_nr = "AN-0000"
-		task.notes = "What did you do in this task?"
+		task.notes = ""
 		task.task_type = TaskType.Issue.rawValue
 		data.insert(task, atIndex: 0)
 		

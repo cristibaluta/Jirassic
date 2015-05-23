@@ -677,6 +677,7 @@
                 <outlet property="_progressIndicator" destination="PDd-Rh-WiK" id="ybz-Nw-qVJ"/>
                 <outlet property="_tasksScrollView" destination="Yng-8a-hsj" id="ZKz-fv-tPv"/>
                 <outlet property="_tasksTableView" destination="TTh-Xv-XFj" id="pIF-DK-ddh"/>
+                <outlet property="_tasksTableViewWidthConstraint" destination="HPd-Nz-7uY" id="DgQ-sg-nJc"/>
                 <outlet property="view" destination="OBP-pT-3rU" id="ZFI-iN-lYr"/>
             </connections>
         </viewController>
@@ -791,6 +792,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </clipView>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="309" id="HPd-Nz-7uY"/>
+                    </constraints>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hog-Iv-FwC">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -860,12 +864,11 @@
             </subviews>
             <constraints>
                 <constraint firstItem="5Rv-SU-X0P" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="62" id="DYf-MA-rJn"/>
-                <constraint firstAttribute="trailing" secondItem="Yng-8a-hsj" secondAttribute="trailing" id="GsI-yh-Fso"/>
-                <constraint firstItem="Yng-8a-hsj" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="62" id="aMT-Bh-ELg"/>
-                <constraint firstAttribute="bottom" secondItem="Yng-8a-hsj" secondAttribute="bottom" id="iON-19-GZz"/>
                 <constraint firstAttribute="bottom" secondItem="5Rv-SU-X0P" secondAttribute="bottom" id="jxj-XQ-lw4"/>
-                <constraint firstItem="Yng-8a-hsj" firstAttribute="leading" secondItem="OBP-pT-3rU" secondAttribute="leading" constant="182" id="jxw-4V-Lvh"/>
+                <constraint firstAttribute="trailing" secondItem="Yng-8a-hsj" secondAttribute="trailing" id="pgr-pN-k3m"/>
+                <constraint firstItem="Yng-8a-hsj" firstAttribute="top" secondItem="OBP-pT-3rU" secondAttribute="top" constant="62" id="tyF-7z-vMe"/>
                 <constraint firstItem="5Rv-SU-X0P" firstAttribute="leading" secondItem="OBP-pT-3rU" secondAttribute="leading" constant="12" id="uhp-Cl-AMT"/>
+                <constraint firstAttribute="bottom" secondItem="Yng-8a-hsj" secondAttribute="bottom" id="zpR-Ko-6X6"/>
             </constraints>
             <point key="canvasLocation" x="354.5" y="449"/>
         </customView>
