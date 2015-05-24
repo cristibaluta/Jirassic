@@ -978,6 +978,16 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSQ-n3-2Jj">
+                                <rect key="frame" x="12" y="365" width="22" height="22"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSHomeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XkC-GJ-ULT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleColumnButton:" target="wHU-IX-gfU" id="sRt-6t-cPi"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsw-eR-tFQ">
                                 <rect key="frame" x="42" y="223" width="407" height="68"/>
                                 <constraints>
@@ -1156,6 +1166,7 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>

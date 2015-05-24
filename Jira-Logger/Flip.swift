@@ -12,6 +12,7 @@ class Flip: NSObject {
 
 	var animationReachedMiddle: (() -> ())?
 	var animationFinished: (() -> ())?
+	var layer: CALayer?
 	
 	func startWithLayer(layer: CALayer) {
 		
@@ -31,15 +32,39 @@ class Flip: NSObject {
 		var mt = CATransform3DIdentity
 		mt.m34 = CGFloat(1.0 / 1000)
 		layer.transform = mt
-		
-		// Set z position so the layer will be on top
-		//		lr?.zPosition = 999;
-		
-		// Keep cards tilted when flipping
-		//		if(self.tiltCard)
-		//		self.frameCenterRotation = self.frameCenterRotation;
-		
-		// Do rotation
 		layer.addAnimation(rotationAnimation, forKey:"flip")
+		self.layer = layer
+	}
+	
+	func animatePhase2(anim: CAAnimation!) {
+		
+		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
+		rotationAnimation.fromValue = -3.14/2
+		rotationAnimation.toValue = 0.0
+		rotationAnimation.duration = 0.6
+		rotationAnimation.repeatCount = 1.0
+		rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+		rotationAnimation.fillMode = kCAFillModeForwards
+		rotationAnimation.removedOnCompletion = false
+		rotationAnimation.setValue("flipAnimationOutwards", forKey: "flip")
+		rotationAnimation.delegate = self
+		
+		// Add perspective
+		var mt = CATransform3DIdentity
+		mt.m34 = CGFloat(1.0 / 1000)
+		self.layer?.transform = mt
+		self.layer?.addAnimation(rotationAnimation, forKey:"flip")
+	}
+	
+	override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+		
+		if anim.valueForKey("flip") as! String == "flipAnimationInwards" {
+			
+			self.animationReachedMiddle!()
+			self.animatePhase2(anim)
+		}
+		else if anim.valueForKey("flip") as! String == "flipAnimationOutwards" {
+			self.animationFinished!()
+		}
 	}
 }

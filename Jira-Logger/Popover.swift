@@ -8,22 +8,22 @@
 
 import Cocoa
 
-public class Popover: NSPopover {
+class Popover: NSPopover {
 	
-	public override init() {
+	override init() {
 		super.init()
 	}
 
-	required public init?(coder: NSCoder) {
+	required init?(coder: NSCoder) {
 		super.init()
 	}
 	
-	override public func awakeFromNib() {
+	override func awakeFromNib() {
 		RCLogO(self.contentViewController)
 		RCLogRect(self.contentViewController?.view.frame)
 	}
 	
-	public func canBecomeKeyWindow() -> Bool {
+	func canBecomeKeyWindow() -> Bool {
 		return true; // Allow Search field to become the first responder
 	}
 }

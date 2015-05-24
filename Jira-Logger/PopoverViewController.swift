@@ -36,7 +36,13 @@ class PopoverViewController: NSViewController {
 		
 		if _tasksController == nil {
 			_tasksController = TasksViewController.instanceFromStoryboard()
-			_tasksController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+			_tasksController?.view.frame = CGRect(x: 0, y: 0,
+				width: self.view.frame.size.width, height: self.view.frame.size.height)
+			_tasksController?.onButSettingsPressed = {[weak self] () in
+				if let strongSelf = self {
+					strongSelf.flipToSettings()
+				}
+			}
 		}
 		
 		return _tasksController!
@@ -52,16 +58,13 @@ class PopoverViewController: NSViewController {
 		
 		if _settingsController == nil {
 			_settingsController = SettingsViewController.instanceFromStoryboard()
-			_settingsController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-			
-			//			_settingsController?.onButStartPressed = { () -> Void in
-			//
-			//				let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
-			//				JLTaskWriter().write( task )
-			//
-			//				self._newDayController.setLastDay( NSDate())
-			//				self.reloadData()
-			//			}
+			_settingsController?.view.frame = CGRect(x: 0, y: 0,
+				width: self.view.frame.size.width, height: self.view.frame.size.height)
+			_settingsController?.onButSavePressed = {[weak self] () in
+				if let strongSelf = self {
+					strongSelf.flipToTasks()
+				}
+			}
 		}
 		
 		return _settingsController!
@@ -77,16 +80,13 @@ class PopoverViewController: NSViewController {
 		
 		if _loginController == nil {
 			_loginController = LoginViewController.instanceFromStoryboard()
-			_loginController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-			
-			//			_settingsController?.onButStartPressed = { () -> Void in
-			//
-			//				let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
-			//				JLTaskWriter().write( task )
-			//
-			//				self._newDayController.setLastDay( NSDate())
-			//				self.reloadData()
-			//			}
+			_loginController?.view.frame = CGRect(x: 0, y: 0,
+				width: self.view.frame.size.width, height: self.view.frame.size.height)
+			_loginController?.onLoginSuccess = {[weak self] () in
+				if let strongSelf = self {
+					strongSelf.flipToTasks()
+				}
+			}
 		}
 		
 		return _loginController!
@@ -101,7 +101,7 @@ class PopoverViewController: NSViewController {
 	
 	// MARK: Flip popup views
 	
-	func flip() {
+	func flipToSettings() {
 		// Get the layer
 		let layer = self.view.superview!.layer!
 		RCLogO(self.view)
@@ -110,12 +110,25 @@ class PopoverViewController: NSViewController {
 		
 		let flip = Flip()
 		flip.animationReachedMiddle = {
-			let controller = self.loginController()
-			self.view.addSubview( controller.view )
+			self.removeTasksController()
+			self.view.addSubview( self.loginController().view )
 		}
 		flip.animationFinished = {
 			
 		}
 		flip.startWithLayer(layer)
+	}
+	
+	func flipToTasks() {
+		
+		let flip = Flip()
+		flip.animationReachedMiddle = {
+			self.removeSettingsController()
+			self.view.addSubview( self.tasksController().view )
+		}
+		flip.animationFinished = {
+			
+		}
+		flip.startWithLayer( self.view.superview!.layer! )
 	}
 }

@@ -10,6 +10,9 @@ import Cocoa
 
 class SettingsViewController: NSViewController {
 	
+	var onButSavePressed: (() -> ())?
+	
+	
 	class func instanceFromStoryboard() -> SettingsViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
 		let vc = storyboard!.instantiateControllerWithIdentifier("SettingsViewController") as! SettingsViewController

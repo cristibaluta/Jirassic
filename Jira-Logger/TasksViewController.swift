@@ -25,20 +25,23 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _tasksTableView: NSTableView?
 	@IBOutlet private var _tasksTableViewWidthConstraint: NSLayoutConstraint?
 	
-	private var _noTasksViewController: NoTasksViewController?
-	private var _newTaskViewController: NewTaskViewController?
-	
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butDrawer: NSButton?
 	@IBOutlet private var _butAdd: NSButton?
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
+	private var _noTasksViewController: NoTasksViewController?
+	private var _newTaskViewController: NewTaskViewController?
+	
 	private var _daysDataSource: DaysDataSource?
 	private var _tasksDataSource: TasksDataSource?
 	private var _newDayController = NewDayController()
 	private let _gapX = CGFloat(12)
 	private let kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
+	
+	var onButSettingsPressed: (() -> ())?
+	
 	
 	class func instanceFromStoryboard() -> TasksViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
@@ -271,7 +274,7 @@ class TasksViewController: NSViewController {
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {
-		
+		self.onButSettingsPressed!()
 	}
 	
 	@IBAction func handleRefreshButton(sender: NSButton) {
