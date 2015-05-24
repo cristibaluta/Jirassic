@@ -27,13 +27,18 @@ class LoginViewController: NSViewController {
         // Do view setup here.
     }
 	
+	func removeFromSuperview() {
+		self.view.removeFromSuperview()
+	}
+	
 	func register() {
-		  var user = PFUser()
-		  user.username = "myUsername"
-		  user.password = "myPassword"
-		  user.email = "email@example.com"
-		  // other fields can be set just like with PFObject
-		  user["phone"] = "415-392-0202"
+		
+		var user = PFUser()
+		user.username = "myUsername"
+		user.password = "myPassword"
+		user.email = "email@example.com"
+		// other fields can be set just like with PFObject
+		user["phone"] = "415-392-0202"
 		
 		user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
 			if let error = error {

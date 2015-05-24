@@ -19,7 +19,8 @@ public class Popover: NSPopover {
 	}
 	
 	override public func awakeFromNib() {
-		
+		RCLogO(self.contentViewController)
+		RCLogRect(self.contentViewController?.view.frame)
 	}
 	
 	public func canBecomeKeyWindow() -> Bool {

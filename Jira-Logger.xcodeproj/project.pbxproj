@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282426761B113D5000211713 /* Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* Flip.swift */; };
+		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
 		286585251B031D3A00352782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286585231B031D3A00352782 /* LaunchScreen.xib */; };
@@ -162,6 +164,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		282426751B113D5000211713 /* Flip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flip.swift; sourceTree = "<group>"; };
+		282426771B113F6900211713 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2846C90C1AFF882E00779357 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		2846C9161AFF8FB100779357 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -427,7 +431,6 @@
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
 				28F51EBA1AC6F5F200A69CDF /* DaysDataSource.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksDataSource.swift */,
-				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */,
 				28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */,
 				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
@@ -460,6 +463,7 @@
 				28EB905F1AF73FFD008D5337 /* JLEstimateStartingDay.swift */,
 				28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */,
 				28D21F7C1B014C41005D3C94 /* JLDrawerState.swift */,
+				282426751B113D5000211713 /* Flip.swift */,
 			);
 			name = "Business Rules";
 			path = "Jira-Logger";
@@ -505,9 +509,11 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
+				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
 				289998A81AC3BDF200706824 /* MenuBarController.swift */,
 				289998A11AC2920200706824 /* Popover.swift */,
+				282426771B113F6900211713 /* PopoverViewController.swift */,
 				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
 				28E838FC1AF3372E00602D33 /* Tasks */,
 				28EB908F1AF974DC008D5337 /* Settings */,
@@ -811,6 +817,8 @@
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */,
 				28EB90601AF73FFD008D5337 /* JLEstimateStartingDay.swift in Sources */,
+				282426761B113D5000211713 /* Flip.swift in Sources */,
+				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				28B1F2BA1AFB2BCF00D61472 /* NonTaskCell.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,

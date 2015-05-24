@@ -31,6 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				self.popover?.close()
 			}
 		}
+		
+		SleepNotifications()
 	}
 	
     func applicationDidFinishLaunching(aNotification: NSNotification) {

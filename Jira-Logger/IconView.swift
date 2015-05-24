@@ -44,8 +44,8 @@ class IconView : NSView {
     }
     
     
-    override func drawRect(dirtyRect: NSRect)
-    {
+    override func drawRect(dirtyRect: NSRect) {
+		
         self.item.drawStatusBarBackgroundInRect(dirtyRect, withHighlight: self.isSelected)
         
         let size = self.image.size
@@ -54,13 +54,12 @@ class IconView : NSView {
         self.image.drawInRect(rect)
     }
     
-    override func mouseDown(theEvent: NSEvent)
-    {
+    override func mouseDown(theEvent: NSEvent) {
         self.isSelected = !self.isSelected;
         self.onMouseDown();
     }
     
-    override func mouseUp(theEvent: NSEvent)
-    {
+    override func mouseUp(theEvent: NSEvent) {
+		
     }
 }

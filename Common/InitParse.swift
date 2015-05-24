@@ -26,9 +26,9 @@ class InitParse: NSObject {
 //		PFUser.currentUser()!.incrementKey("RunCount")
 //		PFUser.currentUser()!.saveInBackground()
 		
-		let defaultACL = PFACL()
-		defaultACL.setPublicReadAccess(true)
-		PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+		let acl = PFACL()
+		acl.setPublicReadAccess(false)
+		PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
 		
 		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
 		PFAnalytics()

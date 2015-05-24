@@ -40,10 +40,15 @@ class TasksViewController: NSViewController {
 	private let _gapX = CGFloat(12)
 	private let kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
+	class func instanceFromStoryboard() -> TasksViewController {
+		let storyboard = NSStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard!.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
+		return vc
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		updateNoTasksState()
-		SleepNotifications()
 		reloadDataFromServer()
     }
 	
@@ -61,7 +66,15 @@ class TasksViewController: NSViewController {
 	
 	override func viewDidLayout() {
 		super.viewDidLayout()
-		RCLogRect(_tasksScrollView!.frame)
+	}
+	
+	override func awakeFromNib() {
+		self.view.layer = CALayer()
+		self.view.wantsLayer = true
+	}
+	
+	func removeFromSuperview() {
+		self.view.removeFromSuperview()
 	}
 	
 	func reloadDataFromServer() {
