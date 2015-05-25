@@ -918,14 +918,24 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
                                 <rect key="frame" x="210" y="13" width="71" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="Use-nS-zxU"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tsy-gv-nNb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="xrA-px-AQY"/>
+                                </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="wtI-Tb-5RE" secondAttribute="centerX" constant="-0.5" id="DsT-Ac-W1G"/>
+                            <constraint firstAttribute="bottom" secondItem="wtI-Tb-5RE" secondAttribute="bottom" constant="20" id="pAr-o8-AYy"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="C7k-Vd-XtM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

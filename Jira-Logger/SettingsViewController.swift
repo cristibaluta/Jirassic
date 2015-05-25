@@ -27,4 +27,12 @@ class SettingsViewController: NSViewController {
 	func removeFromSuperview() {
 		self.view.removeFromSuperview()
 	}
+	
+	
+	// MARK: Actions
+	
+	@IBAction func handleSaveButton(sender: NSButton) {
+		self.onButSavePressed!()
+	}
+	
 }

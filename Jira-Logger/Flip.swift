@@ -20,7 +20,7 @@ class Flip: NSObject {
 		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
 		rotationAnimation.fromValue = 0.0
 		rotationAnimation.toValue = 3.14/2
-		rotationAnimation.duration = 0.4
+		rotationAnimation.duration = 0.2
 		rotationAnimation.repeatCount = 1.0
 		rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
 		rotationAnimation.fillMode = kCAFillModeForwards
@@ -41,9 +41,9 @@ class Flip: NSObject {
 		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
 		rotationAnimation.fromValue = -3.14/2
 		rotationAnimation.toValue = 0.0
-		rotationAnimation.duration = 0.6
+		rotationAnimation.duration = 0.2
 		rotationAnimation.repeatCount = 1.0
-		rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+		rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
 		rotationAnimation.fillMode = kCAFillModeForwards
 		rotationAnimation.removedOnCompletion = false
 		rotationAnimation.setValue("flipAnimationOutwards", forKey: "flip")

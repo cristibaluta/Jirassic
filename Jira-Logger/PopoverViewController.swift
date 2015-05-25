@@ -111,7 +111,7 @@ class PopoverViewController: NSViewController {
 		let flip = Flip()
 		flip.animationReachedMiddle = {
 			self.removeTasksController()
-			self.view.addSubview( self.loginController().view )
+			self.view.addSubview( self.settingsController().view )
 		}
 		flip.animationFinished = {
 			
