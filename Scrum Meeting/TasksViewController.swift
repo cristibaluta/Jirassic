@@ -59,20 +59,11 @@ extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
 			
-			if ((UIDevice.currentDevice().systemVersion as NSString).floatValue >= 7.0) {
-				let size = (theData.notes! as NSString).boundingRectWithSize(CGSize(width: self.view.frame.size.width-CGFloat(48), height: 999),
-					options: NSStringDrawingOptions.UsesFontLeading | NSStringDrawingOptions.UsesLineFragmentOrigin,
-					attributes: [NSFontAttributeName: UIFont.fontWithName("OpenSans-Semibold", size:17)],
-					context: nil).size
-				return ceilf(size.height) + 46
-			}
-			else {
-				let size = (theData.notes! as NSString).sizeWithFont(UIFont.fontWithName("OpenSans-Semibold", size: 17),
-					constrainedToSize: CGSizeMake(self.view.frame.size.width-48, 999),
-					lineBreakMode: NSLineBreakMode.ByWordWrapping)
-				return ceilf(size.height) + 46
-			}
-			return 170
+			return NSString(string: theData.notes!).boundingRectWithSize(
+				CGSize(width: self.view.frame.size.width - 48, height: 999),
+				options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+				attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)],
+				context: nil).size.height + 56
 		} else {
 			return 50
 		}

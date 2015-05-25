@@ -19,9 +19,11 @@ class IosLoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		if PFUser.currentUser() == nil {
-			
+		if PFUser.currentUser() != nil {
+			self.performSegueWithIdentifier("ShowDaysSegue", sender: nil)
 		}
+		_emailTextField?.text = NSUserDefaults.standardUserDefaults().stringForKey("email")
+		self.title = "Login"
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +36,14 @@ class IosLoginViewController: UIViewController {
 		_activityIndicator?.startAnimating()
 		
 		PFUser.logInWithUsernameInBackground(_emailTextField!.text, password:_passwordTextField!.text) {
-			(user: PFUser?, error: NSError?) -> Void in
+			[weak self](user: PFUser?, error: NSError?) -> Void in
 			if user != nil {
-				self._activityIndicator?.stopAnimating()
-				self.performSegueWithIdentifier("ShowDaysSegue", sender: nil)
-			} else if let error = error {
+				self!._activityIndicator?.stopAnimating()
+				NSUserDefaults.standardUserDefaults().setValue(self!._emailTextField!.text, forKey: "email")
+				NSUserDefaults.standardUserDefaults().synchronize()
+				self!.performSegueWithIdentifier("ShowDaysSegue", sender: nil)
+			}
+			else if let error = error {
 				let errorString = error.userInfo?["error"] as? NSString
 				RCLogO(errorString)
 			}
