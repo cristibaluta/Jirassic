@@ -41,9 +41,9 @@ class TasksViewController: UITableViewController {
 	//		let indexPath = NSIndexPath(forRow: 0, inSection: 0)
 	//		self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 	//	}
-	
-	
-	// MARK: - Table View
+}
+
+extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
@@ -54,8 +54,24 @@ class TasksViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		
 		let theData = tasks[indexPath.row]
+		
 		if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
+			
+			if ((UIDevice.currentDevice().systemVersion as NSString).floatValue >= 7.0) {
+				let size = (theData.notes! as NSString).boundingRectWithSize(CGSize(width: self.view.frame.size.width-CGFloat(48), height: 999),
+					options: NSStringDrawingOptions.UsesFontLeading | NSStringDrawingOptions.UsesLineFragmentOrigin,
+					attributes: [NSFontAttributeName: UIFont.fontWithName("OpenSans-Semibold", size:17)],
+					context: nil).size
+				return ceilf(size.height) + 46
+			}
+			else {
+				let size = (theData.notes! as NSString).sizeWithFont(UIFont.fontWithName("OpenSans-Semibold", size: 17),
+					constrainedToSize: CGSizeMake(self.view.frame.size.width-48, 999),
+					lineBreakMode: NSLineBreakMode.ByWordWrapping)
+				return ceilf(size.height) + 46
+			}
 			return 170
 		} else {
 			return 50

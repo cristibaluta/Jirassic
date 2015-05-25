@@ -21,8 +21,9 @@ class InitParse: NSObject {
 		Task.registerSubclass()
 		
 //		Parse.enableLocalDatastore()
-		
+		#if os(iOS)
 		PFUser.enableAutomaticUser()
+		#endif
 //		PFUser.currentUser()!.incrementKey("RunCount")
 //		PFUser.currentUser()!.saveInBackground()
 		
@@ -34,36 +35,36 @@ class InitParse: NSObject {
 		PFAnalytics()
 	}
 	
-	func login() {
-		var currentUser = PFUser.currentUser()
-		if currentUser != nil {
-			// Do stuff with the user
-		} else {
-			loginAnonymousUser()
-		}
-	}
-	
-	func loginAnonymousUser() {
-		PFAnonymousUtils.logInWithBlock {
-			(user: PFUser?, error: NSError?) -> Void in
-			if error != nil || user == nil {
-				RCLogO("Anonymous login failed.")
-			} else {
-				RCLogO("Anonymous user logged in.")
-			}
-		}
-	}
-	
-	func isAnonymousUser() {
-		if PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser()) {
-//			self.enableSignUpButton()
-		} else {
-//			self.enableLogOutButton()
-		}
-	}
-	
-	func logout() {
-		PFUser.logOut()
-		var currentUser = PFUser.currentUser() // this will now be nil
-	}
+//	func login() {
+//		var currentUser = PFUser.currentUser()
+//		if currentUser != nil {
+//			// Do stuff with the user
+//		} else {
+//			loginAnonymousUser()
+//		}
+//	}
+//	
+//	func loginAnonymousUser() {
+//		PFAnonymousUtils.logInWithBlock {
+//			(user: PFUser?, error: NSError?) -> Void in
+//			if error != nil || user == nil {
+//				RCLogO("Anonymous login failed.")
+//			} else {
+//				RCLogO("Anonymous user logged in.")
+//			}
+//		}
+//	}
+//	
+//	func isAnonymousUser() {
+//		if PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser()) {
+////			self.enableSignUpButton()
+//		} else {
+////			self.enableLogOutButton()
+//		}
+//	}
+//	
+//	func logout() {
+//		PFUser.logOut()
+//		var currentUser = PFUser.currentUser() // this will now be nil
+//	}
 }

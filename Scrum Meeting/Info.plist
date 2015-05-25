@@ -6,6 +6,10 @@
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>icon_120.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.ralcr.Scrum</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -40,15 +44,9 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>icon_120.png</string>
-	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

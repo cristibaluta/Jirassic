@@ -20,7 +20,7 @@ class JLTaskWriter: NSObject {
 		}
 	}
 	
-	func delete(task: Task) {
+	func deleteTask(task: Task) {
 		task.deleteInBackgroundWithBlock({ (success, error) -> Void in
 			println("delete task from Parse \(success) \(error)")
 		})

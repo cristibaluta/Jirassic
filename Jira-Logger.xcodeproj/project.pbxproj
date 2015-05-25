@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		282426761B113D5000211713 /* Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* Flip.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
+		2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
 		286585251B031D3A00352782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286585231B031D3A00352782 /* LaunchScreen.xib */; };
@@ -178,6 +179,7 @@
 		2846C9291AFF904500779357 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
+		2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosLoginViewController.swift; sourceTree = "<group>"; };
 		286585141B031D3A00352782 /* Scrum Meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrum Meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286585181B031D3A00352782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				286585181B031D3A00352782 /* AppDelegate.swift */,
 				286585631B053BE800352782 /* Main.storyboard */,
+				2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */,
 				28EB906F1AF95C37008D5337 /* DaysViewController.swift */,
 				28EB90711AF95C37008D5337 /* TasksViewController.swift */,
 				286585691B053CD300352782 /* TaskCell.swift */,
@@ -681,6 +684,7 @@
 					};
 					286585291B031D3A00352782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5NHDC5EV44;
 						TestTargetID = 286585131B031D3A00352782;
 					};
 					6D31D04B1AC196BB001AC4BA = {
@@ -764,6 +768,7 @@
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				286585581B03EABE00352782 /* DataManager.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
+				2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */,
 				2894F1CA1B076EA30095DD17 /* JLTaskWriter.swift in Sources */,
 				2865856A1B053CD300352782 /* TaskCell.swift in Sources */,
 				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
@@ -908,10 +913,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Scrum Meeting/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum Meeting/Scrum Meeting-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -931,10 +936,10 @@
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Scrum Meeting/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Scrum Meeting/Scrum Meeting-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
@@ -945,7 +950,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -961,7 +967,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum Meeting.app/Scrum Meeting";
 			};
@@ -971,7 +977,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -982,7 +989,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a203521-ef78-4df6-8350-b2277115c6a3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrum Meeting.app/Scrum Meeting";
 				VALIDATE_PRODUCT = YES;
