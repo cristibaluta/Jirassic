@@ -950,6 +950,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="490" height="414"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsw-eR-tFQ">
+                                <rect key="frame" x="42" y="223" width="407" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="18A-8V-uiM"/>
+                                    <constraint firstAttribute="width" constant="403" id="6zG-YF-YMB"/>
+                                </constraints>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="A7U-eR-Aq2">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="roI-Pq-KB0">
                                 <rect key="frame" x="150" y="81" width="191" height="19"/>
                                 <constraints>
@@ -960,6 +973,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleLoginButton:" target="DgQ-7j-FkI" id="yCm-l9-OeI"/>
+                                </connections>
                             </button>
                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g6m-an-zuR">
                                 <rect key="frame" x="150" y="118" width="191" height="22"/>
@@ -995,22 +1011,12 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="handleColumnButton:" target="wHU-IX-gfU" id="sRt-6t-cPi"/>
+                                    <action selector="handleCancelButton:" target="DgQ-7j-FkI" id="smx-Wh-4lh"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsw-eR-tFQ">
-                                <rect key="frame" x="42" y="223" width="407" height="68"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="18A-8V-uiM"/>
-                                    <constraint firstAttribute="width" constant="403" id="6zG-YF-YMB"/>
-                                </constraints>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="A7U-eR-Aq2">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Rsu-az-0T9">
+                                <rect key="frame" x="349" y="83" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="roI-Pq-KB0" secondAttribute="centerX" constant="-0.5" id="1XR-td-u3D"/>
@@ -1020,13 +1026,18 @@
                             <constraint firstAttribute="centerX" secondItem="g6m-an-zuR" secondAttribute="centerX" constant="-0.5" id="Zpq-m7-LfO"/>
                             <constraint firstAttribute="centerX" secondItem="nsw-eR-tFQ" secondAttribute="centerX" constant="-0.5" id="cr6-a3-E7r"/>
                             <constraint firstAttribute="bottom" secondItem="roI-Pq-KB0" secondAttribute="bottom" constant="82" id="gc4-dZ-FAL"/>
+                            <constraint firstItem="Rsu-az-0T9" firstAttribute="centerY" secondItem="roI-Pq-KB0" secondAttribute="centerY" id="guV-Fr-yRN"/>
                             <constraint firstAttribute="centerX" secondItem="WHu-r4-8qi" secondAttribute="centerX" constant="-0.5" id="p5S-gf-9tm"/>
+                            <constraint firstItem="Rsu-az-0T9" firstAttribute="leading" secondItem="roI-Pq-KB0" secondAttribute="trailing" constant="8" id="uzf-jv-hvF"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_butCancel" destination="dSQ-n3-2Jj" id="mNn-NA-ftL"/>
                         <outlet property="_butLogin" destination="roI-Pq-KB0" id="cuc-EM-0yd"/>
                         <outlet property="_emailTextField" destination="WHu-r4-8qi" id="rda-qp-b7B"/>
+                        <outlet property="_label" destination="nsw-eR-tFQ" id="Pgd-M8-BJM"/>
                         <outlet property="_passwordTextField" destination="g6m-an-zuR" id="6JM-lE-tKl"/>
+                        <outlet property="_progressIndicator" destination="Rsu-az-0T9" id="PDR-f2-d97"/>
                     </connections>
                 </viewController>
                 <customObject id="UKw-kp-XCG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1092,7 +1103,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Fw-QM-PI1">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OOE-nz-1tq">
+                                <rect key="frame" x="0.0" y="196" width="452" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="aaO-w3-3oJ"/>
+                                    <constraint firstAttribute="width" constant="448" id="cXq-Ob-rpl"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="What kind of task do you want to add?" id="Xys-r8-a8n">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Fw-QM-PI1">
                                 <rect key="frame" x="49" y="37" width="119" height="32"/>
                                 <buttonCell key="cell" type="push" title="Scrum begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vog-g8-0o1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1102,55 +1125,7 @@
                                     <action selector="handleScrumBeginButton:" target="2VM-Zw-qp9" id="J1S-Yk-ZVH"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DXm-Fy-uZV">
-                                <rect key="frame" x="288" y="37" width="116" height="32"/>
-                                <buttonCell key="cell" type="push" title="Lunch begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rWM-Dh-VMA">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleLunchBeginButton:" target="2VM-Zw-qp9" id="qaO-FY-ofg"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqM-dt-X5J">
-                                <rect key="frame" x="299" y="-2" width="105" height="32"/>
-                                <buttonCell key="cell" type="push" title="Lunch end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jXD-1C-Vlr">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleLunchEndButton:" target="2VM-Zw-qp9" id="D5H-55-hGb"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Ec-guA">
-                                <rect key="frame" x="49" y="130" width="355" height="32"/>
-                                <buttonCell key="cell" type="push" title="Task begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rDu-Be-c78">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleTaskBeginButton:" target="2VM-Zw-qp9" id="bPX-hi-xcg"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP3-YD-zEj">
-                                <rect key="frame" x="49" y="103" width="355" height="32"/>
-                                <buttonCell key="cell" type="push" title="Task end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zla-ZL-uDZ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="systemBold"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleTaskEndButton:" target="2VM-Zw-qp9" id="oaX-aQ-9iN"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OOE-nz-1tq">
-                                <rect key="frame" x="0.0" y="196" width="452" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="What kind of task do you want to add?" id="Xys-r8-a8n">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-qM-o57">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-qM-o57">
                                 <rect key="frame" x="49" y="-2" width="107" height="32"/>
                                 <buttonCell key="cell" type="push" title="Scrum end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J2A-GE-JVu">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1160,7 +1135,71 @@
                                     <action selector="handleScrumEndButton:" target="2VM-Zw-qp9" id="LbK-aI-4rw"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DXm-Fy-uZV">
+                                <rect key="frame" x="288" y="37" width="116" height="32"/>
+                                <buttonCell key="cell" type="push" title="Lunch begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rWM-Dh-VMA">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleLunchBeginButton:" target="2VM-Zw-qp9" id="qaO-FY-ofg"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nqM-dt-X5J">
+                                <rect key="frame" x="299" y="-2" width="105" height="32"/>
+                                <buttonCell key="cell" type="push" title="Lunch end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jXD-1C-Vlr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleLunchEndButton:" target="2VM-Zw-qp9" id="D5H-55-hGb"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Ec-guA">
+                                <rect key="frame" x="49" y="130" width="355" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="MS5-sv-V6M"/>
+                                    <constraint firstAttribute="height" constant="21" id="Sav-LP-Ys1"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Task begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rDu-Be-c78">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleTaskBeginButton:" target="2VM-Zw-qp9" id="bPX-hi-xcg"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CP3-YD-zEj">
+                                <rect key="frame" x="49" y="103" width="355" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="IKE-Zz-dfm"/>
+                                    <constraint firstAttribute="height" constant="21" id="TMi-Zo-Dom"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Task end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zla-ZL-uDZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleTaskEndButton:" target="2VM-Zw-qp9" id="oaX-aQ-9iN"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="dT0-Ec-guA" secondAttribute="centerX" constant="-1.5" id="1hg-nY-Vue"/>
+                            <constraint firstItem="dT0-Ec-guA" firstAttribute="top" secondItem="OOE-nz-1tq" secondAttribute="bottom" constant="38" id="2mT-OS-kA1"/>
+                            <constraint firstItem="CP3-YD-zEj" firstAttribute="leading" secondItem="3Fw-QM-PI1" secondAttribute="trailing" constant="-107" id="98g-9B-LN2"/>
+                            <constraint firstItem="nqM-dt-X5J" firstAttribute="top" secondItem="DXm-Fy-uZV" secondAttribute="bottom" constant="18" id="ALB-1X-gGb"/>
+                            <constraint firstItem="OOE-nz-1tq" firstAttribute="top" secondItem="uNj-CH-ggG" secondAttribute="top" constant="82" id="Bu6-hR-8Ds"/>
+                            <constraint firstAttribute="centerX" secondItem="CP3-YD-zEj" secondAttribute="centerX" constant="-1.5" id="E2U-u0-gwq"/>
+                            <constraint firstItem="DfG-qM-o57" firstAttribute="top" secondItem="3Fw-QM-PI1" secondAttribute="bottom" constant="18" id="Ig4-ky-zhm"/>
+                            <constraint firstItem="DXm-Fy-uZV" firstAttribute="trailing" secondItem="CP3-YD-zEj" secondAttribute="trailing" id="Ujf-vS-Zjm"/>
+                            <constraint firstItem="3Fw-QM-PI1" firstAttribute="top" secondItem="CP3-YD-zEj" secondAttribute="bottom" constant="45" id="ZoK-1N-Wie"/>
+                            <constraint firstItem="DXm-Fy-uZV" firstAttribute="top" secondItem="CP3-YD-zEj" secondAttribute="bottom" constant="45" id="jKk-cg-6WC"/>
+                            <constraint firstItem="DfG-qM-o57" firstAttribute="leading" secondItem="3Fw-QM-PI1" secondAttribute="leading" id="o6F-zH-uGi"/>
+                            <constraint firstItem="CP3-YD-zEj" firstAttribute="top" secondItem="dT0-Ec-guA" secondAttribute="bottom" constant="6" id="q12-Ir-Gg1"/>
+                            <constraint firstAttribute="centerX" secondItem="OOE-nz-1tq" secondAttribute="centerX" constant="-1" id="xg7-hk-drf"/>
+                            <constraint firstItem="DXm-Fy-uZV" firstAttribute="trailing" secondItem="nqM-dt-X5J" secondAttribute="trailing" id="yQ9-DB-Nd1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="_butStart" destination="3Fw-QM-PI1" id="WCF-6u-NNs"/>

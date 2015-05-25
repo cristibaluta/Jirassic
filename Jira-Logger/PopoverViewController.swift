@@ -40,7 +40,7 @@ class PopoverViewController: NSViewController {
 				width: self.view.frame.size.width, height: self.view.frame.size.height)
 			_tasksController?.onButSettingsPressed = {[weak self] () in
 				if let strongSelf = self {
-					strongSelf.flipToSettings()
+					strongSelf.flipToLogin()
 				}
 			}
 		}
@@ -87,6 +87,11 @@ class PopoverViewController: NSViewController {
 					strongSelf.flipToTasks()
 				}
 			}
+			_loginController?.onLoginCancel = {[weak self] () in
+				if let strongSelf = self {
+					strongSelf.flipToTasks()
+				}
+			}
 		}
 		
 		return _loginController!
@@ -95,6 +100,7 @@ class PopoverViewController: NSViewController {
 	func removeLoginController() {
 		if _loginController != nil {
 			_loginController!.removeFromSuperview()
+			_loginController = nil
 		}
 	}
 	
@@ -104,9 +110,9 @@ class PopoverViewController: NSViewController {
 	func flipToSettings() {
 		// Get the layer
 		let layer = self.view.superview!.layer!
-		RCLogO(self.view)
-		RCLogO(self.view.superview)
-		RCLogO(self.view.superview?.subviews)
+//		RCLogO(self.view)
+//		RCLogO(self.view.superview)
+//		RCLogO(self.view.superview?.subviews)
 		
 		let flip = Flip()
 		flip.animationReachedMiddle = {
@@ -119,11 +125,30 @@ class PopoverViewController: NSViewController {
 		flip.startWithLayer(layer)
 	}
 	
+	func flipToLogin() {
+		// Get the layer
+		let layer = self.view.superview!.layer!
+		RCLogO(self.view)
+		RCLogO(self.view.superview)
+		RCLogO(self.view.superview?.subviews)
+		
+		let flip = Flip()
+		flip.animationReachedMiddle = {
+			self.removeTasksController()
+			self.view.addSubview( self.loginController().view )
+		}
+		flip.animationFinished = {
+			
+		}
+		flip.startWithLayer(layer)
+	}
+	
 	func flipToTasks() {
 		
 		let flip = Flip()
 		flip.animationReachedMiddle = {
 			self.removeSettingsController()
+			self.removeLoginController()
 			self.view.addSubview( self.tasksController().view )
 		}
 		flip.animationFinished = {

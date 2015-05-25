@@ -10,11 +10,15 @@ import Cocoa
 
 class LoginViewController: NSViewController {
 	
+	@IBOutlet private var _label: NSTextField?
 	@IBOutlet private var _emailTextField: NSTextField?
 	@IBOutlet private var _passwordTextField: NSTextField?
 	@IBOutlet private var _butLogin: NSButton?
+	@IBOutlet private var _butCancel: NSButton?
+	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
 	var onLoginSuccess: (() -> ())?
+	var onLoginCancel: (() -> ())?
 	
 	class func instanceFromStoryboard() -> LoginViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
@@ -24,29 +28,66 @@ class LoginViewController: NSViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+		var currentUser = PFUser.currentUser()
+		RCLogO(currentUser)
+		if currentUser != nil && currentUser?.username != nil {
+			// Do stuff with the user
+			_butLogin?.title = "Logout"
+			_emailTextField?.stringValue = currentUser!.username!
+		} else {
+			// Show the signup or login screen
+			_butLogin?.title = "Signup or Login"
+		}
     }
 	
 	func removeFromSuperview() {
 		self.view.removeFromSuperview()
 	}
 	
+	
+	// MARK: Actions
+	
+	@IBAction func handleLoginButton(sender: NSButton) {
+		self.login()
+	}
+	
+	@IBAction func handleCancelButton(sender: NSButton) {
+		self.onLoginCancel!()
+	}
+	
 	func register() {
 		
 		var user = PFUser()
-		user.username = "myUsername"
-		user.password = "myPassword"
-		user.email = "email@example.com"
-		// other fields can be set just like with PFObject
-		user["phone"] = "415-392-0202"
+		user.username = _emailTextField?.stringValue
+		user.password = _passwordTextField?.stringValue
+		user.email = _emailTextField?.stringValue
+		RCLogO(user)
+		
+		_progressIndicator?.startAnimation(nil)
 		
 		user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
 			if let error = error {
 				let errorString = error.userInfo?["error"] as? NSString
-				// Show the errorString somewhere and let the user try again.
+				RCLogO(errorString)
 			} else {
-				// Hooray! Let them use the app now.
+				self._progressIndicator?.stopAnimation(nil)
 				self.onLoginSuccess!()
+			}
+		}
+	}
+	
+	func login() {
+		RCLogO(nil)
+		_progressIndicator?.startAnimation(nil)
+		PFUser.logInWithUsernameInBackground(_emailTextField!.stringValue, password:_passwordTextField!.stringValue) {
+			(user: PFUser?, error: NSError?) -> Void in
+			if user != nil {
+				self._progressIndicator?.stopAnimation(nil)
+				self.onLoginSuccess!()
+			} else if let error = error {
+				let errorString = error.userInfo?["error"] as? NSString
+				RCLogO(errorString)
+				self.register()
 			}
 		}
 	}
