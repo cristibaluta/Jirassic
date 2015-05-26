@@ -34,9 +34,11 @@ class LoginViewController: NSViewController {
 			// Do stuff with the user
 			_butLogin?.title = "Logout"
 			_emailTextField?.stringValue = currentUser!.username!
+			_label?.stringValue = "You are already logged in."
 		} else {
 			// Show the signup or login screen
 			_butLogin?.title = "Signup or Login"
+			_label?.stringValue = "You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail"
 		}
     }
 	

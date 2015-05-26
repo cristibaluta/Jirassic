@@ -10,6 +10,10 @@
 		282426761B113D5000211713 /* Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* Flip.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
 		2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */; };
+		2856DF1A1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */; };
+		2856DF1B1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */; };
+		2856DF1D1B13C95200A4D5A4 /* JiraTrackWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF1C1B13C95200A4D5A4 /* JiraTrackWork.swift */; };
+		2856DF1E1B13C95200A4D5A4 /* JiraTrackWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF1C1B13C95200A4D5A4 /* JiraTrackWork.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
 		286585251B031D3A00352782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286585231B031D3A00352782 /* LaunchScreen.xib */; };
@@ -180,6 +184,8 @@
 		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosLoginViewController.swift; sourceTree = "<group>"; };
+		2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraLogin.swift; path = Common/JiraLogin.swift; sourceTree = SOURCE_ROOT; };
+		2856DF1C1B13C95200A4D5A4 /* JiraTrackWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraTrackWork.swift; path = Common/JiraTrackWork.swift; sourceTree = SOURCE_ROOT; };
 		286585141B031D3A00352782 /* Scrum Meeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrum Meeting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286585181B031D3A00352782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -353,6 +359,16 @@
 			path = ../Scrum;
 			sourceTree = "<group>";
 		};
+		2856DF181B13C5D200A4D5A4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */,
+				2856DF1C1B13C95200A4D5A4 /* JiraTrackWork.swift */,
+			);
+			name = Services;
+			path = "Jira-Logger";
+			sourceTree = "<group>";
+		};
 		286585151B031D3A00352782 /* Scrum Meeting */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +502,7 @@
 			children = (
 				28F51E6C1AC68E6D00A69CDF /* Business Rules */,
 				289998A61AC3429500706824 /* Data */,
+				2856DF181B13C5D200A4D5A4 /* Services */,
 				28F51EC41AC8059400A69CDF /* Extensions */,
 				6D31D04E1AC196BB001AC4BA /* Jira-Logger */,
 				6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */,
@@ -765,6 +782,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2856DF1E1B13C95200A4D5A4 /* JiraTrackWork.swift in Sources */,
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				286585581B03EABE00352782 /* DataManager.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
@@ -774,6 +792,7 @@
 				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
+				2856DF1B1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */,
 				286585551B03EAA900352782 /* InitParse.swift in Sources */,
 				2865855A1B03EAC700352782 /* NSDateExtension.swift in Sources */,
 				286585561B03EAB600352782 /* ParseCredentials.swift in Sources */,
@@ -806,6 +825,7 @@
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
 				28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */,
+				2856DF1A1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* JLCreateRaport.swift in Sources */,
 				28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */,
@@ -816,6 +836,7 @@
 				28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */,
 				28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */,
 				28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */,
+				2856DF1D1B13C95200A4D5A4 /* JiraTrackWork.swift in Sources */,
 				28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */,
 				28EB90211AF60234008D5337 /* NoTasksController.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */,
