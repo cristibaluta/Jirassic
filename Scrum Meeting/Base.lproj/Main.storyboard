@@ -55,7 +55,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="p2H-cR-j8u">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="p2H-cR-j8u">
                                 <rect key="frame" x="16" y="177" width="568" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="izP-QB-aSw"/>
@@ -74,7 +74,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p2H-cR-j8u" firstAttribute="trailing" secondItem="R6w-4J-pc4" secondAttribute="trailing" id="771-Vy-kxR"/>
                             <constraint firstItem="bQV-kN-5Ia" firstAttribute="trailing" secondItem="D52-14-Kez" secondAttribute="trailingMargin" id="DQx-x7-Eqw"/>
                             <constraint firstItem="b4t-lD-bTw" firstAttribute="leading" secondItem="D52-14-Kez" secondAttribute="leadingMargin" constant="-16" id="EG5-Pb-ZZb"/>
                             <constraint firstItem="b4t-lD-bTw" firstAttribute="centerY" secondItem="bQV-kN-5Ia" secondAttribute="centerY" id="aG1-M3-qLh"/>
@@ -246,8 +245,12 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4X7-kF-Wim" id="yb0-IS-u2w">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL1-iN-yxg">
-                                            <rect key="frame" x="70" y="15" width="522" height="21"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgy-d4-nxc">
+                                            <rect key="frame" x="0.0" y="11" width="592" height="29"/>
+                                            <color key="backgroundColor" red="0.72951265333755233" green="0.84896946479430302" blue="0.97161063762626254" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL1-iN-yxg">
+                                            <rect key="frame" x="38" y="15" width="554" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="XtS-vA-zWj"/>
                                             </constraints>
@@ -268,8 +271,8 @@
                                                 </mask>
                                             </variation>
                                         </view>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPy-XO-NJi">
-                                            <rect key="frame" x="40" y="18" width="14" height="14"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPy-XO-NJi">
+                                            <rect key="frame" x="6" y="18" width="14" height="14"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hen-IC-hc7">
                                                     <rect key="frame" x="2" y="2" width="10" height="10"/>
@@ -284,19 +287,24 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="rL1-iN-yxg" secondAttribute="centerY" id="H5z-ru-ISw"/>
-                                        <constraint firstAttribute="centerY" secondItem="hPy-XO-NJi" secondAttribute="centerY" id="Qy9-mt-ocm"/>
-                                        <constraint firstItem="hPy-XO-NJi" firstAttribute="leading" secondItem="T7x-ia-d8x" secondAttribute="trailing" constant="25" id="SBz-VT-yxx"/>
+                                        <constraint firstAttribute="trailing" secondItem="Rgy-d4-nxc" secondAttribute="trailing" constant="8" id="B0X-KT-OTS"/>
+                                        <constraint firstAttribute="centerY" secondItem="rL1-iN-yxg" secondAttribute="centerY" constant="3" id="H5z-ru-ISw"/>
+                                        <constraint firstAttribute="centerY" secondItem="hPy-XO-NJi" secondAttribute="centerY" constant="3.5" id="Qy9-mt-ocm"/>
+                                        <constraint firstItem="hPy-XO-NJi" firstAttribute="leading" secondItem="T7x-ia-d8x" secondAttribute="trailing" constant="-9" id="SBz-VT-yxx"/>
+                                        <constraint firstItem="Rgy-d4-nxc" firstAttribute="leading" secondItem="yb0-IS-u2w" secondAttribute="leading" id="Se6-1j-tew"/>
                                         <constraint firstAttribute="bottom" secondItem="T7x-ia-d8x" secondAttribute="bottom" id="WsO-XL-2E1"/>
                                         <constraint firstItem="T7x-ia-d8x" firstAttribute="top" secondItem="yb0-IS-u2w" secondAttribute="top" id="Y1Y-zs-jGZ"/>
                                         <constraint firstItem="T7x-ia-d8x" firstAttribute="leading" secondItem="yb0-IS-u2w" secondAttribute="leading" constant="10" id="kVQ-9N-NO2"/>
                                         <constraint firstAttribute="trailing" secondItem="rL1-iN-yxg" secondAttribute="trailing" constant="8" id="l4Z-xx-FR5"/>
-                                        <constraint firstItem="rL1-iN-yxg" firstAttribute="leading" secondItem="hPy-XO-NJi" secondAttribute="trailing" constant="16" id="rqb-ZZ-F66"/>
+                                        <constraint firstItem="Rgy-d4-nxc" firstAttribute="top" secondItem="yb0-IS-u2w" secondAttribute="top" constant="11" id="nEM-6t-PoF"/>
+                                        <constraint firstItem="rL1-iN-yxg" firstAttribute="leading" secondItem="hPy-XO-NJi" secondAttribute="trailing" constant="18" id="rqb-ZZ-F66"/>
+                                        <constraint firstAttribute="bottom" secondItem="Rgy-d4-nxc" secondAttribute="bottom" constant="17" id="xJg-8q-ILL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="circleDark" destination="Hen-IC-hc7" id="zeq-VT-QpY"/>
                                     <outlet property="circleWhite" destination="hPy-XO-NJi" id="lQd-y5-L4z"/>
+                                    <outlet property="notesBackgroundView" destination="Rgy-d4-nxc" id="JGx-zP-dVa"/>
                                     <outlet property="notesLabel" destination="rL1-iN-yxg" id="Cg4-DS-U4t"/>
                                 </connections>
                             </tableViewCell>

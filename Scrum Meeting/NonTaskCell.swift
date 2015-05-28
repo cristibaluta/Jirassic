@@ -9,10 +9,11 @@
 import UIKit
 
 class NonTaskCell: UITableViewCell {
-
+	
 	@IBOutlet var circleWhite: UIView?
 	@IBOutlet var circleDark: UIView?
 	@IBOutlet var dateLabel: UILabel?
+	@IBOutlet var notesBackgroundView: UIView?
 	@IBOutlet var notesLabel: UILabel?
 	
 	override func awakeFromNib() {
@@ -20,6 +21,7 @@ class NonTaskCell: UITableViewCell {
 		// Initialization code
 		circleWhite?.layer.cornerRadius = circleWhite!.frame.size.width/2
 		circleDark?.layer.cornerRadius = circleDark!.frame.size.width/2
+		notesBackgroundView?.layer.cornerRadius = circleDark!.frame.size.width/2
 	}
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -74,7 +74,6 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 					date = "\(thePreviosData.date_task_finished!.HHmm()) - \(theData.date_task_finished!.HHmm())"
 					cell?.statusImage!.image = nil
 				}
-				
 			} else {
 				date = theData.date_task_finished!.HHmm()
 				cell?.statusImage!.image = nil

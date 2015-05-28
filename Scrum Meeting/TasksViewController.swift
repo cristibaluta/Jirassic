@@ -82,8 +82,14 @@ extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
 		}
 		else {
 			let cell = tableView.dequeueReusableCellWithIdentifier("NonTaskCell", forIndexPath: indexPath) as! NonTaskCell
-//			cell.dateLabel!.text = theData.date_task_finished?.HHmm()
-			cell.notesLabel!.text = theData.notes
+			if Int(theData.task_type!.intValue) == TaskType.Start.rawValue {
+				cell.circleWhite?.hidden = false
+				cell.notesLabel!.text = theData.notes
+			} else {
+				cell.circleWhite?.hidden = true
+				let thePreviousData = tasks[indexPath.row+1]
+				cell.notesLabel!.text = "\(theData.notes!) \(thePreviousData.date_task_finished!.HHmm()) - \(theData.date_task_finished!.HHmm())"
+			}
 			return cell
 		}
 	}
