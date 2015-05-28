@@ -55,6 +55,7 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
 		}
 		assert(cell != nil, "Cell can't be nil, check the identifier")
+			
 		var date = ""
 		if theData.date_task_finished == nil && theData.date_task_started != nil {
 			date = theData.date_task_started!.HHmm()
@@ -63,15 +64,21 @@ class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 			if row < data!.count-1 {
 				let thePreviosData = data![row+1] as Task
 				let duration = theData.date_task_finished?.timeIntervalSinceDate(thePreviosData.date_task_finished!)
-				RCLogO(duration)
-				RCLogO(theData.date_task_finished)
-				RCLogO(thePreviosData.date_task_finished)
-				RCLogO(NSDate(timeIntervalSince1970: duration!))
-				date = "\(theData.date_task_finished!.HHmm())\n\(NSDate(timeIntervalSince1970: duration!).HHmmGMT())h"
+				if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
+					date = "\(theData.date_task_finished!.HHmm())\n\(NSDate(timeIntervalSince1970: duration!).HHmmGMT())h"
+					cell?.statusImage!.image = NSImage(named: NSImageNameStatusAvailable)
+				} else if Int(theData.task_type!.intValue) == TaskType.Start.rawValue {
+					date = thePreviosData.date_task_finished!.HHmm()
+					cell?.statusImage!.image = nil
+				} else {
+					date = "\(thePreviosData.date_task_finished!.HHmm()) - \(theData.date_task_finished!.HHmm())"
+					cell?.statusImage!.image = nil
+				}
+				
 			} else {
 				date = theData.date_task_finished!.HHmm()
+				cell?.statusImage!.image = nil
 			}
-			cell?.statusImage!.image = NSImage(named: NSImageNameStatusAvailable)
 		}
 		cell?.data = (date: date, task: theData.task_nr!, notes: theData.notes!)
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in

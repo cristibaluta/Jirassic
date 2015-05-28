@@ -71,7 +71,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		
 		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
-		task.notes = "Working day started at \(NSDate().HHmm())"
+		task.notes = "Working day started"
 		task.task_type = TaskType.Start.rawValue
 		
 		return task

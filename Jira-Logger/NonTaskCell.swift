@@ -23,8 +23,21 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 				self.notesTextField!.stringValue)
 		}
 		set {
-			self.dateEndTextField!.stringValue = newValue.date
-			self.notesTextField!.stringValue = newValue.notes
+//			self.dateEndTextField!.stringValue = newValue.date
+			self.notesTextField!.stringValue = "\(newValue.notes) \(newValue.date)"
 		}
+	}
+	
+	override func drawBackgroundInRect(dirtyRect: NSRect) {
+		
+		let selectionRect = NSRect(x: 0, y: 6, width: dirtyRect.size.width-10, height: dirtyRect.size.height-12)
+		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+		selectionPath.fill()
+		
+		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
+		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+		let linePath = NSBezierPath(rect: lineRect)
+		linePath.fill()
 	}
 }
