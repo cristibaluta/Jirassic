@@ -62,7 +62,7 @@ extension NSDate {
 	
 		while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
 			monthDifference.month = monthOffset++
-			nextDate = NSCalendar.currentCalendar().dateByAddingComponents(monthDifference,
+			nextDate = gregorian!.dateByAddingComponents(monthDifference,
 				toDate: startDate, options: nil)!
 			dates.append(nextDate)
 		}
@@ -134,9 +134,7 @@ extension NSDate {
 	// MARK: Private
 	
 	private func round(min: Int) -> (hour: Int, min: Int) {
-		if min < 8 {
-			return (0, 0)
-		} else if min < 22 {
+		if min < 22 {
 			return (0, 15)
 		} else if min < 38 {
 			return (0, 30)

@@ -565,7 +565,6 @@
 				28E839001AF402B200602D33 /* DateTests.swift */,
 				28F292261B1C57B40015F64F /* RaportTests.swift */,
 				6D31D0651AC196BC001AC4BA /* Supporting Files */,
-				28F2922A1B1C843D0015F64F /* Jira-LoggerTests-Bridging-Header.h */,
 			);
 			path = "Jira-LoggerTests";
 			sourceTree = "<group>";
@@ -573,6 +572,7 @@
 		6D31D0651AC196BC001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28F2922A1B1C843D0015F64F /* Jira-LoggerTests-Bridging-Header.h */,
 				6D31D0661AC196BC001AC4BA /* Info.plist */,
 			);
 			name = "Supporting Files";
