@@ -23,14 +23,15 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var data: (date: String, task: String, notes: String) {
+	var data: (dateStart: String, dateEnd: String, task: String, notes: String) {
 		get {
 			return (self.dateEndTextField!.stringValue,
+					self.dateEndTextField!.stringValue,
 					self.issueNrTextField!.stringValue,
 					self.notesTextField!.stringValue)
 		}
 		set {
-			self.dateEndTextField!.stringValue = newValue.date
+			self.dateEndTextField!.stringValue = newValue.dateEnd
 			self.issueNrTextField!.stringValue = newValue.task
 			self.notesTextField!.stringValue = newValue.notes
 		}
@@ -38,6 +39,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	override func awakeFromNib() {
 		self.butRemove?.hidden = true
+		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
 	override func controlTextDidBeginEditing(obj: NSNotification) {
@@ -80,16 +82,22 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 			selectionPath.fill()
 			selectionPath.stroke()
 		}
+		
+		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
+		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+		let linePath = NSBezierPath(rect: lineRect)
+		linePath.fill()
 	}
 	
 	override func drawSelectionInRect(dirtyRect: NSRect) {
-//		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
+		RCLogRect(dirtyRect)
 		let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
 		NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
 		NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()
 		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 		selectionPath.fill()
 		selectionPath.stroke()
+		
 	}
 	
 	// MARK: mouse

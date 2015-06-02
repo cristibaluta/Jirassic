@@ -16,15 +16,16 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var data: (date: String, task: String, notes: String) {
+	var data: (dateStart: String, dateEnd: String, task: String, notes: String) {
 		get {
-			return (self.dateEndTextField!.stringValue,
-				"",
-				self.notesTextField!.stringValue)
+			return ("",
+					self.dateEndTextField!.stringValue,
+					"",
+					self.notesTextField!.stringValue)
 		}
 		set {
 //			self.dateEndTextField!.stringValue = newValue.date
-			self.notesTextField!.stringValue = "\(newValue.notes) \(newValue.date)"
+			self.notesTextField!.stringValue = "\(newValue.notes) \(newValue.dateEnd)"
 		}
 	}
 	

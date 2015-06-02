@@ -103,6 +103,9 @@
 		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
 		28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
 		28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
+		28F292271B1C57B40015F64F /* RaportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* RaportTests.swift */; };
+		28F292281B1C72720015F64F /* JLCreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */; };
+		28F292291B1C75960015F64F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
 		28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
@@ -119,7 +122,6 @@
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
-		6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */; };
 		6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */; };
 		6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */; };
 		6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D07B1AC2E8BF001AC4BA /* CoreLocation.framework */; };
@@ -228,6 +230,8 @@
 		28EB90711AF95C37008D5337 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28EB90901AF9754A008D5337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLPredictiveTimeTyping.swift; path = ../Common/JLPredictiveTimeTyping.swift; sourceTree = "<group>"; };
+		28F292261B1C57B40015F64F /* RaportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaportTests.swift; sourceTree = "<group>"; };
+		28F2922A1B1C843D0015F64F /* Jira-LoggerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jira-LoggerTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskWriter.swift; path = ../Common/JLTaskWriter.swift; sourceTree = "<group>"; };
 		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskReader.swift; path = ../Common/JLTaskReader.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -247,7 +251,6 @@
 		6D31D05B1AC196BB001AC4BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D31D0611AC196BC001AC4BA /* Jira-LoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jira-LoggerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0661AC196BC001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jira_LoggerTests.swift; sourceTree = "<group>"; };
 		6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6D31D07B1AC2E8BF001AC4BA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -557,11 +560,12 @@
 		6D31D0641AC196BC001AC4BA /* Jira-LoggerTests */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D0671AC196BC001AC4BA /* Jira_LoggerTests.swift */,
 				28EB90251AF6027D008D5337 /* DummyDataManager.swift */,
 				28EB90231AF60250008D5337 /* NoTasksTests.swift */,
 				28E839001AF402B200602D33 /* DateTests.swift */,
+				28F292261B1C57B40015F64F /* RaportTests.swift */,
 				6D31D0651AC196BC001AC4BA /* Supporting Files */,
+				28F2922A1B1C843D0015F64F /* Jira-LoggerTests-Bridging-Header.h */,
 			);
 			path = "Jira-LoggerTests";
 			sourceTree = "<group>";
@@ -862,13 +866,15 @@
 				28EB90611AF73FFD008D5337 /* JLEstimateStartingDay.swift in Sources */,
 				28EB90221AF60234008D5337 /* NoTasksController.swift in Sources */,
 				28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */,
+				28F292271B1C57B40015F64F /* RaportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
 				28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */,
-				6D31D0681AC196BC001AC4BA /* Jira_LoggerTests.swift in Sources */,
+				28F292281B1C72720015F64F /* JLCreateRaport.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,
 				28EB90641AF948E3008D5337 /* NewDayController.swift in Sources */,
 				28EB905E1AF73FD4008D5337 /* JLEstimateLunchBreak.swift in Sources */,
+				28F292291B1C75960015F64F /* Task.swift in Sources */,
 				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1145,6 +1151,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1158,6 +1165,8 @@
 				INFOPLIST_FILE = "Jira-LoggerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "Jira-LoggerTests";
+				SWIFT_OBJC_BRIDGING_HEADER = "Jira-LoggerTests/Jira-LoggerTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira-Logger.app/Contents/MacOS/Jira-Logger";
 			};
 			name = Debug;
@@ -1166,6 +1175,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -1175,6 +1185,7 @@
 				INFOPLIST_FILE = "Jira-LoggerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "Jira-LoggerTests";
+				SWIFT_OBJC_BRIDGING_HEADER = "Jira-LoggerTests/Jira-LoggerTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jira-Logger.app/Contents/MacOS/Jira-Logger";
 			};
 			name = Release;

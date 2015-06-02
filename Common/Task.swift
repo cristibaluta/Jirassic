@@ -20,33 +20,62 @@ enum TaskType: Int {
 	case Start = 1
 	case Scrum = 2
 	case Lunch = 3
+	case Meeting = 4
 }
 
 public class Task: PFObject, PFSubclassing {
 
-	override init () {
-		super.init()
-	}
+//	override init() {
+//		super.init()
+//	}
 	
-	dynamic public var date_task_started :NSDate? {
+	dynamic public var date_task_started: NSDate? {
 		get {
-			return objectForKey(kDateStartKey) as! NSDate?
+			if let value: AnyObject = objectForKey(kDateStartKey) {
+				switch value {
+				case let value as NSNull:
+					return nil
+				case let value as NSDate:
+					return value
+				default:
+					fatalError("unexpected object")
+				}
+			}
+			return nil
 		}
 		set {
-			setObject(newValue!, forKey: kDateStartKey)
+			if let value = newValue {
+				setObject(value, forKey: kDateStartKey)
+			} else {
+				setObject(NSNull(), forKey: kDateStartKey)
+			}
 		}
 	}
 	
-    dynamic public var date_task_finished :NSDate? {
+    dynamic public var date_task_finished: NSDate? {
         get {
-            return objectForKey(kDateFinishKey) as! NSDate?
+			if let value: AnyObject = objectForKey(kDateFinishKey) {
+				switch value {
+					case let value as NSNull:
+						return nil
+					case let value as NSDate:
+						return value
+					default:
+						fatalError("unexpected object")
+				}
+			}
+			return nil
         }
         set {
-            setObject(newValue!, forKey: kDateFinishKey)
+			if let value = newValue {
+				setObject(value, forKey: kDateFinishKey)
+			} else {
+				setObject(NSNull(), forKey: kDateFinishKey)
+			}
         }
     }
     
-    dynamic public var notes :String? {
+    dynamic public var notes: String? {
         get {
             return objectForKey(kNotesKey) as! String?
         }
@@ -55,7 +84,7 @@ public class Task: PFObject, PFSubclassing {
         }
     }
 	
-	dynamic public var task_nr :String? {
+	dynamic public var task_nr: String? {
 		get {
 			return objectForKey(kTaskNrKey) as! String?
 		}
@@ -64,7 +93,7 @@ public class Task: PFObject, PFSubclassing {
 		}
 	}
 	
-	dynamic public var task_type :NSNumber? {
+	dynamic public var task_type: NSNumber? {
 		get {
 			return objectForKey(kTypeKey) as! NSNumber?
 		}

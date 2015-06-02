@@ -15,6 +15,8 @@ enum TaskSubtype: Int {
 	case TaskScrumEnd = 3
 	case TaskLunchBegin = 4
 	case TaskLunchEnd = 5
+	case TaskMeetingBegin = 6
+	case TaskMeetingEnd = 7
 }
 
 class TasksViewController: NSViewController {
@@ -38,7 +40,7 @@ class TasksViewController: NSViewController {
 	private var _tasksDataSource: TasksDataSource?
 	private var _newDayController = NewDayController()
 	private let _gapX = CGFloat(12)
-	private let kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
+	private var kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
 	var onButSettingsPressed: (() -> ())?
 	
@@ -51,6 +53,7 @@ class TasksViewController: NSViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		kSecondaryControllerFrame = NSInsetRect(self.view.bounds, _gapX, 0)
 		updateNoTasksState()
 		reloadDataFromServer()
     }
@@ -105,7 +108,11 @@ class TasksViewController: NSViewController {
 			_daysDataSource?.didSelectRow = { (row: Int) in
 				if row >= 0 {
 					let theData = self._daysDataSource!.data![row]
-					self.reloadTasksOnDay( theData.date_task_finished!)
+					if let dateEnd = theData.date_task_finished {
+						self.reloadTasksOnDay( dateEnd )
+					} else if let dateStart = theData.date_task_started {
+						self.reloadTasksOnDay( dateStart )
+					}
 				}
 			}
 			
@@ -202,9 +209,14 @@ class TasksViewController: NSViewController {
 				var task: Task?
 				
 				switch(i) {
-					case .TaskIssueBegin, .TaskIssueEnd: task = sharedData.addNewTask(NSDate(), dateEnd:NSDate())
-					case .TaskScrumBegin, .TaskScrumEnd: task = sharedData.addScrumSessionTask(NSDate(), dateEnd:NSDate())
-					case .TaskLunchBegin, .TaskLunchEnd: task = sharedData.addLunchBreakTask(NSDate(), dateEnd:NSDate())
+					case .TaskIssueBegin: task = sharedData.addNewTask(NSDate(), dateEnd: nil)
+					case .TaskIssueEnd: task = sharedData.addNewTask(nil, dateEnd: NSDate())
+					case .TaskScrumBegin: task = sharedData.addScrumSessionTask(nil, dateEnd:NSDate())
+					case .TaskScrumEnd: task = sharedData.addScrumSessionTask(nil, dateEnd:NSDate())
+					case .TaskLunchBegin: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
+					case .TaskLunchEnd: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
+					case .TaskMeetingBegin: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
+					case .TaskMeetingEnd: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
 				}
 				
 				self._tasksDataSource?.addTask( task! )
@@ -219,6 +231,7 @@ class TasksViewController: NSViewController {
 				self.removeNewTaskController()
 			}
 		}
+		
 		return _newTaskViewController!
 	}
 	

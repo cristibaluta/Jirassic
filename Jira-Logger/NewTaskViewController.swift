@@ -51,4 +51,12 @@ class NewTaskViewController: NSViewController {
 		self.onOptionChosen?(i: .TaskIssueEnd)
 	}
 	
+	@IBAction func handleMeetingBeginButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskIssueBegin)
+	}
+	
+	@IBAction func handleMeetingEndButton(sender: NSButton) {
+		self.onOptionChosen?(i: .TaskIssueEnd)
+	}
+	
 }

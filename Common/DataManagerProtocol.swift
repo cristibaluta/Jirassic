@@ -17,5 +17,6 @@ import Foundation
 	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
 	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
 	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
+	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
 //	func updateTask(task_id: String, notes: String)
 }

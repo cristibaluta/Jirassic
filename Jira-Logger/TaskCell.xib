@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
                     <rect key="frame" x="70" y="52" width="276" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="kkS-Qs-fmO"/>
@@ -25,7 +25,7 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
                     <rect key="frame" x="70" y="0.0" width="267" height="50"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
@@ -36,7 +36,7 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                     </connections>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
+                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
                     <rect key="frame" x="298" y="52" width="45" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="Llh-x5-YiH"/>
@@ -58,34 +58,21 @@
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
                 </textField>
-                <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-lw-vdV">
-                    <rect key="frame" x="8" y="0.0" width="4" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="width" id="49l-LT-GzP"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="vOk-nT-FeC"/>
-                    </constraints>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
                     <rect key="frame" x="0.0" y="52" width="20" height="18"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="1Ya-2C-gO8"/>
-                <constraint firstItem="0b2-lw-vdV" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="2Bx-lm-qUN"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4LC-Du-N7a"/>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="80g-x5-V5p"/>
+                <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="AJd-Hi-qVV"/>
                 <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="1" id="IWa-Nv-FUv"/>
                 <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="10" id="LIn-sd-PKY"/>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" id="Nf3-e9-nbf"/>
-                <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="top" constant="20" id="aCx-Q1-eHe"/>
-                <constraint firstItem="0b2-lw-vdV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="dS7-9H-GO9"/>
-                <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="dsC-7m-gMj"/>
+                <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>
                 <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="2" id="rjV-yO-bKe"/>
                 <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="2" id="xXu-v8-MmE"/>
-                <constraint firstAttribute="bottom" secondItem="0b2-lw-vdV" secondAttribute="bottom" id="z0l-Sx-rdC"/>
             </constraints>
             <connections>
                 <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>

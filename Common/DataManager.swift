@@ -35,9 +35,16 @@ class DataManager: NSObject, DataManagerProtocol {
 		
 		let filteredData = self.data.filter { (task: Task) -> Bool in
 			
-			if task.date_task_finished!.isSameDayAs(currrentDate) == false {
-				currrentDate = task.date_task_finished!
-				return true
+			if let dateEnd = task.date_task_finished {
+				if dateEnd.isSameDayAs(currrentDate) == false {
+					currrentDate = task.date_task_finished!
+					return true
+				}
+			} else if let dateStart = task.date_task_started {
+				if dateStart.isSameDayAs(currrentDate) == false {
+					currrentDate = task.date_task_started!
+					return true
+				}
 			}
 			return false
 		}
@@ -48,7 +55,13 @@ class DataManager: NSObject, DataManagerProtocol {
 	func tasksForDayOnDate(date: NSDate) -> [Task] {
 		
 		let filteredData = self.data.filter { (task: Task) -> Bool in
-			return task.date_task_finished!.isSameDayAs( date )
+			
+			if let dateEnd = task.date_task_finished {
+				return dateEnd.isSameDayAs(date)
+			} else if let dateStart = task.date_task_started {
+				return dateStart.isSameDayAs(date)
+			}
+			return false
 		}
 		
 		return filteredData
@@ -93,6 +106,16 @@ class DataManager: NSObject, DataManagerProtocol {
 		task.task_nr = ""
 		task.notes = "Lunch break"
 		task.task_type = TaskType.Lunch.rawValue
+		
+		return task
+	}
+	
+	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
+		
+		let task = addNewTask(dateSart, dateEnd: dateEnd)
+		task.task_nr = "Internal meeting"
+		task.notes = ""
+		task.task_type = TaskType.Meeting.rawValue
 		
 		return task
 	}

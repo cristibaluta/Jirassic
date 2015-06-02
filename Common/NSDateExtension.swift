@@ -9,6 +9,9 @@
 import Foundation
 
 let ymdUnitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
+let ymdhmsUnitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth |
+										NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitHour |
+										NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitSecond
 let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
@@ -69,13 +72,7 @@ extension NSDate {
 	
 	func firstDayThisMonth() -> NSDate {
 		
-		let unitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitYear |
-			NSCalendarUnit.CalendarUnitMonth |
-			NSCalendarUnit.CalendarUnitDay |
-			NSCalendarUnit.CalendarUnitHour |
-			NSCalendarUnit.CalendarUnitMinute |
-			NSCalendarUnit.CalendarUnitSecond
-		let comps = gregorian!.components(unitFlags, fromDate: self)
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
 		comps.day = 1
 		comps.hour = 0
 		comps.minute = 0
@@ -119,5 +116,34 @@ extension NSDate {
 	func day() -> Int {
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.day
+	}
+	
+	func roundUp() -> NSDate {
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+		let hm = self.round(comps.minute)
+		comps.hour = comps.hour + hm.hour
+		comps.minute = hm.min
+		comps.second = 0
+		return gregorian!.dateFromComponents(comps)!
+	}
+	
+	func secondsToPercentTime(time: Double) -> Double {
+		return time / 3600
+	}
+	
+	// MARK: Private
+	
+	private func round(min: Int) -> (hour: Int, min: Int) {
+		if min < 8 {
+			return (0, 0)
+		} else if min < 22 {
+			return (0, 15)
+		} else if min < 38 {
+			return (0, 30)
+		} else if min < 52 {
+			return (0, 45)
+		} else {
+			return (1, 0)
+		}
 	}
 }
