@@ -15,6 +15,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	@IBOutlet private var issueNrTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
 	@IBOutlet private var butRemove: NSButton?
+	@IBOutlet private var butAdd: NSButton?
 	
 	private var isEditing = false
 	private var wasEdited = false
@@ -39,6 +40,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	override func awakeFromNib() {
 		self.butRemove?.hidden = true
+		self.butAdd?.hidden = true
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
@@ -105,12 +107,14 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	override func mouseEntered(theEvent: NSEvent) {
 		self.mouseInside = true
 		self.butRemove?.hidden = false
+		self.butAdd?.hidden = false
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
 	override func mouseExited(theEvent: NSEvent) {
 		self.mouseInside = false
 		self.butRemove?.hidden = true
+		self.butAdd?.hidden = true
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	

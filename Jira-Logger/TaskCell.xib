@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="TaskCellIdentifier" id="c22-O7-iKe" customClass="TaskCell" customModule="Jira_Logger" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="345" height="37"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="70" y="52" width="276" height="18"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                    <rect key="frame" x="70" y="19" width="276" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="kkS-Qs-fmO"/>
                     </constraints>
@@ -25,8 +25,8 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                    <rect key="frame" x="70" y="0.0" width="267" height="50"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                    <rect key="frame" x="70" y="0.0" width="267" height="17"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -36,8 +36,8 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                     </connections>
                 </textField>
-                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
-                    <rect key="frame" x="298" y="52" width="45" height="16"/>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
+                    <rect key="frame" x="298" y="19" width="45" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="Llh-x5-YiH"/>
                         <constraint firstAttribute="height" constant="16" id="RFm-9k-fFR"/>
@@ -51,7 +51,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="17" y="0.0" width="51" height="70"/>
+                    <rect key="frame" x="17" y="-33" width="51" height="70"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,13 +59,29 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
-                    <rect key="frame" x="0.0" y="52" width="20" height="18"/>
+                    <rect key="frame" x="0.0" y="19" width="20" height="18"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="egw-SB-d18">
+                    <rect key="frame" x="19" y="0.0" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="fan-M0-Fks"/>
+                        <constraint firstAttribute="width" constant="16" id="fz1-5i-2XZ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QSn-Zg-qm9">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="eqM-87-f3b"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4LC-Du-N7a"/>
+                <constraint firstAttribute="bottom" secondItem="egw-SB-d18" secondAttribute="bottom" id="5eS-Xf-CLy"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="80g-x5-V5p"/>
+                <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="19" id="8CW-fy-g9y"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="AJd-Hi-qVV"/>
                 <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="1" id="IWa-Nv-FUv"/>
                 <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="10" id="LIn-sd-PKY"/>
@@ -75,16 +91,18 @@
                 <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="2" id="xXu-v8-MmE"/>
             </constraints>
             <connections>
+                <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
                 <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
                 <outlet property="dateEndTextField" destination="HS2-iB-3Ta" id="fDF-KM-JEr"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
                 <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
                 <outlet property="statusImage" destination="iAi-8T-Cme" id="kez-tX-mzz"/>
             </connections>
-            <point key="canvasLocation" x="224.5" y="253"/>
+            <point key="canvasLocation" x="224.5" y="252.5"/>
         </customView>
     </objects>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
