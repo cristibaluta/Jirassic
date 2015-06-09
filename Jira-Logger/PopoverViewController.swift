@@ -108,11 +108,6 @@ class PopoverViewController: NSViewController {
 	// MARK: Flip popup views
 	
 	func flipToSettings() {
-		// Get the layer
-		let layer = self.view.superview!.layer!
-//		RCLogO(self.view)
-//		RCLogO(self.view.superview)
-//		RCLogO(self.view.superview?.subviews)
 		
 		let flip = Flip()
 		flip.animationReachedMiddle = {
@@ -122,15 +117,10 @@ class PopoverViewController: NSViewController {
 		flip.animationFinished = {
 			
 		}
-		flip.startWithLayer(layer)
+		flip.startWithLayer(self.view.superview!.layer!)
 	}
 	
 	func flipToLogin() {
-		// Get the layer
-		let layer = self.view.superview!.layer!
-		RCLogO(self.view)
-		RCLogO(self.view.superview)
-		RCLogO(self.view.superview?.subviews)
 		
 		let flip = Flip()
 		flip.animationReachedMiddle = {
@@ -140,7 +130,7 @@ class PopoverViewController: NSViewController {
 		flip.animationFinished = {
 			
 		}
-		flip.startWithLayer(layer)
+		flip.startWithLayer(self.view.superview!.layer!)
 	}
 	
 	func flipToTasks() {

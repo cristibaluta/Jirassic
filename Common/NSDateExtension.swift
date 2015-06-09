@@ -47,6 +47,12 @@ extension NSDate {
 		return f.stringFromDate(self)
 	}
 	
+	func ddEEEEE() -> String {
+		let f = NSDateFormatter()
+		f.dateFormat = "dd • EEEEE"
+		return f.stringFromDate(self)
+	}
+	
 	func EEEEMMdd() -> String {
 		let f = NSDateFormatter()
 		f.dateFormat = "EEEE, MMMM dd"

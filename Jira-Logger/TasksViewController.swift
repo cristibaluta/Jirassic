@@ -200,7 +200,10 @@ class TasksViewController: NSViewController {
 		
 		if _newTaskViewController == nil {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
-			_newTaskViewController?.view.frame = kSecondaryControllerFrame
+			_newTaskViewController?.view.frame = NSRect(x: _gapX,
+				y: CGRectGetMinY(_datesScrollView!.frame),
+				width: self.view.frame.size.width - _gapX,
+				height: CGRectGetHeight(_datesScrollView!.frame))
 			_newTaskViewController?.onOptionChosen = { (i: TaskSubtype) -> Void in
 				
 				self._datesTableView?.hidden = false
