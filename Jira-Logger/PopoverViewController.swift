@@ -14,7 +14,6 @@ class PopoverViewController: NSViewController {
 	private var _settingsController: SettingsViewController?
 	private var _loginController: LoginViewController?
 	
-	
     override func viewDidLoad() {
 		
 		super.viewDidLoad()

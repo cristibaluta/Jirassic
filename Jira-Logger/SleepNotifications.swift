@@ -14,24 +14,40 @@ class SleepNotifications: NSObject {
 	var computerWakeUp: (() -> ())?
 	
 	override init() {
+        
 		super.init()
+		
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
+            selector: Selector("receiveComputerSleepNotification:"), name: NSWorkspaceWillSleepNotification, object: nil)
 		NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-			selector: Selector("receiveSleepNote:"), name: NSWorkspaceWillSleepNotification, object: nil)
-		NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-			selector: Selector("receiveWakeNote:"), name: NSWorkspaceDidWakeNotification, object: nil)
+            selector: Selector("receiveWakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
+            selector: Selector("receiveComputerScreenSleepNotification:"), name: NSWorkspaceScreensDidSleepNotification, object: nil)
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
+            selector: Selector("receiveScreenWakeNotification:"), name: NSWorkspaceScreensDidWakeNotification, object: nil)
 	}
 	
 	deinit {
 		NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
 	}
 	
-	func receiveSleepNote(notif: NSNotification) {
-		RCLog("receiveSleepNote: \(notif.name)")
-//		computerWentToSleep!()
+	func receiveComputerSleepNotification(notif: NSNotification) {
+		RCLogO(notif)
+		computerWentToSleep!()
 	}
-	
-	func receiveWakeNote(notif: NSNotification) {
-		RCLog("receiveWakeNote: \(notif.name)")
-//		computerWakeUp!()
+    
+    func receiveScreenSleepNotification(notif: NSNotification) {
+        RCLogO(notif)
+        computerWentToSleep!()
+    }
+    
+	func receiveComputerWakeNotification(notif: NSNotification) {
+		RCLogO(notif)
+		computerWakeUp!()
 	}
+    
+    func receiveScreenWakeNotification(notif: NSNotification) {
+        RCLogO(notif)
+        computerWakeUp!()
+    }
 }

@@ -12,7 +12,8 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
-	@IBOutlet var popover: NSPopover?
+    @IBOutlet var popover: NSPopover?
+    private var _sleep: SleepNotifications?
 	
 	override init() {
 		
@@ -30,9 +31,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			} else {
 				self.popover?.close()
 			}
-		}
-		
-		SleepNotifications()
+        }
+        _sleep = SleepNotifications()
+        _sleep?.computerWentToSleep = {
+            
+        }
+        _sleep?.computerWakeUp = {
+            
+        }
 	}
 	
     func applicationDidFinishLaunching(aNotification: NSNotification) {
