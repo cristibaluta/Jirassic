@@ -34,10 +34,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         _sleep = SleepNotifications()
         _sleep?.computerWentToSleep = {
-            
+			let existingTasks = sharedData.tasksForDayOnDate(NSDate())
+			var scrumExists = false
+			for task in existingTasks {
+				if task.task_type == TaskType.Scrum.rawValue {
+					scrumExists = true
+					break
+				}
+			}
+			if !scrumExists {
+				sharedData.addScrumSessionTask(NSDate(), dateEnd:nil)
+			}
         }
         _sleep?.computerWakeUp = {
-            
+			let existingTasks = sharedData.tasksForDayOnDate(NSDate())
+			for task in existingTasks {
+				task.date_task_finished = NSDate()
+				break
+			}
         }
 	}
 	

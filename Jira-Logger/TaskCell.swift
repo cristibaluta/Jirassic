@@ -16,14 +16,17 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	@IBOutlet private var notesTextField: NSTextField?
 	@IBOutlet private var butRemove: NSButton?
 	@IBOutlet private var butAdd: NSButton?
+	@IBOutlet private var butCopy: NSButton?
 	
 	private var isEditing = false
 	private var wasEdited = false
-	private var mouseInside = false;
-	private var trackingArea: NSTrackingArea?;
+	private var mouseInside = false
+	private var trackingArea: NSTrackingArea?
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
+	var didAddCell: ((cell: TaskCellProtocol) -> ())?
+	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	var data: (dateStart: String, dateEnd: String, task: String, notes: String) {
 		get {
 			return (self.dateEndTextField!.stringValue,
@@ -41,29 +44,38 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	override func awakeFromNib() {
 		self.butRemove?.hidden = true
 		self.butAdd?.hidden = true
+		self.butCopy?.hidden = true
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
 	override func controlTextDidBeginEditing(obj: NSNotification) {
-		RCLogO(obj.name)
 		isEditing = true
 	}
 	
 	override func controlTextDidChange(obj: NSNotification){
-		RCLogO(obj.name)
 		wasEdited = true
 	}
 	
 	override func controlTextDidEndEditing(obj: NSNotification) {
-		RCLogO(obj.name)
 		if wasEdited {
 			self.didEndEditingCell!(cell: self)
 			wasEdited = false
 		}
 	}
 	
+	// MARK: Acions
+	
 	@IBAction func handleRemoveButton(sender: NSButton) {
 		self.didRemoveCell!(cell: self)
+	}
+	
+	@IBAction func handleAddButton(sender: NSButton) {
+		self.didAddCell!(cell: self)
+	}
+	
+	@IBAction func handleCopyButton(sender: NSButton) {
+		NSPasteboard.generalPasteboard().clearContents()
+		NSPasteboard.generalPasteboard().writeObjects([notesTextField!.stringValue])
 	}
 	
 	override func drawBackgroundInRect(dirtyRect: NSRect) {
@@ -92,7 +104,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	}
 	
 	override func drawSelectionInRect(dirtyRect: NSRect) {
-		RCLogRect(dirtyRect)
+		
 		let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
 		NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
 		NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()
@@ -108,6 +120,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		self.mouseInside = true
 		self.butRemove?.hidden = false
 		self.butAdd?.hidden = false
+		self.butCopy?.hidden = false
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
@@ -115,6 +128,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		self.mouseInside = false
 		self.butRemove?.hidden = true
 		self.butAdd?.hidden = true
+		self.butCopy?.hidden = true
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	

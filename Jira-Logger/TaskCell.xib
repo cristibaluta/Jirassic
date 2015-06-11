@@ -36,20 +36,6 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                     </connections>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
-                    <rect key="frame" x="298" y="19" width="45" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="45" id="Llh-x5-YiH"/>
-                        <constraint firstAttribute="height" constant="16" id="RFm-9k-fFR"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="oWe-AX-kJB"/>
-                    </connections>
-                </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
                     <rect key="frame" x="17" y="-33" width="51" height="70"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
@@ -62,8 +48,22 @@
                     <rect key="frame" x="0.0" y="19" width="20" height="18"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
+                    <rect key="frame" x="40" y="0.0" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="Hca-Cz-ctg"/>
+                        <constraint firstAttribute="width" constant="16" id="ZKD-Kz-mld"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="oWe-AX-kJB"/>
+                    </connections>
+                </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="egw-SB-d18">
-                    <rect key="frame" x="19" y="0.0" width="16" height="16"/>
+                    <rect key="frame" x="20" y="0.0" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="fan-M0-Fks"/>
                         <constraint firstAttribute="width" constant="16" id="fz1-5i-2XZ"/>
@@ -73,25 +73,38 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="eqM-87-f3b"/>
+                        <action selector="handleAddButton:" target="c22-O7-iKe" id="D81-SN-tJv"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
+                    <rect key="frame" x="4" y="5" width="47" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleCopyButton:" target="c22-O7-iKe" id="dmZ-11-AJj"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4LC-Du-N7a"/>
                 <constraint firstAttribute="bottom" secondItem="egw-SB-d18" secondAttribute="bottom" id="5eS-Xf-CLy"/>
+                <constraint firstAttribute="centerY" secondItem="caC-fV-ZwQ" secondAttribute="centerY" constant="-0.5" id="5xQ-yC-MhH"/>
+                <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="6EM-44-CfP"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="80g-x5-V5p"/>
-                <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="19" id="8CW-fy-g9y"/>
+                <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="8CW-fy-g9y"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="AJd-Hi-qVV"/>
+                <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" constant="4" id="HAw-y4-i5c"/>
                 <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="1" id="IWa-Nv-FUv"/>
                 <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="10" id="LIn-sd-PKY"/>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" id="Nf3-e9-nbf"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>
-                <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="2" id="rjV-yO-bKe"/>
-                <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="2" id="xXu-v8-MmE"/>
+                <constraint firstItem="egw-SB-d18" firstAttribute="centerY" secondItem="xar-Oo-330" secondAttribute="centerY" id="tBa-Ey-hHN"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
+                <outlet property="butCopy" destination="caC-fV-ZwQ" id="0ho-tO-K2w"/>
                 <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
                 <outlet property="dateEndTextField" destination="HS2-iB-3Ta" id="fDF-KM-JEr"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>

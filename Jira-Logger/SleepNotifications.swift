@@ -19,10 +19,10 @@ class SleepNotifications: NSObject {
 		
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
             selector: Selector("receiveComputerSleepNotification:"), name: NSWorkspaceWillSleepNotification, object: nil)
-		NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveWakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveComputerScreenSleepNotification:"), name: NSWorkspaceScreensDidSleepNotification, object: nil)
+            selector: Selector("receiveScreenSleepNotification:"), name: NSWorkspaceScreensDidSleepNotification, object: nil)
+		NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
+            selector: Selector("receiveComputerWakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
             selector: Selector("receiveScreenWakeNotification:"), name: NSWorkspaceScreensDidWakeNotification, object: nil)
 	}
