@@ -252,7 +252,7 @@ class TasksViewController: NSViewController {
 		
 		switch s {
 			case .DaysClosed:
-				_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
+//				_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
 				_datesScrollView?.hidden = false
 				_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
 					y: CGRectGetMinY(_datesScrollView!.frame),
@@ -260,7 +260,7 @@ class TasksViewController: NSViewController {
 					height: CGRectGetHeight(_datesScrollView!.frame))
 			
 			case .DaysOpen:
-				_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
+//				_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
 				_datesScrollView?.hidden = true
 				_tasksScrollView?.frame = NSRect(x: _gapX,
 					y: CGRectGetMinY(_datesScrollView!.frame),
@@ -278,7 +278,8 @@ class TasksViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleColumnButton(sender: NSButton) {
-		setDaysTableState( JLDrawerState().toggleState() )
+        NSApplication.sharedApplication().terminate(nil)
+//		setDaysTableState( JLDrawerState().toggleState() )
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
