@@ -64,7 +64,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-		self.show()
+		let icon = self.menu.iconView!
+		icon.mouseDown(NSEvent())
     }
 	
     func applicationWillTerminate(aNotification: NSNotification) {
