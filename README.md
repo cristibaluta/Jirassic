@@ -1,4 +1,4 @@
-# Jira-Logger
+# Jirassic
 
 ![Screenshot](http://ralcr.com/jira-logger/osx.jpg)
 ![Screenshot](http://ralcr.com/jira-logger/ios.jpg)
