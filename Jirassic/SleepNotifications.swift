@@ -12,42 +12,34 @@ class SleepNotifications: NSObject {
 
 	var computerWentToSleep: (() -> ())?
 	var computerWakeUp: (() -> ())?
+	var lastSleepDate: NSDate?
 	
 	override init() {
         
 		super.init()
 		
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveComputerSleepNotification:"), name: NSWorkspaceWillSleepNotification, object: nil)
+            selector: Selector("receiveSleepNotification:"), name: NSWorkspaceWillSleepNotification, object: nil)
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveScreenSleepNotification:"), name: NSWorkspaceScreensDidSleepNotification, object: nil)
+            selector: Selector("receiveSleepNotification:"), name: NSWorkspaceScreensDidSleepNotification, object: nil)
 		NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveComputerWakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
+            selector: Selector("receiveWakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveScreenWakeNotification:"), name: NSWorkspaceScreensDidWakeNotification, object: nil)
+            selector: Selector("receiveWakeNotification:"), name: NSWorkspaceScreensDidWakeNotification, object: nil)
 	}
 	
 	deinit {
 		NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
 	}
 	
-	func receiveComputerSleepNotification(notif: NSNotification) {
+	func receiveSleepNotification(notif: NSNotification) {
 		RCLogO(notif)
+		lastSleepDate = NSDate()
 		computerWentToSleep!()
 	}
-    
-    func receiveScreenSleepNotification(notif: NSNotification) {
-        RCLogO(notif)
-        computerWentToSleep!()
-    }
-    
-	func receiveComputerWakeNotification(notif: NSNotification) {
+	
+	func receiveWakeNotification(notif: NSNotification) {
 		RCLogO(notif)
 		computerWakeUp!()
 	}
-    
-    func receiveScreenWakeNotification(notif: NSNotification) {
-        RCLogO(notif)
-        computerWakeUp!()
-    }
 }

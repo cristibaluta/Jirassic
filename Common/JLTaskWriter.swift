@@ -9,10 +9,6 @@
 import Foundation
 
 class JLTaskWriter: NSObject {
-
-	override init() {
-		
-	}
 	
 	func write(task: Task) {
 		task.saveEventually { (success, error) -> Void in

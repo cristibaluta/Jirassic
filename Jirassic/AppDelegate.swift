@@ -31,6 +31,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         _sleep = SleepNotifications()
         _sleep?.computerWentToSleep = {
+			
+        }
+        _sleep?.computerWakeUp = {
 			let existingTasks = sharedData.tasksForDayOnDate(NSDate())
 			var scrumExists = false
 			for task in existingTasks {
@@ -40,14 +43,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				}
 			}
 			if !scrumExists {
-				sharedData.addScrumSessionTask(NSDate(), dateEnd:nil)
-			}
-        }
-        _sleep?.computerWakeUp = {
-			let existingTasks = sharedData.tasksForDayOnDate(NSDate())
-			for task in existingTasks {
-				task.date_task_finished = NSDate()
-				break
+				let task = sharedData.addScrumSessionTask(self._sleep?.lastSleepDate, dateEnd:NSDate())
+				JLTaskWriter().write( task )
+				NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 			}
         }
 	}

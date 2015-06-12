@@ -64,10 +64,13 @@ class TasksViewController: NSViewController {
 		if _newDayController.isNewDay() {
 			reloadData()
 		}
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: Selector("newTaskWasAdded:"), name: "newTaskWasAdded", object: nil)
 	}
 	
 	override func viewDidDisappear() {
 		super.viewDidDisappear()
+		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
 	override func viewDidLayout() {
@@ -204,6 +207,7 @@ class TasksViewController: NSViewController {
 				y: CGRectGetMinY(_datesScrollView!.frame),
 				width: self.view.frame.size.width - _gapX,
 				height: CGRectGetHeight(_datesScrollView!.frame))
+			
 			_newTaskViewController?.onOptionChosen = { (i: TaskSubtype) -> Void in
 				
 				self._datesTableView?.hidden = false
@@ -236,6 +240,17 @@ class TasksViewController: NSViewController {
 		}
 		
 		return _newTaskViewController!
+	}
+	
+	func newTaskWasAdded(notif: NSNotification) {
+		let task = notif.object as? Task
+		if let t = task {
+			self._tasksDataSource?.addTask( t )
+			self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+				withAnimation: NSTableViewAnimationOptions.SlideUp)
+			self._tasksTableView?.scrollRowToVisible( 0 )
+			self.updateNoTasksState()
+		}
 	}
 	
 	func removeNewTaskController() {
