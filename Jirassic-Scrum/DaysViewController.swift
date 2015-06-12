@@ -20,7 +20,7 @@ class DaysViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let refreshControl = UIRefreshControl()
-		refreshControl.tintColor = UIColor.blueColor()
+		refreshControl.tintColor = UIColor(red: 240.0/255, green: 40.0/255, blue: 40.0/255, alpha: 1.0)
 		refreshControl.addTarget(self, action: Selector("reloadData"), forControlEvents: .ValueChanged)
 		self.refreshControl = refreshControl
 		reloadData()

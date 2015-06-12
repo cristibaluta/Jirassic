@@ -24,6 +24,10 @@ class IosLoginViewController: UIViewController {
 		}
 		_emailTextField?.text = NSUserDefaults.standardUserDefaults().stringForKey("email")
 		self.title = "Login"
+		self.navigationController!.navigationBar.translucent = true
+		self.navigationController!.navigationBar.barTintColor = UIColor(red: 240.0/255, green: 40.0/255, blue: 40.0/255, alpha: 0.2)
+		self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+		self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
     }
 
     override func didReceiveMemoryWarning() {
