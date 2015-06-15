@@ -8,19 +8,16 @@
 
 import Cocoa
 
-class DaysDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
-
+class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
+	
+	@IBOutlet private var tableView: NSTableView?
+	
 	let rowHeight = CGFloat(20)
 	let columnDateId = "date"
 	let columnProgressId = "progress"
 	
-	var tableView: NSTableView?
 	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
-	
-	override init() {
-		
-	}
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		

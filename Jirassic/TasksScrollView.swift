@@ -17,25 +17,26 @@ let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
 
-class TasksDataSource: NSObject, NSTableViewDataSource, NSTableViewDelegate {
+class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	
-	var tableView: NSTableView? {
-		didSet {
-			assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
-			assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
-			
-			if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
-				tableView?.registerNib( nib, forIdentifier: kTaskCellIdentifier)
-			}
-			if let nib = NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) {
-				tableView?.registerNib( nib, forIdentifier: kNonTaskCellIdentifier)
-			}
-		}
-	}
+	@IBOutlet private var tableView: NSTableView?
 	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
 	var didRemoveRow: ((row: Int) -> ())?
 	
+	
+	override func awakeFromNib() {
+		
+		assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
+		assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
+		
+		if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
+			tableView?.registerNib( nib, forIdentifier: kTaskCellIdentifier)
+		}
+		if let nib = NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) {
+			tableView?.registerNib( nib, forIdentifier: kNonTaskCellIdentifier)
+		}
+	}
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		if let d = data {

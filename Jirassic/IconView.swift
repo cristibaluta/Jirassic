@@ -43,7 +43,6 @@ class IconView : NSView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func drawRect(dirtyRect: NSRect) {
 		
         self.item.drawStatusBarBackgroundInRect(dirtyRect, withHighlight: self.isSelected)

@@ -22,7 +22,7 @@ class NoTasksTests: XCTestCase {
     }
 
     func testTheMessageThatYouHaveNTasks() {
-        let controller = NoTasksController()
+        let controller = NoTasks()
         XCTAssert(true, "Pass")
     }
 

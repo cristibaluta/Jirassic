@@ -13,7 +13,7 @@ enum DaysState: Int {
 	case DaysOpen = 1
 }
 
-class JLDrawerState: NSObject {
+class DrawerState: NSObject {
 	
 	private let kDaysTableStateKey = "DaysTableStateKey"
 	var state: DaysState = .DaysOpen

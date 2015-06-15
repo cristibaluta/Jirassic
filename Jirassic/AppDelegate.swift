@@ -43,8 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				}
 			}
 			if !scrumExists {
-				let task = sharedData.addScrumSessionTask(self._sleep?.lastSleepDate, dateEnd:NSDate())
-				JLTaskWriter().write( task )
+				let task = sharedData.addScrumSessionTask(self._sleep?.lastSleepDate, dateEnd: NSDate())
+				WriteTask(task: task)
 				NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 			}
         }

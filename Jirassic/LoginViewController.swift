@@ -18,7 +18,18 @@ class LoginViewController: NSViewController {
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
 	var onLoginSuccess: (() -> ())?
-	var onLoginCancel: (() -> ())?
+	var handleCancelLoginButton: (() -> ())?
+	var credentials: LoginCredentials {
+		get {
+			return (email: self._emailTextField!.stringValue,
+				password: self._passwordTextField!.stringValue)
+		}
+		set {
+			self._emailTextField!.stringValue = newValue.email
+			self._passwordTextField!.stringValue = newValue.password
+		}
+	}
+	var isLoggedIn: Bool = false
 	
 	class func instanceFromStoryboard() -> LoginViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
@@ -28,16 +39,12 @@ class LoginViewController: NSViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		var currentUser = PFUser.currentUser()
-		RCLogO(currentUser)
-		if currentUser != nil && currentUser?.username != nil {
-			// Do stuff with the user
+		let user: UserProtocol = User()
+		if user.isLoggedIn {
 			_butLogin?.title = "Logout"
-			_emailTextField?.stringValue = currentUser!.username!
 			_label?.stringValue = "You are already logged in."
 		} else {
-			// Show the signup or login screen
-			_butLogin?.title = "Signup or Login"
+			_butLogin?.title = "Login or Signup"
 			_label?.stringValue = "You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail"
 		}
     }
@@ -46,51 +53,23 @@ class LoginViewController: NSViewController {
 		self.view.removeFromSuperview()
 	}
 	
+	func showLoadingIndicator(show: Bool) {
+		if show {
+			_progressIndicator?.startAnimation(nil)
+		} else {
+			_progressIndicator?.stopAnimation(nil)
+		}
+	}
+	
 	
 	// MARK: Actions
 	
 	@IBAction func handleLoginButton(sender: NSButton) {
-		self.login()
+		
 	}
 	
 	@IBAction func handleCancelButton(sender: NSButton) {
-		self.onLoginCancel!()
+		self.handleCancelLoginButton!()
 	}
 	
-	func register() {
-		
-		var user = PFUser()
-		user.username = _emailTextField?.stringValue
-		user.password = _passwordTextField?.stringValue
-		user.email = _emailTextField?.stringValue
-		RCLogO(user)
-		
-		_progressIndicator?.startAnimation(nil)
-		
-		user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
-			if let error = error {
-				let errorString = error.userInfo?["error"] as? NSString
-				RCLogO(errorString)
-			} else {
-				self._progressIndicator?.stopAnimation(nil)
-				self.onLoginSuccess!()
-			}
-		}
-	}
-	
-	func login() {
-		RCLogO(nil)
-		_progressIndicator?.startAnimation(nil)
-		PFUser.logInWithUsernameInBackground(_emailTextField!.stringValue, password:_passwordTextField!.stringValue) {
-			(user: PFUser?, error: NSError?) -> Void in
-			if user != nil {
-				self._progressIndicator?.stopAnimation(nil)
-				self.onLoginSuccess!()
-			} else if let error = error {
-				let errorString = error.userInfo?["error"] as? NSString
-				RCLogO(errorString)
-				self.register()
-			}
-		}
-	}
 }

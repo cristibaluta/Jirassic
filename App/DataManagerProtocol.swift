@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc protocol DataManagerProtocol: NSObjectProtocol {
+protocol DataManagerProtocol: NSObjectProtocol {
 	
 	func queryData(completion: ([Task], NSError?) -> Void)
 	func days() -> [Task]

@@ -654,7 +654,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="491" height="442"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <scrollView focusRingType="none" borderType="none" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="hLi-fO-YRi">
+                            <scrollView focusRingType="none" borderType="none" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="hLi-fO-YRi" customClass="DaysScrollView" customModule="Jirassic" customModuleProvider="target">
                                 <rect key="frame" x="12" y="0.0" width="70" height="380"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="p8m-a7-0xK">
                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -681,6 +681,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="hLi-fO-YRi" id="5fr-d1-4tB"/>
+                                                <outlet property="delegate" destination="hLi-fO-YRi" id="09L-Fh-etk"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -696,8 +700,11 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
+                                <connections>
+                                    <outlet property="tableView" destination="qlb-nk-v5r" id="BAB-8j-BPN"/>
+                                </connections>
                             </scrollView>
-                            <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VwR-9G-9tZ">
+                            <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VwR-9G-9tZ" customClass="TasksScrollView" customModule="Jirassic" customModuleProvider="target">
                                 <rect key="frame" x="90" y="0.0" width="401" height="380"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dVk-xC-jtv">
                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -743,6 +750,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="VwR-9G-9tZ" id="Wlh-KP-bxV"/>
+                                                <outlet property="delegate" destination="VwR-9G-9tZ" id="Epr-7H-nwD"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -758,6 +769,9 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
+                                <connections>
+                                    <outlet property="tableView" destination="P2Q-hS-yur" id="bQK-7b-N91"/>
+                                </connections>
                             </scrollView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="czH-D1-htO">
                                 <rect key="frame" x="224" y="396" width="42" height="30"/>
@@ -857,12 +871,10 @@
                         <outlet property="_butDrawer" destination="uMO-PV-PHF" id="uFK-9h-1Rd"/>
                         <outlet property="_butRefresh" destination="w7V-wd-0Hx" id="zfd-TW-d3L"/>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
-                        <outlet property="_datesScrollView" destination="hLi-fO-YRi" id="LXz-Yp-tYF"/>
-                        <outlet property="_datesTableView" destination="qlb-nk-v5r" id="j9U-Cy-HHe"/>
                         <outlet property="_progressIndicator" destination="R3S-KZ-qb3" id="6Zu-Hu-9Jl"/>
-                        <outlet property="_tasksScrollView" destination="VwR-9G-9tZ" id="o7e-Ou-RYA"/>
-                        <outlet property="_tasksTableView" destination="P2Q-hS-yur" id="jUR-mn-NiY"/>
                         <outlet property="_tasksTableViewWidthConstraint" destination="meH-du-u5g" id="M2k-xL-kCF"/>
+                        <outlet property="daysScrollView" destination="hLi-fO-YRi" id="gjC-Zg-rCG"/>
+                        <outlet property="tasksScrollView" destination="VwR-9G-9tZ" id="KgZ-p8-Q32"/>
                     </connections>
                 </viewController>
                 <customObject id="PVZ-YR-gJH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

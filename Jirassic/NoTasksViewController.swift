@@ -13,7 +13,7 @@ class NoTasksViewController: NSViewController {
 	@IBOutlet private var _noTasksLabel: NSTextField?
 	@IBOutlet private var _butStart: NSButton?
 	
-	var onButStartPressed: (() -> ())?
+	var handleStartButton: (() -> ())?
 	
 	class func instanceFromStoryboard() -> NoTasksViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
@@ -21,14 +21,8 @@ class NoTasksViewController: NSViewController {
 		return vc
 	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-		RCLogO("viewDidLoad")
-    }
-	
 	@IBAction func handleStartButton(sender: NSButton) {
-		self.onButStartPressed?()
+		self.handleStartButton?()
 	}
 	
 	

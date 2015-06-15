@@ -8,7 +8,7 @@
 
 import XCTest
 
-class RaportTests: XCTestCase {
+class CreateRaportTests: XCTestCase {
 
 	var tasks = [Task]()
 	let kLunchLength = Double(2760)//46min ~ 45min
@@ -50,7 +50,7 @@ class RaportTests: XCTestCase {
 		
 		var tasks = self.tasks
 		tasks.removeLast()
-		let raport = JLCreateReport(tasks: self.tasks)
+		let raport = CreateReport(tasks: self.tasks)
 		let firstTask = raport.tasks.first
 		let lastTask = raport.tasks.last
 		let diff = lastTask?.date_task_finished?.timeIntervalSinceDate(firstTask!.date_task_finished!)
@@ -76,7 +76,7 @@ class RaportTests: XCTestCase {
 	
 	func testRoundMoreThan8HoursOfWork() {
 		
-		let raport = JLCreateReport(tasks: self.tasks)
+		let raport = CreateReport(tasks: self.tasks)
 		let firstTask = raport.tasks.first
 		let lastTask = raport.tasks.last
 		let diff = lastTask?.date_task_finished?.timeIntervalSinceDate(firstTask!.date_task_finished!)

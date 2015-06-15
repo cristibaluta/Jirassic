@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class SettingsViewController: NSViewController {
+class SettingsViewController: NSViewController, SettingsViewControllerProtocol {
 	
-	var onButSavePressed: (() -> ())?
+	var handleSaveButton: (() -> ())?
+	var handleCloseButton: (() -> ())?
 	
 	
 	class func instanceFromStoryboard() -> SettingsViewController {
@@ -32,7 +33,7 @@ class SettingsViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleSaveButton(sender: NSButton) {
-		self.onButSavePressed!()
+		self.handleSaveButton!()
 	}
 	
 }

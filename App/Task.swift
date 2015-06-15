@@ -15,15 +15,7 @@ let kTaskNrKey = "task_nr"
 let kTypeKey = "task_type"
 let kUserKey = "user"
 
-enum TaskType: Int {
-	case Issue = 0
-	case Start = 1
-	case Scrum = 2
-	case Lunch = 3
-	case Meeting = 4
-}
-
-public class Task: PFObject, PFSubclassing {
+public class Task: PFObject, PFSubclassing, TaskProtocol {
 
 //	override init() {
 //		super.init()

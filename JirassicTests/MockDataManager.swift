@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Cristian Baluta. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 /*
 class DummyDataManager: NSObject, DataManagerProtocol {
 	

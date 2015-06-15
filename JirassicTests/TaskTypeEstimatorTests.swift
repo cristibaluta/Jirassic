@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ScrumEstimationTests: XCTestCase {
+class TaskTypeEstimatorTests: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()

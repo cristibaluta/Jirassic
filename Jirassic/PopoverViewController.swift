@@ -22,22 +22,22 @@ class PopoverViewController: NSViewController {
 		RCLogO(currentUser)
 		
 		if currentUser != nil {
-			let controller = tasksController()
+			let controller = createTasksController()
 			self.view.addSubview( controller.view )
 		}
 		else {
-			let controller = loginController()
+			let controller = createLoginController()
 			self.view.addSubview( controller.view )
 		}
     }
 	
-	func tasksController() -> TasksViewController {
+	func createTasksController() -> TasksViewController {
 		
 		if _tasksController == nil {
 			_tasksController = TasksViewController.instanceFromStoryboard()
 			_tasksController?.view.frame = CGRect(x: 0, y: 0,
 				width: self.view.frame.size.width, height: self.view.frame.size.height)
-			_tasksController?.onButSettingsPressed = {[weak self] () in
+			_tasksController?.handleSettingsButton = {[weak self] () in
 				if let strongSelf = self {
 					strongSelf.flipToLogin()
 				}
@@ -53,13 +53,13 @@ class PopoverViewController: NSViewController {
 		}
 	}
 	
-	func settingsController() -> SettingsViewController {
+	func createSettingsController() -> SettingsViewController {
 		
 		if _settingsController == nil {
 			_settingsController = SettingsViewController.instanceFromStoryboard()
 			_settingsController?.view.frame = CGRect(x: 0, y: 0,
 				width: self.view.frame.size.width, height: self.view.frame.size.height)
-			_settingsController?.onButSavePressed = {[weak self] () in
+			_settingsController?.handleSaveButton = {[weak self] () in
 				if let strongSelf = self {
 					strongSelf.flipToTasks()
 				}
@@ -75,7 +75,7 @@ class PopoverViewController: NSViewController {
 		}
 	}
 	
-	func loginController() -> LoginViewController {
+	func createLoginController() -> LoginViewController {
 		
 		if _loginController == nil {
 			_loginController = LoginViewController.instanceFromStoryboard()
@@ -86,7 +86,7 @@ class PopoverViewController: NSViewController {
 					strongSelf.flipToTasks()
 				}
 			}
-			_loginController?.onLoginCancel = {[weak self] () in
+			_loginController?.handleCancelLoginButton = {[weak self] () in
 				if let strongSelf = self {
 					strongSelf.flipToTasks()
 				}
@@ -108,10 +108,10 @@ class PopoverViewController: NSViewController {
 	
 	func flipToSettings() {
 		
-		let flip = Flip()
+		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
 			self.removeTasksController()
-			self.view.addSubview( self.settingsController().view )
+			self.view.addSubview( self.createSettingsController().view )
 		}
 		flip.animationFinished = {
 			
@@ -121,10 +121,10 @@ class PopoverViewController: NSViewController {
 	
 	func flipToLogin() {
 		
-		let flip = Flip()
+		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
 			self.removeTasksController()
-			self.view.addSubview( self.loginController().view )
+			self.view.addSubview( self.createLoginController().view )
 		}
 		flip.animationFinished = {
 			
@@ -134,11 +134,11 @@ class PopoverViewController: NSViewController {
 	
 	func flipToTasks() {
 		
-		let flip = Flip()
+		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
 			self.removeSettingsController()
 			self.removeLoginController()
-			self.view.addSubview( self.tasksController().view )
+			self.view.addSubview( self.createTasksController().view )
 		}
 		flip.animationFinished = {
 			

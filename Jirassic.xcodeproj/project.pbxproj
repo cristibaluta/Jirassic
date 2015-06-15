@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		282426761B113D5000211713 /* Flip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* Flip.swift */; };
+		282426761B113D5000211713 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
 		2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */; };
 		2856DF1A1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */; };
@@ -57,12 +57,34 @@
 		286585651B053BE800352782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286585631B053BE800352782 /* Main.storyboard */; };
 		2865856A1B053CD300352782 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585691B053CD300352782 /* TaskCell.swift */; };
 		2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865856B1B054E3500352782 /* NonTaskCell.swift */; };
-		2894F1CA1B076EA30095DD17 /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
-		2894F1CB1B076EAE0095DD17 /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
+		2894F1CB1B076EAE0095DD17 /* ReadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTask.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A41AC3354900706824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		289E2AC51B2A3AAF003269A3 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */; };
+		289E2AD01B2B776A003269A3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2ACF1B2B776A003269A3 /* Login.swift */; };
+		289E2AD11B2B776A003269A3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2ACF1B2B776A003269A3 /* Login.swift */; };
+		289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
+		289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */; };
+		289E2AE11B2D4999003269A3 /* DrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21F7C1B014C41005D3C94 /* DrawerState.swift */; };
+		289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
+		289E2AE41B2D5851003269A3 /* DeleteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE31B2D5851003269A3 /* DeleteTask.swift */; };
+		289E2AE91B2D68E2003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
+		289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
+		289E2AEC1B2D6B0B003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
+		289E2AED1B2D6B0D003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
+		289E2AEF1B2D6D56003269A3 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AEE1B2D6D56003269A3 /* Logout.swift */; };
+		289E2AF01B2D6D56003269A3 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AEE1B2D6D56003269A3 /* Logout.swift */; };
+		289E2AF21B2D6D6E003269A3 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */; };
+		289E2AF31B2D6D6E003269A3 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */; };
+		289E2AF61B2D71FD003269A3 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF51B2D71FD003269A3 /* UserProtocol.swift */; };
+		289E2AF71B2D71FD003269A3 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF51B2D71FD003269A3 /* UserProtocol.swift */; };
+		289E2AF91B2D8AD6003269A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF81B2D8AD6003269A3 /* User.swift */; };
+		289E2AFA1B2D8AD6003269A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF81B2D8AD6003269A3 /* User.swift */; };
+		289E2AFB1B2D8ADC003269A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF81B2D8AD6003269A3 /* User.swift */; };
+		289E2AFD1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
+		289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
+		289E2AFF1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
 		28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
 		28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
 		28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
@@ -70,8 +92,8 @@
 		28B1F2BE1AFB2BF500D61472 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */; };
 		28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
-		28B71CBD1B28EC9400E44161 /* ScrumEstimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* ScrumEstimationTests.swift */; };
-		28D21F7D1B014C41005D3C94 /* JLDrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21F7C1B014C41005D3C94 /* JLDrawerState.swift */; };
+		28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */; };
+		28D21F7D1B014C41005D3C94 /* DrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21F7C1B014C41005D3C94 /* DrawerState.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
@@ -90,32 +112,32 @@
 		28E839101AF4974A00602D33 /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
 		28E839111AF4974D00602D33 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
-		28EB90211AF60234008D5337 /* NoTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasksController.swift */; };
-		28EB90221AF60234008D5337 /* NoTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasksController.swift */; };
+		28EB90211AF60234008D5337 /* NoTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasks.swift */; };
+		28EB90221AF60234008D5337 /* NoTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasks.swift */; };
 		28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90231AF60250008D5337 /* NoTasksTests.swift */; };
-		28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* DummyDataManager.swift */; };
-		28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* DummyDataManager.swift */; };
-		28EB905D1AF73FD4008D5337 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* Estimator.swift */; };
-		28EB905E1AF73FD4008D5337 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* Estimator.swift */; };
-		28EB90631AF948E3008D5337 /* NewDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDayController.swift */; };
-		28EB90641AF948E3008D5337 /* NewDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDayController.swift */; };
+		28EB90261AF6027D008D5337 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* MockDataManager.swift */; };
+		28EB90271AF6027D008D5337 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90251AF6027D008D5337 /* MockDataManager.swift */; };
+		28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */; };
+		28EB905E1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */; };
+		28EB90631AF948E3008D5337 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDay.swift */; };
+		28EB90641AF948E3008D5337 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDay.swift */; };
 		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
-		28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
-		28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */; };
-		28F292271B1C57B40015F64F /* RaportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* RaportTests.swift */; };
-		28F292281B1C72720015F64F /* JLCreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */; };
+		28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
+		28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
+		28F292271B1C57B40015F64F /* CreateRaportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* CreateRaportTests.swift */; };
+		28F292281B1C72720015F64F /* CreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */; };
 		28F292291B1C75960015F64F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
-		28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* JLTaskWriter.swift */; };
-		28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* JLTaskReader.swift */; };
+		28F51E771AC6948400A69CDF /* WriteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* WriteTask.swift */; };
+		28F51E7A1AC694B000A69CDF /* ReadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTask.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* IconView.swift */; };
 		28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
-		28F51EAF1AC6AB7A00A69CDF /* JLCreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */; };
+		28F51EAF1AC6AB7A00A69CDF /* CreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */; };
 		28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */; };
 		28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
 		28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
-		28F51EB91AC6F4FA00A69CDF /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksDataSource.swift */; };
-		28F51EBB1AC6F5F200A69CDF /* DaysDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DaysDataSource.swift */; };
+		28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */; };
+		28F51EBB1AC6F5F200A69CDF /* DaysScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */; };
 		28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
 		28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EC51AC805B000A69CDF /* NSDateExtension.swift */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
@@ -170,7 +192,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		282426751B113D5000211713 /* Flip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flip.swift; sourceTree = "<group>"; };
+		282426751B113D5000211713 /* FlipScreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipScreens.swift; sourceTree = "<group>"; };
 		282426771B113F6900211713 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2846C90C1AFF882E00779357 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -185,8 +207,8 @@
 		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosLoginViewController.swift; sourceTree = "<group>"; };
-		2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraLogin.swift; path = Common/JiraLogin.swift; sourceTree = SOURCE_ROOT; };
-		2856DF1C1B13C95200A4D5A4 /* JiraTrackWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraTrackWork.swift; path = Common/JiraTrackWork.swift; sourceTree = SOURCE_ROOT; };
+		2856DF191B13C8FB00A4D5A4 /* JiraLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraLogin.swift; path = App/JiraLogin.swift; sourceTree = SOURCE_ROOT; };
+		2856DF1C1B13C95200A4D5A4 /* JiraTrackWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JiraTrackWork.swift; path = App/JiraTrackWork.swift; sourceTree = SOURCE_ROOT; };
 		286585141B031D3A00352782 /* Jirassic-Scrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic-Scrum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		286585181B031D3A00352782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -201,9 +223,17 @@
 		286585691B053CD300352782 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		2865856B1B054E3500352782 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
-		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Common/Task.swift; sourceTree = "<group>"; };
+		289998A31AC3354900706824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../App/Task.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LaunchImage@2x.png"; path = "Resources/LaunchImage@2x.png"; sourceTree = SOURCE_ROOT; };
+		289E2ACF1B2B776A003269A3 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		289E2AE31B2D5851003269A3 /* DeleteTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTask.swift; sourceTree = "<group>"; };
+		289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskProtocol.swift; path = App/TaskProtocol.swift; sourceTree = "<group>"; };
+		289E2AEE1B2D6D56003269A3 /* Logout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logout.swift; path = App/Logout.swift; sourceTree = SOURCE_ROOT; };
+		289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
+		289E2AF51B2D71FD003269A3 /* UserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProtocol.swift; path = App/UserProtocol.swift; sourceTree = "<group>"; };
+		289E2AF81B2D8AD6003269A3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/User.swift; sourceTree = SOURCE_ROOT; };
+		289E2AFC1B2D8C31003269A3 /* typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = typealiases.swift; path = App/typealiases.swift; sourceTree = "<group>"; };
 		28B1F2AF1AFA78AA00D61472 /* Jirassic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jirassic-Bridging-Header.h"; sourceTree = "<group>"; };
 		28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksViewController.swift; sourceTree = "<group>"; };
 		28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -212,37 +242,37 @@
 		28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
 		28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepNotifications.swift; sourceTree = "<group>"; };
 		28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellProtocol.swift; sourceTree = "<group>"; };
-		28B71CBC1B28EC9400E44161 /* ScrumEstimationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrumEstimationTests.swift; sourceTree = "<group>"; };
-		28D21F7C1B014C41005D3C94 /* JLDrawerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLDrawerState.swift; sourceTree = "<group>"; };
+		28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimatorTests.swift; path = JirassicTests/TaskTypeEstimatorTests.swift; sourceTree = SOURCE_ROOT; };
+		28D21F7C1B014C41005D3C94 /* DrawerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerState.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
-		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManagerProtocol.swift; path = ../Common/DataManagerProtocol.swift; sourceTree = "<group>"; };
-		28E839001AF402B200602D33 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
-		28E839021AF4035900602D33 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = ../Common/DataManager.swift; sourceTree = "<group>"; };
-		28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseCredentials.swift; path = ../Common/ParseCredentials.swift; sourceTree = "<group>"; };
-		28EB90201AF60234008D5337 /* NoTasksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoTasksController.swift; path = ../Common/NoTasksController.swift; sourceTree = "<group>"; };
-		28EB90231AF60250008D5337 /* NoTasksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksTests.swift; sourceTree = "<group>"; };
-		28EB90251AF6027D008D5337 /* DummyDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataManager.swift; sourceTree = "<group>"; };
-		28EB905C1AF73FD4008D5337 /* Estimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Estimator.swift; path = ../Common/Estimator.swift; sourceTree = "<group>"; };
-		28EB90621AF948E3008D5337 /* NewDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDayController.swift; path = ../Common/NewDayController.swift; sourceTree = "<group>"; };
+		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManagerProtocol.swift; path = ../App/DataManagerProtocol.swift; sourceTree = "<group>"; };
+		28E839001AF402B200602D33 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = JirassicTests/DateTests.swift; sourceTree = SOURCE_ROOT; };
+		28E839021AF4035900602D33 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = ../App/DataManager.swift; sourceTree = "<group>"; };
+		28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseCredentials.swift; path = ../App/ParseCredentials.swift; sourceTree = "<group>"; };
+		28EB90201AF60234008D5337 /* NoTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoTasks.swift; path = ../App/NoTasks.swift; sourceTree = "<group>"; };
+		28EB90231AF60250008D5337 /* NoTasksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoTasksTests.swift; path = JirassicTests/NoTasksTests.swift; sourceTree = SOURCE_ROOT; };
+		28EB90251AF6027D008D5337 /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDataManager.swift; path = JirassicTests/MockDataManager.swift; sourceTree = SOURCE_ROOT; };
+		28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimator.swift; path = ../App/TaskTypeEstimator.swift; sourceTree = "<group>"; };
+		28EB90621AF948E3008D5337 /* NewDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDay.swift; path = ../App/NewDay.swift; sourceTree = "<group>"; };
 		28EB906F1AF95C37008D5337 /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
 		28EB90711AF95C37008D5337 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28EB90901AF9754A008D5337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLPredictiveTimeTyping.swift; path = ../Common/JLPredictiveTimeTyping.swift; sourceTree = "<group>"; };
-		28F292261B1C57B40015F64F /* RaportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaportTests.swift; sourceTree = "<group>"; };
+		28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTyping.swift; path = ../App/PredictiveTimeTyping.swift; sourceTree = "<group>"; };
+		28F292261B1C57B40015F64F /* CreateRaportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateRaportTests.swift; path = JirassicTests/CreateRaportTests.swift; sourceTree = SOURCE_ROOT; };
 		28F2922A1B1C843D0015F64F /* JirassicTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JirassicTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		28F51E761AC6948400A69CDF /* JLTaskWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskWriter.swift; path = ../Common/JLTaskWriter.swift; sourceTree = "<group>"; };
-		28F51E791AC694B000A69CDF /* JLTaskReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLTaskReader.swift; path = ../Common/JLTaskReader.swift; sourceTree = "<group>"; };
+		28F51E761AC6948400A69CDF /* WriteTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WriteTask.swift; path = ../App/WriteTask.swift; sourceTree = "<group>"; };
+		28F51E791AC694B000A69CDF /* ReadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadTask.swift; path = ../App/ReadTask.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		28F51EA91AC6A3AE00A69CDF /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
-		28F51EAB1AC6A4F000A69CDF /* InitParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitParse.swift; path = ../Common/InitParse.swift; sourceTree = "<group>"; };
-		28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JLCreateRaport.swift; path = ../Common/JLCreateRaport.swift; sourceTree = "<group>"; };
+		28F51EAB1AC6A4F000A69CDF /* InitParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitParse.swift; path = ../App/InitParse.swift; sourceTree = "<group>"; };
+		28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateRaport.swift; path = ../App/CreateRaport.swift; sourceTree = "<group>"; };
 		28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28F51EB41AC6EE5200A69CDF /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		28F51EB61AC6EF1700A69CDF /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
-		28F51EB81AC6F4FA00A69CDF /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
-		28F51EBA1AC6F5F200A69CDF /* DaysDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysDataSource.swift; sourceTree = "<group>"; };
-		28F51EC51AC805B000A69CDF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = ../Common/NSDateExtension.swift; sourceTree = "<group>"; };
+		28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
+		28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysScrollView.swift; sourceTree = "<group>"; };
+		28F51EC51AC805B000A69CDF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = ../App/NSDateExtension.swift; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -371,7 +401,7 @@
 			path = Jirassic;
 			sourceTree = "<group>";
 		};
-		286585151B031D3A00352782 /* Jirassic-Scrum */ = {
+		286585151B031D3A00352782 /* IOS */ = {
 			isa = PBXGroup;
 			children = (
 				286585181B031D3A00352782 /* AppDelegate.swift */,
@@ -385,8 +415,9 @@
 				286585231B031D3A00352782 /* LaunchScreen.xib */,
 				286585161B031D3A00352782 /* Supporting Files */,
 			);
+			name = IOS;
 			path = "Jirassic-Scrum";
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		286585161B031D3A00352782 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -416,16 +447,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		289998A61AC3429500706824 /* Data */ = {
+		289998A61AC3429500706824 /* External */ = {
 			isa = PBXGroup;
 			children = (
 				28F51EAB1AC6A4F000A69CDF /* InitParse.swift */,
 				28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */,
 				28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */,
 				28E839021AF4035900602D33 /* DataManager.swift */,
+				28EB90251AF6027D008D5337 /* MockDataManager.swift */,
 				289998A31AC3354900706824 /* Task.swift */,
+				289E2AF81B2D8AD6003269A3 /* User.swift */,
 			);
-			name = Data;
+			name = External;
 			path = Jirassic;
 			sourceTree = "<group>";
 		};
@@ -435,6 +468,65 @@
 				28B1F2B71AFB11A900D61472 /* LoginViewController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		289E2AC61B2B6D21003269A3 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				28EB90201AF60234008D5337 /* NoTasks.swift */,
+				28EB90231AF60250008D5337 /* NoTasksTests.swift */,
+				28EB90621AF948E3008D5337 /* NewDay.swift */,
+				28D21F7C1B014C41005D3C94 /* DrawerState.swift */,
+				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		289E2AE61B2D6554003269A3 /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
+				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
+				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
+				289998A81AC3BDF200706824 /* MenuBarController.swift */,
+				289998A11AC2920200706824 /* Popover.swift */,
+				282426771B113F6900211713 /* PopoverViewController.swift */,
+				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
+				28E838FC1AF3372E00602D33 /* Tasks */,
+				28EB908F1AF974DC008D5337 /* Settings */,
+				289998A71AC342AB00706824 /* Login */,
+				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
+				28E838F51AF297FE00602D33 /* Resources */,
+				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
+			);
+			name = OSX;
+			sourceTree = "<group>";
+		};
+		289E2AE71B2D687F003269A3 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */,
+				289E2AF51B2D71FD003269A3 /* UserProtocol.swift */,
+				289E2AFC1B2D8C31003269A3 /* typealiases.swift */,
+			);
+			name = Entities;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		289E2AEB1B2D6918003269A3 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				28F51E761AC6948400A69CDF /* WriteTask.swift */,
+				289E2AE31B2D5851003269A3 /* DeleteTask.swift */,
+				28F51E791AC694B000A69CDF /* ReadTask.swift */,
+				28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */,
+				28F292261B1C57B40015F64F /* CreateRaportTests.swift */,
+				282426751B113D5000211713 /* FlipScreens.swift */,
+				289E2ACF1B2B776A003269A3 /* Login.swift */,
+				289E2AEE1B2D6D56003269A3 /* Logout.swift */,
+				289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 		28E838F51AF297FE00602D33 /* Resources */ = {
@@ -450,11 +542,10 @@
 			isa = PBXGroup;
 			children = (
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
-				28F51EBA1AC6F5F200A69CDF /* DaysDataSource.swift */,
-				28F51EB81AC6F4FA00A69CDF /* TasksDataSource.swift */,
+				28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */,
+				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
 				28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */,
 				28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */,
-				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
 				28F51EB41AC6EE5200A69CDF /* TaskCell.swift */,
 				28F51EB61AC6EF1700A69CDF /* TaskCell.xib */,
 				28B1F2B91AFB2BCF00D61472 /* NonTaskCell.swift */,
@@ -471,21 +562,18 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		28F51E6C1AC68E6D00A69CDF /* Business Rules */ = {
+		28F51E6C1AC68E6D00A69CDF /* App */ = {
 			isa = PBXGroup;
 			children = (
-				28F51E761AC6948400A69CDF /* JLTaskWriter.swift */,
-				28F51E791AC694B000A69CDF /* JLTaskReader.swift */,
-				28F51EAE1AC6AB7A00A69CDF /* JLCreateRaport.swift */,
-				28EB90201AF60234008D5337 /* NoTasksController.swift */,
-				28EB90621AF948E3008D5337 /* NewDayController.swift */,
+				289E2AE71B2D687F003269A3 /* Entities */,
+				289E2AEB1B2D6918003269A3 /* Actions */,
 				28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */,
-				28EB905C1AF73FD4008D5337 /* Estimator.swift */,
-				28EB90951AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift */,
-				28D21F7C1B014C41005D3C94 /* JLDrawerState.swift */,
-				282426751B113D5000211713 /* Flip.swift */,
+				28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */,
+				28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */,
+				28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */,
+				289E2AC61B2B6D21003269A3 /* Tasks */,
 			);
-			name = "Business Rules";
+			name = App;
 			path = Jirassic;
 			sourceTree = "<group>";
 		};
@@ -493,6 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				28F51EC51AC805B000A69CDF /* NSDateExtension.swift */,
+				28E839001AF402B200602D33 /* DateTests.swift */,
 			);
 			name = Extensions;
 			path = Jirassic;
@@ -501,13 +590,12 @@
 		6D31D0431AC196BB001AC4BA = {
 			isa = PBXGroup;
 			children = (
-				28F51E6C1AC68E6D00A69CDF /* Business Rules */,
-				289998A61AC3429500706824 /* Data */,
+				28F51E6C1AC68E6D00A69CDF /* App */,
+				6D31D04E1AC196BB001AC4BA /* Delivery */,
+				289998A61AC3429500706824 /* External */,
 				2856DF181B13C5D200A4D5A4 /* Services */,
 				28F51EC41AC8059400A69CDF /* Extensions */,
-				6D31D04E1AC196BB001AC4BA /* Jirassic */,
 				6D31D0641AC196BC001AC4BA /* JirassicTests */,
-				286585151B031D3A00352782 /* Jirassic-Scrum */,
 				2865852D1B031D3A00352782 /* Jirassic-ScrumTests */,
 				6D31D0A21AC448FF001AC4BA /* Vendor */,
 				6D31D0741AC2E439001AC4BA /* Frameworks */,
@@ -526,23 +614,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6D31D04E1AC196BB001AC4BA /* Jirassic */ = {
+		6D31D04E1AC196BB001AC4BA /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
-				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
-				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
-				289998A81AC3BDF200706824 /* MenuBarController.swift */,
-				289998A11AC2920200706824 /* Popover.swift */,
-				282426771B113F6900211713 /* PopoverViewController.swift */,
-				28F51EA91AC6A3AE00A69CDF /* IconView.swift */,
-				28E838FC1AF3372E00602D33 /* Tasks */,
-				28EB908F1AF974DC008D5337 /* Settings */,
-				289998A71AC342AB00706824 /* Login */,
-				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
-				28E838F51AF297FE00602D33 /* Resources */,
-				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
+				289E2AE61B2D6554003269A3 /* OSX */,
+				286585151B031D3A00352782 /* IOS */,
 			);
+			name = Delivery;
 			path = Jirassic;
 			sourceTree = "<group>";
 		};
@@ -558,11 +636,6 @@
 		6D31D0641AC196BC001AC4BA /* JirassicTests */ = {
 			isa = PBXGroup;
 			children = (
-				28EB90251AF6027D008D5337 /* DummyDataManager.swift */,
-				28EB90231AF60250008D5337 /* NoTasksTests.swift */,
-				28E839001AF402B200602D33 /* DateTests.swift */,
-				28F292261B1C57B40015F64F /* RaportTests.swift */,
-				28B71CBC1B28EC9400E44161 /* ScrumEstimationTests.swift */,
 				6D31D0651AC196BC001AC4BA /* Supporting Files */,
 			);
 			path = JirassicTests;
@@ -785,21 +858,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289E2AEC1B2D6B0B003269A3 /* TaskProtocol.swift in Sources */,
 				2856DF1E1B13C95200A4D5A4 /* JiraTrackWork.swift in Sources */,
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				286585581B03EABE00352782 /* DataManager.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
 				2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */,
-				2894F1CA1B076EA30095DD17 /* JLTaskWriter.swift in Sources */,
 				2865856A1B053CD300352782 /* TaskCell.swift in Sources */,
 				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
+				289E2AFF1B2D8C31003269A3 /* typealiases.swift in Sources */,
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
 				2856DF1B1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */,
 				286585551B03EAA900352782 /* InitParse.swift in Sources */,
 				2865855A1B03EAC700352782 /* NSDateExtension.swift in Sources */,
 				286585561B03EAB600352782 /* ParseCredentials.swift in Sources */,
-				2894F1CB1B076EAE0095DD17 /* JLTaskReader.swift in Sources */,
+				289E2AFB1B2D8ADC003269A3 /* User.swift in Sources */,
+				2894F1CB1B076EAE0095DD17 /* ReadTask.swift in Sources */,
 				286585591B03EAC200352782 /* Task.swift in Sources */,
 				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
 			);
@@ -811,6 +886,7 @@
 			files = (
 				2865855B1B03EAC900352782 /* NSDateExtension.swift in Sources */,
 				286585311B031D3A00352782 /* Jirassic_ScrumTests.swift in Sources */,
+				289E2AED1B2D6B0D003269A3 /* TaskProtocol.swift in Sources */,
 				286585541B03EA6C00352782 /* RCLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -821,38 +897,46 @@
 			files = (
 				28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */,
 				28E839031AF4035900602D33 /* DataManager.swift in Sources */,
-				28D21F7D1B014C41005D3C94 /* JLDrawerState.swift in Sources */,
-				28EB90631AF948E3008D5337 /* NewDayController.swift in Sources */,
+				289E2AD01B2B776A003269A3 /* Login.swift in Sources */,
+				28D21F7D1B014C41005D3C94 /* DrawerState.swift in Sources */,
+				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
 				289998A41AC3354900706824 /* Task.swift in Sources */,
-				28EB90961AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */,
+				28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
 				28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */,
 				2856DF1A1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */,
-				28EB905D1AF73FD4008D5337 /* Estimator.swift in Sources */,
-				28F51EAF1AC6AB7A00A69CDF /* JLCreateRaport.swift in Sources */,
-				28F51E7A1AC694B000A69CDF /* JLTaskReader.swift in Sources */,
-				28F51E771AC6948400A69CDF /* JLTaskWriter.swift in Sources */,
+				28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
+				289E2AF21B2D6D6E003269A3 /* RegisterUser.swift in Sources */,
+				28F51EAF1AC6AB7A00A69CDF /* CreateRaport.swift in Sources */,
+				28F51E7A1AC694B000A69CDF /* ReadTask.swift in Sources */,
+				289E2AF61B2D71FD003269A3 /* UserProtocol.swift in Sources */,
+				28F51E771AC6948400A69CDF /* WriteTask.swift in Sources */,
 				28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */,
-				28F51EBB1AC6F5F200A69CDF /* DaysDataSource.swift in Sources */,
+				28F51EBB1AC6F5F200A69CDF /* DaysScrollView.swift in Sources */,
+				289E2AFD1B2D8C31003269A3 /* typealiases.swift in Sources */,
 				289998A21AC2920200706824 /* Popover.swift in Sources */,
+				289E2AF91B2D8AD6003269A3 /* User.swift in Sources */,
 				28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */,
 				28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */,
-				28EB90261AF6027D008D5337 /* DummyDataManager.swift in Sources */,
+				289E2AE91B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
+				28EB90261AF6027D008D5337 /* MockDataManager.swift in Sources */,
 				2856DF1D1B13C95200A4D5A4 /* JiraTrackWork.swift in Sources */,
 				28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */,
-				28EB90211AF60234008D5337 /* NoTasksController.swift in Sources */,
+				28EB90211AF60234008D5337 /* NoTasks.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */,
-				282426761B113D5000211713 /* Flip.swift in Sources */,
+				282426761B113D5000211713 /* FlipScreens.swift in Sources */,
+				289E2AEF1B2D6D56003269A3 /* Logout.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				28B1F2BA1AFB2BCF00D61472 /* NonTaskCell.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
-				28F51EB91AC6F4FA00A69CDF /* TasksDataSource.swift in Sources */,
+				28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */,
 				28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */,
 				28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */,
+				289E2AE41B2D5851003269A3 /* DeleteTask.swift in Sources */,
 				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -861,19 +945,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B71CBD1B28EC9400E44161 /* ScrumEstimationTests.swift in Sources */,
-				28EB90221AF60234008D5337 /* NoTasksController.swift in Sources */,
-				28EB90271AF6027D008D5337 /* DummyDataManager.swift in Sources */,
-				28F292271B1C57B40015F64F /* RaportTests.swift in Sources */,
+				289E2AD11B2B776A003269A3 /* Login.swift in Sources */,
+				28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */,
+				28EB90221AF60234008D5337 /* NoTasks.swift in Sources */,
+				289E2AF01B2D6D56003269A3 /* Logout.swift in Sources */,
+				289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */,
+				289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */,
+				28EB90271AF6027D008D5337 /* MockDataManager.swift in Sources */,
+				289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */,
+				289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */,
+				28F292271B1C57B40015F64F /* CreateRaportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
+				289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
-				28EB90971AF9D6E9008D5337 /* JLPredictiveTimeTyping.swift in Sources */,
-				28F292281B1C72720015F64F /* JLCreateRaport.swift in Sources */,
+				28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
+				28F292281B1C72720015F64F /* CreateRaport.swift in Sources */,
+				289E2AF71B2D71FD003269A3 /* UserProtocol.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,
-				28EB90641AF948E3008D5337 /* NewDayController.swift in Sources */,
-				28EB905E1AF73FD4008D5337 /* Estimator.swift in Sources */,
+				28EB90641AF948E3008D5337 /* NewDay.swift in Sources */,
+				28EB905E1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
+				289E2AE11B2D4999003269A3 /* DrawerState.swift in Sources */,
 				28F292291B1C75960015F64F /* Task.swift in Sources */,
+				289E2AF31B2D6D6E003269A3 /* RegisterUser.swift in Sources */,
 				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
+				289E2AFA1B2D8AD6003269A3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

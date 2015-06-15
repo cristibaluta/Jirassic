@@ -8,23 +8,10 @@
 
 import Cocoa
 
-enum TaskSubtype: Int {
-	case TaskIssueBegin = 0
-	case TaskIssueEnd = 1
-	case TaskScrumBegin = 2
-	case TaskScrumEnd = 3
-	case TaskLunchBegin = 4
-	case TaskLunchEnd = 5
-	case TaskMeetingBegin = 6
-	case TaskMeetingEnd = 7
-}
-
-class TasksViewController: NSViewController {
+class TasksViewController: NSViewController, TasksViewControllerProtocol {
 	
-	@IBOutlet private var _datesScrollView: NSScrollView?
-	@IBOutlet private var _tasksScrollView: NSScrollView?
-	@IBOutlet private var _datesTableView: NSTableView?
-	@IBOutlet private var _tasksTableView: NSTableView?
+	@IBOutlet private var daysScrollView: DaysScrollView?
+	@IBOutlet private var tasksScrollView: TasksScrollView?
 	@IBOutlet private var _tasksTableViewWidthConstraint: NSLayoutConstraint?
 	
 	@IBOutlet private var _dateLabel: NSTextField?
@@ -35,14 +22,15 @@ class TasksViewController: NSViewController {
 	
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
-	
-	private var _daysDataSource: DaysDataSource?
-	private var _tasksDataSource: TasksDataSource?
 	private var _newDayController = NewDayController()
 	private let _gapX = CGFloat(12)
 	private var kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
-	var onButSettingsPressed: (() -> ())?
+	var handleSettingsButton: (() -> ())?
+	var handleRefreshButton: (() -> ())?
+	var handleDrawerButton: (() -> ())?
+	var handleQuitAppButton: (() -> ())?
+	var selectedDate: NSDate?
 	
 	
 	class func instanceFromStoryboard() -> TasksViewController {
@@ -55,7 +43,7 @@ class TasksViewController: NSViewController {
         super.viewDidLoad()
 		kSecondaryControllerFrame = NSInsetRect(self.view.bounds, _gapX, 0)
 		updateNoTasksState()
-		reloadDataFromServer()
+		self.handleSettingsButton!() // Initiate a data refresh
     }
 	
 	override func viewDidAppear() {
@@ -68,13 +56,8 @@ class TasksViewController: NSViewController {
 			selector: Selector("newTaskWasAdded:"), name: "newTaskWasAdded", object: nil)
 	}
 	
-	override func viewDidDisappear() {
-		super.viewDidDisappear()
+	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
-	}
-	
-	override func viewDidLayout() {
-		super.viewDidLayout()
 	}
 	
 	override func awakeFromNib() {
@@ -86,27 +69,10 @@ class TasksViewController: NSViewController {
 		self.view.removeFromSuperview()
 	}
 	
-	func reloadDataFromServer() {
-		self._progressIndicator?.startAnimation(nil)
-		self._butRefresh?.hidden = true
-		sharedData.queryData { (tasks, error) -> Void in
-			self.reloadData()
-			self._progressIndicator?.stopAnimation(nil)
-			self._butRefresh?.hidden = false
-		}
-	}
-	
-	func reloadData() {
-		self.setupDaysTableView()
-		self.setupTasksTableView()
-		self.reloadTasksOnDay( NSDate())
-	}
-	
 	func setupDaysTableView() {
 		
 		if _daysDataSource == nil {
 			_daysDataSource = DaysDataSource()
-			_daysDataSource!.tableView = _datesTableView
 			_daysDataSource!.data = sharedData.days()
 			_daysDataSource?.didSelectRow = { (row: Int) in
 				if row >= 0 {
@@ -145,17 +111,6 @@ class TasksViewController: NSViewController {
 		}
 	}
 	
-	func reloadTasksOnDay(date: NSDate) {
-		
-		_tasksDataSource!.data = sharedData.tasksForDayOnDate(date)
-		_tasksTableView?.reloadData()
-		_tasksTableView?.hidden = false
-		
-		_dateLabel?.stringValue = date.EEEEMMdd()
-		
-		updateNoTasksState()
-	}
-	
 	func updateNoTasksState() {
 		
 		if _tasksDataSource == nil || _tasksDataSource!.data?.count == 0 {
@@ -180,13 +135,8 @@ class TasksViewController: NSViewController {
 		if _noTasksViewController == nil {
 			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
 			_noTasksViewController?.view.frame = kSecondaryControllerFrame
-			_noTasksViewController?.onButStartPressed = { () -> Void in
-				
-				let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
-				JLTaskWriter().write( task )
-				
-				self._newDayController.setLastDay( NSDate())
-				self.reloadData()
+			_noTasksViewController?.handleStartButton = { () -> Void in
+				self.handleStartDayButton!()
 			}
 		}
 		
@@ -210,8 +160,8 @@ class TasksViewController: NSViewController {
 			
 			_newTaskViewController?.onOptionChosen = { (i: TaskSubtype) -> Void in
 				
-				self._datesTableView?.hidden = false
-				self._tasksTableView?.hidden = false
+				self.daysScrollView?.hidden = false
+				self.tasksScrollView?.hidden = false
 				
 				var task: Task?
 				
@@ -232,7 +182,7 @@ class TasksViewController: NSViewController {
 				self.setupDaysTableView()
 				self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
 					withAnimation: NSTableViewAnimationOptions.SlideUp)
-				self._tasksTableView?.scrollRowToVisible( 0 )
+				self.tasksScrollView?.scrollRowToVisible( 0 )
 				
 				self.updateNoTasksState()
 				self.removeNewTaskController()
@@ -240,17 +190,6 @@ class TasksViewController: NSViewController {
 		}
 		
 		return _newTaskViewController!
-	}
-	
-	func newTaskWasAdded(notif: NSNotification) {
-		let task = notif.object as? Task
-		if let t = task {
-			self._tasksDataSource?.addTask( t )
-			self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
-				withAnimation: NSTableViewAnimationOptions.SlideUp)
-			self._tasksTableView?.scrollRowToVisible( 0 )
-			self.updateNoTasksState()
-		}
 	}
 	
 	func removeNewTaskController() {
@@ -268,48 +207,105 @@ class TasksViewController: NSViewController {
 		switch s {
 			case .DaysClosed:
 //				_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
-				_datesScrollView?.hidden = false
-				_tasksScrollView?.frame = NSRect(x: CGRectGetWidth(_datesScrollView!.frame) + _gapX,
-					y: CGRectGetMinY(_datesScrollView!.frame),
-					width: self.view.frame.size.width - CGRectGetWidth(_datesScrollView!.frame) - _gapX,
-					height: CGRectGetHeight(_datesScrollView!.frame))
+				daysScrollView?.hidden = false
+				tasksScrollView?.frame = NSRect(x: CGRectGetWidth(daysScrollView!.frame) + _gapX,
+					y: CGRectGetMinY(daysScrollView!.frame),
+					width: self.view.frame.size.width - CGRectGetWidth(daysScrollView!.frame) - _gapX,
+					height: CGRectGetHeight(daysScrollView!.frame))
 			
 			case .DaysOpen:
 //				_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
-				_datesScrollView?.hidden = true
-				_tasksScrollView?.frame = NSRect(x: _gapX,
-					y: CGRectGetMinY(_datesScrollView!.frame),
+				daysScrollView?.hidden = true
+				tasksScrollView?.frame = NSRect(x: _gapX,
+					y: CGRectGetMinY(daysScrollView!.frame),
 					width: self.view.frame.size.width - _gapX,
-					height: CGRectGetHeight(_datesScrollView!.frame))
+					height: CGRectGetHeight(daysScrollView!.frame))
 		}
 		
-		noTasksController().view.frame = _tasksScrollView!.frame
-		_tasksTableViewWidthConstraint?.constant = _tasksScrollView!.frame.size.width;
+		noTasksController().view.frame = tasksScrollView!.frame
+		_tasksTableViewWidthConstraint?.constant = tasksScrollView!.frame.size.width;
 		
 		JLDrawerState().setState(s)
 	}
 	
+	func showLoadingIndicator(show: Bool) {
+		if show {
+			_progressIndicator?.startAnimation(nil)
+		} else {
+			_progressIndicator?.stopAnimation(nil)
+		}
+		self._butRefresh?.hidden = show
+	}
+	
+	func reloadDataFromServer() {
+		
+		self.controller.showLoadingIndicator(true)
+		
+		sharedData.queryData { (tasks, error) -> Void in
+			self.reloadData()
+			self.controller.showLoadingIndicator(false)
+		}
+	}
+	
+	func reloadData() {
+		self.setupDaysTableView()
+		self.setupTasksTableView()
+		self.reloadTasksOnDay( NSDate())
+	}
+	
+	func reloadTasksOnDay(date: NSDate) {
+		
+		_tasksDataSource!.data = sharedData.tasksForDayOnDate(date)
+		_tasksTableView?.reloadData()
+		_tasksTableView?.hidden = false
+		
+		self.controller?.dateLabel?.stringValue = date.EEEEMMdd()
+		
+		updateNoTasksState()
+	}
+	
+	func newTaskWasAdded(notif: NSNotification) {
+		if let task = notif.object as? Task {
+			self._tasksDataSource?.addTask( task )
+			self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+				withAnimation: NSTableViewAnimationOptions.SlideUp)
+			self._tasksTableView?.scrollRowToVisible( 0 )
+			self.updateNoTasksState()
+		}
+	}
 	
 	// MARK: Actions
 	
-	@IBAction func handleColumnButton(sender: NSButton) {
-        NSApplication.sharedApplication().terminate(nil)
-//		setDaysTableState( JLDrawerState().toggleState() )
+	func handleStartDayButton() {
+		
+		let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
+		JLTaskWriter().write( task )
+		
+		self._newDayController.setLastDay( NSDate())
+		self.reloadData()
+	}
+	
+	@IBAction func handleDrawerButton(sender: NSButton) {
+		setDaysTableState( JLDrawerState().toggleState() )
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {
 		removeNoTasksController()
-		_datesTableView?.hidden = true
-		_tasksTableView?.hidden = true
+		self.daysScrollView?.hidden = true
+		self.tasksScrollView?.hidden = true
 		let controller = newTaskController()
 		self.view.addSubview( controller.view )
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {
-		self.onButSettingsPressed!()
+		
 	}
 	
 	@IBAction func handleRefreshButton(sender: NSButton) {
 		reloadDataFromServer()
+	}
+	
+	@IBAction func handleQuitAppButton(sender: NSButton) {
+		NSApplication.sharedApplication().terminate(nil)
 	}
 }
