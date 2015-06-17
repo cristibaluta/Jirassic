@@ -38,6 +38,10 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 		}
 	}
 	
+	func reloadData() {
+		self.tableView?.reloadData()
+	}
+	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		if let d = data {
 			return d.count
@@ -91,7 +95,7 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 			theData.task_nr = cell.data.task
 			theData.notes = cell.data.notes
-			JLTaskWriter().write( theData )
+			WriteTask(task: theData)
 		}
 		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
 			if self.didRemoveRow != nil {

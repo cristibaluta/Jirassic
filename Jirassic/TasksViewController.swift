@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TasksViewController: NSViewController, TasksViewControllerProtocol {
+class TasksViewController: NSViewController {
 	
 	@IBOutlet private var daysScrollView: DaysScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
@@ -22,7 +22,7 @@ class TasksViewController: NSViewController, TasksViewControllerProtocol {
 	
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
-	private var _newDayController = NewDayController()
+	private var _newDayController = NewDay()
 	private let _gapX = CGFloat(12)
 	private var kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
@@ -71,12 +71,11 @@ class TasksViewController: NSViewController, TasksViewControllerProtocol {
 	
 	func setupDaysTableView() {
 		
-		if _daysDataSource == nil {
-			_daysDataSource = DaysDataSource()
-			_daysDataSource!.data = sharedData.days()
-			_daysDataSource?.didSelectRow = { (row: Int) in
+		if daysScrollView == nil {
+			daysScrollView!.data = sharedData.days()
+			daysScrollView?.didSelectRow = { (row: Int) in
 				if row >= 0 {
-					let theData = self._daysDataSource!.data![row]
+					let theData = self.daysScrollView!.data![row]
 					if let dateEnd = theData.date_task_finished {
 						self.reloadTasksOnDay( dateEnd )
 					} else if let dateStart = theData.date_task_started {
@@ -84,13 +83,10 @@ class TasksViewController: NSViewController, TasksViewControllerProtocol {
 					}
 				}
 			}
-			
-			_datesTableView?.setDataSource( _daysDataSource )
-			_datesTableView?.setDelegate( _daysDataSource )
 		} else {
-			_daysDataSource!.data = sharedData.days()
+			daysScrollView!.data = sharedData.days()
 		}
-		_datesTableView?.reloadData()
+		daysScrollView?.reloadData()
 	}
 	
 	func setupTasksTableView() {
@@ -199,7 +195,7 @@ class TasksViewController: NSViewController, TasksViewControllerProtocol {
 	}
 	
 	func restoreDaysTableState() {
-		setDaysTableState( JLDrawerState().previousState() )
+		setDaysTableState( DrawerState().previousState() )
 	}
 	
 	func setDaysTableState (s: DaysState) {
@@ -225,7 +221,7 @@ class TasksViewController: NSViewController, TasksViewControllerProtocol {
 		noTasksController().view.frame = tasksScrollView!.frame
 		_tasksTableViewWidthConstraint?.constant = tasksScrollView!.frame.size.width;
 		
-		JLDrawerState().setState(s)
+		DrawerState().setState(s)
 	}
 	
 	func showLoadingIndicator(show: Bool) {
@@ -279,14 +275,14 @@ class TasksViewController: NSViewController, TasksViewControllerProtocol {
 	func handleStartDayButton() {
 		
 		let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
-		JLTaskWriter().write( task )
+		WriteTask(task: task)
 		
 		self._newDayController.setLastDay( NSDate())
 		self.reloadData()
 	}
 	
 	@IBAction func handleDrawerButton(sender: NSButton) {
-		setDaysTableState( JLDrawerState().toggleState() )
+		setDaysTableState( DrawerState().toggleState() )
 	}
 	
 	@IBAction func handlePlusButton(sender: NSButton) {

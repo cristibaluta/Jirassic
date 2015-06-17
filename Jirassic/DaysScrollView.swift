@@ -19,6 +19,16 @@ class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	var data: [Task]?
 	var didSelectRow: ((row: Int) -> ())?
 	
+	
+	override func awakeFromNib() {
+		tableView?.setDataSource( self )
+		tableView?.setDelegate( self )
+	}
+	
+	func reloadData() {
+		self.tableView?.reloadData()
+	}
+	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		
 		let numberOfRows: Int = data!.count

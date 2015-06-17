@@ -85,6 +85,18 @@
 		289E2AFD1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
 		289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
 		289E2AFF1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
+		289E2B181B3141F4003269A3 /* DaysScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */; };
+		289E2B191B3141F8003269A3 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */; };
+		289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
+		289E2B1B1B3141FE003269A3 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
+		289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
+		289E2B1D1B314207003269A3 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
+		289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B91AFB2BCF00D61472 /* NonTaskCell.swift */; };
+		289E2B1F1B31420F003269A3 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */; };
+		289E2B201B31428E003269A3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839021AF4035900602D33 /* DataManager.swift */; };
+		289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
+		289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
+		289E2B231B3142A6003269A3 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
 		28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
 		28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
 		28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
@@ -848,6 +860,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289E2B1F1B31420F003269A3 /* NonTaskCell.xib in Resources */,
+				289E2B1D1B314207003269A3 /* TaskCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +964,7 @@
 				28EB90221AF60234008D5337 /* NoTasks.swift in Sources */,
 				289E2AF01B2D6D56003269A3 /* Logout.swift in Sources */,
 				289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */,
+				289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */,
 				289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */,
 				28EB90271AF6027D008D5337 /* MockDataManager.swift in Sources */,
 				289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */,
@@ -957,9 +972,12 @@
 				28F292271B1C57B40015F64F /* CreateRaportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
+				289E2B231B3142A6003269A3 /* InitParse.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
+				289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */,
 				28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				28F292281B1C72720015F64F /* CreateRaport.swift in Sources */,
+				289E2B201B31428E003269A3 /* DataManager.swift in Sources */,
 				289E2AF71B2D71FD003269A3 /* UserProtocol.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,
 				28EB90641AF948E3008D5337 /* NewDay.swift in Sources */,
@@ -967,8 +985,14 @@
 				289E2AE11B2D4999003269A3 /* DrawerState.swift in Sources */,
 				28F292291B1C75960015F64F /* Task.swift in Sources */,
 				289E2AF31B2D6D6E003269A3 /* RegisterUser.swift in Sources */,
+				289E2B1B1B3141FE003269A3 /* NewTaskViewController.swift in Sources */,
 				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
+				289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */,
+				289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */,
+				289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */,
 				289E2AFA1B2D8AD6003269A3 /* User.swift in Sources */,
+				289E2B191B3141F8003269A3 /* TasksScrollView.swift in Sources */,
+				289E2B181B3141F4003269A3 /* DaysScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
