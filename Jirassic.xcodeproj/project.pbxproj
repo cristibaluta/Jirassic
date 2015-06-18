@@ -97,12 +97,12 @@
 		289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
 		289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
 		289E2B231B3142A6003269A3 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
-		289E2B3E1B3282B3003269A3 /* rex.ico in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B3D1B3282B3003269A3 /* rex.ico */; };
 		289E2B3F1B32857D003269A3 /* WriteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* WriteTask.swift */; };
 		289E2B401B328582003269A3 /* DeleteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE31B2D5851003269A3 /* DeleteTask.swift */; };
 		289E2B411B328588003269A3 /* ReadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTask.swift */; };
 		289E2B421B328598003269A3 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
+		289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B441B332C4C003269A3 /* Jirassic.iconset */; };
 		28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
 		28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
 		28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
@@ -252,7 +252,7 @@
 		289E2AF51B2D71FD003269A3 /* UserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProtocol.swift; path = App/UserProtocol.swift; sourceTree = "<group>"; };
 		289E2AF81B2D8AD6003269A3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/User.swift; sourceTree = SOURCE_ROOT; };
 		289E2AFC1B2D8C31003269A3 /* typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = typealiases.swift; path = App/typealiases.swift; sourceTree = "<group>"; };
-		289E2B3D1B3282B3003269A3 /* rex.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = rex.ico; path = Jirassic/rex.ico; sourceTree = SOURCE_ROOT; };
+		289E2B441B332C4C003269A3 /* Jirassic.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = Jirassic.iconset; path = Jirassic/Jirassic.iconset; sourceTree = SOURCE_ROOT; };
 		28B1F2AF1AFA78AA00D61472 /* Jirassic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jirassic-Bridging-Header.h"; sourceTree = "<group>"; };
 		28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksViewController.swift; sourceTree = "<group>"; };
 		28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -551,7 +551,7 @@
 		28E838F51AF297FE00602D33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				289E2B3D1B3282B3003269A3 /* rex.ico */,
+				289E2B441B332C4C003269A3 /* Jirassic.iconset */,
 				28E838F71AF297FE00602D33 /* Status.png */,
 				28E838F81AF297FE00602D33 /* Status@2x.png */,
 			);
@@ -857,11 +857,11 @@
 				28B1F2BE1AFB2BF500D61472 /* NonTaskCell.xib in Resources */,
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
+				289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */,
 				28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */,
 				28E838FA1AF297FE00602D33 /* Status.png in Resources */,
 				28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */,
 				28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */,
-				289E2B3E1B3282B3003269A3 /* rex.ico in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
