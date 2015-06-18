@@ -97,6 +97,12 @@
 		289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
 		289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
 		289E2B231B3142A6003269A3 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
+		289E2B3E1B3282B3003269A3 /* rex.ico in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B3D1B3282B3003269A3 /* rex.ico */; };
+		289E2B3F1B32857D003269A3 /* WriteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E761AC6948400A69CDF /* WriteTask.swift */; };
+		289E2B401B328582003269A3 /* DeleteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE31B2D5851003269A3 /* DeleteTask.swift */; };
+		289E2B411B328588003269A3 /* ReadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTask.swift */; };
+		289E2B421B328598003269A3 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
+		289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
 		28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
 		28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
@@ -246,6 +252,7 @@
 		289E2AF51B2D71FD003269A3 /* UserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProtocol.swift; path = App/UserProtocol.swift; sourceTree = "<group>"; };
 		289E2AF81B2D8AD6003269A3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/User.swift; sourceTree = SOURCE_ROOT; };
 		289E2AFC1B2D8C31003269A3 /* typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = typealiases.swift; path = App/typealiases.swift; sourceTree = "<group>"; };
+		289E2B3D1B3282B3003269A3 /* rex.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = rex.ico; path = Jirassic/rex.ico; sourceTree = SOURCE_ROOT; };
 		28B1F2AF1AFA78AA00D61472 /* Jirassic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jirassic-Bridging-Header.h"; sourceTree = "<group>"; };
 		28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksViewController.swift; sourceTree = "<group>"; };
 		28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -488,7 +495,6 @@
 				28EB90201AF60234008D5337 /* NoTasks.swift */,
 				28EB90231AF60250008D5337 /* NoTasksTests.swift */,
 				28EB90621AF948E3008D5337 /* NewDay.swift */,
-				28D21F7C1B014C41005D3C94 /* DrawerState.swift */,
 				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
 			);
 			name = Tasks;
@@ -537,6 +543,7 @@
 				289E2ACF1B2B776A003269A3 /* Login.swift */,
 				289E2AEE1B2D6D56003269A3 /* Logout.swift */,
 				289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */,
+				28D21F7C1B014C41005D3C94 /* DrawerState.swift */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -544,6 +551,7 @@
 		28E838F51AF297FE00602D33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				289E2B3D1B3282B3003269A3 /* rex.ico */,
 				28E838F71AF297FE00602D33 /* Status.png */,
 				28E838F81AF297FE00602D33 /* Status@2x.png */,
 			);
@@ -853,6 +861,7 @@
 				28E838FA1AF297FE00602D33 /* Status.png in Resources */,
 				28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */,
 				28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */,
+				289E2B3E1B3282B3003269A3 /* rex.ico in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +968,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */,
 				289E2AD11B2B776A003269A3 /* Login.swift in Sources */,
 				28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */,
 				28EB90221AF60234008D5337 /* NoTasks.swift in Sources */,
@@ -969,6 +979,7 @@
 				28EB90271AF6027D008D5337 /* MockDataManager.swift in Sources */,
 				289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */,
 				289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */,
+				289E2B421B328598003269A3 /* FlipScreens.swift in Sources */,
 				28F292271B1C57B40015F64F /* CreateRaportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
@@ -979,8 +990,10 @@
 				28F292281B1C72720015F64F /* CreateRaport.swift in Sources */,
 				289E2B201B31428E003269A3 /* DataManager.swift in Sources */,
 				289E2AF71B2D71FD003269A3 /* UserProtocol.swift in Sources */,
+				289E2B3F1B32857D003269A3 /* WriteTask.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,
 				28EB90641AF948E3008D5337 /* NewDay.swift in Sources */,
+				289E2B411B328588003269A3 /* ReadTask.swift in Sources */,
 				28EB905E1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				289E2AE11B2D4999003269A3 /* DrawerState.swift in Sources */,
 				28F292291B1C75960015F64F /* Task.swift in Sources */,
@@ -991,6 +1004,7 @@
 				289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */,
 				289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */,
 				289E2AFA1B2D8AD6003269A3 /* User.swift in Sources */,
+				289E2B401B328582003269A3 /* DeleteTask.swift in Sources */,
 				289E2B191B3141F8003269A3 /* TasksScrollView.swift in Sources */,
 				289E2B181B3141F4003269A3 /* DaysScrollView.swift in Sources */,
 			);

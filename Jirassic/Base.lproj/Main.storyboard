@@ -794,7 +794,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="handleColumnButton:" target="wHU-IX-gfU" id="mh1-wG-vEr"/>
+                                    <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="Q2H-uE-Pj0"/>
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="sOM-pv-IVs">

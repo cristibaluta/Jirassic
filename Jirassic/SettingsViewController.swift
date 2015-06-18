@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SettingsViewController: NSViewController, SettingsViewControllerProtocol {
+class SettingsViewController: NSViewController {
 	
 	var handleSaveButton: (() -> ())?
 	var handleCloseButton: (() -> ())?

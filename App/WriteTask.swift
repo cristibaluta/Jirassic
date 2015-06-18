@@ -10,10 +10,12 @@ import Foundation
 
 class WriteTask: NSObject {
 	
-	convenience init(task: Task) {
+	convenience init(task: TaskProtocol) {
 		self.init()
-		task.saveEventually { (success, error) -> Void in
-			println("saved task to Parse \(success) \(error)")
+		if let task = task as? Task {
+			task.saveEventually { (success, error) -> Void in
+				println("saved task to Parse \(success) \(error)")
+			}
 		}
 	}
 }

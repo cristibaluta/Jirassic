@@ -19,13 +19,17 @@ let kTaskCellMaxHeight = CGFloat(90.0)
 
 class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	
-	@IBOutlet private var tableView: NSTableView?
-	var data: [Task]?
+	@IBOutlet var tableView: NSTableView?
+	
+	var data = [TaskProtocol]()
 	var didSelectRow: ((row: Int) -> ())?
 	var didRemoveRow: ((row: Int) -> ())?
 	
 	
 	override func awakeFromNib() {
+		
+		tableView?.setDataSource( self )
+		tableView?.setDelegate( self )
 		
 		assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
 		assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
@@ -43,16 +47,13 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 	}
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
-		if let d = data {
-			return d.count
-		}
-		return 0
+		return data.count
 	}
 	
 	func tableView(tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-		let theData = data![row] as Task
+		let theData = data[row]
 		var cell: TaskCellProtocol? = nil
 		if theData.task_type?.intValue == 0 {
 			cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
@@ -67,8 +68,8 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 			date = theData.date_task_started!.HHmm()
 			cell?.statusImage!.image = NSImage(named: NSImageNameStatusPartiallyAvailable)
 		} else {
-			if row < data!.count-1 {
-				let thePreviosData = data![row+1] as Task
+			if row < data.count-1 {
+				let thePreviosData = data[row+1]
 				
 				if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
 					if let dateEnd = theData.date_task_finished {
@@ -130,18 +131,18 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 //	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		let theData = data![row] as Task
+		let theData = data[row]
 		return theData.task_type?.intValue == 0 ? kTaskCellMaxHeight : kNonTaskCellHeight
 	}
 	
 	
 	// MARK: Add and remove objects
 	
-	func addTask(task: Task) {
-		data?.insert(task, atIndex: 0)
+	func addTask(task: TaskProtocol) {
+		data.insert(task, atIndex: 0)
 	}
 	
-	func removeTask(task: Task) {
+	func removeTask(task: TaskProtocol) {
 //		data?.removeAtIndex( 0 )
 	}
 }

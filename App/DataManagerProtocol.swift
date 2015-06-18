@@ -10,13 +10,13 @@ import Foundation
 
 protocol DataManagerProtocol: NSObjectProtocol {
 	
-	func queryData(completion: ([Task], NSError?) -> Void)
-	func days() -> [Task]
-	func tasksForDayOnDate(date: NSDate) -> [Task]
-	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
-	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
-	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
-	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
-	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task
+	func queryData(completion: ([TaskProtocol], NSError?) -> Void)
+	func days() -> [TaskProtocol]
+	func tasksForDayOnDate(date: NSDate) -> [TaskProtocol]
+	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
+	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
+	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
+	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
+	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
 //	func updateTask(task_id: String, notes: String)
 }

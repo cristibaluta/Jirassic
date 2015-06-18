@@ -12,9 +12,9 @@ let sharedData: DataManagerProtocol = DataManager()
 
 class DataManager: NSObject, DataManagerProtocol {
 
-	private var data = [Task]()
+	private var data = [TaskProtocol]()
 	
-	func queryData(completion: ([Task], NSError?) -> Void) {
+	func queryData(completion: ([TaskProtocol], NSError?) -> Void) {
 		
 		let user = PFUser.currentUser()
 		let query = PFQuery(className: Task.parseClassName())
@@ -22,18 +22,24 @@ class DataManager: NSObject, DataManagerProtocol {
 		query.orderByDescending("date_task_finished")
 //		query.whereKey("user", equalTo: user!)
 		query.findObjectsInBackgroundWithBlock( { (objects: [AnyObject]?, error: NSError?) in
-			if (error == nil) {
-				self.data = objects as! [Task]
+			if error == nil && objects != nil {
+				// TaskProtocol does not conform to AnyObject
+				// and as a side note the objc NSArray cannot be directly casted to Swift array
+				self.data = [TaskProtocol]()
+				for object in objects! {
+					self.data.append(object as! Task)
+					RCLogO(object)
+				}
 			}
 			completion(self.data, error)
 		})
 	}
 	
-	func days() -> [Task] {
+	func days() -> [TaskProtocol] {
 		
 		var currrentDate = NSDate.distantFuture() as! NSDate
 		
-		let filteredData = self.data.filter { (task: Task) -> Bool in
+		let filteredData = self.data.filter { (task: TaskProtocol) -> Bool in
 			
 			if let dateEnd = task.date_task_finished {
 				if dateEnd.isSameDayAs(currrentDate) == false {
@@ -52,9 +58,9 @@ class DataManager: NSObject, DataManagerProtocol {
 		return filteredData
 	}
 	
-	func tasksForDayOnDate(date: NSDate) -> [Task] {
+	func tasksForDayOnDate(date: NSDate) -> [TaskProtocol] {
 		
-		let filteredData = self.data.filter { (task: Task) -> Bool in
+		let filteredData = self.data.filter { (task: TaskProtocol) -> Bool in
 			
 			if let dateEnd = task.date_task_finished {
 				return dateEnd.isSameDayAs(date)
@@ -67,7 +73,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return filteredData
 	}
 	
-	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
+	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
 		
 		let task = Task()
 		task.date_task_started = dateSart
@@ -80,7 +86,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
+	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
 		
 		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
@@ -90,7 +96,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
+	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
 		
 		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
@@ -100,7 +106,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
+	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
 		
 		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = ""
@@ -110,7 +116,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return task
 	}
 	
-	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> Task {
+	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
 		
 		let task = addNewTask(dateSart, dateEnd: dateEnd)
 		task.task_nr = "Internal meeting"

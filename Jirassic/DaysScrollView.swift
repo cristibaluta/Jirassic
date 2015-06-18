@@ -1,5 +1,5 @@
 //
-//  DateCellDataSource.swift
+//  DaysScrollView.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 28/03/15.
@@ -16,7 +16,7 @@ class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	let columnDateId = "date"
 	let columnProgressId = "progress"
 	
-	var data: [Task]?
+	var data = [TaskProtocol]()
 	var didSelectRow: ((row: Int) -> ())?
 	
 	
@@ -31,14 +31,14 @@ class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		
-		let numberOfRows: Int = data!.count
+		let numberOfRows: Int = data.count
 		return numberOfRows
 	}
 	
 	func tableView(tableView: NSTableView,
 		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 			
-		let theData = data![row]
+		let theData = data[row]
 		
 		if (tableColumn?.identifier == columnDateId) {
 			return theData.date_task_finished?.ddEEEEE()

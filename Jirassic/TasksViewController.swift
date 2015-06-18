@@ -39,11 +39,16 @@ class TasksViewController: NSViewController {
 		return vc
 	}
 	
+	override func awakeFromNib() {
+		self.view.layer = CALayer()
+		self.view.wantsLayer = true
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		kSecondaryControllerFrame = NSInsetRect(self.view.bounds, _gapX, 0)
 		updateNoTasksState()
-		self.handleSettingsButton!() // Initiate a data refresh
+		reloadDataFromServer()
     }
 	
 	override func viewDidAppear() {
@@ -60,62 +65,46 @@ class TasksViewController: NSViewController {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
-	override func awakeFromNib() {
-		self.view.layer = CALayer()
-		self.view.wantsLayer = true
-	}
-	
 	func removeFromSuperview() {
 		self.view.removeFromSuperview()
 	}
 	
 	func setupDaysTableView() {
 		
-		if daysScrollView == nil {
-			daysScrollView!.data = sharedData.days()
-			daysScrollView?.didSelectRow = { (row: Int) in
-				if row >= 0 {
-					let theData = self.daysScrollView!.data![row]
-					if let dateEnd = theData.date_task_finished {
-						self.reloadTasksOnDay( dateEnd )
-					} else if let dateStart = theData.date_task_started {
-						self.reloadTasksOnDay( dateStart )
-					}
+		daysScrollView!.data = sharedData.days()
+		daysScrollView?.didSelectRow = { (row: Int) in
+			if row >= 0 {
+				let theData = self.daysScrollView!.data[row]
+				if let dateEnd = theData.date_task_finished {
+					self.reloadTasksOnDay( dateEnd )
+				} else if let dateStart = theData.date_task_started {
+					self.reloadTasksOnDay( dateStart )
 				}
 			}
-		} else {
-			daysScrollView!.data = sharedData.days()
 		}
 		daysScrollView?.reloadData()
 	}
 	
 	func setupTasksTableView() {
 		
-		if _tasksDataSource == nil {
-			_tasksDataSource = TasksDataSource()
-			_tasksDataSource!.tableView = _tasksTableView
-			_tasksDataSource!.didRemoveRow = { (row: Int) in
-				RCLogO("remove \(row)")
-				if row >= 0 {
-					let theData = self._tasksDataSource!.data![row]
-					RCLogO("remove \(theData)")
-				}
+		tasksScrollView!.didRemoveRow = { (row: Int) in
+			RCLogO("remove \(row)")
+			if row >= 0 {
+				let theData = self.tasksScrollView!.data[row]
+				RCLogO("remove \(theData)")
 			}
-			
-			_tasksTableView?.setDataSource( _tasksDataSource )
-			_tasksTableView?.setDelegate( _tasksDataSource )
 		}
 	}
 	
 	func updateNoTasksState() {
 		
-		if _tasksDataSource == nil || _tasksDataSource!.data?.count == 0 {
+		if tasksScrollView == nil || tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
 			self.view.addSubview( controller.view)
 			_butAdd?.hidden = true
 		}
-		else if _tasksDataSource!.data?.count == 1 {
+		else if tasksScrollView!.data.count == 1 {
 			let controller = noTasksController()
 			controller.showFirstTaskState()
 			_butAdd?.hidden = false
@@ -132,7 +121,7 @@ class TasksViewController: NSViewController {
 			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
 			_noTasksViewController?.view.frame = kSecondaryControllerFrame
 			_noTasksViewController?.handleStartButton = { () -> Void in
-				self.handleStartDayButton!()
+				self.handleStartDayButton()
 			}
 		}
 		
@@ -150,16 +139,16 @@ class TasksViewController: NSViewController {
 		if _newTaskViewController == nil {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
 			_newTaskViewController?.view.frame = NSRect(x: _gapX,
-				y: CGRectGetMinY(_datesScrollView!.frame),
+				y: CGRectGetMinY(daysScrollView!.frame),
 				width: self.view.frame.size.width - _gapX,
-				height: CGRectGetHeight(_datesScrollView!.frame))
+				height: CGRectGetHeight(daysScrollView!.frame))
 			
 			_newTaskViewController?.onOptionChosen = { (i: TaskSubtype) -> Void in
 				
 				self.daysScrollView?.hidden = false
 				self.tasksScrollView?.hidden = false
 				
-				var task: Task?
+				var task: TaskProtocol?
 				
 				switch(i) {
 					case .TaskIssueBegin: task = sharedData.addNewTask(NSDate(), dateEnd: nil)
@@ -172,13 +161,13 @@ class TasksViewController: NSViewController {
 					case .TaskMeetingEnd: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
 				}
 				
-				self._tasksDataSource?.addTask( task! )
-				JLTaskWriter().write( task! )
+				self.tasksScrollView?.addTask( task! )
+				WriteTask(task: task!)
 				
 				self.setupDaysTableView()
-				self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+				self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
 					withAnimation: NSTableViewAnimationOptions.SlideUp)
-				self.tasksScrollView?.scrollRowToVisible( 0 )
+				self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
 				
 				self.updateNoTasksState()
 				self.removeNewTaskController()
@@ -235,11 +224,11 @@ class TasksViewController: NSViewController {
 	
 	func reloadDataFromServer() {
 		
-		self.controller.showLoadingIndicator(true)
+		self.showLoadingIndicator(true)
 		
 		sharedData.queryData { (tasks, error) -> Void in
 			self.reloadData()
-			self.controller.showLoadingIndicator(false)
+			self.showLoadingIndicator(false)
 		}
 	}
 	
@@ -251,24 +240,25 @@ class TasksViewController: NSViewController {
 	
 	func reloadTasksOnDay(date: NSDate) {
 		
-		_tasksDataSource!.data = sharedData.tasksForDayOnDate(date)
-		_tasksTableView?.reloadData()
-		_tasksTableView?.hidden = false
+		tasksScrollView!.data = sharedData.tasksForDayOnDate(date)
+		tasksScrollView?.reloadData()
+		tasksScrollView?.hidden = false
 		
-		self.controller?.dateLabel?.stringValue = date.EEEEMMdd()
+		self._dateLabel?.stringValue = date.EEEEMMdd()
 		
 		updateNoTasksState()
 	}
 	
 	func newTaskWasAdded(notif: NSNotification) {
 		if let task = notif.object as? Task {
-			self._tasksDataSource?.addTask( task )
-			self._tasksTableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+			self.tasksScrollView?.addTask( task )
+			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
 				withAnimation: NSTableViewAnimationOptions.SlideUp)
-			self._tasksTableView?.scrollRowToVisible( 0 )
+			self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
 			self.updateNoTasksState()
 		}
 	}
+	
 	
 	// MARK: Actions
 	

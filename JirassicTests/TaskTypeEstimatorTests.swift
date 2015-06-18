@@ -19,8 +19,8 @@ class TaskTypeEstimatorTests: XCTestCase {
 	}
 	
 	func testScrumBegin() {
-		let estimator = Estimator()
-		let taskType = estimator.taskAroundDate(NSDate())
+		let estimator = TaskTypeEstimator()
+		let taskType = estimator.taskTypeAroundDate(NSDate())
 		
 	}
 }
