@@ -19,6 +19,7 @@ class InitParse: NSObject {
 		// https://parse.com/docs/ios_guide#localdatastore/OSX
 		
 		Task.registerSubclass()
+		User.registerSubclass()
 		
 //		Parse.enableLocalDatastore()
 		#if os(iOS)
