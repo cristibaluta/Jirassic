@@ -13,10 +13,4 @@ protocol DataManagerProtocol: NSObjectProtocol {
 	func queryData(completion: ([TaskProtocol], NSError?) -> Void)
 	func days() -> [TaskProtocol]
 	func tasksForDayOnDate(date: NSDate) -> [TaskProtocol]
-	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
-	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
-	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
-	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
-	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol
-//	func updateTask(task_id: String, notes: String)
 }

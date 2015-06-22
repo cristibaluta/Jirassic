@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol UserProtocol: NSObjectProtocol {
+protocol JRUserProtocol: NSObjectProtocol {
 
 	var isLoggedIn: Bool {get}
+	var password: String? {get set}
+	var email: String? {get set}
 }

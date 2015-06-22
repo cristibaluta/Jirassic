@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
     @IBOutlet var popover: NSPopover?
-    private var _sleep: SleepNotifications?
+    private var sleep: SleepNotifications?
 	private let menu = MenuBarController()
 	
 	override init() {
@@ -29,11 +29,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				self.hide()
 			}
         }
-        _sleep = SleepNotifications()
-        _sleep?.computerWentToSleep = {
+        sleep = SleepNotifications()
+        sleep?.computerWentToSleep = {
 			
         }
-        _sleep?.computerWakeUp = {
+        sleep?.computerWakeUp = {
 			let existingTasks = sharedData.tasksForDayOnDate(NSDate())
 			var scrumExists = false
 			for task in existingTasks {
@@ -43,8 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				}
 			}
 			if !scrumExists {
-				let task = sharedData.addScrumSessionTask(self._sleep?.lastSleepDate, dateEnd: NSDate())
-				WriteTask(task: task)
+				let task = Task.create(self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
+				task.saveToParseWhenPossible()
 				NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 			}
         }

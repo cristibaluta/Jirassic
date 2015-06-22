@@ -16,10 +16,6 @@ let kTypeKey = "task_type"
 let kUserKey = "user"
 
 public class Task: PFObject, PFSubclassing, TaskProtocol {
-
-//	override init() {
-//		super.init()
-//	}
 	
 	dynamic public var date_task_started: NSDate? {
 		get {
@@ -94,9 +90,9 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 		}
 	}
 	
-	dynamic public var user: PFUser? {
+	var user: JRUser? {
 		get {
-			return objectForKey(kUserKey) as! PFUser?
+			return objectForKey(kUserKey) as! JRUser?
 		}
 		set {
 			setObject(newValue!, forKey: kUserKey)
@@ -105,5 +101,34 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 	
 	public class func parseClassName() -> String {
 		return "Task"
+	}
+	
+	
+	// Helpers
+	
+	class func create(dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) -> TaskProtocol {
+		
+		let task = Task()
+		task.date_task_started = dateSart
+		task.date_task_finished = dateEnd
+		task.task_nr = "AN-0000"
+		task.task_type = type.rawValue
+		task.user = JRUser.currentUser()!
+		
+		switch (type) {
+		case TaskType.Issue: task.notes = ""
+		case TaskType.Start: task.notes = "Working day started"
+		case TaskType.Scrum: task.notes = "Scrum session"
+		case TaskType.Lunch: task.notes = "Lunch break"
+		case TaskType.Meeting: task.notes = "Internal meeting"
+		}
+		
+		return task
+	}
+	
+	func saveToParseWhenPossible() {
+		self.saveEventually { (success, error) -> Void in
+			RCLogO(success)
+		}
 	}
 }

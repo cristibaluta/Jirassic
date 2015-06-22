@@ -151,18 +151,18 @@ class TasksViewController: NSViewController {
 				var task: TaskProtocol?
 				
 				switch(i) {
-					case .TaskIssueBegin: task = sharedData.addNewTask(NSDate(), dateEnd: nil)
-					case .TaskIssueEnd: task = sharedData.addNewTask(nil, dateEnd: NSDate())
-					case .TaskScrumBegin: task = sharedData.addScrumSessionTask(nil, dateEnd:NSDate())
-					case .TaskScrumEnd: task = sharedData.addScrumSessionTask(nil, dateEnd:NSDate())
-					case .TaskLunchBegin: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
-					case .TaskLunchEnd: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
-					case .TaskMeetingBegin: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
-					case .TaskMeetingEnd: task = sharedData.addLunchBreakTask(nil, dateEnd:NSDate())
+					case .TaskIssueBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Issue)
+					case .TaskIssueEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Issue)
+					case .TaskScrumBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Scrum)
+					case .TaskScrumEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Scrum)
+					case .TaskLunchBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Lunch)
+					case .TaskLunchEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Lunch)
+					case .TaskMeetingBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Meeting)
+					case .TaskMeetingEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Meeting)
 				}
 				
+				task?.saveToParseWhenPossible()
 				self.tasksScrollView?.addTask( task! )
-				WriteTask(task: task!)
 				
 				self.setupDaysTableView()
 				self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
@@ -264,8 +264,8 @@ class TasksViewController: NSViewController {
 	
 	func handleStartDayButton() {
 		
-		let task = sharedData.addNewWorkingDayTask(NSDate(), dateEnd:NSDate())
-		WriteTask(task: task)
+		let task = Task.create(NSDate(), dateEnd:NSDate(), type: TaskType.Start)
+		task.saveToParseWhenPossible()
 		
 		self._newDayController.setLastDay( NSDate())
 		self.reloadData()
@@ -284,7 +284,7 @@ class TasksViewController: NSViewController {
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {
-		
+		self.handleSettingsButton!()
 	}
 	
 	@IBAction func handleRefreshButton(sender: NSButton) {

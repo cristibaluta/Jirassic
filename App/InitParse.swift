@@ -13,15 +13,16 @@ class InitParse: NSObject {
 	override init() {
 		
 		assert(parseApplicationId != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"You need to create your own Parse app in order to use this. After that put the keys in ParseCredentials")
+			"You need to create your own Parse app in order to use this. After that put the keys in ParseCredentials.swift")
 		
 		// [Optional] Power your app with Local Datastore. For more info, go to
 		// https://parse.com/docs/ios_guide#localdatastore/OSX
 		
 		Task.registerSubclass()
+		JRUser.registerSubclass()
 		
 //		Parse.enableLocalDatastore()
-		#if os(iOS)
+		#if os(OSX)
 		PFUser.enableAutomaticUser()
 		#endif
 //		PFUser.currentUser()!.incrementKey("RunCount")
@@ -34,37 +35,4 @@ class InitParse: NSObject {
 		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
 		PFAnalytics()
 	}
-	
-//	func login() {
-//		var currentUser = PFUser.currentUser()
-//		if currentUser != nil {
-//			// Do stuff with the user
-//		} else {
-//			loginAnonymousUser()
-//		}
-//	}
-//	
-//	func loginAnonymousUser() {
-//		PFAnonymousUtils.logInWithBlock {
-//			(user: PFUser?, error: NSError?) -> Void in
-//			if error != nil || user == nil {
-//				RCLogO("Anonymous login failed.")
-//			} else {
-//				RCLogO("Anonymous user logged in.")
-//			}
-//		}
-//	}
-//	
-//	func isAnonymousUser() {
-//		if PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser()) {
-////			self.enableSignUpButton()
-//		} else {
-////			self.enableLogOutButton()
-//		}
-//	}
-//	
-//	func logout() {
-//		PFUser.logOut()
-//		var currentUser = PFUser.currentUser() // this will now be nil
-//	}
 }

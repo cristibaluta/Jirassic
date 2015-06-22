@@ -96,7 +96,7 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 			theData.task_nr = cell.data.task
 			theData.notes = cell.data.notes
-			WriteTask(task: theData)
+			theData.saveToParseWhenPossible()
 		}
 		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
 			if self.didRemoveRow != nil {

@@ -22,9 +22,11 @@ class Login: NSObject {
 		
 		PFUser.logInWithUsernameInBackground(self.credentials!.email, password: self.credentials!.password) {
 			(user: PFUser?, error: NSError?) -> Void in
+			
 			if user != nil {
 				self.onLoginSuccess!()
-			} else if let error = error {
+			}
+			else if let error = error {
 				let errorString = error.userInfo?["error"] as? NSString
 				RCLogO(errorString)
 				
@@ -36,4 +38,37 @@ class Login: NSObject {
 			}
 		}
 	}
+	
+	//	func login() {
+	//		var currentUser = PFUser.currentUser()
+	//		if currentUser != nil {
+	//			// Do stuff with the user
+	//		} else {
+	//			loginAnonymousUser()
+	//		}
+	//	}
+	//
+	//	func loginAnonymousUser() {
+	//		PFAnonymousUtils.logInWithBlock {
+	//			(user: PFUser?, error: NSError?) -> Void in
+	//			if error != nil || user == nil {
+	//				RCLogO("Anonymous login failed.")
+	//			} else {
+	//				RCLogO("Anonymous user logged in.")
+	//			}
+	//		}
+	//	}
+	//
+	func isAnonymousUser() {
+		if PFAnonymousUtils.isLinkedWithUser(PFUser.currentUser()) {
+//			self.enableSignUpButton()
+		} else {
+//			self.enableLogOutButton()
+		}
+	}
+	//
+	//	func logout() {
+	//		PFUser.logOut()
+	//		var currentUser = PFUser.currentUser() // this will now be nil
+	//	}
 }

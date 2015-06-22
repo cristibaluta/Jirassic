@@ -8,8 +8,8 @@
 
 import Foundation
 
-class ReadTask: NSObject {
-
+class ReadTasks: NSObject {
+	
 	override init() {
 		
 	}

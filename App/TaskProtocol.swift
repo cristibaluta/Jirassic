@@ -34,5 +34,8 @@ protocol TaskProtocol: NSObjectProtocol {
 	var notes: String? {get set}
 	var task_nr: String? {get set}
 	var task_type: NSNumber? {get set}
-	var user: PFUser? {get set}
+	var user: JRUser? {get set}
+	
+	static func create(dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) -> TaskProtocol
+	func saveToParseWhenPossible()
 }

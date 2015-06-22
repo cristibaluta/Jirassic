@@ -10,5 +10,9 @@ import Foundation
 
 class Logout: NSObject {
 
-	
+	func logout() {
+		PFUser.logOutInBackgroundWithBlock { (error) -> Void in
+			
+		}
+	}
 }

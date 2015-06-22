@@ -12,19 +12,23 @@ class TaskTypeEstimator: NSObject {
 
 	let scrumUsualHour = 10
 	let scrumUsualMinute = 30
+	let scrumVariationAllowed: Double = 15.0*60//min
 	let lunchUsualHour = 13
 	let lunchUsualMinute = 0
 	
 	func taskTypeAroundDate(date: NSDate) -> TaskType {
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: date)
 		comps.hour = scrumUsualHour
 		comps.minute = scrumUsualMinute
+		comps.second = 0
 		let scrumDate = gregorian!.dateFromComponents(comps)
-		
 		let timestamp = date.timeIntervalSinceDate(scrumDate!)
+		RCLogO(date)
+		RCLogO(scrumDate)
+		RCLogO(timestamp)
 		
-		if (abs(timestamp) > 15*60) {
+		if (abs(timestamp) < scrumVariationAllowed) {
 			return TaskType.Scrum
 		}
 		

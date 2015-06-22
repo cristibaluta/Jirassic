@@ -16,19 +16,20 @@ class DataManager: NSObject, DataManagerProtocol {
 	
 	func queryData(completion: ([TaskProtocol], NSError?) -> Void) {
 		
-		let user = PFUser.currentUser()
+		let user = JRUser.currentUser()
+		RCLogO(user)
 		let query = PFQuery(className: Task.parseClassName())
 		query.cachePolicy = .NetworkElseCache
-		query.orderByDescending("date_task_finished")
-//		query.whereKey("user", equalTo: user!)
+		query.orderByDescending(kDateFinishKey)
+		query.whereKey("user", equalTo: user!)
 		query.findObjectsInBackgroundWithBlock( { (objects: [AnyObject]?, error: NSError?) in
+			RCLogO(objects)
 			if error == nil && objects != nil {
 				// TaskProtocol does not conform to AnyObject
 				// and as a side note the objc NSArray cannot be directly casted to Swift array
 				self.data = [TaskProtocol]()
 				for object in objects! {
 					self.data.append(object as! Task)
-					RCLogO(object)
 				}
 			}
 			completion(self.data, error)
@@ -71,58 +72,5 @@ class DataManager: NSObject, DataManagerProtocol {
 		}
 		
 		return filteredData
-	}
-	
-	func addNewTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
-		
-		let task = Task()
-		task.date_task_started = dateSart
-		task.date_task_finished = dateEnd
-		task.task_nr = "AN-0000"
-		task.notes = ""
-		task.task_type = TaskType.Issue.rawValue
-		data.insert(task, atIndex: 0)
-		
-		return task
-	}
-	
-	func addNewWorkingDayTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
-		
-		let task = addNewTask(dateSart, dateEnd: dateEnd)
-		task.task_nr = ""
-		task.notes = "Working day started"
-		task.task_type = TaskType.Start.rawValue
-		
-		return task
-	}
-	
-	func addScrumSessionTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
-		
-		let task = addNewTask(dateSart, dateEnd: dateEnd)
-		task.task_nr = ""
-		task.notes = "Scrum session"
-		task.task_type = TaskType.Scrum.rawValue
-		
-		return task
-	}
-	
-	func addLunchBreakTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
-		
-		let task = addNewTask(dateSart, dateEnd: dateEnd)
-		task.task_nr = ""
-		task.notes = "Lunch break"
-		task.task_type = TaskType.Lunch.rawValue
-		
-		return task
-	}
-	
-	func addInternalMeetingTask(dateSart: NSDate?, dateEnd: NSDate?) -> TaskProtocol {
-		
-		let task = addNewTask(dateSart, dateEnd: dateEnd)
-		task.task_nr = "Internal meeting"
-		task.notes = ""
-		task.task_type = TaskType.Meeting.rawValue
-		
-		return task
 	}
 }

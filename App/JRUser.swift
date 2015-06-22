@@ -8,8 +8,12 @@
 
 import Foundation
 
-public class User: PFUser, UserProtocol {
-
+public class JRUser: PFUser, JRUserProtocol {
+	
+//	public override class func parseClassName() -> String {
+//		return "JRUser"
+//	}
+//	
 	var isLoggedIn: Bool {
 		get {
 			var currentUser = PFUser.currentUser()
