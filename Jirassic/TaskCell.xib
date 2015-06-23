@@ -7,12 +7,12 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="TaskCellIdentifier" id="c22-O7-iKe" customClass="TaskCell" customModule="Jira_Logger" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="345" height="37"/>
+        <customView identifier="TaskCellIdentifier" id="c22-O7-iKe" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="-1" width="345" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="70" y="19" width="276" height="18"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                    <rect key="frame" x="70" y="59" width="276" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="kkS-Qs-fmO"/>
                     </constraints>
@@ -25,8 +25,8 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                    <rect key="frame" x="70" y="0.0" width="267" height="17"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                    <rect key="frame" x="70" y="0.0" width="267" height="60"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -37,22 +37,22 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="17" y="-33" width="51" height="70"/>
+                    <rect key="frame" x="17" y="7" width="51" height="70"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
-                    <rect key="frame" x="0.0" y="19" width="20" height="18"/>
+                    <rect key="frame" x="0.0" y="62" width="20" height="18"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
-                    <rect key="frame" x="40" y="0.0" width="16" height="16"/>
+                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
+                    <rect key="frame" x="320" y="63" width="16" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="Hca-Cz-ctg"/>
-                        <constraint firstAttribute="width" constant="16" id="ZKD-Kz-mld"/>
+                        <constraint firstAttribute="height" constant="16" id="5SV-30-Z5A"/>
+                        <constraint firstAttribute="width" constant="16" id="pIA-R3-pwC"/>
                     </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -62,11 +62,11 @@
                         <action selector="handleRemoveButton:" target="c22-O7-iKe" id="oWe-AX-kJB"/>
                     </connections>
                 </button>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="egw-SB-d18">
-                    <rect key="frame" x="20" y="0.0" width="16" height="16"/>
+                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egw-SB-d18">
+                    <rect key="frame" x="295" y="63" width="16" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="fan-M0-Fks"/>
-                        <constraint firstAttribute="width" constant="16" id="fz1-5i-2XZ"/>
+                        <constraint firstAttribute="width" constant="16" id="3dQ-k3-en3"/>
+                        <constraint firstAttribute="height" constant="16" id="v6d-fN-etz"/>
                     </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QSn-Zg-qm9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -76,8 +76,8 @@
                         <action selector="handleAddButton:" target="c22-O7-iKe" id="D81-SN-tJv"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
-                    <rect key="frame" x="4" y="5" width="47" height="25"/>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
+                    <rect key="frame" x="210" y="58" width="47" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -88,19 +88,17 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="1" id="2oi-zc-jHR"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4LC-Du-N7a"/>
-                <constraint firstAttribute="bottom" secondItem="egw-SB-d18" secondAttribute="bottom" id="5eS-Xf-CLy"/>
-                <constraint firstAttribute="centerY" secondItem="caC-fV-ZwQ" secondAttribute="centerY" constant="-0.5" id="5xQ-yC-MhH"/>
-                <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="6EM-44-CfP"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="80g-x5-V5p"/>
-                <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="8CW-fy-g9y"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="72" id="AJd-Hi-qVV"/>
-                <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" constant="4" id="HAw-y4-i5c"/>
+                <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" constant="9" id="DB2-8m-oHD"/>
                 <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="1" id="IWa-Nv-FUv"/>
                 <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="10" id="LIn-sd-PKY"/>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" id="Nf3-e9-nbf"/>
+                <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="9" id="Vy8-iw-JGU"/>
+                <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="1" id="cDL-IK-eVu"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>
-                <constraint firstItem="egw-SB-d18" firstAttribute="centerY" secondItem="xar-Oo-330" secondAttribute="centerY" id="tBa-Ey-hHN"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
@@ -111,7 +109,7 @@
                 <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
                 <outlet property="statusImage" destination="iAi-8T-Cme" id="kez-tX-mzz"/>
             </connections>
-            <point key="canvasLocation" x="224.5" y="252.5"/>
+            <point key="canvasLocation" x="224.5" y="274"/>
         </customView>
     </objects>
     <resources>

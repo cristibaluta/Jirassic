@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="NonTaskCellIdentifier" id="c22-O7-iKe" customClass="NonTaskCell" customModule="Jira_Logger" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="341" height="40"/>
+        <customView identifier="NonTaskCellIdentifier" id="c22-O7-iKe" customClass="NonTaskCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="341" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91u-2I-cZl">
-                    <rect key="frame" x="1" y="11" width="20" height="18"/>
+                    <rect key="frame" x="1" y="9" width="20" height="18"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="xfP-nS-4Nk"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
-                    <rect key="frame" x="25" y="11" width="308" height="18"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
+                    <rect key="frame" x="25" y="11" width="308" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" red="0.33822601010101006" green="0.33822601010101006" blue="0.33822601010101006" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,11 +26,37 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="nXg-Io-bJL"/>
                     </connections>
                 </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="JnH-wo-pJy">
+                    <rect key="frame" x="319" y="12" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="7MI-XH-Yv3"/>
+                        <constraint firstAttribute="width" constant="16" id="HJH-Sf-528"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iIg-Ta-PA6">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="z4T-g2-tdS">
+                    <rect key="frame" x="294" y="12" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="nqW-yh-9HU"/>
+                        <constraint firstAttribute="height" constant="16" id="u2a-dx-CSH"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PPd-DR-pXH">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="mSe-2c-CEz" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="11" id="CmZ-7h-whj"/>
+                <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="0.5" id="BfB-re-cQN"/>
+                <constraint firstItem="mSe-2c-CEz" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="CmZ-7h-whj"/>
+                <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
+                <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="6" id="NYK-xv-SAy"/>
                 <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
                 <constraint firstAttribute="bottom" secondItem="mSe-2c-CEz" secondAttribute="bottom" constant="11" id="W0h-Gb-Oai"/>
+                <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="27" id="wXn-Xe-hfV"/>
             </constraints>
             <connections>
@@ -41,6 +67,8 @@
         </customView>
     </objects>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusNone" width="16" height="16"/>
     </resources>
 </document>
