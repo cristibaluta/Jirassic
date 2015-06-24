@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			
         }
         sleep?.computerWakeUp = {
-			let existingTasks = sharedData.tasksForDayOnDate(NSDate())
+			let existingTasks = sharedData.tasksForDayOfDate(NSDate())
 			var scrumExists = false
 			for task in existingTasks {
 				if task.task_type == TaskType.Scrum.rawValue {

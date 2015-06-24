@@ -241,7 +241,7 @@ class TasksViewController: NSViewController {
 	
 	func reloadTasksOnDay(date: NSDate) {
 		
-		tasksScrollView!.data = sharedData.tasksForDayOnDate(date)
+		tasksScrollView!.data = sharedData.tasksForDayOfDate(date)
 		tasksScrollView?.reloadData()
 		tasksScrollView?.hidden = false
 		

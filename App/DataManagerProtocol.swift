@@ -12,5 +12,5 @@ protocol DataManagerProtocol: NSObjectProtocol {
 	
 	func queryData(completion: ([TaskProtocol], NSError?) -> Void)
 	func days() -> [TaskProtocol]
-	func tasksForDayOnDate(date: NSDate) -> [TaskProtocol]
+	func tasksForDayOfDate(date: NSDate) -> [TaskProtocol]
 }

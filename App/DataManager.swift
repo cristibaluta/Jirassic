@@ -59,7 +59,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return filteredData
 	}
 	
-	func tasksForDayOnDate(date: NSDate) -> [TaskProtocol] {
+	func tasksForDayOfDate(date: NSDate) -> [TaskProtocol] {
 		
 		let filteredData = self.data.filter { (task: TaskProtocol) -> Bool in
 			
