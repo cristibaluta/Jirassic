@@ -17,6 +17,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	@IBOutlet private var butRemove: NSButton?
 	@IBOutlet private var butAdd: NSButton?
 	@IBOutlet private var butCopy: NSButton?
+	@IBOutlet private var datePicker: NSDatePicker?
 	
 	private var isEditing = false
 	private var wasEdited = false
@@ -42,9 +43,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	}
 	
 	override func awakeFromNib() {
-		self.butRemove?.hidden = true
-		self.butAdd?.hidden = true
-		self.butCopy?.hidden = true
+		self.showMouseOverControls(false)
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
@@ -111,25 +110,27 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 		selectionPath.fill()
 		selectionPath.stroke()
-		
 	}
 	
 	// MARK: mouse
 	
 	override func mouseEntered(theEvent: NSEvent) {
 		self.mouseInside = true
-		self.butRemove?.hidden = false
-		self.butAdd?.hidden = false
-		self.butCopy?.hidden = false
+		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
 	override func mouseExited(theEvent: NSEvent) {
 		self.mouseInside = false
-		self.butRemove?.hidden = true
-		self.butAdd?.hidden = true
-		self.butCopy?.hidden = true
+		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplayInRect(self.frame)
+	}
+	
+	func showMouseOverControls(show: Bool) {
+		self.butRemove?.hidden = !show
+		self.butAdd?.hidden = !show
+		self.butCopy?.hidden = !show
+		self.datePicker?.hidden = !show
 	}
 	
 	func ensureTrackingArea() {

@@ -125,16 +125,28 @@ extension NSDate {
 	}
 	
 	func roundUp() -> NSDate {
+		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
 		let hm = self.round(comps.minute)
 		comps.hour = comps.hour + hm.hour
 		comps.minute = hm.min
 		comps.second = 0
+		
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
 	func secondsToPercentTime(time: Double) -> Double {
 		return time / 3600
+	}
+	
+	func updateHour(hour: Int, minute: Int) -> NSDate {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+		comps.hour = hour
+		comps.minute = minute
+		comps.second = 0
+		
+		return gregorian!.dateFromComponents(comps)!
 	}
 	
 	// MARK: Private

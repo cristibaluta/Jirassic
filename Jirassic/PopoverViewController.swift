@@ -19,7 +19,6 @@ class PopoverViewController: NSViewController {
 		super.viewDidLoad()
 		
 		var currentUser = PFUser.currentUser()
-		RCLogO(currentUser)
 		
 		if currentUser != nil {
 			let controller = createTasksController()
@@ -39,7 +38,7 @@ class PopoverViewController: NSViewController {
 				width: self.view.frame.size.width, height: self.view.frame.size.height)
 			_tasksController?.handleSettingsButton = {[weak self] () in
 				if let strongSelf = self {
-					strongSelf.flipToLogin()
+					strongSelf.flipToSettings()
 				}
 			}
 		}
@@ -52,6 +51,9 @@ class PopoverViewController: NSViewController {
 			_tasksController!.removeFromSuperview()
 		}
 	}
+	
+	
+	// MARK: Settings
 	
 	func createSettingsController() -> SettingsViewController {
 		

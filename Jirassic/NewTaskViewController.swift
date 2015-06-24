@@ -28,35 +28,35 @@ class NewTaskViewController: NSViewController {
 	}
 	
 	@IBAction func handleScrumBeginButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskScrumBegin)
+		self.onOptionChosen?(i: .ScrumBegin)
 	}
 	
 	@IBAction func handleScrumEndButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskScrumEnd)
+		self.onOptionChosen?(i: .ScrumEnd)
 	}
 	
 	@IBAction func handleLunchBeginButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskLunchBegin)
+		self.onOptionChosen?(i: .LunchBegin)
 	}
 	
 	@IBAction func handleLunchEndButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskLunchEnd)
+		self.onOptionChosen?(i: .LunchEnd)
 	}
 	
 	@IBAction func handleTaskBeginButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskIssueBegin)
+		self.onOptionChosen?(i: .IssueBegin)
 	}
 	
 	@IBAction func handleTaskEndButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskIssueEnd)
+		self.onOptionChosen?(i: .IssueEnd)
 	}
 	
 	@IBAction func handleMeetingBeginButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskIssueBegin)
+		self.onOptionChosen?(i: .IssueBegin)
 	}
 	
 	@IBAction func handleMeetingEndButton(sender: NSButton) {
-		self.onOptionChosen?(i: .TaskIssueEnd)
+		self.onOptionChosen?(i: .IssueEnd)
 	}
 	
 }

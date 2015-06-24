@@ -17,14 +17,14 @@ enum TaskType: Int {
 }
 
 enum TaskSubtype: Int {
-	case TaskIssueBegin = 0
-	case TaskIssueEnd = 1
-	case TaskScrumBegin = 2
-	case TaskScrumEnd = 3
-	case TaskLunchBegin = 4
-	case TaskLunchEnd = 5
-	case TaskMeetingBegin = 6
-	case TaskMeetingEnd = 7
+	case IssueBegin = 0
+	case IssueEnd = 1
+	case ScrumBegin = 2
+	case ScrumEnd = 3
+	case LunchBegin = 4
+	case LunchEnd = 5
+	case MeetingBegin = 6
+	case MeetingEnd = 7
 }
 
 protocol TaskProtocol: NSObjectProtocol {

@@ -152,14 +152,14 @@ class TasksViewController: NSViewController {
 				var task: TaskProtocol?
 				
 				switch(i) {
-					case .TaskIssueBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Issue)
-					case .TaskIssueEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Issue)
-					case .TaskScrumBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Scrum)
-					case .TaskScrumEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Scrum)
-					case .TaskLunchBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Lunch)
-					case .TaskLunchEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Lunch)
-					case .TaskMeetingBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Meeting)
-					case .TaskMeetingEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Meeting)
+					case .IssueBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Issue)
+					case .IssueEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Issue)
+					case .ScrumBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Scrum)
+					case .ScrumEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Scrum)
+					case .LunchBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Lunch)
+					case .LunchEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Lunch)
+					case .MeetingBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Meeting)
+					case .MeetingEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Meeting)
 				}
 				
 				task?.saveToParseWhenPossible()
