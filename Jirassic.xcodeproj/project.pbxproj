@@ -142,14 +142,14 @@
 		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
 		28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
 		28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
-		28F292271B1C57B40015F64F /* CreateRaportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* CreateRaportTests.swift */; };
-		28F292281B1C72720015F64F /* CreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */; };
+		28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* CreateReportTests.swift */; };
+		28F292281B1C72720015F64F /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */; };
 		28F292291B1C75960015F64F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		28F51E7A1AC694B000A69CDF /* ReadTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasks.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* IconView.swift */; };
 		28F51EAC1AC6A4F000A69CDF /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
-		28F51EAF1AC6AB7A00A69CDF /* CreateRaport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */; };
+		28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */; };
 		28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */; };
 		28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
 		28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
@@ -276,13 +276,13 @@
 		28EB90711AF95C37008D5337 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28EB90901AF9754A008D5337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTyping.swift; path = ../App/PredictiveTimeTyping.swift; sourceTree = "<group>"; };
-		28F292261B1C57B40015F64F /* CreateRaportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateRaportTests.swift; path = JirassicTests/CreateRaportTests.swift; sourceTree = SOURCE_ROOT; };
+		28F292261B1C57B40015F64F /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReportTests.swift; path = JirassicTests/CreateReportTests.swift; sourceTree = SOURCE_ROOT; };
 		28F2922A1B1C843D0015F64F /* JirassicTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JirassicTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		28F51E791AC694B000A69CDF /* ReadTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadTasks.swift; path = ../App/ReadTasks.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		28F51EA91AC6A3AE00A69CDF /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		28F51EAB1AC6A4F000A69CDF /* InitParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitParse.swift; path = ../App/InitParse.swift; sourceTree = "<group>"; };
-		28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateRaport.swift; path = ../App/CreateRaport.swift; sourceTree = "<group>"; };
+		28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReport.swift; path = ../App/CreateReport.swift; sourceTree = "<group>"; };
 		28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28F51EB41AC6EE5200A69CDF /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		28F51EB61AC6EF1700A69CDF /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
@@ -532,8 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				28F51E791AC694B000A69CDF /* ReadTasks.swift */,
-				28F51EAE1AC6AB7A00A69CDF /* CreateRaport.swift */,
-				28F292261B1C57B40015F64F /* CreateRaportTests.swift */,
+				28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */,
+				28F292261B1C57B40015F64F /* CreateReportTests.swift */,
 				282426751B113D5000211713 /* FlipScreens.swift */,
 				289E2ACF1B2B776A003269A3 /* Login.swift */,
 				289E2AEE1B2D6D56003269A3 /* Logout.swift */,
@@ -929,7 +929,7 @@
 				2856DF1A1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				289E2AF21B2D6D6E003269A3 /* RegisterUser.swift in Sources */,
-				28F51EAF1AC6AB7A00A69CDF /* CreateRaport.swift in Sources */,
+				28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */,
 				28F51E7A1AC694B000A69CDF /* ReadTasks.swift in Sources */,
 				289E2AF61B2D71FD003269A3 /* JRUserProtocol.swift in Sources */,
 				28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */,
@@ -976,14 +976,14 @@
 				289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */,
 				289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */,
 				289E2B421B328598003269A3 /* FlipScreens.swift in Sources */,
-				28F292271B1C57B40015F64F /* CreateRaportTests.swift in Sources */,
+				28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
 				289E2B231B3142A6003269A3 /* InitParse.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
 				289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */,
 				28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
-				28F292281B1C72720015F64F /* CreateRaport.swift in Sources */,
+				28F292281B1C72720015F64F /* CreateReport.swift in Sources */,
 				289E2B201B31428E003269A3 /* DataManager.swift in Sources */,
 				289E2AF71B2D71FD003269A3 /* JRUserProtocol.swift in Sources */,
 				28E839011AF402B200602D33 /* DateTests.swift in Sources */,

@@ -8,9 +8,9 @@
 
 import XCTest
 
-class CreateRaportTests: XCTestCase {
+class CreateReportTests: XCTestCase {
 
-	var tasks = [Task]()
+	var tasks = [TaskProtocol]()
 	let kLunchLength = Double(2760)//46min ~ 45min
 	
     override func setUp() {
@@ -95,6 +95,6 @@ class CreateRaportTests: XCTestCase {
 		let t5 = date.secondsToPercentTime(1800.0)
 		let t6 = date.secondsToPercentTime(30*60.0)
 		let t7 = date.secondsToPercentTime(30*60.0)
-		XCTAssertTrue(t1+t2+t3+t4+t5+t6+t7 == 8, "The sum should be 8 hours")
+		XCTAssert(t1+t2+t3+t4+t5+t6+t7 == 8, "The sum should be 8 hours")
 	}
 }

@@ -12,9 +12,9 @@ let kEightHoursInSeconds: Double = 28800.0
 
 class CreateReport: NSObject {
 
-	var tasks = [Task]()
+	var tasks = [TaskProtocol]()
 	
-	convenience init(tasks: [Task]) {
+	convenience init(tasks: [TaskProtocol]) {
 		
 		self.init()
 		
@@ -54,7 +54,7 @@ class CreateReport: NSObject {
 		self.tasks.append(tasks.last!)
 	}
 	
-	private func lunchTimeInterval(tasks: [Task]) -> NSTimeInterval {
+	private func lunchTimeInterval(tasks: [TaskProtocol]) -> NSTimeInterval {
 		var referenceDate = tasks.first?.date_task_finished
 		for task in tasks {
 			if task.task_type == TaskType.Lunch.rawValue {

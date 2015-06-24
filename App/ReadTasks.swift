@@ -1,5 +1,5 @@
 //
-//  JLReadLog.swift
+//  ReadTasks.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 28/03/15.

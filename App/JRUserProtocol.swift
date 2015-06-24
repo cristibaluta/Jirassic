@@ -1,5 +1,5 @@
 //
-//  UserProtocol.swift
+//  JRUserProtocol.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 14/06/15.
