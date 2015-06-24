@@ -773,20 +773,6 @@
                                     <outlet property="tableView" destination="P2Q-hS-yur" id="bQK-7b-N91"/>
                                 </connections>
                             </scrollView>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="czH-D1-htO">
-                                <rect key="frame" x="224" y="396" width="42" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="YfZ-Nu-L0B"/>
-                                    <constraint firstAttribute="height" constant="30" id="YrX-nj-dcK"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="aqD-UV-v85">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handlePlusButton:" target="wHU-IX-gfU" id="qeW-eB-KwU"/>
-                                </connections>
-                            </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMO-PV-PHF">
                                 <rect key="frame" x="12" y="400" width="22" height="22"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusUnavailable" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="6kS-Wv-eG3">
@@ -853,7 +839,6 @@
                             <constraint firstItem="hLi-fO-YRi" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="62" id="L9a-bo-cN3"/>
                             <constraint firstItem="hLi-fO-YRi" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="QOR-85-2Qg"/>
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerX" secondItem="R3S-KZ-qb3" secondAttribute="centerX" id="YeC-2t-kXT"/>
-                            <constraint firstAttribute="centerX" secondItem="czH-D1-htO" secondAttribute="centerX" id="atd-Bt-PzE"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="c6a-uG-6en"/>
                             <constraint firstAttribute="bottom" secondItem="VwR-9G-9tZ" secondAttribute="bottom" id="jc7-PH-RfF"/>
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="top" secondItem="sOM-pv-IVs" secondAttribute="bottom" constant="-22" id="kKp-8K-2pA"/>
@@ -863,11 +848,9 @@
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerY" secondItem="R3S-KZ-qb3" secondAttribute="centerY" id="rq8-PK-2xH"/>
                             <constraint firstItem="VwR-9G-9tZ" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="62" id="uzH-pt-slj"/>
                             <constraint firstAttribute="bottom" secondItem="hLi-fO-YRi" secondAttribute="bottom" id="vqe-6f-AeR"/>
-                            <constraint firstItem="czH-D1-htO" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="16" id="yl1-Ex-9eN"/>
                         </constraints>
                     </customView>
                     <connections>
-                        <outlet property="_butAdd" destination="czH-D1-htO" id="QNn-Cw-yg0"/>
                         <outlet property="_butDrawer" destination="uMO-PV-PHF" id="uFK-9h-1Rd"/>
                         <outlet property="_butRefresh" destination="w7V-wd-0Hx" id="zfd-TW-d3L"/>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
@@ -1312,7 +1295,6 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>

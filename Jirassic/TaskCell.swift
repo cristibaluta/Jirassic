@@ -81,10 +81,10 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	override func drawBackgroundInRect(dirtyRect: NSRect) {
 		
 		if (self.mouseInside) {
-			let selectionRect = NSRect(x: 65, y: 2, width: dirtyRect.size.width-74, height: dirtyRect.size.height-2)
-			NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
-			NSColor(calibratedWhite: 0.82, alpha: 0.3).setFill()
-			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+			let selectionRect = NSRect(x: 65, y: 20, width: dirtyRect.size.width-74, height: dirtyRect.size.height-20)
+			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
+			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
+			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
 			selectionPath.fill()
 			selectionPath.stroke()
 		}

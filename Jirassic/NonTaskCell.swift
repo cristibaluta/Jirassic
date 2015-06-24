@@ -13,6 +13,10 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
+	@IBOutlet private var butRemove: NSButton?
+	@IBOutlet private var butAdd: NSButton?
+	
+	private var trackingArea: NSTrackingArea?
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
@@ -31,6 +35,12 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		}
 	}
 	
+	override func awakeFromNib() {
+		self.butRemove?.hidden = true
+		self.butAdd?.hidden = true
+		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
+	}
+	
 	override func drawBackgroundInRect(dirtyRect: NSRect) {
 		
 		let selectionRect = NSRect(x: 0, y: 6, width: dirtyRect.size.width-10, height: dirtyRect.size.height-12)
@@ -43,4 +53,48 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		let linePath = NSBezierPath(rect: lineRect)
 		linePath.fill()
 	}
+	
+	// MARK: Acions
+	
+	@IBAction func handleRemoveButton(sender: NSButton) {
+		self.didRemoveCell!(cell: self)
+	}
+	
+	@IBAction func handleAddButton(sender: NSButton) {
+		self.didAddCell!(cell: self)
+	}
+	
+	// MARK: mouse
+	
+	override func mouseEntered(theEvent: NSEvent) {
+		self.butRemove?.hidden = false
+		self.butAdd?.hidden = false
+		self.setNeedsDisplayInRect(self.frame)
+	}
+	
+	override func mouseExited(theEvent: NSEvent) {
+		self.butRemove?.hidden = true
+		self.butAdd?.hidden = true
+		self.setNeedsDisplayInRect(self.frame)
+	}
+	
+	func ensureTrackingArea() {
+		if (trackingArea == nil) {
+			trackingArea = NSTrackingArea(rect: NSZeroRect,
+				options: NSTrackingAreaOptions.InVisibleRect |
+					NSTrackingAreaOptions.ActiveAlways |
+					NSTrackingAreaOptions.MouseEnteredAndExited,
+				owner: self,
+				userInfo: nil)
+		}
+	}
+	
+	override func updateTrackingAreas() {
+		super.updateTrackingAreas()
+		self.ensureTrackingArea()
+		if (!(self.trackingAreas as NSArray).containsObject(self.trackingArea!)) {
+			self.addTrackingArea(self.trackingArea!);
+		}
+	}
+	
 }

@@ -16,7 +16,6 @@ class TasksViewController: NSViewController {
 	
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butDrawer: NSButton?
-	@IBOutlet private var _butAdd: NSButton?
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
@@ -94,6 +93,11 @@ class TasksViewController: NSViewController {
 				RCLogO("remove \(theData)")
 			}
 		}
+		tasksScrollView!.didAddRow = { (row: Int) -> Void in
+			let theData = self.tasksScrollView!.data[row]
+			let date = theData.date_task_finished
+			self.handleAddTaskButton(date!)
+		}
 	}
 	
 	func updateNoTasksState() {
@@ -102,16 +106,13 @@ class TasksViewController: NSViewController {
 			let controller = noTasksController()
 			controller.showStartState()
 			self.view.addSubview( controller.view)
-			_butAdd?.hidden = true
 		}
 		else if tasksScrollView!.data.count == 1 {
 			let controller = noTasksController()
 			controller.showFirstTaskState()
-			_butAdd?.hidden = false
 		}
 		else {
 			removeNoTasksController()
-			_butAdd?.hidden = false
 		}
 	}
 	
@@ -271,16 +272,17 @@ class TasksViewController: NSViewController {
 		self.reloadData()
 	}
 	
-	@IBAction func handleDrawerButton(sender: NSButton) {
-		setDaysTableState( DrawerState().toggleState() )
-	}
-	
-	@IBAction func handlePlusButton(sender: NSButton) {
+	func handleAddTaskButton(date: NSDate) {
+		RCLogO("add new cell after date \(date)")
 		removeNoTasksController()
 		self.daysScrollView?.hidden = true
 		self.tasksScrollView?.hidden = true
 		let controller = newTaskController()
 		self.view.addSubview( controller.view )
+	}
+	
+	@IBAction func handleDrawerButton(sender: NSButton) {
+		setDaysTableState( DrawerState().toggleState() )
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {

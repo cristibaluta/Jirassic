@@ -27,7 +27,7 @@
                     </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="JnH-wo-pJy">
-                    <rect key="frame" x="319" y="12" width="16" height="16"/>
+                    <rect key="frame" x="309" y="12" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="7MI-XH-Yv3"/>
                         <constraint firstAttribute="width" constant="16" id="HJH-Sf-528"/>
@@ -36,9 +36,12 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="TpF-le-3We"/>
+                    </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="z4T-g2-tdS">
-                    <rect key="frame" x="294" y="12" width="16" height="16"/>
+                    <rect key="frame" x="284" y="12" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="nqW-yh-9HU"/>
                         <constraint firstAttribute="height" constant="16" id="u2a-dx-CSH"/>
@@ -47,19 +50,24 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="handleAddButton:" target="c22-O7-iKe" id="eaV-Iu-0RD"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="0.5" id="BfB-re-cQN"/>
+                <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="1" id="BfB-re-cQN"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="CmZ-7h-whj"/>
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
-                <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="6" id="NYK-xv-SAy"/>
+                <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
                 <constraint firstAttribute="bottom" secondItem="mSe-2c-CEz" secondAttribute="bottom" constant="11" id="W0h-Gb-Oai"/>
                 <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="27" id="wXn-Xe-hfV"/>
             </constraints>
             <connections>
+                <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
+                <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>
                 <outlet property="notesTextField" destination="mSe-2c-CEz" id="jmn-xA-2rK"/>
                 <outlet property="statusImage" destination="91u-2I-cZl" id="LKV-vg-4iG"/>
             </connections>

@@ -23,6 +23,7 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 	
 	var data = [TaskProtocol]()
 	var didSelectRow: ((row: Int) -> ())?
+	var didAddRow: ((row: Int) -> ())?
 	var didRemoveRow: ((row: Int) -> ())?
 	
 	
@@ -103,6 +104,19 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 				let row2 = tableView.rowForView(cell as! TaskCell)
 				RCLogO("remove row \(row2)")
 				self.didRemoveRow!(row: row)
+			}
+		}
+		cell?.didAddCell = { (cell: TaskCellProtocol) in
+			if self.didAddRow != nil {
+				if let cell = cell as? TaskCell {
+					let row2 = tableView.rowForView(cell)
+					RCLogO("add row \(row2)")
+					self.didAddRow!(row: row)
+				} else if let cell = cell as? NonTaskCell {
+					let row2 = tableView.rowForView(cell)
+					RCLogO("add row \(row2)")
+					self.didAddRow!(row: row)
+				}
 			}
 		}
 		
