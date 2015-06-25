@@ -139,12 +139,35 @@ extension NSDate {
 		return time / 3600
 	}
 	
-	func updateHour(hour: Int, minute: Int) -> NSDate {
+	func sameDateWithHour(hour: Int, minute: Int) -> NSDate {
 		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
 		comps.hour = hour
 		comps.minute = minute
 		comps.second = 0
+		
+		return gregorian!.dateFromComponents(comps)!
+	}
+	
+	class func dateWithHour(hour: Int, minute: Int, second: Int=0) -> NSDate {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		comps.hour = hour
+		comps.minute = minute
+		comps.second = 0
+		
+		return gregorian!.dateFromComponents(comps)!
+	}
+	
+	class func dateWithYear(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int=0) -> NSDate {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		comps.year = year
+		comps.month = month
+		comps.day = day
+		comps.hour = hour
+		comps.minute = minute
+		comps.second = second
 		
 		return gregorian!.dateFromComponents(comps)!
 	}
