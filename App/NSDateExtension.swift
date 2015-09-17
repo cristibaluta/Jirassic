@@ -8,10 +8,8 @@
 
 import Foundation
 
-let ymdUnitFlags = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
-let ymdhmsUnitFlags: NSCalendarUnit = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth |
-										NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitHour |
-										NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitSecond
+let ymdUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day]
+let ymdhmsUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second]
 let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
@@ -69,7 +67,7 @@ extension NSDate {
 		while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
 			monthDifference.month = monthOffset++
 			nextDate = gregorian!.dateByAddingComponents(monthDifference,
-				toDate: startDate, options: nil)!
+				toDate: startDate, options: [])!
 			dates.append(nextDate)
 		}
 		
@@ -103,8 +101,8 @@ extension NSDate {
 	
 	func daysInMonth() -> Int {
 		
-		let daysRange = gregorian!.rangeOfUnit(NSCalendarUnit.CalendarUnitDay,
-			inUnit: NSCalendarUnit.CalendarUnitMonth, forDate: self)
+		let daysRange = gregorian!.rangeOfUnit(NSCalendarUnit.Day,
+			inUnit: NSCalendarUnit.Month, forDate: self)
 		
 		return daysRange.length as Int
 	}

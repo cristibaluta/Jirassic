@@ -16,7 +16,7 @@ class SettingsViewController: NSViewController {
 	
 	class func instanceFromStoryboard() -> SettingsViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard!.instantiateControllerWithIdentifier("SettingsViewController") as! SettingsViewController
+		let vc = storyboard.instantiateControllerWithIdentifier("SettingsViewController") as! SettingsViewController
 		return vc
 	}
 	

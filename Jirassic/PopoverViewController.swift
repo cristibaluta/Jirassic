@@ -18,7 +18,7 @@ class PopoverViewController: NSViewController {
 		
 		super.viewDidLoad()
 		
-		var currentUser = PFUser.currentUser()
+		let currentUser = PFUser.currentUser()
 		
 		if currentUser != nil {
 			let controller = createTasksController()

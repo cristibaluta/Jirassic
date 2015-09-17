@@ -33,7 +33,7 @@ class LoginViewController: NSViewController {
 	
 	class func instanceFromStoryboard() -> LoginViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard!.instantiateControllerWithIdentifier("LoginViewController") as! LoginViewController
+		let vc = storyboard.instantiateControllerWithIdentifier("LoginViewController") as! LoginViewController
 		return vc
 	}
 	

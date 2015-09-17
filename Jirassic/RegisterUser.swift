@@ -20,13 +20,13 @@ class RegisterUser: NSObject {
 	
 	func register() {
 		
-		var user = PFUser()
+		let user = PFUser()
 		user.username = credentials!.email
 		user.email = credentials!.email
 		user.password = credentials!.password
 		user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
 			if let error = error {
-				let errorString = error.userInfo?["error"] as? NSString
+				let errorString = error.userInfo["error"] as? NSString
 				RCLogO(errorString)
 			} else {
 				self.onRegisterSuccess!()

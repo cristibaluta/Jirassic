@@ -21,7 +21,7 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 		get {
 			if let value: AnyObject = objectForKey(kDateStartKey) {
 				switch value {
-				case let value as NSNull:
+				case _ as NSNull:
 					return nil
 				case let value as NSDate:
 					return value
@@ -44,7 +44,7 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
         get {
 			if let value: AnyObject = objectForKey(kDateFinishKey) {
 				switch value {
-					case let value as NSNull:
+					case _ as NSNull:
 						return nil
 					case let value as NSDate:
 						return value

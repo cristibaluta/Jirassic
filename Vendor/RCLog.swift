@@ -9,38 +9,38 @@ import Foundation
 import CoreGraphics
 
 func RCLog (message: String, file: String = __FILE__, line: Int = __LINE__) {
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }
 
 func RCLogO (message: AnyObject?, file: String = __FILE__, line: Int = __LINE__) {
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }
 
 func RCLogI (message: Int?, file: String = __FILE__, line: Int = __LINE__) {
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }
 
 func RCLogF (message: Float?, file: String = __FILE__, line: Int = __LINE__) {
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }
 
 func RCLogRect (message: CGRect?, file: String = __FILE__, line: Int = __LINE__) {
 	if message != nil {
-		println("\(file.lastPathComponent):\(line): CGRect\(message!)")
+		print("\((file as NSString).lastPathComponent):\(line): CGRect\(message!)")
 	} else {
-		println("\(file.lastPathComponent):\(line): \(message)")
+		print("\((file as NSString).lastPathComponent):\(line): \(message)")
 	}
 }
 
 func RCLogSize (message: CGSize?, file: String = __FILE__, line: Int = __LINE__) {
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }
 
 func RCLogPoint (message: CGPoint?, file: String = __FILE__, line: Int = __LINE__) {
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }
 
 func RCLogThread (file: String = __FILE__, line: Int = __LINE__) {
 	let message = NSThread.isMainThread() ? "Log from Main Thread" : "Log from Secondary Thread"
-	println("\(file.lastPathComponent):\(line): \(message)")
+	print("\((file as NSString).lastPathComponent):\(line): \(message)")
 }

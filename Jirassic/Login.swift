@@ -27,7 +27,7 @@ class Login: NSObject {
 				self.onLoginSuccess!()
 			}
 			else if let error = error {
-				let errorString = error.userInfo?["error"] as? NSString
+				let errorString = error.userInfo["error"] as? NSString
 				RCLogO(errorString)
 				
 				let register = RegisterUser(credentials: self.credentials!)

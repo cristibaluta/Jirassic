@@ -16,7 +16,7 @@ public class JRUser: PFUser, JRUserProtocol {
 //	
 	var isLoggedIn: Bool {
 		get {
-			var currentUser = PFUser.currentUser()
+			let currentUser = PFUser.currentUser()
 			return (currentUser != nil && currentUser!.username != nil)
 		}
 	}

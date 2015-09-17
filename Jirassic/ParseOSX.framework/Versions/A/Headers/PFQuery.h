@@ -32,6 +32,13 @@ PF_ASSUME_NONNULL_BEGIN
 ///--------------------------------------
 
 /*!
+ @abstract Initializes the query with a class name.
+
+ @param className The class name.
+ */
+- (instancetype)initWithClassName:(NSString *)className;
+
+/*!
  @abstract Returns a `PFQuery` for a given class.
 
  @param className The class to query on.
@@ -65,13 +72,7 @@ PF_ASSUME_NONNULL_BEGIN
 + (instancetype)queryWithClassName:(NSString *)className predicate:(PF_NULLABLE NSPredicate *)predicate;
 
 /*!
- Initializes the query with a class name.
- @param newClassName The class name.
- */
-- (instancetype)initWithClassName:(NSString *)newClassName;
-
-/*!
- The class name to query for
+ The class name to query for.
  */
 @property (nonatomic, strong) NSString *parseClassName;
 
@@ -473,6 +474,8 @@ PF_ASSUME_NONNULL_BEGIN
 /*!
  @abstract Sort the results using a given sort descriptor.
 
+ @warning If a `sortDescriptor` has custom `selector` or `comparator` - they aren't going to be used.
+
  @param sortDescriptor The `NSSortDescriptor` to use to sort the results of the query.
 
  @returns The same instance of `PFQuery` as the receiver. This allows method chaining.
@@ -481,6 +484,8 @@ PF_ASSUME_NONNULL_BEGIN
 
 /*!
  @abstract Sort the results using a given array of sort descriptors.
+
+ @warning If a `sortDescriptor` has custom `selector` or `comparator` - they aren't going to be used.
 
  @param sortDescriptors An array of `NSSortDescriptor` objects to use to sort the results of the query.
 

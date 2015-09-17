@@ -56,7 +56,7 @@ class FlipScreens: NSObject {
 		self.layer?.addAnimation(rotationAnimation, forKey:"flip")
 	}
 	
-	override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+	override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
 		
 		if anim.valueForKey("flip") as! String == "flipAnimationInwards" {
 			

@@ -17,7 +17,7 @@ class NoTasksViewController: NSViewController {
 	
 	class func instanceFromStoryboard() -> NoTasksViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard!.instantiateControllerWithIdentifier("NoTasksViewController") as! NoTasksViewController
+		let vc = storyboard.instantiateControllerWithIdentifier("NoTasksViewController") as! NoTasksViewController
 		return vc
 	}
 	

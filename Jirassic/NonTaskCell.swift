@@ -81,9 +81,7 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	func ensureTrackingArea() {
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
-				options: NSTrackingAreaOptions.InVisibleRect |
-					NSTrackingAreaOptions.ActiveAlways |
-					NSTrackingAreaOptions.MouseEnteredAndExited,
+				options: [NSTrackingAreaOptions.InVisibleRect, NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseEnteredAndExited],
 				owner: self,
 				userInfo: nil)
 		}

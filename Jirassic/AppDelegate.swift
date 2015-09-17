@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	func show() {
 		let icon = self.menu.iconView!
-		let edge = NSMinYEdge
+		let edge = NSRectEdge.MinY
 		let rect = icon.frame
 		self.popover?.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
 	}

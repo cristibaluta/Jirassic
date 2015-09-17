@@ -66,13 +66,6 @@ PF_ASSUME_NONNULL_BEGIN
 ///--------------------------------------
 
 /*!
- @abstract Designated initializer for subclasses.
- This method can only be called on subclasses which conform to <PFSubclassing>.
- This method should not be overridden.
- */
-- (instancetype)init;
-
-/*!
  @abstract Creates an instance of the registered subclass with this class's <parseClassName>.
 
  @discussion This helps a subclass ensure that it can be subclassed itself.

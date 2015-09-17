@@ -38,7 +38,7 @@ class DataManager: NSObject, DataManagerProtocol {
 	
 	func days() -> [TaskProtocol] {
 		
-		var currrentDate = NSDate.distantFuture() as! NSDate
+		var currrentDate = NSDate.distantFuture() 
 		
 		let filteredData = self.data.filter { (task: TaskProtocol) -> Bool in
 			

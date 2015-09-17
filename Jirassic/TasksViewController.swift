@@ -34,7 +34,7 @@ class TasksViewController: NSViewController {
 	
 	class func instanceFromStoryboard() -> TasksViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard!.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
+		let vc = storyboard.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
 		return vc
 	}
 	

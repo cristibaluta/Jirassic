@@ -16,7 +16,7 @@ class ReadTasks: NSObject {
 	
 	func read() {
 		
-		var query = PFQuery(className: Task.parseClassName())
+		let query = PFQuery(className: Task.parseClassName())
 		/*query.findObjectsInBackgroundWithBlock {
 		(objects: Array<AnyObject>!, error: NSError!) -> Void in
 		RCLogO(objects!)
