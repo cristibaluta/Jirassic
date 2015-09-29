@@ -11,7 +11,7 @@ import Foundation
 let kDateStartKey = "date_task_started"
 let kDateFinishKey = "date_task_finished"
 let kNotesKey = "notes"
-let kTaskNrKey = "task_nr"
+let kIssueKey = "issue_type"
 let kTypeKey = "task_type"
 let kUserKey = "user"
 
@@ -72,12 +72,12 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
         }
     }
 	
-	dynamic public var task_nr: String? {
+	dynamic public var issue_type: String? {
 		get {
-			return objectForKey(kTaskNrKey) as! String?
+			return objectForKey(kIssueKey) as! String?
 		}
 		set {
-			setObject(newValue!, forKey: kTaskNrKey)
+			setObject(newValue!, forKey: kIssueKey)
 		}
 	}
 	
@@ -105,26 +105,6 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 	
 	
 	// Helpers
-	
-	class func create(dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) -> TaskProtocol {
-		
-		let task = Task()
-		task.date_task_started = dateSart
-		task.date_task_finished = dateEnd
-		task.task_nr = "AN-0000"
-		task.task_type = type.rawValue
-		task.user = JRUser.currentUser()!
-		
-		switch (type) {
-		case TaskType.Issue: task.notes = ""
-		case TaskType.Start: task.notes = "Working day started"
-		case TaskType.Scrum: task.notes = "Scrum session"
-		case TaskType.Lunch: task.notes = "Lunch break"
-		case TaskType.Meeting: task.notes = "Internal meeting"
-		}
-		
-		return task
-	}
 	
 	func saveToParseWhenPossible() {
 		self.saveEventually { (success, error) -> Void in

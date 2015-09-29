@@ -93,9 +93,9 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 				cell?.statusImage!.image = nil
 			}
 		}
-		cell?.data = (dateStart: date, dateEnd: date, task: theData.task_nr!, notes: notes)
+		cell?.data = (dateStart: date, dateEnd: date, issue: theData.issue_type!, notes: notes)
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
-			theData.task_nr = cell.data.task
+			theData.issue_type = cell.data.issue
 			theData.notes = cell.data.notes
 			theData.saveToParseWhenPossible()
 		}

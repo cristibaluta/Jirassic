@@ -1,5 +1,5 @@
 //
-//  NotesCell.swift
+//  TaskCell.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 28/03/15.
@@ -28,7 +28,9 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
 	var didAddCell: ((cell: TaskCellProtocol) -> ())?
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
-	var data: (dateStart: String, dateEnd: String, task: String, notes: String) {
+	
+	// Sets the data to the cell
+	var data: TaskCreationData {
 		get {
 			return (self.dateEndTextField!.stringValue,
 					self.dateEndTextField!.stringValue,
@@ -37,8 +39,18 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		}
 		set {
 			self.dateEndTextField!.stringValue = newValue.dateEnd
-			self.issueNrTextField!.stringValue = newValue.task
+			self.issueNrTextField!.stringValue = newValue.issue
 			self.notesTextField!.stringValue = newValue.notes
+		}
+	}
+	
+	// Sets the end date of the task to the UI picker. It can be edited and requested back
+	var date: NSDate {
+		get {
+			return self.datePicker!.dateValue
+		}
+		set {
+			self.datePicker!.dateValue = newValue
 		}
 	}
 	

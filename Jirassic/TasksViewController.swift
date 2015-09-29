@@ -34,8 +34,7 @@ class TasksViewController: NSViewController {
 	
 	class func instanceFromStoryboard() -> TasksViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
-		return vc
+		return storyboard.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
 	}
 	
 	override func awakeFromNib() {
@@ -105,7 +104,7 @@ class TasksViewController: NSViewController {
 		if tasksScrollView == nil || tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
-			self.view.addSubview( controller.view)
+			self.view.addSubview( controller.view )
 		}
 		else if tasksScrollView!.data.count == 1 {
 			let controller = noTasksController()
@@ -149,21 +148,9 @@ class TasksViewController: NSViewController {
 				self.daysScrollView?.hidden = false
 				self.tasksScrollView?.hidden = false
 				
-				var task: TaskProtocol?
-				
-				switch(i) {
-					case .IssueBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Issue)
-					case .IssueEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Issue)
-					case .ScrumBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Scrum)
-					case .ScrumEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Scrum)
-					case .LunchBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Lunch)
-					case .LunchEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Lunch)
-					case .MeetingBegin: task = Task.create(NSDate(), dateEnd: nil, type: TaskType.Meeting)
-					case .MeetingEnd: task = Task.create(nil, dateEnd: NSDate(), type: TaskType.Meeting)
-				}
-				
-				task?.saveToParseWhenPossible()
-				self.tasksScrollView?.addTask( task! )
+				let task: TaskProtocol = Tasks.taskFromSubtype(i)
+				task.saveToParseWhenPossible()
+				self.tasksScrollView?.addTask( task )
 				
 				self.setupDaysTableView()
 				self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
@@ -236,7 +223,7 @@ class TasksViewController: NSViewController {
 	func reloadData() {
 		self.setupDaysTableView()
 		self.setupTasksTableView()
-		self.reloadTasksOnDay( NSDate())
+		self.reloadTasksOnDay( NSDate() )
 	}
 	
 	func reloadTasksOnDay(date: NSDate) {
@@ -265,10 +252,10 @@ class TasksViewController: NSViewController {
 	
 	func handleStartDayButton() {
 		
-		let task = Task.create(NSDate(), dateEnd:NSDate(), type: TaskType.Start)
+		let task = Tasks.taskFromDate(NSDate(), dateEnd: NSDate(), type: TaskType.Start)
 		task.saveToParseWhenPossible()
 		
-		self._newDayController.setLastDay( NSDate())
+		self._newDayController.setLastTrackedDay(NSDate())
 		self.reloadData()
 	}
 	

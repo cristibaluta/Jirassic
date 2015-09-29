@@ -14,6 +14,8 @@ let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
 	
+	// MARK: Formatting options
+	
 	func HHmmddMM() -> String {
 		let f = NSDateFormatter()
 		f.dateFormat = "HH:mm • dd MMM"
@@ -56,6 +58,8 @@ extension NSDate {
 		f.dateFormat = "EEEE, MMMM dd"
 		return f.stringFromDate(self)
 	}
+	
+	// MARK: 
 	
 	class func getMonthsBetween(startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
 	
@@ -170,7 +174,7 @@ extension NSDate {
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
-	// MARK: Private
+	// MARK: Round to nearest quarter
 	
 	private func round(min: Int) -> (hour: Int, min: Int) {
 		if min < 22 {

@@ -10,7 +10,20 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
+	@IBOutlet private var issueNrTextField: NSTextField?
+	@IBOutlet private var notesTextField: NSTextField?
+	@IBOutlet private var dateTextField: NSTextField?
 	var onOptionChosen: ((i: TaskSubtype) -> Void)?
+	
+	// Sets the end date of the task to the UI picker. It can be edited and requested back
+	var date: NSDate {
+		get {
+			return NSDate()
+		}
+		set {
+			self.dateTextField!.stringValue = ""
+		}
+	}
 	
 	class func instanceFromStoryboard() -> NewTaskViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)

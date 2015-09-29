@@ -18,10 +18,10 @@ class DrawerState: NSObject {
 	private let kDaysTableStateKey = "DaysTableStateKey"
 	var state: DaysState = .DaysOpen
 	
-	func setState(s: DaysState) -> DaysState {
-		NSUserDefaults.standardUserDefaults().setInteger(s.rawValue, forKey: kDaysTableStateKey)
+	func setState(state: DaysState) -> DaysState {
+		NSUserDefaults.standardUserDefaults().setInteger(state.rawValue, forKey: kDaysTableStateKey)
 		NSUserDefaults.standardUserDefaults().synchronize()
-		return s
+		return state
 	}
 	
 	func previousState() -> DaysState {

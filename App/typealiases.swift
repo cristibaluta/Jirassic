@@ -7,3 +7,4 @@
 //
 
 typealias LoginCredentials = (email: String, password: String)
+typealias TaskCreationData = (dateStart: String, dateEnd: String, issue: String, notes: String)

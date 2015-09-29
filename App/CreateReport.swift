@@ -23,10 +23,10 @@ class CreateReport: NSObject {
 			return
 		}
 		
-		let dateStart = tasks.first!.date_task_finished
+//		let dateStart = tasks.first!.date_task_finished
 		tasks.first!.date_task_finished = tasks.first!.date_task_finished?.roundUp()
 		let dateStartAdjusted = tasks.first!.date_task_finished
-		let dateEnd = tasks.last?.date_task_finished
+//		let dateEnd = tasks.last?.date_task_finished
 		var dateEndAdjusted = dateStartAdjusted!.dateByAddingTimeInterval(kEightHoursInSeconds)
 		
 //		let diff = dateEnd?.timeIntervalSinceDate(dateStart!)

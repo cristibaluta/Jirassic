@@ -1,5 +1,5 @@
 //
-//  ScrumEstimationTests.swift
+//  TaskTypeEstimatorTests.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 11/06/15.
@@ -9,14 +9,6 @@
 import XCTest
 
 class TaskTypeEstimatorTests: XCTestCase {
-	
-	override func setUp() {
-		super.setUp()
-	}
-	
-	override func tearDown() {
-		super.tearDown()
-	}
 	
 	func testScrumBeginAt10_30() {
 		let date = NSDate.dateWithHour(10, minute: 30)
@@ -45,7 +37,6 @@ class TaskTypeEstimatorTests: XCTestCase {
 		let taskType = estimator.taskTypeAroundDate(date)
 		XCTAssertFalse(taskType == TaskType.Scrum, "Pass")
 	}
-	
 	
 	func testLunchBeginAt_12() {
 		let date = NSDate.dateWithHour(12, minute: 0)

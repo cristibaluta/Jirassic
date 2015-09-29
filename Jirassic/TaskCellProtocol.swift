@@ -15,5 +15,5 @@ protocol TaskCellProtocol: NSObjectProtocol {
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())? {get set}
 	var didAddCell: ((cell: TaskCellProtocol) -> ())? {get set}
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())? {get set}
-	var data: (dateStart: String, dateEnd: String, task: String, notes: String) {get set}
+	var data: TaskCreationData {get set}
 }

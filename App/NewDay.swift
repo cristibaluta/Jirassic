@@ -13,15 +13,16 @@ class NewDay: NSObject {
 	private let kLastStartDateKey = "LastStartDateKey"
 	
 	func isNewDay() -> Bool {
-		return lastDay() == nil || !lastDay()!.isSameDayAs( today())
+		let date = lastTrackedDay()
+		return date == nil || !date!.isSameDayAs(today())
 	}
 	
-	func setLastDay(date: NSDate) {
+	func setLastTrackedDay(date: NSDate) {
 		NSUserDefaults.standardUserDefaults().setObject(date, forKey: kLastStartDateKey)
 		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
-	private func lastDay() -> NSDate? {
+	private func lastTrackedDay() -> NSDate? {
 		return NSUserDefaults.standardUserDefaults().objectForKey(kLastStartDateKey) as? NSDate
 	}
 	
