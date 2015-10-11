@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
@@ -16,6 +16,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="kkS-Qs-fmO"/>
                     </constraints>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="AN-0000" id="dlI-ub-5hj">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -27,6 +28,7 @@
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
                     <rect key="frame" x="70" y="0.0" width="267" height="60"/>
+                    <animations/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -38,6 +40,7 @@
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
                     <rect key="frame" x="17" y="7" width="51" height="70"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,6 +49,7 @@
                 </textField>
                 <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ebe-cr-NWB">
                     <rect key="frame" x="19" y="57" width="73" height="27"/>
+                    <animations/>
                     <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="qCs-zf-3LF">
                         <font key="font" metaFont="system"/>
                         <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
@@ -59,6 +63,7 @@
                 </datePicker>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
                     <rect key="frame" x="0.0" y="62" width="20" height="18"/>
+                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
                 <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
@@ -67,6 +72,7 @@
                         <constraint firstAttribute="height" constant="16" id="5SV-30-Z5A"/>
                         <constraint firstAttribute="width" constant="16" id="pIA-R3-pwC"/>
                     </constraints>
+                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -81,6 +87,7 @@
                         <constraint firstAttribute="width" constant="16" id="3dQ-k3-en3"/>
                         <constraint firstAttribute="height" constant="16" id="v6d-fN-etz"/>
                     </constraints>
+                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QSn-Zg-qm9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -91,6 +98,7 @@
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
                     <rect key="frame" x="20" y="9" width="47" height="25"/>
+                    <animations/>
                     <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -113,6 +121,7 @@
                 <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="1" id="cDL-IK-eVu"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>
             </constraints>
+            <animations/>
             <connections>
                 <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
                 <outlet property="butCopy" destination="caC-fV-ZwQ" id="0ho-tO-K2w"/>

@@ -147,7 +147,6 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 			self.addTrackingArea(self.trackingArea!);
 		}
 	}
-
 }
 
 extension TaskCell: NSTextFieldDelegate {

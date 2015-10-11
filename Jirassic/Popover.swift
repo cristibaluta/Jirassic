@@ -10,10 +10,6 @@ import Cocoa
 
 class Popover: NSPopover {
 	
-	override init() {
-		super.init()
-	}
-
 	required init?(coder: NSCoder) {
 		super.init()
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
@@ -13,10 +13,12 @@
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91u-2I-cZl">
                     <rect key="frame" x="1" y="9" width="20" height="18"/>
+                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="xfP-nS-4Nk"/>
                 </imageView>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
                     <rect key="frame" x="25" y="11" width="308" height="17"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" red="0.33822601010101006" green="0.33822601010101006" blue="0.33822601010101006" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,6 +34,7 @@
                         <constraint firstAttribute="height" constant="16" id="7MI-XH-Yv3"/>
                         <constraint firstAttribute="width" constant="16" id="HJH-Sf-528"/>
                     </constraints>
+                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iIg-Ta-PA6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -46,6 +49,7 @@
                         <constraint firstAttribute="width" constant="16" id="nqW-yh-9HU"/>
                         <constraint firstAttribute="height" constant="16" id="u2a-dx-CSH"/>
                     </constraints>
+                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PPd-DR-pXH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -65,6 +69,7 @@
                 <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="27" id="wXn-Xe-hfV"/>
             </constraints>
+            <animations/>
             <connections>
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
                 <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>

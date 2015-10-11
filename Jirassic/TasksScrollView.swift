@@ -1,5 +1,5 @@
 //
-//  TaskCellDataSource.swift
+//  TasksScrollView.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 28/03/15.
@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Foundation
 
 let kTaskCellNibName = "TaskCell"
 let kNonTaskCellNibName = "NonTaskCell"
@@ -17,7 +16,7 @@ let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
 
-class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
+class TasksScrollView: NSScrollView {
 	
 	@IBOutlet var tableView: NSTableView?
 	
@@ -46,6 +45,17 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 	func reloadData() {
 		self.tableView?.reloadData()
 	}
+	
+	func addTask(task: TaskProtocol) {
+		data.insert(task, atIndex: 0)
+	}
+	
+	func removeTask(task: TaskProtocol) {
+		//		data?.removeAtIndex( 0 )
+	}
+}
+
+extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
 		return data.count
@@ -147,16 +157,5 @@ class TasksScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate 
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		let theData = data[row]
 		return theData.task_type?.intValue == 0 ? kTaskCellMaxHeight : kNonTaskCellHeight
-	}
-	
-	
-	// MARK: Add and remove objects
-	
-	func addTask(task: TaskProtocol) {
-		data.insert(task, atIndex: 0)
-	}
-	
-	func removeTask(task: TaskProtocol) {
-//		data?.removeAtIndex( 0 )
 	}
 }

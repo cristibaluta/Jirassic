@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		super.init()
 		
-		InitParse()
+		_ = InitParse()
 		
 		self.menu.onMouseDown = {
 			if (self.menu.iconView?.isSelected == true) {

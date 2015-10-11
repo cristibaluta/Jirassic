@@ -16,15 +16,15 @@ class NoTasksViewController: NSViewController {
 	var handleStartButton: (() -> ())?
 	
 	class func instanceFromStoryboard() -> NoTasksViewController {
+		
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
 		let vc = storyboard.instantiateControllerWithIdentifier("NoTasksViewController") as! NoTasksViewController
 		return vc
 	}
 	
-	@IBAction func handleStartButton(sender: NSButton) {
-		self.handleStartButton?()
+	func removeFromSuperview() {
+		self.view.removeFromSuperview()
 	}
-	
 	
 	func showStartState() {
 		_noTasksLabel?.stringValue = NoTasks().showStartState()
@@ -36,7 +36,10 @@ class NoTasksViewController: NSViewController {
 		_butStart?.hidden = true
 	}
 	
-	func removeFromSuperview() {
-		self.view.removeFromSuperview()
+	
+	// MARK: Actions
+	
+	@IBAction func handleStartButton(sender: NSButton) {
+		self.handleStartButton?()
 	}
 }

@@ -8,12 +8,18 @@
 import Foundation
 import CoreGraphics
 
-func RCLog (message: String, file: String = __FILE__, line: Int = __LINE__) {
-	print("\((file as NSString).lastPathComponent):\(line): \(message)")
+func RCLog (item: Any, file: String = __FILE__, line: Int = __LINE__) {
+	print("\((file as NSString).lastPathComponent):\(line): \(item)")
 }
 
 func RCLogO (message: AnyObject?, file: String = __FILE__, line: Int = __LINE__) {
 	print("\((file as NSString).lastPathComponent):\(line): \(message)")
+}
+
+func RCLogErrorO (message: AnyObject?, file: String = __FILE__, line: Int = __LINE__) {
+	if message != nil {
+		print("**ERROR: \((file as NSString).lastPathComponent):\(line): \(message)")
+	}
 }
 
 func RCLogI (message: Int?, file: String = __FILE__, line: Int = __LINE__) {

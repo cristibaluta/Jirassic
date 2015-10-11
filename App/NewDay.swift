@@ -1,5 +1,5 @@
 //
-//  NewDayController.swift
+//  NewDay.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 05/05/15.

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
+class DaysScrollView: NSScrollView {
 	
 	@IBOutlet private var tableView: NSTableView?
 	
@@ -28,11 +28,16 @@ class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	func reloadData() {
 		self.tableView?.reloadData()
 	}
-	
+}
+
+extension DaysScrollView: NSTableViewDataSource, NSTableViewDelegate {
+
 	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
-		
-		let numberOfRows: Int = data.count
-		return numberOfRows
+		return data.count
+	}
+	
+	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+		return rowHeight
 	}
 	
 	func tableView(tableView: NSTableView,
@@ -49,14 +54,7 @@ class DaysScrollView: NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 	func tableViewSelectionDidChange(aNotification: NSNotification) {
 		
 		if let rowView: AnyObject = aNotification.object {
-			if didSelectRow != nil {
-				didSelectRow!(row: rowView.selectedRow)
-			}
+			didSelectRow?(row: rowView.selectedRow)
 		}
 	}
-	
-	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		return rowHeight
-	}
-	
 }

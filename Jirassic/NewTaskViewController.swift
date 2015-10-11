@@ -26,6 +26,7 @@ class NewTaskViewController: NSViewController {
 	}
 	
 	class func instanceFromStoryboard() -> NewTaskViewController {
+		
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
 		let vc = storyboard.instantiateControllerWithIdentifier("NewTaskViewController") as! NewTaskViewController
 		return vc
