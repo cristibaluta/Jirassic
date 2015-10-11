@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
+class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
@@ -59,20 +59,6 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
-	override func controlTextDidBeginEditing(obj: NSNotification) {
-		isEditing = true
-	}
-	
-	override func controlTextDidChange(obj: NSNotification){
-		wasEdited = true
-	}
-	
-	override func controlTextDidEndEditing(obj: NSNotification) {
-		if wasEdited {
-			self.didEndEditingCell!(cell: self)
-			wasEdited = false
-		}
-	}
 	
 	// MARK: Acions
 	
@@ -148,7 +134,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	func ensureTrackingArea() {
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
-				options: [NSTrackingAreaOptions.InVisibleRect, NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseEnteredAndExited],
+				options: [NSTrackingAreaOptions.InVisibleRect, .ActiveAlways, .MouseEnteredAndExited],
 				owner: self,
 				userInfo: nil)
 		}
@@ -162,4 +148,22 @@ class TaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		}
 	}
 
+}
+
+extension TaskCell: NSTextFieldDelegate {
+	
+	override func controlTextDidBeginEditing(obj: NSNotification) {
+		isEditing = true
+	}
+	
+	override func controlTextDidChange(obj: NSNotification){
+		wasEdited = true
+	}
+	
+	override func controlTextDidEndEditing(obj: NSNotification) {
+		if wasEdited {
+			self.didEndEditingCell!(cell: self)
+			wasEdited = false
+		}
+	}
 }
