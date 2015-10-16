@@ -108,7 +108,7 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 	
 	func saveToParseWhenPossible() {
 		self.saveEventually { (success, error) -> Void in
-			RCLogO(success)
+			RCLogO("Saved to Parse \(success)")
 		}
 	}
 }

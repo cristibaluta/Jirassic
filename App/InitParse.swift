@@ -33,6 +33,6 @@ class InitParse: NSObject {
 		PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
 		
 		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
-		PFAnalytics()
+		_ = PFAnalytics()
 	}
 }
