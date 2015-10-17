@@ -6,6 +6,8 @@
 //  Copyright © 2015 Cristian Baluta. All rights reserved.
 //
 
+import Foundation
+
 class Issues: NSObject {
 
 	class func all() -> [String] {

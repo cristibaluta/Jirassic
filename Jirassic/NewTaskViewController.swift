@@ -21,7 +21,7 @@ class NewTaskViewController: NSViewController {
 			return NSDate()
 		}
 		set {
-			self.dateTextField!.stringValue = ""
+			self.dateTextField?.stringValue = ""
 		}
 	}
 	

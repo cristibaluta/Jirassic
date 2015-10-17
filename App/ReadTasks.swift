@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 class ReadTasks: NSObject {
 	

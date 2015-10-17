@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 let sharedData: DataManagerProtocol = DataManager()
 
@@ -19,11 +20,11 @@ class DataManager: NSObject, DataManagerProtocol {
 		let user = JRUser.currentUser()
 		RCLogO(user)
 		let query = PFQuery(className: Task.parseClassName())
-		query.cachePolicy = .NetworkElseCache
+//		query.cachePolicy = .NetworkElseCache
 		query.orderByDescending(kDateFinishKey)
-		query.whereKey("user", equalTo: user!)
-		query.findObjectsInBackgroundWithBlock( { (objects: [AnyObject]?, error: NSError?) in
-			RCLogO(objects)
+//		query.whereKey("user", equalTo: user!)
+		query.findObjectsInBackgroundWithBlock( { (objects: [PFObject]?, error: NSError?) in
+			
 			if error == nil && objects != nil {
 				// TaskProtocol does not conform to AnyObject
 				// and as a side note the objc NSArray cannot be directly casted to Swift array

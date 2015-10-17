@@ -83,8 +83,6 @@
 		289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
 		289E2AEC1B2D6B0B003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
 		289E2AED1B2D6B0D003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
-		289E2AEF1B2D6D56003269A3 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AEE1B2D6D56003269A3 /* Logout.swift */; };
-		289E2AF01B2D6D56003269A3 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AEE1B2D6D56003269A3 /* Logout.swift */; };
 		289E2AF21B2D6D6E003269A3 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */; };
 		289E2AF31B2D6D6E003269A3 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */; };
 		289E2AF61B2D71FD003269A3 /* JRUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF51B2D71FD003269A3 /* JRUserProtocol.swift */; };
@@ -111,6 +109,14 @@
 		289E2B421B328598003269A3 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B441B332C4C003269A3 /* Jirassic.iconset */; };
+		28B161151BD2EE8900508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		28B161161BD2EE8900508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		28B161171BD2EE8900508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		28B161181BD2EE8900508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
+		28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28B1611B1BD2F03300508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; };
+		28B1611C1BD2F03300508CF5 /* Parse.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
 		28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
 		28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
@@ -134,8 +140,6 @@
 		28E8390C1AF4973900602D33 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */; };
 		28E8390D1AF4973C00602D33 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0831AC2E8F8001AC4BA /* Security.framework */; };
 		28E8390E1AF4973F00602D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */; };
-		28E8390F1AF4974600602D33 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; };
-		28E839101AF4974A00602D33 /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
 		28E839111AF4974D00602D33 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		28EB901F1AF5E9B0008D5337 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
 		28EB90211AF60234008D5337 /* NoTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90201AF60234008D5337 /* NoTasks.swift */; };
@@ -177,10 +181,6 @@
 		6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */; };
 		6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
 		6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
-		6D31D0991AC445CA001AC4BA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; };
-		6D31D09C1AC44613001AC4BA /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0971AC445CA001AC4BA /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6D31D09E1AC44619001AC4BA /* ParseOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; };
-		6D31D09F1AC44619001AC4BA /* ParseOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0981AC445CA001AC4BA /* ParseOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 /* End PBXBuildFile section */
 
@@ -208,8 +208,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6D31D09C1AC44613001AC4BA /* Bolts.framework in Embed Frameworks */,
-				6D31D09F1AC44619001AC4BA /* ParseOSX.framework in Embed Frameworks */,
+				28B1611C1BD2F03300508CF5 /* Parse.framework in Embed Frameworks */,
+				28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,13 +259,13 @@
 		289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LaunchImage@2x.png"; path = "Resources/LaunchImage@2x.png"; sourceTree = SOURCE_ROOT; };
 		289E2ACF1B2B776A003269A3 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskProtocol.swift; path = App/TaskProtocol.swift; sourceTree = "<group>"; };
-		289E2AEE1B2D6D56003269A3 /* Logout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logout.swift; path = App/Logout.swift; sourceTree = SOURCE_ROOT; };
 		289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
 		289E2AF51B2D71FD003269A3 /* JRUserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JRUserProtocol.swift; path = App/JRUserProtocol.swift; sourceTree = "<group>"; };
 		289E2AF81B2D8AD6003269A3 /* JRUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JRUser.swift; path = App/JRUser.swift; sourceTree = SOURCE_ROOT; };
 		289E2AFC1B2D8C31003269A3 /* typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = typealiases.swift; path = App/typealiases.swift; sourceTree = "<group>"; };
 		289E2B441B332C4C003269A3 /* Jirassic.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; name = Jirassic.iconset; path = Jirassic/Jirassic.iconset; sourceTree = SOURCE_ROOT; };
-		28B1F2AF1AFA78AA00D61472 /* Jirassic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jirassic-Bridging-Header.h"; sourceTree = "<group>"; };
+		28B161131BD2EE8900508CF5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Jirassic/Bolts.framework; sourceTree = SOURCE_ROOT; };
+		28B161141BD2EE8900508CF5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Jirassic/Parse.framework; sourceTree = SOURCE_ROOT; };
 		28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoTasksViewController.swift; sourceTree = "<group>"; };
 		28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		28B1F2B71AFB11A900D61472 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -319,8 +319,6 @@
 		6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		6D31D0971AC445CA001AC4BA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		6D31D0981AC445CA001AC4BA /* ParseOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseOSX.framework; sourceTree = "<group>"; };
 		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -370,11 +368,13 @@
 				6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */,
 				6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */,
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
+				28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */,
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
+				28B1611B1BD2F03300508CF5 /* Parse.framework in Frameworks */,
+				28B161151BD2EE8900508CF5 /* Bolts.framework in Frameworks */,
+				28B161171BD2EE8900508CF5 /* Parse.framework in Frameworks */,
 				6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */,
-				6D31D0991AC445CA001AC4BA /* Bolts.framework in Frameworks */,
-				6D31D09E1AC44619001AC4BA /* ParseOSX.framework in Frameworks */,
 				6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */,
 				6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */,
 				6D31D07E1AC2E8C9001AC4BA /* libz.dylib in Frameworks */,
@@ -390,10 +390,10 @@
 				28E839061AF4972300602D33 /* libsqlite3.dylib in Frameworks */,
 				28E8390C1AF4973900602D33 /* QuartzCore.framework in Frameworks */,
 				28E839081AF4972B00602D33 /* ApplicationServices.framework in Frameworks */,
-				28E8390F1AF4974600602D33 /* Bolts.framework in Frameworks */,
+				28B161161BD2EE8900508CF5 /* Bolts.framework in Frameworks */,
+				28B161181BD2EE8900508CF5 /* Parse.framework in Frameworks */,
 				28E839091AF4972F00602D33 /* CFNetwork.framework in Frameworks */,
 				28E8390A1AF4973200602D33 /* CoreGraphics.framework in Frameworks */,
-				28E839101AF4974A00602D33 /* ParseOSX.framework in Frameworks */,
 				28E8390D1AF4973C00602D33 /* Security.framework in Frameworks */,
 				28E839071AF4972700602D33 /* libz.dylib in Frameworks */,
 			);
@@ -402,15 +402,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2846C9101AFF8ABB00779357 /* parse-osx */ = {
-			isa = PBXGroup;
-			children = (
-				6D31D0971AC445CA001AC4BA /* Bolts.framework */,
-				6D31D0981AC445CA001AC4BA /* ParseOSX.framework */,
-			);
-			name = "parse-osx";
-			sourceTree = "<group>";
-		};
 		2846C9111AFF8AC800779357 /* parse-ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,7 +551,6 @@
 				28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */,
 				28F292261B1C57B40015F64F /* CreateReportTests.swift */,
 				289E2ACF1B2B776A003269A3 /* Login.swift */,
-				289E2AEE1B2D6D56003269A3 /* Logout.swift */,
 				289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */,
 			);
 			name = "Use cases";
@@ -580,6 +570,16 @@
 			);
 			name = TasksViewController;
 			sourceTree = "<group>";
+		};
+		28DB60A41BD2E634003FDE96 /* parse-osx */ = {
+			isa = PBXGroup;
+			children = (
+				28B161131BD2EE8900508CF5 /* Bolts.framework */,
+				28B161141BD2EE8900508CF5 /* Parse.framework */,
+			);
+			name = "parse-osx";
+			path = "Vendor/parse-osx";
+			sourceTree = SOURCE_ROOT;
 		};
 		28E838F51AF297FE00602D33 /* Resources */ = {
 			isa = PBXGroup;
@@ -671,7 +671,6 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
-				28B1F2AF1AFA78AA00D61472 /* Jirassic-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -723,7 +722,7 @@
 		6D31D0A21AC448FF001AC4BA /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				2846C9101AFF8ABB00779357 /* parse-osx */,
+				28DB60A41BD2E634003FDE96 /* parse-osx */,
 				2846C9111AFF8AC800779357 /* parse-ios */,
 				6D31D0A01AC44785001AC4BA /* RCLog.swift */,
 			);
@@ -978,7 +977,6 @@
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */,
 				282426761B113D5000211713 /* FlipScreens.swift in Sources */,
-				289E2AEF1B2D6D56003269A3 /* Logout.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				28B1F2BA1AFB2BCF00D61472 /* NonTaskCell.swift in Sources */,
@@ -1000,7 +998,6 @@
 				28778A5F1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift in Sources */,
 				28EB90221AF60234008D5337 /* NoTasks.swift in Sources */,
 				28778A581BB9B9A9003E4880 /* TasksTests.swift in Sources */,
-				289E2AF01B2D6D56003269A3 /* Logout.swift in Sources */,
 				289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */,
 				289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */,
 				289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */,
@@ -1271,6 +1268,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
 					"$(PROJECT_DIR)/Vendor/**",
+					"$(PROJECT_DIR)/Vendor/parse-osx",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1279,8 +1277,9 @@
 				);
 				INFOPLIST_FILE = Jirassic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
 				PRODUCT_NAME = Jirassic;
-				SWIFT_OBJC_BRIDGING_HEADER = "Jirassic/Jirassic-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1295,6 +1294,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
 					"$(PROJECT_DIR)/Vendor/**",
+					"$(PROJECT_DIR)/Vendor/parse-osx",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1303,8 +1303,9 @@
 				);
 				INFOPLIST_FILE = Jirassic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
 				PRODUCT_NAME = Jirassic;
-				SWIFT_OBJC_BRIDGING_HEADER = "Jirassic/Jirassic-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -1318,6 +1319,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
+					"$(PROJECT_DIR)/Vendor/parse-osx",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1326,7 +1328,7 @@
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = JirassicTests;
-				SWIFT_OBJC_BRIDGING_HEADER = "JirassicTests/JirassicTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
@@ -1342,11 +1344,12 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
+					"$(PROJECT_DIR)/Vendor/parse-osx",
 				);
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = JirassicTests;
-				SWIFT_OBJC_BRIDGING_HEADER = "JirassicTests/JirassicTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
 			name = Release;

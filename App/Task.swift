@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 let kDateStartKey = "date_task_started"
 let kDateFinishKey = "date_task_finished"

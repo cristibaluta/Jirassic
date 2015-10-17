@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Cristian Baluta. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 protocol TaskCellProtocol: NSObjectProtocol {
 

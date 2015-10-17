@@ -100,7 +100,7 @@ class TasksViewController: NSViewController {
 	}
 	
 	func updateNoTasksState() {
-		
+		RCLogO("updateNoTasksState")
 		if tasksScrollView == nil || tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
@@ -211,12 +211,11 @@ class TasksViewController: NSViewController {
 	}
 	
 	func reloadDataFromServer() {
-		
 		self.showLoadingIndicator(true)
-		
-		sharedData.queryData { (tasks, error) -> Void in
-			self.reloadData()
-			self.showLoadingIndicator(false)
+		sharedData.queryData { [weak self] (tasks, error) -> Void in
+			RCLog(tasks)
+			self?.reloadData()
+			self?.showLoadingIndicator(false)
 		}
 	}
 	

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Parse
 
 class Login: NSObject {
 
@@ -20,7 +21,7 @@ class Login: NSObject {
 	
 	func login() {
 		
-		PFUser.logInWithUsernameInBackground(self.credentials!.email, password: self.credentials!.password) {
+		JRUser.logInWithUsernameInBackground(self.credentials!.email, password: self.credentials!.password) {
 			(user: PFUser?, error: NSError?) -> Void in
 			
 			if user != nil {
@@ -66,9 +67,11 @@ class Login: NSObject {
 //			self.enableLogOutButton()
 		}
 	}
-	//
-	//	func logout() {
-	//		PFUser.logOut()
-	//		var currentUser = PFUser.currentUser() // this will now be nil
-	//	}
+	
+	func logout() {
+		JRUser.logOutInBackgroundWithBlock { (error) -> Void in
+			RCLogO(error)
+			var currentUser = JRUser.currentUser() // this will now be nil
+		}
+	}
 }

@@ -6,6 +6,9 @@
 //  Copyright © 2015 Cristian Baluta. All rights reserved.
 //
 
+import Foundation
+import Parse
+
 class Tasks: NSObject {
 	
 	class func taskFromDate(dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) -> TaskProtocol {

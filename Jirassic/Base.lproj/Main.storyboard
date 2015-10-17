@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -923,7 +923,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-qM-yQk">
-                                <rect key="frame" x="108" y="260" width="54" height="22"/>
+                                <rect key="frame" x="108" y="260" width="265" height="22"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="AN" drawsBackground="YES" id="xQZ-Ln-Hdl">
                                     <font key="font" metaFont="system"/>
@@ -946,20 +946,6 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
-                                <rect key="frame" x="212" y="13" width="71" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="59" id="Use-nS-zxU"/>
-                                </constraints>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tsy-gv-nNb">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="xrA-px-AQY"/>
-                                </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qig-8f-SpV">
                                 <rect key="frame" x="18" y="46" width="215" height="18"/>
@@ -1076,7 +1062,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="sNb-Ok-c2a"/>
+                                                <action selector="handleLoginButton:" target="J1c-ZL-C5e" id="8QD-WS-jLh"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1096,19 +1082,39 @@
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
+                                <rect key="frame" x="409" y="377" width="71" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="Use-nS-zxU"/>
+                                    <constraint firstAttribute="height" constant="21" id="vWH-pG-KcJ"/>
+                                </constraints>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tsy-gv-nNb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="xrA-px-AQY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="KEe-H3-mry" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="50" id="0Mi-k4-bpK"/>
-                            <constraint firstAttribute="centerX" secondItem="wtI-Tb-5RE" secondAttribute="centerX" constant="-0.5" id="DsT-Ac-W1G"/>
                             <constraint firstItem="KEe-H3-mry" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="FSc-ws-6PC"/>
                             <constraint firstAttribute="trailing" secondItem="OCy-iT-9TC" secondAttribute="trailing" constant="20" id="HWz-r5-zWS"/>
+                            <constraint firstItem="wtI-Tb-5RE" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="21" id="Iuf-tS-mkO"/>
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="20" id="Lng-g3-sZf"/>
+                            <constraint firstAttribute="trailing" secondItem="wtI-Tb-5RE" secondAttribute="trailing" constant="20" id="Pmb-C6-hpC"/>
                             <constraint firstAttribute="trailing" secondItem="KEe-H3-mry" secondAttribute="trailing" constant="20" id="Tj2-JM-51j"/>
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="20" id="krg-JJ-Gi5"/>
-                            <constraint firstAttribute="bottom" secondItem="wtI-Tb-5RE" secondAttribute="bottom" constant="20" id="pAr-o8-AYy"/>
                         </constraints>
                         <animations/>
                     </view>
+                    <connections>
+                        <outlet property="butLogin" destination="mBF-Uz-VFN" id="c7z-d9-gSD"/>
+                        <outlet property="emailTextField" destination="Ui9-h2-Guy" id="EWg-e2-k1x"/>
+                        <outlet property="passwordTextField" destination="6CN-AL-Hhb" id="OEd-g1-Rja"/>
+                    </connections>
                 </viewController>
                 <customObject id="C7k-Vd-XtM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

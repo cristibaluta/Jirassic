@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Parse
 
 class PopoverViewController: NSViewController {
 	
@@ -18,13 +19,13 @@ class PopoverViewController: NSViewController {
 		
 		super.viewDidLoad()
 		
-		let currentUser = PFUser.currentUser()
-		
-		if currentUser != nil {
+		let currentUser = JRUser.currentUser()
+		if currentUser != nil && currentUser!.isLoggedIn {
 			let controller = createTasksController()
 			self.view.addSubview( controller.view )
 		}
 		else {
+			// You cannot use the app without an account
 			let controller = createLoginController()
 			self.view.addSubview( controller.view )
 		}

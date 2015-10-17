@@ -7,17 +7,15 @@
 //
 
 import Foundation
+import Parse
 
 public class JRUser: PFUser, JRUserProtocol {
 	
-//	public override class func parseClassName() -> String {
-//		return "JRUser"
-//	}
-//	
 	var isLoggedIn: Bool {
 		get {
-			let currentUser = PFUser.currentUser()
-			return (currentUser != nil && currentUser!.username != nil)
+			RCLogO(self.isAuthenticated())
+			RCLogO(self.username)
+			return (self.username != nil)
 		}
 	}
 }

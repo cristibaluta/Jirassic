@@ -103,7 +103,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 				cell?.statusImage!.image = nil
 			}
 		}
-		cell?.data = (dateStart: date, dateEnd: date, issue: theData.issue_type!, notes: notes)
+		cell?.data = (dateStart: date, dateEnd: date, issue: theData.issue_type ?? "", notes: notes)
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 			theData.issue_type = cell.data.issue
 			theData.notes = cell.data.notes
