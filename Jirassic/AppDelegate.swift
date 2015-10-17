@@ -17,18 +17,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	private let menu = MenuBarController()
 	
 	override init() {
-		
 		super.init()
 		
 		_ = InitParse()
 		
 		self.menu.onMouseDown = {
 			if (self.menu.iconView?.isSelected == true) {
-				self.show()
+				self.showPopover()
 			} else {
-				self.hide()
+				self.hidePopover()
 			}
         }
+		
         sleep = SleepNotifications()
         sleep?.computerWentToSleep = {
 			
@@ -50,20 +50,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 	}
 	
-	func show() {
+	func showPopover() {
 		let icon = self.menu.iconView!
 		let edge = NSRectEdge.MinY
 		let rect = icon.frame
 		self.popover?.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
 	}
 	
-	func hide() {
+	func hidePopover() {
 		self.popover?.close()
 	}
 	
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-		let icon = self.menu.iconView!
-		icon.mouseDown(NSEvent())
+		let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+			self.menu.iconView?.mouseDown(NSEvent())
+		})
     }
 	
     func applicationWillTerminate(aNotification: NSNotification) {
