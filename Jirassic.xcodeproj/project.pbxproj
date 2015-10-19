@@ -182,6 +182,8 @@
 		6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
 		6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
 		6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		6D89F7BD1BD5257400A6892B /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D89F7BC1BD5257400A6892B /* AddTask.swift */; settings = {ASSET_TAGS = (); }; };
+		6D89F7BE1BD5257400A6892B /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D89F7BC1BD5257400A6892B /* AddTask.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +322,7 @@
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
+		6D89F7BC1BD5257400A6892B /* AddTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -552,6 +555,7 @@
 				28F292261B1C57B40015F64F /* CreateReportTests.swift */,
 				289E2ACF1B2B776A003269A3 /* Login.swift */,
 				289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */,
+				6D89F7BC1BD5257400A6892B /* AddTask.swift */,
 			);
 			name = "Use cases";
 			sourceTree = "<group>";
@@ -954,6 +958,7 @@
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
 				28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */,
 				2856DF1A1B13C8FB00A4D5A4 /* JiraLogin.swift in Sources */,
+				6D89F7BD1BD5257400A6892B /* AddTask.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				289E2AF21B2D6D6E003269A3 /* RegisterUser.swift in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */,
@@ -1003,6 +1008,7 @@
 				289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */,
 				28EB90271AF6027D008D5337 /* MockDataManager.swift in Sources */,
 				289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */,
+				6D89F7BE1BD5257400A6892B /* AddTask.swift in Sources */,
 				28778A561BB9B83A003E4880 /* Tasks.swift in Sources */,
 				2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */,
 				289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */,
