@@ -41,6 +41,7 @@ class SettingsViewController: NSViewController {
 		if let user = JRUser.currentUser() {
 			RCLogO(user.isLoggedIn)
 			butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
+			emailTextField?.stringValue = user.email!
 		}
     }
 	
