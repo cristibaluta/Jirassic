@@ -36,5 +36,6 @@ protocol TaskProtocol: NSObjectProtocol {
 	var task_type: NSNumber? {get set}
 	var user: JRUser? {get set}
 	
-	func saveToParseWhenPossible()
+    func saveToServerWhenPossible()
+    func deleteFromServerWhenPossible()
 }

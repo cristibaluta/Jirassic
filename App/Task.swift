@@ -107,9 +107,13 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 	
 	// Helpers
 	
-	func saveToParseWhenPossible() {
+	func saveToServerWhenPossible() {
 		self.saveEventually { (success, error) -> Void in
 			RCLogO("Saved to Parse \(success)")
 		}
 	}
+    
+    func deleteFromServerWhenPossible() {
+        self.deleteEventually()
+    }
 }

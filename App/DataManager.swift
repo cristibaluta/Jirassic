@@ -74,4 +74,21 @@ class DataManager: NSObject, DataManagerProtocol {
 		
 		return filteredData
 	}
+    
+    func deleteTask(dataToDelete: TaskProtocol) {
+        
+        var indexToRemove = -1
+        var canRemove = false
+        for theData in self.data {
+            indexToRemove++
+            if (theData as! Task) == (dataToDelete as! Task) {
+                canRemove = true
+                theData.deleteFromServerWhenPossible()
+                break
+            }
+        }
+        if canRemove && indexToRemove >= 0 {
+            self.data.removeAtIndex(indexToRemove)
+        }
+    }
 }

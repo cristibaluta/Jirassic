@@ -50,8 +50,11 @@ class TasksScrollView: NSScrollView {
 		data.insert(task, atIndex: 0)
 	}
 	
-	func removeTask(task: TaskProtocol) {
-		//		data?.removeAtIndex( 0 )
+    func removeTaskAtRow(row: Int) {
+        let theData = data[row];
+        theData.deleteFromServerWhenPossible()
+		data.removeAtIndex(row)
+        self.tableView?.removeRowsAtIndexes(NSIndexSet(index: row), withAnimation: NSTableViewAnimationOptions.EffectFade)
 	}
 }
 
@@ -107,13 +110,19 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 			theData.issue_type = cell.data.issue
 			theData.notes = cell.data.notes
-			theData.saveToParseWhenPossible()
+			theData.saveToServerWhenPossible()
 		}
 		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
 			if self.didRemoveRow != nil {
-				let row2 = tableView.rowForView(cell as! TaskCell)
-				RCLogO("remove row \(row2)")
-				self.didRemoveRow!(row: row)
+                if let cell = cell as? TaskCell {
+                    let row2 = tableView.rowForView(cell)
+                    RCLogO("remove row \(row2)")
+                    self.didRemoveRow!(row: row)
+                } else if let cell = cell as? NonTaskCell {
+                    let row2 = tableView.rowForView(cell)
+                    RCLogO("remove row \(row2)")
+                    self.didRemoveRow!(row: row)
+                }
 			}
 		}
 		cell?.didAddCell = { (cell: TaskCellProtocol) in

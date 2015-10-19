@@ -15,7 +15,6 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _tasksTableViewWidthConstraint: NSLayoutConstraint?
 	
 	@IBOutlet private var _dateLabel: NSTextField?
-	@IBOutlet private var _butDrawer: NSButton?
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
@@ -88,14 +87,16 @@ class TasksViewController: NSViewController {
 		tasksScrollView!.didRemoveRow = { (row: Int) in
 			RCLogO("remove \(row)")
 			if row >= 0 {
-				let theData = self.tasksScrollView!.data[row]
-				RCLogO("remove \(theData)")
+                let theData = self.tasksScrollView!.data[row]
+                self.tasksScrollView!.removeTaskAtRow(row);
+                sharedData.deleteTask(theData)
 			}
 		}
-		tasksScrollView!.didAddRow = { (row: Int) -> Void in
-			let theData = self.tasksScrollView!.data[row]
-			let date = theData.date_task_finished
-			self.handleAddTaskButton(date!)
+		tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
+			let theData = self?.tasksScrollView!.data[row]
+            if let date = theData?.date_task_finished {
+                self?.handleAddTaskButton(date)
+            }
 		}
 	}
 	
@@ -149,7 +150,7 @@ class TasksViewController: NSViewController {
 				self.tasksScrollView?.hidden = false
 				
 				let task: TaskProtocol = Tasks.taskFromSubtype(i)
-				task.saveToParseWhenPossible()
+				task.saveToServerWhenPossible()
 				self.tasksScrollView?.addTask( task )
 				
 				self.setupDaysTableView()
@@ -252,7 +253,7 @@ class TasksViewController: NSViewController {
 	func handleStartDayButton() {
 		
 		let task = Tasks.taskFromDate(NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		task.saveToParseWhenPossible()
+		task.saveToServerWhenPossible()
 		
 		self._newDayController.setLastTrackedDay(NSDate())
 		self.reloadData()
@@ -277,9 +278,5 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleRefreshButton(sender: NSButton) {
 		reloadDataFromServer()
-	}
-	
-	@IBAction func handleQuitAppButton(sender: NSButton) {
-		NSApplication.sharedApplication().terminate(nil)
 	}
 }

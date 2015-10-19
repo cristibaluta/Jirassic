@@ -15,7 +15,8 @@ class SettingsViewController: NSViewController {
 	
 	@IBOutlet private var emailTextField: NSTextField?
 	@IBOutlet private var passwordTextField: NSTextField?
-	@IBOutlet private var butLogin: NSButton?
+    @IBOutlet private var butLogin: NSButton?
+    @IBOutlet private var butQuit: NSButton?
 	@IBOutlet private var progressIndicator: NSProgressIndicator?
 	
 	var credentials: LoginCredentials {
@@ -75,4 +76,7 @@ class SettingsViewController: NSViewController {
 		self.handleSaveButton!()
 	}
 	
+    @IBAction func handleQuitAppButton(sender: NSButton) {
+        NSApplication.sharedApplication().terminate(nil)
+    }
 }

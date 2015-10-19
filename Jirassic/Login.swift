@@ -70,8 +70,8 @@ class Login: NSObject {
 	
 	func logout() {
 		JRUser.logOutInBackgroundWithBlock { (error) -> Void in
-			RCLogO(error)
-			var currentUser = JRUser.currentUser() // this will now be nil
+			RCLog(error)
+			_ = JRUser.currentUser() // this will now be nil
 		}
 	}
 }

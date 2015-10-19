@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -786,17 +786,6 @@
                                     <outlet property="tableView" destination="P2Q-hS-yur" id="bQK-7b-N91"/>
                                 </connections>
                             </scrollView>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMO-PV-PHF">
-                                <rect key="frame" x="12" y="400" width="22" height="22"/>
-                                <animations/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusUnavailable" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="6kS-Wv-eG3">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="Q2H-uE-Pj0"/>
-                                </connections>
-                            </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="sOM-pv-IVs">
                                 <rect key="frame" x="460" y="400" width="22" height="22"/>
                                 <constraints>
@@ -842,7 +831,7 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVK-00-mOW">
-                                <rect key="frame" x="42" y="393" width="169" height="30"/>
+                                <rect key="frame" x="14" y="393" width="169" height="30"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Monday, March 30" id="TBK-nb-zgu">
                                     <font key="font" size="13" name="HelveticaNeue-Bold"/>
@@ -871,7 +860,6 @@
                         <animations/>
                     </customView>
                     <connections>
-                        <outlet property="_butDrawer" destination="uMO-PV-PHF" id="uFK-9h-1Rd"/>
                         <outlet property="_butRefresh" destination="w7V-wd-0Hx" id="zfd-TW-d3L"/>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
                         <outlet property="_progressIndicator" destination="R3S-KZ-qb3" id="6Zu-Hu-9Jl"/>
@@ -1015,8 +1003,8 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <box autoresizesSubviews="NO" title="Login" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-H3-mry">
-                                <rect key="frame" x="19" y="314" width="458" height="62"/>
+                            <box autoresizesSubviews="NO" title="User credentials" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-H3-mry">
+                                <rect key="frame" x="19" y="299" width="458" height="62"/>
                                 <view key="contentView" id="K2z-3a-ita">
                                     <rect key="frame" x="1" y="1" width="456" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1097,9 +1085,19 @@
                                     <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="xrA-px-AQY"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K5U-op-A5s">
+                                <rect key="frame" x="15" y="384" width="22" height="22"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusUnavailable" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="jIU-9A-YWV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleQuitAppButton:" target="J1c-ZL-C5e" id="jCj-Jm-4gf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="KEe-H3-mry" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="50" id="0Mi-k4-bpK"/>
+                            <constraint firstItem="KEe-H3-mry" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="65" id="0Mi-k4-bpK"/>
                             <constraint firstItem="KEe-H3-mry" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="FSc-ws-6PC"/>
                             <constraint firstAttribute="trailing" secondItem="OCy-iT-9TC" secondAttribute="trailing" constant="20" id="HWz-r5-zWS"/>
                             <constraint firstItem="wtI-Tb-5RE" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="21" id="Iuf-tS-mkO"/>
@@ -1112,6 +1110,7 @@
                     </view>
                     <connections>
                         <outlet property="butLogin" destination="mBF-Uz-VFN" id="c7z-d9-gSD"/>
+                        <outlet property="butQuit" destination="K5U-op-A5s" id="9xB-kV-tyc"/>
                         <outlet property="emailTextField" destination="Ui9-h2-Guy" id="EWg-e2-k1x"/>
                         <outlet property="passwordTextField" destination="6CN-AL-Hhb" id="OEd-g1-Rja"/>
                     </connections>

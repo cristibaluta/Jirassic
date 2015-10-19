@@ -19,6 +19,7 @@ class LoginViewController: NSViewController {
 	
 	var onLoginSuccess: (() -> ())?
 	var handleCancelLoginButton: (() -> ())?
+    
 	var credentials: LoginCredentials {
 		get {
 			return (email: self._emailTextField!.stringValue,
@@ -71,13 +72,13 @@ class LoginViewController: NSViewController {
 	@IBAction func handleLoginButton(sender: NSButton) {
 		let login = Login(credentials: self.credentials)
 		login.onLoginSuccess = {
-			self.onLoginSuccess!()
+			self.onLoginSuccess?()
 		}
 		login.login()
 	}
 	
 	@IBAction func handleCancelButton(sender: NSButton) {
-		self.handleCancelLoginButton!()
+		self.handleCancelLoginButton?()
 	}
 	
 }

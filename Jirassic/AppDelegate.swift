@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			}
 			if !scrumExists {
 				let task = Tasks.taskFromDate(self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
-				task.saveToParseWhenPossible()
+				task.saveToServerWhenPossible()
 				NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 			}
         }
