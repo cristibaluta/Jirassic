@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		_ = InitParse()
 		
-		self.menu.onMouseDown = {
+		menu.onMouseDown = {
 			if (self.menu.iconView?.isSelected == true) {
 				self.showPopover()
 			} else {
