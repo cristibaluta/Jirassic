@@ -7,29 +7,33 @@
 //
 
 import XCTest
+@testable import Jirassic
 
 class TaskCellTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+	
+//    func testSettingData() {
+//		
+//		let _cell = cell()
+//		RCLog(_cell)
+//		_cell.data = (dateStart: "dateStart", dateEnd: "dateEnd", issue: "IOS-01", notes: "notes")
+//		
+//		XCTAssert(_cell.data.dateStart == "dateStart", "")
+//		XCTAssert(_cell.data.dateEnd == "dateEnd", "")
+//		XCTAssert(_cell.data.issue == "IOS-01", "")
+//		XCTAssert(_cell.data.notes == "notes", "")
+//    }
+//	
+//	func cell() -> TaskCell {
+//		var views: NSArray?
+//		NSBundle.mainBundle().loadNibNamed("TaskCell", owner: self, topLevelObjects: &views)
+//		RCLog(views)
+//		RCLog(views?.objectAtIndex(0))
+//		RCLog(views?.objectAtIndex(1))
+//		if let c = views?.objectAtIndex(0) as? TaskCell {
+//			return c
+//		} else if let c = views?.objectAtIndex(1) as? TaskCell {
+//			return c
+//		}
+//		return TaskCell()
+//	}
 }

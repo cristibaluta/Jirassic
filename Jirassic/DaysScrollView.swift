@@ -12,9 +12,9 @@ class DaysScrollView: NSScrollView {
 	
 	@IBOutlet private var tableView: NSTableView?
 	
-	let rowHeight = CGFloat(20)
-	let columnDateId = "date"
-	let columnProgressId = "progress"
+	private let rowHeight = CGFloat(20)
+	private let columnDateId = "date"
+	private let columnProgressId = "progress"
 	
 	var data = [TaskProtocol]()
 	var didSelectRow: ((row: Int) -> ())?

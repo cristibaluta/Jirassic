@@ -10,9 +10,9 @@ import Cocoa
 
 class TasksViewController: NSViewController {
 	
+	@IBOutlet private var splitView: NSSplitView?
 	@IBOutlet private var daysScrollView: DaysScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
-	@IBOutlet private var _tasksTableViewWidthConstraint: NSLayoutConstraint?
 	
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butRefresh: NSButton?
@@ -21,8 +21,6 @@ class TasksViewController: NSViewController {
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
 	private var _newDayController = NewDay()
-	private let _gapX = CGFloat(12)
-	private var kSecondaryControllerFrame = CGRect(x: 12, y: 0, width: 467, height: 379)
 	
 	var handleSettingsButton: (() -> ())?
 	var handleRefreshButton: (() -> ())?
@@ -37,20 +35,18 @@ class TasksViewController: NSViewController {
 	}
 	
 	override func awakeFromNib() {
-		self.view.layer = CALayer()
-		self.view.wantsLayer = true
+		view.layer = CALayer()
+		view.wantsLayer = true
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		kSecondaryControllerFrame = NSInsetRect(self.view.bounds, _gapX, 0)
 		updateNoTasksState()
 		reloadDataFromServer()
     }
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		self.restoreDaysTableState()
 		if _newDayController.isNewDay() {
 			reloadData()
 		}
@@ -105,7 +101,7 @@ class TasksViewController: NSViewController {
 		if tasksScrollView == nil || tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
-			self.view.addSubview( controller.view )
+			Wireframe.presentNoTaskController(controller, overController: self, splitView: splitView!)
 		}
 		else if tasksScrollView!.data.count == 1 {
 			let controller = noTasksController()
@@ -120,9 +116,8 @@ class TasksViewController: NSViewController {
 		
 		if _noTasksViewController == nil {
 			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
-			_noTasksViewController?.view.frame = kSecondaryControllerFrame
-			_noTasksViewController?.handleStartButton = { () -> Void in
-				self.handleStartDayButton()
+			_noTasksViewController?.handleStartButton = { [weak self] () -> Void in
+				self?.handleStartDayButton()
 			}
 		}
 		
@@ -130,8 +125,8 @@ class TasksViewController: NSViewController {
 	}
 	
 	func removeNoTasksController() {
-		if _noTasksViewController != nil {
-			noTasksController().removeFromSuperview()
+		if let controller = _noTasksViewController {
+			Wireframe.removeNoTaskController(controller, fromController: self)
 		}
 	}
 	
@@ -139,27 +134,21 @@ class TasksViewController: NSViewController {
 		
 		if _newTaskViewController == nil {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
-			_newTaskViewController?.view.frame = NSRect(x: _gapX,
-				y: CGRectGetMinY(daysScrollView!.frame),
-				width: self.view.frame.size.width - _gapX,
-				height: CGRectGetHeight(daysScrollView!.frame))
-			
-			_newTaskViewController?.onOptionChosen = { (i: TaskSubtype) -> Void in
+			_newTaskViewController?.onOptionChosen = { [weak self] (i: TaskSubtype) -> Void in
 				
-				self.daysScrollView?.hidden = false
-				self.tasksScrollView?.hidden = false
+				self?.splitView?.hidden = false
 				
 				let task: TaskProtocol = Tasks.taskFromSubtype(i)
 				task.saveToServerWhenPossible()
-				self.tasksScrollView?.addTask( task )
+				self?.tasksScrollView?.addTask( task )
 				
-				self.setupDaysTableView()
-				self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+				self?.setupDaysTableView()
+				self?.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
 					withAnimation: NSTableViewAnimationOptions.SlideUp)
-				self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
+				self?.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
 				
-				self.updateNoTasksState()
-				self.removeNewTaskController()
+				self?.updateNoTasksState()
+				self?.removeNewTaskController()
 			}
 		}
 		
@@ -170,36 +159,6 @@ class TasksViewController: NSViewController {
 		if _newTaskViewController != nil {
 			newTaskController().removeFromSuperview()
 		}
-	}
-	
-	func restoreDaysTableState() {
-		setDaysTableState( DrawerState().previousState() )
-	}
-	
-	func setDaysTableState (s: DaysState) {
-		
-		switch s {
-			case .DaysClosed:
-//				_butDrawer?.image = NSImage(named: NSImageNameGoLeftTemplate)
-				daysScrollView?.hidden = false
-				tasksScrollView?.frame = NSRect(x: CGRectGetWidth(daysScrollView!.frame) + _gapX,
-					y: CGRectGetMinY(daysScrollView!.frame),
-					width: self.view.frame.size.width - CGRectGetWidth(daysScrollView!.frame) - _gapX,
-					height: CGRectGetHeight(daysScrollView!.frame))
-			
-			case .DaysOpen:
-//				_butDrawer?.image = NSImage(named: NSImageNameGoRightTemplate)
-				daysScrollView?.hidden = true
-				tasksScrollView?.frame = NSRect(x: _gapX,
-					y: CGRectGetMinY(daysScrollView!.frame),
-					width: self.view.frame.size.width - _gapX,
-					height: CGRectGetHeight(daysScrollView!.frame))
-		}
-		
-		noTasksController().view.frame = tasksScrollView!.frame
-		_tasksTableViewWidthConstraint?.constant = tasksScrollView!.frame.size.width;
-		
-		DrawerState().setState(s)
 	}
 	
 	func showLoadingIndicator(show: Bool) {
@@ -262,18 +221,14 @@ class TasksViewController: NSViewController {
 	func handleAddTaskButton(date: NSDate) {
 		RCLogO("add new cell after date \(date)")
 		removeNoTasksController()
-		self.daysScrollView?.hidden = true
-		self.tasksScrollView?.hidden = true
+		daysScrollView?.hidden = true
+		tasksScrollView?.hidden = true
 		let controller = newTaskController()
-		self.view.addSubview( controller.view )
-	}
-	
-	@IBAction func handleDrawerButton(sender: NSButton) {
-		setDaysTableState( DrawerState().toggleState() )
+		view.addSubview( controller.view )
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {
-		self.handleSettingsButton!()
+		handleSettingsButton?()
 	}
 	
 	@IBAction func handleRefreshButton(sender: NSButton) {

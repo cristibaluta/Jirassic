@@ -55,19 +55,19 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	}
 	
 	override func awakeFromNib() {
-		self.showMouseOverControls(false)
-		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
+		showMouseOverControls(false)
+		selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
 	
 	// MARK: Acions
 	
 	@IBAction func handleRemoveButton(sender: NSButton) {
-		self.didRemoveCell!(cell: self)
+		didRemoveCell?(cell: self)
 	}
 	
 	@IBAction func handleAddButton(sender: NSButton) {
-		self.didAddCell!(cell: self)
+		didAddCell?(cell: self)
 	}
 	
 	@IBAction func handleCopyButton(sender: NSButton) {
@@ -133,10 +133,12 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	func ensureTrackingArea() {
 		if (trackingArea == nil) {
-			trackingArea = NSTrackingArea(rect: NSZeroRect,
+			trackingArea = NSTrackingArea(
+				rect: NSZeroRect,
 				options: [NSTrackingAreaOptions.InVisibleRect, .ActiveAlways, .MouseEnteredAndExited],
 				owner: self,
-				userInfo: nil)
+				userInfo: nil
+			)
 		}
 	}
 	

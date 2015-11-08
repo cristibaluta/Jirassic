@@ -56,4 +56,34 @@ class Wireframe: NSObject {
 		}
 		flip.startWithLayer(parentController.view.superview!.layer!)
 	}
+	
+	
+	class func presentNoTaskController(controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
+		
+		parentController.addChildViewController(controller)
+		splitView.subviews[1].addSubview(controller.view)
+		controller.view.constrainToSuperview()
+	}
+	
+	class func removeNoTaskController(controller: NSViewController, fromController parentController: NSViewController) {
+		parentController.addChildViewController(controller)
+		controller.view.removeFromSuperview()
+	}
+	
+	class func presentNewTaskController(childController: NSViewController, overController parentController: NSViewController) {
+		
+		parentController.addChildViewController(childController)
+		parentController.view.addSubview(childController.view)
+		childController.view.removeAutoresizing()
+		childController.view.constrainToSuperviewWidth()
+		childController.view.constrainToSuperviewHeight()
+	}
+	
+	class func removeNoProjectsController(controller: NSViewController?) {
+		
+		if let c = controller {
+			c.view.removeFromSuperview()
+			c.removeFromParentViewController()
+		}
+	}
 }

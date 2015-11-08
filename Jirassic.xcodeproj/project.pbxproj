@@ -127,6 +127,9 @@
 		28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */; };
 		28D21F7D1B014C41005D3C94 /* DrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21F7C1B014C41005D3C94 /* DrawerState.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
+		28E57AD01BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */; };
+		28E57AD11BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */; };
+		28E57AD21BF0039600B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
@@ -279,6 +282,7 @@
 		28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimatorTests.swift; path = JirassicTests/TaskTypeEstimatorTests.swift; sourceTree = SOURCE_ROOT; };
 		28D21F7C1B014C41005D3C94 /* DrawerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawerState.swift; path = Jirassic/DrawerState.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewAutolayout.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManagerProtocol.swift; path = ../App/DataManagerProtocol.swift; sourceTree = "<group>"; };
@@ -630,6 +634,7 @@
 		28F51EC41AC8059400A69CDF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */,
 				28F51EC51AC805B000A69CDF /* NSDateExtension.swift */,
 				28E839001AF402B200602D33 /* NSDateExtensionTests.swift */,
 			);
@@ -956,6 +961,7 @@
 				289E2AD01B2B776A003269A3 /* Login.swift in Sources */,
 				28D21F7D1B014C41005D3C94 /* DrawerState.swift in Sources */,
 				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
+				28E57AD01BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */,
 				289998A41AC3354900706824 /* Task.swift in Sources */,
 				28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
@@ -1007,6 +1013,7 @@
 				28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */,
 				28778A5F1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift in Sources */,
 				28EB90221AF60234008D5337 /* NoTasks.swift in Sources */,
+				28E57AD21BF0039600B803E6 /* Wireframe.swift in Sources */,
 				28778A581BB9B9A9003E4880 /* TasksTests.swift in Sources */,
 				289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */,
 				289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */,
@@ -1018,6 +1025,7 @@
 				2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */,
 				289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */,
 				289E2B421B328598003269A3 /* FlipScreens.swift in Sources */,
+				28E57AD11BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */,
 				28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
@@ -1275,6 +1283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
@@ -1301,6 +1310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",

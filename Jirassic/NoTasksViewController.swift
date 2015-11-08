@@ -22,10 +22,6 @@ class NoTasksViewController: NSViewController {
 		return vc
 	}
 	
-	func removeFromSuperview() {
-		self.view.removeFromSuperview()
-	}
-	
 	func showStartState() {
 		_noTasksLabel?.stringValue = NoTasks().showStartState()
 		_butStart?.hidden = false
