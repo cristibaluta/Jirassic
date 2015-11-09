@@ -130,6 +130,8 @@
 		28E57AD01BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */; };
 		28E57AD11BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */; };
 		28E57AD21BF0039600B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
+		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
+		28E57AD51BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
@@ -283,6 +285,7 @@
 		28D21F7C1B014C41005D3C94 /* DrawerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrawerState.swift; path = Jirassic/DrawerState.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewAutolayout.swift; sourceTree = "<group>"; };
+		28E57AD31BF07ABB00B803E6 /* Scrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrum.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManagerProtocol.swift; path = ../App/DataManagerProtocol.swift; sourceTree = "<group>"; };
@@ -563,6 +566,7 @@
 				289E2ACF1B2B776A003269A3 /* Login.swift */,
 				289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */,
 				6D89F7BC1BD5257400A6892B /* AddTask.swift */,
+				28E57AD31BF07ABB00B803E6 /* Scrum.swift */,
 			);
 			name = "Use cases";
 			sourceTree = "<group>";
@@ -996,6 +1000,7 @@
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				28F51EC61AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				28B1F2BA1AFB2BCF00D61472 /* NonTaskCell.swift in Sources */,
+				28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
 				28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */,
 				28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */,
@@ -1048,6 +1053,7 @@
 				289E2B1B1B3141FE003269A3 /* NewTaskViewController.swift in Sources */,
 				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
 				289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */,
+				28E57AD51BF07ABB00B803E6 /* Scrum.swift in Sources */,
 				289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */,
 				289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */,
 				289E2AFA1B2D8AD6003269A3 /* JRUser.swift in Sources */,

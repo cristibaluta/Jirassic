@@ -35,17 +35,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         sleep?.computerWakeUp = {
 			let existingTasks = sharedData.tasksForDayOfDate(NSDate())
-			var scrumExists = false
-			for task in existingTasks {
-				if task.task_type == TaskType.Scrum.rawValue {
-					scrumExists = true
-					break
+			if existingTasks.count > 0 {
+				// We already started the day, analyze if it's the scrum time
+				if Scrum().exists(existingTasks) {
+					let task = Tasks.taskFromDate(self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
+					task.saveToServerWhenPossible()
+					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 				}
-			}
-			if !scrumExists {
-				let task = Tasks.taskFromDate(self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
-				task.saveToServerWhenPossible()
-				NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
+			} else {
+				// This must be the start of the day
+				
 			}
         }
 	}
