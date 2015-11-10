@@ -98,7 +98,7 @@ class TasksViewController: NSViewController {
 	
 	func updateNoTasksState() {
 		RCLogO("updateNoTasksState")
-		if tasksScrollView == nil || tasksScrollView!.data.count == 0 {
+		if tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
 			Wireframe.presentNoTaskController(controller, overController: self, splitView: splitView!)
@@ -182,7 +182,7 @@ class TasksViewController: NSViewController {
 	func reloadData() {
 		self.setupDaysTableView()
 		self.setupTasksTableView()
-		self.reloadTasksOnDay( NSDate() )
+		self.reloadTasksOnDay(NSDate())
 	}
 	
 	func reloadTasksOnDay(date: NSDate) {
@@ -221,8 +221,7 @@ class TasksViewController: NSViewController {
 	func handleAddTaskButton(date: NSDate) {
 		RCLogO("add new cell after date \(date)")
 		removeNoTasksController()
-		daysScrollView?.hidden = true
-		tasksScrollView?.hidden = true
+		splitView?.hidden = true
 		let controller = newTaskController()
 		view.addSubview( controller.view )
 	}

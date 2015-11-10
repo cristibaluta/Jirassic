@@ -10,6 +10,20 @@ import Cocoa
 
 class Wireframe: NSObject {
 
+	// MARK: Popover
+	
+	class func showPopover(popover: NSPopover, fromIcon icon: NSView) {
+		let edge = NSRectEdge.MinY
+		let rect = icon.frame
+		popover.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
+	}
+	
+	class func hidePopover(popover: NSPopover) {
+		popover.close()
+	}
+	
+	// MARK: Settings
+	
 	class func flipToSettings(settingsController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
 		
 		let flip = FlipScreens()

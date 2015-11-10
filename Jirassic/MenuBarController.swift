@@ -10,7 +10,7 @@ import Cocoa
 
 class MenuBarController: NSObject {
 	
-	var iconView: IconView?
+	var iconView: MenuBarIconView?
 	var onMouseDown: (() -> ())?
 	
 	override init() {
@@ -21,7 +21,7 @@ class MenuBarController: NSObject {
 		let length: CGFloat = -1 //NSVariableStatusItemLength
 		let item = bar.statusItemWithLength(length);
 		
-		iconView = IconView(imageName: "Status", item: item)
+		iconView = MenuBarIconView(imageName: "Status", item: item)
 		iconView?.onMouseDown = {
 			self.onMouseDown!()
 		}

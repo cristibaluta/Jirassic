@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 Tommy Leung. All rights reserved.
 //
 
-import Foundation
 import Cocoa
 
-class IconView : NSView {
+class MenuBarIconView : NSView {
 	
     private(set) var image: NSImage
     private let item: NSStatusItem

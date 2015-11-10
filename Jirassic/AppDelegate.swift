@@ -21,17 +21,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		_ = InitParse()
 		
-		menu.onMouseDown = {
-			if (self.menu.iconView?.isSelected == true) {
-				self.showPopover()
-			} else {
-				self.hidePopover()
+		menu.onMouseDown = { [weak self] in
+			if let wself = self {
+				if (wself.menu.iconView?.isSelected == true) {
+					Wireframe.showPopover(wself.popover!, fromIcon: wself.menu.iconView!)
+				} else {
+					Wireframe.hidePopover(wself.popover!)
+				}
 			}
         }
 		
         sleep = SleepNotifications()
         sleep?.computerWentToSleep = {
-			
+			let existingTasks = sharedData.tasksForDayOfDate(NSDate())
+			if existingTasks.count > 0 {
+				// We already started the day, analyze if it's the scrum time
+				
+			}
         }
         sleep?.computerWakeUp = {
 			let existingTasks = sharedData.tasksForDayOfDate(NSDate())
@@ -43,21 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 				}
 			} else {
-				// This must be the start of the day
+				// This might be the start of the day. Should we start counting automatically or wait the user to press start?
 				
 			}
         }
-	}
-	
-	func showPopover() {
-		let icon = self.menu.iconView!
-		let edge = NSRectEdge.MinY
-		let rect = icon.frame
-		self.popover?.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
-	}
-	
-	func hidePopover() {
-		self.popover?.close()
 	}
 	
     func applicationDidFinishLaunching(aNotification: NSNotification) {
