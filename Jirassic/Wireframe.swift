@@ -79,8 +79,8 @@ class Wireframe: NSObject {
 		controller.view.constrainToSuperview()
 	}
 	
-	class func removeNoTaskController(controller: NSViewController, fromController parentController: NSViewController) {
-		parentController.addChildViewController(controller)
+	class func removeController(controller: NSViewController) {
+		controller.removeFromParentViewController()
 		controller.view.removeFromSuperview()
 	}
 	

@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-public class JRUser: PFUser, JRUserProtocol {
+public class JRUser: PFUser, UserProtocol {
 	
 	var isLoggedIn: Bool {
 		get {

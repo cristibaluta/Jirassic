@@ -20,7 +20,7 @@ class TasksViewController: NSViewController {
 	
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
-	private var _newDayController = NewDay()
+	private var day = NewDay()
 	
 	var handleSettingsButton: (() -> ())?
 	var handleRefreshButton: (() -> ())?
@@ -47,7 +47,7 @@ class TasksViewController: NSViewController {
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-		if _newDayController.isNewDay() {
+		if day.isNewDay() {
 			reloadData()
 		}
 		NSNotificationCenter.defaultCenter().addObserver(self,
@@ -126,7 +126,7 @@ class TasksViewController: NSViewController {
 	
 	func removeNoTasksController() {
 		if let controller = _noTasksViewController {
-			Wireframe.removeNoTaskController(controller, fromController: self)
+			Wireframe.removeController(controller)
 		}
 	}
 	
@@ -214,8 +214,8 @@ class TasksViewController: NSViewController {
 		let task = Tasks.taskFromDate(NSDate(), dateEnd: NSDate(), type: TaskType.Start)
 		task.saveToServerWhenPossible()
 		
-		self._newDayController.setLastTrackedDay(NSDate())
-		self.reloadData()
+		day.setLastTrackedDay(NSDate())
+		reloadData()
 	}
 	
 	func handleAddTaskButton(date: NSDate) {
