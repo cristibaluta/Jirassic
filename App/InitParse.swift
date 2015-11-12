@@ -22,7 +22,7 @@ class InitParse: NSObject {
 		Task.registerSubclass()
 		JRUser.registerSubclass()
 		
-//		Parse.enableLocalDatastore()
+//		Parse.enableLocalDatastore()// This does not work with cache enabled
 		#if os(OSX)
 		PFUser.enableAutomaticUser()
 		#endif

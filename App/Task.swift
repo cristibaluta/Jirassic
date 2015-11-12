@@ -108,12 +108,19 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 	// Helpers
 	
 	func saveToServerWhenPossible() {
+        try? self.pin()
+//        self.pinInBackgroundWithBlock { (success, error) -> Void in
+//            RCLogO("Saved to local Parse \(success)")
+//            RCLogErrorO(error)
+//        }
 		self.saveEventually { (success, error) -> Void in
-			RCLogO("Saved to Parse \(success)")
+            RCLogO("Saved to Parse \(success)")
+            RCLogErrorO(error)
 		}
 	}
     
     func deleteFromServerWhenPossible() {
+        self.unpinInBackground()
         self.deleteEventually()
     }
 }

@@ -84,13 +84,11 @@ class Wireframe: NSObject {
 		controller.view.removeFromSuperview()
 	}
 	
-	class func presentNewTaskController(childController: NSViewController, overController parentController: NSViewController) {
+	class func presentNewTaskController(controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
 		
-		parentController.addChildViewController(childController)
-		parentController.view.addSubview(childController.view)
-		childController.view.removeAutoresizing()
-		childController.view.constrainToSuperviewWidth()
-		childController.view.constrainToSuperviewHeight()
+		parentController.addChildViewController(controller)
+        parentController.view.addSubview(controller.view)
+        controller.view.constrainToSuperview()
 	}
 	
 	class func removeNoProjectsController(controller: NSViewController?) {

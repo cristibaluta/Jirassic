@@ -20,7 +20,8 @@ class DataManager: NSObject, DataManagerProtocol {
 		let user = JRUser.currentUser()
 		RCLogO(user)
 		let query = PFQuery(className: Task.parseClassName())
-		query.cachePolicy = .NetworkElseCache
+//		query.cachePolicy = .NetworkElseCache
+        query.cachePolicy = .CacheThenNetwork
 		query.orderByDescending(kDateFinishKey)
 		query.whereKey("user", equalTo: user!)
 		query.findObjectsInBackgroundWithBlock( { (objects: [PFObject]?, error: NSError?) in

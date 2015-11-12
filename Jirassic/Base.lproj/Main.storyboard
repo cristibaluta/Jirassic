@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -787,7 +787,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="P2Q-hS-yur">
-                                                            <rect key="frame" x="0.0" y="0.0" width="408" height="380"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="408" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -865,7 +865,7 @@
                                 </subviews>
                                 <animations/>
                                 <holdingPriorities>
-                                    <real value="251"/>
+                                    <real value="266"/>
                                     <real value="250"/>
                                 </holdingPriorities>
                             </splitView>
@@ -1534,6 +1534,7 @@
                 </viewController>
                 <customObject id="c1O-om-Y3C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="627" y="279"/>
         </scene>
     </scenes>
     <resources>

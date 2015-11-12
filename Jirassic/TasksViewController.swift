@@ -28,7 +28,9 @@ class TasksViewController: NSViewController {
 	var handleQuitAppButton: (() -> ())?
 	var selectedDate: NSDate?
 	
-	
+    
+    // MARK: View controller lifecycle
+    
 	class func instanceFromStoryboard() -> TasksViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
 		return storyboard.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
@@ -58,10 +60,9 @@ class TasksViewController: NSViewController {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
-	func removeFromSuperview() {
-		self.view.removeFromSuperview()
-	}
-	
+    
+    // MARK: Setup
+    
 	func setupDaysTableView() {
 		
 		daysScrollView!.data = sharedData.days()
@@ -106,12 +107,16 @@ class TasksViewController: NSViewController {
 		else if tasksScrollView!.data.count == 1 {
 			let controller = noTasksController()
 			controller.showFirstTaskState()
+            Wireframe.presentNoTaskController(controller, overController: self, splitView: splitView!)
 		}
 		else {
 			removeNoTasksController()
 		}
 	}
 	
+    
+    // MARK: No Tasks
+    
 	func noTasksController() -> NoTasksViewController {
 		
 		if _noTasksViewController == nil {
@@ -130,6 +135,9 @@ class TasksViewController: NSViewController {
 		}
 	}
 	
+    
+    // MARK: New Tasks
+    
 	func newTaskController() -> NewTaskViewController {
 		
 		if _newTaskViewController == nil {
@@ -156,9 +164,9 @@ class TasksViewController: NSViewController {
 	}
 	
 	func removeNewTaskController() {
-		if _newTaskViewController != nil {
-			newTaskController().removeFromSuperview()
-		}
+        if let controller = _newTaskViewController {
+            Wireframe.removeController(controller)
+        }
 	}
 	
 	func showLoadingIndicator(show: Bool) {
@@ -223,7 +231,7 @@ class TasksViewController: NSViewController {
 		removeNoTasksController()
 		splitView?.hidden = true
 		let controller = newTaskController()
-		view.addSubview( controller.view )
+		Wireframe.presentNewTaskController(controller, overController: self, splitView: splitView!)
 	}
 	
 	@IBAction func handleSettingsButton(sender: NSButton) {
