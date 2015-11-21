@@ -456,7 +456,9 @@
 		289998A61AC3429500706824 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				28C02F431C007E8E00B65478 /* External */,
+				28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */,
+				28C02F541C007F3000B65478 /* InMemoryStorage */,
+				28C02F441C007E8E00B65478 /* Parse */,
 			);
 			name = External;
 			path = Jirassic;
@@ -530,16 +532,6 @@
 			name = "Use cases";
 			sourceTree = "<group>";
 		};
-		28C02F431C007E8E00B65478 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */,
-				28C02F541C007F3000B65478 /* InMemoryStorage */,
-				28C02F441C007E8E00B65478 /* Parse */,
-			);
-			path = External;
-			sourceTree = SOURCE_ROOT;
-		};
 		28C02F441C007E8E00B65478 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,7 +542,8 @@
 				28C02F491C007E8E00B65478 /* PUser.swift */,
 				28C02F8A1C010ABC00B65478 /* PIssue.swift */,
 			);
-			path = Parse;
+			name = Parse;
+			path = ../External/Parse;
 			sourceTree = "<group>";
 		};
 		28C02F541C007F3000B65478 /* InMemoryStorage */ = {
@@ -558,7 +551,8 @@
 			children = (
 				28C02F551C007F3000B65478 /* MockDataManager.swift */,
 			);
-			path = InMemoryStorage;
+			name = InMemoryStorage;
+			path = ../External/InMemoryStorage;
 			sourceTree = "<group>";
 		};
 		28C02F7B1C009D6400B65478 /* Read */ = {
