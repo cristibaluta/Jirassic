@@ -1,5 +1,5 @@
 //
-//  JLPredictiveTimeTyping.swift
+//  PredictiveTimeTyping.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 06/05/15.
@@ -9,99 +9,72 @@
 import Foundation
 
 class PredictiveTimeTyping: NSObject {
-
-	override init() {
-		
-	}
-	/*
-    func timeByAdding(string: String, var to: String) -> String {
+	
+    func timeByAdding (string: String, to: String) -> String {
 	
 		var returnString = string
 		
+		// Deal with backspace
         if (string == "") {
-            // Backspace
-            if to.endIndex == 3 {
-				let textRange = 0..<1
-				to = to[textRange]
-                return string
-            }
-            return to
+			let charsToDelete = to.characters.count == 3 ? 2 : 1
+			let rangeToKeep = to.startIndex..<to.endIndex.advancedBy(-charsToDelete)
+			return to.substringWithRange(rangeToKeep)
         }
-	
-        let comps = to.componentsSeparatedByString(":")
-        
-        if comps.count == 2 {
-        // Insert the minutes
-        
-        var m = 0
-        var min = comps[1]
-        
-        if min.endIndex >= 2 {
-            to = "\(comps[0]):\(min.substringWithRange(NSRange(0, 1)))"
-            return to
+		
+		let timeComps = to.componentsSeparatedByString(":")
+		let hr: String = timeComps.first!
+		
+		// Deal with minutes
+        if timeComps.count == 2 {
+			var m = 0
+			let min = timeComps.last!
+			var minToAdd = ""
+			
+			if min.characters.count == 2 {
+				let rangeToKeep = min.startIndex..<min.endIndex.advancedBy(-1)
+				return "\(hr):\(min.substringWithRange(rangeToKeep))\(string)"
+			} else {
+				m = decimalValueOf(min, newDigit: string)
+			}
+			
+			if (m >= 10) { minToAdd = "\(m)"
+			}
+			else if (m >= 6) { minToAdd = "0\(m)"
+			}
+			else if (m == 0) { minToAdd = "00"
+			}
+			else if (m == 1) { minToAdd = "15"
+			}
+			else if (m == 2) { minToAdd = "20"
+			}
+			else if (m == 3) { minToAdd = "30"
+			}
+			else if (m == 4) { minToAdd = "45"
+			}
+			else if (m == 5) { minToAdd = "50"
+			}
+			returnString = "\(hr):\(minToAdd)"
         }
-        else {
-            m = decimalValueOf(min, newText: string)
-        }
-        
-        if (m >= 60) {
-            return string
-        }
-        else if (m >= 10) {
-            return to
-        }
-        else if (m >= 6) {
-            returnString = "\(comps.first):0\(m)"
-        }
-        else if (m == 0) {
-            returnString = "\(comps.first):00"
-        }
-        else if (m == 1) {
-            returnString = "\(comps.first):15"
-        }
-        else if (m == 2) {
-            returnString = "\(comps.first):20"
-        }
-        else if (m == 3) {
-            returnString = "\(comps.first):30"
-        }
-        else if (m == 4) {
-            returnString = "\(comps.first):45"
-        }
-        else if (m == 5) {
-            returnString = "\(comps.first):50"
-        }
+		// Deal with hours
 		else {
-            return string
-        }
+			let h = decimalValueOf(hr, newDigit: string)
 			
-			// Insert the hour
-			let hr: String = comps[0]
-			let h = decimalValueOf(hr, newText: string)
-			
-        if (h >= 24) {
-			returnString = "00:"
-        }
-        else if (h >= 10) {
-			// Do not perform any edit on this hour
-			returnString = "\(h):"
-        }
-        else if (h >= 3) {
-			returnString = "0\(h):"
-        }
-        else {
-            if (hr.length >= 1) {
-                returnString = "0\(h):"
-            }
-            else {
-                return to
-            }
-        }
-        return string
-        }
-        
-        return to
-	}*/
+			if (h >= 24) {
+				returnString = "00:"
+			}
+			else if (h >= 10) {
+				// Do not perform any edit on hours from 10 to 23
+				returnString = "\(h):"
+			}
+			else if (h >= 3) {
+				returnString = "0\(h):"
+			}
+			else if (hr.characters.count >= 1) {
+				returnString = "0\(h):"
+			}
+		}
+		return returnString
+	}
 	
     func dateFromStringHHmm (string: String) -> NSDate {
 		
@@ -125,11 +98,15 @@ class PredictiveTimeTyping: NSObject {
     }
 	
 	// This method will combine strings and convert the result to number
-    func decimalValueOf (existingText: String, newText: String) -> Int {
-        
-        if existingText.characters.count > 0 {
-            return Int(existingText)! * 10 + Int(newText)!;
+    func decimalValueOf (existingText: String, newDigit: String) -> Int {
+		
+        if existingText.characters.count > 0 && newDigit.characters.count > 0 {
+            return Int(existingText)! * 10 + Int(newDigit)!;
         }
-        return Int(newText)!
+		if let d = Int(newDigit) {
+			return d
+		} else {
+			return 0
+		}
 	}
 }
