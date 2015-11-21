@@ -129,7 +129,7 @@ extension NSDate {
 	func roundUp() -> NSDate {
 		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-		let hm = self.round(comps.minute)
+		let hm = round(comps.minute)
 		comps.hour = comps.hour + hm.hour
 		comps.minute = hm.min
 		comps.second = 0

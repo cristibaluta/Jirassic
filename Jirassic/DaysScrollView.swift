@@ -16,7 +16,7 @@ class DaysScrollView: NSScrollView {
 	private let columnDateId = "date"
 	private let columnProgressId = "progress"
 	
-	var data = [TaskProtocol]()
+	var data = [Task]()
 	var didSelectRow: ((row: Int) -> ())?
 	
 	
@@ -46,7 +46,7 @@ extension DaysScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		let theData = data[row]
 		
 		if (tableColumn?.identifier == columnDateId) {
-			return theData.date_task_finished?.ddEEEEE()
+			return theData.endDate?.ddEEEEE()
 		}
 		return nil
 	}

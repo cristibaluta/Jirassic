@@ -15,7 +15,7 @@ class PopoverViewController: NSViewController {
     override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let currentUser = JRUser.currentUser()
+		let currentUser = PUser.currentUser()
 		if currentUser != nil && currentUser!.isLoggedIn {
 			topController = createTasksController()
 			self.addChildViewController( topController! )

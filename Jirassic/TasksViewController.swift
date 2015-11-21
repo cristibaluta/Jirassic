@@ -69,9 +69,9 @@ class TasksViewController: NSViewController {
 		daysScrollView?.didSelectRow = { (row: Int) in
 			if row >= 0 {
 				let theData = self.daysScrollView!.data[row]
-				if let dateEnd = theData.date_task_finished {
+				if let dateEnd = theData.endDate {
 					self.reloadTasksOnDay( dateEnd )
-				} else if let dateStart = theData.date_task_started {
+				} else if let dateStart = theData.startDate {
 					self.reloadTasksOnDay( dateStart )
 				}
 			}
@@ -91,7 +91,7 @@ class TasksViewController: NSViewController {
 		}
 		tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
 			let theData = self?.tasksScrollView!.data[row]
-            if let date = theData?.date_task_finished {
+            if let date = theData?.endDate {
                 self?.handleAddTaskButton(date)
             }
 		}
@@ -146,8 +146,8 @@ class TasksViewController: NSViewController {
 				
 				self?.splitView?.hidden = false
 				
-				let task: TaskProtocol = Tasks.taskFromSubtype(i)
-				task.saveToServerWhenPossible()
+				let task: Task = Tasks.taskFromSubtype(i)
+//				task.saveToServerWhenPossible()
 				self?.tasksScrollView?.addTask( task )
 				
 				self?.setupDaysTableView()
@@ -180,7 +180,7 @@ class TasksViewController: NSViewController {
 	
 	func reloadDataFromServer() {
 		self.showLoadingIndicator(true)
-		sharedData.queryData { [weak self] (tasks, error) -> Void in
+		sharedData.queryTasks { [weak self] (tasks, error) -> Void in
 			RCLog(tasks)
 			self?.reloadData()
 			self?.showLoadingIndicator(false)
@@ -220,7 +220,7 @@ class TasksViewController: NSViewController {
 	func handleStartDayButton() {
 		
 		let task = Tasks.taskFromDate(NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		task.saveToServerWhenPossible()
+//		task.saveToServerWhenPossible()
 		
 		day.setLastTrackedDay(NSDate())
 		reloadData()

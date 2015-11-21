@@ -11,7 +11,7 @@ import XCTest
 class TasksTests: XCTestCase {
 	
     func testTasksFromSubtype() {
-//		let task = Tasks.taskFromSubtype(.IssueBegin)
-//        XCTAssert(task.task_type == TaskType.Issue.rawValue, "Pass")
+		let task = Tasks.taskFromSubtype(.IssueBegin)
+        XCTAssert(task.taskType == TaskType.Issue.rawValue, "")
     }
 }

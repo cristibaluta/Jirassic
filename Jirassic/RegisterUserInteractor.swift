@@ -9,22 +9,22 @@
 import Foundation
 import Parse
 
-class RegisterUser: NSObject {
+class RegisterUserInteractor: NSObject {
 
 	var onRegisterSuccess: (() -> ())?
-	var credentials: LoginCredentials?
+	var data: DataManagerProtocol?
 	
-	convenience init (credentials: LoginCredentials) {
+	convenience init (data: DataManagerProtocol) {
 		self.init()
-		self.credentials = credentials
+		self.data = data
 	}
 	
-	func register() {
+	func registerWithCredentials (credentials: LoginCredentials) {
 		
 		let user = PFUser()
-		user.username = credentials!.email
-		user.email = credentials!.email
-		user.password = credentials!.password
+		user.username = credentials.email
+		user.email = credentials.email
+		user.password = credentials.password
 		user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
 			if let error = error {
 				let errorString = error.userInfo["error"] as? NSString

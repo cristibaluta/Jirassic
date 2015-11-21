@@ -6,14 +6,15 @@
 //  Copyright © 2015 Cristian Baluta. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 class Scrum: NSObject {
 
-	func exists(tasks: [TaskProtocol]) -> Bool {
+	func exists (tasks: [Task]) -> Bool {
+		
 		var scrumExists = false
 		for task in tasks {
-			if task.task_type == TaskType.Scrum.rawValue {
+			if task.taskType == TaskType.Scrum.rawValue {
 				scrumExists = true
 				break
 			}

@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import Parse
 
 class Tasks: NSObject {
 	
-	class func taskFromDate(dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) -> TaskProtocol {
+	class func taskFromDate (dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) -> Task {
 		
-		let task = Task()
-		task.date_task_started = dateSart
-		task.date_task_finished = dateEnd
-		task.issue_type = Issues.lastUsed()
-		task.task_type = type.rawValue
-		task.user = JRUser.currentUser()!
+		var task = Task()
+		task.startDate = dateSart
+		task.endDate = dateEnd
+		task.issueType = Issues.lastUsed()
+		task.taskType = type.rawValue
+//		task.user = PUser.currentUser()!
 		
 		switch (type) {
 			case TaskType.Issue: task.notes = ""
@@ -31,17 +30,17 @@ class Tasks: NSObject {
 		return task
 	}
 	
-	class func taskFromSubtype(subtype: TaskSubtype) -> TaskProtocol {
+	class func taskFromSubtype (subtype: TaskSubtype) -> Task {
 		
 		switch(subtype) {
-			case .IssueBegin: return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Issue)
-			case .IssueEnd: return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Issue)
-			case .ScrumBegin: return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Scrum)
-			case .ScrumEnd: return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Scrum)
-			case .LunchBegin: return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Lunch)
-			case .LunchEnd: return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Lunch)
+			case .IssueBegin:	return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Issue)
+			case .IssueEnd:		return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Issue)
+			case .ScrumBegin:	return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Scrum)
+			case .ScrumEnd:		return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Scrum)
+			case .LunchBegin:	return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Lunch)
+			case .LunchEnd:		return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Lunch)
 			case .MeetingBegin: return taskFromDate(NSDate(), dateEnd: nil, type: TaskType.Meeting)
-			case .MeetingEnd: return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Meeting)
+			case .MeetingEnd:	return taskFromDate(nil, dateEnd: NSDate(), type: TaskType.Meeting)
 		}
 	}
 }

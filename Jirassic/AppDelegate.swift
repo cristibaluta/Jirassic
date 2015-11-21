@@ -8,6 +8,8 @@
 
 import Cocoa
 
+let sharedData: DataManagerProtocol = DataManager()
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
@@ -45,8 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				// We already started the day, analyze if it's the scrum time
 				if Scrum().exists(existingTasks) {
 					let task = Tasks.taskFromDate(self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
-					task.saveToServerWhenPossible()
-					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
+//					task.saveToServerWhenPossible()
+//					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 				}
 			} else {
 				// This might be the start of the day. Should we start counting automatically or wait the user to press start?

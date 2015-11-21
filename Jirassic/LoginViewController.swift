@@ -42,7 +42,7 @@ class LoginViewController: NSViewController {
 		
         super.viewDidLoad()
 		
-		if let user = JRUser.currentUser() {
+		if let user = PUser.currentUser() {
 			if user.isLoggedIn {
 				_butLogin?.title = "Logout"
 				_label?.stringValue = "You are already logged in."
@@ -58,7 +58,7 @@ class LoginViewController: NSViewController {
 		self.view.removeFromSuperview()
 	}
 	
-	func showLoadingIndicator(show: Bool) {
+	func showLoadingIndicator (show: Bool) {
 		if show {
 			_progressIndicator?.startAnimation(nil)
 		} else {
@@ -69,15 +69,15 @@ class LoginViewController: NSViewController {
 	
 	// MARK: Actions
 	
-	@IBAction func handleLoginButton(sender: NSButton) {
-		let login = Login(credentials: self.credentials)
+	@IBAction func handleLoginButton (sender: NSButton) {
+		let login = LoginInteractor(data: sharedData)
 		login.onLoginSuccess = {
 			self.onLoginSuccess?()
 		}
-		login.login()
+		login.loginWithCredentials(credentials)
 	}
 	
-	@IBAction func handleCancelButton(sender: NSButton) {
+	@IBAction func handleCancelButton (sender: NSButton) {
 		self.handleCancelLoginButton?()
 	}
 	

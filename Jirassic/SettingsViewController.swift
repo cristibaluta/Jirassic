@@ -39,7 +39,7 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		if let user = JRUser.currentUser() {
+		if let user = PUser.currentUser() {
 			RCLogO(user.isLoggedIn)
 			butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
 			emailTextField?.stringValue = user.email!
@@ -63,17 +63,17 @@ class SettingsViewController: NSViewController {
 	
 	@IBAction func handleLoginButton(sender: NSButton) {
 		
-		let login = Login(credentials: self.credentials)
-		login.onLoginSuccess = {
-			self.showLoadingIndicator(false)
-		}
-		if let user = JRUser.currentUser() {
-			user.isLoggedIn ? login.logout() : login.login()
+		if let user = PUser.currentUser() {
+			let login = LoginInteractor(data: sharedData)
+			login.onLoginSuccess = {
+				self.showLoadingIndicator(false)
+			}
+			user.isLoggedIn ? login.logout() : login.loginWithCredentials(credentials)
 		}
 	}
 	
 	@IBAction func handleSaveButton(sender: NSButton) {
-		self.handleSaveButton!()
+		self.handleSaveButton?()
 	}
 	
     @IBAction func handleQuitAppButton(sender: NSButton) {

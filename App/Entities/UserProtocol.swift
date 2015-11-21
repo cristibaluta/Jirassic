@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol UserProtocol: NSObjectProtocol {
-
-	var isLoggedIn: Bool {get}
-	var password: String? {get set}
-	var email: String? {get set}
-}
+//protocol UserProtocol: NSObjectProtocol {
+//
+//	var isLoggedIn: Bool {get}
+//	var password: String? {get set}
+//	var email: String? {get set}
+//}

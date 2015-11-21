@@ -20,7 +20,7 @@ class TasksScrollView: NSScrollView {
 	
 	@IBOutlet var tableView: NSTableView?
 	
-	var data = [TaskProtocol]()
+	var data = [Task]()
 	var didSelectRow: ((row: Int) -> ())?
 	var didAddRow: ((row: Int) -> ())?
 	var didRemoveRow: ((row: Int) -> ())?
@@ -46,13 +46,13 @@ class TasksScrollView: NSScrollView {
 		self.tableView?.reloadData()
 	}
 	
-	func addTask(task: TaskProtocol) {
+	func addTask(task: Task) {
 		data.insert(task, atIndex: 0)
 	}
 	
     func removeTaskAtRow(row: Int) {
         let theData = data[row];
-        theData.deleteFromServerWhenPossible()
+//        theData.deleteFromServerWhenPossible()
 		data.removeAtIndex(row)
         self.tableView?.removeRowsAtIndexes(NSIndexSet(index: row), withAnimation: NSTableViewAnimationOptions.EffectFade)
 	}
@@ -67,9 +67,9 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	func tableView(tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-		let theData = data[row]
+		var theData = data[row]
 		var cell: TaskCellProtocol? = nil
-		if theData.task_type?.intValue == 0 {
+		if theData.taskType?.intValue == 0 {
 			cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
 		} else {
 			cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
@@ -78,39 +78,39 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			
 		var date = ""
 		var notes = theData.notes!
-		if theData.date_task_finished == nil && theData.date_task_started != nil {
-			date = theData.date_task_started!.HHmm()
+		if theData.endDate == nil && theData.startDate != nil {
+			date = theData.startDate!.HHmm()
 			cell?.statusImage!.image = NSImage(named: NSImageNameStatusPartiallyAvailable)
 		} else {
 			if row < data.count-1 {
 				let thePreviosData = data[row+1]
 				
-				if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
-					if let dateEnd = theData.date_task_finished {
-						let duration = dateEnd.timeIntervalSinceDate(thePreviosData.date_task_finished!)
+				if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
+					if let dateEnd = theData.endDate {
+						let duration = dateEnd.timeIntervalSinceDate(thePreviosData.endDate!)
 						date = "\(dateEnd.HHmm())\n\(NSDate(timeIntervalSince1970: duration).HHmmGMT())h"
 						cell?.statusImage!.image = NSImage(named: NSImageNameStatusAvailable)
 					}
 					else {
-						date = "\(theData.date_task_finished!.HHmm())\n..."
+						date = "\(theData.endDate!.HHmm())\n..."
 						cell?.statusImage!.image = NSImage(named: NSImageNameStatusPartiallyAvailable)
 					}
 				}
 				else {
-					date = "\(thePreviosData.date_task_finished!.HHmm()) - \(theData.date_task_finished!.HHmm())"
+					date = "\(thePreviosData.endDate!.HHmm()) - \(theData.endDate!.HHmm())"
 					cell?.statusImage!.image = nil
 				}
 			} else {
 				// This is always the Start cell
-				notes = "\(notes) at \(theData.date_task_finished!.HHmm())"
+				notes = "\(notes) at \(theData.endDate!.HHmm())"
 				cell?.statusImage!.image = nil
 			}
 		}
-		cell?.data = (dateStart: date, dateEnd: date, issue: theData.issue_type ?? "", notes: notes)
+		cell?.data = (dateStart: date, dateEnd: date, issue: theData.issueType ?? "", notes: notes)
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
-			theData.issue_type = cell.data.issue
+			theData.issueType = cell.data.issue
 			theData.notes = cell.data.notes
-			theData.saveToServerWhenPossible()
+//			theData.saveToServerWhenPossible()
 		}
 		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
 			if self.didRemoveRow != nil {
@@ -118,7 +118,8 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
                     let row2 = tableView.rowForView(cell)
                     RCLogO("remove row \(row2)")
                     self.didRemoveRow!(row: row)
-                } else if let cell = cell as? NonTaskCell {
+                }
+				else if let cell = cell as? NonTaskCell {
                     let row2 = tableView.rowForView(cell)
                     RCLogO("remove row \(row2)")
                     self.didRemoveRow!(row: row)
@@ -131,7 +132,8 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 					let row2 = tableView.rowForView(cell)
 					RCLogO("add row \(row2)")
 					self.didAddRow!(row: row)
-				} else if let cell = cell as? NonTaskCell {
+				}
+				else if let cell = cell as? NonTaskCell {
 					let row2 = tableView.rowForView(cell)
 					RCLogO("add row \(row2)")
 					self.didAddRow!(row: row)
@@ -139,7 +141,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			}
 		}
 		
-		if theData.task_type?.intValue == 0 {
+		if theData.taskType?.intValue == 0 {
 			return cell as? TaskCell
 		} else {
 			return cell as? NonTaskCell
@@ -165,6 +167,6 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		let theData = data[row]
-		return theData.task_type?.intValue == 0 ? kTaskCellMaxHeight : kNonTaskCellHeight
+		return theData.taskType?.intValue == 0 ? kTaskCellMaxHeight : kNonTaskCellHeight
 	}
 }

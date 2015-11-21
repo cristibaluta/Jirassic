@@ -23,12 +23,12 @@ class NoTasksViewController: NSViewController {
 	}
 	
 	func showStartState() {
-		_noTasksLabel?.stringValue = NoTasks().showStartState()
+		_noTasksLabel?.stringValue = "Good morning! Ready for your first task?"
 		_butStart?.hidden = false
 	}
 	
 	func showFirstTaskState() {
-		_noTasksLabel?.stringValue = NoTasks().showFirstTaskState()
+		_noTasksLabel?.stringValue = "When you finish tasks press +\nTime will be calculated for you automatically"
 		_butStart?.hidden = true
 	}
 	

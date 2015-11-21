@@ -10,7 +10,7 @@ import XCTest
 
 class CreateReportTests: XCTestCase {
 
-	var tasks = [TaskProtocol]()
+	var tasks = [Task]()
 	let kLunchLength = Double(2760)//46min ~ 45min
 	
     override func setUp() {

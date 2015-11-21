@@ -19,8 +19,8 @@ class InitParse: NSObject {
 		// [Optional] Power your app with Local Datastore. For more info, go to
 		// https://parse.com/docs/ios_guide#localdatastore/OSX
 		
-		Task.registerSubclass()
-		JRUser.registerSubclass()
+		PTask.registerSubclass()
+		PUser.registerSubclass()
 		
 //		Parse.enableLocalDatastore()// This does not work with cache enabled
 		#if os(OSX)

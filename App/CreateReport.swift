@@ -12,9 +12,9 @@ let kEightHoursInSeconds: Double = 28800.0
 
 class CreateReport: NSObject {
 
-	var tasks = [TaskProtocol]()
+	var tasks = [Task]()
 	
-	convenience init(tasks: [TaskProtocol]) {
+	convenience init(tasks: [Task]) {
 		
 		self.init()
 		
@@ -23,9 +23,9 @@ class CreateReport: NSObject {
 			return
 		}
 		
-//		let dateStart = tasks.first!.date_task_finished
-		tasks.first!.date_task_finished = tasks.first!.date_task_finished?.roundUp()
-		let dateStartAdjusted = tasks.first!.date_task_finished
+//		let dateStart = tasks.first!.endDate
+//		tasks.first!.endDate = tasks.first!.endDate?.roundUp()
+		let dateStartAdjusted = tasks.first!.endDate
 //		let dateEnd = tasks.last?.date_task_finished
 		var dateEndAdjusted = dateStartAdjusted!.dateByAddingTimeInterval(kEightHoursInSeconds)
 		
@@ -36,13 +36,13 @@ class CreateReport: NSObject {
 		
 		if tasks.count > 2 {
 			for i in 1...tasks.count-2 {
-				let task = tasks[i]
+				var task = tasks[i]
 				let prevTask = tasks[i-1]
 				
-				task.date_task_finished = task.date_task_finished?.roundUp()
+				task.endDate = task.endDate?.roundUp()
 				
-				if task.task_type == TaskType.Lunch.rawValue {
-					let duration = task.date_task_finished!.timeIntervalSinceDate(prevTask.date_task_finished!)
+				if task.taskType == TaskType.Lunch.rawValue {
+					let duration = task.endDate!.timeIntervalSinceDate(prevTask.endDate!)
 					RCLogO(duration)
 					dateEndAdjusted = dateEndAdjusted.dateByAddingTimeInterval(duration)
 				}
@@ -50,17 +50,18 @@ class CreateReport: NSObject {
 			}
 		}
 		
-		tasks.last?.date_task_finished = dateEndAdjusted
+//		tasks.last?.endDate = dateEndAdjusted
 		self.tasks.append(tasks.last!)
 	}
 	
-	private func lunchTimeInterval(tasks: [TaskProtocol]) -> NSTimeInterval {
-		var referenceDate = tasks.first?.date_task_finished
+	private func lunchTimeInterval(tasks: [Task]) -> NSTimeInterval {
+		
+		var referenceDate = tasks.first?.endDate
 		for task in tasks {
-			if task.task_type == TaskType.Lunch.rawValue {
-				return task.date_task_finished!.timeIntervalSinceDate(referenceDate!)
+			if task.taskType == TaskType.Lunch.rawValue {
+				return task.endDate!.timeIntervalSinceDate(referenceDate!)
 			}
-			referenceDate = task.date_task_finished
+			referenceDate = task.endDate
 		}
 		return 0.0
 	}
