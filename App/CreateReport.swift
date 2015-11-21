@@ -14,8 +14,7 @@ class CreateReport: NSObject {
 
 	var tasks = [Task]()
 	
-	convenience init(tasks: [Task]) {
-		
+	convenience init (tasks: [Task]) {
 		self.init()
 		
 		if tasks.count <= 2 {
@@ -54,7 +53,7 @@ class CreateReport: NSObject {
 		self.tasks.append(tasks.last!)
 	}
 	
-	private func lunchTimeInterval(tasks: [Task]) -> NSTimeInterval {
+	private func lunchTimeInterval (tasks: [Task]) -> NSTimeInterval {
 		
 		var referenceDate = tasks.first?.endDate
 		for task in tasks {

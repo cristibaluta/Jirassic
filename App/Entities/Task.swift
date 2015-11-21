@@ -36,5 +36,5 @@ struct Task {
 	var notes: String?
 	var issueType: String?
 	var taskType: NSNumber?
-	var user: User?
+	var objectId: String?
 }

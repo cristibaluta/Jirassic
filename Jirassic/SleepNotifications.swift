@@ -15,7 +15,6 @@ class SleepNotifications: NSObject {
 	var lastSleepDate: NSDate?
 	
 	override init() {
-        
 		super.init()
 		
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
@@ -36,14 +35,14 @@ class SleepNotifications: NSObject {
 		NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
 	}
 	
-	func receiveSleepNotification(notif: NSNotification) {
+	func receiveSleepNotification (notif: NSNotification) {
 		RCLogO(notif)
 		lastSleepDate = NSDate()
-		computerWentToSleep!()
+		computerWentToSleep?()
 	}
 	
-	func receiveWakeNotification(notif: NSNotification) {
+	func receiveWakeNotification (notif: NSNotification) {
 		RCLogO(notif)
-		computerWakeUp!()
+		computerWakeUp?()
 	}
 }

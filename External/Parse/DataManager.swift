@@ -34,39 +34,14 @@ class DataManager: NSObject, DataManagerProtocol {
 						endDate: ptask.date_task_finished,
 						notes: ptask.notes,
 						issueType: ptask.issue_type,
-						taskType: ptask.task_type, user: user)
+						taskType: ptask.task_type,
+						objectId: ptask.objectId)
 					self.tasks.append(task)
 				}
 			}
 			completion(self.tasks, error)
 		})
 	}
-	
-//	func read() {
-//		
-//		let query = PFQuery(className: PTask.parseClassName())
-//		/*query.findObjectsInBackgroundWithBlock {
-//		(objects: Array<AnyObject>!, error: NSError!) -> Void in
-//		RCLogO(objects!)
-//		for obj in objects {
-//		let o = obj as Task
-//		RCLogO(o.date_task_finished)
-//		RCLogO(o.notes)
-//		}
-//		}*/
-//		
-//		query.cachePolicy = .NetworkElseCache
-//		query.getObjectInBackgroundWithId("RNfW4Fgg5y") {
-//			(data: PFObject?, error: NSError?) -> Void in
-//			
-//			if error != nil {
-//				RCLogO(error)
-//			} else {
-//				RCLogO(data?["date_task_finished"])
-//				RCLogO(data?["notes"])
-//			}
-//		}
-//	}
 	
 	func days() -> [Task] {
 		
@@ -109,17 +84,35 @@ class DataManager: NSObject, DataManagerProtocol {
     func deleteTask(taskToDelete: Task) {
         
         var indexToRemove = -1
-        var canRemove = false
-        for theData in self.tasks {
+        var shouldRemove = false
+        for theTask in tasks {
             indexToRemove++
-//            if theData === taskToDelete {
-//                canRemove = true
-////                theData.deleteFromServerWhenPossible()
-//                break
-//            }
+            if theTask.objectId == taskToDelete.objectId {
+                shouldRemove = true
+				ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
+					ptask.deleteFromServerWhenPossible()
+				})
+                break
+            }
         }
-        if canRemove && indexToRemove >= 0 {
+        if shouldRemove && indexToRemove >= 0 {
             self.tasks.removeAtIndex(indexToRemove)
         }
     }
+	
+	// Get the PTask corresponding to the Task
+	private func ptaskForTask(task: Task, completion: ((ptask: PTask) -> Void)) {
+		
+		let query = PFQuery(className: PTask.parseClassName())
+		query.cachePolicy = .NetworkElseCache
+		query.getObjectInBackgroundWithId(task.objectId!) { (data: PFObject?, error: NSError?) -> Void in
+			
+			if error != nil {
+				RCLogErrorO(error)
+			} else {
+				RCLogO(data)
+				completion(ptask: data as! PTask)
+			}
+		}
+	}
 }
