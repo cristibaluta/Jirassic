@@ -13,7 +13,7 @@ class LoginInteractor: NSObject {
 
 	var onLoginSuccess: (() -> ())?
 	var data: DataManagerProtocol!
-	 
+	
 	convenience init (data: DataManagerProtocol) {
 		self.init()
 		self.data = data
