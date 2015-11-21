@@ -6,8 +6,8 @@
 //  Copyright © 2015 Cristian Baluta. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class AddTask: NSObject {
+class UpdateTaskInteractor: NSObject {
 
 }

@@ -81,7 +81,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		return filteredData
 	}
     
-    func deleteTask(taskToDelete: Task) {
+    func deleteTask (taskToDelete: Task) {
         
         var indexToRemove = -1
         var shouldRemove = false
@@ -90,7 +90,8 @@ class DataManager: NSObject, DataManagerProtocol {
             if theTask.objectId == taskToDelete.objectId {
                 shouldRemove = true
 				ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
-					ptask.deleteFromServerWhenPossible()
+					ptask.unpinInBackground()
+					ptask.deleteEventually()
 				})
                 break
             }
@@ -99,6 +100,22 @@ class DataManager: NSObject, DataManagerProtocol {
             self.tasks.removeAtIndex(indexToRemove)
         }
     }
+	
+	func savePTask (theTask: Task) {
+		
+		ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
+			_ = try? ptask.pin()
+			//        self.pinInBackgroundWithBlock { (success, error) -> Void in
+			//            RCLogO("Saved to local Parse \(success)")
+			//            RCLogErrorO(error)
+			//        }
+			ptask.saveEventually { (success, error) -> Void in
+				RCLogO("Saved to Parse \(success)")
+				RCLogErrorO(error)
+			}
+		})
+		
+	}
 	
 	// Get the PTask corresponding to the Task
 	private func ptaskForTask(task: Task, completion: ((ptask: PTask) -> Void)) {

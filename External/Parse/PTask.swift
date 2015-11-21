@@ -103,24 +103,4 @@ public class PTask: PFObject, PFSubclassing {
 	public class func parseClassName() -> String {
 		return "Task"
 	}
-	
-	
-	// Helpers
-	
-	func saveToServerWhenPossible() {
-        _ = try? self.pin()
-//        self.pinInBackgroundWithBlock { (success, error) -> Void in
-//            RCLogO("Saved to local Parse \(success)")
-//            RCLogErrorO(error)
-//        }
-		self.saveEventually { (success, error) -> Void in
-            RCLogO("Saved to Parse \(success)")
-            RCLogErrorO(error)
-		}
-	}
-    
-    func deleteFromServerWhenPossible() {
-        self.unpinInBackground()
-        self.deleteEventually()
-    }
 }

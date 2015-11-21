@@ -17,7 +17,6 @@ class Tasks: NSObject {
 		task.endDate = dateEnd
 		task.issueType = Issues.lastUsed()
 		task.taskType = type.rawValue
-//		task.user = PUser.currentUser()!
 		
 		switch (type) {
 			case TaskType.Issue: task.notes = ""
