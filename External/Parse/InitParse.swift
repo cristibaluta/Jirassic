@@ -21,6 +21,7 @@ class InitParse: NSObject {
 		
 		PTask.registerSubclass()
 		PUser.registerSubclass()
+		PIssue.registerSubclass()
 		
 //		Parse.enableLocalDatastore()// This does not work with cache enabled
 		#if os(OSX)

@@ -35,19 +35,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
         sleep = SleepNotifications()
         sleep?.computerWentToSleep = {
-			let existingTasks = sharedData.tasksForDayOfDate(NSDate())
+			let reader = ReadDayInteractor(data: sharedData)
+			let existingTasks = reader.tasksForDayOfDate(NSDate())
 			if existingTasks.count > 0 {
 				// We already started the day, analyze if it's the scrum time
 				
 			}
         }
         sleep?.computerWakeUp = {
-			let existingTasks = sharedData.tasksForDayOfDate(NSDate())
+			let reader = ReadDayInteractor(data: sharedData)
+			let existingTasks = reader.tasksForDayOfDate(NSDate())
 			if existingTasks.count > 0 {
 				// We already started the day, analyze if it's the scrum time
 				if Scrum().exists(existingTasks) {
-					let task = Tasks.taskFromDate(self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
-//					task.saveToServerWhenPossible()
+					let task = Task(dateSart: self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
+					sharedData.updateTask(task)
 //					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 				}
 			} else {

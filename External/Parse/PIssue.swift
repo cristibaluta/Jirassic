@@ -13,7 +13,7 @@ let kIssuesTypeKey = "issues_type"
 
 public class PIssue: PFObject, PFSubclassing {
 	
-	dynamic public var notes: [String]? {
+	dynamic public var types: [String]? {
 		get {
 			return objectForKey(kIssuesTypeKey) as! [String]?
 		}

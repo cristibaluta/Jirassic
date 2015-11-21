@@ -65,7 +65,8 @@ class TasksViewController: NSViewController {
     
 	func setupDaysTableView() {
 		
-		daysScrollView!.data = sharedData.days()
+		let reader = ReadDaysInteractor(data: sharedData)
+		daysScrollView!.data = reader.days()
 		daysScrollView?.didSelectRow = { (row: Int) in
 			if row >= 0 {
 				let theData = self.daysScrollView!.data[row]
@@ -146,8 +147,8 @@ class TasksViewController: NSViewController {
 				
 				self?.splitView?.hidden = false
 				
-				let task: Task = Tasks.taskFromSubtype(i)
-//				task.saveToServerWhenPossible()
+				let task = Task(subtype: i)
+				sharedData.updateTask(task)
 				self?.tasksScrollView?.addTask( task )
 				
 				self?.setupDaysTableView()
@@ -195,7 +196,8 @@ class TasksViewController: NSViewController {
 	
 	func reloadTasksOnDay(date: NSDate) {
 		
-		tasksScrollView!.data = sharedData.tasksForDayOfDate(date)
+		let reader = ReadDayInteractor(data: sharedData)
+		tasksScrollView!.data = reader.tasksForDayOfDate(date)
 		tasksScrollView?.reloadData()
 		tasksScrollView?.hidden = false
 		
@@ -219,8 +221,8 @@ class TasksViewController: NSViewController {
 	
 	func handleStartDayButton() {
 		
-		let task = Tasks.taskFromDate(NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-//		task.saveToServerWhenPossible()
+		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
+		sharedData.updateTask(task)
 		
 		day.setLastTrackedDay(NSDate())
 		reloadData()

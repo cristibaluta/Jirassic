@@ -10,8 +10,8 @@ import Foundation
 
 protocol DataManagerProtocol: NSObjectProtocol {
 	
-	func queryTasks(completion: ([Task], NSError?) -> Void)
-	func days() -> [Task]
-	func tasksForDayOfDate(date: NSDate) -> [Task]
-    func deleteTask(dataToDelete: Task)
+	func queryTasks (completion: ([Task], NSError?) -> Void)
+	func allCachedTasks() -> [Task]
+    func deleteTask (dataToDelete: Task)
+	func updateTask (theTask: Task)
 }

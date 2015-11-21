@@ -43,44 +43,10 @@ class DataManager: NSObject, DataManagerProtocol {
 		})
 	}
 	
-	func days() -> [Task] {
-		
-		var currrentDate = NSDate.distantFuture() 
-		
-		let filteredData = self.tasks.filter { (task: Task) -> Bool in
-			
-			if let dateEnd = task.endDate {
-				if dateEnd.isSameDayAs(currrentDate) == false {
-					currrentDate = task.endDate!
-					return true
-				}
-			} else if let dateStart = task.startDate {
-				if dateStart.isSameDayAs(currrentDate) == false {
-					currrentDate = task.startDate!
-					return true
-				}
-			}
-			return false
-		}
-		
-		return filteredData
+	func allCachedTasks() -> [Task] {
+		return tasks
 	}
 	
-	func tasksForDayOfDate(date: NSDate) -> [Task] {
-		
-		let filteredData = self.tasks.filter { (task: Task) -> Bool in
-			
-			if let dateEnd = task.endDate {
-				return dateEnd.isSameDayAs(date)
-			} else if let dateStart = task.startDate {
-				return dateStart.isSameDayAs(date)
-			}
-			return false
-		}
-		
-		return filteredData
-	}
-    
     func deleteTask (taskToDelete: Task) {
         
         var indexToRemove = -1
@@ -101,7 +67,7 @@ class DataManager: NSObject, DataManagerProtocol {
         }
     }
 	
-	func savePTask (theTask: Task) {
+	func updateTask (theTask: Task) {
 		
 		ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
 			_ = try? ptask.pin()

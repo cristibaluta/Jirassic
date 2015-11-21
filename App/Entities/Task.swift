@@ -38,3 +38,36 @@ struct Task {
 	var taskType: NSNumber?
 	var objectId: String?
 }
+
+extension Task {
+	
+	init (dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) {
+		
+		self.startDate = dateSart
+		self.endDate = dateEnd
+		self.issueType = Issues.lastUsed()
+		self.taskType = type.rawValue
+		
+		switch (type) {
+		case TaskType.Issue: self.notes = ""
+		case TaskType.Start: self.notes = "Working day started"
+		case TaskType.Scrum: self.notes = "Scrum session"
+		case TaskType.Lunch: self.notes = "Lunch break"
+		case TaskType.Meeting: self.notes = "Internal meeting"
+		}
+	}
+	
+	init (subtype: TaskSubtype) {
+		
+		switch(subtype) {
+		case .IssueBegin:	self.startDate = NSDate(); self.taskType = TaskType.Issue.rawValue
+		case .IssueEnd:		self.endDate = NSDate(); self.taskType = TaskType.Issue.rawValue
+		case .ScrumBegin:	self.startDate = NSDate(); self.taskType = TaskType.Scrum.rawValue
+		case .ScrumEnd:		self.endDate = NSDate(); self.taskType = TaskType.Scrum.rawValue
+		case .LunchBegin:	self.startDate = NSDate(); self.taskType = TaskType.Lunch.rawValue
+		case .LunchEnd:		self.endDate = NSDate(); self.taskType = TaskType.Lunch.rawValue
+		case .MeetingBegin: self.startDate = NSDate(); self.taskType = TaskType.Meeting.rawValue
+		case .MeetingEnd:	self.endDate = NSDate(); self.taskType = TaskType.Meeting.rawValue
+		}
+	}
+}
