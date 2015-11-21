@@ -105,9 +105,7 @@
 		289E2B421B328598003269A3 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B441B332C4C003269A3 /* Jirassic.iconset */; };
-		28B161151BD2EE8900508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
 		28B161161BD2EE8900508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
-		28B161171BD2EE8900508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; };
 		28B161181BD2EE8900508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; };
 		28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
 		28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -378,8 +376,6 @@
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
 				28B1611B1BD2F03300508CF5 /* Parse.framework in Frameworks */,
-				28B161151BD2EE8900508CF5 /* Bolts.framework in Frameworks */,
-				28B161171BD2EE8900508CF5 /* Parse.framework in Frameworks */,
 				6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */,
 				6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */,
 				6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */,
@@ -810,7 +806,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Cristian Baluta";
 				TargetAttributes = {
 					286585131B031D3A00352782 = {
@@ -1205,6 +1201,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
