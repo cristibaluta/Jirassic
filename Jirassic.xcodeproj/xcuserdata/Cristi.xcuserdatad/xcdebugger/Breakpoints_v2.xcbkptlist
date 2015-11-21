@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
             endingLineNumber = "218"
-            landmarkName = "handleStartDayButton()"
-            landmarkType = "5">
+            landmarkName = "TasksViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "removeNoTasksController()"
+            landmarkName = "noTasksController()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

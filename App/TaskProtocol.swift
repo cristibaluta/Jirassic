@@ -9,6 +9,7 @@
 import Foundation
 
 enum TaskType: Int {
+	
 	case Issue = 0
 	case Start = 1
 	case Scrum = 2
@@ -17,6 +18,7 @@ enum TaskType: Int {
 }
 
 enum TaskSubtype: Int {
+	
 	case IssueBegin = 0
 	case IssueEnd = 1
 	case ScrumBegin = 2
@@ -34,7 +36,7 @@ protocol TaskProtocol: NSObjectProtocol {
 	var notes: String? {get set}
 	var issue_type: String? {get set}
 	var task_type: NSNumber? {get set}
-	var user: JRUser? {get set}
+	var user: UserProtocol? {get set}
 	
     func saveToServerWhenPossible()
     func deleteFromServerWhenPossible()

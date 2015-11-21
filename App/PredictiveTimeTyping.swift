@@ -21,7 +21,8 @@ class PredictiveTimeTyping: NSObject {
         if (string == "") {
             // Backspace
             if to.endIndex == 3 {
-				to = to[NSMakeRange(0, 1)]
+				let textRange = 0..<1
+				to = to[textRange]
                 return string
             }
             return to
@@ -36,7 +37,7 @@ class PredictiveTimeTyping: NSObject {
         var min = comps[1]
         
         if min.endIndex >= 2 {
-            to = "\(comps[0]):\(min.substringWithRange(NSMakeRange(0, 1)))"
+            to = "\(comps[0]):\(min.substringWithRange(NSRange(0, 1)))"
             return to
         }
         else {
@@ -100,16 +101,19 @@ class PredictiveTimeTyping: NSObject {
         }
         
         return to
-	}
-	*/
+	}*/
+	
     func dateFromStringHHmm (string: String) -> NSDate {
 		
         let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
-        
         let hm = string.componentsSeparatedByString(":")
-        
-        if (hm.count > 1) {
+		
+		if (string.characters.count == 0) {
+			comps.hour = 0
+			comps.minute = 0
+		}
+        else if (hm.count > 1) {
             comps.hour = Int(hm[0])!
             comps.minute = Int(hm[1])!
         }
@@ -117,16 +121,15 @@ class PredictiveTimeTyping: NSObject {
             comps.hour = (hm.count == 1) ? Int(hm[0])! : 19;
             comps.minute = 0
         }
-        
         return gregorian!.dateFromComponents(comps)!
     }
-    
+	
+	// This method will combine strings and convert the result to number
     func decimalValueOf (existingText: String, newText: String) -> Int {
         
-//        if existingText.length() > 0 {
-//            return Int(existingText)! * 10 + Int(newText)!;
-//        }
-		
+        if existingText.characters.count > 0 {
+            return Int(existingText)! * 10 + Int(newText)!;
+        }
         return Int(newText)!
 	}
 }

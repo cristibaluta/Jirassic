@@ -22,12 +22,12 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 		get {
 			if let value: AnyObject = objectForKey(kDateStartKey) {
 				switch value {
-				case _ as NSNull:
-					return nil
-				case let value as NSDate:
-					return value
-				default:
-					fatalError("unexpected object")
+					case _ as NSNull:
+						return nil
+					case let value as NSDate:
+						return value
+					default:
+						fatalError("unexpected object")
 				}
 			}
 			return nil
@@ -91,7 +91,7 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 		}
 	}
 	
-	var user: JRUser? {
+	var user: UserProtocol? {
 		get {
 			return objectForKey(kUserKey) as! JRUser?
 		}
@@ -108,7 +108,7 @@ public class Task: PFObject, PFSubclassing, TaskProtocol {
 	// Helpers
 	
 	func saveToServerWhenPossible() {
-        try? self.pin()
+        _ = try? self.pin()
 //        self.pinInBackgroundWithBlock { (success, error) -> Void in
 //            RCLogO("Saved to local Parse \(success)")
 //            RCLogErrorO(error)

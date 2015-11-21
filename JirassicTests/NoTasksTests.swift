@@ -11,7 +11,7 @@ import XCTest
 class NoTasksTests: XCTestCase {
 	
     func testTheMessageThatYouHaveNoTasks() {
-        let controller = NoTasks()
+        _ = NoTasks()
         XCTAssert(true, "Pass")
     }
 

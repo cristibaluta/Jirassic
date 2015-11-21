@@ -41,9 +41,7 @@
 		2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906F1AF95C37008D5337 /* DaysViewController.swift */; };
 		2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90711AF95C37008D5337 /* TasksViewController.swift */; };
 		2865854F1B03EA6100352782 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
-		286585501B03EA6200352782 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
 		286585511B03EA6700352782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
-		286585521B03EA6700352782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
 		286585531B03EA6B00352782 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		286585541B03EA6C00352782 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		286585551B03EAA900352782 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
@@ -58,7 +56,6 @@
 		2865856A1B053CD300352782 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585691B053CD300352782 /* TaskCell.swift */; };
 		2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865856B1B054E3500352782 /* NonTaskCell.swift */; };
 		28778A551BB9B83A003E4880 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A541BB9B83A003E4880 /* Tasks.swift */; };
-		28778A561BB9B83A003E4880 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A541BB9B83A003E4880 /* Tasks.swift */; };
 		28778A581BB9B9A9003E4880 /* TasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A571BB9B9A9003E4880 /* TasksTests.swift */; };
 		28778A5A1BB9C70F003E4880 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
 		28778A5B1BB9C70F003E4880 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
@@ -70,9 +67,6 @@
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		289E2AC51B2A3AAF003269A3 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */; };
 		289E2AD01B2B776A003269A3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2ACF1B2B776A003269A3 /* Login.swift */; };
-		289E2AD11B2B776A003269A3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2ACF1B2B776A003269A3 /* Login.swift */; };
-		289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B71AFB11A900D61472 /* LoginViewController.swift */; };
-		289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */; };
 		289E2AE11B2D4999003269A3 /* DrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21F7C1B014C41005D3C94 /* DrawerState.swift */; };
 		289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
 		289E2AE91B2D68E2003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
@@ -80,11 +74,9 @@
 		289E2AEC1B2D6B0B003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
 		289E2AED1B2D6B0D003269A3 /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AE81B2D68E2003269A3 /* TaskProtocol.swift */; };
 		289E2AF21B2D6D6E003269A3 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */; };
-		289E2AF31B2D6D6E003269A3 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUser.swift */; };
 		289E2AF61B2D71FD003269A3 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF51B2D71FD003269A3 /* UserProtocol.swift */; };
 		289E2AF71B2D71FD003269A3 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF51B2D71FD003269A3 /* UserProtocol.swift */; };
 		289E2AF91B2D8AD6003269A3 /* JRUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF81B2D8AD6003269A3 /* JRUser.swift */; };
-		289E2AFA1B2D8AD6003269A3 /* JRUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF81B2D8AD6003269A3 /* JRUser.swift */; };
 		289E2AFB1B2D8ADC003269A3 /* JRUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF81B2D8AD6003269A3 /* JRUser.swift */; };
 		289E2AFD1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
 		289E2AFE1B2D8C31003269A3 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AFC1B2D8C31003269A3 /* typealiases.swift */; };
@@ -97,16 +89,10 @@
 		289E2B1D1B314207003269A3 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
 		289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B91AFB2BCF00D61472 /* NonTaskCell.swift */; };
 		289E2B1F1B31420F003269A3 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */; };
-		289E2B201B31428E003269A3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839021AF4035900602D33 /* DataManager.swift */; };
 		289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
-		289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB901E1AF5E9B0008D5337 /* ParseCredentials.swift */; };
-		289E2B231B3142A6003269A3 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAB1AC6A4F000A69CDF /* InitParse.swift */; };
-		289E2B411B328588003269A3 /* ReadTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasks.swift */; };
 		289E2B421B328598003269A3 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B441B332C4C003269A3 /* Jirassic.iconset */; };
-		28B161161BD2EE8900508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
-		28B161181BD2EE8900508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; };
 		28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
 		28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28B1611B1BD2F03300508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; };
@@ -119,6 +105,7 @@
 		28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
 		28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */; };
+		28C02F371C006AA600B65478 /* NSDateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839001AF402B200602D33 /* NSDateExtensionTests.swift */; };
 		28D21F7D1B014C41005D3C94 /* DrawerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D21F7C1B014C41005D3C94 /* DrawerState.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E57AD01BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57ACF1BEFBD1C00B803E6 /* NSViewAutolayout.swift */; };
@@ -156,7 +143,6 @@
 		28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
 		28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* CreateReportTests.swift */; };
 		28F292281B1C72720015F64F /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */; };
-		28F292291B1C75960015F64F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A31AC3354900706824 /* Task.swift */; };
 		28F51E7A1AC694B000A69CDF /* ReadTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasks.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */; };
@@ -358,9 +344,7 @@
 				286585471B03E61900352782 /* CoreGraphics.framework in Frameworks */,
 				286585451B03E60C00352782 /* CoreLocation.framework in Frameworks */,
 				2865854B1B03E62400352782 /* AudioToolbox.framework in Frameworks */,
-				286585501B03EA6200352782 /* Bolts.framework in Frameworks */,
 				2865853F1B03E5FC00352782 /* Security.framework in Frameworks */,
-				286585521B03EA6700352782 /* Parse.framework in Frameworks */,
 				2865853B1B03E5F200352782 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,8 +376,6 @@
 				28E839061AF4972300602D33 /* libsqlite3.dylib in Frameworks */,
 				28E8390C1AF4973900602D33 /* QuartzCore.framework in Frameworks */,
 				28E839081AF4972B00602D33 /* ApplicationServices.framework in Frameworks */,
-				28B161161BD2EE8900508CF5 /* Bolts.framework in Frameworks */,
-				28B161181BD2EE8900508CF5 /* Parse.framework in Frameworks */,
 				28E839091AF4972F00602D33 /* CFNetwork.framework in Frameworks */,
 				28E8390A1AF4973200602D33 /* CoreGraphics.framework in Frameworks */,
 				28E8390D1AF4973C00602D33 /* Security.framework in Frameworks */,
@@ -927,6 +909,7 @@
 				2814EEBA1B3772290031D870 /* typealiases.swift in Sources */,
 				2865855B1B03EAC900352782 /* NSDateExtension.swift in Sources */,
 				286585311B031D3A00352782 /* Jirassic_ScrumTests.swift in Sources */,
+				28C02F371C006AA600B65478 /* NSDateExtensionTests.swift in Sources */,
 				289E2AED1B2D6B0D003269A3 /* TaskProtocol.swift in Sources */,
 				2814EEB91B37721E0031D870 /* UserProtocol.swift in Sources */,
 				286585541B03EA6C00352782 /* RCLog.swift in Sources */,
@@ -989,7 +972,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */,
-				289E2AD11B2B776A003269A3 /* Login.swift in Sources */,
 				28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */,
 				28778A5F1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift in Sources */,
 				28EB90221AF60234008D5337 /* NoTasks.swift in Sources */,
@@ -999,39 +981,29 @@
 				289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */,
 				289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */,
 				28EB90271AF6027D008D5337 /* MockDataManager.swift in Sources */,
-				289E2AD71B2B8688003269A3 /* LoginViewController.swift in Sources */,
 				6D89F7BE1BD5257400A6892B /* AddTask.swift in Sources */,
-				28778A561BB9B83A003E4880 /* Tasks.swift in Sources */,
 				2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */,
-				289E2AE01B2D46E0003269A3 /* TasksViewController.swift in Sources */,
 				289E2B421B328598003269A3 /* FlipScreens.swift in Sources */,
 				28E57AD11BEFBD1C00B803E6 /* NSViewAutolayout.swift in Sources */,
 				28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */,
 				28F51EC71AC805B000A69CDF /* NSDateExtension.swift in Sources */,
 				289E2AEA1B2D68E2003269A3 /* TaskProtocol.swift in Sources */,
-				289E2B231B3142A6003269A3 /* InitParse.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
 				289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */,
 				28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				28F292281B1C72720015F64F /* CreateReport.swift in Sources */,
-				289E2B201B31428E003269A3 /* DataManager.swift in Sources */,
 				28778A5B1BB9C70F003E4880 /* Issues.swift in Sources */,
 				289E2AF71B2D71FD003269A3 /* UserProtocol.swift in Sources */,
 				28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */,
 				28EB90641AF948E3008D5337 /* NewDay.swift in Sources */,
-				289E2B411B328588003269A3 /* ReadTasks.swift in Sources */,
 				28EB905E1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				289E2AE11B2D4999003269A3 /* DrawerState.swift in Sources */,
-				28F292291B1C75960015F64F /* Task.swift in Sources */,
-				289E2AF31B2D6D6E003269A3 /* RegisterUser.swift in Sources */,
 				28778A5D1BB9C730003E4880 /* IssuesTests.swift in Sources */,
 				289E2B1B1B3141FE003269A3 /* NewTaskViewController.swift in Sources */,
 				28EB90241AF60250008D5337 /* NoTasksTests.swift in Sources */,
 				289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */,
 				28E57AD51BF07ABB00B803E6 /* Scrum.swift in Sources */,
-				289E2B221B31429F003269A3 /* ParseCredentials.swift in Sources */,
 				289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */,
-				289E2AFA1B2D8AD6003269A3 /* JRUser.swift in Sources */,
 				289E2B191B3141F8003269A3 /* TasksScrollView.swift in Sources */,
 				289E2B181B3141F4003269A3 /* DaysScrollView.swift in Sources */,
 			);
@@ -1265,6 +1237,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1292,6 +1265,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
