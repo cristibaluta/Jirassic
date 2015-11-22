@@ -48,26 +48,15 @@
 		2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865856B1B054E3500352782 /* NonTaskCell.swift */; };
 		28778A581BB9B9A9003E4880 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A571BB9B9A9003E4880 /* TaskTests.swift */; };
 		28778A5A1BB9C70F003E4880 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
-		28778A5B1BB9C70F003E4880 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
 		28778A5D1BB9C730003E4880 /* IssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A5C1BB9C730003E4880 /* IssuesTests.swift */; };
 		28778A5F1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A5E1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift */; };
 		2894F1CB1B076EAE0095DD17 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */; };
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		289E2AC51B2A3AAF003269A3 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */; };
-		289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
 		289E2AF21B2D6D6E003269A3 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUserInteractor.swift */; };
-		289E2B181B3141F4003269A3 /* DaysScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */; };
-		289E2B191B3141F8003269A3 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */; };
-		289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */; };
-		289E2B1B1B3141FE003269A3 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */; };
-		289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
 		289E2B1D1B314207003269A3 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
-		289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2B91AFB2BCF00D61472 /* NonTaskCell.swift */; };
 		289E2B1F1B31420F003269A3 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */; };
-		289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
-		289E2B421B328598003269A3 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
-		289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B441B332C4C003269A3 /* Jirassic.iconset */; };
 		28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
 		28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -95,45 +84,27 @@
 		28C02F561C007F3000B65478 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* MockDataManager.swift */; };
 		28C02F571C007F3000B65478 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* MockDataManager.swift */; };
 		28C02F591C00801A00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
-		28C02F5A1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5B1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
-		28C02F5C1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5E1C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
-		28C02F5F1C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
 		28C02F601C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
-		28C02F611C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
 		28C02F691C0080AD00B65478 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F631C0080AD00B65478 /* typealiases.swift */; };
-		28C02F6A1C0080AD00B65478 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F631C0080AD00B65478 /* typealiases.swift */; };
 		28C02F6B1C0080AD00B65478 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F631C0080AD00B65478 /* typealiases.swift */; };
-		28C02F6C1C0080AD00B65478 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F631C0080AD00B65478 /* typealiases.swift */; };
 		28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
-		28C02F741C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
 		28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
-		28C02F761C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
 		28C02F771C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
-		28C02F781C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
 		28C02F791C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
-		28C02F7A1C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
 		28C02F801C00A6C100B65478 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F7F1C00A6C100B65478 /* LoginPresenter.swift */; };
-		28C02F811C00A6C100B65478 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F7F1C00A6C100B65478 /* LoginPresenter.swift */; };
 		28C02F821C00A6C100B65478 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F7F1C00A6C100B65478 /* LoginPresenter.swift */; };
-		28C02F831C00A6C100B65478 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F7F1C00A6C100B65478 /* LoginPresenter.swift */; };
 		28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F841C00A6F300B65478 /* LoginInteractor.swift */; };
 		28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F841C00A6F300B65478 /* LoginInteractor.swift */; };
 		28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8A1C010ABC00B65478 /* PIssue.swift */; };
 		28C02F8C1C010ABC00B65478 /* PIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8A1C010ABC00B65478 /* PIssue.swift */; };
 		28C02F8E1C01120700B65478 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */; };
-		28C02F8F1C01120700B65478 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */; };
 		28C02F901C01120700B65478 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */; };
-		28C02F911C01120700B65478 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */; };
 		28C02F931C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
-		28C02F941C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28C02F951C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
-		28C02F961C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
-		28E57AD21BF0039600B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
-		28E57AD51BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
@@ -149,14 +120,10 @@
 		28E8390E1AF4973F00602D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */; };
 		28E839111AF4974D00602D33 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */; };
-		28EB905E1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */; };
 		28EB90631AF948E3008D5337 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDay.swift */; };
-		28EB90641AF948E3008D5337 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDay.swift */; };
 		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
 		28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
-		28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
 		28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* CreateReportTests.swift */; };
-		28F292281B1C72720015F64F /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */; };
 		28F51E7A1AC694B000A69CDF /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */; };
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */; };
@@ -663,8 +630,8 @@
 			isa = PBXGroup;
 			children = (
 				28C02F711C009C9700B65478 /* NSDateExtension.swift */,
-				28C02F721C009C9700B65478 /* NSViewAutolayout.swift */,
 				28E839001AF402B200602D33 /* NSDateExtensionTests.swift */,
+				28C02F721C009C9700B65478 /* NSViewAutolayout.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -972,18 +939,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C02F911C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
-				28C02F831C00A6C100B65478 /* LoginPresenter.swift in Sources */,
 				286585311B031D3A00352782 /* Jirassic_ScrumTests.swift in Sources */,
-				28C02F6C1C0080AD00B65478 /* typealiases.swift in Sources */,
 				28C02F371C006AA600B65478 /* NSDateExtensionTests.swift in Sources */,
 				286585541B03EA6C00352782 /* RCLog.swift in Sources */,
-				28C02F7A1C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
-				28C02F5C1C00801B00B65478 /* Task.swift in Sources */,
-				28C02F761C009C9700B65478 /* NSDateExtension.swift in Sources */,
-				28C02F611C00803300B65478 /* User.swift in Sources */,
 				28C02F571C007F3000B65478 /* MockDataManager.swift in Sources */,
-				28C02F961C01143C00B65478 /* ReadDayInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,41 +1001,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				289E2B431B3285A3003269A3 /* SleepNotifications.swift in Sources */,
 				28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */,
 				28778A5F1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift in Sources */,
-				28E57AD21BF0039600B803E6 /* Wireframe.swift in Sources */,
 				28778A581BB9B9A9003E4880 /* TaskTests.swift in Sources */,
-				289E2B1C1B314203003269A3 /* TaskCell.swift in Sources */,
-				289E2AE21B2D49A3003269A3 /* TaskCellProtocol.swift in Sources */,
 				6D89F7BE1BD5257400A6892B /* UpdateTaskInteractor.swift in Sources */,
 				2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */,
-				28C02F811C00A6C100B65478 /* LoginPresenter.swift in Sources */,
-				289E2B421B328598003269A3 /* FlipScreens.swift in Sources */,
-				28C02F6A1C0080AD00B65478 /* typealiases.swift in Sources */,
 				28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */,
-				28C02F5A1C00801B00B65478 /* Task.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
-				289E2B1E1B31420B003269A3 /* NonTaskCell.swift in Sources */,
 				28C02F561C007F3000B65478 /* MockDataManager.swift in Sources */,
-				28EB90971AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
-				28F292281B1C72720015F64F /* CreateReport.swift in Sources */,
-				28778A5B1BB9C70F003E4880 /* Issues.swift in Sources */,
-				28C02F5F1C00803300B65478 /* User.swift in Sources */,
 				28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */,
-				28C02F941C01143C00B65478 /* ReadDayInteractor.swift in Sources */,
-				28EB90641AF948E3008D5337 /* NewDay.swift in Sources */,
-				28C02F741C009C9700B65478 /* NSDateExtension.swift in Sources */,
-				28EB905E1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
-				28C02F781C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
-				28C02F8F1C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
 				28778A5D1BB9C730003E4880 /* IssuesTests.swift in Sources */,
-				289E2B1B1B3141FE003269A3 /* NewTaskViewController.swift in Sources */,
-				289E2B211B314297003269A3 /* DataManagerProtocol.swift in Sources */,
-				28E57AD51BF07ABB00B803E6 /* Scrum.swift in Sources */,
-				289E2B1A1B3141FA003269A3 /* NoTasksViewController.swift in Sources */,
-				289E2B191B3141F8003269A3 /* TasksScrollView.swift in Sources */,
-				289E2B181B3141F4003269A3 /* DaysScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

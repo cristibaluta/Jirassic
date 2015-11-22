@@ -13,7 +13,7 @@ class DataManager: NSObject, DataManagerProtocol {
 
 	private var tasks = [Task]()
 	
-	func queryTasks(completion: ([Task], NSError?) -> Void) {
+	func queryTasks (completion: ([Task], NSError?) -> Void) {
 		
 		let puser = PUser.currentUser()
 		let user = User(isLoggedIn: true, password: nil, email: puser?.email)
@@ -80,11 +80,10 @@ class DataManager: NSObject, DataManagerProtocol {
 				RCLogErrorO(error)
 			}
 		})
-		
 	}
 	
 	// Get the PTask corresponding to the Task
-	private func ptaskForTask(task: Task, completion: ((ptask: PTask) -> Void)) {
+	private func ptaskForTask (task: Task, completion: ((ptask: PTask) -> Void)) {
 		
 		let query = PFQuery(className: PTask.parseClassName())
 		query.cachePolicy = .NetworkElseCache

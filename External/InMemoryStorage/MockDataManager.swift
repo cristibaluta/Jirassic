@@ -1,5 +1,5 @@
 //
-//  DummyDataManager.swift
+//  MockDataManager.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 29/03/15.
@@ -7,88 +7,58 @@
 //
 
 import Foundation
-/*
-class DummyDataManager: NSObject, DataManagerProtocol {
+@testable import Jirassic
+
+class MockDataManager: NSObject, DataManagerProtocol {
 	
-	private var data = [Task]()
+	private var tasks = [Task]()
 	
-	func queryData(completion: ([Task], NSError?) -> Void) {
+	func queryTasks (completion: ([Task], NSError?) -> Void) {
 		
-		let d1 = Task()
-		d1.date_task_finished = NSDate()
-		d1.task_nr = "AN-3422"
+		var d1 = Task()
+		d1.endDate = NSDate()
+		d1.issueType = "AN-3422"
 		d1.notes = "Finished the task by deleting the whole project..."
 		
-		let d1_1 = Task()
-		d1_1.date_task_finished = NSDate().dateByAddingTimeInterval(-500100)
-		d1_1.task_nr = "AN-3425"
+		var d1_1 = Task()
+		d1_1.endDate = NSDate().dateByAddingTimeInterval(-500100)
+		d1_1.issueType = "AN-3425"
 		d1_1.notes = "Finished the task by deleting the whole project..."
 		
-		let d2 = Task()
-		d2.date_task_finished = NSDate().dateByAddingTimeInterval(-500000)
-		d2.task_nr = "AN-3423"
+		var d2 = Task()
+		d2.endDate = NSDate().dateByAddingTimeInterval(-500000)
+		d2.issueType = "AN-3423"
 		d2.notes = "Finished the task by deleting the whole project..."
 		
-		let d3 = Task()
-		d3.date_task_finished = NSDate().dateByAddingTimeInterval(-369000)
-		d3.task_nr = "AN-3423"
+		var d3 = Task()
+		d3.endDate = NSDate().dateByAddingTimeInterval(-369000)
+		d3.issueType = "AN-3423"
 		d3.notes = "Finished the task by deleting the whole project. Finished the task by deleting the whole project..."
 		
-		let d4 = Task()
-		d4.date_task_finished = NSDate().dateByAddingTimeInterval(-106500)
-		d4.task_nr = "AN-3423"
+		var d4 = Task()
+		d4.endDate = NSDate().dateByAddingTimeInterval(-106500)
+		d4.issueType = "AN-3423"
 		d4.notes = "Finished the task by deleting the whole project..."
 		
-		let d5 = Task()
-		d5.date_task_finished = NSDate().dateByAddingTimeInterval(-90600)
-		d5.task_nr = "AN-3323"
+		var d5 = Task()
+		d5.endDate = NSDate().dateByAddingTimeInterval(-90600)
+		d5.issueType = "AN-3323"
 		d5.notes = "Finished the task by deleting the whole project..."
 		
-		data = [d1, d1_1, d2, d3, d4, d5]
+		tasks = [d1, d1_1, d2, d3, d4, d5]
 		
-		completion(data, nil)
+		completion(tasks, nil)
 	}
 	
-	func days() -> [Task] {
-		
-		var objects = [Task]()
-		var currrentDate = NSDate.distantFuture() as! NSDate
-		objects = data.filter { (object: Task) -> Bool in
-			if object.date_task_finished!.isSameDayAs(currrentDate) == false {
-				currrentDate = object.date_task_finished!
-				return true
-			}
-			return false
-		}
-		
-		return objects
+	func allCachedTasks() -> [Task] {
+		return tasks
 	}
 	
-	func tasksForDayOnDate(date: NSDate) -> [Task] {
+	func deleteTask (taskToDelete: Task) {
 		
-		var objects = [Task]()
-		objects = objects.filter { (object: Task) -> Bool in
-			return object.date_task_finished!.isSameDayAs( date )
-		}
-		
-		return objects
 	}
 	
-	func addNewTask() -> Task {
+	func updateTask (theTask: Task) {
 		
-		let task = Task()
-		task.date_task_finished = NSDate()
-		task.task_nr = "AN-0000"
-		task.notes = "What did you do in this task?"
-		
-		//		let task = JLTaskWriter().write(task_id, notes: notes)
-		data.append(task)
-		
-		return task
 	}
-	
-	func addTask(task_id: String, notes: String) {
-//		let task = JLTaskWriter().write(task_id, notes: notes)
-//		data.append(task)
-	}
-}*/
+}
