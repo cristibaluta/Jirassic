@@ -446,7 +446,6 @@
 				28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */,
 				28C02F7B1C009D6400B65478 /* Read */,
 				28C02F7E1C00A57F00B65478 /* Write */,
-				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -600,6 +599,7 @@
 				28DB60911BCA5B27003FDE96 /* TasksViewController */,
 				28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */,
 				28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */,
+				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
 			);
 			name = "Tasks screen";
 			sourceTree = "<group>";
