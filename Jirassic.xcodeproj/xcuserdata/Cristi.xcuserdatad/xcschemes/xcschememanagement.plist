@@ -4,10 +4,13 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Jirassic.xcscheme</key>
+		<key>JIRAssic Scrum.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>JIRAssic.xcscheme</key>
+		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -15,6 +18,18 @@
 		<dict>
 			<key>isShown</key>
 			<true/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Jirassic.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Jirrasic-Line.xcscheme</key>
+		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
@@ -37,6 +52,11 @@
 			<true/>
 		</dict>
 		<key>28EB907E1AF95C37008D5337</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56F88FEF1C06166500DC3807</key>
 		<dict>
 			<key>primary</key>
 			<true/>

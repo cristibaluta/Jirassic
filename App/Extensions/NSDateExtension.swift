@@ -14,6 +14,29 @@ let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
 	
+	convenience init (hour: Int, minute: Int, second: Int=0) {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		comps.hour = hour
+		comps.minute = minute
+		comps.second = 0
+		
+		self.init(timeInterval: 0, sinceDate: gregorian!.dateFromComponents(comps)!)
+	}
+	
+	convenience init (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int=0) {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		comps.year = year
+		comps.month = month
+		comps.day = day
+		comps.hour = hour
+		comps.minute = minute
+		comps.second = second
+		
+		self.init(timeInterval: 0, sinceDate: gregorian!.dateFromComponents(comps)!)
+	}
+	
 	// MARK: Formatting options
 	
 	func HHmmddMM() -> String {
@@ -137,39 +160,16 @@ extension NSDate {
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
-	func secondsToPercentTime(time: Double) -> Double {
+	func secondsToPercentTime (time: Double) -> Double {
 		return time / 3600
 	}
 	
-	func sameDateWithHour(hour: Int, minute: Int) -> NSDate {
+	func sameDateWithHour (hour: Int, minute: Int) -> NSDate {
 		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
 		comps.hour = hour
 		comps.minute = minute
 		comps.second = 0
-		
-		return gregorian!.dateFromComponents(comps)!
-	}
-	
-	class func dateWithHour(hour: Int, minute: Int, second: Int=0) -> NSDate {
-		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
-		comps.hour = hour
-		comps.minute = minute
-		comps.second = 0
-		
-		return gregorian!.dateFromComponents(comps)!
-	}
-	
-	class func dateWithYear(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int=0) -> NSDate {
-		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
-		comps.year = year
-		comps.month = month
-		comps.day = day
-		comps.hour = hour
-		comps.minute = minute
-		comps.second = second
 		
 		return gregorian!.dateFromComponents(comps)!
 	}

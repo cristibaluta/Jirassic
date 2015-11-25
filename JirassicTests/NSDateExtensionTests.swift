@@ -15,7 +15,7 @@ class DateTests: XCTestCase {
 		
 		let sndOfMay2015 = NSDate(timeIntervalSince1970: 1430589737)
 		let fstOfMay2015 = sndOfMay2015.firstDayThisMonth()
-		let components = gregorian!.components(ymdhmsUnitFlags, fromDate:fstOfMay2015)
+		let components = gregorian!.components(ymdhmsUnitFlags, fromDate: fstOfMay2015)
 		
 		XCTAssertTrue(components.year == 2015, "Test failed, check firstDateThisMonth method")
 		XCTAssertTrue(components.month == 5, "Test failed, check firstDateThisMonth method")
@@ -27,25 +27,20 @@ class DateTests: XCTestCase {
 	
 	func testRoundDateUpToNearestQuarter() {
 		
-		var date = NSDate(timeIntervalSince1970: 1433164086) // Mon, 01 Jun 2015 13:08:06 GMT
-		XCTAssertTrue(date.roundUp().timeIntervalSince1970 == 1433164500,
-			"Date should be Mon, 01 Jun 2015 13:15:00 GMT")
+		var date = NSDate(hour: 13, minute: 8)
+		XCTAssertTrue(date.roundUp().compare(NSDate(hour: 13, minute: 15)) == .OrderedSame, "")
 		
-		date = NSDate(timeIntervalSince1970: 1433164626) // Mon, 01 Jun 2015 13:17:06 GMT
-		XCTAssertTrue(date.roundUp().timeIntervalSince1970 == 1433164500,
-			"Date should be Mon, 01 Jun 2015 13:15:00 GMT")
+		date = NSDate(hour: 13, minute: 17)
+		XCTAssertTrue(date.roundUp().compare(NSDate(hour: 13, minute: 15)) == .OrderedSame, "")
 		
-		date = NSDate(timeIntervalSince1970: 1433165280) // Mon, 01 Jun 2015 13:28:00 GMT
-		XCTAssertTrue(date.roundUp().timeIntervalSince1970 == 1433165400,
-			"Date should be Mon, 01 Jun 2015 13:30:00 GMT")
+		date = NSDate(hour: 13, minute: 28)
+		XCTAssertTrue(date.roundUp().compare(NSDate(hour: 13, minute: 30)) == .OrderedSame, "")
 		
-		date = NSDate(timeIntervalSince1970: 1433166240) // Mon, 01 Jun 2015 13:44:00 GMT
-		XCTAssertTrue(date.roundUp().timeIntervalSince1970 == 1433166300,
-			"Date should be Mon, 01 Jun 2015 13:45:00 GMT")
+		date = NSDate(hour: 13, minute: 44)
+		XCTAssertTrue(date.roundUp().compare(NSDate(hour: 13, minute: 45)) == .OrderedSame, "")
 		
-		date = NSDate(timeIntervalSince1970: 1433166846) // Mon, 01 Jun 2015 13:54:06 GMT
-		XCTAssertTrue(date.roundUp().timeIntervalSince1970 == 1433167200,
-			"Date should be Mon, 01 Jun 2015 14:00:00 GMT")
+		date = NSDate(hour: 13, minute: 54)
+		XCTAssertTrue(date.roundUp().compare(NSDate(hour: 14, minute: 0)) == .OrderedSame, "")
 	}
 	
 	func testSecondsToPercent() {
