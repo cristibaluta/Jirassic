@@ -103,6 +103,7 @@
 		28C02F901C01120700B65478 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */; };
 		28C02F931C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28C02F951C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
+		28C030011C06605800B65478 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C030001C06605800B65478 /* main.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
@@ -133,7 +134,6 @@
 		28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
 		28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */; };
 		28F51EBB1AC6F5F200A69CDF /* DaysScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */; };
-		56F88FF31C06166500DC3807 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F88FF21C06166500DC3807 /* main.m */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
@@ -169,7 +169,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		56F88FEE1C06166500DC3807 /* CopyFiles */ = {
+		28C02FFC1C06605800B65478 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -257,6 +257,8 @@
 		28C02F8A1C010ABC00B65478 /* PIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIssue.swift; sourceTree = "<group>"; };
 		28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDaysInteractor.swift; sourceTree = "<group>"; };
 		28C02F921C01143C00B65478 /* ReadDayInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDayInteractor.swift; sourceTree = "<group>"; };
+		28C02FFE1C06605800B65478 /* Jirrasic-Line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Jirrasic-Line"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28C030001C06605800B65478 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		28E57AD31BF07ABB00B803E6 /* Scrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrum.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
@@ -280,8 +282,6 @@
 		28F51EB61AC6EF1700A69CDF /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
 		28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysScrollView.swift; sourceTree = "<group>"; };
-		56F88FF01C06166500DC3807 /* Jirrasic-Line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Jirrasic-Line"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56F88FF21C06166500DC3807 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56F88FED1C06166500DC3807 /* Frameworks */ = {
+		28C02FFB1C06605800B65478 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,6 +577,15 @@
 			name = Write;
 			sourceTree = "<group>";
 		};
+		28C02FFF1C06605800B65478 /* Jirrasic-Line */ = {
+			isa = PBXGroup;
+			children = (
+				28C030001C06605800B65478 /* main.swift */,
+			);
+			name = "Jirrasic-Line";
+			path = "../Jirrasic-Line";
+			sourceTree = "<group>";
+		};
 		28DB60911BCA5B27003FDE96 /* TasksViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,15 +664,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		56F88FF11C06166500DC3807 /* Jirrasic-Line */ = {
-			isa = PBXGroup;
-			children = (
-				56F88FF21C06166500DC3807 /* main.m */,
-			);
-			name = "Jirrasic-Line";
-			path = "../Jirrasic-Line";
-			sourceTree = "<group>";
-		};
 		6D31D0431AC196BB001AC4BA = {
 			isa = PBXGroup;
 			children = (
@@ -685,7 +685,7 @@
 				6D31D0611AC196BC001AC4BA /* JirassicTests.xctest */,
 				286585141B031D3A00352782 /* Jirassic-Scrum.app */,
 				2865852A1B031D3A00352782 /* Jirassic-ScrumTests.xctest */,
-				56F88FF01C06166500DC3807 /* Jirrasic-Line */,
+				28C02FFE1C06605800B65478 /* Jirrasic-Line */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -695,7 +695,7 @@
 			children = (
 				289E2AE61B2D6554003269A3 /* OSX */,
 				286585151B031D3A00352782 /* IOS */,
-				56F88FF11C06166500DC3807 /* Jirrasic-Line */,
+				28C02FFF1C06605800B65478 /* Jirrasic-Line */,
 			);
 			name = Delivery;
 			path = Jirassic;
@@ -802,13 +802,13 @@
 			productReference = 2865852A1B031D3A00352782 /* Jirassic-ScrumTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		56F88FEF1C06166500DC3807 /* Jirrasic-Line */ = {
+		28C02FFD1C06605800B65478 /* Jirrasic-Line */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56F88FF41C06166500DC3807 /* Build configuration list for PBXNativeTarget "Jirrasic-Line" */;
+			buildConfigurationList = 28C030021C06605800B65478 /* Build configuration list for PBXNativeTarget "Jirrasic-Line" */;
 			buildPhases = (
-				56F88FEC1C06166500DC3807 /* Sources */,
-				56F88FED1C06166500DC3807 /* Frameworks */,
-				56F88FEE1C06166500DC3807 /* CopyFiles */,
+				28C02FFA1C06605800B65478 /* Sources */,
+				28C02FFB1C06605800B65478 /* Frameworks */,
+				28C02FFC1C06605800B65478 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -816,7 +816,7 @@
 			);
 			name = "Jirrasic-Line";
 			productName = "Jirrasic-Line";
-			productReference = 56F88FF01C06166500DC3807 /* Jirrasic-Line */;
+			productReference = 28C02FFE1C06605800B65478 /* Jirrasic-Line */;
 			productType = "com.apple.product-type.tool";
 		};
 		6D31D04B1AC196BB001AC4BA /* Jirassic */ = {
@@ -874,8 +874,8 @@
 						DevelopmentTeam = 5NHDC5EV44;
 						TestTargetID = 286585131B031D3A00352782;
 					};
-					56F88FEF1C06166500DC3807 = {
-						CreatedOnToolsVersion = 7.1.1;
+					28C02FFD1C06605800B65478 = {
+						CreatedOnToolsVersion = 7.1;
 					};
 					6D31D04B1AC196BB001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
@@ -903,7 +903,7 @@
 				6D31D0601AC196BC001AC4BA /* JirassicTests */,
 				286585131B031D3A00352782 /* Jirassic-Scrum */,
 				286585291B031D3A00352782 /* Jirassic-ScrumTests */,
-				56F88FEF1C06166500DC3807 /* Jirrasic-Line */,
+				28C02FFD1C06605800B65478 /* Jirrasic-Line */,
 			);
 		};
 /* End PBXProject section */
@@ -997,11 +997,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56F88FEC1C06166500DC3807 /* Sources */ = {
+		28C02FFA1C06605800B65478 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56F88FF31C06166500DC3807 /* main.m in Sources */,
+				28C030011C06605800B65478 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,7 +1217,7 @@
 			};
 			name = Release;
 		};
-		56F88FF51C06166500DC3807 /* Debug */ = {
+		28C030031C06605800B65478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1227,7 +1227,7 @@
 			};
 			name = Debug;
 		};
-		56F88FF61C06166500DC3807 /* Release */ = {
+		28C030041C06605800B65478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1435,11 +1435,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56F88FF41C06166500DC3807 /* Build configuration list for PBXNativeTarget "Jirrasic-Line" */ = {
+		28C030021C06605800B65478 /* Build configuration list for PBXNativeTarget "Jirrasic-Line" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				56F88FF51C06166500DC3807 /* Debug */,
-				56F88FF61C06166500DC3807 /* Release */,
+				28C030031C06605800B65478 /* Debug */,
+				28C030041C06605800B65478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
