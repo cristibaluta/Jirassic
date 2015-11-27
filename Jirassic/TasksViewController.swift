@@ -148,16 +148,18 @@ class TasksViewController: NSViewController {
 				self?.splitView?.hidden = false
 				
 				let task = Task(subtype: i)
-				sharedData.updateTask(task)
-				self?.tasksScrollView?.addTask( task )
+				sharedData.updateTask(task, completion: {(success: Bool) -> Void in
 				
-				self?.setupDaysTableView()
-				self?.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
-					withAnimation: NSTableViewAnimationOptions.SlideUp)
-				self?.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
-				
-				self?.updateNoTasksState()
-				self?.removeNewTaskController()
+					self?.tasksScrollView?.addTask( task )
+					
+					self?.setupDaysTableView()
+					self?.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+						withAnimation: NSTableViewAnimationOptions.SlideUp)
+					self?.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
+					
+					self?.updateNoTasksState()
+					self?.removeNewTaskController()
+				})
 			}
 		}
 		
@@ -222,10 +224,10 @@ class TasksViewController: NSViewController {
 	func handleStartDayButton() {
 		
 		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		sharedData.updateTask(task)
-		
-		day.setLastTrackedDay(NSDate())
-		reloadData()
+		sharedData.updateTask(task, completion: {(success: Bool) -> Void in
+			self.day.setLastTrackedDay(NSDate())
+			self.reloadData()
+		})
 	}
 	
 	func handleAddTaskButton(date: NSDate) {

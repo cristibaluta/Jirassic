@@ -46,11 +46,11 @@ class TasksScrollView: NSScrollView {
 		self.tableView?.reloadData()
 	}
 	
-	func addTask(task: Task) {
+	func addTask (task: Task) {
 		data.insert(task, atIndex: 0)
 	}
 	
-    func removeTaskAtRow(row: Int) {
+    func removeTaskAtRow (row: Int) {
         let theData = data[row];
 //        theData.deleteFromServerWhenPossible()
 		data.removeAtIndex(row)
@@ -60,11 +60,11 @@ class TasksScrollView: NSScrollView {
 
 extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	
-	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
+	func numberOfRowsInTableView (aTableView: NSTableView) -> Int {
 		return data.count
 	}
 	
-	func tableView(tableView: NSTableView,
+	func tableView (tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
 		var theData = data[row]
@@ -77,7 +77,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		assert(cell != nil, "Cell can't be nil, check the identifier")
 			
 		var date = ""
-		var notes = theData.notes!
+		var notes = theData.notes ?? ""//Alert the user the notes can't be nil
 		if theData.endDate == nil && theData.startDate != nil {
 			date = theData.startDate!.HHmm()
 			cell?.statusImage!.image = NSImage(named: NSImageNameStatusPartiallyAvailable)
@@ -148,7 +148,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		}
 	}
 	
-	func tableView(tableView: NSTableView, setObjectValue object: AnyObject?,
+	func tableView (tableView: NSTableView, setObjectValue object: AnyObject?,
 		forTableColumn tableColumn: NSTableColumn?, row: Int) {
 
 			RCLog("set object value for row \(row)")
@@ -165,7 +165,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 //		}
 //	}
 	
-	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		let theData = data[row]
 		return theData.taskType?.intValue == 0 ? kTaskCellMaxHeight : kNonTaskCellHeight
 	}

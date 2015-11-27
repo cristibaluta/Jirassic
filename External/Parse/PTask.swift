@@ -69,7 +69,9 @@ public class PTask: PFObject, PFSubclassing {
             return objectForKey(kNotesKey) as! String?
         }
         set {
-            setObject(newValue!, forKey: kNotesKey)
+			if let value = newValue {
+				setObject(value, forKey: kNotesKey)
+			}
         }
     }
 	
@@ -78,7 +80,9 @@ public class PTask: PFObject, PFSubclassing {
 			return objectForKey(kIssueKey) as! String?
 		}
 		set {
-			setObject(newValue!, forKey: kIssueKey)
+			if let value = newValue {
+				setObject(value, forKey: kIssueKey)
+			}
 		}
 	}
 	
@@ -87,7 +91,9 @@ public class PTask: PFObject, PFSubclassing {
 			return objectForKey(kTypeKey) as! NSNumber?
 		}
 		set {
-			setObject(newValue!, forKey: kTypeKey)
+			if let value = newValue {
+				setObject(value, forKey: kTypeKey)
+			}
 		}
 	}
 	
@@ -96,7 +102,9 @@ public class PTask: PFObject, PFSubclassing {
 			return objectForKey(kUserKey) as! PUser?
 		}
 		set {
-			setObject(newValue!, forKey: kUserKey)
+			if let value = newValue {
+				setObject(value, forKey: kUserKey)
+			}
 		}
 	}
 	

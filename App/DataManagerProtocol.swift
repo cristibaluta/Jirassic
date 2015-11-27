@@ -13,5 +13,5 @@ protocol DataManagerProtocol: NSObjectProtocol {
 	func queryTasks (completion: ([Task], NSError?) -> Void)
 	func allCachedTasks() -> [Task]
     func deleteTask (dataToDelete: Task)
-	func updateTask (theTask: Task)
+	func updateTask (theTask: Task, completion: ((success: Bool) -> Void))
 }

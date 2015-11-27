@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				// We already started the day, analyze if it's the scrum time
 				if Scrum().exists(existingTasks) {
 					let task = Task(dateSart: self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
-					sharedData.updateTask(task)
+					sharedData.updateTask(task, completion: {(success: Bool) -> Void in })
 //					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
 				}
 			} else {

@@ -25,18 +25,10 @@ class DataManager: NSObject, DataManagerProtocol {
 		query.findObjectsInBackgroundWithBlock( { (objects: [PFObject]?, error: NSError?) in
 			
 			if error == nil && objects != nil {
-				// Task does not conform to AnyObject
-				// and as a side note the objc NSArray cannot be directly casted to Swift array
 				self.tasks = [Task]()
 				for object in objects! {
 					let ptask = object as! PTask
-					let task = Task(startDate: ptask.date_task_started,
-						endDate: ptask.date_task_finished,
-						notes: ptask.notes,
-						issueType: ptask.issue_type,
-						taskType: ptask.task_type,
-						objectId: ptask.objectId)
-					self.tasks.append(task)
+					self.tasks.append(self.ptaskToTask(ptask))
 				}
 			}
 			completion(self.tasks, error)
@@ -67,27 +59,34 @@ class DataManager: NSObject, DataManagerProtocol {
         }
     }
 	
-	func updateTask (theTask: Task) {
+	func updateTask (theTask: Task, completion: ((success: Bool) -> Void)) {
 		
 		ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
 			_ = try? ptask.pin()
-			//        self.pinInBackgroundWithBlock { (success, error) -> Void in
-			//            RCLogO("Saved to local Parse \(success)")
-			//            RCLogErrorO(error)
-			//        }
-			ptask.saveEventually { (success, error) -> Void in
-				RCLogO("Saved to Parse \(success)")
+			ptask.pinInBackgroundWithBlock { (success, error) -> Void in
+				RCLogO("Saved to local Parse \(success)")
 				RCLogErrorO(error)
+				completion(success: true)
+				
+				ptask.saveEventually { (success, error) -> Void in
+					RCLogO("Saved to Parse \(success)")
+					RCLogErrorO(error)
+				}
 			}
 		})
 	}
 	
-	// Get the PTask corresponding to the Task
+	// Get the PTask corresponding to the Task. If doesn't exist, create one
 	private func ptaskForTask (task: Task, completion: ((ptask: PTask) -> Void)) {
 		
+		guard let objectId = task.objectId else {
+			completion(ptask: taskToPTask(task))
+			return
+		}
+		
 		let query = PFQuery(className: PTask.parseClassName())
-		query.cachePolicy = .NetworkElseCache
-		query.getObjectInBackgroundWithId(task.objectId!) { (data: PFObject?, error: NSError?) -> Void in
+		query.cachePolicy = .CacheElseNetwork
+		query.getObjectInBackgroundWithId(objectId, block: { (data: PFObject?, error: NSError?) -> Void in
 			
 			if error != nil {
 				RCLogErrorO(error)
@@ -95,6 +94,30 @@ class DataManager: NSObject, DataManagerProtocol {
 				RCLogO(data)
 				completion(ptask: data as! PTask)
 			}
-		}
+		})
+	}
+	
+	private func taskToPTask (task: Task) -> PTask {
+		
+		let ptask = PTask(className: PTask.parseClassName())
+			ptask.date_task_started = task.startDate
+			ptask.date_task_finished = task.endDate
+			ptask.notes = task.notes
+			ptask.issue_type = task.issueType
+			ptask.task_type = task.taskType
+			ptask.user = PUser.currentUser()
+		
+		return ptask
+	}
+	
+	private func ptaskToTask (ptask: PTask) -> Task {
+	
+		return Task(startDate: ptask.date_task_started,
+					endDate: ptask.date_task_finished,
+					notes: ptask.notes,
+					issueType: ptask.issue_type,
+					taskType: ptask.task_type,
+					objectId: ptask.objectId)
 	}
 }
+

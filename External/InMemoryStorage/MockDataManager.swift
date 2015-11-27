@@ -58,7 +58,7 @@ class MockDataManager: NSObject, DataManagerProtocol {
 		
 	}
 	
-	func updateTask (theTask: Task) {
+	func updateTask (theTask: Task, completion: ((success: Bool) -> Void)) {
 		
 	}
 }
