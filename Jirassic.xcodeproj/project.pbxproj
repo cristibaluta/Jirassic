@@ -104,6 +104,7 @@
 		28C02F931C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28C02F951C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28C030011C06605800B65478 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C030001C06605800B65478 /* main.swift */; };
+		28C0300A1C07E93100B65478 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C030091C07E93100B65478 /* TaskCellPresenter.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
@@ -259,6 +260,7 @@
 		28C02F921C01143C00B65478 /* ReadDayInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDayInteractor.swift; sourceTree = "<group>"; };
 		28C02FFE1C06605800B65478 /* Jirrasic-Line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Jirrasic-Line"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C030001C06605800B65478 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		28C030091C07E93100B65478 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		28E57AD31BF07ABB00B803E6 /* Scrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrum.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
@@ -592,6 +594,7 @@
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
 				28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
+				28C030091C07E93100B65478 /* TaskCellPresenter.swift */,
 				28F51EB41AC6EE5200A69CDF /* TaskCell.swift */,
 				28F51EB61AC6EF1700A69CDF /* TaskCell.xib */,
 				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
@@ -1012,6 +1015,7 @@
 				28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */,
 				28C02F4A1C007E8E00B65478 /* DataManager.swift in Sources */,
 				28C02F591C00801A00B65478 /* Task.swift in Sources */,
+				28C0300A1C07E93100B65478 /* TaskCellPresenter.swift in Sources */,
 				28C02F801C00A6C100B65478 /* LoginPresenter.swift in Sources */,
 				28C02F771C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
 				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
