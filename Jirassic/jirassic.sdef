@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="Jirassic Terminology">
+	<suite name="Jirassic Suite" code="Note" description="Jirassic-specific classes.">
+		
+		<class name="application" code="capp" description="Jirassic’s top level scripting object." plural="applications" inherits="application">
+			<cocoa class="NSApplication"/>
+			<element type="note" access="r">
+				<cocoa key="notes"/>
+			</element>
+			<responds-to command="logGitTask">
+				<cocoa method="addGitTask:commitDescription:"/>
+			</responds-to>
+			<responds-to command="quit2">
+				<cocoa method="handleQuitScriptCommand2"/>
+			</responds-to>
+			
+		</class>
+		
+	</suite>￼
+</dictionary>

@@ -28,17 +28,17 @@ class TasksScrollView: NSScrollView {
 	
 	override func awakeFromNib() {
 		
-		tableView?.setDataSource( self )
-		tableView?.setDelegate( self )
+		tableView?.setDataSource(self)
+		tableView?.setDelegate(self)
 		
 		assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
 		assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
 		
 		if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
-			tableView?.registerNib( nib, forIdentifier: kTaskCellIdentifier)
+			tableView?.registerNib(nib, forIdentifier: kTaskCellIdentifier)
 		}
 		if let nib = NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) {
-			tableView?.registerNib( nib, forIdentifier: kNonTaskCellIdentifier)
+			tableView?.registerNib(nib, forIdentifier: kNonTaskCellIdentifier)
 		}
 	}
 	
@@ -69,10 +69,11 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			
 		var theData = data[row]
 		var cell: TaskCellProtocol? = nil
-		if theData.taskType?.intValue == 0 {
-			cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
-		} else {
-			cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
+		switch Int(theData.taskType!.intValue) {
+			case TaskType.Issue.rawValue:
+				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
+			default:
+				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
 		}
 		assert(cell != nil, "Cell can't be nil, check the identifier")
 		
@@ -87,23 +88,21 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			})
 		}
 		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
-			if self.didRemoveRow != nil {
-                if let cell = cell as? TaskCell {
-                    self.didRemoveRow?(row: tableView.rowForView(cell))
-                }
-				else if let cell = cell as? NonTaskCell {
-                    self.didRemoveRow?(row: tableView.rowForView(cell))
-                }
-			}
+			self.didRemoveRow?(row: tableView.rowForView(cell as! NSTableRowView))
+//			if let cell = cell as? TaskCell {
+//				self.didRemoveRow?(row: tableView.rowForView(cell))
+//			}
+//			else if let cell = cell as? NonTaskCell {
+//				self.didRemoveRow?(row: tableView.rowForView(cell))
+//			}
 		}
 		cell?.didAddCell = { (cell: TaskCellProtocol) in
-			if self.didAddRow != nil {
-				if let cell = cell as? TaskCell {
-					self.didAddRow?(row: tableView.rowForView(cell))
-				}
-				else if let cell = cell as? NonTaskCell {
-					self.didAddRow?(row: tableView.rowForView(cell))
-				}
+//			self.didAddRow?(row: tableView.rowForView(cell as! NSTableRowView))
+			if let cell = cell as? TaskCell {
+				self.didAddRow?(row: tableView.rowForView(cell))
+			}
+			else if let cell = cell as? NonTaskCell {
+				self.didAddRow?(row: tableView.rowForView(cell))
 			}
 		}
 		

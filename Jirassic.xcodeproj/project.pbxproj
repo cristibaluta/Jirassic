@@ -103,8 +103,9 @@
 		28C02F901C01120700B65478 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */; };
 		28C02F931C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28C02F951C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
-		28C030011C06605800B65478 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C030001C06605800B65478 /* main.swift */; };
 		28C0300A1C07E93100B65478 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C030091C07E93100B65478 /* TaskCellPresenter.swift */; };
+		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
+		28C0300E1C09CC6F00B65478 /* JRApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* JRApplication.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
@@ -170,15 +171,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		28C02FFC1C06605800B65478 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		6D31D09D1AC44613001AC4BA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,9 +250,9 @@
 		28C02F8A1C010ABC00B65478 /* PIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIssue.swift; sourceTree = "<group>"; };
 		28C02F8D1C01120700B65478 /* ReadDaysInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDaysInteractor.swift; sourceTree = "<group>"; };
 		28C02F921C01143C00B65478 /* ReadDayInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDayInteractor.swift; sourceTree = "<group>"; };
-		28C02FFE1C06605800B65478 /* Jirrasic-Line */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Jirrasic-Line"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28C030001C06605800B65478 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		28C030091C07E93100B65478 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
+		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
+		28C0300D1C09CC6F00B65478 /* JRApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JRApplication.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		28E57AD31BF07ABB00B803E6 /* Scrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrum.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
@@ -338,13 +330,6 @@
 				2865854B1B03E62400352782 /* AudioToolbox.framework in Frameworks */,
 				2865853F1B03E5FC00352782 /* Security.framework in Frameworks */,
 				2865853B1B03E5F200352782 /* libz.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		28C02FFB1C06605800B65478 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
+				28C0300D1C09CC6F00B65478 /* JRApplication.swift */,
 				28E57AC21BEC180C00B803E6 /* Wireframe.swift */,
 				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
@@ -579,15 +565,6 @@
 			name = Write;
 			sourceTree = "<group>";
 		};
-		28C02FFF1C06605800B65478 /* Jirrasic-Line */ = {
-			isa = PBXGroup;
-			children = (
-				28C030001C06605800B65478 /* main.swift */,
-			);
-			name = "Jirrasic-Line";
-			path = "../Jirrasic-Line";
-			sourceTree = "<group>";
-		};
 		28DB60911BCA5B27003FDE96 /* TasksViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,7 +665,6 @@
 				6D31D0611AC196BC001AC4BA /* JirassicTests.xctest */,
 				286585141B031D3A00352782 /* Jirassic-Scrum.app */,
 				2865852A1B031D3A00352782 /* Jirassic-ScrumTests.xctest */,
-				28C02FFE1C06605800B65478 /* Jirrasic-Line */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -698,7 +674,6 @@
 			children = (
 				289E2AE61B2D6554003269A3 /* OSX */,
 				286585151B031D3A00352782 /* IOS */,
-				28C02FFF1C06605800B65478 /* Jirrasic-Line */,
 			);
 			name = Delivery;
 			path = Jirassic;
@@ -708,6 +683,7 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
+				28C0300B1C09969F00B65478 /* jirassic.sdef */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -805,23 +781,6 @@
 			productReference = 2865852A1B031D3A00352782 /* Jirassic-ScrumTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		28C02FFD1C06605800B65478 /* Jirrasic-Line */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28C030021C06605800B65478 /* Build configuration list for PBXNativeTarget "Jirrasic-Line" */;
-			buildPhases = (
-				28C02FFA1C06605800B65478 /* Sources */,
-				28C02FFB1C06605800B65478 /* Frameworks */,
-				28C02FFC1C06605800B65478 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Jirrasic-Line";
-			productName = "Jirrasic-Line";
-			productReference = 28C02FFE1C06605800B65478 /* Jirrasic-Line */;
-			productType = "com.apple.product-type.tool";
-		};
 		6D31D04B1AC196BB001AC4BA /* Jirassic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jirassic" */;
@@ -877,9 +836,6 @@
 						DevelopmentTeam = 5NHDC5EV44;
 						TestTargetID = 286585131B031D3A00352782;
 					};
-					28C02FFD1C06605800B65478 = {
-						CreatedOnToolsVersion = 7.1;
-					};
 					6D31D04B1AC196BB001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
 					};
@@ -906,7 +862,6 @@
 				6D31D0601AC196BC001AC4BA /* JirassicTests */,
 				286585131B031D3A00352782 /* Jirassic-Scrum */,
 				286585291B031D3A00352782 /* Jirassic-ScrumTests */,
-				28C02FFD1C06605800B65478 /* Jirrasic-Line */,
 			);
 		};
 /* End PBXProject section */
@@ -938,6 +893,7 @@
 				28B1F2BE1AFB2BF500D61472 /* NonTaskCell.xib in Resources */,
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
+				28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */,
 				289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */,
 				28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */,
 				28E838FA1AF297FE00602D33 /* Status.png in Resources */,
@@ -1000,14 +956,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C02FFA1C06605800B65478 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28C030011C06605800B65478 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6D31D0481AC196BB001AC4BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1024,6 +972,7 @@
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
+				28C0300E1C09CC6F00B65478 /* JRApplication.swift in Sources */,
 				28C02F8E1C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
 				28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */,
@@ -1218,25 +1167,6 @@
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic-Scrum.app/Jirassic-Scrum";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		28C030031C06605800B65478 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		28C030041C06605800B65478 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_NO_COMMON_BLOCKS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1438,14 +1368,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		28C030021C06605800B65478 /* Build configuration list for PBXNativeTarget "Jirrasic-Line" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				28C030031C06605800B65478 /* Debug */,
-				28C030041C06605800B65478 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jirassic" */ = {
 			isa = XCConfigurationList;

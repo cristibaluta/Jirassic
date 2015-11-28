@@ -32,7 +32,11 @@
 	<string>Copyright © 2015 Cristian Baluta. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>jirassic.sdef</string>
 </dict>
 </plist>

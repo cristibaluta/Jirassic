@@ -59,14 +59,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 	}
 	
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching (aNotification: NSNotification) {
 		let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
 		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
 			self.menu.iconView?.mouseDown(NSEvent())
 		})
     }
 	
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate (aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
 }
