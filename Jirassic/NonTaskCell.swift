@@ -20,7 +20,7 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: TaskCellProtocol) -> ())?
+	var didAddCell: ((cell: NSTableRowView) -> ())?
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	var data: (dateStart: String, dateEnd: String, issue: String, notes: String) {
 		get {
@@ -41,7 +41,7 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
-	override func drawBackgroundInRect(dirtyRect: NSRect) {
+	override func drawBackgroundInRect (dirtyRect: NSRect) {
 		
 		let selectionRect = NSRect(x: 0, y: 6, width: dirtyRect.size.width-10, height: dirtyRect.size.height-12)
 		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
@@ -56,23 +56,23 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	// MARK: Acions
 	
-	@IBAction func handleRemoveButton(sender: NSButton) {
-		self.didRemoveCell!(cell: self)
+	@IBAction func handleRemoveButton (sender: NSButton) {
+		self.didRemoveCell?(cell: self)
 	}
 	
-	@IBAction func handleAddButton(sender: NSButton) {
-		self.didAddCell!(cell: self)
+	@IBAction func handleAddButton (sender: NSButton) {
+		self.didAddCell?(cell: self)
 	}
 	
 	// MARK: mouse
 	
-	override func mouseEntered(theEvent: NSEvent) {
+	override func mouseEntered (theEvent: NSEvent) {
 		self.butRemove?.hidden = false
 		self.butAdd?.hidden = false
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
-	override func mouseExited(theEvent: NSEvent) {
+	override func mouseExited (theEvent: NSEvent) {
 		self.butRemove?.hidden = true
 		self.butAdd?.hidden = true
 		self.setNeedsDisplayInRect(self.frame)

@@ -26,7 +26,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: TaskCellProtocol) -> ())?
+	var didAddCell: ((cell: NSTableRowView) -> ())?
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	
 	// Sets the data to the cell
@@ -62,20 +62,20 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	// MARK: Acions
 	
-	@IBAction func handleRemoveButton(sender: NSButton) {
+	@IBAction func handleRemoveButton (sender: NSButton) {
 		didRemoveCell?(cell: self)
 	}
 	
-	@IBAction func handleAddButton(sender: NSButton) {
+	@IBAction func handleAddButton (sender: NSButton) {
 		didAddCell?(cell: self)
 	}
 	
-	@IBAction func handleCopyButton(sender: NSButton) {
+	@IBAction func handleCopyButton (sender: NSButton) {
 		NSPasteboard.generalPasteboard().clearContents()
 		NSPasteboard.generalPasteboard().writeObjects([notesTextField!.stringValue])
 	}
 	
-	override func drawBackgroundInRect(dirtyRect: NSRect) {
+	override func drawBackgroundInRect (dirtyRect: NSRect) {
 		
 		if (self.mouseInside) {
 			let selectionRect = NSRect(x: 65, y: 20, width: dirtyRect.size.width-74, height: dirtyRect.size.height-20)
@@ -100,7 +100,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 		linePath.fill()
 	}
 	
-	override func drawSelectionInRect(dirtyRect: NSRect) {
+	override func drawSelectionInRect (dirtyRect: NSRect) {
 		
 		let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
 		NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
@@ -112,19 +112,19 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	// MARK: mouse
 	
-	override func mouseEntered(theEvent: NSEvent) {
+	override func mouseEntered (theEvent: NSEvent) {
 		self.mouseInside = true
 		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
-	override func mouseExited(theEvent: NSEvent) {
+	override func mouseExited (theEvent: NSEvent) {
 		self.mouseInside = false
 		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
-	func showMouseOverControls(show: Bool) {
+	func showMouseOverControls (show: Bool) {
 		self.butRemove?.hidden = !show
 		self.butAdd?.hidden = !show
 		self.butCopy?.hidden = !show
@@ -153,15 +153,15 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 
 extension TaskCell: NSTextFieldDelegate {
 	
-	override func controlTextDidBeginEditing(obj: NSNotification) {
+	override func controlTextDidBeginEditing (obj: NSNotification) {
 		isEditing = true
 	}
 	
-	override func controlTextDidChange(obj: NSNotification){
+	override func controlTextDidChange (obj: NSNotification){
 		wasEdited = true
 	}
 	
-	override func controlTextDidEndEditing(obj: NSNotification) {
+	override func controlTextDidEndEditing (obj: NSNotification) {
 		if wasEdited {
 			self.didEndEditingCell!(cell: self)
 			wasEdited = false

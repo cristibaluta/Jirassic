@@ -13,7 +13,7 @@ protocol TaskCellProtocol: NSObjectProtocol {
 	var statusImage: NSImageView? {get}
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())? {get set}
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())? {get set}
-	var didAddCell: ((cell: TaskCellProtocol) -> ())? {get set}
+	var didAddCell: ((cell: NSTableRowView) -> ())? {get set}
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())? {get set}
 	var data: TaskCreationData {get set}
 }

@@ -91,6 +91,7 @@ class TasksViewController: NSViewController {
 			}
 		}
 		tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
+			RCLogO("add \(row)")
 			let theData = self?.tasksScrollView!.data[row]
             if let date = theData?.endDate {
                 self?.handleAddTaskButton(date)
@@ -155,7 +156,7 @@ class TasksViewController: NSViewController {
 					self?.setupDaysTableView()
 					self?.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
 						withAnimation: NSTableViewAnimationOptions.SlideUp)
-					self?.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
+					self?.tasksScrollView?.tableView?.scrollRowToVisible(0)
 					
 					self?.updateNoTasksState()
 					self?.removeNewTaskController()
@@ -172,7 +173,7 @@ class TasksViewController: NSViewController {
         }
 	}
 	
-	func showLoadingIndicator(show: Bool) {
+	func showLoadingIndicator (show: Bool) {
 		if show {
 			_progressIndicator?.startAnimation(nil)
 		} else {
@@ -196,7 +197,7 @@ class TasksViewController: NSViewController {
 		self.reloadTasksOnDay(NSDate())
 	}
 	
-	func reloadTasksOnDay(date: NSDate) {
+	func reloadTasksOnDay (date: NSDate) {
 		
 		let reader = ReadDayInteractor(data: sharedData)
 		tasksScrollView!.data = reader.tasksForDayOfDate(date)
@@ -208,7 +209,7 @@ class TasksViewController: NSViewController {
 		updateNoTasksState()
 	}
 	
-	func newTaskWasAdded(notif: NSNotification) {
+	func newTaskWasAdded (notif: NSNotification) {
 		if let task = notif.object as? Task {
 			self.tasksScrollView?.addTask( task )
 			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
@@ -230,7 +231,7 @@ class TasksViewController: NSViewController {
 		})
 	}
 	
-	func handleAddTaskButton(date: NSDate) {
+	func handleAddTaskButton (date: NSDate) {
 		RCLogO("add new cell after date \(date)")
 		removeNoTasksController()
 		splitView?.hidden = true
@@ -238,11 +239,11 @@ class TasksViewController: NSViewController {
 		Wireframe.presentNewTaskController(controller, overController: self, splitView: splitView!)
 	}
 	
-	@IBAction func handleSettingsButton(sender: NSButton) {
+	@IBAction func handleSettingsButton (sender: NSButton) {
 		handleSettingsButton?()
 	}
 	
-	@IBAction func handleRefreshButton(sender: NSButton) {
+	@IBAction func handleRefreshButton (sender: NSButton) {
 		reloadDataFromServer()
 	}
 }
