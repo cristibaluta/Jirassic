@@ -370,6 +370,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2802E0B21C0AC82000FA225F /* Task cell */ = {
+			isa = PBXGroup;
+			children = (
+				28F51EB41AC6EE5200A69CDF /* TaskCell.swift */,
+				28F51EB61AC6EF1700A69CDF /* TaskCell.xib */,
+				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
+				28C030091C07E93100B65478 /* TaskCellPresenter.swift */,
+			);
+			name = "Task cell";
+			sourceTree = "<group>";
+		};
+		2802E0B31C0AC83600FA225F /* Non task cell */ = {
+			isa = PBXGroup;
+			children = (
+				28B1F2B91AFB2BCF00D61472 /* NonTaskCell.swift */,
+				28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */,
+			);
+			name = "Non task cell";
+			sourceTree = "<group>";
+		};
 		2846C9111AFF8AC800779357 /* parse-ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,12 +591,8 @@
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
 				28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
-				28C030091C07E93100B65478 /* TaskCellPresenter.swift */,
-				28F51EB41AC6EE5200A69CDF /* TaskCell.swift */,
-				28F51EB61AC6EF1700A69CDF /* TaskCell.xib */,
-				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
-				28B1F2B91AFB2BCF00D61472 /* NonTaskCell.swift */,
-				28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */,
+				2802E0B21C0AC82000FA225F /* Task cell */,
+				2802E0B31C0AC83600FA225F /* Non task cell */,
 			);
 			name = TasksViewController;
 			sourceTree = "<group>";

@@ -20,7 +20,7 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: NSTableRowView) -> ())?
+	var didAddCell: ((cell: TaskCellProtocol) -> ())?
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	var data: (dateStart: String, dateEnd: String, issue: String, notes: String) {
 		get {

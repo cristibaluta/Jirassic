@@ -67,7 +67,6 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	func tableView (tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-		let cellRow = row
 		var theData = data[row]
 		var cell: TaskCellProtocol? = nil
 		switch Int(theData.taskType!.intValue) {
@@ -89,29 +88,22 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			})
 		}
 		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
-			self.didRemoveRow?(row: tableView.rowForView(cell as! NSTableRowView))
-//			if let cell = cell as? TaskCell {
-//				self.didRemoveRow?(row: tableView.rowForView(cell))
-//			}
-//			else if let cell = cell as? NonTaskCell {
-//				self.didRemoveRow?(row: tableView.rowForView(cell))
-//			}
-		}
-		cell?.didAddCell = { (cell: NSTableRowView) in
-			RCLog(cell)
-			let row = tableView.rowForView(cell as! NSTableRowView)
-//			guard row >= 0 else {
-//				return
-//			}
 			tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
-				RCLog(rowView)
-				if rowView == cell as! NSTableRowView {
-					RCLog("found it")
-					self.didAddRow?(row: cellRow)
+				if rowView.subviews.first! == cell as! NSTableRowView {
+					self.didRemoveRow?(row: rowIndex)
+					return
 				}
 			})
 		}
-		RCLog(cell)
+		cell?.didAddCell = { (cell: TaskCellProtocol) in
+			tableView.enumerateAvailableRowViewsUsingBlock({ rowView, rowIndex in
+				if rowView.subviews.first! == cell as! NSTableRowView {
+					self.didAddRow?(row: rowIndex)
+					return
+				}
+			})
+		}
+		
 		return cell as? NSView
 	}
 	

@@ -26,7 +26,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
 	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: NSTableRowView) -> ())?
+	var didAddCell: ((cell: TaskCellProtocol) -> ())?
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	
 	// Sets the data to the cell
@@ -163,7 +163,7 @@ extension TaskCell: NSTextFieldDelegate {
 	
 	override func controlTextDidEndEditing (obj: NSNotification) {
 		if wasEdited {
-			self.didEndEditingCell!(cell: self)
+			self.didEndEditingCell?(cell: self)
 			wasEdited = false
 		}
 	}
