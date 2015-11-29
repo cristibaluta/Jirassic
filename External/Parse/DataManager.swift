@@ -62,7 +62,7 @@ class DataManager: NSObject, DataManagerProtocol {
 	func updateTask (task: Task, completion: ((success: Bool) -> Void)) {
 		RCLogO("Update task \(task)")
 		// Update local array
-		for i in 0...tasks.count {
+		for i in 0...(tasks.count-1) {
 			if task.objectId == tasks[i].objectId {
 				tasks[i] = task
 				break
@@ -95,7 +95,11 @@ class DataManager: NSObject, DataManagerProtocol {
 	private func ptaskOfTask (task: Task, completion: ((ptask: PTask) -> Void)) {
 		
 		guard let objectId = task.objectId else {
-			completion(ptask: taskToPTask(task))
+			// Ptask does not exist yet
+			// TODO: insert it at the right index by comparing dates
+			let ptask = taskToPTask(task)
+			self.tasks.insert(task, atIndex: 0)
+			completion(ptask: ptask)
 			return
 		}
 		
