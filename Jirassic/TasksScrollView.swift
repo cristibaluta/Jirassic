@@ -83,6 +83,8 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
 			theData.issueType = cell.data.issue
 			theData.notes = cell.data.notes
+			self.data[row] = theData// save the changes locally because the struct is passed by copying
+			// Save to server
 			sharedData.updateTask(theData, completion: { (success) -> Void in
 				RCLog(success)
 			})
