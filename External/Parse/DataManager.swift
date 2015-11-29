@@ -47,7 +47,7 @@ class DataManager: NSObject, DataManagerProtocol {
             indexToRemove++
             if theTask.objectId == taskToDelete.objectId {
                 shouldRemove = true
-				ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
+				ptaskOfTask(theTask, completion: { (ptask: PTask) -> Void in
 					ptask.unpinInBackground()
 					ptask.deleteEventually()
 				})
@@ -59,15 +59,22 @@ class DataManager: NSObject, DataManagerProtocol {
         }
     }
 	
-	func updateTask (theTask: Task, completion: ((success: Bool) -> Void)) {
-		
-		ptaskForTask(theTask, completion: { (ptask: PTask) -> Void in
-			_ = try? ptask.pin()
-			ptask.pinInBackgroundWithBlock { (success, error) -> Void in
+	func updateTask (task: Task, completion: ((success: Bool) -> Void)) {
+		RCLogO("Update task \(task)")
+		ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
+			// Update the ptask with data from task
+			ptask.date_task_started = task.startDate
+			ptask.date_task_finished = task.endDate
+			ptask.notes = task.notes
+			ptask.issue_type = task.issueType
+			ptask.task_type = task.taskType
+			// Save it locally
+			ptask.pinInBackgroundWithBlock { success, error in
 				RCLogO("Saved to local Parse \(success)")
 				RCLogErrorO(error)
 				completion(success: true)
 				
+				// Save it to server
 				ptask.saveEventually { (success, error) -> Void in
 					RCLogO("Saved to Parse \(success)")
 					RCLogErrorO(error)
@@ -77,7 +84,7 @@ class DataManager: NSObject, DataManagerProtocol {
 	}
 	
 	// Get the PTask corresponding to the Task. If doesn't exist, create one
-	private func ptaskForTask (task: Task, completion: ((ptask: PTask) -> Void)) {
+	private func ptaskOfTask (task: Task, completion: ((ptask: PTask) -> Void)) {
 		
 		guard let objectId = task.objectId else {
 			completion(ptask: taskToPTask(task))

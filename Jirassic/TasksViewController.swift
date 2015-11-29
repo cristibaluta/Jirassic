@@ -83,7 +83,7 @@ class TasksViewController: NSViewController {
 	func setupTasksTableView() {
 		
 		tasksScrollView!.didRemoveRow = { (row: Int) in
-			RCLogO("remove \(row)")
+			RCLogO("remove item at row \(row)")
 			if row >= 0 {
                 let theData = self.tasksScrollView!.data[row]
                 self.tasksScrollView!.removeTaskAtRow(row);
@@ -91,7 +91,7 @@ class TasksViewController: NSViewController {
 			}
 		}
 		tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
-			RCLogO("add \(row)")
+			RCLogO("add item after row \(row)")
 			let theData = self?.tasksScrollView!.data[row]
             if let date = theData?.endDate {
                 self?.handleAddTaskButton(date)
@@ -148,7 +148,11 @@ class TasksViewController: NSViewController {
 				
 				self?.splitView?.hidden = false
 				
-				let task = Task(subtype: i)
+				var task = Task(subtype: i)
+				task.notes = self!._newTaskViewController!.notes
+				task.issueType = self!._newTaskViewController!.issue
+				RCLog(i)
+				RCLog(task)
 				sharedData.updateTask(task, completion: {(success: Bool) -> Void in
 				
 					self?.tasksScrollView?.addTask( task )

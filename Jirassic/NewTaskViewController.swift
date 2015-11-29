@@ -24,6 +24,22 @@ class NewTaskViewController: NSViewController {
 			self.dateTextField?.stringValue = ""
 		}
 	}
+	var notes: String {
+		get {
+			return notesTextField!.stringValue
+		}
+		set {
+			
+		}
+	}
+	var issue: String {
+		get {
+			return issueNrTextField!.stringValue
+		}
+		set {
+			
+		}
+	}
 	
 	class func instanceFromStoryboard() -> NewTaskViewController {
 		
