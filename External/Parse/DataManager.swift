@@ -43,24 +43,32 @@ class DataManager: NSObject, DataManagerProtocol {
         
         var indexToRemove = -1
         var shouldRemove = false
-        for theTask in tasks {
+        for task in tasks {
             indexToRemove++
-            if theTask.objectId == taskToDelete.objectId {
+            if task.objectId == taskToDelete.objectId {
                 shouldRemove = true
-				ptaskOfTask(theTask, completion: { (ptask: PTask) -> Void in
+				ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 					ptask.unpinInBackground()
 					ptask.deleteEventually()
 				})
                 break
             }
         }
-        if shouldRemove && indexToRemove >= 0 {
+        if shouldRemove {
             self.tasks.removeAtIndex(indexToRemove)
         }
     }
 	
 	func updateTask (task: Task, completion: ((success: Bool) -> Void)) {
 		RCLogO("Update task \(task)")
+		// Update local array
+		for i in 0...tasks.count {
+			if task.objectId == tasks[i].objectId {
+				tasks[i] = task
+				break
+			}
+		}
+		// Update local and remote database
 		ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 			// Update the ptask with data from task
 			ptask.date_task_started = task.startDate
