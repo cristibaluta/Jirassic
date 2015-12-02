@@ -12,19 +12,19 @@ class Wireframe: NSObject {
 
 	// MARK: Popover
 	
-	class func showPopover(popover: NSPopover, fromIcon icon: NSView) {
+	class func showPopover (popover: NSPopover, fromIcon icon: NSView) {
 		let edge = NSRectEdge.MinY
 		let rect = icon.frame
 		popover.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
 	}
 	
-	class func hidePopover(popover: NSPopover) {
+	class func hidePopover (popover: NSPopover) {
 		popover.close()
 	}
 	
 	// MARK: Settings
 	
-	class func flipToSettings(settingsController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
+	class func flipToSettings (settingsController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
 		
 		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
@@ -54,7 +54,7 @@ class Wireframe: NSObject {
 //		flip.startWithLayer(self.view.superview!.layer!)
 	}
 	
-	class func flipToTasks(tasksController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
+	class func flipToTasks (tasksController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
 		
 		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
@@ -72,7 +72,7 @@ class Wireframe: NSObject {
 	}
 	
 	
-	class func presentNoTaskController(controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
+	class func presentNoTaskController (controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
 		
 		parentController.addChildViewController(controller)
 		splitView.subviews[1].addSubview(controller.view)
@@ -84,14 +84,15 @@ class Wireframe: NSObject {
 		controller.view.removeFromSuperview()
 	}
 	
-	class func presentNewTaskController(controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
+	class func presentNewTaskController (controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
 		
 		parentController.addChildViewController(controller)
         parentController.view.addSubview(controller.view)
-        controller.view.constrainToSuperview()
+        controller.view.constrainToSuperviewWidth()
+        controller.view.constrainToSuperviewHeight(100, bottom: 0)
 	}
 	
-	class func removeNoProjectsController(controller: NSViewController?) {
+	class func removeNoProjectsController (controller: NSViewController?) {
 		
 		if let c = controller {
 			c.view.removeFromSuperview()
