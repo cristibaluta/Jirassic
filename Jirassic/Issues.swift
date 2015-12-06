@@ -14,7 +14,7 @@ class Issues: NSObject {
 		return ["BOSCH-33 Refactoring", "BOSCH-34 UX"]
 	}
 	
-	class func match(searchString: String) -> [String] {
+	class func match (searchString: String) -> [String] {
 		return all()
 //			.filter({ (_: Issues.Generator.Element) -> Bool in
 //			return true

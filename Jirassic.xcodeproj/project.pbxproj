@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2802E0D01C14BD2A00FA225F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */; };
 		282426761B113D5000211713 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
 		2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851268A1BAB42A100D668F2 /* TaskCellTests.swift */; };
@@ -105,7 +106,7 @@
 		28C02F951C01143C00B65478 /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F921C01143C00B65478 /* ReadDayInteractor.swift */; };
 		28C0300A1C07E93100B65478 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C030091C07E93100B65478 /* TaskCellPresenter.swift */; };
 		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
-		28C0300E1C09CC6F00B65478 /* JRApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* JRApplication.swift */; };
+		28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
 		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
@@ -186,6 +187,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		282426751B113D5000211713 /* FlipScreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipScreens.swift; sourceTree = "<group>"; };
 		282426771B113F6900211713 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -252,7 +254,7 @@
 		28C02F921C01143C00B65478 /* ReadDayInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDayInteractor.swift; sourceTree = "<group>"; };
 		28C030091C07E93100B65478 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
-		28C0300D1C09CC6F00B65478 /* JRApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JRApplication.swift; sourceTree = "<group>"; };
+		28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		28E57AD31BF07ABB00B803E6 /* Scrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrum.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2802E0D01C14BD2A00FA225F /* ScriptingBridge.framework in Frameworks */,
 				6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */,
 				6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */,
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
@@ -480,7 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
-				28C0300D1C09CC6F00B65478 /* JRApplication.swift */,
+				28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */,
 				28E57AC21BEC180C00B803E6 /* Wireframe.swift */,
 				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
@@ -724,6 +727,7 @@
 		6D31D0741AC2E439001AC4BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */,
 				2846C92D1AFF905D00779357 /* libsqlite3.dylib */,
 				2846C92B1AFF905100779357 /* libz.dylib */,
 				2846C9291AFF904500779357 /* SystemConfiguration.framework */,
@@ -988,7 +992,7 @@
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
-				28C0300E1C09CC6F00B65478 /* JRApplication.swift in Sources */,
+				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
 				28C02F8E1C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
 				28B1F2B61AFAA6F600D61472 /* NewTaskViewController.swift in Sources */,
