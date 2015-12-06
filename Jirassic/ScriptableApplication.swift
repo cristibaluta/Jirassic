@@ -16,7 +16,14 @@ extension NSApplication {
 	
 	func setTasks (tasks: String) {
 		RCLog(tasks);
-		let task = Task(startDate: nil, endDate: NSDate(), notes: tasks, issueType: TaskType.Issue, taskType: TaskType.Issue, objectId: nil)
+		let task = Task(
+			startDate: nil,
+			endDate: NSDate(),
+			notes: tasks,
+			issueType: Issues.lastUsed(),
+			taskType: TaskType.Issue.rawValue,
+			objectId: nil
+		)
 		sharedData.updateTask(task, completion: {(success: Bool) -> Void in
 			RCLog(success)
 		})
