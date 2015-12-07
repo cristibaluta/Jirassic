@@ -27,6 +27,12 @@ extension NSApplication {
 		sharedData.updateTask(task, completion: {(success: Bool) -> Void in
 			RCLog(success)
 		})
+        
+        let notification = NSUserNotification()
+        notification.title = "Git commit logged to Jirassic"
+        notification.informativeText = tasks
+        
+        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
 	}
 	
 //	func commit() -> NSDictionary {

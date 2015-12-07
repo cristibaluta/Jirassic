@@ -64,10 +64,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
 			self.menu.iconView?.mouseDown(NSEvent())
 		})
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
     }
 	
     func applicationWillTerminate (aNotification: NSNotification) {
         // Insert code here to tear down your application
+    }
+}
+
+extension AppDelegate: NSUserNotificationCenterDelegate {
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
     }
 }
 
