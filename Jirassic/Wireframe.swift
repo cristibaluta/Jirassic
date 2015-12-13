@@ -24,7 +24,10 @@ class Wireframe: NSObject {
 	
 	// MARK: Settings
 	
-	class func flipToSettings (settingsController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
+	class func flipToSettings (settingsController: NSViewController,
+		parentController: NSViewController,
+		currentController: NSViewController,
+		completion: (controller: NSViewController) -> Void) {
 		
 		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
@@ -54,7 +57,10 @@ class Wireframe: NSObject {
 //		flip.startWithLayer(self.view.superview!.layer!)
 	}
 	
-	class func flipToTasks (tasksController: NSViewController, parentController: NSViewController, currentController: NSViewController, completion: (controller: NSViewController) -> Void) {
+	class func flipToTasks (tasksController: NSViewController,
+		parentController: NSViewController,
+		currentController: NSViewController,
+		completion: (controller: NSViewController) -> Void) {
 		
 		let flip = FlipScreens()
 		flip.animationReachedMiddle = {
@@ -71,8 +77,9 @@ class Wireframe: NSObject {
 		flip.startWithLayer(parentController.view.superview!.layer!)
 	}
 	
-	
-	class func presentNoTaskController (controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
+	class func presentNoTaskController (controller: NSViewController,
+		overController parentController: NSViewController,
+		splitView: NSSplitView) {
 		
 		parentController.addChildViewController(controller)
 		splitView.subviews[1].addSubview(controller.view)
@@ -84,7 +91,9 @@ class Wireframe: NSObject {
 		controller.view.removeFromSuperview()
 	}
 	
-	class func presentNewTaskController (controller: NSViewController, overController parentController: NSViewController, splitView: NSSplitView) {
+	class func presentNewTaskController (controller: NSViewController,
+		overController parentController: NSViewController,
+		splitView: NSSplitView) {
 		
 		parentController.addChildViewController(controller)
         parentController.view.addSubview(controller.view)

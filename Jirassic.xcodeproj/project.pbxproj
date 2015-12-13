@@ -50,6 +50,7 @@
 		286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */; };
 		286E9A3F1C1C9CE0008FC45E /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E9A3E1C1C9CE0008FC45E /* GitCell.swift */; };
 		286E9A411C1C9D92008FC45E /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286E9A401C1C9D92008FC45E /* GitCell.xib */; };
+		286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E9A421C1D9829008FC45E /* InternalNotifications.swift */; };
 		28778A581BB9B9A9003E4880 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A571BB9B9A9003E4880 /* TaskTests.swift */; };
 		28778A5A1BB9C70F003E4880 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
 		28778A5D1BB9C730003E4880 /* IssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A5C1BB9C730003E4880 /* IssuesTests.swift */; };
@@ -221,6 +222,7 @@
 		286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		286E9A3E1C1C9CE0008FC45E /* GitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCell.swift; sourceTree = "<group>"; };
 		286E9A401C1C9D92008FC45E /* GitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitCell.xib; sourceTree = "<group>"; };
+		286E9A421C1D9829008FC45E /* InternalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotifications.swift; sourceTree = "<group>"; };
 		28778A571BB9B9A9003E4880 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTests.swift; path = JirassicTests/TaskTests.swift; sourceTree = SOURCE_ROOT; };
 		28778A591BB9C70F003E4880 /* Issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issues.swift; sourceTree = "<group>"; };
 		28778A5C1BB9C730003E4880 /* IssuesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuesTests.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 			children = (
 				28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */,
 				286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */,
+				286E9A421C1D9829008FC45E /* InternalNotifications.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				286E9A3F1C1C9CE0008FC45E /* GitCell.swift in Sources */,
+				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
 				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
 				28C02F8E1C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,

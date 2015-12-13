@@ -15,8 +15,12 @@ let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 extension NSDate {
 	
 	convenience init (hour: Int, minute: Int, second: Int=0) {
+		self.init(date: NSDate(), hour: hour, minute: minute, second: second)
+	}
+	
+	convenience init (date: NSDate, hour: Int, minute: Int, second: Int=0) {
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: date)
 		comps.hour = hour
 		comps.minute = minute
 		comps.second = 0
@@ -84,7 +88,7 @@ extension NSDate {
 	
 	// MARK: 
 	
-	class func getMonthsBetween(startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
+	class func getMonthsBetween (startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
 	
 		var dates: [NSDate] = [NSDate]()
 		let monthDifference = NSDateComponents()
@@ -112,11 +116,11 @@ extension NSDate {
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
-	func isSameMonthAs(month: NSDate) -> Bool {
+	func isSameMonthAs (month: NSDate) -> Bool {
 		return self.year() == month.year() && self.month() == month.month()
 	}
 	
-	func isSameDayAs(date: NSDate) -> Bool {
+	func isSameDayAs (date: NSDate) -> Bool {
 		
 		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
 		let compsRef = gregorian!.components(ymdUnitFlags, fromDate: date)
@@ -164,7 +168,7 @@ extension NSDate {
 		return time / 3600
 	}
 	
-	func sameDateWithHour (hour: Int, minute: Int) -> NSDate {
+	func dateByUpdatingHour (hour: Int, minute: Int) -> NSDate {
 		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
 		comps.hour = hour
@@ -174,9 +178,14 @@ extension NSDate {
 		return gregorian!.dateFromComponents(comps)!
 	}
 	
+	class func parseHHmm (hhmm: String) -> (hour: Int, min: Int) {
+		let hm = hhmm.componentsSeparatedByString(":")
+		return (hour: Int(hm.first!)!, min: Int(hm.last!)!)
+	}
+	
 	// MARK: Round to nearest quarter
 	
-	private func round(min: Int) -> (hour: Int, min: Int) {
+	private func round (min: Int) -> (hour: Int, min: Int) {
 		if min < 22 {
 			return (0, 15)
 		} else if min < 38 {

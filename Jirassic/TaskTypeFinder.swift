@@ -1,5 +1,5 @@
 //
-//  Scrum.swift
+//  TaskTypeFinder.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 09/11/15.

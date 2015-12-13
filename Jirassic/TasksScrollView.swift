@@ -95,6 +95,10 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
 			theData.issueType = cell.data.issue
 			theData.notes = cell.data.notes
+			if cell.data.dateEnd != "" {
+				let hm = NSDate.parseHHmm(cell.data.dateEnd)
+				theData.endDate = theData.endDate!.dateByUpdatingHour(hm.hour, minute: hm.min)
+			}
 			self?.data[row] = theData// save the changes locally because the struct is passed by copying
 			// Save to server
 			sharedData.updateTask(theData, completion: { (success) -> Void in
@@ -102,6 +106,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			})
 		}
 		cell?.didRemoveCell = { [weak self] (cell: TaskCellProtocol) in
+			// Ugly hack to find the row number from which the action came
 			tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
 				if rowView.subviews.first! == cell as! NSTableRowView {
 					self?.didRemoveRow?(row: rowIndex)
@@ -110,7 +115,8 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			})
 		}
 		cell?.didAddCell = { [weak self] (cell: TaskCellProtocol) in
-			tableView.enumerateAvailableRowViewsUsingBlock({ rowView, rowIndex in
+			// Ugly hack to find the row number from which the action came
+			tableView.enumerateAvailableRowViewsUsingBlock( { rowView, rowIndex in
 				if rowView.subviews.first! == cell as! NSTableRowView {
 					self?.didAddRow?(row: rowIndex)
 					return

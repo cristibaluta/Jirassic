@@ -29,13 +29,13 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	var didAddCell: ((cell: TaskCellProtocol) -> ())?
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	
-	// Sets the data to the cell
+	// Sets data to the cell
 	var data: TaskCreationData {
 		get {
-			return (self.dateEndTextField!.stringValue,
-					self.dateEndTextField!.stringValue,
-					self.issueNrTextField!.stringValue,
-					self.notesTextField!.stringValue)
+			return (dateStart: self.dateEndTextField!.stringValue,
+					dateEnd: self.dateEndTextField!.stringValue,
+					issue: self.issueNrTextField!.stringValue,
+					notes: self.notesTextField!.stringValue)
 		}
 		set {
 			self.dateEndTextField!.stringValue = newValue.dateEnd
@@ -49,16 +49,6 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 		}
 		set {
 			self.durationTextField!.stringValue = newValue
-		}
-	}
-	
-	// Sets the end date of the task to the UI picker. It can be edited and requested back
-	var date: NSDate {
-		get {
-			return NSDate()// self.datePicker!.dateValue
-		}
-		set {
-			//self.datePicker!.dateValue = newValue
 		}
 	}
 	
@@ -86,11 +76,11 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	override func drawBackgroundInRect (dirtyRect: NSRect) {
 		
 		if (self.mouseInside) {
-			let selectionRect = dirtyRect
-			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
-			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
-			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
-			selectionPath.fill()
+//			let selectionRect = dirtyRect
+//			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
+//			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
+//			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
+//			selectionPath.fill()
 			
 //			let selectionRect = NSRect(x: 65, y: 20, width: dirtyRect.size.width-74, height: dirtyRect.size.height-20)
 //			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
@@ -100,18 +90,18 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 //			selectionPath.stroke()
 		}
 		else {
-			let selectionRect = NSRect(x: 60, y: 0, width: dirtyRect.size.width-70, height: dirtyRect.size.height)
-			NSColor(calibratedWhite: 0.65, alpha: 0.0).setStroke()
-			NSColor(calibratedWhite: 0.82, alpha: 0.0).setFill()
-			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-			selectionPath.fill()
-			selectionPath.stroke()
+//			let selectionRect = NSRect(x: 60, y: 0, width: dirtyRect.size.width-70, height: dirtyRect.size.height)
+//			NSColor(calibratedWhite: 0.65, alpha: 0.0).setStroke()
+//			NSColor(calibratedWhite: 0.82, alpha: 0.0).setFill()
+//			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+//			selectionPath.fill()
+//			selectionPath.stroke()
 		}
 		
-		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
-		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-		let linePath = NSBezierPath(rect: lineRect)
-		linePath.fill()
+//		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
+//		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+//		let linePath = NSBezierPath(rect: lineRect)
+//		linePath.fill()
 	}
 	
 	override func drawSelectionInRect (dirtyRect: NSRect) {
@@ -123,6 +113,15 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 		selectionPath.fill()
 		selectionPath.stroke()
 	}
+	
+//	override func drawRect (dirtyRect: NSRect) {
+//		super.drawRect(dirtyRect)
+//		
+////		if selected == true {
+//			NSColor.clearColor().set()
+//			NSRectFill(dirtyRect)
+////		}
+//	}
 	
 	// MARK: mouse
 	
@@ -160,7 +159,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	override func updateTrackingAreas() {
 		super.updateTrackingAreas()
 		self.ensureTrackingArea()
-		if (!(self.trackingAreas as NSArray).containsObject(self.trackingArea!)) {
+		if !(self.trackingAreas as NSArray).containsObject(self.trackingArea!) {
 			self.addTrackingArea(self.trackingArea!);
 		}
 	}
@@ -172,7 +171,7 @@ extension TaskCell: NSTextFieldDelegate {
 		isEditing = true
 	}
 	
-	override func controlTextDidChange (obj: NSNotification){
+	override func controlTextDidChange (obj: NSNotification) {
 		wasEdited = true
 		if obj.object as? NSTextField == dateEndTextField {
 			RCLog(obj);
@@ -189,9 +188,13 @@ extension TaskCell: NSTextFieldDelegate {
 	
 	func control (control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
 		
-		if textView == dateEndTextField {
+		if control as? NSTextField == dateEndTextField {
 			RCLog(commandSelector)
+			if wasEdited && commandSelector == "insertNewline:" {
+				self.didEndEditingCell?(cell: self)
+				wasEdited = false
+			}
 		}
-		return true
+		return false
 	}
 }

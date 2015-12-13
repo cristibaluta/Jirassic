@@ -31,9 +31,8 @@ class PopoverViewController: NSViewController {
 	func createTasksController() -> TasksViewController {
 		
 		let tasksController = TasksViewController.instanceFromStoryboard()
-		tasksController.view.frame = CGRect(x: 0, y: 0,
-				width: self.view.frame.size.width, height: self.view.frame.size.height)
-		tasksController.handleSettingsButton = {[weak self] () in
+		tasksController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
+		tasksController.handleSettingsButton = { [weak self] in
 			if let strongSelf = self {
 				Wireframe.flipToSettings(
 					strongSelf.createSettingsController(),
@@ -52,9 +51,8 @@ class PopoverViewController: NSViewController {
 	func createSettingsController() -> SettingsViewController {
 		
 		let settingsController = SettingsViewController.instanceFromStoryboard()
-		settingsController.view.frame = CGRect(x: 0, y: 0,
-				width: self.view.frame.size.width, height: self.view.frame.size.height)
-		settingsController.handleSaveButton = {[weak self] () in
+		settingsController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
+		settingsController.handleSaveButton = { [weak self] in
 			self?.flipToTasks(settingsController)
 		}
 		
@@ -64,24 +62,24 @@ class PopoverViewController: NSViewController {
 	func createLoginController() -> LoginViewController {
 		
 		let loginController = LoginViewController.instanceFromStoryboard()
-		loginController.view.frame = CGRect(x: 0, y: 0,
-				width: self.view.frame.size.width, height: self.view.frame.size.height)
-		loginController.onLoginSuccess = {[weak self] () in
+		loginController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
+		loginController.onLoginSuccess = { [weak self] in
 			self?.flipToTasks(loginController)
 		}
-		loginController.handleCancelLoginButton = {[weak self] () in
+		loginController.handleCancelLoginButton = { [weak self] in
 			self?.flipToTasks(loginController)
 		}
 		
 		return loginController
 	}
 	
-	func flipToTasks(fromController: NSViewController) {
+	func flipToTasks (fromController: NSViewController) {
+		
 		Wireframe.flipToTasks(
 			self.createTasksController(),
 			parentController: self,
 			currentController: fromController,
-			completion: {[weak self](controller) -> Void in
+			completion: { [weak self] controller in
 				if let strongSelf = self {
 					strongSelf.topController = controller
 				}

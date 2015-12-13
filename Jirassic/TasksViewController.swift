@@ -45,6 +45,7 @@ class TasksViewController: NSViewController {
         super.viewDidLoad()
 		updateNoTasksState()
 		reloadDataFromServer()
+		registerForNotifications()
     }
 	
 	override func viewDidAppear() {
@@ -52,8 +53,6 @@ class TasksViewController: NSViewController {
 		if day.isNewDay() {
 			reloadData()
 		}
-		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: Selector("newTaskWasAdded:"), name: "newTaskWasAdded", object: nil)
 	}
 	
 	deinit {
@@ -66,14 +65,14 @@ class TasksViewController: NSViewController {
 	func setupDaysTableView() {
 		
 		let reader = ReadDaysInteractor(data: sharedData)
-		daysScrollView!.data = reader.days()
-		daysScrollView?.didSelectRow = { (row: Int) in
+		daysScrollView?.data = reader.days()
+		daysScrollView?.didSelectRow = { [weak self] (row: Int) in
 			if row >= 0 {
-				let theData = self.daysScrollView!.data[row]
+				let theData = self!.daysScrollView!.data[row]
 				if let dateEnd = theData.endDate {
-					self.reloadTasksOnDay( dateEnd )
+					self?.reloadTasksOnDay( dateEnd )
 				} else if let dateStart = theData.startDate {
-					self.reloadTasksOnDay( dateStart )
+					self?.reloadTasksOnDay( dateStart )
 				}
 			}
 		}
@@ -85,9 +84,7 @@ class TasksViewController: NSViewController {
 		tasksScrollView!.didRemoveRow = { (row: Int) in
 			RCLogO("remove item at row \(row)")
 			if row >= 0 {
-                let theData = self.tasksScrollView!.data[row]
                 self.tasksScrollView!.removeTaskAtRow(row);
-                sharedData.deleteTask(theData)
 			}
 		}
 		tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
@@ -100,7 +97,6 @@ class TasksViewController: NSViewController {
 	}
 	
 	func updateNoTasksState() {
-		RCLogO("updateNoTasksState")
 		if tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
@@ -154,7 +150,7 @@ class TasksViewController: NSViewController {
 				RCLog(i)
 				RCLog(task)
 				sharedData.updateTask(task, completion: {(success: Bool) -> Void in
-				
+					
 					self?.tasksScrollView?.addTask( task )
 					
 					self?.setupDaysTableView()
@@ -193,7 +189,6 @@ class TasksViewController: NSViewController {
 	func reloadDataFromServer() {
 		self.showLoadingIndicator(true)
 		sharedData.queryTasks { [weak self] (tasks, error) -> Void in
-			RCLog(tasks)
 			self?.reloadData()
 			self?.showLoadingIndicator(false)
 		}
@@ -217,25 +212,15 @@ class TasksViewController: NSViewController {
 		updateNoTasksState()
 	}
 	
-	func newTaskWasAdded (notif: NSNotification) {
-		if let task = notif.object as? Task {
-			self.tasksScrollView?.addTask( task )
-			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
-				withAnimation: NSTableViewAnimationOptions.SlideUp)
-			self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
-			self.updateNoTasksState()
-		}
-	}
-	
 	
 	// MARK: Actions
 	
 	func handleStartDayButton() {
 		
 		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		sharedData.updateTask(task, completion: {(success: Bool) -> Void in
-			self.day.setLastTrackedDay(NSDate())
-			self.reloadData()
+		sharedData.updateTask(task, completion: { [weak self] (success: Bool) -> Void in
+			self?.day.setLastTrackedDay(NSDate())
+			self?.reloadData()
 		})
 	}
 	
@@ -253,5 +238,25 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleRefreshButton (sender: NSButton) {
 		reloadDataFromServer()
+	}
+}
+
+extension TasksViewController {
+	
+	func registerForNotifications() {
+		
+		NSNotificationCenter.defaultCenter().addObserver(self,
+			selector: Selector("newTaskWasAdded:"), name: kNewTaskWasAddedNotification, object: nil)
+	}
+	
+	func newTaskWasAdded (notif: NSNotification) {
+		
+		if let task = notif.object as? Task {
+			self.tasksScrollView?.addTask( task )
+			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+				withAnimation: NSTableViewAnimationOptions.SlideUp)
+			self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
+			self.updateNoTasksState()
+		}
 	}
 }

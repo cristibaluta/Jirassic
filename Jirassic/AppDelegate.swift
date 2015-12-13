@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			let reader = ReadDayInteractor(data: sharedData)
 			let existingTasks = reader.tasksForDayOfDate(NSDate())
 			if existingTasks.count > 0 {
-				// We already started the day, analyze if it's the scrum time
+				// We already started the day, analyze if it's scrum time
 				
 			}
         }
@@ -46,11 +46,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			let reader = ReadDayInteractor(data: sharedData)
 			let existingTasks = reader.tasksForDayOfDate(NSDate())
 			if existingTasks.count > 0 {
-				// We already started the day, analyze if it's the scrum time
+				// We already started the day, analyze if it's scrum time
 				if TaskTypeFinder().scrumExists(existingTasks) {
 					let task = Task(dateSart: self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
 					sharedData.updateTask(task, completion: {(success: Bool) -> Void in })
-//					NSNotificationCenter.defaultCenter().postNotificationName("newTaskWasAdded", object: task)
+					InternalNotifications.taskAdded(task)
 				}
 			} else {
 				// This might be the start of the day. Should we start counting automatically or wait the user to press start?
@@ -60,7 +60,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
     func applicationDidFinishLaunching (aNotification: NSNotification) {
-		let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+		
+		let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
 		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
 			self.menu.iconView?.mouseDown(NSEvent())
 		})
