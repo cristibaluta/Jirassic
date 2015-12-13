@@ -1,5 +1,3 @@
-External_/Parse/ParseCredentials.swift
-
 *.xcuserstate
 
 .DS_Store
@@ -9,3 +7,5 @@ External_/Parse/ParseCredentials.swift
 *.xcscheme
 
 *.xccheckout
+
+External/Parse/ParseCredentials.swift
