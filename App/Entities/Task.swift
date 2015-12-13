@@ -75,3 +75,5 @@ extension Task {
 		}
 	}
 }
+
+typealias TaskCreationData = (dateStart: String, dateEnd: String, issue: String, notes: String)

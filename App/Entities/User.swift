@@ -14,3 +14,5 @@ struct User {
 	var password: String?
 	var email: String?
 }
+
+typealias LoginCredentials = (email: String, password: String)

@@ -91,8 +91,6 @@
 		28C02F5B1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5E1C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
 		28C02F601C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
-		28C02F691C0080AD00B65478 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F631C0080AD00B65478 /* typealiases.swift */; };
-		28C02F6B1C0080AD00B65478 /* typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F631C0080AD00B65478 /* typealiases.swift */; };
 		28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
 		28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
 		28C02F771C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
@@ -250,7 +248,6 @@
 		28C02F551C007F3000B65478 /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
 		28C02F581C00801A00B65478 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = App/Entities/Task.swift; sourceTree = "<group>"; };
 		28C02F5D1C00803300B65478 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/Entities/User.swift; sourceTree = "<group>"; };
-		28C02F631C0080AD00B65478 /* typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = typealiases.swift; path = App/Entities/typealiases.swift; sourceTree = "<group>"; };
 		28C02F711C009C9700B65478 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = App/Extensions/NSDateExtension.swift; sourceTree = SOURCE_ROOT; };
 		28C02F721C009C9700B65478 /* NSViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSViewAutolayout.swift; path = App/Extensions/NSViewAutolayout.swift; sourceTree = SOURCE_ROOT; };
 		28C02F7F1C00A6C100B65478 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = App/LoginPresenter.swift; sourceTree = SOURCE_ROOT; };
@@ -540,7 +537,6 @@
 		289E2AE71B2D687F003269A3 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				28C02F631C0080AD00B65478 /* typealiases.swift */,
 				28C02F581C00801A00B65478 /* Task.swift */,
 				28778A571BB9B9A9003E4880 /* TaskTests.swift */,
 				28C02F5D1C00803300B65478 /* User.swift */,
@@ -974,7 +970,6 @@
 			files = (
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
-				28C02F6B1C0080AD00B65478 /* typealiases.swift in Sources */,
 				28C02F821C00A6C100B65478 /* LoginPresenter.swift in Sources */,
 				28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F4B1C007E8E00B65478 /* DataManager.swift in Sources */,
@@ -1046,7 +1041,6 @@
 				289998A21AC2920200706824 /* Popover.swift in Sources */,
 				28C02F4C1C007E8E00B65478 /* InitParse.swift in Sources */,
 				28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */,
-				28C02F691C0080AD00B65478 /* typealiases.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */,
 				28C02F931C01143C00B65478 /* ReadDayInteractor.swift in Sources */,
 				28778A5A1BB9C70F003E4880 /* Issues.swift in Sources */,
