@@ -32,10 +32,11 @@ class TaskCellPresenter: NSObject {
 				if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
 					if let dateEnd = theData.endDate {
 						let duration = dateEnd.timeIntervalSinceDate(thePreviosData.endDate!)
-						date = "\(dateEnd.HHmm())\n\(NSDate(timeIntervalSince1970: duration).HHmmGMT())h"
+						let durationS = NSDate(timeIntervalSince1970: duration).HHmmGMT()
+						date = dateEnd.HHmm()
 						statusImage = NSImage(named: NSImageNameStatusAvailable)
 					} else {
-						date = "\(theData.endDate!.HHmm())\n..."
+						date = theData.endDate!.HHmm()
 						statusImage = NSImage(named: NSImageNameStatusPartiallyAvailable)
 					}
 				} else {

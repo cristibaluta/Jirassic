@@ -21,5 +21,6 @@ class TaskTests: XCTestCase {
 		XCTAssert(Task(subtype: .LunchEnd).taskType == TaskType.Lunch.rawValue, "")
 		XCTAssert(Task(subtype: .MeetingBegin).taskType == TaskType.Meeting.rawValue, "")
 		XCTAssert(Task(subtype: .MeetingEnd).taskType == TaskType.Meeting.rawValue, "")
+		XCTAssert(Task(subtype: .GitCommitEnd).taskType == TaskType.GitCommit.rawValue, "")
     }
 }

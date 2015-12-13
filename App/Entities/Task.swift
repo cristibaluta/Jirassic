@@ -15,6 +15,7 @@ enum TaskType: Int {
 	case Scrum = 2
 	case Lunch = 3
 	case Meeting = 4
+	case GitCommit = 5
 }
 
 enum TaskSubtype: Int {
@@ -27,6 +28,7 @@ enum TaskSubtype: Int {
 	case LunchEnd = 5
 	case MeetingBegin = 6
 	case MeetingEnd = 7
+	case GitCommitEnd = 8
 }
 
 struct Task {
@@ -49,25 +51,27 @@ extension Task {
 		self.taskType = type.rawValue
 		
 		switch (type) {
-		case TaskType.Issue: self.notes = ""
-		case TaskType.Start: self.notes = "Working day started"
-		case TaskType.Scrum: self.notes = "Scrum session"
-		case TaskType.Lunch: self.notes = "Lunch break"
-		case TaskType.Meeting: self.notes = "Internal meeting"
+			case TaskType.Issue:	self.notes = ""
+			case TaskType.Start:	self.notes = "Working day started"
+			case TaskType.Scrum:	self.notes = "Scrum session"
+			case TaskType.Lunch:	self.notes = "Lunch break"
+			case TaskType.Meeting:	self.notes = "Internal meeting"
+			case TaskType.GitCommit:self.notes = ""
 		}
 	}
 	
 	init (subtype: TaskSubtype) {
 		
 		switch(subtype) {
-		case .IssueBegin:	self.startDate = NSDate(); self.taskType = TaskType.Issue.rawValue
-		case .IssueEnd:		self.endDate = NSDate(); self.taskType = TaskType.Issue.rawValue
-		case .ScrumBegin:	self.startDate = NSDate(); self.taskType = TaskType.Scrum.rawValue
-		case .ScrumEnd:		self.endDate = NSDate(); self.taskType = TaskType.Scrum.rawValue
-		case .LunchBegin:	self.startDate = NSDate(); self.taskType = TaskType.Lunch.rawValue
-		case .LunchEnd:		self.endDate = NSDate(); self.taskType = TaskType.Lunch.rawValue
-		case .MeetingBegin: self.startDate = NSDate(); self.taskType = TaskType.Meeting.rawValue
-		case .MeetingEnd:	self.endDate = NSDate(); self.taskType = TaskType.Meeting.rawValue
+			case .IssueBegin:	self.startDate = NSDate();	self.taskType = TaskType.Issue.rawValue
+			case .IssueEnd:		self.endDate = NSDate();	self.taskType = TaskType.Issue.rawValue
+			case .ScrumBegin:	self.startDate = NSDate();	self.taskType = TaskType.Scrum.rawValue
+			case .ScrumEnd:		self.endDate = NSDate();	self.taskType = TaskType.Scrum.rawValue
+			case .LunchBegin:	self.startDate = NSDate();	self.taskType = TaskType.Lunch.rawValue
+			case .LunchEnd:		self.endDate = NSDate();	self.taskType = TaskType.Lunch.rawValue
+			case .MeetingBegin: self.startDate = NSDate();	self.taskType = TaskType.Meeting.rawValue
+			case .MeetingEnd:	self.endDate = NSDate();	self.taskType = TaskType.Meeting.rawValue
+			case .GitCommitEnd:	self.endDate = NSDate();	self.taskType = TaskType.GitCommit.rawValue
 		}
 	}
 }

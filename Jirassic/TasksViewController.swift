@@ -166,6 +166,10 @@ class TasksViewController: NSViewController {
 					self?.removeNewTaskController()
 				})
 			}
+			_newTaskViewController?.onCancelChosen = {
+				self.splitView?.hidden = false
+				self.removeNewTaskController()
+			}
 		}
 		
 		return _newTaskViewController!

@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Scrum: NSObject {
+class TaskTypeFinder: NSObject {
 
-	func exists (tasks: [Task]) -> Bool {
+	func scrumExists (tasks: [Task]) -> Bool {
 		
-		var scrumExists = false
+		var exists = false
 		for task in tasks {
 			if task.taskType == TaskType.Scrum.rawValue {
-				scrumExists = true
+				exists = true
 				break
 			}
 		}
-		return scrumExists
+		return exists
 	}
 }

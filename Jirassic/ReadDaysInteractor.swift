@@ -19,18 +19,18 @@ class ReadDaysInteractor: NSObject {
 	
 	func days() -> [Task] {
 		
-		var currrentDate = NSDate.distantFuture()
+		var referenceDate = NSDate.distantFuture()
 		
 		let filteredData = data.allCachedTasks().filter { (task: Task) -> Bool in
 			
 			if let dateEnd = task.endDate {
-				if dateEnd.isSameDayAs(currrentDate) == false {
-					currrentDate = task.endDate!
+				if dateEnd.isSameDayAs(referenceDate) == false {
+					referenceDate = dateEnd
 					return true
 				}
 			} else if let dateStart = task.startDate {
-				if dateStart.isSameDayAs(currrentDate) == false {
-					currrentDate = task.startDate!
+				if dateStart.isSameDayAs(referenceDate) == false {
+					referenceDate = dateStart
 					return true
 				}
 			}

@@ -6,9 +6,11 @@
 		<class name="task" plural="tasks" code="gitt" description="Add Git commits to Jirassic as tasks that finished.">
 			<cocoa class="NSApplication"/>
 			<type type="text"/>
-<!--			<responds-to name="quit2">-->
-<!--				<cocoa method="handleQuitScriptCommand2"/>-->
-<!--			</responds-to>-->
+			
+			<responds-to name="logCommit:ofBranch:">
+				<cocoa method="logCommit:ofBranch:"/>
+			</responds-to>
+			
 			<property name="task" code="iMod" type="text" access="rw" description="Add a commit message to Jirassic">
 				<cocoa key="tasks"/>
 			</property>

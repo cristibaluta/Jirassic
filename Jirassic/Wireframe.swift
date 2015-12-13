@@ -89,7 +89,7 @@ class Wireframe: NSObject {
 		parentController.addChildViewController(controller)
         parentController.view.addSubview(controller.view)
         controller.view.constrainToSuperviewWidth()
-        controller.view.constrainToSuperviewHeight(100, bottom: 0)
+        controller.view.constrainToSuperviewHeight(70, bottom: 0)
 	}
 	
 	class func removeNoProjectsController (controller: NSViewController?) {

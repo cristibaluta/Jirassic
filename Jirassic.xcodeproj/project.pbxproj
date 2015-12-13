@@ -47,6 +47,9 @@
 		286585651B053BE800352782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286585631B053BE800352782 /* Main.storyboard */; };
 		2865856A1B053CD300352782 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585691B053CD300352782 /* TaskCell.swift */; };
 		2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2865856B1B054E3500352782 /* NonTaskCell.swift */; };
+		286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */; };
+		286E9A3F1C1C9CE0008FC45E /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E9A3E1C1C9CE0008FC45E /* GitCell.swift */; };
+		286E9A411C1C9D92008FC45E /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286E9A401C1C9D92008FC45E /* GitCell.xib */; };
 		28778A581BB9B9A9003E4880 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A571BB9B9A9003E4880 /* TaskTests.swift */; };
 		28778A5A1BB9C70F003E4880 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
 		28778A5D1BB9C730003E4880 /* IssuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A5C1BB9C730003E4880 /* IssuesTests.swift */; };
@@ -108,7 +111,7 @@
 		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
 		28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */; };
 		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
-		28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* Scrum.swift */; };
+		28E57AD41BF07ABB00B803E6 /* TaskTypeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AD31BF07ABB00B803E6 /* TaskTypeFinder.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */; };
@@ -217,6 +220,9 @@
 		286585641B053BE800352782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		286585691B053CD300352782 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		2865856B1B054E3500352782 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
+		286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		286E9A3E1C1C9CE0008FC45E /* GitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCell.swift; sourceTree = "<group>"; };
+		286E9A401C1C9D92008FC45E /* GitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GitCell.xib; sourceTree = "<group>"; };
 		28778A571BB9B9A9003E4880 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTests.swift; path = JirassicTests/TaskTests.swift; sourceTree = SOURCE_ROOT; };
 		28778A591BB9C70F003E4880 /* Issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issues.swift; sourceTree = "<group>"; };
 		28778A5C1BB9C730003E4880 /* IssuesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuesTests.swift; sourceTree = "<group>"; };
@@ -256,7 +262,7 @@
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
 		28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
-		28E57AD31BF07ABB00B803E6 /* Scrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrum.swift; sourceTree = "<group>"; };
+		28E57AD31BF07ABB00B803E6 /* TaskTypeFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeFinder.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManagerProtocol.swift; path = ../App/DataManagerProtocol.swift; sourceTree = "<group>"; };
@@ -449,6 +455,34 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		286E9A391C1C3FC8008FC45E /* Raports */ = {
+			isa = PBXGroup;
+			children = (
+				28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */,
+				28F292261B1C57B40015F64F /* CreateReportTests.swift */,
+			);
+			name = Raports;
+			sourceTree = "<group>";
+		};
+		286E9A3C1C1C4479008FC45E /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				28EB90621AF948E3008D5337 /* NewDay.swift */,
+				28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */,
+				28778A5E1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift */,
+			);
+			name = Time;
+			sourceTree = "<group>";
+		};
+		286E9A3D1C1C44B6008FC45E /* Git task cell */ = {
+			isa = PBXGroup;
+			children = (
+				286E9A3E1C1C9CE0008FC45E /* GitCell.swift */,
+				286E9A401C1C9D92008FC45E /* GitCell.xib */,
+			);
+			name = "Git task cell";
+			sourceTree = "<group>";
+		};
 		289998A61AC3429500706824 /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +505,7 @@
 		289E2AC61B2B6D21003269A3 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				28E57AD31BF07ABB00B803E6 /* TaskTypeFinder.swift */,
 				28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */,
 				28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */,
 				28C02F7B1C009D6400B65478 /* Read */,
@@ -514,18 +549,13 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		289E2AEB1B2D6918003269A3 /* Use cases */ = {
+		289E2AEB1B2D6918003269A3 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */,
-				28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */,
-				28F292261B1C57B40015F64F /* CreateReportTests.swift */,
-				28E57AD31BF07ABB00B803E6 /* Scrum.swift */,
-				28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */,
-				28778A5E1BB9E29D003E4880 /* PredictiveTimeTypingTests.swift */,
-				28EB90621AF948E3008D5337 /* NewDay.swift */,
+				286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */,
 			);
-			name = "Use cases";
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		28C02F441C007E8E00B65478 /* Parse */ = {
@@ -594,6 +624,7 @@
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
 				28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
+				286E9A3D1C1C44B6008FC45E /* Git task cell */,
 				2802E0B21C0AC82000FA225F /* Task cell */,
 				2802E0B31C0AC83600FA225F /* Non task cell */,
 			);
@@ -643,11 +674,13 @@
 			isa = PBXGroup;
 			children = (
 				289E2AE71B2D687F003269A3 /* Entities */,
-				289E2AEB1B2D6918003269A3 /* Use cases */,
+				286E9A391C1C3FC8008FC45E /* Raports */,
 				28C02F7D1C00A11400B65478 /* User */,
 				28C02F7C1C009FB800B65478 /* Issues */,
 				289E2AC61B2B6D21003269A3 /* Tasks */,
 				28F51EC41AC8059400A69CDF /* Extensions */,
+				286E9A3C1C1C4479008FC45E /* Time */,
+				289E2AEB1B2D6918003269A3 /* Notifications */,
 			);
 			name = App;
 			path = Jirassic;
@@ -912,6 +945,7 @@
 			files = (
 				28B1F2BE1AFB2BF500D61472 /* NonTaskCell.xib in Resources */,
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
+				286E9A411C1C9D92008FC45E /* GitCell.xib in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
 				28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */,
 				289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */,
@@ -992,6 +1026,7 @@
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
+				286E9A3F1C1C9CE0008FC45E /* GitCell.swift in Sources */,
 				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
 				28C02F8E1C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
 				28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */,
@@ -1020,7 +1055,8 @@
 				282426761B113D5000211713 /* FlipScreens.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				28B1F2BA1AFB2BCF00D61472 /* NonTaskCell.swift in Sources */,
-				28E57AD41BF07ABB00B803E6 /* Scrum.swift in Sources */,
+				286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */,
+				28E57AD41BF07ABB00B803E6 /* TaskTypeFinder.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
 				28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */,
 				28B1F2B41AFAA6C700D61472 /* NoTasksViewController.swift in Sources */,

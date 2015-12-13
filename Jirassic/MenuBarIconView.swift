@@ -25,7 +25,7 @@ class MenuBarIconView : NSView {
         }
     }
     
-    init(imageName: String, item: NSStatusItem) {
+    init (imageName: String, item: NSStatusItem) {
 		
         self.image = NSImage(named: imageName)!
         self.item = item
@@ -38,11 +38,11 @@ class MenuBarIconView : NSView {
         super.init(frame: rect)
     }
 
-    required init?(coder: NSCoder) {
+    required init? (coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    override func drawRect (dirtyRect: NSRect) {
 		
         self.item.drawStatusBarBackgroundInRect(dirtyRect, withHighlight: self.isSelected)
         
@@ -52,12 +52,12 @@ class MenuBarIconView : NSView {
         self.image.drawInRect(rect)
     }
     
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown (theEvent: NSEvent) {
         self.isSelected = !self.isSelected;
         self.onMouseDown();
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp (theEvent: NSEvent) {
 		
     }
 }

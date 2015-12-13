@@ -10,8 +10,10 @@ import Cocoa
 
 let kTaskCellNibName = "TaskCell"
 let kNonTaskCellNibName = "NonTaskCell"
+let kGitCellNibName = "GitCell"
 let kTaskCellIdentifier = "TaskCellIdentifier"
 let kNonTaskCellIdentifier = "NonTaskCellIdentifier"
+let kGitCellIdentifier = "GitCellIdentifier"
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
@@ -33,12 +35,16 @@ class TasksScrollView: NSScrollView {
 		
 		assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
 		assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
+		assert(NSNib(nibNamed: kGitCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
 		
 		if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
 			tableView?.registerNib(nib, forIdentifier: kTaskCellIdentifier)
 		}
 		if let nib = NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) {
 			tableView?.registerNib(nib, forIdentifier: kNonTaskCellIdentifier)
+		}
+		if let nib = NSNib(nibNamed: kGitCellNibName, bundle: NSBundle.mainBundle()) {
+			tableView?.registerNib(nib, forIdentifier: kGitCellIdentifier)
 		}
 	}
 	
@@ -72,35 +78,37 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		switch Int(theData.taskType!.intValue) {
 			case TaskType.Issue.rawValue:
 				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
+			case TaskType.GitCommit.rawValue:
+				cell = self.tableView?.makeViewWithIdentifier(kGitCellIdentifier, owner: self) as? GitCell
 			default:
 				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
 		}
-		assert(cell != nil, "Cell can't be nil, check the identifier")
+		assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
 		
 		// Add data to the cell
 		TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: row < data.count-1 ? data[row+1] : nil)
 		
-		cell?.didEndEditingCell = { (cell: TaskCellProtocol) in
+		cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
 			theData.issueType = cell.data.issue
 			theData.notes = cell.data.notes
-			self.data[row] = theData// save the changes locally because the struct is passed by copying
+			self?.data[row] = theData// save the changes locally because the struct is passed by copying
 			// Save to server
 			sharedData.updateTask(theData, completion: { (success) -> Void in
 				RCLog(success)
 			})
 		}
-		cell?.didRemoveCell = { (cell: TaskCellProtocol) in
+		cell?.didRemoveCell = { [weak self] (cell: TaskCellProtocol) in
 			tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
 				if rowView.subviews.first! == cell as! NSTableRowView {
-					self.didRemoveRow?(row: rowIndex)
+					self?.didRemoveRow?(row: rowIndex)
 					return
 				}
 			})
 		}
-		cell?.didAddCell = { (cell: TaskCellProtocol) in
+		cell?.didAddCell = { [weak self] (cell: TaskCellProtocol) in
 			tableView.enumerateAvailableRowViewsUsingBlock({ rowView, rowIndex in
 				if rowView.subviews.first! == cell as! NSTableRowView {
-					self.didAddRow?(row: rowIndex)
+					self?.didAddRow?(row: rowIndex)
 					return
 				}
 			})
@@ -117,7 +125,15 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	}
 	
 	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+		
 		let theData = data[row]
-		return Int(theData.taskType!.intValue) == TaskType.Issue.rawValue ? kTaskCellMaxHeight : kNonTaskCellHeight
+		switch Int(theData.taskType!.intValue) {
+			case TaskType.Issue.rawValue:
+				return kTaskCellMaxHeight
+			case TaskType.GitCommit.rawValue:
+				return kTaskCellMinHeight
+			default:
+				return kNonTaskCellHeight
+		}
 	}
 }

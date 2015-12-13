@@ -12,12 +12,12 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
+	@IBOutlet private var durationTextField: NSTextField?
 	@IBOutlet private var issueNrTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
 	@IBOutlet private var butRemove: NSButton?
 	@IBOutlet private var butAdd: NSButton?
 	@IBOutlet private var butCopy: NSButton?
-	@IBOutlet private var datePicker: NSDatePicker?
 	
 	private var isEditing = false
 	private var wasEdited = false
@@ -47,10 +47,10 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
 		get {
-			return self.datePicker!.dateValue
+			return NSDate()// self.datePicker!.dateValue
 		}
 		set {
-			self.datePicker!.dateValue = newValue
+			//self.datePicker!.dateValue = newValue
 		}
 	}
 	
@@ -78,12 +78,18 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	override func drawBackgroundInRect (dirtyRect: NSRect) {
 		
 		if (self.mouseInside) {
-			let selectionRect = NSRect(x: 65, y: 20, width: dirtyRect.size.width-74, height: dirtyRect.size.height-20)
+			let selectionRect = dirtyRect
 			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
 			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
 			selectionPath.fill()
-			selectionPath.stroke()
+			
+//			let selectionRect = NSRect(x: 65, y: 20, width: dirtyRect.size.width-74, height: dirtyRect.size.height-20)
+//			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
+//			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
+//			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
+//			selectionPath.fill()
+//			selectionPath.stroke()
 		}
 		else {
 			let selectionRect = NSRect(x: 60, y: 0, width: dirtyRect.size.width-70, height: dirtyRect.size.height)
@@ -128,7 +134,8 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 		self.butRemove?.hidden = !show
 		self.butAdd?.hidden = !show
 		self.butCopy?.hidden = !show
-		self.datePicker?.hidden = !show
+		self.dateEndTextField?.editable = show
+		self.durationTextField?.editable = show
 	}
 	
 	func ensureTrackingArea() {
@@ -159,6 +166,10 @@ extension TaskCell: NSTextFieldDelegate {
 	
 	override func controlTextDidChange (obj: NSNotification){
 		wasEdited = true
+		if obj.object as? NSTextField == dateEndTextField {
+			RCLog(obj);
+			RCLog(dateEndTextField?.stringValue)
+		}
 	}
 	
 	override func controlTextDidEndEditing (obj: NSNotification) {
@@ -167,4 +178,27 @@ extension TaskCell: NSTextFieldDelegate {
 			wasEdited = false
 		}
 	}
+	
+	func control (control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
+		RCLog(commandSelector)
+		return true
+	}
+//	- (BOOL)control:(NSControl *)control textView:(NSTextView *)fieldEditor doCommandBySelector:(SEL)commandSelector
+//	{
+//	NSLog(@"Selector method is (%@)", NSStringFromSelector( commandSelector ) );
+//	if (commandSelector == @selector(insertNewline:)) {
+//	//Do something against ENTER key
+//	
+//	} else if (commandSelector == @selector(deleteForward:)) {
+//	//Do something against DELETE key
+//	
+//	} else if (commandSelector == @selector(deleteBackward:)) {
+//	//Do something against BACKSPACE key
+//	
+//	} else if (commandSelector == @selector(insertTab:)) {
+//	//Do something against TAB key
+//	}
+	
+	// return YES if the action was handled; otherwise NO
+//	}
 }

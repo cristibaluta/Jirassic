@@ -14,7 +14,6 @@ class MenuBarController: NSObject {
 	var onMouseDown: (() -> ())?
 	
 	override init() {
-		
 		super.init()
 		
 		let bar = NSStatusBar.systemStatusBar();

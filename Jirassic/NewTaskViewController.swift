@@ -10,10 +10,12 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
+	@IBOutlet private var issueTypeTextField: NSTextField?
 	@IBOutlet private var issueNrTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
 	@IBOutlet private var dateTextField: NSTextField?
 	var onOptionChosen: ((i: TaskSubtype) -> Void)?
+	var onCancelChosen: (Void -> Void)?
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
@@ -81,6 +83,10 @@ class NewTaskViewController: NSViewController {
 	
 	@IBAction func handleMeetingEndButton(sender: NSButton) {
 		self.onOptionChosen?(i: .IssueEnd)
+	}
+	
+	@IBAction func handleCancelButton(sender: NSButton) {
+		self.onCancelChosen?()
 	}
 	
 }

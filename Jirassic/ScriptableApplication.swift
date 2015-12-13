@@ -21,25 +21,18 @@ extension NSApplication {
 			endDate: NSDate(),
 			notes: tasks,
 			issueType: Issues.lastUsed(),
-			taskType: TaskType.Issue.rawValue,
+			taskType: TaskType.GitCommit.rawValue,
 			objectId: nil
 		)
 		sharedData.updateTask(task, completion: {(success: Bool) -> Void in
 			RCLog(success)
 		})
         
-        let notification = NSUserNotification()
-        notification.title = "Git commit logged to Jirassic"
-        notification.informativeText = tasks
-        
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        LocalNotifications().showNotification("Git commit logged to Jirassic", informativeText: tasks)
 	}
 	
-//	func commit() -> NSDictionary {
-//		return (branch: "", message: "")
-//	}
-	
-	func setCommit (commit: NSDictionary) {
-		RCLog(commit);
+	func logCommit (commit: String, ofBranch: String) {
+		RCLog(commit)
+		RCLog(ofBranch)
 	}
 }
