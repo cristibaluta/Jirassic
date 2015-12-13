@@ -16,22 +16,26 @@ class DataManager: NSObject, DataManagerProtocol {
 	func queryTasks (completion: ([Task], NSError?) -> Void) {
 		
 		let puser = PUser.currentUser()
-		let user = User(isLoggedIn: true, password: nil, email: puser?.email)
-		RCLog(user)
+//		let user = User(isLoggedIn: true, password: nil, email: puser?.email)
+		
 		let query = PFQuery(className: PTask.parseClassName())
         query.cachePolicy = .CacheThenNetwork
 		query.orderByDescending(kDateFinishKey)
+		query.orderByDescending(kDateStartKey)
 		query.whereKey("user", equalTo: puser!)
-		query.findObjectsInBackgroundWithBlock( { (objects: [PFObject]?, error: NSError?) in
+//		query.fromLocalDatastore()
+		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
 			
-			if error == nil && objects != nil {
-				self.tasks = [Task]()
-				for object in objects! {
-					let ptask = object as! PTask
-					self.tasks.append(self.ptaskToTask(ptask))
+			if let strongSelf = self {
+				if error == nil && objects != nil {
+					strongSelf.tasks = [Task]()
+					for object in objects! {
+						let ptask = object as! PTask
+						strongSelf.tasks.append(strongSelf.ptaskToTask(ptask))
+					}
 				}
+				completion(strongSelf.tasks, error)
 			}
-			completion(self.tasks, error)
 		})
 	}
 	

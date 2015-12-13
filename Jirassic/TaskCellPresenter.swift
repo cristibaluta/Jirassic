@@ -48,9 +48,13 @@ class TaskCellPresenter: NSObject {
 						break
 					
 					default:
-						dateEnd = theData.endDate!.HHmm()
-						dateStart = thePreviosData.endDate!.HHmm()
-						statusImage = nil
+						if let endDate = theData.endDate {
+							dateEnd = endDate.HHmm()
+							if let endDate = thePreviosData.endDate {
+								dateStart = endDate.HHmm()
+							}
+							statusImage = nil
+						}
 				}
 			} else {
 				// This is always the Start cell

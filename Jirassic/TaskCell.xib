@@ -38,7 +38,7 @@
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
                     <rect key="frame" x="17" y="62" width="51" height="15"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="kk5-M4-fbR">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="kk5-M4-fbR">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -91,7 +91,7 @@
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAU-4V-M8t">
                     <rect key="frame" x="17" y="45" width="51" height="15"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="12:43" id="dAn-XR-e3z">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="dAn-XR-e3z">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.23037979813145845" green="0.3580610079360585" blue="0.53380055877382193" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>

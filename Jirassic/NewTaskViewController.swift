@@ -14,16 +14,18 @@ class NewTaskViewController: NSViewController {
 	@IBOutlet private var issueNrTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
 	@IBOutlet private var dateTextField: NSTextField?
+	
 	var onOptionChosen: ((i: TaskSubtype) -> Void)?
 	var onCancelChosen: (Void -> Void)?
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
 		get {
-			return NSDate()
+			let hm = NSDate.parseHHmm(self.dateTextField!.stringValue)
+			return NSDate().dateByUpdatingHour(hm.hour, minute: hm.min)
 		}
 		set {
-			self.dateTextField?.stringValue = ""
+			self.dateTextField?.stringValue = newValue.HHmm()
 		}
 	}
 	var notes: String {
@@ -31,7 +33,7 @@ class NewTaskViewController: NSViewController {
 			return notesTextField!.stringValue
 		}
 		set {
-			
+			self.notesTextField?.stringValue = newValue
 		}
 	}
 	var issue: String {
@@ -39,7 +41,7 @@ class NewTaskViewController: NSViewController {
 			return issueNrTextField!.stringValue
 		}
 		set {
-			
+			self.issueNrTextField?.stringValue = newValue
 		}
 	}
 	

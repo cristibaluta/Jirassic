@@ -97,6 +97,7 @@ class TasksViewController: NSViewController {
 	}
 	
 	func updateNoTasksState() {
+		
 		if tasksScrollView!.data.count == 0 {
 			let controller = noTasksController()
 			controller.showStartState()
@@ -147,7 +148,11 @@ class TasksViewController: NSViewController {
 				var task = Task(subtype: i)
 				task.notes = self!._newTaskViewController!.notes
 				task.issueType = self!._newTaskViewController!.issue
-				RCLog(i)
+				if task.endDate != nil {
+					task.endDate = self!._newTaskViewController!.date
+				} else if task.startDate != nil {
+					task.startDate = self!._newTaskViewController!.date
+				}
 				RCLog(task)
 				sharedData.updateTask(task, completion: {(success: Bool) -> Void in
 					
@@ -230,6 +235,8 @@ class TasksViewController: NSViewController {
 		splitView?.hidden = true
 		let controller = newTaskController()
 		Wireframe.presentNewTaskController(controller, overController: self, splitView: splitView!)
+		
+		controller.date = NSDate()
 	}
 	
 	@IBAction func handleSettingsButton (sender: NSButton) {

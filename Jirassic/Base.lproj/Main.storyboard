@@ -1302,7 +1302,7 @@
                                 <rect key="frame" x="10" y="178" width="81" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Save as:" id="XNX-oT-fAb">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="0.0028208389939999999" green="0.63105710010000005" blue="0.67762881519999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1310,7 +1310,7 @@
                                 <rect key="frame" x="10" y="208" width="81" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Date:" id="ziS-pY-gBl">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="0.0028208389939999999" green="0.63105710010000005" blue="0.67762881519999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1318,7 +1318,7 @@
                                 <rect key="frame" x="10" y="120" width="125" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Other save options:" id="mzg-gS-UhA">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="0.0028208389939999999" green="0.63105710010000005" blue="0.67762881519999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1447,7 +1447,7 @@
                                 <rect key="frame" x="103" y="212" width="336" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="14:44" id="mhf-BW-pcj">
                                     <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
                             </textField>
