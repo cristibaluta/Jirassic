@@ -36,6 +36,14 @@ class GitCell: NSTableRowView, TaskCellProtocol {
 			self.notesTextField!.stringValue = "\(newValue.notes) \(newValue.dateEnd)"
 		}
 	}
+	var duration: String {
+		get {
+			return ""//durationTextField!.stringValue
+		}
+		set {
+			//			self.durationTextField!.stringValue = newValue
+		}
+	}
 	
 	override func awakeFromNib() {
 		self.butRemove?.hidden = true

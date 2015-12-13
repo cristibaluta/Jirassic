@@ -43,6 +43,14 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 			self.notesTextField!.stringValue = newValue.notes
 		}
 	}
+	var duration: String {
+		get {
+			return durationTextField!.stringValue
+		}
+		set {
+			self.durationTextField!.stringValue = newValue
+		}
+	}
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
@@ -180,25 +188,10 @@ extension TaskCell: NSTextFieldDelegate {
 	}
 	
 	func control (control: NSControl, textView: NSTextView, doCommandBySelector commandSelector: Selector) -> Bool {
-		RCLog(commandSelector)
+		
+		if textView == dateEndTextField {
+			RCLog(commandSelector)
+		}
 		return true
 	}
-//	- (BOOL)control:(NSControl *)control textView:(NSTextView *)fieldEditor doCommandBySelector:(SEL)commandSelector
-//	{
-//	NSLog(@"Selector method is (%@)", NSStringFromSelector( commandSelector ) );
-//	if (commandSelector == @selector(insertNewline:)) {
-//	//Do something against ENTER key
-//	
-//	} else if (commandSelector == @selector(deleteForward:)) {
-//	//Do something against DELETE key
-//	
-//	} else if (commandSelector == @selector(deleteBackward:)) {
-//	//Do something against BACKSPACE key
-//	
-//	} else if (commandSelector == @selector(insertTab:)) {
-//	//Do something against TAB key
-//	}
-	
-	// return YES if the action was handled; otherwise NO
-//	}
 }

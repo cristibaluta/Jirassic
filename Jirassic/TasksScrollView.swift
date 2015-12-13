@@ -89,7 +89,8 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
 		
 		// Add data to the cell
-		TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: row < data.count-1 ? data[row+1] : nil)
+		let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
+		TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
 		
 		cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
 			theData.issueType = cell.data.issue
@@ -120,12 +121,12 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		return cell as? NSView
 	}
 	
-	func tableView (tableView: NSTableView, setObjectValue object: AnyObject?,
-		forTableColumn tableColumn: NSTableColumn?, row: Int) {
-
-			RCLog("set object value for row \(row)")
+//	func tableView (tableView: NSTableView, setObjectValue object: AnyObject?,
+//		forTableColumn tableColumn: NSTableColumn?, row: Int) {
+//
+//			RCLog("set object value for row \(row)")
 //			data?[row].setObject(object!, forKey: (tableColumn?.identifier)!)
-	}
+//	}
 	
 	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		

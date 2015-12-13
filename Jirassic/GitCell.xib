@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="GitCellIdentifier" id="OBB-vl-dgT" customClass="GitCell">
+        <customView identifier="GitCellIdentifier" id="OBB-vl-dgT" customClass="GitCell" customModule="Jirassic" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="341" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

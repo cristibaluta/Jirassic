@@ -15,33 +15,42 @@ class TaskCellPresenter: NSObject {
 	convenience init(cell: TaskCellProtocol) {
 		self.init()
 		self.cell = cell
-		
 	}
 	
 	func presentData (theData: Task, andPreviousData previousData: Task?) {
 		
-		var date = ""
+		var dateStart = ""
+		var dateEnd = ""
+		var duration = ""
 		var notes = theData.notes ?? ""//Alert the user the notes can't be nil
 		var statusImage: NSImage?
 		
 		if theData.endDate == nil && theData.startDate != nil {
-			date = theData.startDate!.HHmm()
+			dateStart = theData.startDate!.HHmm()
 			statusImage = NSImage(named: NSImageNameStatusPartiallyAvailable)
-		} else {
+		}
+		else {
 			if let thePreviosData = previousData {
-				if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
-					if let dateEnd = theData.endDate {
-						let duration = dateEnd.timeIntervalSinceDate(thePreviosData.endDate!)
-						let durationS = NSDate(timeIntervalSince1970: duration).HHmmGMT()
-						date = dateEnd.HHmm()
-						statusImage = NSImage(named: NSImageNameStatusAvailable)
-					} else {
-						date = theData.endDate!.HHmm()
-						statusImage = NSImage(named: NSImageNameStatusPartiallyAvailable)
-					}
-				} else {
-					date = "\(thePreviosData.endDate!.HHmm()) - \(theData.endDate!.HHmm())"
-					statusImage = nil
+				// When we have a previous item to compare dates with
+				switch (Int(theData.taskType!.intValue)) {
+					
+					case TaskType.Issue.rawValue:
+						if let endDate = theData.endDate {
+							let diff = endDate.timeIntervalSinceDate(thePreviosData.endDate!)
+							duration = NSDate(timeIntervalSince1970: diff).HHmmGMT()
+							dateEnd = endDate.HHmm()
+							dateStart = thePreviosData.endDate!.HHmm()
+							statusImage = NSImage(named: NSImageNameStatusAvailable)
+						} else {
+//							dateEnd = theData.endDate!.HHmm()
+							statusImage = NSImage(named: NSImageNameStatusPartiallyAvailable)
+						}
+						break
+					
+					default:
+						dateEnd = theData.endDate!.HHmm()
+						dateStart = thePreviosData.endDate!.HHmm()
+						statusImage = nil
 				}
 			} else {
 				// This is always the Start cell
@@ -50,7 +59,8 @@ class TaskCellPresenter: NSObject {
 			}
 		}
 		
-		cell?.data = (dateStart: date, dateEnd: date, issue: theData.issueType ?? "", notes: notes)
+		cell?.data = (dateStart: dateStart, dateEnd: dateEnd, issue: theData.issueType ?? "", notes: notes)
+		cell?.duration = duration
 		cell?.statusImage!.image = statusImage
 	}
 }
