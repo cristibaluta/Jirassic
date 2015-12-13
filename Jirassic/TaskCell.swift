@@ -30,6 +30,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
 	
 	// Sets data to the cell
+	var _dateEnd = ""
 	var data: TaskCreationData {
 		get {
 			return (dateStart: self.dateEndTextField!.stringValue,
@@ -41,6 +42,7 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 			self.dateEndTextField!.stringValue = newValue.dateEnd
 			self.issueNrTextField!.stringValue = newValue.issue
 			self.notesTextField!.stringValue = newValue.notes
+			_dateEnd = newValue.dateEnd
 		}
 	}
 	var duration: String {
@@ -174,8 +176,11 @@ extension TaskCell: NSTextFieldDelegate {
 	override func controlTextDidChange (obj: NSNotification) {
 		wasEdited = true
 		if obj.object as? NSTextField == dateEndTextField {
-			RCLog(obj);
-			RCLog(dateEndTextField?.stringValue)
+			let predictor = PredictiveTimeTyping()
+			let comps = dateEndTextField!.stringValue.componentsSeparatedByString(_dateEnd)
+			let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last
+			_dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
+			dateEndTextField?.stringValue = _dateEnd
 		}
 	}
 	

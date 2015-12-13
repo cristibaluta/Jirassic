@@ -21,7 +21,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		let query = PFQuery(className: PTask.parseClassName())
         query.cachePolicy = .CacheThenNetwork
 		query.orderByDescending(kDateFinishKey)
-		query.orderByDescending(kDateStartKey)
+//		query.orderByDescending(kDateStartKey)
 		query.whereKey("user", equalTo: puser!)
 //		query.fromLocalDatastore()
 		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in

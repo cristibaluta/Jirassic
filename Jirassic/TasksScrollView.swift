@@ -127,13 +127,6 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		return cell as? NSView
 	}
 	
-//	func tableView (tableView: NSTableView, setObjectValue object: AnyObject?,
-//		forTableColumn tableColumn: NSTableColumn?, row: Int) {
-//
-//			RCLog("set object value for row \(row)")
-//			data?[row].setObject(object!, forKey: (tableColumn?.identifier)!)
-//	}
-	
 	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		
 		let theData = data[row]
