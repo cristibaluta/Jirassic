@@ -13,9 +13,10 @@ JIRAssic is a Mac app that stays in the status bar and you can access it any tim
 - view finished tasks on iPhone in the scrum meetings
 
 # Compile
-Before compiling for the first time you need to setup the database and credentials. The app uses Parse as a datastore.
+Before compiling for the first time you need to setup the Parse database and credentials.
 - Create a project at http://parse.com
 - Get the keys from Parse and create a new file at External/Parse/ParseCredentials.swift and add this lines and fill them:
 
 	let parseApplicationId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	
 	let parseClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
