@@ -22,9 +22,6 @@
                         <color key="textColor" red="0.33822601009999997" green="0.33822601009999997" blue="0.33822601009999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="OBB-vl-dgT" id="UPM-3W-sow"/>
-                    </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Aav-g2-lc0">
                     <rect key="frame" x="309" y="12" width="16" height="16"/>
@@ -36,9 +33,6 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <action selector="handleRemoveButton:" target="OBB-vl-dgT" id="bbR-Q2-SM2"/>
-                    </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="VT5-Z6-TG1">
                     <rect key="frame" x="284" y="12" width="16" height="16"/>
@@ -50,9 +44,6 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <action selector="handleAddButton:" target="OBB-vl-dgT" id="lKy-PA-yR5"/>
-                    </connections>
                 </button>
             </subviews>
             <constraints>
@@ -65,12 +56,6 @@
                 <constraint firstItem="Aav-g2-lc0" firstAttribute="leading" secondItem="VT5-Z6-TG1" secondAttribute="trailing" constant="9" id="q5l-Xk-hsp"/>
                 <constraint firstItem="S8J-80-xoc" firstAttribute="top" secondItem="OBB-vl-dgT" secondAttribute="top" constant="10" id="v4v-hO-RUm"/>
             </constraints>
-            <connections>
-                <outlet property="butAdd" destination="VT5-Z6-TG1" id="QrK-mM-g4n"/>
-                <outlet property="butRemove" destination="Aav-g2-lc0" id="coc-oY-uj5"/>
-                <outlet property="notesTextField" destination="S8J-80-xoc" id="v1P-ac-utE"/>
-                <outlet property="statusImage" destination="cfk-Ds-VkI" id="KXQ-U6-Pjc"/>
-            </connections>
             <point key="canvasLocation" x="256.5" y="173"/>
         </customView>
     </objects>

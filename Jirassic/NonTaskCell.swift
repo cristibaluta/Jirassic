@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class NonTaskCell: NSTableRowView, TaskCellProtocol, NSTextFieldDelegate {
+class NonTaskCell: NSTableRowView, TaskCellProtocol {
 	
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?

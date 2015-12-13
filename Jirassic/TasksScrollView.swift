@@ -78,10 +78,13 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		switch Int(theData.taskType!.intValue) {
 			case TaskType.Issue.rawValue:
 				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
-			case TaskType.GitCommit.rawValue:
-				cell = self.tableView?.makeViewWithIdentifier(kGitCellIdentifier, owner: self) as? GitCell
+				break
+//			case TaskType.GitCommit.rawValue:
+//				cell = self.tableView?.makeViewWithIdentifier(kGitCellIdentifier, owner: self) as? GitCell
+//				break
 			default:
 				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
+				break
 		}
 		assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
 		
