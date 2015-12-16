@@ -77,6 +77,11 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	override func drawBackgroundInRect (dirtyRect: NSRect) {
 		
+		let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
+		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+		selectionPath.fill()
+		
 		if (self.mouseInside) {
 //			let selectionRect = dirtyRect
 //			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()

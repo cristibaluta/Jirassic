@@ -48,7 +48,7 @@
                     </connections>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
-                    <rect key="frame" x="0.0" y="62" width="20" height="18"/>
+                    <rect key="frame" x="14" y="42" width="20" height="18"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
                 <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
