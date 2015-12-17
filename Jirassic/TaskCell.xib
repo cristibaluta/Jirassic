@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
@@ -12,11 +12,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="70" y="60" width="267" height="20"/>
+                    <rect key="frame" x="70" y="54" width="265" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kkS-Qs-fmO"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="AN-0000" id="dlI-ub-5hj">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="AN-0000" drawsBackground="YES" id="dlI-ub-5hj">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -26,8 +26,8 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                    <rect key="frame" x="70" y="0.0" width="267" height="60"/>
-                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
+                    <rect key="frame" x="70" y="11" width="267" height="41"/>
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" drawsBackground="YES" id="PIu-Xg-tz0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="17" y="62" width="51" height="15"/>
+                    <rect key="frame" x="247" y="57" width="51" height="15"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="kk5-M4-fbR">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,12 +47,12 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="VaH-Ay-I8Z"/>
                     </connections>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
-                    <rect key="frame" x="14" y="42" width="20" height="18"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
+                    <rect key="frame" x="14" y="32" width="16" height="16"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                 </imageView>
                 <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
-                    <rect key="frame" x="315" y="60" width="20" height="20"/>
+                    <rect key="frame" x="315" y="54" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="5SV-30-Z5A"/>
                         <constraint firstAttribute="width" constant="20" id="pIA-R3-pwC"/>
@@ -66,7 +66,7 @@
                     </connections>
                 </button>
                 <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egw-SB-d18">
-                    <rect key="frame" x="295" y="60" width="20" height="20"/>
+                    <rect key="frame" x="295" y="54" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="3dQ-k3-en3"/>
                         <constraint firstAttribute="height" constant="20" id="v6d-fN-etz"/>
@@ -79,8 +79,11 @@
                         <action selector="handleAddButton:" target="c22-O7-iKe" id="D81-SN-tJv"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
-                    <rect key="frame" x="18" y="9" width="47" height="25"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
+                    <rect key="frame" x="16" y="9" width="47" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="47" id="Yrs-c8-ijJ"/>
+                    </constraints>
                     <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -99,16 +102,20 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="4LC-Du-N7a"/>
+                <constraint firstItem="iAi-8T-Cme" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="4EI-YK-fcp"/>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="4LC-Du-N7a"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="70" id="80g-x5-V5p"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="70" id="AJd-Hi-qVV"/>
-                <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="L43-NL-Jg1"/>
-                <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" id="Nf3-e9-nbf"/>
+                <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="L43-NL-Jg1"/>
+                <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="11" id="Nf3-e9-nbf"/>
                 <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="10" id="Opv-Gf-sLC"/>
+                <constraint firstItem="iAi-8T-Cme" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Tdx-gI-YRG"/>
                 <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="10" id="aGj-OX-0vK"/>
-                <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="aU1-7S-IRR"/>
-                <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" id="dwc-eg-o9N"/>
-                <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="10" id="mQh-nq-Tft"/>
+                <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="aU1-7S-IRR"/>
+                <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="cZS-0S-iX6"/>
+                <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>
+                <constraint firstAttribute="bottom" secondItem="caC-fV-ZwQ" secondAttribute="bottom" constant="11" id="fXs-zg-VfT"/>
+                <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="8" id="mQh-nq-Tft"/>
                 <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" id="wbd-tK-eiw"/>
             </constraints>
             <connections>

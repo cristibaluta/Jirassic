@@ -77,38 +77,21 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	
 	override func drawBackgroundInRect (dirtyRect: NSRect) {
 		
-		let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
-		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-		selectionPath.fill()
-		
 		if (self.mouseInside) {
-//			let selectionRect = dirtyRect
-//			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
-//			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
-//			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
-//			selectionPath.fill()
-			
-//			let selectionRect = NSRect(x: 65, y: 20, width: dirtyRect.size.width-74, height: dirtyRect.size.height-20)
-//			NSColor(calibratedWhite: 0.4, alpha: 1.0).setStroke()
-//			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
-//			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0, yRadius: 0)
-//			selectionPath.fill()
-//			selectionPath.stroke()
+			let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
+			NSColor(calibratedWhite: 0.8, alpha: 1.0).setFill()
+			NSColor(calibratedWhite: 0.3, alpha: 1.0).setStroke()
+//			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
+			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+			selectionPath.fill()
+			selectionPath.stroke()
 		}
 		else {
-//			let selectionRect = NSRect(x: 60, y: 0, width: dirtyRect.size.width-70, height: dirtyRect.size.height)
-//			NSColor(calibratedWhite: 0.65, alpha: 0.0).setStroke()
-//			NSColor(calibratedWhite: 0.82, alpha: 0.0).setFill()
-//			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-//			selectionPath.fill()
-//			selectionPath.stroke()
+			let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
+			NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+			selectionPath.fill()
 		}
-		
-//		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
-//		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-//		let linePath = NSBezierPath(rect: lineRect)
-//		linePath.fill()
 	}
 	
 	override func drawSelectionInRect (dirtyRect: NSRect) {
@@ -121,14 +104,6 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 		selectionPath.stroke()
 	}
 	
-//	override func drawRect (dirtyRect: NSRect) {
-//		super.drawRect(dirtyRect)
-//		
-////		if selected == true {
-//			NSColor.clearColor().set()
-//			NSRectFill(dirtyRect)
-////		}
-//	}
 	
 	// MARK: mouse
 	
