@@ -21,8 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	override init() {
 		super.init()
 		
-		_ = InitParse()
-		
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
 				if (wself.menu.iconView?.isSelected == true) {

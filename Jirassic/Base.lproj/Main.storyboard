@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -669,8 +669,22 @@
                                     <action selector="handleSettingsButton:" target="wHU-IX-gfU" id="WAP-fv-TY8"/>
                                 </connections>
                             </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="DgU-la-ICp">
+                                <rect key="frame" x="430" y="400" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="8ap-zp-dxa"/>
+                                    <constraint firstAttribute="height" constant="22" id="YfM-P3-7SH"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="w9M-4W-E8w">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleShareButton:" target="wHU-IX-gfU" id="EQ7-Tp-iYC"/>
+                                </connections>
+                            </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="w7V-wd-0Hx">
-                                <rect key="frame" x="435" y="400" width="22" height="22"/>
+                                <rect key="frame" x="235" y="400" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="g6F-ko-67g"/>
                                     <constraint firstAttribute="height" constant="22" id="sXd-km-7cL"/>
@@ -683,8 +697,8 @@
                                     <action selector="handleRefreshButton:" target="wHU-IX-gfU" id="pk4-4Z-QSN"/>
                                 </connections>
                             </button>
-                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="R3S-KZ-qb3">
-                                <rect key="frame" x="438" y="403" width="16" height="16"/>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="R3S-KZ-qb3">
+                                <rect key="frame" x="238" y="403" width="16" height="16"/>
                             </progressIndicator>
                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SJz-Xr-YhG">
                                 <rect key="frame" x="12" y="379" width="467" height="5"/>
@@ -713,11 +727,11 @@
                                             <scrollView focusRingType="none" borderType="none" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="hLi-fO-YRi" customClass="DaysScrollView" customModule="Jirassic" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="380"/>
                                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="p8m-a7-0xK">
-                                                    <rect key="frame" x="1" y="17" width="238" height="117"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="380"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" id="qlb-nk-v5r">
-                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="25"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="380"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="5"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -853,14 +867,16 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sOM-pv-IVs" secondAttribute="trailing" constant="9" id="6OB-gH-BBZ"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="IOj-nH-o5u"/>
+                            <constraint firstItem="DgU-la-ICp" firstAttribute="centerY" secondItem="sOM-pv-IVs" secondAttribute="centerY" id="Mn0-bc-JLK"/>
+                            <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="DgU-la-ICp" secondAttribute="trailing" constant="8" id="THO-0u-Rev"/>
                             <constraint firstAttribute="trailing" secondItem="pVs-CS-Pcx" secondAttribute="trailing" id="Txh-8R-Xmj"/>
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerX" secondItem="R3S-KZ-qb3" secondAttribute="centerX" id="YeC-2t-kXT"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="c6a-uG-6en"/>
+                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="iYk-nj-0Eb"/>
                             <constraint firstAttribute="bottom" secondItem="pVs-CS-Pcx" secondAttribute="bottom" id="jOP-OI-xoU"/>
-                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="top" secondItem="sOM-pv-IVs" secondAttribute="bottom" constant="-22" id="kKp-8K-2pA"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="60" id="kgn-ml-hof"/>
-                            <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="w7V-wd-0Hx" secondAttribute="trailing" constant="3" id="lGD-mN-QSd"/>
                             <constraint firstAttribute="trailing" secondItem="SJz-Xr-YhG" secondAttribute="trailing" constant="12" id="leq-Tf-xCq"/>
+                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerX" secondItem="FwC-dy-0bY" secondAttribute="centerX" id="oU0-C6-UTn"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="62" id="rPW-Au-hGz"/>
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerY" secondItem="R3S-KZ-qb3" secondAttribute="centerY" id="rq8-PK-2xH"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="xh1-lJ-1K2"/>
@@ -870,6 +886,7 @@
                         <outlet property="_butRefresh" destination="w7V-wd-0Hx" id="zfd-TW-d3L"/>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
                         <outlet property="_progressIndicator" destination="R3S-KZ-qb3" id="6Zu-Hu-9Jl"/>
+                        <outlet property="butShare" destination="DgU-la-ICp" id="MEr-sT-GzJ"/>
                         <outlet property="daysScrollView" destination="hLi-fO-YRi" id="gjC-Zg-rCG"/>
                         <outlet property="splitView" destination="pVs-CS-Pcx" id="cl7-Lo-9AU"/>
                         <outlet property="tasksScrollView" destination="VwR-9G-9tZ" id="KgZ-p8-Q32"/>
@@ -899,7 +916,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOS-4d-Fjt">
-                                <rect key="frame" x="20" y="263" width="74" height="17"/>
+                                <rect key="frame" x="20" y="128" width="74" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Task preffix" id="AVY-mY-l1B">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -907,7 +924,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAq-ok-MR3">
-                                <rect key="frame" x="20" y="232" width="157" height="17"/>
+                                <rect key="frame" x="20" y="97" width="157" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="I should come to work at" id="pkU-fZ-BUN">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -915,7 +932,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-qM-yQk">
-                                <rect key="frame" x="108" y="260" width="265" height="22"/>
+                                <rect key="frame" x="108" y="125" width="265" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="AN" drawsBackground="YES" id="xQZ-Ln-Hdl">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -923,28 +940,28 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZW-oy-bAn">
-                                <rect key="frame" x="18" y="117" width="369" height="18"/>
+                                <rect key="frame" x="18" y="67" width="369" height="18"/>
                                 <buttonCell key="cell" type="check" title="Track lunch when computer goes to sleep in this interval" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYU-uP-r49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-eo-qyH">
-                                <rect key="frame" x="18" y="82" width="374" height="18"/>
+                                <rect key="frame" x="18" y="32" width="374" height="18"/>
                                 <buttonCell key="cell" type="check" title="Track scrum when computer goes to sleep in this interval" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qig-8f-SpV">
-                                <rect key="frame" x="18" y="46" width="215" height="18"/>
+                                <rect key="frame" x="18" y="-4" width="215" height="18"/>
                                 <buttonCell key="cell" type="check" title="Round values to obtain 8 hours" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="DFX-bR-Pli">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
-                                <rect key="frame" x="199" y="229" width="104" height="27"/>
+                                <rect key="frame" x="199" y="94" width="104" height="27"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
                                     <font key="font" metaFont="system"/>
                                     <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
@@ -956,49 +973,7 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sus-j4-gZ4">
-                                <rect key="frame" x="20" y="201" width="127" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scrum meeting is at" id="uPO-pb-zD5">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-W0-ldB">
-                                <rect key="frame" x="199" y="198" width="104" height="27"/>
-                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="aAZ-cj-BOO">
-                                    <font key="font" metaFont="system"/>
-                                    <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
-                                        <!--1982-02-12 08:00:00 -0800-->
-                                        <timeZone key="timeZone" name="US/Pacific"/>
-                                    </calendarDate>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                                </datePickerCell>
-                            </datePicker>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1g5-02-vlK">
-                                <rect key="frame" x="20" y="170" width="144" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="I usually go to lunch at" id="YfA-HZ-SpM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
-                                <rect key="frame" x="199" y="167" width="104" height="27"/>
-                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
-                                    <font key="font" metaFont="system"/>
-                                    <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
-                                        <!--1982-02-12 08:00:00 -0800-->
-                                        <timeZone key="timeZone" name="US/Pacific"/>
-                                    </calendarDate>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                                </datePickerCell>
-                            </datePicker>
-                            <box autoresizesSubviews="NO" title="User credentials" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-H3-mry">
+                            <box autoresizesSubviews="NO" title="Jirassic credentials" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KEe-H3-mry">
                                 <rect key="frame" x="19" y="299" width="458" height="62"/>
                                 <view key="contentView" id="K2z-3a-ita">
                                     <rect key="frame" x="1" y="1" width="456" height="46"/>
@@ -1060,6 +1035,84 @@
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
+                            <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" title="Jira credentials" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ELX-Uc-E2D">
+                                <rect key="frame" x="19" y="190" width="458" height="96"/>
+                                <view key="contentView" id="GTP-hi-csP">
+                                    <rect key="frame" x="1" y="1" width="456" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmf-9e-7xQ">
+                                            <rect key="frame" x="9" y="13" width="160" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="160" id="HB6-VC-czL"/>
+                                                <constraint firstAttribute="height" constant="22" id="tPd-Cw-gsD"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="Kp7-sN-n8L">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <secureTextField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
+                                            <rect key="frame" x="183" y="13" width="160" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="fFj-0g-mfD"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="160" id="vMY-2i-8Tn"/>
+                                            </constraints>
+                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="t7N-4z-GJ5">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </secureTextFieldCell>
+                                        </secureTextField>
+                                        <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-ZT-sev">
+                                            <rect key="frame" x="375" y="7" width="75" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="8At-fg-4ev"/>
+                                                <constraint firstAttribute="width" constant="63" id="F0R-fk-hzA"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G5x-SG-kZB">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="handleLoginButton:" target="J1c-ZL-C5e" id="Cuk-cN-ACj"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="web-Sh-ys4">
+                                            <rect key="frame" x="7" y="51" width="171" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira software installation url" id="UYv-JK-YuS">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ygh-kb-AK9">
+                                            <rect key="frame" x="184" y="48" width="260" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://" drawsBackground="YES" id="usI-PC-pS2">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="2Xl-Yb-FkC" secondAttribute="centerY" constant="-7" id="Hie-sM-D8L"/>
+                                    <constraint firstItem="AMk-ZT-sev" firstAttribute="leading" secondItem="2Xl-Yb-FkC" secondAttribute="trailing" constant="38" id="LUq-ZM-gku"/>
+                                    <constraint firstAttribute="height" constant="58" id="dPe-u4-rif"/>
+                                    <constraint firstAttribute="centerY" secondItem="pmf-9e-7xQ" secondAttribute="centerY" constant="-7" id="g4s-Xj-WZH"/>
+                                    <constraint firstItem="2Xl-Yb-FkC" firstAttribute="leading" secondItem="pmf-9e-7xQ" secondAttribute="trailing" constant="14" id="lln-Ee-p2r"/>
+                                    <constraint firstAttribute="trailing" secondItem="AMk-ZT-sev" secondAttribute="trailing" constant="10" id="u7e-Vx-saF"/>
+                                    <constraint firstItem="pmf-9e-7xQ" firstAttribute="leading" secondItem="ELX-Uc-E2D" secondAttribute="leading" constant="7" id="ucH-ti-C1z"/>
+                                    <constraint firstAttribute="centerY" secondItem="AMk-ZT-sev" secondAttribute="centerY" constant="-6.5" id="vGz-8A-OqU"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
                                 <rect key="frame" x="409" y="377" width="71" height="32"/>
                                 <constraints>
@@ -1084,6 +1137,32 @@
                                     <action selector="handleQuitAppButton:" target="J1c-ZL-C5e" id="jCj-Jm-4gf"/>
                                 </connections>
                             </button>
+                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
+                                <rect key="frame" x="393" y="65" width="104" height="27"/>
+                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
+                                    <font key="font" metaFont="system"/>
+                                    <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
+                                        <!--1982-02-12 08:00:00 -0800-->
+                                        <timeZone key="timeZone" name="US/Pacific"/>
+                                    </calendarDate>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                </datePickerCell>
+                            </datePicker>
+                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-W0-ldB">
+                                <rect key="frame" x="394" y="30" width="104" height="27"/>
+                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="aAZ-cj-BOO">
+                                    <font key="font" metaFont="system"/>
+                                    <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
+                                        <!--1982-02-12 08:00:00 -0800-->
+                                        <timeZone key="timeZone" name="US/Pacific"/>
+                                    </calendarDate>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                </datePickerCell>
+                            </datePicker>
                         </subviews>
                         <constraints>
                             <constraint firstItem="KEe-H3-mry" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="65" id="0Mi-k4-bpK"/>
@@ -1505,6 +1584,7 @@ Gw
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
     </resources>
 </document>

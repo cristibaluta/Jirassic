@@ -17,6 +17,7 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
+	@IBOutlet private var butShare: NSButton?
 	
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
@@ -245,6 +246,10 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleRefreshButton (sender: NSButton) {
 		reloadDataFromServer()
+	}
+	
+	@IBAction func handleShareButton (sender: NSButton) {
+		
 	}
 }
 

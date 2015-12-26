@@ -1,5 +1,5 @@
 //
-//  JLCreateReport.swift
+//  CreateReport.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 28/03/15.
@@ -33,20 +33,18 @@ class CreateReport: NSObject {
 		
 		self.tasks.append(tasks.first!)
 		
-		if tasks.count > 2 {
-			for i in 1...tasks.count-2 {
-				var task = tasks[i]
-				let prevTask = tasks[i-1]
-				
-				task.endDate = task.endDate?.roundUp()
-				
-				if task.taskType == TaskType.Lunch.rawValue {
-					let duration = task.endDate!.timeIntervalSinceDate(prevTask.endDate!)
-					RCLogO(duration)
-					dateEndAdjusted = dateEndAdjusted.dateByAddingTimeInterval(duration)
-				}
-				self.tasks.append(task)
+		for i in 1...tasks.count-2 {
+			var task = tasks[i]
+			let prevTask = tasks[i-1]
+			
+			task.endDate = task.endDate?.roundUp()
+			
+			if task.taskType == TaskType.Lunch.rawValue {
+				let duration = task.endDate!.timeIntervalSinceDate(prevTask.endDate!)
+				RCLogO(duration)
+				dateEndAdjusted = dateEndAdjusted.dateByAddingTimeInterval(duration)
 			}
+			self.tasks.append(task)
 		}
 		
 //		tasks.last?.endDate = dateEndAdjusted

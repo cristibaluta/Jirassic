@@ -13,30 +13,57 @@ class DataManager: NSObject, DataManagerProtocol {
 
 	private var tasks = [Task]()
 	
+	override init() {
+		_ = InitParse()
+	}
+	
 	func queryTasks (completion: ([Task], NSError?) -> Void) {
 		
-		let puser = PUser.currentUser()
-//		let user = User(isLoggedIn: true, password: nil, email: puser?.email)
+		queryOfflineTasks(completion)
+		queryOnlineTasks(completion)
+	}
+	
+	private func queryOfflineTasks (completion: ([Task], NSError?) -> Void) {
 		
 		let query = PFQuery(className: PTask.parseClassName())
-        query.cachePolicy = .CacheThenNetwork
-		query.orderByDescending(kDateFinishKey)
-//		query.orderByDescending(kDateStartKey)
-		query.whereKey("user", equalTo: puser!)
-//		query.fromLocalDatastore()
+		query.fromLocalDatastore()
 		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
-			
 			if let strongSelf = self {
-				if error == nil && objects != nil {
-					strongSelf.tasks = [Task]()
-					for object in objects! {
-						let ptask = object as! PTask
-						strongSelf.tasks.append(strongSelf.ptaskToTask(ptask))
-					}
-				}
-				completion(strongSelf.tasks, error)
+				RCLogO("Found \(objects?.count) objects in LocalDatastore")
+				strongSelf.processPTasks(objects, error: error, completion: completion)
 			}
 		})
+	}
+	
+	private func queryOnlineTasks (completion: ([Task], NSError?) -> Void) {
+		
+		let puser = PUser.currentUser()
+		let query = PFQuery(className: PTask.parseClassName())
+		query.orderByDescending(kDateFinishKey)
+		//		query.orderByDescending(kDateStartKey)
+		query.whereKey("user", equalTo: puser!)
+		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
+			
+			PFObject.pinAllInBackground(objects, block: { (success, error) -> Void in
+				RCLogO("Pin \(objects?.count) objects \(success)")
+				RCLogErrorO(error)
+			})
+			if let strongSelf = self {
+				strongSelf.processPTasks(objects, error: error, completion: completion)
+			}
+		})
+	}
+	
+	private func processPTasks (objects: [PFObject]?, error: NSError?, completion: ([Task], NSError?) -> Void) {
+		
+		if error == nil && objects != nil {
+			self.tasks = [Task]()
+			for object in objects! {
+				let ptask = object as! PTask
+				self.tasks.append(self.ptaskToTask(ptask))
+			}
+		}
+		completion(self.tasks, error)
 	}
 	
 	func allCachedTasks() -> [Task] {
