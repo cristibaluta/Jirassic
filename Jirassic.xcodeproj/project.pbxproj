@@ -11,6 +11,8 @@
 		282426761B113D5000211713 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
 		2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851268A1BAB42A100D668F2 /* TaskCellTests.swift */; };
+		285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */; };
+		285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */; };
 		2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
@@ -205,6 +207,8 @@
 		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		2851268A1BAB42A100D668F2 /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellTests.swift; path = JirassicTests/TaskCellTests.swift; sourceTree = SOURCE_ROOT; };
+		285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputerWakeUpInteractor.swift; path = App/ComputerWakeUpInteractor.swift; sourceTree = SOURCE_ROOT; };
+		285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputerSleepInteractor.swift; path = App/ComputerSleepInteractor.swift; sourceTree = SOURCE_ROOT; };
 		2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosLoginViewController.swift; sourceTree = "<group>"; };
 		286585141B031D3A00352782 /* Jirassic-Scrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic-Scrum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -553,6 +557,8 @@
 				28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */,
 				286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */,
 				286E9A421C1D9829008FC45E /* InternalNotifications.swift */,
+				285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */,
+				285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -1019,6 +1025,7 @@
 				28C02F801C00A6C100B65478 /* LoginPresenter.swift in Sources */,
 				28C02F771C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
 				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
+				285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */,
 				28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */,
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
@@ -1035,6 +1042,7 @@
 				289E2AF21B2D6D6E003269A3 /* RegisterUserInteractor.swift in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */,
 				28F51E7A1AC694B000A69CDF /* ReadTasksInteractor.swift in Sources */,
+				285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */,
 				28C02F501C007E8E00B65478 /* PTask.swift in Sources */,
 				28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */,
 				28C02F4E1C007E8E00B65478 /* ParseCredentials.swift in Sources */,

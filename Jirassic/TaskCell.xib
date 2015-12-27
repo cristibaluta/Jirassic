@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="70" y="54" width="265" height="20"/>
+                    <rect key="frame" x="127" y="54" width="208" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kkS-Qs-fmO"/>
                     </constraints>
@@ -37,9 +37,9 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="247" y="57" width="51" height="15"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="kk5-M4-fbR">
-                        <font key="font" metaFont="system" size="10"/>
+                    <rect key="frame" x="70" y="59" width="51" height="15"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="kk5-M4-fbR">
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
@@ -104,7 +104,7 @@
             <constraints>
                 <constraint firstItem="iAi-8T-Cme" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="4EI-YK-fcp"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="4LC-Du-N7a"/>
-                <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="70" id="80g-x5-V5p"/>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="127" id="80g-x5-V5p"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="70" id="AJd-Hi-qVV"/>
                 <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="L43-NL-Jg1"/>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="11" id="Nf3-e9-nbf"/>

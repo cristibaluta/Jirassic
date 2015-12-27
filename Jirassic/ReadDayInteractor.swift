@@ -17,7 +17,7 @@ class ReadDayInteractor: NSObject {
 		self.data = data
 	}
 	
-	func tasksForDayOfDate(date: NSDate) -> [Task] {
+	func tasksForDayOfDate (date: NSDate) -> [Task] {
 		
 		let filteredData = data.allCachedTasks().filter { (task: Task) -> Bool in
 			

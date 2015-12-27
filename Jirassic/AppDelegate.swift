@@ -8,7 +8,7 @@
 
 import Cocoa
 
-let sharedData: DataManagerProtocol = DataManager()
+var sharedData: DataManagerProtocol!
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	override init() {
 		super.init()
+		sharedData = DataManager()
 		
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
@@ -33,27 +34,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
         sleep = SleepNotifications()
         sleep?.computerWentToSleep = {
-			let reader = ReadDayInteractor(data: sharedData)
-			let existingTasks = reader.tasksForDayOfDate(NSDate())
-			if existingTasks.count > 0 {
-				// We already started the day, analyze if it's scrum time
-				
-			}
+			ComputerSleepInteractor(data: sharedData).run()
         }
         sleep?.computerWakeUp = {
-			let reader = ReadDayInteractor(data: sharedData)
-			let existingTasks = reader.tasksForDayOfDate(NSDate())
-			if existingTasks.count > 0 {
-				// We already started the day, analyze if it's scrum time
-				if TaskTypeFinder().scrumExists(existingTasks) {
-					let task = Task(dateSart: self.sleep?.lastSleepDate, dateEnd: NSDate(), type: TaskType.Scrum)
-					sharedData.updateTask(task, completion: {(success: Bool) -> Void in })
-					InternalNotifications.taskAdded(task)
-				}
-			} else {
-				// This might be the start of the day. Should we start counting automatically or wait the user to press start?
-				
-			}
+			ComputerWakeUpInteractor(data: sharedData).runWithLastSleepDate(self.sleep?.lastSleepDate)
         }
 	}
 	
