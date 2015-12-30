@@ -11,18 +11,15 @@ import Cocoa
 class DaysScrollView: NSScrollView {
 	
 	@IBOutlet private var tableView: NSTableView?
-	
+	var data = [Task]()
+	var didSelectRow: ((row: Int) -> ())?
 	private let rowHeight = CGFloat(20)
 	private let columnDateId = "date"
 	private let columnProgressId = "progress"
 	
-	var data = [Task]()
-	var didSelectRow: ((row: Int) -> ())?
-	
-	
 	override func awakeFromNib() {
-		tableView?.setDataSource( self )
-		tableView?.setDelegate( self )
+		tableView?.setDataSource(self)
+		tableView?.setDelegate(self)
 	}
 	
 	func reloadData() {
@@ -32,15 +29,15 @@ class DaysScrollView: NSScrollView {
 
 extension DaysScrollView: NSTableViewDataSource, NSTableViewDelegate {
 
-	func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
+	func numberOfRowsInTableView (aTableView: NSTableView) -> Int {
 		return data.count
 	}
 	
-	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		return rowHeight
 	}
 	
-	func tableView(tableView: NSTableView,
+	func tableView (tableView: NSTableView,
 		objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 			
 		let theData = data[row]
@@ -51,7 +48,7 @@ extension DaysScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		return nil
 	}
 	
-	func tableViewSelectionDidChange(aNotification: NSNotification) {
+	func tableViewSelectionDidChange (aNotification: NSNotification) {
 		
 		if let rowView: AnyObject = aNotification.object {
 			didSelectRow?(row: rowView.selectedRow)

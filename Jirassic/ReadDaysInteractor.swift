@@ -17,26 +17,55 @@ class ReadDaysInteractor: NSObject {
 		self.data = data
 	}
 	
-	func days() -> [Task] {
+	func weeks() -> [Week] {
 		
+		var objects = [Week]()
 		var referenceDate = NSDate.distantFuture()
-		
-		let filteredData = data.allCachedTasks().filter { (task: Task) -> Bool in
+		let filteredTasks = data.allCachedTasks().filter { (task: Task) -> Bool in
 			
-			if let dateEnd = task.endDate {
-				if dateEnd.isSameDayAs(referenceDate) == false {
-					referenceDate = dateEnd
-					return true
-				}
-			} else if let dateStart = task.startDate {
-				if dateStart.isSameDayAs(referenceDate) == false {
-					referenceDate = dateStart
+			if let dateToCompare = task.endDate ?? task.startDate {
+				if dateToCompare.isSameWeekAs(referenceDate) == false {
+					referenceDate = dateToCompare
 					return true
 				}
 			}
 			return false
 		}
 		
-		return filteredData
+		for task in filteredTasks {
+			if let dateToCompare = task.endDate ?? task.startDate {
+				let obj = Week(date: dateToCompare)
+				obj.days = days(obj)
+				objects.append(obj)
+			}
+		}
+		
+		return objects
+	}
+	
+	func days (week: Week) -> [Day] {
+		
+		var objects = [Day]()
+		var referenceDate = NSDate.distantFuture()
+		let filteredTasks = data.allCachedTasks().filter { (task: Task) -> Bool in
+			
+			if let dateToCompare = task.endDate ?? task.startDate {
+				if (dateToCompare.isSameWeekAs(week.date)) {
+					if dateToCompare.isSameDayAs(referenceDate) == false {
+						referenceDate = dateToCompare
+						return true
+					}
+				}
+			}
+			return false
+		}
+		for task in filteredTasks {
+			if let dateToCompare = task.endDate ?? task.startDate {
+				let obj = Day(date: dateToCompare)
+				objects.append(obj)
+			}
+		}
+		
+		return objects
 	}
 }

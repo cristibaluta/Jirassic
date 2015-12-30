@@ -120,6 +120,10 @@ extension NSDate {
 		return self.year() == month.year() && self.month() == month.month()
 	}
 	
+	func isSameWeekAs (month: NSDate) -> Bool {
+		return self.week() == month.week()
+	}
+	
 	func isSameDayAs (date: NSDate) -> Bool {
 		
 		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
@@ -151,6 +155,11 @@ extension NSDate {
 	func day() -> Int {
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.day
+	}
+	
+	func week() -> Int {
+		let comps = gregorian!.components(NSCalendarUnit.WeekOfYear, fromDate: self)
+		return comps.weekOfYear
 	}
 	
 	func roundUp() -> NSDate {

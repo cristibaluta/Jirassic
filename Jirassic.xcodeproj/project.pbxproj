@@ -13,6 +13,9 @@
 		2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851268A1BAB42A100D668F2 /* TaskCellTests.swift */; };
 		285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */; };
 		285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */; };
+		285424C71C3415E60063B532 /* DatesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C61C3415E60063B532 /* DatesScrollView.swift */; };
+		285424C91C34313E0063B532 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
+		285424CB1C3431990063B532 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
 		2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
@@ -209,6 +212,9 @@
 		2851268A1BAB42A100D668F2 /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellTests.swift; path = JirassicTests/TaskCellTests.swift; sourceTree = SOURCE_ROOT; };
 		285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputerWakeUpInteractor.swift; path = App/ComputerWakeUpInteractor.swift; sourceTree = SOURCE_ROOT; };
 		285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputerSleepInteractor.swift; path = App/ComputerSleepInteractor.swift; sourceTree = SOURCE_ROOT; };
+		285424C61C3415E60063B532 /* DatesScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesScrollView.swift; sourceTree = "<group>"; };
+		285424C81C34313E0063B532 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Week.swift; path = App/Entities/Week.swift; sourceTree = "<group>"; };
+		285424CA1C3431990063B532 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Day.swift; path = App/Entities/Day.swift; sourceTree = "<group>"; };
 		2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosLoginViewController.swift; sourceTree = "<group>"; };
 		286585141B031D3A00352782 /* Jirassic-Scrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic-Scrum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		286585171B031D3A00352782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -546,6 +552,8 @@
 				28C02F581C00801A00B65478 /* Task.swift */,
 				28778A571BB9B9A9003E4880 /* TaskTests.swift */,
 				28C02F5D1C00803300B65478 /* User.swift */,
+				285424C81C34313E0063B532 /* Week.swift */,
+				285424CA1C3431990063B532 /* Day.swift */,
 			);
 			name = Entities;
 			path = ..;
@@ -628,6 +636,7 @@
 			children = (
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
 				28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */,
+				285424C61C3415E60063B532 /* DatesScrollView.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
 				286E9A3D1C1C44B6008FC45E /* Git task cell */,
 				2802E0B21C0AC82000FA225F /* Task cell */,
@@ -1030,6 +1039,7 @@
 				28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */,
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
+				285424C71C3415E60063B532 /* DatesScrollView.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				286E9A3F1C1C9CE0008FC45E /* GitCell.swift in Sources */,
 				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
@@ -1049,7 +1059,9 @@
 				28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */,
 				28F51EBB1AC6F5F200A69CDF /* DaysScrollView.swift in Sources */,
 				28C02F521C007E8E00B65478 /* PUser.swift in Sources */,
+				285424CB1C3431990063B532 /* Day.swift in Sources */,
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,
+				285424C91C34313E0063B532 /* Week.swift in Sources */,
 				289998A21AC2920200706824 /* Popover.swift in Sources */,
 				28C02F4C1C007E8E00B65478 /* InitParse.swift in Sources */,
 				28B1F2B81AFB11A900D61472 /* LoginViewController.swift in Sources */,

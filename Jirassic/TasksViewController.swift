@@ -12,6 +12,7 @@ class TasksViewController: NSViewController {
 	
 	@IBOutlet private var splitView: NSSplitView?
 	@IBOutlet private var daysScrollView: DaysScrollView?
+	@IBOutlet private var datesScrollView: DatesScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
 	
 	@IBOutlet private var _dateLabel: NSTextField?
@@ -66,18 +67,11 @@ class TasksViewController: NSViewController {
 	func setupDaysTableView() {
 		
 		let reader = ReadDaysInteractor(data: sharedData)
-		daysScrollView?.data = reader.days()
-		daysScrollView?.didSelectRow = { [weak self] (row: Int) in
-			if row >= 0 {
-				let theData = self!.daysScrollView!.data[row]
-				if let dateEnd = theData.endDate {
-					self?.reloadTasksOnDay( dateEnd )
-				} else if let dateStart = theData.startDate {
-					self?.reloadTasksOnDay( dateStart )
-				}
-			}
+		datesScrollView?.weeks = reader.weeks()
+		datesScrollView?.didSelectDay = { [weak self] (day: Day) in
+			self?.reloadTasksOnDay(day.date)
 		}
-		daysScrollView?.reloadData()
+		datesScrollView?.reloadData()
 	}
 	
 	func setupTasksTableView() {
