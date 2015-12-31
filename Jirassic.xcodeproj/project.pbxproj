@@ -65,7 +65,6 @@
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		289E2AC51B2A3AAF003269A3 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */; };
 		289E2AF21B2D6D6E003269A3 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUserInteractor.swift */; };
-		289E2B1D1B314207003269A3 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
 		289E2B1F1B31420F003269A3 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */; };
 		289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 289E2B441B332C4C003269A3 /* Jirassic.iconset */; };
 		28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
@@ -143,7 +142,6 @@
 		28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
 		28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
 		28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */; };
-		28F51EBB1AC6F5F200A69CDF /* DaysScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
@@ -292,7 +290,6 @@
 		28F51EB41AC6EE5200A69CDF /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		28F51EB61AC6EF1700A69CDF /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
-		28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysScrollView.swift; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -635,7 +632,6 @@
 			isa = PBXGroup;
 			children = (
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
-				28F51EBA1AC6F5F200A69CDF /* DaysScrollView.swift */,
 				285424C61C3415E60063B532 /* DatesScrollView.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
 				286E9A3D1C1C44B6008FC45E /* Git task cell */,
@@ -975,7 +971,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				289E2B1F1B31420F003269A3 /* NonTaskCell.xib in Resources */,
-				289E2B1D1B314207003269A3 /* TaskCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,7 +1052,6 @@
 				28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */,
 				28C02F4E1C007E8E00B65478 /* ParseCredentials.swift in Sources */,
 				28F51EB31AC6B6D800A69CDF /* TasksViewController.swift in Sources */,
-				28F51EBB1AC6F5F200A69CDF /* DaysScrollView.swift in Sources */,
 				28C02F521C007E8E00B65478 /* PUser.swift in Sources */,
 				285424CB1C3431990063B532 /* Day.swift in Sources */,
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,

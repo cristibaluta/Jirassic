@@ -135,13 +135,19 @@ class DataManager: NSObject, DataManagerProtocol {
 		}
 		
 		let query = PFQuery(className: PTask.parseClassName())
-		query.cachePolicy = .CacheElseNetwork
+		query.fromLocalDatastore()
 		query.getObjectInBackgroundWithId(objectId, block: { (data: PFObject?, error: NSError?) -> Void in
 			
-			if error != nil {
-				RCLogErrorO(error)
+			if data == nil {
+				let query = PFQuery(className: PTask.parseClassName())
+				query.getObjectInBackgroundWithId(objectId, block: { (data: PFObject?, error: NSError?) -> Void in
+					
+					RCLogErrorO(error)
+					if data != nil {
+						completion(ptask: data as! PTask)
+					}
+				})
 			} else {
-				RCLogO(data)
 				completion(ptask: data as! PTask)
 			}
 		})

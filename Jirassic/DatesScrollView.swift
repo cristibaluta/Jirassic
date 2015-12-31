@@ -67,13 +67,13 @@ extension DatesScrollView: NSOutlineViewDataSource {
 }
 
 extension DatesScrollView: NSOutlineViewDelegate {
-	// NSOutlineViewDelegate
+	
 	func outlineView (outlineView: NSOutlineView, viewForTableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
 		switch item {
 		case let week as Week:
 			let view = outlineView.makeViewWithIdentifier("HeaderCell", owner: self) as! NSTableCellView
 			if let textField = view.textField {
-				textField.stringValue = week.date.MMdd()
+				textField.stringValue = week.date.weekInterval()
 			}
 			return view
 		case let day as Day:

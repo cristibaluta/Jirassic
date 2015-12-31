@@ -9,7 +9,8 @@
 import Foundation
 
 let ymdUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day]
-let ymdhmsUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second]
+let ymdhmsUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Weekday, NSCalendarUnit.Day,
+										NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second]
 let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 extension NSDate {
@@ -86,6 +87,16 @@ extension NSDate {
 		return f.stringFromDate(self)
 	}
 	
+	func weekInterval() -> String {
+		let bounds = self.weekBounds()
+		let f = NSDateFormatter()
+		f.dateFormat = "MMM dd"
+		if bounds.0.isSameMonthAs(bounds.1) {
+			return "\(f.stringFromDate(bounds.0)) - \(bounds.1.day())"
+		}
+		return "\(f.stringFromDate(bounds.0)) - \(f.stringFromDate(bounds.1))"
+	}
+	
 	// MARK: 
 	
 	class func getMonthsBetween (startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
@@ -105,7 +116,7 @@ extension NSDate {
 		return dates;
 	}
 	
-	func firstDayThisMonth() -> NSDate {
+	func startOfMonth() -> NSDate {
 		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
 		comps.day = 1
@@ -114,6 +125,34 @@ extension NSDate {
 		comps.second = 0
 		
 		return gregorian!.dateFromComponents(comps)!
+	}
+	
+	func startOfWeek() -> NSDate {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+		comps.day = comps.day - (comps.weekday - 1) + 1// 1 because weekday starts with 1, and 1 because weekday starts sunday
+		comps.hour = 0
+		comps.minute = 0
+		comps.second = 0
+		comps.weekday = 1
+		
+		return gregorian!.dateFromComponents(comps)!
+	}
+	
+	func endOfWeek() -> NSDate {
+		
+		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+		comps.day = comps.day + (7 - comps.weekday) + 1
+		comps.hour = 23
+		comps.minute = 59
+		comps.second = 59
+		comps.weekday = 7
+		
+		return gregorian!.dateFromComponents(comps)!
+	}
+	
+	func weekBounds() -> (NSDate, NSDate) {
+		return (self.startOfWeek(), self.endOfWeek())
 	}
 	
 	func isSameMonthAs (month: NSDate) -> Bool {

@@ -71,7 +71,7 @@
                         <constraint firstAttribute="width" constant="20" id="3dQ-k3-en3"/>
                         <constraint firstAttribute="height" constant="20" id="v6d-fN-etz"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QSn-Zg-qm9">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Plus" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QSn-Zg-qm9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -132,8 +132,8 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="Plus" width="15" height="15"/>
     </resources>
 </document>

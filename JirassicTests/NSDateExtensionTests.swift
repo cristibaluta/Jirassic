@@ -50,4 +50,11 @@ class DateTests: XCTestCase {
 		XCTAssertTrue(date.secondsToPercentTime(3600+1800) == 1.5, "")
 		XCTAssertTrue(date.secondsToPercentTime(7200) == 2, "")
 	}
+	
+	func testWeek() {
+		let date = NSDate(year: 2016, month: 1, day: 9, hour: 10, minute: 0)
+		let weekBounds = date.weekBounds()
+		XCTAssertTrue(weekBounds.0.compare(NSDate(year: 2016, month: 1, day: 4, hour: 0, minute: 0)) == .OrderedSame, "")
+		XCTAssertTrue(weekBounds.1.compare(NSDate(year: 2016, month: 1, day: 10, hour: 23, minute: 59, second: 59)) == .OrderedSame, "")
+	}
 }

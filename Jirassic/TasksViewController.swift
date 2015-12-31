@@ -11,10 +11,8 @@ import Cocoa
 class TasksViewController: NSViewController {
 	
 	@IBOutlet private var splitView: NSSplitView?
-	@IBOutlet private var daysScrollView: DaysScrollView?
 	@IBOutlet private var datesScrollView: DatesScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
-	
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
@@ -26,9 +24,6 @@ class TasksViewController: NSViewController {
 	
 	var handleSettingsButton: (() -> ())?
 	var handleRefreshButton: (() -> ())?
-	var handleDrawerButton: (() -> ())?
-	var handleQuitAppButton: (() -> ())?
-	var selectedDate: NSDate?
 	
     
     // MARK: View controller lifecycle
@@ -94,14 +89,12 @@ class TasksViewController: NSViewController {
 	func updateNoTasksState() {
 		
 		if tasksScrollView!.data.count == 0 {
-			let controller = noTasksController()
-			controller.showStartState()
-			Wireframe.presentNoTaskController(controller, overController: self, splitView: splitView!)
+			noTasksViewController.showStartState()
+			Wireframe.presentNoTaskController(noTasksViewController, overController: self, splitView: splitView!)
 		}
 		else if tasksScrollView!.data.count == 1 {
-			let controller = noTasksController()
-			controller.showFirstTaskState()
-            Wireframe.presentNoTaskController(controller, overController: self, splitView: splitView!)
+			noTasksViewController.showFirstTaskState()
+            Wireframe.presentNoTaskController(noTasksViewController, overController: self, splitView: splitView!)
 		}
 		else {
 			removeNoTasksController()
@@ -111,7 +104,7 @@ class TasksViewController: NSViewController {
     
     // MARK: No Tasks
     
-	func noTasksController() -> NoTasksViewController {
+	var noTasksViewController: NoTasksViewController {
 		
 		if _noTasksViewController == nil {
 			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
@@ -132,7 +125,7 @@ class TasksViewController: NSViewController {
     
     // MARK: New Tasks
     
-	func newTaskController() -> NewTaskViewController {
+	var newTaskViewController: NewTaskViewController {
 		
 		if _newTaskViewController == nil {
 			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
@@ -228,10 +221,9 @@ class TasksViewController: NSViewController {
 		RCLogO("add new cell after date \(date)")
 		removeNoTasksController()
 		splitView?.hidden = true
-		let controller = newTaskController()
-		Wireframe.presentNewTaskController(controller, overController: self, splitView: splitView!)
+		Wireframe.presentNewTaskController(newTaskViewController, overController: self, splitView: splitView!)
 		
-		controller.date = NSDate()
+		newTaskViewController.date = NSDate()
 	}
 	
 	@IBAction func handleSettingsButton (sender: NSButton) {
