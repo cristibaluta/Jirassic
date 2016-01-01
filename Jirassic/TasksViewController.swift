@@ -135,7 +135,8 @@ class TasksViewController: NSViewController {
 				
 				var task = Task(subtype: i)
 				task.notes = self!._newTaskViewController!.notes
-				task.issueType = self!._newTaskViewController!.issue
+				task.issueType = self!._newTaskViewController!.issueType
+				task.issueId = self!._newTaskViewController!.issueId
 				if task.endDate != nil {
 					task.endDate = self!._newTaskViewController!.date
 				} else if task.startDate != nil {

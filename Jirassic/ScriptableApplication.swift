@@ -21,6 +21,7 @@ extension NSApplication {
 			endDate: NSDate(),
 			notes: tasks,
 			issueType: Issues.lastUsed(),
+			issueId: "",
 			taskType: TaskType.GitCommit.rawValue,
 			objectId: nil
 		)

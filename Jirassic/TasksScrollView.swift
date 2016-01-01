@@ -93,7 +93,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
 		
 		cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
-			theData.issueType = cell.data.issue
+			theData.issueType = cell.data.issueType
 			theData.notes = cell.data.notes
 			if cell.data.dateEnd != "" {
 				let hm = NSDate.parseHHmm(cell.data.dateEnd)

@@ -172,6 +172,7 @@ class DataManager: NSObject, DataManagerProtocol {
 					endDate: ptask.date_task_finished,
 					notes: ptask.notes,
 					issueType: ptask.issue_type,
+					issueId: ptask.issue_id,
 					taskType: ptask.task_type,
 					objectId: ptask.objectId)
 	}

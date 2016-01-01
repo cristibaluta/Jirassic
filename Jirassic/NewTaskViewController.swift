@@ -10,10 +10,12 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
-	@IBOutlet private var issueTypeTextField: NSTextField?
-	@IBOutlet private var issueNrTextField: NSTextField?
+	@IBOutlet private var issueTypeComboBox: NSComboBox?
+	@IBOutlet private var issueIdTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
-	@IBOutlet private var dateTextField: NSTextField?
+	@IBOutlet private var startDateTextField: NSTextField?
+	@IBOutlet private var endDateTextField: NSTextField?
+	@IBOutlet private var durationTextField: NSTextField?
 	
 	var onOptionChosen: ((i: TaskSubtype) -> Void)?
 	var onCancelChosen: (Void -> Void)?
@@ -21,11 +23,11 @@ class NewTaskViewController: NSViewController {
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
 		get {
-			let hm = NSDate.parseHHmm(self.dateTextField!.stringValue)
+			let hm = NSDate.parseHHmm(self.startDateTextField!.stringValue)
 			return NSDate().dateByUpdatingHour(hm.hour, minute: hm.min)
 		}
 		set {
-			self.dateTextField?.stringValue = newValue.HHmm()
+			self.startDateTextField?.stringValue = newValue.HHmm()
 		}
 	}
 	var notes: String {
@@ -36,12 +38,20 @@ class NewTaskViewController: NSViewController {
 			self.notesTextField?.stringValue = newValue
 		}
 	}
-	var issue: String {
+	var issueType: String {
 		get {
-			return issueNrTextField!.stringValue
+			return issueTypeComboBox!.stringValue
 		}
 		set {
-			self.issueNrTextField?.stringValue = newValue
+			self.issueTypeComboBox?.stringValue = newValue
+		}
+	}
+	var issueId: String {
+		get {
+			return issueIdTextField!.stringValue
+		}
+		set {
+			self.issueIdTextField?.stringValue = newValue
 		}
 	}
 	
@@ -55,39 +65,39 @@ class NewTaskViewController: NSViewController {
 		self.view.removeFromSuperview()
 	}
 	
-	@IBAction func handleScrumBeginButton(sender: NSButton) {
+	@IBAction func handleScrumBeginButton (sender: NSButton) {
 		self.onOptionChosen?(i: .ScrumBegin)
 	}
 	
-	@IBAction func handleScrumEndButton(sender: NSButton) {
+	@IBAction func handleScrumEndButton (sender: NSButton) {
 		self.onOptionChosen?(i: .ScrumEnd)
 	}
 	
-	@IBAction func handleLunchBeginButton(sender: NSButton) {
+	@IBAction func handleLunchBeginButton (sender: NSButton) {
 		self.onOptionChosen?(i: .LunchBegin)
 	}
 	
-	@IBAction func handleLunchEndButton(sender: NSButton) {
+	@IBAction func handleLunchEndButton (sender: NSButton) {
 		self.onOptionChosen?(i: .LunchEnd)
 	}
 	
-	@IBAction func handleTaskBeginButton(sender: NSButton) {
+	@IBAction func handleTaskBeginButton (sender: NSButton) {
 		self.onOptionChosen?(i: .IssueBegin)
 	}
 	
-	@IBAction func handleTaskEndButton(sender: NSButton) {
+	@IBAction func handleTaskEndButton (sender: NSButton) {
 		self.onOptionChosen?(i: .IssueEnd)
 	}
 	
-	@IBAction func handleMeetingBeginButton(sender: NSButton) {
+	@IBAction func handleMeetingBeginButton (sender: NSButton) {
 		self.onOptionChosen?(i: .IssueBegin)
 	}
 	
-	@IBAction func handleMeetingEndButton(sender: NSButton) {
+	@IBAction func handleMeetingEndButton (sender: NSButton) {
 		self.onOptionChosen?(i: .IssueEnd)
 	}
 	
-	@IBAction func handleCancelButton(sender: NSButton) {
+	@IBAction func handleCancelButton (sender: NSButton) {
 		self.onCancelChosen?()
 	}
 	

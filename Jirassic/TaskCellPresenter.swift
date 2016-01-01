@@ -63,7 +63,13 @@ class TaskCellPresenter: NSObject {
 			}
 		}
 		
-		cell?.data = (dateStart: dateStart, dateEnd: dateEnd, issue: theData.issueType ?? "", notes: notes)
+		cell?.data = (
+			dateStart: dateStart,
+			dateEnd: dateEnd,
+			issueType: theData.issueType ?? "",
+			issueId: theData.issueId ?? "",
+			notes: notes
+		)
 		cell?.duration = duration
 		cell?.statusImage!.image = statusImage
 	}

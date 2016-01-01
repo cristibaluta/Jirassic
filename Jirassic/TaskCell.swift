@@ -35,12 +35,13 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 		get {
 			return (dateStart: self.dateEndTextField!.stringValue,
 					dateEnd: self.dateEndTextField!.stringValue,
-					issue: self.issueNrTextField!.stringValue,
+					issueType: self.issueNrTextField!.stringValue,
+					issueId: "",
 					notes: self.notesTextField!.stringValue)
 		}
 		set {
 			self.dateEndTextField!.stringValue = newValue.dateEnd
-			self.issueNrTextField!.stringValue = newValue.issue
+			self.issueNrTextField!.stringValue = newValue.issueType
 			self.notesTextField!.stringValue = newValue.notes
 			_dateEnd = newValue.dateEnd
 		}

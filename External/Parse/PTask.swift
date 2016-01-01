@@ -12,8 +12,9 @@ import Parse
 let kDateStartKey = "date_task_started"
 let kDateFinishKey = "date_task_finished"
 let kNotesKey = "notes"
-let kIssueKey = "issue_type"
-let kTypeKey = "task_type"
+let kIssueTypeKey = "issue_type"
+let kIssueIdKey = "issue_id"
+let kTaskTypeKey = "task_type"
 let kUserKey = "user"
 
 public class PTask: PFObject, PFSubclassing {
@@ -77,22 +78,33 @@ public class PTask: PFObject, PFSubclassing {
 	
 	dynamic public var issue_type: String? {
 		get {
-			return objectForKey(kIssueKey) as! String?
+			return objectForKey(kIssueTypeKey) as! String?
 		}
 		set {
 			if let value = newValue {
-				setObject(value, forKey: kIssueKey)
+				setObject(value, forKey: kIssueTypeKey)
+			}
+		}
+	}
+	
+	dynamic public var issue_id: String? {
+		get {
+			return objectForKey(kIssueIdKey) as! String?
+		}
+		set {
+			if let value = newValue {
+				setObject(value, forKey: kIssueIdKey)
 			}
 		}
 	}
 	
 	dynamic public var task_type: NSNumber? {
 		get {
-			return objectForKey(kTypeKey) as! NSNumber?
+			return objectForKey(kTaskTypeKey) as! NSNumber?
 		}
 		set {
 			if let value = newValue {
-				setObject(value, forKey: kTypeKey)
+				setObject(value, forKey: kTaskTypeKey)
 			}
 		}
 	}

@@ -37,6 +37,7 @@ struct Task {
 	var endDate: NSDate?
 	var notes: String?
 	var issueType: String?
+	var issueId: String?
 	var taskType: NSNumber?
 	var objectId: String?
 }
@@ -76,4 +77,4 @@ extension Task {
 	}
 }
 
-typealias TaskCreationData = (dateStart: String, dateEnd: String, issue: String, notes: String)
+typealias TaskCreationData = (dateStart: String, dateEnd: String, issueType: String, issueId: String, notes: String)
