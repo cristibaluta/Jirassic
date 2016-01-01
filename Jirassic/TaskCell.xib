@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                    <rect key="frame" x="127" y="54" width="208" height="20"/>
+                    <rect key="frame" x="127" y="54" width="160" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kkS-Qs-fmO"/>
                     </constraints>
@@ -93,7 +93,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAU-4V-M8t">
-                    <rect key="frame" x="17" y="45" width="51" height="15"/>
+                    <rect key="frame" x="17" y="57" width="51" height="15"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="dAn-XR-e3z">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.23037979813145845" green="0.3580610079360585" blue="0.53380055877382193" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,7 +110,7 @@
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="11" id="Nf3-e9-nbf"/>
                 <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="10" id="Opv-Gf-sLC"/>
                 <constraint firstItem="iAi-8T-Cme" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Tdx-gI-YRG"/>
-                <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="10" id="aGj-OX-0vK"/>
+                <constraint firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="58" id="aGj-OX-0vK"/>
                 <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="aU1-7S-IRR"/>
                 <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="cZS-0S-iX6"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>

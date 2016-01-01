@@ -236,6 +236,10 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleShareButton (sender: NSButton) {
 		
+		let report = CreateReport(tasks: tasksScrollView!.data.reverse())
+		report.round()
+		tasksScrollView!.data = report.tasks.reverse()
+		tasksScrollView?.reloadData()
 	}
 }
 

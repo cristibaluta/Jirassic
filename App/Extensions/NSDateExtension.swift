@@ -201,10 +201,10 @@ extension NSDate {
 		return comps.weekOfYear
 	}
 	
-	func roundUp() -> NSDate {
+	func round() -> NSDate {
 		
 		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-		let hm = round(comps.minute)
+		let hm = _round(comps.minute)
 		comps.hour = comps.hour + hm.hour
 		comps.minute = hm.min
 		comps.second = 0
@@ -233,7 +233,7 @@ extension NSDate {
 	
 	// MARK: Round to nearest quarter
 	
-	private func round (min: Int) -> (hour: Int, min: Int) {
+	private func _round (min: Int) -> (hour: Int, min: Int) {
 		if min < 22 {
 			return (0, 15)
 		} else if min < 38 {

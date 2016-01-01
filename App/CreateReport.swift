@@ -16,49 +16,66 @@ class CreateReport: NSObject {
 	
 	convenience init (tasks: [Task]) {
 		self.init()
+		self.tasks = tasks
+	}
+	
+	func round() {
 		
-		if tasks.count <= 2 {
-			self.tasks = tasks
+		guard (tasks.first != nil && tasks.first!.endDate != nil) else {
+			return
+		}
+		guard tasks.count > 1 else {
 			return
 		}
 		
-//		let dateStart = tasks.first!.endDate
-//		tasks.first!.endDate = tasks.first!.endDate?.roundUp()
-		let dateStartAdjusted = tasks.first!.endDate
-//		let dateEnd = tasks.last?.date_task_finished
-		var dateEndAdjusted = dateStartAdjusted!.dateByAddingTimeInterval(kEightHoursInSeconds)
+		// Group tasks with thesame id together
+		groupByTaskId()
 		
-//		let diff = dateEnd?.timeIntervalSinceDate(dateStart!)
-//		let newDiff = dateEndAdjusted.timeIntervalSinceDate(dateStartAdjusted!)
+		// Calculate the excess time till 8 hrs
+		let totalTime = tasks.last!.endDate!.timeIntervalSinceDate(tasks.first!.endDate!)
+		let lunchDuration = self.lunchDuration
+		let workedTime = totalTime - lunchDuration
+		let missingTime = kEightHoursInSeconds - workedTime
+		let extraTimePerTask = ceil(Double(Int(missingTime) / (tasks.count)))
+		var extraTimeToAdd = extraTimePerTask
+		RCLog(totalTime)
+		RCLog(lunchDuration)
+		RCLog(workedTime)
+		RCLog(missingTime)
+		RCLog(extraTimePerTask)
 		
-		self.tasks.append(tasks.first!)
-		
-		for i in 1...tasks.count-2 {
+		// Round times and add the extra time
+		for i in 0..<tasks.count-1 {
 			var task = tasks[i]
-			let prevTask = tasks[i-1]
-			
-			task.endDate = task.endDate?.roundUp()
-			
-			if task.taskType == TaskType.Lunch.rawValue {
-				let duration = task.endDate!.timeIntervalSinceDate(prevTask.endDate!)
-				RCLogO(duration)
-				dateEndAdjusted = dateEndAdjusted.dateByAddingTimeInterval(duration)
+			RCLog(task)
+			if i > 0 {
+				task.endDate = task.endDate?.dateByAddingTimeInterval(extraTimeToAdd)
 			}
-			self.tasks.append(task)
+			task.endDate = task.endDate?.round()
+			extraTimeToAdd += extraTimePerTask
+			RCLog(task)
+			tasks[i] = task
 		}
+		// Handle the last task and add the remaining time
+		var task = tasks.last!
+		task.endDate = tasks.first!.endDate?.dateByAddingTimeInterval(kEightHoursInSeconds+self.lunchDuration)
+		RCLog(task)
+		tasks[tasks.count-1] = task
 		
-//		tasks.last?.endDate = dateEndAdjusted
-		self.tasks.append(tasks.last!)
 	}
 	
-	private func lunchTimeInterval (tasks: [Task]) -> NSTimeInterval {
+	func groupByTaskId() {
 		
-		var referenceDate = tasks.first?.endDate
+	}
+	
+	var lunchDuration: NSTimeInterval {
+		
+		var lastTaskEndDate = tasks.first?.endDate
 		for task in tasks {
 			if task.taskType == TaskType.Lunch.rawValue {
-				return task.endDate!.timeIntervalSinceDate(referenceDate!)
+				return task.endDate!.timeIntervalSinceDate(lastTaskEndDate!)
 			}
-			referenceDate = task.endDate
+			lastTaskEndDate = task.endDate
 		}
 		return 0.0
 	}

@@ -18,26 +18,26 @@ class CreateReportTests: XCTestCase {
         super.setUp()
 		
 		var t1 = Task()
-		t1.endDate = NSDate(timeIntervalSince1970: 1433151905) // Mon, 01 Jun 2015 09:45:05 GMT
+		t1.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 9, minute: 45)
 
 		var t1_1 = Task()
-		t1_1.endDate = NSDate(timeIntervalSince1970: 1433151905+3985)
+		t1_1.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 11, minute: 5)
 
 		var t1_lunch = Task()
-		t1_lunch.endDate = NSDate(timeIntervalSince1970: Double(1433151905+3985+kLunchLength))
+		t1_lunch.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 11, minute: 51)
 		t1_lunch.taskType = TaskType.Lunch.rawValue
 		
 		var t1_2 = Task()
-		t1_2.endDate = NSDate(timeIntervalSince1970: 1433151905+8800)
+		t1_2.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 12, minute: 30)
 		
 		var t1_3 = Task()
-		t1_3.endDate = NSDate(timeIntervalSince1970: 1433151905+13980)
+		t1_3.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
 		
 		var t1_4 = Task()
-		t1_4.endDate = NSDate(timeIntervalSince1970: 1433181605-8000)
+		t1_4.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
 		
 		var t2 = Task()
-		t2.endDate = NSDate(timeIntervalSince1970: 1433181605) // Mon, 01 Jun 2015 18:00:05 GMT
+		t2.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
 		
 		tasks = [t1, t1_1, t1_lunch, t1_2, t1_3, t1_4, t2]
     }
@@ -49,53 +49,41 @@ class CreateReportTests: XCTestCase {
 
     func testRoundLessThan8HoursOfWork() {
 		
-		var tasks = self.tasks
-		tasks.removeLast()
-		let raport = CreateReport(tasks: self.tasks)
-		let firstTask = raport.tasks.first
-		let lastTask = raport.tasks.last
+		let report = CreateReport(tasks: self.tasks)
+		report.round()
+		let firstTask = report.tasks.first
+		let lastTask = report.tasks.last
 		let diff = lastTask?.endDate?.timeIntervalSinceDate(firstTask!.endDate!)
 		
-		// 28800
-		RCLogO(diff)
-		let date = NSDate(timeIntervalSince1970: kLunchLength).roundUp()
-		let adjustedLunchLength = date.timeIntervalSince1970
-		RCLogO(adjustedLunchLength)
-		
-        XCTAssert(diff == kEightHoursInSeconds+adjustedLunchLength, "Pass")
-		
-//		for i in 1...raport.tasks.count-1 {
-//			let task = raport.tasks[i]
-//			let prevTask = raport.tasks[i-1]
-//			
-//			let duration = task.date_task_finished!.timeIntervalSinceDate(prevTask.date_task_finished!)
-//			let date = NSDate(timeIntervalSince1970: duration)
-//			RCLogO(task.date_task_finished)
-//			RCLogO(date.secondsToPercentTime(duration))
-//		}
+		// 28800 + lunchDuration
+		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")
     }
 	
 	func testRoundMoreThan8HoursOfWork() {
 		
-		let raport = CreateReport(tasks: self.tasks)
-		let firstTask = raport.tasks.first
-		let lastTask = raport.tasks.last
+		var t3 = Task()
+		t3.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 19, minute: 30)
+		var tasks = self.tasks
+		tasks.append(t3)
+		let report = CreateReport(tasks: tasks)
+		report.round()
+		let firstTask = report.tasks.first
+		let lastTask = report.tasks.last
 		let diff = lastTask?.endDate?.timeIntervalSinceDate(firstTask!.endDate!)
-		let date = NSDate(timeIntervalSince1970: kLunchLength).roundUp()
-		let adjustedLunchLength = date.timeIntervalSince1970
 		
-		XCTAssert(diff == kEightHoursInSeconds+adjustedLunchLength, "Pass")
+		// 28800 + lunchDuration
+		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")
 	}
 
 	func test8Hours() {
 		let date = NSDate()
-		let t1 = date.secondsToPercentTime(3600*1.5)
-		let t2 = date.secondsToPercentTime(3600*4.0)
-		let t3 = date.secondsToPercentTime(15*60.0)
-		let t4 = date.secondsToPercentTime(45*60.0)
-		let t5 = date.secondsToPercentTime(1800.0)
-		let t6 = date.secondsToPercentTime(30*60.0)
-		let t7 = date.secondsToPercentTime(30*60.0)
+		let t1 = date.secondsToPercentTime(3600*1.5)//1.5
+		let t2 = date.secondsToPercentTime(3600*4.0)//4
+		let t3 = date.secondsToPercentTime(15*60.0)//0.25
+		let t4 = date.secondsToPercentTime(45*60.0)//0.75
+		let t5 = date.secondsToPercentTime(1800.0)//0.5
+		let t6 = date.secondsToPercentTime(30*60.0)//0.5
+		let t7 = date.secondsToPercentTime(30*60.0)//0.5
 		XCTAssert(t1+t2+t3+t4+t5+t6+t7 == 8, "The sum should be 8 hours")
 	}
 }

@@ -13,6 +13,7 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol {
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
+	@IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint?
 	@IBOutlet private var butRemove: NSButton?
 	@IBOutlet private var butAdd: NSButton?
 	
@@ -77,12 +78,14 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol {
 	override func mouseEntered (theEvent: NSEvent) {
 		self.butRemove?.hidden = false
 		self.butAdd?.hidden = false
+		self.notesTextFieldTrailingContraint?.constant = 80
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
 	override func mouseExited (theEvent: NSEvent) {
 		self.butRemove?.hidden = true
 		self.butAdd?.hidden = true
+		self.notesTextFieldTrailingContraint?.constant = 10
 		self.setNeedsDisplayInRect(self.frame)
 	}
 	
