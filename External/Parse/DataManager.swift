@@ -25,8 +25,10 @@ class DataManager: NSObject, DataManagerProtocol {
 	
 	private func queryOfflineTasks (completion: ([Task], NSError?) -> Void) {
 		
+		let puser = PUser.currentUser()
 		let query = PFQuery(className: PTask.parseClassName())
 		query.fromLocalDatastore()
+		query.whereKey(kUserKey, equalTo: puser!)
 		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
 			if let strongSelf = self {
 				RCLogO("Found \(objects?.count) objects in LocalDatastore")
@@ -39,9 +41,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		
 		let puser = PUser.currentUser()
 		let query = PFQuery(className: PTask.parseClassName())
-		query.orderByDescending(kDateFinishKey)
-		//		query.orderByDescending(kDateStartKey)
-		query.whereKey("user", equalTo: puser!)
+		query.whereKey(kUserKey, equalTo: puser!)
 		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
 			
 			PFObject.pinAllInBackground(objects, block: { (success, error) -> Void in

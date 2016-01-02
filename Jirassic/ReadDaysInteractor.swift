@@ -10,59 +10,56 @@ import Foundation
 
 class ReadDaysInteractor: NSObject {
 	
-	var data: DataManagerProtocol!
+	private var dataManager: DataManagerProtocol!
+	private var tasks = [Task]()
 	
-	convenience init (data: DataManagerProtocol) {
+	convenience init (dataManager: DataManagerProtocol) {
 		self.init()
-		self.data = data
+		self.dataManager = dataManager
+		self.tasks = dataManager.allCachedTasks()
+		self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
+			if let date1 = task1.endDate ?? task1.startDate {
+				if let date2 = task2.endDate ?? task2.startDate {
+					return date1.compare(date2) == .OrderedDescending
+				}
+			}
+			return false
+		}
 	}
 	
 	func weeks() -> [Week] {
 		
 		var objects = [Week]()
 		var referenceDate = NSDate.distantFuture()
-		let filteredTasks = data.allCachedTasks().filter { (task: Task) -> Bool in
-			
-			if let dateToCompare = task.endDate ?? task.startDate {
-				if dateToCompare.isSameWeekAs(referenceDate) == false {
-					referenceDate = dateToCompare
-					return true
-				}
-			}
-			return false
-		}
 		
-		for task in filteredTasks {
+		for task in tasks {
 			if let dateToCompare = task.endDate ?? task.startDate {
-				let obj = Week(date: dateToCompare)
-				obj.days = days(obj)
-				objects.append(obj)
+				if !dateToCompare.isSameWeekAs(referenceDate) {
+					referenceDate = dateToCompare
+					let obj = Week(date: dateToCompare)
+					obj.days = days(obj)
+					objects.append(obj)
+				}
 			}
 		}
 		
 		return objects
 	}
 	
-	func days (week: Week) -> [Day] {
+	private func days (week: Week) -> [Day] {
 		
 		var objects = [Day]()
 		var referenceDate = NSDate.distantFuture()
-		let filteredTasks = data.allCachedTasks().filter { (task: Task) -> Bool in
-			
+		
+		for task in tasks {
 			if let dateToCompare = task.endDate ?? task.startDate {
 				if (dateToCompare.isSameWeekAs(week.date)) {
-					if dateToCompare.isSameDayAs(referenceDate) == false {
+					if !dateToCompare.isSameDayAs(referenceDate) {
 						referenceDate = dateToCompare
-						return true
+						let obj = Day(date: dateToCompare)
+						objects.append(obj)
 					}
 				}
-			}
-			return false
-		}
-		for task in filteredTasks {
-			if let dateToCompare = task.endDate ?? task.startDate {
-				let obj = Day(date: dateToCompare)
-				objects.append(obj)
 			}
 		}
 		

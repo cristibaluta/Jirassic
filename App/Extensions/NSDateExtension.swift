@@ -155,15 +155,15 @@ extension NSDate {
 		return (self.startOfWeek(), self.endOfWeek())
 	}
 	
-	func isSameMonthAs (month: NSDate) -> Bool {
+	@inline(__always) func isSameMonthAs (month: NSDate) -> Bool {
 		return self.year() == month.year() && self.month() == month.month()
 	}
 	
-	func isSameWeekAs (month: NSDate) -> Bool {
-		return self.week() == month.week()
+	@inline(__always) func isSameWeekAs (month: NSDate) -> Bool {
+		return self.year() == month.year() && self.week() == month.week()
 	}
 	
-	func isSameDayAs (date: NSDate) -> Bool {
+	@inline(__always) func isSameDayAs (date: NSDate) -> Bool {
 		
 		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
 		let compsRef = gregorian!.components(ymdUnitFlags, fromDate: date)
@@ -181,22 +181,22 @@ extension NSDate {
 		return daysRange.length as Int
 	}
 	
-	func year() -> Int {
+	@inline(__always) func year() -> Int {
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.year
 	}
 	
-	func month() -> Int {
+	@inline(__always) func month() -> Int {
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.month
 	}
 	
-	func day() -> Int {
+	@inline(__always) func day() -> Int {
 		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
 		return comps.day
 	}
 	
-	func week() -> Int {
+	@inline(__always) func week() -> Int {
 		let comps = gregorian!.components(NSCalendarUnit.WeekOfYear, fromDate: self)
 		return comps.weekOfYear
 	}
