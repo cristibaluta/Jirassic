@@ -105,7 +105,8 @@ class DataManager: NSObject, DataManagerProtocol {
 			ptask.date_task_started = task.startDate
 			ptask.date_task_finished = task.endDate
 			ptask.notes = task.notes
-			ptask.issue_type = task.issueType
+            ptask.issue_type = task.issueType
+            ptask.issue_id = task.issueId
 			ptask.task_type = task.taskType
 			// Save it locally
 			ptask.pinInBackgroundWithBlock { success, error in
@@ -159,7 +160,8 @@ class DataManager: NSObject, DataManagerProtocol {
 			ptask.date_task_started = task.startDate
 			ptask.date_task_finished = task.endDate
 			ptask.notes = task.notes
-			ptask.issue_type = task.issueType
+            ptask.issue_type = task.issueType
+            ptask.issue_id = task.issueId
 			ptask.task_type = task.taskType
 			ptask.user = PUser.currentUser()
 		

@@ -14,14 +14,20 @@ extension NSApplication {
 		return "Tasks returned from Jirassic"
 	}
 	
-	func setTasks (tasks: String) {
-		RCLog(tasks);
+	func setTasks (message: String) {
+        let comps = message.componentsSeparatedByString("::")
+        RCLog(comps);
+        let notes = comps.last!
+        var issueId = comps.first!
+        if comps.count < 2 {
+            issueId = ""
+        }
 		let task = Task(
 			startDate: nil,
 			endDate: NSDate(),
-			notes: tasks,
+			notes: notes,
 			issueType: Issues.lastUsed(),
-			issueId: "",
+			issueId: issueId,
 			taskType: TaskType.GitCommit.rawValue,
 			objectId: nil
 		)
@@ -29,7 +35,7 @@ extension NSApplication {
 			RCLog(success)
 		})
         
-        LocalNotifications().showNotification("Git commit logged to Jirassic", informativeText: tasks)
+        LocalNotifications().showNotification("Git commit logged to Jirassic", informativeText: notes)
 	}
 	
 	func logCommit (commit: String, ofBranch: String) {
