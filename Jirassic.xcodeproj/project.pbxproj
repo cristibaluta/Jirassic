@@ -10,6 +10,7 @@
 		2802E0D01C14BD2A00FA225F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */; };
 		282426761B113D5000211713 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
+		2841A93F1C3DB2E400564ECD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841A93E1C3DB2E400564ECD /* main.swift */; };
 		2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851268A1BAB42A100D668F2 /* TaskCellTests.swift */; };
 		285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */; };
 		285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */; };
@@ -176,6 +177,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2841A93A1C3DB2E400564ECD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		6D31D09D1AC44613001AC4BA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +204,8 @@
 		2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		282426751B113D5000211713 /* FlipScreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipScreens.swift; sourceTree = "<group>"; };
 		282426771B113F6900211713 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		2841A93C1C3DB2E400564ECD /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
+		2841A93E1C3DB2E400564ECD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../jirassic/main.swift; sourceTree = "<group>"; };
 		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2846C90C1AFF882E00779357 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		2846C9161AFF8FB100779357 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -310,6 +322,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2841A9391C3DB2E400564ECD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		286585111B031D3A00352782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,6 +421,14 @@
 				28B1F2BD1AFB2BF500D61472 /* NonTaskCell.xib */,
 			);
 			name = "Non task cell";
+			sourceTree = "<group>";
+		};
+		2841A9371C3DB27800564ECD /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				2841A93E1C3DB2E400564ECD /* main.swift */,
+			);
+			name = CLI;
 			sourceTree = "<group>";
 		};
 		2846C9111AFF8AC800779357 /* parse-ios */ = {
@@ -726,6 +753,7 @@
 				6D31D0611AC196BC001AC4BA /* JirassicTests.xctest */,
 				286585141B031D3A00352782 /* Jirassic-Scrum.app */,
 				2865852A1B031D3A00352782 /* Jirassic-ScrumTests.xctest */,
+				2841A93C1C3DB2E400564ECD /* jirassic */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -733,6 +761,7 @@
 		6D31D04E1AC196BB001AC4BA /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
+				2841A9371C3DB27800564ECD /* CLI */,
 				289E2AE61B2D6554003269A3 /* OSX */,
 				286585151B031D3A00352782 /* IOS */,
 			);
@@ -808,6 +837,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2841A93B1C3DB2E400564ECD /* jirassic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2841A9401C3DB2E400564ECD /* Build configuration list for PBXNativeTarget "jirassic" */;
+			buildPhases = (
+				2841A9381C3DB2E400564ECD /* Sources */,
+				2841A9391C3DB2E400564ECD /* Frameworks */,
+				2841A93A1C3DB2E400564ECD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jirassic;
+			productName = jirassic;
+			productReference = 2841A93C1C3DB2E400564ECD /* jirassic */;
+			productType = "com.apple.product-type.tool";
+		};
 		286585131B031D3A00352782 /* Jirassic-Scrum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 286585321B031D3A00352782 /* Build configuration list for PBXNativeTarget "Jirassic-Scrum" */;
@@ -885,10 +931,13 @@
 		6D31D0441AC196BB001AC4BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Cristian Baluta";
 				TargetAttributes = {
+					2841A93B1C3DB2E400564ECD = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					286585131B031D3A00352782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 5NHDC5EV44;
@@ -924,6 +973,7 @@
 				6D31D0601AC196BC001AC4BA /* JirassicTests */,
 				286585131B031D3A00352782 /* Jirassic-Scrum */,
 				286585291B031D3A00352782 /* Jirassic-ScrumTests */,
+				2841A93B1C3DB2E400564ECD /* jirassic */,
 			);
 		};
 /* End PBXProject section */
@@ -976,6 +1026,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2841A9381C3DB2E400564ECD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2841A93F1C3DB2E400564ECD /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		286585101B031D3A00352782 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1135,6 +1193,25 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2841A9411C3DB2E400564ECD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2841A9421C3DB2E400564ECD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		286585331B031D3A00352782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1417,6 +1494,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2841A9401C3DB2E400564ECD /* Build configuration list for PBXNativeTarget "jirassic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2841A9411C3DB2E400564ECD /* Debug */,
+				2841A9421C3DB2E400564ECD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		286585321B031D3A00352782 /* Build configuration list for PBXNativeTarget "Jirassic-Scrum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
