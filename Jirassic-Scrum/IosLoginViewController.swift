@@ -39,7 +39,7 @@ class IosLoginViewController: UIViewController {
 		
 		_activityIndicator?.startAnimating()
 		
-		PFUser.logInWithUsernameInBackground(_emailTextField!.text, password:_passwordTextField!.text) {
+		PFUser.logInWithUsernameInBackground(_emailTextField!.text!, password:_passwordTextField!.text!) {
 			[weak self](user: PFUser?, error: NSError?) -> Void in
 			if user != nil {
 				self!._activityIndicator?.stopAnimating()
@@ -48,7 +48,7 @@ class IosLoginViewController: UIViewController {
 				self!.performSegueWithIdentifier("ShowDaysSegue", sender: nil)
 			}
 			else if let error = error {
-				let errorString = error.userInfo?["error"] as? NSString
+				let errorString = error.userInfo["error"] as? NSString
 				RCLogO(errorString)
 			}
 		}

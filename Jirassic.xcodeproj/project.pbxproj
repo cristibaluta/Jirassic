@@ -142,6 +142,10 @@
 		28F51EB51AC6EE5200A69CDF /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB41AC6EE5200A69CDF /* TaskCell.swift */; };
 		28F51EB71AC6EF1700A69CDF /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EB61AC6EF1700A69CDF /* TaskCell.xib */; };
 		28F51EB91AC6F4FA00A69CDF /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */; };
+		5641771D1C579ADB00B893F3 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289E2AF11B2D6D6E003269A3 /* RegisterUserInteractor.swift */; };
+		5641771E1C579DBA00B893F3 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
+		5641771F1C579FA200B893F3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
+		564177201C579FB200B893F3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
@@ -1044,11 +1048,14 @@
 				28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F4B1C007E8E00B65478 /* DataManager.swift in Sources */,
 				28C02F901C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
+				564177201C579FB200B893F3 /* Day.swift in Sources */,
 				28C02F511C007E8E00B65478 /* PTask.swift in Sources */,
+				5641771F1C579FA200B893F3 /* Week.swift in Sources */,
 				2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */,
 				2865856A1B053CD300352782 /* TaskCell.swift in Sources */,
 				28C02F5B1C00801B00B65478 /* Task.swift in Sources */,
 				28C02F601C00803300B65478 /* User.swift in Sources */,
+				5641771E1C579DBA00B893F3 /* Issues.swift in Sources */,
 				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
 				28C02F4D1C007E8E00B65478 /* InitParse.swift in Sources */,
@@ -1058,6 +1065,7 @@
 				28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				28C02F8C1C010ABC00B65478 /* PIssue.swift in Sources */,
 				2894F1CB1B076EAE0095DD17 /* ReadTasksInteractor.swift in Sources */,
+				5641771D1C579ADB00B893F3 /* RegisterUserInteractor.swift in Sources */,
 				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
 				28C02F791C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
 			);
@@ -1230,7 +1238,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1253,7 +1261,7 @@
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -73,15 +73,16 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 	func tableView (tableView: NSTableView,
 		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 			
-		var theData = data[row]
+        var theData = data[row]
+        let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
 		var cell: TaskCellProtocol? = nil
 		switch Int(theData.taskType!.intValue) {
 			case TaskType.Issue.rawValue:
 				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
 				break
-//			case TaskType.GitCommit.rawValue:
-//				cell = self.tableView?.makeViewWithIdentifier(kGitCellIdentifier, owner: self) as? GitCell
-//				break
+			case TaskType.GitCommit.rawValue:
+				cell = self.tableView?.makeViewWithIdentifier(kGitCellIdentifier, owner: self) as? GitCell
+				break
 			default:
 				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
 				break
@@ -89,7 +90,6 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 		assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
 		
 		// Add data to the cell
-		let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
 		TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
 		
 		cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in

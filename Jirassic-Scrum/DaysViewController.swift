@@ -58,7 +58,7 @@ extension DaysViewController: UITableViewDataSource, UITableViewDelegate {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier("DayCell", forIndexPath: indexPath) as! UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("DayCell", forIndexPath: indexPath)
 		
 		let object = days[indexPath.row]
 		cell.textLabel!.text = object.date_task_finished?.EEEEMMdd()

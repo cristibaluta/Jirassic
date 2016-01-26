@@ -22,7 +22,7 @@ class TaskCellPresenter: NSObject {
 		var dateStart = ""
 		var dateEnd = ""
 		var duration = ""
-		var notes = theData.notes ?? ""//Alert the user the notes can't be nil
+		var notes = theData.notes ?? ""// TODO: Alert the user the notes can't be nil
 		var statusImage: NSImage?
 		
 		if theData.endDate == nil && theData.startDate != nil {
@@ -57,7 +57,7 @@ class TaskCellPresenter: NSObject {
 						}
 				}
 			} else {
-				// This is always the Start cell
+				// This is always the first cell
 				notes = "\(notes) at \(theData.endDate!.HHmm())"
 				statusImage = nil
 			}

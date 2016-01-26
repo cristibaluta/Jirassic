@@ -23,11 +23,11 @@ class NewTaskViewController: NSViewController {
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
 		get {
-			let hm = NSDate.parseHHmm(self.startDateTextField!.stringValue)
+			let hm = NSDate.parseHHmm(self.endDateTextField!.stringValue)
 			return NSDate().dateByUpdatingHour(hm.hour, minute: hm.min)
 		}
 		set {
-			self.startDateTextField?.stringValue = newValue.HHmm()
+			self.endDateTextField?.stringValue = newValue.HHmm()
 		}
 	}
 	var notes: String {

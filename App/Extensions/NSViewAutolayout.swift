@@ -6,10 +6,16 @@
 //  Copyright (c) 2015 Baluta Cristian. All rights reserved.
 //
 
-import Cocoa
+#if os(iOS)
+    import UIKit
+    typealias View = UIView
+#else
+    import Cocoa
+    typealias View = NSView
+#endif
 
-extension NSView {
-	
+extension View {
+    
 	func removeAutoresizing() {
 		self.translatesAutoresizingMaskIntoConstraints = false
 	}
@@ -35,21 +41,21 @@ extension NSView {
 			"V:|-top-[view]-bottom-|", options: [], metrics: metricsDictionary, views: viewsDictionary))
 	}
 	
-	func constrainHorizontally (leftView: NSView, rightView: NSView, distance: CGFloat) {
+	func constrainHorizontally (leftView: View, rightView: View, distance: CGFloat) {
 		let viewsDictionary = ["leftView": leftView, "rightView": rightView]
 		let metricsDictionary = ["distance": distance]
 		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
 			"H:[leftView]-distance-[rightView]", options: [], metrics: metricsDictionary, views: viewsDictionary))
 	}
 	
-	func constraintVertically (topView: NSView, bottomView: NSView, distance: CGFloat) {
+	func constraintVertically (topView: View, bottomView: View, distance: CGFloat) {
 		let viewsDictionary = ["topView": topView, "bottomView": bottomView]
 		let metrics = ["gap": distance]
 		self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
 			"V:[topView]-gap-[bottomView]", options: [], metrics: metrics, views: viewsDictionary))
 	}
 	
-	func constraintToTop (view: NSView, distance: CGFloat) -> NSLayoutConstraint {
+	func constraintToTop (view: View, distance: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: view,
 			attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal,
 			toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: distance)
@@ -57,7 +63,7 @@ extension NSView {
 		return constraint
 	}
 	
-	func constraintToBottom (view: NSView, distance: CGFloat) -> NSLayoutConstraint {
+	func constraintToBottom (view: View, distance: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: view,
 			attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal,
 			toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: distance)
@@ -65,7 +71,7 @@ extension NSView {
 		return constraint
 	}
 	
-	func constraintToLeft (view: NSView, distance: CGFloat) -> NSLayoutConstraint {
+	func constraintToLeft (view: View, distance: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: view,
 			attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal,
 			toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: distance)
@@ -73,7 +79,7 @@ extension NSView {
 		return constraint
 	}
 	
-	func constraintToRight (view: NSView, distance: CGFloat) -> NSLayoutConstraint {
+	func constraintToRight (view: View, distance: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: view,
 			attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal,
 			toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: distance)

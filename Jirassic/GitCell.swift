@@ -17,7 +17,8 @@ class GitCell: NSTableRowView, TaskCellProtocol {
 	@IBOutlet private var butAdd: NSButton?
 	
 	private var isEditing = false
-	private var wasEdited = false
+    private var wasEdited = false
+    private var mouseInside = false
 	private var trackingArea: NSTrackingArea?
 	
 	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
@@ -52,18 +53,34 @@ class GitCell: NSTableRowView, TaskCellProtocol {
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
-	override func drawBackgroundInRect (dirtyRect: NSRect) {
-		
-		let selectionRect = NSRect(x: 0, y: 6, width: dirtyRect.size.width-10, height: dirtyRect.size.height-12)
-		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-		selectionPath.fill()
-		
-		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
-		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-		let linePath = NSBezierPath(rect: lineRect)
-		linePath.fill()
-	}
+    override func drawBackgroundInRect (dirtyRect: NSRect) {
+        
+        if (self.mouseInside) {
+            let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
+            NSColor(calibratedWhite: 0.8, alpha: 1.0).setFill()
+            NSColor(calibratedWhite: 0.3, alpha: 1.0).setStroke()
+            //			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
+            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+            selectionPath.fill()
+            selectionPath.stroke()
+        }
+        else {
+            let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
+            NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+            selectionPath.fill()
+        }
+    }
+    
+    override func drawSelectionInRect (dirtyRect: NSRect) {
+        
+        let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
+        NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
+        NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()
+        let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+        selectionPath.fill()
+        selectionPath.stroke()
+    }
 	
 	// MARK: Acions
 	
@@ -77,18 +94,37 @@ class GitCell: NSTableRowView, TaskCellProtocol {
 	
 	// MARK: mouse
 	
-	override func mouseEntered (theEvent: NSEvent) {
-		self.butRemove?.hidden = false
-		self.butAdd?.hidden = false
-		self.setNeedsDisplayInRect(self.frame)
-	}
-	
-	override func mouseExited (theEvent: NSEvent) {
-		self.butRemove?.hidden = true
-		self.butAdd?.hidden = true
-		self.setNeedsDisplayInRect(self.frame)
-	}
-	
+//	override func mouseEntered (theEvent: NSEvent) {
+//		self.butRemove?.hidden = false
+//		self.butAdd?.hidden = false
+//		self.setNeedsDisplayInRect(self.frame)
+//	}
+//	
+//	override func mouseExited (theEvent: NSEvent) {
+//		self.butRemove?.hidden = true
+//		self.butAdd?.hidden = true
+//		self.setNeedsDisplayInRect(self.frame)
+//	}
+    override func mouseEntered (theEvent: NSEvent) {
+        self.mouseInside = true
+        self.showMouseOverControls(self.mouseInside)
+        self.setNeedsDisplayInRect(self.frame)
+    }
+    
+    override func mouseExited (theEvent: NSEvent) {
+        self.mouseInside = false
+        self.showMouseOverControls(self.mouseInside)
+        self.setNeedsDisplayInRect(self.frame)
+    }
+    
+    func showMouseOverControls (show: Bool) {
+        self.butRemove?.hidden = !show
+        self.butAdd?.hidden = !show
+//        self.butCopy?.hidden = !show
+        self.dateEndTextField?.editable = show
+//        self.durationTextField?.editable = show
+    }
+    
 	func ensureTrackingArea() {
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
