@@ -18,6 +18,7 @@
 		285424C91C34313E0063B532 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
 		285424CB1C3431990063B532 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
 		2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2856DF161B13919A00A4D5A4 /* IosLoginViewController.swift */; };
+		2862CEB71C5944D0002369AA /* ReadDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899CD1C1C385EDE00ADCDF1 /* ReadDayInteractor.swift */; };
 		286585191B031D3A00352782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286585181B031D3A00352782 /* AppDelegate.swift */; };
 		286585221B031D3A00352782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286585211B031D3A00352782 /* Images.xcassets */; };
 		286585251B031D3A00352782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286585231B031D3A00352782 /* LaunchScreen.xib */; };
@@ -81,7 +82,6 @@
 		28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
 		28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */; };
-		28C02F371C006AA600B65478 /* NSDateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839001AF402B200602D33 /* NSDateExtensionTests.swift */; };
 		28C02F4A1C007E8E00B65478 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* DataManager.swift */; };
 		28C02F4B1C007E8E00B65478 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* DataManager.swift */; };
 		28C02F4C1C007E8E00B65478 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F461C007E8E00B65478 /* InitParse.swift */; };
@@ -93,7 +93,6 @@
 		28C02F521C007E8E00B65478 /* PUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F491C007E8E00B65478 /* PUser.swift */; };
 		28C02F531C007E8E00B65478 /* PUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F491C007E8E00B65478 /* PUser.swift */; };
 		28C02F561C007F3000B65478 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* MockDataManager.swift */; };
-		28C02F571C007F3000B65478 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* MockDataManager.swift */; };
 		28C02F591C00801A00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5B1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5E1C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
@@ -1056,6 +1055,7 @@
 				28C02F5B1C00801B00B65478 /* Task.swift in Sources */,
 				28C02F601C00803300B65478 /* User.swift in Sources */,
 				5641771E1C579DBA00B893F3 /* Issues.swift in Sources */,
+				2862CEB71C5944D0002369AA /* ReadDayInteractor.swift in Sources */,
 				286585571B03EABA00352782 /* DataManagerProtocol.swift in Sources */,
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
 				28C02F4D1C007E8E00B65478 /* InitParse.swift in Sources */,
@@ -1076,9 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				286585311B031D3A00352782 /* Jirassic_ScrumTests.swift in Sources */,
-				28C02F371C006AA600B65478 /* NSDateExtensionTests.swift in Sources */,
 				286585541B03EA6C00352782 /* RCLog.swift in Sources */,
-				28C02F571C007F3000B65478 /* MockDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1240,6 +1238,7 @@
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1263,6 +1262,7 @@
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1509,6 +1509,7 @@
 				2841A9421C3DB2E400564ECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		286585321B031D3A00352782 /* Build configuration list for PBXNativeTarget "Jirassic-Scrum" */ = {
 			isa = XCConfigurationList;

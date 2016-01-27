@@ -10,7 +10,7 @@ import UIKit
 
 class TasksViewController: UITableViewController {
 
-	var currentDay: Task?
+	var currentDay: Day?
 	var tasks = [Task]()
 	
 	
@@ -26,8 +26,8 @@ class TasksViewController: UITableViewController {
 		//		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
 		//		self.navigationItem.rightBarButtonItem = addButton
 		
-		self.title = self.currentDay!.date_task_finished?.EEEEMMdd()
-		self.tasks = sharedData.tasksForDayOnDate(self.currentDay!.date_task_finished!)
+		self.title = self.currentDay!.date.EEEEMMdd()
+		self.tasks = ReadDayInteractor(data: sharedData).tasksForDayOfDate(self.currentDay!.date)
 		self.tableView.reloadData()
 	}
 	
@@ -43,7 +43,7 @@ class TasksViewController: UITableViewController {
 	//	}
 }
 
-extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
+extension TasksViewController {
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
@@ -57,7 +57,7 @@ extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		let theData = tasks[indexPath.row]
 		
-		if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
+		if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
 			
 			return NSString(string: theData.notes!).boundingRectWithSize(
 				CGSize(width: self.view.frame.size.width - 48, height: 999),
@@ -73,22 +73,22 @@ extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		let theData = tasks[indexPath.row]
 		
-		if Int(theData.task_type!.intValue) == TaskType.Issue.rawValue {
+		if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
 			let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as! TaskCell
-			cell.taskNrLabel!.text = theData.task_nr
-			cell.dateLabel!.text = theData.date_task_finished?.HHmm()
+			cell.taskNrLabel!.text = theData.issueId
+			cell.dateLabel!.text = theData.endDate?.HHmm()
 			cell.notesLabel!.text = theData.notes
 			return cell
 		}
 		else {
 			let cell = tableView.dequeueReusableCellWithIdentifier("NonTaskCell", forIndexPath: indexPath) as! NonTaskCell
-			if Int(theData.task_type!.intValue) == TaskType.Start.rawValue {
+			if Int(theData.taskType!.intValue) == TaskType.Start.rawValue {
 				cell.circleWhite?.hidden = false
 				cell.notesLabel!.text = theData.notes
 			} else {
 				cell.circleWhite?.hidden = true
 				let thePreviousData = tasks[indexPath.row+1]
-				cell.notesLabel!.text = "\(theData.notes!) \(thePreviousData.date_task_finished!.HHmm()) - \(theData.date_task_finished!.HHmm())"
+				cell.notesLabel!.text = "\(theData.notes!) \(thePreviousData.endDate!.HHmm()) - \(theData.endDate!.HHmm())"
 			}
 			return cell
 		}

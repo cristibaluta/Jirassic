@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Jirassic
+//@testable import Jirassic
 
 class MockDataManager: NSObject, DataManagerProtocol {
 	

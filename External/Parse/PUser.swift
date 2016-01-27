@@ -13,7 +13,7 @@ public class PUser: PFUser {
 	
 	var isLoggedIn: Bool {
 		get {
-			RCLogO(self.isAuthenticated())
+//			RCLogO(self.isAuthenticated())
 			RCLogO(self.username)
 			return (self.username != nil)
 		}

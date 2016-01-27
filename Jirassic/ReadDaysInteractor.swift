@@ -46,6 +46,24 @@ class ReadDaysInteractor: NSObject {
 		return objects
 	}
 	
+	func days() -> [Day] {
+		
+		var objects = [Day]()
+		var referenceDate = NSDate.distantFuture()
+		
+		for task in tasks {
+			if let dateToCompare = task.endDate ?? task.startDate {
+				if !dateToCompare.isSameDayAs(referenceDate) {
+					referenceDate = dateToCompare
+					let obj = Day(date: dateToCompare)
+					objects.append(obj)
+				}
+			}
+		}
+		
+		return objects
+	}
+	
 	private func days (week: Week) -> [Day] {
 		
 		var objects = [Day]()

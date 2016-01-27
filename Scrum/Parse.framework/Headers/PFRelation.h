@@ -1,61 +1,57 @@
-//
-//  PFRelation.h
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 #import <Foundation/Foundation.h>
 
-#if TARGET_OS_IPHONE
-#import <Parse/PFNullability.h>
 #import <Parse/PFObject.h>
 #import <Parse/PFQuery.h>
-#else
-#import <ParseOSX/PFNullability.h>
-#import <ParseOSX/PFObject.h>
-#import <ParseOSX/PFQuery.h>
-#endif
 
-PF_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
-/*!
+/**
  The `PFRelation` class that is used to access all of the children of a many-to-many relationship.
  Each instance of `PFRelation` is associated with a particular parent object and key.
  */
-@interface PFRelation : NSObject
+@interface PFRelation<ObjectType : PFObject *> : NSObject
 
-/*!
- @abstract The name of the class of the target child objects.
+/**
+ The name of the class of the target child objects.
  */
-@property (nonatomic, strong) NSString *targetClass;
+@property (nullable, nonatomic, copy) NSString *targetClass;
 
 ///--------------------------------------
-/// @name Accessing Objects
+#pragma mark - Accessing Objects
 ///--------------------------------------
 
-/*!
- @abstract Returns a <PFQuery> object that can be used to get objects in this relation.
+/**
+ Returns a `PFQuery` object that can be used to get objects in this relation.
  */
-- (PF_NULLABLE PFQuery *)query;
+- (PFQuery<ObjectType> *)query;
 
 ///--------------------------------------
-/// @name Modifying Relations
+#pragma mark - Modifying Relations
 ///--------------------------------------
 
-/*!
- @abstract Adds a relation to the passed in object.
+/**
+ Adds a relation to the passed in object.
 
- @param object A <PFObject> object to add relation to.
+ @param object A `PFObject` object to add relation to.
  */
-- (void)addObject:(PFObject *)object;
+- (void)addObject:(ObjectType)object;
 
-/*!
- @abstract Removes a relation to the passed in object.
+/**
+ Removes a relation to the passed in object.
 
- @param object A <PFObject> object to add relation to.
+ @param object A `PFObject` object to add relation to.
  */
-- (void)removeObject:(PFObject *)object;
+- (void)removeObject:(ObjectType)object;
 
 @end
 
-PF_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

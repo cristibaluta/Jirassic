@@ -19,17 +19,16 @@ class InitParse: NSObject {
 		PTask.registerSubclass()
 		PUser.registerSubclass()
 		PIssue.registerSubclass()
-		
+		Parse.enableLocalDatastore()// This does not work with cache enabled
 		#if os(OSX)
-			Parse.enableLocalDatastore()// This does not work with cache enabled
 			PFUser.enableAutomaticUser()
 		#endif
 		
-		let acl = PFACL()
-		acl.setPublicReadAccess(false)
-		PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
-		
 		Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
+		
+		let acl = PFACL()
+		acl.publicReadAccess = false
+		PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
 		
 		_ = PFAnalytics()
 	}

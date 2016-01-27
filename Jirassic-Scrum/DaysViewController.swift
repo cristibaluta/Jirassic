@@ -10,7 +10,7 @@ import UIKit
 
 class DaysViewController: UITableViewController {
 
-	var days = [Task]()
+	var days = [Day]()
 	
 	
 	override func awakeFromNib() {
@@ -27,8 +27,8 @@ class DaysViewController: UITableViewController {
 	}
 	
 	func reloadData() {
-		sharedData.queryData { (tasks, error) -> Void in
-			self.days = sharedData.days()
+		sharedData.queryTasks { (tasks, error) -> Void in
+			self.days = ReadDaysInteractor(dataManager: sharedData).days()
 			self.tableView.reloadData()
 			self.refreshControl?.endRefreshing()
 		}
@@ -38,15 +38,14 @@ class DaysViewController: UITableViewController {
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "ShowTasksSegue" {
-		    if let indexPath = self.tableView.indexPathForSelectedRow() {
-		        let object = days[indexPath.row]
-				(segue.destinationViewController as! TasksViewController).currentDay = object
+		    if let indexPath = self.tableView.indexPathForSelectedRow {
+				(segue.destinationViewController as! TasksViewController).currentDay = days[indexPath.row]
 		    }
 		}
 	}
 }
 
-extension DaysViewController: UITableViewDataSource, UITableViewDelegate {
+extension DaysViewController {
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
@@ -59,9 +58,8 @@ extension DaysViewController: UITableViewDataSource, UITableViewDelegate {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("DayCell", forIndexPath: indexPath)
-		
 		let object = days[indexPath.row]
-		cell.textLabel!.text = object.date_task_finished?.EEEEMMdd()
+		cell.textLabel!.text = object.date.EEEEMMdd()
 		return cell
 	}
 }
