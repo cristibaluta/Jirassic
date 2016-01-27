@@ -11,12 +11,16 @@
             <rect key="frame" x="0.0" y="0.0" width="341" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91u-2I-cZl">
-                    <rect key="frame" x="1" y="9" width="20" height="18"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91u-2I-cZl">
+                    <rect key="frame" x="10" y="9" width="20" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="p8V-5b-McK"/>
+                        <constraint firstAttribute="height" constant="18" id="wI1-Xk-Z3A"/>
+                    </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="xfP-nS-4Nk"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
-                    <rect key="frame" x="25" y="11" width="308" height="17"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
+                    <rect key="frame" x="30" y="11" width="302" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" red="0.33822601010101006" green="0.33822601010101006" blue="0.33822601010101006" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,9 +65,11 @@
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
+                <constraint firstItem="91u-2I-cZl" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="PAY-Po-Lqs"/>
                 <constraint firstAttribute="bottom" secondItem="mSe-2c-CEz" secondAttribute="bottom" constant="11" id="W0h-Gb-Oai"/>
+                <constraint firstItem="91u-2I-cZl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="cw3-2v-PdJ"/>
                 <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
-                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="27" id="wXn-Xe-hfV"/>
+                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="30" id="wXn-Xe-hfV"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>

@@ -12,7 +12,7 @@ class TaskCellPresenter: NSObject {
 
 	var cell: TaskCellProtocol?
 	
-	convenience init(cell: TaskCellProtocol) {
+	convenience init (cell: TaskCellProtocol) {
 		self.init()
 		self.cell = cell
 	}
@@ -53,7 +53,7 @@ class TaskCellPresenter: NSObject {
 							if let endDate = thePreviosData.endDate {
 								dateStart = endDate.HHmm()
 							}
-							statusImage = nil
+							statusImage = NSImage(named: NSImageNameStatusUnavailable)
 						}
 				}
 			} else {
