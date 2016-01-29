@@ -663,6 +663,7 @@
 				28F51EB21AC6B6D800A69CDF /* TasksViewController.swift */,
 				285424C61C3415E60063B532 /* DatesScrollView.swift */,
 				28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */,
+				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
 				286E9A3D1C1C44B6008FC45E /* Git task cell */,
 				2802E0B21C0AC82000FA225F /* Task cell */,
 				2802E0B31C0AC83600FA225F /* Non task cell */,
@@ -696,7 +697,6 @@
 				28DB60911BCA5B27003FDE96 /* TasksViewController */,
 				28B1F2B31AFAA6C700D61472 /* NoTasksViewController.swift */,
 				28B1F2B51AFAA6F600D61472 /* NewTaskViewController.swift */,
-				28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */,
 			);
 			name = "Tasks screen";
 			sourceTree = "<group>";
