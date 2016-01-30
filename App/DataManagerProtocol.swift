@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DataManagerProtocol: NSObjectProtocol {
+protocol DataManagerProtocol {
 	
 	func queryTasks (completion: ([Task], NSError?) -> Void)
 	func allCachedTasks() -> [Task]
