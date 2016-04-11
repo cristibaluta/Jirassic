@@ -41,6 +41,7 @@ class DataManager: NSObject, DataManagerProtocol {
 		
 		let puser = PUser.currentUser()
 		let query = PFQuery(className: PTask.parseClassName())
+        query.limit = 200
 		query.whereKey(kUserKey, equalTo: puser!)
 		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
 			
