@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	override init() {
 		super.init()
-		sharedData = DataManager()
+		sharedData = ParseDataManager()
 		
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {

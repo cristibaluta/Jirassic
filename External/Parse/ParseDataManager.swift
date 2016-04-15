@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class DataManager: NSObject, DataManagerProtocol {
+class ParseDataManager: NSObject, DataManagerProtocol {
 
 	private var tasks = [Task]()
 	

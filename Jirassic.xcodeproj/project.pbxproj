@@ -82,8 +82,8 @@
 		28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		28B1F2C41AFF327D00D61472 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */; };
 		28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */; };
-		28C02F4A1C007E8E00B65478 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* DataManager.swift */; };
-		28C02F4B1C007E8E00B65478 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* DataManager.swift */; };
+		28C02F4A1C007E8E00B65478 /* ParseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* ParseDataManager.swift */; };
+		28C02F4B1C007E8E00B65478 /* ParseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* ParseDataManager.swift */; };
 		28C02F4C1C007E8E00B65478 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F461C007E8E00B65478 /* InitParse.swift */; };
 		28C02F4D1C007E8E00B65478 /* InitParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F461C007E8E00B65478 /* InitParse.swift */; };
 		28C02F4E1C007E8E00B65478 /* ParseCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F471C007E8E00B65478 /* ParseCredentials.swift */; };
@@ -145,6 +145,7 @@
 		5641771E1C579DBA00B893F3 /* Issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28778A591BB9C70F003E4880 /* Issues.swift */; };
 		5641771F1C579FA200B893F3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
 		564177201C579FB200B893F3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
+		56A68A9C1CC0CD3C0031CC0C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68A9B1CC0CD3C0031CC0C /* CoreDataManager.swift */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
@@ -265,7 +266,7 @@
 		28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepNotifications.swift; sourceTree = "<group>"; };
 		28B1F2C31AFF327D00D61472 /* TaskCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellProtocol.swift; sourceTree = "<group>"; };
 		28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimatorTests.swift; path = JirassicTests/TaskTypeEstimatorTests.swift; sourceTree = SOURCE_ROOT; };
-		28C02F451C007E8E00B65478 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		28C02F451C007E8E00B65478 /* ParseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDataManager.swift; sourceTree = "<group>"; };
 		28C02F461C007E8E00B65478 /* InitParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitParse.swift; sourceTree = "<group>"; };
 		28C02F471C007E8E00B65478 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
 		28C02F481C007E8E00B65478 /* PTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTask.swift; sourceTree = "<group>"; };
@@ -304,6 +305,7 @@
 		28F51EB41AC6EE5200A69CDF /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		28F51EB61AC6EF1700A69CDF /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		28F51EB81AC6F4FA00A69CDF /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
+		56A68A9B1CC0CD3C0031CC0C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = External/CoreData/CoreDataManager.swift; sourceTree = SOURCE_ROOT; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				28E838FD1AF401A900602D33 /* DataManagerProtocol.swift */,
+				56A68A9A1CC0CD0B0031CC0C /* CoreData */,
 				28C02F541C007F3000B65478 /* InMemoryStorage */,
 				28C02F441C007E8E00B65478 /* Parse */,
 			);
@@ -600,7 +603,7 @@
 		28C02F441C007E8E00B65478 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				28C02F451C007E8E00B65478 /* DataManager.swift */,
+				28C02F451C007E8E00B65478 /* ParseDataManager.swift */,
 				28C02F461C007E8E00B65478 /* InitParse.swift */,
 				28C02F471C007E8E00B65478 /* ParseCredentials.swift */,
 				28C02F481C007E8E00B65478 /* PTask.swift */,
@@ -733,6 +736,14 @@
 				28C02F721C009C9700B65478 /* NSViewAutolayout.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		56A68A9A1CC0CD0B0031CC0C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				56A68A9B1CC0CD3C0031CC0C /* CoreDataManager.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		6D31D0431AC196BB001AC4BA = {
@@ -1045,7 +1056,7 @@
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
 				28C02F821C00A6C100B65478 /* LoginPresenter.swift in Sources */,
 				28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */,
-				28C02F4B1C007E8E00B65478 /* DataManager.swift in Sources */,
+				28C02F4B1C007E8E00B65478 /* ParseDataManager.swift in Sources */,
 				28C02F901C01120700B65478 /* ReadDaysInteractor.swift in Sources */,
 				564177201C579FB200B893F3 /* Day.swift in Sources */,
 				28C02F511C007E8E00B65478 /* PTask.swift in Sources */,
@@ -1084,8 +1095,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A68A9C1CC0CD3C0031CC0C /* CoreDataManager.swift in Sources */,
 				28E838FE1AF401A900602D33 /* DataManagerProtocol.swift in Sources */,
-				28C02F4A1C007E8E00B65478 /* DataManager.swift in Sources */,
+				28C02F4A1C007E8E00B65478 /* ParseDataManager.swift in Sources */,
 				28C02F591C00801A00B65478 /* Task.swift in Sources */,
 				28C0300A1C07E93100B65478 /* TaskCellPresenter.swift in Sources */,
 				28C02F801C00A6C100B65478 /* LoginPresenter.swift in Sources */,
