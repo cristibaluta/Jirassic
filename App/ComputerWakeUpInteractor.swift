@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ComputerWakeUpInteractor: NSObject {
+class ComputerWakeUpInteractor {
 
 	var data: Repository!
 	

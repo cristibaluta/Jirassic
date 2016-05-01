@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Week: NSObject {
+class Week {
 	
 	let date: NSDate
 	var days = [Day]()

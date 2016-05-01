@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Day: NSObject {
+class Day {
 
 	let date: NSDate
 	

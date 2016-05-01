@@ -6,9 +6,9 @@
 //  Copyright © 2015 Cristian Baluta. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class ComputerSleepInteractor: NSObject {
+class ComputerSleepInteractor {
 
 	var data: Repository!
 	

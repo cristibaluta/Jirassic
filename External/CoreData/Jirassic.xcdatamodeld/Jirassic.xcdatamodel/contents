@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
-    <entity name="CIssue" syncable="YES"/>
-    <entity name="CTask" syncable="YES">
+    <entity name="CIssue" representedClassName=".CIssue" syncable="YES">
+        <attribute name="issueType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CTask" representedClassName=".CTask" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="issueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issueType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastModifiedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CTask" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="CIssue" positionX="-54" positionY="0" width="128" height="45"/>
+        <element name="CTask" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="CIssue" positionX="-54" positionY="0" width="128" height="60"/>
     </elements>
 </model>

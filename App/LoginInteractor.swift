@@ -10,7 +10,7 @@ import Foundation
 import Parse
 
 class LoginInteractor: NSObject {
-
+    
 	var onLoginSuccess: (() -> ())?
 	var data: Repository!
 	
