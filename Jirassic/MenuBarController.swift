@@ -22,7 +22,7 @@ class MenuBarController: NSObject {
 		
 		iconView = MenuBarIconView(imageName: "Status", item: item)
 		iconView?.onMouseDown = {
-			self.onMouseDown!()
+			self.onMouseDown?()
 		}
 		item.view = iconView
 	}

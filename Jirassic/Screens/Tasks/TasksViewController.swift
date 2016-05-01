@@ -182,10 +182,10 @@ class TasksViewController: NSViewController {
 	
 	func reloadDataFromServer() {
 		self.showLoadingIndicator(true)
-		localRepository.queryTasks { [weak self] (tasks, error) -> Void in
+		localRepository.queryTasks(0, completion: { [weak self] (tasks, error) -> Void in
 			self?.reloadData()
 			self?.showLoadingIndicator(false)
-		}
+		})
 	}
 	
 	func reloadData() {

@@ -19,6 +19,7 @@ class TaskTypeFinder {
 				break
 			}
 		}
+        
 		return exists
 	}
 }

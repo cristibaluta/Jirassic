@@ -53,8 +53,8 @@ class MenuBarIconView : NSView {
     }
     
     override func mouseDown (theEvent: NSEvent) {
-        self.isSelected = !self.isSelected;
-        self.onMouseDown();
+        self.isSelected = !self.isSelected
+        self.onMouseDown()
     }
     
     override func mouseUp (theEvent: NSEvent) {

@@ -153,7 +153,7 @@ extension ParseRepository: Repository {
         }
     }
     
-	func queryTasks (completion: ([Task], NSError?) -> Void) {
+    func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
 		
 		let puser = PUser.currentUser()
 		let query = PFQuery(className: PTask.parseClassName())

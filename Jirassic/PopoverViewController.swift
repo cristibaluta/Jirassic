@@ -60,16 +60,20 @@ class PopoverViewController: NSViewController {
 	}
 	
 	func createLoginController() -> LoginViewController {
-		
-		let loginController = LoginViewController.instanceFromStoryboard()
-		loginController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
-		loginController.onLoginSuccess = { [weak self] in
-			self?.flipToTasks(loginController)
-		}
-		loginController.handleCancelLoginButton = { [weak self] in
-			self?.flipToTasks(loginController)
-		}
-		
+        
+        let loginController = LoginViewController.instantiateFromStoryboard("Main")
+        loginController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
+        
+        let loginPresenter = LoginPresenter()
+        loginPresenter.onLoginSuccess = { [weak self] in
+            self?.flipToTasks(loginController)
+        }
+        loginPresenter.onExit = { [weak self] in
+            self?.flipToTasks(loginController)
+        }
+        loginPresenter.userInterface = loginController
+        loginController.loginPresenter = loginPresenter
+        
 		return loginController
 	}
 	

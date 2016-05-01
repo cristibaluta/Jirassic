@@ -14,7 +14,7 @@ protocol Repository {
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
     func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
     func logout()
-    func queryTasks (completion: ([Task], NSError?) -> Void)
+    func queryTasks (page: Int, completion: ([Task], NSError?) -> Void)
     func queryTasksInDay (day: NSDate) -> [Task]
 	func queryUnsyncedTasks() -> [Task]
     func deleteTask (dataToDelete: Task)

@@ -17,8 +17,7 @@ class LoginViewController: NSViewController {
 	@IBOutlet private var _butCancel: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	
-	var onLoginSuccess: (() -> ())?
-	var handleCancelLoginButton: (() -> ())?
+    var loginPresenter: LoginPresenterInput?
     
 	var credentials: UserCredentials {
 		get {
@@ -31,12 +30,6 @@ class LoginViewController: NSViewController {
 		}
 	}
 	var isLoggedIn: Bool = false
-	
-	class func instanceFromStoryboard() -> LoginViewController {
-		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateControllerWithIdentifier(String(LoginViewController)) as! LoginViewController
-		return vc
-	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +49,11 @@ class LoginViewController: NSViewController {
 	func removeFromSuperview() {
 		self.view.removeFromSuperview()
 	}
-	
-	func showLoadingIndicator (show: Bool) {
+}
+
+extension LoginViewController: LoginPresenterOutput {
+
+    func showLoadingIndicator (show: Bool) {
 		if show {
 			_progressIndicator?.startAnimation(nil)
 		} else {
@@ -69,15 +65,11 @@ class LoginViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleLoginButton (sender: NSButton) {
-		let login = LoginInteractor(data: remoteRepository)
-		login.onLoginSuccess = {
-			self.onLoginSuccess?()
-		}
-		login.loginWithCredentials(credentials)
+        loginPresenter?.loginWithCredentials(credentials)
 	}
 	
 	@IBAction func handleCancelButton (sender: NSButton) {
-		self.handleCancelLoginButton?()
+        loginPresenter?.cancelScreen()
 	}
 	
 }

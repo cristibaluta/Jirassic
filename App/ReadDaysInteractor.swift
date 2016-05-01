@@ -14,6 +14,7 @@ class ReadDaysInteractor: RepositoryInteractor {
 	
     convenience init (data: Repository) {
         self.init()
+        
         self.data = data
 		self.tasks = data.queryUnsyncedTasks()
 		self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in

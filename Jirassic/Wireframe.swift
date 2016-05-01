@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Wireframe: NSObject {
+class Wireframe {
 
 	// MARK: Popover
 	

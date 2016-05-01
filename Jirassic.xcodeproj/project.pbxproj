@@ -81,8 +81,8 @@
 		28C02F601C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
 		28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
 		28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
-		28C02F771C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
-		28C02F791C009C9700B65478 /* NSViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* NSViewAutolayout.swift */; };
+		28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* ViewAutolayout.swift */; };
+		28C02F791C009C9700B65478 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* ViewAutolayout.swift */; };
 		28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F841C00A6F300B65478 /* LoginInteractor.swift */; };
 		28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F841C00A6F300B65478 /* LoginInteractor.swift */; };
 		28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8A1C010ABC00B65478 /* PIssue.swift */; };
@@ -113,9 +113,10 @@
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */; };
 		28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */; };
-		4064138B1CD695D700C8E03D /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138A1CD695D700C8E03D /* LoginWireframe.swift */; };
 		4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
+		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
+		406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -262,7 +263,7 @@
 		28C02F581C00801A00B65478 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = App/Entities/Task.swift; sourceTree = "<group>"; };
 		28C02F5D1C00803300B65478 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/Entities/User.swift; sourceTree = "<group>"; };
 		28C02F711C009C9700B65478 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = App/Extensions/NSDateExtension.swift; sourceTree = SOURCE_ROOT; };
-		28C02F721C009C9700B65478 /* NSViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSViewAutolayout.swift; path = App/Extensions/NSViewAutolayout.swift; sourceTree = SOURCE_ROOT; };
+		28C02F721C009C9700B65478 /* ViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewAutolayout.swift; path = App/Extensions/ViewAutolayout.swift; sourceTree = SOURCE_ROOT; };
 		28C02F841C00A6F300B65478 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginInteractor.swift; path = App/LoginInteractor.swift; sourceTree = SOURCE_ROOT; };
 		28C02F8A1C010ABC00B65478 /* PIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIssue.swift; sourceTree = "<group>"; };
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
@@ -284,8 +285,8 @@
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarIconView.swift; sourceTree = "<group>"; };
 		28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReport.swift; path = ../App/CreateReport.swift; sourceTree = "<group>"; };
-		4064138A1CD695D700C8E03D /* LoginWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWireframe.swift; path = Screens/Login/LoginWireframe.swift; sourceTree = "<group>"; };
 		4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryInteractor.swift; path = App/RepositoryInteractor.swift; sourceTree = SOURCE_ROOT; };
+		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -545,7 +546,6 @@
 			children = (
 				40BF53621CD618A700626157 /* LoginViewController.swift */,
 				40BF53601CD6188000626157 /* LoginPresenter.swift */,
-				4064138A1CD695D700C8E03D /* LoginWireframe.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -713,7 +713,8 @@
 			children = (
 				28C02F711C009C9700B65478 /* NSDateExtension.swift */,
 				28E839001AF402B200602D33 /* NSDateExtensionTests.swift */,
-				28C02F721C009C9700B65478 /* NSViewAutolayout.swift */,
+				28C02F721C009C9700B65478 /* ViewAutolayout.swift */,
+				4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1076,11 +1077,12 @@
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
 				28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				40BF53851CD61BD400626157 /* ReadIssuesInteractor.swift in Sources */,
+				406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
 				28C02F8C1C010ABC00B65478 /* PIssue.swift in Sources */,
 				2894F1CB1B076EAE0095DD17 /* ReadTasksInteractor.swift in Sources */,
 				4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
 				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
-				28C02F791C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
+				28C02F791C009C9700B65478 /* ViewAutolayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,7 +1106,7 @@
 				40BF537D1CD61ACF00626157 /* TaskCellProtocol.swift in Sources */,
 				28C02F591C00801A00B65478 /* Task.swift in Sources */,
 				4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
-				28C02F771C009C9700B65478 /* NSViewAutolayout.swift in Sources */,
+				28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */,
 				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
 				285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */,
 				40BF53981CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */,
@@ -1130,7 +1132,6 @@
 				28C02F4E1C007E8E00B65478 /* ParseCredentials.swift in Sources */,
 				40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */,
 				28C02F521C007E8E00B65478 /* PUser.swift in Sources */,
-				4064138B1CD695D700C8E03D /* LoginWireframe.swift in Sources */,
 				285424CB1C3431990063B532 /* Day.swift in Sources */,
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,
 				285424C91C34313E0063B532 /* Week.swift in Sources */,
@@ -1154,6 +1155,7 @@
 				40BF535D1CD6175800626157 /* CTask.swift in Sources */,
 				28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */,
 				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
+				406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
 				40BF53841CD61BD400626157 /* ReadIssuesInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,6 @@ class Popover: NSPopover {
 	}
 	
 	func canBecomeKeyWindow() -> Bool {
-		return true; // Allow Search field to become the first responder
+		return true // Allow Search field to become the first responder
 	}
 }

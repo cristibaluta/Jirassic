@@ -151,14 +151,13 @@ extension CoreDataRepository: Repository {
         remoteRepository.logout()
     }
     
-    func queryTasks (completion: ([Task], NSError?) -> Void) {
+    func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
         
         let userPredicate = NSPredicate(format: "userId = %@", "")
         let results = queryTasksWithPredicate(userPredicate)
         let tasks = tasksFromCTasks(results)
-        completion(tasks, nil)
         
-        remoteRepository.queryTasks(completion)
+        completion(tasks, nil)
     }
     
     func queryTasksInDay (day: NSDate) -> [Task] {
