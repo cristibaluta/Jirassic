@@ -29,9 +29,9 @@ extension NSApplication {
 			issueType: Issues.lastUsed(),
 			issueId: issueId,
 			taskType: TaskType.GitCommit.rawValue,
-			objectId: nil
+			taskId: nil
 		)
-		localRepository.updateTask(task, completion: {(success: Bool) -> Void in
+		localRepository.saveTask(task, completion: {(success: Bool) -> Void in
 			RCLog(success)
 		})
         

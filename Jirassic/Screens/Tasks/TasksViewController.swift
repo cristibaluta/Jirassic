@@ -143,7 +143,7 @@ class TasksViewController: NSViewController {
 					task.startDate = self!._newTaskViewController!.date
 				}
 				RCLog(task)
-				localRepository.updateTask(task, completion: {(success: Bool) -> Void in
+				localRepository.saveTask(task, completion: {(success: Bool) -> Void in
 					
 					self?.tasksScrollView?.addTask( task )
 					
@@ -197,7 +197,7 @@ class TasksViewController: NSViewController {
 	func reloadTasksOnDay (date: NSDate) {
 		
 		let reader = ReadDayInteractor(data: localRepository)
-		tasksScrollView!.data = reader.tasksForDayOfDate(date)
+		tasksScrollView!.data = reader.tasksInDay(date)
 		tasksScrollView?.reloadData()
 		tasksScrollView?.hidden = false
 		
@@ -212,7 +212,7 @@ class TasksViewController: NSViewController {
 	func handleStartDayButton() {
 		
 		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		localRepository.updateTask(task, completion: { [weak self] (success: Bool) -> Void in
+		localRepository.saveTask(task, completion: { [weak self] (success: Bool) -> Void in
 			self?.day.setLastTrackedDay(NSDate())
 			self?.reloadData()
 		})

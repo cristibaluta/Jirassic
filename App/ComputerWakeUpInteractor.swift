@@ -20,12 +20,12 @@ class ComputerWakeUpInteractor {
 	func runWithLastSleepDate (date: NSDate?) {
 		
 		let reader = ReadDayInteractor(data: data)
-		let existingTasks = reader.tasksForDayOfDate(NSDate())
+		let existingTasks = reader.tasksInDay(NSDate())
 		if existingTasks.count > 0 {
 			// We already started the day, analyze if it's scrum time
 			if TaskTypeFinder().scrumExists(existingTasks) {
 				let task = Task(dateSart: date, dateEnd: NSDate(), type: TaskType.Scrum)
-				localRepository.updateTask(task, completion: {(success: Bool) -> Void in })
+				localRepository.saveTask(task, completion: {(success: Bool) -> Void in })
 				InternalNotifications.taskAdded(task)
 			}
 		} else {

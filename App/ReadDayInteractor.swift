@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ReadDayInteractor: NSObject {
+class ReadDayInteractor {
 	
 	var data: Repository!
 	
@@ -17,17 +17,21 @@ class ReadDayInteractor: NSObject {
 		self.data = data
 	}
 	
-	func tasksForDayOfDate (date: NSDate) -> [Task] {
+	func tasksInDay (date: NSDate) -> [Task] {
 		
-		let filteredData = data.allCachedTasks().filter { (task: Task) -> Bool in
-			
-			if let dateEnd = task.endDate {
-				return dateEnd.isSameDayAs(date)
-			} else if let dateStart = task.startDate {
-				return dateStart.isSameDayAs(date)
-			}
-			return false
-		}
+        let filteredData = data.queryTasksInDay(date)
+//        { (tasks: [Task]) in
+        
+//        }
+//        allCachedTasks().filter { (task: Task) -> Bool in
+//			
+//			if let dateEnd = task.endDate {
+//				return dateEnd.isSameDayAs(date)
+//			} else if let dateStart = task.startDate {
+//				return dateStart.isSameDayAs(date)
+//			}
+//			return false
+//		}
 		
 		return filteredData
 	}

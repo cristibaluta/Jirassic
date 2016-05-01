@@ -20,7 +20,7 @@ class LoginViewController: NSViewController {
 	var onLoginSuccess: (() -> ())?
 	var handleCancelLoginButton: (() -> ())?
     
-	var credentials: LoginCredentials {
+	var credentials: UserCredentials {
 		get {
 			return (email: self._emailTextField!.stringValue,
 				password: self._passwordTextField!.stringValue)
@@ -34,12 +34,11 @@ class LoginViewController: NSViewController {
 	
 	class func instanceFromStoryboard() -> LoginViewController {
 		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateControllerWithIdentifier("LoginViewController") as! LoginViewController
+		let vc = storyboard.instantiateControllerWithIdentifier(String(LoginViewController)) as! LoginViewController
 		return vc
 	}
 	
     override func viewDidLoad() {
-		
         super.viewDidLoad()
 		
 		if let user = PUser.currentUser() {
@@ -70,7 +69,7 @@ class LoginViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleLoginButton (sender: NSButton) {
-		let login = LoginInteractor(data: localRepository)
+		let login = LoginInteractor(data: remoteRepository)
 		login.onLoginSuccess = {
 			self.onLoginSuccess?()
 		}

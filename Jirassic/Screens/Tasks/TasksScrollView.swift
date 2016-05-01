@@ -101,7 +101,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			}
 			self?.data[row] = theData// save the changes locally because the struct is passed by copying
 			// Save to server
-			localRepository.updateTask(theData, completion: { (success) -> Void in
+			localRepository.saveTask(theData, completion: { (success) -> Void in
 				RCLog(success)
 			})
 		}

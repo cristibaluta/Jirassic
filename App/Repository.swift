@@ -11,8 +11,11 @@ import Foundation
 protocol Repository {
 	
     func currentUser() -> User
-	func queryTasks (completion: ([Task], NSError?) -> Void)
-	func allCachedTasks() -> [Task]
+    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
+    func logout()
+    func queryTasks (completion: ([Task], NSError?) -> Void)
+    func queryTasksInDay (day: NSDate) -> [Task]
+	func queryUnsyncedTasks() -> [Task]
     func deleteTask (dataToDelete: Task)
-	func updateTask (theTask: Task, completion: ((success: Bool) -> Void))
+	func saveTask (theTask: Task, completion: ((success: Bool) -> Void))
 }

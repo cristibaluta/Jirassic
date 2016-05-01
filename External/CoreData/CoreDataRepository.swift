@@ -28,7 +28,7 @@ class CoreDataRepository {
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Spoto.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Jirassic.sqlite")
         
         do {
             let persistentStore = try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
@@ -61,37 +61,125 @@ class CoreDataRepository {
     }
 }
 
-extension CoreDataRepository: Repository {
+extension CoreDataRepository {
+    
+    private func queryTasksWithPredicate (predicate: NSPredicate) -> [CTask] {
+        
+        guard let context = managedObjectContext else {
+            return []
+        }
+        
+        let request = NSFetchRequest(entityName: String(CTask))
+        request.returnsObjectsAsFaults = false
+        request.predicate = predicate
+        
+        do {
+            let results = try context.executeFetchRequest(request)
+            return results as! [CTask]
+        } catch _ {
+            return []
+        }
+    }
+}
 
+extension CoreDataRepository {
+    
+    private func taskFromCTask (ctask: CTask) -> Task {
+        
+        var task = Task()
+        task.taskId = ctask.taskId
+        task.taskType = ctask.taskType
+        task.notes = ctask.notes
+        task.startDate = ctask.startDate
+        task.endDate = ctask.endDate
+        
+        return task
+    }
+    
+    private func tasksFromCTasks (ctasks: [CTask]) -> [Task] {
+        
+        var tasks = [Task]()
+        for ctask in ctasks {
+            tasks.append(self.taskFromCTask(ctask))
+        }
+        
+        return tasks
+    }
+    
+    private func ctaskFromTask (task: Task) -> CTask {
+        
+        let taskPredicate = NSPredicate(format: "taskId == %@", task.taskId!)
+        let tasks = queryTasksWithPredicate(taskPredicate)
+        if tasks.count > 0 {
+            return updatedCTask(tasks.first!, withTask: task)
+        }
+        
+        let ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
+                    inManagedObjectContext: managedObjectContext!) as! CTask
+        
+        return updatedCTask(ctask, withTask: task)
+    }
+    
+    private func updatedCTask (ctask: CTask, withTask task: Task) -> CTask {
+        
+//        ctask.userId = task.userId
+//        ctask.address = task.address
+//        ctask.city = task.city
+//        ctask.location_latitude = NSNumber(double: task.location!.coordinate.latitude)
+//        ctask.location_longitude = NSNumber(double: task.location!.coordinate.latitude)
+//        ctask.notes = task.notes
+//        ctask.date_taken = task.dateTaken
+        
+        return ctask
+    }
+    
+}
+
+extension CoreDataRepository: Repository {
+    
     func currentUser() -> User {
         return remoteRepository.currentUser()
     }
     
+    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+        remoteRepository.loginWithCredentials(credentials, completion: completion)
+    }
+    
+    func logout() {
+        remoteRepository.logout()
+    }
+    
     func queryTasks (completion: ([Task], NSError?) -> Void) {
         
-        guard let puser = PUser.currentUser() else {
-            return
-        }
-//        query.fromLocalDatastore()
-//        query.whereKey(kUserKey, equalTo: puser)
-//        query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
-//            if let strongSelf = self {
-//                RCLogO("Found \(objects?.count) objects in LocalDatastore")
-//                strongSelf.processPTasks(objects, error: error, completion: completion)
-//            }
-//        })
+        let userPredicate = NSPredicate(format: "userId = %@", "")
+        let results = queryTasksWithPredicate(userPredicate)
+        let tasks = tasksFromCTasks(results)
+        completion(tasks, nil)
+        
         remoteRepository.queryTasks(completion)
     }
     
-    func allCachedTasks() -> [Task] {
-        return remoteRepository.allCachedTasks()
+    func queryTasksInDay (day: NSDate) -> [Task] {
+        
+        let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
+            NSPredicate(format: "startDate >= %@ AND startDate <= %@", day.startOfDay(), day.endOfDay()),
+            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay(), day.endOfDay())
+        ])
+        let results = queryTasksWithPredicate(compoundPredicate)
+        let tasks = tasksFromCTasks(results)
+        
+        return tasks
+    }
+    
+    func queryUnsyncedTasks() -> [Task] {
+        return []
     }
     
     func deleteTask (dataToDelete: Task) {
         remoteRepository.deleteTask(dataToDelete)
     }
     
-    func updateTask (theTask: Task, completion: ((success: Bool) -> Void)) {
-        remoteRepository.updateTask(theTask, completion: completion)
+    func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) {
+        remoteRepository.saveTask(theTask, completion: completion)
     }
 }

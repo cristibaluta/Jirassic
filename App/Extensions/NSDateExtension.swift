@@ -41,8 +41,9 @@ extension NSDate {
 		
 		self.init(timeInterval: 0, sinceDate: gregorian!.dateFromComponents(comps)!)
 	}
-	
-	// MARK: Formatting options
+}
+
+extension NSDate {
 	
 	func HHmmddMM() -> String {
 		let f = NSDateFormatter()
@@ -86,7 +87,10 @@ extension NSDate {
 		f.dateFormat = "EEEE, MMMM dd"
 		return f.stringFromDate(self)
 	}
-	
+}
+
+extension NSDate {
+    
 	func weekInterval() -> String {
 		let bounds = self.weekBounds()
 		let f = NSDateFormatter()
@@ -96,66 +100,10 @@ extension NSDate {
 		}
 		return "\(f.stringFromDate(bounds.0)) - \(f.stringFromDate(bounds.1))"
 	}
-	
-	// MARK: 
-	
-	class func getMonthsBetween (startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
-	
-		var dates: [NSDate] = [NSDate]()
-		let monthDifference = NSDateComponents()
-		var monthOffset: Int = 0
-		var nextDate = startDate
-	
-		while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
-            monthOffset += 1
-			monthDifference.month = monthOffset
-			nextDate = gregorian!.dateByAddingComponents(monthDifference,
-				toDate: startDate, options: [])!
-			dates.append(nextDate)
-		}
-		
-		return dates;
-	}
-	
-	func startOfMonth() -> NSDate {
-		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-		comps.day = 1
-		comps.hour = 0
-		comps.minute = 0
-		comps.second = 0
-		
-		return gregorian!.dateFromComponents(comps)!
-	}
-	
-	func startOfWeek() -> NSDate {
-		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-		comps.day = comps.day - (comps.weekday - 1) + 1// 1 because weekday starts with 1, and 1 because weekday starts sunday
-		comps.hour = 0
-		comps.minute = 0
-		comps.second = 0
-		comps.weekday = 1
-		
-		return gregorian!.dateFromComponents(comps)!
-	}
-	
-	func endOfWeek() -> NSDate {
-		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-		comps.day = comps.day + (7 - comps.weekday) + 1
-		comps.hour = 23
-		comps.minute = 59
-		comps.second = 59
-		comps.weekday = 7
-		
-		return gregorian!.dateFromComponents(comps)!
-	}
-	
-	func weekBounds() -> (NSDate, NSDate) {
-		return (self.startOfWeek(), self.endOfWeek())
-	}
-	
+}
+
+extension NSDate {
+    
 	@inline(__always) func isSameMonthAs (month: NSDate) -> Bool {
 		return self.year() == month.year() && self.month() == month.month()
 	}
@@ -245,4 +193,94 @@ extension NSDate {
 			return (1, 0)
 		}
 	}
+}
+
+extension NSDate {
+    
+    class func getMonthsBetween (startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
+        
+        var dates: [NSDate] = [NSDate]()
+        let monthDifference = NSDateComponents()
+        var monthOffset: Int = 0
+        var nextDate = startDate
+        
+        while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
+            monthOffset += 1
+            monthDifference.month = monthOffset
+            nextDate = gregorian!.dateByAddingComponents(monthDifference,
+                                                         toDate: startDate, options: [])!
+            dates.append(nextDate)
+        }
+        
+        return dates;
+    }
+    
+    func startOfMonth() -> NSDate {
+        
+        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        comps.day = 1
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
+        
+        return gregorian!.dateFromComponents(comps)!
+    }
+}
+
+extension NSDate {
+    
+    func startOfWeek() -> NSDate {
+        
+        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        comps.day = comps.day - (comps.weekday - 1) + 1// 1 because weekday starts with 1, and 1 because weekday starts sunday
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
+        comps.weekday = 1
+        
+        return gregorian!.dateFromComponents(comps)!
+    }
+    
+    func endOfWeek() -> NSDate {
+        
+        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        comps.day = comps.day + (7 - comps.weekday) + 1
+        comps.hour = 23
+        comps.minute = 59
+        comps.second = 59
+        comps.weekday = 7
+        
+        return gregorian!.dateFromComponents(comps)!
+    }
+    
+    func weekBounds() -> (NSDate, NSDate) {
+        return (self.startOfWeek(), self.endOfWeek())
+    }
+}
+
+extension NSDate {
+    
+    func startOfDay() -> NSDate {
+        
+        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
+        
+        return gregorian!.dateFromComponents(comps)!
+    }
+    
+    func endOfDay() -> NSDate {
+        
+        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        comps.hour = 23
+        comps.minute = 59
+        comps.second = 59
+        
+        return gregorian!.dateFromComponents(comps)!
+    }
+    
+    func dayBounds() -> (NSDate, NSDate) {
+        return (self.startOfDay(), self.endOfDay())
+    }
 }

@@ -12,6 +12,7 @@ import Parse
 class ParseRepository {
 
 	private var tasks = [Task]()
+    private var user: User?
 	
 	init() {
         assert(parseApplicationId != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -39,8 +40,8 @@ extension ParseRepository {
     // Get the PTask corresponding to the Task. If doesn't exist, create one
     private func ptaskOfTask (task: Task, completion: ((ptask: PTask) -> Void)) {
         
-        guard let objectId = task.objectId else {
-            // Ptask does not exist yet
+        guard let taskId = task.taskId else {
+            // PTask does not exist yet
             // TODO: insert it at the right index by comparing dates
             let ptask = taskToPTask(task)
             self.tasks.insert(task, atIndex: 0)
@@ -50,11 +51,11 @@ extension ParseRepository {
         
         let query = PFQuery(className: PTask.parseClassName())
         query.fromLocalDatastore()
-        query.getObjectInBackgroundWithId(objectId, block: { (data: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(taskId, block: { (data: PFObject?, error: NSError?) -> Void in
             
             if data == nil {
                 let query = PFQuery(className: PTask.parseClassName())
-                query.getObjectInBackgroundWithId(objectId, block: { (data: PFObject?, error: NSError?) -> Void in
+                query.getObjectInBackgroundWithId(taskId, block: { (data: PFObject?, error: NSError?) -> Void in
                     
                     RCLogErrorO(error)
                     if data != nil {
@@ -89,7 +90,7 @@ extension ParseRepository {
                     issueType: ptask.issue_type,
                     issueId: ptask.issue_id,
                     taskType: ptask.task_type,
-                    objectId: ptask.objectId)
+                    taskId: ptask.objectId)
     }
     
     private func processPTasks (objects: [PFObject]?, error: NSError?, completion: ([Task], NSError?) -> Void) {
@@ -108,7 +109,37 @@ extension ParseRepository {
 extension ParseRepository: Repository {
 	
     func currentUser() -> User {
-        return User(isLoggedIn: true, password: nil, email: nil)
+        
+        if let user = self.user {
+            return user
+        }
+        
+        return User(isLoggedIn: false, email: nil, userId: nil)
+    }
+    
+    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+        
+        PUser.logInWithUsernameInBackground(credentials.email, password: credentials.password) {
+            [weak self] (user: PFUser?, error: NSError?) -> Void in
+            
+            if let user = user {
+                if let strongSelf = self {
+                    strongSelf.user = User(isLoggedIn: true, email: user.email, userId: user.objectId)
+                }
+                completion(nil)
+            }
+            else if let error = error {
+                self?.user = nil
+                completion(error)
+            }
+        }
+    }
+    
+    func logout() {
+        user = nil
+        PUser.logOutInBackgroundWithBlock { (error) -> Void in
+            RCLog(error)
+        }
     }
     
 	func queryTasks (completion: ([Task], NSError?) -> Void) {
@@ -118,19 +149,16 @@ extension ParseRepository: Repository {
         query.limit = 200
 		query.whereKey(kUserKey, equalTo: puser!)
 		query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
-			
-			PFObject.pinAllInBackground(objects, block: { (success, error) -> Void in
-				RCLogO("Pin \(objects?.count) objects \(success)")
-				RCLogErrorO(error)
-			})
-			if let strongSelf = self {
-				strongSelf.processPTasks(objects, error: error, completion: completion)
-			}
+            self?.processPTasks(objects, error: error, completion: completion)
 		})
 	}
+    
+    func queryTasksInDay (day: NSDate) -> [Task] {
+        return []
+    }
 	
-	func allCachedTasks() -> [Task] {
-		return tasks
+	func queryUnsyncedTasks() -> [Task] {
+		return []
 	}
 	
     func deleteTask (taskToDelete: Task) {
@@ -139,10 +167,9 @@ extension ParseRepository: Repository {
         var shouldRemove = false
         for task in tasks {
             indexToRemove += 1
-            if task.objectId == taskToDelete.objectId {
+            if task.taskId == taskToDelete.taskId {
                 shouldRemove = true
 				ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-					ptask.unpinInBackground()
 					ptask.deleteEventually()
 				})
                 break
@@ -153,11 +180,11 @@ extension ParseRepository: Repository {
         }
     }
 	
-	func updateTask (task: Task, completion: ((success: Bool) -> Void)) {
+	func saveTask (task: Task, completion: ((success: Bool) -> Void)) {
 		RCLogO("Update task \(task)")
 		// Update local array
-		for i in 0...(tasks.count-1) {
-			if task.objectId == tasks[i].objectId {
+		for i in 0..<tasks.count {
+			if task.taskId == tasks[i].taskId {
 				tasks[i] = task
 				break
 			}
@@ -171,18 +198,11 @@ extension ParseRepository: Repository {
             ptask.issue_type = task.issueType
             ptask.issue_id = task.issueId
 			ptask.task_type = task.taskType
-			// Save it locally
-			ptask.pinInBackgroundWithBlock { success, error in
-				RCLogO("Saved to local Parse \(success)")
-				RCLogErrorO(error)
-				completion(success: true)
-				
-				// Save it to server
-				ptask.saveEventually { (success, error) -> Void in
-					RCLogO("Saved to Parse \(success)")
-					RCLogErrorO(error)
-				}
-			}
+            ptask.saveEventually { (success, error) -> Void in
+                RCLogO("Saved to Parse \(success)")
+                RCLogErrorO(error)
+                completion(success: success)
+            }
 		})
 	}
 }

@@ -176,7 +176,7 @@ extension TaskCell: NSTextFieldDelegate {
 		
 		if control as? NSTextField == dateEndTextField {
 			RCLog(commandSelector)
-			if wasEdited && commandSelector == "insertNewline:" {
+			if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
 				self.didEndEditingCell?(cell: self)
 				wasEdited = false
 			}

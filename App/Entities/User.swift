@@ -11,8 +11,8 @@ import Foundation
 struct User {
 
 	var isLoggedIn: Bool
-	var password: String?
 	var email: String?
+    var userId: String?
 }
 
-typealias LoginCredentials = (email: String, password: String)
+typealias UserCredentials = (email: String, password: String)

@@ -19,7 +19,7 @@ class RegisterUserInteractor: NSObject {
 		self.data = data
 	}
 	
-	func registerWithCredentials (credentials: LoginCredentials) {
+	func registerWithCredentials (credentials: UserCredentials) {
 		
 		let user = PFUser()
 		user.username = credentials.email

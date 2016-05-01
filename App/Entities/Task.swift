@@ -39,7 +39,7 @@ struct Task {
 	var issueType: String?
 	var issueId: String?
 	var taskType: NSNumber?
-	var objectId: String?
+	var taskId: String?
 }
 
 extension Task {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PredictiveTimeTyping: NSObject {
+class PredictiveTimeTyping {
 	
     func timeByAdding (string: String, to: String) -> String {
 	

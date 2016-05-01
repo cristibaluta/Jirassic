@@ -19,7 +19,7 @@ class ComputerSleepInteractor {
 	
 	func run() {
 		let reader = ReadDayInteractor(data: data)
-		let existingTasks = reader.tasksForDayOfDate(NSDate())
+		let existingTasks = reader.tasksInDay(NSDate())
 		if existingTasks.count > 0 {
 			// We already started the day, analyze if it's scrum time
 			

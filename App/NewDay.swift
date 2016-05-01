@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NewDay: NSObject {
+class NewDay {
 	
 	private let kLastStartDateKey = "LastStartDateKey"
 	

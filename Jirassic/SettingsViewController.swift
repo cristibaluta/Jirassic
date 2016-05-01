@@ -19,7 +19,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet private var butQuit: NSButton?
 	@IBOutlet private var progressIndicator: NSProgressIndicator?
 	
-	var credentials: LoginCredentials {
+	var credentials: UserCredentials {
 		get {
 			return (email: self.emailTextField!.stringValue,
 				password: self.passwordTextField!.stringValue)
