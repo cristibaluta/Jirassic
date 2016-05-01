@@ -10,9 +10,9 @@ import Foundation
 
 class ReadDayInteractor: NSObject {
 	
-	var data: DataManagerProtocol!
+	var data: Repository!
 	
-	convenience init (data: DataManagerProtocol) {
+	convenience init (data: Repository) {
 		self.init()
 		self.data = data
 	}

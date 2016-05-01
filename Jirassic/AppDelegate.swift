@@ -8,7 +8,8 @@
 
 import Cocoa
 
-var sharedData: DataManagerProtocol!
+var localRepository: Repository!
+var remoteRepository: Repository!
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,7 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	override init() {
 		super.init()
-		sharedData = ParseDataManager()
+        
+        localRepository = CoreDataRepository()
+		remoteRepository = ParseRepository()
 		
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
@@ -34,10 +37,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
         sleep = SleepNotifications()
         sleep?.computerWentToSleep = {
-			ComputerSleepInteractor(data: sharedData).run()
+			ComputerSleepInteractor(data: localRepository).run()
         }
         sleep?.computerWakeUp = {
-			ComputerWakeUpInteractor(data: sharedData).runWithLastSleepDate(self.sleep?.lastSleepDate)
+			ComputerWakeUpInteractor(data: localRepository).runWithLastSleepDate(self.sleep?.lastSleepDate)
         }
 	}
 	

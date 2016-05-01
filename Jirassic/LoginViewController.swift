@@ -70,7 +70,7 @@ class LoginViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleLoginButton (sender: NSButton) {
-		let login = LoginInteractor(data: sharedData)
+		let login = LoginInteractor(data: localRepository)
 		login.onLoginSuccess = {
 			self.onLoginSuccess?()
 		}

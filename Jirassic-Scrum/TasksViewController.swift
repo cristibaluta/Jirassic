@@ -27,7 +27,7 @@ class TasksViewController: UITableViewController {
 		//		self.navigationItem.rightBarButtonItem = addButton
 		
 		self.title = self.currentDay!.date.EEEEMMdd()
-		self.tasks = ReadDayInteractor(data: sharedData).tasksForDayOfDate(self.currentDay!.date)
+		self.tasks = ReadDayInteractor(data: localRepository).tasksForDayOfDate(self.currentDay!.date)
 		self.tableView.reloadData()
 	}
 	

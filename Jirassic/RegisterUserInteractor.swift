@@ -12,9 +12,9 @@ import Parse
 class RegisterUserInteractor: NSObject {
 
 	var onRegisterSuccess: (() -> ())?
-	var data: DataManagerProtocol?
+	var data: Repository?
 	
-	convenience init (data: DataManagerProtocol) {
+	convenience init (data: Repository) {
 		self.init()
 		self.data = data
 	}

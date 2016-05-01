@@ -58,7 +58,7 @@ class TasksScrollView: NSScrollView {
 	
     func removeTaskAtRow (row: Int) {
         let theData = data[row];
-		sharedData.deleteTask(theData)
+		localRepository.deleteTask(theData)
 		data.removeAtIndex(row)
         self.tableView?.removeRowsAtIndexes(NSIndexSet(index: row), withAnimation: NSTableViewAnimationOptions.EffectFade)
 	}
@@ -101,7 +101,7 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 			}
 			self?.data[row] = theData// save the changes locally because the struct is passed by copying
 			// Save to server
-			sharedData.updateTask(theData, completion: { (success) -> Void in
+			localRepository.updateTask(theData, completion: { (success) -> Void in
 				RCLog(success)
 			})
 		}

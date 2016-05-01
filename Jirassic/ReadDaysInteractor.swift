@@ -10,10 +10,10 @@ import Foundation
 
 class ReadDaysInteractor: NSObject {
 	
-	private var dataManager: DataManagerProtocol!
+	private var dataManager: Repository!
 	private var tasks = [Task]()
 	
-	convenience init (dataManager: DataManagerProtocol) {
+	convenience init (dataManager: Repository) {
 		self.init()
 		self.dataManager = dataManager
 		self.tasks = dataManager.allCachedTasks()

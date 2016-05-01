@@ -9,7 +9,7 @@
 import Foundation
 //@testable import Jirassic
 
-class MockDataManager: NSObject, DataManagerProtocol {
+class MockDataManager: NSObject, Repository {
 	
 	private var tasks = [Task]()
 	

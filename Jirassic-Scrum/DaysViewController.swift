@@ -27,8 +27,8 @@ class DaysViewController: UITableViewController {
 	}
 	
 	func reloadData() {
-		sharedData.queryTasks { (tasks, error) -> Void in
-			self.days = ReadDaysInteractor(dataManager: sharedData).days()
+		localRepository.queryTasks { (tasks, error) -> Void in
+			self.days = ReadDaysInteractor(dataManager: localRepository).days()
 			self.tableView.reloadData()
 			self.refreshControl?.endRefreshing()
 		}

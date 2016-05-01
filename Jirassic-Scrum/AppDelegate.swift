@@ -8,7 +8,7 @@
 
 import UIKit
 
-var sharedData: DataManagerProtocol!
+var localRepository: Repository!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
-		sharedData = DataManager()
+		localRepository = DataManager()
 		return true
 	}
 

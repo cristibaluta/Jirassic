@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="CIssue" syncable="YES"/>
+    <entity name="CTask" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastModifiedDate" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CTask" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="CIssue" positionX="-54" positionY="0" width="128" height="45"/>
+    </elements>
+</model>

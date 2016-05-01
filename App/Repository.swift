@@ -1,5 +1,5 @@
 //
-//  DataManagerProtocol.swift
+//  Repository.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 01/05/15.
@@ -8,8 +8,9 @@
 
 import Foundation
 
-protocol DataManagerProtocol {
+protocol Repository {
 	
+    func currentUser() -> User
 	func queryTasks (completion: ([Task], NSError?) -> Void)
 	func allCachedTasks() -> [Task]
     func deleteTask (dataToDelete: Task)

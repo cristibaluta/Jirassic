@@ -64,7 +64,7 @@ class SettingsViewController: NSViewController {
 	@IBAction func handleLoginButton(sender: NSButton) {
 		
 		if let user = PUser.currentUser() {
-			let login = LoginInteractor(data: sharedData)
+			let login = LoginInteractor(data: localRepository)
 			login.onLoginSuccess = {
 				self.showLoadingIndicator(false)
 			}

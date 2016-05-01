@@ -10,9 +10,9 @@ import Foundation
 
 class ComputerWakeUpInteractor: NSObject {
 
-	var data: DataManagerProtocol!
+	var data: Repository!
 	
-	convenience init (data: DataManagerProtocol) {
+	convenience init (data: Repository) {
 		self.init()
 		self.data = data
 	}
@@ -25,7 +25,7 @@ class ComputerWakeUpInteractor: NSObject {
 			// We already started the day, analyze if it's scrum time
 			if TaskTypeFinder().scrumExists(existingTasks) {
 				let task = Task(dateSart: date, dateEnd: NSDate(), type: TaskType.Scrum)
-				sharedData.updateTask(task, completion: {(success: Bool) -> Void in })
+				localRepository.updateTask(task, completion: {(success: Bool) -> Void in })
 				InternalNotifications.taskAdded(task)
 			}
 		} else {

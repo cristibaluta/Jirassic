@@ -61,7 +61,7 @@ class TasksViewController: NSViewController {
     
 	func setupDaysTableView() {
 		
-		let reader = ReadDaysInteractor(dataManager: sharedData)
+		let reader = ReadDaysInteractor(dataManager: localRepository)
 		datesScrollView?.weeks = reader.weeks()
 		datesScrollView?.didSelectDay = { [weak self] (day: Day) in
 			self?.reloadTasksOnDay(day.date)
@@ -143,7 +143,7 @@ class TasksViewController: NSViewController {
 					task.startDate = self!._newTaskViewController!.date
 				}
 				RCLog(task)
-				sharedData.updateTask(task, completion: {(success: Bool) -> Void in
+				localRepository.updateTask(task, completion: {(success: Bool) -> Void in
 					
 					self?.tasksScrollView?.addTask( task )
 					
@@ -182,7 +182,7 @@ class TasksViewController: NSViewController {
 	
 	func reloadDataFromServer() {
 		self.showLoadingIndicator(true)
-		sharedData.queryTasks { [weak self] (tasks, error) -> Void in
+		localRepository.queryTasks { [weak self] (tasks, error) -> Void in
 			self?.reloadData()
 			self?.showLoadingIndicator(false)
 		}
@@ -196,7 +196,7 @@ class TasksViewController: NSViewController {
 	
 	func reloadTasksOnDay (date: NSDate) {
 		
-		let reader = ReadDayInteractor(data: sharedData)
+		let reader = ReadDayInteractor(data: localRepository)
 		tasksScrollView!.data = reader.tasksForDayOfDate(date)
 		tasksScrollView?.reloadData()
 		tasksScrollView?.hidden = false
@@ -212,7 +212,7 @@ class TasksViewController: NSViewController {
 	func handleStartDayButton() {
 		
 		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		sharedData.updateTask(task, completion: { [weak self] (success: Bool) -> Void in
+		localRepository.updateTask(task, completion: { [weak self] (success: Bool) -> Void in
 			self?.day.setLastTrackedDay(NSDate())
 			self?.reloadData()
 		})
@@ -249,7 +249,7 @@ extension TasksViewController {
 	func registerForNotifications() {
 		
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: Selector("newTaskWasAdded:"), name: kNewTaskWasAddedNotification, object: nil)
+			selector: #selector(TasksViewController.newTaskWasAdded(_:)), name: kNewTaskWasAddedNotification, object: nil)
 	}
 	
 	func newTaskWasAdded (notif: NSNotification) {

@@ -18,16 +18,16 @@ class SleepNotifications: NSObject {
 		super.init()
 		
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveSleepNotification:"),
+            selector: #selector(SleepNotifications.receiveSleepNotification(_:)),
 			name: NSWorkspaceWillSleepNotification, object: nil)
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveSleepNotification:"),
+            selector: #selector(SleepNotifications.receiveSleepNotification(_:)),
 			name: NSWorkspaceScreensDidSleepNotification, object: nil)
 		NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveWakeNotification:"),
+            selector: #selector(SleepNotifications.receiveWakeNotification(_:)),
 			name: NSWorkspaceDidWakeNotification, object: nil)
         NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self,
-            selector: Selector("receiveWakeNotification:"),
+            selector: #selector(SleepNotifications.receiveWakeNotification(_:)),
 			name: NSWorkspaceScreensDidWakeNotification, object: nil)
 	}
 	

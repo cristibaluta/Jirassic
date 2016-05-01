@@ -107,7 +107,8 @@ extension NSDate {
 		var nextDate = startDate
 	
 		while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
-			monthDifference.month = monthOffset++
+            monthOffset += 1
+			monthDifference.month = monthOffset
 			nextDate = gregorian!.dateByAddingComponents(monthDifference,
 				toDate: startDate, options: [])!
 			dates.append(nextDate)

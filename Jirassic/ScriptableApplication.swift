@@ -31,7 +31,7 @@ extension NSApplication {
 			taskType: TaskType.GitCommit.rawValue,
 			objectId: nil
 		)
-		sharedData.updateTask(task, completion: {(success: Bool) -> Void in
+		localRepository.updateTask(task, completion: {(success: Bool) -> Void in
 			RCLog(success)
 		})
         
