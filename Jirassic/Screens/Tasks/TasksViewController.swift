@@ -61,7 +61,7 @@ class TasksViewController: NSViewController {
     
 	func setupDaysTableView() {
 		
-		let reader = ReadDaysInteractor(dataManager: localRepository)
+		let reader = ReadDaysInteractor(data: localRepository)
 		datesScrollView?.weeks = reader.weeks()
 		datesScrollView?.didSelectDay = { [weak self] (day: Day) in
 			self?.reloadTasksOnDay(day.date)
@@ -196,7 +196,7 @@ class TasksViewController: NSViewController {
 	
 	func reloadTasksOnDay (date: NSDate) {
 		
-		let reader = ReadDayInteractor(data: localRepository)
+		let reader = ReadTasksInteractor(data: localRepository)
 		tasksScrollView!.data = reader.tasksInDay(date)
 		tasksScrollView?.reloadData()
 		tasksScrollView?.hidden = false

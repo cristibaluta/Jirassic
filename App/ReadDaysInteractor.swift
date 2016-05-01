@@ -8,15 +8,14 @@
 
 import Foundation
 
-class ReadDaysInteractor: NSObject {
+class ReadDaysInteractor: RepositoryInteractor {
 	
-	private var dataManager: Repository!
 	private var tasks = [Task]()
 	
-	convenience init (dataManager: Repository) {
-		self.init()
-		self.dataManager = dataManager
-		self.tasks = dataManager.queryUnsyncedTasks()
+    convenience init (data: Repository) {
+        self.init()
+        self.data = data
+		self.tasks = data.queryUnsyncedTasks()
 		self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
 			if let date1 = task1.endDate ?? task1.startDate {
 				if let date2 = task2.endDate ?? task2.startDate {

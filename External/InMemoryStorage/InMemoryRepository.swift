@@ -1,5 +1,5 @@
 //
-//  MockDataManager.swift
+//  InMemoryRepository.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 29/03/15.
@@ -7,12 +7,28 @@
 //
 
 import Foundation
-//@testable import Jirassic
+@testable import Jirassic
 
-class MockDataManager: NSObject, Repository {
+class InMemoryRepository: Repository {
 	
 	private var tasks = [Task]()
-	
+    
+    func currentUser() -> User {
+        return User(isLoggedIn: true, email: nil, userId: "id")
+    }
+    
+    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+        
+    }
+    
+    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+        
+    }
+    
+    func logout() {
+        
+    }
+    
 	func queryTasks (completion: ([Task], NSError?) -> Void) {
 		
 		var d1 = Task()
@@ -50,15 +66,19 @@ class MockDataManager: NSObject, Repository {
 		completion(tasks, nil)
 	}
 	
-	func allCachedTasks() -> [Task] {
-		return tasks
-	}
-	
-	func deleteTask (taskToDelete: Task) {
-		
-	}
-	
-	func updateTask (theTask: Task, completion: ((success: Bool) -> Void)) {
-		
-	}
+    func queryTasksInDay (day: NSDate) -> [Task] {
+        return []
+    }
+    
+    func queryUnsyncedTasks() -> [Task] {
+        return []
+    }
+    
+    func deleteTask (dataToDelete: Task) {
+        
+    }
+    
+    func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) {
+        
+    }
 }

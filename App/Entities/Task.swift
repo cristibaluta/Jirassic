@@ -48,7 +48,7 @@ extension Task {
 		
 		self.startDate = dateSart
 		self.endDate = dateEnd
-		self.issueType = Issues.lastUsed()
+		self.issueType = ReadIssuesInteractor.lastUsed()
 		self.taskType = type.rawValue
 		
 		switch (type) {
@@ -63,7 +63,7 @@ extension Task {
 	
 	init (subtype: TaskSubtype) {
 		
-		switch(subtype) {
+		switch (subtype) {
 			case .IssueBegin:	self.startDate = NSDate();	self.taskType = TaskType.Issue.rawValue
 			case .IssueEnd:		self.endDate = NSDate();	self.taskType = TaskType.Issue.rawValue
 			case .ScrumBegin:	self.startDate = NSDate();	self.taskType = TaskType.Scrum.rawValue
@@ -77,4 +77,10 @@ extension Task {
 	}
 }
 
-typealias TaskCreationData = (dateStart: String, dateEnd: String, issueType: String, issueId: String, notes: String)
+typealias TaskCreationData = (
+    dateStart: String,
+    dateEnd: String,
+    issueType: String,
+    issueId: String,
+    notes: String
+)

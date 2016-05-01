@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Issues {
+class ReadIssuesInteractor {
 
 	class func all() -> [String] {
 		return ["BOSCH-33 Refactoring", "BOSCH-34 UX"]

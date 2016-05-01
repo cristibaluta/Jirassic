@@ -7,31 +7,22 @@
 //
 
 import Foundation
-import Parse
 
-class RegisterUserInteractor: NSObject {
+class RegisterUserInteractor: RepositoryInteractor {
 
-	var onRegisterSuccess: (() -> ())?
-	var data: Repository?
-	
-	convenience init (data: Repository) {
-		self.init()
-		self.data = data
-	}
+    var onRegisterSuccess: (() -> ())?
+    var onRegisterFailure: (() -> ())?
 	
 	func registerWithCredentials (credentials: UserCredentials) {
 		
-		let user = PFUser()
-		user.username = credentials.email
-		user.email = credentials.email
-		user.password = credentials.password
-		user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
-			if let error = error {
-				let errorString = error.userInfo["error"] as? NSString
-				RCLogO(errorString)
-			} else {
-				self.onRegisterSuccess!()
-			}
-		}
+		data.registerWithCredentials(credentials) { [weak self] (error) in
+            if let error = error {
+                let errorString = error.userInfo["error"] as? NSString
+                RCLogO(errorString)
+                self?.onRegisterFailure?()
+            } else {
+                self?.onRegisterSuccess?()
+            }
+        }
 	}
 }

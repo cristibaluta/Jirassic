@@ -9,7 +9,7 @@
 import XCTest
 @testable import Jirassic
 
-class IssuesTests: XCTestCase {
+class ReadIssuesInteractorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

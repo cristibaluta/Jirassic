@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TaskTypeFinder: NSObject {
+class TaskTypeFinder {
 
 	func scrumExists (tasks: [Task]) -> Bool {
 		

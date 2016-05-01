@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import Parse
 
-class ReadTasksInteractor: NSObject {
+class ReadTasksInteractor: RepositoryInteractor {
 	
-	override init() {
-		
-	}
-	
-	
+    func tasksInDay (date: NSDate) -> [Task] {
+        
+        let filteredData = data.queryTasksInDay(date)
+        
+        return filteredData
+    }
 }

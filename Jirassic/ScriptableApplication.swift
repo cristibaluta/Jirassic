@@ -26,7 +26,7 @@ extension NSApplication {
 			startDate: nil,
 			endDate: NSDate(),
 			notes: notes,
-			issueType: Issues.lastUsed(),
+			issueType: ReadIssuesInteractor.lastUsed(),
 			issueId: issueId,
 			taskType: TaskType.GitCommit.rawValue,
 			taskId: nil

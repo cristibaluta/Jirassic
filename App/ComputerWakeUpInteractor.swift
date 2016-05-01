@@ -8,18 +8,11 @@
 
 import Foundation
 
-class ComputerWakeUpInteractor {
-
-	var data: Repository!
-	
-	convenience init (data: Repository) {
-		self.init()
-		self.data = data
-	}
-	
+class ComputerWakeUpInteractor: RepositoryInteractor {
+    
 	func runWithLastSleepDate (date: NSDate?) {
 		
-		let reader = ReadDayInteractor(data: data)
+		let reader = ReadTasksInteractor(data: data)
 		let existingTasks = reader.tasksInDay(NSDate())
 		if existingTasks.count > 0 {
 			// We already started the day, analyze if it's scrum time

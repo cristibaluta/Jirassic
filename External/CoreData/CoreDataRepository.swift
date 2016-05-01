@@ -122,13 +122,11 @@ extension CoreDataRepository {
     
     private func updatedCTask (ctask: CTask, withTask task: Task) -> CTask {
         
-//        ctask.userId = task.userId
-//        ctask.address = task.address
-//        ctask.city = task.city
-//        ctask.location_latitude = NSNumber(double: task.location!.coordinate.latitude)
-//        ctask.location_longitude = NSNumber(double: task.location!.coordinate.latitude)
-//        ctask.notes = task.notes
-//        ctask.date_taken = task.dateTaken
+        ctask.taskId = task.taskId
+        ctask.issueId = task.issueId
+        ctask.notes = task.notes
+        ctask.startDate = task.startDate
+        ctask.endDate = task.endDate
         
         return ctask
     }
@@ -143,6 +141,10 @@ extension CoreDataRepository: Repository {
     
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
         remoteRepository.loginWithCredentials(credentials, completion: completion)
+    }
+    
+    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+        remoteRepository.registerWithCredentials(credentials, completion: completion)
     }
     
     func logout() {
@@ -180,6 +182,14 @@ extension CoreDataRepository: Repository {
     }
     
     func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) {
-        remoteRepository.saveTask(theTask, completion: completion)
+        
+        let taskPredicate = NSPredicate(format: "taskId = %@", theTask.taskId!)
+        let results = queryTasksWithPredicate(taskPredicate)
+        if results.count > 0 {
+            
+        }
+        
+        let _ = ctaskFromTask(theTask)
+        saveContext()
     }
 }

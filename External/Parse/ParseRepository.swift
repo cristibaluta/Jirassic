@@ -135,6 +135,17 @@ extension ParseRepository: Repository {
         }
     }
     
+    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+        
+        let user = PFUser()
+        user.username = credentials.email
+        user.email = credentials.email
+        user.password = credentials.password
+        user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
+            completion(error)
+        }
+    }
+    
     func logout() {
         user = nil
         PUser.logOutInBackgroundWithBlock { (error) -> Void in

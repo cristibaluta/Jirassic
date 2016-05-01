@@ -12,6 +12,7 @@ protocol Repository {
 	
     func currentUser() -> User
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
+    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
     func logout()
     func queryTasks (completion: ([Task], NSError?) -> Void)
     func queryTasksInDay (day: NSDate) -> [Task]

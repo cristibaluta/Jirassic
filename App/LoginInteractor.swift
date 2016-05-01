@@ -8,15 +8,10 @@
 
 import Foundation
 
-class LoginInteractor: NSObject {
+class LoginInteractor: RepositoryInteractor {
     
-	var onLoginSuccess: (() -> ())?
-	var data: Repository!
-	
-	convenience init (data: Repository) {
-		self.init()
-		self.data = data
-	}
+    var onLoginSuccess: (() -> ())?
+    var onLoginFailure: (() -> ())?
 	
 	func loginWithCredentials (credentials: UserCredentials) {
 		
@@ -27,7 +22,7 @@ class LoginInteractor: NSObject {
                 RCLogO(errorString)
                 self?.register(credentials)
             } else {
-                self?.onLoginSuccess!()
+                self?.onLoginSuccess?()
             }
         }
 	}
@@ -35,8 +30,11 @@ class LoginInteractor: NSObject {
     private func register (credentials: UserCredentials) {
         
         let registerInteractor = RegisterUserInteractor(data: data)
-        registerInteractor.onRegisterSuccess = {
-            self.onLoginSuccess!()
+        registerInteractor.onRegisterSuccess = { [weak self] in
+            self?.onLoginSuccess?()
+        }
+        registerInteractor.onRegisterFailure = { [weak self] in
+            self?.onLoginFailure?()
         }
         registerInteractor.registerWithCredentials(credentials)
     }
