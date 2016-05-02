@@ -106,7 +106,6 @@
 		28E839111AF4974D00602D33 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */; };
 		28EB90631AF948E3008D5337 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90621AF948E3008D5337 /* NewDay.swift */; };
-		28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90901AF9754A008D5337 /* SettingsViewController.swift */; };
 		28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */; };
 		28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F292261B1C57B40015F64F /* CreateReportTests.swift */; };
 		28F51E7A1AC694B000A69CDF /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */; };
@@ -117,6 +116,8 @@
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
 		406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
+		406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413921CD71E1700C8E03D /* SettingsPresenter.swift */; };
+		406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413941CD71E2D00C8E03D /* SettingsViewController.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -277,7 +278,6 @@
 		28EB90621AF948E3008D5337 /* NewDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDay.swift; path = ../App/NewDay.swift; sourceTree = "<group>"; };
 		28EB906F1AF95C37008D5337 /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
 		28EB90711AF95C37008D5337 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
-		28EB90901AF9754A008D5337 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTyping.swift; path = ../App/PredictiveTimeTyping.swift; sourceTree = "<group>"; };
 		28F292261B1C57B40015F64F /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReportTests.swift; path = JirassicTests/CreateReportTests.swift; sourceTree = SOURCE_ROOT; };
 		28F2922A1B1C843D0015F64F /* JirassicTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JirassicTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -287,6 +287,8 @@
 		28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReport.swift; path = ../App/CreateReport.swift; sourceTree = "<group>"; };
 		4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryInteractor.swift; path = App/RepositoryInteractor.swift; sourceTree = SOURCE_ROOT; };
 		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
+		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
+		406413941CD71E2D00C8E03D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Screens/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -687,7 +689,8 @@
 		28EB908F1AF974DC008D5337 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				28EB90901AF9754A008D5337 /* SettingsViewController.swift */,
+				406413941CD71E2D00C8E03D /* SettingsViewController.swift */,
+				406413921CD71E1700C8E03D /* SettingsPresenter.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1119,8 +1122,10 @@
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
 				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
+				406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */,
 				40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */,
 				6D89F7BD1BD5257400A6892B /* SaveTaskInteractor.swift in Sources */,
+				406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */,
 				40BF53741CD61ACF00626157 /* GitCell.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */,
@@ -1153,7 +1158,6 @@
 				40BF53901CD61D5C00626157 /* RegisterUserInteractor.swift in Sources */,
 				40BF537F1CD61ACF00626157 /* TasksViewController.swift in Sources */,
 				40BF535D1CD6175800626157 /* CTask.swift in Sources */,
-				28EB90921AF9754A008D5337 /* SettingsViewController.swift in Sources */,
 				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
 				406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
 				40BF53841CD61BD400626157 /* ReadIssuesInteractor.swift in Sources */,
