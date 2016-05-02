@@ -63,19 +63,19 @@ class CoreDataRepository {
 
 extension CoreDataRepository {
     
-    private func queryTasksWithPredicate (predicate: NSPredicate) -> [CTask] {
+    private func queryWithPredicate<T:NSManagedObject> (predicate: NSPredicate) -> [T] {
         
         guard let context = managedObjectContext else {
             return []
         }
         
-        let request = NSFetchRequest(entityName: String(CTask))
+        let request = NSFetchRequest(entityName: String(T))
         request.returnsObjectsAsFaults = false
         request.predicate = predicate
         
         do {
             let results = try context.executeFetchRequest(request)
-            return results as! [CTask]
+            return results as! [T]
         } catch _ {
             return []
         }
@@ -109,15 +109,14 @@ extension CoreDataRepository {
     private func ctaskFromTask (task: Task) -> CTask {
         
         let taskPredicate = NSPredicate(format: "taskId == %@", task.taskId!)
-        let tasks = queryTasksWithPredicate(taskPredicate)
-        if tasks.count > 0 {
-            return updatedCTask(tasks.first!, withTask: task)
+        let tasks: [CTask] = queryWithPredicate(taskPredicate)
+        var ctask: CTask? = tasks.first
+        if ctask == nil {
+            ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
+                    inManagedObjectContext: managedObjectContext!) as? CTask
         }
         
-        let ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
-                    inManagedObjectContext: managedObjectContext!) as! CTask
-        
-        return updatedCTask(ctask, withTask: task)
+        return updatedCTask(ctask!, withTask: task)
     }
     
     private func updatedCTask (ctask: CTask, withTask task: Task) -> CTask {
@@ -154,7 +153,7 @@ extension CoreDataRepository: Repository {
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
         
         let userPredicate = NSPredicate(format: "userId = %@", "")
-        let results = queryTasksWithPredicate(userPredicate)
+        let results: [CTask] = queryWithPredicate(userPredicate)
         let tasks = tasksFromCTasks(results)
         
         completion(tasks, nil)
@@ -166,7 +165,7 @@ extension CoreDataRepository: Repository {
             NSPredicate(format: "startDate >= %@ AND startDate <= %@", day.startOfDay(), day.endOfDay()),
             NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay(), day.endOfDay())
         ])
-        let results = queryTasksWithPredicate(compoundPredicate)
+        let results: [CTask] = queryWithPredicate(compoundPredicate)
         let tasks = tasksFromCTasks(results)
         
         return tasks
@@ -180,15 +179,9 @@ extension CoreDataRepository: Repository {
         remoteRepository.deleteTask(dataToDelete)
     }
     
-    func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) {
+    func saveTask (task: Task, completion: ((success: Bool) -> Void)) {
         
-        let taskPredicate = NSPredicate(format: "taskId = %@", theTask.taskId!)
-        let results = queryTasksWithPredicate(taskPredicate)
-        if results.count > 0 {
-            
-        }
-        
-        let _ = ctaskFromTask(theTask)
+        let _ = ctaskFromTask(task)
         saveContext()
     }
 }

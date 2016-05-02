@@ -9,14 +9,19 @@
 import Foundation
 
 protocol Repository {
-	
+    
+    // MARK: User
     func currentUser() -> User
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
     func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
     func logout()
+    
+    // MARK: Tasks
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void)
     func queryTasksInDay (day: NSDate) -> [Task]
-	func queryUnsyncedTasks() -> [Task]
+    func queryUnsyncedTasks() -> [Task]
     func deleteTask (dataToDelete: Task)
-	func saveTask (theTask: Task, completion: ((success: Bool) -> Void))
+    func saveTask (theTask: Task, completion: ((success: Bool) -> Void))
+    
+    // MARK: Issues
 }
