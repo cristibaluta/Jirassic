@@ -86,7 +86,7 @@ class Wireframe {
 		controller.view.constrainToSuperview()
 	}
 	
-	class func removeController(controller: NSViewController) {
+	class func removeController (controller: NSViewController) {
 		controller.removeFromParentViewController()
 		controller.view.removeFromSuperview()
 	}

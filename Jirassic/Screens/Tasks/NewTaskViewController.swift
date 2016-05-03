@@ -55,12 +55,6 @@ class NewTaskViewController: NSViewController {
 		}
 	}
 	
-	class func instanceFromStoryboard() -> NewTaskViewController {
-		
-		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		return storyboard.instantiateControllerWithIdentifier("NewTaskViewController") as! NewTaskViewController
-	}
-	
 	func removeFromSuperview() {
 		self.view.removeFromSuperview()
 	}

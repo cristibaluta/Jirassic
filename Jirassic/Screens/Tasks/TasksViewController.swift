@@ -17,6 +17,8 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	@IBOutlet private var butShare: NSButton?
+    
+    var wireframe: Wireframe?
 	
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
@@ -24,14 +26,6 @@ class TasksViewController: NSViewController {
 	
 	var handleSettingsButton: (() -> ())?
 	var handleRefreshButton: (() -> ())?
-	
-    
-    // MARK: View controller lifecycle
-    
-	class func instanceFromStoryboard() -> TasksViewController {
-		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		return storyboard.instantiateControllerWithIdentifier("TasksViewController") as! TasksViewController
-	}
 	
 	override func awakeFromNib() {
 		view.layer = CALayer()
@@ -128,7 +122,7 @@ class TasksViewController: NSViewController {
 	var newTaskViewController: NewTaskViewController {
 		
 		if _newTaskViewController == nil {
-			_newTaskViewController = NewTaskViewController.instanceFromStoryboard()
+			_newTaskViewController = NewTaskViewController.instantiateFromStoryboard("Main")
 			_newTaskViewController?.onOptionChosen = { [weak self] (i: TaskSubtype) -> Void in
 				
 				self?.splitView?.hidden = false
@@ -142,19 +136,17 @@ class TasksViewController: NSViewController {
 				} else if task.startDate != nil {
 					task.startDate = self!._newTaskViewController!.date
 				}
-				RCLog(task)
-				localRepository.saveTask(task, completion: {(success: Bool) -> Void in
-					
-					self?.tasksScrollView?.addTask( task )
-					
-					self?.setupDaysTableView()
-					self?.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
-						withAnimation: NSTableViewAnimationOptions.SlideUp)
-					self?.tasksScrollView?.tableView?.scrollRowToVisible(0)
-					
-					self?.updateNoTasksState()
-					self?.removeNewTaskController()
-				})
+				
+                SaveTaskInteractor(data: localRepository).saveTask(task)
+                self?.tasksScrollView?.addTask( task )
+                
+                self?.setupDaysTableView()
+                self?.tasksScrollView?.tableView?.insertRowsAtIndexes(
+                    NSIndexSet(index: 0), withAnimation: NSTableViewAnimationOptions.SlideUp)
+                self?.tasksScrollView?.tableView?.scrollRowToVisible(0)
+                
+                self?.updateNoTasksState()
+                self?.removeNewTaskController()
 			}
 			_newTaskViewController?.onCancelChosen = {
 				self.splitView?.hidden = false
@@ -212,10 +204,9 @@ class TasksViewController: NSViewController {
 	func handleStartDayButton() {
 		
 		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-		localRepository.saveTask(task, completion: { [weak self] (success: Bool) -> Void in
-			self?.day.setLastTrackedDay(NSDate())
-			self?.reloadData()
-		})
+		SaveTaskInteractor(data: localRepository).saveTask(task)
+        self.day.setLastTrackedDay(NSDate())
+        self.reloadData()
 	}
 	
 	func handleAddTaskButton (date: NSDate) {
@@ -249,7 +240,9 @@ extension TasksViewController {
 	func registerForNotifications() {
 		
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: #selector(TasksViewController.newTaskWasAdded(_:)), name: kNewTaskWasAddedNotification, object: nil)
+			selector: #selector(TasksViewController.newTaskWasAdded(_:)),
+			name: kNewTaskWasAddedNotification,
+			object: nil)
 	}
 	
 	func newTaskWasAdded (notif: NSNotification) {

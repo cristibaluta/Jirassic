@@ -86,14 +86,14 @@ extension CoreDataRepository {
     
     private func taskFromCTask (ctask: CTask) -> Task {
         
-        var task = Task()
-        task.taskId = ctask.taskId
-        task.taskType = ctask.taskType
-        task.notes = ctask.notes
-        task.startDate = ctask.startDate
-        task.endDate = ctask.endDate
-        
-        return task
+        return Task(startDate: ctask.startDate,
+                    endDate: ctask.endDate,
+                    notes: ctask.notes,
+                    issueType: ctask.issueType,
+                    issueId: ctask.issueId,
+                    taskType: ctask.taskType,
+                    taskId: ctask.taskId
+        )
     }
     
     private func tasksFromCTasks (ctasks: [CTask]) -> [Task] {
