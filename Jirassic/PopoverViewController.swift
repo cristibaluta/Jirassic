@@ -15,8 +15,8 @@ class PopoverViewController: NSViewController {
     override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let currentUser = PUser.currentUser()
-		if currentUser != nil && currentUser!.isLoggedIn {
+		let currentUser = ReadUserInteractor().execute()
+		if currentUser.isLoggedIn {
 			topController = createTasksController()
 			self.addChildViewController( topController! )
 			self.view.addSubview( topController!.view )
@@ -30,7 +30,7 @@ class PopoverViewController: NSViewController {
 	
 	func createTasksController() -> TasksViewController {
 		
-		let tasksController = TasksViewController.instanceFromStoryboard()
+		let tasksController = TasksViewController.instantiateFromStoryboard("Main")
 		tasksController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
 		tasksController.handleSettingsButton = { [weak self] in
 			if let strongSelf = self {
@@ -50,7 +50,7 @@ class PopoverViewController: NSViewController {
 	
 	func createSettingsController() -> SettingsViewController {
 		
-		let settingsController = SettingsViewController.instanceFromStoryboard()
+		let settingsController = SettingsViewController.instantiateFromStoryboard("Main")
 		settingsController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
 		settingsController.handleSaveButton = { [weak self] in
 			self?.flipToTasks(settingsController)

@@ -11,10 +11,6 @@ import CoreData
 
 class CoreDataRepository {
     
-    init() {
-        
-    }
-    
     lazy var applicationDocumentsDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls.last as NSURL!
@@ -25,22 +21,22 @@ class CoreDataRepository {
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
+    func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
         
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Jirassic.sqlite")
         
         do {
-            let persistentStore = try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
             return coordinator
         } catch _ {
             return nil
         }
-    }()
+    }
     
     lazy var managedObjectContext: NSManagedObjectContext? = {
         
-        guard let coordinator = self.persistentStoreCoordinator else {
+        guard let coordinator = self.persistentStoreCoordinator() else {
             return nil
         }
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -151,7 +147,35 @@ extension CoreDataRepository: Repository {
     }
     
     func logout() {
-        fatalError("This method is not applicable to CoreDataRepository")
+        
+        guard let context = managedObjectContext else {
+            return
+        }
+        
+        if #available(OSX 1000.11, *) {
+            // TODO: This seems not to work under 10.11
+            let fetchRequest = NSFetchRequest(entityName: String(CTask))
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try persistentStoreCoordinator()?.executeRequest(deleteRequest, withContext: context)
+            } catch let error as NSError {
+                RCLog(error)
+            }
+        } else {
+            let fetchRequest = NSFetchRequest()
+            fetchRequest.entity = NSEntityDescription.entityForName(String(CTask), inManagedObjectContext: context)
+            fetchRequest.includesPropertyValues = false
+            do {
+                if let results = try context.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                    for result in results {
+                        context.deleteObject(result)
+                    }
+                    try context.save()
+                }
+            } catch {
+                
+            }
+        }
     }
     
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
@@ -176,7 +200,12 @@ extension CoreDataRepository: Repository {
     }
     
     func queryUnsyncedTasks() -> [Task] {
-        return []
+        
+        let userPredicate = NSPredicate(format: "isSynced = false")
+        let results: [CTask] = queryWithPredicate(userPredicate)
+        let tasks = tasksFromCTasks(results)
+        
+        return tasks
     }
     
     func deleteTask (task: Task) {

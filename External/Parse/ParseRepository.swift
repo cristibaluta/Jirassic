@@ -169,7 +169,7 @@ extension ParseRepository: Repository {
     }
 	
 	func queryUnsyncedTasks() -> [Task] {
-		return []
+		fatalError("This method is not applicable to ParseRepository")
 	}
 	
     func deleteTask (taskToDelete: Task) {

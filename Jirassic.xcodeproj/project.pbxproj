@@ -74,7 +74,6 @@
 		28C02F511C007E8E00B65478 /* PTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F481C007E8E00B65478 /* PTask.swift */; };
 		28C02F521C007E8E00B65478 /* PUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F491C007E8E00B65478 /* PUser.swift */; };
 		28C02F531C007E8E00B65478 /* PUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F491C007E8E00B65478 /* PUser.swift */; };
-		28C02F561C007F3000B65478 /* InMemoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryRepository.swift */; };
 		28C02F591C00801A00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5B1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5E1C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
@@ -119,6 +118,10 @@
 		406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413921CD71E1700C8E03D /* SettingsPresenter.swift */; };
 		406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413941CD71E2D00C8E03D /* SettingsViewController.swift */; };
 		406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413961CD86AA300C8E03D /* StringIdGenerator.swift */; };
+		4064139F1CD926F300C8E03D /* ReadUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064139E1CD926F300C8E03D /* ReadUserInteractor.swift */; };
+		406413A11CD9289000C8E03D /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A01CD9289000C8E03D /* LoginInteractorTests.swift */; };
+		406413A21CD9365C00C8E03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */; };
+		406413A31CD9365F00C8E03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -261,7 +264,7 @@
 		28C02F471C007E8E00B65478 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
 		28C02F481C007E8E00B65478 /* PTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTask.swift; sourceTree = "<group>"; };
 		28C02F491C007E8E00B65478 /* PUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PUser.swift; sourceTree = "<group>"; };
-		28C02F551C007F3000B65478 /* InMemoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryRepository.swift; sourceTree = "<group>"; };
+		28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryCoreDataRepository.swift; sourceTree = "<group>"; };
 		28C02F581C00801A00B65478 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = App/Entities/Task.swift; sourceTree = "<group>"; };
 		28C02F5D1C00803300B65478 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/Entities/User.swift; sourceTree = "<group>"; };
 		28C02F711C009C9700B65478 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = App/Extensions/NSDateExtension.swift; sourceTree = SOURCE_ROOT; };
@@ -291,6 +294,8 @@
 		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
 		406413941CD71E2D00C8E03D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Screens/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		406413961CD86AA300C8E03D /* StringIdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringIdGenerator.swift; path = App/Extensions/StringIdGenerator.swift; sourceTree = SOURCE_ROOT; };
+		4064139E1CD926F300C8E03D /* ReadUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadUserInteractor.swift; path = App/ReadUserInteractor.swift; sourceTree = SOURCE_ROOT; };
+		406413A01CD9289000C8E03D /* LoginInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginInteractorTests.swift; path = App/LoginInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -539,7 +544,7 @@
 				4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */,
 				56A68A9A1CC0CD0B0031CC0C /* CoreData */,
 				28C02F441C007E8E00B65478 /* Parse */,
-				28C02F541C007F3000B65478 /* InMemoryStorage */,
+				28C02F541C007F3000B65478 /* InMemoryCoreData */,
 			);
 			name = External;
 			path = Jirassic;
@@ -625,12 +630,12 @@
 			path = ../External/Parse;
 			sourceTree = "<group>";
 		};
-		28C02F541C007F3000B65478 /* InMemoryStorage */ = {
+		28C02F541C007F3000B65478 /* InMemoryCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				28C02F551C007F3000B65478 /* InMemoryRepository.swift */,
+				28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */,
 			);
-			name = InMemoryStorage;
+			name = InMemoryCoreData;
 			path = ../External/InMemoryStorage;
 			sourceTree = "<group>";
 		};
@@ -647,7 +652,9 @@
 			isa = PBXGroup;
 			children = (
 				28C02F841C00A6F300B65478 /* LoginInteractor.swift */,
+				406413A01CD9289000C8E03D /* LoginInteractorTests.swift */,
 				40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */,
+				4064139E1CD926F300C8E03D /* ReadUserInteractor.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -1070,6 +1077,7 @@
 				564177201C579FB200B893F3 /* Day.swift in Sources */,
 				28C02F511C007E8E00B65478 /* PTask.swift in Sources */,
 				5641771F1C579FA200B893F3 /* Week.swift in Sources */,
+				406413A31CD9365F00C8E03D /* InMemoryCoreDataRepository.swift in Sources */,
 				2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */,
 				2865856A1B053CD300352782 /* TaskCell.swift in Sources */,
 				28C02F5B1C00801B00B65478 /* Task.swift in Sources */,
@@ -1116,8 +1124,10 @@
 				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
 				285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */,
 				40BF53981CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */,
+				4064139F1CD926F300C8E03D /* ReadUserInteractor.swift in Sources */,
 				28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				40BF537A1CD61ACF00626157 /* TaskCell.swift in Sources */,
+				406413A21CD9365C00C8E03D /* InMemoryCoreDataRepository.swift in Sources */,
 				28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */,
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
@@ -1179,7 +1189,7 @@
 				2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */,
 				28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
-				28C02F561C007F3000B65478 /* InMemoryRepository.swift in Sources */,
+				406413A11CD9289000C8E03D /* LoginInteractorTests.swift in Sources */,
 				28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1448,6 +1458,7 @@
 				);
 				INFOPLIST_FILE = Jirassic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1476,6 +1487,7 @@
 				);
 				INFOPLIST_FILE = Jirassic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1500,6 +1512,7 @@
 				);
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = JirassicTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1521,6 +1534,7 @@
 				);
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = JirassicTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
