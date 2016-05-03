@@ -108,12 +108,16 @@ extension CoreDataRepository {
     
     private func ctaskFromTask (task: Task) -> CTask {
         
-        let taskPredicate = NSPredicate(format: "taskId == %@", task.taskId!)
-        let tasks: [CTask] = queryWithPredicate(taskPredicate)
-        var ctask: CTask? = tasks.first
+        var ctask: CTask?
+        if let taskId = task.taskId {
+            let taskPredicate = NSPredicate(format: "taskId == %@", taskId)
+            let tasks: [CTask] = queryWithPredicate(taskPredicate)
+            ctask = tasks.first
+        }
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
                     inManagedObjectContext: managedObjectContext!) as? CTask
+            ctask?.taskId = String.random()
         }
         
         return updatedCTask(ctask!, withTask: task)
@@ -135,24 +139,24 @@ extension CoreDataRepository {
 extension CoreDataRepository: Repository {
     
     func currentUser() -> User {
-        return remoteRepository.currentUser()
+        fatalError("This method is not applicable to CoreDataRepository")
     }
     
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
-        remoteRepository.loginWithCredentials(credentials, completion: completion)
+        fatalError("This method is not applicable to CoreDataRepository")
     }
     
     func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
-        remoteRepository.registerWithCredentials(credentials, completion: completion)
+        fatalError("This method is not applicable to CoreDataRepository")
     }
     
     func logout() {
-        remoteRepository.logout()
+        fatalError("This method is not applicable to CoreDataRepository")
     }
     
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
         
-        let userPredicate = NSPredicate(format: "userId = %@", "")
+        let userPredicate = NSPredicate(format: "userId = nil")
         let results: [CTask] = queryWithPredicate(userPredicate)
         let tasks = tasksFromCTasks(results)
         
@@ -175,13 +179,22 @@ extension CoreDataRepository: Repository {
         return []
     }
     
-    func deleteTask (dataToDelete: Task) {
-        remoteRepository.deleteTask(dataToDelete)
+    func deleteTask (task: Task) {
+        
+        guard let context = managedObjectContext else {
+            return
+        }
+        
+        let ctask = ctaskFromTask(task)
+        context.deleteObject(ctask)
+        saveContext()
     }
     
-    func saveTask (task: Task, completion: ((success: Bool) -> Void)) {
+    func saveTask (task: Task, completion: (success: Bool) -> Void) -> Task {
         
-        let _ = ctaskFromTask(task)
+        let ctask = ctaskFromTask(task)
         saveContext()
+        
+        return taskFromCTask(ctask)
     }
 }

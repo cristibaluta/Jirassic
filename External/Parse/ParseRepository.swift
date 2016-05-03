@@ -191,7 +191,7 @@ extension ParseRepository: Repository {
         }
     }
 	
-	func saveTask (task: Task, completion: ((success: Bool) -> Void)) {
+	func saveTask (task: Task, completion: ((success: Bool) -> Void)) -> Task {
 		RCLogO("Update task \(task)")
 		// Update local array
 		for i in 0..<tasks.count {
@@ -215,5 +215,7 @@ extension ParseRepository: Repository {
                 completion(success: success)
             }
 		})
+        
+        return task
 	}
 }

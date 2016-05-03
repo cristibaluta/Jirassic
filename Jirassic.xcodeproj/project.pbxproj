@@ -118,6 +118,7 @@
 		406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
 		406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413921CD71E1700C8E03D /* SettingsPresenter.swift */; };
 		406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413941CD71E2D00C8E03D /* SettingsViewController.swift */; };
+		406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413961CD86AA300C8E03D /* StringIdGenerator.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -289,6 +290,7 @@
 		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
 		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
 		406413941CD71E2D00C8E03D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Screens/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
+		406413961CD86AA300C8E03D /* StringIdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringIdGenerator.swift; path = App/Extensions/StringIdGenerator.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				28E839001AF402B200602D33 /* NSDateExtensionTests.swift */,
 				28C02F721C009C9700B65478 /* ViewAutolayout.swift */,
 				4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */,
+				406413961CD86AA300C8E03D /* StringIdGenerator.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1119,6 +1122,7 @@
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				40BF53791CD61ACF00626157 /* NoTasksViewController.swift in Sources */,
+				406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
 				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
