@@ -88,7 +88,7 @@
 		28C02F8C1C010ABC00B65478 /* PIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8A1C010ABC00B65478 /* PIssue.swift */; };
 		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
 		28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */; };
-		28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* Wireframe.swift */; };
+		28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* AppWireframe.swift */; };
 		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
 		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* Repository.swift */; };
@@ -277,7 +277,7 @@
 		28C02F8A1C010ABC00B65478 /* PIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIssue.swift; sourceTree = "<group>"; };
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
 		28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
-		28E57AC21BEC180C00B803E6 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		28E57AC21BEC180C00B803E6 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
 		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
 		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = ../App/Repository.swift; sourceTree = "<group>"; };
@@ -589,7 +589,7 @@
 				28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */,
 				289998A11AC2920200706824 /* Popover.swift */,
 				282426771B113F6900211713 /* PopoverViewController.swift */,
-				40BF53651CD619AF00626157 /* Wireframe */,
+				40BF53651CD619AF00626157 /* AppWireframe */,
 				40BF53641CD6198200626157 /* Screens */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
 				28E838F51AF297FE00602D33 /* Resources */,
@@ -748,13 +748,13 @@
 			name = Screens;
 			sourceTree = "<group>";
 		};
-		40BF53651CD619AF00626157 /* Wireframe */ = {
+		40BF53651CD619AF00626157 /* AppWireframe */ = {
 			isa = PBXGroup;
 			children = (
-				28E57AC21BEC180C00B803E6 /* Wireframe.swift */,
+				28E57AC21BEC180C00B803E6 /* AppWireframe.swift */,
 				282426751B113D5000211713 /* FlipScreens.swift */,
 			);
-			name = Wireframe;
+			name = AppWireframe;
 			sourceTree = "<group>";
 		};
 		56A68A9A1CC0CD0B0031CC0C /* CoreData */ = {
@@ -1158,7 +1158,7 @@
 				28F51E7A1AC694B000A69CDF /* ReadTasksInteractor.swift in Sources */,
 				285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */,
 				28C02F501C007E8E00B65478 /* PTask.swift in Sources */,
-				28E57AC31BEC180C00B803E6 /* Wireframe.swift in Sources */,
+				28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */,
 				28C02F4E1C007E8E00B65478 /* ParseCredentials.swift in Sources */,
 				40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */,
 				28C02F521C007E8E00B65478 /* PUser.swift in Sources */,

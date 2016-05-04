@@ -1,5 +1,5 @@
 //
-//  Wireframe.swift
+//  AppWireframe.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 06/11/15.
@@ -8,23 +8,23 @@
 
 import Cocoa
 
-class Wireframe {
+class AppWireframe {
 
 	// MARK: Popover
 	
-	class func showPopover (popover: NSPopover, fromIcon icon: NSView) {
+	func showPopover (popover: NSPopover, fromIcon icon: NSView) {
 		let edge = NSRectEdge.MinY
 		let rect = icon.frame
 		popover.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
 	}
 	
-	class func hidePopover (popover: NSPopover) {
+	func hidePopover (popover: NSPopover) {
 		popover.close()
 	}
 	
 	// MARK: Settings
 	
-	class func flipToSettings (settingsController: NSViewController,
+	func flipToSettings (settingsController: NSViewController,
 		parentController: NSViewController,
 		currentController: NSViewController,
 		completion: (controller: NSViewController) -> Void) {
@@ -57,7 +57,7 @@ class Wireframe {
 //		flip.startWithLayer(self.view.superview!.layer!)
 	}
 	
-	class func flipToTasks (tasksController: NSViewController,
+	func flipToTasks (tasksController: NSViewController,
 		parentController: NSViewController,
 		currentController: NSViewController,
 		completion: (controller: NSViewController) -> Void) {
@@ -77,7 +77,7 @@ class Wireframe {
 		flip.startWithLayer(parentController.view.superview!.layer!)
 	}
 	
-	class func presentNoTaskController (controller: NSViewController,
+	func presentNoTaskController (controller: NSViewController,
 		overController parentController: NSViewController,
 		splitView: NSSplitView) {
 		
@@ -86,12 +86,12 @@ class Wireframe {
 		controller.view.constrainToSuperview()
 	}
 	
-	class func removeController (controller: NSViewController) {
+	func removeController (controller: NSViewController) {
 		controller.removeFromParentViewController()
 		controller.view.removeFromSuperview()
 	}
 	
-	class func presentNewTaskController (controller: NSViewController,
+	func presentNewTaskController (controller: NSViewController,
 		overController parentController: NSViewController,
 		splitView: NSSplitView) {
 		
@@ -101,7 +101,7 @@ class Wireframe {
         controller.view.constrainToSuperviewHeight(70, bottom: 0)
 	}
 	
-	class func removeNoProjectsController (controller: NSViewController?) {
+	func removeNoProjectsController (controller: NSViewController?) {
 		
 		if let c = controller {
 			c.view.removeFromSuperview()

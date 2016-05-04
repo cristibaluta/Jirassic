@@ -14,7 +14,7 @@ class FlipScreens: NSObject {
 	var animationFinished: (() -> ())?
 	var layer: CALayer?
 	
-	func startWithLayer(layer: CALayer) {
+	func startWithLayer (layer: CALayer) {
 		
 		// Create CAAnimation
 		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
@@ -36,7 +36,7 @@ class FlipScreens: NSObject {
 		self.layer = layer
 	}
 	
-	func animatePhase2(anim: CAAnimation!) {
+	func animatePhase2 (anim: CAAnimation!) {
 		
 		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
 		rotationAnimation.fromValue = -3.14/2
@@ -56,7 +56,7 @@ class FlipScreens: NSObject {
 		self.layer?.addAnimation(rotationAnimation, forKey:"flip")
 	}
 	
-	override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+	override func animationDidStop (anim: CAAnimation, finished flag: Bool) {
 		
 		if anim.valueForKey("flip") as! String == "flipAnimationInwards" {
 			

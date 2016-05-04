@@ -11,11 +11,12 @@ import Cocoa
 class PopoverViewController: NSViewController {
 	
 	private var topController: NSViewController?
+    var appWireframe: AppWireframe?
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let currentUser = ReadUserInteractor().execute()
+		let currentUser = ReadUserInteractor().currentUser()
 		if currentUser.isLoggedIn {
 			topController = createTasksController()
 			self.addChildViewController( topController! )
@@ -34,7 +35,7 @@ class PopoverViewController: NSViewController {
 		tasksController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
 		tasksController.handleSettingsButton = { [weak self] in
 			if let strongSelf = self {
-				Wireframe.flipToSettings(
+				strongSelf.appWireframe?.flipToSettings(
 					strongSelf.createSettingsController(),
 					parentController: strongSelf,
 					currentController: strongSelf.topController!,
@@ -79,7 +80,7 @@ class PopoverViewController: NSViewController {
 	
 	func flipToTasks (fromController: NSViewController) {
 		
-		Wireframe.flipToTasks(
+		appWireframe?.flipToTasks(
 			self.createTasksController(),
 			parentController: self,
 			currentController: fromController,

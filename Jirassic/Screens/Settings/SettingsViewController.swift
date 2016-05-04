@@ -33,7 +33,7 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let user = ReadUserInteractor().execute()
+		let user = ReadUserInteractor().currentUser()
         butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
         emailTextField?.stringValue = user.email!
     }
@@ -55,7 +55,7 @@ class SettingsViewController: NSViewController {
 	
 	@IBAction func handleLoginButton (sender: NSButton) {
 		
-		let user = ReadUserInteractor().execute()
+		let user = ReadUserInteractor().currentUser()
         let login = LoginInteractor(data: localRepository)
         login.onLoginSuccess = {
             self.showLoadingIndicator(false)

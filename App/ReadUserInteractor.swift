@@ -10,7 +10,7 @@ import Foundation
 
 class ReadUserInteractor {
     
-    func execute() -> User {
+    func currentUser() -> User {
         return remoteRepository.currentUser()
     }
 }

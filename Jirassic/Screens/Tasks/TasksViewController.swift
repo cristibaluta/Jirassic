@@ -18,7 +18,7 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
 	@IBOutlet private var butShare: NSButton?
     
-    var wireframe: Wireframe?
+    var appWireframe: AppWireframe?
 	
 	private var _noTasksViewController: NoTasksViewController?
 	private var _newTaskViewController: NewTaskViewController?
@@ -84,11 +84,11 @@ class TasksViewController: NSViewController {
 		
 		if tasksScrollView!.data.count == 0 {
 			noTasksViewController.showStartState()
-			Wireframe.presentNoTaskController(noTasksViewController, overController: self, splitView: splitView!)
+			appWireframe?.presentNoTaskController(noTasksViewController, overController: self, splitView: splitView!)
 		}
 		else if tasksScrollView!.data.count == 1 {
 			noTasksViewController.showFirstTaskState()
-            Wireframe.presentNoTaskController(noTasksViewController, overController: self, splitView: splitView!)
+            appWireframe?.presentNoTaskController(noTasksViewController, overController: self, splitView: splitView!)
 		}
 		else {
 			removeNoTasksController()
@@ -112,7 +112,7 @@ class TasksViewController: NSViewController {
 	
 	func removeNoTasksController() {
 		if let controller = _noTasksViewController {
-			Wireframe.removeController(controller)
+			appWireframe?.removeController(controller)
 		}
 	}
 	
@@ -159,7 +159,7 @@ class TasksViewController: NSViewController {
 	
 	func removeNewTaskController() {
         if let controller = _newTaskViewController {
-            Wireframe.removeController(controller)
+            appWireframe?.removeController(controller)
         }
 	}
 	
@@ -213,7 +213,7 @@ class TasksViewController: NSViewController {
 		RCLogO("add new cell after date \(date)")
 		removeNoTasksController()
 		splitView?.hidden = true
-		Wireframe.presentNewTaskController(newTaskViewController, overController: self, splitView: splitView!)
+		appWireframe?.presentNewTaskController(newTaskViewController, overController: self, splitView: splitView!)
 		
 		newTaskViewController.date = NSDate()
 	}

@@ -22,7 +22,7 @@ protocol LoginPresenterOutput {
 class LoginPresenter {
     
     var userInterface: LoginPresenterOutput?
-    var wireframe: Wireframe?
+    var appWireframe: AppWireframe?
     var onLoginSuccess: (() -> ())?
     var onExit: (() -> ())?
 }

@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
     @IBOutlet var popover: NSPopover?
+    private var appWireframe = AppWireframe()
     private var sleep: SleepNotifications?
 	private let menu = MenuBarController()
 	
@@ -28,9 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
 				if (wself.menu.iconView?.isSelected == true) {
-					Wireframe.showPopover(wself.popover!, fromIcon: wself.menu.iconView!)
+					wself.appWireframe.showPopover(wself.popover!, fromIcon: wself.menu.iconView!)
 				} else {
-					Wireframe.hidePopover(wself.popover!)
+					wself.appWireframe.hidePopover(wself.popover!)
 				}
 			}
         }
@@ -46,6 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
     func applicationDidFinishLaunching (aNotification: NSNotification) {
 		
+        (popover?.contentViewController as! PopoverViewController).appWireframe = appWireframe
 		let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
 		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
 			self.menu.iconView?.mouseDown(NSEvent())
