@@ -13,6 +13,7 @@ struct User {
 	var isLoggedIn: Bool
 	var email: String?
     var userId: String?
+    var lastSyncDate: NSDate?
 }
 
 typealias UserCredentials = (email: String, password: String)

@@ -122,6 +122,10 @@
 		406413A11CD9289000C8E03D /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A01CD9289000C8E03D /* LoginInteractorTests.swift */; };
 		406413A21CD9365C00C8E03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */; };
 		406413A31CD9365F00C8E03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */; };
+		406413A61CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */; };
+		406413A71CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */; };
+		406413A81CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
+		406413A91CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -296,6 +300,8 @@
 		406413961CD86AA300C8E03D /* StringIdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringIdGenerator.swift; path = App/Extensions/StringIdGenerator.swift; sourceTree = SOURCE_ROOT; };
 		4064139E1CD926F300C8E03D /* ReadUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadUserInteractor.swift; path = App/ReadUserInteractor.swift; sourceTree = SOURCE_ROOT; };
 		406413A01CD9289000C8E03D /* LoginInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginInteractorTests.swift; path = App/LoginInteractorTests.swift; sourceTree = SOURCE_ROOT; };
+		406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CUser+CoreDataProperties.swift"; path = "../External/CoreData/CUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		406413A51CD9498A00C8E03D /* CUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CUser.swift; path = ../External/CoreData/CUser.swift; sourceTree = "<group>"; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -756,6 +762,8 @@
 			children = (
 				56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */,
 				40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */,
+				406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */,
+				406413A51CD9498A00C8E03D /* CUser.swift */,
 				40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */,
 				40BF53591CD6175800626157 /* CTask.swift */,
 				40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */,
@@ -1077,6 +1085,8 @@
 				564177201C579FB200B893F3 /* Day.swift in Sources */,
 				28C02F511C007E8E00B65478 /* PTask.swift in Sources */,
 				5641771F1C579FA200B893F3 /* Week.swift in Sources */,
+				406413A91CD9498A00C8E03D /* CUser.swift in Sources */,
+				406413A71CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */,
 				406413A31CD9365F00C8E03D /* InMemoryCoreDataRepository.swift in Sources */,
 				2856DF171B13919A00A4D5A4 /* IosLoginViewController.swift in Sources */,
 				2865856A1B053CD300352782 /* TaskCell.swift in Sources */,
@@ -1121,6 +1131,7 @@
 				28C02F591C00801A00B65478 /* Task.swift in Sources */,
 				4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
 				28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */,
+				406413A81CD9498A00C8E03D /* CUser.swift in Sources */,
 				28EB90631AF948E3008D5337 /* NewDay.swift in Sources */,
 				285424C51C2FDD030063B532 /* ComputerSleepInteractor.swift in Sources */,
 				40BF53981CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */,
@@ -1152,6 +1163,7 @@
 				40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */,
 				28C02F521C007E8E00B65478 /* PUser.swift in Sources */,
 				285424CB1C3431990063B532 /* Day.swift in Sources */,
+				406413A61CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */,
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,
 				285424C91C34313E0063B532 /* Week.swift in Sources */,
 				289998A21AC2920200706824 /* Popover.swift in Sources */,

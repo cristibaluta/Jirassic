@@ -135,7 +135,14 @@ extension CoreDataRepository {
 extension CoreDataRepository: Repository {
     
     func currentUser() -> User {
-        fatalError("This method is not applicable to CoreDataRepository")
+        
+        let userPredicate = NSPredicate(format: "isLoggedIn == YES")
+        let cusers: [CUser] = queryWithPredicate(userPredicate)
+        if let cuser = cusers.last {
+            return User(isLoggedIn: true, email: cuser.email, userId: cuser.userId, lastSyncDate: cuser.lastSyncDate)
+        }
+        
+        return User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
     }
     
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
@@ -180,7 +187,7 @@ extension CoreDataRepository: Repository {
     
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
         
-        let userPredicate = NSPredicate(format: "userId = nil")
+        let userPredicate = NSPredicate(format: "userId == nil")
         let results: [CTask] = queryWithPredicate(userPredicate)
         let tasks = tasksFromCTasks(results)
         
@@ -201,7 +208,7 @@ extension CoreDataRepository: Repository {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let userPredicate = NSPredicate(format: "isSynced = false")
+        let userPredicate = NSPredicate(format: "lastModifiedDate == nil")
         let results: [CTask] = queryWithPredicate(userPredicate)
         let tasks = tasksFromCTasks(results)
         

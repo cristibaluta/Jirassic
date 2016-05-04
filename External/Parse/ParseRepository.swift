@@ -113,8 +113,13 @@ extension ParseRepository: Repository {
         if let user = self.user {
             return user
         }
+        if let puser = PUser.currentUser() {
+            self.user = User(isLoggedIn: true, email: puser.email, userId: puser.objectId, lastSyncDate: nil)
+        } else {
+            self.user = User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
+        }
         
-        return User(isLoggedIn: false, email: nil, userId: nil)
+        return self.user!
     }
     
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
@@ -124,7 +129,7 @@ extension ParseRepository: Repository {
             
             if let user = user {
                 if let strongSelf = self {
-                    strongSelf.user = User(isLoggedIn: true, email: user.email, userId: user.objectId)
+                    strongSelf.user = User(isLoggedIn: true, email: user.email, userId: user.objectId, lastSyncDate: nil)
                 }
                 completion(nil)
             }
@@ -200,7 +205,7 @@ extension ParseRepository: Repository {
 				break
 			}
 		}
-		// Update local and remote database
+		
 		ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 			// Update the ptask with data from task
 			ptask.date_task_started = task.startDate

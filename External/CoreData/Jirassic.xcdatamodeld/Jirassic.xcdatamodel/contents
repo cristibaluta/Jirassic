@@ -15,8 +15,15 @@
         <attribute name="taskType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="CUser" representedClassName=".CUser" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastSyncDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="CTask" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="CIssue" positionX="-54" positionY="0" width="128" height="60"/>
+        <element name="CTask" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="CUser" positionX="-54" positionY="54" width="128" height="105"/>
     </elements>
 </model>

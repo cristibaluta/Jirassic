@@ -33,18 +33,16 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		if let user = PUser.currentUser() {
-			RCLogO(user.isLoggedIn)
-			butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
-			emailTextField?.stringValue = user.email!
-		}
+		let user = ReadUserInteractor().execute()
+        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
+        emailTextField?.stringValue = user.email!
     }
 	
 	func removeFromSuperview() {
 		self.view.removeFromSuperview()
 	}
 	
-	func showLoadingIndicator(show: Bool) {
+	func showLoadingIndicator (show: Bool) {
 		if show {
 			progressIndicator?.startAnimation(nil)
 		} else {
@@ -55,22 +53,21 @@ class SettingsViewController: NSViewController {
 	
 	// MARK: Actions
 	
-	@IBAction func handleLoginButton(sender: NSButton) {
+	@IBAction func handleLoginButton (sender: NSButton) {
 		
-		if let user = PUser.currentUser() {
-			let login = LoginInteractor(data: localRepository)
-			login.onLoginSuccess = {
-				self.showLoadingIndicator(false)
-			}
-			user.isLoggedIn ? login.logout() : login.loginWithCredentials(credentials)
-		}
+		let user = ReadUserInteractor().execute()
+        let login = LoginInteractor(data: localRepository)
+        login.onLoginSuccess = {
+            self.showLoadingIndicator(false)
+        }
+        user.isLoggedIn ? login.logout() : login.loginWithCredentials(credentials)
 	}
 	
-	@IBAction func handleSaveButton(sender: NSButton) {
+	@IBAction func handleSaveButton (sender: NSButton) {
 		self.handleSaveButton?()
 	}
 	
-    @IBAction func handleQuitAppButton(sender: NSButton) {
+    @IBAction func handleQuitAppButton (sender: NSButton) {
         NSApplication.sharedApplication().terminate(nil)
     }
 }

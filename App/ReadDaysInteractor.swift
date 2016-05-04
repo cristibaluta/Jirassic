@@ -16,15 +16,18 @@ class ReadDaysInteractor: RepositoryInteractor {
         self.init()
         
         self.data = data
-		self.tasks = data.queryUnsyncedTasks()
-		self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
-			if let date1 = task1.endDate ?? task1.startDate {
-				if let date2 = task2.endDate ?? task2.startDate {
-					return date1.compare(date2) == .OrderedDescending
-				}
-			}
-			return false
-		}
+		data.queryTasks(0, completion: { (tasks, error) in
+            
+            self.tasks = tasks
+            self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
+                if let date1 = task1.endDate ?? task1.startDate {
+                    if let date2 = task2.endDate ?? task2.startDate {
+                        return date1.compare(date2) == .OrderedDescending
+                    }
+                }
+                return false
+            }
+        })
 	}
 	
 	func weeks() -> [Week] {
