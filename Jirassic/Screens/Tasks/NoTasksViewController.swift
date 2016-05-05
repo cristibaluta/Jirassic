@@ -15,13 +15,6 @@ class NoTasksViewController: NSViewController {
 	
 	var handleStartButton: (() -> ())?
 	
-	class func instanceFromStoryboard() -> NoTasksViewController {
-		
-		let storyboard = NSStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateControllerWithIdentifier("NoTasksViewController") as! NoTasksViewController
-		return vc
-	}
-	
 	func showStartState() {
 		_noTasksLabel?.stringValue = "Good morning! Ready for your first task?"
 		_butStart?.hidden = false

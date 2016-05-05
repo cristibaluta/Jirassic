@@ -16,6 +16,7 @@ class PopoverViewController: NSViewController {
     override func viewDidLoad() {
 		super.viewDidLoad()
 		
+        appWireframe = AppDelegate.sharedApp().appWireframe
 		let currentUser = ReadUserInteractor().currentUser()
 		if currentUser.isLoggedIn {
 			topController = createTasksController()
@@ -32,6 +33,7 @@ class PopoverViewController: NSViewController {
 	func createTasksController() -> TasksViewController {
 		
 		let tasksController = TasksViewController.instantiateFromStoryboard("Main")
+        tasksController.appWireframe = self.appWireframe
 		tasksController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
 		tasksController.handleSettingsButton = { [weak self] in
 			if let strongSelf = self {

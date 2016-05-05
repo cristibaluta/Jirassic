@@ -101,7 +101,7 @@ class TasksViewController: NSViewController {
 	var noTasksViewController: NoTasksViewController {
 		
 		if _noTasksViewController == nil {
-			_noTasksViewController = NoTasksViewController.instanceFromStoryboard()
+			_noTasksViewController = NoTasksViewController.instantiateFromStoryboard("Main")
 			_noTasksViewController?.handleStartButton = { [weak self] () -> Void in
 				self?.handleStartDayButton()
 			}
