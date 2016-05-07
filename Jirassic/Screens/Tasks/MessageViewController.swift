@@ -8,6 +8,8 @@
 
 import Cocoa
 
+typealias MessageViewModel = (title: String?, message: String?, buttonTitle: String?)
+
 class MessageViewController: NSViewController {
 
     @IBOutlet private var titleLabel: NSTextField?

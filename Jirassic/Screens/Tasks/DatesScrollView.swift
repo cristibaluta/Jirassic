@@ -94,10 +94,10 @@ extension DatesScrollView: NSOutlineViewDelegate {
 	}
 	
 	func outlineViewSelectionDidChange (notification: NSNotification) {
-		RCLog(notification)
+		
 		let selectedIndex = notification.object?.selectedRow
 		let object:AnyObject? = notification.object?.itemAtRow(selectedIndex!)
-		RCLog(object)
+		
 		if let day = (object as? Day) {
 			didSelectDay?(day: day)
 		}

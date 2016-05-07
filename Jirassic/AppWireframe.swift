@@ -101,15 +101,6 @@ class AppWireframe {
         
         return _messageViewController!
     }
-    
-    
-    func removeMessagesController() {
-        if let controller = _messageViewController {
-            removeController(controller)
-        }
-    }
-    
-    
 }
 
 extension AppWireframe {
@@ -181,9 +172,9 @@ extension AppWireframe {
         flip.animationReachedMiddle = {
             self.removeController(self.currentController!)
             self.addController(tasksController)
+            self.currentController = tasksController
         }
         flip.animationFinished = {
-//            completion(controller: tasksController)
         }
         flip.startWithLayer(tasksController.view.layer!)
     }
