@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -1325,10 +1326,10 @@
             </objects>
             <point key="canvasLocation" x="96" y="714"/>
         </scene>
-        <!--No Tasks View Controller-->
+        <!--Message View Controller-->
         <scene sceneID="qnk-He-sUt">
             <objects>
-                <viewController storyboardIdentifier="NoTasksViewController" id="bVC-7U-s4Z" customClass="NoTasksViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageViewController" id="bVC-7U-s4Z" customClass="MessageViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JCn-4d-cll">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1382,8 +1383,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="_butStart" destination="eVC-8Y-N3H" id="BN2-47-3ds"/>
-                        <outlet property="_noTasksLabel" destination="rbU-ec-RHL" id="UkN-R1-ozi"/>
+                        <outlet property="button" destination="eVC-8Y-N3H" id="d1S-ap-KSw"/>
+                        <outlet property="messageLabel" destination="rbU-ec-RHL" id="CIo-87-9kb"/>
+                        <outlet property="titleLabel" destination="cUg-BX-59h" id="Bl5-mb-gWg"/>
                     </connections>
                 </viewController>
                 <customObject id="udK-4D-ctN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1625,19 +1627,6 @@ Gw
                 <customObject id="oRb-VE-hx2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1211" y="-306.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="QCT-RF-77d">
-            <objects>
-                <viewController id="7Zk-Ro-y7r" sceneMemberID="viewController">
-                    <view key="view" id="1be-hH-czX">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="c1O-om-Y3C" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="627" y="279"/>
         </scene>
     </scenes>
     <resources>

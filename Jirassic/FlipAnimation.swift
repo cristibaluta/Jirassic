@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FlipScreens: NSObject {
+class FlipAnimation: NSObject {
 
 	var animationReachedMiddle: (() -> ())?
 	var animationFinished: (() -> ())?

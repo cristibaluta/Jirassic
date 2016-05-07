@@ -8,12 +8,6 @@
 
 import Cocoa
 
-let kTaskCellNibName = "TaskCell"
-let kNonTaskCellNibName = "NonTaskCell"
-let kGitCellNibName = "GitCell"
-let kTaskCellIdentifier = "TaskCellIdentifier"
-let kNonTaskCellIdentifier = "NonTaskCellIdentifier"
-let kGitCellIdentifier = "GitCellIdentifier"
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellMinHeight = CGFloat(70.0)
 let kTaskCellMaxHeight = CGFloat(90.0)
@@ -29,22 +23,23 @@ class TasksScrollView: NSScrollView {
 	
 	
 	override func awakeFromNib() {
+        super.awakeFromNib()
 		
 		tableView?.setDataSource(self)
 		tableView?.setDelegate(self)
 		
-		assert(NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
-		assert(NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
-		assert(NSNib(nibNamed: kGitCellNibName, bundle: NSBundle.mainBundle()) != nil, "err")
+		assert(NSNib(nibNamed: String(TaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
+		assert(NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
+		assert(NSNib(nibNamed: String(GitCell), bundle: NSBundle.mainBundle()) != nil, "err")
 		
-		if let nib = NSNib(nibNamed: kTaskCellNibName, bundle: NSBundle.mainBundle()) {
-			tableView?.registerNib(nib, forIdentifier: kTaskCellIdentifier)
+		if let nib = NSNib(nibNamed: String(TaskCell), bundle: NSBundle.mainBundle()) {
+			tableView?.registerNib(nib, forIdentifier: String(TaskCell))
 		}
-		if let nib = NSNib(nibNamed: kNonTaskCellNibName, bundle: NSBundle.mainBundle()) {
-			tableView?.registerNib(nib, forIdentifier: kNonTaskCellIdentifier)
+		if let nib = NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) {
+			tableView?.registerNib(nib, forIdentifier: String(NonTaskCell))
 		}
-		if let nib = NSNib(nibNamed: kGitCellNibName, bundle: NSBundle.mainBundle()) {
-			tableView?.registerNib(nib, forIdentifier: kGitCellIdentifier)
+		if let nib = NSNib(nibNamed: String(GitCell), bundle: NSBundle.mainBundle()) {
+			tableView?.registerNib(nib, forIdentifier: String(GitCell))
 		}
 	}
 	
@@ -64,67 +59,10 @@ class TasksScrollView: NSScrollView {
 	}
 }
 
-extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
+extension TasksScrollView: NSTableViewDataSource {
 	
 	func numberOfRowsInTableView (aTableView: NSTableView) -> Int {
 		return data.count
-	}
-	
-	func tableView (tableView: NSTableView,
-		viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-			
-        var theData = data[row]
-        let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
-		var cell: TaskCellProtocol? = nil
-		switch Int(theData.taskType!.intValue) {
-			case TaskType.Issue.rawValue:
-				cell = self.tableView?.makeViewWithIdentifier(kTaskCellIdentifier, owner: self) as? TaskCell
-				break
-			case TaskType.GitCommit.rawValue:
-				cell = self.tableView?.makeViewWithIdentifier(kGitCellIdentifier, owner: self) as? GitCell
-				break
-			default:
-				cell = self.tableView?.makeViewWithIdentifier(kNonTaskCellIdentifier, owner: self) as? NonTaskCell
-				break
-		}
-		assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
-		
-		// Add data to the cell
-		TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
-		
-		cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
-			theData.issueType = cell.data.issueType
-			theData.notes = cell.data.notes
-			if cell.data.dateEnd != "" {
-				let hm = NSDate.parseHHmm(cell.data.dateEnd)
-				theData.endDate = theData.endDate!.dateByUpdatingHour(hm.hour, minute: hm.min)
-			}
-			self?.data[row] = theData// save the changes locally because the struct is passed by copying
-			// Save to server
-			localRepository.saveTask(theData, completion: { (success) -> Void in
-				RCLog(success)
-			})
-		}
-		cell?.didRemoveCell = { [weak self] (cell: TaskCellProtocol) in
-			// Ugly hack to find the row number from which the action came
-			tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
-				if rowView.subviews.first! == cell as! NSTableRowView {
-					self?.didRemoveRow?(row: rowIndex)
-					return
-				}
-			})
-		}
-		cell?.didAddCell = { [weak self] (cell: TaskCellProtocol) in
-			// Ugly hack to find the row number from which the action came
-			tableView.enumerateAvailableRowViewsUsingBlock( { rowView, rowIndex in
-				if rowView.subviews.first! == cell as! NSTableRowView {
-					self?.didAddRow?(row: rowIndex)
-					return
-				}
-			})
-		}
-		
-		return cell as? NSView
 	}
 	
 	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -139,4 +77,64 @@ extension TasksScrollView: NSTableViewDataSource, NSTableViewDelegate {
 				return kNonTaskCellHeight
 		}
 	}
+}
+
+extension TasksScrollView: NSTableViewDelegate {
+    
+    func tableView (tableView: NSTableView,
+                    viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        var theData = data[row]
+        let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
+        var cell: TaskCellProtocol? = nil
+        switch Int(theData.taskType!.intValue) {
+        case TaskType.Issue.rawValue:
+            cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
+            break
+        case TaskType.GitCommit.rawValue:
+            cell = self.tableView?.makeViewWithIdentifier(String(GitCell), owner: self) as? GitCell
+            break
+        default:
+            cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell
+            break
+        }
+        assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
+        
+        // Add data to the cell
+        TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
+        
+        cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
+            theData.issueType = cell.data.issueType
+            theData.notes = cell.data.notes
+            if cell.data.dateEnd != "" {
+                let hm = NSDate.parseHHmm(cell.data.dateEnd)
+                theData.endDate = theData.endDate!.dateByUpdatingHour(hm.hour, minute: hm.min)
+            }
+            self?.data[row] = theData// save the changes locally because the struct is passed by copying
+            // Save to server
+            localRepository.saveTask(theData, completion: { (success) -> Void in
+                RCLog(success)
+            })
+        }
+        cell?.didRemoveCell = { [weak self] (cell: TaskCellProtocol) in
+            // Ugly hack to find the row number from which the action came
+            tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
+                if rowView.subviews.first! == cell as! NSTableRowView {
+                    self?.didRemoveRow?(row: rowIndex)
+                    return
+                }
+            })
+        }
+        cell?.didAddCell = { [weak self] (cell: TaskCellProtocol) in
+            // Ugly hack to find the row number from which the action came
+            tableView.enumerateAvailableRowViewsUsingBlock( { rowView, rowIndex in
+                if rowView.subviews.first! == cell as! NSTableRowView {
+                    self?.didAddRow?(row: rowIndex)
+                    return
+                }
+            })
+        }
+        
+        return cell as? NSView
+    }
 }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol TaskCellProtocol: NSObjectProtocol {
+protocol TaskCellProtocol {
 
 	var statusImage: NSImageView? {get}
 	var data: TaskCreationData {get set}

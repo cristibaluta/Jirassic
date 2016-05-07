@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2802E0D01C14BD2A00FA225F /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */; };
-		282426761B113D5000211713 /* FlipScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipScreens.swift */; };
+		282426761B113D5000211713 /* FlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426751B113D5000211713 /* FlipAnimation.swift */; };
 		282426781B113F6900211713 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282426771B113F6900211713 /* PopoverViewController.swift */; };
 		2841A93F1C3DB2E400564ECD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2841A93E1C3DB2E400564ECD /* main.swift */; };
 		2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851268A1BAB42A100D668F2 /* TaskCellTests.swift */; };
@@ -138,7 +138,7 @@
 		40BF53761CD61ACF00626157 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53691CD61ACF00626157 /* NewTaskViewController.swift */; };
 		40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536A1CD61ACF00626157 /* NonTaskCell.swift */; };
 		40BF53781CD61ACF00626157 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BF536B1CD61ACF00626157 /* NonTaskCell.xib */; };
-		40BF53791CD61ACF00626157 /* NoTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536C1CD61ACF00626157 /* NoTasksViewController.swift */; };
+		40BF53791CD61ACF00626157 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536C1CD61ACF00626157 /* MessageViewController.swift */; };
 		40BF537A1CD61ACF00626157 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536D1CD61ACF00626157 /* TaskCell.swift */; };
 		40BF537B1CD61ACF00626157 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BF536E1CD61ACF00626157 /* TaskCell.xib */; };
 		40BF537C1CD61ACF00626157 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */; };
@@ -156,6 +156,8 @@
 		40BF53931CD61D8000626157 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53921CD61D8000626157 /* PredictiveTimeTypingTests.swift */; };
 		40BF53981CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */; };
 		40BF53991CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */; };
+		40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */; };
+		40F5CC041CDC6B3A00249D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC031CDC6B3A00249D66 /* ViewController.swift */; };
 		5641771F1C579FA200B893F3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
 		564177201C579FB200B893F3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
 		56A68A9C1CC0CD3C0031CC0C /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */; };
@@ -218,7 +220,7 @@
 
 /* Begin PBXFileReference section */
 		2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		282426751B113D5000211713 /* FlipScreens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipScreens.swift; sourceTree = "<group>"; };
+		282426751B113D5000211713 /* FlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
 		282426771B113F6900211713 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		2841A93C1C3DB2E400564ECD /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		2841A93E1C3DB2E400564ECD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../jirassic/main.swift; sourceTree = "<group>"; };
@@ -314,7 +316,7 @@
 		40BF53691CD61ACF00626157 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = Screens/Tasks/NewTaskViewController.swift; sourceTree = "<group>"; };
 		40BF536A1CD61ACF00626157 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NonTaskCell.swift; path = Screens/Tasks/NonTaskCell.swift; sourceTree = "<group>"; };
 		40BF536B1CD61ACF00626157 /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NonTaskCell.xib; path = Screens/Tasks/NonTaskCell.xib; sourceTree = "<group>"; };
-		40BF536C1CD61ACF00626157 /* NoTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoTasksViewController.swift; path = Screens/Tasks/NoTasksViewController.swift; sourceTree = "<group>"; };
+		40BF536C1CD61ACF00626157 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Screens/Tasks/MessageViewController.swift; sourceTree = "<group>"; };
 		40BF536D1CD61ACF00626157 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = Screens/Tasks/TaskCell.swift; sourceTree = "<group>"; };
 		40BF536E1CD61ACF00626157 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskCell.xib; path = Screens/Tasks/TaskCell.xib; sourceTree = "<group>"; };
 		40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellPresenter.swift; path = Screens/Tasks/TaskCellPresenter.swift; sourceTree = "<group>"; };
@@ -328,6 +330,8 @@
 		40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterUserInteractor.swift; path = App/RegisterUserInteractor.swift; sourceTree = SOURCE_ROOT; };
 		40BF53921CD61D8000626157 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTypingTests.swift; path = App/PredictiveTimeTypingTests.swift; sourceTree = SOURCE_ROOT; };
 		40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CTask+CoreDataProperties.swift"; path = "../External/CoreData/CTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksPresenter.swift; path = Screens/Tasks/TasksPresenter.swift; sourceTree = "<group>"; };
+		40F5CC031CDC6B3A00249D66 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = App/Extensions/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataRepository.swift; path = External/CoreData/CoreDataRepository.swift; sourceTree = SOURCE_ROOT; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -431,26 +435,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2802E0B21C0AC82000FA225F /* Task cell */ = {
-			isa = PBXGroup;
-			children = (
-				40BF536D1CD61ACF00626157 /* TaskCell.swift */,
-				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
-				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
-				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
-			);
-			name = "Task cell";
-			sourceTree = "<group>";
-		};
-		2802E0B31C0AC83600FA225F /* Non task cell */ = {
-			isa = PBXGroup;
-			children = (
-				40BF536A1CD61ACF00626157 /* NonTaskCell.swift */,
-				40BF536B1CD61ACF00626157 /* NonTaskCell.xib */,
-			);
-			name = "Non task cell";
-			sourceTree = "<group>";
-		};
 		2841A9371C3DB27800564ECD /* CLI */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,13 +518,20 @@
 			name = Time;
 			sourceTree = "<group>";
 		};
-		286E9A3D1C1C44B6008FC45E /* Git task cell */ = {
+		286E9A3D1C1C44B6008FC45E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */,
 				40BF53671CD61ACF00626157 /* GitCell.swift */,
 				40BF53681CD61ACF00626157 /* GitCell.xib */,
+				40BF536D1CD61ACF00626157 /* TaskCell.swift */,
+				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
+				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
+				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
+				40BF536A1CD61ACF00626157 /* NonTaskCell.swift */,
+				40BF536B1CD61ACF00626157 /* NonTaskCell.xib */,
 			);
-			name = "Git task cell";
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		289998A61AC3429500706824 /* External */ = {
@@ -589,8 +580,9 @@
 				28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */,
 				289998A11AC2920200706824 /* Popover.swift */,
 				282426771B113F6900211713 /* PopoverViewController.swift */,
+				40F5CBF91CDB258A00249D66 /* Common */,
 				40BF53651CD619AF00626157 /* AppWireframe */,
-				40BF53641CD6198200626157 /* Screens */,
+				40BF53641CD6198200626157 /* Scenes */,
 				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
 				28E838F51AF297FE00602D33 /* Resources */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
@@ -689,14 +681,10 @@
 			isa = PBXGroup;
 			children = (
 				40BF53661CD61ACF00626157 /* DatesScrollView.swift */,
-				40BF53691CD61ACF00626157 /* NewTaskViewController.swift */,
-				40BF536C1CD61ACF00626157 /* NoTasksViewController.swift */,
-				40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */,
 				40BF53711CD61ACF00626157 /* TasksScrollView.swift */,
 				40BF53721CD61ACF00626157 /* TasksViewController.swift */,
-				286E9A3D1C1C44B6008FC45E /* Git task cell */,
-				2802E0B21C0AC82000FA225F /* Task cell */,
-				2802E0B31C0AC83600FA225F /* Non task cell */,
+				40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */,
+				286E9A3D1C1C44B6008FC45E /* Cells */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -733,28 +721,46 @@
 				28E839001AF402B200602D33 /* NSDateExtensionTests.swift */,
 				28C02F721C009C9700B65478 /* ViewAutolayout.swift */,
 				4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */,
+				40F5CC031CDC6B3A00249D66 /* ViewController.swift */,
 				406413961CD86AA300C8E03D /* StringIdGenerator.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		40BF53641CD6198200626157 /* Screens */ = {
+		40BF53641CD6198200626157 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				289998A71AC342AB00706824 /* Login */,
 				28EB908F1AF974DC008D5337 /* Settings */,
 				28E838FC1AF3372E00602D33 /* Tasks */,
+				40F5CC021CDBDDFE00249D66 /* New task */,
 			);
-			name = Screens;
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 		40BF53651CD619AF00626157 /* AppWireframe */ = {
 			isa = PBXGroup;
 			children = (
 				28E57AC21BEC180C00B803E6 /* AppWireframe.swift */,
-				282426751B113D5000211713 /* FlipScreens.swift */,
+				282426751B113D5000211713 /* FlipAnimation.swift */,
 			);
 			name = AppWireframe;
+			sourceTree = "<group>";
+		};
+		40F5CBF91CDB258A00249D66 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				40BF536C1CD61ACF00626157 /* MessageViewController.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		40F5CC021CDBDDFE00249D66 /* New task */ = {
+			isa = PBXGroup;
+			children = (
+				40BF53691CD61ACF00626157 /* NewTaskViewController.swift */,
+			);
+			name = "New task";
 			sourceTree = "<group>";
 		};
 		56A68A9A1CC0CD0B0031CC0C /* CoreData */ = {
@@ -1142,7 +1148,7 @@
 				28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */,
 				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
-				40BF53791CD61ACF00626157 /* NoTasksViewController.swift in Sources */,
+				40BF53791CD61ACF00626157 /* MessageViewController.swift in Sources */,
 				406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
 				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
@@ -1159,6 +1165,7 @@
 				285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */,
 				28C02F501C007E8E00B65478 /* PTask.swift in Sources */,
 				28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */,
+				40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */,
 				28C02F4E1C007E8E00B65478 /* ParseCredentials.swift in Sources */,
 				40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */,
 				28C02F521C007E8E00B65478 /* PUser.swift in Sources */,
@@ -1170,12 +1177,13 @@
 				28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */,
 				40BF537C1CD61ACF00626157 /* TaskCellPresenter.swift in Sources */,
 				40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */,
+				40F5CC041CDC6B3A00249D66 /* ViewController.swift in Sources */,
 				40BF53631CD618A700626157 /* LoginViewController.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				40BF535F1CD6175800626157 /* CIssue.swift in Sources */,
 				40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */,
 				40BF53811CD61BB400626157 /* TaskTypeFinder.swift in Sources */,
-				282426761B113D5000211713 /* FlipScreens.swift in Sources */,
+				282426761B113D5000211713 /* FlipAnimation.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */,
 				286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */,

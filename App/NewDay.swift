@@ -17,7 +17,7 @@ class NewDay {
 		return date == nil || !date!.isSameDayAs(today())
 	}
 	
-	func setLastTrackedDay(date: NSDate) {
+	func setLastTrackedDay (date: NSDate) {
 		NSUserDefaults.standardUserDefaults().setObject(date, forKey: kLastStartDateKey)
 		NSUserDefaults.standardUserDefaults().synchronize()
 	}

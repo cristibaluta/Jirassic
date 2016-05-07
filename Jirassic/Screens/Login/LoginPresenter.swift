@@ -23,8 +23,6 @@ class LoginPresenter {
     
     var userInterface: LoginPresenterOutput?
     var appWireframe: AppWireframe?
-    var onLoginSuccess: (() -> ())?
-    var onExit: (() -> ())?
 }
 
 extension LoginPresenter: LoginPresenterInput {
@@ -36,7 +34,7 @@ extension LoginPresenter: LoginPresenterInput {
         let login = LoginInteractor(data: remoteRepository)
         login.onLoginSuccess = {
             self.userInterface?.showLoadingIndicator(false)
-            self.onLoginSuccess?()
+            self.appWireframe?.presentTasksController()
         }
         login.onLoginFailure = {
             self.userInterface?.showLoadingIndicator(false)
@@ -45,6 +43,6 @@ extension LoginPresenter: LoginPresenterInput {
     }
     
     func cancelScreen() {
-        self.onExit?()
+        appWireframe?.presentTasksController()
     }
 }

@@ -15,6 +15,7 @@ class DatesScrollView: NSScrollView {
 	var didSelectDay: ((day: Day) -> ())?
 	
 	override func awakeFromNib() {
+        super.awakeFromNib()
 		outlineView?.setDataSource(self)
 		outlineView?.setDelegate(self)
 	}

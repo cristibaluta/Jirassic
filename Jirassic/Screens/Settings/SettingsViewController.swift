@@ -10,9 +10,6 @@ import Cocoa
 
 class SettingsViewController: NSViewController {
 	
-	var handleSaveButton: (() -> ())?
-	var handleCloseButton: (() -> ())?
-	
 	@IBOutlet private var emailTextField: NSTextField?
 	@IBOutlet private var passwordTextField: NSTextField?
     @IBOutlet private var butLogin: NSButton?
@@ -29,6 +26,7 @@ class SettingsViewController: NSViewController {
 			self.passwordTextField!.stringValue = newValue.password
 		}
 	}
+    var settingsPresenter: SettingsPresenterInput?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,36 +36,31 @@ class SettingsViewController: NSViewController {
         emailTextField?.stringValue = user.email!
     }
 	
-	func removeFromSuperview() {
-		self.view.removeFromSuperview()
-	}
-	
-	func showLoadingIndicator (show: Bool) {
-		if show {
-			progressIndicator?.startAnimation(nil)
-		} else {
-			progressIndicator?.stopAnimation(nil)
-		}
-	}
-	
 	
 	// MARK: Actions
 	
 	@IBAction func handleLoginButton (sender: NSButton) {
 		
-		let user = ReadUserInteractor().currentUser()
-        let login = LoginInteractor(data: localRepository)
-        login.onLoginSuccess = {
-            self.showLoadingIndicator(false)
-        }
-        user.isLoggedIn ? login.logout() : login.loginWithCredentials(credentials)
+        settingsPresenter?.login(credentials)
 	}
 	
 	@IBAction func handleSaveButton (sender: NSButton) {
-		self.handleSaveButton?()
+		
 	}
 	
     @IBAction func handleQuitAppButton (sender: NSButton) {
         NSApplication.sharedApplication().terminate(nil)
     }
+}
+
+extension SettingsViewController: SettingsPresenterOutput {
+    
+    func showLoadingIndicator (show: Bool) {
+        if show {
+            progressIndicator?.startAnimation(nil)
+        } else {
+            progressIndicator?.stopAnimation(nil)
+        }
+    }
+    
 }

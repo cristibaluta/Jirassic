@@ -10,87 +10,19 @@ import Cocoa
 
 class PopoverViewController: NSViewController {
 	
-	private var topController: NSViewController?
     var appWireframe: AppWireframe?
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
 		
         appWireframe = AppDelegate.sharedApp().appWireframe
+        appWireframe?.viewController = self
+        
 		let currentUser = ReadUserInteractor().currentUser()
 		if currentUser.isLoggedIn {
-			topController = createTasksController()
-			self.addChildViewController( topController! )
-			self.view.addSubview( topController!.view )
+            appWireframe?.presentTasksController()
 		} else {
-			// You cannot use the app without an account
-			topController = createLoginController()
-			self.addChildViewController( topController! )
-			self.view.addSubview( topController!.view )
+            appWireframe?.presentLoginController()
 		}
     }
-	
-	func createTasksController() -> TasksViewController {
-		
-		let tasksController = TasksViewController.instantiateFromStoryboard("Main")
-        tasksController.appWireframe = self.appWireframe
-		tasksController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
-		tasksController.handleSettingsButton = { [weak self] in
-			if let strongSelf = self {
-				strongSelf.appWireframe?.flipToSettings(
-					strongSelf.createSettingsController(),
-					parentController: strongSelf,
-					currentController: strongSelf.topController!,
-					completion: {(controller) -> Void in
-						strongSelf.topController = controller
-					}
-				)
-			}
-		}
-		
-		return tasksController
-	}
-	
-	func createSettingsController() -> SettingsViewController {
-		
-		let settingsController = SettingsViewController.instantiateFromStoryboard("Main")
-		settingsController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
-		settingsController.handleSaveButton = { [weak self] in
-			self?.flipToTasks(settingsController)
-		}
-		
-		return settingsController
-	}
-	
-	func createLoginController() -> LoginViewController {
-        
-        let loginController = LoginViewController.instantiateFromStoryboard("Main")
-        loginController.view.frame = CGRect(origin: CGPointZero, size: self.view.frame.size)
-        
-        let loginPresenter = LoginPresenter()
-        loginPresenter.onLoginSuccess = { [weak self] in
-            self?.flipToTasks(loginController)
-        }
-        loginPresenter.onExit = { [weak self] in
-            self?.flipToTasks(loginController)
-        }
-        loginPresenter.userInterface = loginController
-        loginController.loginPresenter = loginPresenter
-        
-		return loginController
-	}
-	
-	func flipToTasks (fromController: NSViewController) {
-		
-		appWireframe?.flipToTasks(
-			self.createTasksController(),
-			parentController: self,
-			currentController: fromController,
-			completion: { [weak self] controller in
-				if let strongSelf = self {
-					strongSelf.topController = controller
-				}
-			}
-		)
-	}
 }

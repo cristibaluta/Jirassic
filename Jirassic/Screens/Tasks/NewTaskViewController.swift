@@ -55,10 +55,6 @@ class NewTaskViewController: NSViewController {
 		}
 	}
 	
-	func removeFromSuperview() {
-		self.view.removeFromSuperview()
-	}
-	
 	@IBAction func handleScrumBeginButton (sender: NSButton) {
 		self.onOptionChosen?(i: .ScrumBegin)
 	}

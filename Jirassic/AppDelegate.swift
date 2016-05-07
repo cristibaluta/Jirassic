@@ -8,6 +8,8 @@
 
 import Cocoa
 
+typealias MessageViewModel = (title: String?, message: String?, buttonTitle: String?)
+
 var localRepository: Repository!
 var remoteRepository: Repository!
 

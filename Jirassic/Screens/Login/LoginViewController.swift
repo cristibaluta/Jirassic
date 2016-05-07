@@ -44,10 +44,16 @@ class LoginViewController: NSViewController {
             _label?.stringValue = "You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail"
         }
     }
-	
-	func removeFromSuperview() {
-		self.view.removeFromSuperview()
-	}
+    
+    // MARK: Actions
+    
+    @IBAction func handleLoginButton (sender: NSButton) {
+        loginPresenter?.loginWithCredentials(credentials)
+    }
+    
+    @IBAction func handleCancelButton (sender: NSButton) {
+        loginPresenter?.cancelScreen()
+    }
 }
 
 extension LoginViewController: LoginPresenterOutput {
@@ -59,16 +65,4 @@ extension LoginViewController: LoginPresenterOutput {
 			_progressIndicator?.stopAnimation(nil)
 		}
 	}
-	
-	
-	// MARK: Actions
-	
-	@IBAction func handleLoginButton (sender: NSButton) {
-        loginPresenter?.loginWithCredentials(credentials)
-	}
-	
-	@IBAction func handleCancelButton (sender: NSButton) {
-        loginPresenter?.cancelScreen()
-	}
-	
 }
