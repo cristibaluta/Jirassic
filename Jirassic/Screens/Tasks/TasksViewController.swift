@@ -33,9 +33,11 @@ class TasksViewController: NSViewController {
         datesScrollView?.didSelectDay = { [weak self] (day: Day) in
             self?.tasksPresenter?.reloadTasksOnDay(day.date)
         }
+        
         tasksScrollView?.didRemoveRow = { [weak self] (row: Int) in
             RCLogO("Remove item at row \(row)")
             if row >= 0 {
+                self?.tasksPresenter?.removeTaskAtRow(row)
                 self?.tasksScrollView?.removeTaskAtRow(row)
             }
         }

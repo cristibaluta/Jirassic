@@ -19,6 +19,7 @@ protocol TasksPresenterInput {
     func startDay()
     func insertTaskWithData (taskData: TaskCreationData)
     func insertTaskAfterRow (row: Int)
+    func removeTaskAtRow (row: Int)
 }
 
 protocol TasksPresenterOutput {
@@ -69,17 +70,18 @@ extension TasksPresenter: TasksPresenterInput {
     
     func reloadDataFromServer() {
         
-        userInterface?.showLoadingIndicator(true)
-        
-        ReadTasksInteractor(data: localRepository).tasksAtPage(0, completion: { [weak self] (tasks) -> Void in
-            
-            self?.currentTasks = tasks
-            self?.userInterface?.showTasks(tasks)
-            self?.userInterface?.showLoadingIndicator(false)
-            
-            let reader = ReadDaysInteractor(data: localRepository)
-            self?.userInterface?.showDates(reader.weeks())
-        })
+        reloadData()
+//        userInterface?.showLoadingIndicator(true)
+//        
+//        ReadTasksInteractor(data: localRepository).tasksAtPage(0, completion: { [weak self] (tasks) -> Void in
+//            
+//            self?.currentTasks = tasks
+//            self?.userInterface?.showTasks(tasks)
+//            self?.userInterface?.showLoadingIndicator(false)
+//            
+//            let reader = ReadDaysInteractor(data: localRepository)
+//            self?.userInterface?.showDates(reader.weeks())
+//        })
     }
     
     func updateNoTasksState() {
@@ -113,7 +115,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         let now = NSDate()
         let task = Task(dateSart: now, dateEnd: now, type: TaskType.Start)
-        let saveInteractor = SaveTaskInteractor(data: localRepository)
+        let saveInteractor = TaskInteractor(data: localRepository)
         saveInteractor.saveTask(task)
         day?.setLastTrackedDay(now)
         reloadData()
@@ -131,7 +133,7 @@ extension TasksPresenter: TasksPresenterInput {
 //            task.startDate = taskData.dateStart
 //        }
         
-        let saveInteractor = SaveTaskInteractor(data: localRepository)
+        let saveInteractor = TaskInteractor(data: localRepository)
             saveInteractor.saveTask(task)
         //                self?.tasksScrollView?.addTask( task )
         //
@@ -143,5 +145,12 @@ extension TasksPresenter: TasksPresenterInput {
     
     func insertTaskAfterRow (row: Int) {
         userInterface?.presentNewTaskController()
+    }
+    
+    func removeTaskAtRow (row: Int) {
+        
+        let task = currentTasks[row]
+        let deleteInteractor = TaskInteractor(data: localRepository)
+        deleteInteractor.deleteTask(task)
     }
 }

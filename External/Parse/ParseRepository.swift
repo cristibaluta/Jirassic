@@ -177,7 +177,7 @@ extension ParseRepository: Repository {
 		fatalError("This method is not applicable to ParseRepository")
 	}
 	
-    func deleteTask (taskToDelete: Task) {
+    func deleteTask (taskToDelete: Task, completion: ((success: Bool) -> Void)) {
         
         var indexToRemove = -1
         var shouldRemove = false
@@ -187,6 +187,7 @@ extension ParseRepository: Repository {
                 shouldRemove = true
 				ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 					ptask.deleteEventually()
+                    completion(success: true)
 				})
                 break
             }

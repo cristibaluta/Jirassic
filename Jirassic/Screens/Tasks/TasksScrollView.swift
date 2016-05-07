@@ -52,8 +52,6 @@ class TasksScrollView: NSScrollView {
 	}
 	
     func removeTaskAtRow (row: Int) {
-        let theData = data[row];
-		localRepository.deleteTask(theData)
 		data.removeAtIndex(row)
         self.tableView?.removeRowsAtIndexes(NSIndexSet(index: row), withAnimation: NSTableViewAnimationOptions.EffectFade)
 	}

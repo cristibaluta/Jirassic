@@ -113,16 +113,19 @@ extension CoreDataRepository {
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
                     inManagedObjectContext: managedObjectContext!) as? CTask
+        }
+        if task.taskId == nil {
             ctask?.taskId = String.random()
         }
         
         return updatedCTask(ctask!, withTask: task)
     }
     
+    // Update only updatable properties. taskId can't be updated
     private func updatedCTask (ctask: CTask, withTask task: Task) -> CTask {
         
-        ctask.taskId = task.taskId
         ctask.issueId = task.issueId
+        ctask.issueType = task.issueType
         ctask.notes = task.notes
         ctask.startDate = task.startDate
         ctask.endDate = task.endDate
@@ -215,15 +218,19 @@ extension CoreDataRepository: Repository {
         return tasks
     }
     
-    func deleteTask (task: Task) {
+    func deleteTask (task: Task, completion: ((success: Bool) -> Void)) {
         
         guard let context = managedObjectContext else {
             return
+        }
+        guard let _ = task.taskId else {
+            fatalError("Can't delete a task without a taskId")
         }
         
         let ctask = ctaskFromTask(task)
         context.deleteObject(ctask)
         saveContext()
+        completion(success: true)
     }
     
     func saveTask (task: Task, completion: (success: Bool) -> Void) -> Task {

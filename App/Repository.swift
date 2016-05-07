@@ -20,7 +20,7 @@ protocol Repository {
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void)
     func queryTasksInDay (day: NSDate) -> [Task]
     func queryUnsyncedTasks() -> [Task]
-    func deleteTask (dataToDelete: Task)
+    func deleteTask (dataToDelete: Task, completion: ((success: Bool) -> Void))
     // Save a task and return the same task with a taskId generated if it didn't had
     func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) -> Task
     
