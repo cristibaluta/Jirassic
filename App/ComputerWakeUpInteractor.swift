@@ -18,8 +18,9 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
 			// We already started the day, analyze if it's scrum time
 			if TaskFinder().scrumExists(existingTasks) {
 				let task = Task(dateSart: date, dateEnd: NSDate(), type: TaskType.Scrum)
-				localRepository.saveTask(task, completion: {(success: Bool) -> Void in })
-				InternalNotifications.taskAdded(task)
+                let saveInteractor = TaskInteractor(data: localRepository)
+                saveInteractor.saveTask(task)
+				InternalNotifications.notifyAboutNewlyAddedTask(task)
 			}
 		} else {
 			// This might be the start of the day. Should we start counting automatically or wait the user to press start?

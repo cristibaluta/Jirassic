@@ -15,6 +15,7 @@ extension NSApplication {
 	}
 	
 	func setTasks (message: String) {
+        
         let comps = message.componentsSeparatedByString("::")
         RCLog(comps);
         let notes = comps.last!
@@ -31,11 +32,11 @@ extension NSApplication {
 			taskType: TaskType.GitCommit.rawValue,
 			taskId: nil
 		)
-		localRepository.saveTask(task, completion: {(success: Bool) -> Void in
-			RCLog(success)
-		})
+        let saveInteractor = TaskInteractor(data: localRepository)
+        saveInteractor.saveTask(task)
         
         LocalNotifications().showNotification("Git commit logged to Jirassic", informativeText: notes)
+        InternalNotifications.notifyAboutNewlyAddedTask(task)
 	}
 	
 	func logCommit (commit: String, ofBranch: String) {

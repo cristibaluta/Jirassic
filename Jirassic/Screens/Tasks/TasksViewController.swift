@@ -142,12 +142,13 @@ extension TasksViewController {
 	
 	func newTaskWasAdded (notif: NSNotification) {
 		
-		if let task = notif.object as? Task {
-			self.tasksScrollView?.addTask( task )
-			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
-				withAnimation: NSTableViewAnimationOptions.SlideUp)
-			self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
-			tasksPresenter?.updateNoTasksState()
-		}
+        tasksPresenter?.reloadData()
+//		if let task = notif.object as? Task {
+//			self.tasksScrollView?.addTask( task )
+//			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
+//				withAnimation: NSTableViewAnimationOptions.SlideUp)
+//			self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
+//			tasksPresenter?.updateNoTasksState()
+//		}
 	}
 }

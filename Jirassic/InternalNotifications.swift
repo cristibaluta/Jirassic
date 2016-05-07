@@ -12,7 +12,7 @@ let kNewTaskWasAddedNotification = "NewTaskWasAddedNotification"
 
 class InternalNotifications: NSObject {
 
-	class func taskAdded (task: Task) {
-//		NSNotificationCenter.defaultCenter().postNotificationName(kNewTaskWasAddedNotification, object: task)
+	class func notifyAboutNewlyAddedTask (task: Task) {
+		NSNotificationCenter.defaultCenter().postNotificationName(kNewTaskWasAddedNotification, object: nil)
 	}
 }
