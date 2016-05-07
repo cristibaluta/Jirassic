@@ -89,8 +89,6 @@
 		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
 		28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */; };
 		28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* AppWireframe.swift */; };
-		28E838FA1AF297FE00602D33 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F71AF297FE00602D33 /* Status.png */; };
-		28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E838F81AF297FE00602D33 /* Status@2x.png */; };
 		28E838FE1AF401A900602D33 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* Repository.swift */; };
 		28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839001AF402B200602D33 /* NSDateExtensionTests.swift */; };
 		28E839061AF4972300602D33 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
@@ -145,7 +143,7 @@
 		40BF537D1CD61ACF00626157 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */; };
 		40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53711CD61ACF00626157 /* TasksScrollView.swift */; };
 		40BF537F1CD61ACF00626157 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53721CD61ACF00626157 /* TasksViewController.swift */; };
-		40BF53811CD61BB400626157 /* TaskTypeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53801CD61BB400626157 /* TaskTypeFinder.swift */; };
+		40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53801CD61BB400626157 /* TaskFinder.swift */; };
 		40BF53841CD61BD400626157 /* ReadIssuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53821CD61BD400626157 /* ReadIssuesInteractor.swift */; };
 		40BF53851CD61BD400626157 /* ReadIssuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53821CD61BD400626157 /* ReadIssuesInteractor.swift */; };
 		40BF53881CD61BDA00626157 /* ReadIssuesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53831CD61BD400626157 /* ReadIssuesInteractorTests.swift */; };
@@ -282,8 +280,6 @@
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
 		28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
-		28E838F71AF297FE00602D33 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
-		28E838F81AF297FE00602D33 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = ../App/Repository.swift; sourceTree = "<group>"; };
 		28E839001AF402B200602D33 /* NSDateExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensionTests.swift; path = JirassicTests/NSDateExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimator.swift; path = ../App/TaskTypeEstimator.swift; sourceTree = "<group>"; };
@@ -325,7 +321,7 @@
 		40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellProtocol.swift; path = Screens/Tasks/TaskCellProtocol.swift; sourceTree = "<group>"; };
 		40BF53711CD61ACF00626157 /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksScrollView.swift; path = Screens/Tasks/TasksScrollView.swift; sourceTree = "<group>"; };
 		40BF53721CD61ACF00626157 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksViewController.swift; path = Screens/Tasks/TasksViewController.swift; sourceTree = "<group>"; };
-		40BF53801CD61BB400626157 /* TaskTypeFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeFinder.swift; path = App/TaskTypeFinder.swift; sourceTree = SOURCE_ROOT; };
+		40BF53801CD61BB400626157 /* TaskFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskFinder.swift; path = App/TaskFinder.swift; sourceTree = SOURCE_ROOT; };
 		40BF53821CD61BD400626157 /* ReadIssuesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadIssuesInteractor.swift; path = App/ReadIssuesInteractor.swift; sourceTree = SOURCE_ROOT; };
 		40BF53831CD61BD400626157 /* ReadIssuesInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadIssuesInteractorTests.swift; path = App/ReadIssuesInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		40BF538A1CD61D3F00626157 /* ReadDaysInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadDaysInteractor.swift; path = App/ReadDaysInteractor.swift; sourceTree = SOURCE_ROOT; };
@@ -562,7 +558,7 @@
 		289E2AC61B2B6D21003269A3 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				40BF53801CD61BB400626157 /* TaskTypeFinder.swift */,
+				40BF53801CD61BB400626157 /* TaskFinder.swift */,
 				28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */,
 				28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */,
 				28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */,
@@ -675,8 +671,6 @@
 			isa = PBXGroup;
 			children = (
 				289E2B441B332C4C003269A3 /* Jirassic.iconset */,
-				28E838F71AF297FE00602D33 /* Status.png */,
-				28E838F81AF297FE00602D33 /* Status@2x.png */,
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
@@ -1059,9 +1053,7 @@
 				289E2B451B332C4C003269A3 /* Jirassic.iconset in Resources */,
 				28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */,
 				40BF537B1CD61ACF00626157 /* TaskCell.xib in Resources */,
-				28E838FA1AF297FE00602D33 /* Status.png in Resources */,
 				40BF53781CD61ACF00626157 /* NonTaskCell.xib in Resources */,
-				28E838FB1AF297FE00602D33 /* Status@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,7 +1179,7 @@
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				40BF535F1CD6175800626157 /* CIssue.swift in Sources */,
 				40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */,
-				40BF53811CD61BB400626157 /* TaskTypeFinder.swift in Sources */,
+				40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */,
 				282426761B113D5000211713 /* FlipAnimation.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */,

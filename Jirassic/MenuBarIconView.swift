@@ -13,24 +13,23 @@ class MenuBarIconView : NSView {
     private(set) var image: NSImage
     private let item: NSStatusItem
     
-    var onMouseDown: () -> ()
+    var onMouseDown: (() -> ())?
     
     var isSelected: Bool {
 		
         didSet {
-            //redraw if isSelected changes for bg highlight
+            self.image = NSImage(named: isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
             if (isSelected != oldValue) {
                 self.needsDisplay = true
             }
         }
     }
     
-    init (imageName: String, item: NSStatusItem) {
+    init (item: NSStatusItem) {
 		
-        self.image = NSImage(named: imageName)!
+        self.image = NSImage(named: "MenuBarIcon-Normal")!
         self.item = item
         self.isSelected = false
-        self.onMouseDown = {}
         
         let thickness = NSStatusBar.systemStatusBar().thickness
         let rect = CGRectMake(0, 0, thickness, thickness)
@@ -49,12 +48,12 @@ class MenuBarIconView : NSView {
         let size = self.image.size
         let rect = CGRectMake(2, 2, size.width, size.height)
         
-        self.image.drawInRect(rect)
+        image.drawInRect(rect)
     }
     
     override func mouseDown (theEvent: NSEvent) {
-        self.isSelected = !self.isSelected
-        self.onMouseDown()
+        isSelected = !self.isSelected
+        onMouseDown?()
     }
     
     override func mouseUp (theEvent: NSEvent) {

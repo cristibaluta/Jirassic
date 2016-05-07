@@ -20,7 +20,7 @@ class MenuBarController: NSObject {
 		let length: CGFloat = -1 //NSVariableStatusItemLength
 		let item = bar.statusItemWithLength(length);
 		
-		iconView = MenuBarIconView(imageName: "Status", item: item)
+		iconView = MenuBarIconView(item: item)
 		iconView?.onMouseDown = {
 			self.onMouseDown?()
 		}

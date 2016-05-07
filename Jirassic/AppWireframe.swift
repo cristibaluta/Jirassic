@@ -31,11 +31,11 @@ class AppWireframe {
         }
         
         let loginController = LoginViewController.instantiateFromStoryboard("Main")
-        loginController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
-        
         let loginPresenter = LoginPresenter()
-        loginPresenter.userInterface = loginController
+        
         loginController.loginPresenter = loginPresenter
+        loginController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
+        loginPresenter.userInterface = loginController
         
         _loginViewController = loginController
         
@@ -86,6 +86,8 @@ class AppWireframe {
         settingsPresenter.userInterface = settingsController
         settingsController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
         settingsController.settingsPresenter = settingsPresenter
+        settingsController.appWireframe = self
+        
         _settingsViewController = settingsController
         
         return settingsController
@@ -166,8 +168,6 @@ extension AppWireframe {
     func flipToTasksController() {
         
         let tasksController = self.tasksViewController
-        addController(tasksController)
-        
         let flip = FlipAnimation()
         flip.animationReachedMiddle = {
             self.removeController(self.currentController!)

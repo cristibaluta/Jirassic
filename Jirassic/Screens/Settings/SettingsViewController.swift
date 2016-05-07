@@ -15,7 +15,9 @@ class SettingsViewController: NSViewController {
     @IBOutlet private var butLogin: NSButton?
     @IBOutlet private var butQuit: NSButton?
 	@IBOutlet private var progressIndicator: NSProgressIndicator?
-	
+    
+    weak var appWireframe: AppWireframe?
+    var settingsPresenter: SettingsPresenterInput?
 	var credentials: UserCredentials {
 		get {
 			return (email: self.emailTextField!.stringValue,
@@ -26,8 +28,7 @@ class SettingsViewController: NSViewController {
 			self.passwordTextField!.stringValue = newValue.password
 		}
 	}
-    var settingsPresenter: SettingsPresenterInput?
-	
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -40,12 +41,11 @@ class SettingsViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func handleLoginButton (sender: NSButton) {
-		
         settingsPresenter?.login(credentials)
 	}
 	
 	@IBAction func handleSaveButton (sender: NSButton) {
-		
+		appWireframe?.flipToTasksController()
 	}
 	
     @IBAction func handleQuitAppButton (sender: NSButton) {
