@@ -114,10 +114,10 @@ extension TasksViewController: TasksPresenterOutput {
         
         appWireframe?.presentNewTaskController()
         appWireframe?.newTaskViewController.date = NSDate()
-        
         appWireframe?.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
             self?.tasksPresenter?.insertTaskWithData(taskData)
             self?.tasksPresenter?.updateNoTasksState()
+            self?.tasksPresenter?.reloadData()
             self?.appWireframe?.removeNewTaskController()
             self?.splitView?.hidden = false
         }
