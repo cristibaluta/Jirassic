@@ -17,7 +17,7 @@ class NewTaskViewController: NSViewController {
 	@IBOutlet private var endDateTextField: NSTextField?
 	@IBOutlet private var durationTextField: NSTextField?
 	
-	var onOptionChosen: ((i: TaskSubtype) -> Void)?
+	var onOptionChosen: ((taskData: TaskCreationData) -> Void)?
 	var onCancelChosen: (Void -> Void)?
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
@@ -56,39 +56,50 @@ class NewTaskViewController: NSViewController {
 	}
 	
 	@IBAction func handleScrumBeginButton (sender: NSButton) {
-		self.onOptionChosen?(i: .ScrumBegin)
+		setTaskDataWithTaskType(.ScrumBegin)
 	}
 	
 	@IBAction func handleScrumEndButton (sender: NSButton) {
-		self.onOptionChosen?(i: .ScrumEnd)
+		setTaskDataWithTaskType(.ScrumEnd)
 	}
 	
 	@IBAction func handleLunchBeginButton (sender: NSButton) {
-		self.onOptionChosen?(i: .LunchBegin)
+		setTaskDataWithTaskType(.LunchBegin)
 	}
 	
 	@IBAction func handleLunchEndButton (sender: NSButton) {
-		self.onOptionChosen?(i: .LunchEnd)
+		setTaskDataWithTaskType(.LunchEnd)
 	}
 	
 	@IBAction func handleTaskBeginButton (sender: NSButton) {
-		self.onOptionChosen?(i: .IssueBegin)
+		setTaskDataWithTaskType(.IssueBegin)
 	}
 	
 	@IBAction func handleTaskEndButton (sender: NSButton) {
-		self.onOptionChosen?(i: .IssueEnd)
+		setTaskDataWithTaskType(.IssueEnd)
 	}
 	
 	@IBAction func handleMeetingBeginButton (sender: NSButton) {
-		self.onOptionChosen?(i: .IssueBegin)
+		setTaskDataWithTaskType(.IssueBegin)
 	}
 	
 	@IBAction func handleMeetingEndButton (sender: NSButton) {
-		self.onOptionChosen?(i: .IssueEnd)
+		setTaskDataWithTaskType(.IssueEnd)
 	}
 	
 	@IBAction func handleCancelButton (sender: NSButton) {
 		self.onCancelChosen?()
 	}
 	
+    func setTaskDataWithTaskType (taskSubtype: TaskSubtype) {
+        
+        let taskData = TaskCreationData(
+            dateStart: "",
+            dateEnd: "",
+            issueType: issueType,
+            issueId: issueId,
+            notes: notes
+        )
+        self.onOptionChosen?(taskData: taskData)
+    }
 }

@@ -31,19 +31,18 @@ class TasksViewController: NSViewController {
 		registerForNotifications()
         
         datesScrollView?.didSelectDay = { [weak self] (day: Day) in
-//            self.tasksPresenter?.reloadTasksOnDay(day.date)
+            self?.tasksPresenter?.reloadTasksOnDay(day.date)
         }
-        tasksScrollView!.didRemoveRow = { (row: Int) in
-//            RCLogO("remove item at row \(row)")
+        tasksScrollView?.didRemoveRow = { [weak self] (row: Int) in
+            RCLogO("Remove item at row \(row)")
             if row >= 0 {
-                self.tasksScrollView!.removeTaskAtRow(row);
+                self?.tasksScrollView?.removeTaskAtRow(row)
             }
         }
-        tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
-//            RCLogO("add item after row \(row)")
-            let theData = self?.tasksScrollView!.data[row]
-            if let date = theData?.endDate {
-                self?.handleAddTaskButton(date)
+        tasksScrollView?.didAddRow = { [weak self] (row: Int) -> Void in
+            RCLogO("Add item after row \(row)")
+            if row >= 0 {
+                self?.tasksPresenter?.insertTaskAfterRow(row)
             }
         }
     }
@@ -59,25 +58,8 @@ class TasksViewController: NSViewController {
 	
 	// MARK: Actions
 	
-	func handleStartDayButton() {
-		
-//		let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Start)
-//		SaveTaskInteractor(data: localRepository).saveTask(task)
-//        self.day.setLastTrackedDay(NSDate())
-//        self.reloadData()
-	}
-	
-	func handleAddTaskButton (date: NSDate) {
-		RCLogO("add new cell after date \(date)")
-//		removeNoTasksController()
-//		splitView?.hidden = true
-//		appWireframe?.presentNewTaskController(newTaskViewController, overController: self, splitView: splitView!)
-//		
-//		newTaskViewController.date = NSDate()
-	}
-	
 	@IBAction func handleSettingsButton (sender: NSButton) {
-		appWireframe?.presentSettingsController()
+		appWireframe?.flipToSettingsController()
 	}
 	
 	@IBAction func handleRefreshButton (sender: NSButton) {
@@ -101,7 +83,11 @@ extension TasksViewController: TasksPresenterOutput {
     }
     
     func showMessage (message: MessageViewModel) {
-//        appWireframe?.messageViewController.viewModel = message
+        
+        appWireframe?.presentMessage(message, intoSplitView: splitView!)
+        appWireframe?.messageViewController.didPressButton = { [weak self] () -> Void in
+            self?.tasksPresenter?.startDay()
+        }
     }
     
     func showDates (weeks: [Week]) {
@@ -119,6 +105,26 @@ extension TasksViewController: TasksPresenterOutput {
     
     func setSelectedDay (date: String) {
         _dateLabel?.stringValue = date
+    }
+    
+    func presentNewTaskController() {
+        
+        splitView?.hidden = true
+        appWireframe?.removeMessage()
+        
+        appWireframe?.presentNewTaskController()
+        appWireframe?.newTaskViewController.date = NSDate()
+        
+        appWireframe?.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
+            self?.tasksPresenter?.insertTaskWithData(taskData)
+            self?.tasksPresenter?.updateNoTasksState()
+            self?.appWireframe?.removeNewTaskController()
+            self?.splitView?.hidden = false
+        }
+        appWireframe?.newTaskViewController.onCancelChosen = { [weak self] in
+            self?.appWireframe?.removeNewTaskController()
+            self?.splitView?.hidden = false
+        }
     }
 }
 

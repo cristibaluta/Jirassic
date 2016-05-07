@@ -680,10 +680,10 @@
 		28E838FC1AF3372E00602D33 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				40BF53661CD61ACF00626157 /* DatesScrollView.swift */,
-				40BF53711CD61ACF00626157 /* TasksScrollView.swift */,
 				40BF53721CD61ACF00626157 /* TasksViewController.swift */,
 				40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */,
+				40BF53661CD61ACF00626157 /* DatesScrollView.swift */,
+				40BF53711CD61ACF00626157 /* TasksScrollView.swift */,
 				286E9A3D1C1C44B6008FC45E /* Cells */,
 			);
 			name = Tasks;
