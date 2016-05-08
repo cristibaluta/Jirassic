@@ -42,7 +42,9 @@ class TaskCell: NSTableRowView, CellProtocol {
 					notes: self.notesTextField!.stringValue)
 		}
 		set {
-			self.dateEndTextField!.stringValue = newValue.dateEnd!.HHmm()
+            if let dateEnd = newValue.dateEnd {
+                self.dateEndTextField!.stringValue = dateEnd.HHmm()
+            }
 			self.issueNrTextField!.stringValue = newValue.issueType
 			self.notesTextField!.stringValue = newValue.notes
 			_dateEnd = newValue.dateEnd!.HHmm()
