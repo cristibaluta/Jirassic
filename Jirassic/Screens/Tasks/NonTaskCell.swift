@@ -23,10 +23,10 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	var didRemoveCell: ((cell: CellProtocol) -> ())?
 	var didAddCell: ((cell: CellProtocol) -> ())?
 	var didCopyContentCell: ((cell: CellProtocol) -> ())?
-	var data: (dateStart: String, dateEnd: String, issueType: String, issueId: String, notes: String) {
+	var data: TaskCreationData {
 		get {
-			return ("",
-					self.dateEndTextField!.stringValue,
+			return (nil,
+					nil,
 					"",
 					"",
 					self.notesTextField!.stringValue)

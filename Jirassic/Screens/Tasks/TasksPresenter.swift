@@ -126,11 +126,8 @@ extension TasksPresenter: TasksPresenterInput {
         task.notes = taskData.notes
         task.issueType = taskData.issueType
         task.issueId = taskData.issueId
-//        if task.endDate != nil {
-//            task.endDate = taskData.dateEnd
-//        } else if task.startDate != nil {
-//            task.startDate = taskData.dateStart
-//        }
+        task.endDate = taskData.dateEnd
+        task.startDate = taskData.dateStart
         
         let saveInteractor = TaskInteractor(data: localRepository)
             saveInteractor.saveTask(task)

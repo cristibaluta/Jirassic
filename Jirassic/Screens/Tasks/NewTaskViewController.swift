@@ -96,8 +96,8 @@ class NewTaskViewController: NSViewController {
     func setTaskDataWithTaskType (taskSubtype: TaskSubtype) {
         
         let taskData = TaskCreationData(
-            dateStart: "",
-            dateEnd: "",
+            dateStart: nil,
+            dateEnd: date,
             issueType: issueType,
             issueId: issueId,
             notes: notes
@@ -144,13 +144,21 @@ extension NewTaskViewController: NSComboBoxDelegate, NSComboBoxDataSource {
 extension NewTaskViewController: NSTextFieldDelegate {
     
     override func controlTextDidBeginEditing (obj: NSNotification) {
+        
         if let textField = obj.object as? NSTextField {
+            guard textField == startDateTextField || textField == endDateTextField || textField == durationTextField else {
+                return
+            }
             _dateEnd = textField.stringValue
         }
     }
     
     override func controlTextDidChange (obj: NSNotification) {
+        
         if let textField = obj.object as? NSTextField {
+            guard textField == startDateTextField || textField == endDateTextField || textField == durationTextField else {
+                return
+            }
             let predictor = PredictiveTimeTyping()
             let comps = textField.stringValue.componentsSeparatedByString(_dateEnd)
             let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last

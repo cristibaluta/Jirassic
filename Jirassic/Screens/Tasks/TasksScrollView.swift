@@ -92,17 +92,14 @@ extension TasksScrollView: NSTableViewDelegate {
         TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
         
         cell?.didEndEditingCell = { [weak self] (cell: CellProtocol) in
-            theData.issueType = cell.data.issueType
-            theData.notes = cell.data.notes
-            if cell.data.dateEnd != "" {
-                let hm = NSDate.parseHHmm(cell.data.dateEnd)
-                theData.endDate = theData.endDate!.dateByUpdatingHour(hm.hour, minute: hm.min)
-            }
+            let updatedData = cell.data
+            theData.issueType = updatedData.issueType
+            theData.notes = updatedData.notes
+            theData.endDate = updatedData.dateEnd
             self?.data[row] = theData// save the changes locally because the struct is passed by copying
             // Save to server
-            localRepository.saveTask(theData, completion: { (success) -> Void in
-                RCLog(success)
-            })
+            let saveInteractor = TaskInteractor(data: localRepository)
+            saveInteractor.saveTask(theData)
         }
         cell?.didRemoveCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came

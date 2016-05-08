@@ -19,14 +19,14 @@ class TaskCellPresenter: NSObject {
 	
 	func presentData (theData: Task, andPreviousData previousData: Task?) {
 		
-		var dateStart = ""
-		var dateEnd = ""
+        var dateStart: NSDate?
+		var dateEnd: NSDate?
 		var duration = ""
 		var notes = theData.notes ?? ""// TODO: Alert the user the notes can't be nil
 		var statusImage: NSImage?
 		
 		if theData.endDate == nil && theData.startDate != nil {
-			dateStart = theData.startDate!.HHmm()
+			dateStart = theData.startDate
 			statusImage = NSImage(named: NSImageNameStatusPartiallyAvailable)
 		}
 		else {
@@ -38,8 +38,8 @@ class TaskCellPresenter: NSObject {
 						if let endDate = theData.endDate {
 							let diff = endDate.timeIntervalSinceDate(thePreviosData.endDate!)
 							duration = NSDate(timeIntervalSince1970: diff).HHmmGMT()
-							dateEnd = endDate.HHmm()
-							dateStart = thePreviosData.endDate!.HHmm()
+							dateEnd = endDate
+							dateStart = thePreviosData.endDate
 							statusImage = NSImage(named: NSImageNameStatusAvailable)
 						} else {
 //							dateEnd = theData.endDate!.HHmm()
@@ -51,8 +51,8 @@ class TaskCellPresenter: NSObject {
                         if let endDate = theData.endDate {
                             let diff = endDate.timeIntervalSinceDate(thePreviosData.endDate!)
                             duration = NSDate(timeIntervalSince1970: diff).HHmmGMT()
-                            dateEnd = endDate.HHmm()
-                            dateStart = thePreviosData.endDate!.HHmm()
+                            dateEnd = endDate
+                            dateStart = thePreviosData.endDate
                         } else {
                             //							dateEnd = theData.endDate!.HHmm()
                         }
@@ -61,9 +61,9 @@ class TaskCellPresenter: NSObject {
                     
 					default:
 						if let endDate = theData.endDate {
-							dateEnd = endDate.HHmm()
+							dateEnd = endDate
 							if let endDate = thePreviosData.endDate {
-								dateStart = endDate.HHmm()
+								dateStart = endDate
 							}
 							statusImage = NSImage(named: NSImageNameStatusUnavailable)
 						}

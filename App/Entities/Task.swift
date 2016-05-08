@@ -78,8 +78,8 @@ extension Task {
 }
 
 typealias TaskCreationData = (
-    dateStart: String,
-    dateEnd: String,
+    dateStart: NSDate?,
+    dateEnd: NSDate?,
     issueType: String,
     issueId: String,
     notes: String
