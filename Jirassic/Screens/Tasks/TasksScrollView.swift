@@ -9,8 +9,7 @@
 import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
-let kTaskCellMinHeight = CGFloat(70.0)
-let kTaskCellMaxHeight = CGFloat(90.0)
+let kTaskCellHeight = CGFloat(90.0)
 
 class TasksScrollView: NSScrollView {
 	
@@ -30,16 +29,12 @@ class TasksScrollView: NSScrollView {
 		
 		assert(NSNib(nibNamed: String(TaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
 		assert(NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
-		assert(NSNib(nibNamed: String(GitCell), bundle: NSBundle.mainBundle()) != nil, "err")
 		
 		if let nib = NSNib(nibNamed: String(TaskCell), bundle: NSBundle.mainBundle()) {
 			tableView?.registerNib(nib, forIdentifier: String(TaskCell))
 		}
 		if let nib = NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) {
 			tableView?.registerNib(nib, forIdentifier: String(NonTaskCell))
-		}
-		if let nib = NSNib(nibNamed: String(GitCell), bundle: NSBundle.mainBundle()) {
-			tableView?.registerNib(nib, forIdentifier: String(GitCell))
 		}
 	}
 	
@@ -67,10 +62,8 @@ extension TasksScrollView: NSTableViewDataSource {
 		
 		let theData = data[row]
 		switch Int(theData.taskType!.intValue) {
-			case TaskType.Issue.rawValue:
-				return kTaskCellMaxHeight
-			case TaskType.GitCommit.rawValue:
-				return kTaskCellMinHeight
+			case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
+				return kTaskCellHeight
 			default:
 				return kNonTaskCellHeight
 		}
@@ -86,11 +79,8 @@ extension TasksScrollView: NSTableViewDelegate {
         let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
         var cell: CellProtocol? = nil
         switch Int(theData.taskType!.intValue) {
-            case TaskType.Issue.rawValue:
+            case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
                 cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
-                break
-            case TaskType.GitCommit.rawValue:
-                cell = self.tableView?.makeViewWithIdentifier(String(GitCell), owner: self) as? GitCell
                 break
             default:
                 cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell

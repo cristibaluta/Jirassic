@@ -131,8 +131,6 @@
 		40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53601CD6188000626157 /* LoginPresenter.swift */; };
 		40BF53631CD618A700626157 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53621CD618A700626157 /* LoginViewController.swift */; };
 		40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53661CD61ACF00626157 /* DatesScrollView.swift */; };
-		40BF53741CD61ACF00626157 /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53671CD61ACF00626157 /* GitCell.swift */; };
-		40BF53751CD61ACF00626157 /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BF53681CD61ACF00626157 /* GitCell.xib */; };
 		40BF53761CD61ACF00626157 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53691CD61ACF00626157 /* NewTaskViewController.swift */; };
 		40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536A1CD61ACF00626157 /* NonTaskCell.swift */; };
 		40BF53781CD61ACF00626157 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BF536B1CD61ACF00626157 /* NonTaskCell.xib */; };
@@ -309,8 +307,6 @@
 		40BF53601CD6188000626157 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = Screens/Login/LoginPresenter.swift; sourceTree = "<group>"; };
 		40BF53621CD618A700626157 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Screens/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		40BF53661CD61ACF00626157 /* DatesScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatesScrollView.swift; path = Screens/Tasks/DatesScrollView.swift; sourceTree = "<group>"; };
-		40BF53671CD61ACF00626157 /* GitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitCell.swift; path = Screens/Tasks/GitCell.swift; sourceTree = "<group>"; };
-		40BF53681CD61ACF00626157 /* GitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GitCell.xib; path = Screens/Tasks/GitCell.xib; sourceTree = "<group>"; };
 		40BF53691CD61ACF00626157 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = Screens/Tasks/NewTaskViewController.swift; sourceTree = "<group>"; };
 		40BF536A1CD61ACF00626157 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NonTaskCell.swift; path = Screens/Tasks/NonTaskCell.swift; sourceTree = "<group>"; };
 		40BF536B1CD61ACF00626157 /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NonTaskCell.xib; path = Screens/Tasks/NonTaskCell.xib; sourceTree = "<group>"; };
@@ -523,8 +519,6 @@
 				40BF53701CD61ACF00626157 /* CellProtocol.swift */,
 				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
 				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
-				40BF53671CD61ACF00626157 /* GitCell.swift */,
-				40BF53681CD61ACF00626157 /* GitCell.xib */,
 				40BF536D1CD61ACF00626157 /* TaskCell.swift */,
 				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
 				40BF536A1CD61ACF00626157 /* NonTaskCell.swift */,
@@ -1046,7 +1040,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40BF53751CD61ACF00626157 /* GitCell.xib in Resources */,
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
 				28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */,
@@ -1153,7 +1146,6 @@
 				406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */,
 				40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */,
 				406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */,
-				40BF53741CD61ACF00626157 /* GitCell.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */,
