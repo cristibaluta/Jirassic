@@ -84,24 +84,24 @@ extension TasksScrollView: NSTableViewDelegate {
         
         var theData = data[row]
         let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
-        var cell: TaskCellProtocol? = nil
+        var cell: CellProtocol? = nil
         switch Int(theData.taskType!.intValue) {
-        case TaskType.Issue.rawValue:
-            cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
-            break
-        case TaskType.GitCommit.rawValue:
-            cell = self.tableView?.makeViewWithIdentifier(String(GitCell), owner: self) as? GitCell
-            break
-        default:
-            cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell
-            break
+            case TaskType.Issue.rawValue:
+                cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
+                break
+            case TaskType.GitCommit.rawValue:
+                cell = self.tableView?.makeViewWithIdentifier(String(GitCell), owner: self) as? GitCell
+                break
+            default:
+                cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell
+                break
         }
         assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
         
         // Add data to the cell
         TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
         
-        cell?.didEndEditingCell = { [weak self] (cell: TaskCellProtocol) in
+        cell?.didEndEditingCell = { [weak self] (cell: CellProtocol) in
             theData.issueType = cell.data.issueType
             theData.notes = cell.data.notes
             if cell.data.dateEnd != "" {
@@ -114,7 +114,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 RCLog(success)
             })
         }
-        cell?.didRemoveCell = { [weak self] (cell: TaskCellProtocol) in
+        cell?.didRemoveCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
                 if rowView.subviews.first! == cell as! NSTableRowView {
@@ -123,7 +123,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 }
             })
         }
-        cell?.didAddCell = { [weak self] (cell: TaskCellProtocol) in
+        cell?.didAddCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViewsUsingBlock( { rowView, rowIndex in
                 if rowView.subviews.first! == cell as! NSTableRowView {

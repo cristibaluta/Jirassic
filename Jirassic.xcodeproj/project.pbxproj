@@ -140,7 +140,7 @@
 		40BF537A1CD61ACF00626157 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536D1CD61ACF00626157 /* TaskCell.swift */; };
 		40BF537B1CD61ACF00626157 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BF536E1CD61ACF00626157 /* TaskCell.xib */; };
 		40BF537C1CD61ACF00626157 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */; };
-		40BF537D1CD61ACF00626157 /* TaskCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */; };
+		40BF537D1CD61ACF00626157 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53701CD61ACF00626157 /* CellProtocol.swift */; };
 		40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53711CD61ACF00626157 /* TasksScrollView.swift */; };
 		40BF537F1CD61ACF00626157 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53721CD61ACF00626157 /* TasksViewController.swift */; };
 		40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53801CD61BB400626157 /* TaskFinder.swift */; };
@@ -318,7 +318,7 @@
 		40BF536D1CD61ACF00626157 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = Screens/Tasks/TaskCell.swift; sourceTree = "<group>"; };
 		40BF536E1CD61ACF00626157 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskCell.xib; path = Screens/Tasks/TaskCell.xib; sourceTree = "<group>"; };
 		40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellPresenter.swift; path = Screens/Tasks/TaskCellPresenter.swift; sourceTree = "<group>"; };
-		40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellProtocol.swift; path = Screens/Tasks/TaskCellProtocol.swift; sourceTree = "<group>"; };
+		40BF53701CD61ACF00626157 /* CellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellProtocol.swift; path = Screens/Tasks/CellProtocol.swift; sourceTree = "<group>"; };
 		40BF53711CD61ACF00626157 /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksScrollView.swift; path = Screens/Tasks/TasksScrollView.swift; sourceTree = "<group>"; };
 		40BF53721CD61ACF00626157 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksViewController.swift; path = Screens/Tasks/TasksViewController.swift; sourceTree = "<group>"; };
 		40BF53801CD61BB400626157 /* TaskFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskFinder.swift; path = App/TaskFinder.swift; sourceTree = SOURCE_ROOT; };
@@ -336,7 +336,7 @@
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6D31D0581AC196BB001AC4BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6D31D0581AC196BB001AC4BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Jirassic/Images.xcassets; sourceTree = "<group>"; };
 		6D31D05B1AC196BB001AC4BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D31D0611AC196BC001AC4BA /* JirassicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JirassicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0661AC196BC001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -520,13 +520,13 @@
 		286E9A3D1C1C44B6008FC45E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				40BF53701CD61ACF00626157 /* TaskCellProtocol.swift */,
+				40BF53701CD61ACF00626157 /* CellProtocol.swift */,
+				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
+				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
 				40BF53671CD61ACF00626157 /* GitCell.swift */,
 				40BF53681CD61ACF00626157 /* GitCell.xib */,
 				40BF536D1CD61ACF00626157 /* TaskCell.swift */,
 				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
-				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
-				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
 				40BF536A1CD61ACF00626157 /* NonTaskCell.swift */,
 				40BF536B1CD61ACF00626157 /* NonTaskCell.xib */,
 			);
@@ -583,7 +583,6 @@
 				40F5CBF91CDB258A00249D66 /* Common */,
 				40BF53651CD619AF00626157 /* AppWireframe */,
 				40BF53641CD6198200626157 /* Scenes */,
-				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
 				28E838F51AF297FE00602D33 /* Resources */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
 			);
@@ -670,6 +669,7 @@
 		28E838F51AF297FE00602D33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6D31D0581AC196BB001AC4BA /* Images.xcassets */,
 				289E2B441B332C4C003269A3 /* Jirassic.iconset */,
 			);
 			path = Resources;
@@ -1130,7 +1130,7 @@
 				40BF538D1CD61D3F00626157 /* ReadDaysInteractor.swift in Sources */,
 				28E838FE1AF401A900602D33 /* Repository.swift in Sources */,
 				28C02F4A1C007E8E00B65478 /* ParseRepository.swift in Sources */,
-				40BF537D1CD61ACF00626157 /* TaskCellProtocol.swift in Sources */,
+				40BF537D1CD61ACF00626157 /* CellProtocol.swift in Sources */,
 				28C02F591C00801A00B65478 /* Task.swift in Sources */,
 				4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
 				28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */,

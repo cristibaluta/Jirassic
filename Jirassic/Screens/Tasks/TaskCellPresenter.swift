@@ -10,9 +10,9 @@ import Cocoa
 
 class TaskCellPresenter: NSObject {
 
-	var cell: TaskCellProtocol?
+	var cell: CellProtocol?
 	
-	convenience init (cell: TaskCellProtocol) {
+	convenience init (cell: CellProtocol) {
 		self.init()
 		self.cell = cell
 	}
@@ -46,7 +46,19 @@ class TaskCellPresenter: NSObject {
 							statusImage = NSImage(named: NSImageNameStatusPartiallyAvailable)
 						}
 						break
-					
+                    
+                    case TaskType.GitCommit.rawValue:
+                        if let endDate = theData.endDate {
+                            let diff = endDate.timeIntervalSinceDate(thePreviosData.endDate!)
+                            duration = NSDate(timeIntervalSince1970: diff).HHmmGMT()
+                            dateEnd = endDate.HHmm()
+                            dateStart = thePreviosData.endDate!.HHmm()
+                        } else {
+                            //							dateEnd = theData.endDate!.HHmm()
+                        }
+                        statusImage = NSImage(named: "GitIcon")
+                        break
+                    
 					default:
 						if let endDate = theData.endDate {
 							dateEnd = endDate.HHmm()
@@ -59,7 +71,7 @@ class TaskCellPresenter: NSObject {
 			} else {
 				// This is always the first cell
 				notes = "\(notes) at \(theData.endDate!.HHmm())"
-				statusImage = nil
+                statusImage = nil
 			}
 		}
 		

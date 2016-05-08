@@ -47,7 +47,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         // Prevent reloading data when you open the popover for the second time in the same day
         if day == nil || day!.isNewDay() {
-            reloadData()
+            reloadDataFromServer()
         }
         updateNoTasksState()
     }
@@ -61,7 +61,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (date: NSDate) {
         
         let reader = ReadTasksInteractor(data: localRepository)
-        currentTasks = reader.tasksInDay(date)
+        currentTasks = reader.tasksInDay(date).reverse()
         userInterface?.showTasks(currentTasks)
         userInterface?.setSelectedDay(date.EEEEMMdd())
         
@@ -79,8 +79,7 @@ extension TasksPresenter: TasksPresenterInput {
 //            self?.userInterface?.showTasks(tasks)
 //            self?.userInterface?.showLoadingIndicator(false)
 //            
-//            let reader = ReadDaysInteractor(data: localRepository)
-//            self?.userInterface?.showDates(reader.weeks())
+//            reloadTasksOnDay(NSDate())
 //        })
     }
     
@@ -95,7 +94,7 @@ extension TasksPresenter: TasksPresenterInput {
             } else {
                 userInterface?.showMessage((
                     title: "No task yet.",
-                    message: "When you're ready with your first task press \n'+' or 'Log time'",
+                    message: "When you're ready with your first task click \n'+' or 'Log time'",
                     buttonTitle: "Log time"))
             }
         } else {
@@ -135,12 +134,6 @@ extension TasksPresenter: TasksPresenterInput {
         
         let saveInteractor = TaskInteractor(data: localRepository)
             saveInteractor.saveTask(task)
-        //                self?.tasksScrollView?.addTask( task )
-        //
-        //                self?.setupDaysTableView()
-        //                self?.tasksScrollView?.tableView?.insertRowsAtIndexes(
-        //                    NSIndexSet(index: 0), withAnimation: NSTableViewAnimationOptions.SlideUp)
-        //                self?.tasksScrollView?.tableView?.scrollRowToVisible(0)
     }
     
     func insertTaskAfterRow (row: Int) {

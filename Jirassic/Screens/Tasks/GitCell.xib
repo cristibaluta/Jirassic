@@ -18,7 +18,7 @@
                         <constraint firstAttribute="height" constant="18" id="HsL-Uc-R3Q"/>
                         <constraint firstAttribute="width" constant="20" id="hYf-sd-qlB"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="2Kp-v3-jPT"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="GitIcon" id="2Kp-v3-jPT"/>
                 </imageView>
                 <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S8J-80-xoc">
                     <rect key="frame" x="35" y="11" width="246" height="17"/>
@@ -73,8 +73,8 @@
         </customView>
     </objects>
     <resources>
+        <image name="GitIcon" width="16" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="NSStatusNone" width="16" height="16"/>
     </resources>
 </document>

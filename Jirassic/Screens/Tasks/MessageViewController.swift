@@ -28,7 +28,7 @@ class MessageViewController: NSViewController {
             }
             if let buttonTitle = viewModel?.buttonTitle {
                 button?.hidden = false
-                self.button?.stringValue = buttonTitle
+                self.button?.title = buttonTitle
             } else {
                 button?.hidden = true
             }

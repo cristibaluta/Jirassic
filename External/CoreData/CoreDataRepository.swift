@@ -126,6 +126,8 @@ extension CoreDataRepository {
         
         ctask.issueId = task.issueId
         ctask.issueType = task.issueType
+        ctask.taskType = task.taskType
+        ctask.taskId = task.taskId
         ctask.notes = task.notes
         ctask.startDate = task.startDate
         ctask.endDate = task.endDate

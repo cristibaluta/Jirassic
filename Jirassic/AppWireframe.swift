@@ -126,6 +126,10 @@ extension AppWireframe {
         controller.removeFromParentViewController()
         controller.view.removeFromSuperview()
     }
+    
+    private func layerToAnimate() -> CALayer {
+        return self.viewController!.view.superview!.layer!
+    }
 }
 
 extension AppWireframe {
@@ -141,17 +145,14 @@ extension AppWireframe {
     func flipToLoginController() {
         
         let loginController = self.loginViewController
-        addController(loginController)
-    
         let flip = FlipAnimation()
         flip.animationReachedMiddle = {
-//            self.removeTasksController()
-            self.viewController!.view.addSubview( self.currentController!.view )
+            self.removeController(self.currentController!)
+            self.addController(loginController)
+            self.currentController = loginController
         }
-        flip.animationFinished = {
-            
-        }
-        flip.startWithLayer(self.viewController!.view.layer!)
+        flip.animationFinished = {}
+        flip.startWithLayer(layerToAnimate())
     }
 }
 
@@ -174,9 +175,8 @@ extension AppWireframe {
             self.addController(tasksController)
             self.currentController = tasksController
         }
-        flip.animationFinished = {
-        }
-        flip.startWithLayer(tasksController.view.layer!)
+        flip.animationFinished = {}
+        flip.startWithLayer(layerToAnimate())
     }
 }
 
@@ -228,8 +228,7 @@ extension AppWireframe {
             self.addController(settingsController)
             self.currentController = settingsController
         }
-        flip.animationFinished = {
-        }
-        flip.startWithLayer(self.viewController!.view.layer!)
+        flip.animationFinished = {}
+        flip.startWithLayer(layerToAnimate())
     }
 }

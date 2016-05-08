@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TaskCell: NSTableRowView, TaskCellProtocol {
+class TaskCell: NSTableRowView, CellProtocol {
 	
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
@@ -24,10 +24,10 @@ class TaskCell: NSTableRowView, TaskCellProtocol {
 	private var mouseInside = false
 	private var trackingArea: NSTrackingArea?
 	
-	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
-	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: TaskCellProtocol) -> ())?
-	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
+	var didEndEditingCell: ((cell: CellProtocol) -> ())?
+	var didRemoveCell: ((cell: CellProtocol) -> ())?
+	var didAddCell: ((cell: CellProtocol) -> ())?
+	var didCopyContentCell: ((cell: CellProtocol) -> ())?
 	
 	// Sets data to the cell
 	var _dateEnd = ""

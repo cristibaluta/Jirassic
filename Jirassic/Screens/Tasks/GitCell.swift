@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class GitCell: NSTableRowView, TaskCellProtocol {
+class GitCell: NSTableRowView, CellProtocol {
 
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
@@ -21,10 +21,10 @@ class GitCell: NSTableRowView, TaskCellProtocol {
     private var mouseInside = false
 	private var trackingArea: NSTrackingArea?
 	
-	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
-	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: TaskCellProtocol) -> ())?
-	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
+	var didEndEditingCell: ((cell: CellProtocol) -> ())?
+	var didRemoveCell: ((cell: CellProtocol) -> ())?
+	var didAddCell: ((cell: CellProtocol) -> ())?
+	var didCopyContentCell: ((cell: CellProtocol) -> ())?
 	var data: (dateStart: String, dateEnd: String, issueType: String, issueId: String, notes: String) {
 		get {
 			return ("",

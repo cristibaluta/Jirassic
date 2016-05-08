@@ -37,7 +37,7 @@
                         <constraint firstAttribute="height" constant="16" id="7MI-XH-Yv3"/>
                         <constraint firstAttribute="width" constant="16" id="HJH-Sf-528"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iIg-Ta-PA6">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="iIg-Ta-PA6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -51,7 +51,7 @@
                         <constraint firstAttribute="width" constant="16" id="nqW-yh-9HU"/>
                         <constraint firstAttribute="height" constant="16" id="u2a-dx-CSH"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="PPd-DR-pXH">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PPd-DR-pXH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

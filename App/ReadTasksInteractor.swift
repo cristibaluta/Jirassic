@@ -21,6 +21,7 @@ class ReadTasksInteractor: RepositoryInteractor {
         })
     }
     
+    // Return a list of tasks sorted by date
     func tasksInDay (date: NSDate) -> [Task] {
         
         let filteredData = data.queryTasksInDay(date)

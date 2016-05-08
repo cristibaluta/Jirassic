@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class NonTaskCell: NSTableRowView, TaskCellProtocol {
+class NonTaskCell: NSTableRowView, CellProtocol {
 	
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: NSTextField?
@@ -19,10 +19,10 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol {
 	
 	private var trackingArea: NSTrackingArea?
 	
-	var didEndEditingCell: ((cell: TaskCellProtocol) -> ())?
-	var didRemoveCell: ((cell: TaskCellProtocol) -> ())?
-	var didAddCell: ((cell: TaskCellProtocol) -> ())?
-	var didCopyContentCell: ((cell: TaskCellProtocol) -> ())?
+	var didEndEditingCell: ((cell: CellProtocol) -> ())?
+	var didRemoveCell: ((cell: CellProtocol) -> ())?
+	var didAddCell: ((cell: CellProtocol) -> ())?
+	var didCopyContentCell: ((cell: CellProtocol) -> ())?
 	var data: (dateStart: String, dateEnd: String, issueType: String, issueId: String, notes: String) {
 		get {
 			return ("",
@@ -46,8 +46,12 @@ class NonTaskCell: NSTableRowView, TaskCellProtocol {
 	}
 	
 	override func awakeFromNib() {
+        super.awakeFromNib()
+        
 		self.butRemove?.hidden = true
 		self.butAdd?.hidden = true
+        self.butRemove?.wantsLayer = true
+        self.butRemove?.layer?.backgroundColor = NSColor.clearColor().CGColor
 		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
 	}
 	
