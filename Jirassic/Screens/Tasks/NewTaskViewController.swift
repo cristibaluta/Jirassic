@@ -19,6 +19,7 @@ class NewTaskViewController: NSViewController {
 	
 	var onOptionChosen: ((taskData: TaskCreationData) -> Void)?
 	var onCancelChosen: (Void -> Void)?
+    private var _dateEnd = ""
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
@@ -101,5 +102,24 @@ class NewTaskViewController: NSViewController {
             notes: notes
         )
         self.onOptionChosen?(taskData: taskData)
+    }
+}
+
+extension NewTaskViewController: NSTextFieldDelegate {
+    
+    override func controlTextDidBeginEditing (obj: NSNotification) {
+        if let textField = obj.object as? NSTextField {
+            _dateEnd = textField.stringValue
+        }
+    }
+    
+    override func controlTextDidChange (obj: NSNotification) {
+        if let textField = obj.object as? NSTextField {
+            let predictor = PredictiveTimeTyping()
+            let comps = textField.stringValue.componentsSeparatedByString(_dateEnd)
+            let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last
+            _dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
+            textField.stringValue = _dateEnd
+        }
     }
 }

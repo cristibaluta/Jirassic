@@ -1559,6 +1559,9 @@
                                     <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="2VM-Zw-qp9" id="ndZ-aI-fzq"/>
+                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WqX-WL-iN6">
                                 <rect key="frame" x="99" y="13" width="107" height="32"/>
@@ -1592,6 +1595,9 @@ Gw
                                     <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="2VM-Zw-qp9" id="DlW-rM-25G"/>
+                                </connections>
                             </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-vr-vuu">
                                 <rect key="frame" x="105" y="362" width="161" height="26"/>
