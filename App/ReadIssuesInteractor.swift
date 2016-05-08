@@ -8,24 +8,29 @@
 
 import Foundation
 
-class ReadIssuesInteractor {
+class ReadIssuesInteractor: RepositoryInteractor {
 
-	class func all() -> [String] {
-		return ["BOSCH-33 Refactoring", "BOSCH-34 UX"]
+    func allIssues (completion: [String] -> Void) {
+        
+        data.queryIssues ({issues in
+            completion(issues)
+        }, errorBlock: { error in
+        
+        })
 	}
 	
-	class func match (searchString: String) -> [String] {
-		return all()
+	func search (searchString: String, completion: [String] -> Void) {
+//		return allIssues()
 //			.filter({ (_: Issues.Generator.Element) -> Bool in
 //			return true
 //		})
 	}
 	
-	class func mostUsed() -> [String] {
-		return all()
+	func mostUsed (completion: String -> Void) {
+		completion("")
 	}
 	
-	class func lastUsed() -> String {
-		return all().first!
+	func lastUsed (completion: String -> Void) {
+		completion("")
 	}
 }

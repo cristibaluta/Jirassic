@@ -20,6 +20,7 @@ class NewTaskViewController: NSViewController {
 	var onOptionChosen: ((taskData: TaskCreationData) -> Void)?
 	var onCancelChosen: (Void -> Void)?
     private var _dateEnd = ""
+    private var issueTypes = [String]()
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
 	var date: NSDate {
@@ -102,6 +103,41 @@ class NewTaskViewController: NSViewController {
             notes: notes
         )
         self.onOptionChosen?(taskData: taskData)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        issueTypeComboBox?.usesDataSource = true
+        issueTypeComboBox?.setDelegate(self)
+        issueTypeComboBox?.dataSource = self
+        issueTypeComboBox?.completes = true
+        
+        let issuesReader = ReadIssuesInteractor(data: localRepository)
+        issuesReader.allIssues { (issues) in
+            self.issueTypes = issues
+            self.issueTypeComboBox?.reloadData()
+        }
+    }
+}
+
+extension NewTaskViewController: NSComboBoxDelegate, NSComboBoxDataSource {
+    
+    func numberOfItemsInComboBox (aComboBox: NSComboBox) -> Int {
+        return issueTypes.count
+    }
+    
+    func comboBox (aComboBox: NSComboBox, objectValueForItemAtIndex index: Int) -> AnyObject {
+        return issueTypes[index]
+    }
+    
+    func comboBox (aComboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
+        return 0//issueTypes.indexOfObject(string)
+    }
+    
+    func comboBox (aComboBox: NSComboBox, completedString string: String) -> String? {
+        print("completedString \(string)")
+        return nil
     }
 }
 

@@ -224,4 +224,17 @@ extension ParseRepository: Repository {
         
         return task
 	}
+    
+    
+    // MARK: Issue
+    
+    func queryIssues (successBlock: [String] -> Void, errorBlock: NSError? -> Void) {
+        
+        let issues = [String]()
+        successBlock(issues)
+    }
+    
+    func saveIssue (issue: String) {
+        
+    }
 }

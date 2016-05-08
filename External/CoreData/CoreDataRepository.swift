@@ -242,4 +242,17 @@ extension CoreDataRepository: Repository {
         
         return taskFromCTask(ctask)
     }
+    
+    
+    // MARK: Issue
+    
+    func queryIssues (successBlock: [String] -> Void, errorBlock: NSError? -> Void) {
+        
+        let issues = ["BOSCH-33 Refactoring", "BOSCH-35 Redesign", "BOSCH-30 Internal meeting"]
+        successBlock(issues)
+    }
+    
+    func saveIssue (issue: String) {
+        
+    }
 }

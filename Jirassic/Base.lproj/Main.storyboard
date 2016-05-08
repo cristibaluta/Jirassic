@@ -1599,22 +1599,23 @@ Gw
                                     <outlet property="delegate" destination="2VM-Zw-qp9" id="DlW-rM-25G"/>
                                 </connections>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-vr-vuu">
-                                <rect key="frame" x="105" y="362" width="161" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Issue name" drawsBackground="YES" completes="NO" numberOfVisibleItems="12" id="2Id-jj-e6x">
+                            <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-vr-vuu">
+                                <rect key="frame" x="105" y="362" width="335" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="oMI-V8-qwT"/>
+                                </constraints>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="Issue name" drawsBackground="YES" buttonBordered="NO" numberOfVisibleItems="12" id="2Id-jj-e6x">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 </comboBoxCell>
                             </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ZRY-yy-MGB" firstAttribute="top" secondItem="uNj-CH-ggG" secondAttribute="top" constant="226" id="1ec-6c-vHA"/>
+                            <constraint firstItem="RUj-vr-vuu" firstAttribute="top" secondItem="uNj-CH-ggG" secondAttribute="top" constant="9" id="FKv-jj-o6F"/>
+                            <constraint firstAttribute="trailing" secondItem="RUj-vr-vuu" secondAttribute="trailing" constant="13" id="IBF-63-ANh"/>
+                            <constraint firstItem="RUj-vr-vuu" firstAttribute="leading" secondItem="uNj-CH-ggG" secondAttribute="leading" constant="105" id="Ifd-Lt-7S3"/>
                             <constraint firstItem="ZRY-yy-MGB" firstAttribute="leading" secondItem="uNj-CH-ggG" secondAttribute="leading" constant="12" id="OtR-6B-YfN"/>
                             <constraint firstAttribute="trailing" secondItem="ZRY-yy-MGB" secondAttribute="trailing" constant="13" id="ZkR-oC-wWJ"/>
                             <constraint firstAttribute="bottom" secondItem="WqX-WL-iN6" secondAttribute="bottom" constant="20" id="bXO-pa-pzr"/>

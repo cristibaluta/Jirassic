@@ -25,4 +25,6 @@ protocol Repository {
     func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) -> Task
     
     // MARK: Issues
+    func queryIssues (successBlock: [String] -> Void, errorBlock: NSError? -> Void)
+    func saveIssue (issue: String)
 }

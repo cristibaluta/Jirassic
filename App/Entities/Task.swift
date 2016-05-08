@@ -48,7 +48,7 @@ extension Task {
 		
 		self.startDate = dateSart
 		self.endDate = dateEnd
-		self.issueType = ReadIssuesInteractor.lastUsed()
+		self.issueType = nil
 		self.taskType = type.rawValue
 		
 		switch (type) {
