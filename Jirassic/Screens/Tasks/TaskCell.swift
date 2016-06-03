@@ -44,10 +44,10 @@ class TaskCell: NSTableRowView, CellProtocol {
 		set {
             if let dateEnd = newValue.dateEnd {
                 self.dateEndTextField!.stringValue = dateEnd.HHmm()
+                _dateEnd = dateEnd.HHmm()
             }
 			self.issueNrTextField!.stringValue = newValue.issueType
 			self.notesTextField!.stringValue = newValue.notes
-			_dateEnd = newValue.dateEnd!.HHmm()
 		}
 	}
 	var duration: String {
