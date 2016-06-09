@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -1439,19 +1439,9 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Fw-QM-PI1">
-                                <rect key="frame" x="99" y="107" width="119" height="32"/>
-                                <buttonCell key="cell" type="push" title="Scrum begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vog-g8-0o1">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleScrumBeginButton:" target="2VM-Zw-qp9" id="J1S-Yk-ZVH"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-qM-o57">
-                                <rect key="frame" x="99" y="68" width="119" height="32"/>
-                                <buttonCell key="cell" type="push" title="Scrum end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J2A-GE-JVu">
+                                <rect key="frame" x="99" y="103" width="119" height="32"/>
+                                <buttonCell key="cell" type="push" title="Scrum" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J2A-GE-JVu">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1459,34 +1449,14 @@
                                     <action selector="handleScrumEndButton:" target="2VM-Zw-qp9" id="LbK-aI-4rw"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DXm-Fy-uZV">
-                                <rect key="frame" x="334" y="107" width="116" height="32"/>
-                                <buttonCell key="cell" type="push" title="Lunch begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rWM-Dh-VMA">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleLunchBeginButton:" target="2VM-Zw-qp9" id="qaO-FY-ofg"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqM-dt-X5J">
-                                <rect key="frame" x="334" y="68" width="116" height="32"/>
-                                <buttonCell key="cell" type="push" title="Lunch end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jXD-1C-Vlr">
+                                <rect key="frame" x="334" y="103" width="116" height="32"/>
+                                <buttonCell key="cell" type="push" title="Lunch" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jXD-1C-Vlr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleLunchEndButton:" target="2VM-Zw-qp9" id="D5H-55-hGb"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dT0-Ec-guA">
-                                <rect key="frame" x="217" y="191" width="119" height="32"/>
-                                <buttonCell key="cell" type="push" title="Task begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rDu-Be-c78">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleTaskBeginButton:" target="2VM-Zw-qp9" id="bPX-hi-xcg"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP3-YD-zEj">
@@ -1499,19 +1469,9 @@
                                     <action selector="handleTaskEndButton:" target="2VM-Zw-qp9" id="oaX-aQ-9iN"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OmM-w6-Jpa">
-                                <rect key="frame" x="212" y="107" width="128" height="32"/>
-                                <buttonCell key="cell" type="push" title="Meeting begin" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NEb-6P-oKM">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleMeetingBeginButton:" target="2VM-Zw-qp9" id="4mB-8H-rm0"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z9D-on-wh9">
-                                <rect key="frame" x="212" y="68" width="128" height="32"/>
-                                <buttonCell key="cell" type="push" title="Meeting end" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3zQ-j4-fYU">
+                                <rect key="frame" x="212" y="103" width="128" height="32"/>
+                                <buttonCell key="cell" type="push" title="Meeting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3zQ-j4-fYU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
