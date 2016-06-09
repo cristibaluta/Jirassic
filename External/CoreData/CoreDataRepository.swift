@@ -59,7 +59,7 @@ class CoreDataRepository {
 
 extension CoreDataRepository {
     
-    private func queryWithPredicate<T:NSManagedObject> (predicate: NSPredicate) -> [T] {
+    private func queryWithPredicate<T:NSManagedObject> (predicate: NSPredicate, sortDescriptors: [NSSortDescriptor]?) -> [T] {
         
         guard let context = managedObjectContext else {
             return []
@@ -68,7 +68,7 @@ extension CoreDataRepository {
         let request = NSFetchRequest(entityName: String(T))
         request.returnsObjectsAsFaults = false
         request.predicate = predicate
-        request.sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
+        request.sortDescriptors = sortDescriptors
         
         do {
             let results = try context.executeFetchRequest(request)
@@ -107,15 +107,18 @@ extension CoreDataRepository {
         var ctask: CTask?
         if let taskId = task.taskId {
             let taskPredicate = NSPredicate(format: "taskId == %@", taskId)
-            let tasks: [CTask] = queryWithPredicate(taskPredicate)
+            let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
             ctask = tasks.first
         }
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
                     inManagedObjectContext: managedObjectContext!) as? CTask
         }
-        if task.taskId == nil {
+        if ctask?.taskId == nil {
             ctask?.taskId = String.random()
+        }
+        if ctask?.userId == nil {
+            ctask?.userId = currentUser().userId
         }
         
         return updatedCTask(ctask!, withTask: task)
@@ -127,7 +130,6 @@ extension CoreDataRepository {
         ctask.issueId = task.issueId
         ctask.issueType = task.issueType
         ctask.taskType = task.taskType
-        ctask.taskId = task.taskId
         ctask.notes = task.notes
         ctask.endDate = task.endDate
         
@@ -141,7 +143,7 @@ extension CoreDataRepository: Repository {
     func currentUser() -> User {
         
         let userPredicate = NSPredicate(format: "isLoggedIn == YES")
-        let cusers: [CUser] = queryWithPredicate(userPredicate)
+        let cusers: [CUser] = queryWithPredicate(userPredicate, sortDescriptors: nil)
         if let cuser = cusers.last {
             return User(isLoggedIn: true, email: cuser.email, userId: cuser.userId, lastSyncDate: cuser.lastSyncDate)
         }
@@ -192,7 +194,8 @@ extension CoreDataRepository: Repository {
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
         
         let userPredicate = NSPredicate(format: "userId == nil")
-        let results: [CTask] = queryWithPredicate(userPredicate)
+        let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
+        let results: [CTask] = queryWithPredicate(userPredicate, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)
         
         completion(tasks, nil)
@@ -202,8 +205,9 @@ extension CoreDataRepository: Repository {
         
         let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
             NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay(), day.endOfDay())
-        ])
-        let results: [CTask] = queryWithPredicate(compoundPredicate)
+            ])
+        let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
+        let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)
         
         return tasks
@@ -212,7 +216,7 @@ extension CoreDataRepository: Repository {
     func queryUnsyncedTasks() -> [Task] {
         
         let userPredicate = NSPredicate(format: "lastModifiedDate == nil")
-        let results: [CTask] = queryWithPredicate(userPredicate)
+        let results: [CTask] = queryWithPredicate(userPredicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         
         return tasks
