@@ -24,7 +24,6 @@ extension NSApplication {
             issueId = ""
         }
 		let task = Task(
-			startDate: nil,
 			endDate: NSDate(),
 			notes: notes,
 			issueType: nil,

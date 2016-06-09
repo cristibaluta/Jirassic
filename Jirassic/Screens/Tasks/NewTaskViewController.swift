@@ -57,32 +57,16 @@ class NewTaskViewController: NSViewController {
 		}
 	}
 	
-	@IBAction func handleScrumBeginButton (sender: NSButton) {
-		setTaskDataWithTaskType(.ScrumBegin)
-	}
-	
 	@IBAction func handleScrumEndButton (sender: NSButton) {
 		setTaskDataWithTaskType(.ScrumEnd)
-	}
-	
-	@IBAction func handleLunchBeginButton (sender: NSButton) {
-		setTaskDataWithTaskType(.LunchBegin)
 	}
 	
 	@IBAction func handleLunchEndButton (sender: NSButton) {
 		setTaskDataWithTaskType(.LunchEnd)
 	}
 	
-	@IBAction func handleTaskBeginButton (sender: NSButton) {
-		setTaskDataWithTaskType(.IssueBegin)
-	}
-	
 	@IBAction func handleTaskEndButton (sender: NSButton) {
 		setTaskDataWithTaskType(.IssueEnd)
-	}
-	
-	@IBAction func handleMeetingBeginButton (sender: NSButton) {
-		setTaskDataWithTaskType(.IssueBegin)
 	}
 	
 	@IBAction func handleMeetingEndButton (sender: NSButton) {
@@ -96,7 +80,6 @@ class NewTaskViewController: NSViewController {
     func setTaskDataWithTaskType (taskSubtype: TaskSubtype) {
         
         let taskData = TaskCreationData(
-            dateStart: nil,
             dateEnd: date,
             issueType: issueType,
             issueId: issueId,

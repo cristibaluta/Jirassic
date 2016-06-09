@@ -20,12 +20,7 @@ class ReadDaysInteractor: RepositoryInteractor {
             
             self.tasks = tasks
             self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
-                if let date1 = task1.endDate ?? task1.startDate {
-                    if let date2 = task2.endDate ?? task2.startDate {
-                        return date1.compare(date2) == .OrderedDescending
-                    }
-                }
-                return false
+                return task1.endDate.compare(task2.endDate) == .OrderedDescending
             }
         })
 	}
@@ -36,14 +31,12 @@ class ReadDaysInteractor: RepositoryInteractor {
 		var referenceDate = NSDate.distantFuture()
 		
 		for task in tasks {
-			if let dateToCompare = task.endDate ?? task.startDate {
-				if !dateToCompare.isSameWeekAs(referenceDate) {
-					referenceDate = dateToCompare
-					let obj = Week(date: dateToCompare)
-					obj.days = days(obj)
-					objects.append(obj)
-				}
-			}
+            if !task.endDate.isSameWeekAs(referenceDate) {
+                referenceDate = task.endDate
+                let obj = Week(date: task.endDate)
+                obj.days = days(obj)
+                objects.append(obj)
+            }
 		}
 		
 		return objects
@@ -55,13 +48,11 @@ class ReadDaysInteractor: RepositoryInteractor {
 		var referenceDate = NSDate.distantFuture()
 		
 		for task in tasks {
-			if let dateToCompare = task.endDate ?? task.startDate {
-				if !dateToCompare.isSameDayAs(referenceDate) {
-					referenceDate = dateToCompare
-					let obj = Day(date: dateToCompare)
-					objects.append(obj)
-				}
-			}
+            if !task.endDate.isSameDayAs(referenceDate) {
+                referenceDate = task.endDate
+                let obj = Day(date: task.endDate)
+                objects.append(obj)
+            }
 		}
 		
 		return objects
@@ -73,15 +64,13 @@ class ReadDaysInteractor: RepositoryInteractor {
 		var referenceDate = NSDate.distantFuture()
 		
 		for task in tasks {
-			if let dateToCompare = task.endDate ?? task.startDate {
-				if (dateToCompare.isSameWeekAs(week.date)) {
-					if !dateToCompare.isSameDayAs(referenceDate) {
-						referenceDate = dateToCompare
-						let obj = Day(date: dateToCompare)
-						objects.append(obj)
-					}
-				}
-			}
+            if (task.endDate.isSameWeekAs(week.date)) {
+                if !task.endDate.isSameDayAs(referenceDate) {
+                    referenceDate = task.endDate
+                    let obj = Day(date: task.endDate)
+                    objects.append(obj)
+                }
+            }
 		}
 		
 		return objects

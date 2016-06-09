@@ -11,7 +11,7 @@ import Foundation
 enum TaskType: Int {
 	
 	case Issue = 0
-	case Start = 1
+	case StartDay = 1
 	case Scrum = 2
 	case Lunch = 3
 	case Meeting = 4
@@ -20,41 +20,39 @@ enum TaskType: Int {
 
 enum TaskSubtype: Int {
 	
-	case IssueBegin = 0
+//	case IssueBegin = 0
 	case IssueEnd = 1
-	case ScrumBegin = 2
+//	case ScrumBegin = 2
 	case ScrumEnd = 3
-	case LunchBegin = 4
+//	case LunchBegin = 4
 	case LunchEnd = 5
-	case MeetingBegin = 6
+//	case MeetingBegin = 6
 	case MeetingEnd = 7
 	case GitCommitEnd = 8
 }
 
 struct Task {
 	
-	var startDate: NSDate?
-	var endDate: NSDate?
+	var endDate: NSDate
 	var notes: String?
 	var issueType: String?
 	var issueId: String?
-	var taskType: NSNumber?
+	var taskType: NSNumber
 	var taskId: String?
 }
 
 extension Task {
 	
-	init (dateSart: NSDate?, dateEnd: NSDate?, type: TaskType) {
+	init (dateEnd: NSDate, type: TaskType) {
 		
-		self.startDate = dateSart
 		self.endDate = dateEnd
 		self.issueType = nil
 		self.taskType = type.rawValue
 		
 		switch (type) {
 			case TaskType.Issue:	self.notes = ""
-			case TaskType.Start:	self.notes = "Working day started"
-			case TaskType.Scrum:	self.notes = "Scrum session"
+			case TaskType.StartDay:	self.notes = "Working day started"
+			case TaskType.Scrum:	self.notes = "Scrum meeting"
 			case TaskType.Lunch:	self.notes = "Lunch break"
 			case TaskType.Meeting:	self.notes = "Internal meeting"
 			case TaskType.GitCommit:self.notes = ""
@@ -64,13 +62,9 @@ extension Task {
 	init (subtype: TaskSubtype) {
 		
 		switch (subtype) {
-			case .IssueBegin:	self.startDate = NSDate();	self.taskType = TaskType.Issue.rawValue
 			case .IssueEnd:		self.endDate = NSDate();	self.taskType = TaskType.Issue.rawValue
-			case .ScrumBegin:	self.startDate = NSDate();	self.taskType = TaskType.Scrum.rawValue
 			case .ScrumEnd:		self.endDate = NSDate();	self.taskType = TaskType.Scrum.rawValue
-			case .LunchBegin:	self.startDate = NSDate();	self.taskType = TaskType.Lunch.rawValue
 			case .LunchEnd:		self.endDate = NSDate();	self.taskType = TaskType.Lunch.rawValue
-			case .MeetingBegin: self.startDate = NSDate();	self.taskType = TaskType.Meeting.rawValue
 			case .MeetingEnd:	self.endDate = NSDate();	self.taskType = TaskType.Meeting.rawValue
 			case .GitCommitEnd:	self.endDate = NSDate();	self.taskType = TaskType.GitCommit.rawValue
 		}
@@ -78,8 +72,7 @@ extension Task {
 }
 
 typealias TaskCreationData = (
-    dateStart: NSDate?,
-    dateEnd: NSDate?,
+    dateEnd: NSDate,
     issueType: String,
     issueId: String,
     notes: String

@@ -16,7 +16,6 @@ extension CTask {
 
     @NSManaged var lastModifiedDate: NSDate?
     @NSManaged var creationDate: NSDate?
-    @NSManaged var startDate: NSDate?
     @NSManaged var endDate: NSDate?
     @NSManaged var notes: String?
     @NSManaged var userId: String?

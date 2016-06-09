@@ -71,7 +71,6 @@ extension ParseRepository {
     private func taskToPTask (task: Task) -> PTask {
         
         let ptask = PTask(className: PTask.parseClassName())
-        ptask.date_task_started = task.startDate
         ptask.date_task_finished = task.endDate
         ptask.notes = task.notes
         ptask.issue_type = task.issueType
@@ -84,12 +83,11 @@ extension ParseRepository {
     
     private func ptaskToTask (ptask: PTask) -> Task {
         
-        return Task(startDate: ptask.date_task_started,
-                    endDate: ptask.date_task_finished,
+        return Task(endDate: ptask.date_task_finished!,
                     notes: ptask.notes,
                     issueType: ptask.issue_type,
                     issueId: ptask.issue_id,
-                    taskType: ptask.task_type,
+                    taskType: ptask.task_type!,
                     taskId: ptask.objectId)
     }
     
@@ -209,7 +207,6 @@ extension ParseRepository: Repository {
 		
 		ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 			// Update the ptask with data from task
-			ptask.date_task_started = task.startDate
 			ptask.date_task_finished = task.endDate
 			ptask.notes = task.notes
             ptask.issue_type = task.issueType

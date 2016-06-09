@@ -61,7 +61,7 @@ extension TasksScrollView: NSTableViewDataSource {
 	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		
 		let theData = data[row]
-		switch Int(theData.taskType!.intValue) {
+		switch Int(theData.taskType.intValue) {
 			case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
 				return kTaskCellHeight
 			default:
@@ -78,7 +78,7 @@ extension TasksScrollView: NSTableViewDelegate {
         var theData = data[row]
         let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
         var cell: CellProtocol? = nil
-        switch Int(theData.taskType!.intValue) {
+        switch Int(theData.taskType.intValue) {
             case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
                 cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
                 break

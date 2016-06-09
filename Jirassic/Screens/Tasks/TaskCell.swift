@@ -35,17 +35,14 @@ class TaskCell: NSTableRowView, CellProtocol {
 		get {
             let hm = NSDate.parseHHmm(self.dateEndTextField!.stringValue)
             let date = NSDate().dateByUpdatingHour(hm.hour, minute: hm.min)
-			return (dateStart: nil,
-					dateEnd: date,
+			return (dateEnd: date,
 					issueType: self.issueNrTextField!.stringValue,
 					issueId: "",
 					notes: self.notesTextField!.stringValue)
 		}
 		set {
-            if let dateEnd = newValue.dateEnd {
-                self.dateEndTextField!.stringValue = dateEnd.HHmm()
-                _dateEnd = dateEnd.HHmm()
-            }
+            _dateEnd = newValue.dateEnd.HHmm()
+            self.dateEndTextField!.stringValue = _dateEnd
 			self.issueNrTextField!.stringValue = newValue.issueType
 			self.notesTextField!.stringValue = newValue.notes
 		}
@@ -65,7 +62,7 @@ class TaskCell: NSTableRowView, CellProtocol {
 	}
 	
 	
-	// MARK: Acions
+	// MARK: Actions
 	
 	@IBAction func handleRemoveButton (sender: NSButton) {
 		didRemoveCell?(cell: self)

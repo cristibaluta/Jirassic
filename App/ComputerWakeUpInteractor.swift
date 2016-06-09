@@ -17,7 +17,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
 		if existingTasks.count > 0 {
 			// We already started the day, analyze if it's scrum time
 			if TaskFinder().scrumExists(existingTasks) {
-				let task = Task(dateSart: date, dateEnd: NSDate(), type: TaskType.Scrum)
+				let task = Task(dateEnd: NSDate(), type: TaskType.Scrum)
                 let saveInteractor = TaskInteractor(data: localRepository)
                 saveInteractor.saveTask(task)
 				InternalNotifications.notifyAboutNewlyAddedTask(task)

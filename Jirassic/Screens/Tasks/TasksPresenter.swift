@@ -113,7 +113,7 @@ extension TasksPresenter: TasksPresenterInput {
     func startDay() {
         
         let now = NSDate()
-        let task = Task(dateSart: now, dateEnd: now, type: TaskType.Start)
+        let task = Task(dateEnd: now, type: TaskType.StartDay)
         let saveInteractor = TaskInteractor(data: localRepository)
         saveInteractor.saveTask(task)
         day?.setLastTrackedDay(now)
@@ -127,7 +127,6 @@ extension TasksPresenter: TasksPresenterInput {
         task.issueType = taskData.issueType
         task.issueId = taskData.issueId
         task.endDate = taskData.dateEnd
-        task.startDate = taskData.dateStart
         
         let saveInteractor = TaskInteractor(data: localRepository)
             saveInteractor.saveTask(task)

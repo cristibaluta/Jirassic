@@ -68,6 +68,7 @@ extension CoreDataRepository {
         let request = NSFetchRequest(entityName: String(T))
         request.returnsObjectsAsFaults = false
         request.predicate = predicate
+        request.sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         
         do {
             let results = try context.executeFetchRequest(request)
@@ -82,12 +83,11 @@ extension CoreDataRepository {
     
     private func taskFromCTask (ctask: CTask) -> Task {
         
-        return Task(startDate: ctask.startDate,
-                    endDate: ctask.endDate,
+        return Task(endDate: ctask.endDate!,
                     notes: ctask.notes,
                     issueType: ctask.issueType,
                     issueId: ctask.issueId,
-                    taskType: ctask.taskType,
+                    taskType: ctask.taskType!,
                     taskId: ctask.taskId
         )
     }
@@ -129,7 +129,6 @@ extension CoreDataRepository {
         ctask.taskType = task.taskType
         ctask.taskId = task.taskId
         ctask.notes = task.notes
-        ctask.startDate = task.startDate
         ctask.endDate = task.endDate
         
         return ctask
@@ -202,7 +201,6 @@ extension CoreDataRepository: Repository {
     func queryTasksInDay (day: NSDate) -> [Task] {
         
         let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
-            NSPredicate(format: "startDate >= %@ AND startDate <= %@", day.startOfDay(), day.endOfDay()),
             NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay(), day.endOfDay())
         ])
         let results: [CTask] = queryWithPredicate(compoundPredicate)
