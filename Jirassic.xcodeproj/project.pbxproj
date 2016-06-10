@@ -124,6 +124,8 @@
 		406413A71CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */; };
 		406413A81CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
 		406413A91CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
+		407BB9C21D09FF550038B014 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C11D09FF550038B014 /* FirebaseRepository.swift */; };
+		407BB9C31D09FF550038B014 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C11D09FF550038B014 /* FirebaseRepository.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -300,6 +302,7 @@
 		406413A01CD9289000C8E03D /* LoginInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginInteractorTests.swift; path = App/LoginInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CUser+CoreDataProperties.swift"; path = "../External/CoreData/CUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		406413A51CD9498A00C8E03D /* CUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CUser.swift; path = ../External/CoreData/CUser.swift; sourceTree = "<group>"; };
+		407BB9C11D09FF550038B014 /* FirebaseRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRepository.swift; path = External/Firebase/FirebaseRepository.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -532,6 +535,7 @@
 			children = (
 				28E838FD1AF401A900602D33 /* Repository.swift */,
 				4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */,
+				407BB9C01D09FEA30038B014 /* Firebase */,
 				56A68A9A1CC0CD0B0031CC0C /* CoreData */,
 				28C02F441C007E8E00B65478 /* Parse */,
 				28C02F541C007F3000B65478 /* InMemoryCoreData */,
@@ -717,6 +721,14 @@
 				406413961CD86AA300C8E03D /* StringIdGenerator.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		407BB9C01D09FEA30038B014 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				407BB9C11D09FF550038B014 /* FirebaseRepository.swift */,
+			);
+			name = Firebase;
 			sourceTree = "<group>";
 		};
 		40BF53641CD6198200626157 /* Scenes */ = {
@@ -1092,6 +1104,7 @@
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
 				40BF538E1CD61D3F00626157 /* ReadDaysInteractor.swift in Sources */,
 				28C02F531C007E8E00B65478 /* PUser.swift in Sources */,
+				407BB9C31D09FF550038B014 /* FirebaseRepository.swift in Sources */,
 				28C02F4F1C007E8E00B65478 /* ParseCredentials.swift in Sources */,
 				40F5CC531CDE349100249D66 /* TaskInteractor.swift in Sources */,
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
@@ -1163,6 +1176,7 @@
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,
 				285424C91C34313E0063B532 /* Week.swift in Sources */,
 				289998A21AC2920200706824 /* Popover.swift in Sources */,
+				407BB9C21D09FF550038B014 /* FirebaseRepository.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */,
 				40BF537C1CD61ACF00626157 /* TaskCellPresenter.swift in Sources */,
 				40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */,

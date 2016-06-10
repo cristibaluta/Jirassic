@@ -16,6 +16,7 @@ protocol TasksPresenterInput {
     func reloadTasksOnDay (date: NSDate)
     func updateNoTasksState()
     func createReport()
+    func messageButtonDidPress()
     func startDay()
     func insertTaskWithData (taskData: TaskCreationData)
     func insertTaskAfterRow (row: Int)
@@ -99,6 +100,15 @@ extension TasksPresenter: TasksPresenterInput {
             }
         } else {
             appWireframe?.removeMessage()
+        }
+    }
+    
+    func messageButtonDidPress() {
+        
+        if currentTasks.count == 0 {
+            startDay()
+        } else {
+            userInterface?.presentNewTaskController()
         }
     }
     

@@ -87,9 +87,7 @@ extension TasksViewController: TasksPresenterOutput {
     func showMessage (message: MessageViewModel) {
         
         appWireframe?.presentMessage(message, intoSplitView: splitView!)
-        appWireframe?.messageViewController.didPressButton = { [weak self] () -> Void in
-            self?.tasksPresenter?.startDay()
-        }
+        appWireframe?.messageViewController.didPressButton = tasksPresenter?.messageButtonDidPress
     }
     
     func showDates (weeks: [Week]) {
@@ -126,6 +124,7 @@ extension TasksViewController: TasksPresenterOutput {
         appWireframe?.newTaskViewController.onCancelChosen = { [weak self] in
             self?.appWireframe?.removeNewTaskController()
             self?.splitView?.hidden = false
+            self?.tasksPresenter?.updateNoTasksState()
         }
     }
 }
