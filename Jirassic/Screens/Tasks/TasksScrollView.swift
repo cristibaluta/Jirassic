@@ -50,6 +50,24 @@ class TasksScrollView: NSScrollView {
 		data.removeAtIndex(row)
         self.tableView?.removeRowsAtIndexes(NSIndexSet(index: row), withAnimation: NSTableViewAnimationOptions.EffectFade)
 	}
+    
+    func cellForTaskType (taskType: NSNumber) -> CellProtocol {
+        
+        var cell: CellProtocol? = nil
+        
+        switch Int(taskType.intValue) {
+            case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
+                cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
+                break
+            default:
+                cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell
+                break
+        }
+        guard cell != nil else {
+            fatalError("Cell can't be nil, check if the identifier is registered")
+        }
+        return cell!
+    }
 }
 
 extension TasksScrollView: NSTableViewDataSource {
@@ -73,35 +91,24 @@ extension TasksScrollView: NSTableViewDataSource {
 extension TasksScrollView: NSTableViewDelegate {
     
     func tableView (tableView: NSTableView,
-                    viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+                    viewForTableColumn tableColumn: NSTableColumn?,
+                    row: Int) -> NSView? {
         
         var theData = data[row]
         let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
-        var cell: CellProtocol? = nil
-        switch Int(theData.taskType.intValue) {
-            case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
-                cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
-                break
-            default:
-                cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell
-                break
-        }
-        assert(cell != nil, "Cell can't be nil, check if the identifier is registered")
+        var cell: CellProtocol = cellForTaskType(theData.taskType)
+        TaskCellPresenter(cell: cell).presentData(theData, andPreviousData: thePreviousData)
         
-        // Add data to the cell
-        TaskCellPresenter(cell: cell!).presentData(theData, andPreviousData: thePreviousData)
-        
-        cell?.didEndEditingCell = { [weak self] (cell: CellProtocol) in
+        cell.didEndEditingCell = { [weak self] (cell: CellProtocol) in
             let updatedData = cell.data
             theData.issueType = updatedData.issueType
             theData.notes = updatedData.notes
             theData.endDate = updatedData.dateEnd
             self?.data[row] = theData// save the changes locally because the struct is passed by copying
-            // Save to server
             let saveInteractor = TaskInteractor(data: localRepository)
             saveInteractor.saveTask(theData)
         }
-        cell?.didRemoveCell = { [weak self] (cell: CellProtocol) in
+        cell.didRemoveCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViewsUsingBlock({ (rowView, rowIndex) -> Void in
                 if rowView.subviews.first! == cell as! NSTableRowView {
@@ -110,7 +117,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 }
             })
         }
-        cell?.didAddCell = { [weak self] (cell: CellProtocol) in
+        cell.didAddCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViewsUsingBlock( { rowView, rowIndex in
                 if rowView.subviews.first! == cell as! NSTableRowView {
