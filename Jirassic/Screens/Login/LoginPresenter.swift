@@ -31,7 +31,7 @@ extension LoginPresenter: LoginPresenterInput {
         
         userInterface?.showLoadingIndicator(true)
         
-        let login = LoginInteractor(data: remoteRepository)
+        let login = UserInteractor(data: remoteRepository)
         login.onLoginSuccess = {
             self.userInterface?.showLoadingIndicator(false)
             self.appWireframe?.presentTasksController()

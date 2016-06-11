@@ -1,5 +1,5 @@
 //
-//  RegisterUser.swift
+//  RegisterUserInteractor.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 14/06/15.

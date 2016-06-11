@@ -59,10 +59,6 @@
 		289998A21AC2920200706824 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A11AC2920200706824 /* Popover.swift */; };
 		289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289998A81AC3BDF200706824 /* MenuBarController.swift */; };
 		289E2AC51B2A3AAF003269A3 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */; };
-		28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; };
-		28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161131BD2EE8900508CF5 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		28B1611B1BD2F03300508CF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; };
-		28B1611C1BD2F03300508CF5 /* Parse.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 28B161141BD2EE8900508CF5 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */; };
 		28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */; };
 		28C02F4A1C007E8E00B65478 /* ParseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F451C007E8E00B65478 /* ParseRepository.swift */; };
@@ -81,8 +77,6 @@
 		28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
 		28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* ViewAutolayout.swift */; };
 		28C02F791C009C9700B65478 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* ViewAutolayout.swift */; };
-		28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F841C00A6F300B65478 /* LoginInteractor.swift */; };
-		28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F841C00A6F300B65478 /* LoginInteractor.swift */; };
 		28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8A1C010ABC00B65478 /* PIssue.swift */; };
 		28C02F8C1C010ABC00B65478 /* PIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F8A1C010ABC00B65478 /* PIssue.swift */; };
 		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
@@ -116,7 +110,7 @@
 		406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413941CD71E2D00C8E03D /* SettingsViewController.swift */; };
 		406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413961CD86AA300C8E03D /* StringIdGenerator.swift */; };
 		4064139F1CD926F300C8E03D /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064139E1CD926F300C8E03D /* UserInteractor.swift */; };
-		406413A11CD9289000C8E03D /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A01CD9289000C8E03D /* LoginInteractorTests.swift */; };
+		406413A11CD9289000C8E03D /* UserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A01CD9289000C8E03D /* UserInteractorTests.swift */; };
 		406413A21CD9365C00C8E03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */; };
 		406413A31CD9365F00C8E03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */; };
 		406413A61CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */; };
@@ -126,6 +120,16 @@
 		407BB9C21D09FF550038B014 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C11D09FF550038B014 /* FirebaseRepository.swift */; };
 		407BB9C31D09FF550038B014 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C11D09FF550038B014 /* FirebaseRepository.swift */; };
 		407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */; };
+		407BB9C81D0C34D40038B014 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9C61D0C34D40038B014 /* Bolts.framework */; };
+		407BB9C91D0C34D40038B014 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9C61D0C34D40038B014 /* Bolts.framework */; };
+		407BB9CA1D0C34D40038B014 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9C71D0C34D40038B014 /* Parse.framework */; };
+		407BB9CB1D0C34D40038B014 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9C71D0C34D40038B014 /* Parse.framework */; };
+		407BB9D21D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */; };
+		407BB9D31D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */; };
+		407BB9D41D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */; };
+		407BB9D51D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */; };
+		407BB9D61D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */; };
+		407BB9D71D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -210,8 +214,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				28B1611C1BD2F03300508CF5 /* Parse.framework in Embed Frameworks */,
-				28B1611A1BD2F03300508CF5 /* Bolts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,7 +238,7 @@
 		2846C9291AFF904500779357 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		2846C92B1AFF905100779357 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		2846C92D1AFF905D00779357 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
-		2851268A1BAB42A100D668F2 /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellTests.swift; path = JirassicTests/TaskCellTests.swift; sourceTree = SOURCE_ROOT; };
+		2851268A1BAB42A100D668F2 /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCellTests.swift; path = Jirassic/Screens/Tasks/TaskCellTests.swift; sourceTree = SOURCE_ROOT; };
 		285424C11C2FDB420063B532 /* ComputerWakeUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputerWakeUpInteractor.swift; path = App/ComputerWakeUpInteractor.swift; sourceTree = SOURCE_ROOT; };
 		285424C41C2FDD030063B532 /* ComputerSleepInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComputerSleepInteractor.swift; path = App/ComputerSleepInteractor.swift; sourceTree = SOURCE_ROOT; };
 		285424C81C34313E0063B532 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Week.swift; path = App/Entities/Week.swift; sourceTree = "<group>"; };
@@ -257,14 +259,12 @@
 		2865856B1B054E3500352782 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
 		286E9A3A1C1C403E008FC45E /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		286E9A421C1D9829008FC45E /* InternalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotifications.swift; sourceTree = "<group>"; };
-		28778A571BB9B9A9003E4880 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTests.swift; path = JirassicTests/TaskTests.swift; sourceTree = SOURCE_ROOT; };
+		28778A571BB9B9A9003E4880 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTests.swift; path = App/Entities/TaskTests.swift; sourceTree = SOURCE_ROOT; };
 		289998A11AC2920200706824 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		289998A81AC3BDF200706824 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		289E2AC41B2A3AAF003269A3 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LaunchImage@2x.png"; path = "Resources/LaunchImage@2x.png"; sourceTree = SOURCE_ROOT; };
-		28B161131BD2EE8900508CF5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Jirassic/Bolts.framework; sourceTree = SOURCE_ROOT; };
-		28B161141BD2EE8900508CF5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Jirassic/Parse.framework; sourceTree = SOURCE_ROOT; };
 		28B1F2C11AFF260B00D61472 /* SleepNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepNotifications.swift; sourceTree = "<group>"; };
-		28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimatorTests.swift; path = JirassicTests/TaskTypeEstimatorTests.swift; sourceTree = SOURCE_ROOT; };
+		28B71CBC1B28EC9400E44161 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimatorTests.swift; path = App/TaskTypeEstimatorTests.swift; sourceTree = SOURCE_ROOT; };
 		28C02F451C007E8E00B65478 /* ParseRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseRepository.swift; sourceTree = "<group>"; };
 		28C02F471C007E8E00B65478 /* ParseCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCredentials.swift; sourceTree = "<group>"; };
 		28C02F481C007E8E00B65478 /* PTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTask.swift; sourceTree = "<group>"; };
@@ -274,19 +274,18 @@
 		28C02F5D1C00803300B65478 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/Entities/User.swift; sourceTree = "<group>"; };
 		28C02F711C009C9700B65478 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = App/Extensions/NSDateExtension.swift; sourceTree = SOURCE_ROOT; };
 		28C02F721C009C9700B65478 /* ViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewAutolayout.swift; path = App/Extensions/ViewAutolayout.swift; sourceTree = SOURCE_ROOT; };
-		28C02F841C00A6F300B65478 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginInteractor.swift; path = App/LoginInteractor.swift; sourceTree = SOURCE_ROOT; };
 		28C02F8A1C010ABC00B65478 /* PIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIssue.swift; sourceTree = "<group>"; };
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
 		28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = ../App/Repository.swift; sourceTree = "<group>"; };
-		28E839001AF402B200602D33 /* NSDateExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensionTests.swift; path = JirassicTests/NSDateExtensionTests.swift; sourceTree = SOURCE_ROOT; };
+		28E839001AF402B200602D33 /* NSDateExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensionTests.swift; path = App/Extensions/NSDateExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimator.swift; path = ../App/TaskTypeEstimator.swift; sourceTree = "<group>"; };
 		28EB90621AF948E3008D5337 /* NewDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDay.swift; path = ../App/NewDay.swift; sourceTree = "<group>"; };
 		28EB906F1AF95C37008D5337 /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
 		28EB90711AF95C37008D5337 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		28EB90951AF9D6E9008D5337 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTyping.swift; path = ../App/PredictiveTimeTyping.swift; sourceTree = "<group>"; };
-		28F292261B1C57B40015F64F /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReportTests.swift; path = JirassicTests/CreateReportTests.swift; sourceTree = SOURCE_ROOT; };
+		28F292261B1C57B40015F64F /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReportTests.swift; path = App/CreateReportTests.swift; sourceTree = SOURCE_ROOT; };
 		28F2922A1B1C843D0015F64F /* JirassicTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JirassicTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadTasksInteractor.swift; path = ../App/ReadTasksInteractor.swift; sourceTree = "<group>"; };
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -298,11 +297,16 @@
 		406413941CD71E2D00C8E03D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Screens/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		406413961CD86AA300C8E03D /* StringIdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringIdGenerator.swift; path = App/Extensions/StringIdGenerator.swift; sourceTree = SOURCE_ROOT; };
 		4064139E1CD926F300C8E03D /* UserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInteractor.swift; path = App/UserInteractor.swift; sourceTree = SOURCE_ROOT; };
-		406413A01CD9289000C8E03D /* LoginInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginInteractorTests.swift; path = App/LoginInteractorTests.swift; sourceTree = SOURCE_ROOT; };
+		406413A01CD9289000C8E03D /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInteractorTests.swift; path = App/UserInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CUser+CoreDataProperties.swift"; path = "../External/CoreData/CUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		406413A51CD9498A00C8E03D /* CUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CUser.swift; path = ../External/CoreData/CUser.swift; sourceTree = "<group>"; };
 		407BB9C11D09FF550038B014 /* FirebaseRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRepository.swift; path = External/Firebase/FirebaseRepository.swift; sourceTree = SOURCE_ROOT; };
 		407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskFinderTests.swift; path = App/TaskFinderTests.swift; sourceTree = SOURCE_ROOT; };
+		407BB9C61D0C34D40038B014 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Vendor/Parse/Bolts.framework; sourceTree = SOURCE_ROOT; };
+		407BB9C71D0C34D40038B014 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse/Parse.framework; sourceTree = SOURCE_ROOT; };
+		407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
+		407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
+		407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				407BB9D71D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */,
+				407BB9D51D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */,
 				286585481B03E61E00352782 /* CFNetwork.framework in Frameworks */,
 				286585401B03E60000352782 /* QuartzCore.framework in Frameworks */,
 				286585381B03E5EA00352782 /* libsqlite3.dylib in Frameworks */,
@@ -370,9 +376,12 @@
 				286585421B03E60500352782 /* MobileCoreServices.framework in Frameworks */,
 				286585461B03E61800352782 /* CoreGraphics.framework in Frameworks */,
 				286585441B03E60B00352782 /* CoreLocation.framework in Frameworks */,
+				407BB9C91D0C34D40038B014 /* Bolts.framework in Frameworks */,
 				2865854A1B03E62300352782 /* AudioToolbox.framework in Frameworks */,
 				2865854F1B03EA6100352782 /* Bolts.framework in Frameworks */,
+				407BB9CB1D0C34D40038B014 /* Parse.framework in Frameworks */,
 				2865853E1B03E5FC00352782 /* Security.framework in Frameworks */,
+				407BB9D31D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */,
 				286585511B03EA6700352782 /* Parse.framework in Frameworks */,
 				2865853A1B03E5F100352782 /* libz.dylib in Frameworks */,
 			);
@@ -403,11 +412,14 @@
 				6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */,
 				6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */,
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
-				28B161191BD2F03300508CF5 /* Bolts.framework in Frameworks */,
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
-				28B1611B1BD2F03300508CF5 /* Parse.framework in Frameworks */,
+				407BB9C81D0C34D40038B014 /* Bolts.framework in Frameworks */,
 				6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */,
+				407BB9D41D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */,
+				407BB9D61D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */,
+				407BB9D21D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */,
+				407BB9CA1D0C34D40038B014 /* Parse.framework in Frameworks */,
 				6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */,
 				6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */,
 				6D31D07E1AC2E8C9001AC4BA /* libz.dylib in Frameworks */,
@@ -520,8 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				40BF53701CD61ACF00626157 /* CellProtocol.swift */,
-				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
 				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
+				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
 				40BF536D1CD61ACF00626157 /* TaskCell.swift */,
 				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
 				40BF536A1CD61ACF00626157 /* NonTaskCell.swift */,
@@ -647,10 +659,9 @@
 		28C02F7D1C00A11400B65478 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				28C02F841C00A6F300B65478 /* LoginInteractor.swift */,
-				406413A01CD9289000C8E03D /* LoginInteractorTests.swift */,
-				40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */,
 				4064139E1CD926F300C8E03D /* UserInteractor.swift */,
+				406413A01CD9289000C8E03D /* UserInteractorTests.swift */,
+				40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -658,8 +669,8 @@
 		28DB60A41BD2E634003FDE96 /* parse-osx */ = {
 			isa = PBXGroup;
 			children = (
-				28B161131BD2EE8900508CF5 /* Bolts.framework */,
-				28B161141BD2EE8900508CF5 /* Parse.framework */,
+				407BB9C61D0C34D40038B014 /* Bolts.framework */,
+				407BB9C71D0C34D40038B014 /* Parse.framework */,
 			);
 			name = "parse-osx";
 			path = "Vendor/parse-osx";
@@ -729,6 +740,33 @@
 				407BB9C11D09FF550038B014 /* FirebaseRepository.swift */,
 			);
 			name = Firebase;
+			sourceTree = "<group>";
+		};
+		407BB9CC1D0C34F10038B014 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				407BB9CD1D0C34F10038B014 /* Auth */,
+				407BB9D01D0C34F10038B014 /* Database */,
+			);
+			name = Firebase;
+			path = Vendor/Firebase;
+			sourceTree = SOURCE_ROOT;
+		};
+		407BB9CD1D0C34F10038B014 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */,
+				407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		407BB9D01D0C34F10038B014 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		40BF53641CD6198200626157 /* Scenes */ = {
@@ -876,6 +914,7 @@
 		6D31D0A21AC448FF001AC4BA /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				407BB9CC1D0C34F10038B014 /* Firebase */,
 				28DB60A41BD2E634003FDE96 /* parse-osx */,
 				2846C9111AFF8AC800779357 /* parse-ios */,
 				6D31D0A01AC44785001AC4BA /* RCLog.swift */,
@@ -1086,7 +1125,6 @@
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
 				40BF53911CD61D6500626157 /* RegisterUserInteractor.swift in Sources */,
-				28C02F871C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F4B1C007E8E00B65478 /* ParseRepository.swift in Sources */,
 				564177201C579FB200B893F3 /* Day.swift in Sources */,
 				28C02F511C007E8E00B65478 /* PTask.swift in Sources */,
@@ -1148,7 +1186,6 @@
 				40BF537A1CD61ACF00626157 /* TaskCell.swift in Sources */,
 				406413A21CD9365C00C8E03D /* InMemoryCoreDataRepository.swift in Sources */,
 				28C02F8B1C010ABC00B65478 /* PIssue.swift in Sources */,
-				28C02F851C00A6F300B65478 /* LoginInteractor.swift in Sources */,
 				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
 				40BF53791CD61ACF00626157 /* MessageViewController.swift in Sources */,
 				406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */,
@@ -1213,7 +1250,7 @@
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,
 				40F5CC501CDE346900249D66 /* TaskInteractorTests.swift in Sources */,
 				407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */,
-				406413A11CD9289000C8E03D /* LoginInteractorTests.swift in Sources */,
+				406413A11CD9289000C8E03D /* UserInteractorTests.swift in Sources */,
 				28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1291,6 +1328,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Scrum",
+					"$(PROJECT_DIR)/Vendor/Parse",
+					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
+					"$(PROJECT_DIR)/Vendor/Firebase/Database",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1319,6 +1359,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Scrum",
+					"$(PROJECT_DIR)/Vendor/Parse",
+					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
+					"$(PROJECT_DIR)/Vendor/Firebase/Database",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
@@ -1474,6 +1517,9 @@
 					"$(PROJECT_DIR)/Jirassic",
 					"$(PROJECT_DIR)/Vendor/**",
 					"$(PROJECT_DIR)/Vendor/parse-osx",
+					"$(PROJECT_DIR)/Vendor/Parse",
+					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
+					"$(PROJECT_DIR)/Vendor/Firebase/Database",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1503,6 +1549,9 @@
 					"$(PROJECT_DIR)/Jirassic",
 					"$(PROJECT_DIR)/Vendor/**",
 					"$(PROJECT_DIR)/Vendor/parse-osx",
+					"$(PROJECT_DIR)/Vendor/Parse",
+					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
+					"$(PROJECT_DIR)/Vendor/Firebase/Database",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

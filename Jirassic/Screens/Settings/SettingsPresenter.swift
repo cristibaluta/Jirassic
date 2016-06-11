@@ -27,11 +27,11 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func login (credentials: UserCredentials) {
         
-        let user = UserInteractor().currentUser()
-        let login = LoginInteractor(data: localRepository)
-        login.onLoginSuccess = {
+        let interactor = UserInteractor(data: localRepository)
+        interactor.onLoginSuccess = {
             self.userInterface?.showLoadingIndicator(false)
         }
-        user.isLoggedIn ? login.logout() : login.loginWithCredentials(credentials)
+        let user = interactor.currentUser()
+        user.isLoggedIn ? interactor.logout() : interactor.loginWithCredentials(credentials)
     }
 }
