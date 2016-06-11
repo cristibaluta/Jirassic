@@ -84,9 +84,9 @@ extension FirebaseRepository: Repository {
     
     func logout() {
         user = nil
-        PUser.logOutInBackgroundWithBlock { (error) -> Void in
-            RCLog(error)
-        }
+//        PUser.logOutInBackgroundWithBlock { (error) -> Void in
+//            RCLog(error)
+//        }
     }
     
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
