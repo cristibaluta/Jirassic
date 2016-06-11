@@ -47,7 +47,7 @@ extension FirebaseRepository: Repository {
 //        if let puser = PUser.currentUser() {
 //            self.user = User(isLoggedIn: true, email: puser.email, userId: puser.objectId, lastSyncDate: nil)
 //        } else {
-//            self.user = User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
+            self.user = User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
 //        }
         
         return self.user!
