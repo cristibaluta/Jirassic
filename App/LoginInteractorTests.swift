@@ -11,13 +11,11 @@ import XCTest
 
 class LoginInteractorTests: XCTestCase {
     
-    let estimator = TaskTypeEstimator()
-    
     func testLogout() {
         
         let repository = InMemoryCoreDataRepository()
         
-        let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Issue)
+        let task = Task(dateEnd: NSDate(), type: TaskType.Issue)
         repository.saveTask(task) { (success) in
             
         }

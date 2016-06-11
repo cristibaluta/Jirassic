@@ -32,7 +32,7 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let user = ReadUserInteractor().currentUser()
+		let user = UserInteractor().currentUser()
         butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
         emailTextField?.stringValue = user.email!
     }

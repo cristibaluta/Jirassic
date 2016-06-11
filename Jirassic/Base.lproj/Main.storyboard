@@ -1025,8 +1025,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ui9-h2-Guy">
-                                            <rect key="frame" x="144" y="14" width="223" height="22"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ui9-h2-Guy">
+                                            <rect key="frame" x="144" y="14" width="231" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="H3s-Kz-lSU"/>
                                             </constraints>
@@ -1036,8 +1036,8 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mBF-Uz-VFN">
-                                            <rect key="frame" x="367" y="8" width="83" height="32"/>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mBF-Uz-VFN">
+                                            <rect key="frame" x="375" y="8" width="75" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="MHv-4e-eRO"/>
                                                 <constraint firstAttribute="width" constant="63" id="eUz-6G-V7w"/>
@@ -1120,8 +1120,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ygh-kb-AK9">
-                                            <rect key="frame" x="184" y="48" width="260" height="22"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ygh-kb-AK9">
+                                            <rect key="frame" x="184" y="53" width="260" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="http://" drawsBackground="YES" id="usI-PC-pS2">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

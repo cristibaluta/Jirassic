@@ -18,7 +18,7 @@ class PopoverViewController: NSViewController {
         appWireframe = AppDelegate.sharedApp().appWireframe
         appWireframe?.viewController = self
         
-		let currentUser = ReadUserInteractor().currentUser()
+		let currentUser = UserInteractor().currentUser()
 		if currentUser.isLoggedIn {
             appWireframe?.presentTasksController()
 		} else {

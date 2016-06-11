@@ -1,5 +1,5 @@
 //
-//  Issues.swift
+//  IssuesInteractor.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 28/09/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ReadIssuesInteractor: RepositoryInteractor {
+class IssuesInteractor: RepositoryInteractor {
 
     func allIssues (completion: [String] -> Void) {
         

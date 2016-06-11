@@ -53,7 +53,7 @@ class CreateReportTests: XCTestCase {
 		report.round()
 		let firstTask = report.tasks.first
 		let lastTask = report.tasks.last
-		let diff = lastTask?.endDate?.timeIntervalSinceDate(firstTask!.endDate!)
+		let diff = lastTask?.endDate.timeIntervalSinceDate(firstTask!.endDate)
 		
 		// 28800 + lunchDuration
 		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")
@@ -69,7 +69,7 @@ class CreateReportTests: XCTestCase {
 		report.round()
 		let firstTask = report.tasks.first
 		let lastTask = report.tasks.last
-		let diff = lastTask?.endDate?.timeIntervalSinceDate(firstTask!.endDate!)
+		let diff = lastTask?.endDate.timeIntervalSinceDate(firstTask!.endDate)
 		
 		// 28800 + lunchDuration
 		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")

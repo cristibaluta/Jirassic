@@ -43,6 +43,11 @@ struct Task {
 
 extension Task {
 	
+    init () {
+        self.endDate = NSDate()
+        self.taskType = TaskType.Issue.rawValue
+    }
+    
 	init (dateEnd: NSDate, type: TaskType) {
 		
 		self.endDate = dateEnd

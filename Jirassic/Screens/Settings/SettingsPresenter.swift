@@ -27,7 +27,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func login (credentials: UserCredentials) {
         
-        let user = ReadUserInteractor().currentUser()
+        let user = UserInteractor().currentUser()
         let login = LoginInteractor(data: localRepository)
         login.onLoginSuccess = {
             self.userInterface?.showLoadingIndicator(false)

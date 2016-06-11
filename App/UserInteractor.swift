@@ -1,5 +1,5 @@
 //
-//  ReadUserInteractor.swift
+//  UserInteractor.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 03/05/16.
@@ -8,9 +8,10 @@
 
 import Foundation
 
-class ReadUserInteractor {
+class UserInteractor {
     
     func currentUser() -> User {
         return remoteRepository.currentUser()
     }
+    
 }

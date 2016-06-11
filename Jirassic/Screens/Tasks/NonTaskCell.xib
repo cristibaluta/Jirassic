@@ -12,8 +12,8 @@
             <rect key="frame" x="0.0" y="0.0" width="341" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
-                    <rect key="frame" x="70" y="11" width="262" height="17"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
+                    <rect key="frame" x="68" y="11" width="265" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" red="0.33822601010101006" green="0.33822601010101006" blue="0.33822601010101006" alpha="1" colorSpace="calibratedRGB"/>

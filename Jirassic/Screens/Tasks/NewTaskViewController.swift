@@ -96,7 +96,7 @@ class NewTaskViewController: NSViewController {
         issueTypeComboBox?.dataSource = self
         issueTypeComboBox?.completes = true
         
-        let issuesReader = ReadIssuesInteractor(data: localRepository)
+        let issuesReader = IssuesInteractor(data: localRepository)
         issuesReader.allIssues { (issues) in
             self.issueTypes = issues
             self.issueTypeComboBox?.reloadData()

@@ -19,7 +19,7 @@ class TaskInteractorTests: XCTestCase {
         let tasksBeforeInsert = repository.queryTasksInDay(NSDate())
         XCTAssert(tasksBeforeInsert.count == 0, "We added one task, we should receive one task")
         
-        let task = Task(dateSart: NSDate(), dateEnd: NSDate(), type: TaskType.Issue)
+        let task = Task(dateEnd: NSDate(), type: TaskType.Issue)
         interactor.saveTask(task)
         
         let tasks = repository.queryTasksInDay(NSDate())
