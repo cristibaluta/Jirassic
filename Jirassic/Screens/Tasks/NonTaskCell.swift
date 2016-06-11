@@ -31,8 +31,8 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 					self.notesTextField!.stringValue)
 		}
 		set {
-//			self.dateEndTextField!.stringValue = newValue.date
-			self.notesTextField!.stringValue = "\(newValue.notes) \(newValue.dateEnd)"
+			self.dateEndTextField?.stringValue = newValue.dateEnd.HHmm()
+			self.notesTextField?.stringValue = newValue.notes
 		}
 	}
 	var duration: String {
@@ -60,11 +60,6 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
 		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 		selectionPath.fill()
-		
-//		let lineRect = NSRect(x: 10, y: 0, width: 1, height: dirtyRect.size.height)
-//		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-//		let linePath = NSBezierPath(rect: lineRect)
-//		linePath.fill()
 	}
 	
 	// MARK: Acions
@@ -96,7 +91,11 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	func ensureTrackingArea() {
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
-				options: [NSTrackingAreaOptions.InVisibleRect, NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseEnteredAndExited],
+				options: [
+                    NSTrackingAreaOptions.InVisibleRect,
+                    NSTrackingAreaOptions.ActiveAlways,
+                    NSTrackingAreaOptions.MouseEnteredAndExited
+                ],
 				owner: self,
 				userInfo: nil)
 		}
@@ -109,5 +108,4 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 			self.addTrackingArea(self.trackingArea!);
 		}
 	}
-	
 }

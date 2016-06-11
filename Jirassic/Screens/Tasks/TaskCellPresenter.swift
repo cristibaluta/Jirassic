@@ -19,9 +19,7 @@ class TaskCellPresenter: NSObject {
 	
 	func presentData (theData: Task, andPreviousData previousData: Task?) {
 		
-		var dateEnd: NSDate = NSDate()
 		var duration = ""
-		var notes = theData.notes ?? ""// TODO: Alert the user the notes can't be nil
 		var statusImage: NSImage?
 		
         if let thePreviosData = previousData {
@@ -29,39 +27,32 @@ class TaskCellPresenter: NSObject {
             switch (Int(theData.taskType.intValue)) {
                 
             case TaskType.Issue.rawValue:
-                let endDate = theData.endDate
-                let diff = endDate.timeIntervalSinceDate(thePreviosData.endDate)
+                let diff = theData.endDate.timeIntervalSinceDate(thePreviosData.endDate)
                 duration = NSDate(timeIntervalSince1970: diff).HHmmGMT()
-                dateEnd = endDate
                 statusImage = NSImage(named: NSImageNameStatusAvailable)
                 break
                 
             case TaskType.GitCommit.rawValue:
-                let endDate = theData.endDate
-                let diff = endDate.timeIntervalSinceDate(thePreviosData.endDate)
+                let diff = theData.endDate.timeIntervalSinceDate(thePreviosData.endDate)
                 duration = NSDate(timeIntervalSince1970: diff).HHmmGMT()
-                dateEnd = endDate
                 statusImage = NSImage(named: "GitIcon")
                 break
                 
             default:
-                let endDate = theData.endDate
-                dateEnd = endDate
                 statusImage = NSImage(named: NSImageNameStatusUnavailable)
             }
         } else {
             // This is always the first cell
-            notes = "\(notes) at \(theData.endDate.HHmm())"
             statusImage = nil
         }
 		
 		cell?.data = (
-			dateEnd: dateEnd,
+			dateEnd: theData.endDate,
 			issueType: theData.issueType ?? "",
 			issueId: theData.issueId ?? "",
-			notes: notes
+			notes: theData.notes ?? ""
 		)
 		cell?.duration = duration
-		cell?.statusImage!.image = statusImage
+		cell?.statusImage?.image = statusImage
 	}
 }
