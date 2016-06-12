@@ -15,7 +15,7 @@ class TaskInteractor: RepositoryInteractor {
         data.saveTask(task, completion: { (success: Bool) -> Void in
             
         })
-        remoteRepository.saveTask(task, completion: { (success: Bool) -> Void in
+        remoteRepository?.saveTask(task, completion: { (success: Bool) -> Void in
             
         })
     }
@@ -25,7 +25,7 @@ class TaskInteractor: RepositoryInteractor {
         data.deleteTask(task, completion: { (success: Bool) -> Void in
             
         })
-        remoteRepository.deleteTask(task, completion: { (success: Bool) -> Void in
+        remoteRepository?.deleteTask(task, completion: { (success: Bool) -> Void in
             
         })
     }

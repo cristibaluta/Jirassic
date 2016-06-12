@@ -15,7 +15,7 @@ class ReadTasksInteractor: RepositoryInteractor {
         data.queryTasks(page, completion: { (tasks, error) in
             completion(tasks)
             
-            remoteRepository.queryTasks(page, completion: { (tasks, error) in
+            remoteRepository?.queryTasks(page, completion: { (tasks, error) in
                 
             })
         })

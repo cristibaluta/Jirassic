@@ -7,33 +7,22 @@
 //
 
 import Foundation
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 
 class FirebaseRepository {
     
     private var tasks = [Task]()
     private var user: User?
+    let ref = Firebase(url: "https://project-8960206996854234475.firebaseio.com")
     
     init() {
 //        assert(parseApplicationId != "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 //               "You need to create your own Parse app in order to use this. After that put the keys in ParseCredentials.swift")
         
-//        PTask.registerSubclass()
-//        PUser.registerSubclass()
-//        PIssue.registerSubclass()
-//        Parse.enableLocalDatastore()// This does not work with cache enabled
-//        #if os(OSX)
-//            PFUser.enableAutomaticUser()
-//        #endif
-//        
-//        Parse.setApplicationId(parseApplicationId, clientKey:parseClientId)
-//        
-//        let acl = PFACL()
-//        acl.publicReadAccess = false
-//        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
-//        
-//        _ = PFAnalytics()
+        
+//        let database = FIRDatabase.database()
+//        database.persistenceEnabled = false
+//        let ref = database.reference()
     }
 }
 
@@ -55,6 +44,10 @@ extension FirebaseRepository: Repository {
     
     func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
         
+        ref.authUser(credentials.email, password: credentials.password, withCompletionBlock: { (error, authData) in
+            print(authData)
+            print(error)
+        })
 //        PUser.logInWithUsernameInBackground(credentials.email, password: credentials.password) {
 //            [weak self] (user: PFUser?, error: NSError?) -> Void in
 //            

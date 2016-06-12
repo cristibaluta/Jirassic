@@ -9,7 +9,7 @@
 import Cocoa
 
 var localRepository: Repository!
-var remoteRepository: Repository!
+var remoteRepository: Repository?
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		super.init()
         
         localRepository = CoreDataRepository()
-		remoteRepository = FirebaseRepository()
+//		remoteRepository = IcloudRepository()
 		
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {

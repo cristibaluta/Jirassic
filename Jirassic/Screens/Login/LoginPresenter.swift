@@ -31,15 +31,17 @@ extension LoginPresenter: LoginPresenterInput {
         
         userInterface?.showLoadingIndicator(true)
         
-        let login = UserInteractor(data: remoteRepository)
-        login.onLoginSuccess = {
-            self.userInterface?.showLoadingIndicator(false)
-            self.appWireframe?.presentTasksController()
+        if let repository = remoteRepository {
+            let login = UserInteractor(data: repository)
+            login.onLoginSuccess = {
+                self.userInterface?.showLoadingIndicator(false)
+                self.appWireframe?.presentTasksController()
+            }
+            login.onLoginFailure = {
+                self.userInterface?.showLoadingIndicator(false)
+            }
+            login.loginWithCredentials(credentials)
         }
-        login.onLoginFailure = {
-            self.userInterface?.showLoadingIndicator(false)
-        }
-        login.loginWithCredentials(credentials)
     }
     
     func cancelScreen() {

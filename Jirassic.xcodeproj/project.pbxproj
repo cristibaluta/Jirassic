@@ -43,8 +43,6 @@
 		2865854B1B03E62400352782 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C9161AFF8FB100779357 /* AudioToolbox.framework */; };
 		2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB906F1AF95C37008D5337 /* DaysViewController.swift */; };
 		2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EB90711AF95C37008D5337 /* TasksViewController.swift */; };
-		2865854F1B03EA6100352782 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90B1AFF882E00779357 /* Bolts.framework */; };
-		286585511B03EA6700352782 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2846C90C1AFF882E00779357 /* Parse.framework */; };
 		286585531B03EA6B00352782 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		286585541B03EA6C00352782 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		286585571B03EABA00352782 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* Repository.swift */; };
@@ -74,8 +72,6 @@
 		28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* AppWireframe.swift */; };
 		28E838FE1AF401A900602D33 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* Repository.swift */; };
 		28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839001AF402B200602D33 /* NSDateExtensionTests.swift */; };
-		28E839061AF4972300602D33 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
-		28E839071AF4972700602D33 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D07D1AC2E8C9001AC4BA /* libz.dylib */; };
 		28E839081AF4972B00602D33 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
 		28E839091AF4972F00602D33 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */; };
 		28E8390A1AF4973200602D33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */; };
@@ -107,19 +103,7 @@
 		406413A71CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */; };
 		406413A81CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
 		406413A91CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
-		407BB9C21D09FF550038B014 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C11D09FF550038B014 /* FirebaseRepository.swift */; };
-		407BB9C31D09FF550038B014 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C11D09FF550038B014 /* FirebaseRepository.swift */; };
 		407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */; };
-		407BB9C91D0C34D40038B014 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9C61D0C34D40038B014 /* Bolts.framework */; };
-		407BB9CB1D0C34D40038B014 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9C71D0C34D40038B014 /* Parse.framework */; };
-		407BB9D21D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */; };
-		407BB9D31D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */; };
-		407BB9D41D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */; };
-		407BB9D51D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */; };
-		407BB9D61D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */; };
-		407BB9D71D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */; };
-		407BB9D91D0C40E80038B014 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9D81D0C40E80038B014 /* libicucore.tbd */; };
-		407BB9DB1D0C41010038B014 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 407BB9DA1D0C41010038B014 /* libc++.tbd */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
@@ -162,11 +146,9 @@
 		6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */; };
 		6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */; };
 		6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D07B1AC2E8BF001AC4BA /* CoreLocation.framework */; };
-		6D31D07E1AC2E8C9001AC4BA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D07D1AC2E8C9001AC4BA /* libz.dylib */; };
 		6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */; };
 		6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0831AC2E8F8001AC4BA /* Security.framework */; };
 		6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */; };
-		6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */; };
 		6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
 		6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 /* End PBXBuildFile section */
@@ -216,8 +198,6 @@
 		282426771B113F6900211713 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		2841A93C1C3DB2E400564ECD /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		2841A93E1C3DB2E400564ECD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../jirassic/main.swift; sourceTree = "<group>"; };
-		2846C90B1AFF882E00779357 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		2846C90C1AFF882E00779357 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		2846C9161AFF8FB100779357 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		2846C91B1AFF8FFA00779357 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		2846C91D1AFF900400779357 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
@@ -285,13 +265,7 @@
 		406413A01CD9289000C8E03D /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInteractorTests.swift; path = App/UserInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CUser+CoreDataProperties.swift"; path = "../External/CoreData/CUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		406413A51CD9498A00C8E03D /* CUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CUser.swift; path = ../External/CoreData/CUser.swift; sourceTree = "<group>"; };
-		407BB9C11D09FF550038B014 /* FirebaseRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRepository.swift; path = External/Firebase/FirebaseRepository.swift; sourceTree = SOURCE_ROOT; };
 		407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskFinderTests.swift; path = App/TaskFinderTests.swift; sourceTree = SOURCE_ROOT; };
-		407BB9C61D0C34D40038B014 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Vendor/Parse/Bolts.framework; sourceTree = SOURCE_ROOT; };
-		407BB9C71D0C34D40038B014 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Vendor/Parse/Parse.framework; sourceTree = SOURCE_ROOT; };
-		407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
-		407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
-		407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
 		407BB9D81D0C40E80038B014 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		407BB9DA1D0C41010038B014 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
@@ -323,6 +297,7 @@
 		40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractorTests.swift; path = App/TaskInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		40F5CC511CDE349100249D66 /* TaskInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractor.swift; path = App/TaskInteractor.swift; sourceTree = SOURCE_ROOT; };
 		56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataRepository.swift; path = External/CoreData/CoreDataRepository.swift; sourceTree = SOURCE_ROOT; };
+		6AAF86A38A2A18D681EEBF6B /* Pods-Jirassic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jirassic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jirassic/Pods-Jirassic.debug.xcconfig"; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -340,6 +315,8 @@
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
+		B5E70594EACAA8DC0A8386AA /* Pods-Jirassic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jirassic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jirassic/Pods-Jirassic.release.xcconfig"; sourceTree = "<group>"; };
+		F932D96FF66C2279F191EDD9 /* Pods_Jirassic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jirassic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,8 +331,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				407BB9D71D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */,
-				407BB9D51D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */,
 				286585481B03E61E00352782 /* CFNetwork.framework in Frameworks */,
 				286585401B03E60000352782 /* QuartzCore.framework in Frameworks */,
 				286585381B03E5EA00352782 /* libsqlite3.dylib in Frameworks */,
@@ -363,13 +338,8 @@
 				286585421B03E60500352782 /* MobileCoreServices.framework in Frameworks */,
 				286585461B03E61800352782 /* CoreGraphics.framework in Frameworks */,
 				286585441B03E60B00352782 /* CoreLocation.framework in Frameworks */,
-				407BB9C91D0C34D40038B014 /* Bolts.framework in Frameworks */,
 				2865854A1B03E62300352782 /* AudioToolbox.framework in Frameworks */,
-				2865854F1B03EA6100352782 /* Bolts.framework in Frameworks */,
-				407BB9CB1D0C34D40038B014 /* Parse.framework in Frameworks */,
 				2865853E1B03E5FC00352782 /* Security.framework in Frameworks */,
-				407BB9D31D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */,
-				286585511B03EA6700352782 /* Parse.framework in Frameworks */,
 				2865853A1B03E5F100352782 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,15 +371,8 @@
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
-				407BB9D41D0C34F10038B014 /* GoogleNetworkingUtilities.framework in Frameworks */,
-				407BB9D61D0C34F10038B014 /* FirebaseDatabase.framework in Frameworks */,
-				407BB9D21D0C34F10038B014 /* FirebaseAuth.framework in Frameworks */,
 				6D31D0841AC2E8F8001AC4BA /* Security.framework in Frameworks */,
 				6D31D0881AC2E90B001AC4BA /* SystemConfiguration.framework in Frameworks */,
-				6D31D08D1AC2EB0D001AC4BA /* libsqlite3.dylib in Frameworks */,
-				6D31D07E1AC2E8C9001AC4BA /* libz.dylib in Frameworks */,
-				407BB9D91D0C40E80038B014 /* libicucore.tbd in Frameworks */,
-				407BB9DB1D0C41010038B014 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,13 +382,11 @@
 			files = (
 				28E8390B1AF4973500602D33 /* CoreLocation.framework in Frameworks */,
 				28E8390E1AF4973F00602D33 /* SystemConfiguration.framework in Frameworks */,
-				28E839061AF4972300602D33 /* libsqlite3.dylib in Frameworks */,
 				28E8390C1AF4973900602D33 /* QuartzCore.framework in Frameworks */,
 				28E839081AF4972B00602D33 /* ApplicationServices.framework in Frameworks */,
 				28E839091AF4972F00602D33 /* CFNetwork.framework in Frameworks */,
 				28E8390A1AF4973200602D33 /* CoreGraphics.framework in Frameworks */,
 				28E8390D1AF4973C00602D33 /* Security.framework in Frameworks */,
-				28E839071AF4972700602D33 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,16 +399,6 @@
 				2841A93E1C3DB2E400564ECD /* main.swift */,
 			);
 			name = CLI;
-			sourceTree = "<group>";
-		};
-		2846C9111AFF8AC800779357 /* parse-ios */ = {
-			isa = PBXGroup;
-			children = (
-				2846C90B1AFF882E00779357 /* Bolts.framework */,
-				2846C90C1AFF882E00779357 /* Parse.framework */,
-			);
-			name = "parse-ios";
-			path = ../Scrum;
 			sourceTree = "<group>";
 		};
 		286585151B031D3A00352782 /* IOS */ = {
@@ -535,7 +486,6 @@
 				28E838FD1AF401A900602D33 /* Repository.swift */,
 				4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */,
 				56A68A9A1CC0CD0B0031CC0C /* CoreData */,
-				407BB9C01D09FEA30038B014 /* Firebase */,
 				28C02F541C007F3000B65478 /* InMemoryCoreData */,
 			);
 			name = External;
@@ -639,16 +589,6 @@
 			name = User;
 			sourceTree = "<group>";
 		};
-		28DB60A41BD2E634003FDE96 /* parse-osx */ = {
-			isa = PBXGroup;
-			children = (
-				407BB9C61D0C34D40038B014 /* Bolts.framework */,
-				407BB9C71D0C34D40038B014 /* Parse.framework */,
-			);
-			name = "parse-osx";
-			path = "Vendor/parse-osx";
-			sourceTree = SOURCE_ROOT;
-		};
 		28E838F51AF297FE00602D33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,41 +645,6 @@
 				406413961CD86AA300C8E03D /* StringIdGenerator.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		407BB9C01D09FEA30038B014 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				407BB9C11D09FF550038B014 /* FirebaseRepository.swift */,
-			);
-			name = Firebase;
-			sourceTree = "<group>";
-		};
-		407BB9CC1D0C34F10038B014 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				407BB9CD1D0C34F10038B014 /* Auth */,
-				407BB9D01D0C34F10038B014 /* Database */,
-			);
-			name = Firebase;
-			path = Vendor/Firebase;
-			sourceTree = SOURCE_ROOT;
-		};
-		407BB9CD1D0C34F10038B014 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				407BB9CE1D0C34F10038B014 /* FirebaseAuth.framework */,
-				407BB9CF1D0C34F10038B014 /* GoogleNetworkingUtilities.framework */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		407BB9D01D0C34F10038B014 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				407BB9D11D0C34F10038B014 /* FirebaseDatabase.framework */,
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		40BF53641CD6198200626157 /* Scenes */ = {
@@ -804,6 +709,7 @@
 				6D31D0A21AC448FF001AC4BA /* Vendor */,
 				6D31D0741AC2E439001AC4BA /* Frameworks */,
 				6D31D04D1AC196BB001AC4BA /* Products */,
+				A91A7A01470D331F1FDAE6FD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -881,6 +787,7 @@
 				6D31D0811AC2E8ED001AC4BA /* QuartzCore.framework */,
 				6D31D0831AC2E8F8001AC4BA /* Security.framework */,
 				6D31D0871AC2E90B001AC4BA /* SystemConfiguration.framework */,
+				F932D96FF66C2279F191EDD9 /* Pods_Jirassic.framework */,
 			);
 			name = Frameworks;
 			path = Jirassic;
@@ -889,13 +796,19 @@
 		6D31D0A21AC448FF001AC4BA /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				407BB9CC1D0C34F10038B014 /* Firebase */,
-				28DB60A41BD2E634003FDE96 /* parse-osx */,
-				2846C9111AFF8AC800779357 /* parse-ios */,
 				6D31D0A01AC44785001AC4BA /* RCLog.swift */,
 			);
 			name = Vendor;
 			path = Jirassic;
+			sourceTree = "<group>";
+		};
+		A91A7A01470D331F1FDAE6FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6AAF86A38A2A18D681EEBF6B /* Pods-Jirassic.debug.xcconfig */,
+				B5E70594EACAA8DC0A8386AA /* Pods-Jirassic.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1113,7 +1026,6 @@
 				286585571B03EABA00352782 /* Repository.swift in Sources */,
 				286585531B03EA6B00352782 /* RCLog.swift in Sources */,
 				40BF538E1CD61D3F00626157 /* ReadDaysInteractor.swift in Sources */,
-				407BB9C31D09FF550038B014 /* FirebaseRepository.swift in Sources */,
 				40F5CC531CDE349100249D66 /* TaskInteractor.swift in Sources */,
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
 				28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */,
@@ -1177,7 +1089,6 @@
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,
 				285424C91C34313E0063B532 /* Week.swift in Sources */,
 				289998A21AC2920200706824 /* Popover.swift in Sources */,
-				407BB9C21D09FF550038B014 /* FirebaseRepository.swift in Sources */,
 				28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */,
 				40BF537C1CD61ACF00626157 /* TaskCellPresenter.swift in Sources */,
 				40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */,
@@ -1263,16 +1174,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2841A9411C3DB2E400564ECD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
 		2841A9421C3DB2E400564ECD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1281,38 +1182,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
-		};
-		286585331B031D3A00352782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Baluta Cristian (53NTS244G5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Baluta Cristian (53NTS244G5)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Scrum",
-					"$(PROJECT_DIR)/Vendor/Parse",
-					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
-					"$(PROJECT_DIR)/Vendor/Firebase/Database",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Jirassic-Scrum/Jirassic-Scrum-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
 		};
 		286585341B031D3A00352782 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1327,6 +1196,15 @@
 					"$(PROJECT_DIR)/Vendor/Parse",
 					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
 					"$(PROJECT_DIR)/Vendor/Firebase/Database",
+					"$(PROJECT_DIR)/Vendor/Firebase",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAuth/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseDatabase/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseInstanceID/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/GoogleInterchangeUtilities/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/GoogleNetworkingUtilities/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/GoogleSymbolUtilities/Frameworks",
+					"$(PROJECT_DIR)/Vendor/Firebase/GoogleUtilities/Frameworks",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
@@ -1340,33 +1218,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		286585361B031D3A00352782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(PROJECT_DIR)/Scrum",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Jirassic-ScrumTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic-Scrum.app/Jirassic-Scrum";
-			};
-			name = Debug;
 		};
 		286585371B031D3A00352782 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1390,49 +1241,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		6D31D0691AC196BC001AC4BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
 		};
 		6D31D06A1AC196BC001AC4BA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1469,41 +1277,11 @@
 			};
 			name = Release;
 		};
-		6D31D06C1AC196BC001AC4BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Jirassic",
-					"$(PROJECT_DIR)/Vendor/**",
-					"$(PROJECT_DIR)/Vendor/parse-osx",
-					"$(PROJECT_DIR)/Vendor/Parse",
-					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
-					"$(PROJECT_DIR)/Vendor/Firebase/Database",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(PROJECT_DIR)/Vendor/**",
-				);
-				INFOPLIST_FILE = Jirassic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
-				PRODUCT_NAME = Jirassic;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
 		6D31D06D1AC196BC001AC4BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5E70594EACAA8DC0A8386AA /* Pods-Jirassic.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1512,11 +1290,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
-					"$(PROJECT_DIR)/Vendor/**",
-					"$(PROJECT_DIR)/Vendor/parse-osx",
-					"$(PROJECT_DIR)/Vendor/Parse",
-					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
-					"$(PROJECT_DIR)/Vendor/Firebase/Database",
+					"$(PROJECT_DIR)/Vendor",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1529,34 +1303,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
-		};
-		6D31D06F1AC196BC001AC4BA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-					"$(PROJECT_DIR)/Jirassic",
-					"$(PROJECT_DIR)/Vendor/parse-osx",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = JirassicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_NAME = JirassicTests;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
-			};
-			name = Debug;
 		};
 		6D31D0701AC196BC001AC4BA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1585,7 +1334,6 @@
 		2841A9401C3DB2E400564ECD /* Build configuration list for PBXNativeTarget "jirassic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2841A9411C3DB2E400564ECD /* Debug */,
 				2841A9421C3DB2E400564ECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1594,7 +1342,6 @@
 		286585321B031D3A00352782 /* Build configuration list for PBXNativeTarget "Jirassic-Scrum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				286585331B031D3A00352782 /* Debug */,
 				286585341B031D3A00352782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1603,7 +1350,6 @@
 		286585351B031D3A00352782 /* Build configuration list for PBXNativeTarget "Jirassic-ScrumTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				286585361B031D3A00352782 /* Debug */,
 				286585371B031D3A00352782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1612,7 +1358,6 @@
 		6D31D0471AC196BB001AC4BA /* Build configuration list for PBXProject "Jirassic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D31D0691AC196BC001AC4BA /* Debug */,
 				6D31D06A1AC196BC001AC4BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1621,7 +1366,6 @@
 		6D31D06B1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "Jirassic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D31D06C1AC196BC001AC4BA /* Debug */,
 				6D31D06D1AC196BC001AC4BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1630,7 +1374,6 @@
 		6D31D06E1AC196BC001AC4BA /* Build configuration list for PBXNativeTarget "JirassicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D31D06F1AC196BC001AC4BA /* Debug */,
 				6D31D0701AC196BC001AC4BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

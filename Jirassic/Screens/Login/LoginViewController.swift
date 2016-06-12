@@ -34,14 +34,16 @@ class LoginViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let user = UserInteractor(data: remoteRepository).currentUser()
-        if user.isLoggedIn {
-            _butLogin?.title = "Logout"
-            _label?.stringValue = "You are already logged in."
-            self.credentials = (email: user.email!, password: "")
-        } else {
-            _butLogin?.title = "Login or Signup"
-            _label?.stringValue = "You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail"
+        if let repository = remoteRepository {
+		let user = UserInteractor(data: repository).currentUser()
+            if user.isLoggedIn {
+                _butLogin?.title = "Logout"
+                _label?.stringValue = "You are already logged in."
+                self.credentials = (email: user.email!, password: "")
+            } else {
+                _butLogin?.title = "Login or Signup"
+                _label?.stringValue = "You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail"
+            }
         }
     }
     
