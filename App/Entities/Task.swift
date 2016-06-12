@@ -38,7 +38,7 @@ struct Task {
 	var issueType: String?
 	var issueId: String?
 	var taskType: NSNumber
-	var taskId: String?
+	var taskId: String
 }
 
 extension Task {
@@ -46,6 +46,7 @@ extension Task {
     init () {
         self.endDate = NSDate()
         self.taskType = TaskType.Issue.rawValue
+        self.taskId = String.random()
     }
     
 	init (dateEnd: NSDate, type: TaskType) {
@@ -53,6 +54,7 @@ extension Task {
 		self.endDate = dateEnd
 		self.issueType = nil
 		self.taskType = type.rawValue
+        self.taskId = String.random()
 		
 		switch (type) {
 			case TaskType.Issue:	self.notes = ""
@@ -66,12 +68,15 @@ extension Task {
 	
 	init (subtype: TaskSubtype) {
 		
+        self.endDate = NSDate()
+        self.taskId = String.random()
+        
 		switch (subtype) {
-			case .IssueEnd:		self.endDate = NSDate();	self.taskType = TaskType.Issue.rawValue
-			case .ScrumEnd:		self.endDate = NSDate();	self.taskType = TaskType.Scrum.rawValue
-			case .LunchEnd:		self.endDate = NSDate();	self.taskType = TaskType.Lunch.rawValue
-			case .MeetingEnd:	self.endDate = NSDate();	self.taskType = TaskType.Meeting.rawValue
-			case .GitCommitEnd:	self.endDate = NSDate();	self.taskType = TaskType.GitCommit.rawValue
+			case .IssueEnd:		self.taskType = TaskType.Issue.rawValue
+			case .ScrumEnd:		self.taskType = TaskType.Scrum.rawValue
+			case .LunchEnd:		self.taskType = TaskType.Lunch.rawValue
+			case .MeetingEnd:	self.taskType = TaskType.Meeting.rawValue
+			case .GitCommitEnd:	self.taskType = TaskType.GitCommit.rawValue
 		}
 	}
 }

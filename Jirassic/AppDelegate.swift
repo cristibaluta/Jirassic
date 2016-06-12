@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		super.init()
         
         localRepository = CoreDataRepository()
-//		remoteRepository = IcloudRepository()
+		remoteRepository = CloudKitRepository()
 		
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {

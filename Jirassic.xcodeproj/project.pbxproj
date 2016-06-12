@@ -132,6 +132,9 @@
 		40BF53931CD61D8000626157 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53921CD61D8000626157 /* PredictiveTimeTypingTests.swift */; };
 		40BF53981CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */; };
 		40BF53991CD64A2E00626157 /* CTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */; };
+		40D6DF731D0DE97D00D7AB9A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D6DF721D0DE97D00D7AB9A /* CloudKit.framework */; };
+		40D6DF761D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */; };
+		40D6DF771D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */; };
 		40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */; };
 		40F5CC041CDC6B3A00249D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC031CDC6B3A00249D66 /* ViewController.swift */; };
 		40F5CC501CDE346900249D66 /* TaskInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */; };
@@ -292,6 +295,9 @@
 		40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterUserInteractor.swift; path = App/RegisterUserInteractor.swift; sourceTree = SOURCE_ROOT; };
 		40BF53921CD61D8000626157 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTypingTests.swift; path = App/PredictiveTimeTypingTests.swift; sourceTree = SOURCE_ROOT; };
 		40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CTask+CoreDataProperties.swift"; path = "../External/CoreData/CTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		40D6DF6D1D0D9A6300D7AB9A /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Jirassic.entitlements; path = Jirassic/Jirassic.entitlements; sourceTree = "<group>"; };
+		40D6DF721D0DE97D00D7AB9A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitRepository.swift; sourceTree = "<group>"; };
 		40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksPresenter.swift; path = Screens/Tasks/TasksPresenter.swift; sourceTree = "<group>"; };
 		40F5CC031CDC6B3A00249D66 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = App/Extensions/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractorTests.swift; path = App/TaskInteractorTests.swift; sourceTree = SOURCE_ROOT; };
@@ -368,6 +374,7 @@
 				2802E0D01C14BD2A00FA225F /* ScriptingBridge.framework in Frameworks */,
 				6D31D08F1AC2EB1B001AC4BA /* ApplicationServices.framework in Frameworks */,
 				6D31D0781AC2E8AE001AC4BA /* CFNetwork.framework in Frameworks */,
+				40D6DF731D0DE97D00D7AB9A /* CloudKit.framework in Frameworks */,
 				6D31D07A1AC2E8B7001AC4BA /* CoreGraphics.framework in Frameworks */,
 				6D31D07C1AC2E8BF001AC4BA /* CoreLocation.framework in Frameworks */,
 				6D31D0821AC2E8ED001AC4BA /* QuartzCore.framework in Frameworks */,
@@ -486,6 +493,7 @@
 				28E838FD1AF401A900602D33 /* Repository.swift */,
 				4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */,
 				56A68A9A1CC0CD0B0031CC0C /* CoreData */,
+				40D6DF741D0DF22D00D7AB9A /* CloudKit */,
 				28C02F541C007F3000B65478 /* InMemoryCoreData */,
 			);
 			name = External;
@@ -667,6 +675,15 @@
 			name = AppWireframe;
 			sourceTree = "<group>";
 		};
+		40D6DF741D0DF22D00D7AB9A /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */,
+			);
+			name = CloudKit;
+			path = External/CloudKit;
+			sourceTree = SOURCE_ROOT;
+		};
 		40F5CBF91CDB258A00249D66 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +718,7 @@
 		6D31D0431AC196BB001AC4BA = {
 			isa = PBXGroup;
 			children = (
+				40D6DF6D1D0D9A6300D7AB9A /* Jirassic.entitlements */,
 				28F51E6C1AC68E6D00A69CDF /* App */,
 				6D31D04E1AC196BB001AC4BA /* Delivery */,
 				289998A61AC3429500706824 /* External */,
@@ -765,6 +783,7 @@
 		6D31D0741AC2E439001AC4BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40D6DF721D0DE97D00D7AB9A /* CloudKit.framework */,
 				407BB9DA1D0C41010038B014 /* libc++.tbd */,
 				407BB9D81D0C40E80038B014 /* libicucore.tbd */,
 				2802E0CF1C14BD2A00FA225F /* ScriptingBridge.framework */,
@@ -926,6 +945,12 @@
 					};
 					6D31D04B1AC196BB001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5NHDC5EV44;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					6D31D0601AC196BC001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
@@ -1012,6 +1037,7 @@
 			files = (
 				286585191B031D3A00352782 /* AppDelegate.swift in Sources */,
 				2865856C1B054E3500352782 /* NonTaskCell.swift in Sources */,
+				40D6DF771D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */,
 				40BF53911CD61D6500626157 /* RegisterUserInteractor.swift in Sources */,
 				564177201C579FB200B893F3 /* Day.swift in Sources */,
 				5641771F1C579FA200B893F3 /* Week.swift in Sources */,
@@ -1081,6 +1107,7 @@
 				28F51E7A1AC694B000A69CDF /* ReadTasksInteractor.swift in Sources */,
 				285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */,
 				28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */,
+				40D6DF761D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */,
 				40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */,
 				40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */,
 				285424CB1C3431990063B532 /* Day.swift in Sources */,
@@ -1284,6 +1311,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Jirassic/Jirassic.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1300,8 +1330,9 @@
 				INFOPLIST_FILE = Jirassic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.jirassic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
 				PRODUCT_NAME = Jirassic;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				USER_HEADER_SEARCH_PATHS = "";
 			};

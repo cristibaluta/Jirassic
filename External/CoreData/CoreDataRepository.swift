@@ -88,7 +88,7 @@ extension CoreDataRepository {
                     issueType: ctask.issueType,
                     issueId: ctask.issueId,
                     taskType: ctask.taskType!,
-                    taskId: ctask.taskId
+                    taskId: ctask.taskId!
         )
     }
     
@@ -104,21 +104,15 @@ extension CoreDataRepository {
     
     private func ctaskFromTask (task: Task) -> CTask {
         
-        var ctask: CTask?
-        if let taskId = task.taskId {
-            let taskPredicate = NSPredicate(format: "taskId == %@", taskId)
-            let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
-            ctask = tasks.first
-        }
+        let taskPredicate = NSPredicate(format: "taskId == %@", task.taskId)
+        let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
+        var ctask: CTask? = tasks.first
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
                     inManagedObjectContext: managedObjectContext!) as? CTask
         }
         if ctask?.taskId == nil {
-            ctask?.taskId = String.random()
-        }
-        if ctask?.userId == nil {
-            ctask?.userId = currentUser().userId
+            ctask?.taskId = task.taskId
         }
         
         return updatedCTask(ctask!, withTask: task)
@@ -226,9 +220,6 @@ extension CoreDataRepository: Repository {
         
         guard let context = managedObjectContext else {
             return
-        }
-        guard let _ = task.taskId else {
-            fatalError("Can't delete a task without a taskId")
         }
         
         let ctask = ctaskFromTask(task)

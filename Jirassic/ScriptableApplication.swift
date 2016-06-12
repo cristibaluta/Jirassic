@@ -29,7 +29,7 @@ extension NSApplication {
 			issueType: nil,
 			issueId: issueId,
 			taskType: TaskType.GitCommit.rawValue,
-			taskId: nil
+			taskId: String.random()
 		)
         let saveInteractor = TaskInteractor(data: localRepository)
         saveInteractor.saveTask(task)

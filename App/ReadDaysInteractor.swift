@@ -22,6 +22,10 @@ class ReadDaysInteractor: RepositoryInteractor {
             self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
                 return task1.endDate.compare(task2.endDate) == .OrderedDescending
             }
+            
+            remoteRepository?.queryTasks(0, completion: { (tasks, error) in
+                
+            })
         })
 	}
 	
