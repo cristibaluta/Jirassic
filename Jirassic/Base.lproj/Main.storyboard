@@ -1285,16 +1285,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSQ-n3-2Jj">
-                                <rect key="frame" x="12" y="365" width="22" height="22"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSHomeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XkC-GJ-ULT">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleCancelButton:" target="DgQ-7j-FkI" id="smx-Wh-4lh"/>
-                                </connections>
-                            </button>
                             <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Rsu-az-0T9">
                                 <rect key="frame" x="349" y="83" width="16" height="16"/>
                             </progressIndicator>
@@ -1313,7 +1303,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="_butCancel" destination="dSQ-n3-2Jj" id="mNn-NA-ftL"/>
                         <outlet property="_butLogin" destination="roI-Pq-KB0" id="cuc-EM-0yd"/>
                         <outlet property="_emailTextField" destination="WHu-r4-8qi" id="rda-qp-b7B"/>
                         <outlet property="_label" destination="nsw-eR-tFQ" id="Pgd-M8-BJM"/>
@@ -1324,6 +1313,83 @@
                 <customObject id="UKw-kp-XCG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="96" y="714"/>
+        </scene>
+        <!--Cloud Kit Login View Controller-->
+        <scene sceneID="4N0-Zb-doT">
+            <objects>
+                <viewController storyboardIdentifier="CloudKitLoginViewController" id="PuF-si-uvp" customClass="CloudKitLoginViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2Km-il-V80">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULO-HA-inL">
+                                <rect key="frame" x="21" y="88" width="407" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="403" id="oRZ-lg-ysa"/>
+                                    <constraint firstAttribute="height" constant="68" id="osc-j5-4Qw"/>
+                                </constraints>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="dr3-Yn-2ii">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Sign in to your iCloud account to keep the data in sync with other devices. Launch Settings, tap iCloud, and enter your Apple ID. Turn iCloud Drive on. If you don't have an iCloud account, tap Create a new Apple ID.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fNH-n4-fXm">
+                                <rect key="frame" x="-2" y="191" width="454" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="xWU-OI-SeQ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Sign in to iCloud" id="itf-qQ-WBg">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rQ2-iz-OTA">
+                                <rect key="frame" x="33" y="63" width="214" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Continue in annonymous mode" id="dwf-q2-7Pf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9l-uc-UM5">
+                                <rect key="frame" x="33" y="19" width="214" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Sign in to iCloud" id="ixm-7c-tdb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jt3-SC-Ts9">
+                                <rect key="frame" x="253" y="48" width="52" height="46"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSUserGuest" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="gBF-da-zUX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xY-1p-ejP">
+                                <rect key="frame" x="253" y="8" width="52" height="39"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSMobileMe" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="Gfw-p5-477">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fNH-n4-fXm" firstAttribute="leading" secondItem="2Km-il-V80" secondAttribute="leading" id="AM3-mo-Oy4"/>
+                            <constraint firstItem="fNH-n4-fXm" firstAttribute="top" secondItem="2Km-il-V80" secondAttribute="top" constant="85" id="Ndb-1c-eRF"/>
+                            <constraint firstAttribute="trailing" secondItem="fNH-n4-fXm" secondAttribute="trailing" id="Xvw-wT-cOd"/>
+                            <constraint firstItem="ULO-HA-inL" firstAttribute="top" secondItem="fNH-n4-fXm" secondAttribute="bottom" constant="18" id="aYu-WO-eLv"/>
+                            <constraint firstItem="ULO-HA-inL" firstAttribute="leading" secondItem="2Km-il-V80" secondAttribute="leading" constant="23" id="w7h-l8-bUC"/>
+                            <constraint firstAttribute="trailing" secondItem="ULO-HA-inL" secondAttribute="trailing" constant="24" id="x4r-R7-CAr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="8Cv-I0-n97" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623" y="657"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="qnk-He-sUt">
@@ -1597,9 +1663,10 @@ Gw
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSMobileMe" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
+        <image name="NSUserGuest" width="32" height="32"/>
     </resources>
 </document>

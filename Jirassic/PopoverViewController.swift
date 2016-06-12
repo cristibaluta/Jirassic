@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CloudKit
 
 class PopoverViewController: NSViewController {
 	
@@ -17,7 +18,18 @@ class PopoverViewController: NSViewController {
 		
         appWireframe = AppDelegate.sharedApp().appWireframe
         appWireframe?.viewController = self
-        appWireframe?.presentTasksController()
+        
+        if let _ = remoteRepository {
+            CKContainer.defaultContainer().accountStatusWithCompletionHandler({ [weak self] (accountStatus, error) in
+                if accountStatus == .NoAccount {
+                    self?.appWireframe?.presentLoginController()
+                } else {
+                    self?.appWireframe?.presentTasksController()
+                }
+            })
+        } else {
+            appWireframe?.presentTasksController()
+        }
 //        let currentUser = UserInteractor(data: localRepository).currentUser()
 //		if currentUser.isLoggedIn {
 //            appWireframe?.presentTasksController()

@@ -58,7 +58,7 @@
                         <constraint firstAttribute="height" constant="20" id="5SV-30-Z5A"/>
                         <constraint firstAttribute="width" constant="20" id="pIA-R3-pwC"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -133,8 +133,8 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="Plus" width="15" height="15"/>
     </resources>
 </document>

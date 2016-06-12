@@ -135,6 +135,8 @@
 		40D6DF731D0DE97D00D7AB9A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D6DF721D0DE97D00D7AB9A /* CloudKit.framework */; };
 		40D6DF761D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */; };
 		40D6DF771D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */; };
+		40D6DF791D0E22C800D7AB9A /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6DF781D0E22C800D7AB9A /* CloudKitLoginViewController.swift */; };
+		40D6DF7A1D0E22C800D7AB9A /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D6DF781D0E22C800D7AB9A /* CloudKitLoginViewController.swift */; };
 		40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */; };
 		40F5CC041CDC6B3A00249D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC031CDC6B3A00249D66 /* ViewController.swift */; };
 		40F5CC501CDE346900249D66 /* TaskInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */; };
@@ -298,6 +300,7 @@
 		40D6DF6D1D0D9A6300D7AB9A /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Jirassic.entitlements; path = Jirassic/Jirassic.entitlements; sourceTree = "<group>"; };
 		40D6DF721D0DE97D00D7AB9A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		40D6DF751D0DF22D00D7AB9A /* CloudKitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitRepository.swift; sourceTree = "<group>"; };
+		40D6DF781D0E22C800D7AB9A /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitLoginViewController.swift; path = Screens/Login/CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksPresenter.swift; path = Screens/Tasks/TasksPresenter.swift; sourceTree = "<group>"; };
 		40F5CC031CDC6B3A00249D66 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = App/Extensions/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractorTests.swift; path = App/TaskInteractorTests.swift; sourceTree = SOURCE_ROOT; };
@@ -504,6 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				40BF53621CD618A700626157 /* LoginViewController.swift */,
+				40D6DF781D0E22C800D7AB9A /* CloudKitLoginViewController.swift */,
 				40BF53601CD6188000626157 /* LoginPresenter.swift */,
 			);
 			name = Login;
@@ -1061,6 +1065,7 @@
 				4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
 				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
 				28C02F791C009C9700B65478 /* ViewAutolayout.swift in Sources */,
+				40D6DF7A1D0E22C800D7AB9A /* CloudKitLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1087,7 @@
 				28E838FE1AF401A900602D33 /* Repository.swift in Sources */,
 				40BF537D1CD61ACF00626157 /* CellProtocol.swift in Sources */,
 				28C02F591C00801A00B65478 /* Task.swift in Sources */,
+				40D6DF791D0E22C800D7AB9A /* CloudKitLoginViewController.swift in Sources */,
 				4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
 				28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */,
 				406413A81CD9498A00C8E03D /* CUser.swift in Sources */,
