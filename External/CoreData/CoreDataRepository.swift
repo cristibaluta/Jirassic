@@ -12,8 +12,10 @@ import CoreData
 class CoreDataRepository {
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
+        RCLog(urls)
         return urls.last as NSURL!
+//        return (urls.last as NSURL!).URLByAppendingPathComponent("Jirassic")
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -59,7 +61,7 @@ class CoreDataRepository {
 
 extension CoreDataRepository {
     
-    private func queryWithPredicate<T:NSManagedObject> (predicate: NSPredicate, sortDescriptors: [NSSortDescriptor]?) -> [T] {
+    private func queryWithPredicate<T:NSManagedObject> (predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?) -> [T] {
         
         guard let context = managedObjectContext else {
             return []
@@ -187,9 +189,8 @@ extension CoreDataRepository: Repository {
     
     func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
         
-        let userPredicate = NSPredicate(format: "userId == nil")
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
-        let results: [CTask] = queryWithPredicate(userPredicate, sortDescriptors: sortDescriptors)
+        let results: [CTask] = queryWithPredicate(nil, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)
         
         completion(tasks, nil)
@@ -209,8 +210,8 @@ extension CoreDataRepository: Repository {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let userPredicate = NSPredicate(format: "lastModifiedDate == nil")
-        let results: [CTask] = queryWithPredicate(userPredicate, sortDescriptors: nil)
+        let predicate = NSPredicate(format: "lastModifiedDate == nil")
+        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         
         return tasks

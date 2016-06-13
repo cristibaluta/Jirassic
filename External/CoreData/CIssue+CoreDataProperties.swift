@@ -15,5 +15,6 @@ import CoreData
 extension CIssue {
 
     @NSManaged var issueType: String?
+    @NSManaged var issueId: String?
 
 }
