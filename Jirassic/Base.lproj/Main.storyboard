@@ -1420,7 +1420,7 @@
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="nbU-Rc-uag">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" red="0.94117647058823528" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" name="windowFrameColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
