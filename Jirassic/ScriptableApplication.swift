@@ -19,15 +19,14 @@ extension NSApplication {
         let comps = message.componentsSeparatedByString("::")
         RCLog(comps);
         let notes = comps.last!
-        var issueId = comps.first!
+        var taskNumber = comps.first!
         if comps.count < 2 {
-            issueId = ""
+            taskNumber = ""
         }
 		let task = Task(
 			endDate: NSDate(),
 			notes: notes,
-			issueType: nil,
-			issueId: issueId,
+			taskNumber: taskNumber,
 			taskType: TaskType.GitCommit.rawValue,
 			taskId: String.random()
 		)

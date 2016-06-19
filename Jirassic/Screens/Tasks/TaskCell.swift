@@ -36,14 +36,13 @@ class TaskCell: NSTableRowView, CellProtocol {
             let hm = NSDate.parseHHmm(self.dateEndTextField!.stringValue)
             let date = NSDate().dateByUpdatingHour(hm.hour, minute: hm.min)
 			return (dateEnd: date,
-					issueType: self.issueNrTextField!.stringValue,
-					issueId: "",
+					taskNumber: self.issueNrTextField!.stringValue,
 					notes: self.notesTextField!.stringValue)
 		}
 		set {
             _dateEnd = newValue.dateEnd.HHmm()
             self.dateEndTextField!.stringValue = _dateEnd
-			self.issueNrTextField!.stringValue = newValue.issueType
+			self.issueNrTextField!.stringValue = newValue.taskNumber
 			self.notesTextField!.stringValue = newValue.notes
 		}
 	}

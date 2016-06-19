@@ -27,7 +27,6 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		get {
 			return (NSDate(),
 					"",
-					"",
 					self.notesTextField!.stringValue)
 		}
 		set {

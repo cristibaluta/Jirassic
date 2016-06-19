@@ -16,7 +16,8 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var _dateLabel: NSTextField?
 	@IBOutlet private var _butRefresh: NSButton?
 	@IBOutlet private var _progressIndicator: NSProgressIndicator?
-	@IBOutlet private var butShare: NSButton?
+    @IBOutlet private var butGroup: NSButton?
+    @IBOutlet private var butAll: NSButton?
     
     var appWireframe: AppWireframe?
     var tasksPresenter: TasksPresenterInput?
@@ -68,9 +69,15 @@ class TasksViewController: NSViewController {
 		tasksPresenter?.reloadDataFromServer()
 	}
 	
-	@IBAction func handleShareButton (sender: NSButton) {
-		tasksPresenter?.createReport()
+	@IBAction func handleGroupButton (sender: NSButton) {
+        butGroup?.bordered = true
+        butAll?.bordered = false
 	}
+    
+    @IBAction func handleAllButton (sender: NSButton) {
+        butGroup?.bordered = false
+        butAll?.bordered = true
+    }
 }
 
 extension TasksViewController: TasksPresenterOutput {

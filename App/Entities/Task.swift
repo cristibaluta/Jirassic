@@ -35,8 +35,7 @@ struct Task {
 	
 	var endDate: NSDate
 	var notes: String?
-	var issueType: String?
-	var issueId: String?
+	var taskNumber: String?
 	var taskType: NSNumber
 	var taskId: String
 }
@@ -52,7 +51,7 @@ extension Task {
 	init (dateEnd: NSDate, type: TaskType) {
 		
 		self.endDate = dateEnd
-		self.issueType = nil
+		self.taskNumber = nil
 		self.taskType = type.rawValue
         self.taskId = String.random()
 		
@@ -83,7 +82,6 @@ extension Task {
 
 typealias TaskCreationData = (
     dateEnd: NSDate,
-    issueType: String,
-    issueId: String,
+    taskNumber: String,
     notes: String
 )

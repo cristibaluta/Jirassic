@@ -134,8 +134,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         var task = Task(subtype: TaskSubtype.IssueEnd)
         task.notes = taskData.notes
-        task.issueType = taskData.issueType
-        task.issueId = taskData.issueId
+        task.taskNumber = taskData.taskNumber
         task.endDate = taskData.dateEnd
         
         let saveInteractor = TaskInteractor(data: localRepository)

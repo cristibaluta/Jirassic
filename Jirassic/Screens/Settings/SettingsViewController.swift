@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CloudKit
 
 class SettingsViewController: NSViewController {
 	
@@ -32,9 +33,18 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let user = UserInteractor().currentUser()
-        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
-        emailTextField?.stringValue = user.email!
+        let container = CKContainer.defaultContainer()
+        container.fetchUserRecordIDWithCompletionHandler() {
+            recordID, error in
+            print("fetched ID \(recordID?.recordName)")
+            container.discoverUserInfoWithUserRecordID(recordID!, completionHandler: { (userInfo, error) in
+                print(userInfo)
+            })
+        }
+        
+//		let user = UserInteractor().currentUser()
+//        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
+//        emailTextField?.stringValue = user.email!
     }
 	
 	

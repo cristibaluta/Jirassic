@@ -10,7 +10,6 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
-	@IBOutlet private var issueTypeComboBox: NSComboBox?
 	@IBOutlet private var issueIdTextField: NSTextField?
 	@IBOutlet private var notesTextField: NSTextField?
 	@IBOutlet private var startDateTextField: NSTextField?
@@ -40,15 +39,7 @@ class NewTaskViewController: NSViewController {
 			self.notesTextField?.stringValue = newValue
 		}
 	}
-	var issueType: String {
-		get {
-			return issueTypeComboBox!.stringValue
-		}
-		set {
-			self.issueTypeComboBox?.stringValue = newValue
-		}
-	}
-	var issueId: String {
+	var taskNumber: String {
 		get {
 			return issueIdTextField!.stringValue
 		}
@@ -81,8 +72,7 @@ class NewTaskViewController: NSViewController {
         
         let taskData = TaskCreationData(
             dateEnd: date,
-            issueType: issueType,
-            issueId: issueId,
+            taskNumber: taskNumber,
             notes: notes
         )
         self.onOptionChosen?(taskData: taskData)
@@ -91,16 +81,6 @@ class NewTaskViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        issueTypeComboBox?.usesDataSource = true
-        issueTypeComboBox?.setDelegate(self)
-        issueTypeComboBox?.dataSource = self
-        issueTypeComboBox?.completes = true
-        
-        let issuesReader = IssuesInteractor(data: localRepository)
-        issuesReader.allIssues { (issues) in
-            self.issueTypes = issues
-            self.issueTypeComboBox?.reloadData()
-        }
     }
 }
 

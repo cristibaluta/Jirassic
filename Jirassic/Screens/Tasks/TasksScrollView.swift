@@ -101,7 +101,7 @@ extension TasksScrollView: NSTableViewDelegate {
         
         cell.didEndEditingCell = { [weak self] (cell: CellProtocol) in
             let updatedData = cell.data
-            theData.issueType = updatedData.issueType
+            theData.taskNumber = updatedData.taskNumber
             theData.notes = updatedData.notes
             theData.endDate = updatedData.dateEnd
             self?.data[row] = theData// save the changes locally because the struct is passed by copying

@@ -48,8 +48,7 @@ class TaskCellPresenter: NSObject {
 		
 		cell?.data = (
 			dateEnd: theData.endDate,
-			issueType: theData.issueType ?? "",
-			issueId: theData.issueId ?? "",
+			taskNumber: theData.taskNumber ?? "",
 			notes: theData.notes ?? ""
 		)
 		cell?.duration = duration

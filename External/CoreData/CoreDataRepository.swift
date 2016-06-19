@@ -87,8 +87,7 @@ extension CoreDataRepository {
         
         return Task(endDate: ctask.endDate!,
                     notes: ctask.notes,
-                    issueType: ctask.issueType,
-                    issueId: ctask.issueId,
+                    taskNumber: ctask.taskNumber,
                     taskType: ctask.taskType!,
                     taskId: ctask.taskId!
         )
@@ -123,8 +122,7 @@ extension CoreDataRepository {
     // Update only updatable properties. taskId can't be updated
     private func updatedCTask (ctask: CTask, withTask task: Task) -> CTask {
         
-        ctask.issueId = task.issueId
-        ctask.issueType = task.issueType
+        ctask.taskNumber = task.taskNumber
         ctask.taskType = task.taskType
         ctask.notes = task.notes
         ctask.endDate = task.endDate
@@ -235,18 +233,5 @@ extension CoreDataRepository: Repository {
         saveContext()
         
         return taskFromCTask(ctask)
-    }
-    
-    
-    // MARK: Issue
-    
-    func queryIssues (successBlock: [String] -> Void, errorBlock: NSError? -> Void) {
-        
-        let issues = ["BOSCH-33 Refactoring", "BOSCH-35 Redesign", "BOSCH-30 Internal meeting"]
-        successBlock(issues)
-    }
-    
-    func saveIssue (issue: String) {
-        
     }
 }

@@ -106,8 +106,6 @@
 		407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
-		40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */; };
-		40BF535F1CD6175800626157 /* CIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF535B1CD6175800626157 /* CIssue.swift */; };
 		40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53601CD6188000626157 /* LoginPresenter.swift */; };
 		40BF53631CD618A700626157 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53621CD618A700626157 /* LoginViewController.swift */; };
 		40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53661CD61ACF00626157 /* DatesScrollView.swift */; };
@@ -122,9 +120,6 @@
 		40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53711CD61ACF00626157 /* TasksScrollView.swift */; };
 		40BF537F1CD61ACF00626157 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53721CD61ACF00626157 /* TasksViewController.swift */; };
 		40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53801CD61BB400626157 /* TaskFinder.swift */; };
-		40BF53841CD61BD400626157 /* IssuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53821CD61BD400626157 /* IssuesInteractor.swift */; };
-		40BF53851CD61BD400626157 /* IssuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53821CD61BD400626157 /* IssuesInteractor.swift */; };
-		40BF53881CD61BDA00626157 /* IssuesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53831CD61BD400626157 /* IssuesInteractorTests.swift */; };
 		40BF538D1CD61D3F00626157 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF538A1CD61D3F00626157 /* ReadDaysInteractor.swift */; };
 		40BF538E1CD61D3F00626157 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF538A1CD61D3F00626157 /* ReadDaysInteractor.swift */; };
 		40BF53901CD61D5C00626157 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */; };
@@ -275,8 +270,6 @@
 		407BB9DA1D0C41010038B014 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
-		40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CIssue+CoreDataProperties.swift"; path = "../External/CoreData/CIssue+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		40BF535B1CD6175800626157 /* CIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CIssue.swift; path = ../External/CoreData/CIssue.swift; sourceTree = "<group>"; };
 		40BF53601CD6188000626157 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = Screens/Login/LoginPresenter.swift; sourceTree = "<group>"; };
 		40BF53621CD618A700626157 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Screens/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		40BF53661CD61ACF00626157 /* DatesScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatesScrollView.swift; path = Screens/Tasks/DatesScrollView.swift; sourceTree = "<group>"; };
@@ -291,8 +284,6 @@
 		40BF53711CD61ACF00626157 /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksScrollView.swift; path = Screens/Tasks/TasksScrollView.swift; sourceTree = "<group>"; };
 		40BF53721CD61ACF00626157 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TasksViewController.swift; path = Screens/Tasks/TasksViewController.swift; sourceTree = "<group>"; };
 		40BF53801CD61BB400626157 /* TaskFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskFinder.swift; path = App/TaskFinder.swift; sourceTree = SOURCE_ROOT; };
-		40BF53821CD61BD400626157 /* IssuesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssuesInteractor.swift; path = App/IssuesInteractor.swift; sourceTree = SOURCE_ROOT; };
-		40BF53831CD61BD400626157 /* IssuesInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IssuesInteractorTests.swift; path = App/IssuesInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		40BF538A1CD61D3F00626157 /* ReadDaysInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadDaysInteractor.swift; path = App/ReadDaysInteractor.swift; sourceTree = SOURCE_ROOT; };
 		40BF538F1CD61D5C00626157 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterUserInteractor.swift; path = App/RegisterUserInteractor.swift; sourceTree = SOURCE_ROOT; };
 		40BF53921CD61D8000626157 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PredictiveTimeTypingTests.swift; path = App/PredictiveTimeTypingTests.swift; sourceTree = SOURCE_ROOT; };
@@ -582,15 +573,6 @@
 			path = ../External/InMemoryStorage;
 			sourceTree = "<group>";
 		};
-		28C02F7C1C009FB800B65478 /* Issues */ = {
-			isa = PBXGroup;
-			children = (
-				40BF53821CD61BD400626157 /* IssuesInteractor.swift */,
-				40BF53831CD61BD400626157 /* IssuesInteractorTests.swift */,
-			);
-			name = Issues;
-			sourceTree = "<group>";
-		};
 		28C02F7D1C00A11400B65478 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,7 +618,6 @@
 				289E2AE71B2D687F003269A3 /* Entities */,
 				286E9A391C1C3FC8008FC45E /* Reports */,
 				28C02F7D1C00A11400B65478 /* User */,
-				28C02F7C1C009FB800B65478 /* Issues */,
 				289E2AC61B2B6D21003269A3 /* Tasks */,
 				28F51EC41AC8059400A69CDF /* Extensions */,
 				286E9A3C1C1C4479008FC45E /* Time */,
@@ -713,8 +694,6 @@
 				406413A51CD9498A00C8E03D /* CUser.swift */,
 				40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */,
 				40BF53591CD6175800626157 /* CTask.swift */,
-				40BF535A1CD6175800626157 /* CIssue+CoreDataProperties.swift */,
-				40BF535B1CD6175800626157 /* CIssue.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1059,7 +1038,6 @@
 				40F5CC531CDE349100249D66 /* TaskInteractor.swift in Sources */,
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
 				28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */,
-				40BF53851CD61BD400626157 /* IssuesInteractor.swift in Sources */,
 				406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
 				2894F1CB1B076EAE0095DD17 /* ReadTasksInteractor.swift in Sources */,
 				4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
@@ -1105,7 +1083,6 @@
 				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
 				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
 				406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */,
-				40BF535E1CD6175800626157 /* CIssue+CoreDataProperties.swift in Sources */,
 				406413951CD71E2D00C8E03D /* SettingsViewController.swift in Sources */,
 				28EB905D1AF73FD4008D5337 /* TaskTypeEstimator.swift in Sources */,
 				40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */,
@@ -1128,7 +1105,6 @@
 				40F5CC041CDC6B3A00249D66 /* ViewController.swift in Sources */,
 				40BF53631CD618A700626157 /* LoginViewController.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
-				40BF535F1CD6175800626157 /* CIssue.swift in Sources */,
 				40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */,
 				40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */,
 				282426761B113D5000211713 /* FlipAnimation.swift in Sources */,
@@ -1142,7 +1118,6 @@
 				40BF535D1CD6175800626157 /* CTask.swift in Sources */,
 				289998A91AC3BDF200706824 /* MenuBarController.swift in Sources */,
 				406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
-				40BF53841CD61BD400626157 /* IssuesInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,7 +1128,6 @@
 				28B71CBD1B28EC9400E44161 /* TaskTypeEstimatorTests.swift in Sources */,
 				40BF53931CD61D8000626157 /* PredictiveTimeTypingTests.swift in Sources */,
 				28778A581BB9B9A9003E4880 /* TaskTests.swift in Sources */,
-				40BF53881CD61BDA00626157 /* IssuesInteractorTests.swift in Sources */,
 				2851268B1BAB42A100D668F2 /* TaskCellTests.swift in Sources */,
 				28F292271B1C57B40015F64F /* CreateReportTests.swift in Sources */,
 				28E839111AF4974D00602D33 /* RCLog.swift in Sources */,

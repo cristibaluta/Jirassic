@@ -666,22 +666,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <accessibility description="Settings" identifier="Settings"/>
                                 <connections>
                                     <action selector="handleSettingsButton:" target="wHU-IX-gfU" id="WAP-fv-TY8"/>
-                                </connections>
-                            </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="DgU-la-ICp">
-                                <rect key="frame" x="430" y="400" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="8ap-zp-dxa"/>
-                                    <constraint firstAttribute="height" constant="22" id="YfM-P3-7SH"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="w9M-4W-E8w">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleShareButton:" target="wHU-IX-gfU" id="EQ7-Tp-iYC"/>
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="w7V-wd-0Hx">
@@ -690,10 +677,11 @@
                                     <constraint firstAttribute="width" constant="22" id="g6F-ko-67g"/>
                                     <constraint firstAttribute="height" constant="22" id="sXd-km-7cL"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="mZE-V7-N4P">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="mZE-V7-N4P">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <accessibility description="Sync" identifier="Sync"/>
                                 <connections>
                                     <action selector="handleRefreshButton:" target="wHU-IX-gfU" id="pk4-4Z-QSN"/>
                                 </connections>
@@ -901,16 +889,38 @@
                                     <real value="250"/>
                                 </holdingPriorities>
                             </splitView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uQf-4E-jQD">
+                                <rect key="frame" x="430" y="402" width="27" height="17"/>
+                                <buttonCell key="cell" type="inline" title="All" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="2S7-cz-amj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleAllButton:" target="wHU-IX-gfU" id="oHh-M6-rwn"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q6m-xX-c1w">
+                                <rect key="frame" x="336" y="403" width="90" height="16"/>
+                                <buttonCell key="cell" type="inline" title="Group by task" bezelStyle="inline" alignment="center" inset="2" id="pxe-gB-O1B">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleGroupButton:" target="wHU-IX-gfU" id="fTY-Re-cS0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sOM-pv-IVs" secondAttribute="trailing" constant="9" id="6OB-gH-BBZ"/>
+                            <constraint firstItem="uQf-4E-jQD" firstAttribute="centerY" secondItem="sOM-pv-IVs" secondAttribute="centerY" id="D2q-w1-tKV"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="IOj-nH-o5u"/>
-                            <constraint firstItem="DgU-la-ICp" firstAttribute="centerY" secondItem="sOM-pv-IVs" secondAttribute="centerY" id="Mn0-bc-JLK"/>
-                            <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="DgU-la-ICp" secondAttribute="trailing" constant="8" id="THO-0u-Rev"/>
+                            <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="uQf-4E-jQD" secondAttribute="trailing" constant="3" id="OCl-IQ-2jI"/>
                             <constraint firstAttribute="trailing" secondItem="pVs-CS-Pcx" secondAttribute="trailing" id="Txh-8R-Xmj"/>
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerX" secondItem="R3S-KZ-qb3" secondAttribute="centerX" id="YeC-2t-kXT"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="c6a-uG-6en"/>
+                            <constraint firstItem="q6m-xX-c1w" firstAttribute="centerY" secondItem="uQf-4E-jQD" secondAttribute="centerY" id="g4e-0E-kxH"/>
                             <constraint firstItem="w7V-wd-0Hx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="iYk-nj-0Eb"/>
+                            <constraint firstItem="uQf-4E-jQD" firstAttribute="leading" secondItem="q6m-xX-c1w" secondAttribute="trailing" constant="4" id="itR-RY-0cu"/>
                             <constraint firstAttribute="bottom" secondItem="pVs-CS-Pcx" secondAttribute="bottom" id="jOP-OI-xoU"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="60" id="kgn-ml-hof"/>
                             <constraint firstAttribute="trailing" secondItem="SJz-Xr-YhG" secondAttribute="trailing" constant="12" id="leq-Tf-xCq"/>
@@ -924,7 +934,8 @@
                         <outlet property="_butRefresh" destination="w7V-wd-0Hx" id="zfd-TW-d3L"/>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
                         <outlet property="_progressIndicator" destination="R3S-KZ-qb3" id="6Zu-Hu-9Jl"/>
-                        <outlet property="butShare" destination="DgU-la-ICp" id="MEr-sT-GzJ"/>
+                        <outlet property="butAll" destination="uQf-4E-jQD" id="Dxm-gv-b5i"/>
+                        <outlet property="butGroup" destination="q6m-xX-c1w" id="5W1-td-rbs"/>
                         <outlet property="datesScrollView" destination="TP3-Rr-lmx" id="ZUj-Jx-jHU"/>
                         <outlet property="splitView" destination="pVs-CS-Pcx" id="cl7-Lo-9AU"/>
                         <outlet property="tasksScrollView" destination="VwR-9G-9tZ" id="KgZ-p8-Q32"/>
@@ -1553,14 +1564,6 @@
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-FB-h26">
-                                <rect key="frame" x="10" y="365" width="74" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Issue:" id="1Tz-bS-qXb">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" red="0.0028208389935042346" green="0.63105710011360616" blue="0.67762881517410278" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qmm-dh-euc">
                                 <rect key="frame" x="103" y="275" width="336" height="60"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="QGE-cg-AaN">
@@ -1625,23 +1628,9 @@ Gw
                                     <outlet property="delegate" destination="2VM-Zw-qp9" id="DlW-rM-25G"/>
                                 </connections>
                             </textField>
-                            <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-vr-vuu">
-                                <rect key="frame" x="105" y="362" width="335" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="oMI-V8-qwT"/>
-                                </constraints>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="Issue name" drawsBackground="YES" buttonBordered="NO" numberOfVisibleItems="12" id="2Id-jj-e6x">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
-                                </comboBoxCell>
-                            </comboBox>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ZRY-yy-MGB" firstAttribute="top" secondItem="uNj-CH-ggG" secondAttribute="top" constant="226" id="1ec-6c-vHA"/>
-                            <constraint firstItem="RUj-vr-vuu" firstAttribute="top" secondItem="uNj-CH-ggG" secondAttribute="top" constant="9" id="FKv-jj-o6F"/>
-                            <constraint firstAttribute="trailing" secondItem="RUj-vr-vuu" secondAttribute="trailing" constant="13" id="IBF-63-ANh"/>
-                            <constraint firstItem="RUj-vr-vuu" firstAttribute="leading" secondItem="uNj-CH-ggG" secondAttribute="leading" constant="105" id="Ifd-Lt-7S3"/>
                             <constraint firstItem="ZRY-yy-MGB" firstAttribute="leading" secondItem="uNj-CH-ggG" secondAttribute="leading" constant="12" id="OtR-6B-YfN"/>
                             <constraint firstAttribute="trailing" secondItem="ZRY-yy-MGB" secondAttribute="trailing" constant="13" id="ZkR-oC-wWJ"/>
                             <constraint firstAttribute="bottom" secondItem="WqX-WL-iN6" secondAttribute="bottom" constant="20" id="bXO-pa-pzr"/>
@@ -1652,7 +1641,6 @@ Gw
                         <outlet property="durationTextField" destination="EO1-hJ-BgS" id="Ioa-R7-b7S"/>
                         <outlet property="endDateTextField" destination="UZY-4V-W4J" id="Ip3-LZ-Ds6"/>
                         <outlet property="issueIdTextField" destination="7eN-co-UsJ" id="qI7-Wd-zma"/>
-                        <outlet property="issueTypeComboBox" destination="RUj-vr-vuu" id="ySE-L5-bn6"/>
                         <outlet property="notesTextField" destination="Qmm-dh-euc" id="fGQ-Ib-9g1"/>
                     </connections>
                 </viewController>
@@ -1665,7 +1653,6 @@ Gw
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSMobileMe" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSShareTemplate" width="11" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
         <image name="NSUserGuest" width="32" height="32"/>
     </resources>

@@ -18,9 +18,8 @@ extension CTask {
     @NSManaged var creationDate: NSDate?
     @NSManaged var endDate: NSDate?
     @NSManaged var notes: String?
-    @NSManaged var issueType: String?
+    @NSManaged var taskNumber: String?
     @NSManaged var taskType: NSNumber?
-    @NSManaged var issueId: String?
     @NSManaged var taskId: String?
 
 }
