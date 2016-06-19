@@ -78,6 +78,10 @@ class TasksViewController: NSViewController {
         butGroup?.bordered = false
         butAll?.bordered = true
     }
+    
+    @IBAction func handleQuitAppButton (sender: NSButton) {
+        NSApplication.sharedApplication().terminate(nil)
+    }
 }
 
 extension TasksViewController: TasksPresenterOutput {

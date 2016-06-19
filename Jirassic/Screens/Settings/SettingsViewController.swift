@@ -14,7 +14,6 @@ class SettingsViewController: NSViewController {
 	@IBOutlet private var emailTextField: NSTextField?
 	@IBOutlet private var passwordTextField: NSTextField?
     @IBOutlet private var butLogin: NSButton?
-    @IBOutlet private var butQuit: NSButton?
 	@IBOutlet private var progressIndicator: NSProgressIndicator?
     
     weak var appWireframe: AppWireframe?
@@ -34,12 +33,20 @@ class SettingsViewController: NSViewController {
         super.viewDidLoad()
 		
         let container = CKContainer.defaultContainer()
-        container.fetchUserRecordIDWithCompletionHandler() {
-            recordID, error in
-            print("fetched ID \(recordID?.recordName)")
-            container.discoverUserInfoWithUserRecordID(recordID!, completionHandler: { (userInfo, error) in
-                print(userInfo)
-            })
+        container.requestApplicationPermission(.UserDiscoverability) { (status, error) in
+            guard error == nil else { return }
+            
+            if status == CKApplicationPermissionStatus.Granted {
+                container.fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+                    guard error == nil else { return }
+                    guard let recordID = recordID else { return }
+                    
+                    container.discoverUserInfoWithUserRecordID(recordID) { (info, fetchError) in
+                        // use info.firstName and info.lastName however you need
+                        print(info)
+                    }
+                }
+            }
         }
         
 //		let user = UserInteractor().currentUser()
@@ -57,10 +64,6 @@ class SettingsViewController: NSViewController {
 	@IBAction func handleSaveButton (sender: NSButton) {
 		appWireframe?.flipToTasksController()
 	}
-	
-    @IBAction func handleQuitAppButton (sender: NSButton) {
-        NSApplication.sharedApplication().terminate(nil)
-    }
 }
 
 extension SettingsViewController: SettingsPresenterOutput {
