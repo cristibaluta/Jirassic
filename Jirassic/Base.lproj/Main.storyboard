@@ -671,24 +671,6 @@
                                     <action selector="handleSettingsButton:" target="wHU-IX-gfU" id="WAP-fv-TY8"/>
                                 </connections>
                             </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="w7V-wd-0Hx">
-                                <rect key="frame" x="235" y="400" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="g6F-ko-67g"/>
-                                    <constraint firstAttribute="height" constant="22" id="sXd-km-7cL"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="mZE-V7-N4P">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <accessibility description="Sync" identifier="Sync"/>
-                                <connections>
-                                    <action selector="handleRefreshButton:" target="wHU-IX-gfU" id="pk4-4Z-QSN"/>
-                                </connections>
-                            </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="R3S-KZ-qb3">
-                                <rect key="frame" x="238" y="403" width="16" height="16"/>
-                            </progressIndicator>
                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SJz-Xr-YhG">
                                 <rect key="frame" x="12" y="379" width="467" height="5"/>
                                 <constraints>
@@ -889,33 +871,13 @@
                                     <real value="250"/>
                                 </holdingPriorities>
                             </splitView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uQf-4E-jQD">
-                                <rect key="frame" x="403" y="402" width="27" height="17"/>
-                                <buttonCell key="cell" type="inline" title="All" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="2S7-cz-amj">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleAllButton:" target="wHU-IX-gfU" id="oHh-M6-rwn"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q6m-xX-c1w">
-                                <rect key="frame" x="308" y="404" width="90" height="14"/>
-                                <buttonCell key="cell" type="inline" title="Group by task" bezelStyle="inline" alignment="center" inset="2" id="pxe-gB-O1B">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleGroupButton:" target="wHU-IX-gfU" id="fTY-Re-cS0"/>
-                                </connections>
-                            </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="rhx-UQ-KmF">
                                 <rect key="frame" x="463" y="400" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="UPH-5F-Pfw"/>
                                     <constraint firstAttribute="height" constant="22" id="nf4-3J-Lbd"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusUnavailable" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="At4-An-7dD">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="At4-An-7dD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -923,35 +885,36 @@
                                     <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="1xF-Xg-9zG"/>
                                 </connections>
                             </button>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95a-7I-VNJ">
+                                <rect key="frame" x="141" y="399" width="210" height="23"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="fYS-Rm-Q7V">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="All" width="68"/>
+                                        <segment label="Grouped" width="67" selected="YES" tag="1"/>
+                                        <segment label="Rounded" width="67"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="95a-7I-VNJ" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="BIc-JC-FRc"/>
                             <constraint firstAttribute="trailing" secondItem="rhx-UQ-KmF" secondAttribute="trailing" constant="6" id="C9o-ox-QWg"/>
-                            <constraint firstItem="uQf-4E-jQD" firstAttribute="centerY" secondItem="sOM-pv-IVs" secondAttribute="centerY" id="D2q-w1-tKV"/>
                             <constraint firstItem="rhx-UQ-KmF" firstAttribute="leading" secondItem="sOM-pv-IVs" secondAttribute="trailing" constant="1" id="FJ1-Dh-xdc"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="IOj-nH-o5u"/>
-                            <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="uQf-4E-jQD" secondAttribute="trailing" constant="10" id="OCl-IQ-2jI"/>
                             <constraint firstAttribute="trailing" secondItem="pVs-CS-Pcx" secondAttribute="trailing" id="Txh-8R-Xmj"/>
                             <constraint firstItem="rhx-UQ-KmF" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="Xmr-U7-0TU"/>
-                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerX" secondItem="R3S-KZ-qb3" secondAttribute="centerX" id="YeC-2t-kXT"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="c6a-uG-6en"/>
-                            <constraint firstItem="q6m-xX-c1w" firstAttribute="centerY" secondItem="uQf-4E-jQD" secondAttribute="centerY" id="g4e-0E-kxH"/>
-                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="iYk-nj-0Eb"/>
-                            <constraint firstItem="uQf-4E-jQD" firstAttribute="leading" secondItem="q6m-xX-c1w" secondAttribute="trailing" constant="5" id="itR-RY-0cu"/>
                             <constraint firstAttribute="bottom" secondItem="pVs-CS-Pcx" secondAttribute="bottom" id="jOP-OI-xoU"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="60" id="kgn-ml-hof"/>
+                            <constraint firstItem="95a-7I-VNJ" firstAttribute="centerX" secondItem="FwC-dy-0bY" secondAttribute="centerX" id="lHI-TJ-Zn1"/>
                             <constraint firstAttribute="trailing" secondItem="SJz-Xr-YhG" secondAttribute="trailing" constant="12" id="leq-Tf-xCq"/>
-                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerX" secondItem="FwC-dy-0bY" secondAttribute="centerX" id="oU0-C6-UTn"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="62" id="rPW-Au-hGz"/>
-                            <constraint firstItem="w7V-wd-0Hx" firstAttribute="centerY" secondItem="R3S-KZ-qb3" secondAttribute="centerY" id="rq8-PK-2xH"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="xh1-lJ-1K2"/>
                         </constraints>
                     </customView>
                     <connections>
-                        <outlet property="_butRefresh" destination="w7V-wd-0Hx" id="zfd-TW-d3L"/>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
-                        <outlet property="_progressIndicator" destination="R3S-KZ-qb3" id="6Zu-Hu-9Jl"/>
-                        <outlet property="butAll" destination="uQf-4E-jQD" id="Dxm-gv-b5i"/>
-                        <outlet property="butGroup" destination="q6m-xX-c1w" id="5W1-td-rbs"/>
                         <outlet property="datesScrollView" destination="TP3-Rr-lmx" id="ZUj-Jx-jHU"/>
                         <outlet property="splitView" destination="pVs-CS-Pcx" id="cl7-Lo-9AU"/>
                         <outlet property="tasksScrollView" destination="VwR-9G-9tZ" id="KgZ-p8-Q32"/>
@@ -1512,6 +1475,19 @@
             </objects>
             <point key="canvasLocation" x="77" y="-782"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="cm9-ck-QOK">
+            <objects>
+                <viewController id="iaY-ro-C5e" sceneMemberID="viewController">
+                    <view key="view" id="msN-JB-seW">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Ub3-7n-fsG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="-783"/>
+        </scene>
         <!--New Task View Controller-->
         <scene sceneID="M3u-7D-JEH">
             <objects>
@@ -1696,8 +1672,7 @@ Gw
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSMobileMe" width="32" height="32"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSStatusUnavailable" width="16" height="16"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="NSUserGuest" width="32" height="32"/>
     </resources>
 </document>

@@ -14,10 +14,6 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var datesScrollView: DatesScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
 	@IBOutlet private var _dateLabel: NSTextField?
-	@IBOutlet private var _butRefresh: NSButton?
-	@IBOutlet private var _progressIndicator: NSProgressIndicator?
-    @IBOutlet private var butGroup: NSButton?
-    @IBOutlet private var butAll: NSButton?
     
     var appWireframe: AppWireframe?
     var tasksPresenter: TasksPresenterInput?
@@ -69,15 +65,9 @@ class TasksViewController: NSViewController {
 		tasksPresenter?.reloadDataFromServer()
 	}
 	
-	@IBAction func handleGroupButton (sender: NSButton) {
-        butGroup?.bordered = true
-        butAll?.bordered = false
+	@IBAction func handleSegmentedControl (sender: NSSegmentedControl) {
+        
 	}
-    
-    @IBAction func handleAllButton (sender: NSButton) {
-        butGroup?.bordered = false
-        butAll?.bordered = true
-    }
     
     @IBAction func handleQuitAppButton (sender: NSButton) {
         NSApplication.sharedApplication().terminate(nil)
@@ -87,12 +77,7 @@ class TasksViewController: NSViewController {
 extension TasksViewController: TasksPresenterOutput {
     
     func showLoadingIndicator (show: Bool) {
-        if show {
-            _progressIndicator?.startAnimation(nil)
-        } else {
-            _progressIndicator?.stopAnimation(nil)
-        }
-        self._butRefresh?.hidden = show
+        
     }
     
     func showMessage (message: MessageViewModel) {
