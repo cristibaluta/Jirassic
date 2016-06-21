@@ -16,7 +16,9 @@ extension NSApplication {
 	
 	func setTasks (json: String) {
         
-        if let data = json.dataUsingEncoding(NSUTF8StringEncoding) {
+        RCLog(json)
+        let validJson = json.stringByReplacingOccurrencesOfString("'", withString: "\"")
+        if let data = validJson.dataUsingEncoding(NSUTF8StringEncoding) {
             do {
                 guard let dict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: String] else {
                     return
