@@ -58,14 +58,17 @@ class CreateReport: NSObject {
 		}
 		// Handle the last task and add the remaining time
 		var task = tasks.last!
-		task.endDate = tasks.first!.endDate.dateByAddingTimeInterval(kEightHoursInSeconds+self.lunchDuration)
+		task.endDate = tasks.first!.endDate.dateByAddingTimeInterval(kEightHoursInSeconds + self.lunchDuration)
 		RCLog(task)
 		tasks[tasks.count-1] = task
-		
 	}
 	
-	func groupByTaskId() {
-		
+	private func groupByTaskId() {
+        var taskNumbers = [String]()
+        for task in tasks {
+            print(task)
+//            taskNumbers.append(task.taskNumber!)
+        }
 	}
 	
 	var lunchDuration: NSTimeInterval {

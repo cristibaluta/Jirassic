@@ -13,7 +13,8 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var splitView: NSSplitView?
 	@IBOutlet private var datesScrollView: DatesScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
-	@IBOutlet private var _dateLabel: NSTextField?
+    @IBOutlet private var _dateLabel: NSTextField?
+    @IBOutlet private var listSegmentedControl: NSSegmentedControl?
     
     var appWireframe: AppWireframe?
     var tasksPresenter: TasksPresenterInput?
@@ -28,7 +29,7 @@ class TasksViewController: NSViewController {
 		registerForNotifications()
         
         datesScrollView?.didSelectDay = { [weak self] (day: Day) in
-            self?.tasksPresenter?.reloadTasksOnDay(day.date)
+            self?.tasksPresenter?.reloadTasksOnDay(day.date, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
         }
         
         tasksScrollView?.didRemoveRow = { [weak self] (row: Int) in
@@ -61,12 +62,9 @@ class TasksViewController: NSViewController {
 		appWireframe?.flipToSettingsController()
 	}
 	
-	@IBAction func handleRefreshButton (sender: NSButton) {
-		tasksPresenter?.reloadDataFromServer()
-	}
-	
 	@IBAction func handleSegmentedControl (sender: NSSegmentedControl) {
-        
+        RCLog(sender.selectedSegment)
+        tasksPresenter?.reloadTasksOnDay(NSDate(), listType: ListType(rawValue: sender.selectedSegment)!)
 	}
     
     @IBAction func handleQuitAppButton (sender: NSButton) {
@@ -136,14 +134,6 @@ extension TasksViewController {
 	}
 	
 	func newTaskWasAdded (notif: NSNotification) {
-		
         tasksPresenter?.reloadData()
-//		if let task = notif.object as? Task {
-//			self.tasksScrollView?.addTask( task )
-//			self.tasksScrollView?.tableView?.insertRowsAtIndexes(NSIndexSet(index: 0),
-//				withAnimation: NSTableViewAnimationOptions.SlideUp)
-//			self.tasksScrollView?.tableView?.scrollRowToVisible( 0 )
-//			tasksPresenter?.updateNoTasksState()
-//		}
 	}
 }

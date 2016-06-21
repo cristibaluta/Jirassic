@@ -12,10 +12,8 @@ protocol TasksPresenterInput {
     
     func refreshUI()
     func reloadData()
-    func reloadDataFromServer()
-    func reloadTasksOnDay (date: NSDate)
+    func reloadTasksOnDay (date: NSDate, listType: ListType)
     func updateNoTasksState()
-    func createReport()
     func messageButtonDidPress()
     func startDay()
     func insertTaskWithData (taskData: TaskCreationData)
@@ -33,12 +31,19 @@ protocol TasksPresenterOutput {
     func presentNewTaskController()
 }
 
+enum ListType: Int {
+    
+    case AllTasks = 0
+    case Report = 1
+}
+
 class TasksPresenter {
     
     var appWireframe: AppWireframe?
     var userInterface: TasksPresenterOutput?
     private var day: NewDay?
     private var currentTasks = [Task]()
+    private var selectedListType = ListType.AllTasks
     
 }
 
@@ -48,7 +53,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         // Prevent reloading data when you open the popover for the second time in the same day
         if day == nil || day!.isNewDay() {
-            reloadDataFromServer()
+            reloadData()
         }
         updateNoTasksState()
     }
@@ -56,32 +61,24 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadData() {
         let reader = ReadDaysInteractor(data: localRepository)
         userInterface?.showDates(reader.weeks())
-        reloadTasksOnDay(NSDate())
+        reloadTasksOnDay(NSDate(), listType: selectedListType)
     }
     
-    func reloadTasksOnDay (date: NSDate) {
+    func reloadTasksOnDay (date: NSDate, listType: ListType) {
         
         let reader = ReadTasksInteractor(data: localRepository)
         currentTasks = reader.tasksInDay(date).reverse()
+        
+        if listType == .Report {
+            let report = CreateReport(tasks: currentTasks)
+            report.round()
+            currentTasks = report.tasks.reverse()
+        }
+        
         userInterface?.showTasks(currentTasks)
         userInterface?.setSelectedDay(date.EEEEMMdd())
         
         updateNoTasksState()
-    }
-    
-    func reloadDataFromServer() {
-        
-        reloadData()
-//        userInterface?.showLoadingIndicator(true)
-//        
-//        ReadTasksInteractor(data: localRepository).tasksAtPage(0, completion: { [weak self] (tasks) -> Void in
-//            
-//            self?.currentTasks = tasks
-//            self?.userInterface?.showTasks(tasks)
-//            self?.userInterface?.showLoadingIndicator(false)
-//            
-//            reloadTasksOnDay(NSDate())
-//        })
     }
     
     func updateNoTasksState() {
@@ -110,14 +107,6 @@ extension TasksPresenter: TasksPresenterInput {
         } else {
             userInterface?.presentNewTaskController()
         }
-    }
-    
-    func createReport() {
-        
-        let reader = ReadTasksInteractor(data: localRepository)
-        let report = CreateReport(tasks: reader.tasksInDay(NSDate()).reverse())
-        report.round()
-        userInterface?.showTasks(report.tasks.reverse())
     }
     
     func startDay() {

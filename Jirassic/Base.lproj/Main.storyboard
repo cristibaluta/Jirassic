@@ -885,16 +885,18 @@
                                     <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="1xF-Xg-9zG"/>
                                 </connections>
                             </button>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95a-7I-VNJ">
-                                <rect key="frame" x="141" y="399" width="210" height="23"/>
+                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95a-7I-VNJ">
+                                <rect key="frame" x="177" y="399" width="139" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="fYS-Rm-Q7V">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="All" width="68"/>
-                                        <segment label="Grouped" width="67" selected="YES" tag="1"/>
-                                        <segment label="Rounded" width="67"/>
+                                        <segment label="All tasks"/>
+                                        <segment label="Report" selected="YES" tag="1"/>
                                     </segments>
                                 </segmentedCell>
+                                <connections>
+                                    <action selector="handleSegmentedControl:" target="wHU-IX-gfU" id="1hR-gG-H11"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <constraints>
@@ -916,6 +918,7 @@
                     <connections>
                         <outlet property="_dateLabel" destination="gVK-00-mOW" id="iDX-aK-GsQ"/>
                         <outlet property="datesScrollView" destination="TP3-Rr-lmx" id="ZUj-Jx-jHU"/>
+                        <outlet property="listSegmentedControl" destination="95a-7I-VNJ" id="8E8-Sc-7fh"/>
                         <outlet property="splitView" destination="pVs-CS-Pcx" id="cl7-Lo-9AU"/>
                         <outlet property="tasksScrollView" destination="VwR-9G-9tZ" id="KgZ-p8-Q32"/>
                     </connections>
