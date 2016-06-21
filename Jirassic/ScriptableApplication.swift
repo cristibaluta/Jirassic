@@ -14,27 +14,36 @@ extension NSApplication {
 		return "Tasks returned from Jirassic"
 	}
 	
-	func setTasks (message: String) {
+	func setTasks (json: String) {
         
-        let comps = message.componentsSeparatedByString("::")
-        RCLog(comps);
-        let notes = comps.last!
-        var taskNumber = comps.first!
-        if comps.count < 2 {
-            taskNumber = ""
+        if let data = json.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                guard let dict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: String] else {
+                    return
+                }
+                RCLog(dict)
+                let notes = dict["notes"] ?? ""
+                let taskNumber = dict["taskNumber"] ?? ""
+                let taskType = dict["taskType"] != nil ? Int(dict["taskType"]!) : TaskType.GitCommit.rawValue
+                let informativeText = "\(taskNumber) \(notes)"
+                
+                let task = Task(
+                    endDate: NSDate(),
+                    notes: notes,
+                    taskNumber: taskNumber,
+                    taskType: taskType!,
+                    taskId: String.random()
+                )
+                let saveInteractor = TaskInteractor(data: localRepository)
+                saveInteractor.saveTask(task)
+                
+                LocalNotifications().showNotification("Git commit logged", informativeText: informativeText)
+                InternalNotifications.notifyAboutNewlyAddedTask(task)
+            }
+            catch let error as NSError {
+                RCLogErrorO(error)
+            }
         }
-		let task = Task(
-			endDate: NSDate(),
-			notes: notes,
-			taskNumber: taskNumber,
-			taskType: TaskType.GitCommit.rawValue,
-			taskId: String.random()
-		)
-        let saveInteractor = TaskInteractor(data: localRepository)
-        saveInteractor.saveTask(task)
-        
-        LocalNotifications().showNotification("Git commit logged to Jirassic", informativeText: notes)
-        InternalNotifications.notifyAboutNewlyAddedTask(task)
 	}
 	
 	func logCommit (commit: String, ofBranch: String) {
