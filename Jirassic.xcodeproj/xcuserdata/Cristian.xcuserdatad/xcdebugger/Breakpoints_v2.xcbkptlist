@@ -17,38 +17,6 @@
             endingLineNumber = "15"
             landmarkName = "tasksAtPage(_:completion:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Jirassic.ReadTasksInteractor.tasksAtPage (Swift.Int, completion : (Swift.Array&lt;Jirassic.Task&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Jirassic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Cristian/Documents/Jirassic/App/ReadTasksInteractor.swift"
-                  timestampString = "489393676.63469"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Jirassic.ReadTasksInteractor.(tasksAtPage (Swift.Int, completion : (Swift.Array&lt;Jirassic.Task&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Jirassic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Cristian/Documents/Jirassic/App/ReadTasksInteractor.swift"
-                  timestampString = "489393676.634907"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

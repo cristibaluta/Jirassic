@@ -75,7 +75,7 @@ class CreateReport: NSObject {
                                       notes: task.notes,
                                       taskNumber: taskNumber,
                                       taskType: task.taskType,
-                                      taskId: task.taskId)
+                                      taskId: "")
                     uniqueTasks[taskNumber] = uniqueTask
                 } else {
                     uniqueTask!.notes = "\(uniqueTask!.notes!)\n\(task.notes!)"
