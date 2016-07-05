@@ -19,25 +19,37 @@ class CreateReportTests: XCTestCase {
 		
 		var t1 = Task()
 		t1.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 9, minute: 45)
+        t1.taskNumber = "IOS-1"
+        t1.notes = "Note 1"
 
 		var t1_1 = Task()
-		t1_1.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 11, minute: 5)
+        t1_1.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 11, minute: 5)
+        t1_1.taskNumber = "IOS-2"
+        t1_1.notes = "Note 2"
 
 		var t1_lunch = Task()
 		t1_lunch.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 11, minute: 51)
 		t1_lunch.taskType = TaskType.Lunch.rawValue
 		
 		var t1_2 = Task()
-		t1_2.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 12, minute: 30)
+        t1_2.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 12, minute: 30)
+        t1_2.taskNumber = "IOS-3"
+        t1_2.notes = "Note 3"
 		
 		var t1_3 = Task()
-		t1_3.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
+        t1_3.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
+        t1_3.taskNumber = "IOS-1"
+        t1_3.notes = "Note 4"
 		
 		var t1_4 = Task()
-		t1_4.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
+        t1_4.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
+        t1_4.taskNumber = "IOS-4"
+        t1_4.notes = "Note 5"
 		
 		var t2 = Task()
-		t2.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
+        t2.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
+        t2.taskNumber = "IOS-4"
+        t2.notes = "Note 6"
 		
 		tasks = [t1, t1_1, t1_lunch, t1_2, t1_3, t1_4, t2]
     }
@@ -57,6 +69,14 @@ class CreateReportTests: XCTestCase {
 		
 		// 28800 + lunchDuration
 		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")
+    }
+    
+    func testGroupByTaskNumber() {
+        
+        let report = CreateReport(tasks: self.tasks)
+        report.round()
+        
+        XCTAssert(report.tasks.count == 5, "Pass")
     }
 	
 	func testRoundMoreThan8HoursOfWork() {

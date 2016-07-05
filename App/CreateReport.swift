@@ -28,7 +28,7 @@ class CreateReport: NSObject {
 			return
 		}
 		
-		// Group tasks with thesame id together
+		// Group tasks with the same number together
 		groupByTaskId()
 		
 		// Calculate the excess time till 8 hrs
@@ -38,11 +38,11 @@ class CreateReport: NSObject {
 		let missingTime = kEightHoursInSeconds - workedTime
 		let extraTimePerTask = ceil(Double(Int(missingTime) / (tasks.count)))
 		var extraTimeToAdd = extraTimePerTask
-		RCLog(totalTime)
-		RCLog(lunchDuration)
-		RCLog(workedTime)
-		RCLog(missingTime)
-		RCLog(extraTimePerTask)
+//		RCLog(totalTime)
+//		RCLog(lunchDuration)
+//		RCLog(workedTime)
+//		RCLog(missingTime)
+//		RCLog(extraTimePerTask)
 		
 		// Round times and add the extra time
 		for i in 0..<tasks.count-1 {
@@ -64,11 +64,30 @@ class CreateReport: NSObject {
 	}
 	
 	private func groupByTaskId() {
-        var taskNumbers = [String]()
+        
+        var uniqueTasks = [String: Task]()
         for task in tasks {
             print(task)
-//            taskNumbers.append(task.taskNumber!)
+            if let taskNumber = task.taskNumber {
+                var uniqueTask = uniqueTasks[taskNumber]
+                if uniqueTask == nil {
+                    uniqueTask = Task(endDate: task.endDate,
+                                      notes: task.notes,
+                                      taskNumber: taskNumber,
+                                      taskType: task.taskType,
+                                      taskId: task.taskId)
+                    uniqueTasks[taskNumber] = uniqueTask
+                } else {
+                    uniqueTask!.notes = "\(uniqueTask!.notes!)\n\(task.notes!)"
+                    uniqueTasks[taskNumber] = uniqueTask
+                }
+            }
+            else {
+                uniqueTasks[String.random()] = task
+            }
         }
+        self.tasks = Array(uniqueTasks.values)
+        print(self.tasks)
 	}
 	
 	var lunchDuration: NSTimeInterval {
