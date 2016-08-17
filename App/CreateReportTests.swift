@@ -10,13 +10,15 @@ import XCTest
 @testable import Jirassic
 
 class CreateReportTests: XCTestCase {
-
+    
 	var tasks = [Task]()
 	let kLunchLength = Double(2760)//46min ~ 45min
 	
     override func setUp() {
         super.setUp()
-		
+        
+        let t0 = Task(dateEnd: NSDate(year: 2015, month: 6, day: 1, hour: 9, minute: 22), type: TaskType.StartDay)
+
 		var t1 = Task()
 		t1.endDate = NSDate(year: 2015, month: 6, day: 1, hour: 9, minute: 45)
         t1.taskNumber = "IOS-1"
@@ -51,7 +53,7 @@ class CreateReportTests: XCTestCase {
         t2.taskNumber = "IOS-4"
         t2.notes = "Note 6"
 		
-		tasks = [t1, t1_1, t1_lunch, t1_2, t1_3, t1_4, t2]
+		tasks = [t0, t1, t1_1, t1_lunch, t1_2, t1_3, t1_4, t2]
     }
     
     override func tearDown() {

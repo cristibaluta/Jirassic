@@ -13,7 +13,6 @@ class TasksViewController: NSViewController {
 	@IBOutlet private var splitView: NSSplitView?
 	@IBOutlet private var datesScrollView: DatesScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
-    @IBOutlet private var _dateLabel: NSTextField?
     @IBOutlet private var listSegmentedControl: NSSegmentedControl?
     
     var appWireframe: AppWireframe?
@@ -98,7 +97,7 @@ extension TasksViewController: TasksPresenterOutput {
     }
     
     func setSelectedDay (date: String) {
-        _dateLabel?.stringValue = date
+        
     }
     
     func presentNewTaskController() {
