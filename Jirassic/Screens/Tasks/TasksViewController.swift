@@ -63,7 +63,9 @@ class TasksViewController: NSViewController {
 	
 	@IBAction func handleSegmentedControl (sender: NSSegmentedControl) {
         RCLog(sender.selectedSegment)
-        tasksPresenter?.reloadTasksOnDay(NSDate(), listType: ListType(rawValue: sender.selectedSegment)!)
+        if let selectedDay = datesScrollView!.selectedDay {
+            tasksPresenter?.reloadTasksOnDay(selectedDay.date, listType: ListType(rawValue: sender.selectedSegment)!)
+        }
 	}
     
     @IBAction func handleQuitAppButton (sender: NSButton) {

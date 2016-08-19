@@ -68,17 +68,20 @@ class CreateReport: NSObject {
         var uniqueTasks = [String: Task]()
         for task in tasks {
             print(task)
+            if task.taskType == TaskType.StartDay.rawValue {
+                continue
+            }
             if let taskNumber = task.taskNumber {
                 var uniqueTask = uniqueTasks[taskNumber]
                 if uniqueTask == nil {
                     uniqueTask = Task(endDate: task.endDate,
-                                      notes: task.notes,
+                                      notes: "• \(task.notes!)",
                                       taskNumber: taskNumber,
                                       taskType: task.taskType,
                                       taskId: "")
                     uniqueTasks[taskNumber] = uniqueTask
                 } else {
-                    uniqueTask!.notes = "\(uniqueTask!.notes!)\n\(task.notes!)"
+                    uniqueTask!.notes = "\(uniqueTask!.notes!)\n• \(task.notes!)"
                     uniqueTasks[taskNumber] = uniqueTask
                 }
             }

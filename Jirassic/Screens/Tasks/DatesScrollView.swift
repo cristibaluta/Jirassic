@@ -13,6 +13,7 @@ class DatesScrollView: NSScrollView {
 	@IBOutlet private var outlineView: NSOutlineView?
 	var weeks = [Week]()
 	var didSelectDay: ((day: Day) -> ())?
+    var selectedDay: Day?
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -96,9 +97,10 @@ extension DatesScrollView: NSOutlineViewDelegate {
 	func outlineViewSelectionDidChange (notification: NSNotification) {
 		
 		let selectedIndex = notification.object?.selectedRow
-		let object:AnyObject? = notification.object?.itemAtRow(selectedIndex!)
+		let object: AnyObject? = notification.object?.itemAtRow(selectedIndex!)
 		
 		if let day = (object as? Day) {
+            selectedDay = day
 			didSelectDay?(day: day)
 		}
 	}
