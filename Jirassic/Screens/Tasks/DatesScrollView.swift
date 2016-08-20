@@ -25,6 +25,22 @@ class DatesScrollView: NSScrollView {
 		self.outlineView?.reloadData()
 		self.outlineView?.expandItem(nil, expandChildren: true)
 	}
+    
+    func selectDay (dayToSelect: Day) {
+        
+        var i = -1
+        for week in weeks {
+            i += 1
+            for day in week.days {
+                i += 1
+                if day.date.isSameDayAs(dayToSelect.date) {
+                    let indexSet = NSIndexSet(index: i)
+                    outlineView?.selectRowIndexes(indexSet, byExtendingSelection: true)
+                    break
+                }
+            }
+        }
+    }
 }
 
 extension DatesScrollView: NSOutlineViewDataSource {
@@ -71,6 +87,7 @@ extension DatesScrollView: NSOutlineViewDataSource {
 extension DatesScrollView: NSOutlineViewDelegate {
 	
 	func outlineView (outlineView: NSOutlineView, viewForTableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
+        
 		switch item {
 		case let week as Week:
 			let view = outlineView.makeViewWithIdentifier("HeaderCell", owner: self) as! NSTableCellView

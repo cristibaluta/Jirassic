@@ -12,7 +12,7 @@ protocol TasksPresenterInput {
     
     func refreshUI()
     func reloadData()
-    func reloadTasksOnDay (date: NSDate, listType: ListType)
+    func reloadTasksOnDay (day: Day, listType: ListType)
     func updateNoTasksState()
     func messageButtonDidPress()
     func startDay()
@@ -27,7 +27,7 @@ protocol TasksPresenterOutput {
     func showMessage (message: MessageViewModel)
     func showDates (weeks: [Week])
     func showTasks (tasks: [Task])
-    func setSelectedDay (date: String)
+    func selectDay (day: Day)
     func presentNewTaskController()
 }
 
@@ -59,15 +59,18 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func reloadData() {
+        
+        let todayDay = Day(date: NSDate())
         let reader = ReadDaysInteractor(data: localRepository)
         userInterface?.showDates(reader.weeks())
-        reloadTasksOnDay(NSDate(), listType: selectedListType)
+        userInterface?.selectDay(todayDay)
+        reloadTasksOnDay(todayDay, listType: selectedListType)
     }
     
-    func reloadTasksOnDay (date: NSDate, listType: ListType) {
+    func reloadTasksOnDay (day: Day, listType: ListType) {
         
         let reader = ReadTasksInteractor(data: localRepository)
-        currentTasks = reader.tasksInDay(date).reverse()
+        currentTasks = reader.tasksInDay(day.date).reverse()
         
         if listType == .Report {
             let report = CreateReport(tasks: currentTasks)
@@ -76,7 +79,6 @@ extension TasksPresenter: TasksPresenterInput {
         }
         
         userInterface?.showTasks(currentTasks)
-        userInterface?.setSelectedDay(date.EEEEMMdd())
         
         updateNoTasksState()
     }

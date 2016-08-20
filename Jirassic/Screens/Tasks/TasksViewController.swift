@@ -28,7 +28,7 @@ class TasksViewController: NSViewController {
 		registerForNotifications()
         
         datesScrollView?.didSelectDay = { [weak self] (day: Day) in
-            self?.tasksPresenter?.reloadTasksOnDay(day.date, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
+            self?.tasksPresenter?.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
         }
         
         tasksScrollView?.didRemoveRow = { [weak self] (row: Int) in
@@ -54,19 +54,19 @@ class TasksViewController: NSViewController {
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
-	
-	// MARK: Actions
-	
-	@IBAction func handleSettingsButton (sender: NSButton) {
-		appWireframe?.flipToSettingsController()
-	}
+}
+
+extension TasksViewController {
 	
 	@IBAction func handleSegmentedControl (sender: NSSegmentedControl) {
-        RCLog(sender.selectedSegment)
         if let selectedDay = datesScrollView!.selectedDay {
-            tasksPresenter?.reloadTasksOnDay(selectedDay.date, listType: ListType(rawValue: sender.selectedSegment)!)
+            tasksPresenter?.reloadTasksOnDay(selectedDay, listType: ListType(rawValue: sender.selectedSegment)!)
         }
 	}
+    
+    @IBAction func handleSettingsButton (sender: NSButton) {
+        appWireframe?.flipToSettingsController()
+    }
     
     @IBAction func handleQuitAppButton (sender: NSButton) {
         NSApplication.sharedApplication().terminate(nil)
@@ -98,8 +98,8 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView?.hidden = false
     }
     
-    func setSelectedDay (date: String) {
-        
+    func selectDay (day: Day) {
+        datesScrollView?.selectDay(day)
     }
     
     func presentNewTaskController() {
