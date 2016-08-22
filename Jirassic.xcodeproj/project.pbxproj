@@ -104,6 +104,7 @@
 		406413A81CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
 		406413A91CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
 		407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */; };
+		4094D5DC1D686EE300C55755 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53601CD6188000626157 /* LoginPresenter.swift */; };
@@ -268,6 +269,7 @@
 		407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskFinderTests.swift; path = App/TaskFinderTests.swift; sourceTree = SOURCE_ROOT; };
 		407BB9D81D0C40E80038B014 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		407BB9DA1D0C41010038B014 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeSelection.swift; path = App/TaskTypeSelection.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF53601CD6188000626157 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = Screens/Login/LoginPresenter.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				40BF538A1CD61D3F00626157 /* ReadDaysInteractor.swift */,
 				40F5CC511CDE349100249D66 /* TaskInteractor.swift */,
 				40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */,
+				4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */,
 				28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */,
 				28F51E7A1AC694B000A69CDF /* ReadTasksInteractor.swift in Sources */,
+				4094D5DC1D686EE300C55755 /* TaskTypeSelection.swift in Sources */,
 				285424C21C2FDB420063B532 /* ComputerWakeUpInteractor.swift in Sources */,
 				28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */,
 				40D6DF761D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */,

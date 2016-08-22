@@ -26,6 +26,7 @@ class TasksViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		registerForNotifications()
+        listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         
         datesScrollView?.didSelectDay = { [weak self] (day: Day) in
             self?.tasksPresenter?.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
@@ -59,8 +60,10 @@ class TasksViewController: NSViewController {
 extension TasksViewController {
 	
 	@IBAction func handleSegmentedControl (sender: NSSegmentedControl) {
+        let listType = ListType(rawValue: sender.selectedSegment)!
+        TaskTypeSelection().setType(listType)
         if let selectedDay = datesScrollView!.selectedDay {
-            tasksPresenter?.reloadTasksOnDay(selectedDay, listType: ListType(rawValue: sender.selectedSegment)!)
+            tasksPresenter?.reloadTasksOnDay(selectedDay, listType: listType)
         }
 	}
     

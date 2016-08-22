@@ -85,18 +85,21 @@ extension TasksPresenter: TasksPresenterInput {
     
     func updateNoTasksState() {
         
-        if currentTasks.count <= 1 {
-            if currentTasks.count == 0 {
-                userInterface?.showMessage((
-                    title: "Good morning!",
-                    message: "Ready to begin your working day?",
-                    buttonTitle: "Start day"))
-            } else {
-                userInterface?.showMessage((
-                    title: "No task yet.",
-                    message: "When you're ready with your first task click \n'+' or 'Log time'",
-                    buttonTitle: "Log time"))
-            }
+        guard TaskTypeSelection().lastType() == .AllTasks else {
+            appWireframe?.removeMessage()
+            return
+        }
+        
+        if currentTasks.count == 0 {
+            userInterface?.showMessage((
+                title: "Good morning!",
+                message: "Ready to begin your working day?",
+                buttonTitle: "Start day"))
+        } else if currentTasks.count == 1 {
+            userInterface?.showMessage((
+                title: "No task yet.",
+                message: "When you're ready with your first task click \n'+' or 'Log time'",
+                buttonTitle: "Log time"))
         } else {
             appWireframe?.removeMessage()
         }
