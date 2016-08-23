@@ -49,6 +49,8 @@ class SettingsViewController: NSViewController {
             }
         }
         
+        settingsPresenter?.testJit()
+        
 //		let user = UserInteractor().currentUser()
 //        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
 //        emailTextField?.stringValue = user.email!
@@ -56,7 +58,11 @@ class SettingsViewController: NSViewController {
 	
 	
 	// MARK: Actions
-	
+    
+    @IBAction func handleInstallJitButton (sender: NSButton) {
+        settingsPresenter?.installJit()
+    }
+    
 	@IBAction func handleLoginButton (sender: NSButton) {
         settingsPresenter?.login(credentials)
 	}

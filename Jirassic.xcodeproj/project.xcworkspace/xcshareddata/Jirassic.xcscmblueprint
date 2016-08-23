@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0B796DD3257EC7820586F3B4A1641021EF01638C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0B796DD3257EC7820586F3B4A1641021EF01638C" : 0,
+    "1048E803827672007322F0AD9D640D7339B30B44" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "45A61E83-97AD-4062-9F44-58967FD6E397",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0B796DD3257EC7820586F3B4A1641021EF01638C" : "Jira-Logger",
+    "1048E803827672007322F0AD9D640D7339B30B44" : "Jit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Jirassic",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Jirassic.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ralcr\/Jira-Logger.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B796DD3257EC7820586F3B4A1641021EF01638C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ralcr\/Jit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1048E803827672007322F0AD9D640D7339B30B44"
+    }
+  ]
+}
