@@ -73,7 +73,8 @@ class CreateReport: NSObject {
             let taskNumber = task.taskNumber ?? String.random()
             var tgroup: [Task]? = groups[taskNumber]
             if tgroup == nil {
-                groups[taskNumber] = [Task]()
+                tgroup = [Task]()
+                groups[taskNumber] = tgroup
             }
             tgroup?.append(task)
             groups[taskNumber] = tgroup!
