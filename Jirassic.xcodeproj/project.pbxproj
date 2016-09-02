@@ -141,8 +141,6 @@
 		5641771F1C579FA200B893F3 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
 		564177201C579FB200B893F3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
 		56A68A9C1CC0CD3C0031CC0C /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */; };
-		56B7596F1D6C32D0004E5580 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 56B7596E1D6C32D0004E5580 /* jit */; };
-		56B759701D6C32D0004E5580 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 56B7596E1D6C32D0004E5580 /* jit */; };
 		6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0511AC196BB001AC4BA /* AppDelegate.swift */; };
 		6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D0581AC196BB001AC4BA /* Images.xcassets */; };
 		6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D31D05A1AC196BB001AC4BA /* Main.storyboard */; };
@@ -301,7 +299,6 @@
 		40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractorTests.swift; path = App/TaskInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		40F5CC511CDE349100249D66 /* TaskInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractor.swift; path = App/TaskInteractor.swift; sourceTree = SOURCE_ROOT; };
 		56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataRepository.swift; path = External/CoreData/CoreDataRepository.swift; sourceTree = SOURCE_ROOT; };
-		56B7596E1D6C32D0004E5580 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = jit; path = ../../Jit/build/jit; sourceTree = "<group>"; };
 		6AAF86A38A2A18D681EEBF6B /* Pods-Jirassic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jirassic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jirassic/Pods-Jirassic.debug.xcconfig"; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -746,7 +743,6 @@
 		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				56B7596E1D6C32D0004E5580 /* jit */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
 				28C0300B1C09969F00B65478 /* jirassic.sdef */,
 			);
@@ -975,7 +971,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B759701D6C32D0004E5580 /* jit in Resources */,
 				286585251B031D3A00352782 /* LaunchScreen.xib in Resources */,
 				286585621B04022800352782 /* icon_120.png in Resources */,
 				286585221B031D3A00352782 /* Images.xcassets in Resources */,
@@ -998,7 +993,6 @@
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
 				28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */,
-				56B7596F1D6C32D0004E5580 /* jit in Resources */,
 				28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */,
 				40BF537B1CD61ACF00626157 /* TaskCell.xib in Resources */,
 				40BF53781CD61ACF00626157 /* NonTaskCell.xib in Resources */,

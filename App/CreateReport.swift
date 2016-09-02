@@ -65,31 +65,38 @@ class CreateReport: NSObject {
 	
 	private func groupByTaskId() {
         
-        var uniqueTasks = [String: Task]()
+        var groups = [String: [Task]]()
         for task in tasks {
-            print(task)
             if task.taskType == TaskType.StartDay.rawValue {
                 continue
             }
-            if let taskNumber = task.taskNumber {
-                var uniqueTask = uniqueTasks[taskNumber]
+            let taskNumber = task.taskNumber ?? String.random()
+            var tgroup: [Task]? = groups[taskNumber]
+            if tgroup == nil {
+                groups[taskNumber] = [Task]()
+            }
+            tgroup?.append(task)
+            groups[taskNumber] = tgroup!
+        }
+        
+        var joinedTasks = [String: Task]()
+        for (taskNumber, tasks) in groups {
+            for task in tasks {
+                var uniqueTask = joinedTasks[taskNumber]
                 if uniqueTask == nil {
                     uniqueTask = Task(endDate: task.endDate,
                                       notes: "• \(task.notes!)",
                                       taskNumber: taskNumber,
                                       taskType: task.taskType,
                                       taskId: "")
-                    uniqueTasks[taskNumber] = uniqueTask
+                    joinedTasks[taskNumber] = uniqueTask
                 } else {
                     uniqueTask!.notes = "\(uniqueTask!.notes!)\n• \(task.notes!)"
-                    uniqueTasks[taskNumber] = uniqueTask
+                    joinedTasks[taskNumber] = uniqueTask
                 }
             }
-            else {
-                uniqueTasks[String.random()] = task
-            }
         }
-        self.tasks = Array(uniqueTasks.values)
+        self.tasks = Array(joinedTasks.values)
         print(self.tasks)
 	}
 	
