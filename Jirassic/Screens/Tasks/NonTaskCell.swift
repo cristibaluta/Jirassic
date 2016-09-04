@@ -102,6 +102,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	
 	override func updateTrackingAreas() {
 		super.updateTrackingAreas()
+        
 		self.ensureTrackingArea()
 		if (!(self.trackingAreas as NSArray).containsObject(self.trackingArea!)) {
 			self.addTrackingArea(self.trackingArea!);

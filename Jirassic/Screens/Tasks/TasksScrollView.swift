@@ -15,6 +15,7 @@ class TasksScrollView: NSScrollView {
 	
 	@IBOutlet var tableView: NSTableView?
 	
+    var listType: ListType = ListType.AllTasks
 	var data = [Task]()
 	var didSelectRow: ((row: Int) -> ())?
 	var didAddRow: ((row: Int) -> ())?
@@ -28,14 +29,18 @@ class TasksScrollView: NSScrollView {
 		tableView?.setDelegate(self)
 		
 		assert(NSNib(nibNamed: String(TaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
-		assert(NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
+        assert(NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) != nil, "err")
+        assert(NSNib(nibNamed: String(ReportCell), bundle: NSBundle.mainBundle()) != nil, "err")
 		
 		if let nib = NSNib(nibNamed: String(TaskCell), bundle: NSBundle.mainBundle()) {
 			tableView?.registerNib(nib, forIdentifier: String(TaskCell))
 		}
 		if let nib = NSNib(nibNamed: String(NonTaskCell), bundle: NSBundle.mainBundle()) {
 			tableView?.registerNib(nib, forIdentifier: String(NonTaskCell))
-		}
+        }
+        if let nib = NSNib(nibNamed: String(ReportCell), bundle: NSBundle.mainBundle()) {
+            tableView?.registerNib(nib, forIdentifier: String(ReportCell))
+        }
 	}
 	
 	func reloadData() {
@@ -54,18 +59,23 @@ class TasksScrollView: NSScrollView {
     func cellForTaskType (taskType: NSNumber) -> CellProtocol {
         
         var cell: CellProtocol? = nil
-        
-        switch Int(taskType.intValue) {
+        RCLog(listType)
+        if listType == ListType.Report {
+            cell = self.tableView?.makeViewWithIdentifier(String(ReportCell), owner: self) as? ReportCell
+        } else {
+            switch Int(taskType.intValue) {
             case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
                 cell = self.tableView?.makeViewWithIdentifier(String(TaskCell), owner: self) as? TaskCell
                 break
             default:
                 cell = self.tableView?.makeViewWithIdentifier(String(NonTaskCell), owner: self) as? NonTaskCell
                 break
+            }
         }
         guard cell != nil else {
             fatalError("Cell can't be nil, check if the identifier is registered")
         }
+        
         return cell!
     }
 }

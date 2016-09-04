@@ -106,6 +106,8 @@
 		407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */; };
 		408CD21E1D7BFA8900FA2EA4 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 408CD21D1D7BFA8900FA2EA4 /* jit */; };
 		408CD2211D7C6AFB00FA2EA4 /* JitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CD2201D7C6AFB00FA2EA4 /* JitInteractor.swift */; };
+		408CD2231D7C720C00FA2EA4 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CD2221D7C720C00FA2EA4 /* ReportCell.swift */; };
+		408CD2271D7C72B100FA2EA4 /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408CD2261D7C72B100FA2EA4 /* ReportCell.xib */; };
 		4094D5DC1D686EE300C55755 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
@@ -273,6 +275,8 @@
 		407BB9DA1D0C41010038B014 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		408CD21D1D7BFA8900FA2EA4 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jit; sourceTree = "<group>"; };
 		408CD2201D7C6AFB00FA2EA4 /* JitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JitInteractor.swift; path = App/Jit/JitInteractor.swift; sourceTree = SOURCE_ROOT; };
+		408CD2221D7C720C00FA2EA4 /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCell.swift; path = Screens/Tasks/ReportCell.swift; sourceTree = "<group>"; };
+		408CD2261D7C72B100FA2EA4 /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportCell.xib; path = Screens/Tasks/ReportCell.xib; sourceTree = "<group>"; };
 		4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeSelection.swift; path = App/TaskTypeSelection.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
 				40BF536A1CD61ACF00626157 /* NonTaskCell.swift */,
 				40BF536B1CD61ACF00626157 /* NonTaskCell.xib */,
+				408CD2221D7C720C00FA2EA4 /* ReportCell.swift */,
+				408CD2261D7C72B100FA2EA4 /* ReportCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1007,6 +1013,7 @@
 				6D31D0591AC196BB001AC4BA /* Images.xcassets in Resources */,
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
 				28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */,
+				408CD2271D7C72B100FA2EA4 /* ReportCell.xib in Resources */,
 				408CD21E1D7BFA8900FA2EA4 /* jit in Resources */,
 				28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */,
 				40BF537B1CD61ACF00626157 /* TaskCell.xib in Resources */,
@@ -1098,6 +1105,7 @@
 				40BF53791CD61ACF00626157 /* MessageViewController.swift in Sources */,
 				406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
+				408CD2231D7C720C00FA2EA4 /* ReportCell.swift in Sources */,
 				286E9A431C1D9829008FC45E /* InternalNotifications.swift in Sources */,
 				28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */,
 				406413931CD71E1700C8E03D /* SettingsPresenter.swift in Sources */,

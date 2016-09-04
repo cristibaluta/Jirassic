@@ -28,28 +28,28 @@ class TasksViewController: NSViewController {
 		registerForNotifications()
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         
-        datesScrollView?.didSelectDay = { [weak self] (day: Day) in
+        datesScrollView!.didSelectDay = { [weak self] (day: Day) in
             self?.tasksPresenter?.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
         }
         
-        tasksScrollView?.didRemoveRow = { [weak self] (row: Int) in
+        tasksScrollView!.didRemoveRow = { [weak self] (row: Int) in
             RCLogO("Remove item at row \(row)")
             if row >= 0 {
-                self?.tasksPresenter?.removeTaskAtRow(row)
-                self?.tasksScrollView?.removeTaskAtRow(row)
+                self?.tasksPresenter!.removeTaskAtRow(row)
+                self?.tasksScrollView!.removeTaskAtRow(row)
             }
         }
-        tasksScrollView?.didAddRow = { [weak self] (row: Int) -> Void in
+        tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
-                self?.tasksPresenter?.insertTaskAfterRow(row)
+                self?.tasksPresenter!.insertTaskAfterRow(row)
             }
         }
     }
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-        tasksPresenter?.refreshUI()
+        tasksPresenter!.refreshUI()
 	}
 	
 	deinit {
@@ -63,12 +63,12 @@ extension TasksViewController {
         let listType = ListType(rawValue: sender.selectedSegment)!
         TaskTypeSelection().setType(listType)
         if let selectedDay = datesScrollView!.selectedDay {
-            tasksPresenter?.reloadTasksOnDay(selectedDay, listType: listType)
+            tasksPresenter!.reloadTasksOnDay(selectedDay, listType: listType)
         }
 	}
     
     @IBAction func handleSettingsButton (sender: NSButton) {
-        appWireframe?.flipToSettingsController()
+        appWireframe!.flipToSettingsController()
     }
     
     @IBAction func handleQuitAppButton (sender: NSButton) {
@@ -94,32 +94,34 @@ extension TasksViewController: TasksPresenterOutput {
         datesScrollView?.reloadData()
     }
     
-    func showTasks (tasks: [Task]) {
+    func showTasks (tasks: [Task], listType: ListType) {
         
-        tasksScrollView?.data = tasks
-        tasksScrollView?.reloadData()
-        tasksScrollView?.hidden = false
+        RCLog(listType)
+        tasksScrollView!.listType = listType
+        tasksScrollView!.data = tasks
+        tasksScrollView!.reloadData()
+        tasksScrollView!.hidden = false
     }
     
     func selectDay (day: Day) {
-        datesScrollView?.selectDay(day)
+        datesScrollView!.selectDay(day)
     }
     
     func presentNewTaskController() {
         
-        splitView?.hidden = true
-        appWireframe?.removeMessage()
+        splitView!.hidden = true
+        appWireframe!.removeMessage()
         
-        appWireframe?.presentNewTaskController()
-        appWireframe?.newTaskViewController.date = NSDate()
-        appWireframe?.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
-            self?.tasksPresenter?.insertTaskWithData(taskData)
-            self?.tasksPresenter?.updateNoTasksState()
-            self?.tasksPresenter?.reloadData()
-            self?.appWireframe?.removeNewTaskController()
-            self?.splitView?.hidden = false
+        appWireframe!.presentNewTaskController()
+        appWireframe!.newTaskViewController.date = NSDate()
+        appWireframe!.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
+            self?.tasksPresenter!.insertTaskWithData(taskData)
+            self?.tasksPresenter!.updateNoTasksState()
+            self?.tasksPresenter!.reloadData()
+            self?.appWireframe!.removeNewTaskController()
+            self?.splitView!.hidden = false
         }
-        appWireframe?.newTaskViewController.onCancelChosen = { [weak self] in
+        appWireframe!.newTaskViewController.onCancelChosen = { [weak self] in
             self?.appWireframe?.removeNewTaskController()
             self?.splitView?.hidden = false
             self?.tasksPresenter?.updateNoTasksState()

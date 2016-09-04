@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="ReportCell" misplaced="YES" id="c22-O7-iKe" customClass="ReportCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                    <rect key="frame" x="12" y="54" width="278" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="kkS-Qs-fmO"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task number" drawsBackground="YES" id="dlI-ub-5hj">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
+                    <rect key="frame" x="296" y="59" width="51" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="47" id="2nv-uf-Elb"/>
+                        <constraint firstAttribute="height" constant="15" id="6CB-mp-rwI"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="kk5-M4-fbR">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
+                    <rect key="frame" x="16" y="9" width="47" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="47" id="Yrs-c8-ijJ"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-oc-wrR">
+                    <rect key="frame" x="12" y="0.0" width="333" height="50"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task number" drawsBackground="YES" id="29U-pf-bPN">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="4LC-Du-N7a"/>
+                <constraint firstItem="5uZ-oc-wrR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="5mO-XJ-c6e"/>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="80g-x5-V5p"/>
+                <constraint firstItem="HS2-iB-3Ta" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="CdD-BY-vkN"/>
+                <constraint firstAttribute="trailing" secondItem="HS2-iB-3Ta" secondAttribute="trailing" id="Cge-0e-uSq"/>
+                <constraint firstItem="HS2-iB-3Ta" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="8" id="GsV-4p-3AN"/>
+                <constraint firstAttribute="trailing" secondItem="5uZ-oc-wrR" secondAttribute="trailing" id="Kyq-c4-fAD"/>
+                <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="cZS-0S-iX6"/>
+                <constraint firstAttribute="bottom" secondItem="caC-fV-ZwQ" secondAttribute="bottom" constant="11" id="fXs-zg-VfT"/>
+                <constraint firstAttribute="bottom" secondItem="5uZ-oc-wrR" secondAttribute="bottom" id="nKY-rU-Out"/>
+                <constraint firstItem="5uZ-oc-wrR" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="4" id="zsg-3g-1Ut"/>
+            </constraints>
+            <connections>
+                <outlet property="durationTextField" destination="HS2-iB-3Ta" id="NnR-E7-aVg"/>
+                <outlet property="notesTextField" destination="5uZ-oc-wrR" id="vTY-dZ-ItF"/>
+                <outlet property="taskNrTextField" destination="bpM-64-Faf" id="eZv-mn-kHX"/>
+            </connections>
+            <point key="canvasLocation" x="224.5" y="274"/>
+        </customView>
+    </objects>
+</document>

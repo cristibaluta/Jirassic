@@ -26,7 +26,7 @@ protocol TasksPresenterOutput {
     func showLoadingIndicator (show: Bool)
     func showMessage (message: MessageViewModel)
     func showDates (weeks: [Week])
-    func showTasks (tasks: [Task])
+    func showTasks (tasks: [Task], listType: ListType)
     func selectDay (day: Day)
     func presentNewTaskController()
 }
@@ -71,6 +71,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         let reader = ReadTasksInteractor(data: localRepository)
         currentTasks = reader.tasksInDay(day.date).reverse()
+        selectedListType = listType
         
         if listType == .Report {
             let report = CreateReport(tasks: currentTasks)
@@ -78,7 +79,7 @@ extension TasksPresenter: TasksPresenterInput {
             currentTasks = report.tasks.reverse()
         }
         
-        userInterface?.showTasks(currentTasks)
+        userInterface!.showTasks(currentTasks, listType: selectedListType)
         
         updateNoTasksState()
     }
@@ -86,22 +87,22 @@ extension TasksPresenter: TasksPresenterInput {
     func updateNoTasksState() {
         
         guard TaskTypeSelection().lastType() == .AllTasks else {
-            appWireframe?.removeMessage()
+            appWireframe!.removeMessage()
             return
         }
         
         if currentTasks.count == 0 {
-            userInterface?.showMessage((
+            userInterface!.showMessage((
                 title: "Good morning!",
                 message: "Ready to begin your working day?",
                 buttonTitle: "Start day"))
         } else if currentTasks.count == 1 {
-            userInterface?.showMessage((
+            userInterface!.showMessage((
                 title: "No task yet.",
                 message: "When you're ready with your first task click \n'+' or 'Log time'",
                 buttonTitle: "Log time"))
         } else {
-            appWireframe?.removeMessage()
+            appWireframe!.removeMessage()
         }
     }
     
@@ -110,7 +111,7 @@ extension TasksPresenter: TasksPresenterInput {
         if currentTasks.count == 0 {
             startDay()
         } else {
-            userInterface?.presentNewTaskController()
+            userInterface!.presentNewTaskController()
         }
     }
     
@@ -120,7 +121,7 @@ extension TasksPresenter: TasksPresenterInput {
         let task = Task(dateEnd: now, type: TaskType.StartDay)
         let saveInteractor = TaskInteractor(data: localRepository)
         saveInteractor.saveTask(task)
-        day?.setLastTrackedDay(now)
+        day!.setLastTrackedDay(now)
         reloadData()
     }
     
@@ -136,7 +137,7 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func insertTaskAfterRow (row: Int) {
-        userInterface?.presentNewTaskController()
+        userInterface!.presentNewTaskController()
     }
     
     func removeTaskAtRow (row: Int) {
