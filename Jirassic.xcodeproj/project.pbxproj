@@ -105,6 +105,7 @@
 		406413A91CD9498A00C8E03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
 		407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407BB9C41D0C1B020038B014 /* TaskFinderTests.swift */; };
 		408CD21E1D7BFA8900FA2EA4 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 408CD21D1D7BFA8900FA2EA4 /* jit */; };
+		408CD2211D7C6AFB00FA2EA4 /* JitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CD2201D7C6AFB00FA2EA4 /* JitInteractor.swift */; };
 		4094D5DC1D686EE300C55755 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
@@ -271,6 +272,7 @@
 		407BB9D81D0C40E80038B014 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		407BB9DA1D0C41010038B014 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		408CD21D1D7BFA8900FA2EA4 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jit; sourceTree = "<group>"; };
+		408CD2201D7C6AFB00FA2EA4 /* JitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JitInteractor.swift; path = App/Jit/JitInteractor.swift; sourceTree = SOURCE_ROOT; };
 		4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeSelection.swift; path = App/TaskTypeSelection.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 		28F51E6C1AC68E6D00A69CDF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				408CD21F1D7C6A7400FA2EA4 /* Jit */,
 				289E2AE71B2D687F003269A3 /* Entities */,
 				286E9A391C1C3FC8008FC45E /* Reports */,
 				28C02F7D1C00A11400B65478 /* User */,
@@ -643,6 +646,14 @@
 				406413961CD86AA300C8E03D /* StringIdGenerator.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		408CD21F1D7C6A7400FA2EA4 /* Jit */ = {
+			isa = PBXGroup;
+			children = (
+				408CD2201D7C6AFB00FA2EA4 /* JitInteractor.swift */,
+			);
+			name = Jit;
 			sourceTree = "<group>";
 		};
 		40BF53641CD6198200626157 /* Scenes */ = {
@@ -1119,6 +1130,7 @@
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */,
 				286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */,
+				408CD2211D7C6AFB00FA2EA4 /* JitInteractor.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
 				40BF53761CD61ACF00626157 /* NewTaskViewController.swift in Sources */,
 				40BF53901CD61D5C00626157 /* RegisterUserInteractor.swift in Sources */,

@@ -25,8 +25,12 @@ protocol SettingsPresenterOutput {
 
 class SettingsPresenter {
     
-    private let jitInstallationPath = "/usr/local/bin/"
-    var jitInstalled = false
+    private var jitInteractor = JitInteractor()
+    var jitInstalled: Bool {
+        get {
+            return self.jitInteractor.isInstalled
+        }
+    }
     var userInterface: SettingsPresenterOutput?
 }
 
@@ -44,50 +48,24 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func testJit() {
         
-        let asc = NSAppleScript(source: "do shell script \"\(jitInstallationPath)jit\"")
-        if let response = asc?.executeAndReturnError(nil) {
-            print(response)
-            jitInstalled = true
-        } else {
-            print("Could not find Jit at \(jitInstallationPath)")
-            jitInstalled = false
-        }
-        userInterface!.setJitIsInstalled(jitInstalled)
-        
-//        let task = NSTask()
-//        task.launchPath = "\(jitInstallationPath)jit2"
-////        task.arguments = [""]
-//        task.terminationHandler = { task in
-//            dispatch_async(dispatch_get_main_queue(), {
-//                print(task)
-//                print(task.terminationStatus)
-//            })
-//        }
-//        try task.launch()
+        userInterface!.setJitIsInstalled( jitInteractor.isInstalled )
     }
     
     func installJit() {
         
-        guard let bundledJitPath = NSBundle.mainBundle().pathForResource("jit", ofType: nil) else {
-            return
-        }
-        let asc = NSAppleScript(source: "do shell script \"sudo cp \(bundledJitPath) \(jitInstallationPath)\" with administrator privileges")
-        if let response = asc?.executeAndReturnError(nil) {
-            print(response)
-            testJit()
-        } else {
-            print("Could not copy Jit from \(bundledJitPath) to \(jitInstallationPath)")
+        jitInteractor.installJit { [weak self] (success) in
+            if success {
+                self?.testJit()
+            }
         }
     }
     
     func uninstallJit() {
         
-        let asc = NSAppleScript(source: "do shell script \"sudo rm \(jitInstallationPath)jit\" with administrator privileges")
-        if let response = asc?.executeAndReturnError(nil) {
-            print(response)
-            testJit()
-        } else {
-            print("Could not delete Jit from \(jitInstallationPath)")
+        jitInteractor.uninstallJit { [weak self] (success) in
+            if success {
+                self?.testJit()
+            }
         }
     }
 }
