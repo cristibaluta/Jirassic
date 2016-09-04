@@ -28,7 +28,7 @@ extension NSApplication {
                 let branchName = dict["branchName"] ?? ""
                 let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : branchName
                 let taskType = dict["taskType"] != nil ? Int(dict["taskType"]!) : TaskType.GitCommit.rawValue
-                let informativeText = "\(taskNumber) \(notes)"
+                let informativeText = "\(taskNumber): \(notes)"
                 
                 let task = Task(
                     endDate: NSDate(),

@@ -43,6 +43,12 @@ class ReportCell: NSTableRowView, CellProtocol {
             self.durationTextField!.stringValue = newValue
         }
     }
+    var heightThatFits: CGFloat {
+        get {
+            self.notesTextField!.sizeToFit()
+            return 30 + self.notesTextField!.frame.size.height + 10
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

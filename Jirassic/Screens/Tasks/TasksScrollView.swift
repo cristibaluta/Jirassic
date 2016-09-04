@@ -13,7 +13,8 @@ let kTaskCellHeight = CGFloat(90.0)
 
 class TasksScrollView: NSScrollView {
 	
-	@IBOutlet var tableView: NSTableView?
+	@IBOutlet private var tableView: NSTableView?
+    private var tempCell: ReportCell?
 	
     var listType: ListType = ListType.AllTasks
 	var data = [Task]()
@@ -86,14 +87,22 @@ extension TasksScrollView: NSTableViewDataSource {
 	}
 	
 	func tableView (tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		
-		let theData = data[row]
-		switch Int(theData.taskType.intValue) {
-			case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
-				return kTaskCellHeight
-			default:
-				return kNonTaskCellHeight
-		}
+        
+        let theData = data[row]
+        if listType == ListType.Report {
+            if tempCell == nil {
+                tempCell = tableView.makeViewWithIdentifier(String(ReportCell), owner: self) as? ReportCell
+            }
+            TaskCellPresenter(cell: tempCell!).presentData(theData, andPreviousData: nil)
+            return tempCell!.heightThatFits
+        } else {
+            switch Int(theData.taskType.intValue) {
+                case TaskType.Issue.rawValue, TaskType.GitCommit.rawValue:
+                    return kTaskCellHeight
+                default:
+                    return kNonTaskCellHeight
+            }
+        }
 	}
 }
 
