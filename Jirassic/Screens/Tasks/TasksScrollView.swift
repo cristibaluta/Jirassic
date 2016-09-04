@@ -59,7 +59,6 @@ class TasksScrollView: NSScrollView {
     func cellForTaskType (taskType: NSNumber) -> CellProtocol {
         
         var cell: CellProtocol? = nil
-        RCLog(listType)
         if listType == ListType.Report {
             cell = self.tableView?.makeViewWithIdentifier(String(ReportCell), owner: self) as? ReportCell
         } else {
