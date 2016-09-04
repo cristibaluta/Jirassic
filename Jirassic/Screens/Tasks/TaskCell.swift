@@ -80,7 +80,7 @@ class TaskCell: NSTableRowView, CellProtocol {
 		
 		if (self.mouseInside) {
 			let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
-			NSColor(calibratedWhite: 0.8, alpha: 1.0).setFill()
+			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
 			NSColor(calibratedWhite: 0.3, alpha: 1.0).setStroke()
 //			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
