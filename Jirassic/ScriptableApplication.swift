@@ -25,7 +25,8 @@ extension NSApplication {
                 }
                 RCLog(dict)
                 let notes = dict["notes"] ?? ""
-                let taskNumber = dict["taskNumber"] ?? ""
+                let branchName = dict["branchName"] ?? ""
+                let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"] : branchName
                 let taskType = dict["taskType"] != nil ? Int(dict["taskType"]!) : TaskType.GitCommit.rawValue
                 let informativeText = "\(taskNumber) \(notes)"
                 
