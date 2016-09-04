@@ -13,15 +13,20 @@ protocol SettingsPresenterInput {
     func login (credentials: UserCredentials)
     func testJit()
     func installJit()
+    func uninstallJit()
+    var jitInstalled: Bool {get}
 }
 
 protocol SettingsPresenterOutput {
     
     func showLoadingIndicator (show: Bool)
+    func setJitIsInstalled (installed: Bool)
 }
 
 class SettingsPresenter {
     
+    private let jitInstallationPath = "/usr/local/bin/"
+    var jitInstalled = false
     var userInterface: SettingsPresenterOutput?
 }
 
@@ -39,33 +44,50 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func testJit() {
         
-        let asc = NSAppleScript(source: "sudo /usr/local/bin/jit")
-        let res = asc?.executeAndReturnError(nil)
-        print (res)
+        let asc = NSAppleScript(source: "do shell script \"\(jitInstallationPath)jit\"")
+        if let response = asc?.executeAndReturnError(nil) {
+            print(response)
+            jitInstalled = true
+        } else {
+            print("Could not find Jit at \(jitInstallationPath)")
+            jitInstalled = false
+        }
+        userInterface!.setJitIsInstalled(jitInstalled)
         
 //        let task = NSTask()
-//        task.launchPath = "/usr/local/bin/jit"
-//        task.arguments = []
+//        task.launchPath = "\(jitInstallationPath)jit2"
+////        task.arguments = [""]
 //        task.terminationHandler = { task in
 //            dispatch_async(dispatch_get_main_queue(), {
-////                print(task)
+//                print(task)
+//                print(task.terminationStatus)
 //            })
 //        }
-//        task.launch()
-//        task.waitUntilExit()
+//        try task.launch()
     }
     
     func installJit() {
-        testJit()
-        return
-        let task = NSTask()
-        task.launchPath = NSBundle.mainBundle().pathForResource("jit", ofType: nil)
-        task.arguments = ["install"]
-        task.terminationHandler = { task in
-            dispatch_async(dispatch_get_main_queue(), {
-                //                print(task)
-            })
+        
+        guard let bundledJitPath = NSBundle.mainBundle().pathForResource("jit", ofType: nil) else {
+            return
         }
-        task.launch()
+        let asc = NSAppleScript(source: "do shell script \"sudo cp \(bundledJitPath) \(jitInstallationPath)\" with administrator privileges")
+        if let response = asc?.executeAndReturnError(nil) {
+            print(response)
+            testJit()
+        } else {
+            print("Could not copy Jit from \(bundledJitPath) to \(jitInstallationPath)")
+        }
+    }
+    
+    func uninstallJit() {
+        
+        let asc = NSAppleScript(source: "do shell script \"sudo rm \(jitInstallationPath)jit\" with administrator privileges")
+        if let response = asc?.executeAndReturnError(nil) {
+            print(response)
+            testJit()
+        } else {
+            print("Could not delete Jit from \(jitInstallationPath)")
+        }
     }
 }

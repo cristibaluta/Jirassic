@@ -15,6 +15,10 @@ class SettingsViewController: NSViewController {
 	@IBOutlet private var passwordTextField: NSTextField?
     @IBOutlet private var butLogin: NSButton?
 	@IBOutlet private var progressIndicator: NSProgressIndicator?
+    // Jit
+    @IBOutlet private var jitImageView: NSImageView?
+    @IBOutlet private var jitTextField: NSTextField?
+    @IBOutlet private var butInstallJit: NSButton?
     
     weak var appWireframe: AppWireframe?
     var settingsPresenter: SettingsPresenterInput?
@@ -48,8 +52,11 @@ class SettingsViewController: NSViewController {
                 }
             }
         }
-        
-        settingsPresenter?.testJit()
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        settingsPresenter!.testJit()
         
 //		let user = UserInteractor().currentUser()
 //        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
@@ -60,15 +67,19 @@ class SettingsViewController: NSViewController {
 	// MARK: Actions
     
     @IBAction func handleInstallJitButton (sender: NSButton) {
-        settingsPresenter?.installJit()
+        if settingsPresenter!.jitInstalled {
+            settingsPresenter!.uninstallJit()
+        } else {
+            settingsPresenter!.installJit()
+        }
     }
     
 	@IBAction func handleLoginButton (sender: NSButton) {
-        settingsPresenter?.login(credentials)
+        settingsPresenter!.login(credentials)
 	}
 	
 	@IBAction func handleSaveButton (sender: NSButton) {
-		appWireframe?.flipToTasksController()
+		appWireframe!.flipToTasksController()
 	}
 }
 
@@ -76,10 +87,16 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func showLoadingIndicator (show: Bool) {
         if show {
-            progressIndicator?.startAnimation(nil)
+            progressIndicator!.startAnimation(nil)
         } else {
-            progressIndicator?.stopAnimation(nil)
+            progressIndicator!.stopAnimation(nil)
         }
     }
     
+    func setJitIsInstalled (installed: Bool) {
+        
+        jitImageView?.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+        jitTextField?.stringValue = installed ? "Jit command line tool is installed" : "Jit command line tool is not installed yet"
+        butInstallJit!.title = installed ? "Uninstall" : "Install"
+    }
 }
