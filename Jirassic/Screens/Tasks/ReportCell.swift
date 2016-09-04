@@ -14,6 +14,10 @@ class ReportCell: NSTableRowView, CellProtocol {
     @IBOutlet private var durationTextField: NSTextField?
     @IBOutlet private var taskNrTextField: NSTextField?
     @IBOutlet private var notesTextField: NSTextField?
+    @IBOutlet private var butCopy: NSButton?
+    @IBOutlet private var butCopyWidthConstraint: NSLayoutConstraint?
+    private var trackingArea: NSTrackingArea?
+    private var bgColor: NSColor = NSColor.clearColor()
     
     var didEndEditingCell: ((cell: CellProtocol) -> ())?
     var didRemoveCell: ((cell: CellProtocol) -> ())?
@@ -39,4 +43,61 @@ class ReportCell: NSTableRowView, CellProtocol {
             self.durationTextField!.stringValue = newValue
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        butCopyWidthConstraint?.constant = 0
+        ensureTrackingArea()
+    }
+    
+    override func drawRect (dirtyRect: NSRect) {
+        bgColor.set()
+        NSRectFill(dirtyRect)
+    }
+    
+    @IBAction func handleCopyButton (sender: NSButton) {
+        
+        let string = "\(taskNrTextField!.stringValue)\n\(notesTextField!.stringValue)"
+        NSPasteboard.generalPasteboard().clearContents()
+        NSPasteboard.generalPasteboard().writeObjects([string])
+    }
+    
+}
+
+extension ReportCell {
+    
+    override func mouseEntered (theEvent: NSEvent) {
+        butCopyWidthConstraint?.constant = 47
+        bgColor = NSColor.whiteColor()
+        butCopy!.needsLayout = true
+        self.needsDisplay = true
+    }
+    
+    override func mouseExited (theEvent: NSEvent) {
+        butCopyWidthConstraint?.constant = 0
+        bgColor = NSColor.clearColor()
+        butCopy!.needsLayout = true
+        self.needsDisplay = true
+    }
+    
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        
+        self.ensureTrackingArea()
+        if (!(self.trackingAreas as NSArray).containsObject(self.trackingArea!)) {
+            self.addTrackingArea(self.trackingArea!);
+        }
+    }
+    
+    func ensureTrackingArea() {
+        if (trackingArea == nil) {
+            trackingArea = NSTrackingArea(
+                rect: self.bounds,
+                options: [NSTrackingAreaOptions.InVisibleRect, .ActiveAlways, .MouseEnteredAndExited],
+                owner: self,
+                userInfo: nil
+            )
+        }
+    }
+    
 }
