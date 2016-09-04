@@ -28,6 +28,7 @@ class JitInteractor {
     func installJit (completion: Bool -> Void) {
         
         guard let bundledJitPath = NSBundle.mainBundle().pathForResource("jit", ofType: nil) else {
+            completion(false)
             return
         }
         let asc = NSAppleScript(source: "do shell script \"sudo cp \(bundledJitPath) \(jitInstallationPath)\" with administrator privileges")
