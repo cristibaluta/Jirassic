@@ -53,6 +53,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         // Prevent reloading data when you open the popover for the second time in the same day
         if day == nil || day!.isNewDay() {
+            day = NewDay()
             reloadData()
         }
         updateNoTasksState()
@@ -85,11 +86,6 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func updateNoTasksState() {
-        
-        guard TaskTypeSelection().lastType() == .AllTasks else {
-            appWireframe!.removeMessage()
-            return
-        }
         
         if currentTasks.count == 0 {
             userInterface!.showMessage((
@@ -143,7 +139,9 @@ extension TasksPresenter: TasksPresenterInput {
     func removeTaskAtRow (row: Int) {
         
         let task = currentTasks[row]
+        currentTasks.removeAtIndex(row)
         let deleteInteractor = TaskInteractor(data: localRepository)
         deleteInteractor.deleteTask(task)
+        updateNoTasksState()
     }
 }
