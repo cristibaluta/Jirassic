@@ -30,6 +30,14 @@ extension NSApplication {
                 let taskType = dict["taskType"] != nil ? Int(dict["taskType"]!) : TaskType.GitCommit.rawValue
                 let informativeText = "\(taskNumber): \(notes)"
                 
+                let saveInteractor = TaskInteractor(data: localRepository)
+                let reader = ReadTasksInteractor(data: localRepository)
+                let currentTasks = reader.tasksInDay(NSDate())
+                if currentTasks.count == 0 {
+                    let startDayMark = Task(dateEnd: NSDate(hour: 9, minute: 0), type: TaskType.StartDay)
+                    saveInteractor.saveTask(startDayMark)
+                }
+                
                 let task = Task(
                     endDate: NSDate(),
                     notes: notes,
@@ -37,7 +45,6 @@ extension NSApplication {
                     taskType: taskType!,
                     taskId: String.random()
                 )
-                let saveInteractor = TaskInteractor(data: localRepository)
                 saveInteractor.saveTask(task)
                 
                 LocalNotifications().showNotification("Git commit logged", informativeText: informativeText)
