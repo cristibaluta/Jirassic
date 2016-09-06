@@ -108,6 +108,7 @@
 		408CD2231D7C720C00FA2EA4 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CD2221D7C720C00FA2EA4 /* ReportCell.swift */; };
 		408CD2271D7C72B100FA2EA4 /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408CD2261D7C72B100FA2EA4 /* ReportCell.xib */; };
 		408CD2291D7CA98200FA2EA4 /* JitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CD2281D7CA98200FA2EA4 /* JitInteractor.swift */; };
+		408CD22B1D7E994600FA2EA4 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CD22A1D7E994600FA2EA4 /* SettingsInteractor.swift */; };
 		4094D5DC1D686EE300C55755 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */; };
 		40BF53571CD6020A00626157 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
@@ -277,6 +278,7 @@
 		408CD2221D7C720C00FA2EA4 /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCell.swift; path = Screens/Tasks/ReportCell.swift; sourceTree = "<group>"; };
 		408CD2261D7C72B100FA2EA4 /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReportCell.xib; path = Screens/Tasks/ReportCell.xib; sourceTree = "<group>"; };
 		408CD2281D7CA98200FA2EA4 /* JitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInteractor.swift; sourceTree = "<group>"; };
+		408CD22A1D7E994600FA2EA4 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsInteractor.swift; path = Screens/Settings/SettingsInteractor.swift; sourceTree = "<group>"; };
 		4094D5DB1D686EE300C55755 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeSelection.swift; path = App/TaskTypeSelection.swift; sourceTree = SOURCE_ROOT; };
 		40BF53561CD6020A00626157 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 			children = (
 				406413941CD71E2D00C8E03D /* SettingsViewController.swift */,
 				406413921CD71E1700C8E03D /* SettingsPresenter.swift */,
+				408CD22A1D7E994600FA2EA4 /* SettingsInteractor.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1124,6 +1127,7 @@
 				40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */,
 				40F5CC041CDC6B3A00249D66 /* ViewController.swift in Sources */,
 				40BF53631CD618A700626157 /* LoginViewController.swift in Sources */,
+				408CD22B1D7E994600FA2EA4 /* SettingsInteractor.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */,
 				40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */,
