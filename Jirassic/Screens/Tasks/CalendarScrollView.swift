@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DatesScrollView: NSScrollView {
+class CalendarScrollView: NSScrollView {
 	
 	@IBOutlet private var outlineView: NSOutlineView?
 	var weeks = [Week]()
@@ -43,7 +43,7 @@ class DatesScrollView: NSScrollView {
     }
 }
 
-extension DatesScrollView: NSOutlineViewDataSource {
+extension CalendarScrollView: NSOutlineViewDataSource {
 	
 	func outlineView (outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
 		
@@ -84,7 +84,7 @@ extension DatesScrollView: NSOutlineViewDataSource {
 	}
 }
 
-extension DatesScrollView: NSOutlineViewDelegate {
+extension CalendarScrollView: NSOutlineViewDelegate {
 	
 	func outlineView (outlineView: NSOutlineView, viewForTableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
         

@@ -143,5 +143,9 @@ extension TasksPresenter: TasksPresenterInput {
         let deleteInteractor = TaskInteractor(data: localRepository)
         deleteInteractor.deleteTask(task)
         updateNoTasksState()
+        if currentTasks.count == 0 {
+            let reader = ReadDaysInteractor(data: localRepository)
+            userInterface?.showDates(reader.weeks())
+        }
     }
 }

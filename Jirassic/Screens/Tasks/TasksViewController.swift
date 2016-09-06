@@ -11,7 +11,7 @@ import Cocoa
 class TasksViewController: NSViewController {
 	
 	@IBOutlet private var splitView: NSSplitView?
-	@IBOutlet private var datesScrollView: DatesScrollView?
+	@IBOutlet private var calendarScrollView: CalendarScrollView?
 	@IBOutlet private var tasksScrollView: TasksScrollView?
     @IBOutlet private var listSegmentedControl: NSSegmentedControl?
     
@@ -28,7 +28,7 @@ class TasksViewController: NSViewController {
 		registerForNotifications()
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         
-        datesScrollView!.didSelectDay = { [weak self] (day: Day) in
+        calendarScrollView!.didSelectDay = { [weak self] (day: Day) in
             self?.tasksPresenter?.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
         }
         
@@ -62,7 +62,7 @@ extension TasksViewController {
 	@IBAction func handleSegmentedControl (sender: NSSegmentedControl) {
         let listType = ListType(rawValue: sender.selectedSegment)!
         TaskTypeSelection().setType(listType)
-        if let selectedDay = datesScrollView!.selectedDay {
+        if let selectedDay = calendarScrollView!.selectedDay {
             tasksPresenter!.reloadTasksOnDay(selectedDay, listType: listType)
         }
 	}
@@ -90,8 +90,8 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showDates (weeks: [Week]) {
         
-        datesScrollView?.weeks = weeks
-        datesScrollView?.reloadData()
+        calendarScrollView?.weeks = weeks
+        calendarScrollView?.reloadData()
     }
     
     func showTasks (tasks: [Task], listType: ListType) {
@@ -104,7 +104,7 @@ extension TasksViewController: TasksPresenterOutput {
     }
     
     func selectDay (day: Day) {
-        datesScrollView!.selectDay(day)
+        calendarScrollView!.selectDay(day)
     }
     
     func presentNewTaskController() {
@@ -134,12 +134,12 @@ extension TasksViewController {
 	func registerForNotifications() {
 		
 		NSNotificationCenter.defaultCenter().addObserver(self,
-			selector: #selector(TasksViewController.newTaskWasAdded(_:)),
+			selector: #selector(TasksViewController.handleNewTaskAdded(_:)),
 			name: kNewTaskWasAddedNotification,
 			object: nil)
 	}
 	
-	func newTaskWasAdded (notif: NSNotification) {
+	func handleNewTaskAdded (notif: NSNotification) {
         tasksPresenter?.reloadData()
 	}
 }

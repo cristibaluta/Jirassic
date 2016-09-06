@@ -687,7 +687,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="380"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP3-Rr-lmx" customClass="DatesScrollView" customModule="Jirassic" customModuleProvider="target">
+                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP3-Rr-lmx" customClass="CalendarScrollView" customModule="Jirassic" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="380"/>
                                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" id="c1O-Xx-nvd">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="380"/>
@@ -908,7 +908,7 @@
                         </constraints>
                     </customView>
                     <connections>
-                        <outlet property="datesScrollView" destination="TP3-Rr-lmx" id="ZUj-Jx-jHU"/>
+                        <outlet property="calendarScrollView" destination="TP3-Rr-lmx" id="Zzl-gR-bBE"/>
                         <outlet property="listSegmentedControl" destination="95a-7I-VNJ" id="8E8-Sc-7fh"/>
                         <outlet property="splitView" destination="pVs-CS-Pcx" id="cl7-Lo-9AU"/>
                         <outlet property="tasksScrollView" destination="VwR-9G-9tZ" id="KgZ-p8-Q32"/>

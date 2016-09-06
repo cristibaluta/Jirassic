@@ -113,7 +113,7 @@
 		40BF535D1CD6175800626157 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
 		40BF53611CD6188000626157 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53601CD6188000626157 /* LoginPresenter.swift */; };
 		40BF53631CD618A700626157 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53621CD618A700626157 /* LoginViewController.swift */; };
-		40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53661CD61ACF00626157 /* DatesScrollView.swift */; };
+		40BF53731CD61ACF00626157 /* CalendarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53661CD61ACF00626157 /* CalendarScrollView.swift */; };
 		40BF53761CD61ACF00626157 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53691CD61ACF00626157 /* NewTaskViewController.swift */; };
 		40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF536A1CD61ACF00626157 /* NonTaskCell.swift */; };
 		40BF53781CD61ACF00626157 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BF536B1CD61ACF00626157 /* NonTaskCell.xib */; };
@@ -282,7 +282,7 @@
 		40BF53591CD6175800626157 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTask.swift; path = ../External/CoreData/CTask.swift; sourceTree = "<group>"; };
 		40BF53601CD6188000626157 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPresenter.swift; path = Screens/Login/LoginPresenter.swift; sourceTree = "<group>"; };
 		40BF53621CD618A700626157 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Screens/Login/LoginViewController.swift; sourceTree = "<group>"; };
-		40BF53661CD61ACF00626157 /* DatesScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatesScrollView.swift; path = Screens/Tasks/DatesScrollView.swift; sourceTree = "<group>"; };
+		40BF53661CD61ACF00626157 /* CalendarScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarScrollView.swift; path = Screens/Tasks/CalendarScrollView.swift; sourceTree = "<group>"; };
 		40BF53691CD61ACF00626157 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewTaskViewController.swift; path = Screens/Tasks/NewTaskViewController.swift; sourceTree = "<group>"; };
 		40BF536A1CD61ACF00626157 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NonTaskCell.swift; path = Screens/Tasks/NonTaskCell.swift; sourceTree = "<group>"; };
 		40BF536B1CD61ACF00626157 /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NonTaskCell.xib; path = Screens/Tasks/NonTaskCell.xib; sourceTree = "<group>"; };
@@ -609,7 +609,7 @@
 			children = (
 				40BF53721CD61ACF00626157 /* TasksViewController.swift */,
 				40F5CBFA1CDB3BEF00249D66 /* TasksPresenter.swift */,
-				40BF53661CD61ACF00626157 /* DatesScrollView.swift */,
+				40BF53661CD61ACF00626157 /* CalendarScrollView.swift */,
 				40BF53711CD61ACF00626157 /* TasksScrollView.swift */,
 				286E9A3D1C1C44B6008FC45E /* Cells */,
 			);
@@ -1112,7 +1112,7 @@
 				28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */,
 				40D6DF761D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */,
 				40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */,
-				40BF53731CD61ACF00626157 /* DatesScrollView.swift in Sources */,
+				40BF53731CD61ACF00626157 /* CalendarScrollView.swift in Sources */,
 				285424CB1C3431990063B532 /* Day.swift in Sources */,
 				406413A61CD9498A00C8E03D /* CUser+CoreDataProperties.swift in Sources */,
 				40F5CC521CDE349100249D66 /* TaskInteractor.swift in Sources */,
