@@ -17,7 +17,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="kkS-Qs-fmO"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task number" drawsBackground="YES" id="dlI-ub-5hj">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task number" drawsBackground="YES" id="dlI-ub-5hj">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
