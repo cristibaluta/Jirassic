@@ -45,8 +45,9 @@ class ReportCell: NSTableRowView, CellProtocol {
     }
     var heightThatFits: CGFloat {
         get {
-//            self.notesTextField!.sizeToFit()
-            let size = self.notesTextField!.sizeThatFits(NSSize(width: self.frame.size.width, height: 1000))
+            let size = self.notesTextField!.sizeThatFits(
+                NSSize(width: self.frame.size.width - self.notesTextField!.frame.origin.x, height: 1000)
+            )
             
             return 30 + size.height + 10
         }
