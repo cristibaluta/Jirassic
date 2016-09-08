@@ -96,7 +96,6 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showTasks (tasks: [Task], listType: ListType) {
         
-        RCLog(listType)
         tasksScrollView!.listType = listType
         tasksScrollView!.data = tasks
         tasksScrollView!.reloadData()

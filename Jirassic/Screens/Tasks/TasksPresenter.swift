@@ -92,7 +92,7 @@ extension TasksPresenter: TasksPresenterInput {
                 title: "Good morning!",
                 message: "Ready to begin your working day?",
                 buttonTitle: "Start day"))
-        } else if currentTasks.count == 1 {
+        } else if currentTasks.count == 1 && selectedListType != .Report {
             userInterface!.showMessage((
                 title: "No task yet.",
                 message: "When you're ready with your first task click \n'+' or 'Log time'",

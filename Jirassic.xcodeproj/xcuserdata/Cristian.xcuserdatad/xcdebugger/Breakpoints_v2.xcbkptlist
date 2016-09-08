@@ -19,5 +19,53 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Jirassic/Screens/Tasks/TasksScrollView.swift"
+            timestampString = "494923363.465167"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "tableView(_:heightOfRow:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of Jirassic.TasksScrollView.tableView (__ObjC.NSTableView, heightOfRow : Swift.Int) -&gt; CoreGraphics.CGFloat"
+                  moduleName = "Jirassic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Cristian/Documents/Jirassic/Jirassic/Screens/Tasks/TasksScrollView.swift"
+                  timestampString = "494923443.905959"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "1370">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of Jirassic.TasksScrollView.tableView (__ObjC.NSTableView, heightOfRow : Swift.Int) -&gt; CoreGraphics.CGFloat"
+                  moduleName = "Jirassic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Cristian/Documents/Jirassic/Jirassic/Screens/Tasks/TasksScrollView.swift"
+                  timestampString = "494923443.906171"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "1374">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
