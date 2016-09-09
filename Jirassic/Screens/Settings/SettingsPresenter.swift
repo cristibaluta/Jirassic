@@ -32,6 +32,7 @@ class SettingsPresenter {
         }
     }
     var userInterface: SettingsPresenterOutput?
+    var settingsInteractor: SettingsInteractorInput?
 }
 
 extension SettingsPresenter: SettingsPresenterInput {
@@ -49,20 +50,6 @@ extension SettingsPresenter: SettingsPresenterInput {
     func testJit() {
         
         userInterface!.setJitIsInstalled( jitInteractor.isInstalled )
-        
-//        let keychain = KeychainWrapper.defaultKeychainWrapper()
-//        keychain.setString("aaa", forKey: "cbaluta2")
-//        print(keychain.stringForKey("cbaluta2"))
-        
-        let task = NSTask()
-        task.launchPath = "/usr/bin/security"
-        task.arguments = ["find-generic-password", "-wa", "cbaluta"]
-        task.terminationHandler = { task in
-            dispatch_async(dispatch_get_main_queue(), {
-                print(task)
-            })
-        }
-        task.launch()
     }
     
     func installJit() {
@@ -82,4 +69,8 @@ extension SettingsPresenter: SettingsPresenterInput {
             }
         }
     }
+}
+
+extension SettingsPresenter: SettingsInteractorOutput {
+    
 }

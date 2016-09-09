@@ -82,8 +82,11 @@ class AppWireframe {
         
         let settingsController = SettingsViewController.instantiateFromStoryboard("Main")
         let settingsPresenter = SettingsPresenter()
+        let settingsInteractor = SettingsInteractor()
         
         settingsPresenter.userInterface = settingsController
+        settingsPresenter.settingsInteractor = settingsInteractor
+        settingsInteractor.settingsPresenter = settingsPresenter
         settingsController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
         settingsController.settingsPresenter = settingsPresenter
         settingsController.appWireframe = self

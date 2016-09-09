@@ -8,6 +8,37 @@
 
 import Foundation
 
-class SettingsInteractor: NSObject {
+protocol SettingsInteractorInput {
+    
+    
+}
 
+protocol SettingsInteractorOutput {
+    
+    
+}
+
+class SettingsInteractor {
+    
+    var settingsPresenter: SettingsInteractorOutput?
+    
+    init() {
+        
+    }
+}
+
+extension SettingsInteractor: SettingsInteractorInput {
+    
+    func getJiraPasswordForUser (jiraUser: String) {
+        
+        let task = NSTask()
+        task.launchPath = "/usr/bin/security"
+        task.arguments = ["find-generic-password", "-wa", jiraUser]
+        task.terminationHandler = { task in
+            dispatch_async(dispatch_get_main_queue(), {
+                print(task)
+            })
+        }
+        task.launch()
+    }
 }

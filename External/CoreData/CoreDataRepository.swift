@@ -12,10 +12,19 @@ import CoreData
 class CoreDataRepository {
     
     lazy var applicationDocumentsDirectory: NSURL = {
+        
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
-        RCLog(urls)
-        return urls.last as NSURL!
-//        return (urls.last as NSURL!).URLByAppendingPathComponent("Jirassic")
+        let baseUrl = urls.last as NSURL!
+        let url = baseUrl.URLByAppendingPathComponent("Jirassic")
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
+            do {
+                try NSFileManager.defaultManager().createDirectoryAtURL(url, withIntermediateDirectories: false, attributes: nil)
+            } catch _ {
+                return baseUrl
+            }
+        }
+        return url
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
