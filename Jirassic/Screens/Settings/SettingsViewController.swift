@@ -19,6 +19,10 @@ class SettingsViewController: NSViewController {
     @IBOutlet private var jitImageView: NSImageView?
     @IBOutlet private var jitTextField: NSTextField?
     @IBOutlet private var butInstallJit: NSButton?
+    // Jira
+    @IBOutlet private var jiraUrlTextField: NSTextField?
+    @IBOutlet private var jiraUserTextField: NSTextField?
+    @IBOutlet private var jiraPasswordTextField: NSTextField?
     
     weak var appWireframe: AppWireframe?
     var settingsPresenter: SettingsPresenterInput?
@@ -98,5 +102,12 @@ extension SettingsViewController: SettingsPresenterOutput {
         jitImageView?.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
         jitTextField?.stringValue = installed ? "Jit command line tool is installed" : "Jit command line tool is not installed yet"
         butInstallJit!.title = installed ? "Uninstall" : "Install"
+    }
+    
+    func setJiraSettings (settings: JiraSettings) {
+        
+        jiraUrlTextField!.stringValue = settings.url!
+        jiraUserTextField!.stringValue = settings.user!
+//        jiraPasswordTextField!.stringValue = nil
     }
 }

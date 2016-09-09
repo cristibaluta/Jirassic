@@ -21,6 +21,7 @@ protocol SettingsPresenterOutput {
     
     func showLoadingIndicator (show: Bool)
     func setJitIsInstalled (installed: Bool)
+    func setJiraSettings (settings: JiraSettings)
 }
 
 class SettingsPresenter {
@@ -50,6 +51,11 @@ extension SettingsPresenter: SettingsPresenterInput {
     func testJit() {
         
         userInterface!.setJitIsInstalled( jitInteractor.isInstalled )
+        
+        let jiraSettings = settingsInteractor!.getJiraSettings()
+        RCLog(jiraSettings)
+        settingsInteractor!.getJiraPasswordForUser(jiraSettings!.user!)
+        userInterface!.setJiraSettings(jiraSettings!)
     }
     
     func installJit() {

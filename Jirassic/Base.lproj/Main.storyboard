@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -993,7 +993,7 @@
                                     <rect key="frame" x="1" y="1" width="456" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pmf-9e-7xQ">
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmf-9e-7xQ">
                                             <rect key="frame" x="9" y="13" width="160" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="160" id="HB6-VC-czL"/>
@@ -1005,11 +1005,10 @@
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
                                             </textFieldCell>
                                         </textField>
-                                        <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
-                                            <rect key="frame" x="183" y="13" width="160" height="22"/>
+                                        <secureTextField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
+                                            <rect key="frame" x="183" y="13" width="261" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="fFj-0g-mfD"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="160" id="vMY-2i-8Tn"/>
                                             </constraints>
                                             <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="t7N-4z-GJ5">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1020,20 +1019,6 @@
                                                 </allowedInputSourceLocales>
                                             </secureTextFieldCell>
                                         </secureTextField>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-ZT-sev">
-                                            <rect key="frame" x="375" y="7" width="75" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="8At-fg-4ev"/>
-                                                <constraint firstAttribute="width" constant="63" id="F0R-fk-hzA"/>
-                                            </constraints>
-                                            <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G5x-SG-kZB">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="handleLoginButton:" target="J1c-ZL-C5e" id="Cuk-cN-ACj"/>
-                                            </connections>
-                                        </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="web-Sh-ys4">
                                             <rect key="frame" x="7" y="51" width="171" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira software installation url" id="UYv-JK-YuS">
@@ -1053,18 +1038,16 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Ygh-kb-AK9" secondAttribute="trailing" constant="12" id="1bX-zv-uF8"/>
-                                        <constraint firstItem="AMk-ZT-sev" firstAttribute="centerY" secondItem="pmf-9e-7xQ" secondAttribute="centerY" id="3m6-1k-QO2"/>
                                         <constraint firstItem="2Xl-Yb-FkC" firstAttribute="centerY" secondItem="pmf-9e-7xQ" secondAttribute="centerY" id="Qh9-gx-mhg"/>
                                         <constraint firstItem="Ygh-kb-AK9" firstAttribute="leading" secondItem="GTP-hi-csP" secondAttribute="leading" constant="184" id="RQP-iD-Pml"/>
+                                        <constraint firstAttribute="trailing" secondItem="2Xl-Yb-FkC" secondAttribute="trailing" constant="12" id="ut9-5H-hj5"/>
                                         <constraint firstItem="Ygh-kb-AK9" firstAttribute="top" secondItem="GTP-hi-csP" secondAttribute="top" constant="10" id="wVv-cV-2wo"/>
                                         <constraint firstAttribute="bottom" secondItem="pmf-9e-7xQ" secondAttribute="bottom" constant="13" id="yTe-6H-d0s"/>
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="AMk-ZT-sev" firstAttribute="leading" secondItem="2Xl-Yb-FkC" secondAttribute="trailing" constant="38" id="LUq-ZM-gku"/>
                                     <constraint firstAttribute="height" constant="92" id="XTp-9s-QBx"/>
                                     <constraint firstItem="2Xl-Yb-FkC" firstAttribute="leading" secondItem="pmf-9e-7xQ" secondAttribute="trailing" constant="14" id="lln-Ee-p2r"/>
-                                    <constraint firstAttribute="trailing" secondItem="AMk-ZT-sev" secondAttribute="trailing" constant="10" id="u7e-Vx-saF"/>
                                     <constraint firstItem="pmf-9e-7xQ" firstAttribute="leading" secondItem="ELX-Uc-E2D" secondAttribute="leading" constant="7" id="ucH-ti-C1z"/>
                                 </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -1190,7 +1173,9 @@
                     </view>
                     <connections>
                         <outlet property="butInstallJit" destination="19q-BQ-bPB" id="ekh-La-zda"/>
-                        <outlet property="butLogin" destination="AMk-ZT-sev" id="moz-Ja-2JI"/>
+                        <outlet property="jiraPasswordTextField" destination="2Xl-Yb-FkC" id="ohC-It-DHk"/>
+                        <outlet property="jiraUrlTextField" destination="Ygh-kb-AK9" id="h3X-TY-xXc"/>
+                        <outlet property="jiraUserTextField" destination="pmf-9e-7xQ" id="bhs-dM-Ha9"/>
                         <outlet property="jitImageView" destination="1zu-O9-EL6" id="q4f-Ic-FI2"/>
                         <outlet property="jitTextField" destination="WPR-i0-dsI" id="J2v-FS-c35"/>
                     </connections>

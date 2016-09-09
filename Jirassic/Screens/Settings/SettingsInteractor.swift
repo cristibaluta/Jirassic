@@ -8,9 +8,16 @@
 
 import Foundation
 
+struct JiraSettings {
+    var url: String?
+    var user: String?
+    var separator: String?
+}
+
 protocol SettingsInteractorInput {
     
-    
+    func getJiraSettings() -> JiraSettings?
+    func getJiraPasswordForUser (jiraUser: String)
 }
 
 protocol SettingsInteractorOutput {
@@ -28,6 +35,23 @@ class SettingsInteractor {
 }
 
 extension SettingsInteractor: SettingsInteractorInput {
+    
+    func getJiraSettings() -> JiraSettings? {
+        
+        let homeDirectory = NSHomeDirectory()
+        let jitconfigPath = "\(homeDirectory)/.jitconfig"
+        
+        if NSFileManager.defaultManager().fileExistsAtPath(jitconfigPath) {
+            do {
+                let jitconfig = try NSString(contentsOfFile: jitconfigPath, encoding: NSUTF8StringEncoding)
+                let lines = jitconfig.componentsSeparatedByString("\n") as [String]
+                let settings = JiraSettings(url: lines[0], user: lines[1], separator: lines[2])
+                return settings
+            }
+            catch {}
+        }
+        return nil
+    }
     
     func getJiraPasswordForUser (jiraUser: String) {
         
