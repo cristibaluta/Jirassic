@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="CSettings" syncable="YES">
+        <attribute name="autoTrackLunch" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="autoTrackScrum" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lunchTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="scrumMeetingTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="showSuggestions" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="startDayTime" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="CTask" representedClassName=".CTask" syncable="YES">
         <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -18,5 +26,6 @@
     <elements>
         <element name="CTask" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="CUser" positionX="-54" positionY="54" width="128" height="105"/>
+        <element name="CSettings" positionX="-54" positionY="45" width="128" height="135"/>
     </elements>
 </model>

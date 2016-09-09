@@ -937,46 +937,30 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOS-4d-Fjt">
-                                <rect key="frame" x="20" y="133" width="125" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Task number preffix" id="AVY-mY-l1B">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAq-ok-MR3">
-                                <rect key="frame" x="20" y="102" width="157" height="17"/>
+                                <rect key="frame" x="20" y="117" width="157" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="I should come to work at" id="pkU-fZ-BUN">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ob-qM-yQk">
-                                <rect key="frame" x="163" y="130" width="67" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="AN" drawsBackground="YES" id="xQZ-Ln-Hdl">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZW-oy-bAn">
-                                <rect key="frame" x="20" y="72" width="369" height="18"/>
+                                <rect key="frame" x="20" y="87" width="369" height="18"/>
                                 <buttonCell key="cell" type="check" title="Track lunch when computer goes to sleep around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYU-uP-r49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-eo-qyH">
-                                <rect key="frame" x="20" y="37" width="374" height="18"/>
+                                <rect key="frame" x="20" y="52" width="374" height="18"/>
                                 <buttonCell key="cell" type="check" title="Track scrum when computer goes to sleep around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
-                                <rect key="frame" x="194" y="99" width="104" height="27"/>
+                                <rect key="frame" x="194" y="114" width="104" height="27"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="-595962000">
@@ -993,10 +977,10 @@
                                     <rect key="frame" x="1" y="1" width="456" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmf-9e-7xQ">
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pmf-9e-7xQ">
                                             <rect key="frame" x="9" y="13" width="160" height="22"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="160" id="HB6-VC-czL"/>
+                                                <constraint firstAttribute="width" priority="750" constant="160" id="HB6-VC-czL"/>
                                                 <constraint firstAttribute="height" constant="22" id="tPd-Cw-gsD"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="Email" drawsBackground="YES" id="Kp7-sN-n8L">
@@ -1005,7 +989,7 @@
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
                                             </textFieldCell>
                                         </textField>
-                                        <secureTextField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
+                                        <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
                                             <rect key="frame" x="183" y="13" width="261" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="fFj-0g-mfD"/>
@@ -1068,7 +1052,7 @@
                                 </connections>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
-                                <rect key="frame" x="395" y="70" width="61" height="27"/>
+                                <rect key="frame" x="395" y="85" width="61" height="27"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="-595947600">
@@ -1080,7 +1064,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-W0-ldB">
-                                <rect key="frame" x="396" y="35" width="61" height="27"/>
+                                <rect key="frame" x="396" y="50" width="61" height="27"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="aAZ-cj-BOO">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="-595956600">
@@ -1153,10 +1137,27 @@
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
+                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mfs-D5-P9c">
+                                <rect key="frame" x="12" y="153" width="470" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="kNE-vc-TD5"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="goh-iR-DW2">
+                                <rect key="frame" x="20" y="18" width="374" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show suggestions" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Im-2V-c5a">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jgE-dH-Hh6" secondAttribute="trailing" constant="20" id="BR0-UX-Ylu"/>
                             <constraint firstAttribute="trailing" secondItem="OCy-iT-9TC" secondAttribute="trailing" constant="20" id="HWz-r5-zWS"/>
+                            <constraint firstItem="mfs-D5-P9c" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="I8X-MZ-dEC"/>
                             <constraint firstItem="wtI-Tb-5RE" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="21" id="Iuf-tS-mkO"/>
                             <constraint firstItem="ELX-Uc-E2D" firstAttribute="top" secondItem="jgE-dH-Hh6" secondAttribute="bottom" constant="19" id="JYU-VN-hjg"/>
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="20" id="Lng-g3-sZf"/>
@@ -1165,8 +1166,10 @@
                             <constraint firstItem="cH4-ct-dhw" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="YL7-iP-tRU"/>
                             <constraint firstAttribute="trailing" secondItem="cH4-ct-dhw" secondAttribute="trailing" constant="12" id="ZD1-Vg-zxL"/>
                             <constraint firstItem="jgE-dH-Hh6" firstAttribute="top" secondItem="cH4-ct-dhw" secondAttribute="bottom" constant="18" id="ao6-R0-qtz"/>
+                            <constraint firstAttribute="trailing" secondItem="mfs-D5-P9c" secondAttribute="trailing" constant="12" id="b0P-3M-tYp"/>
                             <constraint firstItem="ELX-Uc-E2D" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="fm4-7Z-y2o"/>
                             <constraint firstItem="jgE-dH-Hh6" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="gWd-r8-vT5"/>
+                            <constraint firstItem="mfs-D5-P9c" firstAttribute="top" secondItem="ELX-Uc-E2D" secondAttribute="bottom" constant="22" id="heb-ab-o1w"/>
                             <constraint firstItem="cH4-ct-dhw" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="60" id="iOV-Gk-7bV"/>
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="20" id="krg-JJ-Gi5"/>
                         </constraints>
