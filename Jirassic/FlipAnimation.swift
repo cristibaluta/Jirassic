@@ -14,7 +14,7 @@ class FlipAnimation: NSObject {
 	var animationFinished: (() -> ())?
 	var layer: CALayer?
 	
-	func startWithLayer (layer: CALayer) {
+	func startWithLayer (_ layer: CALayer) {
 		
 		// Create CAAnimation
 		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
@@ -24,7 +24,7 @@ class FlipAnimation: NSObject {
 		rotationAnimation.repeatCount = 1.0
 		rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
 		rotationAnimation.fillMode = kCAFillModeForwards
-		rotationAnimation.removedOnCompletion = false
+		rotationAnimation.isRemovedOnCompletion = false
 		rotationAnimation.setValue("flipAnimationInwards", forKey: "flip")
 		rotationAnimation.delegate = self
 		
@@ -32,11 +32,11 @@ class FlipAnimation: NSObject {
 		var mt = CATransform3DIdentity
 		mt.m34 = CGFloat(1.0 / 1000)
 		layer.transform = mt
-		layer.addAnimation(rotationAnimation, forKey:"flip")
+		layer.add(rotationAnimation, forKey:"flip")
 		self.layer = layer
 	}
 	
-	func animatePhase2 (anim: CAAnimation!) {
+	func animatePhase2 (_ anim: CAAnimation!) {
 		
 		let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.y")
 		rotationAnimation.fromValue = -3.14/2
@@ -45,7 +45,7 @@ class FlipAnimation: NSObject {
 		rotationAnimation.repeatCount = 1.0
 		rotationAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
 		rotationAnimation.fillMode = kCAFillModeForwards
-		rotationAnimation.removedOnCompletion = false
+		rotationAnimation.isRemovedOnCompletion = false
 		rotationAnimation.setValue("flipAnimationOutwards", forKey: "flip")
 		rotationAnimation.delegate = self
 		
@@ -53,18 +53,21 @@ class FlipAnimation: NSObject {
 		var mt = CATransform3DIdentity
 		mt.m34 = CGFloat(1.0 / 1000)
 		self.layer?.transform = mt
-		self.layer?.addAnimation(rotationAnimation, forKey:"flip")
+		self.layer?.add(rotationAnimation, forKey:"flip")
 	}
-	
-	override func animationDidStop (anim: CAAnimation, finished flag: Bool) {
-		
-		if anim.valueForKey("flip") as! String == "flipAnimationInwards" {
-			
-			self.animationReachedMiddle!()
-			self.animatePhase2(anim)
-		}
-		else if anim.valueForKey("flip") as! String == "flipAnimationOutwards" {
-			self.animationFinished!()
-		}
-	}
+}
+
+extension FlipAnimation: CAAnimationDelegate {
+    
+    func animationDidStop (_ anim: CAAnimation, finished flag: Bool) {
+        
+        if anim.value(forKey: "flip") as! String == "flipAnimationInwards" {
+            
+            self.animationReachedMiddle!()
+            self.animatePhase2(anim)
+        }
+        else if anim.value(forKey: "flip") as! String == "flipAnimationOutwards" {
+            self.animationFinished!()
+        }
+    }
 }

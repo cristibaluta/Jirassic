@@ -10,15 +10,15 @@ import Cocoa
 
 class CalendarScrollView: NSScrollView {
 	
-	@IBOutlet private var outlineView: NSOutlineView?
+	@IBOutlet fileprivate var outlineView: NSOutlineView?
 	var weeks = [Week]()
-	var didSelectDay: ((day: Day) -> ())?
+	var didSelectDay: ((_ day: Day) -> ())?
     var selectedDay: Day?
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
-		outlineView?.setDataSource(self)
-		outlineView?.setDelegate(self)
+		outlineView?.dataSource = self
+		outlineView?.delegate = self
 	}
 	
 	func reloadData() {
@@ -26,7 +26,7 @@ class CalendarScrollView: NSScrollView {
 		self.outlineView?.expandItem(nil, expandChildren: true)
 	}
     
-    func selectDay (dayToSelect: Day) {
+    func selectDay (_ dayToSelect: Day) {
         
         var i = -1
         for week in weeks {
@@ -34,7 +34,7 @@ class CalendarScrollView: NSScrollView {
             for day in week.days {
                 i += 1
                 if day.date.isSameDayAs(dayToSelect.date) {
-                    let indexSet = NSIndexSet(index: i)
+                    let indexSet = IndexSet(integer: i)
                     outlineView?.selectRowIndexes(indexSet, byExtendingSelection: true)
                     break
                 }
@@ -45,9 +45,9 @@ class CalendarScrollView: NSScrollView {
 
 extension CalendarScrollView: NSOutlineViewDataSource {
 	
-	func outlineView (outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
+	func outlineView (_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
 		
-		if let item: AnyObject = item {
+		if let item: AnyObject = item as AnyObject? {
 			switch item {
 			case let week as Week:
 				return week.days[index]
@@ -59,7 +59,7 @@ extension CalendarScrollView: NSOutlineViewDataSource {
 		}
 	}
 	
-	func outlineView (outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+	func outlineView (_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
 		
 		switch item {
 		case let week as Week:
@@ -69,9 +69,9 @@ extension CalendarScrollView: NSOutlineViewDataSource {
 		}
 	}
 	
-	func outlineView (outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
+	func outlineView (_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
 		
-		if let item: AnyObject = item {
+		if let item: AnyObject = item as AnyObject? {
 			switch item {
 			case let week as Week:
 				return week.days.count
@@ -86,17 +86,17 @@ extension CalendarScrollView: NSOutlineViewDataSource {
 
 extension CalendarScrollView: NSOutlineViewDelegate {
 	
-	func outlineView (outlineView: NSOutlineView, viewForTableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
+	func outlineView (_ outlineView: NSOutlineView, viewFor viewForTableColumn: NSTableColumn?, item: Any) -> NSView? {
         
 		switch item {
 		case let week as Week:
-			let view = outlineView.makeViewWithIdentifier("HeaderCell", owner: self) as! NSTableCellView
+			let view = outlineView.make(withIdentifier: "HeaderCell", owner: self) as! NSTableCellView
 			if let textField = view.textField {
 				textField.stringValue = week.date.weekInterval()
 			}
 			return view
 		case let day as Day:
-			let view = outlineView.makeViewWithIdentifier("DataCell", owner: self) as! NSTableCellView
+			let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
 			if let textField = view.textField {
 				textField.stringValue = day.date.ddEEEEE()
 			}
@@ -107,18 +107,18 @@ extension CalendarScrollView: NSOutlineViewDelegate {
 		}
 	}
 	
-	func outlineView (outlineView: NSOutlineView, isGroupItem item: AnyObject) -> Bool {
+	func outlineView (_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
 		return item is Week
 	}
 	
-	func outlineViewSelectionDidChange (notification: NSNotification) {
+	func outlineViewSelectionDidChange (_ notification: Notification) {
 		
-		let selectedIndex = notification.object?.selectedRow
-		let object: AnyObject? = notification.object?.itemAtRow(selectedIndex!)
-		
-		if let day = (object as? Day) {
-            selectedDay = day
-			didSelectDay?(day: day)
-		}
+        if let outlineView = notification.object as? NSOutlineView {
+            let selectedRow = outlineView.selectedRow
+            if let selectedObject = outlineView.item(atRow: selectedRow) as? Day {
+                selectedDay = selectedObject
+                didSelectDay?(selectedObject)
+            }
+        }
 	}
 }

@@ -16,7 +16,7 @@ extension CUser {
 
     @NSManaged var userId: String?
     @NSManaged var email: String?
-    @NSManaged var lastSyncDate: NSDate?
+    @NSManaged var lastSyncDate: Date?
     @NSManaged var isLoggedIn: NSNumber?
 
 }

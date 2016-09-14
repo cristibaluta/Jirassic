@@ -11,12 +11,12 @@ import CloudKit
 
 class CloudKitRepository {
     
-    private var tasks = [Task]()
-    private var user: User?
-    let privateDB = CKContainer.defaultContainer().privateCloudDatabase
+    fileprivate var tasks = [Task]()
+    fileprivate var user: User?
+    let privateDB = CKContainer.default().privateCloudDatabase
     
     init() {
-        CKContainer.defaultContainer().accountStatusWithCompletionHandler({ (status, error) in
+        CKContainer.default().accountStatus(completionHandler: { (status, error) in
             RCLog(status.rawValue)
             RCLogErrorO(error)
         })
@@ -40,11 +40,11 @@ extension CloudKitRepository: Repository {
         return self.user!
     }
     
-    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+    func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
         
     }
     
-    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+    func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
         
     }
     
@@ -52,11 +52,11 @@ extension CloudKitRepository: Repository {
         user = nil
     }
     
-    func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
+    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
         
         let predicate = NSPredicate(format: "TRUEPREDICATE")
         let query = CKQuery(recordType: "Task", predicate: predicate)
-        privateDB.performQuery(query, inZoneWithID: nil) { results, error in
+        privateDB.perform(query, inZoneWith: nil) { results, error in
             RCLog(results)
             RCLogErrorO(error)
 //            if error != nil {
@@ -85,7 +85,7 @@ extension CloudKitRepository: Repository {
 //            })
     }
     
-    func queryTasksInDay (day: NSDate) -> [Task] {
+    func queryTasksInDay (_ day: Date) -> [Task] {
         return []
     }
     
@@ -93,7 +93,7 @@ extension CloudKitRepository: Repository {
         fatalError("This method is not applicable to ParseRepository")
     }
     
-    func deleteTask (taskToDelete: Task, completion: ((success: Bool) -> Void)) {
+    func deleteTask (_ taskToDelete: Task, completion: ((_ success: Bool) -> Void)) {
         
         var indexToRemove = -1
         var shouldRemove = false
@@ -109,11 +109,11 @@ extension CloudKitRepository: Repository {
             }
         }
         if shouldRemove {
-            self.tasks.removeAtIndex(indexToRemove)
+            self.tasks.remove(at: indexToRemove)
         }
     }
     
-    func saveTask (task: Task, completion: ((success: Bool) -> Void)) -> Task {
+    func saveTask (_ task: Task, completion: ((_ success: Bool) -> Void)) -> Task {
         RCLogO("Update task \(task)")
         // Update local array
         for i in 0..<tasks.count {
@@ -125,12 +125,12 @@ extension CloudKitRepository: Repository {
         
         let ID = CKRecordID(recordName: task.taskId)
         let cktask = CKRecord(recordType: "Task", recordID: ID)
-        cktask["notes"] = task.notes
+        cktask["notes"] = task.notes as CKRecordValue?
         
-        privateDB.saveRecord(cktask) { savedRecord, error in
+        privateDB.save(cktask, completionHandler: { savedRecord, error in
             RCLog(savedRecord)
             RCLogErrorO(error)
-        }
+        }) 
         
 //        ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 //            // Update the ptask with data from task
@@ -152,13 +152,13 @@ extension CloudKitRepository: Repository {
     
     // MARK: Issue
     
-    func queryIssues (successBlock: [String] -> Void, errorBlock: NSError? -> Void) {
+    func queryIssues (_ successBlock: ([String]) -> Void, errorBlock: (NSError?) -> Void) {
         
         let issues = [String]()
         successBlock(issues)
     }
     
-    func saveIssue (issue: String) {
+    func saveIssue (_ issue: String) {
         
     }
 }

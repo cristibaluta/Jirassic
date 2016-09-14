@@ -10,23 +10,23 @@ import Foundation
 
 class NewDay {
 	
-	private let kLastStartDateKey = "LastStartDateKey"
+	fileprivate let kLastStartDateKey = "LastStartDateKey"
 	
 	func isNewDay() -> Bool {
 		let date = lastTrackedDay()
 		return date == nil || !date!.isSameDayAs(today())
 	}
 	
-	func setLastTrackedDay (date: NSDate) {
-		NSUserDefaults.standardUserDefaults().setObject(date, forKey: kLastStartDateKey)
-		NSUserDefaults.standardUserDefaults().synchronize()
+	func setLastTrackedDay (_ date: Date) {
+		UserDefaults.standard.set(date, forKey: kLastStartDateKey)
+		UserDefaults.standard.synchronize()
 	}
 	
-	private func lastTrackedDay() -> NSDate? {
-		return NSUserDefaults.standardUserDefaults().objectForKey(kLastStartDateKey) as? NSDate
+	fileprivate func lastTrackedDay() -> Date? {
+		return UserDefaults.standard.object(forKey: kLastStartDateKey) as? Date
 	}
 	
-	private func today() -> NSDate {
-		return NSDate()
+	fileprivate func today() -> Date {
+		return Date()
 	}
 }

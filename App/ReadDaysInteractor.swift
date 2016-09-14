@@ -10,7 +10,7 @@ import Foundation
 
 class ReadDaysInteractor: RepositoryInteractor {
 	
-	private var tasks = [Task]()
+	fileprivate var tasks = [Task]()
 	
     convenience init (data: Repository) {
         self.init()
@@ -19,8 +19,8 @@ class ReadDaysInteractor: RepositoryInteractor {
 		data.queryTasks(0, completion: { (tasks, error) in
             
             self.tasks = tasks
-            self.tasks.sortInPlace { (task1: Task, task2: Task) -> Bool in
-                return task1.endDate.compare(task2.endDate) == .OrderedDescending
+            self.tasks.sort { (task1: Task, task2: Task) -> Bool in
+                return task1.endDate.compare(task2.endDate) == .orderedDescending
             }
             
             remoteRepository?.queryTasks(0, completion: { (tasks, error) in
@@ -32,7 +32,7 @@ class ReadDaysInteractor: RepositoryInteractor {
 	func weeks() -> [Week] {
 		
 		var objects = [Week]()
-		var referenceDate = NSDate.distantFuture()
+		var referenceDate = Date.distantFuture
 		
 		for task in tasks {
             if !task.endDate.isSameWeekAs(referenceDate) {
@@ -49,7 +49,7 @@ class ReadDaysInteractor: RepositoryInteractor {
 	func days() -> [Day] {
 		
 		var objects = [Day]()
-		var referenceDate = NSDate.distantFuture()
+		var referenceDate = Date.distantFuture
 		
 		for task in tasks {
             if !task.endDate.isSameDayAs(referenceDate) {
@@ -62,10 +62,10 @@ class ReadDaysInteractor: RepositoryInteractor {
 		return objects
 	}
 	
-	private func days (week: Week) -> [Day] {
+	fileprivate func days (_ week: Week) -> [Day] {
 		
 		var objects = [Day]()
-		var referenceDate = NSDate.distantFuture()
+		var referenceDate = Date.distantFuture
 		
 		for task in tasks {
             if (task.endDate.isSameWeekAs(week.date)) {

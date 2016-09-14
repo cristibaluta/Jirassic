@@ -10,11 +10,11 @@ import Foundation
 
 class TaskFinder {
 
-	func scrumExists (tasks: [Task]) -> Bool {
+	func scrumExists (_ tasks: [Task]) -> Bool {
 		
 		var exists = false
 		for task in tasks {
-			if task.taskType == TaskType.Scrum.rawValue {
+			if task.taskType.intValue == TaskType.scrum.rawValue {
 				exists = true
 				break
 			}

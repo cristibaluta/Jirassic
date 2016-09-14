@@ -309,7 +309,6 @@
 		40F5CC4F1CDE346900249D66 /* TaskInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractorTests.swift; path = App/TaskInteractorTests.swift; sourceTree = SOURCE_ROOT; };
 		40F5CC511CDE349100249D66 /* TaskInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskInteractor.swift; path = App/TaskInteractor.swift; sourceTree = SOURCE_ROOT; };
 		56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataRepository.swift; path = External/CoreData/CoreDataRepository.swift; sourceTree = SOURCE_ROOT; };
-		6AAF86A38A2A18D681EEBF6B /* Pods-Jirassic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jirassic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jirassic/Pods-Jirassic.debug.xcconfig"; sourceTree = "<group>"; };
 		6D31D04C1AC196BB001AC4BA /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31D0501AC196BB001AC4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D31D0511AC196BB001AC4BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -327,7 +326,6 @@
 		6D31D08C1AC2EB0D001AC4BA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		6D31D0A01AC44785001AC4BA /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCLog.swift; path = ../Vendor/RCLog.swift; sourceTree = "<group>"; };
-		B5E70594EACAA8DC0A8386AA /* Pods-Jirassic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jirassic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jirassic/Pods-Jirassic.release.xcconfig"; sourceTree = "<group>"; };
 		F932D96FF66C2279F191EDD9 /* Pods_Jirassic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jirassic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -727,7 +725,6 @@
 				6D31D0A21AC448FF001AC4BA /* Vendor */,
 				6D31D0741AC2E439001AC4BA /* Frameworks */,
 				6D31D04D1AC196BB001AC4BA /* Products */,
-				A91A7A01470D331F1FDAE6FD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -820,15 +817,6 @@
 			);
 			name = Vendor;
 			path = Jirassic;
-			sourceTree = "<group>";
-		};
-		A91A7A01470D331F1FDAE6FD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6AAF86A38A2A18D681EEBF6B /* Pods-Jirassic.debug.xcconfig */,
-				B5E70594EACAA8DC0A8386AA /* Pods-Jirassic.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -929,7 +917,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Cristian Baluta";
 				TargetAttributes = {
 					2841A93B1C3DB2E400564ECD = {
@@ -947,6 +935,7 @@
 					6D31D04B1AC196BB001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -1286,8 +1275,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1296,6 +1287,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1305,12 +1297,12 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		6D31D06D1AC196BC001AC4BA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5E70594EACAA8DC0A8386AA /* Pods-Jirassic.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1338,6 +1330,7 @@
 				PRODUCT_NAME = Jirassic;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

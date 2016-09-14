@@ -12,15 +12,15 @@ protocol Repository {
     
     // MARK: User
     func currentUser() -> User
-    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
-    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void)
+    func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void)
+    func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void)
     func logout()
     
     // MARK: Tasks
-    func queryTasks (page: Int, completion: ([Task], NSError?) -> Void)
-    func queryTasksInDay (day: NSDate) -> [Task]
+    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void)
+    func queryTasksInDay (_ day: Date) -> [Task]
     func queryUnsyncedTasks() -> [Task]
-    func deleteTask (dataToDelete: Task, completion: ((success: Bool) -> Void))
+    func deleteTask (_ dataToDelete: Task, completion: ((_ success: Bool) -> Void))
     // Save a task and return the same task with a taskId generated if it didn't had
-    func saveTask (theTask: Task, completion: ((success: Bool) -> Void)) -> Task
+    func saveTask (_ theTask: Task, completion: ((_ success: Bool) -> Void)) -> Task
 }

@@ -11,18 +11,18 @@ import CloudKit
 
 class SettingsViewController: NSViewController {
 	
-	@IBOutlet private var emailTextField: NSTextField?
-	@IBOutlet private var passwordTextField: NSTextField?
-    @IBOutlet private var butLogin: NSButton?
-	@IBOutlet private var progressIndicator: NSProgressIndicator?
+	@IBOutlet fileprivate var emailTextField: NSTextField?
+	@IBOutlet fileprivate var passwordTextField: NSTextField?
+    @IBOutlet fileprivate var butLogin: NSButton?
+	@IBOutlet fileprivate var progressIndicator: NSProgressIndicator?
     // Jit
-    @IBOutlet private var jitImageView: NSImageView?
-    @IBOutlet private var jitTextField: NSTextField?
-    @IBOutlet private var butInstallJit: NSButton?
+    @IBOutlet fileprivate var jitImageView: NSImageView?
+    @IBOutlet fileprivate var jitTextField: NSTextField?
+    @IBOutlet fileprivate var butInstallJit: NSButton?
     // Jira
-    @IBOutlet private var jiraUrlTextField: NSTextField?
-    @IBOutlet private var jiraUserTextField: NSTextField?
-    @IBOutlet private var jiraPasswordTextField: NSTextField?
+    @IBOutlet fileprivate var jiraUrlTextField: NSTextField?
+    @IBOutlet fileprivate var jiraUserTextField: NSTextField?
+    @IBOutlet fileprivate var jiraPasswordTextField: NSTextField?
     
     weak var appWireframe: AppWireframe?
     var settingsPresenter: SettingsPresenterInput?
@@ -40,16 +40,16 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        let container = CKContainer.defaultContainer()
-        container.requestApplicationPermission(.UserDiscoverability) { (status, error) in
+        let container = CKContainer.default()
+        container.requestApplicationPermission(.userDiscoverability) { (status, error) in
             guard error == nil else { return }
             
-            if status == CKApplicationPermissionStatus.Granted {
-                container.fetchUserRecordIDWithCompletionHandler { (recordID, error) in
+            if status == CKApplicationPermissionStatus.granted {
+                container.fetchUserRecordID { (recordID, error) in
                     guard error == nil else { return }
                     guard let recordID = recordID else { return }
                     
-                    container.discoverUserInfoWithUserRecordID(recordID) { (info, fetchError) in
+                    container.discoverUserInfo(withUserRecordID: recordID) { (info, fetchError) in
                         // use info.firstName and info.lastName however you need
                         print(info)
                     }
@@ -70,7 +70,7 @@ class SettingsViewController: NSViewController {
 	
 	// MARK: Actions
     
-    @IBAction func handleInstallJitButton (sender: NSButton) {
+    @IBAction func handleInstallJitButton (_ sender: NSButton) {
         if settingsPresenter!.jitInstalled {
             settingsPresenter!.uninstallJit()
         } else {
@@ -78,18 +78,18 @@ class SettingsViewController: NSViewController {
         }
     }
     
-	@IBAction func handleLoginButton (sender: NSButton) {
+	@IBAction func handleLoginButton (_ sender: NSButton) {
         settingsPresenter!.login(credentials)
 	}
 	
-	@IBAction func handleSaveButton (sender: NSButton) {
+	@IBAction func handleSaveButton (_ sender: NSButton) {
 		appWireframe!.flipToTasksController()
 	}
 }
 
 extension SettingsViewController: SettingsPresenterOutput {
     
-    func showLoadingIndicator (show: Bool) {
+    func showLoadingIndicator (_ show: Bool) {
         if show {
             progressIndicator!.startAnimation(nil)
         } else {
@@ -97,14 +97,14 @@ extension SettingsViewController: SettingsPresenterOutput {
         }
     }
     
-    func setJitIsInstalled (installed: Bool) {
+    func setJitIsInstalled (_ installed: Bool) {
         
         jitImageView?.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
         jitTextField?.stringValue = installed ? "Jit command line tool is installed" : "Jit command line tool is not installed yet"
         butInstallJit!.title = installed ? "Uninstall" : "Install"
     }
     
-    func setJiraSettings (settings: JiraSettings) {
+    func setJiraSettings (_ settings: JiraSettings) {
         
         jiraUrlTextField!.stringValue = settings.url!
         jiraUserTextField!.stringValue = settings.user!

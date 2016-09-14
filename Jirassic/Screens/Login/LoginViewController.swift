@@ -10,12 +10,12 @@ import Cocoa
 
 class LoginViewController: NSViewController {
 	
-	@IBOutlet private var _label: NSTextField?
-	@IBOutlet private var _emailTextField: NSTextField?
-	@IBOutlet private var _passwordTextField: NSTextField?
-	@IBOutlet private var _butLogin: NSButton?
-	@IBOutlet private var _butCancel: NSButton?
-	@IBOutlet private var _progressIndicator: NSProgressIndicator?
+	@IBOutlet fileprivate var _label: NSTextField?
+	@IBOutlet fileprivate var _emailTextField: NSTextField?
+	@IBOutlet fileprivate var _passwordTextField: NSTextField?
+	@IBOutlet fileprivate var _butLogin: NSButton?
+	@IBOutlet fileprivate var _butCancel: NSButton?
+	@IBOutlet fileprivate var _progressIndicator: NSProgressIndicator?
 	
     var loginPresenter: LoginPresenterInput?
     
@@ -49,18 +49,18 @@ class LoginViewController: NSViewController {
     
     // MARK: Actions
     
-    @IBAction func handleLoginButton (sender: NSButton) {
+    @IBAction func handleLoginButton (_ sender: NSButton) {
         loginPresenter?.loginWithCredentials(credentials)
     }
     
-    @IBAction func handleCancelButton (sender: NSButton) {
+    @IBAction func handleCancelButton (_ sender: NSButton) {
         loginPresenter?.cancelScreen()
     }
 }
 
 extension LoginViewController: LoginPresenterOutput {
 
-    func showLoadingIndicator (show: Bool) {
+    func showLoadingIndicator (_ show: Bool) {
 		if show {
 			_progressIndicator?.startAnimation(nil)
 		} else {

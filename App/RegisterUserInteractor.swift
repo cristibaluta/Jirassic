@@ -13,7 +13,7 @@ class RegisterUserInteractor: RepositoryInteractor {
     var onRegisterSuccess: (() -> ())?
     var onRegisterFailure: (() -> ())?
 	
-	func registerWithCredentials (credentials: UserCredentials) {
+	func registerWithCredentials (_ credentials: UserCredentials) {
 		
 		data.registerWithCredentials(credentials) { [weak self] (error) in
             if let error = error {

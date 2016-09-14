@@ -10,22 +10,22 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
 	
-	@IBOutlet private var issueIdTextField: NSTextField?
-	@IBOutlet private var notesTextField: NSTextField?
-	@IBOutlet private var startDateTextField: NSTextField?
-	@IBOutlet private var endDateTextField: NSTextField?
-	@IBOutlet private var durationTextField: NSTextField?
+	@IBOutlet fileprivate var issueIdTextField: NSTextField?
+	@IBOutlet fileprivate var notesTextField: NSTextField?
+	@IBOutlet fileprivate var startDateTextField: NSTextField?
+	@IBOutlet fileprivate var endDateTextField: NSTextField?
+	@IBOutlet fileprivate var durationTextField: NSTextField?
 	
-	var onOptionChosen: ((taskData: TaskCreationData) -> Void)?
-	var onCancelChosen: (Void -> Void)?
-    private var _dateEnd = ""
-    private var issueTypes = [String]()
+	var onOptionChosen: ((_ taskData: TaskCreationData) -> Void)?
+	var onCancelChosen: ((Void) -> Void)?
+    fileprivate var _dateEnd = ""
+    fileprivate var issueTypes = [String]()
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
-	var date: NSDate {
+	var date: Date {
 		get {
-			let hm = NSDate.parseHHmm(self.endDateTextField!.stringValue)
-			return NSDate().dateByUpdatingHour(hm.hour, minute: hm.min)
+			let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
+			return Date().dateByUpdatingHour(hm.hour, minute: hm.min)
 		}
 		set {
 			self.endDateTextField?.stringValue = newValue.HHmm()
@@ -48,34 +48,34 @@ class NewTaskViewController: NSViewController {
 		}
 	}
 	
-	@IBAction func handleScrumEndButton (sender: NSButton) {
-		setTaskDataWithTaskType(.ScrumEnd)
+	@IBAction func handleScrumEndButton (_ sender: NSButton) {
+		setTaskDataWithTaskType(.scrumEnd)
 	}
 	
-	@IBAction func handleLunchEndButton (sender: NSButton) {
-		setTaskDataWithTaskType(.LunchEnd)
+	@IBAction func handleLunchEndButton (_ sender: NSButton) {
+		setTaskDataWithTaskType(.lunchEnd)
 	}
 	
-	@IBAction func handleTaskEndButton (sender: NSButton) {
-		setTaskDataWithTaskType(.IssueEnd)
+	@IBAction func handleTaskEndButton (_ sender: NSButton) {
+		setTaskDataWithTaskType(.issueEnd)
 	}
 	
-	@IBAction func handleMeetingEndButton (sender: NSButton) {
-		setTaskDataWithTaskType(.IssueEnd)
+	@IBAction func handleMeetingEndButton (_ sender: NSButton) {
+		setTaskDataWithTaskType(.issueEnd)
 	}
 	
-	@IBAction func handleCancelButton (sender: NSButton) {
+	@IBAction func handleCancelButton (_ sender: NSButton) {
 		self.onCancelChosen?()
 	}
 	
-    func setTaskDataWithTaskType (taskSubtype: TaskSubtype) {
+    func setTaskDataWithTaskType (_ taskSubtype: TaskSubtype) {
         
         let taskData = TaskCreationData(
             dateEnd: date,
             taskNumber: taskNumber,
             notes: notes
         )
-        self.onOptionChosen?(taskData: taskData)
+        self.onOptionChosen?(taskData)
     }
     
     override func viewDidLoad() {
@@ -86,19 +86,19 @@ class NewTaskViewController: NSViewController {
 
 extension NewTaskViewController: NSComboBoxDelegate, NSComboBoxDataSource {
     
-    func numberOfItemsInComboBox (aComboBox: NSComboBox) -> Int {
+    func numberOfItems (in aComboBox: NSComboBox) -> Int {
         return issueTypes.count
     }
     
-    func comboBox (aComboBox: NSComboBox, objectValueForItemAtIndex index: Int) -> AnyObject {
+    func comboBox (_ aComboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
         return issueTypes[index]
     }
     
-    func comboBox (aComboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
+    func comboBox (_ aComboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
         return 0//issueTypes.indexOfObject(string)
     }
     
-    func comboBox (aComboBox: NSComboBox, completedString string: String) -> String? {
+    func comboBox (_ aComboBox: NSComboBox, completedString string: String) -> String? {
         print("completedString \(string)")
         return nil
     }
@@ -106,7 +106,7 @@ extension NewTaskViewController: NSComboBoxDelegate, NSComboBoxDataSource {
 
 extension NewTaskViewController: NSTextFieldDelegate {
     
-    override func controlTextDidBeginEditing (obj: NSNotification) {
+    override func controlTextDidBeginEditing (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
             guard textField == startDateTextField || textField == endDateTextField || textField == durationTextField else {
@@ -116,14 +116,14 @@ extension NewTaskViewController: NSTextFieldDelegate {
         }
     }
     
-    override func controlTextDidChange (obj: NSNotification) {
+    override func controlTextDidChange (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
             guard textField == startDateTextField || textField == endDateTextField || textField == durationTextField else {
                 return
             }
             let predictor = PredictiveTimeTyping()
-            let comps = textField.stringValue.componentsSeparatedByString(_dateEnd)
+            let comps = textField.stringValue.components(separatedBy: _dateEnd)
             let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last
             _dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
             textField.stringValue = _dateEnd

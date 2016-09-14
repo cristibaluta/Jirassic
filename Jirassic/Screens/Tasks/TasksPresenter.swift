@@ -12,38 +12,38 @@ protocol TasksPresenterInput {
     
     func refreshUI()
     func reloadData()
-    func reloadTasksOnDay (day: Day, listType: ListType)
+    func reloadTasksOnDay (_ day: Day, listType: ListType)
     func updateNoTasksState()
     func messageButtonDidPress()
     func startDay()
-    func insertTaskWithData (taskData: TaskCreationData)
-    func insertTaskAfterRow (row: Int)
-    func removeTaskAtRow (row: Int)
+    func insertTaskWithData (_ taskData: TaskCreationData)
+    func insertTaskAfterRow (_ row: Int)
+    func removeTaskAtRow (_ row: Int)
 }
 
 protocol TasksPresenterOutput {
     
-    func showLoadingIndicator (show: Bool)
-    func showMessage (message: MessageViewModel)
-    func showDates (weeks: [Week])
-    func showTasks (tasks: [Task], listType: ListType)
-    func selectDay (day: Day)
+    func showLoadingIndicator (_ show: Bool)
+    func showMessage (_ message: MessageViewModel)
+    func showDates (_ weeks: [Week])
+    func showTasks (_ tasks: [Task], listType: ListType)
+    func selectDay (_ day: Day)
     func presentNewTaskController()
 }
 
 enum ListType: Int {
     
-    case AllTasks = 0
-    case Report = 1
+    case allTasks = 0
+    case report = 1
 }
 
 class TasksPresenter {
     
     var appWireframe: AppWireframe?
     var userInterface: TasksPresenterOutput?
-    private var day: NewDay?
-    private var currentTasks = [Task]()
-    private var selectedListType = ListType.AllTasks
+    fileprivate var day: NewDay?
+    fileprivate var currentTasks = [Task]()
+    fileprivate var selectedListType = ListType.allTasks
     
 }
 
@@ -61,23 +61,23 @@ extension TasksPresenter: TasksPresenterInput {
     
     func reloadData() {
         
-        let todayDay = Day(date: NSDate())
+        let todayDay = Day(date: Date())
         let reader = ReadDaysInteractor(data: localRepository)
         userInterface?.showDates(reader.weeks())
         userInterface?.selectDay(todayDay)
         reloadTasksOnDay(todayDay, listType: selectedListType)
     }
     
-    func reloadTasksOnDay (day: Day, listType: ListType) {
+    func reloadTasksOnDay (_ day: Day, listType: ListType) {
         
         let reader = ReadTasksInteractor(data: localRepository)
-        currentTasks = reader.tasksInDay(day.date).reverse()
+        currentTasks = reader.tasksInDay(day.date).reversed()
         selectedListType = listType
         
-        if listType == .Report {
+        if listType == .report {
             let report = CreateReport(tasks: currentTasks)
             report.round()
-            currentTasks = report.tasks.reverse()
+            currentTasks = report.tasks.reversed()
         }
         
         userInterface!.showTasks(currentTasks, listType: selectedListType)
@@ -92,7 +92,7 @@ extension TasksPresenter: TasksPresenterInput {
                 title: "Good morning!",
                 message: "Ready to begin your working day?",
                 buttonTitle: "Start day"))
-        } else if currentTasks.count == 1 && selectedListType != .Report {
+        } else if currentTasks.count == 1 && selectedListType != .report {
             userInterface!.showMessage((
                 title: "No task yet.",
                 message: "When you're ready with your first task click \n'+' or 'Log time'",
@@ -113,17 +113,17 @@ extension TasksPresenter: TasksPresenterInput {
     
     func startDay() {
         
-        let now = NSDate()
-        let task = Task(dateEnd: now, type: TaskType.StartDay)
+        let now = Date()
+        let task = Task(dateEnd: now, type: TaskType.startDay)
         let saveInteractor = TaskInteractor(data: localRepository)
         saveInteractor.saveTask(task)
         day!.setLastTrackedDay(now)
         reloadData()
     }
     
-    func insertTaskWithData (taskData: TaskCreationData) {
+    func insertTaskWithData (_ taskData: TaskCreationData) {
         
-        var task = Task(subtype: TaskSubtype.IssueEnd)
+        var task = Task(subtype: TaskSubtype.issueEnd)
         task.notes = taskData.notes
         task.taskNumber = taskData.taskNumber
         task.endDate = taskData.dateEnd
@@ -132,14 +132,14 @@ extension TasksPresenter: TasksPresenterInput {
             saveInteractor.saveTask(task)
     }
     
-    func insertTaskAfterRow (row: Int) {
+    func insertTaskAfterRow (_ row: Int) {
         userInterface!.presentNewTaskController()
     }
     
-    func removeTaskAtRow (row: Int) {
+    func removeTaskAtRow (_ row: Int) {
         
         let task = currentTasks[row]
-        currentTasks.removeAtIndex(row)
+        currentTasks.remove(at: row)
         let deleteInteractor = TaskInteractor(data: localRepository)
         deleteInteractor.deleteTask(task)
         updateNoTasksState()

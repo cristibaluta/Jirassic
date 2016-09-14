@@ -11,21 +11,21 @@ import Cocoa
 class NonTaskCell: NSTableRowView, CellProtocol {
 	
 	@IBOutlet var statusImage: NSImageView?
-	@IBOutlet private var dateEndTextField: NSTextField?
-	@IBOutlet private var notesTextField: NSTextField?
-	@IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint?
-	@IBOutlet private var butRemove: NSButton?
-	@IBOutlet private var butAdd: NSButton?
+	@IBOutlet fileprivate var dateEndTextField: NSTextField?
+	@IBOutlet fileprivate var notesTextField: NSTextField?
+	@IBOutlet fileprivate var notesTextFieldTrailingContraint: NSLayoutConstraint?
+	@IBOutlet fileprivate var butRemove: NSButton?
+	@IBOutlet fileprivate var butAdd: NSButton?
 	
-	private var trackingArea: NSTrackingArea?
+	fileprivate var trackingArea: NSTrackingArea?
 	
-	var didEndEditingCell: ((cell: CellProtocol) -> ())?
-	var didRemoveCell: ((cell: CellProtocol) -> ())?
-	var didAddCell: ((cell: CellProtocol) -> ())?
-	var didCopyContentCell: ((cell: CellProtocol) -> ())?
+	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
+	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
+	var didAddCell: ((_ cell: CellProtocol) -> ())?
+	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
 	var data: TaskCreationData {
 		get {
-			return (NSDate(),
+			return (Date(),
 					"",
 					self.notesTextField!.stringValue)
 		}
@@ -46,14 +46,14 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	override func awakeFromNib() {
         super.awakeFromNib()
         
-		self.butRemove?.hidden = true
-		self.butAdd?.hidden = true
+		self.butRemove?.isHidden = true
+		self.butAdd?.isHidden = true
         self.butRemove?.wantsLayer = true
-        self.butRemove?.layer?.backgroundColor = NSColor.clearColor().CGColor
-		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.None
+        self.butRemove?.layer?.backgroundColor = NSColor.clear.cgColor
+		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
 	}
 	
-	override func drawBackgroundInRect (dirtyRect: NSRect) {
+	override func drawBackground (in dirtyRect: NSRect) {
 		
 		let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
 		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
@@ -63,37 +63,37 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	
 	// MARK: Acions
 	
-	@IBAction func handleRemoveButton (sender: NSButton) {
-		self.didRemoveCell?(cell: self)
+	@IBAction func handleRemoveButton (_ sender: NSButton) {
+		self.didRemoveCell?(self)
 	}
 	
-	@IBAction func handleAddButton (sender: NSButton) {
-		self.didAddCell?(cell: self)
+	@IBAction func handleAddButton (_ sender: NSButton) {
+		self.didAddCell?(self)
 	}
 	
 	// MARK: mouse
 	
-	override func mouseEntered (theEvent: NSEvent) {
-		self.butRemove?.hidden = false
-		self.butAdd?.hidden = false
+	override func mouseEntered (with theEvent: NSEvent) {
+		self.butRemove?.isHidden = false
+		self.butAdd?.isHidden = false
 		self.notesTextFieldTrailingContraint?.constant = 80
-		self.setNeedsDisplayInRect(self.frame)
+		self.setNeedsDisplay(self.frame)
 	}
 	
-	override func mouseExited (theEvent: NSEvent) {
-		self.butRemove?.hidden = true
-		self.butAdd?.hidden = true
+	override func mouseExited (with theEvent: NSEvent) {
+		self.butRemove?.isHidden = true
+		self.butAdd?.isHidden = true
 		self.notesTextFieldTrailingContraint?.constant = 10
-		self.setNeedsDisplayInRect(self.frame)
+		self.setNeedsDisplay(self.frame)
 	}
 	
 	func ensureTrackingArea() {
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
 				options: [
-                    NSTrackingAreaOptions.InVisibleRect,
-                    NSTrackingAreaOptions.ActiveAlways,
-                    NSTrackingAreaOptions.MouseEnteredAndExited
+                    NSTrackingAreaOptions.inVisibleRect,
+                    NSTrackingAreaOptions.activeAlways,
+                    NSTrackingAreaOptions.mouseEnteredAndExited
                 ],
 				owner: self,
 				userInfo: nil)
@@ -104,7 +104,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		super.updateTrackingAreas()
         
 		self.ensureTrackingArea()
-		if (!(self.trackingAreas as NSArray).containsObject(self.trackingArea!)) {
+		if (!(self.trackingAreas as NSArray).contains(self.trackingArea!)) {
 			self.addTrackingArea(self.trackingArea!);
 		}
 	}

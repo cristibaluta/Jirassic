@@ -20,8 +20,8 @@ class PopoverViewController: NSViewController {
         appWireframe?.viewController = self
         
         if let _ = remoteRepository {
-            CKContainer.defaultContainer().accountStatusWithCompletionHandler({ [weak self] (accountStatus, error) in
-                if accountStatus == .NoAccount {
+            CKContainer.default().accountStatus(completionHandler: { [weak self] (accountStatus, error) in
+                if accountStatus == .noAccount {
                     self?.appWireframe?.presentLoginController()
                 } else {
                     self?.appWireframe?.presentTasksController()

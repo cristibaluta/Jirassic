@@ -17,7 +17,7 @@ class UserInteractor: RepositoryInteractor {
         return data.currentUser()
     }
     
-    func loginWithCredentials (credentials: UserCredentials) {
+    func loginWithCredentials (_ credentials: UserCredentials) {
         
         data.loginWithCredentials(credentials) { [weak self] (error: NSError?) in
             
@@ -35,7 +35,7 @@ class UserInteractor: RepositoryInteractor {
         data.logout()
     }
     
-    private func register (credentials: UserCredentials) {
+    fileprivate func register (_ credentials: UserCredentials) {
         
         let registerInteractor = RegisterUserInteractor(data: data)
         registerInteractor.onRegisterSuccess = { [weak self] in

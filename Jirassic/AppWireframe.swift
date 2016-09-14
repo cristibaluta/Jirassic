@@ -9,20 +9,20 @@
 import Cocoa
 
 enum SplitViewColumn: Int {
-    case Dates = 0
-    case Tasks = 1
+    case dates = 0
+    case tasks = 1
 }
 
 class AppWireframe {
 
     var viewController: NSViewController?
     
-    private var currentController: NSViewController?
-    private var _loginViewController: LoginViewController?
-    private var _tasksViewController: TasksViewController?
-    private var _messageViewController: MessageViewController?
-    private var _newTaskViewController: NewTaskViewController?
-    private var _settingsViewController: SettingsViewController?
+    fileprivate var currentController: NSViewController?
+    fileprivate var _loginViewController: LoginViewController?
+    fileprivate var _tasksViewController: TasksViewController?
+    fileprivate var _messageViewController: MessageViewController?
+    fileprivate var _newTaskViewController: NewTaskViewController?
+    fileprivate var _settingsViewController: SettingsViewController?
     
     var loginViewController: LoginViewController {
         
@@ -34,7 +34,7 @@ class AppWireframe {
         let loginPresenter = LoginPresenter()
         
         loginController.loginPresenter = loginPresenter
-        loginController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
+        loginController.view.frame = CGRect(origin: CGPoint.zero, size: self.viewController!.view.frame.size)
         loginPresenter.userInterface = loginController
         
         _loginViewController = loginController
@@ -53,7 +53,7 @@ class AppWireframe {
         
         tasksController.appWireframe = self
         tasksController.tasksPresenter = tasksPresenter
-        tasksController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
+        tasksController.view.frame = CGRect(origin: CGPoint.zero, size: self.viewController!.view.frame.size)
         
         tasksPresenter.userInterface = tasksController
         tasksPresenter.appWireframe = self
@@ -87,7 +87,7 @@ class AppWireframe {
         settingsPresenter.userInterface = settingsController
         settingsPresenter.settingsInteractor = settingsInteractor
         settingsInteractor.settingsPresenter = settingsPresenter
-        settingsController.view.frame = CGRect(origin: CGPointZero, size: self.viewController!.view.frame.size)
+        settingsController.view.frame = CGRect(origin: CGPoint.zero, size: self.viewController!.view.frame.size)
         settingsController.settingsPresenter = settingsPresenter
         settingsController.appWireframe = self
         
@@ -110,27 +110,27 @@ class AppWireframe {
 
 extension AppWireframe {
 	
-	func showPopover (popover: NSPopover, fromIcon icon: NSView) {
-		let edge = NSRectEdge.MinY
+	func showPopover (_ popover: NSPopover, fromIcon icon: NSView) {
+		let edge = NSRectEdge.minY
 		let rect = icon.frame
-		popover.showRelativeToRect(rect, ofView: icon, preferredEdge: edge);
+		popover.show(relativeTo: rect, of: icon, preferredEdge: edge);
 	}
 	
-	func hidePopover (popover: NSPopover) {
+	func hidePopover (_ popover: NSPopover) {
 		popover.close()
 	}
 	
-	private func addController (controller: NSViewController) {
+	fileprivate func addController (_ controller: NSViewController) {
         self.viewController?.addChildViewController(controller)
         self.viewController?.view.addSubview(controller.view)
 	}
     
-    private func removeController (controller: NSViewController) {
+    fileprivate func removeController (_ controller: NSViewController) {
         controller.removeFromParentViewController()
         controller.view.removeFromSuperview()
     }
     
-    private func layerToAnimate() -> CALayer {
+    fileprivate func layerToAnimate() -> CALayer {
         return self.viewController!.view.superview!.layer!
     }
 }
@@ -185,13 +185,13 @@ extension AppWireframe {
 
 extension AppWireframe {
     
-    func presentMessage (message: MessageViewModel, intoSplitView splitView: NSSplitView) {
+    func presentMessage (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) {
         
         let messageController = self.messageViewController
         messageViewController.viewModel = message
         
         self.viewController!.addChildViewController(messageController)
-        splitView.subviews[SplitViewColumn.Tasks.rawValue].addSubview(messageController.view)
+        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(messageController.view)
         messageController.view.constrainToSuperview()
     }
     

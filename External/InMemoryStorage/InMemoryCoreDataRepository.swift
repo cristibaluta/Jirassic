@@ -12,11 +12,11 @@ class InMemoryCoreDataRepository: CoreDataRepository {
 	
     override func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
         
-        if let mom = NSManagedObjectModel.mergedModelFromBundles([NSBundle.mainBundle()]) {
+        if let mom = NSManagedObjectModel.mergedModel(from: [Bundle.main]) {
             
             let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
             do {
-                try coordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil)
+                try coordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
                 return coordinator
             } catch _ {
                 

@@ -10,9 +10,9 @@ import Foundation
 
 class Day {
 
-	let date: NSDate
+	let date: Date
 	
-	init (date: NSDate) {
+	init (date: Date) {
 		self.date = date
 	}
 }

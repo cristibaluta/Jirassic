@@ -17,19 +17,19 @@ class TaskTypeEstimator: NSObject {
 	let lunchUsualMinute = 0
 	let lunchVariationAllowed: Double = 60.0*60//min
 	
-	func taskTypeAroundDate (date: NSDate) -> TaskType {
+	func taskTypeAroundDate (_ date: Date) -> TaskType {
 		
 		// Check if the date is around scrum time
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: date)
+		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
 		comps.hour = scrumUsualHour
 		comps.minute = scrumUsualMinute
 		comps.second = 0
-		let scrumDate = gregorian!.dateFromComponents(comps)
-		var timestamp = date.timeIntervalSinceDate(scrumDate!)
+		let scrumDate = gregorian.date(from: comps)
+		var timestamp = date.timeIntervalSince(scrumDate!)
 		
 		if abs(timestamp) <= scrumVariationAllowed {
-			return TaskType.Scrum
+			return TaskType.scrum
 		}
 		
 		
@@ -38,13 +38,13 @@ class TaskTypeEstimator: NSObject {
 		comps.hour = lunchUsualHour
 		comps.minute = lunchUsualMinute
 		comps.second = 0
-		let lunchDate = gregorian!.dateFromComponents(comps)
-		timestamp = date.timeIntervalSinceDate(lunchDate!)
+		let lunchDate = gregorian.date(from: comps)
+		timestamp = date.timeIntervalSince(lunchDate!)
 		
 		if abs(timestamp) <= lunchVariationAllowed {
-			return TaskType.Lunch
+			return TaskType.lunch
 		}
 		
-		return TaskType.Issue
+		return TaskType.issue
 	}
 }

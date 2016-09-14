@@ -11,34 +11,34 @@ import CoreData
 
 class CoreDataRepository {
     
-    lazy var applicationDocumentsDirectory: NSURL = {
+    lazy var applicationDocumentsDirectory: URL = {
         
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
-        let baseUrl = urls.last as NSURL!
-        let url = baseUrl.URLByAppendingPathComponent("Jirassic")
+        let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        let baseUrl = urls.last as URL!
+        let url = baseUrl?.appendingPathComponent("Jirassic")
         
-        if !NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
+        if !FileManager.default.fileExists(atPath: url!.path) {
             do {
-                try NSFileManager.defaultManager().createDirectoryAtURL(url, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(at: url!, withIntermediateDirectories: false, attributes: nil)
             } catch _ {
-                return baseUrl
+                return baseUrl!
             }
         }
-        return url
+        return url!
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = NSBundle.mainBundle().URLForResource("Jirassic", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = Bundle.main.url(forResource: "Jirassic", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     
     func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
         
         let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Jirassic.sqlite")
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("Jirassic.sqlite")
         
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
             return coordinator
         } catch _ {
             return nil
@@ -50,7 +50,7 @@ class CoreDataRepository {
         guard let coordinator = self.persistentStoreCoordinator() else {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
@@ -70,20 +70,21 @@ class CoreDataRepository {
 
 extension CoreDataRepository {
     
-    private func queryWithPredicate<T:NSManagedObject> (predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?) -> [T] {
+    fileprivate func queryWithPredicate<T:NSManagedObject> (_ predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?) -> [T] {
         
         guard let context = managedObjectContext else {
             return []
         }
         
-        let request = NSFetchRequest(entityName: String(T))
+        let request = NSFetchRequest<T>(entityName: String(describing: T.self))
+        //let request = T.fetchRequest()
         request.returnsObjectsAsFaults = false
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         
         do {
-            let results = try context.executeFetchRequest(request)
-            return results as! [T]
+            let results = try context.fetch(request)
+            return results
         } catch _ {
             return []
         }
@@ -92,7 +93,7 @@ extension CoreDataRepository {
 
 extension CoreDataRepository {
     
-    private func taskFromCTask (ctask: CTask) -> Task {
+    fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
         
         return Task(endDate: ctask.endDate!,
                     notes: ctask.notes,
@@ -102,7 +103,7 @@ extension CoreDataRepository {
         )
     }
     
-    private func tasksFromCTasks (ctasks: [CTask]) -> [Task] {
+    fileprivate func tasksFromCTasks (_ ctasks: [CTask]) -> [Task] {
         
         var tasks = [Task]()
         for ctask in ctasks {
@@ -112,14 +113,14 @@ extension CoreDataRepository {
         return tasks
     }
     
-    private func ctaskFromTask (task: Task) -> CTask {
+    fileprivate func ctaskFromTask (_ task: Task) -> CTask {
         
         let taskPredicate = NSPredicate(format: "taskId == %@", task.taskId)
         let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
         var ctask: CTask? = tasks.first
         if ctask == nil {
-            ctask = NSEntityDescription.insertNewObjectForEntityForName(String(CTask),
-                    inManagedObjectContext: managedObjectContext!) as? CTask
+            ctask = NSEntityDescription.insertNewObject(forEntityName: String(describing: CTask.self),
+                    into: managedObjectContext!) as? CTask
         }
         if ctask?.taskId == nil {
             ctask?.taskId = task.taskId
@@ -129,7 +130,7 @@ extension CoreDataRepository {
     }
     
     // Update only updatable properties. taskId can't be updated
-    private func updatedCTask (ctask: CTask, withTask task: Task) -> CTask {
+    fileprivate func updatedCTask (_ ctask: CTask, withTask task: Task) -> CTask {
         
         ctask.taskNumber = task.taskNumber
         ctask.taskType = task.taskType
@@ -154,11 +155,11 @@ extension CoreDataRepository: Repository {
         return User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
     }
     
-    func loginWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+    func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
         fatalError("This method is not applicable to CoreDataRepository")
     }
     
-    func registerWithCredentials (credentials: UserCredentials, completion: (NSError?) -> Void) {
+    func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
         fatalError("This method is not applicable to CoreDataRepository")
     }
     
@@ -170,31 +171,30 @@ extension CoreDataRepository: Repository {
         
         if #available(OSX 1000.11, *) {
             // TODO: This seems not to work under 10.11
-            let fetchRequest = NSFetchRequest(entityName: String(CTask))
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: CTask.self))
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             do {
-                try persistentStoreCoordinator()?.executeRequest(deleteRequest, withContext: context)
+                try persistentStoreCoordinator()?.execute(deleteRequest, with: context)
             } catch let error as NSError {
                 RCLog(error)
             }
         } else {
-            let fetchRequest = NSFetchRequest()
-            fetchRequest.entity = NSEntityDescription.entityForName(String(CTask), inManagedObjectContext: context)
+            let fetchRequest = NSFetchRequest<CTask>()
+            fetchRequest.entity = NSEntityDescription.entity(forEntityName: String(describing: CTask.self), in: context)
             fetchRequest.includesPropertyValues = false
             do {
-                if let results = try context.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
-                    for result in results {
-                        context.deleteObject(result)
-                    }
-                    try context.save()
+                let results = try context.fetch(fetchRequest)
+                for result in results {
+                    context.delete(result)
                 }
+                try context.save()
             } catch {
                 
             }
         }
     }
     
-    func queryTasks (page: Int, completion: ([Task], NSError?) -> Void) {
+    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
         
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(nil, sortDescriptors: sortDescriptors)
@@ -203,10 +203,10 @@ extension CoreDataRepository: Repository {
         completion(tasks, nil)
     }
     
-    func queryTasksInDay (day: NSDate) -> [Task] {
+    func queryTasksInDay (_ day: Date) -> [Task] {
         
         let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
-            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay(), day.endOfDay())
+            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
             ])
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
@@ -224,19 +224,19 @@ extension CoreDataRepository: Repository {
         return tasks
     }
     
-    func deleteTask (task: Task, completion: ((success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, completion: ((_ success: Bool) -> Void)) {
         
         guard let context = managedObjectContext else {
             return
         }
         
         let ctask = ctaskFromTask(task)
-        context.deleteObject(ctask)
+        context.delete(ctask)
         saveContext()
-        completion(success: true)
+        completion(true)
     }
     
-    func saveTask (task: Task, completion: (success: Bool) -> Void) -> Task {
+    func saveTask (_ task: Task, completion: (_ success: Bool) -> Void) -> Task {
         
         let ctask = ctaskFromTask(task)
         saveContext()

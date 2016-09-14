@@ -10,7 +10,7 @@ import Foundation
 
 protocol SettingsPresenterInput {
     
-    func login (credentials: UserCredentials)
+    func login (_ credentials: UserCredentials)
     func testJit()
     func installJit()
     func uninstallJit()
@@ -19,14 +19,14 @@ protocol SettingsPresenterInput {
 
 protocol SettingsPresenterOutput {
     
-    func showLoadingIndicator (show: Bool)
-    func setJitIsInstalled (installed: Bool)
-    func setJiraSettings (settings: JiraSettings)
+    func showLoadingIndicator (_ show: Bool)
+    func setJitIsInstalled (_ installed: Bool)
+    func setJiraSettings (_ settings: JiraSettings)
 }
 
 class SettingsPresenter {
     
-    private var jitInteractor = JitInteractor()
+    fileprivate var jitInteractor = JitInteractor()
     var jitInstalled: Bool {
         get {
             return self.jitInteractor.isInstalled
@@ -38,7 +38,7 @@ class SettingsPresenter {
 
 extension SettingsPresenter: SettingsPresenterInput {
     
-    func login (credentials: UserCredentials) {
+    func login (_ credentials: UserCredentials) {
         
         let interactor = UserInteractor(data: localRepository)
         interactor.onLoginSuccess = {

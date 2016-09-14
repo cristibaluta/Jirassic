@@ -10,7 +10,7 @@ import Foundation
 
 class ReadTasksInteractor: RepositoryInteractor {
 	
-    func tasksAtPage (page: Int, completion: ([Task]) -> Void) {
+    func tasksAtPage (_ page: Int, completion: @escaping ([Task]) -> Void) {
         
         data.queryTasks(page, completion: { (tasks, error) in
             completion(tasks)
@@ -22,7 +22,7 @@ class ReadTasksInteractor: RepositoryInteractor {
     }
     
     // Return a list of tasks sorted by date
-    func tasksInDay (date: NSDate) -> [Task] {
+    func tasksInDay (_ date: Date) -> [Task] {
         
         let filteredData = data.queryTasksInDay(date)
         

@@ -10,8 +10,8 @@ import Cocoa
 
 class MenuBarIconView : NSView {
 	
-    private(set) var image: NSImage
-    private let item: NSStatusItem
+    fileprivate(set) var image: NSImage
+    fileprivate let item: NSStatusItem
     
     var onMouseDown: (() -> ())?
     
@@ -31,8 +31,8 @@ class MenuBarIconView : NSView {
         self.item = item
         self.isSelected = false
         
-        let thickness = NSStatusBar.systemStatusBar().thickness
-        let rect = CGRectMake(0, 0, thickness, thickness)
+        let thickness = NSStatusBar.system().thickness
+        let rect = CGRect(x: 0, y: 0, width: thickness, height: thickness)
         
         super.init(frame: rect)
     }
@@ -41,22 +41,22 @@ class MenuBarIconView : NSView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect (dirtyRect: NSRect) {
+    override func draw (_ dirtyRect: NSRect) {
 		
-        self.item.drawStatusBarBackgroundInRect(dirtyRect, withHighlight: self.isSelected)
+        self.item.drawStatusBarBackground(in: dirtyRect, withHighlight: self.isSelected)
         
         let size = self.image.size
-        let rect = CGRectMake(2, 2, size.width, size.height)
+        let rect = CGRect(x: 2, y: 2, width: size.width, height: size.height)
         
-        image.drawInRect(rect)
+        image.draw(in: rect)
     }
     
-    override func mouseDown (theEvent: NSEvent) {
+    override func mouseDown (with theEvent: NSEvent) {
         isSelected = !self.isSelected
         onMouseDown?()
     }
     
-    override func mouseUp (theEvent: NSEvent) {
+    override func mouseUp (with theEvent: NSEvent) {
 		
     }
 }

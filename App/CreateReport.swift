@@ -32,7 +32,7 @@ class CreateReport: NSObject {
 		groupByTaskId()
 		
 		// Calculate the excess time till 8 hrs
-		let totalTime = tasks.last!.endDate.timeIntervalSinceDate(tasks.first!.endDate)
+		let totalTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate as Date)
 		let lunchDuration = self.lunchDuration
 		let workedTime = totalTime - lunchDuration
 		let missingTime = kEightHoursInSeconds - workedTime
@@ -49,7 +49,7 @@ class CreateReport: NSObject {
 			var task = tasks[i]
 			RCLog(task)
 			if i > 0 {
-				task.endDate = task.endDate.dateByAddingTimeInterval(extraTimeToAdd)
+				task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd)
 			}
 			task.endDate = task.endDate.round()
 			extraTimeToAdd += extraTimePerTask
@@ -58,16 +58,16 @@ class CreateReport: NSObject {
 		}
 		// Handle the last task and add the remaining time
 		var task = tasks.last!
-		task.endDate = tasks.first!.endDate.dateByAddingTimeInterval(kEightHoursInSeconds + self.lunchDuration)
+		task.endDate = tasks.first!.endDate.addingTimeInterval(kEightHoursInSeconds + self.lunchDuration)
 		RCLog(task)
 		tasks[tasks.count-1] = task
 	}
 	
-	private func groupByTaskId() {
+	fileprivate func groupByTaskId() {
         
         var groups = [String: [Task]]()
         for task in tasks {
-            if task.taskType == TaskType.StartDay.rawValue {
+            if task.taskType.intValue == TaskType.startDay.rawValue {
                 continue
             }
             let taskNumber = task.taskNumber ?? String.random()
@@ -101,12 +101,12 @@ class CreateReport: NSObject {
         print(self.tasks)
 	}
 	
-	var lunchDuration: NSTimeInterval {
+	var lunchDuration: TimeInterval {
 		
 		var lastTaskEndDate = tasks.first?.endDate
 		for task in tasks {
-			if task.taskType == TaskType.Lunch.rawValue {
-				return task.endDate.timeIntervalSinceDate(lastTaskEndDate!)
+			if task.taskType.intValue == TaskType.lunch.rawValue {
+				return task.endDate.timeIntervalSince(lastTaskEndDate! as Date)
 			}
 			lastTaskEndDate = task.endDate
 		}

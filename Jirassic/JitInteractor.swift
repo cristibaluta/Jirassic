@@ -10,7 +10,7 @@ import Foundation
 
 class JitInteractor {
     
-    private let jitInstallationPath = "/usr/local/bin/"
+    fileprivate let jitInstallationPath = "/usr/local/bin/"
     
     var isInstalled: Bool {
         get {
@@ -25,9 +25,9 @@ class JitInteractor {
         }
     }
     
-    func installJit (completion: Bool -> Void) {
+    func installJit (_ completion: (Bool) -> Void) {
         
-        guard let bundledJitPath = NSBundle.mainBundle().pathForResource("jit", ofType: nil) else {
+        guard let bundledJitPath = Bundle.main.path(forResource: "jit", ofType: nil) else {
             completion(false)
             return
         }
@@ -41,7 +41,7 @@ class JitInteractor {
         }
     }
     
-    func uninstallJit (completion: Bool -> Void) {
+    func uninstallJit (_ completion: (Bool) -> Void) {
         
         let asc = NSAppleScript(source: "do shell script \"sudo rm \(jitInstallationPath)jit\" with administrator privileges")
         if let response = asc?.executeAndReturnError(nil) {

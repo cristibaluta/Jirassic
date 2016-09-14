@@ -12,9 +12,9 @@ typealias MessageViewModel = (title: String?, message: String?, buttonTitle: Str
 
 class MessageViewController: NSViewController {
 
-    @IBOutlet private var titleLabel: NSTextField?
-    @IBOutlet private var messageLabel: NSTextField?
-    @IBOutlet private var button: NSButton?
+    @IBOutlet fileprivate var titleLabel: NSTextField?
+    @IBOutlet fileprivate var messageLabel: NSTextField?
+    @IBOutlet fileprivate var button: NSButton?
 	
 	var didPressButton: (() -> ())?
 	
@@ -27,17 +27,17 @@ class MessageViewController: NSViewController {
                 self.messageLabel?.stringValue = message
             }
             if let buttonTitle = viewModel?.buttonTitle {
-                button?.hidden = false
+                button?.isHidden = false
                 self.button?.title = buttonTitle
             } else {
-                button?.hidden = true
+                button?.isHidden = true
             }
         }
     }
 	
 	// MARK: Actions
 	
-	@IBAction func handleStartButton (sender: NSButton) {
+	@IBAction func handleStartButton (_ sender: NSButton) {
 		self.didPressButton?()
 	}
 }

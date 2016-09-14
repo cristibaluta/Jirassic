@@ -16,9 +16,9 @@ class MenuBarController: NSObject {
 	override init() {
 		super.init()
 		
-		let bar = NSStatusBar.systemStatusBar();
+		let bar = NSStatusBar.system();
 		let length: CGFloat = -1 //NSVariableStatusItemLength
-		let item = bar.statusItemWithLength(length);
+		let item = bar.statusItem(withLength: length);
 		
 		iconView = MenuBarIconView(item: item)
 		iconView?.onMouseDown = {

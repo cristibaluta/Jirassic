@@ -17,11 +17,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet var window: NSWindow?
     @IBOutlet var popover: NSPopover?
     var appWireframe = AppWireframe()
-    private var sleep: SleepNotifications?
-	private let menu = MenuBarController()
+    fileprivate var sleep: SleepNotifications?
+	fileprivate let menu = MenuBarController()
 	
     class func sharedApp() -> AppDelegate {
-        return NSApplication.sharedApplication().delegate as! AppDelegate
+        return NSApplication.shared().delegate as! AppDelegate
     }
     
 	override init() {
@@ -49,27 +49,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 	}
 	
-    func applicationDidFinishLaunching (aNotification: NSNotification) {
+    func applicationDidFinishLaunching (_ aNotification: Notification) {
 		
-		let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
-		dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-			self.menu.iconView?.mouseDown(NSEvent())
+		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+			self.menu.iconView?.mouseDown(with: NSEvent())
 		})
-        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        NSUserNotificationCenter.default.delegate = self
         
-        NSEvent.addGlobalMonitorForEventsMatchingMask(.RightMouseDownMask, handler: { event in
+        NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
             self.popover?.performClose(nil)
         })
     }
 	
-    func applicationWillTerminate (aNotification: NSNotification) {
+    func applicationWillTerminate (_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 }
 
 extension AppDelegate: NSUserNotificationCenterDelegate {
 	
-    func userNotificationCenter (center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+    func userNotificationCenter (_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
 }

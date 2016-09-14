@@ -11,22 +11,22 @@ import Cocoa
 class ReportCell: NSTableRowView, CellProtocol {
 
     var statusImage: NSImageView?
-    @IBOutlet private var durationTextField: NSTextField?
-    @IBOutlet private var taskNrTextField: NSTextField?
-    @IBOutlet private var notesTextField: NSTextField?
-    @IBOutlet private var butCopy: NSButton?
-    @IBOutlet private var butCopyWidthConstraint: NSLayoutConstraint?
-    private var trackingArea: NSTrackingArea?
-    private var bgColor: NSColor = NSColor.clearColor()
+    @IBOutlet fileprivate var durationTextField: NSTextField?
+    @IBOutlet fileprivate var taskNrTextField: NSTextField?
+    @IBOutlet fileprivate var notesTextField: NSTextField?
+    @IBOutlet fileprivate var butCopy: NSButton?
+    @IBOutlet fileprivate var butCopyWidthConstraint: NSLayoutConstraint?
+    fileprivate var trackingArea: NSTrackingArea?
+    fileprivate var bgColor: NSColor = NSColor.clear
     
-    var didEndEditingCell: ((cell: CellProtocol) -> ())?
-    var didRemoveCell: ((cell: CellProtocol) -> ())?
-    var didAddCell: ((cell: CellProtocol) -> ())?
-    var didCopyContentCell: ((cell: CellProtocol) -> ())?
+    var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
+    var didRemoveCell: ((_ cell: CellProtocol) -> ())?
+    var didAddCell: ((_ cell: CellProtocol) -> ())?
+    var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
     
     var data: TaskCreationData {
         get {
-            return (dateEnd: NSDate(),
+            return (dateEnd: Date(),
                     taskNumber: self.taskNrTextField!.stringValue,
                     notes: self.notesTextField!.stringValue)
         }
@@ -59,32 +59,32 @@ class ReportCell: NSTableRowView, CellProtocol {
         ensureTrackingArea()
     }
     
-    override func drawRect (dirtyRect: NSRect) {
+    override func draw (_ dirtyRect: NSRect) {
         bgColor.set()
         NSRectFill(dirtyRect)
     }
     
-    @IBAction func handleCopyButton (sender: NSButton) {
+    @IBAction func handleCopyButton (_ sender: NSButton) {
         
         let string = "\(taskNrTextField!.stringValue)\n\(notesTextField!.stringValue)"
-        NSPasteboard.generalPasteboard().clearContents()
-        NSPasteboard.generalPasteboard().writeObjects([string])
+        NSPasteboard.general().clearContents()
+        NSPasteboard.general().writeObjects([string as NSPasteboardWriting])
     }
     
 }
 
 extension ReportCell {
     
-    override func mouseEntered (theEvent: NSEvent) {
+    override func mouseEntered (with theEvent: NSEvent) {
         butCopyWidthConstraint?.constant = 47
-        bgColor = NSColor.whiteColor()
+        bgColor = NSColor.white
         butCopy!.needsLayout = true
         self.needsDisplay = true
     }
     
-    override func mouseExited (theEvent: NSEvent) {
+    override func mouseExited (with theEvent: NSEvent) {
         butCopyWidthConstraint?.constant = 0
-        bgColor = NSColor.clearColor()
+        bgColor = NSColor.clear
         butCopy!.needsLayout = true
         self.needsDisplay = true
     }
@@ -93,7 +93,7 @@ extension ReportCell {
         super.updateTrackingAreas()
         
         self.ensureTrackingArea()
-        if (!(self.trackingAreas as NSArray).containsObject(self.trackingArea!)) {
+        if (!(self.trackingAreas as NSArray).contains(self.trackingArea!)) {
             self.addTrackingArea(self.trackingArea!);
         }
     }
@@ -102,7 +102,7 @@ extension ReportCell {
         if (trackingArea == nil) {
             trackingArea = NSTrackingArea(
                 rect: self.bounds,
-                options: [NSTrackingAreaOptions.InVisibleRect, .ActiveAlways, .MouseEnteredAndExited],
+                options: [NSTrackingAreaOptions.inVisibleRect, .activeAlways, .mouseEnteredAndExited],
                 owner: self,
                 userInfo: nil
             )

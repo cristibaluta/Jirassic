@@ -10,10 +10,10 @@ import Foundation
 
 class Week {
 	
-	let date: NSDate
+	let date: Date
 	var days = [Day]()
 	
-	init (date: NSDate) {
+	init (date: Date) {
 		self.date = date
 	}
 }

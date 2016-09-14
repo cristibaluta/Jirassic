@@ -10,30 +10,30 @@ import Foundation
 
 enum TaskType: Int {
 	
-	case Issue = 0
-	case StartDay = 1
-	case Scrum = 2
-	case Lunch = 3
-	case Meeting = 4
-	case GitCommit = 5
+	case issue = 0
+	case startDay = 1
+	case scrum = 2
+	case lunch = 3
+	case meeting = 4
+	case gitCommit = 5
 }
 
 enum TaskSubtype: Int {
 	
 //	case IssueBegin = 0
-	case IssueEnd = 1
+	case issueEnd = 1
 //	case ScrumBegin = 2
-	case ScrumEnd = 3
+	case scrumEnd = 3
 //	case LunchBegin = 4
-	case LunchEnd = 5
+	case lunchEnd = 5
 //	case MeetingBegin = 6
-	case MeetingEnd = 7
-	case GitCommitEnd = 8
+	case meetingEnd = 7
+	case gitCommitEnd = 8
 }
 
 struct Task {
 	
-	var endDate: NSDate
+	var endDate: Date
 	var notes: String?
 	var taskNumber: String?
 	var taskType: NSNumber
@@ -43,45 +43,45 @@ struct Task {
 extension Task {
 	
     init () {
-        self.endDate = NSDate()
-        self.taskType = TaskType.Issue.rawValue
+        self.endDate = Date()
+        self.taskType = NSNumber(value: TaskType.issue.rawValue)
         self.taskId = String.random()
     }
     
-	init (dateEnd: NSDate, type: TaskType) {
+	init (dateEnd: Date, type: TaskType) {
 		
 		self.endDate = dateEnd
 		self.taskNumber = nil
-		self.taskType = type.rawValue
+		self.taskType = NSNumber(value: type.rawValue)
         self.taskId = String.random()
 		
 		switch (type) {
-			case TaskType.Issue:	self.notes = ""
-			case TaskType.StartDay:	self.notes = "Working day started"
-			case TaskType.Scrum:	self.notes = "Scrum meeting"
-			case TaskType.Lunch:	self.notes = "Lunch break"
-			case TaskType.Meeting:	self.notes = "Internal meeting"
-			case TaskType.GitCommit:self.notes = ""
+			case TaskType.issue:	self.notes = ""
+			case TaskType.startDay:	self.notes = "Working day started"
+			case TaskType.scrum:	self.notes = "Scrum meeting"
+			case TaskType.lunch:	self.notes = "Lunch break"
+			case TaskType.meeting:	self.notes = "Internal meeting"
+			case TaskType.gitCommit:self.notes = ""
 		}
 	}
 	
 	init (subtype: TaskSubtype) {
 		
-        self.endDate = NSDate()
+        self.endDate = Date()
         self.taskId = String.random()
         
 		switch (subtype) {
-			case .IssueEnd:		self.taskType = TaskType.Issue.rawValue
-			case .ScrumEnd:		self.taskType = TaskType.Scrum.rawValue
-			case .LunchEnd:		self.taskType = TaskType.Lunch.rawValue
-			case .MeetingEnd:	self.taskType = TaskType.Meeting.rawValue
-			case .GitCommitEnd:	self.taskType = TaskType.GitCommit.rawValue
+			case .issueEnd:		self.taskType = NSNumber(value: TaskType.issue.rawValue)
+			case .scrumEnd:		self.taskType = NSNumber(value: TaskType.scrum.rawValue)
+			case .lunchEnd:		self.taskType = NSNumber(value: TaskType.lunch.rawValue)
+			case .meetingEnd:	self.taskType = NSNumber(value: TaskType.meeting.rawValue)
+			case .gitCommitEnd:	self.taskType = NSNumber(value: TaskType.gitCommit.rawValue)
 		}
 	}
 }
 
 typealias TaskCreationData = (
-    dateEnd: NSDate,
+    dateEnd: Date,
     taskNumber: String,
     notes: String
 )

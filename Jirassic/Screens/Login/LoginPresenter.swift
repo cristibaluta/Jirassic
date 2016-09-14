@@ -10,13 +10,13 @@ import Foundation
 
 protocol LoginPresenterInput {
     
-    func loginWithCredentials (credentials: UserCredentials)
+    func loginWithCredentials (_ credentials: UserCredentials)
     func cancelScreen()
 }
 
 protocol LoginPresenterOutput {
     
-    func showLoadingIndicator (show: Bool)
+    func showLoadingIndicator (_ show: Bool)
 }
 
 class LoginPresenter {
@@ -27,7 +27,7 @@ class LoginPresenter {
 
 extension LoginPresenter: LoginPresenterInput {
     
-    func loginWithCredentials (credentials: UserCredentials) {
+    func loginWithCredentials (_ credentials: UserCredentials) {
         
         userInterface?.showLoadingIndicator(true)
         

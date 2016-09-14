@@ -10,14 +10,14 @@ import Foundation
 
 class ComputerWakeUpInteractor: RepositoryInteractor {
     
-	func runWithLastSleepDate (date: NSDate?) {
+	func runWithLastSleepDate (_ date: Date?) {
 		
 		let reader = ReadTasksInteractor(data: data)
-		let existingTasks = reader.tasksInDay(NSDate())
+		let existingTasks = reader.tasksInDay(Date())
 		if existingTasks.count > 0 {
 			// We already started the day, analyze if it's scrum time
 			if TaskFinder().scrumExists(existingTasks) {
-				let task = Task(dateEnd: NSDate(), type: TaskType.Scrum)
+				let task = Task(dateEnd: Date(), type: TaskType.scrum)
                 let saveInteractor = TaskInteractor(data: localRepository)
                 saveInteractor.saveTask(task)
 				InternalNotifications.notifyAboutNewlyAddedTask(task)

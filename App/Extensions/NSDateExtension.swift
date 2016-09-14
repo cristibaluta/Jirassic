@@ -8,30 +8,29 @@
 
 import Foundation
 
-let ymdUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Day]
-let ymdhmsUnitFlags: NSCalendarUnit = [NSCalendarUnit.Year, NSCalendarUnit.Month, NSCalendarUnit.Weekday, NSCalendarUnit.Day,
-										NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second]
-let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+let ymdUnitFlags: Set<Calendar.Component> = [.year, .month, .day]
+let ymdhmsUnitFlags: Set<Calendar.Component> = [.year, .month, .weekday, .day, .hour, .minute, .second]
+let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
 
-extension NSDate {
+extension Date {
 	
-	convenience init (hour: Int, minute: Int, second: Int=0) {
-		self.init(date: NSDate(), hour: hour, minute: minute, second: second)
+	init (hour: Int, minute: Int, second: Int=0) {
+		self.init(date: Date(), hour: hour, minute: minute, second: second)
 	}
 	
-	convenience init (date: NSDate, hour: Int, minute: Int, second: Int=0) {
+	init (date: Date, hour: Int, minute: Int, second: Int=0) {
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: date)
+		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
 		comps.hour = hour
 		comps.minute = minute
 		comps.second = 0
 		
-		self.init(timeInterval: 0, sinceDate: gregorian!.dateFromComponents(comps)!)
+		self.init(timeInterval: 0, since: gregorian.date(from: comps)!)
 	}
 	
-	convenience init (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int=0) {
+	init (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int=0) {
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
+		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: Date())
 		comps.year = year
 		comps.month = month
 		comps.day = day
@@ -39,150 +38,149 @@ extension NSDate {
 		comps.minute = minute
 		comps.second = second
 		
-		self.init(timeInterval: 0, sinceDate: gregorian!.dateFromComponents(comps)!)
+		self.init(timeInterval: 0, since: gregorian.date(from: comps)!)
 	}
 }
 
-extension NSDate {
+extension Date {
 	
 	func HHmmddMM() -> String {
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "HH:mm • dd MMM"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 	
 	func MMdd() -> String {
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "MMMM dd"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 	
 	func HHmm() -> String {
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "HH:mm"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 	
 	func HHmmGMT() -> String {
-		let f = NSDateFormatter()
-		f.timeZone = NSTimeZone(abbreviation: "GMT")
+		let f = DateFormatter()
+		f.timeZone = TimeZone(abbreviation: "GMT")
 		f.dateFormat = "HH:mm"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 	
 	func EEMMdd() -> String {
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "EE, MMMM dd"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 	
 	func ddEEEEE() -> String {
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "dd • EEE"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 	
 	func EEEEMMdd() -> String {
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "EEEE, MMMM dd"
-		return f.stringFromDate(self)
+		return f.string(from: self)
 	}
 }
 
-extension NSDate {
+extension Date {
     
 	func weekInterval() -> String {
 		let bounds = self.weekBounds()
-		let f = NSDateFormatter()
+		let f = DateFormatter()
 		f.dateFormat = "MMM dd"
 		if bounds.0.isSameMonthAs(bounds.1) {
-			return "\(f.stringFromDate(bounds.0)) - \(bounds.1.day())"
+			return "\(f.string(from: bounds.0)) - \(bounds.1.day())"
 		}
-		return "\(f.stringFromDate(bounds.0)) - \(f.stringFromDate(bounds.1))"
+		return "\(f.string(from: bounds.0)) - \(f.string(from: bounds.1))"
 	}
 }
 
-extension NSDate {
+extension Date {
     
-	@inline(__always) func isSameMonthAs (month: NSDate) -> Bool {
+	@inline(__always) func isSameMonthAs (_ month: Date) -> Bool {
 		return self.year() == month.year() && self.month() == month.month()
 	}
 	
-	@inline(__always) func isSameWeekAs (month: NSDate) -> Bool {
+	@inline(__always) func isSameWeekAs (_ month: Date) -> Bool {
 		return self.year() == month.year() && self.week() == month.week()
 	}
 	
-	@inline(__always) func isSameDayAs (date: NSDate) -> Bool {
+	@inline(__always) func isSameDayAs (_ date: Date) -> Bool {
 		
-		let compsSelf = gregorian!.components(ymdUnitFlags, fromDate: self)
-		let compsRef = gregorian!.components(ymdUnitFlags, fromDate: date)
+		let compsSelf = gregorian.dateComponents(ymdUnitFlags, from: self)
+		let compsRef = gregorian.dateComponents(ymdUnitFlags, from: date)
 		
-		return compsSelf.day == compsRef.day &&
-			compsSelf.month == compsRef.month &&
-			compsSelf.year == compsRef.year
+		return  compsSelf.day == compsRef.day &&
+                compsSelf.month == compsRef.month &&
+                compsSelf.year == compsRef.year
 	}
 	
 	func daysInMonth() -> Int {
 		
-		let daysRange = gregorian!.rangeOfUnit(NSCalendarUnit.Day,
-			inUnit: NSCalendarUnit.Month, forDate: self)
+		let daysRange = gregorian.range(of: Calendar.Component.day, in: Calendar.Component.month, for: self)
 		
-		return daysRange.length as Int
+		return daysRange!.count as Int
 	}
 	
 	@inline(__always) func year() -> Int {
-		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
-		return comps.year
+		let comps = gregorian.dateComponents(ymdUnitFlags, from: self)
+		return comps.year!
 	}
 	
 	@inline(__always) func month() -> Int {
-		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
-		return comps.month
+		let comps = gregorian.dateComponents(ymdUnitFlags, from: self)
+		return comps.month!
 	}
 	
 	@inline(__always) func day() -> Int {
-		let comps = gregorian!.components(ymdUnitFlags, fromDate: self)
-		return comps.day
+		let comps = gregorian.dateComponents(ymdUnitFlags, from: self)
+		return comps.day!
 	}
 	
 	@inline(__always) func week() -> Int {
-		let comps = gregorian!.components(NSCalendarUnit.WeekOfYear, fromDate: self)
-		return comps.weekOfYear
+		let comps = gregorian.dateComponents([Calendar.Component.weekOfYear], from: self)
+		return comps.weekOfYear!
 	}
 	
-	func round() -> NSDate {
+	func round() -> Date {
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-		let hm = _round(comps.minute)
-		comps.hour = comps.hour + hm.hour
+		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+		let hm = _round(comps.minute!)
+		comps.hour = comps.hour! + hm.hour
 		comps.minute = hm.min
 		comps.second = 0
 		
-		return gregorian!.dateFromComponents(comps)!
+		return gregorian.date(from: comps)!
 	}
 	
-	func secondsToPercentTime (time: Double) -> Double {
+	func secondsToPercentTime (_ time: Double) -> Double {
 		return time / 3600
 	}
 	
-	func dateByUpdatingHour (hour: Int, minute: Int) -> NSDate {
+	func dateByUpdatingHour (_ hour: Int, minute: Int) -> Date {
 		
-		let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
 		comps.hour = hour
 		comps.minute = minute
 		comps.second = 0
 		
-		return gregorian!.dateFromComponents(comps)!
+		return gregorian.date(from: comps)!
 	}
 	
-	class func parseHHmm (hhmm: String) -> (hour: Int, min: Int) {
-		let hm = hhmm.componentsSeparatedByString(":")
+	static func parseHHmm (_ hhmm: String) -> (hour: Int, min: Int) {
+		let hm = hhmm.components(separatedBy: ":")
 		return (hour: Int(hm.first!)!, min: Int(hm.last!)!)
 	}
 	
 	// MARK: Round to nearest quarter
 	
-	private func _round (min: Int) -> (hour: Int, min: Int) {
+	fileprivate func _round (_ min: Int) -> (hour: Int, min: Int) {
 		if min < 22 {
 			return (0, 15)
 		} else if min < 38 {
@@ -195,92 +193,91 @@ extension NSDate {
 	}
 }
 
-extension NSDate {
+extension Date {
     
-    class func getMonthsBetween (startDate: NSDate, endDate: NSDate) -> Array<NSDate> {
+    static func getMonthsBetween (_ startDate: Date, endDate: Date) -> Array<Date> {
         
-        var dates: [NSDate] = [NSDate]()
-        let monthDifference = NSDateComponents()
+        var dates: [Date] = [Date]()
+        var monthDifference = DateComponents()
         var monthOffset: Int = 0
         var nextDate = startDate
         
-        while nextDate.compare(endDate) == NSComparisonResult.OrderedAscending {
+        while nextDate.compare(endDate) == ComparisonResult.orderedAscending {
             monthOffset += 1
             monthDifference.month = monthOffset
-            nextDate = gregorian!.dateByAddingComponents(monthDifference,
-                                                         toDate: startDate, options: [])!
+            nextDate = gregorian.date(byAdding: monthDifference, to: startDate)!
             dates.append(nextDate)
         }
         
         return dates;
     }
     
-    func startOfMonth() -> NSDate {
+    func startOfMonth() -> Date {
         
-        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
         comps.day = 1
         comps.hour = 0
         comps.minute = 0
         comps.second = 0
         
-        return gregorian!.dateFromComponents(comps)!
+        return gregorian.date(from: comps)!
     }
 }
 
-extension NSDate {
+extension Date {
     
-    func startOfWeek() -> NSDate {
+    func startOfWeek() -> Date {
         
-        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-        comps.day = comps.day - (comps.weekday - 1) + 1// 1 because weekday starts with 1, and 1 because weekday starts sunday
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+        comps.day = comps.day! - (comps.weekday! - 1) + 1// 1 because weekday starts with 1, and 1 because weekday starts sunday
         comps.hour = 0
         comps.minute = 0
         comps.second = 0
         comps.weekday = 1
         
-        return gregorian!.dateFromComponents(comps)!
+        return gregorian.date(from: comps)!
     }
     
-    func endOfWeek() -> NSDate {
+    func endOfWeek() -> Date {
         
-        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
-        comps.day = comps.day + (7 - comps.weekday) + 1
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+        comps.day = comps.day! + (7 - comps.weekday!) + 1
         comps.hour = 23
         comps.minute = 59
         comps.second = 59
         comps.weekday = 7
         
-        return gregorian!.dateFromComponents(comps)!
+        return gregorian.date(from: comps)!
     }
     
-    func weekBounds() -> (NSDate, NSDate) {
+    func weekBounds() -> (Date, Date) {
         return (self.startOfWeek(), self.endOfWeek())
     }
 }
 
-extension NSDate {
+extension Date {
     
-    func startOfDay() -> NSDate {
+    func startOfDay() -> Date {
         
-        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
         comps.hour = 0
         comps.minute = 0
         comps.second = 0
         
-        return gregorian!.dateFromComponents(comps)!
+        return gregorian.date(from: comps)!
     }
     
-    func endOfDay() -> NSDate {
+    func endOfDay() -> Date {
         
-        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: self)
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
         comps.hour = 23
         comps.minute = 59
         comps.second = 59
         
-        return gregorian!.dateFromComponents(comps)!
+        return gregorian.date(from: comps)!
     }
     
-    func dayBounds() -> (NSDate, NSDate) {
+    func dayBounds() -> (Date, Date) {
         return (self.startOfDay(), self.endOfDay())
     }
 }

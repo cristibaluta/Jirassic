@@ -10,18 +10,18 @@ import Foundation
 
 class TaskTypeSelection {
     
-    private let kLastSelectedTabKey = "LastSelectedTabKey"
+    fileprivate let kLastSelectedTabKey = "LastSelectedTabKey"
     
-    func setType (type: ListType) {
-        NSUserDefaults.standardUserDefaults().setObject(type.rawValue, forKey: kLastSelectedTabKey)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func setType (_ type: ListType) {
+        UserDefaults.standard.set(type.rawValue, forKey: kLastSelectedTabKey)
+        UserDefaults.standard.synchronize()
     }
     
     func lastType() -> ListType {
         
-        if let type = ListType(rawValue: NSUserDefaults.standardUserDefaults().integerForKey(kLastSelectedTabKey)) {
+        if let type = ListType(rawValue: UserDefaults.standard.integer(forKey: kLastSelectedTabKey)) {
             return type
         }
-        return ListType.AllTasks
+        return ListType.allTasks
     }
 }

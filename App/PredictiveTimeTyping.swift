@@ -10,18 +10,18 @@ import Foundation
 
 class PredictiveTimeTyping {
 	
-    func timeByAdding (string: String, to: String) -> String {
+    func timeByAdding (_ string: String, to: String) -> String {
 	
 		var returnString = string
 		
 		// Deal with backspace
         if (string == "") {
 			let charsToDelete = to.characters.count == 3 ? 2 : 1
-			let rangeToKeep = to.startIndex..<to.endIndex.advancedBy(-charsToDelete)
-			return to.substringWithRange(rangeToKeep)
+			let rangeToKeep = to.startIndex..<to.characters.index(to.endIndex, offsetBy: -charsToDelete)
+			return to.substring(with: rangeToKeep)
         }
 		
-		let timeComps = to.componentsSeparatedByString(":")
+		let timeComps = to.components(separatedBy: ":")
 		let hr: String = timeComps.first!
 		
 		// Deal with minutes
@@ -31,8 +31,8 @@ class PredictiveTimeTyping {
 			var minToAdd = ""
 			
 			if min.characters.count == 2 {
-				let rangeToKeep = min.startIndex..<min.endIndex.advancedBy(-1)
-				return "\(hr):\(min.substringWithRange(rangeToKeep))\(string)"
+				let rangeToKeep = min.startIndex..<min.characters.index(min.endIndex, offsetBy: -1)
+				return "\(hr):\(min.substring(with: rangeToKeep))\(string)"
 			} else {
 				m = decimalValueOf(min, newDigit: string)
 			}
@@ -76,11 +76,11 @@ class PredictiveTimeTyping {
 		return returnString
 	}
 	
-    func dateFromStringHHmm (string: String) -> NSDate {
+    func dateFromStringHHmm (_ string: String) -> Date {
 		
-        let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        let comps = gregorian!.components(ymdhmsUnitFlags, fromDate: NSDate())
-        let hm = string.componentsSeparatedByString(":")
+        let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: Date())
+        let hm = string.components(separatedBy: ":")
 		
 		if (string.characters.count == 0) {
 			comps.hour = 0
@@ -94,11 +94,11 @@ class PredictiveTimeTyping {
             comps.hour = (hm.count == 1) ? Int(hm[0])! : 19;
             comps.minute = 0
         }
-        return gregorian!.dateFromComponents(comps)!
+        return gregorian.date(from: comps)!
     }
 	
 	// This method will combine strings and convert the result to number
-    func decimalValueOf (existingText: String, newDigit: String) -> Int {
+    func decimalValueOf (_ existingText: String, newDigit: String) -> Int {
 		
         if existingText.characters.count > 0 && newDigit.characters.count > 0 {
             return Int(existingText)! * 10 + Int(newDigit)!;

@@ -14,9 +14,9 @@ import CoreData
 
 extension CTask {
 
-    @NSManaged var lastModifiedDate: NSDate?
-    @NSManaged var creationDate: NSDate?
-    @NSManaged var endDate: NSDate?
+    @NSManaged var lastModifiedDate: Date?
+    @NSManaged var creationDate: Date?
+    @NSManaged var endDate: Date?
     @NSManaged var notes: String?
     @NSManaged var taskNumber: String?
     @NSManaged var taskType: NSNumber?

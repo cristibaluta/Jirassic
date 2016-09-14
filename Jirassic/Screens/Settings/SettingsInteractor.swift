@@ -17,7 +17,7 @@ struct JiraSettings {
 protocol SettingsInteractorInput {
     
     func getJiraSettings() -> JiraSettings?
-    func getJiraPasswordForUser (jiraUser: String)
+    func getJiraPasswordForUser (_ jiraUser: String)
 }
 
 protocol SettingsInteractorOutput {
@@ -41,10 +41,10 @@ extension SettingsInteractor: SettingsInteractorInput {
         let homeDirectory = NSHomeDirectory()
         let jitconfigPath = "\(homeDirectory)/.jitconfig"
         
-        if NSFileManager.defaultManager().fileExistsAtPath(jitconfigPath) {
+        if FileManager.default.fileExists(atPath: jitconfigPath) {
             do {
-                let jitconfig = try NSString(contentsOfFile: jitconfigPath, encoding: NSUTF8StringEncoding)
-                let lines = jitconfig.componentsSeparatedByString("\n") as [String]
+                let jitconfig = try NSString(contentsOfFile: jitconfigPath, encoding: String.Encoding.utf8.rawValue)
+                let lines = jitconfig.components(separatedBy: "\n") as [String]
                 let settings = JiraSettings(url: lines[0], user: lines[1], separator: lines[2])
                 return settings
             }
@@ -53,13 +53,13 @@ extension SettingsInteractor: SettingsInteractorInput {
         return nil
     }
     
-    func getJiraPasswordForUser (jiraUser: String) {
+    func getJiraPasswordForUser (_ jiraUser: String) {
         
-        let task = NSTask()
+        let task = Process()
         task.launchPath = "/usr/bin/security"
         task.arguments = ["find-generic-password", "-wa", jiraUser]
         task.terminationHandler = { task in
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 print(task)
             })
         }

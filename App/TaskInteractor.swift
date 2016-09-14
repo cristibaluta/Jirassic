@@ -10,7 +10,7 @@ import Foundation
 
 class TaskInteractor: RepositoryInteractor {
 
-    func saveTask (task: Task) {
+    func saveTask (_ task: Task) {
         
         let savedTask = data.saveTask(task, completion: { (success: Bool) -> Void in
             
@@ -20,7 +20,7 @@ class TaskInteractor: RepositoryInteractor {
         })
     }
     
-    func deleteTask (task: Task) {
+    func deleteTask (_ task: Task) {
         
         data.deleteTask(task, completion: { (success: Bool) -> Void in
             
