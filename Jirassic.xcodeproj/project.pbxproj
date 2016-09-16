@@ -106,6 +106,8 @@
 		40182C441D8B483D00073128 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC511CDE349100249D66 /* TaskInteractor.swift */; };
 		40182C451D8B486600073128 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */; };
 		40182C461D8BA92100073128 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
+		40182C491D8C65BA00073128 /* jirassic in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2841A93C1C3DB2E400564ECD /* jirassic */; };
+		40182C4B1D8C7A7900073128 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 40182C4A1D8C7A7900073128 /* jirassic */; };
 		4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
@@ -197,12 +199,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		2841A93A1C3DB2E400564ECD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = "${SRCROOT}/Jirassic";
 			dstSubfolderSpec = 0;
 			files = (
+				40182C491D8C65BA00073128 /* jirassic in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6D31D09D1AC44613001AC4BA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -280,6 +283,7 @@
 		28F51EA71AC6A37C00A69CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarIconView.swift; sourceTree = "<group>"; };
 		28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReport.swift; path = ../App/CreateReport.swift; sourceTree = "<group>"; };
+		40182C4A1D8C7A7900073128 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
 		4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryInteractor.swift; path = App/RepositoryInteractor.swift; sourceTree = SOURCE_ROOT; };
 		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
 		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -772,6 +776,7 @@
 		6D31D04F1AC196BB001AC4BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				40182C4A1D8C7A7900073128 /* jirassic */,
 				408CD21D1D7BFA8900FA2EA4 /* jit */,
 				6D31D0501AC196BB001AC4BA /* Info.plist */,
 				28C0300B1C09969F00B65478 /* jirassic.sdef */,
@@ -1016,6 +1021,7 @@
 				6D31D05C1AC196BB001AC4BA /* Main.storyboard in Resources */,
 				28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */,
 				408CD2271D7C72B100FA2EA4 /* ReportCell.xib in Resources */,
+				40182C4B1D8C7A7900073128 /* jirassic in Resources */,
 				408CD21E1D7BFA8900FA2EA4 /* jit in Resources */,
 				28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */,
 				40BF537B1CD61ACF00626157 /* TaskCell.xib in Resources */,
