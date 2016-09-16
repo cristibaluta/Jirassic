@@ -88,6 +88,24 @@
 		28F51EA81AC6A37C00A69CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F51EA71AC6A37C00A69CDF /* MainMenu.xib */; };
 		28F51EAA1AC6A3AE00A69CDF /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */; };
 		28F51EAF1AC6AB7A00A69CDF /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */; };
+		40182C351D8B3D9100073128 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* Repository.swift */; };
+		40182C361D8B3D9800073128 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
+		40182C371D8B3DAB00073128 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A68A9B1CC0CD3C0031CC0C /* CoreDataRepository.swift */; };
+		40182C381D8B3DB000073128 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53551CD6020A00626157 /* Jirassic.xcdatamodeld */; };
+		40182C391D8B3DB300073128 /* CUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A41CD9498A00C8E03D /* CUser+CoreDataProperties.swift */; };
+		40182C3A1D8B3DB700073128 /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413A51CD9498A00C8E03D /* CUser.swift */; };
+		40182C3B1D8B3DBA00073128 /* CTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */; };
+		40182C3C1D8B3DBF00073128 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
+		40182C3D1D8B3DCD00073128 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BF53591CD6175800626157 /* CTask.swift */; };
+		40182C3E1D8B3E5600073128 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
+		40182C3F1D8B3E6000073128 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
+		40182C401D8B3E6400073128 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
+		40182C411D8B3E6800073128 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
+		40182C421D8B3E7D00073128 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413961CD86AA300C8E03D /* StringIdGenerator.swift */; };
+		40182C431D8B3E8F00073128 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
+		40182C441D8B483D00073128 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC511CDE349100249D66 /* TaskInteractor.swift */; };
+		40182C451D8B486600073128 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */; };
+		40182C461D8BA92100073128 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
@@ -1019,7 +1037,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40182C391D8B3DB300073128 /* CUser+CoreDataProperties.swift in Sources */,
+				40182C361D8B3D9800073128 /* RepositoryInteractor.swift in Sources */,
+				40182C3E1D8B3E5600073128 /* Task.swift in Sources */,
+				40182C421D8B3E7D00073128 /* StringIdGenerator.swift in Sources */,
+				40182C3B1D8B3DBA00073128 /* CTask+CoreDataProperties.swift in Sources */,
+				40182C3A1D8B3DB700073128 /* CUser.swift in Sources */,
+				40182C431D8B3E8F00073128 /* NSDateExtension.swift in Sources */,
+				40182C401D8B3E6400073128 /* Week.swift in Sources */,
+				40182C451D8B486600073128 /* ReadTasksInteractor.swift in Sources */,
+				40182C411D8B3E6800073128 /* Day.swift in Sources */,
 				2841A93F1C3DB2E400564ECD /* main.swift in Sources */,
+				40182C3C1D8B3DBF00073128 /* CTask.swift in Sources */,
+				40182C381D8B3DB000073128 /* Jirassic.xcdatamodeld in Sources */,
+				40182C371D8B3DAB00073128 /* CoreDataRepository.swift in Sources */,
+				40182C441D8B483D00073128 /* TaskInteractor.swift in Sources */,
+				40182C351D8B3D9100073128 /* Repository.swift in Sources */,
+				40182C3F1D8B3E6000073128 /* User.swift in Sources */,
+				40182C461D8BA92100073128 /* RCLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1085,7 @@
 				406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
 				2894F1CB1B076EAE0095DD17 /* ReadTasksInteractor.swift in Sources */,
 				4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
+				40182C3D1D8B3DCD00073128 /* CTask.swift in Sources */,
 				2865854D1B03E6D100352782 /* TasksViewController.swift in Sources */,
 				28C02F791C009C9700B65478 /* ViewAutolayout.swift in Sources */,
 				40D6DF7A1D0E22C800D7AB9A /* CloudKitLoginViewController.swift in Sources */,
@@ -1200,6 +1236,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1235,6 +1272,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Jirassic-Scrum/Jirassic-Scrum-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
