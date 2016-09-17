@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
@@ -37,8 +37,12 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
                     <rect key="frame" x="70" y="59" width="51" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="9iT-gw-b28"/>
+                        <constraint firstAttribute="width" constant="47" id="Msf-to-ooV"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="kk5-M4-fbR">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,8 +97,12 @@
                         <action selector="handleCopyButton:" target="c22-O7-iKe" id="dmZ-11-AJj"/>
                     </connections>
                 </button>
-                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAU-4V-M8t">
+                <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAU-4V-M8t">
                     <rect key="frame" x="17" y="57" width="51" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="bgr-Wy-nVZ"/>
+                        <constraint firstAttribute="width" constant="47" id="nvc-cs-oSM"/>
+                    </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="dAn-XR-e3z">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" red="0.23037979813145845" green="0.3580610079360585" blue="0.53380055877382193" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,10 +111,12 @@
                 </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="HS2-iB-3Ta" firstAttribute="leading" secondItem="YAU-4V-M8t" secondAttribute="trailing" constant="6" id="3Vu-bZ-525"/>
                 <constraint firstItem="iAi-8T-Cme" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="4EI-YK-fcp"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="4LC-Du-N7a"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="127" id="80g-x5-V5p"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="70" id="AJd-Hi-qVV"/>
+                <constraint firstItem="HS2-iB-3Ta" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="ITh-KB-vKp"/>
                 <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="L43-NL-Jg1"/>
                 <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="11" id="Nf3-e9-nbf"/>
                 <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" constant="10" id="Opv-Gf-sLC"/>
@@ -116,7 +126,9 @@
                 <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="cZS-0S-iX6"/>
                 <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="2" id="dwc-eg-o9N"/>
                 <constraint firstAttribute="bottom" secondItem="caC-fV-ZwQ" secondAttribute="bottom" constant="11" id="fXs-zg-VfT"/>
+                <constraint firstItem="YAU-4V-M8t" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="19" id="goo-Wh-59h"/>
                 <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="8" id="mQh-nq-Tft"/>
+                <constraint firstItem="YAU-4V-M8t" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="msQ-0v-sR9"/>
                 <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" id="wbd-tK-eiw"/>
             </constraints>
             <connections>
