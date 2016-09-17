@@ -108,6 +108,8 @@
 		40182C461D8BA92100073128 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
 		40182C491D8C65BA00073128 /* jirassic in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2841A93C1C3DB2E400564ECD /* jirassic */; };
 		40182C4B1D8C7A7900073128 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 40182C4A1D8C7A7900073128 /* jirassic */; };
+		40182C551D8D3BC500073128 /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40182C541D8D3BC500073128 /* CSettings.swift */; };
+		40182C571D8D3D6400073128 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40182C561D8D3D6400073128 /* Settings.swift */; };
 		4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
@@ -284,6 +286,8 @@
 		28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarIconView.swift; sourceTree = "<group>"; };
 		28F51EAE1AC6AB7A00A69CDF /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateReport.swift; path = ../App/CreateReport.swift; sourceTree = "<group>"; };
 		40182C4A1D8C7A7900073128 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
+		40182C541D8D3BC500073128 /* CSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSettings.swift; path = External/CoreData/CSettings.swift; sourceTree = SOURCE_ROOT; };
+		40182C561D8D3D6400073128 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = App/Entities/Settings.swift; sourceTree = "<group>"; };
 		4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryInteractor.swift; path = App/RepositoryInteractor.swift; sourceTree = SOURCE_ROOT; };
 		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
 		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -557,10 +561,10 @@
 		289E2AE61B2D6554003269A3 /* OSX */ = {
 			isa = PBXGroup;
 			children = (
-				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
-				28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */,
 				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
 				6D31D05A1AC196BB001AC4BA /* Main.storyboard */,
+				6D31D0511AC196BB001AC4BA /* AppDelegate.swift */,
+				28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */,
 				289998A81AC3BDF200706824 /* MenuBarController.swift */,
 				28F51EA91AC6A3AE00A69CDF /* MenuBarIconView.swift */,
 				289998A11AC2920200706824 /* Popover.swift */,
@@ -582,6 +586,7 @@
 				28C02F5D1C00803300B65478 /* User.swift */,
 				285424C81C34313E0063B532 /* Week.swift */,
 				285424CA1C3431990063B532 /* Day.swift */,
+				40182C561D8D3D6400073128 /* Settings.swift */,
 			);
 			name = Entities;
 			path = ..;
@@ -731,6 +736,7 @@
 				406413A51CD9498A00C8E03D /* CUser.swift */,
 				40BF53971CD64A2E00626157 /* CTask+CoreDataProperties.swift */,
 				40BF53591CD6175800626157 /* CTask.swift */,
+				40182C541D8D3BC500073128 /* CSettings.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1167,7 +1173,9 @@
 				40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */,
 				286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */,
 				6D31D0A11AC44785001AC4BA /* RCLog.swift in Sources */,
+				40182C551D8D3BC500073128 /* CSettings.swift in Sources */,
 				40BF53761CD61ACF00626157 /* NewTaskViewController.swift in Sources */,
+				40182C571D8D3D6400073128 /* Settings.swift in Sources */,
 				40BF53901CD61D5C00626157 /* RegisterUserInteractor.swift in Sources */,
 				40BF537F1CD61ACF00626157 /* TasksViewController.swift in Sources */,
 				40BF535D1CD6175800626157 /* CTask.swift in Sources */,
@@ -1240,7 +1248,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_NO_COMMON_BLOCKS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

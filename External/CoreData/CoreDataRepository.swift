@@ -139,7 +139,50 @@ extension CoreDataRepository {
         
         return ctask
     }
+}
+
+extension CoreDataRepository {
     
+    fileprivate func settingsFromCSettings (_ csettings: CSettings) -> Settings {
+        
+        return Settings(autoTrackLunch: csettings.autoTrackLunch?.boolValue,
+                        autoTrackScrum: csettings.autoTrackScrum?.boolValue,
+                        showSuggestions: csettings.showSuggestions?.boolValue,
+                        lunchTime: csettings.lunchTime,
+                        scrumMeetingTime: csettings.scrumMeetingTime,
+                        startDayTime: csettings.startDayTime
+        )
+    }
+    
+    fileprivate func csettingsFromSettings (_ settings: Settings) -> CSettings {
+        
+        let results: [CSettings] = queryWithPredicate(nil, sortDescriptors: nil)
+        var csettings: CSettings? = results.first
+        if csettings == nil {
+            csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
+                                                            into: managedObjectContext!) as? CSettings
+        }
+        if let autoTrackLunch = settings.autoTrackLunch {
+            csettings?.autoTrackLunch = NSNumber(value: autoTrackLunch)
+        }
+        if let autoTrackScrum = settings.autoTrackScrum {
+            csettings?.autoTrackScrum = NSNumber(value: autoTrackScrum)
+        }
+        if let showSuggestions = settings.showSuggestions {
+            csettings?.showSuggestions = NSNumber(value: showSuggestions)
+        }
+        if let lunchTime = settings.lunchTime {
+            csettings?.lunchTime = lunchTime
+        }
+        if let scrumMeetingTime = settings.scrumMeetingTime {
+            csettings?.scrumMeetingTime = scrumMeetingTime
+        }
+        if let startDayTime = settings.startDayTime {
+            csettings?.startDayTime = startDayTime
+        }
+        
+        return csettings!
+    }
 }
 
 extension CoreDataRepository: Repository {
@@ -242,5 +285,30 @@ extension CoreDataRepository: Repository {
         saveContext()
         
         return taskFromCTask(ctask)
+    }
+    
+    // MARK: Settings
+    func settings() -> Settings {
+        
+        let results: [CSettings] = queryWithPredicate(nil, sortDescriptors: nil)
+        var csettings: CSettings? = results.first
+        if csettings == nil {
+            csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
+                                                            into: managedObjectContext!) as? CSettings
+            csettings?.autoTrackLunch = 1
+            csettings?.autoTrackScrum = 1
+            csettings?.showSuggestions = 0
+            csettings?.lunchTime = Date(hour: 13, minute: 20)
+            csettings?.scrumMeetingTime = Date(hour: 10, minute: 30)
+            csettings?.startDayTime = Date(hour: 9, minute: 0)
+            saveContext()
+        }
+        return settingsFromCSettings(csettings!)
+    }
+    
+    func saveSettings (_ settings: Settings) {
+        
+        let _ = csettingsFromSettings(settings)
+        saveContext()
     }
 }

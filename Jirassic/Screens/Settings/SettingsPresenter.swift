@@ -14,6 +14,8 @@ protocol SettingsPresenterInput {
     func testJit()
     func installJit()
     func uninstallJit()
+    func showSettings()
+    func saveAppSettings (_ settings: Settings)
     var jitInstalled: Bool {get}
 }
 
@@ -22,6 +24,7 @@ protocol SettingsPresenterOutput {
     func showLoadingIndicator (_ show: Bool)
     func setJitIsInstalled (_ installed: Bool)
     func setJiraSettings (_ settings: JiraSettings)
+    func showAppSettings (_ settings: Settings)
 }
 
 class SettingsPresenter {
@@ -74,6 +77,15 @@ extension SettingsPresenter: SettingsPresenterInput {
                 self?.testJit()
             }
         }
+    }
+    
+    func showSettings() {
+        let settings = settingsInteractor!.getAppSettings()
+        userInterface!.showAppSettings(settings)
+    }
+    
+    func saveAppSettings (_ settings: Settings) {
+        settingsInteractor!.saveAppSettings(settings)
     }
 }
 

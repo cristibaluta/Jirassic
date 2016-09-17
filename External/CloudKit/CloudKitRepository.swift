@@ -161,4 +161,14 @@ extension CloudKitRepository: Repository {
     func saveIssue (_ issue: String) {
         
     }
+    
+    // MARK: Settings
+    
+    func settings() -> Settings {
+        fatalError("Not applicable")
+    }
+    
+    func saveSettings (_ settings: Settings) {
+        fatalError("Not applicable")
+    }
 }

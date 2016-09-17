@@ -23,4 +23,8 @@ protocol Repository {
     func deleteTask (_ dataToDelete: Task, completion: ((_ success: Bool) -> Void))
     // Save a task and return the same task with a taskId generated if it didn't had
     func saveTask (_ theTask: Task, completion: ((_ success: Bool) -> Void)) -> Task
+    
+    // MARK: Settings
+    func settings() -> Settings
+    func saveSettings (_ settings: Settings)
 }

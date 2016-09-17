@@ -8,6 +8,10 @@
 
 import Foundation
 
+var shouldKeepRunning = true
+let theRL = RunLoop.current
+//while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
+
 enum ArgType {
     case nr
     case notes
@@ -26,13 +30,16 @@ var remoteRepository: Repository?
 let saveInteractor = TaskInteractor(data: localRepository)
 let reader = ReadTasksInteractor(data: localRepository)
 let currentTasks = reader.tasksInDay(Date())
+print(currentTasks)
 if currentTasks.count == 0 {
     let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
+    print(startDayMark)
     saveInteractor.saveTask(startDayMark)
 }
 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
+print(arguments)
 arguments.remove(at: 0)
 
 guard arguments.count > 0 else {
@@ -41,7 +48,7 @@ guard arguments.count > 0 else {
 }
 
 func insert (_ arguments: [String]) {
-    
+    print("insert")
     var argType: ArgType?
     var taskNumber: String?
     var taskType = TaskType.issue
@@ -94,11 +101,13 @@ func insert (_ arguments: [String]) {
 }
 
 let command = arguments.remove(at: 0)
-
+print("command \(command)")
 switch command {
-case "insert": insert(arguments)
+case "insert": //insert(arguments)
     break
 default:
     printHelp()
     break
 }
+
+exit(0)

@@ -18,10 +18,11 @@ protocol SettingsInteractorInput {
     
     func getJiraSettings() -> JiraSettings?
     func getJiraPasswordForUser (_ jiraUser: String)
+    func getAppSettings() -> Settings
+    func saveAppSettings (_ settings: Settings)
 }
 
 protocol SettingsInteractorOutput {
-    
     
 }
 
@@ -64,5 +65,14 @@ extension SettingsInteractor: SettingsInteractorInput {
             })
         }
         task.launch()
+    }
+    
+    func getAppSettings() -> Settings {
+        
+        return localRepository!.settings()
+    }
+    
+    func saveAppSettings (_ settings: Settings) {
+        localRepository!.saveSettings(settings)
     }
 }

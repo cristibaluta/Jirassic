@@ -23,6 +23,13 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var jiraUrlTextField: NSTextField?
     @IBOutlet fileprivate var jiraUserTextField: NSTextField?
     @IBOutlet fileprivate var jiraPasswordTextField: NSTextField?
+    // Settings
+    @IBOutlet fileprivate var butAutoTrackLunch: NSButton!
+    @IBOutlet fileprivate var butAutoTrackScrum: NSButton!
+    @IBOutlet fileprivate var butShowSuggestions: NSButton!
+    @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var scrumMeetingTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var startDayTimePicker: NSDatePicker!
     
     weak var appWireframe: AppWireframe?
     var settingsPresenter: SettingsPresenterInput?
@@ -60,7 +67,9 @@ class SettingsViewController: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        
         settingsPresenter!.testJit()
+        settingsPresenter!.showSettings()
         
 //		let user = UserInteractor().currentUser()
 //        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
@@ -83,7 +92,17 @@ class SettingsViewController: NSViewController {
 	}
 	
 	@IBAction func handleSaveButton (_ sender: NSButton) {
-		appWireframe!.flipToTasksController()
+		
+        let settings = Settings(autoTrackLunch: butAutoTrackLunch.state == NSOnState,
+                                autoTrackScrum: butAutoTrackScrum.state == NSOnState,
+                                showSuggestions: butShowSuggestions.state == NSOnState,
+                                lunchTime: lunchTimePicker.dateValue,
+                                scrumMeetingTime: scrumMeetingTimePicker.dateValue,
+                                startDayTime: startDayTimePicker.dateValue
+        )
+        settingsPresenter!.saveAppSettings(settings)
+        
+        appWireframe!.flipToTasksController()
 	}
 }
 
@@ -109,5 +128,15 @@ extension SettingsViewController: SettingsPresenterOutput {
         jiraUrlTextField!.stringValue = settings.url!
         jiraUserTextField!.stringValue = settings.user!
 //        jiraPasswordTextField!.stringValue = nil
+    }
+    
+    func showAppSettings (_ settings: Settings) {
+        
+        butAutoTrackLunch.state = settings.autoTrackLunch == true ? NSOnState : NSOffState
+        butAutoTrackScrum.state = settings.autoTrackScrum == true ? NSOnState : NSOffState
+        butShowSuggestions.state = settings.showSuggestions == true ? NSOnState : NSOffState
+        lunchTimePicker.dateValue = settings.lunchTime!
+        scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime!
+        startDayTimePicker.dateValue = settings.startDayTime!
     }
 }
