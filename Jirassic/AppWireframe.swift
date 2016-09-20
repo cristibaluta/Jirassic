@@ -188,11 +188,12 @@ extension AppWireframe {
     func presentMessage (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) {
         
         let messageController = self.messageViewController
+        if messageController.parent == nil {
+            self.viewController!.addChildViewController(messageController)
+            splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(messageController.view)
+            messageController.view.constrainToSuperview()
+        }
         messageViewController.viewModel = message
-        
-        self.viewController!.addChildViewController(messageController)
-        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(messageController.view)
-        messageController.view.constrainToSuperview()
     }
     
     func removeMessage() {

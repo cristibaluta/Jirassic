@@ -12,14 +12,18 @@ typealias MessageViewModel = (title: String?, message: String?, buttonTitle: Str
 
 class MessageViewController: NSViewController {
 
-    @IBOutlet fileprivate var titleLabel: NSTextField?
-    @IBOutlet fileprivate var messageLabel: NSTextField?
-    @IBOutlet fileprivate var button: NSButton?
+    @IBOutlet weak fileprivate var titleLabel: NSTextField?
+    @IBOutlet weak fileprivate var messageLabel: NSTextField?
+    @IBOutlet weak fileprivate var button: NSButton?
 	
 	var didPressButton: (() -> ())?
 	
     var viewModel: MessageViewModel? {
+        
         didSet {
+            guard self.titleLabel != nil else {
+                fatalError("viewModel should be set after the VC is presented")
+            }
             if let title = viewModel?.title {
                 self.titleLabel?.stringValue = title
             }
