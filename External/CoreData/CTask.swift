@@ -11,7 +11,13 @@ import CoreData
 
 
 class CTask: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+    
+    @NSManaged var lastModifiedDate: Date?
+    @NSManaged var creationDate: Date?
+    @NSManaged var endDate: Date?
+    @NSManaged var notes: String?
+    @NSManaged var taskNumber: String?
+    @NSManaged var taskType: NSNumber?
+    @NSManaged var taskId: String?
 
 }

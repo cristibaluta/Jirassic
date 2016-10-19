@@ -14,17 +14,17 @@ class CoreDataRepository {
     lazy var applicationDocumentsDirectory: URL = {
         
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        let baseUrl = urls.last as URL!
-        let url = baseUrl?.appendingPathComponent("Jirassic")
+        let baseUrl = urls.last!
+        let url = baseUrl.appendingPathComponent("Jirassic")
         
-        if !FileManager.default.fileExists(atPath: url!.path) {
+        if !FileManager.default.fileExists(atPath: url.path) {
             do {
-                try FileManager.default.createDirectory(at: url!, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
             } catch _ {
-                return baseUrl!
+                return baseUrl
             }
         }
-        return url!
+        return url
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {

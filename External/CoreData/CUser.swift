@@ -11,7 +11,10 @@ import CoreData
 
 
 class CUser: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+    
+    @NSManaged var userId: String?
+    @NSManaged var email: String?
+    @NSManaged var lastSyncDate: Date?
+    @NSManaged var isLoggedIn: NSNumber?
 
 }
