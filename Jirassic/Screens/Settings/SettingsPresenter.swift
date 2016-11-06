@@ -55,10 +55,12 @@ extension SettingsPresenter: SettingsPresenterInput {
         
         userInterface!.setJitIsInstalled( jitInteractor.isInstalled )
         
-        let jiraSettings = settingsInteractor!.getJiraSettings()
+        guard let jiraSettings = settingsInteractor!.getJiraSettings() else {
+            return
+        }
         RCLog(jiraSettings)
-        settingsInteractor!.getJiraPasswordForUser(jiraSettings!.user!)
-        userInterface!.setJiraSettings(jiraSettings!)
+        settingsInteractor!.getJiraPasswordForUser(jiraSettings.user!)
+        userInterface!.setJiraSettings(jiraSettings)
     }
     
     func installJit() {

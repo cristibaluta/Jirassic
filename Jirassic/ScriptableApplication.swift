@@ -40,6 +40,7 @@ extension NSApplication {
                 }
                 
                 let task = Task(
+                    startDate: nil,
                     endDate: Date(),
                     notes: notes,
                     taskNumber: taskNumber,

@@ -19,7 +19,7 @@ enum ArgType {
 }
 
 func printHelp() {
-    print("jirassic cli 1.0 - (c)2016 Cristian Baluta")
+    print("jirassic cmd 1.0 - (c)2016 Cristian Baluta")
     print("Usage:")
     print("     insert -nr <task number> -type <task type> -notes <notes>")
 }

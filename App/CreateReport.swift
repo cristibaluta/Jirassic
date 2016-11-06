@@ -85,7 +85,8 @@ class CreateReport: NSObject {
             for task in tasks {
                 var uniqueTask = joinedTasks[taskNumber]
                 if uniqueTask == nil {
-                    uniqueTask = Task(endDate: task.endDate,
+                    uniqueTask = Task(startDate: nil,
+                                      endDate: task.endDate,
                                       notes: "• \(task.notes!)",
                                       taskNumber: taskNumber,
                                       taskType: task.taskType,

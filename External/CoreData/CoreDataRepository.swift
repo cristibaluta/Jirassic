@@ -95,7 +95,8 @@ extension CoreDataRepository {
     
     fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
         
-        return Task(endDate: ctask.endDate!,
+        return Task(startDate: nil,
+                    endDate: ctask.endDate!,
                     notes: ctask.notes,
                     taskNumber: ctask.taskNumber,
                     taskType: ctask.taskType!,
