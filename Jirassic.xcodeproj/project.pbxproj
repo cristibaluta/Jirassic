@@ -63,15 +63,15 @@
 		28C02F5B1C00801B00B65478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F581C00801A00B65478 /* Task.swift */; };
 		28C02F5E1C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
 		28C02F601C00803300B65478 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F5D1C00803300B65478 /* User.swift */; };
-		28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
-		28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
+		28C02F731C009C9700B65478 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* DateExtension.swift */; };
+		28C02F751C009C9700B65478 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* DateExtension.swift */; };
 		28C02F771C009C9700B65478 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* ViewAutolayout.swift */; };
 		28C02F791C009C9700B65478 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F721C009C9700B65478 /* ViewAutolayout.swift */; };
 		28C0300C1C09969F00B65478 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 28C0300B1C09969F00B65478 /* jirassic.sdef */; };
 		28C0300E1C09CC6F00B65478 /* ScriptableApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */; };
 		28E57AC31BEC180C00B803E6 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E57AC21BEC180C00B803E6 /* AppWireframe.swift */; };
 		28E838FE1AF401A900602D33 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E838FD1AF401A900602D33 /* Repository.swift */; };
-		28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839001AF402B200602D33 /* NSDateExtensionTests.swift */; };
+		28E839011AF402B200602D33 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E839001AF402B200602D33 /* DateExtensionTests.swift */; };
 		28E839081AF4972B00602D33 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D08E1AC2EB1B001AC4BA /* ApplicationServices.framework */; };
 		28E839091AF4972F00602D33 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0771AC2E8AE001AC4BA /* CFNetwork.framework */; };
 		28E8390A1AF4973200602D33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D31D0791AC2E8B7001AC4BA /* CoreGraphics.framework */; };
@@ -100,7 +100,7 @@
 		40182C401D8B3E6400073128 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424C81C34313E0063B532 /* Week.swift */; };
 		40182C411D8B3E6800073128 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285424CA1C3431990063B532 /* Day.swift */; };
 		40182C421D8B3E7D00073128 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406413961CD86AA300C8E03D /* StringIdGenerator.swift */; };
-		40182C431D8B3E8F00073128 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* NSDateExtension.swift */; };
+		40182C431D8B3E8F00073128 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C02F711C009C9700B65478 /* DateExtension.swift */; };
 		40182C441D8B483D00073128 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5CC511CDE349100249D66 /* TaskInteractor.swift */; };
 		40182C451D8B486600073128 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F51E791AC694B000A69CDF /* ReadTasksInteractor.swift */; };
 		40182C461D8BA92100073128 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31D0A01AC44785001AC4BA /* RCLog.swift */; };
@@ -108,6 +108,7 @@
 		40182C4B1D8C7A7900073128 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 40182C4A1D8C7A7900073128 /* jirassic */; };
 		40182C551D8D3BC500073128 /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40182C541D8D3BC500073128 /* CSettings.swift */; };
 		40182C571D8D3D6400073128 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40182C561D8D3D6400073128 /* Settings.swift */; };
+		4043F4111DCF202E009B1A70 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043F4101DCF202E009B1A70 /* Zeta.swift */; };
 		4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
@@ -261,13 +262,13 @@
 		28C02F551C007F3000B65478 /* InMemoryCoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryCoreDataRepository.swift; sourceTree = "<group>"; };
 		28C02F581C00801A00B65478 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = App/Entities/Task.swift; sourceTree = "<group>"; };
 		28C02F5D1C00803300B65478 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = App/Entities/User.swift; sourceTree = "<group>"; };
-		28C02F711C009C9700B65478 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = App/Extensions/NSDateExtension.swift; sourceTree = SOURCE_ROOT; };
+		28C02F711C009C9700B65478 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = App/Extensions/DateExtension.swift; sourceTree = SOURCE_ROOT; };
 		28C02F721C009C9700B65478 /* ViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewAutolayout.swift; path = App/Extensions/ViewAutolayout.swift; sourceTree = SOURCE_ROOT; };
 		28C0300B1C09969F00B65478 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jirassic.sdef; sourceTree = "<group>"; };
 		28C0300D1C09CC6F00B65478 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
 		28E57AC21BEC180C00B803E6 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
 		28E838FD1AF401A900602D33 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = ../App/Repository.swift; sourceTree = "<group>"; };
-		28E839001AF402B200602D33 /* NSDateExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtensionTests.swift; path = App/Extensions/NSDateExtensionTests.swift; sourceTree = SOURCE_ROOT; };
+		28E839001AF402B200602D33 /* DateExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtensionTests.swift; path = App/Extensions/DateExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		28EB905C1AF73FD4008D5337 /* TaskTypeEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskTypeEstimator.swift; path = ../App/TaskTypeEstimator.swift; sourceTree = "<group>"; };
 		28EB90621AF948E3008D5337 /* NewDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDay.swift; path = ../App/NewDay.swift; sourceTree = "<group>"; };
 		28EB906F1AF95C37008D5337 /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +283,7 @@
 		40182C4A1D8C7A7900073128 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
 		40182C541D8D3BC500073128 /* CSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSettings.swift; path = External/CoreData/CSettings.swift; sourceTree = SOURCE_ROOT; };
 		40182C561D8D3D6400073128 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = App/Entities/Settings.swift; sourceTree = "<group>"; };
+		4043F4101DCF202E009B1A70 /* Zeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Zeta.swift; path = App/Extensions/Zeta.swift; sourceTree = SOURCE_ROOT; };
 		4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryInteractor.swift; path = App/RepositoryInteractor.swift; sourceTree = SOURCE_ROOT; };
 		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
 		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -663,12 +665,13 @@
 		28F51EC41AC8059400A69CDF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				28C02F711C009C9700B65478 /* NSDateExtension.swift */,
-				28E839001AF402B200602D33 /* NSDateExtensionTests.swift */,
+				28C02F711C009C9700B65478 /* DateExtension.swift */,
+				28E839001AF402B200602D33 /* DateExtensionTests.swift */,
 				28C02F721C009C9700B65478 /* ViewAutolayout.swift */,
 				4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */,
 				40F5CC031CDC6B3A00249D66 /* ViewController.swift */,
 				406413961CD86AA300C8E03D /* StringIdGenerator.swift */,
+				4043F4101DCF202E009B1A70 /* Zeta.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 					};
 					6D31D0601AC196BC001AC4BA = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 0810;
 						TestTargetID = 6D31D04B1AC196BB001AC4BA;
 					};
 				};
@@ -1046,7 +1050,7 @@
 				40182C3E1D8B3E5600073128 /* Task.swift in Sources */,
 				40182C421D8B3E7D00073128 /* StringIdGenerator.swift in Sources */,
 				40182C3A1D8B3DB700073128 /* CUser.swift in Sources */,
-				40182C431D8B3E8F00073128 /* NSDateExtension.swift in Sources */,
+				40182C431D8B3E8F00073128 /* DateExtension.swift in Sources */,
 				40182C401D8B3E6400073128 /* Week.swift in Sources */,
 				40182C451D8B486600073128 /* ReadTasksInteractor.swift in Sources */,
 				40182C411D8B3E6800073128 /* Day.swift in Sources */,
@@ -1082,7 +1086,7 @@
 				40BF538E1CD61D3F00626157 /* ReadDaysInteractor.swift in Sources */,
 				40F5CC531CDE349100249D66 /* TaskInteractor.swift in Sources */,
 				2865854C1B03E6CD00352782 /* DaysViewController.swift in Sources */,
-				28C02F751C009C9700B65478 /* NSDateExtension.swift in Sources */,
+				28C02F751C009C9700B65478 /* DateExtension.swift in Sources */,
 				406413911CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */,
 				2894F1CB1B076EAE0095DD17 /* ReadTasksInteractor.swift in Sources */,
 				4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */,
@@ -1122,7 +1126,7 @@
 				28EB90961AF9D6E9008D5337 /* PredictiveTimeTyping.swift in Sources */,
 				40BF537A1CD61ACF00626157 /* TaskCell.swift in Sources */,
 				406413A21CD9365C00C8E03D /* InMemoryCoreDataRepository.swift in Sources */,
-				28C02F731C009C9700B65478 /* NSDateExtension.swift in Sources */,
+				28C02F731C009C9700B65478 /* DateExtension.swift in Sources */,
 				40BF53791CD61ACF00626157 /* MessageViewController.swift in Sources */,
 				406413971CD86AA300C8E03D /* StringIdGenerator.swift in Sources */,
 				28B1F2C21AFF260B00D61472 /* SleepNotifications.swift in Sources */,
@@ -1154,6 +1158,7 @@
 				408CD22B1D7E994600FA2EA4 /* SettingsInteractor.swift in Sources */,
 				6D31D0521AC196BB001AC4BA /* AppDelegate.swift in Sources */,
 				40BF53771CD61ACF00626157 /* NonTaskCell.swift in Sources */,
+				4043F4111DCF202E009B1A70 /* Zeta.swift in Sources */,
 				40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */,
 				282426761B113D5000211713 /* FlipAnimation.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
@@ -1184,7 +1189,7 @@
 				40F5CC501CDE346900249D66 /* TaskInteractorTests.swift in Sources */,
 				407BB9C51D0C1B020038B014 /* TaskFinderTests.swift in Sources */,
 				406413A11CD9289000C8E03D /* UserInteractorTests.swift in Sources */,
-				28E839011AF402B200602D33 /* NSDateExtensionTests.swift in Sources */,
+				28E839011AF402B200602D33 /* DateExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1392,6 +1397,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = JirassicTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
 			name = Release;

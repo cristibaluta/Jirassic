@@ -14,12 +14,12 @@ class TaskFinderTests: XCTestCase {
     func testScrumExistence() {
         
         let tasks = [
-            Task(dateEnd: NSDate(), type: TaskType.Issue),
-            Task(dateEnd: NSDate(), type: TaskType.StartDay),
-            Task(dateEnd: NSDate(), type: TaskType.Scrum),
-            Task(dateEnd: NSDate(), type: TaskType.Lunch),
-            Task(dateEnd: NSDate(), type: TaskType.Meeting),
-            Task(dateEnd: NSDate(), type: TaskType.GitCommit)
+            Task(dateEnd: Date(), type: TaskType.issue),
+            Task(dateEnd: Date(), type: TaskType.startDay),
+            Task(dateEnd: Date(), type: TaskType.scrum),
+            Task(dateEnd: Date(), type: TaskType.lunch),
+            Task(dateEnd: Date(), type: TaskType.meeting),
+            Task(dateEnd: Date(), type: TaskType.gitCommit)
         ]
         
         let taskFinder = TaskFinder()

@@ -12,10 +12,10 @@ class TaskTypeEstimator: NSObject {
 
 	let scrumUsualHour = 10
 	let scrumUsualMinute = 30
-	let scrumVariationAllowed: Double = 20.0*60//min
+	let scrumVariationAllowed: Double = 20.0.minToSec
 	let lunchUsualHour = 13
 	let lunchUsualMinute = 0
-	let lunchVariationAllowed: Double = 60.0*60//min
+	let lunchVariationAllowed: Double = 60.0.minToSec
 	
 	func taskTypeAroundDate (_ date: Date) -> TaskType {
 		

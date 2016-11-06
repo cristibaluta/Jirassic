@@ -15,17 +15,17 @@ class UserInteractorTests: XCTestCase {
         
         let repository = InMemoryCoreDataRepository()
         
-        let task = Task(dateEnd: NSDate(), type: TaskType.Issue)
+        let task = Task(dateEnd: Date(), type: TaskType.issue)
         repository.saveTask(task) { (success) in
             
         }
         
-        let tasks = repository.queryTasksInDay(NSDate())
+        let tasks = repository.queryTasksInDay(Date())
         XCTAssert(tasks.count == 1, "We added one task, we should receive one task")
         
         UserInteractor(data: repository).logout()
         
-        let tasksAfterLogout = repository.queryTasksInDay(NSDate())
+        let tasksAfterLogout = repository.queryTasksInDay(Date())
         XCTAssert(tasksAfterLogout.count == 0, "After logging out there should be no task left")
     }
 }
