@@ -17,23 +17,23 @@ class TaskCellPresenter: NSObject {
 		self.cell = cell
 	}
 	
-	func presentData (_ theData: Task, andPreviousData previousData: Task?) {
+	func present (previousTask: Task?, currentTask theTask: Task) {
 		
 		var duration = ""
 		var statusImage: NSImage?
 		
-        if let thePreviosData = previousData {
+        if let thePreviosData = previousTask {
             // When we have a previous item to compare dates with
-            switch (Int(theData.taskType.int32Value)) {
+            switch (Int(theTask.taskType.int32Value)) {
                 
             case TaskType.issue.rawValue:
-                let diff = theData.endDate.timeIntervalSince(thePreviosData.endDate as Date)
+                let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
                 duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                 statusImage = NSImage(named: NSImageNameStatusAvailable)
                 break
                 
             case TaskType.gitCommit.rawValue:
-                let diff = theData.endDate.timeIntervalSince(thePreviosData.endDate as Date)
+                let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
                 duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                 statusImage = NSImage(named: "GitIcon")
                 break
@@ -42,14 +42,13 @@ class TaskCellPresenter: NSObject {
                 statusImage = NSImage(named: NSImageNameStatusUnavailable)
             }
         } else {
-            // This is always the first cell
             statusImage = nil
         }
 		
 		cell?.data = (
-			dateEnd: theData.endDate,
-			taskNumber: theData.taskNumber ?? "",
-			notes: theData.notes ?? ""
+			dateEnd: theTask.endDate,
+			taskNumber: theTask.taskNumber ?? "",
+			notes: theTask.notes ?? ""
 		)
 		cell?.duration = duration
 		cell?.statusImage?.image = statusImage

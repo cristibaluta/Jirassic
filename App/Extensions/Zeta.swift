@@ -13,4 +13,8 @@ extension Double {
     var minToSec: Double {
         return self * 60
     }
+    
+    var hoursToSec: Double {
+        return self * 60 * 60
+    }
 }

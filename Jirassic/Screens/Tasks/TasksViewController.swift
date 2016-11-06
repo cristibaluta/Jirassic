@@ -97,7 +97,17 @@ extension TasksViewController: TasksPresenterOutput {
     func showTasks (_ tasks: [Task], listType: ListType) {
         
         tasksScrollView!.listType = listType
-        tasksScrollView!.data = tasks
+        tasksScrollView!.tasks = tasks
+        tasksScrollView!.reports = nil
+        tasksScrollView!.reloadData()
+        tasksScrollView!.isHidden = false
+    }
+    
+    func showReports (_ reports: [Report], listType: ListType) {
+        
+        tasksScrollView!.listType = listType
+        tasksScrollView!.tasks = nil
+        tasksScrollView!.reports = reports
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
     }

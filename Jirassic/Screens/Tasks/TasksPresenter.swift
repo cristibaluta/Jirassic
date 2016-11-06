@@ -27,6 +27,7 @@ protocol TasksPresenterOutput {
     func showMessage (_ message: MessageViewModel)
     func showDates (_ weeks: [Week])
     func showTasks (_ tasks: [Task], listType: ListType)
+    func showReports (_ reports: [Report], listType: ListType)
     func selectDay (_ day: Day)
     func presentNewTaskController()
 }
@@ -43,6 +44,7 @@ class TasksPresenter {
     var userInterface: TasksPresenterOutput?
     fileprivate var day: NewDay?
     fileprivate var currentTasks = [Task]()
+    fileprivate var currentReports = [Report]()
     fileprivate var selectedListType = ListType.allTasks
     
 }
@@ -75,12 +77,14 @@ extension TasksPresenter: TasksPresenterInput {
         selectedListType = listType
         
         if listType == .report {
-            let report = CreateReport(tasks: currentTasks)
-            report.round()
-            currentTasks = report.tasks.reversed()
+            let reportInteractor = CreateReport(tasks: currentTasks)
+            let reports = reportInteractor.reports()
+            currentReports = reports.reversed()
+            userInterface!.showReports(currentReports, listType: selectedListType)
         }
-        
-        userInterface!.showTasks(currentTasks, listType: selectedListType)
+        else {
+            userInterface!.showTasks(currentTasks, listType: selectedListType)
+        }
         
         updateNoTasksState()
     }

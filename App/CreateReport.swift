@@ -8,62 +8,64 @@
 
 import Foundation
 
-let kEightHoursInSeconds: Double = 28800.0
-
 class CreateReport: NSObject {
 
-	var tasks = [Task]()
+    fileprivate let targetHoursInDay = 8.0.hoursToSec
+	fileprivate var tasks = [Task]()
 	
 	convenience init (tasks: [Task]) {
 		self.init()
 		self.tasks = tasks
 	}
 	
-	func round() {
+	func reports() -> [Report] {
 		
-		guard (tasks.first != nil) else {
-			return
-		}
 		guard tasks.count > 1 else {
-			return
-		}
+			return []
+        }
+        print(tasks)
 		
-		// Group tasks with the same number together
-		groupByTaskId()
-		
-		// Calculate the excess time till 8 hrs
-		let totalTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate as Date)
+		// Calculate the diff to 8 hrs
+		let totalTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
 		let lunchDuration = self.lunchDuration
 		let workedTime = totalTime - lunchDuration
-		let missingTime = kEightHoursInSeconds - workedTime
+		let missingTime = targetHoursInDay - workedTime
 		let extraTimePerTask = ceil(Double(Int(missingTime) / (tasks.count)))
-		var extraTimeToAdd = extraTimePerTask
-//		RCLog(totalTime)
-//		RCLog(lunchDuration)
-//		RCLog(workedTime)
-//		RCLog(missingTime)
-//		RCLog(extraTimePerTask)
-		
-		// Round times and add the extra time
-		for i in 0..<tasks.count-1 {
-			var task = tasks[i]
-			RCLog(task)
-			if i > 0 {
-				task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd)
-			}
-			task.endDate = task.endDate.round()
-			extraTimeToAdd += extraTimePerTask
-			RCLog(task)
-			tasks[i] = task
-		}
-		// Handle the last task and add the remaining time
-		var task = tasks.last!
-		task.endDate = tasks.first!.endDate.addingTimeInterval(kEightHoursInSeconds + self.lunchDuration)
-		RCLog(task)
-		tasks[tasks.count-1] = task
+        
+        addExtraTimeToTasks (extraTimePerTask: extraTimePerTask, lunchDuration: lunchDuration)
+
+        let groups = groupsByTaskNumber()
+        let reports = reportsFromGroups(groups: groups)
+        print(groups)
+        print(reports)
+        
+        return reports
 	}
+}
+
+extension CreateReport {
+
+    fileprivate func addExtraTimeToTasks (extraTimePerTask: Double, lunchDuration: Double) {
+        
+        var extraTimeToAdd = extraTimePerTask
+        
+        for i in 0..<tasks.count - 1 {
+            var task = tasks[i]
+            if i > 0 {
+                task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd)
+            }
+            task.endDate = task.endDate.round()
+            extraTimeToAdd += extraTimePerTask
+            tasks[i] = task
+        }
+        
+        // Handle the last task separately, add the remaining time to targetHoursInDay
+        var task = tasks.last!
+        task.endDate = tasks.first!.endDate.addingTimeInterval(targetHoursInDay + lunchDuration)
+        tasks[tasks.count-1] = task
+    }
 	
-	fileprivate func groupByTaskId() {
+	fileprivate func groupsByTaskNumber() -> [String: [Task]] {
         
         var groups = [String: [Task]]()
         for task in tasks {
@@ -80,29 +82,39 @@ class CreateReport: NSObject {
             groups[taskNumber] = tgroup!
         }
         
-        var joinedTasks = [String: Task]()
+        return groups
+    }
+    
+    fileprivate func reportsFromGroups (groups: [String: [Task]]) -> [Report] {
+        
+        var reportsMap = [String: Report]()
+        
         for (taskNumber, tasks) in groups {
+            
+            var previousTask: Task?
+            
             for task in tasks {
-                var uniqueTask = joinedTasks[taskNumber]
-                if uniqueTask == nil {
-                    uniqueTask = Task(startDate: nil,
-                                      endDate: task.endDate,
-                                      notes: "• \(task.notes!)",
-                                      taskNumber: taskNumber,
-                                      taskType: task.taskType,
-                                      taskId: "")
-                    joinedTasks[taskNumber] = uniqueTask
-                } else {
-                    uniqueTask!.notes = "\(uniqueTask!.notes!)\n• \(task.notes!)"
-                    joinedTasks[taskNumber] = uniqueTask
+                
+                var report = reportsMap[taskNumber]
+                
+                if report == nil {
+                    previousTask = task
+                    report = Report(duration: 0.0,
+                                    notes: "• \(task.notes!)",
+                                    taskNumber: taskNumber)
                 }
+                else {
+                    report!.duration += task.endDate.timeIntervalSince(previousTask!.endDate)
+                    report!.notes = "\(report!.notes)\n• \(task.notes!)"
+                }
+                reportsMap[taskNumber] = report
             }
         }
-        self.tasks = Array(joinedTasks.values)
-        print(self.tasks)
+        
+        return Array(reportsMap.values)
 	}
 	
-	var lunchDuration: TimeInterval {
+	fileprivate var lunchDuration: TimeInterval {
 		
 		var lastTaskEndDate = tasks.first?.endDate
 		for task in tasks {

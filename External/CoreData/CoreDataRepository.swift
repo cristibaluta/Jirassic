@@ -251,7 +251,7 @@ extension CoreDataRepository: Repository {
         
         let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
             NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
-            ])
+        ])
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)

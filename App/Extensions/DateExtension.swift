@@ -151,7 +151,7 @@ extension Date {
 	func round() -> Date {
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
-		let hm = _round(comps.minute!)
+		let hm = roundToNearestQuarter(comps.minute!)
 		comps.hour = comps.hour! + hm.hour
 		comps.minute = hm.min
 		comps.second = 0
@@ -163,12 +163,12 @@ extension Date {
 		return time / 3600
 	}
 	
-	func dateByUpdatingHour (_ hour: Int, minute: Int) -> Date {
+    func dateByUpdating (hour: Int, minute: Int, second: Int = 0) -> Date {
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
 		comps.hour = hour
 		comps.minute = minute
-		comps.second = 0
+		comps.second = second
 		
 		return gregorian.date(from: comps)!
 	}
@@ -177,25 +177,11 @@ extension Date {
 		let hm = hhmm.components(separatedBy: ":")
 		return (hour: Int(hm.first!)!, min: Int(hm.last!)!)
 	}
-	
-	// MARK: Round to nearest quarter
-	
-	fileprivate func _round (_ min: Int) -> (hour: Int, min: Int) {
-		if min < 22 {
-			return (0, 15)
-		} else if min < 38 {
-			return (0, 30)
-		} else if min < 52 {
-			return (0, 45)
-		} else {
-			return (1, 0)
-		}
-	}
 }
 
 extension Date {
     
-    static func getMonthsBetween (_ startDate: Date, endDate: Date) -> Array<Date> {
+    static func getMonthsBetween (startDate: Date, endDate: Date) -> Array<Date> {
         
         var dates: [Date] = [Date]()
         var monthDifference = DateComponents()
@@ -279,5 +265,20 @@ extension Date {
     
     func dayBounds() -> (Date, Date) {
         return (self.startOfDay(), self.endOfDay())
+    }
+}
+
+extension Date {
+    
+    fileprivate func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
+        if min < 22 {
+            return (0, 15)
+        } else if min < 38 {
+            return (0, 30)
+        } else if min < 52 {
+            return (0, 45)
+        } else {
+            return (1, 0)
+        }
     }
 }

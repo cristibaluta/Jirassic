@@ -17,7 +17,8 @@ class TasksScrollView: NSScrollView {
     fileprivate var tempCell: ReportCell?
 	
     var listType: ListType = ListType.allTasks
-	var data = [Task]()
+    var tasks: [Task]? = []
+    var reports: [Report]?
 	var didSelectRow: ((_ row: Int) -> ())?
 	var didAddRow: ((_ row: Int) -> ())?
 	var didRemoveRow: ((_ row: Int) -> ())?
@@ -49,15 +50,15 @@ class TasksScrollView: NSScrollView {
 	}
 	
 	func addTask (_ task: Task) {
-		data.insert(task, at: 0)
+		tasks?.insert(task, at: 0)
 	}
 	
     func removeTaskAtRow (_ row: Int) {
-		data.remove(at: row)
+		tasks?.remove(at: row)
         self.tableView?.removeRows(at: IndexSet(integer: row), withAnimation: NSTableViewAnimationOptions.effectFade)
 	}
     
-    func cellForTaskType (_ taskType: NSNumber) -> CellProtocol {
+    fileprivate func cellForTaskType (_ taskType: NSNumber) -> CellProtocol {
         
         var cell: CellProtocol? = nil
         if listType == ListType.report {
@@ -83,19 +84,24 @@ class TasksScrollView: NSScrollView {
 extension TasksScrollView: NSTableViewDataSource {
 	
 	func numberOfRows (in aTableView: NSTableView) -> Int {
-		return data.count
+        return listType == ListType.report ? reports!.count : tasks!.count
 	}
 	
 	func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         
-        let theData = data[row]
         if listType == ListType.report {
+            let theData = reports![row]
+            // Calculate height to fit content
             if tempCell == nil {
                 tempCell = tableView.make(withIdentifier: String(describing: ReportCell.self), owner: self) as? ReportCell
             }
-            TaskCellPresenter(cell: tempCell!).presentData(theData, andPreviousData: nil)
+            ReportCellPresenter(cell: tempCell!).present(theReport: theData)
+            
             return tempCell!.heightThatFits
-        } else {
+        }
+        else {
+            let theData = tasks![row]
+            // Return predefined height
             switch Int(theData.taskType.int32Value) {
                 case TaskType.issue.rawValue, TaskType.gitCommit.rawValue:
                     return kTaskCellHeight
@@ -112,39 +118,48 @@ extension TasksScrollView: NSTableViewDelegate {
                     viewFor tableColumn: NSTableColumn?,
                     row: Int) -> NSView? {
         
-        var theData = data[row]
-        let thePreviousData: Task? = (row + 1 < data.count) ? data[row+1] : nil
-        var cell: CellProtocol = cellForTaskType(theData.taskType)
-        TaskCellPresenter(cell: cell).presentData(theData, andPreviousData: thePreviousData)
-        
-        cell.didEndEditingCell = { [weak self] (cell: CellProtocol) in
-            let updatedData = cell.data
-            theData.taskNumber = updatedData.taskNumber
-            theData.notes = updatedData.notes
-            theData.endDate = updatedData.dateEnd
-            self?.data[row] = theData// save the changes locally because the struct is passed by copying
-            let saveInteractor = TaskInteractor(data: localRepository)
-            saveInteractor.saveTask(theData)
+        if listType == ListType.report {
+            let theData = reports![row]
+            let cell: CellProtocol = cellForTaskType(NSNumber(value: 0))
+            ReportCellPresenter(cell: cell).present(theReport: theData)
+            
+            return cell as? NSView
         }
-        cell.didRemoveCell = { [weak self] (cell: CellProtocol) in
-            // Ugly hack to find the row number from which the action came
-            tableView.enumerateAvailableRowViews({ (rowView, rowIndex) -> Void in
-                if rowView.subviews.first! == cell as! NSTableRowView {
-                    self?.didRemoveRow?(rowIndex)
-                    return
-                }
-            })
+        else {
+            var theData = tasks![row]
+            let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
+            var cell: CellProtocol = cellForTaskType(theData.taskType)
+            TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
+            
+            cell.didEndEditingCell = { [weak self] (cell: CellProtocol) in
+                let updatedData = cell.data
+                theData.taskNumber = updatedData.taskNumber
+                theData.notes = updatedData.notes
+                theData.endDate = updatedData.dateEnd
+                self?.tasks![row] = theData// save the changes locally because the struct is passed by copying
+                let saveInteractor = TaskInteractor(data: localRepository)
+                saveInteractor.saveTask(theData)
+            }
+            cell.didRemoveCell = { [weak self] (cell: CellProtocol) in
+                // Ugly hack to find the row number from which the action came
+                tableView.enumerateAvailableRowViews({ (rowView, rowIndex) -> Void in
+                    if rowView.subviews.first! == cell as! NSTableRowView {
+                        self?.didRemoveRow?(rowIndex)
+                        return
+                    }
+                })
+            }
+            cell.didAddCell = { [weak self] (cell: CellProtocol) in
+                // Ugly hack to find the row number from which the action came
+                tableView.enumerateAvailableRowViews( { rowView, rowIndex in
+                    if rowView.subviews.first! == cell as! NSTableRowView {
+                        self?.didAddRow?(rowIndex)
+                        return
+                    }
+                })
+            }
+            
+            return cell as? NSView
         }
-        cell.didAddCell = { [weak self] (cell: CellProtocol) in
-            // Ugly hack to find the row number from which the action came
-            tableView.enumerateAvailableRowViews( { rowView, rowIndex in
-                if rowView.subviews.first! == cell as! NSTableRowView {
-                    self?.didAddRow?(rowIndex)
-                    return
-                }
-            })
-        }
-        
-        return cell as? NSView
     }
 }

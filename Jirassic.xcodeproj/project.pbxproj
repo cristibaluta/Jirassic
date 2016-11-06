@@ -109,6 +109,8 @@
 		40182C551D8D3BC500073128 /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40182C541D8D3BC500073128 /* CSettings.swift */; };
 		40182C571D8D3D6400073128 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40182C561D8D3D6400073128 /* Settings.swift */; };
 		4043F4111DCF202E009B1A70 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043F4101DCF202E009B1A70 /* Zeta.swift */; };
+		4043F4131DCF602F009B1A70 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043F4121DCF602F009B1A70 /* Report.swift */; };
+		4043F4151DCFA99A009B1A70 /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043F4141DCFA99A009B1A70 /* ReportCellPresenter.swift */; };
 		4064138D1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		4064138E1CD6993600C8E03D /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */; };
 		406413901CD6B13400C8E03D /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */; };
@@ -284,6 +286,8 @@
 		40182C541D8D3BC500073128 /* CSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSettings.swift; path = External/CoreData/CSettings.swift; sourceTree = SOURCE_ROOT; };
 		40182C561D8D3D6400073128 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = App/Entities/Settings.swift; sourceTree = "<group>"; };
 		4043F4101DCF202E009B1A70 /* Zeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Zeta.swift; path = App/Extensions/Zeta.swift; sourceTree = SOURCE_ROOT; };
+		4043F4121DCF602F009B1A70 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = App/Entities/Report.swift; sourceTree = "<group>"; };
+		4043F4141DCFA99A009B1A70 /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellPresenter.swift; path = Screens/Tasks/ReportCellPresenter.swift; sourceTree = "<group>"; };
 		4064138C1CD6993600C8E03D /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryInteractor.swift; path = App/RepositoryInteractor.swift; sourceTree = SOURCE_ROOT; };
 		4064138F1CD6B13400C8E03D /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerStoryboard.swift; path = App/Extensions/ViewControllerStoryboard.swift; sourceTree = SOURCE_ROOT; };
 		406413921CD71E1700C8E03D /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = Screens/Settings/SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 			children = (
 				40BF53701CD61ACF00626157 /* CellProtocol.swift */,
 				40BF536F1CD61ACF00626157 /* TaskCellPresenter.swift */,
+				4043F4141DCFA99A009B1A70 /* ReportCellPresenter.swift */,
 				2851268A1BAB42A100D668F2 /* TaskCellTests.swift */,
 				40BF536D1CD61ACF00626157 /* TaskCell.swift */,
 				40BF536E1CD61ACF00626157 /* TaskCell.xib */,
@@ -577,6 +582,7 @@
 			children = (
 				28C02F581C00801A00B65478 /* Task.swift */,
 				28778A571BB9B9A9003E4880 /* TaskTests.swift */,
+				4043F4121DCF602F009B1A70 /* Report.swift */,
 				28C02F5D1C00803300B65478 /* User.swift */,
 				285424C81C34313E0063B532 /* Week.swift */,
 				285424CA1C3431990063B532 /* Day.swift */,
@@ -1145,6 +1151,7 @@
 				40D6DF761D0DF22D00D7AB9A /* CloudKitRepository.swift in Sources */,
 				40F5CBFB1CDB3BEF00249D66 /* TasksPresenter.swift in Sources */,
 				40BF53731CD61ACF00626157 /* CalendarScrollView.swift in Sources */,
+				4043F4131DCF602F009B1A70 /* Report.swift in Sources */,
 				285424CB1C3431990063B532 /* Day.swift in Sources */,
 				40F5CC521CDE349100249D66 /* TaskInteractor.swift in Sources */,
 				28C02F5E1C00803300B65478 /* User.swift in Sources */,
@@ -1161,6 +1168,7 @@
 				4043F4111DCF202E009B1A70 /* Zeta.swift in Sources */,
 				40BF53811CD61BB400626157 /* TaskFinder.swift in Sources */,
 				282426761B113D5000211713 /* FlipAnimation.swift in Sources */,
+				4043F4151DCFA99A009B1A70 /* ReportCellPresenter.swift in Sources */,
 				282426781B113F6900211713 /* PopoverViewController.swift in Sources */,
 				40BF537E1CD61ACF00626157 /* TasksScrollView.swift in Sources */,
 				286E9A3B1C1C403E008FC45E /* LocalNotifications.swift in Sources */,

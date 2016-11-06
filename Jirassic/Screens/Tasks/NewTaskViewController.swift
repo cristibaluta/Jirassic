@@ -25,7 +25,7 @@ class NewTaskViewController: NSViewController {
 	var date: Date {
 		get {
 			let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
-			return Date().dateByUpdatingHour(hm.hour, minute: hm.min)
+			return Date().dateByUpdating(hour: hm.hour, minute: hm.min)
 		}
 		set {
 			self.endDateTextField?.stringValue = newValue.HHmm()
