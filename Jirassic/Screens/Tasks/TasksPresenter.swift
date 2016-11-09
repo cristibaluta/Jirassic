@@ -73,7 +73,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         
         let reader = ReadTasksInteractor(data: localRepository)
-        currentTasks = reader.tasksInDay(day.date).reversed()
+        currentTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
         if listType == .report {

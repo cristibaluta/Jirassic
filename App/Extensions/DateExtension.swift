@@ -271,7 +271,10 @@ extension Date {
 extension Date {
     
     fileprivate func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
-        if min < 22 {
+        
+        if min < 8 {
+            return (0, 0)
+        } else if min < 22 {
             return (0, 15)
         } else if min < 38 {
             return (0, 30)
