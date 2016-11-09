@@ -428,12 +428,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2841A9371C3DB27800564ECD /* CLI */ = {
+		2841A9371C3DB27800564ECD /* MacOS-cmd */ = {
 			isa = PBXGroup;
 			children = (
 				2841A93E1C3DB2E400564ECD /* main.swift */,
 			);
-			name = CLI;
+			name = "MacOS-cmd";
 			sourceTree = "<group>";
 		};
 		286585151B031D3A00352782 /* IOS */ = {
@@ -557,7 +557,7 @@
 			name = Tasks;
 			sourceTree = "<group>";
 		};
-		289E2AE61B2D6554003269A3 /* OSX */ = {
+		289E2AE61B2D6554003269A3 /* MacOS */ = {
 			isa = PBXGroup;
 			children = (
 				28F51EA71AC6A37C00A69CDF /* MainMenu.xib */,
@@ -574,7 +574,7 @@
 				28E838F51AF297FE00602D33 /* Resources */,
 				6D31D04F1AC196BB001AC4BA /* Supporting Files */,
 			);
-			name = OSX;
+			name = MacOS;
 			sourceTree = "<group>";
 		};
 		289E2AE71B2D687F003269A3 /* Entities */ = {
@@ -770,8 +770,8 @@
 		6D31D04E1AC196BB001AC4BA /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
-				2841A9371C3DB27800564ECD /* CLI */,
-				289E2AE61B2D6554003269A3 /* OSX */,
+				2841A9371C3DB27800564ECD /* MacOS-cmd */,
+				289E2AE61B2D6554003269A3 /* MacOS */,
 				286585151B031D3A00352782 /* IOS */,
 			);
 			name = Delivery;
@@ -1265,18 +1265,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Scrum",
-					"$(PROJECT_DIR)/Vendor/Parse",
-					"$(PROJECT_DIR)/Vendor/Firebase/Auth",
-					"$(PROJECT_DIR)/Vendor/Firebase/Database",
-					"$(PROJECT_DIR)/Vendor/Firebase",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAuth/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseDatabase/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseInstanceID/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/GoogleInterchangeUtilities/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/GoogleNetworkingUtilities/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/GoogleSymbolUtilities/Frameworks",
-					"$(PROJECT_DIR)/Vendor/Firebase/GoogleUtilities/Frameworks",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Jirassic-Scrum/Info.plist";
@@ -1398,7 +1386,6 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jirassic",
-					"$(PROJECT_DIR)/Vendor/parse-osx",
 				);
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

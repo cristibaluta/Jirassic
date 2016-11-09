@@ -16,7 +16,7 @@ class UserInteractorTests: XCTestCase {
         let repository = InMemoryCoreDataRepository()
         
         let task = Task(dateEnd: Date(), type: TaskType.issue)
-        repository.saveTask(task) { (success) in
+        let _ = repository.saveTask(task) { (success) in
             
         }
         

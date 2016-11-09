@@ -64,21 +64,22 @@ class CreateReportTests: XCTestCase {
     func testRoundLessThan8HoursOfWork() {
 		
 		let report = CreateReport(tasks: self.tasks)
-		report.round()
-		let firstTask = report.tasks.first
-		let lastTask = report.tasks.last
-		let diff = lastTask?.endDate.timeIntervalSince(firstTask!.endDate)
+		let reports = report.reports()
+        
+        var duration = 0.0
+        for report in reports {
+            duration += report.duration
+        }
 		
-		// 28800 + lunchDuration
-		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")
+		XCTAssert(duration == 8.0.hoursToSec)
     }
     
     func testGroupByTaskNumber() {
         
         let report = CreateReport(tasks: self.tasks)
-        report.round()
+        let reports = report.reports()
         
-        XCTAssert(report.tasks.count == 5, "Pass")
+        XCTAssert(reports.count == 4, "There are only 4 unique task numbers. Lunch is ignored")
     }
 	
 	func testRoundMoreThan8HoursOfWork() {
@@ -87,25 +88,15 @@ class CreateReportTests: XCTestCase {
 		t3.endDate = Date(year: 2015, month: 6, day: 1, hour: 19, minute: 30)
 		var tasks = self.tasks
 		tasks.append(t3)
+        
 		let report = CreateReport(tasks: tasks)
-		report.round()
-		let firstTask = report.tasks.first
-		let lastTask = report.tasks.last
-		let diff = lastTask?.endDate.timeIntervalSince(firstTask!.endDate)
+        let reports = report.reports()
 		
-		// 28800 + lunchDuration
-		XCTAssert(diff == kEightHoursInSeconds+report.lunchDuration, "Pass")
-	}
-
-	func test8Hours() {
-		let date = Date()
-		let t1 = date.secondsToPercentTime(3600*1.5)//1.5
-		let t2 = date.secondsToPercentTime(3600*4.0)//4
-		let t3 = date.secondsToPercentTime(15*60.0)//0.25
-		let t4 = date.secondsToPercentTime(45*60.0)//0.75
-		let t5 = date.secondsToPercentTime(1800.0)//0.5
-		let t6 = date.secondsToPercentTime(30*60.0)//0.5
-		let t7 = date.secondsToPercentTime(30*60.0)//0.5
-		XCTAssert(t1+t2+t3+t4+t5+t6+t7 == 8, "The sum should be 8 hours")
-	}
+        var duration = 0.0
+        for report in reports {
+            duration += report.duration
+        }
+        
+        XCTAssert(duration == 8.0.hoursToSec)
+    }
 }

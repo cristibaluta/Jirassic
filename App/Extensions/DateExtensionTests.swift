@@ -50,7 +50,19 @@ class DateTests: XCTestCase {
 		XCTAssertTrue(date.secondsToPercentTime(3600+1800) == 1.5, "")
 		XCTAssertTrue(date.secondsToPercentTime(7200) == 2, "")
 	}
-	
+    
+    func test8Hours() {
+        let date = Date()
+        let t1 = date.secondsToPercentTime(3600*1.5)//1.5
+        let t2 = date.secondsToPercentTime(3600*4.0)//4
+        let t3 = date.secondsToPercentTime(15*60.0)//0.25
+        let t4 = date.secondsToPercentTime(45*60.0)//0.75
+        let t5 = date.secondsToPercentTime(1800.0)//0.5
+        let t6 = date.secondsToPercentTime(30*60.0)//0.5
+        let t7 = date.secondsToPercentTime(30*60.0)//0.5
+        XCTAssert(t1+t2+t3+t4+t5+t6+t7 == 8, "The sum should be 8 hours")
+    }
+    
 	func testWeek() {
 		let date = Date(year: 2016, month: 1, day: 9, hour: 10, minute: 0)
 		let weekBounds = date.weekBounds()
