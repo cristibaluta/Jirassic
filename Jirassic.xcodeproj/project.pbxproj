@@ -1,0 +1,1123 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4065D39C1DD3B44200B73201 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
+		4065D39D1DD3B44200B73201 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
+		4065D39E1DD3B44200B73201 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31A1DD3B44200B73201 /* Settings.swift */; };
+		4065D39F1DD3B44200B73201 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31B1DD3B44200B73201 /* Task.swift */; };
+		4065D3A11DD3B44200B73201 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31D1DD3B44200B73201 /* User.swift */; };
+		4065D3A21DD3B44200B73201 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31E1DD3B44200B73201 /* Week.swift */; };
+		4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3201DD3B44200B73201 /* DateExtension.swift */; };
+		4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
+		4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3231DD3B44200B73201 /* ViewAutolayout.swift */; };
+		4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3241DD3B44200B73201 /* ViewController.swift */; };
+		4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */; };
+		4065D3A91DD3B44200B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
+		4065D3AA1DD3B44200B73201 /* ComputerSleepInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3281DD3B44200B73201 /* ComputerSleepInteractor.swift */; };
+		4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */; };
+		4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
+		4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
+		4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
+		4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3301DD3B44200B73201 /* TaskFinder.swift */; };
+		4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3321DD3B44200B73201 /* TaskInteractor.swift */; };
+		4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
+		4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */; };
+		4065D3B71DD3B44200B73201 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3381DD3B44200B73201 /* NewDay.swift */; };
+		4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */; };
+		4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
+		4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
+		4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3521DD3B44200B73201 /* FlipAnimation.swift */; };
+		4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
+		4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
+		4065D3CB1DD3B44200B73201 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3561DD3B44200B73201 /* Popover.swift */; };
+		4065D3CC1DD3B44200B73201 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3571DD3B44200B73201 /* PopoverViewController.swift */; };
+		4065D3CD1DD3B44200B73201 /* ScriptableApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3581DD3B44200B73201 /* ScriptableApplication.swift */; };
+		4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
+		4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
+		4065D3D01DD3B44200B73201 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35C1DD3B44200B73201 /* Info.plist */; };
+		4065D3D11DD3B44200B73201 /* JitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D35E1DD3B44200B73201 /* JitInteractor.swift */; };
+		4065D3D21DD3B44200B73201 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35F1DD3B44200B73201 /* jirassic */; };
+		4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
+		4065D3D41DD3B44200B73201 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3621DD3B44200B73201 /* jit */; };
+		4065D3D51DD3B44200B73201 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3631DD3B44200B73201 /* MainMenu.xib */; };
+		4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3651DD3B44200B73201 /* MenuBarController.swift */; };
+		4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3661DD3B44200B73201 /* MenuBarIconView.swift */; };
+		4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3681DD3B44200B73201 /* InternalNotifications.swift */; };
+		4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3691DD3B44200B73201 /* LocalNotifications.swift */; };
+		4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36A1DD3B44200B73201 /* SleepNotifications.swift */; };
+		4065D3DB1DD3B44200B73201 /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */; };
+		4065D3DC1DD3B44200B73201 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36E1DD3B44200B73201 /* LoginPresenter.swift */; };
+		4065D3DD1DD3B44200B73201 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36F1DD3B44200B73201 /* LoginViewController.swift */; };
+		4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3711DD3B44200B73201 /* NewTaskViewController.swift */; };
+		4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3731DD3B44200B73201 /* SettingsInteractor.swift */; };
+		4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3741DD3B44200B73201 /* SettingsPresenter.swift */; };
+		4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3751DD3B44200B73201 /* SettingsViewController.swift */; };
+		4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3771DD3B44200B73201 /* CalendarScrollView.swift */; };
+		4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3781DD3B44200B73201 /* CellProtocol.swift */; };
+		4065D3E41DD3B44200B73201 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3791DD3B44200B73201 /* MessageViewController.swift */; };
+		4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37A1DD3B44200B73201 /* NonTaskCell.swift */; };
+		4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D37B1DD3B44200B73201 /* NonTaskCell.xib */; };
+		4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37C1DD3B44200B73201 /* ReportCell.swift */; };
+		4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D37D1DD3B44200B73201 /* ReportCell.xib */; };
+		4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */; };
+		4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37F1DD3B44200B73201 /* TaskCell.swift */; };
+		4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3801DD3B44200B73201 /* TaskCell.xib */; };
+		4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */; };
+		4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3831DD3B44200B73201 /* TasksPresenter.swift */; };
+		4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3841DD3B44200B73201 /* TasksScrollView.swift */; };
+		4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3851DD3B44200B73201 /* TasksViewController.swift */; };
+		4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38A1DD3B44200B73201 /* CloudKitRepository.swift */; };
+		4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
+		4065D3F41DD3B44200B73201 /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38D1DD3B44200B73201 /* CSettings.swift */; };
+		4065D3F51DD3B44200B73201 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
+		4065D3F61DD3B44200B73201 /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
+		4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */; };
+		4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
+		4065D3F91DD3B44200B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
+		4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
+		4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
+		4065D3FD1DD3B44200B73201 /* Jirassic.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4065D39B1DD3B44200B73201 /* Jirassic.scpt */; };
+		4065D4171DD4536200B73201 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3871DD3B44200B73201 /* main.swift */; };
+		4065D4181DD454C500B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
+		4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
+		4065D41A1DD454DF00B73201 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
+		4065D41B1DD454DF00B73201 /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38D1DD3B44200B73201 /* CSettings.swift */; };
+		4065D41C1DD454DF00B73201 /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
+		4065D41D1DD454DF00B73201 /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
+		4065D41E1DD454E400B73201 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */; };
+		4065D41F1DD4561A00B73201 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3821DD3B44200B73201 /* TaskCellTests.swift */; };
+		4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */; };
+		4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */; };
+		4065D4221DD4562900B73201 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31C1DD3B44200B73201 /* TaskTests.swift */; };
+		4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3211DD3B44200B73201 /* DateExtensionTests.swift */; };
+		4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32C1DD3B44200B73201 /* CreateReportTests.swift */; };
+		4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3311DD3B44200B73201 /* TaskFinderTests.swift */; };
+		4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3331DD3B44200B73201 /* TaskInteractorTests.swift */; };
+		4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3351DD3B44200B73201 /* TaskTypeEstimatorTests.swift */; };
+		4065D4281DD4574D00B73201 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31D1DD3B44200B73201 /* User.swift */; };
+		4065D4291DD4575B00B73201 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31E1DD3B44200B73201 /* Week.swift */; };
+		4065D42A1DD4576000B73201 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31B1DD3B44200B73201 /* Task.swift */; };
+		4065D42B1DD4576500B73201 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31A1DD3B44200B73201 /* Settings.swift */; };
+		4065D42C1DD4576800B73201 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
+		4065D42D1DD4576C00B73201 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
+		4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
+		4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3321DD3B44200B73201 /* TaskInteractor.swift */; };
+		4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
+		4065D4311DD457B000B73201 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3201DD3B44200B73201 /* DateExtension.swift */; };
+		4065D4321DD457B500B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
+		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4065D4071DD4532100B73201 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4065D2FC1DD3A1AA00B73201 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4065D3031DD3A1AA00B73201;
+			remoteInfo = Jirassic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4065D40E1DD4534C00B73201 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4065D3041DD3A1AA00B73201 /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4065D3181DD3B44200B73201 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		4065D3191DD3B44200B73201 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		4065D31A1DD3B44200B73201 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		4065D31B1DD3B44200B73201 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		4065D31C1DD3B44200B73201 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
+		4065D31D1DD3B44200B73201 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4065D31E1DD3B44200B73201 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		4065D3201DD3B44200B73201 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		4065D3211DD3B44200B73201 /* DateExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensionTests.swift; sourceTree = "<group>"; };
+		4065D3221DD3B44200B73201 /* StringIdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIdGenerator.swift; sourceTree = "<group>"; };
+		4065D3231DD3B44200B73201 /* ViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAutolayout.swift; sourceTree = "<group>"; };
+		4065D3241DD3B44200B73201 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerStoryboard.swift; sourceTree = "<group>"; };
+		4065D3261DD3B44200B73201 /* Zeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zeta.swift; sourceTree = "<group>"; };
+		4065D3281DD3B44200B73201 /* ComputerSleepInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerSleepInteractor.swift; sourceTree = "<group>"; };
+		4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractor.swift; sourceTree = "<group>"; };
+		4065D32B1DD3B44200B73201 /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReport.swift; sourceTree = "<group>"; };
+		4065D32C1DD3B44200B73201 /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReportTests.swift; sourceTree = "<group>"; };
+		4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDaysInteractor.swift; sourceTree = "<group>"; };
+		4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadTasksInteractor.swift; sourceTree = "<group>"; };
+		4065D3301DD3B44200B73201 /* TaskFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFinder.swift; sourceTree = "<group>"; };
+		4065D3311DD3B44200B73201 /* TaskFinderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFinderTests.swift; sourceTree = "<group>"; };
+		4065D3321DD3B44200B73201 /* TaskInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInteractor.swift; sourceTree = "<group>"; };
+		4065D3331DD3B44200B73201 /* TaskInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInteractorTests.swift; sourceTree = "<group>"; };
+		4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeEstimator.swift; sourceTree = "<group>"; };
+		4065D3351DD3B44200B73201 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeEstimatorTests.swift; sourceTree = "<group>"; };
+		4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeSelection.swift; sourceTree = "<group>"; };
+		4065D3381DD3B44200B73201 /* NewDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDay.swift; sourceTree = "<group>"; };
+		4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTyping.swift; sourceTree = "<group>"; };
+		4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTypingTests.swift; sourceTree = "<group>"; };
+		4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
+		4065D33D1DD3B44200B73201 /* UserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
+		4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractorTests.swift; sourceTree = "<group>"; };
+		4065D3421DD3B44200B73201 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4065D3441DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4065D3461DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4065D3471DD3B44200B73201 /* DaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
+		4065D3481DD3B44200B73201 /* icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120.png; sourceTree = "<group>"; };
+		4065D3491DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4065D34A1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4065D34B1DD3B44200B73201 /* IosLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IosLoginViewController.swift; sourceTree = "<group>"; };
+		4065D34D1DD3B44200B73201 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
+		4065D34E1DD3B44200B73201 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		4065D34F1DD3B44200B73201 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		4065D3521DD3B44200B73201 /* FlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
+		4065D3541DD3B44200B73201 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4065D3551DD3B44200B73201 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
+		4065D3561DD3B44200B73201 /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
+		4065D3571DD3B44200B73201 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		4065D3581DD3B44200B73201 /* ScriptableApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptableApplication.swift; sourceTree = "<group>"; };
+		4065D35A1DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4065D35B1DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4065D35C1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4065D35E1DD3B44200B73201 /* JitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInteractor.swift; sourceTree = "<group>"; };
+		4065D35F1DD3B44200B73201 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
+		4065D3601DD3B44200B73201 /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
+		4065D3611DD3B44200B73201 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = jirassic.sdef; sourceTree = "<group>"; };
+		4065D3621DD3B44200B73201 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jit; sourceTree = "<group>"; };
+		4065D3631DD3B44200B73201 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		4065D3651DD3B44200B73201 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		4065D3661DD3B44200B73201 /* MenuBarIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarIconView.swift; sourceTree = "<group>"; };
+		4065D3681DD3B44200B73201 /* InternalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotifications.swift; sourceTree = "<group>"; };
+		4065D3691DD3B44200B73201 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		4065D36A1DD3B44200B73201 /* SleepNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepNotifications.swift; sourceTree = "<group>"; };
+		4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
+		4065D36E1DD3B44200B73201 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		4065D36F1DD3B44200B73201 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4065D3711DD3B44200B73201 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		4065D3731DD3B44200B73201 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		4065D3741DD3B44200B73201 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		4065D3751DD3B44200B73201 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4065D3771DD3B44200B73201 /* CalendarScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarScrollView.swift; sourceTree = "<group>"; };
+		4065D3781DD3B44200B73201 /* CellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
+		4065D3791DD3B44200B73201 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		4065D37A1DD3B44200B73201 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
+		4065D37B1DD3B44200B73201 /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
+		4065D37C1DD3B44200B73201 /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
+		4065D37D1DD3B44200B73201 /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
+		4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCellPresenter.swift; sourceTree = "<group>"; };
+		4065D37F1DD3B44200B73201 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		4065D3801DD3B44200B73201 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
+		4065D3821DD3B44200B73201 /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTests.swift; sourceTree = "<group>"; };
+		4065D3831DD3B44200B73201 /* TasksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
+		4065D3841DD3B44200B73201 /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
+		4065D3851DD3B44200B73201 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		4065D3871DD3B44200B73201 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4065D38A1DD3B44200B73201 /* CloudKitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitRepository.swift; sourceTree = "<group>"; };
+		4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		4065D38D1DD3B44200B73201 /* CSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSettings.swift; sourceTree = "<group>"; };
+		4065D38E1DD3B44200B73201 /* CTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTask.swift; sourceTree = "<group>"; };
+		4065D38F1DD3B44200B73201 /* CUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUser.swift; sourceTree = "<group>"; };
+		4065D3911DD3B44200B73201 /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
+		4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryCoreDataRepository.swift; sourceTree = "<group>"; };
+		4065D3941DD3B44200B73201 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryInteractor.swift; sourceTree = "<group>"; };
+		4065D39A1DD3B44200B73201 /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
+		4065D39B1DD3B44200B73201 /* Jirassic.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jirassic.scpt; sourceTree = "<group>"; };
+		4065D4021DD4532100B73201 /* JirassicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JirassicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4065D4101DD4534C00B73201 /* jirassic-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jirassic-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4065D3011DD3A1AA00B73201 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D3FF1DD4532100B73201 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D40D1DD4534C00B73201 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4065D2FB1DD3A1AA00B73201 = {
+			isa = PBXGroup;
+			children = (
+				4065D3161DD3B44200B73201 /* App */,
+				4065D33F1DD3B44200B73201 /* Builds */,
+				4065D3401DD3B44200B73201 /* Delivery */,
+				4065D3881DD3B44200B73201 /* External */,
+				4065D3991DD3B44200B73201 /* Vendor */,
+				4065D39B1DD3B44200B73201 /* Jirassic.scpt */,
+				4065D4031DD4532100B73201 /* JirassicTests */,
+				4065D3051DD3A1AA00B73201 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4065D3051DD3A1AA00B73201 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3041DD3A1AA00B73201 /* Jirassic.app */,
+				4065D4021DD4532100B73201 /* JirassicTests.xctest */,
+				4065D4101DD4534C00B73201 /* jirassic-cmd */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4065D3161DD3B44200B73201 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3171DD3B44200B73201 /* Entities */,
+				4065D31F1DD3B44200B73201 /* Extensions */,
+				4065D3271DD3B44200B73201 /* Notifications */,
+				4065D32A1DD3B44200B73201 /* Reports */,
+				4065D32D1DD3B44200B73201 /* Tasks */,
+				4065D3371DD3B44200B73201 /* Time */,
+				4065D33B1DD3B44200B73201 /* User */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4065D3171DD3B44200B73201 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3181DD3B44200B73201 /* Day.swift */,
+				4065D3191DD3B44200B73201 /* Report.swift */,
+				4065D31A1DD3B44200B73201 /* Settings.swift */,
+				4065D31B1DD3B44200B73201 /* Task.swift */,
+				4065D31C1DD3B44200B73201 /* TaskTests.swift */,
+				4065D31D1DD3B44200B73201 /* User.swift */,
+				4065D31E1DD3B44200B73201 /* Week.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4065D31F1DD3B44200B73201 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3201DD3B44200B73201 /* DateExtension.swift */,
+				4065D3211DD3B44200B73201 /* DateExtensionTests.swift */,
+				4065D3221DD3B44200B73201 /* StringIdGenerator.swift */,
+				4065D3231DD3B44200B73201 /* ViewAutolayout.swift */,
+				4065D3241DD3B44200B73201 /* ViewController.swift */,
+				4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */,
+				4065D3261DD3B44200B73201 /* Zeta.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4065D3271DD3B44200B73201 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3281DD3B44200B73201 /* ComputerSleepInteractor.swift */,
+				4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		4065D32A1DD3B44200B73201 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				4065D32B1DD3B44200B73201 /* CreateReport.swift */,
+				4065D32C1DD3B44200B73201 /* CreateReportTests.swift */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		4065D32D1DD3B44200B73201 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */,
+				4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */,
+				4065D3301DD3B44200B73201 /* TaskFinder.swift */,
+				4065D3311DD3B44200B73201 /* TaskFinderTests.swift */,
+				4065D3321DD3B44200B73201 /* TaskInteractor.swift */,
+				4065D3331DD3B44200B73201 /* TaskInteractorTests.swift */,
+				4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */,
+				4065D3351DD3B44200B73201 /* TaskTypeEstimatorTests.swift */,
+				4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		4065D3371DD3B44200B73201 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3381DD3B44200B73201 /* NewDay.swift */,
+				4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */,
+				4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		4065D33B1DD3B44200B73201 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */,
+				4065D33D1DD3B44200B73201 /* UserInteractor.swift */,
+				4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4065D33F1DD3B44200B73201 /* Builds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Builds;
+			sourceTree = "<group>";
+		};
+		4065D3401DD3B44200B73201 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3411DD3B44200B73201 /* iOS */,
+				4065D3501DD3B44200B73201 /* macOS */,
+				4065D3861DD3B44200B73201 /* macOS-cmd */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		4065D3411DD3B44200B73201 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3421DD3B44200B73201 /* AppDelegate.swift */,
+				4065D3431DD3B44200B73201 /* LaunchScreen.xib */,
+				4065D3451DD3B44200B73201 /* Main.storyboard */,
+				4065D3471DD3B44200B73201 /* DaysViewController.swift */,
+				4065D3481DD3B44200B73201 /* icon_120.png */,
+				4065D3491DD3B44200B73201 /* Images.xcassets */,
+				4065D34A1DD3B44200B73201 /* Info.plist */,
+				4065D34B1DD3B44200B73201 /* IosLoginViewController.swift */,
+				4065D34D1DD3B44200B73201 /* NonTaskCell.swift */,
+				4065D34E1DD3B44200B73201 /* TaskCell.swift */,
+				4065D34F1DD3B44200B73201 /* TasksViewController.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		4065D3501DD3B44200B73201 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3531DD3B44200B73201 /* App */,
+				4065D3641DD3B44200B73201 /* Menu */,
+				4065D3511DD3B44200B73201 /* Animations */,
+				4065D35D1DD3B44200B73201 /* Interactor */,
+				4065D36B1DD3B44200B73201 /* Screens */,
+				4065D3671DD3B44200B73201 /* Notifications */,
+				4065D3591DD3B44200B73201 /* Main.storyboard */,
+				4065D3631DD3B44200B73201 /* MainMenu.xib */,
+				4065D35B1DD3B44200B73201 /* Images.xcassets */,
+				4065D35C1DD3B44200B73201 /* Info.plist */,
+				4065D3601DD3B44200B73201 /* Jirassic.entitlements */,
+				4065D3611DD3B44200B73201 /* jirassic.sdef */,
+				4065D35F1DD3B44200B73201 /* jirassic */,
+				4065D3621DD3B44200B73201 /* jit */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		4065D3511DD3B44200B73201 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3521DD3B44200B73201 /* FlipAnimation.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		4065D3531DD3B44200B73201 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3541DD3B44200B73201 /* AppDelegate.swift */,
+				4065D3551DD3B44200B73201 /* AppWireframe.swift */,
+				4065D3561DD3B44200B73201 /* Popover.swift */,
+				4065D3571DD3B44200B73201 /* PopoverViewController.swift */,
+				4065D3581DD3B44200B73201 /* ScriptableApplication.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4065D35D1DD3B44200B73201 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				4065D35E1DD3B44200B73201 /* JitInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4065D3641DD3B44200B73201 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3651DD3B44200B73201 /* MenuBarController.swift */,
+				4065D3661DD3B44200B73201 /* MenuBarIconView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		4065D3671DD3B44200B73201 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3681DD3B44200B73201 /* InternalNotifications.swift */,
+				4065D3691DD3B44200B73201 /* LocalNotifications.swift */,
+				4065D36A1DD3B44200B73201 /* SleepNotifications.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		4065D36B1DD3B44200B73201 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4065D36C1DD3B44200B73201 /* Login */,
+				4065D3701DD3B44200B73201 /* NewTask */,
+				4065D3721DD3B44200B73201 /* Settings */,
+				4065D3761DD3B44200B73201 /* Tasks */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		4065D36C1DD3B44200B73201 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */,
+				4065D36E1DD3B44200B73201 /* LoginPresenter.swift */,
+				4065D36F1DD3B44200B73201 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4065D3701DD3B44200B73201 /* NewTask */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3711DD3B44200B73201 /* NewTaskViewController.swift */,
+			);
+			path = NewTask;
+			sourceTree = "<group>";
+		};
+		4065D3721DD3B44200B73201 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
+				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
+				4065D3751DD3B44200B73201 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4065D3761DD3B44200B73201 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
+				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
+				4065D3791DD3B44200B73201 /* MessageViewController.swift */,
+				4065D37A1DD3B44200B73201 /* NonTaskCell.swift */,
+				4065D37B1DD3B44200B73201 /* NonTaskCell.xib */,
+				4065D37C1DD3B44200B73201 /* ReportCell.swift */,
+				4065D37D1DD3B44200B73201 /* ReportCell.xib */,
+				4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */,
+				4065D37F1DD3B44200B73201 /* TaskCell.swift */,
+				4065D3801DD3B44200B73201 /* TaskCell.xib */,
+				4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */,
+				4065D3821DD3B44200B73201 /* TaskCellTests.swift */,
+				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
+				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
+				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		4065D3861DD3B44200B73201 /* macOS-cmd */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3871DD3B44200B73201 /* main.swift */,
+			);
+			path = "macOS-cmd";
+			sourceTree = "<group>";
+		};
+		4065D3881DD3B44200B73201 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3891DD3B44200B73201 /* CloudKit */,
+				4065D38B1DD3B44200B73201 /* CoreData */,
+				4065D3921DD3B44200B73201 /* InMemoryStorage */,
+				4065D3941DD3B44200B73201 /* Repository.swift */,
+				4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		4065D3891DD3B44200B73201 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				4065D38A1DD3B44200B73201 /* CloudKitRepository.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		4065D38B1DD3B44200B73201 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */,
+				4065D38D1DD3B44200B73201 /* CSettings.swift */,
+				4065D38E1DD3B44200B73201 /* CTask.swift */,
+				4065D38F1DD3B44200B73201 /* CUser.swift */,
+				4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4065D3921DD3B44200B73201 /* InMemoryStorage */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */,
+			);
+			path = InMemoryStorage;
+			sourceTree = "<group>";
+		};
+		4065D3991DD3B44200B73201 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				4065D39A1DD3B44200B73201 /* RCLog.swift */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		4065D4031DD4532100B73201 /* JirassicTests */ = {
+			isa = PBXGroup;
+			children = (
+				4065D4061DD4532100B73201 /* Info.plist */,
+			);
+			path = JirassicTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4065D3031DD3A1AA00B73201 /* Jirassic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4065D3131DD3A1AA00B73201 /* Build configuration list for PBXNativeTarget "Jirassic" */;
+			buildPhases = (
+				4065D3001DD3A1AA00B73201 /* Sources */,
+				4065D3011DD3A1AA00B73201 /* Frameworks */,
+				4065D3021DD3A1AA00B73201 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jirassic;
+			productName = Jirassic;
+			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4065D4011DD4532100B73201 /* JirassicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4065D4091DD4532100B73201 /* Build configuration list for PBXNativeTarget "JirassicTests" */;
+			buildPhases = (
+				4065D3FE1DD4532100B73201 /* Sources */,
+				4065D3FF1DD4532100B73201 /* Frameworks */,
+				4065D4001DD4532100B73201 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4065D4081DD4532100B73201 /* PBXTargetDependency */,
+			);
+			name = JirassicTests;
+			productName = JirassicTests;
+			productReference = 4065D4021DD4532100B73201 /* JirassicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4065D40F1DD4534C00B73201 /* jirassic-cmd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */;
+			buildPhases = (
+				4065D40C1DD4534C00B73201 /* Sources */,
+				4065D40D1DD4534C00B73201 /* Frameworks */,
+				4065D40E1DD4534C00B73201 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "jirassic-cmd";
+			productName = "jirassic-cmd";
+			productReference = 4065D4101DD4534C00B73201 /* jirassic-cmd */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4065D2FC1DD3A1AA00B73201 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Imagin soft";
+				TargetAttributes = {
+					4065D3031DD3A1AA00B73201 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5NHDC5EV44;
+						ProvisioningStyle = Automatic;
+					};
+					4065D4011DD4532100B73201 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5NHDC5EV44;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4065D3031DD3A1AA00B73201;
+					};
+					4065D40F1DD4534C00B73201 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5NHDC5EV44;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 4065D2FF1DD3A1AA00B73201 /* Build configuration list for PBXProject "Jirassic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4065D2FB1DD3A1AA00B73201;
+			productRefGroup = 4065D3051DD3A1AA00B73201 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4065D3031DD3A1AA00B73201 /* Jirassic */,
+				4065D4011DD4532100B73201 /* JirassicTests */,
+				4065D40F1DD4534C00B73201 /* jirassic-cmd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4065D3021DD3A1AA00B73201 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
+				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
+				4065D3FD1DD3B44200B73201 /* Jirassic.scpt in Resources */,
+				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
+				4065D3D41DD3B44200B73201 /* jit in Resources */,
+				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
+				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
+				4065D3D21DD3B44200B73201 /* jirassic in Resources */,
+				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
+				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
+				4065D3D51DD3B44200B73201 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D4001DD4532100B73201 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4065D3001DD3A1AA00B73201 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4065D3DD1DD3B44200B73201 /* LoginViewController.swift in Sources */,
+				4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */,
+				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
+				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
+				4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */,
+				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
+				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
+				4065D3F61DD3B44200B73201 /* CUser.swift in Sources */,
+				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
+				4065D3D11DD3B44200B73201 /* JitInteractor.swift in Sources */,
+				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
+				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
+				4065D3F41DD3B44200B73201 /* CSettings.swift in Sources */,
+				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
+				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
+				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
+				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
+				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
+				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
+				4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */,
+				4065D3F51DD3B44200B73201 /* CTask.swift in Sources */,
+				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
+				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
+				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
+				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
+				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
+				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
+				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
+				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
+				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
+				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
+				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
+				4065D3B71DD3B44200B73201 /* NewDay.swift in Sources */,
+				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
+				4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */,
+				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
+				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
+				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
+				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
+				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
+				4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */,
+				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
+				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
+				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
+				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
+				4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */,
+				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
+				4065D3CB1DD3B44200B73201 /* Popover.swift in Sources */,
+				4065D3CD1DD3B44200B73201 /* ScriptableApplication.swift in Sources */,
+				4065D3AA1DD3B44200B73201 /* ComputerSleepInteractor.swift in Sources */,
+				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
+				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
+				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
+				4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */,
+				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
+				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,
+				4065D3DB1DD3B44200B73201 /* CloudKitLoginViewController.swift in Sources */,
+				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,
+				4065D3A91DD3B44200B73201 /* Zeta.swift in Sources */,
+				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
+				4065D3CC1DD3B44200B73201 /* PopoverViewController.swift in Sources */,
+				4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */,
+				4065D3E41DD3B44200B73201 /* MessageViewController.swift in Sources */,
+				4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */,
+				4065D3DC1DD3B44200B73201 /* LoginPresenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D3FE1DD4532100B73201 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4065D41F1DD4561A00B73201 /* TaskCellTests.swift in Sources */,
+				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
+				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
+				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
+				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
+				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
+				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
+				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,
+				4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D40C1DD4534C00B73201 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4065D42D1DD4576C00B73201 /* Day.swift in Sources */,
+				4065D41D1DD454DF00B73201 /* CUser.swift in Sources */,
+				4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */,
+				4065D41A1DD454DF00B73201 /* CoreDataRepository.swift in Sources */,
+				4065D4321DD457B500B73201 /* Zeta.swift in Sources */,
+				4065D4331DD457E000B73201 /* RCLog.swift in Sources */,
+				4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */,
+				4065D41B1DD454DF00B73201 /* CSettings.swift in Sources */,
+				4065D42A1DD4576000B73201 /* Task.swift in Sources */,
+				4065D42C1DD4576800B73201 /* Report.swift in Sources */,
+				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
+				4065D4171DD4536200B73201 /* main.swift in Sources */,
+				4065D42B1DD4576500B73201 /* Settings.swift in Sources */,
+				4065D4281DD4574D00B73201 /* User.swift in Sources */,
+				4065D41E1DD454E400B73201 /* Jirassic.xcdatamodeld in Sources */,
+				4065D4311DD457B000B73201 /* DateExtension.swift in Sources */,
+				4065D4291DD4575B00B73201 /* Week.swift in Sources */,
+				4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */,
+				4065D41C1DD454DF00B73201 /* CTask.swift in Sources */,
+				4065D4181DD454C500B73201 /* Repository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4065D4081DD4532100B73201 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4065D3031DD3A1AA00B73201 /* Jirassic */;
+			targetProxy = 4065D4071DD4532100B73201 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4065D3431DD3B44200B73201 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4065D3441DD3B44200B73201 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		4065D3451DD3B44200B73201 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4065D3461DD3B44200B73201 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4065D3591DD3B44200B73201 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4065D35A1DD3B44200B73201 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4065D3111DD3A1AA00B73201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4065D3121DD3A1AA00B73201 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		4065D3141DD3A1AA00B73201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4065D3151DD3A1AA00B73201 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4065D40A1DD4532100B73201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				INFOPLIST_FILE = JirassicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
+			};
+			name = Debug;
+		};
+		4065D40B1DD4532100B73201 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				INFOPLIST_FILE = JirassicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
+			};
+			name = Release;
+		};
+		4065D4151DD4534C00B73201 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4065D4161DD4534C00B73201 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4065D2FF1DD3A1AA00B73201 /* Build configuration list for PBXProject "Jirassic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4065D3111DD3A1AA00B73201 /* Debug */,
+				4065D3121DD3A1AA00B73201 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4065D3131DD3A1AA00B73201 /* Build configuration list for PBXNativeTarget "Jirassic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4065D3141DD3A1AA00B73201 /* Debug */,
+				4065D3151DD3A1AA00B73201 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4065D4091DD4532100B73201 /* Build configuration list for PBXNativeTarget "JirassicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4065D40A1DD4532100B73201 /* Debug */,
+				4065D40B1DD4532100B73201 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4065D4151DD4534C00B73201 /* Debug */,
+				4065D4161DD4534C00B73201 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4065D3911DD3B44200B73201 /* Jirassic.xcdatamodel */,
+			);
+			currentVersion = 4065D3911DD3B44200B73201 /* Jirassic.xcdatamodel */;
+			path = Jirassic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4065D2FC1DD3A1AA00B73201 /* Project object */;
+}
