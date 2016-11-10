@@ -13,7 +13,7 @@ extension String {
     static func random (_ length: Int = 10) -> String {
         
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        var randomString: String = ""
+        var randomString = ""
         
         for _ in 0..<length {
             let randomValue = arc4random_uniform(UInt32(base.characters.count))

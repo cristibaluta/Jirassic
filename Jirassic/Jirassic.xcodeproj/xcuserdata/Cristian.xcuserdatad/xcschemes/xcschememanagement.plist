@@ -9,25 +9,10 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>jirassic-cmd.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>4065D3031DD3A1AA00B73201</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4065D4011DD4532100B73201</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4065D40F1DD4534C00B73201</key>
 		<dict>
 			<key>primary</key>
 			<true/>
