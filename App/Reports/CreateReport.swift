@@ -31,7 +31,7 @@ class CreateReport: NSObject {
 		let missingTime = targetHoursInDay - workedTime
 		let extraTimePerTask = ceil( Double( Int(missingTime) / tasks.count))
         
-        addExtraTimeToTasks (extraTimePerTask: extraTimePerTask, lunchDuration: lunchDuration)
+        addExtraTimeToTasks (extraTimePerTask: extraTimePerTask)
 
         let groups = groupsByTaskNumber()
         let reports = reportsFromGroups(groups)
@@ -42,7 +42,7 @@ class CreateReport: NSObject {
 
 extension CreateReport {
 
-    fileprivate func addExtraTimeToTasks (extraTimePerTask: Double, lunchDuration: Double) {
+    fileprivate func addExtraTimeToTasks (extraTimePerTask: Double) {
         
         var extraTimeToAdd = extraTimePerTask
         
@@ -50,13 +50,18 @@ extension CreateReport {
         task.endDate = task.endDate.round()
         tasks[0] = task
         var previousDate = task.endDate
+        var lunchDuration = 0.0
         
         for i in 1..<tasks.count - 1 {
             task = tasks[i]
-            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
-            task.startDate = previousDate
-            extraTimeToAdd += extraTimePerTask
-            tasks[i] = task
+            if task.taskType.intValue == TaskType.lunch.rawValue {
+                lunchDuration = task.endDate.timeIntervalSince(previousDate)
+            } else {
+                task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd - lunchDuration).round()
+                task.startDate = previousDate
+                extraTimeToAdd += extraTimePerTask
+                tasks[i] = task
+            }
             previousDate = task.endDate
         }
         
@@ -89,12 +94,15 @@ extension CreateReport {
     
     fileprivate func reportsFromGroups (_ groups: [String: [Task]]) -> [Report] {
         
-        RCLog(groups)
         var reportsMap = [String: Report]()
         
         for (taskNumber, tasks) in groups {
             
             for task in tasks {
+                
+                guard task.taskType.intValue != TaskType.lunch.rawValue else {
+                    continue
+                }
                 
                 var report = reportsMap[taskNumber]
                 
@@ -107,7 +115,6 @@ extension CreateReport {
                     report!.duration += task.endDate.timeIntervalSince(task.startDate!)
                     report!.notes = "\(report!.notes)\n• \(task.notes!)"
                 }
-                RCLog(report!.duration/3600)
                 reportsMap[taskNumber] = report
             }
         }

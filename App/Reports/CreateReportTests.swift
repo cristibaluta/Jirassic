@@ -79,7 +79,7 @@ class CreateReportTests: XCTestCase {
         let report = CreateReport(tasks: self.tasks)
         let reports = report.reports()
         
-        XCTAssert(reports.count == 4, "There are only 4 unique task numbers. Lunch is ignored")
+        XCTAssert(reports.count == 4, "There should be only 4 unique task numbers. Lunch is ignored")
     }
 	
 	func testRoundMoreThan8HoursOfWork() {
