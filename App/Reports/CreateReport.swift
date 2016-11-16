@@ -34,7 +34,7 @@ class CreateReport: NSObject {
         addExtraTimeToTasks (extraTimePerTask: extraTimePerTask, lunchDuration: lunchDuration)
 
         let groups = groupsByTaskNumber()
-        let reports = reportsFromGroups(groups: groups, andStartDayDate: tasks.first!.endDate)
+        let reports = reportsFromGroups(groups)
         
         return reports
 	}
@@ -46,33 +46,28 @@ extension CreateReport {
         
         var extraTimeToAdd = extraTimePerTask
         
-        var task = tasks[0]
-        RCLog(task.endDate)
+        var task = tasks.first!
         task.endDate = task.endDate.round()
         tasks[0] = task
-        RCLog(task.endDate)
+        var previousDate = task.endDate
         
         for i in 1..<tasks.count - 1 {
             task = tasks[i]
-            RCLog(task.endDate)
-            if i > 0 {
-                task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd)
-            }
-            task.endDate = task.endDate.round()
+            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
+            task.startDate = previousDate
             extraTimeToAdd += extraTimePerTask
             tasks[i] = task
-            RCLog(task.endDate)
+            previousDate = task.endDate
         }
         
-        // Handle the last task separately, add the remaining time to targetHoursInDay
+        // Handle the last task separately, add the remaining time till targetHoursInDay
         task = tasks.last!
-        RCLog(task.endDate)
         task.endDate = tasks.first!.endDate.addingTimeInterval(targetHoursInDay + lunchDuration)
+        task.startDate = previousDate
         tasks[tasks.count-1] = task
-        RCLog(task.endDate)
     }
 	
-	fileprivate func groupsByTaskNumber() -> [String: [Task]] {
+    fileprivate func groupsByTaskNumber() -> [String: [Task]] {
         
         var groups = [String: [Task]]()
         for task in tasks {
@@ -92,31 +87,28 @@ extension CreateReport {
         return groups
     }
     
-    fileprivate func reportsFromGroups (groups: [String: [Task]], andStartDayDate startDayDate: Date) -> [Report] {
-        RCLog(startDayDate)
+    fileprivate func reportsFromGroups (_ groups: [String: [Task]]) -> [Report] {
+        
         RCLog(groups)
         var reportsMap = [String: Report]()
         
         for (taskNumber, tasks) in groups {
-            
-            var previousTask: Task?
             
             for task in tasks {
                 
                 var report = reportsMap[taskNumber]
                 
                 if report == nil {
-                    report = Report(duration: task.endDate.timeIntervalSince(startDayDate),
-                                    notes: "• \(task.notes!)",
+                    report = Report(duration: task.endDate.timeIntervalSince(task.startDate!),
+                                    notes: "• \(task.notes ?? "")",
                                     taskNumber: taskNumber)
                 }
                 else {
-                    report!.duration += task.endDate.timeIntervalSince(previousTask!.endDate)
+                    report!.duration += task.endDate.timeIntervalSince(task.startDate!)
                     report!.notes = "\(report!.notes)\n• \(task.notes!)"
                 }
-                RCLog(report!.duration)
+                RCLog(report!.duration/3600)
                 reportsMap[taskNumber] = report
-                previousTask = task
             }
         }
         
