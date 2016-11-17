@@ -6,13 +6,24 @@ Using the browsers to track your work is not human, you have to keep Jira open a
 JIRAssic is a Mac app that stays in the status bar and you can access it any time and take notes as you finish tasks. Commiting to Git with our CLI tool called Jit, will log time to JIRAssic as well. Time is calculated and rouded automatically, you just need to insert them in Jira at the end of the month or whenever you wish.
 
 # Features:
+- round times to quarters and the whole day to fit 8 hrs
 - track automatically the time you’ve spent on tasks
 - track lunch break
-- track daily stand-up meetings
+- track daily scrum meetings
 - track Git commits as tasks
-- view tasks on iPhone (useful in daily stand-up meetings away from the computer)
+- view tasks on iPhone (useful in daily scrum meetings that are done away from the computer)
+
+# Dependencies
+- Jit cmd https://github.com/ralcr/Jit Replacement for some git commands
+- jirassic-cmd Use Jirassic from the command line, it works directly with the Jirassic database
+They both come bundled in the Jirassic app but needs to be installed manually from settings.
 
 # Compile
-Xcode with swift2 is needed
+Xcode8 and swift3 is needed
 JIRAssic is free for developers who can compile it themselves, please do not distribute it all over.
-Ios app is not compiling yet.
+
+# Roadmap
+- Launch the app in the store
+- Use cloudkit to save the data to server
+- Fix the iOS app to use the cloudkit for data
+- Launch iOS, and macOS again in the store
