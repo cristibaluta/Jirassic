@@ -82,7 +82,6 @@
 		4065D3F91DD3B44200B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
-		4065D3FD1DD3B44200B73201 /* Jirassic.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 4065D39B1DD3B44200B73201 /* Jirassic.scpt */; };
 		4065D4171DD4536200B73201 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3871DD3B44200B73201 /* main.swift */; };
 		4065D4181DD454C500B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
@@ -193,7 +192,6 @@
 		4065D35C1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D35E1DD3B44200B73201 /* JitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInteractor.swift; sourceTree = "<group>"; };
 		4065D35F1DD3B44200B73201 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
-		4065D3601DD3B44200B73201 /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
 		4065D3611DD3B44200B73201 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = jirassic.sdef; sourceTree = "<group>"; };
 		4065D3621DD3B44200B73201 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jit; sourceTree = "<group>"; };
 		4065D3631DD3B44200B73201 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -235,10 +233,10 @@
 		4065D3941DD3B44200B73201 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryInteractor.swift; sourceTree = "<group>"; };
 		4065D39A1DD3B44200B73201 /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
-		4065D39B1DD3B44200B73201 /* Jirassic.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jirassic.scpt; sourceTree = "<group>"; };
 		4065D4021DD4532100B73201 /* JirassicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JirassicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D4101DD4534C00B73201 /* jirassic-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jirassic-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,12 +267,11 @@
 		4065D2FB1DD3A1AA00B73201 = {
 			isa = PBXGroup;
 			children = (
+				40F347861DDD92C600193360 /* Jirassic.entitlements */,
 				4065D3161DD3B44200B73201 /* App */,
-				4065D33F1DD3B44200B73201 /* Builds */,
 				4065D3401DD3B44200B73201 /* Delivery */,
 				4065D3881DD3B44200B73201 /* External */,
 				4065D3991DD3B44200B73201 /* Vendor */,
-				4065D39B1DD3B44200B73201 /* Jirassic.scpt */,
 				4065D4031DD4532100B73201 /* JirassicTests */,
 				4065D3051DD3A1AA00B73201 /* Products */,
 			);
@@ -386,13 +383,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		4065D33F1DD3B44200B73201 /* Builds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Builds;
-			sourceTree = "<group>";
-		};
 		4065D3401DD3B44200B73201 /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,7 +424,6 @@
 				4065D3631DD3B44200B73201 /* MainMenu.xib */,
 				4065D35B1DD3B44200B73201 /* Images.xcassets */,
 				4065D35C1DD3B44200B73201 /* Info.plist */,
-				4065D3601DD3B44200B73201 /* Jirassic.entitlements */,
 				4065D3611DD3B44200B73201 /* jirassic.sdef */,
 				4065D35F1DD3B44200B73201 /* jirassic */,
 				4065D3621DD3B44200B73201 /* jit */,
@@ -683,6 +672,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					4065D4011DD4532100B73201 = {
 						CreatedOnToolsVersion = 8.1;
@@ -724,7 +718,6 @@
 			files = (
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
-				4065D3FD1DD3B44200B73201 /* Jirassic.scpt in Resources */,
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
 				4065D3D41DD3B44200B73201 /* jit in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
@@ -939,7 +932,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -982,7 +975,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -993,6 +986,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jirassic.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
@@ -1008,6 +1002,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jirassic.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
@@ -1095,6 +1090,7 @@
 				4065D40B1DD4532100B73201 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */ = {
 			isa = XCConfigurationList;
@@ -1103,6 +1099,7 @@
 				4065D4161DD4534C00B73201 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
