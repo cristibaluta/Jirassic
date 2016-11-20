@@ -32,7 +32,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var startDayTimePicker: NSDatePicker!
     
     weak var appWireframe: AppWireframe?
-    var settingsPresenter: SettingsPresenterInput?
+    var presenter: SettingsPresenterInput?
 	var credentials: UserCredentials {
 		get {
 			return (email: self.emailTextField!.stringValue,
@@ -68,8 +68,8 @@ class SettingsViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         
-        settingsPresenter!.testJit()
-        settingsPresenter!.showSettings()
+        presenter!.loadJitInfo()
+        presenter!.showSettings()
         
 //		let user = UserInteractor().currentUser()
 //        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
@@ -80,15 +80,15 @@ class SettingsViewController: NSViewController {
 	// MARK: Actions
     
     @IBAction func handleInstallJitButton (_ sender: NSButton) {
-        if settingsPresenter!.jitInstalled {
-            settingsPresenter!.uninstallJit()
-        } else {
-            settingsPresenter!.installJit()
-        }
+//        if presenter!.jitInstalled {
+//            presenter!.uninstallJit()
+//        } else {
+            presenter!.installJit()
+//        }
     }
     
 	@IBAction func handleLoginButton (_ sender: NSButton) {
-        settingsPresenter!.login(credentials)
+        presenter!.login(credentials)
 	}
 	
 	@IBAction func handleSaveButton (_ sender: NSButton) {
@@ -100,7 +100,7 @@ class SettingsViewController: NSViewController {
                                 scrumMeetingTime: scrumMeetingTimePicker.dateValue,
                                 startDayTime: startDayTimePicker.dateValue
         )
-        settingsPresenter!.saveAppSettings(settings)
+        presenter!.saveAppSettings(settings)
         
         appWireframe!.flipToTasksController()
 	}
@@ -125,6 +125,7 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func setJiraSettings (_ settings: JiraSettings) {
         
+        RCLogThread()
         jiraUrlTextField!.stringValue = settings.url!
         jiraUserTextField!.stringValue = settings.user!
 //        jiraPasswordTextField!.stringValue = nil

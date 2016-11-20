@@ -8,27 +8,21 @@
 
 import Foundation
 
-struct JiraSettings {
-    var url: String?
-    var user: String?
-    var separator: String?
-}
-
 protocol SettingsInteractorInput {
     
-    func getJiraSettings() -> JiraSettings?
-    func getJiraPasswordForUser (_ jiraUser: String)
+    func loadJiraSettings()
     func getAppSettings() -> Settings
     func saveAppSettings (_ settings: Settings)
 }
 
 protocol SettingsInteractorOutput {
     
+    func jiraSettingsDidLoad (_ settings: JiraSettings)
 }
 
 class SettingsInteractor {
     
-    var settingsPresenter: SettingsInteractorOutput?
+    var presenter: SettingsInteractorOutput?
     
     init() {
         
@@ -37,35 +31,24 @@ class SettingsInteractor {
 
 extension SettingsInteractor: SettingsInteractorInput {
     
-    func getJiraSettings() -> JiraSettings? {
+    func loadJiraSettings() {
         
-        let homeDirectory = NSHomeDirectory()
-        let jitconfigPath = "\(homeDirectory)/.jitconfig"
-        
-        if FileManager.default.fileExists(atPath: jitconfigPath) {
-            do {
-                let jitconfig = try NSString(contentsOfFile: jitconfigPath, encoding: String.Encoding.utf8.rawValue)
-                let lines = jitconfig.components(separatedBy: "\n") as [String]
-                let settings = JiraSettings(url: lines[0], user: lines[1], separator: lines[2])
-                return settings
-            }
-            catch {}
-        }
-        return nil
+//        let settings = JiraSettings(url: lines[0], user: lines[1], separator: lines[2])
+//        presenter!.jiraSettingsDidLoad()
     }
     
-    func getJiraPasswordForUser (_ jiraUser: String) {
-        
-        let task = Process()
-        task.launchPath = "/usr/bin/security"
-        task.arguments = ["find-generic-password", "-wa", jiraUser]
-        task.terminationHandler = { task in
-            DispatchQueue.main.async(execute: {
-                print(task)
-            })
-        }
-        task.launch()
-    }
+//    func getJiraPasswordForUser (_ jiraUser: String) {
+//        
+//        let task = Process()
+//        task.launchPath = "/usr/bin/security"
+//        task.arguments = ["find-generic-password", "-wa", jiraUser]
+//        task.terminationHandler = { task in
+//            DispatchQueue.main.async(execute: {
+//                print(task)
+//            })
+//        }
+//        task.launch()
+//    }
     
     func getAppSettings() -> Settings {
         

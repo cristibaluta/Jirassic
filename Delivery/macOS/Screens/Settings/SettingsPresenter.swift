@@ -11,12 +11,11 @@ import Foundation
 protocol SettingsPresenterInput {
     
     func login (_ credentials: UserCredentials)
-    func testJit()
+    func loadJitInfo()
     func installJit()
     func uninstallJit()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
-    var jitInstalled: Bool {get}
 }
 
 protocol SettingsPresenterOutput {
@@ -30,44 +29,45 @@ protocol SettingsPresenterOutput {
 class SettingsPresenter {
     
     fileprivate var jitInteractor = JitInteractor()
-    var jitInstalled: Bool {
-        get {
-            return self.jitInteractor.isInstalled
-        }
-    }
     var userInterface: SettingsPresenterOutput?
-    var settingsInteractor: SettingsInteractorInput?
+    var interactor: SettingsInteractorInput?
 }
 
 extension SettingsPresenter: SettingsPresenterInput {
     
     func login (_ credentials: UserCredentials) {
         
-        let interactor = UserInteractor(data: localRepository)
-        interactor.onLoginSuccess = {
-            self.userInterface?.showLoadingIndicator(false)
-        }
-        let user = interactor.currentUser()
-        user.isLoggedIn ? interactor.logout() : interactor.loginWithCredentials(credentials)
+//        let interactor = UserInteractor(data: localRepository)
+//        interactor.onLoginSuccess = {
+//            self.userInterface?.showLoadingIndicator(false)
+//        }
+//        let user = interactor.currentUser()
+//        user.isLoggedIn ? interactor.logout() : interactor.loginWithCredentials(credentials)
     }
     
-    func testJit() {
+    func loadJitInfo() {
         
-        userInterface!.setJitIsInstalled( jitInteractor.isInstalled )
-        
-        guard let jiraSettings = settingsInteractor!.getJiraSettings() else {
-            return
+        jitInteractor.isInstalled { installed in
+            
+            DispatchQueue.main.sync {
+                self.userInterface!.setJitIsInstalled( installed )
+            }
+            
+            self.jitInteractor.getJiraSettings { dict in
+                print(dict)
+                let settings = JiraSettings(url: dict["url"], user: dict["user"], separator: dict["separator"])
+                print(settings)
+                self.jiraSettingsDidLoad(settings)
+            }
+//            self.interactor!.loadJiraSettings()
         }
-        RCLog(jiraSettings)
-        settingsInteractor!.getJiraPasswordForUser(jiraSettings.user!)
-        userInterface!.setJiraSettings(jiraSettings)
     }
     
     func installJit() {
         
         jitInteractor.installJit { [weak self] (success) in
             if success {
-                self?.testJit()
+                self?.loadJitInfo()
             }
         }
     }
@@ -76,21 +76,27 @@ extension SettingsPresenter: SettingsPresenterInput {
         
         jitInteractor.uninstallJit { [weak self] (success) in
             if success {
-                self?.testJit()
+                self?.loadJitInfo()
             }
         }
     }
     
     func showSettings() {
-        let settings = settingsInteractor!.getAppSettings()
+        let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
     }
     
     func saveAppSettings (_ settings: Settings) {
-        settingsInteractor!.saveAppSettings(settings)
+        interactor!.saveAppSettings(settings)
     }
 }
 
 extension SettingsPresenter: SettingsInteractorOutput {
     
+    func jiraSettingsDidLoad (_ settings: JiraSettings) {
+        
+        DispatchQueue.main.sync {
+            userInterface!.setJiraSettings(settings)
+        }
+    }
 }

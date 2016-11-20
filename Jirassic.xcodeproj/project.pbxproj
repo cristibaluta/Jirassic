@@ -111,6 +111,12 @@
 		4065D4311DD457B000B73201 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3201DD3B44200B73201 /* DateExtension.swift */; };
 		4065D4321DD457B500B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
+		40E092351DE19B1D001EF5DA /* ScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */; };
+		40E092371DE19B33001EF5DA /* SandboxedScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */; };
+		40E0923B1DE1CC81001EF5DA /* GetJitVersion.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */; };
+		40E0923C1DE1CC81001EF5DA /* Installer.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092391DE1CC81001EF5DA /* Installer.scpt */; };
+		40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */; };
+		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +242,12 @@
 		4065D4021DD4532100B73201 /* JirassicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JirassicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D4101DD4534C00B73201 /* jirassic-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jirassic-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsInteractor.swift; sourceTree = "<group>"; };
+		40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedScriptsInteractor.swift; sourceTree = "<group>"; };
+		40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GetJitVersion.scpt; sourceTree = "<group>"; };
+		40E092391DE1CC81001EF5DA /* Installer.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Installer.scpt; sourceTree = "<group>"; };
+		40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Uninstaller.scpt; sourceTree = "<group>"; };
+		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,6 +323,7 @@
 				4065D31C1DD3B44200B73201 /* TaskTests.swift */,
 				4065D31D1DD3B44200B73201 /* User.swift */,
 				4065D31E1DD3B44200B73201 /* Week.swift */,
+				40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -425,6 +438,9 @@
 				4065D35B1DD3B44200B73201 /* Images.xcassets */,
 				4065D35C1DD3B44200B73201 /* Info.plist */,
 				4065D3611DD3B44200B73201 /* jirassic.sdef */,
+				40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */,
+				40E092391DE1CC81001EF5DA /* Installer.scpt */,
+				40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */,
 				4065D35F1DD3B44200B73201 /* jirassic */,
 				4065D3621DD3B44200B73201 /* jit */,
 			);
@@ -455,6 +471,8 @@
 			isa = PBXGroup;
 			children = (
 				4065D35E1DD3B44200B73201 /* JitInteractor.swift */,
+				40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */,
+				40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -510,9 +528,9 @@
 		4065D3721DD3B44200B73201 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
-				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3751DD3B44200B73201 /* SettingsViewController.swift */,
+				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
+				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -720,9 +738,12 @@
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
 				4065D3D41DD3B44200B73201 /* jit in Resources */,
+				40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */,
+				40E0923C1DE1CC81001EF5DA /* Installer.scpt in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				4065D3D21DD3B44200B73201 /* jirassic in Resources */,
+				40E0923B1DE1CC81001EF5DA /* GetJitVersion.scpt in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				4065D3D51DD3B44200B73201 /* MainMenu.xib in Resources */,
@@ -771,6 +792,7 @@
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
+				40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
@@ -790,12 +812,14 @@
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
+				40E092371DE19B33001EF5DA /* SandboxedScriptsInteractor.swift in Sources */,
 				4065D3CB1DD3B44200B73201 /* Popover.swift in Sources */,
 				4065D3CD1DD3B44200B73201 /* ScriptableApplication.swift in Sources */,
 				4065D3AA1DD3B44200B73201 /* ComputerSleepInteractor.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
+				40E092351DE19B1D001EF5DA /* ScriptsInteractor.swift in Sources */,
 				4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,

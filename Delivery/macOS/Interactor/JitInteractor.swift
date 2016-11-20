@@ -7,41 +7,45 @@
 //
 
 import Foundation
-import Cocoa
-import CoreServices
 
 class JitInteractor {
     
-    fileprivate let jitInstallationPath = "/usr/local/bin/"
+    fileprivate let localBinPath = "/usr/local/bin/"
+    fileprivate let scripts: ScriptsInteractorProtocol = SandboxedScriptsInteractor()
     
-    var isInstalled: Bool {
-        get {
-            let asc = NSAppleScript(source: "do shell script \"\(jitInstallationPath)jit\"")
-            if let response = asc?.executeAndReturnError(nil) {
-                print(response)
-                return true
-            } else {
-                print("Could not find Jit at \(jitInstallationPath)")
-                return false
-            }
-        }
+    func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
+        
+        scripts.getVersion(completion: { dict in
+            completion(dict)
+        })
     }
+    
+    func isInstalled (completion: @escaping (Bool) -> Void) {
+        
+        scripts.getVersion(completion: { dict in
+            let isInstalled = dict["version"] != nil
+            completion(isInstalled)
+        })
+    }
+    
     func installJit (_ completion: (Bool) -> Void) {
         
         guard let bundledJitPath = Bundle.main.url(forResource: "jit", withExtension: nil) else {
             completion(false)
             return
         }
-//        let downloadsPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true)[0]
-//        
-//        do {
-//            let f = FileManager.default.contents(atPath: bundledJitPath.path)
-//            try f?.write(to: URL(fileURLWithPath: "\(downloadsPath)/jit", isDirectory: false))
-//        } catch let e as NSError {
-//            print("err \(e)")
-//        } catch {
-//            print("")
-//        }
+        guard let bundledJirrasicPath = Bundle.main.url(forResource: "jirassic", withExtension: nil) else {
+            completion(false)
+            return
+        }
+        scripts.copyFile(from: bundledJitPath.path, to: localBinPath + "jit", completion: { success in
+            
+        })
+        scripts.copyFile(from: bundledJirrasicPath.path, to: localBinPath + "jirassic", completion: { success in
+            
+        })
+        
+
         
 //        let asc = NSAppleScript(source: "do shell script \"sudo ./\(bundledJitPath) install\"")
 //        var errorInfo: NSDictionary?
@@ -53,39 +57,6 @@ class JitInteractor {
 //            completion(false)
 //        }
         
-        var directoryURL: URL?
-        do {
-            directoryURL = try? FileManager.default.url(for: .applicationScriptsDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor:nil, create:true)
-        } catch {
-            
-        }
-
-//        let scriptURL = directoryURL?.appendingPathComponent("Installer.scpt")
-//        
-//        do {
-//            var pid = ProcessInfo.processInfo.processIdentifier
-//            
-//            let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID, bytes: &pid, length: MemoryLayout.size(ofValue: pid))
-//            
-//            let appleEventDescriptor = NSAppleEventDescriptor.appleEvent(withEventClass: kCoreEventClass,
-//                                                                         eventID: kAEOpenDocuments,
-//                                                                         targetDescriptor: targetDescriptor,
-//                                                                         returnID: AEReturnID(kAutoGenerateReturnID),
-//                                                                         transactionID: AETransactionID(kAnyTransactionID))
-//            
-//            let list = NSAppleEventDescriptor.list()
-//            list.insert(NSAppleEventDescriptor(string: "path"), at: 1)
-//            
-//            appleEventDescriptor.setParam(list, forKeyword: keyDirectObject)
-//            
-//            let result = try NSUserAppleScriptTask(url: scriptURL!)
-//            result.execute(withAppleEvent: appleEventDescriptor, completionHandler: { (descriptor, error) in
-//                print(descriptor)
-//                print(error)
-//            })
-//        } catch {
-//            
-//        }
         
         
 //        let openPanel = NSOpenPanel()
@@ -109,7 +80,8 @@ class JitInteractor {
 //        let panel = NSSavePanel()
 //        panel.nameFieldStringValue = "jit"
 //        panel.directoryURL = URL(string: jitInstallationPath)
-//        
+//        panel.message = "Please select the User > Library > Application Scripts > com.ralcr.Jirassic.osx folder"
+//
 //        panel.begin { (result) in
 //        
 //            if result == NSFileHandlingPanelOKButton {
@@ -124,31 +96,14 @@ class JitInteractor {
 //            }
 //        }
     }
-//    func installJit (_ completion: (Bool) -> Void) {
-//        
-//        guard let bundledJitPath = Bundle.main.path(forResource: "jit", ofType: nil) else {
-//            completion(false)
-//            return
-//        }
-//        let asc = NSAppleScript(source: "do shell script \"sudo cp \(bundledJitPath) \(jitInstallationPath)\" with administrator privileges")
-//        if let response = asc?.executeAndReturnError(nil) {
-//            print(response)
-//            completion(true)
-//        } else {
-//            print("Could not copy Jit from \(bundledJitPath) to \(jitInstallationPath)")
-//            completion(false)
-//        }
-//    }
     
     func uninstallJit (_ completion: (Bool) -> Void) {
         
-        let asc = NSAppleScript(source: "do shell script \"sudo rm \(jitInstallationPath)jit\" with administrator privileges")
-        if let response = asc?.executeAndReturnError(nil) {
-            print(response)
-            completion(true)
-        } else {
-            print("Could not delete Jit from \(jitInstallationPath)")
-            completion(false)
-        }
+        scripts.removeFile(from: localBinPath + "jit", completion: { success in
+            
+        })
+        scripts.removeFile(from: localBinPath + "jirassic", completion: { success in
+            
+        })
     }
 }
