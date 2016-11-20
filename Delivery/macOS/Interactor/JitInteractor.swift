@@ -61,19 +61,21 @@ extension JitInteractor {
     
     fileprivate func installScripts (_ completion: @escaping (Bool) -> Void) {
         
+        self.installScript(script: "Installer", { success in
+            self.installCmds(completion)
+        })
+        self.installScript(script: "Uninstaller", { success in
+            
+        })
         installScript(script: "GetJitVersion", { success in
-            self.installScript(script: "Installer", { success in
-                self.installScript(script: "Uninstaller", { success in
-                    self.installCmds(completion)
-                })
-            })
+            
         })
     }
     
     fileprivate func installScript (script: String, _ completion: @escaping (Bool) -> Void) {
         
         let panel = NSSavePanel()
-        panel.nameFieldStringValue = script
+        panel.nameFieldStringValue = script + ".scpt"
         panel.directoryURL = scripts.scriptsDirectory()!
         panel.message = "Please select the User > Library > Application Scripts > com.ralcr.Jirassic.osx folder"
         
