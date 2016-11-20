@@ -10,12 +10,17 @@ import Foundation
 
 protocol ScriptsInteractorProtocol {
     
+    func scriptsDirectory() -> URL?
     func getVersion (completion: @escaping ([String: String]) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
 }
 
 class ScriptsInteractor: ScriptsInteractorProtocol {
+    
+    func scriptsDirectory() -> URL? {
+        return nil
+    }
     
     func getVersion (completion: @escaping ([String: String]) -> Void) {
         

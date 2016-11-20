@@ -11,6 +11,14 @@ import CoreServices
 
 class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
     
+    func scriptsDirectory() -> URL? {
+        
+        return try? FileManager.default.url(for: .applicationScriptsDirectory,
+                                            in: FileManager.SearchPathDomainMask.userDomainMask,
+                                            appropriateFor: nil,
+                                            create: true)
+    }
+    
     func getVersion (completion: @escaping ([String: String]) -> Void) {
         
         guard let scriptsDirectory = scriptsDirectory() else {
@@ -57,14 +65,6 @@ class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
 }
 
 extension SandboxedScriptsInteractor {
-    
-    fileprivate func scriptsDirectory() -> URL? {
-        
-        return try? FileManager.default.url(for: .applicationScriptsDirectory,
-                                            in: FileManager.SearchPathDomainMask.userDomainMask,
-                                            appropriateFor: nil,
-                                            create: true)
-    }
     
     fileprivate func run (script: String, args: NSAppleEventDescriptor, completion: @escaping (Bool) -> Void) {
         
