@@ -47,22 +47,22 @@ class SettingsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        let container = CKContainer.default()
-        container.requestApplicationPermission(.userDiscoverability) { (status, error) in
-            guard error == nil else { return }
-            
-            if status == CKApplicationPermissionStatus.granted {
-                container.fetchUserRecordID { (recordID, error) in
-                    guard error == nil else { return }
-                    guard let recordID = recordID else { return }
-                    
-                    container.discoverUserInfo(withUserRecordID: recordID) { (info, fetchError) in
-                        // use info.firstName and info.lastName however you need
-                        print(info)
-                    }
-                }
-            }
-        }
+//        let container = CKContainer.default()
+//        container.requestApplicationPermission(.userDiscoverability) { (status, error) in
+//            guard error == nil else { return }
+//            
+//            if status == CKApplicationPermissionStatus.granted {
+//                container.fetchUserRecordID { (recordID, error) in
+//                    guard error == nil else { return }
+//                    guard let recordID = recordID else { return }
+//                    
+//                    container.discoverUserInfo(withUserRecordID: recordID) { (info, fetchError) in
+//                        // use info.firstName and info.lastName however you need
+//                        print(info)
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func viewDidAppear() {
