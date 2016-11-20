@@ -59,6 +59,8 @@ extension SettingsPresenter: SettingsPresenterInput {
                                                 separator: dict["separator"])
                     self.jiraSettingsDidLoad(settings)
                 }
+            } else {
+                self.jiraSettingsDidLoad(JiraSettings())
             }
         }
     }

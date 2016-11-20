@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Cocoa
 import CoreServices
 
 class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
@@ -41,75 +40,19 @@ class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
     
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
         
-        guard let scriptsDirectory = scriptsDirectory() else {
-            return
-        }
-        let scriptURL = scriptsDirectory.appendingPathComponent("Installer.scpt")
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: from), at: 1)
+        args.insert(NSAppleEventDescriptor(string: to), at: 2)
         
-        do {
-            var pid = ProcessInfo.processInfo.processIdentifier
-            
-            let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID,
-                                                          bytes: &pid,
-                                                          length: MemoryLayout.size(ofValue: pid))
-            
-            let appleEventDescriptor = NSAppleEventDescriptor.appleEvent(withEventClass: kCoreEventClass,
-                                                                         eventID: kAEOpenDocuments,
-                                                                         targetDescriptor: targetDescriptor,
-                                                                         returnID: AEReturnID(kAutoGenerateReturnID),
-                                                                         transactionID: AETransactionID(kAnyTransactionID))
-            
-            let list = NSAppleEventDescriptor.list()
-            list.insert(NSAppleEventDescriptor(string: from), at: 1)
-            list.insert(NSAppleEventDescriptor(string: to), at: 2)
-            
-            appleEventDescriptor.setParam(list, forKeyword: keyDirectObject)
-            
-            let result = try NSUserAppleScriptTask(url: scriptURL)
-            result.execute(withAppleEvent: appleEventDescriptor, completionHandler: { (descriptor, error) in
-                RCLogO(descriptor)
-                RCLogErrorO(error)
-                completion(error == nil)
-            })
-        } catch {
-            completion(false)
-        }
+        run(script: "Installer.scpt", args: args, completion: completion)
     }
     
     func removeFile (from: String, completion: @escaping (Bool) -> Void) {
         
-        guard let scriptsDirectory = scriptsDirectory() else {
-            return
-        }
-        let scriptURL = scriptsDirectory.appendingPathComponent("Uninstaller.scpt")
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: from), at: 1)
         
-        do {
-            var pid = ProcessInfo.processInfo.processIdentifier
-            
-            let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID,
-                                                          bytes: &pid,
-                                                          length: MemoryLayout.size(ofValue: pid))
-            
-            let appleEventDescriptor = NSAppleEventDescriptor.appleEvent(withEventClass: kCoreEventClass,
-                                                                         eventID: kAEOpenDocuments,
-                                                                         targetDescriptor: targetDescriptor,
-                                                                         returnID: AEReturnID(kAutoGenerateReturnID),
-                                                                         transactionID: AETransactionID(kAnyTransactionID))
-            
-            let list = NSAppleEventDescriptor.list()
-            list.insert(NSAppleEventDescriptor(string: from), at: 1)
-            
-            appleEventDescriptor.setParam(list, forKeyword: keyDirectObject)
-            
-            let result = try NSUserAppleScriptTask(url: scriptURL)
-            result.execute(withAppleEvent: appleEventDescriptor, completionHandler: { (descriptor, error) in
-                RCLogO(descriptor)
-                RCLogErrorO(error)
-                completion(error == nil)
-            })
-        } catch {
-            completion(false)
-        }
+        run(script: "Uninstaller.scpt", args: args, completion: completion)
     }
 }
 
@@ -121,5 +64,38 @@ extension SandboxedScriptsInteractor {
                                             in: FileManager.SearchPathDomainMask.userDomainMask,
                                             appropriateFor: nil,
                                             create: true)
+    }
+    
+    fileprivate func run (script: String, args: NSAppleEventDescriptor, completion: @escaping (Bool) -> Void) {
+        
+        guard let scriptsDirectory = scriptsDirectory() else {
+            completion(false)
+            return
+        }
+        let scriptURL = scriptsDirectory.appendingPathComponent(script)
+        
+        do {
+            var pid = ProcessInfo.processInfo.processIdentifier
+            
+            let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID,
+                                                          bytes: &pid,
+                                                          length: MemoryLayout.size(ofValue: pid))
+            
+            let appleEventDescriptor = NSAppleEventDescriptor.appleEvent(withEventClass: kCoreEventClass,
+                                                                         eventID: kAEOpenDocuments,
+                                                                         targetDescriptor: targetDescriptor,
+                                                                         returnID: AEReturnID(kAutoGenerateReturnID),
+                                                                         transactionID: AETransactionID(kAnyTransactionID))
+            
+            appleEventDescriptor.setParam(args, forKeyword: keyDirectObject)
+            
+            let result = try NSUserAppleScriptTask(url: scriptURL)
+            result.execute(withAppleEvent: appleEventDescriptor, completionHandler: { (descriptor, error) in
+                RCLogErrorO(error)
+                completion(error == nil)
+            })
+        } catch {
+            completion(false)
+        }
     }
 }

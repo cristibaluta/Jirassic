@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class JitInteractor {
     
@@ -28,11 +29,11 @@ class JitInteractor {
         })
     }
     
-    func installJit (_ completion: (Bool) -> Void) {
+    func installJit (_ completion: @escaping (Bool) -> Void) {
         
         let bundlePath = Bundle.main.url(forResource: "jit", withExtension: nil)!.deletingLastPathComponent()
         scripts.copyFile(from: bundlePath.path + "/", to: localBinPath, completion: { success in
-            
+            completion(success)
         })
         
 //        let panel = NSSavePanel()
@@ -55,10 +56,10 @@ class JitInteractor {
 //        }
     }
     
-    func uninstallJit (_ completion: (Bool) -> Void) {
+    func uninstallJit (_ completion: @escaping (Bool) -> Void) {
         
         scripts.removeFile(from: localBinPath, completion: { success in
-            
+            completion(success)
         })
     }
 }

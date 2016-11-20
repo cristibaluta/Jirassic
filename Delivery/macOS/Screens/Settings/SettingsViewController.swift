@@ -125,9 +125,8 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func setJiraSettings (_ settings: JiraSettings) {
         
-        RCLogThread()
-        jiraUrlTextField!.stringValue = settings.url!
-        jiraUserTextField!.stringValue = settings.user!
+        jiraUrlTextField!.stringValue = settings.url ?? ""
+        jiraUserTextField!.stringValue = settings.user ?? ""
 //        jiraPasswordTextField!.stringValue = nil
     }
     

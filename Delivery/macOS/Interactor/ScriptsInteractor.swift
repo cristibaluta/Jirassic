@@ -37,3 +37,17 @@ class ScriptsInteractor: ScriptsInteractorProtocol {
         
     }
 }
+
+//    func getJiraPasswordForUser (_ jiraUser: String) {
+//
+//        let task = Process()
+//        task.launchPath = "/usr/bin/security"
+//        task.arguments = ["find-generic-password", "-wa", jiraUser]
+//        task.terminationHandler = { task in
+//            DispatchQueue.main.async(execute: {
+//                print(task)
+//            })
+//        }
+//        task.launch()
+//    }
+    
