@@ -30,52 +30,10 @@ class JitInteractor {
     
     func installJit (_ completion: (Bool) -> Void) {
         
-        guard let bundledJitPath = Bundle.main.url(forResource: "jit", withExtension: nil) else {
-            completion(false)
-            return
-        }
-        guard let bundledJirrasicPath = Bundle.main.url(forResource: "jirassic", withExtension: nil) else {
-            completion(false)
-            return
-        }
-        scripts.copyFile(from: bundledJitPath.path, to: localBinPath + "jit", completion: { success in
+        let bundlePath = Bundle.main.url(forResource: "jit", withExtension: nil)!.deletingLastPathComponent()
+        scripts.copyFile(from: bundlePath.path + "/", to: localBinPath, completion: { success in
             
         })
-        scripts.copyFile(from: bundledJirrasicPath.path, to: localBinPath + "jirassic", completion: { success in
-            
-        })
-        
-
-        
-//        let asc = NSAppleScript(source: "do shell script \"sudo ./\(bundledJitPath) install\"")
-//        var errorInfo: NSDictionary?
-//        if let response = asc?.executeAndReturnError(&errorInfo) {
-//            print(response)
-//            completion(true)
-//        } else {
-//            print(errorInfo)
-//            completion(false)
-//        }
-        
-        
-        
-//        let openPanel = NSOpenPanel()
-//        openPanel.directoryURL = directoryURL
-//        openPanel.canChooseDirectories = true
-//        openPanel.canChooseFiles = false
-//        openPanel.prompt = "Select Script Folder"
-//        openPanel.message = "Please select the User > Library > Application Scripts > com.iconfactory.Scriptinator folder"
-//        openPanel.begin { [weak self] (result) -> Void in
-//            
-//            let selectedURL = openPanel.url
-//            let destinationURL = selectedURL?.appendingPathComponent("Automation.scpt")
-//            let f = FileManager.default.contents(atPath: bundledJitPath.path)
-//            do {
-//               try f?.write(to: destinationURL!)
-//            } catch {
-//                
-//            }
-//        }
         
 //        let panel = NSSavePanel()
 //        panel.nameFieldStringValue = "jit"
@@ -99,10 +57,7 @@ class JitInteractor {
     
     func uninstallJit (_ completion: (Bool) -> Void) {
         
-        scripts.removeFile(from: localBinPath + "jit", completion: { success in
-            
-        })
-        scripts.removeFile(from: localBinPath + "jirassic", completion: { success in
+        scripts.removeFile(from: localBinPath, completion: { success in
             
         })
     }

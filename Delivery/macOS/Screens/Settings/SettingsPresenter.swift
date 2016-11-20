@@ -52,14 +52,14 @@ extension SettingsPresenter: SettingsPresenterInput {
             DispatchQueue.main.sync {
                 self.userInterface!.setJitIsInstalled( installed )
             }
-            
-            self.jitInteractor.getJiraSettings { dict in
-                print(dict)
-                let settings = JiraSettings(url: dict["url"], user: dict["user"], separator: dict["separator"])
-                print(settings)
-                self.jiraSettingsDidLoad(settings)
+            if installed {
+                self.jitInteractor.getJiraSettings { dict in
+                    let settings = JiraSettings(url: dict["url"],
+                                                user: dict["user"],
+                                                separator: dict["separator"])
+                    self.jiraSettingsDidLoad(settings)
+                }
             }
-//            self.interactor!.loadJiraSettings()
         }
     }
     

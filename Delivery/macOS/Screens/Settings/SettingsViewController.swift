@@ -80,11 +80,11 @@ class SettingsViewController: NSViewController {
 	// MARK: Actions
     
     @IBAction func handleInstallJitButton (_ sender: NSButton) {
-//        if presenter!.jitInstalled {
-//            presenter!.uninstallJit()
-//        } else {
+        if sender.title == "Install" {
             presenter!.installJit()
-//        }
+        } else {
+            presenter!.uninstallJit()
+        }
     }
     
 	@IBAction func handleLoginButton (_ sender: NSButton) {
@@ -119,7 +119,7 @@ extension SettingsViewController: SettingsPresenterOutput {
     func setJitIsInstalled (_ installed: Bool) {
         
         jitImageView?.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField?.stringValue = installed ? "Jit command line tool is installed" : "Jit command line tool is not installed yet"
+        jitTextField?.stringValue = installed ? "Shell support is installed" : "Shell support not installed yet"
         butInstallJit!.title = installed ? "Uninstall" : "Install"
     }
     

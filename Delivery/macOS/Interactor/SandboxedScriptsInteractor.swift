@@ -22,7 +22,6 @@ class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
         let result = try? NSUserAppleScriptTask(url: scriptURL)
         result?.execute(withAppleEvent: nil, completionHandler: { (descriptor, error) in
             
-            print(descriptor)
             var dict: [String: String] = [:]
             if let descriptor = descriptor {
                 
@@ -79,6 +78,38 @@ class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
     
     func removeFile (from: String, completion: @escaping (Bool) -> Void) {
         
+        guard let scriptsDirectory = scriptsDirectory() else {
+            return
+        }
+        let scriptURL = scriptsDirectory.appendingPathComponent("Uninstaller.scpt")
+        
+        do {
+            var pid = ProcessInfo.processInfo.processIdentifier
+            
+            let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID,
+                                                          bytes: &pid,
+                                                          length: MemoryLayout.size(ofValue: pid))
+            
+            let appleEventDescriptor = NSAppleEventDescriptor.appleEvent(withEventClass: kCoreEventClass,
+                                                                         eventID: kAEOpenDocuments,
+                                                                         targetDescriptor: targetDescriptor,
+                                                                         returnID: AEReturnID(kAutoGenerateReturnID),
+                                                                         transactionID: AETransactionID(kAnyTransactionID))
+            
+            let list = NSAppleEventDescriptor.list()
+            list.insert(NSAppleEventDescriptor(string: from), at: 1)
+            
+            appleEventDescriptor.setParam(list, forKeyword: keyDirectObject)
+            
+            let result = try NSUserAppleScriptTask(url: scriptURL)
+            result.execute(withAppleEvent: appleEventDescriptor, completionHandler: { (descriptor, error) in
+                RCLogO(descriptor)
+                RCLogErrorO(error)
+                completion(error == nil)
+            })
+        } catch {
+            completion(false)
+        }
     }
 }
 
