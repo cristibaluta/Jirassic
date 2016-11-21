@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402BBF0F1DE389DF00FE96B9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402BBF0E1DE389DF00FE96B9 /* Login.storyboard */; };
+		406384891DE388C5004795A4 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406384881DE388C5004795A4 /* Tasks.storyboard */; };
 		4065D39C1DD3B44200B73201 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
 		4065D39D1DD3B44200B73201 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
 		4065D39E1DD3B44200B73201 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31A1DD3B44200B73201 /* Settings.swift */; };
@@ -117,6 +119,7 @@
 		40E0923C1DE1CC81001EF5DA /* Installer.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092391DE1CC81001EF5DA /* Installer.scpt */; };
 		40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */; };
 		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
+		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +145,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		402BBF0E1DE389DF00FE96B9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		406384881DE388C5004795A4 /* Tasks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
 		4065D3041DD3A1AA00B73201 /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D3181DD3B44200B73201 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		4065D3191DD3B44200B73201 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -248,6 +253,7 @@
 		40E092391DE1CC81001EF5DA /* Installer.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Installer.scpt; sourceTree = "<group>"; };
 		40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Uninstaller.scpt; sourceTree = "<group>"; };
 		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
+		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -513,6 +519,7 @@
 				4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */,
 				4065D36E1DD3B44200B73201 /* LoginPresenter.swift */,
 				4065D36F1DD3B44200B73201 /* LoginViewController.swift */,
+				402BBF0E1DE389DF00FE96B9 /* Login.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -531,6 +538,7 @@
 				4065D3751DD3B44200B73201 /* SettingsViewController.swift */,
 				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
+				40E092401DE385E4001EF5DA /* Settings.storyboard */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -538,9 +546,13 @@
 		4065D3761DD3B44200B73201 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				406384881DE388C5004795A4 /* Tasks.storyboard */,
+				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
+				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
 				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
-				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
+				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				4065D3791DD3B44200B73201 /* MessageViewController.swift */,
+				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				4065D37A1DD3B44200B73201 /* NonTaskCell.swift */,
 				4065D37B1DD3B44200B73201 /* NonTaskCell.xib */,
 				4065D37C1DD3B44200B73201 /* ReportCell.swift */,
@@ -548,11 +560,8 @@
 				4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */,
 				4065D37F1DD3B44200B73201 /* TaskCell.swift */,
 				4065D3801DD3B44200B73201 /* TaskCell.xib */,
-				4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */,
 				4065D3821DD3B44200B73201 /* TaskCellTests.swift */,
-				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
-				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
-				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
+				4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -734,6 +743,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				402BBF0F1DE389DF00FE96B9 /* Login.storyboard in Resources */,
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
@@ -743,10 +753,12 @@
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				4065D3D21DD3B44200B73201 /* jirassic in Resources */,
+				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				40E0923B1DE1CC81001EF5DA /* GetJitVersion.scpt in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				4065D3D51DD3B44200B73201 /* MainMenu.xib in Resources */,
+				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

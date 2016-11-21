@@ -30,7 +30,7 @@ class AppWireframe {
             return _loginViewController!
         }
         
-        let loginController = LoginViewController.instantiateFromStoryboard("Main")
+        let loginController = LoginViewController.instantiateFromStoryboard("Login")
         let loginPresenter = LoginPresenter()
         
         loginController.loginPresenter = loginPresenter
@@ -48,7 +48,7 @@ class AppWireframe {
             return _tasksViewController!
         }
         
-        let tasksController = TasksViewController.instantiateFromStoryboard("Main")
+        let tasksController = TasksViewController.instantiateFromStoryboard("Tasks")
         let tasksPresenter = TasksPresenter()
         
         tasksController.appWireframe = self
@@ -69,7 +69,7 @@ class AppWireframe {
             return _newTaskViewController!
         }
         
-        _newTaskViewController = NewTaskViewController.instantiateFromStoryboard("Main")
+        _newTaskViewController = NewTaskViewController.instantiateFromStoryboard("Tasks")
         
         return _newTaskViewController!
     }
@@ -80,7 +80,7 @@ class AppWireframe {
             return _settingsViewController!
         }
         
-        let settingsController = SettingsViewController.instantiateFromStoryboard("Main")
+        let settingsController = SettingsViewController.instantiateFromStoryboard("Settings")
         let presenter = SettingsPresenter()
         let interactor = SettingsInteractor()
         

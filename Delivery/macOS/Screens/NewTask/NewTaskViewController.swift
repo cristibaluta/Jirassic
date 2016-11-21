@@ -9,10 +9,10 @@
 import Cocoa
 
 class NewTaskViewController: NSViewController {
-	
+    
+    @IBOutlet fileprivate var taskTypeSegmentedControl: NSSegmentedControl?
 	@IBOutlet fileprivate var issueIdTextField: NSTextField?
 	@IBOutlet fileprivate var notesTextField: NSTextField?
-	@IBOutlet fileprivate var startDateTextField: NSTextField?
 	@IBOutlet fileprivate var endDateTextField: NSTextField?
 	@IBOutlet fileprivate var durationTextField: NSTextField?
 	
@@ -46,26 +46,6 @@ class NewTaskViewController: NSViewController {
 		set {
 			self.issueIdTextField?.stringValue = newValue
 		}
-	}
-	
-	@IBAction func handleScrumEndButton (_ sender: NSButton) {
-		setTaskDataWithTaskType(.scrumEnd)
-	}
-	
-	@IBAction func handleLunchEndButton (_ sender: NSButton) {
-		setTaskDataWithTaskType(.lunchEnd)
-	}
-	
-	@IBAction func handleTaskEndButton (_ sender: NSButton) {
-		setTaskDataWithTaskType(.issueEnd)
-	}
-	
-	@IBAction func handleMeetingEndButton (_ sender: NSButton) {
-		setTaskDataWithTaskType(.issueEnd)
-	}
-	
-	@IBAction func handleCancelButton (_ sender: NSButton) {
-		self.onCancelChosen?()
 	}
 	
     func setTaskDataWithTaskType (_ taskSubtype: TaskSubtype) {
@@ -109,7 +89,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
     override func controlTextDidBeginEditing (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
-            guard textField == startDateTextField || textField == endDateTextField || textField == durationTextField else {
+            guard textField == endDateTextField || textField == durationTextField else {
                 return
             }
             _dateEnd = textField.stringValue
@@ -119,7 +99,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
     override func controlTextDidChange (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
-            guard textField == startDateTextField || textField == endDateTextField || textField == durationTextField else {
+            guard textField == endDateTextField || textField == durationTextField else {
                 return
             }
             let predictor = PredictiveTimeTyping()
@@ -128,5 +108,21 @@ extension NewTaskViewController: NSTextFieldDelegate {
             _dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
             textField.stringValue = _dateEnd
         }
+    }
+}
+
+extension NewTaskViewController {
+    
+    @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
+        let taskType = TaskType(rawValue: sender.selectedSegment)!
+        print(taskType)
+    }
+    
+    @IBAction func handleSaveButton (_ sender: NSButton) {
+        setTaskDataWithTaskType(.issueEnd)
+    }
+    
+    @IBAction func handleCancelButton (_ sender: NSButton) {
+        self.onCancelChosen?()
     }
 }

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="dbB-kx-1Q6">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="MZm-Jd-s4c" customClass="LoginViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="04v-5T-U8P">
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="414"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7W-i2-lic">
+                                <rect key="frame" x="42" y="223" width="407" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="403" id="Gl3-mF-3dh"/>
+                                    <constraint firstAttribute="height" constant="68" id="zBR-M9-6Rd"/>
+                                </constraints>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="U4x-co-B8z">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">You are currently using the app in annonymous mode. By logging in you ensure you never lose the data and you can sync with the phone. Preferably to register with your work e-mail</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUo-Ah-uoO">
+                                <rect key="frame" x="150" y="81" width="191" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="d20-lI-rgT"/>
+                                    <constraint firstAttribute="width" constant="191" id="vi6-0b-qYR"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundRect" title="Login" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kA3-PN-Vv6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleLoginButton:" target="MZm-Jd-s4c" id="bgH-9j-ztD"/>
+                                </connections>
+                            </button>
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FS0-uf-Nwq">
+                                <rect key="frame" x="150" y="118" width="191" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="2K3-5Y-SFu"/>
+                                    <constraint firstAttribute="width" constant="191" id="BPU-P6-lM1"/>
+                                </constraints>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="NYs-Oa-9bc">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                            </secureTextField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5oq-we-289">
+                                <rect key="frame" x="150" y="155" width="191" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="FXC-uG-TSu"/>
+                                    <constraint firstAttribute="width" constant="191" id="hcQ-3O-OzP"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="ijq-0x-1OO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="SzE-hz-CAA">
+                                <rect key="frame" x="349" y="83" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Y7W-i2-lic" firstAttribute="top" secondItem="04v-5T-U8P" secondAttribute="top" constant="123" id="0Rn-PI-9n9"/>
+                            <constraint firstAttribute="centerX" secondItem="tUo-Ah-uoO" secondAttribute="centerX" constant="-0.5" id="2aw-X6-x72"/>
+                            <constraint firstItem="tUo-Ah-uoO" firstAttribute="top" secondItem="FS0-uf-Nwq" secondAttribute="bottom" constant="18" id="Pui-VW-fmA"/>
+                            <constraint firstItem="SzE-hz-CAA" firstAttribute="centerY" secondItem="tUo-Ah-uoO" secondAttribute="centerY" id="Q9L-Fb-mhI"/>
+                            <constraint firstAttribute="centerX" secondItem="FS0-uf-Nwq" secondAttribute="centerX" constant="-0.5" id="UpD-sR-Bu9"/>
+                            <constraint firstItem="FS0-uf-Nwq" firstAttribute="top" secondItem="5oq-we-289" secondAttribute="bottom" constant="15" id="Z3x-Pc-RVi"/>
+                            <constraint firstAttribute="centerX" secondItem="5oq-we-289" secondAttribute="centerX" constant="-0.5" id="gfz-Uw-eQu"/>
+                            <constraint firstItem="SzE-hz-CAA" firstAttribute="leading" secondItem="tUo-Ah-uoO" secondAttribute="trailing" constant="8" id="hjB-QW-AVi"/>
+                            <constraint firstAttribute="bottom" secondItem="tUo-Ah-uoO" secondAttribute="bottom" constant="82" id="k5c-8V-rJY"/>
+                            <constraint firstAttribute="centerX" secondItem="Y7W-i2-lic" secondAttribute="centerX" constant="-0.5" id="xTz-7e-FaQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_butLogin" destination="tUo-Ah-uoO" id="3Ew-AO-jjZ"/>
+                        <outlet property="_emailTextField" destination="5oq-we-289" id="HdF-u9-PS2"/>
+                        <outlet property="_label" destination="Y7W-i2-lic" id="rF6-8I-CtZ"/>
+                        <outlet property="_passwordTextField" destination="FS0-uf-Nwq" id="Fy3-lY-2rJ"/>
+                        <outlet property="_progressIndicator" destination="SzE-hz-CAA" id="tpe-ZX-9Ko"/>
+                    </connections>
+                </viewController>
+                <customObject id="vlD-nS-0PC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="1014"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PKn-Zj-Cgy">
+            <objects>
+                <viewController id="3cW-7h-cFs" sceneMemberID="viewController">
+                    <view key="view" id="QLL-MG-Amm">
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" borderType="line" title="Jirassic user" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-NR-1xm">
+                                <rect key="frame" x="20" y="123" width="458" height="62"/>
+                                <view key="contentView" id="Wxo-uA-Fm9">
+                                    <rect key="frame" x="1" y="1" width="456" height="46"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZPV-O2-4j4">
+                                            <rect key="frame" x="10" y="19" width="130" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You are logged in as:" id="aBX-fe-7j6">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGc-LR-7yv">
+                                            <rect key="frame" x="144" y="14" width="231" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="OZb-zV-4bb"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="Email" id="KvH-d0-7bI">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1W7-56-xGE">
+                                            <rect key="frame" x="375" y="8" width="75" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="PKJ-fX-9Ug"/>
+                                                <constraint firstAttribute="width" constant="63" id="ifw-Yb-ZNC"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Logout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ca5-nF-Q29">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1W7-56-xGE" firstAttribute="leading" secondItem="CGc-LR-7yv" secondAttribute="trailing" constant="8" id="6lp-D3-OBj"/>
+                                        <constraint firstItem="CGc-LR-7yv" firstAttribute="leading" secondItem="Wxo-uA-Fm9" secondAttribute="leading" constant="146" id="cYw-ct-66h"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1W7-56-xGE" secondAttribute="trailing" constant="10" id="JLg-P4-drJ"/>
+                                    <constraint firstAttribute="centerY" secondItem="CGc-LR-7yv" secondAttribute="centerY" constant="-7" id="JsI-5e-TvV"/>
+                                    <constraint firstAttribute="height" constant="58" id="dTk-dy-gi7"/>
+                                    <constraint firstAttribute="centerY" secondItem="1W7-56-xGE" secondAttribute="centerY" constant="-6.5" id="exY-KC-Tet"/>
+                                </constraints>
+                            </box>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="P9G-yE-X56" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="1438"/>
+        </scene>
+        <!--Cloud Kit Login View Controller-->
+        <scene sceneID="OlU-zA-EKc">
+            <objects>
+                <viewController storyboardIdentifier="CloudKitLoginViewController" id="oJ3-lT-MEh" customClass="CloudKitLoginViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="m2C-3F-pNA">
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYg-Nz-mL6">
+                                <rect key="frame" x="21" y="88" width="451" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Uwn-kO-T42"/>
+                                    <constraint firstAttribute="width" constant="403" id="aLX-2o-IO7"/>
+                                </constraints>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="scf-qH-cFe">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Sign in to your iCloud account to keep the data in sync with other devices. Launch Settings, tap iCloud, and enter your Apple ID. Turn iCloud Drive on. If you don't have an iCloud account, tap Create a new Apple ID.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y07-EW-Axq">
+                                <rect key="frame" x="-2" y="191" width="494" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="W9f-vT-XoD"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Sign in to iCloud" id="PuS-2C-gl1">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urH-Bk-tis">
+                                <rect key="frame" x="33" y="63" width="214" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Continue in annonymous mode" id="jWQ-ra-kto">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-Ka-MAe">
+                                <rect key="frame" x="33" y="19" width="214" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Sign in to iCloud" id="sWA-ZK-MAK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pvQ-wI-DdQ">
+                                <rect key="frame" x="253" y="48" width="52" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSUserGuest" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="g1y-vl-dUk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-Vx-0yB">
+                                <rect key="frame" x="253" y="8" width="52" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSMobileMe" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="Nrn-vE-t3s">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="bYg-Nz-mL6" firstAttribute="leading" secondItem="m2C-3F-pNA" secondAttribute="leading" constant="23" id="8sb-w7-OK7"/>
+                            <constraint firstAttribute="trailing" secondItem="Y07-EW-Axq" secondAttribute="trailing" id="C2w-qp-Ij7"/>
+                            <constraint firstItem="Y07-EW-Axq" firstAttribute="leading" secondItem="m2C-3F-pNA" secondAttribute="leading" id="V2s-IC-Hxk"/>
+                            <constraint firstItem="bYg-Nz-mL6" firstAttribute="top" secondItem="Y07-EW-Axq" secondAttribute="bottom" constant="18" id="csP-f8-ATE"/>
+                            <constraint firstAttribute="trailing" secondItem="bYg-Nz-mL6" secondAttribute="trailing" constant="24" id="p72-zb-bzT"/>
+                            <constraint firstItem="Y07-EW-Axq" firstAttribute="top" secondItem="m2C-3F-pNA" secondAttribute="top" constant="85" id="tF6-WQ-wso"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="lpO-KK-F0t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="585"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSMobileMe" width="32" height="32"/>
+        <image name="NSUserGuest" width="32" height="32"/>
+    </resources>
+</document>
