@@ -60,6 +60,10 @@ class NewTaskViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        taskTypeSegmentedControl?.selectedSegment = 0
+    }
+    
+    override func viewDidLayout() {
         
     }
 }
@@ -114,12 +118,22 @@ extension NewTaskViewController: NSTextFieldDelegate {
 extension NewTaskViewController {
     
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
-        let taskType = TaskType(rawValue: sender.selectedSegment)!
-        print(taskType)
+        
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        setTaskDataWithTaskType(.issueEnd)
+        
+        var taskType: TaskSubtype = .issueEnd
+        
+        switch taskTypeSegmentedControl!.selectedSegment {
+        case 0: taskType = .issueEnd
+        case 1: taskType = .scrumEnd
+        case 2: taskType = .meetingEnd
+        case 3: taskType = .lunchEnd
+        default: break
+        }
+        RCLogO(taskType)
+        setTaskDataWithTaskType(taskType)
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {

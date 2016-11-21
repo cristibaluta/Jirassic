@@ -286,16 +286,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zcb-sO-3NH">
-                                <rect key="frame" x="11" y="364" width="427" height="20"/>
+                                <rect key="frame" x="111" y="364" width="228" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="EqY-k0-xKz"/>
                                 </constraints>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="RjR-Sg-a3G">
                                     <font key="font" metaFont="cellTitle"/>
                                     <segments>
-                                        <segment label="Task" width="123"/>
-                                        <segment label="Scrum" width="123" selected="YES" tag="1"/>
-                                        <segment label="Meeting" width="123"/>
+                                        <segment label="Task"/>
+                                        <segment label="Scrum" selected="YES" tag="1"/>
+                                        <segment label="Meeting"/>
                                         <segment label="Food"/>
                                     </segments>
                                 </segmentedCell>
@@ -430,6 +430,7 @@ Gw
                         <constraints>
                             <constraint firstItem="mxx-cb-Hab" firstAttribute="top" secondItem="DPg-gd-JXL" secondAttribute="bottom" constant="11" id="03O-vP-1W3"/>
                             <constraint firstAttribute="bottom" secondItem="auP-Xn-Vxm" secondAttribute="bottom" constant="20" id="0gt-C8-INU"/>
+                            <constraint firstItem="Zcb-sO-3NH" firstAttribute="centerX" secondItem="2VI-8P-899" secondAttribute="centerX" id="3Ut-HA-Ykx"/>
                             <constraint firstItem="Z2V-RD-hFG" firstAttribute="top" secondItem="062-p9-Ntt" secondAttribute="bottom" constant="11" id="6qP-Ru-07P"/>
                             <constraint firstItem="juH-D0-Zmt" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="12" id="7qg-Ff-X5g"/>
                             <constraint firstItem="xtF-se-LHC" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="20" id="8oH-eg-O6k"/>
@@ -440,7 +441,6 @@ Gw
                             <constraint firstAttribute="trailing" secondItem="DPg-gd-JXL" secondAttribute="trailing" constant="13" id="KUU-xs-Arj"/>
                             <constraint firstAttribute="trailing" secondItem="ist-jg-ccy" secondAttribute="trailing" constant="13" id="N1X-1Z-8FL"/>
                             <constraint firstItem="juH-D0-Zmt" firstAttribute="top" secondItem="mxx-cb-Hab" secondAttribute="bottom" constant="10" id="Tef-tv-2Uc"/>
-                            <constraint firstItem="Zcb-sO-3NH" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="12" id="VgF-7W-5qm"/>
                             <constraint firstItem="y40-BP-zYc" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="59" id="WmT-d4-MM3"/>
                             <constraint firstItem="Zcb-sO-3NH" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="12" id="XFE-Om-xUy"/>
                             <constraint firstItem="062-p9-Ntt" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="Yag-dG-pd3"/>
@@ -451,7 +451,6 @@ Gw
                             <constraint firstItem="Udr-Tx-Jyo" firstAttribute="leading" secondItem="auP-Xn-Vxm" secondAttribute="trailing" constant="12" id="irU-rZ-tUw"/>
                             <constraint firstItem="ist-jg-ccy" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="n1q-yr-JcY"/>
                             <constraint firstAttribute="trailing" secondItem="y40-BP-zYc" secondAttribute="trailing" id="q7p-ky-fiq"/>
-                            <constraint firstAttribute="trailing" secondItem="Zcb-sO-3NH" secondAttribute="trailing" constant="13" id="r55-kR-HRG"/>
                             <constraint firstItem="mxx-cb-Hab" firstAttribute="leading" secondItem="Z2V-RD-hFG" secondAttribute="trailing" constant="13" id="rWF-Cj-8IG"/>
                             <constraint firstAttribute="bottom" secondItem="Udr-Tx-Jyo" secondAttribute="bottom" constant="20" id="t6E-TZ-gFj"/>
                             <constraint firstItem="Z2V-RD-hFG" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="tmS-hk-yhf"/>
