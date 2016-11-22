@@ -66,6 +66,17 @@ class NewTaskViewController: NSViewController {
     override func viewDidLayout() {
         
     }
+    
+    fileprivate func taskSubtype() -> TaskSubtype {
+        
+        switch taskTypeSegmentedControl!.selectedSegment {
+        case 0: return .issueEnd
+        case 1: return .scrumEnd
+        case 2: return .meetingEnd
+        case 3: return .lunchEnd
+        default: return .issueEnd
+        }
+    }
 }
 
 extension NewTaskViewController: NSComboBoxDelegate, NSComboBoxDataSource {
@@ -119,21 +130,31 @@ extension NewTaskViewController {
     
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
         
+        let subtype = taskSubtype()
+        switch subtype {
+        case .issueEnd:
+            issueIdTextField?.stringValue = ""
+            break
+        case .scrumEnd:
+            issueIdTextField?.stringValue = "scrum"
+            break
+        case .meetingEnd:
+            issueIdTextField?.stringValue = "meeting"
+            break
+        case .lunchEnd:
+            issueIdTextField?.stringValue = "lunch"
+            break
+        case .gitCommitEnd:
+            
+            break
+        }
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
         
-        var taskType: TaskSubtype = .issueEnd
-        
-        switch taskTypeSegmentedControl!.selectedSegment {
-        case 0: taskType = .issueEnd
-        case 1: taskType = .scrumEnd
-        case 2: taskType = .meetingEnd
-        case 3: taskType = .lunchEnd
-        default: break
-        }
-        RCLogO(taskType)
-        setTaskDataWithTaskType(taskType)
+        let subtype = taskSubtype()
+        RCLogO(subtype)
+        setTaskDataWithTaskType(subtype)
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {
