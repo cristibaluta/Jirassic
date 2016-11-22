@@ -79,26 +79,6 @@ class NewTaskViewController: NSViewController {
     }
 }
 
-extension NewTaskViewController: NSComboBoxDelegate, NSComboBoxDataSource {
-    
-    func numberOfItems (in aComboBox: NSComboBox) -> Int {
-        return issueTypes.count
-    }
-    
-    func comboBox (_ aComboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
-        return issueTypes[index]
-    }
-    
-    func comboBox (_ aComboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-        return 0//issueTypes.indexOfObject(string)
-    }
-    
-    func comboBox (_ aComboBox: NSComboBox, completedString string: String) -> String? {
-        print("completedString \(string)")
-        return nil
-    }
-}
-
 extension NewTaskViewController: NSTextFieldDelegate {
     
     override func controlTextDidBeginEditing (_ obj: Notification) {

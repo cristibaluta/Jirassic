@@ -14,6 +14,8 @@ class TasksViewController: NSViewController {
 	@IBOutlet fileprivate var calendarScrollView: CalendarScrollView?
 	@IBOutlet fileprivate var tasksScrollView: TasksScrollView?
     @IBOutlet fileprivate var listSegmentedControl: NSSegmentedControl?
+    @IBOutlet fileprivate var butSettings: NSButton?
+    @IBOutlet fileprivate var butQuit: NSButton?
     
     var appWireframe: AppWireframe?
     var tasksPresenter: TasksPresenterInput?
@@ -55,6 +57,12 @@ class TasksViewController: NSViewController {
 	deinit {
 		NotificationCenter.default.removeObserver(self)
 	}
+    
+    fileprivate func hideControls (_ hide: Bool) {
+        butSettings?.isHidden = hide
+        butQuit?.isHidden = hide
+        listSegmentedControl?.isHidden = hide
+    }
 }
 
 extension TasksViewController {
@@ -120,6 +128,7 @@ extension TasksViewController: TasksPresenterOutput {
         
         splitView!.isHidden = true
         appWireframe!.removeMessage()
+        hideControls(true)
         
         appWireframe!.presentNewTaskController()
         appWireframe!.newTaskViewController.date = Date()
@@ -129,11 +138,13 @@ extension TasksViewController: TasksPresenterOutput {
             self?.tasksPresenter!.reloadData()
             self?.appWireframe!.removeNewTaskController()
             self?.splitView!.isHidden = false
+            self?.hideControls(false)
         }
         appWireframe!.newTaskViewController.onCancelChosen = { [weak self] in
             self?.appWireframe?.removeNewTaskController()
             self?.splitView?.isHidden = false
             self?.tasksPresenter?.updateNoTasksState()
+            self?.hideControls(false)
         }
     }
 }

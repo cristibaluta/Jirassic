@@ -210,8 +210,7 @@ extension AppWireframe {
         
         let taskController = self.newTaskViewController
         addController(taskController)
-        taskController.view.constrainToSuperviewWidth()
-        taskController.view.constrainToSuperviewHeight(70, bottom: 0)
+        taskController.view.constrainToSuperview()
     }
     
     func removeNewTaskController() {
