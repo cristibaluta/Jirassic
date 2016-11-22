@@ -35,7 +35,8 @@ class TaskCell: NSTableRowView, CellProtocol {
 		get {
             let hm = Date.parseHHmm(self.dateEndTextField!.stringValue)
             let date = Date().dateByUpdating(hour: hm.hour, minute: hm.min)
-			return (dateEnd: date,
+			return (dateStart: nil,
+			        dateEnd: date,
 					taskNumber: self.issueNrTextField!.stringValue,
 					notes: self.notesTextField!.stringValue)
 		}

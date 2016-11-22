@@ -22,7 +22,7 @@ class NewTaskViewController: NSViewController {
     fileprivate var issueTypes = [String]()
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
-	var date: Date {
+	var dateEnd: Date {
 		get {
 			let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
 			return Date().dateByUpdating(hour: hm.hour, minute: hm.min)
@@ -31,6 +31,15 @@ class NewTaskViewController: NSViewController {
 			self.endDateTextField?.stringValue = newValue.HHmm()
 		}
 	}
+    var duration: TimeInterval {
+        get {
+            if self.durationTextField!.stringValue == "" {
+                return 0.0
+            }
+            let hm = Date.parseHHmm(self.durationTextField!.stringValue)
+            return Double(hm.min * 60 + hm.hour * 3600)
+        }
+    }
 	var notes: String {
 		get {
 			return notesTextField!.stringValue
@@ -51,9 +60,10 @@ class NewTaskViewController: NSViewController {
     func setTaskDataWithTaskType (_ taskSubtype: TaskSubtype) {
         
         let taskData = TaskCreationData(
-            dateEnd: date,
-            taskNumber: taskNumber,
-            notes: notes
+            dateStart: self.duration > 0 ? self.dateEnd.addingTimeInterval(self.duration) : nil,
+            dateEnd: self.dateEnd,
+            taskNumber: self.taskNumber,
+            notes: self.notes
         )
         self.onOptionChosen?(taskData)
     }
@@ -70,11 +80,11 @@ class NewTaskViewController: NSViewController {
     fileprivate func taskSubtype() -> TaskSubtype {
         
         switch taskTypeSegmentedControl!.selectedSegment {
-        case 0: return .issueEnd
-        case 1: return .scrumEnd
-        case 2: return .meetingEnd
-        case 3: return .lunchEnd
-        default: return .issueEnd
+            case 0: return .issueEnd
+            case 1: return .scrumEnd
+            case 2: return .meetingEnd
+            case 3: return .lunchEnd
+            default: return .issueEnd
         }
     }
 }

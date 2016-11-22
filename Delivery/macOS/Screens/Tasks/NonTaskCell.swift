@@ -25,8 +25,9 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
 	var data: TaskCreationData {
 		get {
-			return (Date(),
-					"",
+			return (dateStart: nil,
+			        dateEnd: Date(),
+			        notes: "",
 					self.notesTextField!.stringValue)
 		}
 		set {

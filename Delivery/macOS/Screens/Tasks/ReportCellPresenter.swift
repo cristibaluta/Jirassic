@@ -20,6 +20,7 @@ class ReportCellPresenter: NSObject {
     func present (theReport: Report) {
         
         cell?.data = (
+            dateStart: nil,
             dateEnd: Date(),
             taskNumber: theReport.taskNumber,
             notes: theReport.notes

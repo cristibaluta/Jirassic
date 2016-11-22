@@ -131,7 +131,7 @@ extension TasksViewController: TasksPresenterOutput {
         hideControls(true)
         
         appWireframe!.presentNewTaskController()
-        appWireframe!.newTaskViewController.date = Date()
+        appWireframe!.newTaskViewController.dateEnd = Date()
         appWireframe!.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
             self?.tasksPresenter!.insertTaskWithData(taskData)
             self?.tasksPresenter!.updateNoTasksState()

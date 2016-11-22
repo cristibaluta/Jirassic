@@ -82,6 +82,7 @@ extension Task {
 }
 
 typealias TaskCreationData = (
+    dateStart: Date?,
     dateEnd: Date,
     taskNumber: String,
     notes: String
