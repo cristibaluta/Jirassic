@@ -216,6 +216,7 @@ extension AppWireframe {
     func removeNewTaskController() {
         if let controller = _newTaskViewController {
             removeController(controller)
+            _newTaskViewController = nil
         }
     }
 }

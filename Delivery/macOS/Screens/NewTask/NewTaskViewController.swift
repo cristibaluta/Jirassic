@@ -60,7 +60,7 @@ class NewTaskViewController: NSViewController {
     func setTaskDataWithTaskType (_ taskSubtype: TaskSubtype) {
         
         let taskData = TaskCreationData(
-            dateStart: self.duration > 0 ? self.dateEnd.addingTimeInterval(self.duration) : nil,
+            dateStart: self.duration > 0 ? self.dateEnd.addingTimeInterval(-self.duration) : nil,
             dateEnd: self.dateEnd,
             taskNumber: self.taskNumber,
             notes: self.notes
