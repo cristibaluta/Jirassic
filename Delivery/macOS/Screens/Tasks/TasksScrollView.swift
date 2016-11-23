@@ -127,7 +127,8 @@ extension TasksScrollView: NSTableViewDelegate {
         }
         else {
             var theData = tasks![row]
-            let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
+            //let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
+            let thePreviousData: Task? = row == 0 ? nil : tasks![row-1]
             var cell: CellProtocol = cellForTaskType(theData.taskType)
             TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
             
@@ -139,6 +140,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 self?.tasks![row] = theData// save the changes locally because the struct is passed by copying
                 let saveInteractor = TaskInteractor(data: localRepository)
                 saveInteractor.saveTask(theData)
+                tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
             }
             cell.didRemoveCell = { [weak self] (cell: CellProtocol) in
                 // Ugly hack to find the row number from which the action came
