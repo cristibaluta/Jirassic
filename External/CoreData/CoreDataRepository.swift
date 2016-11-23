@@ -16,6 +16,7 @@ class CoreDataRepository {
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
         let baseUrl = urls.last!
         let url = baseUrl.appendingPathComponent("Jirassic")
+        RCLog(url)
         
         if !FileManager.default.fileExists(atPath: url.path) {
             do {
