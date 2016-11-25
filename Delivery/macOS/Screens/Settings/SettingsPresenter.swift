@@ -10,7 +10,6 @@ import Foundation
 
 protocol SettingsPresenterInput {
     
-    func login (_ credentials: UserCredentials)
     func loadJitInfo()
     func installJit()
     func uninstallJit()
@@ -20,7 +19,6 @@ protocol SettingsPresenterInput {
 
 protocol SettingsPresenterOutput {
     
-    func showLoadingIndicator (_ show: Bool)
     func setJitIsInstalled (_ installed: Bool)
     func setJiraSettings (_ settings: JiraSettings)
     func showAppSettings (_ settings: Settings)
@@ -34,16 +32,6 @@ class SettingsPresenter {
 }
 
 extension SettingsPresenter: SettingsPresenterInput {
-    
-    func login (_ credentials: UserCredentials) {
-        
-//        let interactor = UserInteractor(data: localRepository)
-//        interactor.onLoginSuccess = {
-//            self.userInterface?.showLoadingIndicator(false)
-//        }
-//        let user = interactor.currentUser()
-//        user.isLoggedIn ? interactor.logout() : interactor.loginWithCredentials(credentials)
-    }
     
     func loadJitInfo() {
         

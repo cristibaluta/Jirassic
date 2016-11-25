@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		402BBF0F1DE389DF00FE96B9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 402BBF0E1DE389DF00FE96B9 /* Login.storyboard */; };
 		406384891DE388C5004795A4 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406384881DE388C5004795A4 /* Tasks.storyboard */; };
 		4065D39C1DD3B44200B73201 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
 		4065D39D1DD3B44200B73201 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
@@ -53,9 +52,6 @@
 		4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3681DD3B44200B73201 /* InternalNotifications.swift */; };
 		4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3691DD3B44200B73201 /* LocalNotifications.swift */; };
 		4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36A1DD3B44200B73201 /* SleepNotifications.swift */; };
-		4065D3DB1DD3B44200B73201 /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */; };
-		4065D3DC1DD3B44200B73201 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36E1DD3B44200B73201 /* LoginPresenter.swift */; };
-		4065D3DD1DD3B44200B73201 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36F1DD3B44200B73201 /* LoginViewController.swift */; };
 		4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3711DD3B44200B73201 /* NewTaskViewController.swift */; };
 		4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3731DD3B44200B73201 /* SettingsInteractor.swift */; };
 		4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3741DD3B44200B73201 /* SettingsPresenter.swift */; };
@@ -120,6 +116,11 @@
 		40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */; };
 		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
+		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
+		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
+		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
+		5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7661DE8721100CA545E /* LoginViewController.swift */; };
+		5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C76B1DE8724400CA545E /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +146,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		402BBF0E1DE389DF00FE96B9 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		406384881DE388C5004795A4 /* Tasks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
 		4065D3041DD3A1AA00B73201 /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D3181DD3B44200B73201 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -211,9 +211,6 @@
 		4065D3681DD3B44200B73201 /* InternalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotifications.swift; sourceTree = "<group>"; };
 		4065D3691DD3B44200B73201 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		4065D36A1DD3B44200B73201 /* SleepNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepNotifications.swift; sourceTree = "<group>"; };
-		4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
-		4065D36E1DD3B44200B73201 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		4065D36F1DD3B44200B73201 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4065D3711DD3B44200B73201 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		4065D3731DD3B44200B73201 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		4065D3741DD3B44200B73201 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -255,6 +252,11 @@
 		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
+		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
+		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		5685C7661DE8721100CA545E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5685C76B1DE8724400CA545E /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -505,23 +507,12 @@
 		4065D36B1DD3B44200B73201 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				4065D36C1DD3B44200B73201 /* Login */,
+				5685C7621DE8721100CA545E /* Account */,
 				4065D3701DD3B44200B73201 /* NewTask */,
 				4065D3721DD3B44200B73201 /* Settings */,
 				4065D3761DD3B44200B73201 /* Tasks */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		4065D36C1DD3B44200B73201 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				4065D36D1DD3B44200B73201 /* CloudKitLoginViewController.swift */,
-				4065D36E1DD3B44200B73201 /* LoginPresenter.swift */,
-				4065D36F1DD3B44200B73201 /* LoginViewController.swift */,
-				402BBF0E1DE389DF00FE96B9 /* Login.storyboard */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		4065D3701DD3B44200B73201 /* NewTask */ = {
@@ -628,6 +619,18 @@
 				4065D4061DD4532100B73201 /* Info.plist */,
 			);
 			path = JirassicTests;
+			sourceTree = "<group>";
+		};
+		5685C7621DE8721100CA545E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				5685C76B1DE8724400CA545E /* AccountViewController.swift */,
+				5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */,
+				5685C7641DE8721100CA545E /* Login.storyboard */,
+				5685C7651DE8721100CA545E /* LoginPresenter.swift */,
+				5685C7661DE8721100CA545E /* LoginViewController.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -743,7 +746,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				402BBF0F1DE389DF00FE96B9 /* Login.storyboard in Resources */,
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
@@ -751,6 +753,7 @@
 				40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */,
 				40E0923C1DE1CC81001EF5DA /* Installer.scpt in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
+				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				4065D3D21DD3B44200B73201 /* jirassic in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
@@ -776,7 +779,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4065D3DD1DD3B44200B73201 /* LoginViewController.swift in Sources */,
 				4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */,
 				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
@@ -796,6 +798,7 @@
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
 				4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */,
+				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
 				4065D3F51DD3B44200B73201 /* CTask.swift in Sources */,
 				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
@@ -820,6 +823,8 @@
 				4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */,
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
+				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
+				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */,
@@ -835,15 +840,14 @@
 				4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,
-				4065D3DB1DD3B44200B73201 /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,
+				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Zeta.swift in Sources */,
 				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
 				4065D3CC1DD3B44200B73201 /* PopoverViewController.swift in Sources */,
 				4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */,
 				4065D3E41DD3B44200B73201 /* MessageViewController.swift in Sources */,
 				4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */,
-				4065D3DC1DD3B44200B73201 /* LoginPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

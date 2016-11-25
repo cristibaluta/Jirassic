@@ -10,10 +10,10 @@ import Foundation
 
 struct Settings {
     
+    var autoTrackStartOfDay: Bool?
     var autoTrackLunch: Bool?
     var autoTrackScrum: Bool?
-    var showSuggestions: Bool?
+    var startOfDayTime: Date?
     var lunchTime: Date?
     var scrumMeetingTime: Date?
-    var startDayTime: Date?
 }

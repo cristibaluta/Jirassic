@@ -11,10 +11,6 @@ import CloudKit
 
 class SettingsViewController: NSViewController {
 	
-	@IBOutlet fileprivate var emailTextField: NSTextField?
-	@IBOutlet fileprivate var passwordTextField: NSTextField?
-    @IBOutlet fileprivate var butLogin: NSButton?
-	@IBOutlet fileprivate var progressIndicator: NSProgressIndicator?
     // Jit
     @IBOutlet fileprivate var jitImageView: NSImageView?
     @IBOutlet fileprivate var jitTextField: NSTextField?
@@ -24,56 +20,21 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var jiraUserTextField: NSTextField?
     @IBOutlet fileprivate var jiraPasswordTextField: NSTextField?
     // Settings
+    @IBOutlet fileprivate var butAutoTrackStartOfDay: NSButton!
     @IBOutlet fileprivate var butAutoTrackLunch: NSButton!
     @IBOutlet fileprivate var butAutoTrackScrum: NSButton!
-    @IBOutlet fileprivate var butShowSuggestions: NSButton!
+    @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
     @IBOutlet fileprivate var scrumMeetingTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var startDayTimePicker: NSDatePicker!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
-	var credentials: UserCredentials {
-		get {
-			return (email: self.emailTextField!.stringValue,
-				password: self.passwordTextField!.stringValue)
-		}
-		set {
-			self.emailTextField!.stringValue = newValue.email
-			self.passwordTextField!.stringValue = newValue.password
-		}
-	}
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		
-//        let container = CKContainer.default()
-//        container.requestApplicationPermission(.userDiscoverability) { (status, error) in
-//            guard error == nil else { return }
-//            
-//            if status == CKApplicationPermissionStatus.granted {
-//                container.fetchUserRecordID { (recordID, error) in
-//                    guard error == nil else { return }
-//                    guard let recordID = recordID else { return }
-//                    
-//                    container.discoverUserInfo(withUserRecordID: recordID) { (info, fetchError) in
-//                        // use info.firstName and info.lastName however you need
-//                        print(info)
-//                    }
-//                }
-//            }
-//        }
-    }
-    
+	
     override func viewDidAppear() {
         super.viewDidAppear()
         
         presenter!.loadJitInfo()
         presenter!.showSettings()
-        
-//		let user = UserInteractor().currentUser()
-//        butLogin?.title = user.isLoggedIn ? "Logout" : "Login"
-//        emailTextField?.stringValue = user.email!
     }
 	
 	
@@ -87,18 +48,14 @@ class SettingsViewController: NSViewController {
         }
     }
     
-	@IBAction func handleLoginButton (_ sender: NSButton) {
-        presenter!.login(credentials)
-	}
-	
 	@IBAction func handleSaveButton (_ sender: NSButton) {
 		
-        let settings = Settings(autoTrackLunch: butAutoTrackLunch.state == NSOnState,
+        let settings = Settings(autoTrackStartOfDay: butAutoTrackStartOfDay.state == NSOnState,
+                                autoTrackLunch: butAutoTrackLunch.state == NSOnState,
                                 autoTrackScrum: butAutoTrackScrum.state == NSOnState,
-                                showSuggestions: butShowSuggestions.state == NSOnState,
+                                startOfDayTime: startOfDayTimePicker.dateValue,
                                 lunchTime: lunchTimePicker.dateValue,
-                                scrumMeetingTime: scrumMeetingTimePicker.dateValue,
-                                startDayTime: startDayTimePicker.dateValue
+                                scrumMeetingTime: scrumMeetingTimePicker.dateValue
         )
         presenter!.saveAppSettings(settings)
         
@@ -107,14 +64,6 @@ class SettingsViewController: NSViewController {
 }
 
 extension SettingsViewController: SettingsPresenterOutput {
-    
-    func showLoadingIndicator (_ show: Bool) {
-        if show {
-            progressIndicator!.startAnimation(nil)
-        } else {
-            progressIndicator!.stopAnimation(nil)
-        }
-    }
     
     func setJitIsInstalled (_ installed: Bool) {
         
@@ -132,11 +81,11 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func showAppSettings (_ settings: Settings) {
         
+        butAutoTrackStartOfDay.state = settings.autoTrackStartOfDay == true ? NSOnState : NSOffState
         butAutoTrackLunch.state = settings.autoTrackLunch == true ? NSOnState : NSOffState
         butAutoTrackScrum.state = settings.autoTrackScrum == true ? NSOnState : NSOffState
-        butShowSuggestions.state = settings.showSuggestions == true ? NSOnState : NSOffState
         lunchTimePicker.dateValue = settings.lunchTime!
         scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime!
-        startDayTimePicker.dateValue = settings.startDayTime!
+        startOfDayTimePicker.dateValue = settings.startOfDayTime!
     }
 }
