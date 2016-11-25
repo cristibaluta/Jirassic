@@ -23,15 +23,17 @@ class CreateReportTests: XCTestCase {
 		t1.endDate = Date(year: 2015, month: 6, day: 1, hour: 9, minute: 45)
         t1.taskNumber = "IOS-1"
         t1.notes = "Note 1"
-
+        
+        var scrum = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 45), type: TaskType.scrum)
+        scrum.startDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 30)
+        
+        // t1_1 begins before the scrum but ends after the scrum. Subtract the scrum duration
 		var t1_1 = Task()
         t1_1.endDate = Date(year: 2015, month: 6, day: 1, hour: 11, minute: 5)
         t1_1.taskNumber = "IOS-2"
         t1_1.notes = "Note 2"
 
-		var t1_lunch = Task()
-		t1_lunch.endDate = Date(year: 2015, month: 6, day: 1, hour: 11, minute: 51)
-        t1_lunch.taskType = NSNumber(value: TaskType.lunch.rawValue)
+        let lunch = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 11, minute: 51), type: TaskType.lunch)
 		
 		var t1_2 = Task()
         t1_2.endDate = Date(year: 2015, month: 6, day: 1, hour: 12, minute: 30)
@@ -53,7 +55,7 @@ class CreateReportTests: XCTestCase {
         t2.taskNumber = "IOS-4"
         t2.notes = "Note 6"
 		
-		tasks = [t0, t1, t1_1, t1_lunch, t1_2, t1_3, t1_4, t2]
+		tasks = [t0, t1, scrum, t1_1, lunch, t1_2, t1_3, t1_4, t2]
     }
     
     override func tearDown() {
@@ -78,8 +80,10 @@ class CreateReportTests: XCTestCase {
         
         let report = CreateReport(tasks: self.tasks)
         let reports = report.reports()
-        
-        XCTAssert(reports.count == 4, "There should be only 4 unique task numbers. Lunch is ignored")
+        print(reports)
+        XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch is ignored")
+       // XCTAssert(reports[0].duration = )
+       // XCTAssert(reports[0].duration = )
     }
 	
 	func testRoundMoreThan8HoursOfWork() {

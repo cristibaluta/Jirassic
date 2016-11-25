@@ -23,7 +23,15 @@ class CreateReport: NSObject {
 		guard tasks.count > 1 else {
 			return []
         }
-		
+        for t in tasks {
+            RCLog(t.endDate)
+        }
+        tasks = splitOverlappingTasks(tasks)
+        for t in tasks {
+            RCLog(t.endDate)
+        }
+        return []
+        
 		// Calculate the diff to 8 hrs
 		let totalTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
 		let lunchDuration = self.lunchDuration
@@ -31,7 +39,7 @@ class CreateReport: NSObject {
 		let missingTime = targetHoursInDay - workedTime
 		let extraTimePerTask = ceil( Double( Int(missingTime) / tasks.count))
         
-        addExtraTimeToTasks (extraTimePerTask: extraTimePerTask)
+        addExtraTimeToTasks(extraTimePerTask: extraTimePerTask)
 
         let groups = groupsByTaskNumber()
         let reports = reportsFromGroups(groups)
@@ -41,7 +49,45 @@ class CreateReport: NSObject {
 }
 
 extension CreateReport {
-
+    
+    fileprivate func splitOverlappingTasks (_ tasks: [Task]) -> [Task] {
+        
+        var expandedTasks = [Task]()
+        var inlinedTasks = [Task]()
+        var task = tasks.first!
+        var previousDate = task.endDate
+        var inlineDuration: TimeInterval = 0.0
+        
+        for i in 1..<tasks.count {
+            
+            task = tasks[i]
+            
+            if let startDate = task.startDate {
+                // Task with begining and ending defined
+                inlinedTasks.append(task)
+                inlineDuration += task.endDate.timeIntervalSince(startDate)
+            } else {
+                inlineDuration = 0.0
+                // Add the task but substract the time from the inlined tasks
+                task.endDate = task.endDate.addingTimeInterval(-inlineDuration)
+                expandedTasks.append(task)
+                previousDate = task.endDate
+                
+                // Add the inlined tasks
+                for itask in inlinedTasks {
+                    var tempTask = itask
+                    let duration = tempTask.endDate.timeIntervalSince(tempTask.startDate!)
+                    tempTask.startDate = nil
+                    tempTask.endDate = previousDate.addingTimeInterval(duration)
+                    expandedTasks.append(task)
+                    previousDate = tempTask.endDate
+                }
+                inlinedTasks = []
+            }
+        }
+        return expandedTasks
+    }
+    
     fileprivate func addExtraTimeToTasks (extraTimePerTask: Double) {
         
         var extraTimeToAdd = extraTimePerTask
@@ -53,16 +99,27 @@ extension CreateReport {
         var lunchDuration = 0.0
         
         for i in 1..<tasks.count - 1 {
+            
             task = tasks[i]
+            
             if task.taskType.intValue == TaskType.lunch.rawValue {
                 lunchDuration = task.endDate.timeIntervalSince(previousDate)
             } else {
-                task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd - lunchDuration).round()
-                task.startDate = previousDate
-                extraTimeToAdd += extraTimePerTask
+                if let startDate = task.startDate {
+                    // For tasks with start and end date
+                    task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd - lunchDuration).round()
+                    task.startDate = startDate.addingTimeInterval(extraTimeToAdd - lunchDuration).round()
+                    extraTimeToAdd += extraTimePerTask
+                } else {
+                    // For tasks with only end date
+                    task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd - lunchDuration).round()
+                    task.startDate = previousDate
+                    extraTimeToAdd += extraTimePerTask
+                }
                 tasks[i] = task
             }
             previousDate = task.endDate
+            RCLog("\(task.startDate) - \(task.endDate)")
         }
         
         // Handle the last task separately, add the remaining time till targetHoursInDay
@@ -71,7 +128,7 @@ extension CreateReport {
         task.startDate = previousDate
         tasks[tasks.count-1] = task
     }
-	
+    
     fileprivate func groupsByTaskNumber() -> [String: [Task]] {
         
         var groups = [String: [Task]]()
@@ -110,8 +167,7 @@ extension CreateReport {
                     report = Report(duration: task.endDate.timeIntervalSince(task.startDate!),
                                     notes: "• \(task.notes ?? "")",
                                     taskNumber: taskNumber)
-                }
-                else {
+                } else {
                     report!.duration += task.endDate.timeIntervalSince(task.startDate!)
                     report!.notes = "\(report!.notes)\n• \(task.notes!)"
                 }
