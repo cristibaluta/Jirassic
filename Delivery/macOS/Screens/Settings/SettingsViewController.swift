@@ -23,9 +23,11 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var butAutoTrackStartOfDay: NSButton!
     @IBOutlet fileprivate var butAutoTrackLunch: NSButton!
     @IBOutlet fileprivate var butAutoTrackScrum: NSButton!
+    @IBOutlet fileprivate var butAutoTrackMeetings: NSButton!
     @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
     @IBOutlet fileprivate var scrumMeetingTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var minMeetingDurationTimePicker: NSDatePicker!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
@@ -53,9 +55,11 @@ class SettingsViewController: NSViewController {
         let settings = Settings(autoTrackStartOfDay: butAutoTrackStartOfDay.state == NSOnState,
                                 autoTrackLunch: butAutoTrackLunch.state == NSOnState,
                                 autoTrackScrum: butAutoTrackScrum.state == NSOnState,
+                                autoTrackMeetings: butAutoTrackMeetings.state == NSOnState,
                                 startOfDayTime: startOfDayTimePicker.dateValue,
                                 lunchTime: lunchTimePicker.dateValue,
-                                scrumMeetingTime: scrumMeetingTimePicker.dateValue
+                                scrumMeetingTime: scrumMeetingTimePicker.dateValue,
+                                minMeetingDuration: minMeetingDurationTimePicker.dateValue
         )
         presenter!.saveAppSettings(settings)
         
@@ -84,8 +88,11 @@ extension SettingsViewController: SettingsPresenterOutput {
         butAutoTrackStartOfDay.state = settings.autoTrackStartOfDay ? NSOnState : NSOffState
         butAutoTrackLunch.state = settings.autoTrackLunch ? NSOnState : NSOffState
         butAutoTrackScrum.state = settings.autoTrackScrum ? NSOnState : NSOffState
+        butAutoTrackMeetings.state = settings.autoTrackMeetings ? NSOnState : NSOffState
+        
         lunchTimePicker.dateValue = settings.lunchTime
         scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime
         startOfDayTimePicker.dateValue = settings.startOfDayTime
+        minMeetingDurationTimePicker.dateValue = settings.minMeetingDuration
     }
 }

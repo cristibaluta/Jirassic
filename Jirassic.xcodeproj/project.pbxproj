@@ -20,7 +20,6 @@
 		4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3241DD3B44200B73201 /* ViewController.swift */; };
 		4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */; };
 		4065D3A91DD3B44200B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
-		4065D3AA1DD3B44200B73201 /* ComputerSleepInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3281DD3B44200B73201 /* ComputerSleepInteractor.swift */; };
 		4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */; };
 		4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
@@ -109,6 +108,7 @@
 		4065D4311DD457B000B73201 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3201DD3B44200B73201 /* DateExtension.swift */; };
 		4065D4321DD457B500B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
+		4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */; };
 		40E092351DE19B1D001EF5DA /* ScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */; };
 		40E092371DE19B33001EF5DA /* SandboxedScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */; };
 		40E0923B1DE1CC81001EF5DA /* GetJitVersion.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */; };
@@ -162,7 +162,6 @@
 		4065D3241DD3B44200B73201 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerStoryboard.swift; sourceTree = "<group>"; };
 		4065D3261DD3B44200B73201 /* Zeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zeta.swift; sourceTree = "<group>"; };
-		4065D3281DD3B44200B73201 /* ComputerSleepInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerSleepInteractor.swift; sourceTree = "<group>"; };
 		4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractor.swift; sourceTree = "<group>"; };
 		4065D32B1DD3B44200B73201 /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReport.swift; sourceTree = "<group>"; };
 		4065D32C1DD3B44200B73201 /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReportTests.swift; sourceTree = "<group>"; };
@@ -244,6 +243,7 @@
 		4065D4021DD4532100B73201 /* JirassicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JirassicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D4101DD4534C00B73201 /* jirassic-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jirassic-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
 		40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsInteractor.swift; sourceTree = "<group>"; };
 		40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedScriptsInteractor.swift; sourceTree = "<group>"; };
 		40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GetJitVersion.scpt; sourceTree = "<group>"; };
@@ -353,8 +353,8 @@
 		4065D3271DD3B44200B73201 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				4065D3281DD3B44200B73201 /* ComputerSleepInteractor.swift */,
 				4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */,
+				4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -832,7 +832,6 @@
 				40E092371DE19B33001EF5DA /* SandboxedScriptsInteractor.swift in Sources */,
 				4065D3CB1DD3B44200B73201 /* Popover.swift in Sources */,
 				4065D3CD1DD3B44200B73201 /* ScriptableApplication.swift in Sources */,
-				4065D3AA1DD3B44200B73201 /* ComputerSleepInteractor.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
@@ -859,6 +858,7 @@
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
 				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
+				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
 				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,

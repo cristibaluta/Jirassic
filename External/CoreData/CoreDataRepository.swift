@@ -150,9 +150,11 @@ extension CoreDataRepository {
         return Settings(autoTrackStartOfDay: csettings.autoTrackStartOfDay!.boolValue,
                         autoTrackLunch: csettings.autoTrackLunch!.boolValue,
                         autoTrackScrum: csettings.autoTrackScrum!.boolValue,
+                        autoTrackMeetings: csettings.autoTrackMeetings!.boolValue,
                         startOfDayTime: csettings.startOfDayTime!,
                         lunchTime: csettings.lunchTime!,
-                        scrumMeetingTime: csettings.scrumMeetingTime!
+                        scrumMeetingTime: csettings.scrumMeetingTime!,
+                        minMeetingDuration: csettings.minMeetingDuration!
         )
     }
     
@@ -167,9 +169,11 @@ extension CoreDataRepository {
         csettings?.autoTrackStartOfDay = NSNumber(value: settings.autoTrackStartOfDay)
         csettings?.autoTrackLunch = NSNumber(value: settings.autoTrackLunch)
         csettings?.autoTrackScrum = NSNumber(value: settings.autoTrackScrum)
+        csettings?.autoTrackMeetings = NSNumber(value: settings.autoTrackMeetings)
         csettings?.startOfDayTime = settings.startOfDayTime
         csettings?.lunchTime = settings.lunchTime
         csettings?.scrumMeetingTime = settings.scrumMeetingTime
+        csettings?.minMeetingDuration = settings.minMeetingDuration
         
         return csettings!
     }
@@ -287,10 +291,12 @@ extension CoreDataRepository: Repository {
                                                             into: managedObjectContext!) as? CSettings
             csettings?.autoTrackLunch = 1
             csettings?.autoTrackScrum = 1
-            csettings?.autoTrackStartOfDay = 0
+            csettings?.autoTrackStartOfDay = 1
+            csettings?.autoTrackMeetings = 1
             csettings?.lunchTime = Date(hour: 13, minute: 0)
             csettings?.scrumMeetingTime = Date(hour: 10, minute: 30)
             csettings?.startOfDayTime = Date(hour: 9, minute: 0)
+            csettings?.minMeetingDuration = Date(hour: 0, minute: 20)
             saveContext()
         }
         return settingsFromCSettings(csettings!)

@@ -2,9 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="CSettings" representedClassName=".CSettings" syncable="YES">
         <attribute name="autoTrackLunch" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="autoTrackMeetings" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="autoTrackScrum" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="autoTrackStartOfDay" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lunchTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="minMeetingDuration" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="scrumMeetingTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startOfDayTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
@@ -24,7 +26,7 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CSettings" positionX="-54" positionY="45" width="128" height="135"/>
+        <element name="CSettings" positionX="-54" positionY="45" width="128" height="165"/>
         <element name="CTask" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="CUser" positionX="-54" positionY="54" width="128" height="105"/>
     </elements>

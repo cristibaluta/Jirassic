@@ -13,7 +13,10 @@ struct Settings {
     var autoTrackStartOfDay: Bool
     var autoTrackLunch: Bool
     var autoTrackScrum: Bool
+    var autoTrackMeetings: Bool
+    
     var startOfDayTime: Date
     var lunchTime: Date
     var scrumMeetingTime: Date
+    var minMeetingDuration: Date
 }
