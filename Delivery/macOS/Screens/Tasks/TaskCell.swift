@@ -55,7 +55,7 @@ class TaskCell: NSTableRowView, CellProtocol {
 			self.durationTextField!.stringValue = newValue
 		}
 	}
-	
+    
 	override func awakeFromNib() {
 		showMouseOverControls(false)
 		selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none

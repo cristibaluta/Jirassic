@@ -57,7 +57,7 @@ extension CloudKitRepository: Repository {
         let predicate = NSPredicate(format: "TRUEPREDICATE")
         let query = CKQuery(recordType: "Task", predicate: predicate)
         privateDB.perform(query, inZoneWith: nil) { results, error in
-            RCLog(results)
+            RCLogO(results)
             RCLogErrorO(error)
 //            if error != nil {
 //                dispatch_async(dispatch_get_main_queue()) {

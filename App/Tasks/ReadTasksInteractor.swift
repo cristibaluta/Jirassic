@@ -12,7 +12,7 @@ class ReadTasksInteractor: RepositoryInteractor {
 	
     func tasksAtPage (_ page: Int, completion: @escaping ([Task]) -> Void) {
         
-        data.queryTasks(page, completion: { (tasks, error) in
+        self.repository.queryTasks(page, completion: { (tasks, error) in
             completion(tasks)
             
             remoteRepository?.queryTasks(page, completion: { (tasks, error) in
@@ -24,6 +24,6 @@ class ReadTasksInteractor: RepositoryInteractor {
     // Return a list of tasks sorted by date
     func tasksInDay (_ date: Date) -> [Task] {
         
-        return data.queryTasksInDay(date)
+        return self.repository.queryTasksInDay(date)
     }
 }

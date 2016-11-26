@@ -35,7 +35,7 @@ class LoginViewController: NSViewController {
         super.viewDidLoad()
 		
         if let repository = remoteRepository {
-            let user = UserInteractor(data: repository).currentUser()
+            let user = UserInteractor(repository: repository).currentUser()
             if user.isLoggedIn {
                 _butLogin?.title = "Logout"
                 _label?.stringValue = "You are already logged in."

@@ -64,7 +64,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadData() {
         
         let todayDay = Day(date: Date())
-        let reader = ReadDaysInteractor(data: localRepository)
+        let reader = ReadDaysInteractor(repository: localRepository)
         userInterface?.showDates(reader.weeks())
         userInterface?.selectDay(todayDay)
         reloadTasksOnDay(todayDay, listType: selectedListType)
@@ -72,7 +72,7 @@ extension TasksPresenter: TasksPresenterInput {
     
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         
-        let reader = ReadTasksInteractor(data: localRepository)
+        let reader = ReadTasksInteractor(repository: localRepository)
         currentTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
@@ -119,7 +119,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         let now = Date()
         let task = Task(dateEnd: now, type: TaskType.startDay)
-        let saveInteractor = TaskInteractor(data: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
         day!.setLastTrackedDay(now)
         reloadData()
@@ -132,7 +132,7 @@ extension TasksPresenter: TasksPresenterInput {
         task.taskNumber = taskData.taskNumber
         task.endDate = taskData.dateEnd
         
-        let saveInteractor = TaskInteractor(data: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository)
             saveInteractor.saveTask(task)
     }
     
@@ -144,11 +144,11 @@ extension TasksPresenter: TasksPresenterInput {
         
         let task = currentTasks[row]
         currentTasks.remove(at: row)
-        let deleteInteractor = TaskInteractor(data: localRepository)
+        let deleteInteractor = TaskInteractor(repository: localRepository)
         deleteInteractor.deleteTask(task)
         updateNoTasksState()
         if currentTasks.count == 0 {
-            let reader = ReadDaysInteractor(data: localRepository)
+            let reader = ReadDaysInteractor(repository: localRepository)
             userInterface?.showDates(reader.weeks())
         }
     }

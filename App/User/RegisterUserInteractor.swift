@@ -15,7 +15,7 @@ class RegisterUserInteractor: RepositoryInteractor {
 	
 	func registerWithCredentials (_ credentials: UserCredentials) {
 		
-		data.registerWithCredentials(credentials) { [weak self] (error) in
+		self.repository.registerWithCredentials(credentials) { [weak self] (error) in
             if let error = error {
                 let errorString = error.userInfo["error"] as? NSString
                 RCLogO(errorString)

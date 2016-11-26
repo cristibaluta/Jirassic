@@ -12,11 +12,11 @@ class ReadDaysInteractor: RepositoryInteractor {
 	
 	fileprivate var tasks = [Task]()
 	
-    convenience init (data: Repository) {
+    convenience init (repository: Repository) {
         self.init()
         
-        self.data = data
-		data.queryTasks(0, completion: { (tasks, error) in
+        self.repository = repository
+		self.repository.queryTasks(0, completion: { (tasks, error) in
             
             self.tasks = tasks
             self.tasks.sort { (task1: Task, task2: Task) -> Bool in

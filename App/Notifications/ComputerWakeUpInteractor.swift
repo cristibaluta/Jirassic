@@ -12,7 +12,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     
 	func runWithLastSleepDate (_ date: Date?) {
 		
-		let reader = ReadTasksInteractor(data: self.data)
+		let reader = ReadTasksInteractor(repository: self.repository)
 		let existingTasks = reader.tasksInDay(Date())
         let settings: Settings = SettingsInteractor().getAppSettings()
         let typeEstimator = TaskTypeEstimator()
@@ -51,7 +51,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     func log (taskType: TaskType) {
         
         let task = Task(dateEnd: Date(), type: taskType)
-        let saveInteractor = TaskInteractor(data: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
         InternalNotifications.notifyAboutNewlyAddedTask(task)
     }

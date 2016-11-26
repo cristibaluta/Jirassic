@@ -31,8 +31,8 @@ extension NSApplication {
                 let taskType = dict["taskType"] != nil ? Int(dict["taskType"]!) : TaskType.gitCommit.rawValue
                 let informativeText = "\(taskNumber): \(notes)"
                 
-                let saveInteractor = TaskInteractor(data: localRepository)
-                let reader = ReadTasksInteractor(data: localRepository)
+                let saveInteractor = TaskInteractor(repository: localRepository)
+                let reader = ReadTasksInteractor(repository: localRepository)
                 let currentTasks = reader.tasksInDay(Date())
                 if currentTasks.count == 0 {
                     let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)

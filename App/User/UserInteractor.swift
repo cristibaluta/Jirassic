@@ -14,12 +14,12 @@ class UserInteractor: RepositoryInteractor {
     var onLoginFailure: (() -> ())?
     
     func currentUser() -> User {
-        return data.currentUser()
+        return self.repository.currentUser()
     }
     
     func loginWithCredentials (_ credentials: UserCredentials) {
         
-        data.loginWithCredentials(credentials) { [weak self] (error: NSError?) in
+        self.repository.loginWithCredentials(credentials) { [weak self] (error: NSError?) in
             
             if let error = error {
                 let errorString = error.userInfo["error"] as? NSString
@@ -32,12 +32,12 @@ class UserInteractor: RepositoryInteractor {
     }
     
     func logout() {
-        data.logout()
+        self.repository.logout()
     }
     
     fileprivate func register (_ credentials: UserCredentials) {
         
-        let registerInteractor = RegisterUserInteractor(data: data)
+        let registerInteractor = RegisterUserInteractor(repository: self.repository)
         registerInteractor.onRegisterSuccess = { [weak self] in
             self?.onLoginSuccess?()
         }

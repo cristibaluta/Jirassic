@@ -10,10 +10,10 @@ import Foundation
 
 class RepositoryInteractor {
     
-    var data: Repository!
+    var repository: Repository!
     
-    convenience init (data: Repository) {
+    convenience init (repository: Repository) {
         self.init()
-        self.data = data
+        self.repository = repository
     }
 }

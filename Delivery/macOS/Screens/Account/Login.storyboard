@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="MZm-Jd-s4c">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -105,8 +105,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="490" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" borderType="line" title="Jirassic user" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-NR-1xm">
+                            <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="Jirassic user" translatesAutoresizingMaskIntoConstraints="NO" id="Tpc-NR-1xm">
                                 <rect key="frame" x="20" y="123" width="458" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="Wxo-uA-Fm9">
                                     <rect key="frame" x="1" y="1" width="456" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,40 +121,25 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGc-LR-7yv">
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGc-LR-7yv">
                                             <rect key="frame" x="144" y="14" width="231" height="22"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="OZb-zV-4bb"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" alignment="left" placeholderString="Email" id="KvH-d0-7bI">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1W7-56-xGE">
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1W7-56-xGE">
                                             <rect key="frame" x="375" y="8" width="75" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="PKJ-fX-9Ug"/>
-                                                <constraint firstAttribute="width" constant="63" id="ifw-Yb-ZNC"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Logout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ca5-nF-Q29">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="1W7-56-xGE" firstAttribute="leading" secondItem="CGc-LR-7yv" secondAttribute="trailing" constant="8" id="6lp-D3-OBj"/>
-                                        <constraint firstItem="CGc-LR-7yv" firstAttribute="leading" secondItem="Wxo-uA-Fm9" secondAttribute="leading" constant="146" id="cYw-ct-66h"/>
-                                    </constraints>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1W7-56-xGE" secondAttribute="trailing" constant="10" id="JLg-P4-drJ"/>
-                                    <constraint firstAttribute="centerY" secondItem="CGc-LR-7yv" secondAttribute="centerY" constant="-7" id="JsI-5e-TvV"/>
-                                    <constraint firstAttribute="height" constant="58" id="dTk-dy-gi7"/>
-                                    <constraint firstAttribute="centerY" secondItem="1W7-56-xGE" secondAttribute="centerY" constant="-6.5" id="exY-KC-Tet"/>
-                                </constraints>
                             </box>
                         </subviews>
                     </view>

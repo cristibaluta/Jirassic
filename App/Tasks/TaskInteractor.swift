@@ -12,7 +12,7 @@ class TaskInteractor: RepositoryInteractor {
 
     func saveTask (_ task: Task) {
         
-        let savedTask = data.saveTask(task, completion: { (success: Bool) -> Void in
+        let savedTask = self.repository.saveTask(task, completion: { (success: Bool) -> Void in
             
         })
         let _ = remoteRepository?.saveTask(savedTask, completion: { (success: Bool) -> Void in
@@ -22,7 +22,7 @@ class TaskInteractor: RepositoryInteractor {
     
     func deleteTask (_ task: Task) {
         
-        data.deleteTask(task, completion: { (success: Bool) -> Void in
+        self.repository.deleteTask(task, completion: { (success: Bool) -> Void in
             
         })
         remoteRepository?.deleteTask(task, completion: { (success: Bool) -> Void in

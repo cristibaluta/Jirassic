@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			// Nothing to do
         }
         sleep?.computerWakeUp = {
-			ComputerWakeUpInteractor(data: localRepository).runWithLastSleepDate(self.sleep?.lastSleepDate)
+			ComputerWakeUpInteractor(repository: localRepository).runWithLastSleepDate(self.sleep?.lastSleepDate)
         }
 	}
 	

@@ -138,7 +138,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 theData.notes = updatedData.notes
                 theData.endDate = updatedData.dateEnd
                 self?.tasks![row] = theData// save the changes locally because the struct is passed by copying
-                let saveInteractor = TaskInteractor(data: localRepository)
+                let saveInteractor = TaskInteractor(repository: localRepository)
                 saveInteractor.saveTask(theData)
                 tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
             }
