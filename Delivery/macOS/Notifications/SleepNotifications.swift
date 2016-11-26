@@ -17,18 +17,29 @@ class SleepNotifications: NSObject {
 	override init() {
 		super.init()
 		
-        NSWorkspace.shared().notificationCenter.addObserver(self,
+        NSWorkspace.shared().notificationCenter.addObserver(
+            self,
             selector: #selector(SleepNotifications.receiveSleepNotification(_:)),
-			name: NSNotification.Name.NSWorkspaceWillSleep, object: nil)
-        NSWorkspace.shared().notificationCenter.addObserver(self,
+			name: NSNotification.Name.NSWorkspaceWillSleep,
+			object: nil)
+        
+        NSWorkspace.shared().notificationCenter.addObserver(
+            self,
             selector: #selector(SleepNotifications.receiveSleepNotification(_:)),
-			name: NSNotification.Name.NSWorkspaceScreensDidSleep, object: nil)
-		NSWorkspace.shared().notificationCenter.addObserver(self,
+			name: NSNotification.Name.NSWorkspaceScreensDidSleep,
+			object: nil)
+		
+        NSWorkspace.shared().notificationCenter.addObserver(
+            self,
             selector: #selector(SleepNotifications.receiveWakeNotification(_:)),
-			name: NSNotification.Name.NSWorkspaceDidWake, object: nil)
-        NSWorkspace.shared().notificationCenter.addObserver(self,
+			name: NSNotification.Name.NSWorkspaceDidWake,
+			object: nil)
+        
+        NSWorkspace.shared().notificationCenter.addObserver(
+            self,
             selector: #selector(SleepNotifications.receiveWakeNotification(_:)),
-			name: NSNotification.Name.NSWorkspaceScreensDidWake, object: nil)
+			name: NSNotification.Name.NSWorkspaceScreensDidWake,
+			object: nil)
 	}
 	
 	deinit {

@@ -12,19 +12,47 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     
 	func runWithLastSleepDate (_ date: Date?) {
 		
-		let reader = ReadTasksInteractor(data: data)
+		let reader = ReadTasksInteractor(data: self.data)
 		let existingTasks = reader.tasksInDay(Date())
-		if existingTasks.count > 0 {
-			// We already started the day, analyze if it's scrum time
-			if TaskFinder().scrumExists(existingTasks) {
-				let task = Task(dateEnd: Date(), type: TaskType.scrum)
-                let saveInteractor = TaskInteractor(data: localRepository)
-                saveInteractor.saveTask(task)
-				InternalNotifications.notifyAboutNewlyAddedTask(task)
-			}
-		} else {
-			// This might be the start of the day. Should we start counting automatically or wait the user to press start?
-			
-		}
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let typeEstimator = TaskTypeEstimator()
+        
+        guard existingTasks.count > 0 else {
+            let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(Date(), withSettings: settings)
+            if estimatedType == .startDay && settings.autoTrackStartOfDay {
+                log(taskType: TaskType.startDay)
+            }
+            return
+        }
+        
+        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date!, withSettings: settings)
+        
+        switch estimatedType {
+        case .scrum:
+            if settings.autoTrackScrum && !TaskFinder().scrumExists(existingTasks) {
+                log(taskType: TaskType.scrum)
+            }
+            break
+        case .lunch:
+            if settings.autoTrackLunch && !TaskFinder().scrumExists(existingTasks) {
+                log(taskType: TaskType.lunch)
+            }
+            break
+        case .meeting:
+            //                if settings.autoTrackMeetings {
+            log(taskType: TaskType.meeting)
+            //                }
+            break
+        default:
+            break
+        }
 	}
+
+    func log (taskType: TaskType) {
+        
+        let task = Task(dateEnd: Date(), type: taskType)
+        let saveInteractor = TaskInteractor(data: localRepository)
+        saveInteractor.saveTask(task)
+        InternalNotifications.notifyAboutNewlyAddedTask(task)
+    }
 }
