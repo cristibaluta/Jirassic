@@ -10,20 +10,17 @@ import Foundation
 
 class TaskTypeEstimator: NSObject {
 
-	let scrumUsualHour = 10
-	let scrumUsualMinute = 30
-	let scrumVariationAllowed: Double = 20.0.minToSec
-	let lunchUsualHour = 13
-	let lunchUsualMinute = 0
-	let lunchVariationAllowed: Double = 60.0.minToSec
+	let scrumVariationAllowed = 20.0.minToSec
+	let lunchVariationAllowed = 60.0.minToSec
 	
-	func taskTypeAroundDate (_ date: Date) -> TaskType {
+    func taskTypeAroundDate (_ date: Date, withSettings settings: Settings) -> TaskType {
 		
 		// Check if the date is around scrum time
+        var settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumMeetingTime)
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
-		comps.hour = scrumUsualHour
-		comps.minute = scrumUsualMinute
+		comps.hour = settingsScrumTime.hour
+		comps.minute = settingsScrumTime.minute
 		comps.second = 0
 		let scrumDate = gregorian.date(from: comps)
 		var timestamp = date.timeIntervalSince(scrumDate!)
@@ -33,10 +30,11 @@ class TaskTypeEstimator: NSObject {
 		}
 		
 		
-		// Check if the date is around lunch break
+        // Check if the date is around lunch break
+        var settingsLunchTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.lunchTime)
 		
-		comps.hour = lunchUsualHour
-		comps.minute = lunchUsualMinute
+		comps.hour = settingsLunchTime.hour
+		comps.minute = settingsLunchTime.minute
 		comps.second = 0
 		let lunchDate = gregorian.date(from: comps)
 		timestamp = date.timeIntervalSince(lunchDate!)
@@ -44,6 +42,10 @@ class TaskTypeEstimator: NSObject {
 		if abs(timestamp) <= lunchVariationAllowed {
 			return TaskType.lunch
 		}
+        
+        
+        // Check if date is after or around start of day
+        
 		
 		return TaskType.issue
 	}
