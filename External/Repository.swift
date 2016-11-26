@@ -8,23 +8,31 @@
 
 import Foundation
 
-protocol Repository {
+protocol RepositoryUser {
     
-    // MARK: User
     func currentUser() -> User
     func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void)
     func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void)
     func logout()
     
-    // MARK: Tasks
+}
+
+protocol RepositoryTasks {
+    
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void)
     func queryTasksInDay (_ day: Date) -> [Task]
     func queryUnsyncedTasks() -> [Task]
     func deleteTask (_ dataToDelete: Task, completion: ((_ success: Bool) -> Void))
-    // Save a task and return the same task with a taskId generated if it didn't had
+    // Save a task and returns the same task with a taskId generated if it didn't had
     func saveTask (_ theTask: Task, completion: ((_ success: Bool) -> Void)) -> Task
     
-    // MARK: Settings
+}
+
+protocol RepositorySettings {
+    
     func settings() -> Settings
     func saveSettings (_ settings: Settings)
+    
 }
+
+typealias Repository = RepositoryUser & RepositoryTasks & RepositorySettings

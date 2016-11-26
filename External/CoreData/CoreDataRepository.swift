@@ -179,7 +179,7 @@ extension CoreDataRepository {
     }
 }
 
-extension CoreDataRepository: Repository {
+extension CoreDataRepository: RepositoryUser {
     
     func currentUser() -> User {
         
@@ -230,7 +230,10 @@ extension CoreDataRepository: Repository {
             }
         }
     }
-    
+}
+
+extension CoreDataRepository: RepositoryTasks {
+
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
         
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
@@ -281,7 +284,10 @@ extension CoreDataRepository: Repository {
         return taskFromCTask(ctask)
     }
     
-    // MARK: Settings
+}
+
+extension CoreDataRepository: RepositorySettings {
+    
     func settings() -> Settings {
         
         let results: [CSettings] = queryWithPredicate(nil, sortDescriptors: nil)

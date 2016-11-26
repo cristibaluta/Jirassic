@@ -20,4 +20,5 @@ class CSettings: NSManagedObject {
     @NSManaged var lunchTime: Date?
     @NSManaged var scrumMeetingTime: Date?
     @NSManaged var minMeetingDuration: Date?
+    
 }

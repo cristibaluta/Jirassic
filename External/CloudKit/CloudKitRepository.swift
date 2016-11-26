@@ -23,7 +23,7 @@ class CloudKitRepository {
     }
 }
 
-extension CloudKitRepository: Repository {
+extension CloudKitRepository: RepositoryUser {
 
     func currentUser() -> User {
         
@@ -51,7 +51,10 @@ extension CloudKitRepository: Repository {
     func logout() {
         user = nil
     }
-    
+}
+
+extension CloudKitRepository: RepositoryTasks {
+
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
         
         let predicate = NSPredicate(format: "TRUEPREDICATE")
@@ -161,8 +164,9 @@ extension CloudKitRepository: Repository {
     func saveIssue (_ issue: String) {
         
     }
-    
-    // MARK: Settings
+}
+
+extension CloudKitRepository: RepositorySettings {
     
     func settings() -> Settings {
         fatalError("Not applicable")
