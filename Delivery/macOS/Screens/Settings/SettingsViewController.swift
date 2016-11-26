@@ -81,11 +81,11 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func showAppSettings (_ settings: Settings) {
         
-        butAutoTrackStartOfDay.state = settings.autoTrackStartOfDay == true ? NSOnState : NSOffState
-        butAutoTrackLunch.state = settings.autoTrackLunch == true ? NSOnState : NSOffState
-        butAutoTrackScrum.state = settings.autoTrackScrum == true ? NSOnState : NSOffState
-        lunchTimePicker.dateValue = settings.lunchTime!
-        scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime!
-        startOfDayTimePicker.dateValue = settings.startOfDayTime!
+        butAutoTrackStartOfDay.state = settings.autoTrackStartOfDay ? NSOnState : NSOffState
+        butAutoTrackLunch.state = settings.autoTrackLunch ? NSOnState : NSOffState
+        butAutoTrackScrum.state = settings.autoTrackScrum ? NSOnState : NSOffState
+        lunchTimePicker.dateValue = settings.lunchTime
+        scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime
+        startOfDayTimePicker.dateValue = settings.startOfDayTime
     }
 }

@@ -147,12 +147,12 @@ extension CoreDataRepository {
     
     fileprivate func settingsFromCSettings (_ csettings: CSettings) -> Settings {
         
-        return Settings(autoTrackStartOfDay: csettings.autoTrackStartOfDay?.boolValue,
-                        autoTrackLunch: csettings.autoTrackLunch?.boolValue,
-                        autoTrackScrum: csettings.autoTrackScrum?.boolValue,
-                        startOfDayTime: csettings.startOfDayTime,
-                        lunchTime: csettings.lunchTime,
-                        scrumMeetingTime: csettings.scrumMeetingTime
+        return Settings(autoTrackStartOfDay: csettings.autoTrackStartOfDay!.boolValue,
+                        autoTrackLunch: csettings.autoTrackLunch!.boolValue,
+                        autoTrackScrum: csettings.autoTrackScrum!.boolValue,
+                        startOfDayTime: csettings.startOfDayTime!,
+                        lunchTime: csettings.lunchTime!,
+                        scrumMeetingTime: csettings.scrumMeetingTime!
         )
     }
     
@@ -164,24 +164,12 @@ extension CoreDataRepository {
             csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
                                                             into: managedObjectContext!) as? CSettings
         }
-        if let autoTrackStartOfDay = settings.autoTrackStartOfDay {
-            csettings?.autoTrackStartOfDay = NSNumber(value: autoTrackStartOfDay)
-        }
-        if let autoTrackLunch = settings.autoTrackLunch {
-            csettings?.autoTrackLunch = NSNumber(value: autoTrackLunch)
-        }
-        if let autoTrackScrum = settings.autoTrackScrum {
-            csettings?.autoTrackScrum = NSNumber(value: autoTrackScrum)
-        }
-        if let startOfDayTime = settings.startOfDayTime {
-            csettings?.startOfDayTime = startOfDayTime
-        }
-        if let lunchTime = settings.lunchTime {
-            csettings?.lunchTime = lunchTime
-        }
-        if let scrumMeetingTime = settings.scrumMeetingTime {
-            csettings?.scrumMeetingTime = scrumMeetingTime
-        }
+        csettings?.autoTrackStartOfDay = NSNumber(value: settings.autoTrackStartOfDay)
+        csettings?.autoTrackLunch = NSNumber(value: settings.autoTrackLunch)
+        csettings?.autoTrackScrum = NSNumber(value: settings.autoTrackScrum)
+        csettings?.startOfDayTime = settings.startOfDayTime
+        csettings?.lunchTime = settings.lunchTime
+        csettings?.scrumMeetingTime = settings.scrumMeetingTime
         
         return csettings!
     }
@@ -300,7 +288,7 @@ extension CoreDataRepository: Repository {
             csettings?.autoTrackLunch = 1
             csettings?.autoTrackScrum = 1
             csettings?.autoTrackStartOfDay = 0
-            csettings?.lunchTime = Date(hour: 13, minute: 20)
+            csettings?.lunchTime = Date(hour: 13, minute: 0)
             csettings?.scrumMeetingTime = Date(hour: 10, minute: 30)
             csettings?.startOfDayTime = Date(hour: 9, minute: 0)
             saveContext()
