@@ -11,22 +11,21 @@ import XCTest
 
 class TaskFinderTests: XCTestCase {
     
-    func testScrumMissing() {
+    func testMissingTasks() {
         
         let tasks = [
             Task(dateEnd: Date(), type: TaskType.issue),
             Task(dateEnd: Date(), type: TaskType.startDay),
-            Task(dateEnd: Date(), type: TaskType.lunch),
             Task(dateEnd: Date(), type: TaskType.meeting),
             Task(dateEnd: Date(), type: TaskType.gitCommit)
         ]
         
         let taskFinder = TaskFinder()
-        let scrumExists = taskFinder.scrumExists(tasks)
-        XCTAssertFalse(scrumExists)
+        XCTAssertFalse(taskFinder.scrumExists(tasks))
+        XCTAssertFalse(taskFinder.lunchExists(tasks))
     }
     
-    func testScrumExistence() {
+    func testExistingTasks() {
         
         let tasks = [
             Task(dateEnd: Date(), type: TaskType.issue),
@@ -38,7 +37,7 @@ class TaskFinderTests: XCTestCase {
         ]
         
         let taskFinder = TaskFinder()
-        let scrumExists = taskFinder.scrumExists(tasks)
-        XCTAssertTrue(scrumExists)
+        XCTAssertTrue(taskFinder.scrumExists(tasks))
+        XCTAssertTrue(taskFinder.lunchExists(tasks))
     }
 }

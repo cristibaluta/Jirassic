@@ -14,4 +14,9 @@ class TaskFinder {
 		
         return tasks.filter({ $0.taskType.intValue == TaskType.scrum.rawValue }).count > 0
 	}
+    
+    func lunchExists (_ tasks: [Task]) -> Bool {
+        
+        return tasks.filter({ $0.taskType.intValue == TaskType.lunch.rawValue }).count > 0
+    }
 }
