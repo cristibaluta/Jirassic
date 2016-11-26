@@ -11,6 +11,7 @@ import XCTest
 
 class CreateReportTests: XCTestCase {
     
+    let report = CreateReport()
 	var tasks = [Task]()
 	let kLunchLength = Double(2760)//46min ~ 45min
 	
@@ -21,52 +22,47 @@ class CreateReportTests: XCTestCase {
 
 		var t1 = Task()
 		t1.endDate = Date(year: 2015, month: 6, day: 1, hour: 9, minute: 45)
-        t1.taskNumber = "IOS-1"
-        t1.notes = "Note 1"
+        t1.taskNumber = "coderev"
+        t1.notes = "Code reviews"
         
-        var scrum = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 45), type: TaskType.scrum)
+        var scrum = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 47), type: TaskType.scrum)
         scrum.startDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 30)
+        
+        var lunch = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 13, minute: 51), type: TaskType.lunch)
+        lunch.startDate = Date(year: 2015, month: 6, day: 1, hour: 12, minute: 45)
         
         // t1_1 begins before the scrum but ends after the scrum. Subtract the scrum duration
 		var t1_1 = Task()
-        t1_1.endDate = Date(year: 2015, month: 6, day: 1, hour: 11, minute: 5)
+        t1_1.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 5)
         t1_1.taskNumber = "IOS-2"
         t1_1.notes = "Note 2"
 
-        let lunch = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 11, minute: 51), type: TaskType.lunch)
-		
 		var t1_2 = Task()
-        t1_2.endDate = Date(year: 2015, month: 6, day: 1, hour: 12, minute: 30)
+        t1_2.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
         t1_2.taskNumber = "IOS-3"
         t1_2.notes = "Note 3"
 		
 		var t1_3 = Task()
-        t1_3.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
-        t1_3.taskNumber = "IOS-1"
-        t1_3.notes = "Note 4"
-		
-		var t1_4 = Task()
-        t1_4.endDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
-        t1_4.taskNumber = "IOS-4"
-        t1_4.notes = "Note 5"
+        t1_3.endDate = Date(year: 2015, month: 6, day: 1, hour: 15, minute: 6)
+        t1_3.taskNumber = "coderev"
+        t1_3.notes = "Codereviews"
 		
 		var t2 = Task()
         t2.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
         t2.taskNumber = "IOS-4"
         t2.notes = "Note 6"
 		
-		tasks = [t0, t1, scrum, t1_1, lunch, t1_2, t1_3, t1_4, t2]
+		tasks = [t0, t1, scrum, lunch, t1_1, t1_2, t1_3, t2]
     }
     
     override func tearDown() {
 		tasks = []
         super.tearDown()
     }
-
+    
     func testRoundLessThan8HoursOfWork() {
 		
-		let report = CreateReport(tasks: self.tasks)
-		let reports = report.reports()
+		let reports = report.reports(fromTasks: tasks)
         
         var duration = 0.0
         for report in reports {
@@ -78,8 +74,7 @@ class CreateReportTests: XCTestCase {
     
     func testGroupByTaskNumber() {
         
-        let report = CreateReport(tasks: self.tasks)
-        let reports = report.reports()
+        let reports = report.reports(fromTasks: tasks)
         print(reports)
         XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch is ignored")
        // XCTAssert(reports[0].duration = )
@@ -93,8 +88,7 @@ class CreateReportTests: XCTestCase {
 		var tasks = self.tasks
 		tasks.append(t3)
         
-		let report = CreateReport(tasks: tasks)
-        let reports = report.reports()
+        let reports = report.reports(fromTasks: tasks)
 		
         var duration = 0.0
         for report in reports {

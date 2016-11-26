@@ -77,8 +77,8 @@ extension TasksPresenter: TasksPresenterInput {
         selectedListType = listType
         
         if listType == .report {
-            let reportInteractor = CreateReport(tasks: currentTasks)
-            let reports = reportInteractor.reports()
+            let reportInteractor = CreateReport()
+            let reports = reportInteractor.reports(fromTasks: currentTasks)
             currentReports = reports.reversed()
             userInterface!.showReports(currentReports, listType: selectedListType)
         }
