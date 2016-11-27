@@ -131,12 +131,13 @@ extension CoreDataRepository {
         return updatedCTask(ctask!, withTask: task)
     }
     
-    // Update only updatable properties. taskId can't be updated
+    // Update only updatable properties. objectId can't be updated
     fileprivate func updatedCTask (_ ctask: CTask, withTask task: Task) -> CTask {
         
         ctask.taskNumber = task.taskNumber
         ctask.taskType = NSNumber(value: task.taskType.rawValue)
         ctask.notes = task.notes
+        ctask.startDate = task.startDate
         ctask.endDate = task.endDate
         
         return ctask
