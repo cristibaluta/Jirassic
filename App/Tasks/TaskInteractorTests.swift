@@ -14,7 +14,7 @@ class TaskInteractorTests: XCTestCase {
     func testSaveDelete() {
         
         let repository = InMemoryCoreDataRepository()
-        let interactor = TaskInteractor(data: repository)
+        let interactor = TaskInteractor(repository: repository)
         
         let tasksBeforeInsert = repository.queryTasksInDay(Date())
         XCTAssert(tasksBeforeInsert.count == 0, "We added one task, we should receive one task")

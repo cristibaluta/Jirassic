@@ -12,9 +12,9 @@ import XCTest
 class ComputerWakeUpInteractorMock: ComputerWakeUpInteractor {
     var log_called = false
     var taskType_received: TaskType?
-    override func log (taskType: TaskType) {
+    override func log (task: Task) {
         log_called = true
-        taskType_received = taskType
+        taskType_received = TaskType(rawValue: Int(task.taskType))
     }
 }
 
@@ -25,17 +25,17 @@ class ComputerWakeUpInteractorTests: XCTestCase {
         let repository = InMemoryCoreDataRepository()
         
         let task = Task(dateEnd: Date(hour: 9, minute: 0), type: .startDay)
-        let saveInteractor = TaskInteractor(data: repository)
+        let saveInteractor = TaskInteractor(repository: repository)
         saveInteractor.saveTask(task)
         
-        let interactor = ComputerWakeUpInteractorMock(data: repository)
+        let interactor = ComputerWakeUpInteractorMock(repository: repository)
         
-        interactor.runWithLastSleepDate(Date(hour: 10, minute: 30))
+        interactor.runWith(lastSleepDate: Date(hour: 10, minute: 30))
         XCTAssert(interactor.log_called)
         XCTAssert(interactor.taskType_received == .scrum)
         
         interactor.log_called = false
-        interactor.runWithLastSleepDate(Date(hour: 12, minute: 45))
+        interactor.runWith(lastSleepDate: Date(hour: 12, minute: 45))
         XCTAssert(interactor.log_called)
         XCTAssert(interactor.taskType_received == .lunch)
     }

@@ -15,9 +15,11 @@ class TaskTypeEstimatorTests: XCTestCase {
     let settings = Settings(autoTrackStartOfDay: true,
                             autoTrackLunch: true,
                             autoTrackScrum: true,
+                            autoTrackMeetings: true,
                             startOfDayTime: Date(hour: 9, minute: 0),
                             lunchTime: Date(hour: 13, minute: 0),
-                            scrumMeetingTime: Date(hour: 10, minute: 30))
+                            scrumMeetingTime: Date(hour: 10, minute: 30),
+                            minMeetingDuration: Date(hour: 0, minute: 20))
 	
 	func testScrumBeginAt10_30() {
         let date = Date(hour: 10, minute: 30)
@@ -66,5 +68,11 @@ class TaskTypeEstimatorTests: XCTestCase {
 		let taskType = estimator.taskTypeAroundDate(date, withSettings: settings)
 		XCTAssertFalse(taskType == TaskType.lunch, "")
 	}
-	
+    
+    func testMeeting() {
+        let date = Date(timeIntervalSinceNow: -3600)
+        let taskType = estimator.taskTypeAroundDate(date, withSettings: settings)
+        XCTAssertTrue(taskType == TaskType.meeting, "")
+    }
+    
 }

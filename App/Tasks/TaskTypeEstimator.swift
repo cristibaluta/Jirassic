@@ -43,10 +43,14 @@ class TaskTypeEstimator: NSObject {
 			return TaskType.lunch
 		}
         
+        // Check if meeting
+        var settingsMeetingTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.minMeetingDuration)
+        let duration = Double(settingsMeetingTime.hour!).hoursToSec + Double(settingsMeetingTime.minute!).minToSec
         
-        // Check if date is after or around start of day
+        if abs(date.timeIntervalSinceNow) > duration {
+            return TaskType.meeting
+        }
         
-		
 		return TaskType.issue
 	}
 }

@@ -10,47 +10,58 @@ import Foundation
 
 class ComputerWakeUpInteractor: RepositoryInteractor {
     
-	func runWithLastSleepDate (_ date: Date?) {
+	func runWith (lastSleepDate date: Date?) {
 		
+        guard let date = date else {
+            return
+        }
 		let reader = ReadTasksInteractor(repository: self.repository)
 		let existingTasks = reader.tasksInDay(Date())
         let settings: Settings = SettingsInteractor().getAppSettings()
         let typeEstimator = TaskTypeEstimator()
         
         guard existingTasks.count > 0 else {
-            let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(Date(), withSettings: settings)
-            if estimatedType == .startDay && settings.autoTrackStartOfDay {
-                log(taskType: TaskType.startDay)
+            if settings.autoTrackStartOfDay {
+                let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
+                let startDate = gregorian.date(from: comps)
+                
+                if Date() > startDate! {
+                    log(task: Task(dateEnd: Date(), type: TaskType.startDay))
+                }
             }
             return
         }
         
-        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date!, withSettings: settings)
+        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date, withSettings: settings)
         
         switch estimatedType {
         case .scrum:
             if settings.autoTrackScrum && !TaskFinder().scrumExists(existingTasks) {
-                log(taskType: TaskType.scrum)
+                var task = Task(dateEnd: Date(), type: TaskType.scrum)
+                task.startDate = date
+                log(task: task)
             }
             break
         case .lunch:
-            if settings.autoTrackLunch && !TaskFinder().scrumExists(existingTasks) {
-                log(taskType: TaskType.lunch)
+            if settings.autoTrackLunch && !TaskFinder().lunchExists(existingTasks) {
+                var task = Task(dateEnd: Date(), type: TaskType.lunch)
+                task.startDate = date
+                log(task: task)
             }
             break
         case .meeting:
-            //                if settings.autoTrackMeetings {
-            log(taskType: TaskType.meeting)
-            //                }
+            if settings.autoTrackMeetings {
+                var task = Task(dateEnd: Date(), type: TaskType.meeting)
+                task.startDate = date
+                log(task: task)
+            }
             break
         default:
             break
         }
 	}
 
-    func log (taskType: TaskType) {
-        
-        let task = Task(dateEnd: Date(), type: taskType)
+    func log (task: Task) {
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
         InternalNotifications.notifyAboutNewlyAddedTask(task)

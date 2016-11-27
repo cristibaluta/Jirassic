@@ -23,7 +23,7 @@ class UserInteractorTests: XCTestCase {
         let tasks = repository.queryTasksInDay(Date())
         XCTAssert(tasks.count == 1, "We added one task, we should receive one task")
         
-        UserInteractor(data: repository).logout()
+        UserInteractor(repository: repository).logout()
         
         let tasksAfterLogout = repository.queryTasksInDay(Date())
         XCTAssert(tasksAfterLogout.count == 0, "After logging out there should be no task left")
