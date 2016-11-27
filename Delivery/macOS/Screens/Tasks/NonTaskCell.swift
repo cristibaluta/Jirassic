@@ -51,14 +51,12 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		self.butAdd?.isHidden = true
         self.butRemove?.wantsLayer = true
         self.butRemove?.layer?.backgroundColor = NSColor.clear.cgColor
-		self.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
 	}
 	
 	override func drawBackground (in dirtyRect: NSRect) {
-		
-		let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
-		NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
-		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+        
+		NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
+		let selectionPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
 		selectionPath.fill()
 	}
 	
@@ -89,6 +87,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	}
 	
 	func ensureTrackingArea() {
+        
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
 				options: [
@@ -105,8 +104,8 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		super.updateTrackingAreas()
         
 		self.ensureTrackingArea()
-		if (!(self.trackingAreas as NSArray).contains(self.trackingArea!)) {
-			self.addTrackingArea(self.trackingArea!);
+		if !(self.trackingAreas as NSArray).contains(self.trackingArea!) {
+			self.addTrackingArea(self.trackingArea!)
 		}
 	}
 }

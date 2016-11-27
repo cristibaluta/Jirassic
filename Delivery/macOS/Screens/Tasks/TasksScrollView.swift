@@ -10,6 +10,8 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
+let kGapBetweenCells = CGFloat(16.0)
+let kCellLeftPadding = CGFloat(10.0)
 
 class TasksScrollView: NSScrollView {
 	
@@ -26,9 +28,13 @@ class TasksScrollView: NSScrollView {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
-		
-		tableView?.dataSource = self
-		tableView?.delegate = self
+        
+//        tableView!.intercellSpacing = NSSize(width: 0, height: 10)
+        self.automaticallyAdjustsContentInsets = false
+        self.contentInsets = NSEdgeInsetsMake(0, 0, 0, 0)
+        tableView!.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
+		tableView!.dataSource = self
+		tableView!.delegate = self
 		
 		assert(NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) != nil, "err")

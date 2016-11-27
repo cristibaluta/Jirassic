@@ -544,15 +544,9 @@
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				4065D3791DD3B44200B73201 /* MessageViewController.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
-				4065D37A1DD3B44200B73201 /* NonTaskCell.swift */,
-				4065D37B1DD3B44200B73201 /* NonTaskCell.xib */,
-				4065D37C1DD3B44200B73201 /* ReportCell.swift */,
-				4065D37D1DD3B44200B73201 /* ReportCell.xib */,
-				4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */,
-				4065D37F1DD3B44200B73201 /* TaskCell.swift */,
-				4065D3801DD3B44200B73201 /* TaskCell.xib */,
-				4065D3821DD3B44200B73201 /* TaskCellTests.swift */,
-				4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */,
+				407318511DEAAAE00046F409 /* ReportCell */,
+				407318501DEAAACC0046F409 /* TaskCell */,
+				407318521DEAAB010046F409 /* NonTaskCell */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -619,6 +613,36 @@
 				4065D4061DD4532100B73201 /* Info.plist */,
 			);
 			path = JirassicTests;
+			sourceTree = "<group>";
+		};
+		407318501DEAAACC0046F409 /* TaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				4065D37F1DD3B44200B73201 /* TaskCell.swift */,
+				4065D3801DD3B44200B73201 /* TaskCell.xib */,
+				4065D3821DD3B44200B73201 /* TaskCellTests.swift */,
+				4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */,
+			);
+			name = TaskCell;
+			sourceTree = "<group>";
+		};
+		407318511DEAAAE00046F409 /* ReportCell */ = {
+			isa = PBXGroup;
+			children = (
+				4065D37C1DD3B44200B73201 /* ReportCell.swift */,
+				4065D37D1DD3B44200B73201 /* ReportCell.xib */,
+				4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */,
+			);
+			name = ReportCell;
+			sourceTree = "<group>";
+		};
+		407318521DEAAB010046F409 /* NonTaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				4065D37A1DD3B44200B73201 /* NonTaskCell.swift */,
+				4065D37B1DD3B44200B73201 /* NonTaskCell.xib */,
+			);
+			name = NonTaskCell;
 			sourceTree = "<group>";
 		};
 		5685C7621DE8721100CA545E /* Account */ = {

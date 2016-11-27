@@ -9,15 +9,23 @@
 import Cocoa
 
 class TaskCell: NSTableRowView, CellProtocol {
-	
+    
+    @IBOutlet var contentView: NSView?
+    
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet fileprivate var dateEndTextField: NSTextField?
 	@IBOutlet fileprivate var durationTextField: NSTextField?
 	@IBOutlet fileprivate var issueNrTextField: NSTextField?
-	@IBOutlet fileprivate var notesTextField: NSTextField?
+    @IBOutlet fileprivate var notesTextField: NSTextField?
+    @IBOutlet fileprivate var notesTextFieldRightConstrain: NSLayoutConstraint?
+    
+    @IBOutlet fileprivate var butCopy: NSButton?
+    @IBOutlet fileprivate var butAdd: NSButton?
 	@IBOutlet fileprivate var butRemove: NSButton?
-	@IBOutlet fileprivate var butAdd: NSButton?
-	@IBOutlet fileprivate var butCopy: NSButton?
+    
+    @IBOutlet fileprivate var line1: NSBox?
+    @IBOutlet fileprivate var line2: NSBox?
+    @IBOutlet fileprivate var line3: NSBox?
 	
 	fileprivate var isEditing = false
 	fileprivate var wasEdited = false
@@ -42,9 +50,9 @@ class TaskCell: NSTableRowView, CellProtocol {
 		}
 		set {
             _dateEnd = newValue.dateEnd.HHmm()
-            self.dateEndTextField!.stringValue = _dateEnd
-			self.issueNrTextField!.stringValue = newValue.taskNumber
-			self.notesTextField!.stringValue = newValue.notes
+            dateEndTextField!.stringValue = _dateEnd
+			issueNrTextField!.stringValue = newValue.taskNumber
+			notesTextField!.stringValue = newValue.notes
 		}
 	}
 	var duration: String {
@@ -52,13 +60,14 @@ class TaskCell: NSTableRowView, CellProtocol {
 			return durationTextField!.stringValue
 		}
 		set {
-			self.durationTextField!.stringValue = newValue
+			durationTextField!.stringValue = newValue
 		}
 	}
     
 	override func awakeFromNib() {
 		showMouseOverControls(false)
-		selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
+        notesTextFieldRightConstrain!.constant = 0
+//		selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
 	}
 	
 	
@@ -79,33 +88,27 @@ class TaskCell: NSTableRowView, CellProtocol {
 	
 	override func drawBackground (in dirtyRect: NSRect) {
 		
+        let width = dirtyRect.size.width - kCellLeftPadding * 2
+        let height = dirtyRect.size.height - kGapBetweenCells
 		if (self.mouseInside) {
-			let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
-			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
-			NSColor(calibratedWhite: 0.3, alpha: 1.0).setStroke()
+            notesTextFieldRightConstrain!.constant = 140
+			let selectionRect = NSRect(x: kCellLeftPadding, y: 1, width: width, height: height)
+			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
+			NSColor(calibratedWhite: 0.0, alpha: 0.4).setStroke()
 //			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-			selectionPath.fill()
+//			selectionPath.fill()
 			selectionPath.stroke()
 		}
 		else {
-			let selectionRect = NSRect(x: 10, y: 6, width: dirtyRect.size.width-20, height: dirtyRect.size.height-12)
-			NSColor(calibratedWhite: 0.80, alpha: 1.0).setFill()
+            notesTextFieldRightConstrain!.constant = 0
+			let selectionRect = NSRect(x: kCellLeftPadding, y: 0, width: width, height: height)
+			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 			selectionPath.fill()
 		}
 	}
-	
-	override func drawSelection (in dirtyRect: NSRect) {
-		
-		let selectionRect = NSInsetRect(self.bounds, 2.5, 2.5)
-		NSColor(calibratedWhite: 0.65, alpha: 1.0).setStroke()
-		NSColor(calibratedWhite: 0.82, alpha: 1.0).setFill()
-		let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-		selectionPath.fill()
-		selectionPath.stroke()
-	}
-	
+    
 	
 	// MARK: mouse
 	
@@ -125,6 +128,9 @@ class TaskCell: NSTableRowView, CellProtocol {
 		self.butRemove?.isHidden = !show
 		self.butAdd?.isHidden = !show
 		self.butCopy?.isHidden = !show
+        line1?.isHidden = !show
+        line2?.isHidden = !show
+        line3?.isHidden = !show
 		self.dateEndTextField?.isEditable = show
 		self.durationTextField?.isEditable = show
 	}
