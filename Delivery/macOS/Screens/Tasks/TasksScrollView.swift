@@ -15,12 +15,12 @@ let kCellLeftPadding = CGFloat(10.0)
 
 class TasksScrollView: NSScrollView {
 	
-	@IBOutlet fileprivate var tableView: NSTableView?
+	@IBOutlet fileprivate var tableView: NSTableView!
     fileprivate var tempCell: ReportCell?
 	
     var listType: ListType = ListType.allTasks
-    var tasks: [Task]? = []
-    var reports: [Report]?
+    var tasks = [Task]()
+    var reports = [Report]()
 	var didSelectRow: ((_ row: Int) -> ())?
 	var didAddRow: ((_ row: Int) -> ())?
 	var didRemoveRow: ((_ row: Int) -> ())?
@@ -29,7 +29,6 @@ class TasksScrollView: NSScrollView {
 	override func awakeFromNib() {
         super.awakeFromNib()
         
-//        tableView!.intercellSpacing = NSSize(width: 0, height: 10)
         self.automaticallyAdjustsContentInsets = false
         self.contentInsets = NSEdgeInsetsMake(0, 0, 0, 0)
         tableView!.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
@@ -41,41 +40,41 @@ class TasksScrollView: NSScrollView {
         assert(NSNib(nibNamed: String(describing: ReportCell.self), bundle: Bundle.main) != nil, "err")
 		
 		if let nib = NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) {
-			tableView?.register(nib, forIdentifier: String(describing: TaskCell.self))
+			tableView.register(nib, forIdentifier: String(describing: TaskCell.self))
 		}
 		if let nib = NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) {
-			tableView?.register(nib, forIdentifier: String(describing: NonTaskCell.self))
+			tableView.register(nib, forIdentifier: String(describing: NonTaskCell.self))
         }
         if let nib = NSNib(nibNamed: String(describing: ReportCell.self), bundle: Bundle.main) {
-            tableView?.register(nib, forIdentifier: String(describing: ReportCell.self))
+            tableView.register(nib, forIdentifier: String(describing: ReportCell.self))
         }
 	}
 	
 	func reloadData() {
-		self.tableView?.reloadData()
+		self.tableView!.reloadData()
 	}
 	
 	func addTask (_ task: Task) {
-		tasks?.insert(task, at: 0)
+		tasks.insert(task, at: 0)
 	}
 	
     func removeTaskAtRow (_ row: Int) {
-		tasks?.remove(at: row)
-        self.tableView?.removeRows(at: IndexSet(integer: row), withAnimation: NSTableViewAnimationOptions.effectFade)
+		tasks.remove(at: row)
+        self.tableView.removeRows(at: IndexSet(integer: row), withAnimation: NSTableViewAnimationOptions.effectFade)
 	}
     
     fileprivate func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
         
         var cell: CellProtocol? = nil
         if listType == ListType.report {
-            cell = self.tableView?.make(withIdentifier: String(describing: ReportCell.self), owner: self) as? ReportCell
+            cell = self.tableView.make(withIdentifier: String(describing: ReportCell.self), owner: self) as? ReportCell
         } else {
             switch taskType {
                 case TaskType.issue, TaskType.gitCommit:
-                    cell = self.tableView?.make(withIdentifier: String(describing: TaskCell.self), owner: self) as? TaskCell
+                    cell = self.tableView.make(withIdentifier: String(describing: TaskCell.self), owner: self) as? TaskCell
                     break
                 default:
-                    cell = self.tableView?.make(withIdentifier: String(describing: NonTaskCell.self), owner: self) as? NonTaskCell
+                    cell = self.tableView.make(withIdentifier: String(describing: NonTaskCell.self), owner: self) as? NonTaskCell
                     break
             }
         }
@@ -90,13 +89,13 @@ class TasksScrollView: NSScrollView {
 extension TasksScrollView: NSTableViewDataSource {
 	
 	func numberOfRows (in aTableView: NSTableView) -> Int {
-        return listType == ListType.report ? reports!.count : tasks!.count
+        return listType == ListType.report ? reports.count : tasks.count
 	}
 	
 	func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         
         if listType == ListType.report {
-            let theData = reports![row]
+            let theData = reports[row]
             // Calculate height to fit content
             if tempCell == nil {
                 tempCell = tableView.make(withIdentifier: String(describing: ReportCell.self), owner: self) as? ReportCell
@@ -106,7 +105,7 @@ extension TasksScrollView: NSTableViewDataSource {
             return tempCell!.heightThatFits
         }
         else {
-            let theData = tasks![row]
+            let theData = tasks[row]
             // Return predefined height
             switch theData.taskType {
                 case TaskType.issue, TaskType.gitCommit:
@@ -125,16 +124,16 @@ extension TasksScrollView: NSTableViewDelegate {
                     row: Int) -> NSView? {
         
         if listType == ListType.report {
-            let theData = reports![row]
+            let theData = reports[row]
             let cell: CellProtocol = cellForTaskType(TaskType.issue)
             ReportCellPresenter(cell: cell).present(theReport: theData)
             
             return cell as? NSView
         }
         else {
-            var theData = tasks![row]
+            var theData = tasks[row]
             //let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
-            let thePreviousData: Task? = row == 0 ? nil : tasks![row-1]
+            let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
             var cell: CellProtocol = cellForTaskType(theData.taskType)
             TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
             
@@ -143,7 +142,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 theData.taskNumber = updatedData.taskNumber
                 theData.notes = updatedData.notes
                 theData.endDate = updatedData.dateEnd
-                self?.tasks![row] = theData// save the changes locally because the struct is passed by copying
+                self?.tasks[row] = theData// save the changes locally because the struct is passed by copying
                 let saveInteractor = TaskInteractor(repository: localRepository)
                 saveInteractor.saveTask(theData)
                 tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])

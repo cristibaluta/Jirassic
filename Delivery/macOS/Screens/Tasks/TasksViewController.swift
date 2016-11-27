@@ -21,6 +21,7 @@ class TasksViewController: NSViewController {
     var tasksPresenter: TasksPresenterInput?
 	
 	override func awakeFromNib() {
+        super.awakeFromNib()
 		view.layer = CALayer()
 		view.wantsLayer = true
 	}
@@ -59,8 +60,8 @@ class TasksViewController: NSViewController {
 	}
     
     fileprivate func hideControls (_ hide: Bool) {
-        butSettings?.isHidden = hide
-        butQuit?.isHidden = hide
+        butSettings!.isHidden = hide
+        butQuit!.isHidden = hide
         listSegmentedControl?.isHidden = hide
     }
 }
@@ -92,8 +93,8 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showMessage (_ message: MessageViewModel) {
         
-        appWireframe?.presentMessage(message, intoSplitView: splitView!)
-        appWireframe?.messageViewController.didPressButton = tasksPresenter?.messageButtonDidPress
+        appWireframe!.presentMessage(message, intoSplitView: splitView!)
+        appWireframe!.messageViewController.didPressButton = tasksPresenter?.messageButtonDidPress
     }
     
     func showDates (_ weeks: [Week]) {
@@ -106,7 +107,7 @@ extension TasksViewController: TasksPresenterOutput {
         
         tasksScrollView!.listType = listType
         tasksScrollView!.tasks = tasks
-        tasksScrollView!.reports = nil
+        tasksScrollView!.reports = []
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
     }
@@ -114,7 +115,7 @@ extension TasksViewController: TasksPresenterOutput {
     func showReports (_ reports: [Report], listType: ListType) {
         
         tasksScrollView!.listType = listType
-        tasksScrollView!.tasks = nil
+        tasksScrollView!.tasks = []
         tasksScrollView!.reports = reports
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
@@ -133,18 +134,22 @@ extension TasksViewController: TasksPresenterOutput {
         appWireframe!.presentNewTaskController()
         appWireframe!.newTaskViewController.dateEnd = Date()
         appWireframe!.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
-            self?.tasksPresenter!.insertTaskWithData(taskData)
-            self?.tasksPresenter!.updateNoTasksState()
-            self?.tasksPresenter!.reloadData()
-            self?.appWireframe!.removeNewTaskController()
-            self?.splitView!.isHidden = false
-            self?.hideControls(false)
+            if let strongSelf = self {
+                strongSelf.tasksPresenter!.insertTaskWithData(taskData)
+                strongSelf.tasksPresenter!.updateNoTasksState()
+                strongSelf.tasksPresenter!.reloadData()
+                strongSelf.appWireframe!.removeNewTaskController()
+                strongSelf.splitView!.isHidden = false
+                strongSelf.hideControls(false)
+            }
         }
         appWireframe!.newTaskViewController.onCancelChosen = { [weak self] in
-            self?.appWireframe?.removeNewTaskController()
-            self?.splitView?.isHidden = false
-            self?.tasksPresenter?.updateNoTasksState()
-            self?.hideControls(false)
+            if let strongSelf = self {
+                strongSelf.appWireframe!.removeNewTaskController()
+                strongSelf.splitView!.isHidden = false
+                strongSelf.tasksPresenter!.updateNoTasksState()
+                strongSelf.hideControls(false)
+            }
         }
     }
 }

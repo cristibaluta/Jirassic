@@ -67,7 +67,6 @@ class TaskCell: NSTableRowView, CellProtocol {
 	override func awakeFromNib() {
 		showMouseOverControls(false)
         notesTextFieldRightConstrain!.constant = 0
-//		selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
 	}
 	
 	
@@ -89,8 +88,9 @@ class TaskCell: NSTableRowView, CellProtocol {
 	override func drawBackground (in dirtyRect: NSRect) {
 		
         let width = dirtyRect.size.width - kCellLeftPadding * 2
-        let height = dirtyRect.size.height - kGapBetweenCells
-		if (self.mouseInside) {
+        let height = dirtyRect.size.height - kGapBetweenCells - 1
+        
+		if self.mouseInside {
             notesTextFieldRightConstrain!.constant = 140
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 1, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
@@ -99,10 +99,9 @@ class TaskCell: NSTableRowView, CellProtocol {
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 //			selectionPath.fill()
 			selectionPath.stroke()
-		}
-		else {
+		} else {
             notesTextFieldRightConstrain!.constant = 0
-			let selectionRect = NSRect(x: kCellLeftPadding, y: 0, width: width, height: height)
+			let selectionRect = NSRect(x: kCellLeftPadding, y: 1, width: width, height: height)
 			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 			selectionPath.fill()
@@ -118,7 +117,7 @@ class TaskCell: NSTableRowView, CellProtocol {
 		self.setNeedsDisplay(self.frame)
 	}
 	
-	override func mouseExited (with theEvent: NSEvent) {
+    override func mouseExited (with theEvent: NSEvent) {
 		self.mouseInside = false
 		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplay(self.frame)
@@ -136,7 +135,7 @@ class TaskCell: NSTableRowView, CellProtocol {
 	}
 	
 	func ensureTrackingArea() {
-		if (trackingArea == nil) {
+		if trackingArea == nil {
 			trackingArea = NSTrackingArea(
 				rect: NSZeroRect,
 				options: [NSTrackingAreaOptions.inVisibleRect, .activeAlways, .mouseEnteredAndExited],
@@ -173,9 +172,9 @@ extension TaskCell: NSTextFieldDelegate {
 	}
 	
 	override func controlTextDidEndEditing (_ obj: Notification) {
-		if wasEdited {
+        if wasEdited {
+            wasEdited = false
 			self.didEndEditingCell?(self)
-			wasEdited = false
 		}
 	}
 	
