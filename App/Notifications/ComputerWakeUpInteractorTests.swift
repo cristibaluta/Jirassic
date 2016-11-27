@@ -14,7 +14,7 @@ class ComputerWakeUpInteractorMock: ComputerWakeUpInteractor {
     var taskType_received: TaskType?
     override func log (task: Task) {
         log_called = true
-        taskType_received = TaskType(rawValue: Int(task.taskType))
+        taskType_received = task.taskType
     }
 }
 

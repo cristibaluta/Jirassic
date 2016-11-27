@@ -64,19 +64,19 @@ class TasksScrollView: NSScrollView {
         self.tableView?.removeRows(at: IndexSet(integer: row), withAnimation: NSTableViewAnimationOptions.effectFade)
 	}
     
-    fileprivate func cellForTaskType (_ taskType: NSNumber) -> CellProtocol {
+    fileprivate func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
         
         var cell: CellProtocol? = nil
         if listType == ListType.report {
             cell = self.tableView?.make(withIdentifier: String(describing: ReportCell.self), owner: self) as? ReportCell
         } else {
-            switch Int(taskType.int32Value) {
-            case TaskType.issue.rawValue, TaskType.gitCommit.rawValue:
-                cell = self.tableView?.make(withIdentifier: String(describing: TaskCell.self), owner: self) as? TaskCell
-                break
-            default:
-                cell = self.tableView?.make(withIdentifier: String(describing: NonTaskCell.self), owner: self) as? NonTaskCell
-                break
+            switch taskType {
+                case TaskType.issue, TaskType.gitCommit:
+                    cell = self.tableView?.make(withIdentifier: String(describing: TaskCell.self), owner: self) as? TaskCell
+                    break
+                default:
+                    cell = self.tableView?.make(withIdentifier: String(describing: NonTaskCell.self), owner: self) as? NonTaskCell
+                    break
             }
         }
         guard cell != nil else {
@@ -108,8 +108,8 @@ extension TasksScrollView: NSTableViewDataSource {
         else {
             let theData = tasks![row]
             // Return predefined height
-            switch Int(theData.taskType.int32Value) {
-                case TaskType.issue.rawValue, TaskType.gitCommit.rawValue:
+            switch theData.taskType {
+                case TaskType.issue, TaskType.gitCommit:
                     return kTaskCellHeight
                 default:
                     return kNonTaskCellHeight
@@ -126,7 +126,7 @@ extension TasksScrollView: NSTableViewDelegate {
         
         if listType == ListType.report {
             let theData = reports![row]
-            let cell: CellProtocol = cellForTaskType(NSNumber(value: 0))
+            let cell: CellProtocol = cellForTaskType(TaskType.issue)
             ReportCellPresenter(cell: cell).present(theReport: theData)
             
             return cell as? NSView

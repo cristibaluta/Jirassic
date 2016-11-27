@@ -15,7 +15,9 @@ enum TaskType: Int {
 	case scrum = 2
 	case lunch = 3
 	case meeting = 4
-	case gitCommit = 5
+    case gitCommit = 5
+    case nap = 6
+    case learning = 7
 }
 
 enum TaskSubtype: Int {
@@ -28,7 +30,11 @@ enum TaskSubtype: Int {
 	case lunchEnd = 5
 //	case MeetingBegin = 6
 	case meetingEnd = 7
-	case gitCommitEnd = 8
+    case gitCommitEnd = 8
+//    case napBegin = 9
+    case napEnd = 10
+    //    case learningBegin = 11
+    case learningEnd = 12
 }
 
 struct Task {
@@ -37,24 +43,24 @@ struct Task {
 	var endDate: Date
 	var notes: String?
 	var taskNumber: String?
-	var taskType: NSNumber
-	var taskId: String
+	var taskType: TaskType
+	var objectId: String
 }
 
 extension Task {
 	
     init () {
         self.endDate = Date()
-        self.taskType = NSNumber(value: TaskType.issue.rawValue)
-        self.taskId = String.random()
+        self.taskType = TaskType.issue
+        self.objectId = String.random()
     }
     
 	init (dateEnd: Date, type: TaskType) {
 		
 		self.endDate = dateEnd
 		self.taskNumber = nil
-		self.taskType = NSNumber(value: type.rawValue)
-        self.taskId = String.random()
+		self.taskType = type
+        self.objectId = String.random()
 		
 		switch (type) {
 			case TaskType.issue:	self.notes = ""
@@ -62,21 +68,25 @@ extension Task {
 			case TaskType.scrum:	self.notes = "Scrum meeting"
 			case TaskType.lunch:	self.notes = "Lunch break"
 			case TaskType.meeting:	self.notes = "Internal meeting"
-			case TaskType.gitCommit:self.notes = ""
+            case TaskType.gitCommit:self.notes = ""
+            case TaskType.nap:      self.notes = "Nap, I was tired"
+            case TaskType.learning: self.notes = "Learning session"
 		}
 	}
 	
 	init (subtype: TaskSubtype) {
 		
         self.endDate = Date()
-        self.taskId = String.random()
+        self.objectId = String.random()
         
 		switch (subtype) {
-			case .issueEnd:		self.taskType = NSNumber(value: TaskType.issue.rawValue)
-			case .scrumEnd:		self.taskType = NSNumber(value: TaskType.scrum.rawValue)
-			case .lunchEnd:		self.taskType = NSNumber(value: TaskType.lunch.rawValue)
-			case .meetingEnd:	self.taskType = NSNumber(value: TaskType.meeting.rawValue)
-			case .gitCommitEnd:	self.taskType = NSNumber(value: TaskType.gitCommit.rawValue)
+			case .issueEnd:		self.taskType = TaskType.issue
+			case .scrumEnd:		self.taskType = TaskType.scrum
+			case .lunchEnd:		self.taskType = TaskType.lunch
+			case .meetingEnd:	self.taskType = TaskType.meeting
+            case .gitCommitEnd:	self.taskType = TaskType.gitCommit
+            case .napEnd:       self.taskType = TaskType.nap
+            case .learningEnd:  self.taskType = TaskType.learning
 		}
 	}
 }

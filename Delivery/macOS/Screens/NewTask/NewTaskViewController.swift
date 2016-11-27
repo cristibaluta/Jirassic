@@ -85,6 +85,8 @@ class NewTaskViewController: NSViewController {
             case 1: return .scrumEnd
             case 2: return .meetingEnd
             case 3: return .lunchEnd
+            case 4: return .napEnd
+            case 5: return .learningEnd
             default: return .issueEnd
         }
     }
@@ -136,6 +138,12 @@ extension NewTaskViewController {
             break
         case .gitCommitEnd:
             
+            break
+        case .napEnd:
+            issueIdTextField?.stringValue = "nap"
+            break
+        case .learningEnd:
+            issueIdTextField?.stringValue = "learning"
             break
         }
     }

@@ -72,7 +72,7 @@ extension CreateReport {
         
         for task in tasks {
             
-            guard task.taskType.intValue != TaskType.lunch.rawValue else {
+            guard task.taskType != TaskType.lunch else {
                 lunchDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
                 continue
             }
@@ -119,7 +119,7 @@ extension CreateReport {
         
         var groups = [String: [Task]]()
         for task in tasks {
-            if task.taskType.intValue == TaskType.startDay.rawValue {
+            if task.taskType == TaskType.startDay {
                 continue
             }
             let taskNumber = task.taskNumber ?? String.random()
@@ -143,7 +143,7 @@ extension CreateReport {
             
             for task in tasks {
                 
-                guard task.taskType.intValue != TaskType.lunch.rawValue else {
+                guard task.taskType != TaskType.lunch else {
                     continue
                 }
                 

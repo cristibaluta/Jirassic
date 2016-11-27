@@ -28,7 +28,7 @@ extension NSApplication {
                 let notes = dict["notes"] ?? ""
                 let branchName = dict["branchName"] ?? ""
                 let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : branchName
-                let taskType = dict["taskType"] != nil ? Int(dict["taskType"]!) : TaskType.gitCommit.rawValue
+                let taskType = dict["taskType"] != nil ? TaskType(rawValue: Int(dict["taskType"]!)!)! : TaskType.gitCommit
                 let informativeText = "\(taskNumber): \(notes)"
                 
                 let saveInteractor = TaskInteractor(repository: localRepository)
@@ -44,8 +44,8 @@ extension NSApplication {
                     endDate: Date(),
                     notes: notes,
                     taskNumber: taskNumber,
-                    taskType: NSNumber(value: taskType!),
-                    taskId: String.random()
+                    taskType: taskType,
+                    objectId: String.random()
                 )
                 saveInteractor.saveTask(task)
                 

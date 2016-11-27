@@ -288,7 +288,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zcb-sO-3NH">
-                                <rect key="frame" x="111" y="356" width="228" height="20"/>
+                                <rect key="frame" x="54" y="356" width="342" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="EqY-k0-xKz"/>
                                 </constraints>
@@ -299,6 +299,8 @@
                                         <segment label="Scrum" selected="YES" tag="1"/>
                                         <segment label="Meeting"/>
                                         <segment label="Food"/>
+                                        <segment label="Nap"/>
+                                        <segment label="Learning"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>

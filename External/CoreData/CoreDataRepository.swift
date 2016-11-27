@@ -96,12 +96,12 @@ extension CoreDataRepository {
     
     fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
         
-        return Task(startDate: nil,
+        return Task(startDate: ctask.startDate,
                     endDate: ctask.endDate!,
                     notes: ctask.notes,
                     taskNumber: ctask.taskNumber,
-                    taskType: ctask.taskType!,
-                    taskId: ctask.taskId!
+                    taskType: TaskType(rawValue: ctask.taskType!.intValue)!,
+                    objectId: ctask.objectId!
         )
     }
     
@@ -117,15 +117,15 @@ extension CoreDataRepository {
     
     fileprivate func ctaskFromTask (_ task: Task) -> CTask {
         
-        let taskPredicate = NSPredicate(format: "taskId == %@", task.taskId)
+        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
         let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
         var ctask: CTask? = tasks.first
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObject(forEntityName: String(describing: CTask.self),
                     into: managedObjectContext!) as? CTask
         }
-        if ctask?.taskId == nil {
-            ctask?.taskId = task.taskId
+        if ctask?.objectId == nil {
+            ctask?.objectId = task.objectId
         }
         
         return updatedCTask(ctask!, withTask: task)
@@ -135,7 +135,7 @@ extension CoreDataRepository {
     fileprivate func updatedCTask (_ ctask: CTask, withTask task: Task) -> CTask {
         
         ctask.taskNumber = task.taskNumber
-        ctask.taskType = task.taskType
+        ctask.taskType = NSNumber(value: task.taskType.rawValue)
         ctask.notes = task.notes
         ctask.endDate = task.endDate
         

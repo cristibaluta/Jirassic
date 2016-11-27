@@ -13,10 +13,12 @@ class TaskTests: XCTestCase {
 	
     func testTasksFromSubtype() {
 		
-		XCTAssert(Task(subtype: .issueEnd).taskType.intValue == TaskType.issue.rawValue, "")
-		XCTAssert(Task(subtype: .scrumEnd).taskType.intValue == TaskType.scrum.rawValue, "")
-		XCTAssert(Task(subtype: .lunchEnd).taskType.intValue == TaskType.lunch.rawValue, "")
-		XCTAssert(Task(subtype: .meetingEnd).taskType.intValue == TaskType.meeting.rawValue, "")
-		XCTAssert(Task(subtype: .gitCommitEnd).taskType.intValue == TaskType.gitCommit.rawValue, "")
+		XCTAssert(Task(subtype: .issueEnd).taskType == TaskType.issue)
+		XCTAssert(Task(subtype: .scrumEnd).taskType == TaskType.scrum)
+		XCTAssert(Task(subtype: .lunchEnd).taskType == TaskType.lunch)
+		XCTAssert(Task(subtype: .meetingEnd).taskType == TaskType.meeting)
+        XCTAssert(Task(subtype: .gitCommitEnd).taskType == TaskType.gitCommit)
+        XCTAssert(Task(subtype: .napEnd).taskType == TaskType.nap)
+        XCTAssert(Task(subtype: .learningEnd).taskType == TaskType.learning)
     }
 }

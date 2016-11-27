@@ -15,7 +15,8 @@
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastModifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="taskId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="taskNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
@@ -27,7 +28,7 @@
     </entity>
     <elements>
         <element name="CSettings" positionX="-54" positionY="45" width="128" height="165"/>
-        <element name="CTask" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="CTask" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="CUser" positionX="-54" positionY="54" width="128" height="105"/>
     </elements>
 </model>

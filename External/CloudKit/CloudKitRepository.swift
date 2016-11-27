@@ -102,7 +102,7 @@ extension CloudKitRepository: RepositoryTasks {
         var shouldRemove = false
         for task in tasks {
             indexToRemove += 1
-            if task.taskId == taskToDelete.taskId {
+            if task.objectId == taskToDelete.objectId {
                 shouldRemove = true
 //                ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
 //                    ptask.deleteEventually()
@@ -120,13 +120,13 @@ extension CloudKitRepository: RepositoryTasks {
         RCLogO("Update task \(task)")
         // Update local array
         for i in 0..<tasks.count {
-            if task.taskId == tasks[i].taskId {
+            if task.objectId == tasks[i].objectId {
                 tasks[i] = task
                 break
             }
         }
         
-        let ID = CKRecordID(recordName: task.taskId)
+        let ID = CKRecordID(recordName: task.objectId)
         let cktask = CKRecord(recordType: "Task", recordID: ID)
         cktask["notes"] = task.notes as CKRecordValue?
         

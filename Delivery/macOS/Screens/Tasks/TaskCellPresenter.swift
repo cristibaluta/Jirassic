@@ -24,22 +24,22 @@ class TaskCellPresenter: NSObject {
 		
         if let thePreviosData = previousTask {
             // When we have a previous item to compare dates with
-            switch (Int(theTask.taskType.int32Value)) {
+            switch theTask.taskType {
                 
-            case TaskType.issue.rawValue:
-                let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
-                duration = Date(timeIntervalSince1970: diff).HHmmGMT()
-                statusImage = NSImage(named: NSImageNameStatusAvailable)
-                break
-                
-            case TaskType.gitCommit.rawValue:
-                let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
-                duration = Date(timeIntervalSince1970: diff).HHmmGMT()
-                statusImage = NSImage(named: "GitIcon")
-                break
-                
-            default:
-                statusImage = NSImage(named: NSImageNameStatusUnavailable)
+                case TaskType.issue:
+                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
+                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
+                    statusImage = NSImage(named: NSImageNameStatusAvailable)
+                    break
+                    
+                case TaskType.gitCommit:
+                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
+                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
+                    statusImage = NSImage(named: "GitIcon")
+                    break
+                    
+                default:
+                    statusImage = NSImage(named: NSImageNameStatusUnavailable)
             }
         } else {
             statusImage = nil
