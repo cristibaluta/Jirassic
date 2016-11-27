@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         localRepository = CoreDataRepository()
 //		remoteRepository = CloudKitRepository()
-		
+        
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
 				if (wself.menu.iconView?.isSelected == true) {

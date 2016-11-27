@@ -18,7 +18,7 @@
                                 <rect key="frame" x="18" y="420" width="458" height="27"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Settings" id="GLz-DY-qQW">
                                     <font key="font" metaFont="system" size="22"/>
-                                    <color key="textColor" red="1" green="0.37857353919999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
