@@ -125,14 +125,14 @@ extension TasksViewController: TasksPresenterOutput {
         calendarScrollView!.selectDay(day)
     }
     
-    func presentNewTaskController() {
+    func presentNewTaskController (withInitialDate date: Date) {
         
         splitView!.isHidden = true
         appWireframe!.removeMessage()
         hideControls(true)
         
         appWireframe!.presentNewTaskController()
-        appWireframe!.newTaskViewController.dateEnd = Date()
+        appWireframe!.newTaskViewController.dateEnd = date
         appWireframe!.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
             if let strongSelf = self {
                 strongSelf.tasksPresenter!.insertTaskWithData(taskData)

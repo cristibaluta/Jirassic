@@ -23,12 +23,14 @@ class NewTaskViewController: NSViewController {
     fileprivate let predictor = PredictiveTimeTyping()
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
+    var initialDate = Date()
 	var dateEnd: Date {
 		get {
 			let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
-			return Date().dateByUpdating(hour: hm.hour, minute: hm.min)
+			return self.initialDate.dateByUpdating(hour: hm.hour, minute: hm.min)
 		}
 		set {
+            self.initialDate = newValue
 			self.endDateTextField?.stringValue = newValue.HHmm()
 		}
 	}
@@ -38,7 +40,7 @@ class NewTaskViewController: NSViewController {
                 return 0.0
             }
             let hm = Date.parseHHmm(self.durationTextField!.stringValue)
-            return Double(hm.min * 60 + hm.hour * 3600)
+            return Double(hm.min).minToSec + Double(hm.hour).hoursToSec
         }
     }
 	var notes: String {

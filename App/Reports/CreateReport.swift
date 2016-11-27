@@ -146,11 +146,14 @@ extension CreateReport {
                 guard task.taskType != TaskType.lunch else {
                     continue
                 }
+                guard let startDate = task.startDate else {
+                    continue
+                }
                 
                 var report = reportsMap[taskNumber]
                 
                 if report == nil {
-                    report = Report(duration: task.endDate.timeIntervalSince(task.startDate!),
+                    report = Report(duration: task.endDate.timeIntervalSince(startDate),
                                     notes: "• \(task.notes ?? "")",
                                     taskNumber: taskNumber)
                 } else {

@@ -29,7 +29,7 @@ protocol TasksPresenterOutput {
     func showTasks (_ tasks: [Task], listType: ListType)
     func showReports (_ reports: [Report], listType: ListType)
     func selectDay (_ day: Day)
-    func presentNewTaskController()
+    func presentNewTaskController (withInitialDate date: Date)
 }
 
 enum ListType: Int {
@@ -111,7 +111,7 @@ extension TasksPresenter: TasksPresenterInput {
         if currentTasks.count == 0 {
             startDay()
         } else {
-            userInterface!.presentNewTaskController()
+            userInterface!.presentNewTaskController(withInitialDate: Date())
         }
     }
     
@@ -137,7 +137,16 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func insertTaskAfterRow (_ row: Int) {
-        userInterface!.presentNewTaskController()
+        
+        guard currentTasks.count > row + 1 else {
+            userInterface!.presentNewTaskController(withInitialDate: Date())
+            return
+        }
+        let taskBefore = currentTasks[row]
+        let taskAfter = currentTasks[row+1]
+        let middleTimestamp = taskAfter.endDate.timeIntervalSince(taskBefore.endDate) / 2
+        let middleDate = taskBefore.endDate.addingTimeInterval(middleTimestamp)
+        userInterface!.presentNewTaskController(withInitialDate: middleDate)
     }
     
     func removeTaskAtRow (_ row: Int) {

@@ -127,6 +127,11 @@ extension Date {
 		
 		return daysRange!.count as Int
 	}
+    
+    func components() -> (hour: Int, minute: Int) {
+        let comps = gregorian.dateComponents(ymdUnitFlags, from: self)
+        return (hour: comps.hour!, minute: comps.minute!)
+    }
 	
 	@inline(__always) func year() -> Int {
 		let comps = gregorian.dateComponents(ymdUnitFlags, from: self)
