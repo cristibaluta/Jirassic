@@ -147,6 +147,7 @@ extension CreateReport {
                     continue
                 }
                 guard let startDate = task.startDate else {
+                    // This shouldn't happen. It can happen only if there's no start of the day
                     continue
                 }
                 
