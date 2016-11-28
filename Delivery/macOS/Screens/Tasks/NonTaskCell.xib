@@ -30,6 +30,9 @@
                         <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="c22-O7-iKe" id="6oz-2c-sdW"/>
+                    </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="JnH-wo-pJy">
                     <rect key="frame" x="309" y="10" width="16" height="16"/>
