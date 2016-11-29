@@ -23,9 +23,9 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         guard existingTasks.count > 0 else {
             if settings.autoTrackStartOfDay {
                 let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
-                let startDate = gregorian.date(from: comps)
+                let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
                 
-                if Date() > startDate! {
+                if Date() > startDate {
                     log(task: Task(dateEnd: Date(), type: TaskType.startDay))
                 }
             }
