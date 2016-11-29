@@ -122,7 +122,7 @@ extension CreateReport {
             if task.taskType == TaskType.startDay {
                 continue
             }
-            let taskNumber = task.taskNumber ?? String.random()
+            let taskNumber = task.taskNumber ?? ""
             var tgroup: [Task]? = groups[taskNumber]
             if tgroup == nil {
                 tgroup = [Task]()
@@ -159,7 +159,7 @@ extension CreateReport {
                                     taskNumber: taskNumber)
                 } else {
                     report!.duration += task.endDate.timeIntervalSince(task.startDate!)
-                    report!.notes = "\(report!.notes)\n• \(task.notes!)"
+                    report!.notes = "\(report!.notes)\n• \(task.notes ?? "")"
                 }
                 reportsMap[taskNumber] = report
             }
