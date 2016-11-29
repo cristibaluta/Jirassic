@@ -65,7 +65,8 @@ extension TasksPresenter: TasksPresenterInput {
         
         let todayDay = Day(date: Date())
         let reader = ReadDaysInteractor(repository: localRepository)
-        userInterface?.showDates(reader.weeks())
+        let weeks = reader.weeks()
+        userInterface?.showDates(weeks)
         userInterface?.selectDay(todayDay)
         reloadTasksOnDay(todayDay, listType: selectedListType)
     }

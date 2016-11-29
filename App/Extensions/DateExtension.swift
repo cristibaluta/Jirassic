@@ -112,13 +112,7 @@ extension Date {
 	}
 	
 	@inline(__always) func isSameDayAs (_ date: Date) -> Bool {
-		
-		let compsSelf = gregorian.dateComponents(ymdUnitFlags, from: self)
-		let compsRef = gregorian.dateComponents(ymdUnitFlags, from: date)
-		
-		return  compsSelf.day == compsRef.day &&
-                compsSelf.month == compsRef.month &&
-                compsSelf.year == compsRef.year
+        return NSCalendar.current.isDate(self, inSameDayAs: date)
 	}
 	
 	func daysInMonth() -> Int {

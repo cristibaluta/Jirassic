@@ -100,7 +100,8 @@ extension CalendarScrollView: NSOutlineViewDelegate {
 			if let textField = view.textField {
 				textField.stringValue = day.date.ddEEEEE()
 			}
-			view.imageView!.image = NSImage(named: NSImageNameStatusAvailable)
+            let isToday = day.date.isSameDayAs(Date())
+            view.imageView!.image = NSImage(named: isToday ? NSImageNameStatusPartiallyAvailable : NSImageNameStatusAvailable)
 			return view
 		default:
 			return nil
