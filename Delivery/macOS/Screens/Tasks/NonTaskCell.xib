@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
-                    <rect key="frame" x="68" y="11" width="265" height="13"/>
+                    <rect key="frame" x="88" y="11" width="245" height="13"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold" size="10"/>
                         <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -24,7 +24,7 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lST-kg-vHw">
-                    <rect key="frame" x="14" y="11" width="36" height="13"/>
+                    <rect key="frame" x="46" y="11" width="36" height="13"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="AGM-TZ-JvH">
                         <font key="font" metaFont="systemBold" size="10"/>
                         <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,6 +32,20 @@
                     </textFieldCell>
                     <connections>
                         <outlet property="delegate" destination="c22-O7-iKe" id="6oz-2c-sdW"/>
+                    </connections>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vij-9X-OHu">
+                    <rect key="frame" x="14" y="11" width="36" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="B9a-kG-NYM"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="TeL-qA-PlH">
+                        <font key="font" metaFont="systemBold" size="10"/>
+                        <color key="textColor" red="0.25829608180000002" green="0.25765414619999999" blue="0.43782722509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="c22-O7-iKe" id="g1M-9h-Iiw"/>
                     </connections>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="JnH-wo-pJy">
@@ -64,20 +78,24 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="lST-kg-vHw" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="Azg-w9-Qa3"/>
                 <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="1" id="BfB-re-cQN"/>
                 <constraint firstItem="lST-kg-vHw" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="D8t-bg-E8e"/>
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Qz6-sT-SxZ"/>
+                <constraint firstItem="lST-kg-vHw" firstAttribute="leading" secondItem="Vij-9X-OHu" secondAttribute="trailing" id="ZNP-Xn-e4a"/>
+                <constraint firstItem="Vij-9X-OHu" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="fAA-TK-DmT"/>
+                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="lST-kg-vHw" secondAttribute="trailing" constant="10" id="mvq-aK-1Tv"/>
                 <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
-                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="70" id="wXn-Xe-hfV"/>
+                <constraint firstItem="Vij-9X-OHu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="yzV-uz-dJR"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
                 <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>
                 <outlet property="dateEndTextField" destination="lST-kg-vHw" id="LtE-hF-xlK"/>
+                <outlet property="dateStartTextField" destination="Vij-9X-OHu" id="GgF-ID-enr"/>
+                <outlet property="dateStartTextFieldWidthContraint" destination="B9a-kG-NYM" id="gXj-1B-zeX"/>
                 <outlet property="notesTextField" destination="mSe-2c-CEz" id="jmn-xA-2rK"/>
                 <outlet property="notesTextFieldTrailingContraint" destination="OxX-q5-0hQ" id="9o2-k6-ZCc"/>
             </connections>

@@ -10,53 +10,70 @@ import Cocoa
 
 class NonTaskCell: NSTableRowView, CellProtocol {
 	
-	@IBOutlet var statusImage: NSImageView?
-	@IBOutlet fileprivate var dateEndTextField: NSTextField?
-	@IBOutlet fileprivate var notesTextField: NSTextField?
-	@IBOutlet fileprivate var notesTextFieldTrailingContraint: NSLayoutConstraint?
-	@IBOutlet fileprivate var butRemove: NSButton?
-	@IBOutlet fileprivate var butAdd: NSButton?
+    var statusImage: NSImageView?
+    @IBOutlet fileprivate var dateStartTextField: NSTextField!
+    @IBOutlet fileprivate var dateStartTextFieldWidthContraint: NSLayoutConstraint!
+	@IBOutlet fileprivate var dateEndTextField: NSTextField!
+	@IBOutlet fileprivate var notesTextField: NSTextField!
+	@IBOutlet fileprivate var notesTextFieldTrailingContraint: NSLayoutConstraint!
+	@IBOutlet fileprivate var butRemove: NSButton!
+	@IBOutlet fileprivate var butAdd: NSButton!
     
     fileprivate var isEditing = false
     fileprivate var wasEdited = false
     fileprivate var trackingArea: NSTrackingArea?
-    var _dateEnd = ""
+    fileprivate var currentlyEditingTime = ""
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
 	var didAddCell: ((_ cell: CellProtocol) -> ())?
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
+    
+    fileprivate var _data: TaskCreationData?
 	var data: TaskCreationData {
 		get {
-            let hm = Date.parseHHmm(self.dateEndTextField!.stringValue)
-            let date = Date().dateByUpdating(hour: hm.hour, minute: hm.min)
-			return (dateStart: nil,
-			        dateEnd: date,
-			        taskNumber: "",
-			        notes: self.notesTextField!.stringValue)
+            if let dateStart = _data?.dateStart {
+                let newHM = Date.parseHHmm(self.dateStartTextField.stringValue)
+                let date = dateStart.dateByUpdating(hour: newHM.hour, minute: newHM.min)
+                _data?.dateStart = date
+            }
+            let newHM = Date.parseHHmm(self.dateEndTextField.stringValue)
+            let dateEnd = _data!.dateEnd.dateByUpdating(hour: newHM.hour, minute: newHM.min)
+            _data?.dateEnd = dateEnd
+            
+            _data?.notes = self.notesTextField.stringValue
+            
+            return _data!
 		}
         set {
-            _dateEnd = newValue.dateEnd.HHmm()
-			self.dateEndTextField?.stringValue = newValue.dateEnd.HHmm()
-			self.notesTextField?.stringValue = newValue.notes
+            _data = newValue
+            if let dateStart = newValue.dateStart {
+                self.dateStartTextField.stringValue = dateStart.HHmm()
+                self.dateStartTextFieldWidthContraint.constant = 40
+            } else {
+                self.dateStartTextField.stringValue = ""
+                self.dateStartTextFieldWidthContraint.constant = 0
+            }
+            self.dateEndTextField.stringValue = newValue.dateEnd.HHmm()
+			self.notesTextField.stringValue = newValue.notes
 		}
 	}
 	var duration: String {
 		get {
-			return ""//durationTextField!.stringValue
+			return ""
 		}
-		set {
-//			self.durationTextField!.stringValue = newValue
-		}
+        set {
+            
+        }
 	}
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
         
-		self.butRemove?.isHidden = true
-		self.butAdd?.isHidden = true
-        self.butRemove?.wantsLayer = true
-        self.butRemove?.layer?.backgroundColor = NSColor.clear.cgColor
+		self.butRemove.isHidden = true
+		self.butAdd.isHidden = true
+        self.butRemove.wantsLayer = true
+//        self.butRemove.layer?.backgroundColor = NSColor.clear.cgColor
 	}
 	
 	override func drawBackground (in dirtyRect: NSRect) {
@@ -79,18 +96,20 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	// MARK: mouse
 	
 	override func mouseEntered (with theEvent: NSEvent) {
-		self.butRemove?.isHidden = false
-        self.butAdd?.isHidden = false
-        self.dateEndTextField?.isEditable = true
-		self.notesTextFieldTrailingContraint?.constant = 80
+		self.butRemove.isHidden = false
+        self.butAdd.isHidden = false
+        self.dateStartTextField.isEditable = true
+        self.dateEndTextField.isEditable = true
+		self.notesTextFieldTrailingContraint.constant = 80
 		self.setNeedsDisplay(self.frame)
 	}
 	
 	override func mouseExited (with theEvent: NSEvent) {
-		self.butRemove?.isHidden = true
-        self.butAdd?.isHidden = true
-        self.dateEndTextField?.isEditable = false
-		self.notesTextFieldTrailingContraint?.constant = 10
+		self.butRemove.isHidden = true
+        self.butAdd.isHidden = true
+        self.dateStartTextField.isEditable = false
+        self.dateEndTextField.isEditable = false
+		self.notesTextFieldTrailingContraint.constant = 10
 		self.setNeedsDisplay(self.frame)
 	}
 	
@@ -122,16 +141,29 @@ extension NonTaskCell: NSTextFieldDelegate {
     
     override func controlTextDidBeginEditing (_ obj: Notification) {
         isEditing = true
+        if obj.object as? NSTextField == dateEndTextField {
+            currentlyEditingTime = self.dateEndTextField.stringValue
+        }
+        else if obj.object as? NSTextField == dateStartTextField {
+            currentlyEditingTime = self.dateStartTextField.stringValue
+        }
     }
     
     override func controlTextDidChange (_ obj: Notification) {
         wasEdited = true
         if obj.object as? NSTextField == dateEndTextField {
             let predictor = PredictiveTimeTyping()
-            let comps = dateEndTextField!.stringValue.components(separatedBy: _dateEnd)
-            let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last
-            _dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
-            dateEndTextField?.stringValue = _dateEnd
+            let comps = dateEndTextField.stringValue.components(separatedBy: currentlyEditingTime)
+            let newDigit = (comps.count == 1 && currentlyEditingTime != "") ? "" : comps.last
+            currentlyEditingTime = predictor.timeByAdding(newDigit!, to: currentlyEditingTime)
+            dateEndTextField.stringValue = currentlyEditingTime
+        }
+        else if obj.object as? NSTextField == dateStartTextField {
+            let predictor = PredictiveTimeTyping()
+            let comps = dateStartTextField.stringValue.components(separatedBy: currentlyEditingTime)
+            let newDigit = (comps.count == 1 && currentlyEditingTime != "") ? "" : comps.last
+            currentlyEditingTime = predictor.timeByAdding(newDigit!, to: currentlyEditingTime)
+            dateStartTextField.stringValue = currentlyEditingTime
         }
     }
     
@@ -144,8 +176,13 @@ extension NonTaskCell: NSTextFieldDelegate {
     
     func control (_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         
-        if control as? NSTextField == dateEndTextField {
-            RCLog(commandSelector)
+        // Detect enter key
+        if control as? NSTextField == dateStartTextField {
+            if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
+                self.didEndEditingCell?(self)
+                wasEdited = false
+            }
+        } else if control as? NSTextField == dateEndTextField {
             if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
                 self.didEndEditingCell?(self)
                 wasEdited = false
