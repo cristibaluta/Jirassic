@@ -14,7 +14,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Jirassic" customModuleProvider="target">
             <connections>
-                <outlet property="popover" destination="79J-8G-uar" id="csQ-r6-VX8"/>
+                <outlet property="appPopover" destination="79J-8G-uar" id="sNQ-as-z3b"/>
+                <outlet property="taskSuggestionPopover" destination="MZ3-RL-aMg" id="Ha8-K5-sPk"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -206,11 +207,7 @@
                                                 <action selector="performFindPanelAction:" target="-1" id="U76-nv-p5D"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Jump to Selection" keyEquivalent="j" id="S0p-oC-mLd">
-                                            <connections>
-                                                <action selector="centerSelectionInVisibleArea:" target="-1" id="IOG-6D-g5B"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Jump to Selection" keyEquivalent="j" id="S0p-oC-mLd"/>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -312,15 +309,9 @@
                                         </menuItem>
                                         <menuItem title="Make Lower Case" id="d9M-CD-aMd">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="lowercaseWord:" target="-1" id="iUZ-b5-hil"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem title="Capitalize" id="UEZ-Bs-lqG">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="capitalizeWord:" target="-1" id="26H-TL-nsh"/>
-                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -538,23 +529,14 @@
                                                     <menuItem id="YGs-j5-SAR">
                                                         <string key="title">	Default</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="makeBaseWritingDirectionNatural:" target="-1" id="qtV-5e-UBP"/>
-                                                        </connections>
                                                     </menuItem>
                                                     <menuItem id="Lbh-J2-qVU">
                                                         <string key="title">	Left to Right</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="makeBaseWritingDirectionLeftToRight:" target="-1" id="S0X-9S-QSf"/>
-                                                        </connections>
                                                     </menuItem>
                                                     <menuItem id="jFq-tB-4Kx">
                                                         <string key="title">	Right to Left</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="makeBaseWritingDirectionRightToLeft:" target="-1" id="5fk-qB-AqJ"/>
-                                                        </connections>
                                                     </menuItem>
                                                     <menuItem isSeparatorItem="YES" id="swp-gr-a21"/>
                                                     <menuItem title="Selection" enabled="NO" id="cqv-fj-IhA">
@@ -563,23 +545,14 @@
                                                     <menuItem id="Nop-cj-93Q">
                                                         <string key="title">	Default</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="makeTextWritingDirectionNatural:" target="-1" id="lPI-Se-ZHp"/>
-                                                        </connections>
                                                     </menuItem>
                                                     <menuItem id="BgM-ve-c93">
                                                         <string key="title">	Left to Right</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="makeTextWritingDirectionLeftToRight:" target="-1" id="caW-Bv-w94"/>
-                                                        </connections>
                                                     </menuItem>
                                                     <menuItem id="RB4-Sm-HuC">
                                                         <string key="title">	Right to Left</string>
                                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="makeTextWritingDirectionRightToLeft:" target="-1" id="EXD-6r-ZUu"/>
-                                                        </connections>
                                                     </menuItem>
                                                 </items>
                                             </menu>
@@ -687,5 +660,11 @@
                 <outlet property="content" destination="Mzr-YU-Yq5" id="OZc-54-OcZ"/>
             </connections>
         </arrayController>
+        <viewController id="Fpi-Gx-O7s" userLabel="Popover View Controller"/>
+        <popover id="MZ3-RL-aMg">
+            <connections>
+                <outlet property="contentViewController" destination="Fpi-Gx-O7s" id="leH-Ai-Spc"/>
+            </connections>
+        </popover>
     </objects>
 </document>

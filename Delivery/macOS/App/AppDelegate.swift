@@ -15,7 +15,8 @@ var remoteRepository: Repository?
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
-    @IBOutlet var popover: NSPopover?
+    @IBOutlet var appPopover: NSPopover!
+    @IBOutlet var taskSuggestionPopover: NSPopover!
     var appWireframe = AppWireframe()
     fileprivate var sleep: SleepNotifications?
 	fileprivate let menu = MenuBarController()
@@ -33,9 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
 				if (wself.menu.iconView?.isSelected == true) {
-					wself.appWireframe.showPopover(wself.popover!, fromIcon: wself.menu.iconView!)
+					wself.appWireframe.showPopover(wself.appPopover!, fromIcon: wself.menu.iconView!)
 				} else {
-					wself.appWireframe.hidePopover(wself.popover!)
+					wself.appWireframe.hidePopover(wself.appPopover!)
 				}
 			}
         }
@@ -58,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
-            self.popover?.performClose(nil)
+            self.appPopover.performClose(nil)
         })
     }
 	

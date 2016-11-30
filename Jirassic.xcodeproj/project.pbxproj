@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		405B155C1DEEBFB60009871C /* TaskSuggestionPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B155B1DEEBFB60009871C /* TaskSuggestionPopoverViewController.swift */; };
+		405B155E1DEEC0220009871C /* TaskSuggestionPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B155D1DEEC0220009871C /* TaskSuggestionPopover.swift */; };
 		406384891DE388C5004795A4 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406384881DE388C5004795A4 /* Tasks.storyboard */; };
 		4065D39C1DD3B44200B73201 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
 		4065D39D1DD3B44200B73201 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
@@ -146,6 +148,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		405B155B1DEEBFB60009871C /* TaskSuggestionPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSuggestionPopoverViewController.swift; sourceTree = "<group>"; };
+		405B155D1DEEC0220009871C /* TaskSuggestionPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSuggestionPopover.swift; sourceTree = "<group>"; };
 		406384881DE388C5004795A4 /* Tasks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
 		4065D3041DD3A1AA00B73201 /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D3181DD3B44200B73201 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -470,6 +474,8 @@
 				4065D3551DD3B44200B73201 /* AppWireframe.swift */,
 				4065D3561DD3B44200B73201 /* Popover.swift */,
 				4065D3571DD3B44200B73201 /* PopoverViewController.swift */,
+				405B155B1DEEBFB60009871C /* TaskSuggestionPopoverViewController.swift */,
+				405B155D1DEEC0220009871C /* TaskSuggestionPopover.swift */,
 				4065D3581DD3B44200B73201 /* ScriptableApplication.swift */,
 			);
 			path = App;
@@ -816,6 +822,7 @@
 				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
 				4065D3F41DD3B44200B73201 /* CSettings.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
+				405B155C1DEEBFB60009871C /* TaskSuggestionPopoverViewController.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
@@ -840,6 +847,7 @@
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
+				405B155E1DEEC0220009871C /* TaskSuggestionPopover.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,

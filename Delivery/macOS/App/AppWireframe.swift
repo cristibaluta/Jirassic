@@ -119,7 +119,13 @@ extension AppWireframe {
 	func hidePopover (_ popover: NSPopover) {
 		popover.close()
 	}
-	
+    
+    func showTaskSuggestionPopover (_ popover: NSPopover, fromIcon icon: NSView) {
+        let edge = NSRectEdge.minY
+        let rect = icon.frame
+        popover.show(relativeTo: rect, of: icon, preferredEdge: edge);
+    }
+    
 	fileprivate func addController (_ controller: NSViewController) {
         self.viewController?.addChildViewController(controller)
         self.viewController?.view.addSubview(controller.view)
