@@ -15,31 +15,32 @@ enum SplitViewColumn: Int {
 
 class AppWireframe {
 
-    var viewController: NSViewController?
+    fileprivate var _appViewController: AppViewController?
     
     fileprivate var currentController: NSViewController?
-    fileprivate var _loginViewController: LoginViewController?
     fileprivate var _tasksViewController: TasksViewController?
     fileprivate var _messageViewController: MessageViewController?
     fileprivate var _newTaskViewController: NewTaskViewController?
-    fileprivate var _settingsViewController: SettingsViewController?
+    
+    var appViewController: AppViewController {
+        
+        guard _appViewController == nil else {
+            return _appViewController!
+        }
+        _appViewController = AppViewController.instantiateFromStoryboard("Main")
+        
+        return _appViewController!
+    }
     
     var loginViewController: LoginViewController {
         
-        guard _loginViewController == nil else {
-            return _loginViewController!
-        }
+        let controller = LoginViewController.instantiateFromStoryboard("Login")
+        let presenter = LoginPresenter()
         
-        let loginController = LoginViewController.instantiateFromStoryboard("Login")
-        let loginPresenter = LoginPresenter()
+        controller.loginPresenter = presenter
+        presenter.userInterface = controller
         
-        loginController.loginPresenter = loginPresenter
-        loginController.view.frame = CGRect(origin: CGPoint.zero, size: self.viewController!.view.frame.size)
-        loginPresenter.userInterface = loginController
-        
-        _loginViewController = loginController
-        
-        return loginController
+        return controller
     }
     
     var tasksViewController: TasksViewController {
@@ -48,19 +49,30 @@ class AppWireframe {
             return _tasksViewController!
         }
         
-        let tasksController = TasksViewController.instantiateFromStoryboard("Tasks")
-        let tasksPresenter = TasksPresenter()
+        let controller = TasksViewController.instantiateFromStoryboard("Tasks")
+        let presenter = TasksPresenter()
         
-        tasksController.appWireframe = self
-        tasksController.tasksPresenter = tasksPresenter
-        tasksController.view.frame = CGRect(origin: CGPoint.zero, size: self.viewController!.view.frame.size)
+        controller.appWireframe = self
+        controller.tasksPresenter = presenter
+        controller.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 500, height: 500))
         
-        tasksPresenter.userInterface = tasksController
-        tasksPresenter.appWireframe = self
+        presenter.userInterface = controller
+        presenter.appWireframe = self
         
-        _tasksViewController = tasksController
+        _tasksViewController = controller
         
-        return tasksController
+        return controller
+    }
+    
+    var taskSuggestionViewController: TaskSuggestionViewController {
+        
+        let controller = TaskSuggestionViewController.instantiateFromStoryboard("Tasks")
+        let presenter = TaskSuggestionPresenter()
+        
+        controller.presenter = presenter
+        presenter.userInterface = controller
+        
+        return controller
     }
     
     var newTaskViewController: NewTaskViewController {
@@ -76,24 +88,18 @@ class AppWireframe {
     
     var settingsViewController: SettingsViewController {
         
-        guard _settingsViewController == nil else {
-            return _settingsViewController!
-        }
-        
-        let settingsController = SettingsViewController.instantiateFromStoryboard("Settings")
+        let controller = SettingsViewController.instantiateFromStoryboard("Settings")
         let presenter = SettingsPresenter()
         let interactor = SettingsInteractor()
         
-        presenter.userInterface = settingsController
+        presenter.userInterface = controller
         presenter.interactor = interactor
         interactor.presenter = presenter
-        settingsController.view.frame = CGRect(origin: CGPoint.zero, size: self.viewController!.view.frame.size)
-        settingsController.presenter = presenter
-        settingsController.appWireframe = self
+        controller.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 500, height: 500))
+        controller.presenter = presenter
+        controller.appWireframe = self
         
-        _settingsViewController = settingsController
-        
-        return settingsController
+        return controller
     }
     
     var messageViewController: MessageViewController {
@@ -127,8 +133,9 @@ extension AppWireframe {
     }
     
 	fileprivate func addController (_ controller: NSViewController) {
-        self.viewController?.addChildViewController(controller)
-        self.viewController?.view.addSubview(controller.view)
+        _appViewController?.addChildViewController(controller)
+        _appViewController?.view.addSubview(controller.view)
+        controller.view.constrainToSuperview()
 	}
     
     fileprivate func removeController (_ controller: NSViewController) {
@@ -137,7 +144,7 @@ extension AppWireframe {
     }
     
     fileprivate func layerToAnimate() -> CALayer {
-        return self.viewController!.view.superview!.layer!
+        return _appViewController!.view.superview!.layer!
     }
 }
 
@@ -169,6 +176,7 @@ extension AppWireframe {
     
     func presentTasksController() {
         
+        _appViewController?.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
         let tasksController = self.tasksViewController
         addController(tasksController)
         
@@ -191,11 +199,24 @@ extension AppWireframe {
 
 extension AppWireframe {
     
+    func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) {
+        
+        _appViewController?.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
+        let controller = self.taskSuggestionViewController
+        addController(controller)
+        
+        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: startSleepDate)
+        
+    }
+}
+
+extension AppWireframe {
+    
     func presentMessage (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) {
         
         let messageController = self.messageViewController
         if messageController.parent == nil {
-            self.viewController!.addChildViewController(messageController)
+            _appViewController?.addChildViewController(messageController)
             splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(messageController.view)
             messageController.view.constrainToSuperview()
         }

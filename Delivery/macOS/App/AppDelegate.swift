@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CloudKit
 
 var localRepository: Repository!
 var remoteRepository: Repository?
@@ -15,10 +16,9 @@ var remoteRepository: Repository?
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
-    @IBOutlet var appPopover: NSPopover!
-    @IBOutlet var taskSuggestionPopover: NSPopover!
+    let appPopover = NSPopover()
     var appWireframe = AppWireframe()
-    fileprivate var sleep: SleepNotifications?
+    fileprivate var sleep = SleepNotifications()
 	fileprivate let menu = MenuBarController()
 	
     class func sharedApp() -> AppDelegate {
@@ -31,27 +31,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         localRepository = CoreDataRepository()
 //		remoteRepository = CloudKitRepository()
         
+        // Add a VC to the popup
+        appPopover.contentViewController = appWireframe.appViewController
+        
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
-				if (wself.menu.iconView?.isSelected == true) {
-					wself.appWireframe.showPopover(wself.appPopover!, fromIcon: wself.menu.iconView!)
+                if (wself.menu.iconView?.isSelected == true) {
+					wself.appWireframe.showPopover(wself.appPopover, fromIcon: wself.menu.iconView!)
 				} else {
-					wself.appWireframe.hidePopover(wself.appPopover!)
+					wself.appWireframe.hidePopover(wself.appPopover)
 				}
 			}
         }
 		
-        sleep = SleepNotifications()
-        sleep?.computerWentToSleep = {
+        sleep.computerWentToSleep = {
 			// Nothing to do
         }
-        sleep?.computerWakeUp = {
-            ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep?.lastSleepDate)
+        sleep.computerWakeUp = {
+            if true {
+                self.appWireframe.presentTaskSuggestionController (startSleepDate: self.sleep.lastSleepDate,
+                                                                   endSleepDate: Date())
+            } else {
+                ComputerWakeUpInteractor(repository: localRepository)
+                    .runWith(lastSleepDate: self.sleep.lastSleepDate)
+            }
         }
 	}
 	
     func applicationDidFinishLaunching (_ aNotification: Notification) {
 		
+        if let _ = remoteRepository {
+            CKContainer.default().accountStatus(completionHandler: { [weak self] (accountStatus, error) in
+                if accountStatus == .noAccount {
+                    self?.appWireframe.presentLoginController()
+                } else {
+                    self?.appWireframe.presentTasksController()
+                }
+            })
+        } else {
+            appWireframe.presentTasksController()
+//            appWireframe.presentTaskSuggestionController(startSleepDate: nil, endSleepDate: Date())
+        }
+        //        let currentUser = UserInteractor(data: localRepository).currentUser()
+        //		if currentUser.isLoggedIn {
+        //            appWireframe?.presentTasksController()
+        //		} else {
+        //            appWireframe?.presentLoginController()
+        //		}
+        
 		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
 			self.menu.iconView?.mouseDown(with: NSEvent())

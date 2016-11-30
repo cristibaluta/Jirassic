@@ -32,8 +32,8 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016 Cristian Baluta. All rights reserved.</string>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<key>NSMainStoryboardFile</key>
+	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>

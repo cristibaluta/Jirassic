@@ -487,6 +487,71 @@ Gw
             </objects>
             <point key="canvasLocation" x="75" y="230.5"/>
         </scene>
+        <!--Task Suggestion View Controller-->
+        <scene sceneID="nAc-ky-Zce">
+            <objects>
+                <viewController storyboardIdentifier="TaskSuggestionViewController" id="tRv-ep-RyQ" customClass="TaskSuggestionViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="F46-mC-JhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="91"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xms-pO-x4G">
+                                <rect key="frame" x="357" y="43" width="79" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ignore" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pDT-IB-e1W">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="55W-A0-75h">
+                                <rect key="frame" x="366" y="13" width="70" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bTq-7V-gcM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ql7-Oz-1OK">
+                                <rect key="frame" x="20" y="54" width="253" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You were away between: 12:30 and 13.25" id="XUG-df-poy">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-O7-hvq">
+                                <rect key="frame" x="21" y="19" width="294" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="M3U-lw-qlU"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="Pdl-Oi-foe">
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <segments>
+                                        <segment label="Scrum"/>
+                                        <segment label="Meeting" selected="YES" tag="1"/>
+                                        <segment label="Food"/>
+                                        <segment label="Nap"/>
+                                        <segment label="Learning"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="handleSegmentedControl:" target="F9u-wL-YtO" id="ijs-56-YHu"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xms-pO-x4G" secondAttribute="trailing" constant="20" id="EIS-9X-FYz"/>
+                            <constraint firstAttribute="trailing" secondItem="55W-A0-75h" secondAttribute="trailing" constant="20" id="Io9-0e-CfM"/>
+                            <constraint firstItem="xms-pO-x4G" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" constant="20" id="IpK-IL-Ihm"/>
+                            <constraint firstItem="ZGF-O7-hvq" firstAttribute="leading" secondItem="F46-mC-JhQ" secondAttribute="leading" constant="22" id="LCZ-0w-abe"/>
+                            <constraint firstAttribute="bottom" secondItem="55W-A0-75h" secondAttribute="bottom" constant="20" id="U2c-Yy-ztR"/>
+                            <constraint firstAttribute="bottom" secondItem="ZGF-O7-hvq" secondAttribute="bottom" constant="20" id="fcP-Dv-1IX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="xgm-Ey-9tg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="562.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

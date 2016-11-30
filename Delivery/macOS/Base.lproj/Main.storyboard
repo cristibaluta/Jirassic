@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bVC-7U-s4Z">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,9 +11,9 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Jira Logger" id="1Xt-HY-uBw">
+                            <menuItem title="Jirassic" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Jira Logger" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Jirassic" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
                                         <menuItem title="About Jira Logger" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -711,12 +711,12 @@
                 </viewController>
                 <customObject id="udK-4D-ctN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="-782"/>
+            <point key="canvasLocation" x="77" y="-395"/>
         </scene>
-        <!--View Controller-->
+        <!--App View Controller-->
         <scene sceneID="cm9-ck-QOK">
             <objects>
-                <viewController id="iaY-ro-C5e" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AppViewController" id="iaY-ro-C5e" customClass="AppViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="msN-JB-seW">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -724,7 +724,7 @@
                 </viewController>
                 <customObject id="Ub3-7n-fsG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585" y="-783"/>
+            <point key="canvasLocation" x="77" y="-780"/>
         </scene>
     </scenes>
 </document>
