@@ -283,6 +283,7 @@
                         <outlet property="butAutoTrackScrum" destination="N5K-eo-qyH" id="QIh-HJ-B5S"/>
                         <outlet property="butAutoTrackStartOfDay" destination="mwE-DS-XUK" id="vaC-kU-CEa"/>
                         <outlet property="butInstallJit" destination="19q-BQ-bPB" id="ekh-La-zda"/>
+                        <outlet property="butWakeUpSuggestions" destination="nYd-jv-yMI" id="oR4-hA-6YK"/>
                         <outlet property="jiraPasswordTextField" destination="2Xl-Yb-FkC" id="ohC-It-DHk"/>
                         <outlet property="jiraUrlTextField" destination="Ygh-kb-AK9" id="h3X-TY-xXc"/>
                         <outlet property="jiraUserTextField" destination="pmf-9e-7xQ" id="bhs-dM-Ha9"/>

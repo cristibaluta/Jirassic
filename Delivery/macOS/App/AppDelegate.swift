@@ -45,12 +45,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 		
         sleep.computerWentToSleep = {
-			// Nothing to do
+            self.appWireframe.hidePopover(self.appPopover)
         }
         sleep.computerWakeUp = {
             if true {
                 self.appWireframe.presentTaskSuggestionController (startSleepDate: self.sleep.lastSleepDate,
                                                                    endSleepDate: Date())
+                self.appWireframe.showPopover(self.appPopover, fromIcon: self.menu.iconView!)
             } else {
                 ComputerWakeUpInteractor(repository: localRepository)
                     .runWith(lastSleepDate: self.sleep.lastSleepDate)

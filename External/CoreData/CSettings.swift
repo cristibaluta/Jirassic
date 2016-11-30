@@ -15,6 +15,7 @@ class CSettings: NSManagedObject {
     @NSManaged var autoTrackLunch: NSNumber?
     @NSManaged var autoTrackScrum: NSNumber?
     @NSManaged var autoTrackMeetings: NSNumber?
+    @NSManaged var showWakeUpSuggestions: NSNumber?
     
     @NSManaged var startOfDayTime: Date?
     @NSManaged var lunchTime: Date?

@@ -24,6 +24,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var butAutoTrackLunch: NSButton!
     @IBOutlet fileprivate var butAutoTrackScrum: NSButton!
     @IBOutlet fileprivate var butAutoTrackMeetings: NSButton!
+    @IBOutlet fileprivate var butWakeUpSuggestions: NSButton!
     @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
     @IBOutlet fileprivate var scrumMeetingTimePicker: NSDatePicker!
@@ -56,6 +57,7 @@ class SettingsViewController: NSViewController {
                                 autoTrackLunch: butAutoTrackLunch.state == NSOnState,
                                 autoTrackScrum: butAutoTrackScrum.state == NSOnState,
                                 autoTrackMeetings: butAutoTrackMeetings.state == NSOnState,
+                                showWakeUpSuggestions: butWakeUpSuggestions.state == NSOnState,
                                 startOfDayTime: startOfDayTimePicker.dateValue,
                                 lunchTime: lunchTimePicker.dateValue,
                                 scrumMeetingTime: scrumMeetingTimePicker.dateValue,
@@ -89,6 +91,7 @@ extension SettingsViewController: SettingsPresenterOutput {
         butAutoTrackLunch.state = settings.autoTrackLunch ? NSOnState : NSOffState
         butAutoTrackScrum.state = settings.autoTrackScrum ? NSOnState : NSOffState
         butAutoTrackMeetings.state = settings.autoTrackMeetings ? NSOnState : NSOffState
+        butWakeUpSuggestions.state = settings.showWakeUpSuggestions ? NSOnState : NSOffState
         
         lunchTimePicker.dateValue = settings.lunchTime
         scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime

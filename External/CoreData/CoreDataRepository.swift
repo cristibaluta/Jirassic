@@ -92,94 +92,6 @@ extension CoreDataRepository {
     }
 }
 
-extension CoreDataRepository {
-    
-    fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
-        
-        return Task(startDate: ctask.startDate,
-                    endDate: ctask.endDate!,
-                    notes: ctask.notes,
-                    taskNumber: ctask.taskNumber,
-                    taskType: TaskType(rawValue: ctask.taskType!.intValue)!,
-                    objectId: ctask.objectId!
-        )
-    }
-    
-    fileprivate func tasksFromCTasks (_ ctasks: [CTask]) -> [Task] {
-        
-        var tasks = [Task]()
-        for ctask in ctasks {
-            tasks.append(self.taskFromCTask(ctask))
-        }
-        
-        return tasks
-    }
-    
-    fileprivate func ctaskFromTask (_ task: Task) -> CTask {
-        
-        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
-        let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
-        var ctask: CTask? = tasks.first
-        if ctask == nil {
-            ctask = NSEntityDescription.insertNewObject(forEntityName: String(describing: CTask.self),
-                    into: managedObjectContext!) as? CTask
-        }
-        if ctask?.objectId == nil {
-            ctask?.objectId = task.objectId
-        }
-        
-        return updatedCTask(ctask!, withTask: task)
-    }
-    
-    // Update only updatable properties. objectId can't be updated
-    fileprivate func updatedCTask (_ ctask: CTask, withTask task: Task) -> CTask {
-        
-        ctask.taskNumber = task.taskNumber
-        ctask.taskType = NSNumber(value: task.taskType.rawValue)
-        ctask.notes = task.notes
-        ctask.startDate = task.startDate
-        ctask.endDate = task.endDate
-        
-        return ctask
-    }
-}
-
-extension CoreDataRepository {
-    
-    fileprivate func settingsFromCSettings (_ csettings: CSettings) -> Settings {
-        
-        return Settings(autoTrackStartOfDay: csettings.autoTrackStartOfDay!.boolValue,
-                        autoTrackLunch: csettings.autoTrackLunch!.boolValue,
-                        autoTrackScrum: csettings.autoTrackScrum!.boolValue,
-                        autoTrackMeetings: csettings.autoTrackMeetings!.boolValue,
-                        startOfDayTime: csettings.startOfDayTime!,
-                        lunchTime: csettings.lunchTime!,
-                        scrumMeetingTime: csettings.scrumMeetingTime!,
-                        minMeetingDuration: csettings.minMeetingDuration!
-        )
-    }
-    
-    fileprivate func csettingsFromSettings (_ settings: Settings) -> CSettings {
-        
-        let results: [CSettings] = queryWithPredicate(nil, sortDescriptors: nil)
-        var csettings: CSettings? = results.first
-        if csettings == nil {
-            csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
-                                                            into: managedObjectContext!) as? CSettings
-        }
-        csettings?.autoTrackStartOfDay = NSNumber(value: settings.autoTrackStartOfDay)
-        csettings?.autoTrackLunch = NSNumber(value: settings.autoTrackLunch)
-        csettings?.autoTrackScrum = NSNumber(value: settings.autoTrackScrum)
-        csettings?.autoTrackMeetings = NSNumber(value: settings.autoTrackMeetings)
-        csettings?.startOfDayTime = settings.startOfDayTime
-        csettings?.lunchTime = settings.lunchTime
-        csettings?.scrumMeetingTime = settings.scrumMeetingTime
-        csettings?.minMeetingDuration = settings.minMeetingDuration
-        
-        return csettings!
-    }
-}
-
 extension CoreDataRepository: RepositoryUser {
     
     func currentUser() -> User {
@@ -285,6 +197,54 @@ extension CoreDataRepository: RepositoryTasks {
         return taskFromCTask(ctask)
     }
     
+    fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
+        
+        return Task(startDate: ctask.startDate,
+                    endDate: ctask.endDate!,
+                    notes: ctask.notes,
+                    taskNumber: ctask.taskNumber,
+                    taskType: TaskType(rawValue: ctask.taskType!.intValue)!,
+                    objectId: ctask.objectId!
+        )
+    }
+    
+    fileprivate func tasksFromCTasks (_ ctasks: [CTask]) -> [Task] {
+        
+        var tasks = [Task]()
+        for ctask in ctasks {
+            tasks.append(self.taskFromCTask(ctask))
+        }
+        
+        return tasks
+    }
+    
+    fileprivate func ctaskFromTask (_ task: Task) -> CTask {
+        
+        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
+        let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
+        var ctask: CTask? = tasks.first
+        if ctask == nil {
+            ctask = NSEntityDescription.insertNewObject(forEntityName: String(describing: CTask.self),
+                                                        into: managedObjectContext!) as? CTask
+        }
+        if ctask?.objectId == nil {
+            ctask?.objectId = task.objectId
+        }
+        
+        return updatedCTask(ctask!, withTask: task)
+    }
+    
+    // Update only updatable properties. objectId can't be updated
+    fileprivate func updatedCTask (_ ctask: CTask, withTask task: Task) -> CTask {
+        
+        ctask.taskNumber = task.taskNumber
+        ctask.taskType = NSNumber(value: task.taskType.rawValue)
+        ctask.notes = task.notes
+        ctask.startDate = task.startDate
+        ctask.endDate = task.endDate
+        
+        return ctask
+    }
 }
 
 extension CoreDataRepository: RepositorySettings {
@@ -300,6 +260,7 @@ extension CoreDataRepository: RepositorySettings {
             csettings?.autoTrackScrum = 1
             csettings?.autoTrackStartOfDay = 1
             csettings?.autoTrackMeetings = 1
+            csettings?.showWakeUpSuggestions = 1
             csettings?.lunchTime = Date(hour: 13, minute: 0)
             csettings?.scrumMeetingTime = Date(hour: 10, minute: 30)
             csettings?.startOfDayTime = Date(hour: 9, minute: 0)
@@ -313,5 +274,40 @@ extension CoreDataRepository: RepositorySettings {
         
         let _ = csettingsFromSettings(settings)
         saveContext()
+    }
+    
+    fileprivate func settingsFromCSettings (_ csettings: CSettings) -> Settings {
+        
+        return Settings(autoTrackStartOfDay: csettings.autoTrackStartOfDay!.boolValue,
+                        autoTrackLunch: csettings.autoTrackLunch!.boolValue,
+                        autoTrackScrum: csettings.autoTrackScrum!.boolValue,
+                        autoTrackMeetings: csettings.autoTrackMeetings!.boolValue,
+                        showWakeUpSuggestions: csettings.showWakeUpSuggestions!.boolValue,
+                        startOfDayTime: csettings.startOfDayTime!,
+                        lunchTime: csettings.lunchTime!,
+                        scrumMeetingTime: csettings.scrumMeetingTime!,
+                        minMeetingDuration: csettings.minMeetingDuration!
+        )
+    }
+    
+    fileprivate func csettingsFromSettings (_ settings: Settings) -> CSettings {
+        
+        let results: [CSettings] = queryWithPredicate(nil, sortDescriptors: nil)
+        var csettings: CSettings? = results.first
+        if csettings == nil {
+            csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
+                                                            into: managedObjectContext!) as? CSettings
+        }
+        csettings?.autoTrackStartOfDay = NSNumber(value: settings.autoTrackStartOfDay)
+        csettings?.autoTrackLunch = NSNumber(value: settings.autoTrackLunch)
+        csettings?.autoTrackScrum = NSNumber(value: settings.autoTrackScrum)
+        csettings?.autoTrackMeetings = NSNumber(value: settings.autoTrackMeetings)
+        csettings?.showWakeUpSuggestions = NSNumber(value: settings.showWakeUpSuggestions)
+        csettings?.startOfDayTime = settings.startOfDayTime
+        csettings?.lunchTime = settings.lunchTime
+        csettings?.scrumMeetingTime = settings.scrumMeetingTime
+        csettings?.minMeetingDuration = settings.minMeetingDuration
+        
+        return csettings!
     }
 }

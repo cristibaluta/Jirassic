@@ -14,6 +14,7 @@ struct Settings {
     var autoTrackLunch: Bool
     var autoTrackScrum: Bool
     var autoTrackMeetings: Bool
+    var showWakeUpSuggestions: Bool
     
     var startOfDayTime: Date
     var lunchTime: Date

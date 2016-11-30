@@ -8,6 +8,7 @@
         <attribute name="lunchTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="minMeetingDuration" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="scrumMeetingTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="showWakeUpSuggestions" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startOfDayTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="CTask" representedClassName=".CTask" syncable="YES">
@@ -27,7 +28,7 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CSettings" positionX="-54" positionY="45" width="128" height="165"/>
+        <element name="CSettings" positionX="-54" positionY="45" width="128" height="180"/>
         <element name="CTask" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="CUser" positionX="-54" positionY="54" width="128" height="105"/>
     </elements>
