@@ -54,7 +54,7 @@ class AppWireframe {
         
         controller.appWireframe = self
         controller.tasksPresenter = presenter
-        controller.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 500, height: 500))
+//        controller.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 500, height: 500))
         
         presenter.userInterface = controller
         presenter.appWireframe = self
@@ -126,12 +126,6 @@ extension AppWireframe {
 		popover.close()
 	}
     
-    func showTaskSuggestionPopover (_ popover: NSPopover, fromIcon icon: NSView) {
-        let edge = NSRectEdge.minY
-        let rect = icon.frame
-        popover.show(relativeTo: rect, of: icon, preferredEdge: edge);
-    }
-    
 	fileprivate func addController (_ controller: NSViewController) {
         _appViewController?.addChildViewController(controller)
         _appViewController?.view.addSubview(controller.view)
@@ -201,11 +195,15 @@ extension AppWireframe {
     
     func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) {
         
+        if let cc = currentController {
+            removeController(cc)
+            currentController = nil
+        }
         _appViewController?.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
         let controller = self.taskSuggestionViewController
         addController(controller)
         
-        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: startSleepDate)
+//        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: startSleepDate)
         
     }
 }
