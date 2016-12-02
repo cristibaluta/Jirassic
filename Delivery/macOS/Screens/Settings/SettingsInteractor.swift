@@ -8,20 +8,20 @@
 
 import Foundation
 
-protocol SettingsInteractorInput {
+protocol SettingsInteractorInput: class {
     
     func getAppSettings() -> Settings
     func saveAppSettings (_ settings: Settings)
 }
 
-protocol SettingsInteractorOutput {
+protocol SettingsInteractorOutput: class {
     
     func jiraSettingsDidLoad (_ settings: JiraSettings)
 }
 
 class SettingsInteractor {
     
-    var presenter: SettingsInteractorOutput?
+    weak var presenter: SettingsInteractorOutput?
     
     init() {
         

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TasksPresenterInput {
+protocol TasksPresenterInput: class {
     
     func refreshUI()
     func reloadData()
@@ -21,7 +21,7 @@ protocol TasksPresenterInput {
     func removeTaskAtRow (_ row: Int)
 }
 
-protocol TasksPresenterOutput {
+protocol TasksPresenterOutput: class {
     
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
@@ -40,8 +40,8 @@ enum ListType: Int {
 
 class TasksPresenter {
     
-    var appWireframe: AppWireframe?
-    var userInterface: TasksPresenterOutput?
+    weak var appWireframe: AppWireframe?
+    weak var userInterface: TasksPresenterOutput?
     fileprivate var day: NewDay?
     fileprivate var currentTasks = [Task]()
     fileprivate var currentReports = [Report]()

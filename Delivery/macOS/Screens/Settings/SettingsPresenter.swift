@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SettingsPresenterInput {
+protocol SettingsPresenterInput: class {
     
     func loadJitInfo()
     func installJit()
@@ -17,7 +17,7 @@ protocol SettingsPresenterInput {
     func saveAppSettings (_ settings: Settings)
 }
 
-protocol SettingsPresenterOutput {
+protocol SettingsPresenterOutput: class {
     
     func setJitIsInstalled (_ installed: Bool)
     func setJiraSettings (_ settings: JiraSettings)
@@ -27,7 +27,7 @@ protocol SettingsPresenterOutput {
 class SettingsPresenter {
     
     fileprivate var jitInteractor = JitInteractor()
-    var userInterface: SettingsPresenterOutput?
+    weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
 }
 

@@ -76,14 +76,7 @@ class AppWireframe {
     }
     
     var newTaskViewController: NewTaskViewController {
-        
-        guard _newTaskViewController == nil else {
-            return _newTaskViewController!
-        }
-        
-        _newTaskViewController = NewTaskViewController.instantiateFromStoryboard("Tasks")
-        
-        return _newTaskViewController!
+        return NewTaskViewController.instantiateFromStoryboard("Tasks")
     }
     
     var settingsViewController: SettingsViewController {
@@ -103,14 +96,7 @@ class AppWireframe {
     }
     
     var messageViewController: MessageViewController {
-        
-        guard _messageViewController == nil else {
-            return _messageViewController!
-        }
-        
-        _messageViewController = MessageViewController.instantiateFromStoryboard("Main")
-        
-        return _messageViewController!
+        return MessageViewController.instantiateFromStoryboard("Main")
     }
 }
 
@@ -182,35 +168,16 @@ extension AppWireframe {
         
         currentController = tasksController
     }
-    
-    func flipToTasksController() {
-        
-        let tasksController = self.tasksViewController
-        let flip = FlipAnimation()
-        flip.animationReachedMiddle = {
-            self.removeController(self.currentController!)
-            self.addController(tasksController)
-            self.currentController = tasksController
-        }
-        flip.animationFinished = {}
-        flip.startWithLayer(layerToAnimate())
-    }
 }
 
 extension AppWireframe {
     
     func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) {
         
-        if let cc = currentController {
-            removeController(cc)
-            currentController = nil
-        }
         _appViewController?.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
         let controller = self.taskSuggestionViewController
         addController(controller)
-        
-//        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: startSleepDate)
-        
+        currentController = controller
     }
 }
 
@@ -225,6 +192,7 @@ extension AppWireframe {
             messageController.view.constrainToSuperview()
         }
         messageViewController.viewModel = message
+        _messageViewController = messageController
     }
     
     func removeMessage() {
@@ -242,6 +210,7 @@ extension AppWireframe {
         let taskController = self.newTaskViewController
         addController(taskController)
         taskController.view.constrainToSuperview()
+        _newTaskViewController = taskController
     }
     
     func removeNewTaskController() {
@@ -254,12 +223,26 @@ extension AppWireframe {
 
 extension AppWireframe {
     
+    
+    func flipToTasksController() {
+        
+        let tasksController = self.tasksViewController
+        let flip = FlipAnimation()
+        flip.animationReachedMiddle = {
+            self.removeCurrentController()
+            self.addController(tasksController)
+            self.currentController = tasksController
+        }
+        flip.animationFinished = {}
+        flip.startWithLayer(layerToAnimate())
+    }
+    
     func flipToSettingsController() {
         
         let settingsController = self.settingsViewController
         let flip = FlipAnimation()
         flip.animationReachedMiddle = {
-            self.removeController(self.currentController!)
+            self.removeCurrentController()
             self.addController(settingsController)
             self.currentController = settingsController
         }

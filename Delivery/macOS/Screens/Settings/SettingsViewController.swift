@@ -39,6 +39,10 @@ class SettingsViewController: NSViewController {
         presenter!.loadJitInfo()
         presenter!.showSettings()
     }
+    
+    deinit {
+        RCLog("deinit")
+    }
 	
 	
 	// MARK: Actions

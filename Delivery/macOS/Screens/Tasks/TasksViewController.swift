@@ -17,7 +17,7 @@ class TasksViewController: NSViewController {
     @IBOutlet fileprivate var butSettings: NSButton?
     @IBOutlet fileprivate var butQuit: NSButton?
     
-    var appWireframe: AppWireframe?
+    weak var appWireframe: AppWireframe?
     var tasksPresenter: TasksPresenterInput?
 	
 	override func awakeFromNib() {
@@ -55,7 +55,8 @@ class TasksViewController: NSViewController {
         tasksPresenter!.refreshUI()
 	}
 	
-	deinit {
+    deinit {
+        RCLog("deinit")
 		NotificationCenter.default.removeObserver(self)
 	}
     
