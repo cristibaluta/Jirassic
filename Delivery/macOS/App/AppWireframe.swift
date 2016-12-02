@@ -18,7 +18,7 @@ class AppWireframe {
     fileprivate var _appViewController: AppViewController?
     
     fileprivate var currentController: NSViewController?
-    fileprivate var _tasksViewController: TasksViewController?
+//    fileprivate var _tasksViewController: TasksViewController?
     fileprivate var _messageViewController: MessageViewController?
     fileprivate var _newTaskViewController: NewTaskViewController?
     
@@ -45,9 +45,9 @@ class AppWireframe {
     
     var tasksViewController: TasksViewController {
         
-        guard _tasksViewController == nil else {
-            return _tasksViewController!
-        }
+//        guard _tasksViewController == nil else {
+//            return _tasksViewController!
+//        }
         
         let controller = TasksViewController.instantiateFromStoryboard("Tasks")
         let presenter = TasksPresenter()
@@ -59,7 +59,7 @@ class AppWireframe {
         presenter.userInterface = controller
         presenter.appWireframe = self
         
-        _tasksViewController = controller
+//        _tasksViewController = controller
         
         return controller
     }
@@ -125,6 +125,12 @@ extension AppWireframe {
 	func hidePopover (_ popover: NSPopover) {
 		popover.close()
 	}
+    
+    func removeCurrentController() {
+        if let c = currentController {
+            removeController(c)
+        }
+    }
     
 	fileprivate func addController (_ controller: NSViewController) {
         _appViewController?.addChildViewController(controller)

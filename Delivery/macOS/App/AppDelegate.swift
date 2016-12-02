@@ -37,9 +37,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
                 if (wself.menu.iconView?.isSelected == true) {
+                    wself.appWireframe.presentTasksController()
 					wself.appWireframe.showPopover(wself.appPopover, fromIcon: wself.menu.iconView!)
 				} else {
-					wself.appWireframe.hidePopover(wself.appPopover)
+                    wself.appWireframe.hidePopover(wself.appPopover)
+                    wself.appWireframe.removeCurrentController()
 				}
 			}
         }
