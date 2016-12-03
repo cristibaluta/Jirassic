@@ -83,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
-            RCLog(event.type)
+            RCLog(event.type.rawValue)
             self.activePopover?.performClose(nil)
         })
     }

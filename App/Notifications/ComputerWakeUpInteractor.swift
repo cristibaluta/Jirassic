@@ -24,14 +24,16 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
         if let type = estimationForDate(date) {
             if type == .startDay {
-                let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
-                let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
-                
-                if Date() > startDate {
-                    save(task: Task(dateEnd: Date(), type: TaskType.startDay))
+                if settings.autoTrackStartOfDay {
+                    let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
+                    let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
+                    
+                    if Date() > startDate {
+                        save(task: Task(dateEnd: Date(), type: TaskType.startDay))
+                    }
                 }
-            }
-            else {
+            } else if (type == .scrum && settings.autoTrackScrum) || (type == .lunch && settings.autoTrackLunch) {
+                
                 var task = Task(dateEnd: Date(), type: type)
                 task.startDate = date
                 save(task: task)
@@ -45,9 +47,6 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
 		let existingTasks = reader.tasksInDay(Date())
         
         guard existingTasks.count > 0 else {
-            if settings.autoTrackStartOfDay {
-                
-            }
             return TaskType.startDay
         }
         
@@ -55,12 +54,12 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         
         switch estimatedType {
         case .scrum:
-            if settings.autoTrackScrum && !TaskFinder().scrumExists(existingTasks) {
+            if !TaskFinder().scrumExists(existingTasks) {
                 return TaskType.scrum
             }
             break
         case .lunch:
-            if settings.autoTrackLunch && !TaskFinder().lunchExists(existingTasks) {
+            if !TaskFinder().lunchExists(existingTasks) {
                 return TaskType.lunch
             }
             break
