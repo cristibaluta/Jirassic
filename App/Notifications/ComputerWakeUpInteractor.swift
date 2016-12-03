@@ -26,7 +26,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
                 let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
                 
                 if Date() > startDate {
-                    log(task: Task(dateEnd: Date(), type: TaskType.startDay))
+                    save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                 }
             }
             return
@@ -39,21 +39,21 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             if settings.autoTrackScrum && !TaskFinder().scrumExists(existingTasks) {
                 var task = Task(dateEnd: Date(), type: TaskType.scrum)
                 task.startDate = date
-                log(task: task)
+                save(task: task)
             }
             break
         case .lunch:
             if settings.autoTrackLunch && !TaskFinder().lunchExists(existingTasks) {
                 var task = Task(dateEnd: Date(), type: TaskType.lunch)
                 task.startDate = date
-                log(task: task)
+                save(task: task)
             }
             break
         case .meeting:
             if settings.autoTrackMeetings {
                 var task = Task(dateEnd: Date(), type: TaskType.meeting)
                 task.startDate = date
-                log(task: task)
+                save(task: task)
             }
             break
         default:
@@ -61,7 +61,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
 	}
 
-    func log (task: Task) {
+    fileprivate func save (task: Task) {
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
         InternalNotifications.notifyAboutNewlyAddedTask(task)

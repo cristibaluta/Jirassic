@@ -492,15 +492,18 @@ Gw
             <objects>
                 <viewController storyboardIdentifier="TaskSuggestionViewController" id="tRv-ep-RyQ" customClass="TaskSuggestionViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="F46-mC-JhQ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="91"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="115"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xms-pO-x4G">
-                                <rect key="frame" x="357" y="43" width="79" height="32"/>
+                                <rect key="frame" x="357" y="67" width="79" height="32"/>
                                 <buttonCell key="cell" type="push" title="Ignore" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pDT-IB-e1W">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleIgnoreButton:" target="tRv-ep-RyQ" id="nxo-VW-zvW"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="55W-A0-75h">
                                 <rect key="frame" x="366" y="13" width="70" height="32"/>
@@ -508,13 +511,16 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="tRv-ep-RyQ" id="VQw-Ze-tQc"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ql7-Oz-1OK">
-                                <rect key="frame" x="20" y="54" width="253" height="17"/>
+                                <rect key="frame" x="20" y="78" width="253" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="You were away between: 12:30 and 13.25" id="XUG-df-poy">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -534,23 +540,46 @@ Gw
                                     </segments>
                                 </segmentedCell>
                                 <connections>
-                                    <action selector="handleSegmentedControl:" target="F9u-wL-YtO" id="ijs-56-YHu"/>
+                                    <action selector="handleSegmentedControl:" target="tRv-ep-RyQ" id="UaC-K0-4ue"/>
                                 </connections>
                             </segmentedControl>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-JW-h3W">
+                                <rect key="frame" x="21" y="46" width="323" height="24"/>
+                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this time?" id="vVI-i0-CV1">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                            </textField>
+                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CGp-Zh-lOB">
+                                <rect key="frame" x="348" y="20" width="5" height="75"/>
+                            </box>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="CGp-Zh-lOB" firstAttribute="leading" secondItem="wTJ-JW-h3W" secondAttribute="trailing" constant="8" id="0kJ-i1-uDH"/>
+                            <constraint firstItem="wTJ-JW-h3W" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" constant="45" id="8bz-Sq-k6h"/>
+                            <constraint firstAttribute="bottom" secondItem="CGp-Zh-lOB" secondAttribute="bottom" constant="20" id="AYe-CY-0Ib"/>
                             <constraint firstAttribute="trailing" secondItem="xms-pO-x4G" secondAttribute="trailing" constant="20" id="EIS-9X-FYz"/>
+                            <constraint firstItem="CGp-Zh-lOB" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" constant="20" id="FAM-wJ-ShU"/>
                             <constraint firstAttribute="trailing" secondItem="55W-A0-75h" secondAttribute="trailing" constant="20" id="Io9-0e-CfM"/>
                             <constraint firstItem="xms-pO-x4G" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" constant="20" id="IpK-IL-Ihm"/>
                             <constraint firstItem="ZGF-O7-hvq" firstAttribute="leading" secondItem="F46-mC-JhQ" secondAttribute="leading" constant="22" id="LCZ-0w-abe"/>
+                            <constraint firstItem="wTJ-JW-h3W" firstAttribute="leading" secondItem="F46-mC-JhQ" secondAttribute="leading" constant="23" id="M2b-Rf-pGx"/>
                             <constraint firstAttribute="bottom" secondItem="55W-A0-75h" secondAttribute="bottom" constant="20" id="U2c-Yy-ztR"/>
+                            <constraint firstAttribute="trailing" secondItem="CGp-Zh-lOB" secondAttribute="trailing" constant="99" id="W7e-9Y-Fkp"/>
+                            <constraint firstAttribute="bottom" secondItem="wTJ-JW-h3W" secondAttribute="bottom" constant="46" id="WVb-lr-FSV"/>
                             <constraint firstAttribute="bottom" secondItem="ZGF-O7-hvq" secondAttribute="bottom" constant="20" id="fcP-Dv-1IX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="notesTextField" destination="wTJ-JW-h3W" id="NwV-nb-rDW"/>
+                        <outlet property="segmentedControl" destination="ZGF-O7-hvq" id="J2A-Xd-Vhz"/>
+                        <outlet property="titleTextField" destination="ql7-Oz-1OK" id="ir4-Di-RaZ"/>
+                    </connections>
                 </viewController>
                 <customObject id="xgm-Ey-9tg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="562.5"/>
+            <point key="canvasLocation" x="75" y="562"/>
         </scene>
     </scenes>
     <resources>

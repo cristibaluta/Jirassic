@@ -148,6 +148,8 @@ extension AppWireframe {
         
         _appViewController!.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
         let controller = self.taskSuggestionViewController
+        controller.startSleepDate = startSleepDate
+        controller.endSleepDate = endSleepDate
         addController(controller)
         currentController = controller
     }
@@ -194,7 +196,6 @@ extension AppWireframe {
 }
 
 extension AppWireframe {
-    
     
     func flipToTasksController() {
         

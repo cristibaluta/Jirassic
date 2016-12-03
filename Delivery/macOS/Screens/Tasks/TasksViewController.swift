@@ -10,12 +10,12 @@ import Cocoa
 
 class TasksViewController: NSViewController {
 	
-	@IBOutlet fileprivate var splitView: NSSplitView?
-	@IBOutlet fileprivate var calendarScrollView: CalendarScrollView?
-	@IBOutlet fileprivate var tasksScrollView: TasksScrollView?
-    @IBOutlet fileprivate var listSegmentedControl: NSSegmentedControl?
-    @IBOutlet fileprivate var butSettings: NSButton?
-    @IBOutlet fileprivate var butQuit: NSButton?
+	@IBOutlet fileprivate weak var splitView: NSSplitView?
+	@IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView?
+	@IBOutlet fileprivate weak var tasksScrollView: TasksScrollView?
+    @IBOutlet fileprivate weak var listSegmentedControl: NSSegmentedControl?
+    @IBOutlet fileprivate weak var butSettings: NSButton?
+    @IBOutlet fileprivate weak var butQuit: NSButton?
     
     weak var appWireframe: AppWireframe?
     var tasksPresenter: TasksPresenterInput?

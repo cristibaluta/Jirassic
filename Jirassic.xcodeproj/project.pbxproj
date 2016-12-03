@@ -465,7 +465,6 @@
 				4065D35D1DD3B44200B73201 /* Interactor */,
 				4065D36B1DD3B44200B73201 /* Screens */,
 				4065D3671DD3B44200B73201 /* Notifications */,
-				4065D3591DD3B44200B73201 /* Main.storyboard */,
 				405B15641DEF66EE0009871C /* Resources */,
 			);
 			path = macOS;
@@ -482,6 +481,7 @@
 		4065D3531DD3B44200B73201 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4065D3591DD3B44200B73201 /* Main.storyboard */,
 				4065D3541DD3B44200B73201 /* AppDelegate.swift */,
 				4065D3551DD3B44200B73201 /* AppWireframe.swift */,
 				405B15651DEF75660009871C /* AppViewController.swift */,
@@ -967,6 +967,7 @@
 				4065D35A1DD3B44200B73201 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

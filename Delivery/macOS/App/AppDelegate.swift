@@ -104,7 +104,7 @@ extension AppDelegate {
         appWireframe.showPopover(popover, fromIcon: menu.iconView!)
     }
     
-    fileprivate func removeActivePopup() {
+    func removeActivePopup() {
         if let popover = activePopover {
             appWireframe.hidePopover(popover)
             appWireframe.removeCurrentController()

@@ -35,6 +35,27 @@ enum TaskSubtype: Int {
     case napEnd = 10
     //    case learningBegin = 11
     case learningEnd = 12
+    
+    var defaultTaskNumber: String? {
+        switch self {
+        case .scrumEnd: return "scrum"
+        case .lunchEnd: return "lunch"
+        case .meetingEnd: return "meeting"
+        case .napEnd: return "nap"
+        case .learningEnd: return "learning"
+        default: return nil
+        }
+    }
+    var defaultNotes: String {
+        switch self {
+            case .scrumEnd: return "Scrum meeting"
+            case .lunchEnd: return "Lunch"
+            case .meetingEnd: return "Internal meeting"
+            case .napEnd: return "Short nap"
+            case .learningEnd: return "Learning time"
+            default: return ""
+        }
+    }
 }
 
 struct Task {
