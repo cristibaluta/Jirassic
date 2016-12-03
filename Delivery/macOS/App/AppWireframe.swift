@@ -137,7 +137,7 @@ extension AppWireframe {
     
     func presentTasksController() {
         
-        _appViewController?.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
+        _appViewController!.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
         let controller = self.tasksViewController
         addController(controller)
         
@@ -146,7 +146,7 @@ extension AppWireframe {
     
     func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) {
         
-        _appViewController?.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
+        _appViewController!.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
         let controller = self.taskSuggestionViewController
         addController(controller)
         currentController = controller
