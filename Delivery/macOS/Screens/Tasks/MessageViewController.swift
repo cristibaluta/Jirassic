@@ -12,9 +12,9 @@ typealias MessageViewModel = (title: String?, message: String?, buttonTitle: Str
 
 class MessageViewController: NSViewController {
 
-    @IBOutlet weak fileprivate var titleLabel: NSTextField?
-    @IBOutlet weak fileprivate var messageLabel: NSTextField?
-    @IBOutlet weak fileprivate var button: NSButton?
+    @IBOutlet fileprivate weak var titleLabel: NSTextField!
+    @IBOutlet fileprivate weak var messageLabel: NSTextField!
+    @IBOutlet fileprivate weak var button: NSButton!
 	
 	var didPressButton: (() -> ())?
 	
@@ -37,6 +37,14 @@ class MessageViewController: NSViewController {
                 button?.isHidden = true
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    deinit {
+        RCLog(self)
     }
 	
 	// MARK: Actions

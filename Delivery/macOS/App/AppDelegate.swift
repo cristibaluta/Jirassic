@@ -42,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				} else {
                     wself.appWireframe.hidePopover(wself.appPopover)
                     wself.appWireframe.removeCurrentController()
+                    wself.appWireframe.removeMessage()
 				}
 			}
         }
@@ -72,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             })
         } else {
-            appWireframe.presentTasksController()
+//            appWireframe.presentTasksController()
 //            appWireframe.presentTaskSuggestionController(startSleepDate: nil, endSleepDate: Date())
         }
         //        let currentUser = UserInteractor(data: localRepository).currentUser()

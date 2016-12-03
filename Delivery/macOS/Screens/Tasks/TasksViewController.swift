@@ -28,6 +28,7 @@ class TasksViewController: NSViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+        RCLog(self)
 		registerForNotifications()
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         
@@ -56,7 +57,7 @@ class TasksViewController: NSViewController {
 	}
 	
     deinit {
-        RCLog("deinit")
+        RCLog(self)
 		NotificationCenter.default.removeObserver(self)
 	}
     
@@ -94,8 +95,8 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showMessage (_ message: MessageViewModel) {
         
-        appWireframe!.presentMessage(message, intoSplitView: splitView!)
-        appWireframe!.messageViewController.didPressButton = tasksPresenter?.messageButtonDidPress
+        let controller = appWireframe!.presentMessage(message, intoSplitView: splitView!)
+        controller.didPressButton = tasksPresenter?.messageButtonDidPress
     }
     
     func showDates (_ weeks: [Week]) {
@@ -132,9 +133,9 @@ extension TasksViewController: TasksPresenterOutput {
         appWireframe!.removeMessage()
         hideControls(true)
         
-        appWireframe!.presentNewTaskController()
-        appWireframe!.newTaskViewController.dateEnd = date
-        appWireframe!.newTaskViewController.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
+        let controller = appWireframe!.presentNewTaskController()
+        controller.dateEnd = date
+        controller.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
             if let strongSelf = self {
                 strongSelf.tasksPresenter!.insertTaskWithData(taskData)
                 strongSelf.tasksPresenter!.updateNoTasksState()
@@ -144,7 +145,7 @@ extension TasksViewController: TasksPresenterOutput {
                 strongSelf.hideControls(false)
             }
         }
-        appWireframe!.newTaskViewController.onCancelChosen = { [weak self] in
+        controller.onCancelChosen = { [weak self] in
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeNewTaskController()
                 strongSelf.splitView!.isHidden = false
