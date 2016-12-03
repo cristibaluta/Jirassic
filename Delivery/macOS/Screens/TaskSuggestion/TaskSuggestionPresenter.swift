@@ -16,8 +16,9 @@ protocol TaskSuggestionPresenterInput: class {
 
 protocol TaskSuggestionPresenterOutput: class {
     func setTaskType (_ taskType: TaskSubtype)
-    func setHeadnotes (_ notes: String)
+    func setTime (_ notes: String)
     func setNotes (_ notes: String)
+    func hideTaskTypes()
 }
 
 class TaskSuggestionPresenter {
@@ -35,19 +36,46 @@ class TaskSuggestionPresenter {
             default: return .issueEnd
         }
     }
+    
+    fileprivate func selectedSegment (forTaskType taskType: TaskType) -> Int {
+        
+        switch taskType {
+        case .scrum: return 0
+        case .meeting: return 1
+        case .lunch: return 2
+        case .nap: return 3
+        case .learning: return 4
+        default: return -1
+        }
+    }
 }
 
 extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
     
     func setup (startSleepDate: Date?, endSleepDate: Date?) {
         
-//        let subtype = TaskSubtype.meetingEnd
         var time = ""
         if let startDate = startSleepDate {
-            time += startDate.HHmm() + "-"
+            time += startDate.HHmm() + " - "
         }
         time += endSleepDate!.HHmm()
-        userInterface!.setHeadnotes(time)
+        userInterface!.setTime(time)
+        
+        if let startDate = startSleepDate {
+            let interactor = ComputerWakeUpInteractor(repository: localRepository)
+            if let type = interactor.estimationForDate(startDate) {
+                if type == .startDay {
+                    userInterface!.setNotes("Start working day")
+                    userInterface!.hideTaskTypes()
+                } else {
+                    let index = selectedSegment(forTaskType: type)
+                    selectSegment(atIndex: index)
+                }
+            }
+        } else {
+            userInterface!.setNotes("Start working day")
+            userInterface!.hideTaskTypes()
+        }
     }
     
     func selectSegment (atIndex index: Int) {

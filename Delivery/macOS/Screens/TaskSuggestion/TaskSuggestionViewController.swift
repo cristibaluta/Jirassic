@@ -46,11 +46,15 @@ extension TaskSuggestionViewController: TaskSuggestionPresenterOutput {
         segmentedControl.selectedSegment = taskType.rawValue
     }
     
-    func setHeadnotes (_ notes: String) {
+    func setTime (_ notes: String) {
         titleTextField.stringValue = notes
     }
     
     func setNotes (_ notes: String) {
         notesTextField.stringValue = notes
+    }
+    
+    func hideTaskTypes() {
+        segmentedControl.isHidden = true
     }
 }

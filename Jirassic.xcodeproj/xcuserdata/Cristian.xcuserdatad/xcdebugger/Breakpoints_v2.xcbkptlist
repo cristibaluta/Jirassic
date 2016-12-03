@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Delivery/macOS/Screens/TaskSuggestion/TaskSuggestionPresenter.swift"
-            timestampString = "502485135.113749"
+            timestampString = "502490063.776594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "save(selectedSegment:notes:startSleepDate:endSleepDate:)"
             landmarkType = "7">
          </BreakpointContent>

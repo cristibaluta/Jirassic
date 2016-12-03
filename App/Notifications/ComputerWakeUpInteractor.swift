@@ -10,18 +10,20 @@ import Foundation
 
 class ComputerWakeUpInteractor: RepositoryInteractor {
     
+    var settings: Settings
+    let typeEstimator = TaskTypeEstimator()
+    
+    override init() {
+        settings = SettingsInteractor().getAppSettings()
+    }
+    
 	func runWith (lastSleepDate date: Date?) {
 		
         guard let date = date else {
             return
         }
-		let reader = ReadTasksInteractor(repository: self.repository)
-		let existingTasks = reader.tasksInDay(Date())
-        let settings: Settings = SettingsInteractor().getAppSettings()
-        let typeEstimator = TaskTypeEstimator()
-        
-        guard existingTasks.count > 0 else {
-            if settings.autoTrackStartOfDay {
+        if let type = estimationForDate(date) {
+            if type == .startDay {
                 let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
                 let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
                 
@@ -29,7 +31,24 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
                     save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                 }
             }
-            return
+            else {
+                var task = Task(dateEnd: Date(), type: type)
+                task.startDate = date
+                save(task: task)
+            }
+        }
+    }
+    
+    func estimationForDate (_ date: Date) -> TaskType? {
+	
+        let reader = ReadTasksInteractor(repository: self.repository)
+		let existingTasks = reader.tasksInDay(Date())
+        
+        guard existingTasks.count > 0 else {
+            if settings.autoTrackStartOfDay {
+                
+            }
+            return TaskType.startDay
         }
         
         let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date, withSettings: settings)
@@ -37,30 +56,25 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         switch estimatedType {
         case .scrum:
             if settings.autoTrackScrum && !TaskFinder().scrumExists(existingTasks) {
-                var task = Task(dateEnd: Date(), type: TaskType.scrum)
-                task.startDate = date
-                save(task: task)
+                return TaskType.scrum
             }
             break
         case .lunch:
             if settings.autoTrackLunch && !TaskFinder().lunchExists(existingTasks) {
-                var task = Task(dateEnd: Date(), type: TaskType.lunch)
-                task.startDate = date
-                save(task: task)
+                return TaskType.lunch
             }
             break
         case .meeting:
             if settings.autoTrackMeetings {
-                var task = Task(dateEnd: Date(), type: TaskType.meeting)
-                task.startDate = date
-                save(task: task)
+                return TaskType.meeting
             }
             break
         default:
-            break
+            return nil
         }
+        return nil
 	}
-
+    
     fileprivate func save (task: Task) {
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
