@@ -240,8 +240,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="R21-XD-uAZ">
                                     <font key="font" metaFont="system"/>
-                                    <date key="date" timeIntervalSinceReferenceDate="-595993200">
-                                        <!--1982-02-11 22:20:00 +0000-->
+                                    <date key="date" timeIntervalSinceReferenceDate="-595993620">
+                                        <!--1982-02-11 22:13:00 +0000-->
                                     </date>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -251,7 +251,7 @@
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nYd-jv-yMI">
                                 <rect key="frame" x="20" y="52" width="374" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Suggest actions when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Rn-wh-mtH">
+                                <buttonCell key="cell" type="check" title="Suggest tasks to log when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Rn-wh-mtH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

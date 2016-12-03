@@ -42,7 +42,12 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
     func setup (startSleepDate: Date?, endSleepDate: Date?) {
         
 //        let subtype = TaskSubtype.meetingEnd
-        userInterface!.setHeadnotes("You were away between \(startSleepDate != nil ? startSleepDate?.HHmm() : "--:--") and \(endSleepDate!.HHmm())")
+        var time = ""
+        if let startDate = startSleepDate {
+            time += startDate.HHmm() + "-"
+        }
+        time += endSleepDate!.HHmm()
+        userInterface!.setHeadnotes(time)
     }
     
     func selectSegment (atIndex index: Int) {

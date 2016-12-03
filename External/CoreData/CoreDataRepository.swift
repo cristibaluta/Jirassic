@@ -264,7 +264,7 @@ extension CoreDataRepository: RepositorySettings {
             csettings?.lunchTime = Date(hour: 13, minute: 0)
             csettings?.scrumMeetingTime = Date(hour: 10, minute: 30)
             csettings?.startOfDayTime = Date(hour: 9, minute: 0)
-            csettings?.minMeetingDuration = Date(hour: 0, minute: 20)
+            csettings?.minMeetingDuration = Date(hour: 0, minute: 13)
             saveContext()
         }
         return settingsFromCSettings(csettings!)
