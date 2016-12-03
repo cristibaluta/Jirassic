@@ -10,11 +10,11 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
     
-    @IBOutlet fileprivate var taskTypeSegmentedControl: NSSegmentedControl?
-	@IBOutlet fileprivate var issueIdTextField: NSTextField?
-	@IBOutlet fileprivate var notesTextField: NSTextField?
-	@IBOutlet fileprivate var endDateTextField: NSTextField?
-	@IBOutlet fileprivate var durationTextField: NSTextField?
+    @IBOutlet fileprivate weak var taskTypeSegmentedControl: NSSegmentedControl!
+	@IBOutlet fileprivate weak var issueIdTextField: NSTextField!
+	@IBOutlet fileprivate weak var notesTextField: NSTextField!
+	@IBOutlet fileprivate weak var endDateTextField: NSTextField!
+	@IBOutlet fileprivate weak var durationTextField: NSTextField!
 	
 	var onOptionChosen: ((_ taskData: TaskCreationData) -> Void)?
 	var onCancelChosen: ((Void) -> Void)?
@@ -125,29 +125,8 @@ extension NewTaskViewController {
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
         
         let subtype = taskSubtype()
-        switch subtype {
-        case .issueEnd:
-            issueIdTextField?.stringValue = ""
-            break
-        case .scrumEnd:
-            issueIdTextField?.stringValue = "scrum"
-            break
-        case .meetingEnd:
-            issueIdTextField?.stringValue = "meeting"
-            break
-        case .lunchEnd:
-            issueIdTextField?.stringValue = "lunch"
-            break
-        case .gitCommitEnd:
-            
-            break
-        case .napEnd:
-            issueIdTextField?.stringValue = "nap"
-            break
-        case .learningEnd:
-            issueIdTextField?.stringValue = "learning"
-            break
-        }
+        issueIdTextField.stringValue = subtype.defaultTaskNumber ?? ""
+        notesTextField.stringValue = subtype.defaultNotes
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
