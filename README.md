@@ -8,7 +8,7 @@ JIRAssic is a Mac app that stays in the status bar and you can access it any tim
 # Who is this for
 - You are forced to use Jira timesheets at work
 - You use git from command line, or want to
-- You are a perfectionist
+- You are a perfectionist, you don't stand for useless workflows, like noting down your time.
 
 # Features
 - Track automatically the time you’ve spent on tasks based on git commits
