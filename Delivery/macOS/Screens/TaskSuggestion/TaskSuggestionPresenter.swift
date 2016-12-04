@@ -24,6 +24,7 @@ protocol TaskSuggestionPresenterOutput: class {
 class TaskSuggestionPresenter {
     
     weak var userInterface: TaskSuggestionPresenterOutput?
+    fileprivate var isStartOfDay = false
     
     fileprivate func taskSubtype (forIndex index: Int) -> TaskSubtype {
         
@@ -65,7 +66,8 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
             let interactor = ComputerWakeUpInteractor(repository: localRepository)
             if let type = interactor.estimationForDate(startDate) {
                 if type == .startDay {
-                    userInterface!.setNotes("Start working day")
+                    isStartOfDay = true
+                    userInterface!.setNotes("Good morning, ready to start your working day?")
                     userInterface!.hideTaskTypes()
                 } else {
                     let index = selectedSegment(forTaskType: type)
@@ -73,7 +75,8 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                 }
             }
         } else {
-            userInterface!.setNotes("Start working day")
+            isStartOfDay = true
+            userInterface!.setNotes("Good morning, ready to start your working day?")
             userInterface!.hideTaskTypes()
         }
     }
@@ -86,13 +89,18 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
     
     func save (selectedSegment: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?) {
         
-        let type = taskSubtype(forIndex: selectedSegment)
+        var task: Task
         
-        var task = Task(subtype: type)
-        task.notes = notes
-        task.taskNumber = type.defaultTaskNumber
-        task.startDate = startSleepDate
-        task.endDate = endSleepDate!
+        if isStartOfDay {
+            task = Task(dateEnd: endSleepDate!, type: TaskType.startDay)
+        } else {
+            let type = taskSubtype(forIndex: selectedSegment)
+            task = Task(subtype: type)
+            task.notes = notes
+            task.taskNumber = type.defaultTaskNumber
+            task.startDate = startSleepDate
+            task.endDate = endSleepDate!
+        }
         
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
