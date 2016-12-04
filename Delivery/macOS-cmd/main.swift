@@ -13,9 +13,8 @@ let theRL = RunLoop.current
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
-    case nr
+    case taskNr
     case notes
-    case type
 }
 
 func printHelp() {
@@ -38,7 +37,7 @@ let localRepository: Repository! = CoreDataRepository(documentsDirectory: jirass
 var remoteRepository: Repository?
 
 
-let settings = SettingsInteractor().getAppSettings()
+//let settings = SettingsInteractor().getAppSettings()
 //print(currentTasks)
 
 
@@ -71,37 +70,23 @@ func list (dayOnDate date: Date) {
     }
 }
 
-func insert (_ arguments: [String]) {
+func insertIssue (arguments: [String]) {
+    
+    guard dayStarted() else {
+        return
+    }
     
     var argType: ArgType?
     var taskNumber: String?
-    var taskType = TaskType.issue
+    let taskType = TaskType.issue
     var notes: String?
-    
-    switch arguments.first {
-        case "task": taskType = .issue
-            break
-        case "scrum": taskType = .issue
-            break
-        case "meeting": taskType = .meeting
-            break
-        case "nap": taskType = .nap
-            break
-        case "learning": taskType = .learning
-            break
-        default:
-            print("Unsupported first argument \(arg). It should be [task,scrum,meeting,nap,learning]")
-            return
-    }
     
     for arg in arguments {
         if arg.hasPrefix("-") {
             switch arg {
-                case "-nr": argType = .nr
+                case "-nr": argType = .taskNr
                     break
                 case "-notes": argType = .notes
-                    break
-                case "-type": argType = .type
                     break
                 default:
                     print("Unsupported argument \(arg). Is it a typo?")
@@ -109,18 +94,13 @@ func insert (_ arguments: [String]) {
             }
         } else if let argType = argType {
             switch argType {
-            case .nr: taskNumber = arg
+            case .taskNr: taskNumber = arg
                 break
             case .notes:
                 if notes == nil {
                     notes = arg
                 } else {
                     notes = "\(notes!) \(arg)"
-                }
-                break
-            case .type:
-                if let type = TaskType(rawValue: Int(arg)!) {
-                    taskType = type
                 }
                 break
             }
@@ -142,9 +122,45 @@ func insert (_ arguments: [String]) {
     print(task.objectId)
 }
 
-func insert (taskType taskType: String) {
+func insert (taskType taskTypeStr: String, arguments: [String]) {
     
+    guard dayStarted() else {
+        return
+    }
     
+    var task: Task?
+    
+    switch taskTypeStr {
+    case "scrum": task = Task(subtype: .scrumEnd)
+        break
+    case "lunch": task = Task(subtype: .lunchEnd)
+        break
+    case "meeting": task = Task(subtype: .meetingEnd)
+        break
+    case "nap": task = Task(subtype: .napEnd)
+        break
+    case "learning": task = Task(subtype: .learningEnd)
+        break
+    case "coderev": task = Task(subtype: .coderevEnd)
+        break
+    default:
+        print("Unsupported first argument \(taskTypeStr). It should be [task,scrum,meeting,nap,learning,coderev]")
+        return
+    }
+    
+    if let duration = arguments.first {
+        if let d = Double(duration) {
+            if d > 0 {
+                task?.startDate = task?.endDate.addingTimeInterval(d)
+            }
+        }
+    }
+    
+    print(task!)
+    let saveInteractor = TaskInteractor(repository: localRepository)
+    saveInteractor.saveTask(task!)
+    
+    print(task!.objectId)
 }
 
 let command = arguments.remove(at: 0)
@@ -154,9 +170,10 @@ switch command {
         list (dayOnDate: Date())
         break
     case "insert":
-        insert(arguments)
+        insertIssue (arguments: arguments)
         break
     case "scrum","lunch","meeting","nap","learning","coderev":
+        insert (taskType: command, arguments: arguments)
         break
     default:
         printHelp()
