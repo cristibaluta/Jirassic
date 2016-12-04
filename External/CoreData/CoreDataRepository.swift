@@ -11,11 +11,13 @@ import CoreData
 
 class CoreDataRepository {
     
+    let databaseName = "Jirassic"
+    
     lazy var applicationDocumentsDirectory: URL = {
         
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
         let baseUrl = urls.last!
-        let url = baseUrl.appendingPathComponent("Jirassic")
+        let url = baseUrl.appendingPathComponent(self.databaseName)
         RCLog(url)
         
         if !FileManager.default.fileExists(atPath: url.path) {
@@ -29,14 +31,14 @@ class CoreDataRepository {
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = Bundle.main.url(forResource: "Jirassic", withExtension: "momd")!
+        let modelURL = Bundle.main.url(forResource: self.databaseName, withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     
     func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
         
         let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent("Jirassic.sqlite")
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("\(self.databaseName).sqlite")
         
         do {
             try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
@@ -66,6 +68,11 @@ class CoreDataRepository {
                 }
             }
         }
+    }
+    
+    convenience init (documentsDirectory: String) {
+        self.init()
+        applicationDocumentsDirectory = URL(fileURLWithPath: documentsDirectory)
     }
 }
 

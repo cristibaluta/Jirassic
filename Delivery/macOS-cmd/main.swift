@@ -19,24 +19,27 @@ enum ArgType {
 }
 
 func printHelp() {
-    print("jirassic-cmd 16.12.24 - (c)2016 Cristian Baluta")
+    print("jirassic-cmd 16.12.24 - (c)2016 Imagin soft")
     print("Usage:")
+    print("     list -date <yyyy.mm.dd>")
     print("     insert -nr <task number> -type <task type> -notes <notes>")
     print("     lunch <duration>  Duration in minutes")
 }
 
-let localRepository = CoreDataRepository()
+
+// /Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application%20Support/Jirassic/
+// /Users/Cristian/Library/Application%20Support/Jirassic/
+let localRepository = CoreDataRepository(documentsDirectory: "/Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application Support/Jirassic/")
 var remoteRepository: Repository?
 
-let saveInteractor = TaskInteractor(data: localRepository)
-let reader = ReadTasksInteractor(data: localRepository)
+let reader = ReadTasksInteractor(repository: localRepository)
 let currentTasks = reader.tasksInDay(Date())
 print(currentTasks)
-if currentTasks.count == 0 {
-    let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
-    print(startDayMark)
-    saveInteractor.saveTask(startDayMark)
-}
+//if currentTasks.count == 0 {
+//    let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
+//    print(startDayMark)
+//    saveInteractor.saveTask(startDayMark)
+//}
 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
@@ -46,6 +49,14 @@ arguments.remove(at: 0)
 guard arguments.count > 0 else {
     printHelp()
     exit(0)
+}
+
+func list (dayOnDate date: Date) {
+    let reader = ReadTasksInteractor(repository: localRepository)
+    let tasks = reader.tasksInDay(date)
+    for task in tasks {
+        print(task.endDate.HHmm() + " " + task.notes!)
+    }
 }
 
 func insert (_ arguments: [String]) {
@@ -93,23 +104,27 @@ func insert (_ arguments: [String]) {
         endDate: Date(),
         notes: notes,
         taskNumber: taskNumber,
-        taskType: NSNumber(value: taskType.rawValue),
-        taskId: String.random()
+        taskType: taskType,
+        objectId: String.random()
     )
     print(task)
+    let saveInteractor = TaskInteractor(repository: localRepository)
     saveInteractor.saveTask(task)
     
-    print(task.taskId)
+    print(task.objectId)
 }
 
 let command = arguments.remove(at: 0)
 print("command \(command)")
 switch command {
-case "insert": //insert(arguments)
-    break
-default:
-    printHelp()
-    break
+    case "list":
+        list (dayOnDate: Date())
+        break
+    case "insert": //insert(arguments)
+        break
+    default:
+        printHelp()
+        break
 }
 
 exit(0)
