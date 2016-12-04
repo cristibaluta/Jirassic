@@ -117,6 +117,8 @@
 		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
 		40FCE41E1DF4237000D4FD45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE41D1DF4237000D4FD45 /* Info.plist */; };
+		40FCE41F1DF4299900D4FD45 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3731DD3B44200B73201 /* SettingsInteractor.swift */; };
+		40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -915,6 +917,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */,
 				4065D42D1DD4576C00B73201 /* Day.swift in Sources */,
 				4065D41D1DD454DF00B73201 /* CUser.swift in Sources */,
 				4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */,
@@ -932,6 +935,7 @@
 				4065D41E1DD454E400B73201 /* Jirassic.xcdatamodeld in Sources */,
 				4065D4311DD457B000B73201 /* DateExtension.swift in Sources */,
 				4065D4291DD4575B00B73201 /* Week.swift in Sources */,
+				40FCE41F1DF4299900D4FD45 /* SettingsInteractor.swift in Sources */,
 				4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */,
 				4065D41C1DD454DF00B73201 /* CTask.swift in Sources */,
 				4065D4181DD454C500B73201 /* Repository.swift in Sources */,

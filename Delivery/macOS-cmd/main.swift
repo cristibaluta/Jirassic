@@ -26,24 +26,24 @@ func printHelp() {
     print("     lunch <duration>  Duration in minutes")
 }
 
-
+let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
+let libraryDirectory = urls.first!
+let jirassicSandboxedAppSupportDir = libraryDirectory.appendingPathComponent("Containers/com.ralcr.Jirassic.osx/Data/Library/Application Support/Jirassic")
+//print(urls)
+//print(jirassicSandboxedAppSupportDir)
 // /Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application%20Support/Jirassic/
 // /Users/Cristian/Library/Application%20Support/Jirassic/
-let localRepository = CoreDataRepository(documentsDirectory: "/Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application Support/Jirassic/")
+let localRepository: Repository! = CoreDataRepository(documentsDirectory: jirassicSandboxedAppSupportDir.path)
 var remoteRepository: Repository?
 
-let reader = ReadTasksInteractor(repository: localRepository)
-let currentTasks = reader.tasksInDay(Date())
-print(currentTasks)
-//if currentTasks.count == 0 {
-//    let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
-//    print(startDayMark)
-//    saveInteractor.saveTask(startDayMark)
-//}
+
+let settings = SettingsInteractor().getAppSettings()
+//print(currentTasks)
+
 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
-print(arguments)
+//print(arguments)
 arguments.remove(at: 0)
 
 guard arguments.count > 0 else {
@@ -60,7 +60,18 @@ func list (dayOnDate date: Date) {
 }
 
 func insert (_ arguments: [String]) {
-    print("insert")
+    
+    let reader = ReadTasksInteractor(repository: localRepository)
+    let currentTasks = reader.tasksInDay(Date())
+    guard currentTasks.count > 0 else {
+        print("Working day was not started yet. Run jirassic start.")
+        return
+    }
+    //    let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
+    //    print(startDayMark)
+    //    saveInteractor.saveTask(startDayMark)
+    //}
+    
     var argType: ArgType?
     var taskNumber: String?
     var taskType = TaskType.issue
