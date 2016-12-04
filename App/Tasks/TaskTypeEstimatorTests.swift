@@ -16,6 +16,7 @@ class TaskTypeEstimatorTests: XCTestCase {
                             autoTrackLunch: true,
                             autoTrackScrum: true,
                             autoTrackMeetings: true,
+                            showWakeUpSuggestions: true,
                             startOfDayTime: Date(hour: 9, minute: 0),
                             lunchTime: Date(hour: 13, minute: 0),
                             scrumMeetingTime: Date(hour: 10, minute: 30),

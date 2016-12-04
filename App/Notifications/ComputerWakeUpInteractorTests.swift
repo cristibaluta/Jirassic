@@ -12,7 +12,7 @@ import XCTest
 class ComputerWakeUpInteractorMock: ComputerWakeUpInteractor {
     var log_called = false
     var taskType_received: TaskType?
-    override func log (task: Task) {
+    override func save (task: Task) {
         log_called = true
         taskType_received = task.taskType
     }
