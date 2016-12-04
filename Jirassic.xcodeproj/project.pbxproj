@@ -116,6 +116,7 @@
 		40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */; };
 		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
+		40FCE41E1DF4237000D4FD45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE41D1DF4237000D4FD45 /* Info.plist */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -242,7 +243,7 @@
 		4065D39A1DD3B44200B73201 /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
 		4065D4021DD4532100B73201 /* JirassicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JirassicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4065D4101DD4534C00B73201 /* jirassic-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jirassic-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4065D4101DD4534C00B73201 /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
 		40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsInteractor.swift; sourceTree = "<group>"; };
 		40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedScriptsInteractor.swift; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
+		40FCE41D1DF4237000D4FD45 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -326,7 +328,7 @@
 			children = (
 				4065D3041DD3A1AA00B73201 /* Jirassic.app */,
 				4065D4021DD4532100B73201 /* JirassicTests.xctest */,
-				4065D4101DD4534C00B73201 /* jirassic-cmd */,
+				4065D4101DD4534C00B73201 /* jirassic */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -571,6 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				4065D3871DD3B44200B73201 /* main.swift */,
+				40FCE41D1DF4237000D4FD45 /* Info.plist */,
 			);
 			path = "macOS-cmd";
 			sourceTree = "<group>";
@@ -711,9 +714,9 @@
 			productReference = 4065D4021DD4532100B73201 /* JirassicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4065D40F1DD4534C00B73201 /* jirassic-cmd */ = {
+		4065D40F1DD4534C00B73201 /* jirassic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */;
+			buildConfigurationList = 4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic" */;
 			buildPhases = (
 				4065D40C1DD4534C00B73201 /* Sources */,
 				4065D40D1DD4534C00B73201 /* Frameworks */,
@@ -723,9 +726,9 @@
 			);
 			dependencies = (
 			);
-			name = "jirassic-cmd";
+			name = jirassic;
 			productName = "jirassic-cmd";
-			productReference = 4065D4101DD4534C00B73201 /* jirassic-cmd */;
+			productReference = 4065D4101DD4534C00B73201 /* jirassic */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -776,7 +779,7 @@
 			targets = (
 				4065D3031DD3A1AA00B73201 /* Jirassic */,
 				4065D4011DD4532100B73201 /* JirassicTests */,
-				4065D40F1DD4534C00B73201 /* jirassic-cmd */,
+				4065D40F1DD4534C00B73201 /* jirassic */,
 			);
 		};
 /* End PBXProject section */
@@ -786,6 +789,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40FCE41E1DF4237000D4FD45 /* Info.plist in Resources */,
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
@@ -1129,6 +1133,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1138,6 +1143,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1173,7 +1179,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */ = {
+		4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4065D4151DD4534C00B73201 /* Debug */,
