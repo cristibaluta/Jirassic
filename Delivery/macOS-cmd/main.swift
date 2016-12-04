@@ -18,12 +18,13 @@ enum ArgType {
 }
 
 func printHelp() {
-    print("jirassic-cmd 16.12.24 - (c)2016 Imagin soft")
+    print("jirassic 16.12.24 - (c)2016 Imagin soft")
     print("Usage:")
     print("     list [yyyy.mm.dd] If date is missing list tasks from today")
     print("     reports [yyyy.mm.dd] If date is missing list reports from today")
     print("     insert -nr <task number> -notes <notes> -duration <mm>")
     print("     [scrum,lunch,meeting,nap,learning,coderev] <duration>  Duration in minutes")
+    print("")
 }
 
 let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
@@ -37,14 +38,14 @@ let localRepository: Repository! = CoreDataRepository(documentsDirectory: jirass
 var remoteRepository: Repository?
 
 
-//let settings = SettingsInteractor().getAppSettings()
+//let settings = localRepository!.settings()
 //print(currentTasks)
 
 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
 //print(arguments)
-arguments.remove(at: 0)
+arguments.remove(at: 0)// First arg is the filepath and needs to be removed
 
 guard arguments.count > 0 else {
     printHelp()
