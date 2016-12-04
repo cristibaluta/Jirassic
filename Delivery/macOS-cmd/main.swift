@@ -21,9 +21,10 @@ enum ArgType {
 func printHelp() {
     print("jirassic-cmd 16.12.24 - (c)2016 Imagin soft")
     print("Usage:")
-    print("     list -date <yyyy.mm.dd>")
-    print("     insert -nr <task number> -type <task type> -notes <notes>")
-    print("     lunch <duration>  Duration in minutes")
+    print("     list [yyyy.mm.dd] If date is missing list tasks from today")
+    print("     reports [yyyy.mm.dd] If date is missing list reports from today")
+    print("     insert -nr <task number> -notes <notes> -duration <mm>")
+    print("     [scrum,lunch,meeting,nap,learning,coderev] <duration>  Duration in minutes")
 }
 
 let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
@@ -51,6 +52,17 @@ guard arguments.count > 0 else {
     exit(0)
 }
 
+func dayStarted() -> Bool {
+    
+    let reader = ReadTasksInteractor(repository: localRepository)
+    let currentTasks = reader.tasksInDay(Date())
+    guard currentTasks.count > 0 else {
+        print("Working day was not started yet. Run jirassic start.")
+        return false
+    }
+    return true
+}
+
 func list (dayOnDate date: Date) {
     let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
@@ -61,34 +73,39 @@ func list (dayOnDate date: Date) {
 
 func insert (_ arguments: [String]) {
     
-    let reader = ReadTasksInteractor(repository: localRepository)
-    let currentTasks = reader.tasksInDay(Date())
-    guard currentTasks.count > 0 else {
-        print("Working day was not started yet. Run jirassic start.")
-        return
-    }
-    //    let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
-    //    print(startDayMark)
-    //    saveInteractor.saveTask(startDayMark)
-    //}
-    
     var argType: ArgType?
     var taskNumber: String?
     var taskType = TaskType.issue
     var notes: String?
     
+    switch arguments.first {
+        case "task": taskType = .issue
+            break
+        case "scrum": taskType = .issue
+            break
+        case "meeting": taskType = .meeting
+            break
+        case "nap": taskType = .nap
+            break
+        case "learning": taskType = .learning
+            break
+        default:
+            print("Unsupported first argument \(arg). It should be [task,scrum,meeting,nap,learning]")
+            return
+    }
+    
     for arg in arguments {
         if arg.hasPrefix("-") {
             switch arg {
-            case "-nr": argType = .nr
-                break
-            case "-notes": argType = .notes
-                break
-            case "-type": argType = .type
-                break
-            default:
-                print("Unsupported argument \(arg). Did you meant something else?")
-                break
+                case "-nr": argType = .nr
+                    break
+                case "-notes": argType = .notes
+                    break
+                case "-type": argType = .type
+                    break
+                default:
+                    print("Unsupported argument \(arg). Is it a typo?")
+                    break
             }
         } else if let argType = argType {
             switch argType {
@@ -125,13 +142,21 @@ func insert (_ arguments: [String]) {
     print(task.objectId)
 }
 
+func insert (taskType taskType: String) {
+    
+    
+}
+
 let command = arguments.remove(at: 0)
 print("command \(command)")
 switch command {
     case "list":
         list (dayOnDate: Date())
         break
-    case "insert": //insert(arguments)
+    case "insert":
+        insert(arguments)
+        break
+    case "scrum","lunch","meeting","nap","learning","coderev":
         break
     default:
         printHelp()

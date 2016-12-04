@@ -89,6 +89,7 @@ class NewTaskViewController: NSViewController {
             case 3: return .lunchEnd
             case 4: return .napEnd
             case 5: return .learningEnd
+            case 6: return .coderevEnd
             default: return .issueEnd
         }
     }

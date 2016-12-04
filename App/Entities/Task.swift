@@ -18,6 +18,7 @@ enum TaskType: Int {
     case gitCommit = 5
     case nap = 6
     case learning = 7
+    case coderev = 8
 }
 
 enum TaskSubtype: Int {
@@ -35,24 +36,28 @@ enum TaskSubtype: Int {
     case napEnd = 10
     //    case learningBegin = 11
     case learningEnd = 12
+    //    case coderevBegin = 13
+    case coderevEnd = 14
     
     var defaultTaskNumber: String? {
         switch self {
-        case .scrumEnd: return "scrum"
-        case .lunchEnd: return "lunch"
-        case .meetingEnd: return "meeting"
-        case .napEnd: return "nap"
-        case .learningEnd: return "learning"
-        default: return nil
+            case .scrumEnd: return "scrum"
+            case .lunchEnd: return "lunch"
+            case .meetingEnd: return "meeting"
+            case .napEnd: return "nap"
+            case .learningEnd: return "learning"
+            case .coderevEnd: return "coderev"
+            default: return nil
         }
     }
     var defaultNotes: String {
         switch self {
             case .scrumEnd: return "Scrum meeting"
-            case .lunchEnd: return "Lunch"
+            case .lunchEnd: return "Lunch break"
             case .meetingEnd: return "Internal meeting"
-            case .napEnd: return "Short nap"
+            case .napEnd: return "Nap time"
             case .learningEnd: return "Learning time"
+            case .coderevEnd: return "Code reviews"
             default: return ""
         }
     }
@@ -86,12 +91,13 @@ extension Task {
 		switch (type) {
 			case TaskType.issue:	self.notes = ""
 			case TaskType.startDay:	self.notes = "Working day started"
-			case TaskType.scrum:	self.notes = "Scrum meeting"
-			case TaskType.lunch:	self.notes = "Lunch break"
-			case TaskType.meeting:	self.notes = "Internal meeting"
+			case TaskType.scrum:	self.notes = TaskSubtype.scrumEnd.defaultNotes
+			case TaskType.lunch:	self.notes = TaskSubtype.lunchEnd.defaultNotes
+			case TaskType.meeting:	self.notes = TaskSubtype.meetingEnd.defaultNotes
             case TaskType.gitCommit:self.notes = ""
-            case TaskType.nap:      self.notes = "Nap, I was tired"
-            case TaskType.learning: self.notes = "Learning session"
+            case TaskType.nap:      self.notes = TaskSubtype.napEnd.defaultNotes
+            case TaskType.learning: self.notes = TaskSubtype.learningEnd.defaultNotes
+            case TaskType.coderev:  self.notes = TaskSubtype.coderevEnd.defaultNotes
 		}
 	}
 	
@@ -99,6 +105,8 @@ extension Task {
 		
         self.endDate = Date()
         self.objectId = String.random()
+        self.notes = subtype.defaultNotes
+        self.taskNumber = subtype.defaultTaskNumber
         
 		switch (subtype) {
 			case .issueEnd:		self.taskType = TaskType.issue
@@ -108,6 +116,7 @@ extension Task {
             case .gitCommitEnd:	self.taskType = TaskType.gitCommit
             case .napEnd:       self.taskType = TaskType.nap
             case .learningEnd:  self.taskType = TaskType.learning
+            case .coderevEnd:   self.taskType = TaskType.coderev
 		}
 	}
 }

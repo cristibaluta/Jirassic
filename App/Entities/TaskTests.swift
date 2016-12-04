@@ -20,5 +20,6 @@ class TaskTests: XCTestCase {
         XCTAssert(Task(subtype: .gitCommitEnd).taskType == TaskType.gitCommit)
         XCTAssert(Task(subtype: .napEnd).taskType == TaskType.nap)
         XCTAssert(Task(subtype: .learningEnd).taskType == TaskType.learning)
+        XCTAssert(Task(subtype: .coderevEnd).taskType == TaskType.coderev)
     }
 }

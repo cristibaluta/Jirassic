@@ -116,7 +116,6 @@
 		40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */; };
 		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
-		40FCE41E1DF4237000D4FD45 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE41D1DF4237000D4FD45 /* Info.plist */; };
 		40FCE41F1DF4299900D4FD45 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3731DD3B44200B73201 /* SettingsInteractor.swift */; };
 		40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
@@ -255,7 +254,6 @@
 		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
-		40FCE41D1DF4237000D4FD45 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -575,7 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				4065D3871DD3B44200B73201 /* main.swift */,
-				40FCE41D1DF4237000D4FD45 /* Info.plist */,
 			);
 			path = "macOS-cmd";
 			sourceTree = "<group>";
@@ -791,7 +788,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FCE41E1DF4237000D4FD45 /* Info.plist in Resources */,
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
