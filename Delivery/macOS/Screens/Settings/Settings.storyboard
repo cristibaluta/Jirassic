@@ -23,44 +23,57 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZW-oy-bAn">
-                                <rect key="frame" x="20" y="155" width="369" height="18"/>
+                                <rect key="frame" x="20" y="100" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Track lunch when computer goes to sleep around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYU-uP-r49">
+                                <buttonCell key="cell" type="check" title="Lunch begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYU-uP-r49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwE-DS-XUK">
-                                <rect key="frame" x="20" y="189" width="305" height="18"/>
+                                <rect key="frame" x="20" y="134" width="128" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Start the day when computer wakes up around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U9A-hl-Ro2">
+                                <buttonCell key="cell" type="check" title="Working between" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U9A-hl-Ro2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-eo-qyH">
-                                <rect key="frame" x="20" y="120" width="374" height="18"/>
+                                <rect key="frame" x="20" y="65" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Track scrum when computer goes to sleep around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
+                                <buttonCell key="cell" type="check" title="Scrum begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1zq-qp-TWl">
-                                <rect key="frame" x="20" y="85" width="374" height="18"/>
+                                <rect key="frame" x="20" y="30" width="197" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Track as meetings computer sleeps longer than" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XNA-EY-JgP">
+                                <buttonCell key="cell" type="check" title="Ignore sleeps shorter than" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XNA-EY-JgP">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
-                                <rect key="frame" x="395" y="186" width="62" height="27"/>
+                                <rect key="frame" x="185" y="131" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="-595962000">
                                         <!--1982-02-12 07:00:00 +0000-->
+                                    </date>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                </datePickerCell>
+                            </datePicker>
+                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-af-j6l">
+                                <rect key="frame" x="316" y="131" width="62" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="0bs-wq-Tnf">
+                                    <font key="font" metaFont="system"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="-595933200">
+                                        <!--1982-02-12 15:00:00 +0000-->
                                     </date>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -147,7 +160,7 @@
                                 </connections>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
-                                <rect key="frame" x="395" y="152" width="61" height="27"/>
+                                <rect key="frame" x="185" y="97" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
                                     <font key="font" metaFont="system"/>
@@ -160,7 +173,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-W0-ldB">
-                                <rect key="frame" x="395" y="118" width="61" height="27"/>
+                                <rect key="frame" x="185" y="63" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="aAZ-cj-BOO">
                                     <font key="font" metaFont="system"/>
@@ -236,7 +249,7 @@
                                 </constraints>
                             </box>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUr-A2-ir2">
-                                <rect key="frame" x="396" y="82" width="61" height="27"/>
+                                <rect key="frame" x="216" y="27" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="R21-XD-uAZ">
                                     <font key="font" metaFont="system"/>
@@ -248,14 +261,55 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nYd-jv-yMI">
-                                <rect key="frame" x="20" y="52" width="374" height="18"/>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-3o-iuE">
+                                <rect key="frame" x="20" y="188" width="250" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Suggest tasks to log when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Rn-wh-mtH">
+                                <buttonCell key="cell" type="check" title="Log tasks when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="k5h-wa-doI">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleAutoTrackButton:" target="J1c-ZL-C5e" id="GlF-LF-fFK"/>
+                                </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJX-Vo-Lzi">
+                                <rect key="frame" x="266" y="134" width="27" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="and" id="FCS-Ce-XyY">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFE-Rj-eXW">
+                                <rect key="frame" x="266" y="184" width="259" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="N0R-bz-bQl">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Automatically" width="126"/>
+                                        <segment label="Notification popup" width="126" selected="YES" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeV-Hb-mtE">
+                                <rect key="frame" x="396" y="134" width="143" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lunch and nap ignored" id="nkd-gH-y58">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9lx-Ml-Fp6">
+                                <rect key="frame" x="302" y="31" width="164" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Rest of them are meetings" id="Pwc-t0-igT">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jgE-dH-Hh6" secondAttribute="trailing" constant="20" id="BR0-UX-Ylu"/>
@@ -278,21 +332,23 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="butAutoTrackLunch" destination="gZW-oy-bAn" id="mmJ-uU-5HZ"/>
-                        <outlet property="butAutoTrackMeetings" destination="1zq-qp-TWl" id="0bT-p3-wDe"/>
-                        <outlet property="butAutoTrackScrum" destination="N5K-eo-qyH" id="QIh-HJ-B5S"/>
-                        <outlet property="butAutoTrackStartOfDay" destination="mwE-DS-XUK" id="vaC-kU-CEa"/>
+                        <outlet property="butEnableAutoTrack" destination="xBu-3o-iuE" id="qZO-Eu-geI"/>
+                        <outlet property="butEnableLunch" destination="gZW-oy-bAn" id="wQl-Xs-E1X"/>
+                        <outlet property="butEnableMeetings" destination="1zq-qp-TWl" id="lTE-a0-Vkf"/>
+                        <outlet property="butEnableScrum" destination="N5K-eo-qyH" id="mXR-1g-gJl"/>
+                        <outlet property="butEnableStartOfDay" destination="mwE-DS-XUK" id="7xw-NT-vF5"/>
                         <outlet property="butInstallJit" destination="19q-BQ-bPB" id="ekh-La-zda"/>
-                        <outlet property="butWakeUpSuggestions" destination="nYd-jv-yMI" id="oR4-hA-6YK"/>
+                        <outlet property="endOfDayTimePicker" destination="zDS-af-j6l" id="23g-Br-Fe6"/>
                         <outlet property="jiraPasswordTextField" destination="2Xl-Yb-FkC" id="ohC-It-DHk"/>
                         <outlet property="jiraUrlTextField" destination="Ygh-kb-AK9" id="h3X-TY-xXc"/>
                         <outlet property="jiraUserTextField" destination="pmf-9e-7xQ" id="bhs-dM-Ha9"/>
                         <outlet property="jitImageView" destination="1zu-O9-EL6" id="q4f-Ic-FI2"/>
                         <outlet property="jitTextField" destination="WPR-i0-dsI" id="J2v-FS-c35"/>
                         <outlet property="lunchTimePicker" destination="9vu-o2-nUg" id="y0n-g6-Dc6"/>
-                        <outlet property="minMeetingDurationTimePicker" destination="zUr-A2-ir2" id="qn2-L5-QDa"/>
-                        <outlet property="scrumMeetingTimePicker" destination="tAP-W0-ldB" id="B6q-7b-eki"/>
+                        <outlet property="minSleepDurationTimePicker" destination="zUr-A2-ir2" id="5is-kv-mhX"/>
+                        <outlet property="scrumTimePicker" destination="tAP-W0-ldB" id="4dp-QB-pWf"/>
                         <outlet property="startOfDayTimePicker" destination="y4N-A7-wyY" id="jTW-Fv-a7I"/>
+                        <outlet property="trackingModeSegmentedControl" destination="PFE-Rj-eXW" id="xYO-Bl-Rex"/>
                     </connections>
                 </viewController>
                 <customObject id="C7k-Vd-XtM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

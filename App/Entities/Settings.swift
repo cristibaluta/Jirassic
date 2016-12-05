@@ -8,16 +8,23 @@
 
 import Foundation
 
+enum TaskTrackingMode: Int {
+    case auto
+    case notif
+}
+
 struct Settings {
     
-    var autoTrackStartOfDay: Bool
-    var autoTrackLunch: Bool
-    var autoTrackScrum: Bool
-    var autoTrackMeetings: Bool
-    var showWakeUpSuggestions: Bool
+    var startOfDayEnabled: Bool
+    var lunchEnabled: Bool
+    var scrumEnabled: Bool
+    var meetingEnabled: Bool
+    var autoTrackEnabled: Bool
+    var trackingMode: TaskTrackingMode
     
     var startOfDayTime: Date
+    var endOfDayTime: Date
     var lunchTime: Date
-    var scrumMeetingTime: Date
-    var minMeetingDuration: Date
+    var scrumTime: Date
+    var minSleepDuration: Date
 }

@@ -16,7 +16,7 @@ class TaskTypeEstimator: NSObject {
     func taskTypeAroundDate (_ date: Date, withSettings settings: Settings) -> TaskType {
 		
 		// Check if the date is around scrum time
-        var settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumMeetingTime)
+        var settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumTime)
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
 		comps.hour = settingsScrumTime.hour
@@ -44,7 +44,7 @@ class TaskTypeEstimator: NSObject {
 		}
         
         // Check if meeting
-        var settingsMeetingTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.minMeetingDuration)
+        var settingsMeetingTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.minSleepDuration)
         let duration = Double(settingsMeetingTime.hour!).hoursToSec + Double(settingsMeetingTime.minute!).minToSec
         
         if abs(date.timeIntervalSinceNow) > duration {

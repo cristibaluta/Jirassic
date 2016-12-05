@@ -263,15 +263,17 @@ extension CoreDataRepository: RepositorySettings {
         if csettings == nil {
             csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
                                                             into: managedObjectContext!) as? CSettings
-            csettings?.autoTrackLunch = 1
-            csettings?.autoTrackScrum = 1
-            csettings?.autoTrackStartOfDay = 1
-            csettings?.autoTrackMeetings = 1
-            csettings?.showWakeUpSuggestions = 1
-            csettings?.lunchTime = Date(hour: 13, minute: 0)
-            csettings?.scrumMeetingTime = Date(hour: 10, minute: 30)
+            csettings?.startOfDayEnabled = 1
+            csettings?.lunchEnabled = 1
+            csettings?.scrumEnabled = 1
+            csettings?.meetingEnabled = 1
+            csettings?.autoTrackEnabled = 1
+            csettings?.trackingMode = 1
             csettings?.startOfDayTime = Date(hour: 9, minute: 0)
-            csettings?.minMeetingDuration = Date(hour: 0, minute: 13)
+            csettings?.endOfDayTime = Date(hour: 17, minute: 0)
+            csettings?.lunchTime = Date(hour: 13, minute: 0)
+            csettings?.scrumTime = Date(hour: 10, minute: 30)
+            csettings?.minSleepDuration = Date(hour: 0, minute: 13)
             saveContext()
         }
         return settingsFromCSettings(csettings!)
@@ -285,15 +287,17 @@ extension CoreDataRepository: RepositorySettings {
     
     fileprivate func settingsFromCSettings (_ csettings: CSettings) -> Settings {
         
-        return Settings(autoTrackStartOfDay: csettings.autoTrackStartOfDay!.boolValue,
-                        autoTrackLunch: csettings.autoTrackLunch!.boolValue,
-                        autoTrackScrum: csettings.autoTrackScrum!.boolValue,
-                        autoTrackMeetings: csettings.autoTrackMeetings!.boolValue,
-                        showWakeUpSuggestions: csettings.showWakeUpSuggestions!.boolValue,
+        return Settings(startOfDayEnabled: csettings.startOfDayEnabled!.boolValue,
+                        lunchEnabled: csettings.lunchEnabled!.boolValue,
+                        scrumEnabled: csettings.scrumEnabled!.boolValue,
+                        meetingEnabled: csettings.meetingEnabled!.boolValue,
+                        autoTrackEnabled: csettings.autoTrackEnabled!.boolValue,
+                        trackingMode: TaskTrackingMode(rawValue: csettings.trackingMode!.intValue)!,
                         startOfDayTime: csettings.startOfDayTime!,
+                        endOfDayTime: csettings.endOfDayTime!,
                         lunchTime: csettings.lunchTime!,
-                        scrumMeetingTime: csettings.scrumMeetingTime!,
-                        minMeetingDuration: csettings.minMeetingDuration!
+                        scrumTime: csettings.scrumTime!,
+                        minSleepDuration: csettings.minSleepDuration!
         )
     }
     
@@ -305,15 +309,17 @@ extension CoreDataRepository: RepositorySettings {
             csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
                                                             into: managedObjectContext!) as? CSettings
         }
-        csettings?.autoTrackStartOfDay = NSNumber(value: settings.autoTrackStartOfDay)
-        csettings?.autoTrackLunch = NSNumber(value: settings.autoTrackLunch)
-        csettings?.autoTrackScrum = NSNumber(value: settings.autoTrackScrum)
-        csettings?.autoTrackMeetings = NSNumber(value: settings.autoTrackMeetings)
-        csettings?.showWakeUpSuggestions = NSNumber(value: settings.showWakeUpSuggestions)
+        csettings?.startOfDayEnabled = NSNumber(value: settings.startOfDayEnabled)
+        csettings?.lunchEnabled = NSNumber(value: settings.lunchEnabled)
+        csettings?.scrumEnabled = NSNumber(value: settings.scrumEnabled)
+        csettings?.meetingEnabled = NSNumber(value: settings.meetingEnabled)
+        csettings?.autoTrackEnabled = NSNumber(value: settings.autoTrackEnabled)
+        csettings?.trackingMode = NSNumber(value: settings.trackingMode.rawValue)
         csettings?.startOfDayTime = settings.startOfDayTime
+        csettings?.endOfDayTime = settings.endOfDayTime
         csettings?.lunchTime = settings.lunchTime
-        csettings?.scrumMeetingTime = settings.scrumMeetingTime
-        csettings?.minMeetingDuration = settings.minMeetingDuration
+        csettings?.scrumTime = settings.scrumTime
+        csettings?.minSleepDuration = settings.minSleepDuration
         
         return csettings!
     }

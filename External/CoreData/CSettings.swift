@@ -11,15 +11,17 @@ import CoreData
 
 class CSettings: NSManagedObject {
     
-    @NSManaged var autoTrackStartOfDay: NSNumber?
-    @NSManaged var autoTrackLunch: NSNumber?
-    @NSManaged var autoTrackScrum: NSNumber?
-    @NSManaged var autoTrackMeetings: NSNumber?
-    @NSManaged var showWakeUpSuggestions: NSNumber?
+    @NSManaged var startOfDayEnabled: NSNumber?
+    @NSManaged var lunchEnabled: NSNumber?
+    @NSManaged var scrumEnabled: NSNumber?
+    @NSManaged var meetingEnabled: NSNumber?
+    @NSManaged var autoTrackEnabled: NSNumber?
+    @NSManaged var trackingMode: NSNumber?
     
     @NSManaged var startOfDayTime: Date?
+    @NSManaged var endOfDayTime: Date?
     @NSManaged var lunchTime: Date?
-    @NSManaged var scrumMeetingTime: Date?
-    @NSManaged var minMeetingDuration: Date?
+    @NSManaged var scrumTime: Date?
+    @NSManaged var minSleepDuration: Date?
     
 }

@@ -20,15 +20,17 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var jiraUserTextField: NSTextField?
     @IBOutlet fileprivate var jiraPasswordTextField: NSTextField?
     // Settings
-    @IBOutlet fileprivate var butAutoTrackStartOfDay: NSButton!
-    @IBOutlet fileprivate var butAutoTrackLunch: NSButton!
-    @IBOutlet fileprivate var butAutoTrackScrum: NSButton!
-    @IBOutlet fileprivate var butAutoTrackMeetings: NSButton!
-    @IBOutlet fileprivate var butWakeUpSuggestions: NSButton!
+    @IBOutlet fileprivate var butEnableStartOfDay: NSButton!
+    @IBOutlet fileprivate var butEnableLunch: NSButton!
+    @IBOutlet fileprivate var butEnableScrum: NSButton!
+    @IBOutlet fileprivate var butEnableMeetings: NSButton!
+    @IBOutlet fileprivate var butEnableAutoTrack: NSButton!
+    @IBOutlet fileprivate var trackingModeSegmentedControl: NSSegmentedControl!
     @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var endOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var scrumMeetingTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var minMeetingDurationTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var scrumTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var minSleepDurationTimePicker: NSDatePicker!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
@@ -57,20 +59,26 @@ class SettingsViewController: NSViewController {
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {
 		
-        let settings = Settings(autoTrackStartOfDay: butAutoTrackStartOfDay.state == NSOnState,
-                                autoTrackLunch: butAutoTrackLunch.state == NSOnState,
-                                autoTrackScrum: butAutoTrackScrum.state == NSOnState,
-                                autoTrackMeetings: butAutoTrackMeetings.state == NSOnState,
-                                showWakeUpSuggestions: butWakeUpSuggestions.state == NSOnState,
+        let settings = Settings(startOfDayEnabled: butEnableStartOfDay.state == NSOnState,
+                                lunchEnabled: butEnableLunch.state == NSOnState,
+                                scrumEnabled: butEnableScrum.state == NSOnState,
+                                meetingEnabled: butEnableMeetings.state == NSOnState,
+                                autoTrackEnabled: butEnableAutoTrack.state == NSOnState,
+                                trackingMode: TaskTrackingMode(rawValue: trackingModeSegmentedControl.selectedSegment)!,
                                 startOfDayTime: startOfDayTimePicker.dateValue,
+                                endOfDayTime: endOfDayTimePicker.dateValue,
                                 lunchTime: lunchTimePicker.dateValue,
-                                scrumMeetingTime: scrumMeetingTimePicker.dateValue,
-                                minMeetingDuration: minMeetingDurationTimePicker.dateValue
+                                scrumTime: scrumTimePicker.dateValue,
+                                minSleepDuration: minSleepDurationTimePicker.dateValue
         )
         presenter!.saveAppSettings(settings)
         
         appWireframe!.flipToTasksController()
 	}
+    
+    @IBAction func handleAutoTrackButton (_ sender: NSButton) {
+        trackingModeSegmentedControl.isEnabled = sender.state == NSOnState
+    }
 }
 
 extension SettingsViewController: SettingsPresenterOutput {
@@ -91,15 +99,18 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func showAppSettings (_ settings: Settings) {
         
-        butAutoTrackStartOfDay.state = settings.autoTrackStartOfDay ? NSOnState : NSOffState
-        butAutoTrackLunch.state = settings.autoTrackLunch ? NSOnState : NSOffState
-        butAutoTrackScrum.state = settings.autoTrackScrum ? NSOnState : NSOffState
-        butAutoTrackMeetings.state = settings.autoTrackMeetings ? NSOnState : NSOffState
-        butWakeUpSuggestions.state = settings.showWakeUpSuggestions ? NSOnState : NSOffState
+        butEnableStartOfDay.state = settings.startOfDayEnabled ? NSOnState : NSOffState
+        butEnableLunch.state = settings.lunchEnabled ? NSOnState : NSOffState
+        butEnableScrum.state = settings.scrumEnabled ? NSOnState : NSOffState
+        butEnableMeetings.state = settings.meetingEnabled ? NSOnState : NSOffState
+        butEnableAutoTrack.state = settings.autoTrackEnabled ? NSOnState : NSOffState
         
-        lunchTimePicker.dateValue = settings.lunchTime
-        scrumMeetingTimePicker.dateValue = settings.scrumMeetingTime
+        trackingModeSegmentedControl.selectedSegment = settings.trackingMode.rawValue
+        
         startOfDayTimePicker.dateValue = settings.startOfDayTime
-        minMeetingDurationTimePicker.dateValue = settings.minMeetingDuration
+        endOfDayTimePicker.dateValue = settings.endOfDayTime
+        lunchTimePicker.dateValue = settings.lunchTime
+        scrumTimePicker.dateValue = settings.scrumTime
+        minSleepDurationTimePicker.dateValue = settings.minSleepDuration
     }
 }

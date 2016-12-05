@@ -45,12 +45,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.removeActivePopup()
         }
         sleep.computerWakeUp = {
+            
             let settings: Settings = SettingsInteractor().getAppSettings()
-            if settings.showWakeUpSuggestions {
-                self.presentTaskSuggestionPopup()
-            } else {
-                ComputerWakeUpInteractor(repository: localRepository)
+            
+            if settings.autoTrackEnabled {
+                
+                let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
+                let minSleepDuration = Double(settings.minSleepDuration.components().minute).minToSec +
+                                       Double(settings.minSleepDuration.components().hour).hoursToSec
+                
+                guard sleepDuration >= minSleepDuration else {
+                    return
+                }
+                if settings.trackingMode == .notif {
+                    self.presentTaskSuggestionPopup()
+                } else {
+                    ComputerWakeUpInteractor(repository: localRepository)
                     .runWith(lastSleepDate: self.sleep.lastSleepDate)
+                }
             }
         }
 	}

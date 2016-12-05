@@ -24,7 +24,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
         if let type = estimationForDate(date) {
             if type == .startDay {
-                if settings.autoTrackStartOfDay {
+                if settings.startOfDayEnabled {
                     let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
                     let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
                     
@@ -32,7 +32,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
                         save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                     }
                 }
-            } else if (type == .scrum && settings.autoTrackScrum) || (type == .lunch && settings.autoTrackLunch) {
+            } else if (type == .scrum && settings.scrumEnabled) || (type == .lunch && settings.lunchEnabled) {
                 
                 var task = Task(dateEnd: Date(), type: type)
                 task.startDate = date
@@ -64,7 +64,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             }
             break
         case .meeting:
-            if settings.autoTrackMeetings {
+            if settings.meetingEnabled {
                 return TaskType.meeting
             }
             break
