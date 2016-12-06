@@ -123,7 +123,7 @@ extension Date {
 	}
     
     func components() -> (hour: Int, minute: Int) {
-        let comps = gregorian.dateComponents(ymdUnitFlags, from: self)
+        let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
         return (hour: comps.hour!, minute: comps.minute!)
     }
 	
