@@ -40,6 +40,9 @@ class SettingsViewController: NSViewController {
         
         presenter!.loadJitInfo()
         presenter!.showSettings()
+        butEnableStartOfDay.toolTip = "The official hours you're supposed to work. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
+        butEnableLunch.toolTip = "Lunch and nap logs are ignored when calculating the amount of worked hours."
+        butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
     }
     
     deinit {
