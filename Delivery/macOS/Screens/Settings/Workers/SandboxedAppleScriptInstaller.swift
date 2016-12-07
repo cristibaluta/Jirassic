@@ -1,5 +1,5 @@
 //
-//  SandboxedScriptsInteractor.swift
+//  SandboxedAppleScriptInstaller.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 20/11/2016.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreServices
 
-class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
+class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
     
     func scriptsDirectory() -> URL? {
         
@@ -64,7 +64,7 @@ class SandboxedScriptsInteractor: ScriptsInteractorProtocol {
     }
 }
 
-extension SandboxedScriptsInteractor {
+extension SandboxedAppleScriptInstaller {
     
     fileprivate func run (script: String, args: NSAppleEventDescriptor, completion: @escaping (Bool) -> Void) {
         

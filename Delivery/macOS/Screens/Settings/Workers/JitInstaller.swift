@@ -1,5 +1,5 @@
 //
-//  JitInteractor.swift
+//  JitInstaller.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 04/09/16.
@@ -9,10 +9,10 @@
 import Foundation
 import Cocoa
 
-class JitInteractor {
+class JitInstaller {
     
     fileprivate let localBinPath = "/usr/local/bin/"
-    fileprivate let scripts: ScriptsInteractorProtocol = SandboxedScriptsInteractor()
+    fileprivate let scripts: AppleScriptInstallerProtocol = SandboxedAppleScriptInstaller()
     
     func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
         
@@ -57,7 +57,7 @@ class JitInteractor {
     }
 }
 
-extension JitInteractor {
+extension JitInstaller {
     
     fileprivate func installScripts (_ completion: @escaping (Bool) -> Void) {
         

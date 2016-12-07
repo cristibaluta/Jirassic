@@ -42,7 +42,6 @@
 		4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
 		4065D3D01DD3B44200B73201 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35C1DD3B44200B73201 /* Info.plist */; };
-		4065D3D11DD3B44200B73201 /* JitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D35E1DD3B44200B73201 /* JitInteractor.swift */; };
 		4065D3D21DD3B44200B73201 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35F1DD3B44200B73201 /* jirassic */; };
 		4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
 		4065D3D41DD3B44200B73201 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3621DD3B44200B73201 /* jit */; };
@@ -109,14 +108,15 @@
 		4065D4321DD457B500B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
 		4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */; };
-		40E092351DE19B1D001EF5DA /* ScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */; };
-		40E092371DE19B33001EF5DA /* SandboxedScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */; };
 		40E0923B1DE1CC81001EF5DA /* GetJitVersion.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */; };
 		40E0923C1DE1CC81001EF5DA /* Installer.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092391DE1CC81001EF5DA /* Installer.scpt */; };
 		40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */; };
 		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
 		40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
+		40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */; };
+		40FCE4261DF7646F00D4FD45 /* JitInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */; };
+		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -202,7 +202,6 @@
 		4065D35A1DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4065D35B1DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4065D35C1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4065D35E1DD3B44200B73201 /* JitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInteractor.swift; sourceTree = "<group>"; };
 		4065D35F1DD3B44200B73201 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
 		4065D3611DD3B44200B73201 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = jirassic.sdef; sourceTree = "<group>"; };
 		4065D3621DD3B44200B73201 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jit; sourceTree = "<group>"; };
@@ -245,14 +244,15 @@
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D4101DD4534C00B73201 /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
-		40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsInteractor.swift; sourceTree = "<group>"; };
-		40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedScriptsInteractor.swift; sourceTree = "<group>"; };
 		40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = GetJitVersion.scpt; sourceTree = "<group>"; };
 		40E092391DE1CC81001EF5DA /* Installer.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Installer.scpt; sourceTree = "<group>"; };
 		40E0923A1DE1CC81001EF5DA /* Uninstaller.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = Uninstaller.scpt; sourceTree = "<group>"; };
 		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40F347861DDD92C600193360 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
+		40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInstaller.swift; sourceTree = "<group>"; };
+		40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInstaller.swift; sourceTree = "<group>"; };
+		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScriptInstaller.swift; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -463,7 +463,6 @@
 				4065D3531DD3B44200B73201 /* App */,
 				4065D3641DD3B44200B73201 /* Menu */,
 				4065D3511DD3B44200B73201 /* Animations */,
-				4065D35D1DD3B44200B73201 /* Interactor */,
 				4065D36B1DD3B44200B73201 /* Screens */,
 				4065D3671DD3B44200B73201 /* Notifications */,
 				405B15641DEF66EE0009871C /* Resources */,
@@ -489,16 +488,6 @@
 				4065D3581DD3B44200B73201 /* ScriptableApplication.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		4065D35D1DD3B44200B73201 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				4065D35E1DD3B44200B73201 /* JitInteractor.swift */,
-				40E092341DE19B1D001EF5DA /* ScriptsInteractor.swift */,
-				40E092361DE19B33001EF5DA /* SandboxedScriptsInteractor.swift */,
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 		4065D3641DD3B44200B73201 /* Menu */ = {
@@ -543,6 +532,7 @@
 		4065D3721DD3B44200B73201 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				40FCE4211DF7646F00D4FD45 /* Workers */,
 				4065D3751DD3B44200B73201 /* SettingsViewController.swift */,
 				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
@@ -660,6 +650,16 @@
 				4065D37B1DD3B44200B73201 /* NonTaskCell.xib */,
 			);
 			name = NonTaskCell;
+			sourceTree = "<group>";
+		};
+		40FCE4211DF7646F00D4FD45 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */,
+				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */,
+				40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		5685C7621DE8721100CA545E /* Account */ = {
@@ -828,7 +828,6 @@
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
 				4065D3F61DD3B44200B73201 /* CUser.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
-				4065D3D11DD3B44200B73201 /* JitInteractor.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
 				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
 				4065D3F41DD3B44200B73201 /* CSettings.swift in Sources */,
@@ -846,6 +845,7 @@
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
+				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
 				40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */,
@@ -865,17 +865,17 @@
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
+				40FCE4261DF7646F00D4FD45 /* JitInstaller.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
-				40E092371DE19B33001EF5DA /* SandboxedScriptsInteractor.swift in Sources */,
 				4065D3CD1DD3B44200B73201 /* ScriptableApplication.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
+				40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
-				40E092351DE19B1D001EF5DA /* ScriptsInteractor.swift in Sources */,
 				4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,

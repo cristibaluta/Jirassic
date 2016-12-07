@@ -1,5 +1,5 @@
 //
-//  ScriptsInteractor.swift
+//  AppleScriptInstaller.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 20/11/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ScriptsInteractorProtocol {
+protocol AppleScriptInstallerProtocol {
     
     func scriptsDirectory() -> URL?
     func getVersion (completion: @escaping ([String: String]) -> Void)
@@ -16,7 +16,7 @@ protocol ScriptsInteractorProtocol {
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
 }
 
-class ScriptsInteractor: ScriptsInteractorProtocol {
+class AppleScriptInstaller: AppleScriptInstallerProtocol {
     
     func scriptsDirectory() -> URL? {
         return nil

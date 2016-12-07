@@ -26,7 +26,7 @@ protocol SettingsPresenterOutput: class {
 
 class SettingsPresenter {
     
-    fileprivate var jitInteractor = JitInteractor()
+    fileprivate var jitInstaller = JitInstaller()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
 }
@@ -35,13 +35,13 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func loadJitInfo() {
         
-        jitInteractor.isInstalled { installed in
+        jitInstaller.isInstalled { installed in
             
             DispatchQueue.main.sync {
                 self.userInterface!.setJitIsInstalled( installed )
             }
             if installed {
-                self.jitInteractor.getJiraSettings { dict in
+                self.jitInstaller.getJiraSettings { dict in
                     let settings = JiraSettings(url: dict["url"],
                                                 user: dict["user"],
                                                 separator: dict["separator"])
@@ -55,7 +55,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func installJit() {
         
-        jitInteractor.installJit { [weak self] (success) in
+        jitInstaller.installJit { [weak self] (success) in
             if success {
                 self?.loadJitInfo()
             }
@@ -64,7 +64,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func uninstallJit() {
         
-        jitInteractor.uninstallJit { [weak self] (success) in
+        jitInstaller.uninstallJit { [weak self] (success) in
             if success {
                 self?.loadJitInfo()
             }
