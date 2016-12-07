@@ -57,6 +57,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 guard sleepDuration >= minSleepDuration else {
                     return
                 }
+                let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+                let workedDuration = Date().timeIntervalSince(settings.startOfDayTime)
+                guard workedDuration > dayDuration else {
+                    return
+                }
                 if settings.trackingMode == .notif {
                     self.presentTaskSuggestionPopup()
                 } else {
