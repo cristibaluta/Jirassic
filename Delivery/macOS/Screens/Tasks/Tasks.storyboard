@@ -496,11 +496,8 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="450" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="55W-A0-75h">
-                                <rect key="frame" x="370" y="0.0" width="80" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="bt7-sW-ceI"/>
-                                </constraints>
+                            <button verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="55W-A0-75h">
+                                <rect key="frame" x="370" y="0.0" width="80" height="52"/>
                                 <buttonCell key="cell" type="square" title="Save" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="bTq-7V-gcM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="systemBold"/>
@@ -510,14 +507,10 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xms-pO-x4G">
-                                <rect key="frame" x="370" y="78" width="80" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="BhB-70-M5H"/>
-                                    <constraint firstAttribute="width" constant="80" id="aYD-wU-DY8"/>
-                                </constraints>
+                                <rect key="frame" x="370" y="52" width="80" height="52"/>
                                 <buttonCell key="cell" type="square" title="Ignore" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="pDT-IB-e1W">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="10"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleIgnoreButton:" target="tRv-ep-RyQ" id="nxo-VW-zvW"/>
@@ -552,10 +545,13 @@ Gw
                                 </connections>
                             </segmentedControl>
                             <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CGp-Zh-lOB">
-                                <rect key="frame" x="366" y="0.0" width="5" height="104"/>
+                                <rect key="frame" x="367" y="0.0" width="5" height="104"/>
+                            </box>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-Jn-pJP">
+                                <rect key="frame" x="371" y="50" width="79" height="5"/>
                             </box>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-JW-h3W">
-                                <rect key="frame" x="18" y="46" width="352" height="24"/>
+                                <rect key="frame" x="18" y="46" width="353" height="24"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do while away?" id="vVI-i0-CV1">
                                     <font key="font" metaFont="system" size="20"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -565,19 +561,25 @@ Gw
                         </subviews>
                         <constraints>
                             <constraint firstItem="CGp-Zh-lOB" firstAttribute="leading" secondItem="wTJ-JW-h3W" secondAttribute="trailing" id="0kJ-i1-uDH"/>
+                            <constraint firstItem="mC8-Jn-pJP" firstAttribute="centerY" secondItem="F46-mC-JhQ" secondAttribute="centerY" id="8Sb-Ia-84N"/>
                             <constraint firstItem="wTJ-JW-h3W" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" constant="34" id="8bz-Sq-k6h"/>
                             <constraint firstAttribute="bottom" secondItem="CGp-Zh-lOB" secondAttribute="bottom" id="AYe-CY-0Ib"/>
+                            <constraint firstItem="mC8-Jn-pJP" firstAttribute="top" secondItem="xms-pO-x4G" secondAttribute="bottom" constant="-1" id="Ctv-Hh-yns"/>
                             <constraint firstAttribute="trailing" secondItem="xms-pO-x4G" secondAttribute="trailing" id="EIS-9X-FYz"/>
                             <constraint firstItem="CGp-Zh-lOB" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" id="FAM-wJ-ShU"/>
+                            <constraint firstItem="55W-A0-75h" firstAttribute="leading" secondItem="CGp-Zh-lOB" secondAttribute="trailing" id="Ghk-DV-vpm"/>
                             <constraint firstAttribute="trailing" secondItem="55W-A0-75h" secondAttribute="trailing" id="Io9-0e-CfM"/>
                             <constraint firstItem="xms-pO-x4G" firstAttribute="top" secondItem="F46-mC-JhQ" secondAttribute="top" id="IpK-IL-Ihm"/>
                             <constraint firstItem="ZGF-O7-hvq" firstAttribute="leading" secondItem="F46-mC-JhQ" secondAttribute="leading" constant="20" id="LCZ-0w-abe"/>
                             <constraint firstItem="wTJ-JW-h3W" firstAttribute="leading" secondItem="F46-mC-JhQ" secondAttribute="leading" constant="20" id="M2b-Rf-pGx"/>
-                            <constraint firstItem="55W-A0-75h" firstAttribute="top" secondItem="xms-pO-x4G" secondAttribute="bottom" constant="-1" id="QWe-3j-DBK"/>
                             <constraint firstAttribute="bottom" secondItem="55W-A0-75h" secondAttribute="bottom" id="U2c-Yy-ztR"/>
-                            <constraint firstAttribute="trailing" secondItem="CGp-Zh-lOB" secondAttribute="trailing" constant="81" id="W7e-9Y-Fkp"/>
+                            <constraint firstItem="55W-A0-75h" firstAttribute="top" secondItem="mC8-Jn-pJP" secondAttribute="bottom" id="W3G-sC-NLT"/>
+                            <constraint firstAttribute="trailing" secondItem="CGp-Zh-lOB" secondAttribute="trailing" constant="80" id="W7e-9Y-Fkp"/>
                             <constraint firstAttribute="bottom" secondItem="wTJ-JW-h3W" secondAttribute="bottom" constant="46" id="WVb-lr-FSV"/>
+                            <constraint firstAttribute="trailing" secondItem="mC8-Jn-pJP" secondAttribute="trailing" id="Wsj-N1-nxK"/>
+                            <constraint firstItem="mC8-Jn-pJP" firstAttribute="leading" secondItem="CGp-Zh-lOB" secondAttribute="trailing" constant="1" id="dlz-sP-JyV"/>
                             <constraint firstAttribute="bottom" secondItem="ZGF-O7-hvq" secondAttribute="bottom" constant="10" id="fcP-Dv-1IX"/>
+                            <constraint firstItem="xms-pO-x4G" firstAttribute="leading" secondItem="CGp-Zh-lOB" secondAttribute="trailing" id="gM6-mf-DE5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -588,7 +590,7 @@ Gw
                 </viewController>
                 <customObject id="xgm-Ey-9tg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="561.5"/>
+            <point key="canvasLocation" x="75" y="561"/>
         </scene>
     </scenes>
     <resources>
