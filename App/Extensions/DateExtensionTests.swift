@@ -10,7 +10,23 @@ import XCTest
 @testable import Jirassic
 
 class DateTests: XCTestCase {
-	
+    
+    func testDateByKeepingTime() {
+        
+        let d1 = Date()
+        let d2 = Date(year: 2016, month: 5, day: 5, hour: 11, minute: 30)
+        let d3 = d2.dateByKeepingTime()
+        let components1 = gregorian.dateComponents(ymdhmsUnitFlags, from: d1)
+        let components2 = gregorian.dateComponents(ymdhmsUnitFlags, from: d2)
+        let components3 = gregorian.dateComponents(ymdhmsUnitFlags, from: d3)
+        
+        XCTAssertTrue(components1.year == components3.year, "Should keep the ymd from current date d1")
+        XCTAssertTrue(components1.month == components3.month)
+        XCTAssertTrue(components1.day == components3.day)
+        XCTAssertTrue(components2.hour == components3.hour, "Should keep the hm from custom date d2")
+        XCTAssertTrue(components2.minute == components3.minute)
+    }
+    
     func testFirstDayThisMonth() {
 		
 		let sndOfMay2015 = Date(timeIntervalSince1970: 1430589737)

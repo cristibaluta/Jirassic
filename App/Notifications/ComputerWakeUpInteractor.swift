@@ -25,9 +25,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         if let type = estimationForDate(date) {
             if type == .startDay {
                 if settings.startOfDayEnabled {
-                    let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.startOfDayTime)
-                    let startDate = Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
-                    
+                    let startDate = settings.startOfDayTime.dateByKeepingTime()
                     if Date() > startDate {
                         save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                     }

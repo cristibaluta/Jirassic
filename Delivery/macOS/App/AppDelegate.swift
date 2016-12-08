@@ -58,8 +58,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     return
                 }
                 let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
-                let workedDuration = Date().timeIntervalSince(settings.startOfDayTime)
-                guard workedDuration > dayDuration else {
+                let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
+                guard workedDuration < dayDuration else {
                     return
                 }
                 if settings.trackingMode == .notif {

@@ -171,6 +171,12 @@ extension Date {
 		
 		return gregorian.date(from: comps)!
 	}
+    
+    func dateByKeepingTime() -> Date {
+        let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+        
+        return Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
+    }
 	
 	static func parseHHmm (_ hhmm: String) -> (hour: Int, min: Int) {
 		let hm = hhmm.components(separatedBy: ":")

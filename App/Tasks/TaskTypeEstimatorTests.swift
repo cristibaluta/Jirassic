@@ -12,16 +12,18 @@ import XCTest
 class TaskTypeEstimatorTests: XCTestCase {
 	
 	let estimator = TaskTypeEstimator()
-    let settings = Settings(autoTrackStartOfDay: true,
-                            autoTrackLunch: true,
-                            autoTrackScrum: true,
-                            autoTrackMeetings: true,
-                            showWakeUpSuggestions: true,
+    let settings = Settings(startOfDayEnabled: true,
+                            lunchEnabled: true,
+                            scrumEnabled: true,
+                            meetingEnabled: true,
+                            autoTrackEnabled: true,
+                            trackingMode: TaskTrackingMode.auto,
                             startOfDayTime: Date(hour: 9, minute: 0),
+                            endOfDayTime: Date(hour: 17, minute: 0),
                             lunchTime: Date(hour: 13, minute: 0),
-                            scrumMeetingTime: Date(hour: 10, minute: 30),
-                            minMeetingDuration: Date(hour: 0, minute: 20))
-	
+                            scrumTime: Date(hour: 10, minute: 30),
+                            minSleepDuration: Date(hour: 0, minute: 20))
+    
 	func testScrumBeginAt10_30() {
         let date = Date(hour: 10, minute: 30)
 		let taskType = estimator.taskTypeAroundDate(date, withSettings: settings)
