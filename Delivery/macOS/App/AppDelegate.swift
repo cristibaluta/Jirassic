@@ -54,9 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let minSleepDuration = Double(settings.minSleepDuration.components().minute).minToSec +
                                        Double(settings.minSleepDuration.components().hour).hoursToSec
                 
-                guard sleepDuration >= minSleepDuration else {
-                    return
-                }
+//                guard sleepDuration >= minSleepDuration else {
+//                    return
+//                }
                 let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
                 let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
                 guard workedDuration < dayDuration else {
@@ -124,8 +124,9 @@ extension AppDelegate {
     func removeActivePopup() {
         if let popover = activePopover {
             appWireframe.hidePopover(popover)
-            appWireframe.removeCurrentController()
+            appWireframe.removeNewTaskController()
             appWireframe.removeMessage()
+            appWireframe.removeCurrentController()
             activePopover = nil
         }
     }
