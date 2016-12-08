@@ -12,10 +12,9 @@ class ReadDaysInteractor: RepositoryInteractor {
 	
 	fileprivate var tasks = [Task]()
 	
-    convenience init (repository: Repository) {
-        self.init()
+    override init (repository: Repository) {
+        super.init(repository: repository)
         
-        self.repository = repository
 		self.repository.queryTasks(0, completion: { (tasks, error) in
             
             self.tasks = tasks

@@ -12,8 +12,7 @@ class RepositoryInteractor {
     
     var repository: Repository!
     
-    convenience init (repository: Repository) {
-        self.init()
+    init (repository: Repository) {
         self.repository = repository
     }
 }

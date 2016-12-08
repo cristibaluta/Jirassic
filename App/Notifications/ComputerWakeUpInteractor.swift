@@ -10,11 +10,14 @@ import Foundation
 
 class ComputerWakeUpInteractor: RepositoryInteractor {
     
-    var settings: Settings
+    var settings: Settings?
     let typeEstimator = TaskTypeEstimator()
+    let reader: ReadTasksInteractor?
     
-    override init() {
+    override init (repository: Repository) {
         settings = SettingsInteractor().getAppSettings()
+        reader = ReadTasksInteractor(repository: repository)
+        super.init(repository: repository)
     }
     
 	func runWith (lastSleepDate date: Date?) {
@@ -24,13 +27,13 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
         if let type = estimationForDate(date) {
             if type == .startDay {
-                if settings.startOfDayEnabled {
-                    let startDate = settings.startOfDayTime.dateByKeepingTime()
+                if settings!.startOfDayEnabled {
+                    let startDate = settings!.startOfDayTime.dateByKeepingTime()
                     if Date() > startDate {
                         save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                     }
                 }
-            } else if (type == .scrum && settings.scrumEnabled) || (type == .lunch && settings.lunchEnabled) {
+            } else if (type == .scrum && settings!.scrumEnabled) || (type == .lunch && settings!.lunchEnabled) {
                 
                 var task = Task(dateEnd: Date(), type: type)
                 task.startDate = date
@@ -41,14 +44,13 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     
     func estimationForDate (_ date: Date) -> TaskType? {
 	
-        let reader = ReadTasksInteractor(repository: self.repository)
-		let existingTasks = reader.tasksInDay(Date())
+		let existingTasks = reader!.tasksInDay(Date())
         
         guard existingTasks.count > 0 else {
             return TaskType.startDay
         }
         
-        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date, withSettings: settings)
+        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date, withSettings: settings!)
         
         switch estimatedType {
         case .scrum:
@@ -62,7 +64,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             }
             break
         case .meeting:
-            if settings.meetingEnabled {
+            if settings!.meetingEnabled {
                 return TaskType.meeting
             }
             break
