@@ -18,7 +18,7 @@ class CreateReport: NSObject {
 			return []
         }
         var tasks = splitOverlappingTasks(tasks)
-        tasks = removeFood(tasks)
+        tasks = removeUntrackableTasks(tasks)
         
 		// Calculate the diff to 8 hrs
 		let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
@@ -64,24 +64,28 @@ extension CreateReport {
         return arr
     }
     
-    fileprivate func removeFood (_ tasks: [Task]) -> [Task] {
+    fileprivate func removeUntrackableTasks (_ tasks: [Task]) -> [Task] {
         
         var arr = [Task]()
-        var lunchDuration = 0.0
+        var untrackedDuration = 0.0
         var lastTaskEndDate = tasks.first!.endDate
         
         for task in tasks {
             
-            guard task.taskType != TaskType.lunch else {
-                lunchDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
+            guard isTrackable(taskType: task.taskType) else {
+                untrackedDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
                 continue
             }
             var tempTask = task
-            tempTask.endDate = task.endDate.addingTimeInterval(-lunchDuration)
+            tempTask.endDate = task.endDate.addingTimeInterval(-untrackedDuration)
             arr.append(tempTask)
             lastTaskEndDate = tempTask.endDate
         }
         return arr
+    }
+    
+    fileprivate func isTrackable (taskType: TaskType) -> Bool {
+        return taskType != TaskType.lunch && taskType != TaskType.nap
     }
     
     fileprivate func addExtraTimeToTasks (_ tasks: [Task], extraTimePerTask: Double) -> [Task] {
@@ -143,7 +147,7 @@ extension CreateReport {
             
             for task in tasks {
                 
-                guard task.taskType != TaskType.lunch else {
+                guard isTrackable(taskType: task.taskType) else {
                     continue
                 }
                 guard let startDate = task.startDate else {

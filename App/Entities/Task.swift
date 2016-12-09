@@ -84,21 +84,26 @@ extension Task {
 	init (dateEnd: Date, type: TaskType) {
 		
 		self.endDate = dateEnd
-		self.taskNumber = nil
 		self.taskType = type
         self.objectId = String.random()
+        
+        var subtype: TaskSubtype?
 		
 		switch (type) {
-			case TaskType.issue:	self.notes = ""
+			case TaskType.issue:	subtype = .issueEnd
 			case TaskType.startDay:	self.notes = "Working day started"
-			case TaskType.scrum:	self.notes = TaskSubtype.scrumEnd.defaultNotes
-			case TaskType.lunch:	self.notes = TaskSubtype.lunchEnd.defaultNotes
-			case TaskType.meeting:	self.notes = TaskSubtype.meetingEnd.defaultNotes
-            case TaskType.gitCommit:self.notes = ""
-            case TaskType.nap:      self.notes = TaskSubtype.napEnd.defaultNotes
-            case TaskType.learning: self.notes = TaskSubtype.learningEnd.defaultNotes
-            case TaskType.coderev:  self.notes = TaskSubtype.coderevEnd.defaultNotes
-		}
+			case TaskType.scrum:	subtype = .scrumEnd
+			case TaskType.lunch:	subtype = .lunchEnd
+			case TaskType.meeting:	subtype = .meetingEnd
+            case TaskType.gitCommit:subtype = .gitCommitEnd
+            case TaskType.nap:      subtype = .napEnd
+            case TaskType.learning: subtype = .learningEnd
+            case TaskType.coderev:  subtype = .coderevEnd
+        }
+        if let s = subtype {
+            self.taskNumber = s.defaultTaskNumber
+            self.notes = s.defaultNotes
+        }
 	}
 	
 	init (subtype: TaskSubtype) {
