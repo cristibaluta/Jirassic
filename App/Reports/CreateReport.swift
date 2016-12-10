@@ -9,10 +9,8 @@
 import Foundation
 
 class CreateReport: NSObject {
-
-    fileprivate let targetHoursInDay = 8.0.hoursToSec
-	
-	func reports (fromTasks tasks: [Task]) -> [Report] {
+    
+    func reports (fromTasks tasks: [Task], targetHoursInDay: Double) -> [Report] {
 		
 		guard tasks.count > 1 else {
 			return []
@@ -25,7 +23,7 @@ class CreateReport: NSObject {
 		let missingTime = targetHoursInDay - workedTime
 		let extraTimePerTask = ceil( Double( Int(missingTime) / tasks.count))
         
-        tasks = addExtraTimeToTasks(tasks, extraTimePerTask: extraTimePerTask)
+        tasks = addExtraTimeToTasks(tasks, extraTimePerTask: extraTimePerTask, targetHoursInDay: targetHoursInDay)
         
         let groups = groupByTaskNumber(tasks)
         let reports = reportsFromGroups(groups)
@@ -85,10 +83,22 @@ extension CreateReport {
     }
     
     fileprivate func isTrackable (taskType: TaskType) -> Bool {
-        return taskType != TaskType.lunch && taskType != TaskType.nap
+        switch taskType {
+        case .lunch, .nap: return false
+        default: return true
+        }
     }
     
-    fileprivate func addExtraTimeToTasks (_ tasks: [Task], extraTimePerTask: Double) -> [Task] {
+    fileprivate func isAdjustable (taskType: TaskType) -> Bool {
+        switch taskType {
+        case .scrum, .meeting, .learning: return false
+        default: return true
+        }
+    }
+    
+    fileprivate func addExtraTimeToTasks (_ tasks: [Task],
+                                          extraTimePerTask: Double,
+                                          targetHoursInDay: Double) -> [Task] {
         
         var roundedTasks = [Task]()
         var extraTimeToAdd = extraTimePerTask

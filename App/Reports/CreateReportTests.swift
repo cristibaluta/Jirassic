@@ -14,6 +14,7 @@ class CreateReportTests: XCTestCase {
     let report = CreateReport()
 	var tasks = [Task]()
 	let kLunchLength = Double(2760)//46min ~ 45min
+    let targetHoursInDay = 8.0.hoursToSec
 	
     override func setUp() {
         super.setUp()
@@ -65,19 +66,19 @@ class CreateReportTests: XCTestCase {
     
     func testRoundLessThan8HoursOfWork() {
 		
-		let reports = report.reports(fromTasks: tasks)
+		let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         
         var duration = 0.0
         for report in reports {
             duration += report.duration
         }
 		
-		XCTAssert(duration == 8.0.hoursToSec)
+		XCTAssert(duration == targetHoursInDay)
     }
     
     func testGroupByTaskNumber() {
         
-        let reports = report.reports(fromTasks: tasks)
+        let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch and nap are ignored")
        // XCTAssert(reports[0].duration = )
        // XCTAssert(reports[0].duration = )
@@ -90,13 +91,13 @@ class CreateReportTests: XCTestCase {
 		var tasks = self.tasks
 		tasks.append(t3)
         
-        let reports = report.reports(fromTasks: tasks)
+        let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
 		
         var duration = 0.0
         for report in reports {
             duration += report.duration
         }
         
-        XCTAssert(duration == 8.0.hoursToSec)
+        XCTAssert(duration == targetHoursInDay)
     }
 }

@@ -73,13 +73,15 @@ extension TasksPresenter: TasksPresenterInput {
     
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         
+        let settings = SettingsInteractor().getAppSettings()
+        let targetHoursInDay = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
         let reader = ReadTasksInteractor(repository: localRepository)
         currentTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
         if listType == .report {
             let reportInteractor = CreateReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks)
+            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
             currentReports = reports.reversed()
             userInterface!.showReports(currentReports, listType: selectedListType)
         }
