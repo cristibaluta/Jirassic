@@ -85,6 +85,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         
         let type = taskSubtype(forIndex: index)
         userInterface!.setNotes(type.defaultNotes)
+        userInterface!.setTaskType(type)
     }
     
     func save (selectedSegment: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?) {

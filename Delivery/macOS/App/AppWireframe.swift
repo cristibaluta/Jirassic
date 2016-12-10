@@ -110,8 +110,8 @@ extension AppWireframe {
     }
     
 	fileprivate func addController (_ controller: NSViewController) {
-        _appViewController!.addChildViewController(controller)
-        _appViewController!.view.addSubview(controller.view)
+        appViewController.addChildViewController(controller)
+        appViewController.view.addSubview(controller.view)
         controller.view.constrainToSuperview()
 	}
     
@@ -121,37 +121,41 @@ extension AppWireframe {
     }
     
     fileprivate func layerToAnimate() -> CALayer {
-        return _appViewController!.view.superview!.layer!
+        return appViewController.view.superview!.layer!
     }
 }
 
 extension AppWireframe {
     
-    func presentLoginController() {
+    func presentLoginController() -> LoginViewController {
         
-        let loginController = self.loginViewController
-        addController(loginController)
+        let controller = self.loginViewController
+        addController(controller)
+        currentController = controller
         
-        currentController = loginController
+        return controller
     }
     
-    func presentTasksController() {
+    func presentTasksController() -> TasksViewController {
         
-        _appViewController!.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
+        appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
         let controller = self.tasksViewController
         addController(controller)
-        
         currentController = controller
+        
+        return controller
     }
     
-    func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) {
+    func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) -> TaskSuggestionViewController {
         
-        _appViewController!.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
+        appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
         let controller = self.taskSuggestionViewController
         controller.startSleepDate = startSleepDate
         controller.endSleepDate = endSleepDate
         addController(controller)
         currentController = controller
+        
+        return controller
     }
     
     func presentMessage (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) -> MessageViewController {
@@ -160,7 +164,7 @@ extension AppWireframe {
         
         if controller == nil {
             controller = self.messageViewController
-            _appViewController!.addChildViewController(controller!)
+            appViewController.addChildViewController(controller!)
             splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(controller!.view)
             controller!.view.constrainToSuperview()
             _messageViewController = controller

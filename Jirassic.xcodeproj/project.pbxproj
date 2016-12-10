@@ -116,6 +116,7 @@
 		40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */; };
 		40FCE4261DF7646F00D4FD45 /* JitInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */; };
 		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */; };
+		40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -251,6 +252,7 @@
 		40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInstaller.swift; sourceTree = "<group>"; };
 		40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInstaller.swift; sourceTree = "<group>"; };
 		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScriptInstaller.swift; sourceTree = "<group>"; };
+		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			children = (
 				405B15601DEF3D080009871C /* TaskSuggestionViewController.swift */,
 				405B15621DEF3F2A0009871C /* TaskSuggestionPresenter.swift */,
+				40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */,
 			);
 			name = TaskSuggestion;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
+				40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */,
 				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
 				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,

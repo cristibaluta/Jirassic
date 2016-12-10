@@ -72,10 +72,4 @@ class TaskTypeEstimatorTests: XCTestCase {
 		XCTAssertFalse(taskType == TaskType.lunch, "")
 	}
     
-    func testMeeting() {
-        let date = Date(timeIntervalSinceNow: -3600)
-        let taskType = estimator.taskTypeAroundDate(date, withSettings: settings)
-        XCTAssertTrue(taskType == TaskType.meeting, "")
-    }
-    
 }
