@@ -42,7 +42,6 @@ class TasksPresenter {
     
     weak var appWireframe: AppWireframe?
     weak var userInterface: TasksPresenterOutput?
-    fileprivate var day: NewDay?
     fileprivate var currentTasks = [Task]()
     fileprivate var currentReports = [Report]()
     fileprivate var selectedListType = ListType.allTasks
@@ -52,12 +51,7 @@ class TasksPresenter {
 extension TasksPresenter: TasksPresenterInput {
     
     func refreshUI() {
-        
-        // Prevent reloading data when you open the popover for the second time in the same day
-        if day == nil || day!.isNewDay() {
-            day = NewDay()
-            reloadData()
-        }
+        reloadData()
         updateNoTasksState()
     }
     
@@ -124,7 +118,6 @@ extension TasksPresenter: TasksPresenterInput {
         let task = Task(dateEnd: now, type: TaskType.startDay)
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task)
-        day!.setLastTrackedDay(now)
         reloadData()
     }
     

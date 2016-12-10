@@ -31,7 +31,6 @@
 		4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3321DD3B44200B73201 /* TaskInteractor.swift */; };
 		4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
 		4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */; };
-		4065D3B71DD3B44200B73201 /* NewDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3381DD3B44200B73201 /* NewDay.swift */; };
 		4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */; };
 		4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
 		4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
@@ -178,7 +177,6 @@
 		4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeEstimator.swift; sourceTree = "<group>"; };
 		4065D3351DD3B44200B73201 /* TaskTypeEstimatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeEstimatorTests.swift; sourceTree = "<group>"; };
 		4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeSelection.swift; sourceTree = "<group>"; };
-		4065D3381DD3B44200B73201 /* NewDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDay.swift; sourceTree = "<group>"; };
 		4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTyping.swift; sourceTree = "<group>"; };
 		4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTypingTests.swift; sourceTree = "<group>"; };
 		4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
@@ -412,7 +410,6 @@
 		4065D3371DD3B44200B73201 /* Time */ = {
 			isa = PBXGroup;
 			children = (
-				4065D3381DD3B44200B73201 /* NewDay.swift */,
 				4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */,
 				4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */,
 			);
@@ -853,7 +850,6 @@
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
-				4065D3B71DD3B44200B73201 /* NewDay.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
