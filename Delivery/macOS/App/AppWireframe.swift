@@ -216,6 +216,7 @@ extension AppWireframe {
         let flip = FlipAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
+            self.removeMessage()
             self.addController(settingsController)
             self.currentController = settingsController
         }
