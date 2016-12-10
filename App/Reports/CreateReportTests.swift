@@ -47,8 +47,8 @@ class CreateReportTests: XCTestCase {
         t1_3.taskNumber = "coderev"
         t1_3.notes = "Codereviews"
         
-        var nap = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10), type: TaskType.nap)
-        nap.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 35)
+        var nap = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 36), type: TaskType.nap)
+        nap.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
         
 		var t2 = Task()
         t2.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
