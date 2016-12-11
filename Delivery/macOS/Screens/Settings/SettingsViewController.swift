@@ -37,6 +37,7 @@ class SettingsViewController: NSViewController {
 	
     override func viewDidAppear() {
         super.viewDidAppear()
+        createLayer()
         
         presenter!.loadJitInfo()
         presenter!.showSettings()
@@ -81,6 +82,14 @@ class SettingsViewController: NSViewController {
     
     @IBAction func handleAutoTrackButton (_ sender: NSButton) {
         trackingModeSegmentedControl.isEnabled = sender.state == NSOnState
+    }
+}
+
+extension SettingsViewController: Animatable {
+    
+    func createLayer() {
+        view.layer = CALayer()
+        view.wantsLayer = true
     }
 }
 

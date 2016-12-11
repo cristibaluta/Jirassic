@@ -30,6 +30,14 @@ class AppWireframe {
         return _appViewController!
     }
     
+    fileprivate var welcomeViewController: WelcomeViewController {
+        
+        let controller = WelcomeViewController.instantiateFromStoryboard("Welcome")
+        controller.appWireframe = self
+        
+        return controller
+    }
+    
     fileprivate var loginViewController: LoginViewController {
         
         let controller = LoginViewController.instantiateFromStoryboard("Login")
@@ -126,6 +134,16 @@ extension AppWireframe {
 }
 
 extension AppWireframe {
+    
+    func presentWelcomeController() -> WelcomeViewController {
+        
+        appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
+        let controller = self.welcomeViewController
+        addController(controller)
+        currentController = controller
+        
+        return controller
+    }
     
     func presentLoginController() -> LoginViewController {
         

@@ -117,6 +117,10 @@
 		40FCE4261DF7646F00D4FD45 /* JitInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */; };
 		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */; };
 		40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */; };
+		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
+		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
+		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
+		40FCE4321DFD9BC200D4FD45 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4311DFD9BC200D4FD45 /* History.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -253,6 +257,10 @@
 		40FCE4231DF7646F00D4FD45 /* JitInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JitInstaller.swift; sourceTree = "<group>"; };
 		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScriptInstaller.swift; sourceTree = "<group>"; };
 		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
+		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
+		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Welcome.storyboard; path = Welcome/Welcome.storyboard; sourceTree = "<group>"; };
+		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		40FCE4311DFD9BC200D4FD45 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -474,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				4065D3521DD3B44200B73201 /* FlipAnimation.swift */,
+				40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -486,6 +495,7 @@
 				4065D3551DD3B44200B73201 /* AppWireframe.swift */,
 				405B15651DEF75660009871C /* AppViewController.swift */,
 				4065D3581DD3B44200B73201 /* ScriptableApplication.swift */,
+				40FCE4311DFD9BC200D4FD45 /* History.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -512,6 +522,7 @@
 		4065D36B1DD3B44200B73201 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				40FCE42A1DFC3F4F00D4FD45 /* Welcome */,
 				405B155F1DEF3CE20009871C /* TaskSuggestion */,
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3701DD3B44200B73201 /* NewTask */,
@@ -662,6 +673,15 @@
 			path = Workers;
 			sourceTree = "<group>";
 		};
+		40FCE42A1DFC3F4F00D4FD45 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */,
+				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
+			);
+			name = Welcome;
+			sourceTree = "<group>";
+		};
 		5685C7621DE8721100CA545E /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +812,7 @@
 				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
 				4065D3D41DD3B44200B73201 /* jit in Resources */,
 				40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */,
+				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				40E0923C1DE1CC81001EF5DA /* Installer.scpt in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
@@ -858,6 +879,7 @@
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
+				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
 				4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */,
@@ -870,12 +892,14 @@
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
+				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
 				4065D3CD1DD3B44200B73201 /* ScriptableApplication.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */,
+				40FCE4321DFD9BC200D4FD45 /* History.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,
 				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,

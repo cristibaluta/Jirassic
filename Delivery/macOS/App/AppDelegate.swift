@@ -34,7 +34,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			if let wself = self {
                 if (wself.menu.iconView?.isSelected == true) {
                     wself.removeActivePopup()
-                    wself.presentTasksPopup()
+                    
+                    let firstLaunch = History().isFirstLaunch()
+                    if firstLaunch {
+                        wself.presentWelcomePopup()
+                    } else {
+                        wself.presentTasksPopup()
+                    }
 				} else {
                     wself.removeActivePopup()
 				}
@@ -112,12 +118,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate {
     
+    fileprivate func presentWelcomePopup() {
+        let popover = NSPopover()
+        activePopover = popover
+        popover.contentViewController = appWireframe.appViewController
+        appWireframe.removeCurrentController()
+        _ = appWireframe.presentWelcomeController()
+        appWireframe.showPopover(popover, fromIcon: menu.iconView!)
+    }
+    
     fileprivate func presentTasksPopup() {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
         appWireframe.removeCurrentController()
-        appWireframe.presentTasksController()
+        _ = appWireframe.presentTasksController()
         appWireframe.showPopover(popover, fromIcon: menu.iconView!)
     }
     
@@ -135,8 +150,8 @@ extension AppDelegate {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
-        appWireframe.presentTaskSuggestionController (startSleepDate: sleep.lastSleepDate,
-                                                      endSleepDate: Date())
+        _ = appWireframe.presentTaskSuggestionController (startSleepDate: sleep.lastSleepDate,
+                                                          endSleepDate: Date())
         appWireframe.showPopover(popover, fromIcon: menu.iconView!)
     }
 }

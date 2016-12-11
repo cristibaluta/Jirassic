@@ -22,8 +22,7 @@ class TasksViewController: NSViewController {
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
-		view.layer = CALayer()
-		view.wantsLayer = true
+		createLayer()
 	}
 	
     override func viewDidLoad() {
@@ -65,6 +64,14 @@ class TasksViewController: NSViewController {
         butSettings!.isHidden = hide
         butQuit!.isHidden = hide
         listSegmentedControl?.isHidden = hide
+    }
+}
+
+extension TasksViewController: Animatable {
+    
+    func createLayer() {
+        view.layer = CALayer()
+        view.wantsLayer = true
     }
 }
 
