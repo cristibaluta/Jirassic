@@ -12,13 +12,16 @@ import CloudKit
 class SettingsViewController: NSViewController {
 	
     // Jit
-    @IBOutlet fileprivate var jitImageView: NSImageView?
-    @IBOutlet fileprivate var jitTextField: NSTextField?
-    @IBOutlet fileprivate var butInstallJit: NSButton?
+    @IBOutlet fileprivate var jitImageView: NSImageView!
+    @IBOutlet fileprivate var jitTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallJit: NSButton!
     // Jira
-    @IBOutlet fileprivate var jiraUrlTextField: NSTextField?
-    @IBOutlet fileprivate var jiraUserTextField: NSTextField?
-    @IBOutlet fileprivate var jiraPasswordTextField: NSTextField?
+    @IBOutlet fileprivate var jiraUrlTextField: NSTextField!
+    @IBOutlet fileprivate var jiraUserTextField: NSTextField!
+    @IBOutlet fileprivate var jiraPasswordTextField: NSTextField!
+    @IBOutlet fileprivate var jiraCredentialsBox: NSBox!
+    @IBOutlet fileprivate var shellSupportBox: NSBox!
+    @IBOutlet fileprivate var shellSupportTextField: NSTextField!
     // Settings
     @IBOutlet fileprivate var butEnableStartOfDay: NSButton!
     @IBOutlet fileprivate var butEnableLunch: NSButton!
@@ -44,6 +47,7 @@ class SettingsViewController: NSViewController {
         butEnableStartOfDay.toolTip = "The official hours you're supposed to work. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
         butEnableLunch.toolTip = "Lunch and nap logs are ignored when calculating the amount of worked hours."
         butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
+        shellSupportTextField.stringValue = "Steps to install the shell support:\n1) Install the apple scripts helpers to '~/Library/Application Scripts'\n2) Apple scripts will then install to /usr/local/bin two command line tools:\n   - jit: Replacement for git that will log commits as tasks\n   - jirassic: Use Jirassic from the cmd"
     }
     
     deinit {
@@ -97,15 +101,17 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func setJitIsInstalled (_ installed: Bool) {
         
-        jitImageView?.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField?.stringValue = installed ? "Shell support is installed" : "Shell support not installed yet"
-        butInstallJit!.title = installed ? "Uninstall" : "Install"
+        jitImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+        jitTextField.stringValue = installed ? "Shell support is installed" : "Shell support not installed yet"
+        butInstallJit.title = installed ? "Uninstall" : "Install"
+        jiraCredentialsBox.isHidden = !installed
+        shellSupportBox.isHidden = installed
     }
     
     func setJiraSettings (_ settings: JiraSettings) {
         
-        jiraUrlTextField!.stringValue = settings.url ?? ""
-        jiraUserTextField!.stringValue = settings.user ?? ""
+        jiraUrlTextField.stringValue = settings.url ?? ""
+        jiraUserTextField.stringValue = settings.user ?? ""
 //        jiraPasswordTextField!.stringValue = nil
     }
     

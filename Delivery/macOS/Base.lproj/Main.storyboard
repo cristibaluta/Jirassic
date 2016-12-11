@@ -656,14 +656,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-8Y-N3H">
-                                <rect key="frame" x="177" y="98" width="96" height="32"/>
+                                <rect key="frame" x="183" y="104" width="84" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="WFf-3D-D74"/>
                                     <constraint firstAttribute="height" constant="21" id="ZxE-ET-YU7"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Start day" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNR-UV-oHT">
+                                <buttonCell key="cell" type="inline" title="Start day" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNR-UV-oHT">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleStartButton:" target="bVC-7U-s4Z" id="iuh-wp-mgt"/>
