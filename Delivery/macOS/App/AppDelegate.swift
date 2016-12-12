@@ -62,7 +62,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
 //                guard sleepDuration >= minSleepDuration else {
 //                    return
-//                }
+                //                }
+                let startDate = settings.startOfDayTime.dateByKeepingTime()
+                guard Date() > startDate else {
+                    return
+                }
+                
                 let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
                 let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
                 guard workedDuration < dayDuration else {

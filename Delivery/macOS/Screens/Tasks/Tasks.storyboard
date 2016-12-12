@@ -525,6 +525,14 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-JW-h3W">
+                                <rect key="frame" x="18" y="46" width="353" height="24"/>
+                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do while away?" id="vVI-i0-CV1">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                            </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-O7-hvq">
                                 <rect key="frame" x="19" y="9" width="294" height="20"/>
                                 <constraints>
@@ -550,14 +558,6 @@ Gw
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-Jn-pJP">
                                 <rect key="frame" x="371" y="50" width="79" height="5"/>
                             </box>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-JW-h3W">
-                                <rect key="frame" x="18" y="46" width="353" height="24"/>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do while away?" id="vVI-i0-CV1">
-                                    <font key="font" metaFont="system" size="20"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="CGp-Zh-lOB" firstAttribute="leading" secondItem="wTJ-JW-h3W" secondAttribute="trailing" id="0kJ-i1-uDH"/>
@@ -575,11 +575,11 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="55W-A0-75h" secondAttribute="bottom" id="U2c-Yy-ztR"/>
                             <constraint firstItem="55W-A0-75h" firstAttribute="top" secondItem="mC8-Jn-pJP" secondAttribute="bottom" id="W3G-sC-NLT"/>
                             <constraint firstAttribute="trailing" secondItem="CGp-Zh-lOB" secondAttribute="trailing" constant="80" id="W7e-9Y-Fkp"/>
-                            <constraint firstAttribute="bottom" secondItem="wTJ-JW-h3W" secondAttribute="bottom" constant="46" id="WVb-lr-FSV"/>
                             <constraint firstAttribute="trailing" secondItem="mC8-Jn-pJP" secondAttribute="trailing" id="Wsj-N1-nxK"/>
                             <constraint firstItem="mC8-Jn-pJP" firstAttribute="leading" secondItem="CGp-Zh-lOB" secondAttribute="trailing" constant="1" id="dlz-sP-JyV"/>
                             <constraint firstAttribute="bottom" secondItem="ZGF-O7-hvq" secondAttribute="bottom" constant="10" id="fcP-Dv-1IX"/>
                             <constraint firstItem="xms-pO-x4G" firstAttribute="leading" secondItem="CGp-Zh-lOB" secondAttribute="trailing" id="gM6-mf-DE5"/>
+                            <constraint firstItem="ZGF-O7-hvq" firstAttribute="top" secondItem="wTJ-JW-h3W" secondAttribute="bottom" constant="18" id="sEi-D8-nHs"/>
                         </constraints>
                     </view>
                     <connections>

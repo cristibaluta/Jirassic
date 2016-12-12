@@ -55,6 +55,8 @@ extension TaskSuggestionViewController: TaskSuggestionPresenterOutput {
     }
     
     func hideTaskTypes() {
-        segmentedControl.isHidden = true
+        segmentedControl.removeFromSuperview()
+//        notesTextField.removeAutoresizing()
+//        _ = notesTextField.constraintToBottom(self.view, distance: CGFloat(0))
     }
 }

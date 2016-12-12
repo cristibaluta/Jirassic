@@ -60,14 +60,14 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
             time += startDate.HHmm() + " - "
         }
         time += endSleepDate!.HHmm()
-        userInterface!.setTime(time)
         
         if let startDate = startSleepDate {
             let interactor = ComputerWakeUpInteractor(repository: localRepository)
             if let type = interactor.estimationForDate(startDate) {
                 if type == .startDay {
+                    time += "   " + "Good morning, ready to start working?"
                     isStartOfDay = true
-                    userInterface!.setNotes("Good morning, ready to start your working day?")
+                    userInterface!.setNotes("Good morning, ready to start working?")
                     userInterface!.hideTaskTypes()
                 } else {
                     let index = selectedSegment(forTaskType: type)
@@ -75,10 +75,12 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                 }
             }
         } else {
+            time += "   " + "Good morning, ready to start working?"
             isStartOfDay = true
-            userInterface!.setNotes("Good morning, ready to start your working day?")
+            userInterface!.setNotes("Good morning, ready to start working?")
             userInterface!.hideTaskTypes()
         }
+        userInterface!.setTime(time)
     }
     
     func selectSegment (atIndex index: Int) {
