@@ -15,7 +15,7 @@ protocol TaskSuggestionPresenterInput: class {
 }
 
 protocol TaskSuggestionPresenterOutput: class {
-    func setTaskType (_ taskType: TaskSubtype)
+    func selectSegment (atIndex index: Int)
     func setTime (_ notes: String)
     func setNotes (_ notes: String)
     func hideTaskTypes()
@@ -87,7 +87,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         
         let type = taskSubtype(forIndex: index)
         userInterface!.setNotes(type.defaultNotes)
-        userInterface!.setTaskType(type)
+        userInterface!.selectSegment(atIndex: index)
     }
     
     func save (selectedSegment: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?) {

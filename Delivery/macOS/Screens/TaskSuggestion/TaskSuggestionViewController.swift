@@ -42,8 +42,8 @@ class TaskSuggestionViewController: NSViewController {
 
 extension TaskSuggestionViewController: TaskSuggestionPresenterOutput {
     
-    func setTaskType (_ taskType: TaskSubtype) {
-        segmentedControl.selectedSegment = taskType.rawValue
+    func selectSegment (atIndex index: Int) {
+        segmentedControl.selectedSegment = index
     }
     
     func setTime (_ notes: String) {
