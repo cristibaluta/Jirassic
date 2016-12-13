@@ -10,7 +10,7 @@ import Cocoa
 
 class TaskSuggestionViewController: NSViewController {
     
-    @IBOutlet fileprivate weak var segmentedControl: NSSegmentedControl!
+    @IBOutlet fileprivate weak var segmentedControl: NSSegmentedControl?
     @IBOutlet fileprivate weak var titleTextField: NSTextField!
     @IBOutlet fileprivate weak var notesTextField: NSTextField!
     
@@ -24,7 +24,7 @@ class TaskSuggestionViewController: NSViewController {
     }
     
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
-        presenter!.selectSegment(atIndex: segmentedControl.selectedSegment)
+        presenter!.selectSegment(atIndex: sender.selectedSegment)
     }
     
     @IBAction func handleIgnoreButton (_ sender: NSButton) {
@@ -32,7 +32,7 @@ class TaskSuggestionViewController: NSViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        presenter!.save(selectedSegment: segmentedControl.selectedSegment,
+        presenter!.save(selectedSegment: segmentedControl != nil ? segmentedControl!.selectedSegment : -1,
                         notes: notesTextField.stringValue,
                         startSleepDate: startSleepDate,
                         endSleepDate: endSleepDate)
@@ -43,7 +43,7 @@ class TaskSuggestionViewController: NSViewController {
 extension TaskSuggestionViewController: TaskSuggestionPresenterOutput {
     
     func selectSegment (atIndex index: Int) {
-        segmentedControl.selectedSegment = index
+        segmentedControl!.selectedSegment = index
     }
     
     func setTime (_ notes: String) {
@@ -55,7 +55,8 @@ extension TaskSuggestionViewController: TaskSuggestionPresenterOutput {
     }
     
     func hideTaskTypes() {
-        segmentedControl.removeFromSuperview()
+        segmentedControl!.removeFromSuperview()
+        segmentedControl = nil
 //        notesTextField.removeAutoresizing()
 //        _ = notesTextField.constraintToBottom(self.view, distance: CGFloat(0))
     }
