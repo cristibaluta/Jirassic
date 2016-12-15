@@ -10,11 +10,11 @@ import XCTest
 @testable import Jirassic
 
 fileprivate class TaskSuggestionPresenterMock: TaskSuggestionPresenterOutput {
-    var setTaskType_called = false
+    var selectSegment_called = false
     var setTime_called = false
     var setNotes_called = false
     var hideTaskTypes_called = false
-    func setTaskType (_ taskType: TaskSubtype) { setTaskType_called = true }
+    func selectSegment (atIndex index: Int) { selectSegment_called = true }
     func setTime (_ notes: String) { setTime_called = true }
     func setNotes (_ notes: String) { setNotes_called = true }
     func hideTaskTypes() { hideTaskTypes_called = true }
@@ -41,7 +41,7 @@ class TaskSuggestionTests: XCTestCase {
         XCTAssert(controller.setTime_called)
         XCTAssert(controller.setNotes_called)
         XCTAssert(controller.hideTaskTypes_called)
-        XCTAssertFalse(controller.setTaskType_called)
+        XCTAssertFalse(controller.selectSegment_called)
     }
     
     func testMethod_setTime() {
@@ -54,7 +54,7 @@ class TaskSuggestionTests: XCTestCase {
         XCTAssertFalse(controller.setTime_called)
         XCTAssertFalse(controller.hideTaskTypes_called)
         XCTAssert(controller.setNotes_called)
-        XCTAssert(controller.setTaskType_called)
+        XCTAssert(controller.selectSegment_called)
     }
     
     func testMethod_save() {
