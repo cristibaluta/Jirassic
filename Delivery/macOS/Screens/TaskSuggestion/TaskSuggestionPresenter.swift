@@ -25,6 +25,7 @@ class TaskSuggestionPresenter {
     
     weak var userInterface: TaskSuggestionPresenterOutput?
     fileprivate var isStartOfDay = false
+    fileprivate let startWorkText = "Good morning, ready to start work?"
     
     fileprivate func taskSubtype (forIndex index: Int) -> TaskSubtype {
         
@@ -65,9 +66,9 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
             let interactor = ComputerWakeUpInteractor(repository: localRepository)
             if let type = interactor.estimationForDate(startDate) {
                 if type == .startDay {
-                    time += "   " + "Good morning, ready to start working?"
+                    time += "   " + startWorkText
                     isStartOfDay = true
-                    userInterface!.setNotes("Good morning, ready to start working?")
+                    userInterface!.setNotes(startWorkText)
                     userInterface!.hideTaskTypes()
                 } else {
                     let index = selectedSegment(forTaskType: type)
@@ -75,9 +76,9 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                 }
             }
         } else {
-            time += "   " + "Good morning, ready to start working?"
+            time += "   " + startWorkText
             isStartOfDay = true
-            userInterface!.setNotes("Good morning, ready to start working?")
+            userInterface!.setNotes(startWorkText)
             userInterface!.hideTaskTypes()
         }
         userInterface!.setTime(time)

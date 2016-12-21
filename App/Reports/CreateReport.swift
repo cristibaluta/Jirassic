@@ -17,14 +17,7 @@ class CreateReport: NSObject {
         }
         var tasks = splitOverlappingTasks(tasks)
         tasks = removeUntrackableTasks(tasks)
-        
-		// Calculate the diff to 8 hrs
-		let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
-		let missingTime = targetHoursInDay - workedTime
-		let extraTimePerTask = ceil( Double( Int(missingTime) / tasks.count))
-        
-        tasks = addExtraTimeToTasks(tasks, extraTimePerTask: extraTimePerTask, targetHoursInDay: targetHoursInDay)
-        
+        tasks = addExtraTimeToTasks(tasks, targetHoursInDay: targetHoursInDay)
         let groups = groupByTaskNumber(tasks)
         let reports = reportsFromGroups(groups)
         
@@ -52,7 +45,7 @@ extension CreateReport {
                 task.endDate = previousDate.addingTimeInterval(duration)
                 arr.append(task)
                 previousDate = task.endDate
-                print("inlined \(startDate)")
+//                print("inlined \(startDate)")
             } else {
                 // Add the task but substract the time from the inlined tasks
                 arr.append(task)
@@ -96,9 +89,15 @@ extension CreateReport {
         }
     }
     
-    fileprivate func addExtraTimeToTasks (_ tasks: [Task],
-                                          extraTimePerTask: Double,
-                                          targetHoursInDay: Double) -> [Task] {
+    fileprivate func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double) -> [Task] {
+        
+        // How many tasks should be adjusted
+        let tasksToAdjust = tasks.filter({ isAdjustable(taskType: $0.taskType) }).count
+        
+        // Calculate the diff to targetHoursInDay
+        let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
+        let missingTime = targetHoursInDay - workedTime
+        let extraTimePerTask = ceil( Double( Int(missingTime) / tasksToAdjust))
         
         var roundedTasks = [Task]()
         var extraTimeToAdd = extraTimePerTask
@@ -114,8 +113,13 @@ extension CreateReport {
             
             task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
             task.startDate = previousDate
-            extraTimeToAdd += extraTimePerTask
             previousDate = task.endDate
+            if tasks.count > i + 1 {
+                let nextTask = tasks[i+1]
+                if isAdjustable(taskType: nextTask.taskType) {
+                    extraTimeToAdd += extraTimePerTask
+                }
+            }
             
             roundedTasks.append(task)
         }
