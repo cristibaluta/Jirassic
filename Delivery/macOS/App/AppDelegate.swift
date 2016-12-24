@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import ServiceManagement
 
 var localRepository: Repository!
 var remoteRepository: Repository?
@@ -86,20 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
     func applicationDidFinishLaunching (_ aNotification: Notification) {
 		
-        let identifier = "com.ralcr.JirassicLauncher"
-        let ret = SMLoginItemSetEnabled(identifier as CFString, true)
-        RCLog(ret)
-        
-        for app in NSWorkspace.shared().runningApplications {
-            if app.bundleIdentifier == identifier {
-                DistributedNotificationCenter.default()
-                    .postNotificationName(NSNotification.Name(rawValue: "killme"),
-                                          object: Bundle.main.bundleIdentifier!,
-                                          userInfo: nil,
-                                          deliverImmediately: true)
-                break
-            }
-        }
+        killLauncher()
         
 //        if let _ = remoteRepository {
 //            CKContainer.default().accountStatus(completionHandler: { [weak self] (accountStatus, error) in

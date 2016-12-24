@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         let identifier = "com.ralcr.Jirassic.osx"
-        print(NSWorkspace.shared().runningApplications)
+        
         var alreadyRunning = false
         for app in NSWorkspace.shared().runningApplications {
             if app.bundleIdentifier == identifier {
