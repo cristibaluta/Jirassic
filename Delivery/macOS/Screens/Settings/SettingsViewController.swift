@@ -28,6 +28,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var butEnableScrum: NSButton!
     @IBOutlet fileprivate var butEnableMeetings: NSButton!
     @IBOutlet fileprivate var butEnableAutoTrack: NSButton!
+    @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
     @IBOutlet fileprivate var trackingModeSegmentedControl: NSSegmentedControl!
     @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var endOfDayTimePicker: NSDatePicker!
@@ -87,6 +88,10 @@ class SettingsViewController: NSViewController {
     @IBAction func handleAutoTrackButton (_ sender: NSButton) {
         trackingModeSegmentedControl.isEnabled = sender.state == NSOnState
     }
+    
+    @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
+        presenter!.enabledLaunchAtStartup(sender.state == NSOnState)
+    }
 }
 
 extension SettingsViewController: Animatable {
@@ -131,4 +136,9 @@ extension SettingsViewController: SettingsPresenterOutput {
         scrumTimePicker.dateValue = settings.scrumTime
         minSleepDurationTimePicker.dateValue = settings.minSleepDuration
     }
+    
+    func enabledLaunchAtStartup (_ enabled: Bool) {
+        butEnableLaunchAtStartup.state = enabled ? NSOnState : NSOffState
+    }
+    
 }

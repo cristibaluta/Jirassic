@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import ServiceManagement
 
 protocol SettingsInteractorInput: class {
     
     func getAppSettings() -> Settings
     func saveAppSettings (_ settings: Settings)
+    func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 protocol SettingsInteractorOutput: class {
@@ -37,5 +39,12 @@ extension SettingsInteractor: SettingsInteractorInput {
     
     func saveAppSettings (_ settings: Settings) {
         localRepository!.saveSettings(settings)
+    }
+    
+    func enabledLaunchAtStartup (_ enabled: Bool) {
+        
+        let identifier = "com.ralcr.Jirassic.osx.launcher"
+        let _ = SMLoginItemSetEnabled(identifier as CFString, enabled)
+        InternalSettings().setLaunchAtStartup(enabled)
     }
 }

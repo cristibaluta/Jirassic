@@ -7,25 +7,28 @@
 //
 
 import Cocoa
-import ServiceManagement
 
 extension AppDelegate {
 
-    func killLauncher() {
+    func launchAtStartup() {
         
-        let identifier = "com.ralcr.Jirassic.osx.launcher"
-        let ret = SMLoginItemSetEnabled(identifier as CFString, true)
-        RCLog(ret)
-        return
-        for app in NSWorkspace.shared().runningApplications {
-            if app.bundleIdentifier == identifier {
-                DistributedNotificationCenter.default()
-                    .postNotificationName(NSNotification.Name(rawValue: "killme"),
-                                          object: Bundle.main.bundleIdentifier!,
-                                          userInfo: nil,
-                                          deliverImmediately: true)
-                break
-            }
+        guard InternalSettings().launchAtStartup() else {
+            return
         }
+        InternalSettings().setLaunchAtStartup(true)
+        killLauncher()
+    }
+    
+    func killLauncher() {
+        //        for app in NSWorkspace.shared().runningApplications {
+        //            if app.bundleIdentifier == identifier {
+        //                DistributedNotificationCenter.default()
+        //                    .postNotificationName(NSNotification.Name(rawValue: "killme"),
+        //                                          object: Bundle.main.bundleIdentifier!,
+        //                                          userInfo: nil,
+        //                                          deliverImmediately: true)
+        //                break
+        //            }
+        //        }
     }
 }

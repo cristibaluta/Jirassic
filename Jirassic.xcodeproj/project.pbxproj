@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400E7BFA1E0EEFA800D19FFD /* InternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */; };
 		4051D5F21E0EA0EA002042BB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F01E0EA0EA002042BB /* Info.plist */; };
 		4051D5F31E0EA0EA002042BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F11E0EA0EA002042BB /* AppDelegate.swift */; };
 		4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F41E0EA0F3002042BB /* Main.storyboard */; };
@@ -28,7 +29,7 @@
 		4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3231DD3B44200B73201 /* ViewAutolayout.swift */; };
 		4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3241DD3B44200B73201 /* ViewController.swift */; };
 		4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */; };
-		4065D3A91DD3B44200B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
+		4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Conversions.swift */; };
 		4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */; };
 		4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
@@ -110,7 +111,7 @@
 		4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3321DD3B44200B73201 /* TaskInteractor.swift */; };
 		4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
 		4065D4311DD457B000B73201 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3201DD3B44200B73201 /* DateExtension.swift */; };
-		4065D4321DD457B500B73201 /* Zeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Zeta.swift */; };
+		4065D4321DD457B500B73201 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Conversions.swift */; };
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
 		4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */; };
 		40E0923B1DE1CC81001EF5DA /* GetJitVersion.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 40E092381DE1CC81001EF5DA /* GetJitVersion.scpt */; };
@@ -167,6 +168,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSettings.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
 		4051D5F11E0EA0EA002042BB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "macOS-launcher/AppDelegate.swift"; sourceTree = "<group>"; };
@@ -193,7 +195,7 @@
 		4065D3231DD3B44200B73201 /* ViewAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAutolayout.swift; sourceTree = "<group>"; };
 		4065D3241DD3B44200B73201 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerStoryboard.swift; sourceTree = "<group>"; };
-		4065D3261DD3B44200B73201 /* Zeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zeta.swift; sourceTree = "<group>"; };
+		4065D3261DD3B44200B73201 /* Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		4065D3291DD3B44200B73201 /* ComputerWakeUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractor.swift; sourceTree = "<group>"; };
 		4065D32B1DD3B44200B73201 /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReport.swift; sourceTree = "<group>"; };
 		4065D32C1DD3B44200B73201 /* CreateReportTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReportTests.swift; sourceTree = "<group>"; };
@@ -431,7 +433,7 @@
 				4065D3231DD3B44200B73201 /* ViewAutolayout.swift */,
 				4065D3241DD3B44200B73201 /* ViewController.swift */,
 				4065D3251DD3B44200B73201 /* ViewControllerStoryboard.swift */,
-				4065D3261DD3B44200B73201 /* Zeta.swift */,
+				4065D3261DD3B44200B73201 /* Conversions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,6 +552,7 @@
 				4065D3581DD3B44200B73201 /* AppScriptable.swift */,
 				4051D5F81E0EA48A002042BB /* AppLauncher.swift */,
 				40FCE4311DFD9BC200D4FD45 /* History.swift */,
+				400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
+				400E7BFA1E0EEFA800D19FFD /* InternalSettings.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
 				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */,
@@ -1005,7 +1009,7 @@
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,
 				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
-				4065D3A91DD3B44200B73201 /* Zeta.swift in Sources */,
+				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
 				405B15631DEF3F2A0009871C /* TaskSuggestionPresenter.swift in Sources */,
@@ -1042,7 +1046,7 @@
 				4065D41D1DD454DF00B73201 /* CUser.swift in Sources */,
 				4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */,
 				4065D41A1DD454DF00B73201 /* CoreDataRepository.swift in Sources */,
-				4065D4321DD457B500B73201 /* Zeta.swift in Sources */,
+				4065D4321DD457B500B73201 /* Conversions.swift in Sources */,
 				4065D4331DD457E000B73201 /* RCLog.swift in Sources */,
 				4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */,
 				4065D41B1DD454DF00B73201 /* CSettings.swift in Sources */,

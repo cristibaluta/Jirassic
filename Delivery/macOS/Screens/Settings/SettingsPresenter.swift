@@ -15,6 +15,7 @@ protocol SettingsPresenterInput: class {
     func uninstallJit()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
+    func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 protocol SettingsPresenterOutput: class {
@@ -22,6 +23,7 @@ protocol SettingsPresenterOutput: class {
     func setJitIsInstalled (_ installed: Bool)
     func setJiraSettings (_ settings: JiraSettings)
     func showAppSettings (_ settings: Settings)
+    func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 class SettingsPresenter {
@@ -74,10 +76,15 @@ extension SettingsPresenter: SettingsPresenterInput {
     func showSettings() {
         let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
+        userInterface!.enabledLaunchAtStartup(InternalSettings().launchAtStartup())
     }
     
     func saveAppSettings (_ settings: Settings) {
         interactor!.saveAppSettings(settings)
+    }
+    
+    func enabledLaunchAtStartup (_ enabled: Bool) {
+        interactor!.enabledLaunchAtStartup(enabled)
     }
 }
 

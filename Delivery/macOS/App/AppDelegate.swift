@@ -85,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
     func applicationDidFinishLaunching (_ aNotification: Notification) {
 		
-        killLauncher()
+        launchAtStartup()
         
 //        if let _ = remoteRepository {
 //            CKContainer.default().accountStatus(completionHandler: { [weak self] (accountStatus, error) in
