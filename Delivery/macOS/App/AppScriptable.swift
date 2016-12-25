@@ -28,14 +28,19 @@ extension NSApplication {
                 let notes = dict["notes"] ?? ""
                 let branchName = dict["branchName"] ?? ""
                 let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : branchName
-                let taskType = dict["taskType"] != nil ? TaskType(rawValue: Int(dict["taskType"]!)!)! : TaskType.gitCommit
+                let taskType = dict["taskType"] != nil
+                    ? TaskType(rawValue: Int(dict["taskType"]!)!)!
+                    : TaskType.gitCommit
                 let informativeText = "\(taskNumber): \(notes)"
                 
                 let saveInteractor = TaskInteractor(repository: localRepository)
                 let reader = ReadTasksInteractor(repository: localRepository)
                 let currentTasks = reader.tasksInDay(Date())
                 if currentTasks.count == 0 {
-                    let startDayMark = Task(dateEnd: Date(hour: 9, minute: 0), type: TaskType.startDay)
+                    let settings: Settings = SettingsInteractor().getAppSettings()
+                    let startDate = settings.startOfDayTime.dateByKeepingTime()
+                    let comps = startDate.components()
+                    let startDayMark = Task(dateEnd: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
                     saveInteractor.saveTask(startDayMark)
                 }
                 
@@ -49,7 +54,7 @@ extension NSApplication {
                 )
                 saveInteractor.saveTask(task)
                 
-                UserNotifications().showNotification("Git commit logged", informativeText: informativeText)
+                UserNotifications().showNotification("Git commit added", informativeText: informativeText)
                 InternalNotifications.notifyAboutNewlyAddedTask(task)
             }
             catch let error as NSError {
