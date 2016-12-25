@@ -16,9 +16,9 @@ JIRAssic is a Mac app that stays in the status bar and you can access it any tim
 - Track daily scrum meetings
 - Round times to quarters and the whole day to fit 8 hrs
 
-# Dependencies
-- Jit cmd https://github.com/ralcr/Jit Replacement for some git commands but you need only one command
-- jirassic-cmd Use Jirassic from the command line, you can manipulate the Jirassic database directly from the command line
+# Shell support
+- jit-cmd Use 'jit commit' to commit to git then automatically log the commit message to Jirassic. But it comes with more useful commands https://github.com/ralcr/Jit
+- jirassic-cmd Use Jirassic from the command line, you can manipulate the Jirassic database directly from the command line, the app does not have to be open
 
 They both come bundled in the Jirassic app but needs to be installed manually from settings.
 
