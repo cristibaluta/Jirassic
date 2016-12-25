@@ -319,7 +319,7 @@
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aR4-jV-fsE">
                                 <rect key="frame" x="20" y="15" width="197" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Launch at starrtup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hx6-4U-fCn">
+                                <buttonCell key="cell" type="check" title="Launch at startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hx6-4U-fCn">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

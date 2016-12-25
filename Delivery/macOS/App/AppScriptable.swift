@@ -49,7 +49,7 @@ extension NSApplication {
                 )
                 saveInteractor.saveTask(task)
                 
-                LocalNotifications().showNotification("Git commit logged", informativeText: informativeText)
+                UserNotifications().showNotification("Git commit logged", informativeText: informativeText)
                 InternalNotifications.notifyAboutNewlyAddedTask(task)
             }
             catch let error as NSError {

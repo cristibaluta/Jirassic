@@ -131,7 +131,7 @@ extension CloudKitRepository: RepositoryTasks {
         cktask["notes"] = task.notes as CKRecordValue?
         
         privateDB.save(cktask, completionHandler: { savedRecord, error in
-            RCLog(savedRecord)
+            RCLogO(savedRecord)
             RCLogErrorO(error)
         }) 
         

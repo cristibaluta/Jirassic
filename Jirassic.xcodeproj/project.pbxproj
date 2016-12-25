@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		400E7BFA1E0EEFA800D19FFD /* InternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */; };
-		4051D5F21E0EA0EA002042BB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F01E0EA0EA002042BB /* Info.plist */; };
 		4051D5F31E0EA0EA002042BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F11E0EA0EA002042BB /* AppDelegate.swift */; };
 		4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F41E0EA0F3002042BB /* Main.storyboard */; };
 		4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
@@ -47,14 +46,13 @@
 		4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3581DD3B44200B73201 /* AppScriptable.swift */; };
 		4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
-		4065D3D01DD3B44200B73201 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35C1DD3B44200B73201 /* Info.plist */; };
 		4065D3D21DD3B44200B73201 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35F1DD3B44200B73201 /* jirassic */; };
 		4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
 		4065D3D41DD3B44200B73201 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3621DD3B44200B73201 /* jit */; };
 		4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3651DD3B44200B73201 /* MenuBarController.swift */; };
 		4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3661DD3B44200B73201 /* MenuBarIconView.swift */; };
 		4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3681DD3B44200B73201 /* InternalNotifications.swift */; };
-		4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3691DD3B44200B73201 /* LocalNotifications.swift */; };
+		4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3691DD3B44200B73201 /* UserNotifications.swift */; };
 		4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36A1DD3B44200B73201 /* SleepNotifications.swift */; };
 		4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3711DD3B44200B73201 /* NewTaskViewController.swift */; };
 		4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3731DD3B44200B73201 /* SettingsInteractor.swift */; };
@@ -237,7 +235,7 @@
 		4065D3651DD3B44200B73201 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		4065D3661DD3B44200B73201 /* MenuBarIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarIconView.swift; sourceTree = "<group>"; };
 		4065D3681DD3B44200B73201 /* InternalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotifications.swift; sourceTree = "<group>"; };
-		4065D3691DD3B44200B73201 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		4065D3691DD3B44200B73201 /* UserNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotifications.swift; sourceTree = "<group>"; };
 		4065D36A1DD3B44200B73201 /* SleepNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepNotifications.swift; sourceTree = "<group>"; };
 		4065D3711DD3B44200B73201 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		4065D3731DD3B44200B73201 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
@@ -570,7 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				4065D3681DD3B44200B73201 /* InternalNotifications.swift */,
-				4065D3691DD3B44200B73201 /* LocalNotifications.swift */,
+				4065D3691DD3B44200B73201 /* UserNotifications.swift */,
 				4065D36A1DD3B44200B73201 /* SleepNotifications.swift */,
 			);
 			path = Notifications;
@@ -831,7 +829,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					4055B1221E0D802300279430 = {
@@ -894,7 +892,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */,
-				4051D5F21E0EA0EA002042BB /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,7 +901,6 @@
 			files = (
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
-				4065D3D01DD3B44200B73201 /* Info.plist in Resources */,
 				4065D3D41DD3B44200B73201 /* jit in Resources */,
 				40E0923D1DE1CC81001EF5DA /* Uninstaller.scpt in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
@@ -979,7 +975,7 @@
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
-				4065D3D91DD3B44200B73201 /* LocalNotifications.swift in Sources */,
+				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
@@ -1168,6 +1164,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1217,6 +1214,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

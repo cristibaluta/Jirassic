@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LocalNotifications {
+class UserNotifications {
 
 	func showNotification (_ title: String, informativeText: String) {
 		

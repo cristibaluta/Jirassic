@@ -35,7 +35,7 @@ extension LoginPresenter: LoginPresenterInput {
             let login = UserInteractor(repository: repository)
             login.onLoginSuccess = {
                 self.userInterface?.showLoadingIndicator(false)
-                self.appWireframe?.presentTasksController()
+                _ = self.appWireframe?.presentTasksController()
             }
             login.onLoginFailure = {
                 self.userInterface?.showLoadingIndicator(false)
@@ -45,6 +45,6 @@ extension LoginPresenter: LoginPresenterInput {
     }
     
     func cancelScreen() {
-        appWireframe?.presentTasksController()
+        _ = appWireframe?.presentTasksController()
     }
 }
