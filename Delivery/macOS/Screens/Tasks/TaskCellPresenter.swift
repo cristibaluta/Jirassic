@@ -49,7 +49,8 @@ class TaskCellPresenter: NSObject {
             dateStart: theTask.startDate,
             dateEnd: theTask.endDate,
 			taskNumber: theTask.taskNumber ?? "",
-			notes: theTask.notes ?? ""
+			notes: theTask.notes ?? "",
+			taskType: .issue
 		)
 		cell?.duration = duration
 		cell?.statusImage?.image = statusImage

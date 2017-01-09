@@ -26,10 +26,13 @@ class ReportCell: NSTableRowView, CellProtocol {
     
     var data: TaskCreationData {
         get {
-            return (dateStart: nil,
-                    dateEnd: Date(),
-                    taskNumber: self.taskNrTextField!.stringValue,
-                    notes: self.notesTextField!.stringValue)
+            return (
+                dateStart: nil,
+                dateEnd: Date(),
+                taskNumber: self.taskNrTextField!.stringValue,
+                notes: self.notesTextField!.stringValue,
+                taskType: .issue
+            )
         }
         set {
             self.taskNrTextField!.stringValue = newValue.taskNumber

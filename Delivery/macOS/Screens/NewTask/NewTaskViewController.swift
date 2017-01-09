@@ -60,13 +60,14 @@ class NewTaskViewController: NSViewController {
 		}
 	}
 	
-    func setTaskDataWithTaskType (_ taskSubtype: TaskSubtype) {
+    func setTaskDataWithTaskType (_ taskType: TaskType) {
         
         let taskData = TaskCreationData(
             dateStart: self.duration > 0 ? self.dateEnd.addingTimeInterval(-self.duration) : nil,
             dateEnd: self.dateEnd,
             taskNumber: self.taskNumber,
-            notes: self.notes
+            notes: self.notes,
+            taskType: taskType
         )
         self.onOptionChosen?(taskData)
     }
@@ -80,7 +81,7 @@ class NewTaskViewController: NSViewController {
         
     }
     
-    fileprivate func taskSubtype() -> TaskSubtype {
+    fileprivate func selectedTaskSubtype() -> TaskSubtype {
         
         switch taskTypeSegmentedControl!.selectedSegment {
             case 0: return .issueEnd
@@ -91,6 +92,20 @@ class NewTaskViewController: NSViewController {
             case 5: return .learningEnd
             case 6: return .coderevEnd
             default: return .issueEnd
+        }
+    }
+    
+    fileprivate func selectedTaskType() -> TaskType {
+        
+        switch taskTypeSegmentedControl!.selectedSegment {
+        case 0: return .issue
+        case 1: return .scrum
+        case 2: return .meeting
+        case 3: return .lunch
+        case 4: return .nap
+        case 5: return .learning
+        case 6: return .coderev
+        default: return .issue
         }
     }
 }
@@ -125,16 +140,13 @@ extension NewTaskViewController {
     
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
         
-        let subtype = taskSubtype()
+        let subtype = selectedTaskSubtype()
         issueIdTextField.stringValue = subtype.defaultTaskNumber ?? ""
         notesTextField.stringValue = subtype.defaultNotes
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        
-        let subtype = taskSubtype()
-        RCLogO(subtype)
-        setTaskDataWithTaskType(subtype)
+        setTaskDataWithTaskType(selectedTaskType())
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {

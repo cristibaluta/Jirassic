@@ -127,6 +127,7 @@ extension TasksPresenter: TasksPresenterInput {
         task.notes = taskData.notes
         task.taskNumber = taskData.taskNumber
         task.endDate = taskData.dateEnd
+        task.taskType = taskData.taskType
         
         let saveInteractor = TaskInteractor(repository: localRepository)
             saveInteractor.saveTask(task)

@@ -23,7 +23,8 @@ class ReportCellPresenter: NSObject {
             dateStart: nil,
             dateEnd: Date(),
             taskNumber: theReport.taskNumber,
-            notes: theReport.notes
+            notes: theReport.notes,
+            taskType: .issue
         )
         cell?.duration = Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell?.statusImage?.image = NSImage(named: NSImageNameStatusAvailable)
