@@ -27,6 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	override init() {
 		super.init()
         
+        // For testing
+//        UserDefaults.standard.removeObject(forKey: "launched")
+        
         localRepository = CoreDataRepository()
 //		remoteRepository = CloudKitRepository()
         

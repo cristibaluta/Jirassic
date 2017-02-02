@@ -107,7 +107,7 @@ extension SettingsViewController: SettingsPresenterOutput {
     func setJitIsInstalled (_ installed: Bool) {
         
         jitImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField.stringValue = installed ? "Shell support is installed" : "Shell support not installed yet"
+        jitTextField.stringValue = installed ? "Command line tools are installed" : "Command line tools are not installed yet"
         butInstallJit.title = installed ? "Uninstall" : "Install"
         jiraCredentialsBox.isHidden = !installed
         shellSupportBox.isHidden = installed

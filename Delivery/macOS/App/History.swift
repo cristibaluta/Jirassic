@@ -16,5 +16,6 @@ class History {
     
     func setLaunched() {
         UserDefaults.standard.set(true, forKey: "launched")
+        UserDefaults.standard.synchronize()
     }
 }

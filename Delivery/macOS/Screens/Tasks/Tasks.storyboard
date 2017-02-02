@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wHU-IX-gfU">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wHU-IX-gfU">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
@@ -223,18 +223,29 @@
                                 </holdingPriorities>
                             </splitView>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="rhx-UQ-KmF">
-                                <rect key="frame" x="7" y="400" width="22" height="22"/>
+                                <rect key="frame" x="7" y="398" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="UPH-5F-Pfw"/>
-                                    <constraint firstAttribute="height" constant="22" id="nf4-3J-Lbd"/>
+                                    <constraint firstAttribute="width" constant="24" id="UPH-5F-Pfw"/>
+                                    <constraint firstAttribute="height" constant="24" id="nf4-3J-Lbd"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="At4-An-7dD">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ButClose" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="At4-An-7dD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="1xF-Xg-9zG"/>
                                 </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="6Em-gu-4cj">
+                                <rect key="frame" x="30" y="398" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="00Y-zk-eER"/>
+                                    <constraint firstAttribute="height" constant="24" id="umL-wH-4FS"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ButMinimize" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="bPg-k2-O5r">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95a-7I-VNJ">
                                 <rect key="frame" x="178" y="398" width="135" height="25"/>
@@ -249,8 +260,20 @@
                                     <action selector="handleSegmentedControl:" target="wHU-IX-gfU" id="1hR-gG-H11"/>
                                 </connections>
                             </segmentedControl>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="PZL-RZ-Mym">
+                                <rect key="frame" x="53" y="398" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="OQQ-Tx-zmt"/>
+                                    <constraint firstAttribute="height" constant="24" id="dHv-4q-uIG"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ButFullScreen" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="IPE-Op-n48">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="PZL-RZ-Mym" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="7Lu-To-KpL"/>
                             <constraint firstItem="95a-7I-VNJ" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="BIc-JC-FRc"/>
                             <constraint firstAttribute="trailing" secondItem="sOM-pv-IVs" secondAttribute="trailing" constant="12" id="EDp-gv-hVw"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="IOj-nH-o5u"/>
@@ -262,7 +285,10 @@
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="60" id="kgn-ml-hof"/>
                             <constraint firstItem="95a-7I-VNJ" firstAttribute="centerX" secondItem="FwC-dy-0bY" secondAttribute="centerX" id="lHI-TJ-Zn1"/>
                             <constraint firstAttribute="trailing" secondItem="SJz-Xr-YhG" secondAttribute="trailing" constant="12" id="leq-Tf-xCq"/>
+                            <constraint firstItem="PZL-RZ-Mym" firstAttribute="leading" secondItem="rhx-UQ-KmF" secondAttribute="trailing" constant="22" id="m8X-lr-c5u"/>
+                            <constraint firstItem="6Em-gu-4cj" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="nTL-hi-2Or"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="62" id="rPW-Au-hGz"/>
+                            <constraint firstItem="6Em-gu-4cj" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="30" id="w02-IC-8NC"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="xh1-lJ-1K2"/>
                         </constraints>
                     </customView>
@@ -594,7 +620,9 @@ Gw
         </scene>
     </scenes>
     <resources>
+        <image name="ButClose" width="12" height="12"/>
+        <image name="ButFullScreen" width="12" height="12"/>
+        <image name="ButMinimize" width="12" height="12"/>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
     </resources>
 </document>

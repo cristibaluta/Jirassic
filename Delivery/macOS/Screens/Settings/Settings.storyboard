@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OCy-iT-9TC">
-                                <rect key="frame" x="18" y="447" width="458" height="27"/>
+                                <rect key="frame" x="48" y="447" width="428" height="27"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Settings" id="GLz-DY-qQW">
                                     <font key="font" metaFont="system" size="22"/>
                                     <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -23,7 +23,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZW-oy-bAn">
-                                <rect key="frame" x="20" y="119" width="166" height="18"/>
+                                <rect key="frame" x="20" y="104" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Lunch begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYU-uP-r49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -31,7 +31,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwE-DS-XUK">
-                                <rect key="frame" x="20" y="153" width="128" height="18"/>
+                                <rect key="frame" x="20" y="138" width="128" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Working between" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U9A-hl-Ro2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -39,7 +39,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-eo-qyH">
-                                <rect key="frame" x="20" y="84" width="166" height="18"/>
+                                <rect key="frame" x="20" y="69" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Scrum begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -47,7 +47,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1zq-qp-TWl">
-                                <rect key="frame" x="20" y="49" width="197" height="18"/>
+                                <rect key="frame" x="20" y="34" width="197" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Ignore sleeps shorter than" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XNA-EY-JgP">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -55,7 +55,7 @@
                                 </buttonCell>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
-                                <rect key="frame" x="185" y="150" width="62" height="27"/>
+                                <rect key="frame" x="185" y="135" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
                                     <font key="font" metaFont="system"/>
@@ -68,7 +68,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-af-j6l">
-                                <rect key="frame" x="316" y="150" width="62" height="27"/>
+                                <rect key="frame" x="316" y="135" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="0bs-wq-Tnf">
                                     <font key="font" metaFont="system"/>
@@ -170,7 +170,7 @@
                                 </view>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
-                                <rect key="frame" x="419" y="445" width="71" height="32"/>
+                                <rect key="frame" x="419" y="10" width="71" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="Use-nS-zxU"/>
                                     <constraint firstAttribute="height" constant="21" id="vWH-pG-KcJ"/>
@@ -184,7 +184,7 @@
                                 </connections>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
-                                <rect key="frame" x="185" y="116" width="61" height="27"/>
+                                <rect key="frame" x="185" y="101" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
                                     <font key="font" metaFont="system"/>
@@ -197,7 +197,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-W0-ldB">
-                                <rect key="frame" x="185" y="82" width="61" height="27"/>
+                                <rect key="frame" x="185" y="67" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="aAZ-cj-BOO">
                                     <font key="font" metaFont="system"/>
@@ -209,7 +209,7 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="Shell support" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
+                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="Command line tools" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
                                 <rect key="frame" x="19" y="353" width="458" height="62"/>
                                 <view key="contentView" id="IpW-dh-bsa">
                                     <rect key="frame" x="1" y="1" width="456" height="46"/>
@@ -273,7 +273,7 @@
                                 </constraints>
                             </box>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUr-A2-ir2">
-                                <rect key="frame" x="216" y="46" width="61" height="27"/>
+                                <rect key="frame" x="216" y="31" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="R21-XD-uAZ">
                                     <font key="font" metaFont="system"/>
@@ -297,7 +297,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJX-Vo-Lzi">
-                                <rect key="frame" x="266" y="153" width="27" height="17"/>
+                                <rect key="frame" x="266" y="138" width="27" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="and" id="FCS-Ce-XyY">
                                     <font key="font" metaFont="system"/>
@@ -316,9 +316,26 @@
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aR4-jV-fsE">
-                                <rect key="frame" x="20" y="15" width="197" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="nlR-CY-a5k">
+                                <rect key="frame" x="20" y="448" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="4g4-ML-oQZ"/>
+                                    <constraint firstAttribute="height" constant="22" id="E7I-QJ-lJh"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="9MX-x5-EW3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="eUr-xg-ou7"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="aR4-jV-fsE">
+                                <rect key="frame" x="348" y="450" width="138" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="XN9-Nn-6RA"/>
+                                    <constraint firstAttribute="height" constant="14" id="xhj-Xc-xzd"/>
+                                </constraints>
                                 <buttonCell key="cell" type="check" title="Launch at startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hx6-4U-fCn">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -329,17 +346,18 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="nlR-CY-a5k" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="24" id="9VN-DO-g2f"/>
                             <constraint firstItem="mfs-D5-P9c" firstAttribute="top" secondItem="wiB-Ff-as4" secondAttribute="bottom" constant="18" id="Aft-Bx-qUE"/>
                             <constraint firstAttribute="trailing" secondItem="jgE-dH-Hh6" secondAttribute="trailing" constant="20" id="BR0-UX-Ylu"/>
                             <constraint firstAttribute="trailing" secondItem="wiB-Ff-as4" secondAttribute="trailing" constant="19" id="DI0-nN-3hg"/>
                             <constraint firstItem="wiB-Ff-as4" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="FFN-uj-BPs"/>
                             <constraint firstAttribute="trailing" secondItem="OCy-iT-9TC" secondAttribute="trailing" constant="20" id="HWz-r5-zWS"/>
                             <constraint firstItem="mfs-D5-P9c" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="I8X-MZ-dEC"/>
-                            <constraint firstItem="wtI-Tb-5RE" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="21" id="Iuf-tS-mkO"/>
                             <constraint firstItem="ELX-Uc-E2D" firstAttribute="top" secondItem="jgE-dH-Hh6" secondAttribute="bottom" constant="19" id="JYU-VN-hjg"/>
-                            <constraint firstItem="OCy-iT-9TC" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="20" id="Lng-g3-sZf"/>
+                            <constraint firstItem="OCy-iT-9TC" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="50" id="Lng-g3-sZf"/>
                             <constraint firstAttribute="trailing" secondItem="wtI-Tb-5RE" secondAttribute="trailing" constant="10" id="Pmb-C6-hpC"/>
                             <constraint firstAttribute="trailing" secondItem="ELX-Uc-E2D" secondAttribute="trailing" constant="20" id="PqU-gH-Hfy"/>
+                            <constraint firstItem="nlR-CY-a5k" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="20" id="THA-lL-HLX"/>
                             <constraint firstItem="cH4-ct-dhw" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="YL7-iP-tRU"/>
                             <constraint firstAttribute="trailing" secondItem="cH4-ct-dhw" secondAttribute="trailing" constant="12" id="ZD1-Vg-zxL"/>
                             <constraint firstItem="jgE-dH-Hh6" firstAttribute="top" secondItem="cH4-ct-dhw" secondAttribute="bottom" constant="18" id="ao6-R0-qtz"/>
@@ -349,6 +367,9 @@
                             <constraint firstItem="mfs-D5-P9c" firstAttribute="top" secondItem="ELX-Uc-E2D" secondAttribute="bottom" constant="22" id="heb-ab-o1w"/>
                             <constraint firstItem="cH4-ct-dhw" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="60" id="iOV-Gk-7bV"/>
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="20" id="krg-JJ-Gi5"/>
+                            <constraint firstAttribute="trailing" secondItem="aR4-jV-fsE" secondAttribute="trailing" constant="10" id="m5z-j0-Y8j"/>
+                            <constraint firstItem="aR4-jV-fsE" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="28" id="q5r-Rz-amx"/>
+                            <constraint firstAttribute="bottom" secondItem="wtI-Tb-5RE" secondAttribute="bottom" constant="17" id="tQ4-fD-PPo"/>
                             <constraint firstItem="wiB-Ff-as4" firstAttribute="top" secondItem="jgE-dH-Hh6" secondAttribute="bottom" constant="19" id="vMa-kW-Zrc"/>
                         </constraints>
                     </view>
@@ -382,6 +403,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSStatusNone" width="16" height="16"/>
     </resources>
 </document>
