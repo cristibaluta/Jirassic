@@ -12,18 +12,20 @@ class InternalSettings {
     
     fileprivate let userDefaults = UserDefaults.standard
     
-    func setLaunchAtStartup (_ enabled: Bool) {
-        userDefaults.set(enabled, forKey: "InternalSettings.launchAtStartup")
-        userDefaults.synchronize()
+    fileprivate let launchAtStartupKey = "InternalSettings.launchAtStartup"
+    var launchAtStartup: Bool {
+        get {
+            guard userDefaults.object(forKey: launchAtStartupKey) != nil else {
+                return false
+            }
+            return userDefaults.bool(forKey: launchAtStartupKey)
+        }
+        set {
+            userDefaults.set(newValue, forKey: launchAtStartupKey)
+            userDefaults.synchronize()
+        }
     }
     
-    func launchAtStartup() -> Bool {
-        
-        guard userDefaults.object(forKey: "InternalSettings.launchAtStartup") != nil else {
-            return true
-        }
-        return userDefaults.bool(forKey: "InternalSettings.launchAtStartup")
-    }
     
     func setRoundDay (_ on: Bool) {
         userDefaults.set(on, forKey: "InternalSettings.RoundDay")

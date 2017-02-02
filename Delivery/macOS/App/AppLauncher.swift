@@ -12,10 +12,10 @@ extension AppDelegate {
 
     func launchAtStartup() {
         
-        guard InternalSettings().launchAtStartup() else {
+        guard InternalSettings().launchAtStartup else {
             return
         }
-        InternalSettings().setLaunchAtStartup(true)
+        InternalSettings().launchAtStartup = true
         killLauncher()
     }
     

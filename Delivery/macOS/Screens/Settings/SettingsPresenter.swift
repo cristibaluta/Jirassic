@@ -76,7 +76,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     func showSettings() {
         let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
-        userInterface!.enabledLaunchAtStartup(InternalSettings().launchAtStartup())
+        userInterface!.enabledLaunchAtStartup( InternalSettings().launchAtStartup )
     }
     
     func saveAppSettings (_ settings: Settings) {

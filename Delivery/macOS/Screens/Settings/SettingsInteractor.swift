@@ -45,6 +45,6 @@ extension SettingsInteractor: SettingsInteractorInput {
         
         let identifier = "com.ralcr.Jirassic.osx.launcher"
         let _ = SMLoginItemSetEnabled(identifier as CFString, enabled)
-        InternalSettings().setLaunchAtStartup(enabled)
+        InternalSettings().launchAtStartup = enabled
     }
 }
