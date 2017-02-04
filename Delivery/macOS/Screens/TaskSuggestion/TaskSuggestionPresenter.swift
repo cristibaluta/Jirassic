@@ -58,15 +58,15 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         
         var time = ""
         if let startDate = startSleepDate {
-            time += startDate.HHmm() + " - "
+            time += "Away between \(startDate.HHmm()) - "
         }
         time += endSleepDate!.HHmm()
+        userInterface!.setTime(time)
         
         if let startDate = startSleepDate {
             let interactor = ComputerWakeUpInteractor(repository: localRepository)
             if let type = interactor.estimationForDate(startDate) {
                 if type == .startDay {
-                    time += "   " + startWorkText
                     isStartOfDay = true
                     userInterface!.setNotes(startWorkText)
                     userInterface!.hideTaskTypes()
@@ -76,12 +76,10 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                 }
             }
         } else {
-            time += "   " + startWorkText
             isStartOfDay = true
             userInterface!.setNotes(startWorkText)
             userInterface!.hideTaskTypes()
         }
-        userInterface!.setTime(time)
     }
     
     func selectSegment (atIndex index: Int) {

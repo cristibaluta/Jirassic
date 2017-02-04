@@ -580,6 +580,9 @@ Gw
                             </segmentedControl>
                             <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CGp-Zh-lOB">
                                 <rect key="frame" x="367" y="0.0" width="5" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="7NW-pb-i5r"/>
+                                </constraints>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-Jn-pJP">
                                 <rect key="frame" x="371" y="50" width="79" height="5"/>
