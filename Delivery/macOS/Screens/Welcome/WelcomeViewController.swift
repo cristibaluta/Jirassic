@@ -18,12 +18,12 @@ class WelcomeViewController: NSViewController {
     }
     
     @IBAction func handleStartButton (_ sender: NSButton) {
-        InternalSettings().setFirstLaunch(true, forVersion: appVersion)
+        InternalSettings().setFirstLaunch(false, forVersion: appVersion)
         appWireframe!.flipToTasksController()
     }
     
     @IBAction func handleSettingsButton (_ sender: NSButton) {
-        InternalSettings().setFirstLaunch(true, forVersion: appVersion)
+        InternalSettings().setFirstLaunch(false, forVersion: appVersion)
         appWireframe!.flipToSettingsController()
     }
 }

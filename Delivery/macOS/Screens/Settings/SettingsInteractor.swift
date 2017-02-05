@@ -43,7 +43,7 @@ extension SettingsInteractor: SettingsInteractorInput {
     func enabledLaunchAtStartup (_ enabled: Bool) {
         
         let identifier = "com.ralcr.Jirassic.osx.launcher"
-        let _ = SMLoginItemSetEnabled(identifier as CFString, enabled)
-        InternalSettings().launchAtStartup = enabled
+        let launchAtStartup = SMLoginItemSetEnabled(identifier as CFString, enabled)
+        InternalSettings().launchAtStartup = launchAtStartup ? enabled : false
     }
 }
