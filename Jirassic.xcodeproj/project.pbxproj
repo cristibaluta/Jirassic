@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2801DD3B1E468B92005B5842 /* CommandLineTools.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */; };
+		2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */; };
 		400E7BFA1E0EEFA800D19FFD /* InternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */; };
 		4051D5F31E0EA0EA002042BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F11E0EA0EA002042BB /* AppDelegate.swift */; };
 		4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F41E0EA0F3002042BB /* Main.storyboard */; };
@@ -164,6 +165,7 @@
 
 /* Begin PBXFileReference section */
 		2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = CommandLineTools.scpt; sourceTree = "<group>"; };
+		2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHeaderView.swift; sourceTree = "<group>"; };
 		400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSettings.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
@@ -318,6 +320,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2801DD6D1E4787E2005B5842 /* ReportHeader */ = {
+			isa = PBXGroup;
+			children = (
+				2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */,
+			);
+			name = ReportHeader;
+			sourceTree = "<group>";
+		};
 		4055B1371E0D82A800279430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +618,7 @@
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				4065D3791DD3B44200B73201 /* MessageViewController.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
+				2801DD6D1E4787E2005B5842 /* ReportHeader */,
 				407318511DEAAAE00046F409 /* ReportCell */,
 				407318501DEAAACC0046F409 /* TaskCell */,
 				407318521DEAAB010046F409 /* NonTaskCell */,
@@ -967,6 +978,7 @@
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
+				2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,

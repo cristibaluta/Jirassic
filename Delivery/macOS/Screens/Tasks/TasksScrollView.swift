@@ -33,7 +33,8 @@ class TasksScrollView: NSScrollView {
         self.contentInsets = NSEdgeInsetsMake(0, 0, 0, 0)
         tableView!.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
 		tableView!.dataSource = self
-		tableView!.delegate = self
+        tableView!.delegate = self
+//        tableView.headerView = ReportHeaderView(frame: NSRect(x: 0, y: 0, width: 300, height: 50))
 		
 		assert(NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) != nil, "err")
@@ -48,6 +49,7 @@ class TasksScrollView: NSScrollView {
         if let nib = NSNib(nibNamed: String(describing: ReportCell.self), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: String(describing: ReportCell.self))
         }
+        
 	}
 	
 	func reloadData() {
