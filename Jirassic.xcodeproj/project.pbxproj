@@ -117,7 +117,7 @@
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
 		40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */; };
-		40FCE4261DF7646F00D4FD45 /* CMDToolsInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* CMDToolsInstaller.swift */; };
+		40FCE4261DF7646F00D4FD45 /* AppleScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */; };
 		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */; };
 		40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */; };
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
@@ -273,7 +273,7 @@
 		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInstaller.swift; sourceTree = "<group>"; };
-		40FCE4231DF7646F00D4FD45 /* CMDToolsInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMDToolsInstaller.swift; sourceTree = "<group>"; };
+		40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptsInteractor.swift; sourceTree = "<group>"; };
 		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScriptInstaller.swift; sourceTree = "<group>"; };
 		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -715,9 +715,9 @@
 		40FCE4211DF7646F00D4FD45 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */,
 				40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */,
 				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */,
-				40FCE4231DF7646F00D4FD45 /* CMDToolsInstaller.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -978,7 +978,7 @@
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
-				40FCE4261DF7646F00D4FD45 /* CMDToolsInstaller.swift in Sources */,
+				40FCE4261DF7646F00D4FD45 /* AppleScriptsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,

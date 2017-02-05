@@ -11,8 +11,8 @@ import Foundation
 protocol SettingsPresenterInput: class {
     
     func loadJitInfo()
-    func installJit()
-    func uninstallJit()
+    func installTools()
+    func uninstallTools()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
@@ -28,7 +28,7 @@ protocol SettingsPresenterOutput: class {
 
 class SettingsPresenter {
     
-    fileprivate var jitInstaller = CMDToolsInstaller()
+    fileprivate var scriptsInstaller = AppleScriptsInteractor()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
 }
@@ -37,11 +37,11 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func loadJitInfo() {
         
-        jitInstaller.isInstalled { installed in
+        scriptsInstaller.isInstalled { installed in
             
             self.userInterface!.setJitIsInstalled( installed )
             if installed {
-                self.jitInstaller.getJiraSettings { dict in
+                self.scriptsInstaller.getJiraSettings { dict in
                     let settings = JiraSettings(url: dict["url"],
                                                 user: dict["user"],
                                                 separator: dict["separator"])
@@ -53,18 +53,18 @@ extension SettingsPresenter: SettingsPresenterInput {
         }
     }
     
-    func installJit() {
+    func installTools() {
         
-        jitInstaller.installTools { [weak self] (success) in
+        scriptsInstaller.installTools { [weak self] (success) in
             if success {
                 self?.loadJitInfo()
             }
         }
     }
     
-    func uninstallJit() {
+    func uninstallTools() {
         
-        jitInstaller.uninstallTools { [weak self] (success) in
+        scriptsInstaller.uninstallTools { [weak self] (success) in
             if success {
                 self?.loadJitInfo()
             }

@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class CMDToolsInstaller {
+class AppleScriptsInteractor {
     
     fileprivate let localBinPath = "/usr/local/bin/"
     fileprivate let scripts: AppleScriptInstallerProtocol = SandboxedAppleScriptInstaller()
@@ -61,7 +61,7 @@ class CMDToolsInstaller {
     }
 }
 
-extension CMDToolsInstaller {
+extension AppleScriptsInteractor {
     
     fileprivate func isScriptInstalled() -> Bool {
         let scriptsDirectory = scripts.scriptsDirectory!
@@ -105,7 +105,7 @@ extension CMDToolsInstaller {
         }
     }
     
-    func installCmds (_ completion: @escaping (Bool) -> Void) {
+    fileprivate func installCmds (_ completion: @escaping (Bool) -> Void) {
         
         let bundlePath = Bundle.main.url(forResource: "jit", withExtension: nil)!.deletingLastPathComponent()
         
@@ -114,7 +114,7 @@ extension CMDToolsInstaller {
         })
     }
     
-    func uninstallCmds (_ completion: @escaping (Bool) -> Void) {
+    fileprivate func uninstallCmds (_ completion: @escaping (Bool) -> Void) {
         
         scripts.removeFile(from: localBinPath, completion: { success in
             completion(success)

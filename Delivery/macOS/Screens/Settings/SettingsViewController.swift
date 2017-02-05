@@ -60,9 +60,9 @@ class SettingsViewController: NSViewController {
     
     @IBAction func handleInstallJitButton (_ sender: NSButton) {
         if sender.title == "Install" {
-            presenter!.installJit()
+            presenter!.installTools()
         } else {
-            presenter!.uninstallJit()
+            presenter!.uninstallTools()
         }
     }
     
