@@ -15,41 +15,66 @@ class InternalSettings {
     fileprivate let launchAtStartupKey = "InternalSettings.launchAtStartup"
     var launchAtStartup: Bool {
         get {
-            guard userDefaults.object(forKey: launchAtStartupKey) != nil else {
+            guard let oldValue = get(launchAtStartupKey) else {
                 return false
             }
-            return userDefaults.bool(forKey: launchAtStartupKey)
+            return oldValue as! Bool
         }
         set {
-            userDefaults.set(newValue, forKey: launchAtStartupKey)
-            userDefaults.synchronize()
+            set(newValue, forKey: launchAtStartupKey)
         }
     }
     
     
-    func setRoundDay (_ on: Bool) {
-        userDefaults.set(on, forKey: "InternalSettings.RoundDay")
-        userDefaults.synchronize()
+    fileprivate let roundDayKey = "InternalSettings.RoundDay"
+    var roundDay: Bool {
+        get {
+            guard let oldValue = get(roundDayKey) else {
+                return true
+            }
+            return oldValue as! Bool
+        }
+        set {
+            set(newValue, forKey: roundDayKey)
+        }
     }
     
-    func roundDay() -> Bool {
+    
+    fileprivate let usePercentsKey = "InternalSettings.UsePercents"
+    var usePercents: Bool {
+        get {
+            guard let oldValue = get(usePercentsKey) else {
+                return true
+            }
+            return oldValue as! Bool
+        }
+        set {
+            set(newValue, forKey: usePercentsKey)
+        }
+    }
+    
+    
+    func setFirstLaunch (_ on: Bool, forVersion version: String) {
+        set(on, forKey: "InternalSettings.FirstLaunch-" + version)
+    }
+    
+    func isFirstLaunch (forVersion version: String) -> Bool {
         
-        guard userDefaults.object(forKey: "InternalSettings.RoundDay") != nil else {
+        guard let oldValue = get("InternalSettings.FirstLaunch-" + version) else {
             return true
         }
-        return userDefaults.bool(forKey: "InternalSettings.RoundDay")
+        return oldValue as! Bool
+    }
+}
+
+extension InternalSettings {
+    
+    fileprivate func get (_ key: String) -> Any? {
+        return userDefaults.object(forKey: key)
     }
     
-    func setUsePercents (_ on: Bool) {
-        userDefaults.set(on, forKey: "InternalSettings.UsePercents")
+    fileprivate func set (_ value: Any, forKey key: String) {
+        userDefaults.set(value, forKey: key)
         userDefaults.synchronize()
-    }
-    
-    func usePercents() -> Bool {
-        
-        guard userDefaults.object(forKey: "InternalSettings.UsePercents") != nil else {
-            return true
-        }
-        return userDefaults.bool(forKey: "InternalSettings.UsePercents")
     }
 }

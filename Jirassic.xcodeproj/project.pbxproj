@@ -123,7 +123,6 @@
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
-		40FCE4321DFD9BC200D4FD45 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4311DFD9BC200D4FD45 /* History.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -279,7 +278,6 @@
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Welcome.storyboard; path = Welcome/Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
-		40FCE4311DFD9BC200D4FD45 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -543,7 +541,6 @@
 				405B15651DEF75660009871C /* AppViewController.swift */,
 				4065D3581DD3B44200B73201 /* AppScriptable.swift */,
 				4051D5F81E0EA48A002042BB /* AppLauncher.swift */,
-				40FCE4311DFD9BC200D4FD45 /* History.swift */,
 				400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */,
 			);
 			path = App;
@@ -992,7 +989,6 @@
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3F31DD3B44200B73201 /* CoreDataRepository.swift in Sources */,
-				40FCE4321DFD9BC200D4FD45 /* History.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,
 				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,

@@ -10,6 +10,7 @@ import Cocoa
 
 var localRepository: Repository!
 var remoteRepository: Repository?
+let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -28,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		super.init()
         
         // For testing
-//        UserDefaults.standard.removeObject(forKey: "launched")
+//        UserDefaults.standard.removeObject(forKey: "InternalSettings.FirstLaunch-" + version)
         
         localRepository = CoreDataRepository()
 //		remoteRepository = CloudKitRepository()
@@ -38,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (wself.menu.iconView?.isSelected == true) {
                     wself.removeActivePopup()
                     
-                    let firstLaunch = History().isFirstLaunch()
+                    let firstLaunch = InternalSettings().isFirstLaunch(forVersion: appVersion)
                     if firstLaunch {
                         wself.presentWelcomePopup()
                     } else {
