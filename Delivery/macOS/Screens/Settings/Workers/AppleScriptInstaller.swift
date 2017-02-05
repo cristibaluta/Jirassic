@@ -12,6 +12,7 @@ protocol AppleScriptInstallerProtocol {
     
     var scriptsDirectory: URL? {get}
     func getVersion (completion: @escaping ([String: String]) -> Void)
+    func getSafariUrl (completion: @escaping (String) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
 }
@@ -23,6 +24,10 @@ class AppleScriptInstaller: AppleScriptInstallerProtocol {
     }
     
     func getVersion (completion: @escaping ([String: String]) -> Void) {
+        
+    }
+    
+    func getSafariUrl (completion: @escaping (String) -> Void) {
         
     }
     

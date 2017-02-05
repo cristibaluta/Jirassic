@@ -22,6 +22,10 @@ class AppleScriptsInteractor {
         })
     }
     
+    func getSafariUrl (completion: @escaping (String) -> Void) {
+        scripts.getSafariUrl(completion: completion)
+    }
+    
     func isInstalled (completion: @escaping (Bool) -> Void) {
         
         guard isScriptInstalled() else {

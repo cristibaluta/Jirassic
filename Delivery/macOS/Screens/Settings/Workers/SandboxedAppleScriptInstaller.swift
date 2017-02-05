@@ -42,6 +42,13 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
         })
     }
     
+    func getSafariUrl (completion: @escaping (String) -> Void) {
+        
+        run (command: "getSafariUrl", args: nil, completion: { descriptor in
+            
+        })
+    }
+    
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
         
         let args = NSAppleEventDescriptor.list()
