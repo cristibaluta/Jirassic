@@ -8,10 +8,11 @@
 
 import Foundation
 import CoreServices
+import Carbon.OpenScripting
 
 class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
     
-    func scriptsDirectory() -> URL? {
+    var scriptsDirectory: URL? {
         
         return try? FileManager.default.url(for: .applicationScriptsDirectory,
                                             in: FileManager.SearchPathDomainMask.userDomainMask,
@@ -21,13 +22,7 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
     
     func getVersion (completion: @escaping ([String: String]) -> Void) {
         
-        guard let scriptsDirectory = scriptsDirectory() else {
-            completion([:])
-            return
-        }
-        let scriptURL = scriptsDirectory.appendingPathComponent("GetJitVersion.scpt")
-        let result = try? NSUserAppleScriptTask(url: scriptURL)
-        result?.execute(withAppleEvent: nil, completionHandler: { (descriptor, error) in
+        run (command: "getJitVersion", args: nil, completion: { descriptor in
             
             var dict: [String: String] = [:]
             if let descriptor = descriptor {
@@ -35,8 +30,9 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
                 let validJson = descriptor.stringValue!.replacingOccurrences(of: "'", with: "\"")
                 if let data = validJson.data(using: String.Encoding.utf8) {
                     if let d = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
-                        if let d = d {
-                            dict = d
+                        if let _d = d {
+                            print(_d)
+                            dict = _d
                         }
                     }
                 }
@@ -52,7 +48,9 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
         args.insert(NSAppleEventDescriptor(string: from), at: 1)
         args.insert(NSAppleEventDescriptor(string: to), at: 2)
         
-        run(script: "Installer.scpt", args: args, completion: completion)
+        run (command: "install", args: args, completion: { descriptor in
+            completion(descriptor != nil)
+        })
     }
     
     func removeFile (from: String, completion: @escaping (Bool) -> Void) {
@@ -60,19 +58,21 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: from), at: 1)
         
-        run(script: "Uninstaller.scpt", args: args, completion: completion)
+        run (command: "uninstall", args: args, completion: { descriptor in
+            completion(descriptor != nil)
+        })
     }
 }
 
 extension SandboxedAppleScriptInstaller {
     
-    fileprivate func run (script: String, args: NSAppleEventDescriptor, completion: @escaping (Bool) -> Void) {
+    fileprivate func run (command: String, args: NSAppleEventDescriptor?, completion: @escaping (NSAppleEventDescriptor?) -> Void) {
         
-        guard let scriptsDirectory = scriptsDirectory() else {
-            completion(false)
+        guard let scriptsDirectory = self.scriptsDirectory else {
+            completion(nil)
             return
         }
-        let scriptURL = scriptsDirectory.appendingPathComponent(script)
+        let scriptURL = scriptsDirectory.appendingPathComponent("CommandLineTools.scpt")
         
         do {
             var pid = ProcessInfo.processInfo.processIdentifier
@@ -81,21 +81,29 @@ extension SandboxedAppleScriptInstaller {
                                                           bytes: &pid,
                                                           length: MemoryLayout.size(ofValue: pid))
             
-            let appleEventDescriptor = NSAppleEventDescriptor.appleEvent(withEventClass: kCoreEventClass,
-                                                                         eventID: kAEOpenDocuments,
-                                                                         targetDescriptor: targetDescriptor,
-                                                                         returnID: AEReturnID(kAutoGenerateReturnID),
-                                                                         transactionID: AETransactionID(kAnyTransactionID))
+            let theEvent = NSAppleEventDescriptor.appleEvent(withEventClass: AEEventClass(kASAppleScriptSuite),//kCoreEventClass,
+                                                             eventID: AEEventID(kASSubroutineEvent),//kAEOpenDocuments,
+                                                             targetDescriptor: targetDescriptor,
+                                                             returnID: AEReturnID(kAutoGenerateReturnID),
+                                                             transactionID: AETransactionID(kAnyTransactionID))
             
-            appleEventDescriptor.setParam(args, forKeyword: keyDirectObject)
+            let commandDescriptor = NSAppleEventDescriptor(string: command)
+            theEvent.setDescriptor(commandDescriptor, forKeyword: AEKeyword(keyASSubroutineName))
+            
+            if let args = args {
+                theEvent.setDescriptor(args, forKeyword: keyDirectObject)
+            }
             
             let result = try NSUserAppleScriptTask(url: scriptURL)
-            result.execute(withAppleEvent: appleEventDescriptor, completionHandler: { (descriptor, error) in
+            result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
+                RCLogO(descriptor)
                 RCLogErrorO(error)
-                completion(error == nil)
+                DispatchQueue.main.sync {
+                    completion(descriptor)
+                }
             })
         } catch {
-            completion(false)
+            completion(nil)
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol AppleScriptInstallerProtocol {
     
-    func scriptsDirectory() -> URL?
+    var scriptsDirectory: URL? {get}
     func getVersion (completion: @escaping ([String: String]) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
@@ -18,7 +18,7 @@ protocol AppleScriptInstallerProtocol {
 
 class AppleScriptInstaller: AppleScriptInstallerProtocol {
     
-    func scriptsDirectory() -> URL? {
+    var scriptsDirectory: URL? {
         return nil
     }
     

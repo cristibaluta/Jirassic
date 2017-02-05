@@ -33,7 +33,6 @@ class SettingsInteractor {
 extension SettingsInteractor: SettingsInteractorInput {
     
     func getAppSettings() -> Settings {
-        
         return localRepository!.settings()
     }
     
