@@ -19,10 +19,10 @@ class CreateReportTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let t0 = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 9, minute: 22), type: TaskType.startDay)
+        let t0 = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 10), type: TaskType.startDay)
 
 		var t1 = Task()
-		t1.endDate = Date(year: 2015, month: 6, day: 1, hour: 9, minute: 45)
+		t1.endDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 25)
         t1.taskNumber = "coderev"
         t1.notes = "Code reviews"
         
@@ -100,4 +100,19 @@ class CreateReportTests: XCTestCase {
         
         XCTAssert(duration == targetHoursInDay)
     }
+    
+    func testDoNotRoundMeetings() {
+        
+        var t3 = Task()
+        t3.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 20)
+        t3.taskType = .learning
+        t3.notes = "Learning time"
+        var tasks = self.tasks
+        tasks.append(t3)
+        
+        let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+        
+        XCTAssert(reports.count == 6)
+    }
+    
 }

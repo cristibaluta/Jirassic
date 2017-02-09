@@ -11,12 +11,13 @@ import Foundation
 class CreateReport: NSObject {
     
     func reports (fromTasks tasks: [Task], targetHoursInDay: Double) -> [Report] {
-		
+		RCLogO(tasks)
 		guard tasks.count > 1 else {
 			return []
         }
         var tasks = splitOverlappingTasks(tasks)
         tasks = removeUntrackableTasks(tasks)
+        RCLogO(tasks)
         tasks = addExtraTimeToTasks(tasks, targetHoursInDay: targetHoursInDay)
         let groups = groupByTaskNumber(tasks)
         let reports = reportsFromGroups(groups)
@@ -63,7 +64,7 @@ extension CreateReport {
         
         for task in tasks {
             
-            guard isTrackable(taskType: task.taskType) else {
+            guard isTrackingAllowed(taskType: task.taskType) else {
                 untrackedDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
                 continue
             }
@@ -75,14 +76,14 @@ extension CreateReport {
         return arr
     }
     
-    fileprivate func isTrackable (taskType: TaskType) -> Bool {
+    fileprivate func isTrackingAllowed (taskType: TaskType) -> Bool {
         switch taskType {
         case .lunch, .nap: return false
         default: return true
         }
     }
     
-    fileprivate func isAdjustable (taskType: TaskType) -> Bool {
+    fileprivate func isRoundingAllowed (taskType: TaskType) -> Bool {
         switch taskType {
         case .scrum, .meeting, .learning: return false
         default: return true
@@ -92,35 +93,43 @@ extension CreateReport {
     fileprivate func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double) -> [Task] {
         
         // How many tasks should be adjusted
-        let tasksToAdjust = tasks.filter({ isAdjustable(taskType: $0.taskType) }).count
+        let numberOfTasksToAdjust = tasks.filter({ isRoundingAllowed(taskType: $0.taskType) }).count
         
+        RCLogO("-----------------------------------")
+        RCLogO(tasks.count)
+        RCLogO(numberOfTasksToAdjust)
         // Calculate the diff to targetHoursInDay
         let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
         let missingTime = targetHoursInDay - workedTime
-        let extraTimePerTask = ceil( Double( Int(missingTime) / tasksToAdjust))
+        let extraTimePerTask = ceil( Double( Int(missingTime) / numberOfTasksToAdjust))
+        RCLogO(extraTimePerTask)
         
         var roundedTasks = [Task]()
-        var extraTimeToAdd = extraTimePerTask
         
         var task = tasks.first!
         task.endDate = task.endDate.round()
         roundedTasks.append(task)
         var previousDate = task.endDate
+        var extraTimeToAdd = extraTimePerTask
+        RCLogO(task)
+        RCLogO(extraTimeToAdd)
         
-        for i in 1..<tasks.count - 1 {
+        for i in 1..<tasks.count {
             
             task = tasks[i]
-            
+            RCLogO(task)
+            RCLogO(extraTimeToAdd)
             task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
             task.startDate = previousDate
             previousDate = task.endDate
             if tasks.count > i + 1 {
                 let nextTask = tasks[i+1]
-                if isAdjustable(taskType: nextTask.taskType) {
+                if isRoundingAllowed(taskType: nextTask.taskType) {
                     extraTimeToAdd += extraTimePerTask
                 }
             }
             
+            RCLogO(extraTimeToAdd)
             roundedTasks.append(task)
         }
         
@@ -161,7 +170,7 @@ extension CreateReport {
             
             for task in tasks {
                 
-                guard isTrackable(taskType: task.taskType) else {
+                guard isTrackingAllowed(taskType: task.taskType) else {
                     continue
                 }
                 guard let startDate = task.startDate else {
