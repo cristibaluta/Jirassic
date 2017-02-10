@@ -80,26 +80,45 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <box hidden="YES" autoresizesSubviews="NO" borderType="line" title="Jira credentials" translatesAutoresizingMaskIntoConstraints="NO" id="ELX-Uc-E2D">
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="wiB-Ff-as4">
+                                <rect key="frame" x="22" y="242" width="453" height="96"/>
+                                <view key="contentView" id="TKo-Ez-bd2">
+                                    <rect key="frame" x="1" y="1" width="451" height="94"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCo-Ie-oqJ">
+                                            <rect key="frame" x="7" y="0.0" width="446" height="94"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="RyO-GP-7xA">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Steps to install the shell support: 1) Install the apple scripts to allowed location 2) Apple scripts will use sudo to install two command line tools, jit and jirassic.</string>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </box>
+                            <box autoresizesSubviews="NO" borderType="line" title="Jira credentials" translatesAutoresizingMaskIntoConstraints="NO" id="ELX-Uc-E2D">
                                 <rect key="frame" x="19" y="242" width="458" height="96"/>
                                 <view key="contentView" id="GTP-hi-csP">
                                     <rect key="frame" x="1" y="1" width="456" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pmf-9e-7xQ">
-                                            <rect key="frame" x="122" y="19" width="160" height="17"/>
+                                            <rect key="frame" x="122" y="19" width="130" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" priority="750" constant="160" id="HB6-VC-czL"/>
+                                                <constraint firstAttribute="width" priority="750" constant="130" id="HB6-VC-czL"/>
                                             </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" placeholderString="Username" drawsBackground="YES" id="Kp7-sN-n8L">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="Username" drawsBackground="YES" id="Kp7-sN-n8L">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
                                             </textFieldCell>
                                         </textField>
-                                        <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
-                                            <rect key="frame" x="296" y="19" width="148" height="17"/>
-                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="t7N-4z-GJ5">
+                                        <secureTextField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Yb-FkC">
+                                            <rect key="frame" x="267" y="19" width="127" height="17"/>
+                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="t7N-4z-GJ5">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
@@ -119,7 +138,7 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ygh-kb-AK9">
                                             <rect key="frame" x="120" y="51" width="324" height="17"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" placeholderString="http://" drawsBackground="YES" id="usI-PC-pS2">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="http://" drawsBackground="YES" id="usI-PC-pS2">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
@@ -134,12 +153,24 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-Bz-bTG">
+                                            <rect key="frame" x="402" y="17" width="42" height="19"/>
+                                            <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qjl-fl-R9u">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="cellTitle"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="handleSaveJiraSettingsButton:" target="J1c-ZL-C5e" id="uyi-x5-0uj"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Ygh-kb-AK9" secondAttribute="trailing" constant="12" id="1bX-zv-uF8"/>
+                                        <constraint firstItem="bRA-Bz-bTG" firstAttribute="leading" secondItem="2Xl-Yb-FkC" secondAttribute="trailing" constant="8" id="1dx-Fr-aJ8"/>
+                                        <constraint firstAttribute="trailing" secondItem="bRA-Bz-bTG" secondAttribute="trailing" constant="12" id="4By-j1-aoM"/>
                                         <constraint firstItem="2Xl-Yb-FkC" firstAttribute="centerY" secondItem="pmf-9e-7xQ" secondAttribute="centerY" id="Qh9-gx-mhg"/>
                                         <constraint firstItem="Ygh-kb-AK9" firstAttribute="leading" secondItem="GTP-hi-csP" secondAttribute="leading" constant="120" id="RQP-iD-Pml"/>
-                                        <constraint firstAttribute="trailing" secondItem="2Xl-Yb-FkC" secondAttribute="trailing" constant="12" id="ut9-5H-hj5"/>
+                                        <constraint firstItem="bRA-Bz-bTG" firstAttribute="centerY" secondItem="2Xl-Yb-FkC" secondAttribute="centerY" id="l8e-OD-pPo"/>
                                         <constraint firstItem="Ygh-kb-AK9" firstAttribute="top" secondItem="GTP-hi-csP" secondAttribute="top" constant="12" id="wVv-cV-2wo"/>
                                         <constraint firstAttribute="bottom" secondItem="pmf-9e-7xQ" secondAttribute="bottom" constant="19" id="yTe-6H-d0s"/>
                                     </constraints>
@@ -149,25 +180,6 @@
                                     <constraint firstItem="2Xl-Yb-FkC" firstAttribute="leading" secondItem="pmf-9e-7xQ" secondAttribute="trailing" constant="14" id="lln-Ee-p2r"/>
                                     <constraint firstItem="pmf-9e-7xQ" firstAttribute="leading" secondItem="ELX-Uc-E2D" secondAttribute="leading" constant="120" id="ucH-ti-C1z"/>
                                 </constraints>
-                            </box>
-                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="wiB-Ff-as4">
-                                <rect key="frame" x="22" y="242" width="453" height="96"/>
-                                <view key="contentView" id="TKo-Ez-bd2">
-                                    <rect key="frame" x="1" y="1" width="451" height="94"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCo-Ie-oqJ">
-                                            <rect key="frame" x="7" y="0.0" width="446" height="94"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="RyO-GP-7xA">
-                                                <font key="font" metaFont="system"/>
-                                                <string key="title">Steps to install the shell support: 1) Install the apple scripts to allowed location 2) Apple scripts will use sudo to install two command line tools, jit and jirassic.</string>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </subviews>
-                                </view>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
                                 <rect key="frame" x="419" y="10" width="71" height="32"/>
@@ -381,6 +393,7 @@
                         <outlet property="butEnableScrum" destination="N5K-eo-qyH" id="mXR-1g-gJl"/>
                         <outlet property="butEnableStartOfDay" destination="mwE-DS-XUK" id="7xw-NT-vF5"/>
                         <outlet property="butInstallJit" destination="19q-BQ-bPB" id="ekh-La-zda"/>
+                        <outlet property="butSaveJiraSettings" destination="bRA-Bz-bTG" id="qVw-1y-dN3"/>
                         <outlet property="endOfDayTimePicker" destination="zDS-af-j6l" id="23g-Br-Fe6"/>
                         <outlet property="jiraCredentialsBox" destination="ELX-Uc-E2D" id="Kpw-Rt-blN"/>
                         <outlet property="jiraPasswordTextField" destination="2Xl-Yb-FkC" id="ohC-It-DHk"/>

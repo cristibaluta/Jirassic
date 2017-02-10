@@ -11,7 +11,9 @@ import Foundation
 protocol AppleScriptInstallerProtocol {
     
     var scriptsDirectory: URL? {get}
-    func getVersion (completion: @escaping ([String: String]) -> Void)
+    func getScriptsVersion (completion: @escaping (String) -> Void)
+    func getJitVersion (completion: @escaping ([String: String]) -> Void)
+    func saveJiraSettings (_ settings: String, completion: @escaping (Bool) -> Void)
     func getSafariUrl (completion: @escaping (String) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
@@ -23,7 +25,15 @@ class AppleScriptInstaller: AppleScriptInstallerProtocol {
         return nil
     }
     
-    func getVersion (completion: @escaping ([String: String]) -> Void) {
+    func getScriptsVersion (completion: @escaping (String) -> Void) {
+        
+    }
+    
+    func getJitVersion (completion: @escaping ([String: String]) -> Void) {
+        
+    }
+    
+    func saveJiraSettings (_ settings: String, completion: @escaping (Bool) -> Void) {
         
     }
     

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import CloudKit
 
 class SettingsViewController: NSViewController {
 	
@@ -22,6 +21,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var jiraCredentialsBox: NSBox!
     @IBOutlet fileprivate var shellSupportBox: NSBox!
     @IBOutlet fileprivate var shellSupportTextField: NSTextField!
+    @IBOutlet fileprivate var butSaveJiraSettings: NSButton!
     // Settings
     @IBOutlet fileprivate var butEnableStartOfDay: NSButton!
     @IBOutlet fileprivate var butEnableLunch: NSButton!
@@ -45,7 +45,7 @@ class SettingsViewController: NSViewController {
         
         presenter!.loadJitInfo()
         presenter!.showSettings()
-        butEnableStartOfDay.toolTip = "The official hours you're supposed to work. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
+        butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
         butEnableLunch.toolTip = "Lunch and nap logs are ignored when calculating the amount of worked hours."
         butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
         shellSupportTextField.stringValue = "Steps to install the shell support:\n1) Install the apple scripts helpers to '~/Library/Application Scripts'\n2) Apple scripts will then install to /usr/local/bin two command line tools:\n   - jit: Replacement for git that will log commits as tasks\n   - jirassic: Use Jirassic from the cmd"
@@ -64,6 +64,15 @@ class SettingsViewController: NSViewController {
         } else {
             presenter!.uninstallTools()
         }
+    }
+    
+    @IBAction func handleSaveJiraSettingsButton (_ sender: NSButton) {
+        
+        let settings = JiraSettings(url: jiraUrlTextField.stringValue,
+                                    user: jiraUserTextField.stringValue,
+                                    password: jiraPasswordTextField.stringValue,
+                                    separator: nil)
+        presenter!.saveJiraSettings(settings)
     }
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {

@@ -22,6 +22,13 @@ class AppleScriptsInteractor {
         })
     }
     
+    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping ([String: String]) -> Void) {
+        
+        scripts.getVersion(completion: { dict in
+            completion(dict)
+        })
+    }
+    
     func getSafariUrl (completion: @escaping (String) -> Void) {
         scripts.getSafariUrl(completion: completion)
     }

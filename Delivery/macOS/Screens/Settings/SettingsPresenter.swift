@@ -15,6 +15,7 @@ protocol SettingsPresenterInput: class {
     func uninstallTools()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
+    func saveJiraSettings (_ settings: JiraSettings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
@@ -44,6 +45,7 @@ extension SettingsPresenter: SettingsPresenterInput {
                 self.scriptsInstaller.getJiraSettings { dict in
                     let settings = JiraSettings(url: dict["url"],
                                                 user: dict["user"],
+                                                password: nil,
                                                 separator: dict["separator"])
                     self.jiraSettingsDidLoad(settings)
                 }
@@ -79,6 +81,25 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func saveAppSettings (_ settings: Settings) {
         interactor!.saveAppSettings(settings)
+    }
+    
+    func saveJiraSettings (_ settings: JiraSettings) {
+        RCLogO(settings)
+        scriptsInstaller.isInstalled { installed in
+            
+            self.userInterface!.setJitIsInstalled( installed )
+            if installed {
+                self.scriptsInstaller.getJiraSettings { dict in
+                    let settings = JiraSettings(url: dict["url"],
+                                                user: dict["user"],
+                                                password: nil,
+                                                separator: dict["separator"])
+                    self.jiraSettingsDidLoad(settings)
+                }
+            } else {
+                self.jiraSettingsDidLoad(JiraSettings())
+            }
+        }
     }
     
     func enabledLaunchAtStartup (_ enabled: Bool) {

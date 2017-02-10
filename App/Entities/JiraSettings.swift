@@ -10,5 +10,6 @@ struct JiraSettings {
     
     var url: String?
     var user: String?
+    var password: String?
     var separator: String?
 }
