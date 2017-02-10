@@ -31,7 +31,11 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
     
     func getJitVersion (completion: @escaping ([String: String]) -> Void) {
         
-        run (command: "getJitVersion", args: nil, completion: { descriptor in
+        let command = "/usr/local/bin/jit version"
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: "runShellScript", args: args, completion: { descriptor in
             
             var dict: [String: String] = [:]
             if let descriptor = descriptor {
@@ -51,12 +55,13 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
         })
     }
     
-    func saveJiraSettings (_ settings: String, completion: @escaping (Bool) -> Void) {
+    func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void) {
         
+        let command = "/usr/local/bin/jit setup \"\(settings)\""
         let args = NSAppleEventDescriptor.list()
-        args.insert(NSAppleEventDescriptor(string: settings), at: 1)
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "setupJitWithSettings", args: args, completion: { descriptor in
+        run (command: "runShellScript", args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }

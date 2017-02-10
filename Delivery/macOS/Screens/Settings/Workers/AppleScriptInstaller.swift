@@ -13,7 +13,7 @@ protocol AppleScriptInstallerProtocol {
     var scriptsDirectory: URL? {get}
     func getScriptsVersion (completion: @escaping (String) -> Void)
     func getJitVersion (completion: @escaping ([String: String]) -> Void)
-    func saveJiraSettings (_ settings: String, completion: @escaping (Bool) -> Void)
+    func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void)
     func getSafariUrl (completion: @escaping (String) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
@@ -33,7 +33,7 @@ class AppleScriptInstaller: AppleScriptInstallerProtocol {
         
     }
     
-    func saveJiraSettings (_ settings: String, completion: @escaping (Bool) -> Void) {
+    func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void) {
         
     }
     
@@ -57,17 +57,3 @@ class AppleScriptInstaller: AppleScriptInstallerProtocol {
         
     }
 }
-
-//    func getJiraPasswordForUser (_ jiraUser: String) {
-//
-//        let task = Process()
-//        task.launchPath = "/usr/bin/security"
-//        task.arguments = ["find-generic-password", "-wa", jiraUser]
-//        task.terminationHandler = { task in
-//            DispatchQueue.main.async(execute: {
-//                print(task)
-//            })
-//        }
-//        task.launch()
-//    }
-    

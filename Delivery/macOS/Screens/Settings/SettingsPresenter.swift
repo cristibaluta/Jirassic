@@ -87,17 +87,11 @@ extension SettingsPresenter: SettingsPresenterInput {
         RCLogO(settings)
         scriptsInstaller.isInstalled { installed in
             
-            self.userInterface!.setJitIsInstalled( installed )
+//            self.userInterface!.setJitIsInstalled( installed )
             if installed {
-                self.scriptsInstaller.getJiraSettings { dict in
-                    let settings = JiraSettings(url: dict["url"],
-                                                user: dict["user"],
-                                                password: nil,
-                                                separator: dict["separator"])
-                    self.jiraSettingsDidLoad(settings)
-                }
-            } else {
-                self.jiraSettingsDidLoad(JiraSettings())
+                self.scriptsInstaller.saveJiraSettings(settings, completion: { success in
+                    
+                })
             }
         }
     }

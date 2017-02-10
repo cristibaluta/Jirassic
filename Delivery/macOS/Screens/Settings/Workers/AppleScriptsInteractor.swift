@@ -11,21 +11,27 @@ import Cocoa
 
 class AppleScriptsInteractor {
     
+    fileprivate let scriptsName = "CommandLineTools"
     fileprivate let localBinPath = "/usr/local/bin/"
     fileprivate let scripts: AppleScriptInstallerProtocol = SandboxedAppleScriptInstaller()
     fileprivate let manager = FileManager.default
     
     func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
         
-        scripts.getVersion(completion: { dict in
+        scripts.getJitVersion(completion: { dict in
             completion(dict)
         })
     }
     
-    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping ([String: String]) -> Void) {
+    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping (Bool) -> Void) {
         
-        scripts.getVersion(completion: { dict in
-            completion(dict)
+        var values = "jira_url=\(settings.url!)\njira_user=\(settings.user!)"
+        if let password = settings.password {
+            values += "\njira_password=\(password)"
+        }
+        
+        scripts.setupJitWithValues(values, completion: { success in
+            completion(success)
         })
     }
     
@@ -39,7 +45,7 @@ class AppleScriptsInteractor {
             completion(false)
             return
         }
-        scripts.getVersion(completion: { dict in
+        scripts.getJitVersion(completion: { dict in
             let isInstalled = dict["version"] != nil
             completion(isInstalled)
         })
@@ -60,7 +66,7 @@ class AppleScriptsInteractor {
             uninstallCmds({ success in
                 if success {
                     let scriptsDirectory = self.scripts.scriptsDirectory!
-                    let scriptUrl = scriptsDirectory.appendingPathComponent("CommandLineTools.scpt")
+                    let scriptUrl = scriptsDirectory.appendingPathComponent("\(self.scriptsName).scpt")
                     self.uninstallScript(atUrl: scriptUrl, completion)
                 } else {
                     completion(false)
@@ -76,12 +82,12 @@ extension AppleScriptsInteractor {
     
     fileprivate func isScriptInstalled() -> Bool {
         let scriptsDirectory = scripts.scriptsDirectory!
-        return manager.fileExists(atPath: scriptsDirectory.appendingPathComponent("CommandLineTools.scpt").path)
+        return manager.fileExists(atPath: scriptsDirectory.appendingPathComponent("\(scriptsName).scpt").path)
     }
     
     fileprivate func installScriptAndCmds (_ completion: @escaping (Bool) -> Void) {
         
-        installScript(script: "CommandLineTools", { success in
+        installScript(script: scriptsName, { success in
             self.installCmds(completion)
         })
     }
@@ -89,7 +95,7 @@ extension AppleScriptsInteractor {
     fileprivate func installScript (script: String, _ completion: @escaping (Bool) -> Void) {
         
         let panel = NSSavePanel()
-        panel.nameFieldStringValue = script + ".scpt"
+        panel.nameFieldStringValue = "\(script).scpt"
         panel.directoryURL = scripts.scriptsDirectory!
         panel.message = "Please select: User / Library / Application Scripts / com.ralcr.Jirassic.osx"
         

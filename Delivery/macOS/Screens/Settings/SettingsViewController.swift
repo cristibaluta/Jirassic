@@ -70,7 +70,7 @@ class SettingsViewController: NSViewController {
         
         let settings = JiraSettings(url: jiraUrlTextField.stringValue,
                                     user: jiraUserTextField.stringValue,
-                                    password: jiraPasswordTextField.stringValue,
+                                    password: jiraPasswordTextField.stringValue != "" ? jiraPasswordTextField.stringValue : nil,
                                     separator: nil)
         presenter!.saveJiraSettings(settings)
     }
