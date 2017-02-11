@@ -38,7 +38,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func loadJitInfo() {
         
-        scriptsInstaller.isInstalled { installed in
+        scriptsInstaller.checkTools { (installed, compatible) in
             
             self.userInterface!.setJitIsInstalled( installed )
             if installed {
@@ -85,7 +85,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func saveJiraSettings (_ settings: JiraSettings) {
         RCLogO(settings)
-        scriptsInstaller.isInstalled { installed in
+        scriptsInstaller.checkTools { (installed, compatible) in
             
 //            self.userInterface!.setJitIsInstalled( installed )
             if installed {

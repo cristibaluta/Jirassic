@@ -10,7 +10,6 @@ import Cocoa
 
 var localRepository: Repository!
 var remoteRepository: Repository?
-let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -39,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (wself.menu.iconView?.isSelected == true) {
                     wself.removeActivePopup()
                     
-                    let firstLaunch = InternalSettings().isFirstLaunch(forVersion: appVersion)
+                    let firstLaunch = InternalSettings().isFirstLaunch(forVersion: Versioning.appVersion)
                     if firstLaunch {
                         wself.presentWelcomePopup()
                     } else {
@@ -78,6 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
                 let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
                 guard workedDuration < dayDuration else {
+                    // Do not track time exceeded the working duration
                     return
                 }
                 if settings.trackingMode == .notif {

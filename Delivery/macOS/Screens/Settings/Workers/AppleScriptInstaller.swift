@@ -13,6 +13,7 @@ protocol AppleScriptInstallerProtocol {
     var scriptsDirectory: URL? {get}
     func getScriptsVersion (completion: @escaping (String) -> Void)
     func getJitVersion (completion: @escaping ([String: String]) -> Void)
+    func getJirassicVersion (completion: @escaping (String) -> Void)
     func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void)
     func getSafariUrl (completion: @escaping (String) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
@@ -30,6 +31,10 @@ class AppleScriptInstaller: AppleScriptInstallerProtocol {
     }
     
     func getJitVersion (completion: @escaping ([String: String]) -> Void) {
+        
+    }
+    
+    func getJirassicVersion (completion: @escaping (String) -> Void) {
         
     }
     

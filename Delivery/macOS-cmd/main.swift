@@ -1,5 +1,4 @@
 //
-//  main.swift
 //  jirassic
 //
 //  Created by Baluta Cristian on 06/01/16.
@@ -10,6 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
+let appVersion = "17.02.28"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -17,11 +17,24 @@ enum ArgType {
     case notes
 }
 
+enum Command: String {
+    case list = "list"
+    case reports = "reports"
+    case insert = "insert"
+    case scrum = "scrum"
+    case lunch = "lunch"
+    case meeting = "meeting"
+    case nap = "nap"
+    case learning = "learning"
+    case coderev = "coderev"
+    case version = "version"
+}
+
 func printHelp() {
-    print("jirassic 16.12.24 - (c)2016 Imagin soft")
+    print("jirassic \(appVersion) - (c)2017 Imagin soft")
     print("Usage:")
     print("     list [yyyy.mm.dd] If date is missing list tasks from today")
-    print("     reports [yyyy.mm.dd] If date is missing list reports from today")
+    print("     reports [yyyy.mm.dd] [-no-round] If date is missing list reports from today")
     print("     insert -nr <task number> -notes <notes> -duration <mm>")
     print("     [scrum,lunch,meeting,nap,learning,coderev] <duration>  Duration in minutes")
     print("")
@@ -66,8 +79,24 @@ func dayStarted() -> Bool {
 func list (dayOnDate date: Date) {
     let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
-    for task in tasks {
-        print(task.endDate.HHmm() + " " + task.notes!)
+    if tasks.count > 0 {
+        for task in tasks {
+            print(task.endDate.HHmm() + " " + task.notes!)
+        }
+    } else {
+        print("No tasks!")
+    }
+}
+
+func reports (dayOnDate date: Date) {
+    let reader = ReadTasksInteractor(repository: localRepository)
+    let tasks = reader.tasksInDay(date)
+    if tasks.count > 0 {
+        for task in tasks {
+            print(task.endDate.HHmm() + " " + task.notes!)
+        }
+    } else {
+        print("No tasks!")
     }
 }
 
@@ -123,30 +152,28 @@ func insertIssue (arguments: [String]) {
     print(task.objectId)
 }
 
-func insert (taskType taskTypeStr: String, arguments: [String]) {
+func insert (taskType: Command, arguments: [String]) {
     
     guard dayStarted() else {
         return
     }
-    
     var task: Task?
     
-    switch taskTypeStr {
-    case "scrum": task = Task(subtype: .scrumEnd)
-        break
-    case "lunch": task = Task(subtype: .lunchEnd)
-        break
-    case "meeting": task = Task(subtype: .meetingEnd)
-        break
-    case "nap": task = Task(subtype: .napEnd)
-        break
-    case "learning": task = Task(subtype: .learningEnd)
-        break
-    case "coderev": task = Task(subtype: .coderevEnd)
-        break
-    default:
-        print("Unsupported first argument \(taskTypeStr). It should be [task,scrum,meeting,nap,learning,coderev]")
-        return
+    switch taskType {
+        case .scrum: task = Task(subtype: .scrumEnd)
+            break
+        case .lunch: task = Task(subtype: .lunchEnd)
+            break
+        case .meeting: task = Task(subtype: .meetingEnd)
+            break
+        case .nap: task = Task(subtype: .napEnd)
+            break
+        case .learning: task = Task(subtype: .learningEnd)
+            break
+        case .coderev: task = Task(subtype: .coderevEnd)
+            break
+        default:
+            return
     }
     
     if let duration = arguments.first {
@@ -164,21 +191,27 @@ func insert (taskType taskTypeStr: String, arguments: [String]) {
     print(task!.objectId)
 }
 
-let command = arguments.remove(at: 0)
-print("command \(command)")
-switch command {
-    case "list":
-        list (dayOnDate: Date())
-        break
-    case "insert":
-        insertIssue (arguments: arguments)
-        break
-    case "scrum","lunch","meeting","nap","learning","coderev":
-        insert (taskType: command, arguments: arguments)
-        break
-    default:
-        printHelp()
-        break
+let commandStr = arguments.remove(at: 0)
+if let command = Command(rawValue: commandStr) {
+    switch command {
+        case .list:
+            list (dayOnDate: Date())
+            break
+        case .reports:
+            reports (dayOnDate: Date())
+            break
+        case .insert:
+            insertIssue (arguments: arguments)
+            break
+        case .scrum, .lunch, .meeting, .nap, .learning, .coderev:
+            insert (taskType: command, arguments: arguments)
+            break
+        case .version:
+            print(appVersion)
+    }
+} else {
+    print("\nUnsupported command.\n")
+    printHelp()
 }
 
 exit(0)

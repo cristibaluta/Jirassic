@@ -39,15 +39,20 @@ class AppleScriptsInteractor {
         scripts.getSafariUrl(completion: completion)
     }
     
-    func isInstalled (completion: @escaping (Bool) -> Void) {
+    func checkTools (completion: @escaping (_ installed: Bool, _ compatible: Bool) -> Void) {
         
         guard isScriptInstalled() else {
-            completion(false)
+            completion(false, false)
             return
         }
-        scripts.getJitVersion(completion: { dict in
-            let isInstalled = dict["version"] != nil
-            completion(isInstalled)
+        scripts.getScriptsVersion(completion: { scriptsVersion in
+            self.scripts.getJitVersion(completion: { dict in
+                let jitVersion = dict["version"] ?? ""
+                self.scripts.getJirassicVersion(completion: { jirassicVersion in
+                    let versions = Versions(scripts: scriptsVersion, jitCmd: jitVersion, jirassicCmd: jirassicVersion)
+                    completion( true, Versioning.isCompatibleWithTools(versions) )
+                })
+            })
         })
     }
     

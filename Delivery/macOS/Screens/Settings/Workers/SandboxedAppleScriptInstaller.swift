@@ -22,9 +22,11 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
     
     func getScriptsVersion (completion: @escaping (String) -> Void) {
         
-        run (command: "getScriptsVersion", args: nil, completion: { descriptor in
+        run (command: "getScriptVersion", args: nil, completion: { descriptor in
             if let descriptor = descriptor {
                 completion( descriptor.stringValue! )
+            } else {
+                completion("")
             }
         })
     }
@@ -52,6 +54,21 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
             }
             
             completion(dict)
+        })
+    }
+    
+    func getJirassicVersion (completion: @escaping (String) -> Void) {
+        
+        let command = "/usr/local/bin/jirassic version"
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: "runShellScript", args: args, completion: { descriptor in
+            if let descriptor = descriptor {
+                completion( descriptor.stringValue! )
+            } else {
+                completion("")
+            }
         })
     }
     
