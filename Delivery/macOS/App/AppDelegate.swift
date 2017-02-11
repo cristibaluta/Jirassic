@@ -56,6 +56,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         sleep.computerWakeUp = {
             
+            guard !Date().isWeekend() else {
+                return
+            }
             let settings: Settings = SettingsInteractor().getAppSettings()
             
             if settings.autoTrackEnabled {

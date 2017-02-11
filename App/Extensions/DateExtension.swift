@@ -114,6 +114,10 @@ extension Date {
 	@inline(__always) func isSameDayAs (_ date: Date) -> Bool {
         return NSCalendar.current.isDate(self, inSameDayAs: date)
 	}
+    
+    func isWeekend() -> Bool {
+        return gregorian.isDateInWeekend(self)
+    }
 	
 	func daysInMonth() -> Int {
 		
