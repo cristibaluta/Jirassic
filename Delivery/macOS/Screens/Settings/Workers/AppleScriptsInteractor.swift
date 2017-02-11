@@ -18,7 +18,7 @@ class AppleScriptsInteractor {
     
     func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
         
-        scripts.getJitVersion(completion: { dict in
+        scripts.getJitInfo(completion: { dict in
             completion(dict)
         })
     }
@@ -46,7 +46,7 @@ class AppleScriptsInteractor {
             return
         }
         scripts.getScriptsVersion(completion: { scriptsVersion in
-            self.scripts.getJitVersion(completion: { dict in
+            self.scripts.getJitInfo(completion: { dict in
                 let jitVersion = dict["version"] ?? ""
                 self.scripts.getJirassicVersion(completion: { jirassicVersion in
                     let versions = Versions(scripts: scriptsVersion, jitCmd: jitVersion, jirassicCmd: jirassicVersion)

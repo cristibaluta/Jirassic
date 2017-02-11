@@ -31,9 +31,9 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
         })
     }
     
-    func getJitVersion (completion: @escaping ([String: String]) -> Void) {
+    func getJitInfo (completion: @escaping ([String: String]) -> Void) {
         
-        let command = "/usr/local/bin/jit version"
+        let command = "/usr/local/bin/jit info"
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
