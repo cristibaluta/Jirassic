@@ -70,9 +70,22 @@ class AppleScriptsInteractor {
         if isScriptInstalled() {
             uninstallCmds({ success in
                 if success {
-                    let scriptsDirectory = self.scripts.scriptsDirectory!
-                    let scriptUrl = scriptsDirectory.appendingPathComponent("\(self.scriptsName).scpt")
-                    self.uninstallScript(atUrl: scriptUrl, completion)
+                    
+                    if let bookmark = UserDefaults.standard.object(forKey: self.scriptsName) as? NSData as? Data {
+                        var stale = false
+                        if let url = try? URL(resolvingBookmarkData: bookmark, options: URL.BookmarkResolutionOptions.withSecurityScope,
+                                              relativeTo: nil,
+                                              bookmarkDataIsStale: &stale) {
+                            
+                            let _ = url?.startAccessingSecurityScopedResource()
+                            self.uninstallScript(atUrl: url!, completion)
+                            url?.stopAccessingSecurityScopedResource()
+                        }
+                    }
+                    
+//                    let scriptsDirectory = self.scripts.scriptsDirectory!
+//                    let scriptUrl = scriptsDirectory.appendingPathComponent("\(self.scriptsName).scpt")
+//                    self.uninstallScript(atUrl: scriptUrl, completion)
                 } else {
                     completion(false)
                 }
@@ -111,6 +124,14 @@ extension AppleScriptsInteractor {
                 let scriptPath = Bundle.main.url(forResource: script, withExtension: ".scpt")
                 do {
                     try? self.manager.copyItem(at: scriptPath!, to: panel.url!)
+                    
+                    let bookmark = try? panel.url!.bookmarkData(options: URL.BookmarkCreationOptions.withSecurityScope,
+                                                                includingResourceValuesForKeys: nil,
+                                                                relativeTo: nil)
+                    
+                    UserDefaults.standard.set(bookmark, forKey: self.scriptsName)
+                    UserDefaults.standard.synchronize()
+                    
                     completion(true)
                 }
             } else {
