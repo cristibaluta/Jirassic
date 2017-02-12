@@ -88,7 +88,7 @@
                                     <subviews>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCo-Ie-oqJ">
                                             <rect key="frame" x="7" y="0.0" width="446" height="94"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="RyO-GP-7xA">
                                                 <font key="font" metaFont="system"/>
                                                 <string key="title">Steps to install the shell support: 1) Install the apple scripts to allowed location 2) Apple scripts will use sudo to install two command line tools, jit and jirassic.</string>
@@ -181,20 +181,6 @@
                                     <constraint firstItem="pmf-9e-7xQ" firstAttribute="leading" secondItem="ELX-Uc-E2D" secondAttribute="leading" constant="120" id="ucH-ti-C1z"/>
                                 </constraints>
                             </box>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-Tb-5RE">
-                                <rect key="frame" x="419" y="10" width="71" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="59" id="Use-nS-zxU"/>
-                                    <constraint firstAttribute="height" constant="21" id="vWH-pG-KcJ"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tsy-gv-nNb">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="xrA-px-AQY"/>
-                                </connections>
-                            </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
                                 <rect key="frame" x="185" y="101" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -227,8 +213,16 @@
                                     <rect key="frame" x="1" y="1" width="456" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-O9-EL6">
+                                            <rect key="frame" x="8" y="16" width="18" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="18" id="Iqo-Ou-c2Z"/>
+                                                <constraint firstAttribute="height" constant="18" id="du9-Gf-rJ9"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="Qr4-BQ-p3G"/>
+                                        </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WPR-i0-dsI">
-                                            <rect key="frame" x="30" y="15" width="328" height="17"/>
+                                            <rect key="frame" x="30" y="18" width="328" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking shell support" id="saZ-NO-Pwy">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -249,21 +243,13 @@
                                                 <action selector="handleInstallJitButton:" target="J1c-ZL-C5e" id="aNh-Le-nJF"/>
                                             </connections>
                                         </button>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-O9-EL6">
-                                            <rect key="frame" x="8" y="0.0" width="18" height="46"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="18" id="Iqo-Ou-c2Z"/>
-                                            </constraints>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="Qr4-BQ-p3G"/>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1zu-O9-EL6" firstAttribute="top" secondItem="IpW-dh-bsa" secondAttribute="top" id="8O8-IJ-cru"/>
                                         <constraint firstItem="19q-BQ-bPB" firstAttribute="leading" secondItem="WPR-i0-dsI" secondAttribute="trailing" constant="8" id="CfY-89-kOn"/>
                                         <constraint firstItem="WPR-i0-dsI" firstAttribute="leading" secondItem="1zu-O9-EL6" secondAttribute="trailing" constant="6" id="HJj-Qm-W0w"/>
-                                        <constraint firstAttribute="bottom" secondItem="1zu-O9-EL6" secondAttribute="bottom" id="gIM-6h-PkV"/>
                                         <constraint firstItem="1zu-O9-EL6" firstAttribute="leading" secondItem="IpW-dh-bsa" secondAttribute="leading" constant="8" id="gbH-wg-DLx"/>
-                                        <constraint firstItem="WPR-i0-dsI" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" id="wUI-3t-mBp"/>
+                                        <constraint firstItem="1zu-O9-EL6" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" constant="-2" id="uev-JG-oDN"/>
+                                        <constraint firstItem="WPR-i0-dsI" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" constant="-3" id="wUI-3t-mBp"/>
                                     </constraints>
                                 </view>
                                 <constraints>
@@ -320,7 +306,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMP-6Q-4Qc">
                                 <rect key="frame" x="266" y="105" width="210" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="± 1 hour" id="Gic-88-gQ8">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(± 1 hour)" id="Gic-88-gQ8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -368,7 +354,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grC-mh-m0b">
                                 <rect key="frame" x="266" y="70" width="210" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="± 20 minutes" id="nOX-56-304">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(± 20 minutes)" id="nOX-56-304">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -385,7 +371,6 @@
                             <constraint firstItem="mfs-D5-P9c" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="I8X-MZ-dEC"/>
                             <constraint firstItem="ELX-Uc-E2D" firstAttribute="top" secondItem="jgE-dH-Hh6" secondAttribute="bottom" constant="19" id="JYU-VN-hjg"/>
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="50" id="Lng-g3-sZf"/>
-                            <constraint firstAttribute="trailing" secondItem="wtI-Tb-5RE" secondAttribute="trailing" constant="10" id="Pmb-C6-hpC"/>
                             <constraint firstAttribute="trailing" secondItem="ELX-Uc-E2D" secondAttribute="trailing" constant="20" id="PqU-gH-Hfy"/>
                             <constraint firstItem="nlR-CY-a5k" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="20" id="THA-lL-HLX"/>
                             <constraint firstItem="cH4-ct-dhw" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="YL7-iP-tRU"/>
@@ -399,7 +384,6 @@
                             <constraint firstItem="OCy-iT-9TC" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="20" id="krg-JJ-Gi5"/>
                             <constraint firstAttribute="trailing" secondItem="aR4-jV-fsE" secondAttribute="trailing" constant="10" id="m5z-j0-Y8j"/>
                             <constraint firstItem="aR4-jV-fsE" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="28" id="q5r-Rz-amx"/>
-                            <constraint firstAttribute="bottom" secondItem="wtI-Tb-5RE" secondAttribute="bottom" constant="17" id="tQ4-fD-PPo"/>
                             <constraint firstItem="wiB-Ff-as4" firstAttribute="top" secondItem="jgE-dH-Hh6" secondAttribute="bottom" constant="19" id="vMa-kW-Zrc"/>
                         </constraints>
                     </view>
