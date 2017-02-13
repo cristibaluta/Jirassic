@@ -87,7 +87,6 @@ extension SettingsPresenter: SettingsPresenterInput {
         RCLogO(settings)
         scriptsInstaller.checkTools { (installed, compatible) in
             
-//            self.userInterface!.setJitIsInstalled( installed )
             if installed {
                 self.scriptsInstaller.saveJiraSettings(settings, completion: { success in
                     

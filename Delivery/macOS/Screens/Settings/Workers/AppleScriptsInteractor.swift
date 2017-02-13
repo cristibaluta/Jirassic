@@ -14,7 +14,7 @@ class AppleScriptsInteractor {
     fileprivate let scriptsName = "CommandLineTools"
     fileprivate let localBinPath = "/usr/local/bin/"
     fileprivate let scripts: AppleScriptInstallerProtocol = SandboxedAppleScriptInstaller()
-    fileprivate let manager = FileManager.default
+    fileprivate let fileManager = FileManager.default
     
     func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
         
@@ -100,7 +100,7 @@ extension AppleScriptsInteractor {
     
     fileprivate func isScriptInstalled() -> Bool {
         let scriptsDirectory = scripts.scriptsDirectory!
-        return manager.fileExists(atPath: scriptsDirectory.appendingPathComponent("\(scriptsName).scpt").path)
+        return fileManager.fileExists(atPath: scriptsDirectory.appendingPathComponent("\(scriptsName).scpt").path)
     }
     
     fileprivate func installScriptAndCmds (_ completion: @escaping (Bool) -> Void) {
@@ -124,7 +124,7 @@ extension AppleScriptsInteractor {
                 
                 let scriptPath = Bundle.main.url(forResource: script, withExtension: ".scpt")
                 do {
-                    try? self.manager.copyItem(at: scriptPath!, to: panel.url!)
+                    try? self.fileManager.copyItem(at: scriptPath!, to: panel.url!)
                     
                     let bookmark = try? panel.url!.bookmarkData(options: URL.BookmarkCreationOptions.withSecurityScope,
                                                                 includingResourceValuesForKeys: nil,
@@ -142,11 +142,8 @@ extension AppleScriptsInteractor {
     }
     
     fileprivate func uninstallScript (atUrl url: URL, _ completion: @escaping (Bool) -> Void) {
-        
-        do {
-            try? self.manager.removeItem(at: url)
-            completion(true)
-        }
+        try? fileManager.removeItem(at: url)
+        completion(true)
     }
     
     fileprivate func installCmds (_ completion: @escaping (Bool) -> Void) {

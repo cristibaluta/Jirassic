@@ -44,16 +44,19 @@ class DateTests: XCTestCase {
 	func testRoundDateUpToNearestQuarter() {
 		
 		var date = Date(hour: 13, minute: 8)
-		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 15)) == .orderedSame, "")
+		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 10)) == .orderedSame, "")
 		
 		date = Date(hour: 13, minute: 17)
-		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 15)) == .orderedSame, "")
+		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 20)) == .orderedSame, "")
 		
 		date = Date(hour: 13, minute: 28)
 		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 30)) == .orderedSame, "")
-		
+        
+        date = Date(hour: 13, minute: 31)
+        XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 40)) == .orderedSame, "")
+        
 		date = Date(hour: 13, minute: 44)
-		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 45)) == .orderedSame, "")
+		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 50)) == .orderedSame, "")
 		
 		date = Date(hour: 13, minute: 54)
 		XCTAssertTrue(date.round().compare(Date(hour: 14, minute: 0)) == .orderedSame, "")
