@@ -80,14 +80,14 @@ extension CreateReport {
         // How many tasks should be adjusted
         let numberOfTasksToAdjust = tasks.filter({ isRoundingAllowed(taskType: $0.taskType) }).count
         
-        RCLogO("-----------------------------------")
-        RCLogO(tasks.count)
-        RCLogO(numberOfTasksToAdjust)
+        guard numberOfTasksToAdjust > 0 else {
+            return tasks
+        }
+        
         // Calculate the diff to targetHoursInDay
         let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
         let missingTime = targetHoursInDay - workedTime
         let extraTimePerTask = ceil( Double( Int(missingTime) / numberOfTasksToAdjust))
-        RCLogO(extraTimePerTask)
         
         var roundedTasks = [Task]()
         
@@ -95,26 +95,26 @@ extension CreateReport {
         task.endDate = task.endDate.round()
         roundedTasks.append(task)
         var previousDate = task.endDate
-        var extraTimeToAdd = extraTimePerTask
-        RCLogO(task)
-        RCLogO(extraTimeToAdd)
+        var extraTimeToAdd = 0.0
         
         for i in 1..<tasks.count-1 {
             
             task = tasks[i]
-            RCLogO(task)
-            RCLogO(extraTimeToAdd)
+            
+            if isRoundingAllowed(taskType: task.taskType) {
+                extraTimeToAdd += extraTimePerTask
+            }
+            
             task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
             task.startDate = previousDate
             previousDate = task.endDate
-            if tasks.count > i + 1 {
-                let nextTask = tasks[i+1]
-                if isRoundingAllowed(taskType: nextTask.taskType) {
-                    extraTimeToAdd += extraTimePerTask
-                }
-            }
+//            if tasks.count > i + 1 {
+//                let nextTask = tasks[i+1]
+//                if isRoundingAllowed(taskType: nextTask.taskType) {
+//                    extraTimeToAdd += extraTimePerTask
+//                }
+//            }
             
-            RCLogO(extraTimeToAdd)
             roundedTasks.append(task)
         }
         
@@ -218,7 +218,7 @@ extension CreateReport {
     
     fileprivate func isRoundingAllowed (taskType: TaskType) -> Bool {
         switch taskType {
-            case .scrum, .meeting, .learning: return false
+            case .startDay, .scrum, .meeting, .learning: return false
             default: return true
         }
     }

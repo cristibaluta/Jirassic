@@ -64,6 +64,19 @@ class CreateReportTests: XCTestCase {
         super.tearDown()
     }
     
+    func testGroupByTaskNumber() {
+        
+        let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+        XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch and nap are ignored")
+        for i1 in 0..<reports.count {
+            for i2 in 0..<reports.count {
+                if i1 != i2 {
+                    XCTAssertFalse(reports[i1].taskNumber == reports[i2].taskNumber, "Duplicate taskNumber found, they should be unique")
+                }
+            }
+        }
+    }
+    
     func testRoundLessThan8HoursOfWork() {
 		
 		let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
@@ -76,14 +89,6 @@ class CreateReportTests: XCTestCase {
 		XCTAssert(duration == targetHoursInDay)
     }
     
-    func testGroupByTaskNumber() {
-        
-        let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
-        XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch and nap are ignored")
-       // XCTAssert(reports[0].duration = )
-       // XCTAssert(reports[0].duration = )
-    }
-	
 	func testRoundMoreThan8HoursOfWork() {
 		
 		var t3 = Task()
