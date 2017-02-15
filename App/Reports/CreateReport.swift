@@ -11,18 +11,17 @@ import Foundation
 class CreateReport: NSObject {
     
     func reports (fromTasks tasks: [Task], targetHoursInDay: Double) -> [Report] {
-		RCLogO(tasks)
+		
 		guard tasks.count > 1 else {
 			return []
         }
-        var tasks = splitOverlappingTasks(tasks)
-        tasks = removeUntrackableTasks(tasks)
-        RCLogO(tasks)
-        tasks = addExtraTimeToTasks(tasks, targetHoursInDay: targetHoursInDay)
-        let groups = groupByTaskNumber(tasks)
-        let reports = reportsFromGroups(groups)
+        var processedTasks = splitOverlappingTasks(tasks)
+        processedTasks = removeUntrackableTasks(processedTasks)
+        processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
+        let groups = groupByTaskNumber(processedTasks)
+        let reports = reportsFromGroups(groups.groups)
         
-        return reports
+        return sortReports(reports, withOrder: groups.order)
 	}
 }
 
@@ -76,20 +75,6 @@ extension CreateReport {
         return arr
     }
     
-    fileprivate func isTrackingAllowed (taskType: TaskType) -> Bool {
-        switch taskType {
-        case .lunch, .nap: return false
-        default: return true
-        }
-    }
-    
-    fileprivate func isRoundingAllowed (taskType: TaskType) -> Bool {
-        switch taskType {
-        case .scrum, .meeting, .learning: return false
-        default: return true
-        }
-    }
-    
     fileprivate func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double) -> [Task] {
         
         // How many tasks should be adjusted
@@ -114,7 +99,7 @@ extension CreateReport {
         RCLogO(task)
         RCLogO(extraTimeToAdd)
         
-        for i in 1..<tasks.count {
+        for i in 1..<tasks.count-1 {
             
             task = tasks[i]
             RCLogO(task)
@@ -142,14 +127,16 @@ extension CreateReport {
         return roundedTasks
     }
     
-    fileprivate func groupByTaskNumber (_ tasks: [Task]) -> [String: [Task]] {
+    fileprivate func groupByTaskNumber (_ tasks: [Task]) -> (groups: [String: [Task]], order: [String]) {
         
+        var order = [String]()
         var groups = [String: [Task]]()
         for task in tasks {
             if task.taskType == TaskType.startDay {
                 continue
             }
             let taskNumber = task.taskNumber ?? ""
+            // Save to dictionary
             var tgroup: [Task]? = groups[taskNumber]
             if tgroup == nil {
                 tgroup = [Task]()
@@ -157,9 +144,13 @@ extension CreateReport {
             }
             tgroup?.append(task)
             groups[taskNumber] = tgroup!
+            // Save order
+            if !order.contains(taskNumber) {
+                order.append(taskNumber)
+            }
         }
         
-        return groups
+        return (groups: groups, order: order)
     }
     
     fileprivate func reportsFromGroups (_ groups: [String: [Task]]) -> [Report] {
@@ -181,9 +172,11 @@ extension CreateReport {
                 var report = reportsMap[taskNumber]
                 
                 if report == nil {
-                    report = Report(duration: task.endDate.timeIntervalSince(startDate),
-                                    notes: "• \(task.notes ?? "")",
-                                    taskNumber: taskNumber)
+                    report = Report(
+                        taskNumber: taskNumber,
+                        notes: "• \(task.notes ?? "")",
+                        duration: task.endDate.timeIntervalSince(startDate)
+                    )
                 } else {
                     report!.duration += task.endDate.timeIntervalSince(task.startDate!)
                     report!.notes = "\(report!.notes)\n• \(task.notes ?? "")"
@@ -194,4 +187,39 @@ extension CreateReport {
         
         return Array(reportsMap.values)
 	}
+    
+    fileprivate func sortReports (_ reports: [Report], withOrder order: [String]) -> [Report] {
+        
+        var orderedReports = [Report]()
+        
+        // TODO: sort the array with short lambdas if possible
+//        let arr = reports.sorted { reports.index(of: $0) < order.index(of: $1.1) }
+        
+        for taskNumber in order {
+            for report in reports {
+                if report.taskNumber == taskNumber {
+                    orderedReports.append(report)
+                }
+            }
+        }
+        
+        return orderedReports
+    }
+}
+
+extension CreateReport {
+    
+    fileprivate func isTrackingAllowed (taskType: TaskType) -> Bool {
+        switch taskType {
+            case .lunch, .nap: return false
+            default: return true
+        }
+    }
+    
+    fileprivate func isRoundingAllowed (taskType: TaskType) -> Bool {
+        switch taskType {
+            case .scrum, .meeting, .learning: return false
+            default: return true
+        }
+    }
 }

@@ -24,7 +24,7 @@ class CreateReportTests: XCTestCase {
 		var t1 = Task()
 		t1.endDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 25)
         t1.taskNumber = "coderev"
-        t1.notes = "Code reviews"
+        t1.notes = "Code reviews part 1"
         
         var scrum = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 47), type: TaskType.scrum)
         scrum.startDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 30)
@@ -46,7 +46,7 @@ class CreateReportTests: XCTestCase {
 		var t1_3 = Task()
         t1_3.endDate = Date(year: 2015, month: 6, day: 1, hour: 15, minute: 6)
         t1_3.taskNumber = "coderev"
-        t1_3.notes = "Codereviews"
+        t1_3.notes = "Code reviews part 2"
         
         var nap = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 36), type: TaskType.nap)
         nap.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
@@ -105,14 +105,20 @@ class CreateReportTests: XCTestCase {
         
         var t3 = Task()
         t3.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 20)
+        t3.taskNumber = "learning"
         t3.taskType = .learning
         t3.notes = "Learning time"
-        var tasks = self.tasks
-        tasks.append(t3)
+        let tasks = self.tasks + [t3]
         
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         
         XCTAssert(reports.count == 6)
+        
+        XCTAssert(reports[1].taskNumber == "scrum")
+        XCTAssert(reports[1].duration == 20.minToSec)
+        
+        XCTAssert(reports[5].taskNumber == "learning")
+        XCTAssert(reports[5].duration == 20.minToSec)
     }
     
 }

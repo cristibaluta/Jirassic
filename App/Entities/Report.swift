@@ -10,7 +10,7 @@ import Foundation
 
 struct Report {
     
-    var duration: TimeInterval
-    var notes: String
     var taskNumber: String
+    var notes: String
+    var duration: TimeInterval
 }

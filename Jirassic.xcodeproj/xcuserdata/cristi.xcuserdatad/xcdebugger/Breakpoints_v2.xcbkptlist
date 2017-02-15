@@ -2,4 +2,54 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Reports/CreateReportTests.swift"
+            timestampString = "508835296.195339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "testDoNotRoundMeetings()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JirassicTests.CreateReportTests.testDoNotRoundMeetings () -&gt; ()"
+                  moduleName = "JirassicTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cristi/Documents/Jirassic/App/Reports/CreateReportTests.swift"
+                  timestampString = "508798285.436271"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "976">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JirassicTests.CreateReportTests.(testDoNotRoundMeetings () -&gt; ()).(implicit closure #1)"
+                  moduleName = "JirassicTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cristi/Documents/Jirassic/App/Reports/CreateReportTests.swift"
+                  timestampString = "508798285.437867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
