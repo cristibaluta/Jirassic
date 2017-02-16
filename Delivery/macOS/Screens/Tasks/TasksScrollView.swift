@@ -143,6 +143,7 @@ extension TasksScrollView: NSTableViewDelegate {
                 let updatedData = cell.data
                 theData.taskNumber = updatedData.taskNumber
                 theData.notes = updatedData.notes
+                theData.startDate = updatedData.dateStart
                 theData.endDate = updatedData.dateEnd
                 self?.tasks[row] = theData// save the changes locally because the struct is passed by copying
                 let saveInteractor = TaskInteractor(repository: localRepository)

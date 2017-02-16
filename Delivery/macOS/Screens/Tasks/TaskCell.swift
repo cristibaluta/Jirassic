@@ -14,7 +14,6 @@ class TaskCell: NSTableRowView, CellProtocol {
     
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet fileprivate var dateEndTextField: NSTextField?
-	@IBOutlet fileprivate var durationTextField: NSTextField?
 	@IBOutlet fileprivate var issueNrTextField: NSTextField?
     @IBOutlet fileprivate var notesTextField: NSTextField?
     @IBOutlet fileprivate var notesTextFieldRightConstrain: NSLayoutConstraint?
@@ -58,22 +57,22 @@ class TaskCell: NSTableRowView, CellProtocol {
 			notesTextField!.stringValue = newValue.notes
 		}
 	}
-	var duration: String {
-		get {
-			return durationTextField!.stringValue
-		}
-		set {
-			durationTextField!.stringValue = newValue
-		}
-	}
+    var duration: String {
+        get {
+            return ""
+        }
+        set {
+            
+        }
+    }
     
 	override func awakeFromNib() {
 		showMouseOverControls(false)
         notesTextFieldRightConstrain!.constant = 0
 	}
-	
-	
-	// MARK: Actions
+}
+
+extension TaskCell {
 	
 	@IBAction func handleRemoveButton (_ sender: NSButton) {
 		didRemoveCell?(self)
@@ -87,7 +86,10 @@ class TaskCell: NSTableRowView, CellProtocol {
 		NSPasteboard.general().clearContents()
 		NSPasteboard.general().writeObjects([notesTextField!.stringValue as NSPasteboardWriting])
 	}
-	
+}
+
+extension TaskCell {
+
 	override func drawBackground (in dirtyRect: NSRect) {
 		
         let width = dirtyRect.size.width - kCellLeftPadding * 2
@@ -110,9 +112,6 @@ class TaskCell: NSTableRowView, CellProtocol {
 			selectionPath.fill()
 		}
 	}
-    
-	
-	// MARK: mouse
 	
 	override func mouseEntered (with theEvent: NSEvent) {
 		self.mouseInside = true
@@ -134,7 +133,6 @@ class TaskCell: NSTableRowView, CellProtocol {
         line2?.isHidden = !show
         line3?.isHidden = !show
 		self.dateEndTextField?.isEditable = show
-		self.durationTextField?.isEditable = show
 	}
 	
 	func ensureTrackingArea() {

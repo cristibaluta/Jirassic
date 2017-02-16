@@ -10,7 +10,7 @@ import Cocoa
 
 class TaskCellPresenter: NSObject {
 
-	var cell: CellProtocol?
+	var cell: CellProtocol!
 	
 	convenience init (cell: CellProtocol) {
 		self.init()
@@ -19,7 +19,7 @@ class TaskCellPresenter: NSObject {
 	
 	func present (previousTask: Task?, currentTask theTask: Task) {
 		
-		var duration = ""
+//		var duration = ""
 		var statusImage: NSImage?
 		
         if let thePreviosData = previousTask {
@@ -28,13 +28,13 @@ class TaskCellPresenter: NSObject {
                 
                 case TaskType.issue:
                     let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
-                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
+//                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                     statusImage = NSImage(named: NSImageNameStatusAvailable)
                     break
                     
                 case TaskType.gitCommit:
                     let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
-                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
+//                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                     statusImage = NSImage(named: "GitIcon")
                     break
                     
@@ -45,14 +45,14 @@ class TaskCellPresenter: NSObject {
             statusImage = nil
         }
 		
-		cell?.data = (
+		cell.data = (
             dateStart: theTask.startDate,
             dateEnd: theTask.endDate,
 			taskNumber: theTask.taskNumber ?? "",
 			notes: theTask.notes ?? "",
 			taskType: .issue
 		)
-		cell?.duration = duration
-		cell?.statusImage?.image = statusImage
+//		cell.duration = duration
+		cell.statusImage?.image = statusImage
 	}
 }

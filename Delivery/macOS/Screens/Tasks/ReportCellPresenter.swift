@@ -10,7 +10,7 @@ import Cocoa
 
 class ReportCellPresenter: NSObject {
     
-    var cell: CellProtocol?
+    var cell: CellProtocol!
     
     convenience init (cell: CellProtocol) {
         self.init()
@@ -19,14 +19,14 @@ class ReportCellPresenter: NSObject {
     
     func present (theReport: Report) {
         
-        cell?.data = (
+        cell.data = (
             dateStart: nil,
             dateEnd: Date(),
             taskNumber: theReport.taskNumber,
             notes: theReport.notes,
             taskType: .issue
         )
-        cell?.duration = Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
-        cell?.statusImage?.image = NSImage(named: NSImageNameStatusAvailable)
+        cell.duration = Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
+        cell.statusImage?.image = NSImage(named: NSImageNameStatusAvailable)
     }
 }
