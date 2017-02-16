@@ -178,7 +178,6 @@ extension Date {
     
     func dateByKeepingTime() -> Date {
         let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
-        
         return Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
     }
 	
