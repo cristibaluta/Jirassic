@@ -67,6 +67,7 @@ class TaskCell: NSTableRowView, CellProtocol {
     }
     
 	override func awakeFromNib() {
+        super.awakeFromNib()
 		showMouseOverControls(false)
         notesTextFieldRightConstrain!.constant = 0
 	}

@@ -27,13 +27,13 @@ class TaskCellPresenter: NSObject {
             switch theTask.taskType {
                 
                 case TaskType.issue:
-                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
+//                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
 //                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                     statusImage = NSImage(named: NSImageNameStatusAvailable)
                     break
                     
                 case TaskType.gitCommit:
-                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
+//                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
 //                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                     statusImage = NSImage(named: "GitIcon")
                     break

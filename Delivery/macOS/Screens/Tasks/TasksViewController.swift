@@ -12,7 +12,7 @@ class TasksViewController: NSViewController {
 	
 	@IBOutlet fileprivate weak var splitView: NSSplitView?
 	@IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView?
-	@IBOutlet fileprivate weak var tasksScrollView: TasksScrollView?
+	fileprivate var tasksScrollView: TasksScrollView?
     @IBOutlet fileprivate weak var listSegmentedControl: NSSegmentedControl?
     @IBOutlet fileprivate weak var butSettings: NSButton?
     @IBOutlet fileprivate weak var butQuit: NSButton?
@@ -27,26 +27,12 @@ class TasksViewController: NSViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        RCLog(self)
+        
 		registerForNotifications()
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         
         calendarScrollView!.didSelectDay = { [weak self] (day: Day) in
-            self?.tasksPresenter?.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
-        }
-        
-        tasksScrollView!.didRemoveRow = { [weak self] (row: Int) in
-            RCLogO("Remove item at row \(row)")
-            if row >= 0 {
-                self?.tasksPresenter!.removeTaskAtRow(row)
-                self?.tasksScrollView!.removeTaskAtRow(row)
-            }
-        }
-        tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
-            RCLogO("Add item after row \(row)")
-            if row >= 0 {
-                self?.tasksPresenter!.insertTaskAfterRow(row)
-            }
+            self?.tasksPresenter!.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
         }
     }
 	
@@ -112,20 +98,49 @@ extension TasksViewController: TasksPresenterOutput {
         calendarScrollView?.reloadData()
     }
     
-    func showTasks (_ tasks: [Task], listType: ListType) {
+    func showTasks (_ tasks: [Task]) {
         
-        tasksScrollView!.listType = listType
-        tasksScrollView!.tasks = tasks
-        tasksScrollView!.reports = []
+        if tasksScrollView != nil {
+            tasksScrollView?.removeFromSuperview()
+            tasksScrollView = nil
+        }
+        var r = splitView!.subviews[SplitViewColumn.tasks.rawValue].frame
+        r.origin = NSPoint.zero
+        tasksScrollView = TasksScrollView(tasks: tasks)
+        tasksScrollView!.frame = r
+        splitView!.subviews[SplitViewColumn.tasks.rawValue].addSubview(tasksScrollView!)
+        tasksScrollView!.constrainToSuperview()
+        tasksScrollView!.didRemoveRow = { [weak self] (row: Int) in
+            RCLogO("Remove item at row \(row)")
+            if row >= 0 {
+                self?.tasksPresenter!.removeTaskAtRow(row)
+                self?.tasksScrollView!.removeTaskAtRow(row)
+            }
+        }
+        tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
+            RCLogO("Add item after row \(row)")
+            if row >= 0 {
+                self?.tasksPresenter!.insertTaskAfterRow(row)
+            }
+        }
+        
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
     }
     
-    func showReports (_ reports: [Report], listType: ListType) {
+    func showReports (_ reports: [Report]) {
         
-        tasksScrollView!.listType = listType
-        tasksScrollView!.tasks = []
-        tasksScrollView!.reports = reports
+        if tasksScrollView != nil {
+            tasksScrollView?.removeFromSuperview()
+            tasksScrollView = nil
+        }
+        var r = splitView!.subviews[SplitViewColumn.tasks.rawValue].frame
+        r.origin = NSPoint.zero
+        tasksScrollView = TasksScrollView(reports: reports)
+        tasksScrollView!.frame = r
+        splitView!.subviews[SplitViewColumn.tasks.rawValue].addSubview(tasksScrollView!)
+        tasksScrollView!.constrainToSuperview()
+        
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
     }

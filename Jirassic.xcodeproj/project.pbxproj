@@ -10,6 +10,9 @@
 		2801DD3B1E468B92005B5842 /* CommandLineTools.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */; };
 		2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
+		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
+		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
+		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
 		400E7BFA1E0EEFA800D19FFD /* InternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */; };
 		4051D5F31E0EA0EA002042BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F11E0EA0EA002042BB /* AppDelegate.swift */; };
 		4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F41E0EA0F3002042BB /* Main.storyboard */; };
@@ -168,6 +171,9 @@
 		2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = CommandLineTools.scpt; sourceTree = "<group>"; };
 		2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHeaderView.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
+		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
+		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
+		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSettings.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
@@ -619,6 +625,9 @@
 				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
 				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
+				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
+				28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */,
+				28A5F2811E586426002BE564 /* DataSource.swift */,
 				4065D3791DD3B44200B73201 /* MessageViewController.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				2801DD6D1E4787E2005B5842 /* ReportHeader */,
@@ -953,6 +962,7 @@
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
 				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
+				28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */,
 				4065D3F41DD3B44200B73201 /* CSettings.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
@@ -983,6 +993,7 @@
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */,
+				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
@@ -1014,6 +1025,7 @@
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
 				405B15631DEF3F2A0009871C /* TaskSuggestionPresenter.swift in Sources */,
 				4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */,
+				28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */,
 				4065D3E41DD3B44200B73201 /* MessageViewController.swift in Sources */,
 				4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */,
 			);

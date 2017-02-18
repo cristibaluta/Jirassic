@@ -26,8 +26,8 @@ protocol TasksPresenterOutput: class {
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
     func showDates (_ weeks: [Week])
-    func showTasks (_ tasks: [Task], listType: ListType)
-    func showReports (_ reports: [Report], listType: ListType)
+    func showTasks (_ tasks: [Task])
+    func showReports (_ reports: [Report])
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
 }
@@ -77,10 +77,10 @@ extension TasksPresenter: TasksPresenterInput {
             let reportInteractor = CreateReport()
             let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
             currentReports = reports.reversed()
-            userInterface!.showReports(currentReports, listType: selectedListType)
+            userInterface!.showReports(currentReports)
         }
         else {
-            userInterface!.showTasks(currentTasks, listType: selectedListType)
+            userInterface!.showTasks(currentTasks)
         }
         
         updateNoTasksState()
