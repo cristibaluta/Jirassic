@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,25 +54,6 @@
                                 <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
                             </connections>
                         </textField>
-                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="31B-nk-8de">
-                            <rect key="frame" x="185" y="5" width="5" height="33"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="1" id="9go-5p-JcN"/>
-                            </constraints>
-                        </box>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
-                            <rect key="frame" x="193" y="9" width="47" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="47" id="Yrs-c8-ijJ"/>
-                            </constraints>
-                            <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleCopyButton:" target="c22-O7-iKe" id="dmZ-11-AJj"/>
-                            </connections>
-                        </button>
                         <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mpD-Z5-CaT">
                             <rect key="frame" x="243" y="5" width="5" height="33"/>
                             <constraints>
@@ -114,21 +95,16 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="xar-Oo-330" secondAttribute="bottom" id="1qr-l8-df2"/>
-                        <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="31B-nk-8de" secondAttribute="trailing" constant="5" id="5zp-iy-8ox"/>
                         <constraint firstItem="tMm-ch-iIr" firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" id="8Ce-Qx-9Nt"/>
                         <constraint firstAttribute="bottom" secondItem="EWV-4g-F8D" secondAttribute="bottom" constant="5" id="9z3-VD-G9h"/>
                         <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" id="A8C-VE-1z0"/>
-                        <constraint firstItem="caC-fV-ZwQ" firstAttribute="centerY" secondItem="nlM-Fp-eXf" secondAttribute="centerY" id="DH5-YM-aZp"/>
                         <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="24" id="Dxm-IR-2no"/>
                         <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="mpD-Z5-CaT" secondAttribute="trailing" constant="-2" id="EHw-5b-Lpz"/>
                         <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="137" id="GXk-TS-g3i"/>
-                        <constraint firstAttribute="bottom" secondItem="31B-nk-8de" secondAttribute="bottom" constant="5" id="Rvk-Q5-TGi"/>
                         <constraint firstAttribute="bottom" secondItem="mpD-Z5-CaT" secondAttribute="bottom" constant="5" id="SdS-02-fCE"/>
                         <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="nlM-Fp-eXf" secondAttribute="leading" constant="60" id="UnF-KY-oDx"/>
                         <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" constant="1" id="VTp-j8-otJ"/>
-                        <constraint firstItem="31B-nk-8de" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="5" id="Wsz-id-0dF"/>
                         <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" id="Zxl-PT-glX"/>
-                        <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="caC-fV-ZwQ" secondAttribute="trailing" constant="4" id="dXK-f1-BQ1"/>
                         <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="4" id="i80-2L-3fg"/>
                         <constraint firstAttribute="bottom" secondItem="egw-SB-d18" secondAttribute="bottom" id="kC9-mp-4hd"/>
                         <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="leading" id="kGG-Qr-vpT"/>
@@ -165,15 +141,12 @@
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
-                <outlet property="butCopy" destination="caC-fV-ZwQ" id="0ho-tO-K2w"/>
                 <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
                 <outlet property="contentView" destination="nlM-Fp-eXf" id="Mbb-tX-J7N"/>
                 <outlet property="dateEndTextField" destination="HS2-iB-3Ta" id="fDF-KM-JEr"/>
-                <outlet property="durationTextField" destination="YAU-4V-M8t" id="aH9-y6-aBT"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
-                <outlet property="line1" destination="31B-nk-8de" id="5s4-fX-jlT"/>
-                <outlet property="line2" destination="mpD-Z5-CaT" id="Z3V-De-PWV"/>
-                <outlet property="line3" destination="EWV-4g-F8D" id="eJg-wt-E7a"/>
+                <outlet property="line1" destination="mpD-Z5-CaT" id="C5p-dQ-v8c"/>
+                <outlet property="line2" destination="EWV-4g-F8D" id="EVg-sQ-hHA"/>
                 <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
                 <outlet property="notesTextFieldRightConstrain" destination="GXk-TS-g3i" id="MiD-17-vyw"/>
                 <outlet property="statusImage" destination="iAi-8T-Cme" id="kez-tX-mzz"/>

@@ -18,13 +18,11 @@ class TaskCell: NSTableRowView, CellProtocol {
     @IBOutlet fileprivate var notesTextField: NSTextField?
     @IBOutlet fileprivate var notesTextFieldRightConstrain: NSLayoutConstraint?
     
-    @IBOutlet fileprivate var butCopy: NSButton?
     @IBOutlet fileprivate var butAdd: NSButton?
 	@IBOutlet fileprivate var butRemove: NSButton?
     
     @IBOutlet fileprivate var line1: NSBox?
     @IBOutlet fileprivate var line2: NSBox?
-    @IBOutlet fileprivate var line3: NSBox?
 	
 	fileprivate var isEditing = false
 	fileprivate var wasEdited = false
@@ -82,11 +80,6 @@ extension TaskCell {
 	@IBAction func handleAddButton (_ sender: NSButton) {
 		didAddCell?(self)
 	}
-	
-	@IBAction func handleCopyButton (_ sender: NSButton) {
-		NSPasteboard.general().clearContents()
-		NSPasteboard.general().writeObjects([notesTextField!.stringValue as NSPasteboardWriting])
-	}
 }
 
 extension TaskCell {
@@ -97,7 +90,7 @@ extension TaskCell {
         let height = dirtyRect.size.height - kGapBetweenCells - 1
         
 		if self.mouseInside {
-            notesTextFieldRightConstrain!.constant = 140
+            notesTextFieldRightConstrain!.constant = 90
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 1, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
 			NSColor(calibratedWhite: 0.0, alpha: 0.4).setStroke()
@@ -129,10 +122,8 @@ extension TaskCell {
 	func showMouseOverControls (_ show: Bool) {
 		self.butRemove?.isHidden = !show
 		self.butAdd?.isHidden = !show
-		self.butCopy?.isHidden = !show
         line1?.isHidden = !show
         line2?.isHidden = !show
-        line3?.isHidden = !show
 		self.dateEndTextField?.isEditable = show
 	}
 	
