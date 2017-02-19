@@ -11,7 +11,7 @@ import Cocoa
 class TasksView: NSView {
     
     
-    override func mouseDown (with theEvent: NSEvent) {
+    override func mouseUp (with theEvent: NSEvent) {
         if theEvent.clickCount == 2 {
             AppDelegate.sharedApp().removeActivePopup()
         }
