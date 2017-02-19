@@ -26,7 +26,10 @@ class ReportCellPresenter: NSObject {
             notes: theReport.notes,
             taskType: .issue
         )
-        cell.duration = Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
+        let settings = InternalSettings()
+        cell.duration = settings.usePercents 
+            ? "\(Date.secondsToPercentTime(theReport.duration))"
+            : Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell.statusImage?.image = NSImage(named: NSImageNameStatusAvailable)
     }
 }

@@ -14,7 +14,8 @@ class TasksScrollView: NSScrollView {
     fileprivate var dataSource: DataSource?
 	
 	var didAddRow: ((_ row: Int) -> ())?
-	var didRemoveRow: ((_ row: Int) -> ())?
+    var didRemoveRow: ((_ row: Int) -> ())?
+    var didChangeSettings: (() -> ())?
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -43,6 +44,9 @@ class TasksScrollView: NSScrollView {
         tableView!.delegate = dataSource
         
         let headerView = ReportsHeaderView()
+        headerView.didChangeSettings = { [weak self] in
+            self?.didChangeSettings?()
+        }
         tableView!.headerView = headerView
     }
     
@@ -69,6 +73,13 @@ class TasksScrollView: NSScrollView {
 	func reloadData() {
 		tableView!.reloadData()
 	}
+    
+    func reloadReports (_ reports: [Report]) {
+        dataSource = ReportsDataSource(tableView: tableView, reports: reports)
+        tableView!.dataSource = dataSource
+        tableView!.delegate = dataSource
+        tableView!.reloadData()
+    }
 	
 	func addTask (_ task: Task) {
         if let dataSource = tableView.dataSource as? TasksDataSource {

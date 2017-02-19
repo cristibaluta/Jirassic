@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
@@ -29,7 +29,7 @@
                         <constraint firstAttribute="width" constant="47" id="2nv-uf-Elb"/>
                         <constraint firstAttribute="height" constant="15" id="6CB-mp-rwI"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="kk5-M4-fbR">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="right" placeholderString="00:00" id="kk5-M4-fbR">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" red="0.03125284388694733" green="0.23230350378787878" blue="0.068295803949179099" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -62,7 +62,7 @@
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="4LC-Du-N7a"/>
                 <constraint firstItem="5uZ-oc-wrR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="5mO-XJ-c6e"/>
                 <constraint firstItem="HS2-iB-3Ta" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="CdD-BY-vkN"/>
-                <constraint firstAttribute="trailing" secondItem="HS2-iB-3Ta" secondAttribute="trailing" id="Cge-0e-uSq"/>
+                <constraint firstAttribute="trailing" secondItem="HS2-iB-3Ta" secondAttribute="trailing" constant="15" id="Cge-0e-uSq"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="caC-fV-ZwQ" secondAttribute="trailing" id="DHh-0e-UNE"/>
                 <constraint firstItem="HS2-iB-3Ta" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="8" id="GsV-4p-3AN"/>
                 <constraint firstAttribute="trailing" secondItem="5uZ-oc-wrR" secondAttribute="trailing" id="Kyq-c4-fAD"/>

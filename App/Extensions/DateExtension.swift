@@ -162,7 +162,7 @@ extension Date {
 		return gregorian.date(from: comps)!
 	}
 	
-	func secondsToPercentTime (_ time: Double) -> Double {
+	static func secondsToPercentTime (_ time: Double) -> Double {
 		return time / 3600
 	}
 	
@@ -280,10 +280,11 @@ extension Date {
     
     fileprivate func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
         
-        let rest = min % 10
-        let newMin = rest == 0 ? min : (min + 10 - rest)
+        let division = 6
+        let rest = min % division
+        let newMin = rest == 0 ? min : (min + division - rest)
         
-        return (newMin > 50 ? 1 : 0, newMin > 50 ? 0 : newMin)
+        return (newMin >= 60 ? 1 : 0, newMin >= 60 ? 0 : newMin)
         
 //        if min < 8 {
 //            return (0, 0)

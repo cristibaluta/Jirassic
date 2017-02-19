@@ -10,9 +10,10 @@ import Cocoa
 
 class ReportsHeaderView: NSTableHeaderView {
     
-    var butRound: NSButton
-    var butPercents: NSButton
-    let settings = InternalSettings()
+    fileprivate var butRound: NSButton
+    fileprivate var butPercents: NSButton
+    fileprivate let settings = InternalSettings()
+    var didChangeSettings: (() -> ())?
     
     init() {
         
@@ -23,7 +24,7 @@ class ReportsHeaderView: NSTableHeaderView {
         butRound.state = settings.roundDay ? NSOnState : NSOffState
         
         butPercents = NSButton()
-        butPercents.frame = NSRect(x: 20, y: 20, width: 200, height: 20)
+        butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
         butPercents.attributedTitle = NSAttributedString(string: "Use percents", attributes: [ NSForegroundColorAttributeName : NSColor.white])
         butPercents.setButtonType(NSSwitchButton)
         butPercents.state = settings.usePercents ? NSOnState : NSOffState
@@ -53,9 +54,11 @@ extension ReportsHeaderView {
     
     func handleRoundButton (_ sender: NSButton) {
         settings.roundDay = sender.state == NSOnState
+        didChangeSettings?()
     }
     
     func handlePercentsButton (_ sender: NSButton) {
         settings.usePercents = sender.state == NSOnState
+        didChangeSettings?()
     }
 }

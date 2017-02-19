@@ -10,14 +10,16 @@ import Foundation
 
 class CreateReport: NSObject {
     
-    func reports (fromTasks tasks: [Task], targetHoursInDay: Double) -> [Report] {
+    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
 		
 		guard tasks.count > 1 else {
 			return []
         }
         var processedTasks = splitOverlappingTasks(tasks)
         processedTasks = removeUntrackableTasks(processedTasks)
-        processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
+        if let hours = targetHoursInDay {
+            processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: hours)
+        }
         let groups = groupByTaskNumber(processedTasks)
         let reports = reportsFromGroups(groups.groups)
         

@@ -45,7 +45,8 @@ class TasksPresenter {
     fileprivate var currentTasks = [Task]()
     fileprivate var currentReports = [Report]()
     fileprivate var selectedListType = ListType.allTasks
-    
+    fileprivate let internalSettings = InternalSettings()
+    fileprivate var lastSelectedDay: Day?
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -68,7 +69,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         
         let settings = SettingsInteractor().getAppSettings()
-        let targetHoursInDay = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+        let targetHoursInDay = internalSettings.roundDay ? settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime) : 0
         let reader = ReadTasksInteractor(repository: localRepository)
         currentTasks = reader.tasksInDay(day.date)
         selectedListType = listType
