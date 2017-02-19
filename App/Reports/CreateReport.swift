@@ -17,9 +17,7 @@ class CreateReport: NSObject {
         }
         var processedTasks = splitOverlappingTasks(tasks)
         processedTasks = removeUntrackableTasks(processedTasks)
-        if let hours = targetHoursInDay {
-            processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: hours)
-        }
+        processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
         let groups = groupByTaskNumber(processedTasks)
         let reports = reportsFromGroups(groups.groups)
         
@@ -77,7 +75,7 @@ extension CreateReport {
         return arr
     }
     
-    fileprivate func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double) -> [Task] {
+    fileprivate func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double?) -> [Task] {
         
         // How many tasks should be adjusted
         let numberOfTasksToAdjust = tasks.filter({ isRoundingAllowed(taskType: $0.taskType) }).count
@@ -88,7 +86,8 @@ extension CreateReport {
         
         // Calculate the diff to targetHoursInDay
         let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
-        let missingTime = targetHoursInDay - workedTime
+        let requiredHours = targetHoursInDay != nil ? targetHoursInDay! : workedTime
+        let missingTime = requiredHours - workedTime
         let extraTimePerTask = ceil( Double( Int(missingTime) / numberOfTasksToAdjust))
         
         var roundedTasks = [Task]()
@@ -103,26 +102,20 @@ extension CreateReport {
             
             task = tasks[i]
             
-            if isRoundingAllowed(taskType: task.taskType) {
+            if targetHoursInDay != nil && isRoundingAllowed(taskType: task.taskType) {
                 extraTimeToAdd += extraTimePerTask
             }
             
             task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
             task.startDate = previousDate
             previousDate = task.endDate
-//            if tasks.count > i + 1 {
-//                let nextTask = tasks[i+1]
-//                if isRoundingAllowed(taskType: nextTask.taskType) {
-//                    extraTimeToAdd += extraTimePerTask
-//                }
-//            }
             
             roundedTasks.append(task)
         }
         
         // Handle the last task separately, add the remaining time till targetHoursInDay
         task = tasks.last!
-        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(targetHoursInDay)
+        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(requiredHours).round()
         task.startDate = previousDate
         roundedTasks.append(task)
         

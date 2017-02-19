@@ -18,18 +18,18 @@ class ReportsHeaderView: NSTableHeaderView {
     init() {
         
         butRound = NSButton()
-        butRound.frame = NSRect(x: 150, y: 20, width: 200, height: 20)
+        butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
         butRound.attributedTitle = NSAttributedString(string: "Round to 8 hours", attributes: [ NSForegroundColorAttributeName : NSColor.white])
         butRound.setButtonType(NSSwitchButton)
         butRound.state = settings.roundDay ? NSOnState : NSOffState
         
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
-        butPercents.attributedTitle = NSAttributedString(string: "Use percents", attributes: [ NSForegroundColorAttributeName : NSColor.white])
+        butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: [ NSForegroundColorAttributeName : NSColor.white])
         butPercents.setButtonType(NSSwitchButton)
         butPercents.state = settings.usePercents ? NSOnState : NSOffState
         
-        super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 100))
+        super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
         
         butRound.target = self
         butRound.action = #selector(self.handleRoundButton)
