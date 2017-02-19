@@ -1,5 +1,5 @@
 //
-//  ScrumCell.swift
+//  NonTaskCell.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 07/05/15.
@@ -82,8 +82,9 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		let selectionPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
 		selectionPath.fill()
 	}
-	
-	// MARK: Acions
+}
+
+extension NonTaskCell {
 	
 	@IBAction func handleRemoveButton (_ sender: NSButton) {
 		self.didRemoveCell?(self)
@@ -92,10 +93,12 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	@IBAction func handleAddButton (_ sender: NSButton) {
 		self.didAddCell?(self)
 	}
-	
-	// MARK: mouse
-	
+}
+
+extension NonTaskCell {
+    
 	override func mouseEntered (with theEvent: NSEvent) {
+        
 		self.butRemove.isHidden = false
         self.butAdd.isHidden = false
         self.dateStartTextField.isEditable = true
@@ -104,7 +107,18 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		self.setNeedsDisplay(self.frame)
 	}
 	
+//    override func mouseMoved(with event: NSEvent) {
+//        
+//        let locationInWindow = event.locationInWindow
+//        let locationInView = self.convert(locationInWindow, from: nil)
+//        RCLog(locationInView)
+//        if dateStartTextField.frame.contains(locationInView) {
+//            dateStartTextField.font = NSFont.systemFont(ofSize: 14)
+//        }
+//    }
+    
 	override func mouseExited (with theEvent: NSEvent) {
+        
 		self.butRemove.isHidden = true
         self.butAdd.isHidden = true
         self.dateStartTextField.isEditable = false

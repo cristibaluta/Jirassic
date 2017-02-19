@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (wself.menu.iconView?.isSelected == true) {
                     wself.removeActivePopup()
                     
-                    let firstLaunch = InternalSettings().isFirstLaunch(forVersion: Versioning.appVersion)
+                    let firstLaunch = InternalSettings().isFirstLaunch(ofVersion: Versioning.appVersion)
                     if firstLaunch {
                         wself.presentWelcomePopup()
                     } else {

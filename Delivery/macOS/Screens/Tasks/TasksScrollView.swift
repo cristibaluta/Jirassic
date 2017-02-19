@@ -41,6 +41,9 @@ class TasksScrollView: NSScrollView {
         dataSource = ReportsDataSource(tableView: tableView, reports: reports)
         tableView!.dataSource = dataSource
         tableView!.delegate = dataSource
+        
+        let headerView = ReportsHeaderView()
+        tableView!.headerView = headerView
     }
     
     fileprivate func setup() {        

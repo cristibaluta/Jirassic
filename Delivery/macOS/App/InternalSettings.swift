@@ -58,7 +58,7 @@ class InternalSettings {
         set(on, forKey: "InternalSettings.FirstLaunch-" + version)
     }
     
-    func isFirstLaunch (forVersion version: String) -> Bool {
+    func isFirstLaunch (ofVersion version: String) -> Bool {
         
         guard let oldValue = get("InternalSettings.FirstLaunch-" + version) else {
             return true
