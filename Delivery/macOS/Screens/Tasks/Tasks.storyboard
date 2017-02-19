@@ -10,7 +10,7 @@
         <scene sceneID="dDM-mM-AcD">
             <objects>
                 <viewController storyboardIdentifier="TasksViewController" id="wHU-IX-gfU" customClass="TasksViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
-                    <customView key="view" id="FwC-dy-0bY">
+                    <customView key="view" id="FwC-dy-0bY" customClass="TasksView" customModule="Jirassic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="491" height="442"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
