@@ -30,16 +30,25 @@ class TasksScrollView: NSScrollView {
         self.init(frame: NSRect.zero)
         self.setup()
         
-        dataSource = TasksDataSource(tableView: tableView, tasks: tasks)
+        let dataSource = TasksDataSource(tableView: tableView, tasks: tasks)
         tableView!.dataSource = dataSource
         tableView!.delegate = dataSource
+        
+        dataSource.didAddRow = { [weak self] (row: Int) -> Void in
+            self?.didAddRow!(row)
+        }
+        dataSource.didRemoveRow = { [weak self] (row: Int) -> Void in
+            self?.didRemoveRow!(row)
+        }
+        
+        self.dataSource = dataSource
     }
     
     convenience init (reports: [Report]) {
         self.init(frame: NSRect.zero)
         self.setup()
         
-        dataSource = ReportsDataSource(tableView: tableView, reports: reports)
+        let dataSource = ReportsDataSource(tableView: tableView, reports: reports)
         tableView!.dataSource = dataSource
         tableView!.delegate = dataSource
         
@@ -48,6 +57,8 @@ class TasksScrollView: NSScrollView {
             self?.didChangeSettings?()
         }
         tableView!.headerView = headerView
+        
+        self.dataSource = dataSource
     }
     
     fileprivate func setup() {        

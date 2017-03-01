@@ -42,12 +42,9 @@ class MessageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    deinit {
-        RCLog(self)
-    }
-	
-	// MARK: Actions
+}
+
+extension MessageViewController {
 	
 	@IBAction func handleStartButton (_ sender: NSButton) {
 		self.didPressButton?()

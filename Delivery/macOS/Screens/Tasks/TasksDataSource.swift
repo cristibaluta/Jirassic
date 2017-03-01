@@ -17,7 +17,6 @@ class TasksDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate var tasks: [Task] = []
-    var didSelectRow: ((_ row: Int) -> ())?
     var didAddRow: ((_ row: Int) -> ())?
     var didRemoveRow: ((_ row: Int) -> ())?
     
@@ -106,7 +105,7 @@ extension TasksDataSource: NSTableViewDelegate {
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViews({ (rowView, rowIndex) -> Void in
                 if rowView.subviews.first! == cell as! NSTableRowView {
-                    self?.didRemoveRow?(rowIndex)
+                    self?.didRemoveRow!(rowIndex)
                     return
                 }
             })
@@ -115,7 +114,7 @@ extension TasksDataSource: NSTableViewDelegate {
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViews( { rowView, rowIndex in
                 if rowView.subviews.first! == cell as! NSTableRowView {
-                    self?.didAddRow?(rowIndex)
+                    self?.didAddRow!(rowIndex)
                     return
                 }
             })

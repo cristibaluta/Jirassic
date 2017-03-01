@@ -140,14 +140,6 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView!.frame = r
         splitView!.subviews[SplitViewColumn.tasks.rawValue].addSubview(tasksScrollView!)
         tasksScrollView!.constrainToSuperview()
-        tasksScrollView!.didChangeSettings = { [weak self] in
-            if let strong = self {
-                if let day = strong.calendarScrollView!.selectedDay {
-                    strong.tasksPresenter!.reloadTasksOnDay(day, listType: .report)
-                }
-            }
-        }
-        
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
     }
