@@ -1265,6 +1265,7 @@
 		4065D3141DD3A1AA00B73201 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1282,6 +1283,7 @@
 		4065D3151DD3A1AA00B73201 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
