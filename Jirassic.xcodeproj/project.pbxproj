@@ -135,6 +135,7 @@
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
 		5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7661DE8721100CA545E /* LoginViewController.swift */; };
 		5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C76B1DE8724400CA545E /* AccountViewController.swift */; };
+		56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,6 +298,7 @@
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		5685C7661DE8721100CA545E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5685C76B1DE8724400CA545E /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +374,7 @@
 		405B15641DEF66EE0009871C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */,
 				4065D35B1DD3B44200B73201 /* Images.xcassets */,
 				4065D35C1DD3B44200B73201 /* Info.plist */,
 				2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */,
@@ -797,6 +800,7 @@
 				4065D3011DD3A1AA00B73201 /* Frameworks */,
 				4065D3021DD3A1AA00B73201 /* Resources */,
 				4055B1351E0D81E600279430 /* CopyFiles */,
+				56CD22C01E72F8C400F9CDB8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -927,6 +931,7 @@
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
+				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
 				4065D3D21DD3B44200B73201 /* jirassic in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
@@ -943,6 +948,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56CD22C01E72F8C400F9CDB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/Delivery/macOS/BuildScript.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4055B11F1E0D802300279430 /* Sources */ = {
