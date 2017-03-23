@@ -12,7 +12,7 @@ class ReportsHeaderView: NSTableHeaderView {
     
     fileprivate var butRound: NSButton
     fileprivate var butPercents: NSButton
-    fileprivate let settings = InternalSettings()
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     var didChangeSettings: (() -> ())?
     
     init() {
@@ -21,13 +21,13 @@ class ReportsHeaderView: NSTableHeaderView {
         butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
         butRound.attributedTitle = NSAttributedString(string: "Round to 8 hours", attributes: [ NSForegroundColorAttributeName : NSColor.white])
         butRound.setButtonType(NSSwitchButton)
-        butRound.state = settings.roundDay ? NSOnState : NSOffState
+        butRound.state = localPreferences.bool(.roundDay)  ? NSOnState : NSOffState
         
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
         butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: [ NSForegroundColorAttributeName : NSColor.white])
         butPercents.setButtonType(NSSwitchButton)
-        butPercents.state = settings.usePercents ? NSOnState : NSOffState
+        butPercents.state = localPreferences.bool(.usePercents) ? NSOnState : NSOffState
         
         super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
         
@@ -53,12 +53,12 @@ class ReportsHeaderView: NSTableHeaderView {
 extension ReportsHeaderView {
     
     func handleRoundButton (_ sender: NSButton) {
-        settings.roundDay = sender.state == NSOnState
+        localPreferences.set(sender.state == NSOnState, forKey: .roundDay)
         didChangeSettings?()
     }
     
     func handlePercentsButton (_ sender: NSButton) {
-        settings.usePercents = sender.state == NSOnState
+        localPreferences.set(sender.state == NSOnState, forKey: .usePercents)
         didChangeSettings?()
     }
 }

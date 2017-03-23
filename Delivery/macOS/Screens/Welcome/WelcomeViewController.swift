@@ -11,6 +11,7 @@ import Cocoa
 class WelcomeViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +19,12 @@ class WelcomeViewController: NSViewController {
     }
     
     @IBAction func handleStartButton (_ sender: NSButton) {
-        InternalSettings().setFirstLaunch(false, forVersion: Versioning.appVersion)
+        localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
         appWireframe!.flipToTasksController()
     }
     
     @IBAction func handleSettingsButton (_ sender: NSButton) {
-        InternalSettings().setFirstLaunch(false, forVersion: Versioning.appVersion)
+        localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
         appWireframe!.flipToSettingsController()
     }
 }

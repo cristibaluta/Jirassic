@@ -24,6 +24,7 @@ protocol SettingsInteractorOutput: class {
 class SettingsInteractor {
     
     weak var presenter: SettingsInteractorOutput?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     
     init() {
         
@@ -44,6 +45,6 @@ extension SettingsInteractor: SettingsInteractorInput {
         
         let identifier = "com.ralcr.Jirassic.osx.launcher"
         let launchAtStartup = SMLoginItemSetEnabled(identifier as CFString, enabled)
-        InternalSettings().launchAtStartup = launchAtStartup ? enabled : false
+        localPreferences.set(launchAtStartup ? enabled : false, forKey: .launchAtStartup)
     }
 }

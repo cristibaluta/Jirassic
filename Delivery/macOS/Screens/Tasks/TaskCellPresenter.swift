@@ -22,7 +22,7 @@ class TaskCellPresenter: NSObject {
 //		var duration = ""
 		var statusImage: NSImage?
 		
-        if let thePreviosData = previousTask {
+        if let _ = previousTask {
             // When we have a previous item to compare dates with
             switch theTask.taskType {
                 

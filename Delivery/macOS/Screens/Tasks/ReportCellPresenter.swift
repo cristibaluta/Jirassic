@@ -26,8 +26,8 @@ class ReportCellPresenter: NSObject {
             notes: theReport.notes,
             taskType: .issue
         )
-        let settings = InternalSettings()
-        cell.duration = settings.usePercents 
+        let localPreferences = RCPreferences<LocalPreferences>()
+        cell.duration = localPreferences.bool(.usePercents) 
             ? "\(Date.secondsToPercentTime(theReport.duration))"
             : Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell.statusImage?.image = NSImage(named: NSImageNameStatusAvailable)

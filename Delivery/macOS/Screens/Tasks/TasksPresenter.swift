@@ -45,7 +45,7 @@ class TasksPresenter {
     fileprivate var currentTasks = [Task]()
     fileprivate var currentReports = [Report]()
     fileprivate var selectedListType = ListType.allTasks
-    fileprivate let internalSettings = InternalSettings()
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var lastSelectedDay: Day?
 }
 
@@ -69,7 +69,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         
         let settings = SettingsInteractor().getAppSettings()
-        let targetHoursInDay = internalSettings.roundDay 
+        let targetHoursInDay = localPreferences.bool(.roundDay) 
             ? settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime) 
             : nil
         let reader = ReadTasksInteractor(repository: localRepository)

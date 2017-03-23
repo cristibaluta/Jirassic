@@ -32,6 +32,7 @@ class SettingsPresenter {
     fileprivate var scriptsInstaller = AppleScriptsInteractor()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 }
 
 extension SettingsPresenter: SettingsPresenterInput {
@@ -76,7 +77,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     func showSettings() {
         let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
-        userInterface!.enabledLaunchAtStartup( InternalSettings().launchAtStartup )
+        userInterface!.enabledLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
     }
     
     func saveAppSettings (_ settings: Settings) {

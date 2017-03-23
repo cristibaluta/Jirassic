@@ -11,6 +11,23 @@ import Cocoa
 var localRepository: Repository!
 var remoteRepository: Repository?
 
+enum LocalPreferences: String, RCPreferencesProtocol {
+    
+    case launchAtStartup = "launchAtStartup"
+    case roundDay = "roundDay"
+    case usePercents = "usePercents"
+    case firstLaunch = "firstLaunch"
+    
+    func defaultValue() -> Any {
+        switch self {
+        case .launchAtStartup:          return false
+        case .roundDay:                 return false
+        case .usePercents:              return true
+        case .firstLaunch:              return true
+        }
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 	
@@ -18,7 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activePopover: NSPopover?
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
-	fileprivate let menu = MenuBarController()
+    fileprivate let menu = MenuBarController()
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
     class func sharedApp() -> AppDelegate {
         return NSApplication.shared().delegate as! AppDelegate
@@ -28,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		super.init()
         
         // For testing
-//        UserDefaults.standard.removeObject(forKey: "InternalSettings.FirstLaunch-" + version)
+        //localPreferences.reset()
         
         localRepository = CoreDataRepository()
 //		remoteRepository = CloudKitRepository()
@@ -38,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (wself.menu.iconView?.isSelected == true) {
                     wself.removeActivePopup()
                     
-                    let firstLaunch = InternalSettings().isFirstLaunch(ofVersion: Versioning.appVersion)
+                    let firstLaunch = wself.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
                     if firstLaunch {
                         wself.presentWelcomePopup()
                     } else {
