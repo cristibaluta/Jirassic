@@ -1,5 +1,5 @@
 //
-//  CoreDataManager.swift
+//  CoreDataRepository.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 15/04/16.
@@ -11,14 +11,14 @@ import CoreData
 
 class CoreDataRepository {
     
-    let databaseName = "Jirassic"
+    fileprivate let databaseName = "Jirassic"
     
     lazy var applicationDocumentsDirectory: URL = {
-        
+        print("get applicationDocumentsDirectory")
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
         let baseUrl = urls.last!
         let url = baseUrl.appendingPathComponent(self.databaseName)
-        RCLog(url)
+        print(url)
         
         if !FileManager.default.fileExists(atPath: url.path) {
             do {
@@ -30,27 +30,33 @@ class CoreDataRepository {
         return url
     }()
     
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = Bundle.main.url(forResource: self.databaseName, withExtension: "momd")!
-        return NSManagedObjectModel(contentsOf: modelURL)!
-    }()
-    
     func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
-        
+        print("get persistentStoreCoordinator")
         let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.appendingPathComponent("\(self.databaseName).sqlite")
-        
+        print(coordinator)
+        print(applicationDocumentsDirectory)
+        let url = applicationDocumentsDirectory.appendingPathComponent("\(databaseName).sqlite")
+        print(url)
         do {
             try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
             return coordinator
         } catch _ {
+            print("NO PERSISTENT")
             return nil
         }
     }
     
+    lazy var managedObjectModel: NSManagedObjectModel = {
+        print("get managedObjectModel")
+        let modelURL = Bundle.main.url(forResource: self.databaseName, withExtension: "momd")
+        print(modelURL)
+        return NSManagedObjectModel(contentsOf: modelURL!)!
+    }()
+    
     lazy var managedObjectContext: NSManagedObjectContext? = {
-        
+        print("get managedObjectContext")
         guard let coordinator = self.persistentStoreCoordinator() else {
+            print("NO PERSISTENT")
             return nil
         }
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
@@ -73,6 +79,7 @@ class CoreDataRepository {
     convenience init (documentsDirectory: String) {
         self.init()
         applicationDocumentsDirectory = URL(fileURLWithPath: documentsDirectory)
+        print(applicationDocumentsDirectory)
     }
 }
 

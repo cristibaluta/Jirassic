@@ -4,6 +4,6 @@
 
 *.xcworkspacedata
 
-*.xcscheme
-
 *.xccheckout
+
+web

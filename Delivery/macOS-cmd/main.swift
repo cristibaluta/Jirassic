@@ -43,8 +43,8 @@ func printHelp() {
 let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
 let libraryDirectory = urls.first!
 let jirassicSandboxedAppSupportDir = libraryDirectory.appendingPathComponent("Containers/com.ralcr.Jirassic.osx/Data/Library/Application Support/Jirassic")
-//print(urls)
-//print(jirassicSandboxedAppSupportDir)
+print(urls)
+print(jirassicSandboxedAppSupportDir)
 // /Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application%20Support/Jirassic/
 // /Users/Cristian/Library/Application%20Support/Jirassic/
 let localRepository: Repository! = CoreDataRepository(documentsDirectory: jirassicSandboxedAppSupportDir.path)
@@ -57,7 +57,9 @@ var remoteRepository: Repository?
 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
-//print(arguments)
+arguments.append("list")
+//arguments.append("2017.03.01")
+print(arguments)
 arguments.remove(at: 0)// First arg is the filepath and needs to be removed
 
 guard arguments.count > 0 else {
@@ -77,6 +79,8 @@ func dayStarted() -> Bool {
 }
 
 func list (dayOnDate date: Date) {
+    
+    print("")
     let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
     if tasks.count > 0 {
@@ -86,9 +90,12 @@ func list (dayOnDate date: Date) {
     } else {
         print("No tasks!")
     }
+    print("")
 }
 
 func reports (dayOnDate date: Date) {
+    
+    print("")
     let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
     if tasks.count > 0 {
@@ -98,6 +105,7 @@ func reports (dayOnDate date: Date) {
     } else {
         print("No tasks!")
     }
+    print("")
 }
 
 func insertIssue (arguments: [String]) {
@@ -195,7 +203,12 @@ let commandStr = arguments.remove(at: 0)
 if let command = Command(rawValue: commandStr) {
     switch command {
         case .list:
-            list (dayOnDate: Date())
+            var date = Date()
+            if arguments.count > 0 {
+                let arg = arguments.remove(at: 0)
+                date = Date(YYYYMMddString: arg)
+            }
+            list (dayOnDate: date)
             break
         case .reports:
             reports (dayOnDate: Date())

@@ -40,6 +40,15 @@ extension Date {
 		
 		self.init(timeInterval: 0, since: gregorian.date(from: comps)!)
 	}
+    
+    init (YYYYMMddString: String) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        let date = dateFormatter.date(from: YYYYMMddString)
+        
+        self.init(timeInterval: 0, since: date!)
+    }
 }
 
 extension Date {
