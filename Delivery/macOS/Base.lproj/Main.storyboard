@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -646,72 +646,6 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="-1039"/>
-        </scene>
-        <!--Message View Controller-->
-        <scene sceneID="qnk-He-sUt">
-            <objects>
-                <viewController storyboardIdentifier="MessageViewController" id="bVC-7U-s4Z" customClass="MessageViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="JCn-4d-cll">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-8Y-N3H">
-                                <rect key="frame" x="183" y="104" width="84" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="84" id="WFf-3D-D74"/>
-                                    <constraint firstAttribute="height" constant="21" id="ZxE-ET-YU7"/>
-                                </constraints>
-                                <buttonCell key="cell" type="inline" title="Start day" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNR-UV-oHT">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleStartButton:" target="bVC-7U-s4Z" id="iuh-wp-mgt"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rbU-ec-RHL">
-                                <rect key="frame" x="-2" y="139" width="454" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="yK8-kZ-ZiA"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="nbU-Rc-uag">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="windowFrameColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cUg-BX-59h">
-                                <rect key="frame" x="-2" y="169" width="454" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="qSP-if-TRP"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No task yet!" id="ihR-AE-q10">
-                                    <font key="font" metaFont="system" size="20"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="cUg-BX-59h" firstAttribute="leading" secondItem="JCn-4d-cll" secondAttribute="leading" id="49A-Cb-qM5"/>
-                            <constraint firstItem="rbU-ec-RHL" firstAttribute="bottom" secondItem="eVC-8Y-N3H" secondAttribute="bottom" constant="-34" id="AgH-uo-3m6"/>
-                            <constraint firstAttribute="trailing" secondItem="rbU-ec-RHL" secondAttribute="trailing" id="GPF-o3-sAZ"/>
-                            <constraint firstItem="rbU-ec-RHL" firstAttribute="top" secondItem="cUg-BX-59h" secondAttribute="bottom" constant="8" id="O5P-IB-9OM"/>
-                            <constraint firstAttribute="trailing" secondItem="cUg-BX-59h" secondAttribute="trailing" id="VNA-0A-7ec"/>
-                            <constraint firstItem="rbU-ec-RHL" firstAttribute="leading" secondItem="JCn-4d-cll" secondAttribute="leading" id="YSF-VA-WlY"/>
-                            <constraint firstAttribute="centerX" secondItem="eVC-8Y-N3H" secondAttribute="centerX" id="lrK-ul-V9G"/>
-                            <constraint firstAttribute="centerY" secondItem="rbU-ec-RHL" secondAttribute="centerY" id="n9K-Pa-rkC"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="button" destination="eVC-8Y-N3H" id="d1S-ap-KSw"/>
-                        <outlet property="messageLabel" destination="rbU-ec-RHL" id="CIo-87-9kb"/>
-                        <outlet property="titleLabel" destination="cUg-BX-59h" id="Bl5-mb-gWg"/>
-                    </connections>
-                </viewController>
-                <customObject id="udK-4D-ctN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="77" y="-395"/>
         </scene>
         <!--App View Controller-->
         <scene sceneID="cm9-ck-QOK">

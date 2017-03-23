@@ -17,7 +17,7 @@ class AppWireframe {
 
     fileprivate var _appViewController: AppViewController?
     fileprivate var currentController: NSViewController?
-    fileprivate var _messageViewController: MessageViewController?
+    fileprivate var _placeholderViewController: PlaceholderViewController?
     fileprivate var _newTaskViewController: NewTaskViewController?
     
     var appViewController: AppViewController {
@@ -93,8 +93,8 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var messageViewController: MessageViewController {
-        return MessageViewController.instantiateFromStoryboard("Main")
+    fileprivate var placeholderViewController: PlaceholderViewController {
+        return PlaceholderViewController.instantiateFromStoryboard("Placeholder")
     }
 }
 
@@ -176,26 +176,26 @@ extension AppWireframe {
         return controller
     }
     
-    func presentMessage (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) -> MessageViewController {
+    func presentPlaceholder (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) -> PlaceholderViewController {
         
-        var controller = _messageViewController
+        var controller = _placeholderViewController
         
         if controller == nil {
-            controller = self.messageViewController
+            controller = self.placeholderViewController
             appViewController.addChildViewController(controller!)
             splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(controller!.view)
             controller!.view.constrainToSuperview()
-            _messageViewController = controller
+            _placeholderViewController = controller
         }
         controller!.viewModel = message
         
         return controller!
     }
     
-    func removeMessage() {
-        if let controller = _messageViewController {
+    func removePlaceholder() {
+        if let controller = _placeholderViewController {
             removeController(controller)
-            _messageViewController = nil
+            _placeholderViewController = nil
         }
     }
     
@@ -238,7 +238,7 @@ extension AppWireframe {
         let flip = FlipAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
-            self.removeMessage()
+            self.removePlaceholder()
             self.addController(settingsController)
             self.currentController = settingsController
         }

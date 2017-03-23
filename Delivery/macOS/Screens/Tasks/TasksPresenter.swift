@@ -102,7 +102,7 @@ extension TasksPresenter: TasksPresenterInput {
                 message: "When you're ready with your first task click \n'+' or 'Log time'",
                 buttonTitle: "Log time"))
         } else {
-            appWireframe!.removeMessage()
+            appWireframe!.removePlaceholder()
         }
     }
     

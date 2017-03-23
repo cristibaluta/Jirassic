@@ -154,7 +154,7 @@ extension AppDelegate {
         if let popover = activePopover {
             appWireframe.hidePopover(popover)
             appWireframe.removeNewTaskController()
-            appWireframe.removeMessage()
+            appWireframe.removePlaceholder()
             appWireframe.removeCurrentController()
             activePopover = nil
         }

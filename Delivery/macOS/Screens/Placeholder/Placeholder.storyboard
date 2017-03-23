@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Placeholder View Controller-->
+        <scene sceneID="GmZ-gD-vCb">
+            <objects>
+                <customObject id="UqC-ap-ctp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="PlaceholderViewController" id="eiK-MM-LiK" customClass="PlaceholderViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="o3K-nw-a6h">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-HK-p1X">
+                                <rect key="frame" x="183" y="104" width="84" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="U3c-3g-yGf"/>
+                                    <constraint firstAttribute="height" constant="21" id="dy9-u4-0of"/>
+                                </constraints>
+                                <buttonCell key="cell" type="inline" title="Start day" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FGE-Fq-6Z5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleStartButton:" target="eiK-MM-LiK" id="Pxp-zE-b0E"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-io-OfB">
+                                <rect key="frame" x="-2" y="139" width="454" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="o0g-0n-8No"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="4yf-MA-WY8">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="windowFrameColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pqi-kL-eQt">
+                                <rect key="frame" x="-2" y="169" width="454" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="ePv-0m-7Vx"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No task yet!" id="bZw-Ma-Ra6">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pqi-kL-eQt" secondAttribute="trailing" id="EqZ-EB-3Hd"/>
+                            <constraint firstAttribute="centerX" secondItem="vXy-HK-p1X" secondAttribute="centerX" id="Jjz-id-Bhj"/>
+                            <constraint firstItem="Icp-io-OfB" firstAttribute="bottom" secondItem="vXy-HK-p1X" secondAttribute="bottom" constant="-34" id="QXN-Xc-iD9"/>
+                            <constraint firstItem="Icp-io-OfB" firstAttribute="leading" secondItem="o3K-nw-a6h" secondAttribute="leading" id="Qwy-xs-YxL"/>
+                            <constraint firstItem="Icp-io-OfB" firstAttribute="top" secondItem="pqi-kL-eQt" secondAttribute="bottom" constant="8" id="c0N-1H-Xrc"/>
+                            <constraint firstAttribute="trailing" secondItem="Icp-io-OfB" secondAttribute="trailing" id="nab-tg-Fuv"/>
+                            <constraint firstAttribute="centerY" secondItem="Icp-io-OfB" secondAttribute="centerY" id="oiz-ur-I8h"/>
+                            <constraint firstItem="pqi-kL-eQt" firstAttribute="leading" secondItem="o3K-nw-a6h" secondAttribute="leading" id="pyI-Nn-O1j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="vXy-HK-p1X" id="p0f-i7-UEO"/>
+                        <outlet property="messageLabel" destination="Icp-io-OfB" id="3ky-bK-VSS"/>
+                        <outlet property="titleLabel" destination="pqi-kL-eQt" id="LBk-cK-a7e"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="77" y="-395"/>
+        </scene>
+    </scenes>
+</document>

@@ -88,7 +88,7 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showMessage (_ message: MessageViewModel) {
         
-        let controller = appWireframe!.presentMessage(message, intoSplitView: splitView!)
+        let controller = appWireframe!.presentPlaceholder(message, intoSplitView: splitView!)
         controller.didPressButton = tasksPresenter?.messageButtonDidPress
     }
     
@@ -151,7 +151,7 @@ extension TasksViewController: TasksPresenterOutput {
     func presentNewTaskController (withInitialDate date: Date) {
         
         splitView!.isHidden = true
-        appWireframe!.removeMessage()
+        appWireframe!.removePlaceholder()
         hideControls(true)
         
         let controller = appWireframe!.presentNewTaskController()

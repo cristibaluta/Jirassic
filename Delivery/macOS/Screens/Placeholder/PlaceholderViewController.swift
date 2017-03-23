@@ -1,5 +1,5 @@
 //
-//  NoTasksViewController.swift
+//  PlaceholderViewController.swift
 //  Jirassic
 //
 //  Created by Baluta Cristian on 06/05/15.
@@ -10,7 +10,7 @@ import Cocoa
 
 typealias MessageViewModel = (title: String?, message: String?, buttonTitle: String?)
 
-class MessageViewController: NSViewController {
+class PlaceholderViewController: NSViewController {
 
     @IBOutlet fileprivate weak var titleLabel: NSTextField!
     @IBOutlet fileprivate weak var messageLabel: NSTextField!
@@ -44,7 +44,7 @@ class MessageViewController: NSViewController {
     }
 }
 
-extension MessageViewController {
+extension PlaceholderViewController {
 	
 	@IBAction func handleStartButton (_ sender: NSButton) {
 		self.didPressButton?()
