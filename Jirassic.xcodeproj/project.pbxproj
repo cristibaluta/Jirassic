@@ -15,11 +15,12 @@
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
 		28E896631E830D6700722032 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
+		28E896711E83732200722032 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8966F1E83732200722032 /* AppDelegate.m */; };
+		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
+		28E896751E83770D00722032 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E896731E83770D00722032 /* MainMenu.xib */; };
 		28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */; };
 		28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9381E59EC1500B360A4 /* TasksView.swift */; };
 		400E7BFA1E0EEFA800D19FFD /* InternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */; };
-		4051D5F31E0EA0EA002042BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F11E0EA0EA002042BB /* AppDelegate.swift */; };
-		4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4051D5F41E0EA0F3002042BB /* Main.storyboard */; };
 		4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
 		4055B1361E0D821500279430 /* JirassicLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4055B1231E0D802300279430 /* JirassicLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
@@ -180,13 +181,15 @@
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		28E896621E830D6700722032 /* Placeholder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
+		28E8966E1E83732200722032 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "macOS-launcher/AppDelegate.h"; sourceTree = "<group>"; };
+		28E8966F1E83732200722032 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "macOS-launcher/AppDelegate.m"; sourceTree = "<group>"; };
+		28E896701E83732200722032 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "macOS-launcher/main.m"; sourceTree = "<group>"; };
+		28E896741E83770D00722032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "macOS-launcher/Base.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
 		28EDE9381E59EC1500B360A4 /* TasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		400E7BF91E0EEFA800D19FFD /* InternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalSettings.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
-		4051D5F11E0EA0EA002042BB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "macOS-launcher/AppDelegate.swift"; sourceTree = "<group>"; };
-		4051D5F51E0EA0F3002042BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "macOS-launcher/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		4051D5F71E0EA320002042BB /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
 		4051D5F81E0EA48A002042BB /* AppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		4055B1231E0D802300279430 /* JirassicLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JirassicLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,9 +367,11 @@
 		4055B13A1E0E663800279430 /* macOS-launcher */ = {
 			isa = PBXGroup;
 			children = (
-				4051D5F11E0EA0EA002042BB /* AppDelegate.swift */,
+				28E8966E1E83732200722032 /* AppDelegate.h */,
+				28E8966F1E83732200722032 /* AppDelegate.m */,
+				28E896701E83732200722032 /* main.m */,
 				4051D5F01E0EA0EA002042BB /* Info.plist */,
-				4051D5F41E0EA0F3002042BB /* Main.storyboard */,
+				28E896731E83770D00722032 /* MainMenu.xib */,
 				4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */,
 			);
 			name = "macOS-launcher";
@@ -879,6 +884,7 @@
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -925,7 +931,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4051D5F61E0EA0F3002042BB /* Main.storyboard in Resources */,
+				28E896751E83770D00722032 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,7 +971,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4051D5F31E0EA0EA002042BB /* AppDelegate.swift in Sources */,
+				28E896721E83732200722032 /* main.m in Sources */,
+				28E896711E83732200722032 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,12 +1119,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4051D5F41E0EA0F3002042BB /* Main.storyboard */ = {
+		28E896731E83770D00722032 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4051D5F51E0EA0F3002042BB /* Base */,
+				28E896741E83770D00722032 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		4065D3431DD3B44200B73201 /* LaunchScreen.xib */ = {
@@ -1163,7 +1170,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1182,7 +1188,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1281,8 +1286,8 @@
 		4065D3141DD3A1AA00B73201 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1292,6 +1297,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1299,8 +1305,8 @@
 		4065D3151DD3A1AA00B73201 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
