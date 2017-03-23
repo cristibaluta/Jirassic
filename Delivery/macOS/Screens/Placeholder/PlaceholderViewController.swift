@@ -47,6 +47,7 @@ class PlaceholderViewController: NSViewController {
 extension PlaceholderViewController {
 	
 	@IBAction func handleStartButton (_ sender: NSButton) {
+        RCLog(sender)
 		self.didPressButton?()
 	}
 }

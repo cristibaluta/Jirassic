@@ -183,10 +183,10 @@ extension AppWireframe {
         if controller == nil {
             controller = self.placeholderViewController
             appViewController.addChildViewController(controller!)
-            splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(controller!.view)
-            controller!.view.constrainToSuperview()
             _placeholderViewController = controller
         }
+        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(controller!.view)
+        controller!.view.constrainToSuperview()
         controller!.viewModel = message
         
         return controller!

@@ -89,7 +89,9 @@ extension TasksViewController: TasksPresenterOutput {
     func showMessage (_ message: MessageViewModel) {
         
         let controller = appWireframe!.presentPlaceholder(message, intoSplitView: splitView!)
-        controller.didPressButton = tasksPresenter?.messageButtonDidPress
+        controller.didPressButton = {
+            self.tasksPresenter?.messageButtonDidPress()
+        }
     }
     
     func showDates (_ weeks: [Week]) {
