@@ -847,9 +847,9 @@
 			productReference = 4065D4021DD4532100B73201 /* JirassicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4065D40F1DD4534C00B73201 /* jirassic-cli */ = {
+		4065D40F1DD4534C00B73201 /* jirassic-cmd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cli" */;
+			buildConfigurationList = 4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */;
 			buildPhases = (
 				4065D40C1DD4534C00B73201 /* Sources */,
 				4065D40D1DD4534C00B73201 /* Frameworks */,
@@ -859,7 +859,7 @@
 			);
 			dependencies = (
 			);
-			name = "jirassic-cli";
+			name = "jirassic-cmd";
 			productName = "jirassic-cmd";
 			productReference = 4065D4101DD4534C00B73201 /* jirassic */;
 			productType = "com.apple.product-type.tool";
@@ -924,7 +924,7 @@
 			targets = (
 				4065D3031DD3A1AA00B73201 /* Jirassic */,
 				4065D4011DD4532100B73201 /* JirassicTests */,
-				4065D40F1DD4534C00B73201 /* jirassic-cli */,
+				4065D40F1DD4534C00B73201 /* jirassic-cmd */,
 				4055B1221E0D802300279430 /* JirassicLauncher */,
 			);
 		};
@@ -1419,7 +1419,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cli" */ = {
+		4065D4141DD4534C00B73201 /* Build configuration list for PBXNativeTarget "jirassic-cmd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4065D4151DD4534C00B73201 /* Debug */,
