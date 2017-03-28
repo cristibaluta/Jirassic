@@ -17,6 +17,19 @@
 		28577E9A1E899870002B07FD /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 28E896851E845AB800722032 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28577E9C1E89A97A002B07FD /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 28577E961E89979E002B07FD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28577E9D1E89A982002B07FD /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 28E896851E845AB800722032 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
+		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
+		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
+		28577EAE1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
+		28577EAF1E8ADC53002B07FD /* STask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA91E8ADC53002B07FD /* STask.swift */; };
+		28577EB01E8ADC53002B07FD /* STask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA91E8ADC53002B07FD /* STask.swift */; };
+		28577EB11E8ADC53002B07FD /* SUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EAA1E8ADC53002B07FD /* SUser.swift */; };
+		28577EB21E8ADC53002B07FD /* SUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EAA1E8ADC53002B07FD /* SUser.swift */; };
+		28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB31E8AF08F002B07FD /* SQLiteDB.swift */; };
+		28577EB61E8AF08F002B07FD /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB31E8AF08F002B07FD /* SQLiteDB.swift */; };
+		28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
+		28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
+		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -217,6 +230,14 @@
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		28577E961E89979E002B07FD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
+		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
+		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
+		28577EAA1E8ADC53002B07FD /* SUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUser.swift; sourceTree = "<group>"; };
+		28577EB31E8AF08F002B07FD /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
+		28577EB41E8AF08F002B07FD /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
+		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -364,6 +385,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */,
 				28577E971E89979E002B07FD /* Realm.framework in Frameworks */,
 				4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */,
 				28E8968D1E845AB800722032 /* RealmSwift.framework in Frameworks */,
@@ -406,6 +428,19 @@
 			path = Placeholder;
 			sourceTree = "<group>";
 		};
+		28577EA01E8ADBBD002B07FD /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				28577EA71E8ADC53002B07FD /* SqliteRepository.swift */,
+				28577EA81E8ADC53002B07FD /* SSettings.swift */,
+				28577EA91E8ADC53002B07FD /* STask.swift */,
+				28577EAA1E8ADC53002B07FD /* SUser.swift */,
+				28577EB31E8AF08F002B07FD /* SQLiteDB.swift */,
+				28577EB41E8AF08F002B07FD /* SQLTable.swift */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
 		28E896821E845AB800722032 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +457,7 @@
 		4055B1371E0D82A800279430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28577EB91E8AF379002B07FD /* libsqlite3.tbd */,
 				4055B1381E0D82A900279430 /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
@@ -456,6 +492,7 @@
 				56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */,
 				4065D35B1DD3B44200B73201 /* Images.xcassets */,
 				4065D35C1DD3B44200B73201 /* Info.plist */,
+				28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */,
 				2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */,
 				4065D3611DD3B44200B73201 /* jirassic.sdef */,
 				4051D5F71E0EA320002042BB /* Jirassic.entitlements */,
@@ -736,6 +773,7 @@
 		4065D3881DD3B44200B73201 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				28577EA01E8ADBBD002B07FD /* sqlite */,
 				28E896821E845AB800722032 /* Realm */,
 				4065D3891DD3B44200B73201 /* CloudKit */,
 				4065D38B1DD3B44200B73201 /* CoreData */,
@@ -1055,7 +1093,9 @@
 				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
 				405B15661DEF75660009871C /* AppViewController.swift in Sources */,
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
+				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				4065D3F61DD3B44200B73201 /* CUser.swift in Sources */,
+				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
 				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
@@ -1089,7 +1129,9 @@
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
+				28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
+				28577EAF1E8ADC53002B07FD /* STask.swift in Sources */,
 				2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */,
 				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
@@ -1107,6 +1149,7 @@
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				28E896911E845AB800722032 /* RTask.swift in Sources */,
+				28577EB11E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D3F71DD3B44200B73201 /* Jirassic.xcdatamodeld in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
@@ -1121,6 +1164,7 @@
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				4065D3F81DD3B44200B73201 /* InMemoryCoreDataRepository.swift in Sources */,
 				28E8967A1E83845900722032 /* RCPreferences.swift in Sources */,
+				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
@@ -1159,9 +1203,12 @@
 			files = (
 				28E896941E845AB800722032 /* RUser.swift in Sources */,
 				40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */,
+				28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				4065D42D1DD4576C00B73201 /* Day.swift in Sources */,
+				28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				4065D41D1DD454DF00B73201 /* CUser.swift in Sources */,
 				28E896921E845AB800722032 /* RTask.swift in Sources */,
+				28577EAE1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */,
 				4065D41A1DD454DF00B73201 /* CoreDataRepository.swift in Sources */,
 				4065D4321DD457B500B73201 /* Conversions.swift in Sources */,
@@ -1177,9 +1224,12 @@
 				4065D41E1DD454E400B73201 /* Jirassic.xcdatamodeld in Sources */,
 				4065D4311DD457B000B73201 /* DateExtension.swift in Sources */,
 				28E8968C1E845AB800722032 /* RealmRepository.swift in Sources */,
+				28577EB01E8ADC53002B07FD /* STask.swift in Sources */,
 				4065D4291DD4575B00B73201 /* Week.swift in Sources */,
 				28E896901E845AB800722032 /* RSettings.swift in Sources */,
+				28577EB21E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */,
+				28577EB61E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				4065D41C1DD454DF00B73201 /* CTask.swift in Sources */,
 				4065D4181DD454C500B73201 /* Repository.swift in Sources */,
 			);
@@ -1383,6 +1433,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};

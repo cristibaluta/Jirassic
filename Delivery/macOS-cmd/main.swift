@@ -47,7 +47,7 @@ print(urls)
 print(jirassicSandboxedAppSupportDir)
 // /Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application%20Support/Jirassic/
 // /Users/Cristian/Library/Application%20Support/Jirassic/
-let localRepository: Repository! = CoreDataRepository(documentsDirectory: jirassicSandboxedAppSupportDir.path)
+let localRepository: Repository! = RealmRepository(documentsDirectory: jirassicSandboxedAppSupportDir.path)
 var remoteRepository: Repository?
 
 
