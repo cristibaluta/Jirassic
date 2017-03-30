@@ -20,55 +20,59 @@ private let SQLITE_TRANSIENT = unsafeBitCast(-1, to:sqlite3_destructor_type.self
 
 // MARK:- SQLiteDB Class - Does all the work
 @objc(SQLiteDB)
-class SQLiteDB:NSObject {
-	let DB_NAME = "data.db"
+class SQLiteDB: NSObject {
+    
 	let QUEUE_LABEL = "SQLiteDB"
-	static let shared = SQLiteDB()
-	private var db:OpaquePointer? = nil
-	private var queue:DispatchQueue!
+	private var db: OpaquePointer? = nil
+	private var queue: DispatchQueue!
 	private let fmt = DateFormatter()
-	private var path:String!
+	private var path: String!
+    static var shared: SQLiteDB!
 	
-	private override init() {
-		super.init()
-		// Set up for file operations
-		let fm = FileManager.default
-		// Get path to DB in Documents directory
-		var docDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-		// If macOS, add app name to path since otherwise, DB could possibly interfere with another app using SQLiteDB
-#if os(OSX)
-		let info = Bundle.main.infoDictionary!
-		let appName = info["CFBundleName"] as! String
-		docDir = (docDir as NSString).appendingPathComponent(appName)
-		// Create folder if it does not exist
-		if !fm.fileExists(atPath:docDir) {
-			do {
-				try fm.createDirectory(atPath:docDir, withIntermediateDirectories:true, attributes:nil)
-			} catch {
-				assert(false, "SQLiteDB: Error creating DB directory: \(docDir) on macOS")
-				return
-			}
-		}
-#endif
-		let path = (docDir as NSString).appendingPathComponent(DB_NAME)
-		// Check if copy of DB is there in Documents directory
-		if !(fm.fileExists(atPath:path)) {
-			// The database does not exist, so copy to Documents directory
-			guard let rp = Bundle.main.resourcePath else { return }
-			let from = (rp as NSString).appendingPathComponent(DB_NAME)
-			do {
-				try fm.copyItem(atPath:from, toPath:path)
-			} catch let error {
-				assert(false, "SQLiteDB: Failed to copy writable version of DB! Error - \(error.localizedDescription)")
-				return
-			}
-		}
-		openDB(path:path)
-	}
-	
-	private init(path:String) {
-		super.init()
-		openDB(path:path)
+    convenience init (url: URL) {
+		self.init()
+        
+//        if !FileManager.default.fileExists(atPath: url.path) {
+//            do {
+//                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+//            } catch _ {
+//                return baseUrl
+//            }
+//        }
+//        
+//		// Set up for file operations
+//		let fm = FileManager.default
+//		// Get path to DB in Documents directory
+//		var docDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+//		// If macOS, add app name to path since otherwise, DB could possibly interfere with another app using SQLiteDB
+//#if os(OSX)
+//		let info = Bundle.main.infoDictionary!
+//		let appName = info["CFBundleName"] as! String
+//		docDir = (docDir as NSString).appendingPathComponent(appName)
+//		// Create folder if it does not exist
+//		if !fm.fileExists(atPath:docDir) {
+//			do {
+//				try fm.createDirectory(atPath:docDir, withIntermediateDirectories:true, attributes:nil)
+//			} catch {
+//				assert(false, "SQLiteDB: Error creating DB directory: \(docDir) on macOS")
+//				return
+//			}
+//		}
+//#endif
+//		let path = (docDir as NSString).appendingPathComponent(DB_NAME)
+//		// Check if copy of DB is there in Documents directory
+//		if !(fm.fileExists(atPath:path)) {
+//			// The database does not exist, so copy to Documents directory
+//			guard let rp = Bundle.main.resourcePath else { return }
+//			let from = (rp as NSString).appendingPathComponent(DB_NAME)
+//			do {
+//				try fm.copyItem(atPath:from, toPath:path)
+//			} catch let error {
+//				assert(false, "SQLiteDB: Failed to copy writable version of DB! Error - \(error.localizedDescription)")
+//				return
+//			}
+//		}
+//		openDB(path:path)
 	}
 	
 	deinit {
@@ -190,7 +194,7 @@ class SQLiteDB:NSObject {
 			let cntParams = sqlite3_bind_parameter_count(stmt)
 			let cnt = CInt(params!.count)
 			if cntParams != cnt {
-				let msg = "SQLiteDB - failed to bind parameters, counts did not match. SQL: \(sql), Parameters: \(params)"
+				let msg = "SQLiteDB - failed to bind parameters, counts did not match. SQL: \(sql), Parameters: \(String(describing: params))"
 				NSLog(msg)
 				return nil
 			}
@@ -199,7 +203,7 @@ class SQLiteDB:NSObject {
 			for ndx in 1...cnt {
 //				NSLog("Binding: \(params![ndx-1]) at Index: \(ndx)")
 				// Check for data types
-				if let txt = params![ndx-1] as? String {
+				if let txt = params![ndx - 1] as? String {
 					flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
 				} else if let data = params![ndx-1] as? NSData {
 					flag = sqlite3_bind_blob(stmt, CInt(ndx), data.bytes, CInt(data.length), SQLITE_TRANSIENT)
@@ -220,7 +224,7 @@ class SQLiteDB:NSObject {
 				if flag != SQLITE_OK {
 					sqlite3_finalize(stmt)
 					if let error = String(validatingUTF8:sqlite3_errmsg(self.db)) {
-						let msg = "SQLiteDB - failed to bind for SQL: \(sql), Parameters: \(params), Index: \(ndx) Error: \(error)"
+						let msg = "SQLiteDB - failed to bind for SQL: \(sql), Parameters: \(String(describing: params)), Index: \(ndx) Error: \(error)"
 						NSLog(msg)
 					}
 					return nil

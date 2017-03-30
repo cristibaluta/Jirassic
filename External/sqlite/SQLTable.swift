@@ -68,7 +68,7 @@ class SQLTable:NSObject {
 		var res = [SQLTable]()
 		let tmp = self.init()
 		let data = tmp.values()
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		let fsql = sql.isEmpty ? "SELECT * FROM \(table)" : sql
 		let arr = db.query(sql:fsql)
 		for row in arr {
@@ -87,7 +87,7 @@ class SQLTable:NSObject {
 	class func rowBy(id:Any) -> SQLTable? {
 		let row = self.init()
 		let data = row.values()
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		var val = "\(id)"
 		if id is String {
 			val = "'\(id)'"
@@ -106,7 +106,7 @@ class SQLTable:NSObject {
 	}
 	
 	class func count(filter:String="") -> Int {
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		var sql = "SELECT COUNT(*) AS count FROM \(table)"
 		if !filter.isEmpty {
 			sql += " WHERE \(filter)"
@@ -124,7 +124,7 @@ class SQLTable:NSObject {
 	class func row(number:Int, filter:String="", order:String="") -> SQLTable? {
 		let row = self.init()
 		let data = row.values()
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		var sql = "SELECT * FROM \(table)"
 		if !filter.isEmpty {
 			sql += " WHERE \(filter)"
@@ -147,7 +147,7 @@ class SQLTable:NSObject {
 	}
 	
 	class func remove(filter:String = "") -> Bool {
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		let sql:String
 		if filter.isEmpty {
 			// Delete all records
@@ -161,14 +161,14 @@ class SQLTable:NSObject {
 	}
 	
 	class func zap() {
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		let sql = "DELETE FROM \(table)"
 		_ = db.execute(sql:sql)
 	}
 	
 	// MARK:- Public Methods
 	func save() -> Int {
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		let key = primaryKey()
 		let data = values()
 		var insert = true
@@ -205,7 +205,7 @@ class SQLTable:NSObject {
 	}
 	
 	func delete() -> Bool {
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		let key = primaryKey()
 		let data = values()
 		if let rid = data[key] {
@@ -217,7 +217,7 @@ class SQLTable:NSObject {
 	}
 	
 	func refresh() {
-		let db = SQLiteDB.shared
+		let db = SQLiteDB.shared!
 		let key = primaryKey()
 		let data = values()
 		if let rid = data[key] {

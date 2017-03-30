@@ -10,16 +10,27 @@ import Foundation
 
 class SqliteRepository {
     
-    fileprivate let databaseName = "Jirassic"
-    fileprivate let db = SQLiteDB.shared
+    fileprivate let databaseName = "Jirassic2"
+    fileprivate var db: SQLiteDB?
     
     init() {
-//        let fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(databaseName).sqlite")
+        let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        let baseUrl = urls.last!
+        let url = baseUrl.appendingPathComponent(databaseName)
+        if !FileManager.default.fileExists(atPath: url.path) {
+            try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+        }
+        let dbUrl = url.appendingPathComponent("\(databaseName).sqlite")
+        print(dbUrl)
+        db = SQLiteDB(url: dbUrl)
     }
     
     convenience init (documentsDirectory: String) {
         self.init()
-//        let fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(databaseName).sqlite")
+        let baseUrl = URL(fileURLWithPath: documentsDirectory)
+        let url = baseUrl.appendingPathComponent("\(databaseName).sqlite")
+        print(url)
+        db = SQLiteDB(url: url)
     }
 }
 
@@ -27,8 +38,8 @@ extension SqliteRepository {
     
     fileprivate func queryWithPredicate<T: SQLTable> (_ predicate: NSPredicate?, sortingKeyPath: String?) -> [T] {
         
-        var results = [T]()
-        var resultsObjs = T.rows(order: "id ASC") as! [T]
+        let results = [T]()
+//        let resultsObjs = T.rows(order: "id ASC") as! [T]
         
 //        if let pred = predicate {
 //            resultsObjs = resultsObjs.filter(pred)
@@ -102,7 +113,7 @@ extension SqliteRepository: RepositoryTasks {
     func deleteTask (_ task: Task, completion: ((_ success: Bool) -> Void)) {
         
 //        realm.beginWrite()
-        let rtask = rtaskFromTask(task)
+        _ = rtaskFromTask(task)
 //        realm.delete(rtask)
 //        try! realm.commitWrite()
         completion(true)
@@ -142,7 +153,7 @@ extension SqliteRepository: RepositoryTasks {
         
         let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
-        var rtask: STask? = tasks.first
+        let rtask: STask? = tasks.first
         if rtask == nil {
 //            rtask = RTask()
 //            rtask = realm.create(RTask.self)

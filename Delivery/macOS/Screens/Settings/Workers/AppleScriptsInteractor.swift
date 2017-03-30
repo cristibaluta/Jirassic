@@ -71,7 +71,7 @@ class AppleScriptsInteractor {
             uninstallCmds({ success in
                 if success {
                     
-                    if let bookmark = UserDefaults.standard.object(forKey: self.scriptsName) as? NSData as? Data {
+                    if let bookmark = UserDefaults.standard.object(forKey: self.scriptsName) as? NSData as Data? {
                         var stale = false
                         if let url = try? URL(resolvingBookmarkData: bookmark, options: URL.BookmarkResolutionOptions.withSecurityScope,
                                               relativeTo: nil,
