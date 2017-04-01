@@ -1,9 +1,9 @@
 # Jirassic for programmers
 
-![Screenshot](https://s9.postimg.org/ma7lec3in/jirassic4sept.jpg)
-
-Using the browsers to track your work is not human, you have to keep Jira open and switch tabs, you have to remember how much time you’ve spent on tasks, you have to deal with the heavy Jira UI... JIRAssic purpose is to take away all this frustration.
-Jirassic is a Mac app that stays in the status bar and you can access it any time and take notes as you finish tasks. Commiting to Git with our CLI tool called Jit, will log time to JIRAssic as well.
+Using the browsers to track your work is not human, you have to keep Jira open and switch tabs, you have to remember how much time you’ve spent on tasks, you have to deal with the heavy Jira UI... Jirassic purpose is to take away all this frustration.
+Jirassic is a Mac app that stays in the status bar and you can access it any time and take notes as you finish tasks. Commiting to Git with our CLI tool called Jit, will log time to Jirassic as well.
+![Screenshot](https://s15.postimg.org/x0s6u8usr/Screen_Shot_2017-04-01_at_17.59.57.png)
+![Screenshot](https://s22.postimg.org/yvdycqg5t/Screen_Shot_2017-04-01_at_18.00.43.png)
 
 # Who is this for
 - You are forced to use Jira timesheets at work
