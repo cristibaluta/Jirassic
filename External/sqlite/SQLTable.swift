@@ -6,20 +6,17 @@
 //  Copyright © 2015 RookSoft Pte. Ltd. All rights reserved.
 //
 
-#if os(iOS)
-	import UIKit
-#else
-	import AppKit
-#endif
+import Foundation
 
 @objc(SQLTable)
-class SQLTable:NSObject {
+class SQLTable: NSObject {
+    
 	private var table = ""
 	
-	private static var table:String {
+	private static var table: String {
 		let cls = "\(classForCoder())".lowercased()
-		let ndx = cls.characters.index(before:cls.endIndex)
-		let tnm = cls.hasSuffix("y") ? cls.substring(to:ndx) + "ies" : cls + "s"
+		let ndx = cls.characters.index(before: cls.endIndex)
+		let tnm = cls.hasSuffix("y") ? cls.substring(to: ndx) + "ies" : cls + "s"
 		return tnm
 	}
 	
@@ -41,16 +38,16 @@ class SQLTable:NSObject {
 		return []
 	}
 	
-	func setPrimaryKey(val:Any) {
-		setValue(val, forKey:primaryKey())
+	func setPrimaryKey (val: Any) {
+		setValue(val, forKey: primaryKey())
 	}
 
 	func getPrimaryKey() -> Any? {
-		return value(forKey:primaryKey())
-	}
+		return value(forKey: primaryKey())
+	} 
 	
 	// MARK:- Class Methods
-	class func rows(filter:String="", order:String="", limit:Int=0) -> [SQLTable] {
+	class func rows (filter: String = "", order: String = "", limit: Int = 0) -> [SQLTable] {
 		var sql = "SELECT * FROM \(table)"
 		if !filter.isEmpty {
 			sql += " WHERE \(filter)"
@@ -61,16 +58,16 @@ class SQLTable:NSObject {
 		if limit > 0 {
 			sql += " LIMIT 0, \(limit)"
 		}
-		return self.rowsFor(sql:sql)
+		return self.rowsFor(sql: sql)
 	}
 
-	class func rowsFor(sql:String="") -> [SQLTable] {
+	class func rowsFor (sql: String = "") -> [SQLTable] {
 		var res = [SQLTable]()
 		let tmp = self.init()
 		let data = tmp.values()
 		let db = SQLiteDB.shared!
 		let fsql = sql.isEmpty ? "SELECT * FROM \(table)" : sql
-		let arr = db.query(sql:fsql)
+		let arr = db.query(sql: fsql)
 		for row in arr {
 			let t = self.init()
 			for (key, _) in data {
@@ -84,7 +81,7 @@ class SQLTable:NSObject {
 		
 	}
 	
-	class func rowBy(id:Any) -> SQLTable? {
+	class func rowBy (id: Any) -> SQLTable? {
 		let row = self.init()
 		let data = row.values()
 		let db = SQLiteDB.shared!
@@ -93,19 +90,19 @@ class SQLTable:NSObject {
 			val = "'\(id)'"
 		}
 		let sql = "SELECT * FROM \(table) WHERE \(row.primaryKey())=\(val)"
-		let arr = db.query(sql:sql)
+		let arr = db.query(sql: sql)
 		if arr.count == 0 {
 			return nil
 		}
 		for (key, _) in data {
 			if let val = arr[0][key] {
-				row.setValue(val, forKey:key)
+				row.setValue(val, forKey: key)
 			}
 		}
 		return row
 	}
 	
-	class func count(filter:String="") -> Int {
+	class func count (filter: String = "") -> Int {
 		let db = SQLiteDB.shared!
 		var sql = "SELECT COUNT(*) AS count FROM \(table)"
 		if !filter.isEmpty {
@@ -121,7 +118,7 @@ class SQLTable:NSObject {
 		return 0
 	}
 	
-	class func row(number:Int, filter:String="", order:String="") -> SQLTable? {
+	class func row (number: Int, filter: String = "", order: String = "") -> SQLTable? {
 		let row = self.init()
 		let data = row.values()
 		let db = SQLiteDB.shared!
@@ -146,7 +143,7 @@ class SQLTable:NSObject {
 		return row
 	}
 	
-	class func remove(filter:String = "") -> Bool {
+	class func remove (filter: String = "") -> Bool {
 		let db = SQLiteDB.shared!
 		let sql:String
 		if filter.isEmpty {
@@ -178,7 +175,7 @@ class SQLTable:NSObject {
 				val = "'\(rid)'"
 			}
 			let sql = "SELECT COUNT(*) AS count FROM \(table) WHERE \(primaryKey())=\(val)"
-			let arr = db.query(sql:sql)
+			let arr = db.query(sql: sql)
 			if arr.count == 1 {
 				if let cnt = arr[0]["count"] as? Int {
 					insert = (cnt == 0)
@@ -186,8 +183,8 @@ class SQLTable:NSObject {
 			}
 		}
 		// Insert or update
-		let (sql, params) = getSQL(data:data, forInsert:insert)
-		let rc = db.execute(sql:sql, parameters:params)
+		let (sql, params) = getSQL(data: data, forInsert: insert)
+		let rc = db.execute(sql: sql, parameters: params)
 		if rc == 0 {
 			NSLog("Error saving record!")
 			return 0
@@ -196,9 +193,9 @@ class SQLTable:NSObject {
 		let pid = data[key]
 		if insert {
 			if pid is Int64 {
-				setValue(rc, forKey:key)
+				setValue(rc, forKey: key)
 			} else if pid is Int {
-				setValue(Int(rc), forKey:key)
+				setValue(Int(rc), forKey: key)
 			}
 		}
 		return rc
@@ -242,22 +239,22 @@ class SQLTable:NSObject {
 //		return res
 //	}
 	
-	private func values() -> [String:Any] {
-		var res = [String:Any]()
-		let obj = Mirror(reflecting:self)
+	private func values() -> [String: Any] {
+		var res = [String: Any]()
+		let obj = Mirror(reflecting: self)
 		for (_, attr) in obj.children.enumerated() {
 			if let name = attr.label {
 				// Ignore special properties and lazy vars
 				if ignoredKeys().contains(name) || name.hasSuffix(".storage") {
 					continue
 				}
-				res[name] = get(value:attr.value)
+				res[name] = get(value: attr.value)
 			}
 		}
 		return res
 	}
 	
-	private func get(value:Any) -> Any {
+	private func get (value: Any) -> Any {
 		if value is String {
 			return value as! String
 		} else if value is Int {
@@ -273,10 +270,10 @@ class SQLTable:NSObject {
 		} else if value is NSData {
 			return value as! NSData
 		}
-		return "nAn"
+		return NSNull()
 	}
 	
-	private func getSQL(data:[String:Any], forInsert:Bool = true) -> (String, [Any]?) {
+	private func getSQL (data: [String: Any], forInsert: Bool = true) -> (String, [Any]?) {
 		var sql = ""
 		var params:[Any]? = nil
 		if forInsert {
@@ -326,7 +323,7 @@ class SQLTable:NSObject {
 			sql += wsql
 			params!.append(rid!)
 		}
-//		NSLog("Final SQL: \(sql) with parameters: \(params)")
+		NSLog("Final SQL: \(sql) with parameters: \(params)")
 		return (sql, params)
 	}
 }

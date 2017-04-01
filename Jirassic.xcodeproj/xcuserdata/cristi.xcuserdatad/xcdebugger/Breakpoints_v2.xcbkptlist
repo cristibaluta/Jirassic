@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "External/sqlite/SqliteRepository.swift"
-            timestampString = "512455989.958044"
+            filePath = "External/sqlite/SQLiteDB.swift"
+            timestampString = "512718379.162341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "init()"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "prepare(sql:params:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

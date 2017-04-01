@@ -48,7 +48,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // For testing
         //localPreferences.reset()
         
-        localRepository = CoreDataRepository()
+//        localRepository = CoreDataRepository()
+        localRepository = SqliteRepository()
 //		remoteRepository = CloudKitRepository()
         
 		menu.onMouseDown = { [weak self] in

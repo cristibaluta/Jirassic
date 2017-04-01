@@ -7,104 +7,58 @@
 //
 
 import Foundation
-#if os(iOS)
-import UIKit
-#else
-import AppKit
-#endif
 
 let SQLITE_DATE = SQLITE_NULL + 1
+fileprivate let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+fileprivate let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
-private let SQLITE_STATIC = unsafeBitCast(0, to:sqlite3_destructor_type.self)
-private let SQLITE_TRANSIENT = unsafeBitCast(-1, to:sqlite3_destructor_type.self)
-
-// MARK:- SQLiteDB Class - Does all the work
 @objc(SQLiteDB)
 class SQLiteDB: NSObject {
     
 	let QUEUE_LABEL = "SQLiteDB"
-	private var db: OpaquePointer? = nil
-	private var queue: DispatchQueue!
-	private let fmt = DateFormatter()
-	private var path: String!
+	fileprivate var db: OpaquePointer? = nil
+	fileprivate var queue: DispatchQueue!
+	fileprivate let fmt = DateFormatter()
+	fileprivate var path: String!
     static var shared: SQLiteDB!
 	
     convenience init (url: URL) {
 		self.init()
-        
-//        if !FileManager.default.fileExists(atPath: url.path) {
-//            do {
-//                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-//            } catch _ {
-//                return baseUrl
-//            }
-//        }
-//        
-//		// Set up for file operations
-//		let fm = FileManager.default
-//		// Get path to DB in Documents directory
-//		var docDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
-//		// If macOS, add app name to path since otherwise, DB could possibly interfere with another app using SQLiteDB
-//#if os(OSX)
-//		let info = Bundle.main.infoDictionary!
-//		let appName = info["CFBundleName"] as! String
-//		docDir = (docDir as NSString).appendingPathComponent(appName)
-//		// Create folder if it does not exist
-//		if !fm.fileExists(atPath:docDir) {
-//			do {
-//				try fm.createDirectory(atPath:docDir, withIntermediateDirectories:true, attributes:nil)
-//			} catch {
-//				assert(false, "SQLiteDB: Error creating DB directory: \(docDir) on macOS")
-//				return
-//			}
-//		}
-//#endif
-//		let path = (docDir as NSString).appendingPathComponent(DB_NAME)
-//		// Check if copy of DB is there in Documents directory
-//		if !(fm.fileExists(atPath:path)) {
-//			// The database does not exist, so copy to Documents directory
-//			guard let rp = Bundle.main.resourcePath else { return }
-//			let from = (rp as NSString).appendingPathComponent(DB_NAME)
-//			do {
-//				try fm.copyItem(atPath:from, toPath:path)
-//			} catch let error {
-//				assert(false, "SQLiteDB: Failed to copy writable version of DB! Error - \(error.localizedDescription)")
-//				return
-//			}
-//		}
-//		openDB(path:path)
+		openDB(path: url.path)
+        SQLiteDB.shared = self
 	}
 	
 	deinit {
 		closeDB()
 	}
  
-	override var description:String {
+	override var description: String {
 		return "SQLiteDB: \(path)"
 	}
 	
-	// MARK:- Public Methods
-	func dbDate(dt:Date) -> String {
-		return fmt.string(from:dt)
+	func dbDate (dt: Date) -> String {
+		return fmt.string(from: dt)
 	}
 	
 	// Execute SQL with parameters and return result code
-	func execute(sql:String, parameters:[Any]?=nil)->Int {
+    func execute (sql: String, parameters: [Any]? = nil) -> Int {
+        print(sql)
 		var result = 0
 		queue.sync {
-			if let stmt = self.prepare(sql:sql, params:parameters) {
-				result = self.execute(stmt:stmt, sql:sql)
+			if let stmt = self.prepare(sql: sql, params: parameters) {
+				result = self.execute(stmt: stmt, sql: sql)
 			}
 		}
 		return result
 	}
 	
 	// Run SQL query with parameters
-	func query(sql:String, parameters:[Any]?=nil)->[[String:Any]] {
-		var rows = [[String:Any]]()
+    func query (sql: String, parameters: [Any]? = nil) -> [[String: Any]] {
+        print(sql)
+		var rows = [[String: Any]]()
 		queue.sync {
-			if let stmt = self.prepare(sql:sql, params:parameters) {
-				rows = self.query(stmt:stmt, sql:sql)
+			if let stmt = self.prepare(sql: sql, params: parameters) {
+				rows = self.query(stmt: stmt, sql: sql)
 			}
 		}
 		return rows
@@ -113,70 +67,73 @@ class SQLiteDB: NSObject {
 	// Versioning
 	func getDBVersion() -> Int {
 		var version = 0
-		let arr = query(sql:"PRAGMA user_version")
+		let arr = query(sql: "PRAGMA db_version")
 		if arr.count == 1 {
-			version = arr[0]["user_version"] as! Int
+			version = arr[0]["db_version"] as! Int
 		}
 		return version
 	}
 	
 	// Sets the 'user_version' value, a user-defined version number for the database. This is useful for managing migrations.
-	func set(version:Int) {
-		_ = execute(sql:"PRAGMA user_version=\(version)")
+	func set (version: Int) {
+		_ = execute(sql: "PRAGMA db_version=\(version)")
 	}
-	
-	// MARK:- Private Methods
-	private func openDB(path:String) {
+}
+
+extension SQLiteDB {
+
+    fileprivate func openDB (path: String) {
 		// Set up essentials
-		queue = DispatchQueue(label:QUEUE_LABEL, attributes:[])
+		queue = DispatchQueue(label: QUEUE_LABEL, attributes: [])
 		// You need to set the locale in order for the 24-hour date format to work correctly on devices where 24-hour format is turned off
-		fmt.locale = Locale(identifier:"en_US_POSIX")
-		fmt.timeZone = TimeZone(secondsFromGMT:0)
+		fmt.locale = Locale(identifier: "en_US_POSIX")
+		fmt.timeZone = TimeZone(secondsFromGMT: 0)
 		fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
 		// Open the DB
 		let cpath = path.cString(using: String.Encoding.utf8)
 		let error = sqlite3_open(cpath!, &db)
 		if error != SQLITE_OK {
 			// Open failed, close DB and fail
-			NSLog("SQLiteDB - failed to open DB!")
+			print("SQLiteDB - failed to open DB!")
 			sqlite3_close(db)
 			return
 		}
 		NSLog("SQLiteDB opened!")
 	}
 	
-	private func closeDB() {
-		if db != nil {
-			// Get launch count value
-			let ud = UserDefaults.standard
-			var launchCount = ud.integer(forKey: "LaunchCount")
-			launchCount -= 1
-			NSLog("SQLiteDB - Launch count \(launchCount)")
-			var clean = false
-			if launchCount < 0 {
-				clean = true
-				launchCount = 500
-			}
-			ud.set(launchCount, forKey:"LaunchCount")
-			ud.synchronize()
-			// Do we clean DB?
-			if !clean {
-				sqlite3_close(db)
-				return
-			}
-			// Clean DB
-			NSLog("SQLiteDB - Optimize DB")
-			let sql = "VACUUM; ANALYZE"
-			if CInt(execute(sql:sql)) != SQLITE_OK {
-				NSLog("SQLiteDB - Error cleaning DB")
-			}
-			sqlite3_close(db)
-		}
+	fileprivate func closeDB() {
+		guard db != nil else {
+            return
+        }
+        // Get launch count value
+        let ud = UserDefaults.standard
+        var launchCount = ud.integer(forKey: "LaunchCount")
+        launchCount -= 1
+        print("SQLiteDB - Launch count \(launchCount)")
+        var clean = false
+        if launchCount < 0 {
+            clean = true
+            launchCount = 500
+        }
+        ud.set(launchCount, forKey: "LaunchCount")
+        ud.synchronize()
+        // Do we clean DB?
+        if !clean {
+            sqlite3_close(db)
+            return
+        }
+        // Clean DB
+        print("SQLiteDB - Optimize DB")
+        let sql = "VACUUM; ANALYZE"
+        if CInt(execute(sql: sql)) != SQLITE_OK {
+            print("SQLiteDB - Error cleaning DB")
+        }
+        sqlite3_close(db)
 	}
 	
-	// Private method which prepares the SQL
-	private func prepare(sql:String, params:[Any]?) -> OpaquePointer? {
-		var stmt:OpaquePointer? = nil
+	// fileprivate method which prepares the SQL
+	fileprivate func prepare (sql: String, params: [Any]?) -> OpaquePointer? {
+		var stmt: OpaquePointer? = nil
 		let cSql = sql.cString(using: String.Encoding.utf8)
 		// Prepare
 		let result = sqlite3_prepare_v2(self.db, cSql!, -1, &stmt, nil)
@@ -198,13 +155,17 @@ class SQLiteDB: NSObject {
 				NSLog(msg)
 				return nil
 			}
-			var flag:CInt = 0
+			var flag: CInt = 0
 			// Text & BLOB values passed to a C-API do not work correctly if they are not marked as transient.
 			for ndx in 1...cnt {
 //				NSLog("Binding: \(params![ndx-1]) at Index: \(ndx)")
 				// Check for data types
 				if let txt = params![ndx - 1] as? String {
-					flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
+                    if txt == "null" {
+                        flag = sqlite3_bind_null(stmt, CInt(ndx))
+                    } else {
+                        flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
+                    }
 				} else if let data = params![ndx-1] as? NSData {
 					flag = sqlite3_bind_blob(stmt, CInt(ndx), data.bytes, CInt(data.length), SQLITE_TRANSIENT)
 				} else if let date = params![ndx-1] as? Date {
@@ -234,15 +195,15 @@ class SQLiteDB: NSObject {
 		return stmt
 	}
 	
-	// Private method which handles the actual execution of an SQL statement
-	private func execute(stmt:OpaquePointer, sql:String)->Int {
+	// fileprivate method which handles the actual execution of an SQL statement
+	fileprivate func execute (stmt: OpaquePointer, sql: String) -> Int {
 		// Step
 		let res = sqlite3_step(stmt)
 		if res != SQLITE_OK && res != SQLITE_DONE {
 			sqlite3_finalize(stmt)
-			if let error = String(validatingUTF8:sqlite3_errmsg(self.db)) {
+			if let error = String(validatingUTF8: sqlite3_errmsg(self.db)) {
 				let msg = "SQLiteDB - failed to execute SQL: \(sql), Error: \(error)"
-				NSLog(msg)
+				print(msg)
 			}
 			return 0
 		}
@@ -267,8 +228,8 @@ class SQLiteDB: NSObject {
 		return result
 	}
 	
-	// Private method which handles the actual execution of an SQL query
-	private func query(stmt:OpaquePointer, sql:String)->[[String:Any]] {
+	// fileprivate method which handles the actual execution of an SQL query
+	fileprivate func query (stmt: OpaquePointer, sql: String) -> [[String: Any]] {
 		var rows = [[String:Any]]()
 		var fetchColumnInfo = true
 		var columnCount:CInt = 0
@@ -307,7 +268,7 @@ class SQLiteDB: NSObject {
 	}
 	
 	// Get column type
-	private func getColumnType(index:CInt, stmt:OpaquePointer)->CInt {
+	fileprivate func getColumnType (index: CInt, stmt: OpaquePointer) -> CInt {
 		var type:CInt = 0
 		// Column types - http://www.sqlite.org/datatype3.html (section 2.2 table column 1)
 		let blobTypes = ["BINARY", "BLOB", "VARBINARY"]
@@ -356,7 +317,7 @@ class SQLiteDB: NSObject {
 	}
 	
 	// Get column value
-	private func getColumnValue(index:CInt, type:CInt, stmt:OpaquePointer)->Any? {
+	fileprivate func getColumnValue (index: CInt, type: CInt, stmt: OpaquePointer) -> Any? {
 		// Integer
 		if type == SQLITE_INTEGER {
 			let val = sqlite3_column_int(stmt, index)
@@ -372,7 +333,7 @@ class SQLiteDB: NSObject {
 		if type == SQLITE_BLOB {
 			let data = sqlite3_column_blob(stmt, index)
 			let size = sqlite3_column_bytes(stmt, index)
-			let val = NSData(bytes:data, length:Int(size))
+			let val = NSData(bytes: data, length: Int(size))
 			return val
 		}
 		// Null
@@ -388,13 +349,13 @@ class SQLiteDB: NSObject {
 				let set = CharacterSet(charactersIn:"-:")
 				if txt.rangeOfCharacter(from:set) != nil {
 					// Convert to time
-					var time:tm = tm(tm_sec: 0, tm_min: 0, tm_hour: 0, tm_mday: 0, tm_mon: 0, tm_year: 0, tm_wday: 0, tm_yday: 0, tm_isdst: 0, tm_gmtoff: 0, tm_zone:nil)
+					var time:tm = tm(tm_sec: 0, tm_min: 0, tm_hour: 0, tm_mday: 0, tm_mon: 0, tm_year: 0, tm_wday: 0, tm_yday: 0, tm_isdst: 0, tm_gmtoff: 0, tm_zone: nil)
 					strptime(txt, "%Y-%m-%d %H:%M:%S", &time)
 					time.tm_isdst = -1
 					let diff = TimeZone.current.secondsFromGMT()
 					let t = mktime(&time) + diff
 					let ti = TimeInterval(t)
-					let val = Date(timeIntervalSince1970:ti)
+					let val = Date(timeIntervalSince1970: ti)
 					return val
 				}
 			}
@@ -405,8 +366,8 @@ class SQLiteDB: NSObject {
 		}
 		// If nothing works, return a string representation
 		if let ptr = UnsafeRawPointer.init(sqlite3_column_text(stmt, index)) {
-			let uptr = ptr.bindMemory(to:CChar.self, capacity:0)
-			let txt = String(validatingUTF8:uptr)
+			let uptr = ptr.bindMemory(to: CChar.self, capacity: 0)
+			let txt = String(validatingUTF8: uptr)
 			return txt
 		}
 		return nil

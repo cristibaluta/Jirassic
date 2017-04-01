@@ -31,7 +31,7 @@ class CoreDataRepository {
     
     func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
         let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = applicationDocumentsDirectory.appendingPathComponent("\(databaseName).sqlite")
+        let url = applicationDocumentsDirectory.appendingPathComponent("\(databaseName).coredata")
         do {
             try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
             return coordinator

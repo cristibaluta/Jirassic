@@ -10,8 +10,8 @@ import Foundation
 
 class SqliteRepository {
     
-    fileprivate let databaseName = "Jirassic2"
-    fileprivate var db: SQLiteDB?
+    fileprivate let databaseName = "Jirassic"
+    fileprivate var db: SQLiteDB!
     
     init() {
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
@@ -21,8 +21,23 @@ class SqliteRepository {
             try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
         }
         let dbUrl = url.appendingPathComponent("\(databaseName).sqlite")
-        print(dbUrl)
+        RCLog(dbUrl)
         db = SQLiteDB(url: dbUrl)
+        
+        // Get current version
+        let v = db.query(sql: "SELECT * FROM 'sversions';")
+        RCLog(v)
+        if v.count == 0 {
+            // Create tables
+            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS sversions (db_version REAL);")
+            let _ = db.execute(sql: "INSERT INTO sversions (db_version) values(1.0);")
+            
+            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS stasks (lastModifiedDate DATETIME, creationDate DATETIME, startDate DATETIME, endDate DATETIME, notes TEXT, taskNumber TEXT, taskType INTEGER, objectId TEXT UNIQUE);")
+            
+            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS ssettingss (startOfDayEnabled BOOL, lunchEnabled BOOL, scrumEnabled BOOL, meetingEnabled BOOL, autoTrackEnabled BOOL, trackingMode INTEGER, startOfDayTime DATETIME, endOfDayTime DATETIME, lunchTime DATETIME, scrumTime DATETIME, minSleepDuration DATETIME);")
+            
+            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS susers (userId TEXT, email TEXT, lastSyncDate DATETIME, isLoggedIn BOOL);")
+        }
     }
     
     convenience init (documentsDirectory: String) {
@@ -36,20 +51,16 @@ class SqliteRepository {
 
 extension SqliteRepository {
     
-    fileprivate func queryWithPredicate<T: SQLTable> (_ predicate: NSPredicate?, sortingKeyPath: String?) -> [T] {
+    fileprivate func queryWithPredicate<T: SQLTable> (_ predicate: String?, sortingKeyPath: String?) -> [T] {
         
-        let results = [T]()
-//        let resultsObjs = T.rows(order: "id ASC") as! [T]
+        var results = [T]()
         
-//        if let pred = predicate {
-//            resultsObjs = resultsObjs.filter(pred)
-//        }
-//        if let key = sortingKeyPath {
-//            resultsObjs = resultsObjs.sorted(byKeyPath: key)
-//        }
-//        for result in resultsObjs {
-//            results.append(result)
-//        }
+        let resultsObjs = T.rows(filter: predicate ?? "", order: sortingKeyPath != nil ? "\(sortingKeyPath!) ASC" : "") as! [T]
+        RCLog(resultsObjs)
+        for result in resultsObjs {
+            results.append(result)
+        }
+        
         return results
     }
 }
@@ -68,11 +79,11 @@ extension SqliteRepository: RepositoryUser {
     }
     
     func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        fatalError("This method is not applicable to CoreDataRepository")
+        fatalError("This method is not applicable to local Repository")
     }
     
     func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        fatalError("This method is not applicable to CoreDataRepository")
+        fatalError("This method is not applicable to local Repository")
     }
     
     func logout() {
@@ -80,52 +91,50 @@ extension SqliteRepository: RepositoryUser {
 }
 
 extension SqliteRepository: RepositoryTasks {
-
+    
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
         
         let results: [STask] = queryWithPredicate(nil, sortingKeyPath: "endDate")
-        let tasks = tasksFromRTasks(results)
+        let tasks = tasksFromSTasks(results)
         
         completion(tasks, nil)
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
         
-        let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
-            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
-        ])
-//        let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
-        let results: [STask] = queryWithPredicate(compoundPredicate, sortingKeyPath: "endDate")
-        let tasks = tasksFromRTasks(results)
+        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())')"
+        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
+        let tasks = tasksFromSTasks(results)
         
         return tasks
     }
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = NSPredicate(format: "lastModifiedDate == nil")
+        let predicate = "lastModifiedDate == NULL"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
-        let tasks = tasksFromRTasks(results)
+        let tasks = tasksFromSTasks(results)
         
         return tasks
     }
     
     func deleteTask (_ task: Task, completion: ((_ success: Bool) -> Void)) {
         
-//        realm.beginWrite()
-        _ = rtaskFromTask(task)
-//        realm.delete(rtask)
-//        try! realm.commitWrite()
-        completion(true)
+        let stask = staskFromTask(task)
+        let deleted = stask.delete()
+        RCLog("deleted \(deleted)")
+        
+        completion(deleted)
     }
     
     func saveTask (_ task: Task, completion: (_ success: Bool) -> Void) -> Task {
         
-//        realm.beginWrite()
-        let rtask = rtaskFromTask(task)
-//        try! realm.commitWrite()
+        let stask = staskFromTask(task)
+        let saved = stask.save()
+        RCLog("saved \(saved)")
+        completion(saved == 1)
         
-        return taskFromSTask(rtask)
+        return taskFromSTask(stask)
     }
     
     fileprivate func taskFromSTask (_ rtask: STask) -> Task {
@@ -139,7 +148,7 @@ extension SqliteRepository: RepositoryTasks {
         )
     }
     
-    fileprivate func tasksFromRTasks (_ rtasks: [STask]) -> [Task] {
+    fileprivate func tasksFromSTasks (_ rtasks: [STask]) -> [Task] {
         
         var tasks = [Task]()
         for rtask in rtasks {
@@ -149,20 +158,19 @@ extension SqliteRepository: RepositoryTasks {
         return tasks
     }
     
-    fileprivate func rtaskFromTask (_ task: Task) -> STask {
+    fileprivate func staskFromTask (_ task: Task) -> STask {
         
-        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
+        let taskPredicate = "objectId == '\(task.objectId)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
-        let rtask: STask? = tasks.first
-        if rtask == nil {
-//            rtask = RTask()
-//            rtask = realm.create(RTask.self)
+        var stask: STask? = tasks.first
+        if stask == nil {
+            stask = STask()
         }
-        if rtask?.objectId == nil {
-            rtask?.objectId = task.objectId
+        if stask!.objectId == nil {
+            stask!.objectId = task.objectId
         }
         
-        return updatedSTask(rtask!, withTask: task)
+        return updatedSTask(stask!, withTask: task)
     }
     
     // Update only updatable properties. objectId can't be updated
@@ -185,9 +193,6 @@ extension SqliteRepository: RepositorySettings {
         let results: [SSettings] = queryWithPredicate(nil, sortingKeyPath: nil)
         var rsettings: SSettings? = results.first
         if rsettings == nil {
-            
-//            realm.beginWrite()
-            
             rsettings = SSettings()
             rsettings?.startOfDayEnabled = true
             rsettings?.lunchEnabled = true
@@ -201,16 +206,14 @@ extension SqliteRepository: RepositorySettings {
             rsettings?.scrumTime = Date(hour: 10, minute: 30)
             rsettings?.minSleepDuration = Date(hour: 0, minute: 13)
             
-//            try! realm.commitWrite()
         }
         return settingsFromRSettings(rsettings!)
     }
     
     func saveSettings (_ settings: Settings) {
         
-//        realm.beginWrite()
         let _ = rsettingsFromSettings(settings)
-//        try! realm.commitWrite()
+        
     }
     
     fileprivate func settingsFromRSettings (_ rsettings: SSettings) -> Settings {
