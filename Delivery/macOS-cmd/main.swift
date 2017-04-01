@@ -99,9 +99,16 @@ func reports (dayOnDate date: Date) {
     print("")
     let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
-    if tasks.count > 0 {
-        for task in tasks {
-            print(task.endDate.HHmm() + " " + task.notes!)
+    let reportsInteractor = CreateReport()
+    let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
+    if reports.count > 0 {
+        for report in reports {
+            let duration = true
+                ? "\(Date.secondsToPercentTime(report.duration))"
+                : Date(timeIntervalSince1970: report.duration).HHmmGMT()
+            print("Duration: " + duration + " task id: " + report.taskNumber)
+            print(report.notes)
+            print("")
         }
     } else {
         print("No tasks!")
