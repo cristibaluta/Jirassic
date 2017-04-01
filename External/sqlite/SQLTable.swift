@@ -281,7 +281,7 @@ class SQLTable: NSObject {
 	
 	private func getSQL (data: [String: Any], forInsert: Bool = true) -> (String, [Any]?) {
 		var sql = ""
-		var params:[Any]? = nil
+		var params: [Any]? = nil
 		if forInsert {
 			// INSERT INTO tasks(task, categoryID) VALUES ('\(txtTask.text)', 1)
 			sql = "INSERT INTO \(table) ("
@@ -291,7 +291,7 @@ class SQLTable: NSObject {
 		}
 		let pkey = primaryKey()
 		var wsql = ""
-		var rid:Any?
+		var rid: Any?
 		var first = true
 		for (key, val) in data {
 			// Primary key handling

@@ -341,7 +341,7 @@ extension SQLiteDB {
 				let uptr = ptr.bindMemory(to: CChar.self, capacity: 0)
 				let txt = String(validatingUTF8: uptr)!
 				let set = CharacterSet(charactersIn: "-:")
-				if txt.rangeOfCharacter(from:set) != nil {
+				if txt.rangeOfCharacter(from: set) != nil {
 					// Convert to time
 					var time = tm(tm_sec: 0, 
 					              tm_min: 0, 
@@ -365,6 +365,9 @@ extension SQLiteDB {
 			}
 			// If not a text date, then it's a time interval
 			let val = sqlite3_column_double(stmt, index)
+            if val == 0.0 {
+                return nil
+            }
 			let dt = Date(timeIntervalSince1970: val)
 			return dt
 		}
