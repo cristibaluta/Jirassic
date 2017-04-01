@@ -18,10 +18,6 @@ class SQLiteMigrator {
         
         // Get current version
         let v = db.query(sql: "SELECT * FROM 'sversions';")
-        RCLog(v)
-        RCLog(db.version)
-        db.version = 2
-        RCLog(db.version)
         if v.count == 0 {
             migrate(db: db, toVersion: .v1_0)
         }

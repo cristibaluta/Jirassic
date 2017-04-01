@@ -43,11 +43,11 @@ func printHelp() {
 let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
 let libraryDirectory = urls.first!
 let jirassicSandboxedAppSupportDir = libraryDirectory.appendingPathComponent("Containers/com.ralcr.Jirassic.osx/Data/Library/Application Support/Jirassic")
-print(urls)
-print(jirassicSandboxedAppSupportDir)
+//print(urls)
+//print(jirassicSandboxedAppSupportDir)
 // /Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application%20Support/Jirassic/
 // /Users/Cristian/Library/Application%20Support/Jirassic/
-let localRepository: Repository! = RealmRepository(documentsDirectory: jirassicSandboxedAppSupportDir.path)
+let localRepository: Repository! = SqliteRepository(documentsDirectory: jirassicSandboxedAppSupportDir)
 var remoteRepository: Repository?
 
 
@@ -57,9 +57,10 @@ var remoteRepository: Repository?
 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
-arguments.append("list")
+//arguments.append("list")
 //arguments.append("2017.03.01")
-print(arguments)
+//print(arguments)
+
 arguments.remove(at: 0)// First arg is the filepath and needs to be removed
 
 guard arguments.count > 0 else {

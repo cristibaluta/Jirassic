@@ -15,6 +15,7 @@ fileprivate let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type
 @objc(SQLiteDB)
 class SQLiteDB: NSObject {
     
+    static var sql_logs_enabled = false
 	let QUEUE_LABEL = "SQLiteDB"
 	fileprivate var db: OpaquePointer? = nil
 	fileprivate var queue: DispatchQueue!
@@ -42,7 +43,7 @@ class SQLiteDB: NSObject {
 	
 	// Execute SQL with parameters and return result code
     func execute (sql: String, parameters: [Any]? = nil) -> Int {
-        print(sql)
+        if SQLiteDB.sql_logs_enabled { print(sql) }
 		var result = 0
 		queue.sync {
 			if let stmt = self.prepare(sql: sql, params: parameters) {
@@ -54,7 +55,7 @@ class SQLiteDB: NSObject {
 	
 	// Run SQL query with parameters
     func query (sql: String, parameters: [Any]? = nil) -> [[String: Any]] {
-        print(sql)
+        if SQLiteDB.sql_logs_enabled { print(sql) }
 		var rows = [[String: Any]]()
 		queue.sync {
 			if let stmt = self.prepare(sql: sql, params: parameters) {
@@ -67,14 +68,14 @@ class SQLiteDB: NSObject {
     var version: Int {
         get {
             var version = 0
-            let arr = query(sql: "PRAGMA db_version")
+            let arr = query(sql: "PRAGMA user_version")
             if arr.count == 1 {
-                version = arr[0]["db_version"] as! Int
+                version = arr[0]["user_version"] as! Int
             }
             return version
         }
         set {
-            _ = execute(sql: "PRAGMA db_version=\(version)")
+            _ = execute(sql: "PRAGMA user_version=\(version)")
         }
     }
 }
@@ -93,11 +94,11 @@ extension SQLiteDB {
 		let error = sqlite3_open(cpath!, &db)
 		if error != SQLITE_OK {
 			// Open failed, close DB and fail
-			print("SQLiteDB - failed to open DB!")
+            if SQLiteDB.sql_logs_enabled { print("SQLiteDB - failed to open DB!") }
 			sqlite3_close(db)
 			return
 		}
-		NSLog("SQLiteDB opened!")
+        if SQLiteDB.sql_logs_enabled { print("SQLiteDB opened!") }
 	}
 	
 	fileprivate func closeDB() {
@@ -108,7 +109,7 @@ extension SQLiteDB {
         let ud = UserDefaults.standard
         var launchCount = ud.integer(forKey: "LaunchCount")
         launchCount -= 1
-        print("SQLiteDB - Launch count \(launchCount)")
+        if SQLiteDB.sql_logs_enabled { print("SQLiteDB - Launch count \(launchCount)") }
         var clean = false
         if launchCount < 0 {
             clean = true
@@ -122,10 +123,10 @@ extension SQLiteDB {
             return
         }
         // Clean DB
-        print("SQLiteDB - Optimize DB")
+        if SQLiteDB.sql_logs_enabled { print("SQLiteDB - Optimize DB") }
         let sql = "VACUUM; ANALYZE"
         if CInt(execute(sql: sql)) != SQLITE_OK {
-            print("SQLiteDB - Error cleaning DB")
+            if SQLiteDB.sql_logs_enabled { print("SQLiteDB - Error cleaning DB") }
         }
         sqlite3_close(db)
 	}
@@ -181,7 +182,7 @@ extension SQLiteDB {
 					sqlite3_finalize(stmt)
 					if let error = String(validatingUTF8:sqlite3_errmsg(self.db)) {
 						let msg = "SQLiteDB - failed to bind for SQL: \(sql), Parameters: \(String(describing: params)), Index: \(ndx) Error: \(error)"
-						NSLog(msg)
+                        if SQLiteDB.sql_logs_enabled { print(msg) }
 					}
 					return nil
 				}
@@ -198,7 +199,7 @@ extension SQLiteDB {
 			sqlite3_finalize(stmt)
 			if let error = String(validatingUTF8: sqlite3_errmsg(self.db)) {
 				let msg = "SQLiteDB - failed to execute SQL: \(sql), Error: \(error)"
-				print(msg)
+                if SQLiteDB.sql_logs_enabled { print(msg) }
 			}
 			return 0
 		}
@@ -250,7 +251,7 @@ extension SQLiteDB {
 				let key = columnNames[Int(index)]
 				let type = columnTypes[Int(index)]
 				if let val = getColumnValue(index: index, type: type, stmt: stmt) {
-					print("Column type:\(type) with value:\(val)")
+//                    if SQLiteDB.sql_logs_enabled { print("Column type:\(type) with value:\(val)") }
 					row[key] = val
 				}
 			}

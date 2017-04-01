@@ -186,7 +186,7 @@ class SQLTable: NSObject {
 		let (sql, params) = getSQL(data: data, forInsert: insert)
 		let rc = db.execute(sql: sql, parameters: params)
 		if rc == 0 {
-			NSLog("Error saving record!")
+            if SQLiteDB.sql_logs_enabled { print("Error saving record!") }
 			return 0
 		}
 		// Update primary key
@@ -329,7 +329,7 @@ class SQLTable: NSObject {
 			sql += wsql
 			params!.append(rid!)
 		}
-		NSLog("Final SQL: \(sql) with parameters: \(params)")
+        if SQLiteDB.sql_logs_enabled { print("Final SQL: \(sql) with parameters: \(String(describing: params))") }
 		return (sql, params)
 	}
 }
