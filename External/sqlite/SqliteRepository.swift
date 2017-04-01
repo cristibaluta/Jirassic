@@ -23,21 +23,7 @@ class SqliteRepository {
         let dbUrl = url.appendingPathComponent("\(databaseName).sqlite")
         RCLog(dbUrl)
         db = SQLiteDB(url: dbUrl)
-        
-        // Get current version
-        let v = db.query(sql: "SELECT * FROM 'sversions';")
-        RCLog(v)
-        if v.count == 0 {
-            // Create tables
-            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS sversions (db_version REAL);")
-            let _ = db.execute(sql: "INSERT INTO sversions (db_version) values(1.0);")
-            
-            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS stasks (lastModifiedDate DATETIME, creationDate DATETIME, startDate DATETIME, endDate DATETIME, notes TEXT, taskNumber TEXT, taskType INTEGER, objectId TEXT UNIQUE);")
-            
-            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS ssettingss (startOfDayEnabled BOOL, lunchEnabled BOOL, scrumEnabled BOOL, meetingEnabled BOOL, autoTrackEnabled BOOL, trackingMode INTEGER, startOfDayTime DATETIME, endOfDayTime DATETIME, lunchTime DATETIME, scrumTime DATETIME, minSleepDuration DATETIME);")
-            
-            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS susers (userId TEXT, email TEXT, lastSyncDate DATETIME, isLoggedIn BOOL);")
-        }
+        _ = SQLiteMigrator(db: db)
     }
     
     convenience init (documentsDirectory: String) {
@@ -46,6 +32,7 @@ class SqliteRepository {
         let url = baseUrl.appendingPathComponent("\(databaseName).sqlite")
         print(url)
         db = SQLiteDB(url: url)
+        _ = SQLiteMigrator(db: db)
     }
 }
 

@@ -14,5 +14,9 @@ class SUser: SQLTable {
     var email: String?
     var lastSyncDate: Date?
     var isLoggedIn: Bool = false
-
+    
+    override func primaryKey() -> String {
+        return "userId"
+    }
+    
 }

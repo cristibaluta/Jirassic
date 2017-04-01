@@ -145,7 +145,7 @@ class SQLTable: NSObject {
 	
 	class func remove (filter: String = "") -> Bool {
 		let db = SQLiteDB.shared!
-		let sql:String
+		let sql: String
 		if filter.isEmpty {
 			// Delete all records
 			sql = "DELETE FROM \(table)"
@@ -153,7 +153,7 @@ class SQLTable: NSObject {
 			// Use filter to delete
 			sql = "DELETE FROM \(table) WHERE \(filter)"
 		}
-		let rc = db.execute(sql:sql)
+		let rc = db.execute(sql: sql)
 		return (rc != 0)
 	}
 	
@@ -206,8 +206,14 @@ class SQLTable: NSObject {
 		let key = primaryKey()
 		let data = values()
 		if let rid = data[key] {
-			let sql = "DELETE FROM \(table) WHERE \(primaryKey())=\(rid)"
-			let rc = db.execute(sql:sql)
+            let v: String
+            if let s = rid as? String {
+                v = "'\(s)'"
+            } else {
+                v = "\(rid)"
+            }
+			let sql = "DELETE FROM \(table) WHERE \(primaryKey())=\(v)"
+			let rc = db.execute(sql: sql)
 			return (rc != 0)
 		}
 		return false
@@ -222,7 +228,7 @@ class SQLTable: NSObject {
 			let arr = db.query(sql:sql)
 			for (key, _) in data {
 				if let val = arr[0][key] {
-					setValue(val, forKey:key)
+					setValue(val, forKey: key)
 				}
 			}
 		}
@@ -278,7 +284,7 @@ class SQLTable: NSObject {
 		var params:[Any]? = nil
 		if forInsert {
 			// INSERT INTO tasks(task, categoryID) VALUES ('\(txtTask.text)', 1)
-			sql = "INSERT INTO \(table)("
+			sql = "INSERT INTO \(table) ("
 		} else {
 			// UPDATE tasks SET task = ? WHERE categoryID = ?
 			sql = "UPDATE \(table) SET "

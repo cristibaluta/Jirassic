@@ -64,20 +64,19 @@ class SQLiteDB: NSObject {
 		return rows
 	}
 	
-	// Versioning
-	func getDBVersion() -> Int {
-		var version = 0
-		let arr = query(sql: "PRAGMA db_version")
-		if arr.count == 1 {
-			version = arr[0]["db_version"] as! Int
-		}
-		return version
-	}
-	
-	// Sets the 'user_version' value, a user-defined version number for the database. This is useful for managing migrations.
-	func set (version: Int) {
-		_ = execute(sql: "PRAGMA db_version=\(version)")
-	}
+    var version: Int {
+        get {
+            var version = 0
+            let arr = query(sql: "PRAGMA db_version")
+            if arr.count == 1 {
+                version = arr[0]["db_version"] as! Int
+            }
+            return version
+        }
+        set {
+            _ = execute(sql: "PRAGMA db_version=\(version)")
+        }
+    }
 }
 
 extension SQLiteDB {
@@ -161,11 +160,7 @@ extension SQLiteDB {
 //				NSLog("Binding: \(params![ndx-1]) at Index: \(ndx)")
 				// Check for data types
 				if let txt = params![ndx - 1] as? String {
-                    if txt == "null" {
-                        flag = sqlite3_bind_null(stmt, CInt(ndx))
-                    } else {
-                        flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
-                    }
+                    flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
 				} else if let data = params![ndx-1] as? NSData {
 					flag = sqlite3_bind_blob(stmt, CInt(ndx), data.bytes, CInt(data.length), SQLITE_TRANSIENT)
 				} else if let date = params![ndx-1] as? Date {
@@ -243,19 +238,19 @@ extension SQLiteDB {
 				for index in 0..<columnCount {
 					// Get column name
 					let name = sqlite3_column_name(stmt, index)
-					columnNames.append(String(validatingUTF8:name!)!)
+					columnNames.append(String(validatingUTF8: name!)!)
 					// Get column type
-					columnTypes.append(self.getColumnType(index:index, stmt:stmt))
+					columnTypes.append(self.getColumnType(index: index, stmt: stmt))
 				}
 				fetchColumnInfo = false
 			}
 			// Get row data for each column
-			var row = [String:Any]()
+			var row = [String: Any]()
 			for index in 0..<columnCount {
 				let key = columnNames[Int(index)]
 				let type = columnTypes[Int(index)]
-				if let val = getColumnValue(index:index, type:type, stmt:stmt) {
-//						NSLog("Column type:\(type) with value:\(val)")
+				if let val = getColumnValue(index: index, type: type, stmt: stmt) {
+					print("Column type:\(type) with value:\(val)")
 					row[key] = val
 				}
 			}
@@ -316,7 +311,6 @@ extension SQLiteDB {
 		return type
 	}
 	
-	// Get column value
 	fileprivate func getColumnValue (index: CInt, type: CInt, stmt: OpaquePointer) -> Any? {
 		// Integer
 		if type == SQLITE_INTEGER {
@@ -344,12 +338,22 @@ extension SQLiteDB {
 		if type == SQLITE_DATE {
 			// Is this a text date
 			if let ptr = UnsafeRawPointer.init(sqlite3_column_text(stmt, index)) {
-				let uptr = ptr.bindMemory(to:CChar.self, capacity:0)
-				let txt = String(validatingUTF8:uptr)!
-				let set = CharacterSet(charactersIn:"-:")
+				let uptr = ptr.bindMemory(to: CChar.self, capacity: 0)
+				let txt = String(validatingUTF8: uptr)!
+				let set = CharacterSet(charactersIn: "-:")
 				if txt.rangeOfCharacter(from:set) != nil {
 					// Convert to time
-					var time:tm = tm(tm_sec: 0, tm_min: 0, tm_hour: 0, tm_mday: 0, tm_mon: 0, tm_year: 0, tm_wday: 0, tm_yday: 0, tm_isdst: 0, tm_gmtoff: 0, tm_zone: nil)
+					var time = tm(tm_sec: 0, 
+					              tm_min: 0, 
+					              tm_hour: 0, 
+					              tm_mday: 0, 
+					              tm_mon: 0, 
+					              tm_year: 0, 
+					              tm_wday: 0, 
+					              tm_yday: 0, 
+					              tm_isdst: 0, 
+					              tm_gmtoff: 0, 
+					              tm_zone: nil)
 					strptime(txt, "%Y-%m-%d %H:%M:%S", &time)
 					time.tm_isdst = -1
 					let diff = TimeZone.current.secondsFromGMT()
