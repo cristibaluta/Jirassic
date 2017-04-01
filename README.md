@@ -13,7 +13,7 @@ Jirassic is a Mac app that stays in the status bar and you can access it any tim
 
 # How it works
 - When you come to work in the morning Jirassic will ask you to start the day
-- Tasks are logged when you finish them, not when you start
+- Tasks are logged when you finish them, not when you start. The premise is that you're always doing something that can be logged, but some of the tasks can be logged without counting the time (food, nap)
 - Tasks can be logged in multiple ways: manually by clicking + on an existing item in the list; automatically when commiting to git with Jit cli; time spent away from the computer is tracked automatically when you come back; from command line with jirassic cli
 - At the end of the day/week/month you can go to reports tab and copy paste the logs to jira timesheets
 
