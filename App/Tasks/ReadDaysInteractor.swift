@@ -21,11 +21,13 @@ class ReadDaysInteractor: RepositoryInteractor {
             self.tasks.sort { (task1: Task, task2: Task) -> Bool in
                 return task1.endDate.compare(task2.endDate) == .orderedDescending
             }
-            
-            remoteRepository?.queryTasks(0, completion: { (tasks, error) in
-                
-            })
         })
+        if let remoteRepository = remoteRepository {
+            let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+            sync.start { hasIncomingChanges in
+                
+            }
+        }
 	}
 	
 	func weeks() -> [Week] {

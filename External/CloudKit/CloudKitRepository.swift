@@ -11,10 +11,11 @@ import CloudKit
 
 class CloudKitRepository {
     
-    fileprivate var tasks = [Task]()
-    fileprivate var user: User?
-    fileprivate let privateDB = CKContainer.default().privateCloudDatabase
-    fileprivate let preferences = RCPreferences<LocalPreferences>()
+    internal var tasks = [Task]()
+    internal var user: User?
+    internal let privateDB = CKContainer.default().privateCloudDatabase
+    internal let zoneId = CKRecordZoneID(zoneName: "tasksZone", ownerName: CKOwnerDefaultName)
+    internal let preferences = RCPreferences<LocalPreferences>()
     
     init() {
         CKContainer.default().accountStatus(completionHandler: { (status, error) in
@@ -26,142 +27,50 @@ class CloudKitRepository {
 
 extension CloudKitRepository {
     
-    
-}
-
-extension CloudKitRepository: RepositoryUser {
-
-    func currentUser() -> User {
+    func fetchChangedRecords (token: CKServerChangeToken?) {
         
-        if let user = self.user {
-            return user
+        let op = CKFetchRecordChangesOperation(recordZoneID: zoneId, previousServerChangeToken: token)
+        
+        op.recordChangedBlock = { record in
+            RCLog(record)
         }
         
-//        if let puser = PUser.currentUser() {
-//            self.user = User(isLoggedIn: true, email: puser.email, userId: puser.objectId, lastSyncDate: nil)
-//        } else {
-            self.user = User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
-//        }
+        op.recordWithIDWasDeletedBlock = { recordID in
+            RCLog(recordID)
+        }
         
-        return self.user!
-    }
-    
-    func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        
-    }
-    
-    func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        
-    }
-    
-    func logout() {
-        user = nil
-    }
-}
-
-extension CloudKitRepository: RepositoryTasks {
-
-    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
-        
-//        let predicate = NSPredicate(format: "TRUEPREDICATE")
-        let lastSyncDate: Date = preferences.get(.lastIcloudSync)
-        let predicate = NSPredicate(format: "creationDate >= %@", lastSyncDate as CVarArg)
-        let query = CKQuery(recordType: "Task", predicate: predicate)
-        privateDB.perform(query, inZoneWith: nil) { (results: [CKRecord]?, error) in
+        op.fetchRecordChangesCompletionBlock = { serverChangeToken, clientChangeToken, error in
             
+            RCLogO(serverChangeToken)
+            RCLogO(clientChangeToken)
             RCLogErrorO(error)
+            if let err = error {
+            }
             
-            if let results = results {
-                for record in results {
-                    RCLogO(record)
-                    self.privateDB.delete(withRecordID: record.recordID, completionHandler: { (res, err) in
-                        RCLogO(res)
-                        RCLogErrorO(err)
-                    })
-                }
-            }
-        }
-    }
-    
-    func queryTasksInDay (_ day: Date) -> [Task] {
-        return []
-    }
-    
-    func queryUnsyncedTasks() -> [Task] {
-        fatalError("This method is not applicable to ParseRepository")
-    }
-    
-    func deleteTask (_ taskToDelete: Task, completion: ((_ success: Bool) -> Void)) {
-        
-        var indexToRemove = -1
-        var shouldRemove = false
-        for task in tasks {
-            indexToRemove += 1
-            if task.objectId == taskToDelete.objectId {
-                shouldRemove = true
-//                ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-//                    ptask.deleteEventually()
-//                    completion(success: true)
-//                })
-                break
-            }
-        }
-        if shouldRemove {
-            self.tasks.remove(at: indexToRemove)
-        }
-    }
-    
-    func saveTask (_ task: Task, completion: ((_ success: Bool) -> Void)) -> Task {
-        RCLogO("Update task \(task)")
-        // Update local array
-        for i in 0..<tasks.count {
-            if task.objectId == tasks[i].objectId {
-                tasks[i] = task
-                break
+            if op.moreComing {
+                self.fetchChangedRecords(token: serverChangeToken)
             }
         }
         
-        let ID = CKRecordID(recordName: task.objectId)
-        let cktask = CKRecord(recordType: "Task", recordID: ID)
-        cktask["lastModifiedDate"] = Date() as CKRecordValue?
-//        cktask["creationDate"] = task.creationDate as CKRecordValue?
-        cktask["startDate"] = task.startDate as CKRecordValue?
-        cktask["endDate"] = task.endDate as CKRecordValue
-        cktask["notes"] = task.notes as CKRecordValue?
-        cktask["taskNumber"] = task.taskNumber as CKRecordValue?
-        cktask["taskType"] = task.taskType.rawValue as CKRecordValue
-        cktask["objectId"] = task.objectId as CKRecordValue
+        privateDB.add(op)
         
-        privateDB.save(cktask, completionHandler: { savedRecord, error in
-            RCLogO(savedRecord)
-            RCLogErrorO(error)
-        }) 
-        
-//        ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-//            // Update the ptask with data from task
-//            ptask.date_task_finished = task.endDate
-//            ptask.notes = task.notes
-//            ptask.issue_type = task.issueType
-//            ptask.issue_id = task.issueId
-//            ptask.task_type = task.taskType
-//            ptask.saveEventually { (success, error) -> Void in
-//                RCLogO("Saved to Parse \(success)")
-//                RCLogErrorO(error)
-//                completion(success: success)
+        //        let predicate = NSPredicate(format: "TRUEPREDICATE")
+//        let lastSyncDate: Date = preferences.get(.lastIcloudSync)
+//        let predicate = NSPredicate(format: "creationDate >= %@", lastSyncDate as CVarArg)
+//        let query = CKQuery(recordType: "Task", predicate: predicate)
+//        privateDB.perform(query, inZoneWith: nil) { (results: [CKRecord]?, error) in
+//            
+//            RCLogErrorO(error)
+//            
+//            if let results = results {
+//                for record in results {
+//                    RCLogO(record)
+//                    self.privateDB.delete(withRecordID: record.recordID, completionHandler: { (res, err) in
+//                        RCLogO(res)
+//                        RCLogErrorO(err)
+//                    })
+//                }
 //            }
-//        })
-        
-        return task
-    }
-}
-
-extension CloudKitRepository: RepositorySettings {
-    
-    func settings() -> Settings {
-        fatalError("Not applicable")
-    }
-    
-    func saveSettings (_ settings: Settings) {
-        fatalError("Not applicable")
+//        }
     }
 }
