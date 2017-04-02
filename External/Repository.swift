@@ -22,9 +22,10 @@ protocol RepositoryTasks {
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void)
     func queryTasksInDay (_ day: Date) -> [Task]
     func queryUnsyncedTasks() -> [Task]
-    func deleteTask (_ dataToDelete: Task, completion: ((_ success: Bool) -> Void))
+    func queryChangedTasks (sinceDate: Date) -> [Task]
+    func deleteTask (_ dataToDelete: Task, completion: @escaping ((_ success: Bool) -> Void))
     // Save a task and returns the same task with a taskId generated if it didn't had
-    func saveTask (_ theTask: Task, completion: ((_ success: Bool) -> Void)) -> Task
+    func saveTask (_ theTask: Task, completion: @escaping ((_ success: Bool) -> Void)) -> Task
     
 }
 

@@ -116,13 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.killLauncher()
         
 //        if let _ = remoteRepository {
-//            CKContainer.default().accountStatus(completionHandler: { [weak self] (accountStatus, error) in
-//                if accountStatus == .noAccount {
-//                    self?.appWireframe.presentLoginController()
-//                } else {
-//                    self?.appWireframe.presentTasksController()
-//                }
-//            })
+//            
 //        } else {
 //            appWireframe.presentTasksController()
 //            appWireframe.presentTaskSuggestionController(startSleepDate: nil, endSleepDate: Date())

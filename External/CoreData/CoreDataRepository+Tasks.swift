@@ -41,7 +41,16 @@ extension CoreDataRepository: RepositoryTasks {
         return tasks
     }
     
-    func deleteTask (_ task: Task, completion: ((_ success: Bool) -> Void)) {
+    func queryChangedTasks (sinceDate: Date) -> [Task] {
+        
+        let predicate = NSPredicate(format: "lastModifiedDate > %@", sinceDate as CVarArg)
+        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
+        let tasks = tasksFromCTasks(results)
+        
+        return tasks
+    }
+    
+    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         guard let context = managedObjectContext else {
             return
@@ -53,7 +62,7 @@ extension CoreDataRepository: RepositoryTasks {
         completion(true)
     }
     
-    func saveTask (_ task: Task, completion: (_ success: Bool) -> Void) -> Task {
+    func saveTask (_ task: Task, completion: @escaping (_ success: Bool) -> Void) -> Task {
         
         let ctask = ctaskFromTask(task)
         saveContext()
@@ -66,7 +75,8 @@ extension CoreDataRepository {
     
     fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
         
-        return Task(startDate: ctask.startDate,
+        return Task(lastModifiedDate: ctask.lastModifiedDate,
+                    startDate: ctask.startDate,
                     endDate: ctask.endDate!,
                     notes: ctask.notes,
                     taskNumber: ctask.taskNumber,
@@ -109,6 +119,7 @@ extension CoreDataRepository {
         ctask.notes = task.notes
         ctask.startDate = task.startDate
         ctask.endDate = task.endDate
+        ctask.lastModifiedDate = task.lastModifiedDate
         
         return ctask
     }

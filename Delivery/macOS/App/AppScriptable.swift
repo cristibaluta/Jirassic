@@ -45,6 +45,7 @@ extension NSApplication {
                 }
                 
                 let task = Task(
+                    lastModifiedDate: nil,
                     startDate: nil,
                     endDate: Date(),
                     notes: notes,

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CloudKit
 
 extension CloudKitRepository: RepositoryUser {
     
@@ -16,6 +17,13 @@ extension CloudKitRepository: RepositoryUser {
             return user
         }
         
+        CKContainer.default().accountStatus(completionHandler: { (accountStatus, error) in
+            if accountStatus == .noAccount {
+//                self?.appWireframe.presentLoginController()
+            } else {
+//                self?.appWireframe.presentTasksController()
+            }
+        })
         //        if let puser = PUser.currentUser() {
         //            self.user = User(isLoggedIn: true, email: puser.email, userId: puser.objectId, lastSyncDate: nil)
         //        } else {

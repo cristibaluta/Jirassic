@@ -12,7 +12,8 @@ import CloudKit
 extension CloudKitRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
-        fetchChangedRecords(token: nil)
+        let changeToken = UserDefaults.standard.serverChangeToken
+        fetchChangedRecords(token: changeToken)
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
@@ -20,10 +21,14 @@ extension CloudKitRepository: RepositoryTasks {
     }
     
     func queryUnsyncedTasks() -> [Task] {
-        fatalError("This method is not applicable to ParseRepository")
+        fatalError("This method is not applicable to CloudKitRepository")
     }
     
-    func deleteTask (_ taskToDelete: Task, completion: ((_ success: Bool) -> Void)) {
+    func queryChangedTasks (sinceDate: Date) -> [Task] {
+        fatalError()
+    }
+    
+    func deleteTask (_ taskToDelete: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         var indexToRemove = -1
         var shouldRemove = false
@@ -43,46 +48,54 @@ extension CloudKitRepository: RepositoryTasks {
         }
     }
     
-    func saveTask (_ task: Task, completion: ((_ success: Bool) -> Void)) -> Task {
+    func saveTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) -> Task {
         RCLogO("Update task \(task)")
         // Update local array
-        for i in 0..<tasks.count {
-            if task.objectId == tasks[i].objectId {
-                tasks[i] = task
-                break
+//        for i in 0..<tasks.count {
+//            if task.objectId == tasks[i].objectId {
+//                tasks[i] = task
+//                break
+//            }
+//        }
+        
+        // Query for the task from server if exists
+        cktaskOfTask(task) { (record) in
+            var cktask: CKRecord? = record
+            if record == nil {
+                cktask = CKRecord(recordType: "Task", zoneID: self.customZone.zoneID)
+            }
+            cktask?["startDate"] = task.startDate as CKRecordValue?
+            cktask?["endDate"] = task.endDate as CKRecordValue
+            cktask?["notes"] = task.notes as CKRecordValue?
+            cktask?["taskNumber"] = task.taskNumber as CKRecordValue?
+            cktask?["taskType"] = task.taskType.rawValue as CKRecordValue
+            cktask?["objectId"] = task.objectId as CKRecordValue
+            
+            self.privateDB.save(cktask!, completionHandler: { savedRecord, error in
+                RCLogO(savedRecord)
+                RCLogErrorO(error)
+                completion(error != nil)
+            }) 
+        }
+        return task
+    }
+}
+
+extension CloudKitRepository {
+    
+    func cktaskOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
+        
+        let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
+        let query = CKQuery(recordType: "Task", predicate: predicate)
+        privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
+            
+            RCLogErrorO(error)
+            
+            if let result = results?.first {
+                completion(result)
+            } else {
+                completion(nil)
             }
         }
-        
-        let ID = CKRecordID(recordName: task.objectId)
-        let cktask = CKRecord(recordType: "Task", recordID: ID)
-        cktask["lastModifiedDate"] = Date() as CKRecordValue?
-        //        cktask["creationDate"] = task.creationDate as CKRecordValue?
-        cktask["startDate"] = task.startDate as CKRecordValue?
-        cktask["endDate"] = task.endDate as CKRecordValue
-        cktask["notes"] = task.notes as CKRecordValue?
-        cktask["taskNumber"] = task.taskNumber as CKRecordValue?
-        cktask["taskType"] = task.taskType.rawValue as CKRecordValue
-        cktask["objectId"] = task.objectId as CKRecordValue
-        
-        privateDB.save(cktask, completionHandler: { savedRecord, error in
-            RCLogO(savedRecord)
-            RCLogErrorO(error)
-        }) 
-        
-        //        ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-        //            // Update the ptask with data from task
-        //            ptask.date_task_finished = task.endDate
-        //            ptask.notes = task.notes
-        //            ptask.issue_type = task.issueType
-        //            ptask.issue_id = task.issueId
-        //            ptask.task_type = task.taskType
-        //            ptask.saveEventually { (success, error) -> Void in
-        //                RCLogO("Saved to Parse \(success)")
-        //                RCLogErrorO(error)
-        //                completion(success: success)
-        //            }
-        //        })
-        
-        return task
     }
 }

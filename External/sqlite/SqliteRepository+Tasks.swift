@@ -36,7 +36,16 @@ extension SqliteRepository: RepositoryTasks {
         return tasks
     }
     
-    func deleteTask (_ task: Task, completion: ((_ success: Bool) -> Void)) {
+    func queryChangedTasks (sinceDate: Date) -> [Task] {
+        
+        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())')"
+        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
+        let tasks = tasksFromSTasks(results)
+        
+        return tasks
+    }
+    
+    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         let stask = staskFromTask(task)
         let deleted = stask.delete()
@@ -45,7 +54,7 @@ extension SqliteRepository: RepositoryTasks {
         completion(deleted)
     }
     
-    func saveTask (_ task: Task, completion: (_ success: Bool) -> Void) -> Task {
+    func saveTask (_ task: Task, completion: @escaping (_ success: Bool) -> Void) -> Task {
         
         let stask = staskFromTask(task)
         let saved = stask.save()
@@ -60,7 +69,8 @@ extension SqliteRepository {
     
     fileprivate func taskFromSTask (_ rtask: STask) -> Task {
         
-        return Task(startDate: rtask.startDate,
+        return Task(lastModifiedDate: rtask.lastModifiedDate,
+                    startDate: rtask.startDate,
                     endDate: rtask.endDate!,
                     notes: rtask.notes,
                     taskNumber: rtask.taskNumber,
@@ -102,6 +112,7 @@ extension SqliteRepository {
         rtask.notes = task.notes
         rtask.startDate = task.startDate
         rtask.endDate = task.endDate
+        rtask.lastModifiedDate = task.lastModifiedDate
         
         return rtask
     }

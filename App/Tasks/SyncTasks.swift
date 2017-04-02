@@ -21,7 +21,7 @@ class SyncTasks {
     func start (_ completion: ((_ hasIncomingChanges: Bool) -> Void)?) {
         
         let unsyncedTasks = localRepository.queryUnsyncedTasks()
-        RCLog(unsyncedTasks)
+        RCLog("unsyncedTasks = \(unsyncedTasks.count)")
         
         remoteRepository.queryTasks(0, completion: { (tasks, error) in
             completion?(tasks.count > 0)

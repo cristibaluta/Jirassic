@@ -150,23 +150,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "External/CloudKit/CloudKitRepository.swift"
-            timestampString = "512819225.039726"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "fetchChangedRecords(token:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "App/Tasks/SyncTasks.swift"
@@ -179,14 +163,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Jirassic.SyncTasks.start (Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "Jirassic"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cristi/Documents/Jirassic/App/Tasks/SyncTasks.swift"
-                  timestampString = "512825881.876082"
+                  timestampString = "512836028.58961"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
@@ -194,14 +178,14 @@
                   offsetFromSymbolStart = "649">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Jirassic.SyncTasks.(start (Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()).(closure #1)"
                   moduleName = "Jirassic"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cristi/Documents/Jirassic/App/Tasks/SyncTasks.swift"
-                  timestampString = "512825881.877508"
+                  timestampString = "512836028.591158"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "27"

@@ -65,6 +65,7 @@ enum TaskSubtype: Int {
 
 struct Task {
     
+    var lastModifiedDate: Date?
     var startDate: Date?
 	var endDate: Date
 	var notes: String?
