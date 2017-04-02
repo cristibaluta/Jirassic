@@ -163,5 +163,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Tasks/SyncTasks.swift"
+            timestampString = "512825875.885438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "start(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Jirassic.SyncTasks.start (Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "Jirassic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cristi/Documents/Jirassic/App/Tasks/SyncTasks.swift"
+                  timestampString = "512825881.876082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "649">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Jirassic.SyncTasks.(start (Swift.Optional&lt;(Swift.Bool) -&gt; ()&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "Jirassic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cristi/Documents/Jirassic/App/Tasks/SyncTasks.swift"
+                  timestampString = "512825881.877508"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

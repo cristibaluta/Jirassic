@@ -53,7 +53,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
 		remoteRepository = CloudKitRepository()
-//        (remoteRepository as? CloudKitRepository)?.fetch()
         
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
@@ -142,7 +141,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
-            RCLog(event.type.rawValue)
             self.activePopover?.performClose(nil)
         })
     }

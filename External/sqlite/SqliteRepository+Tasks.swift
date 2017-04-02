@@ -29,7 +29,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = "lastModifiedDate == NULL"
+        let predicate = "lastModifiedDate is NULL"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
