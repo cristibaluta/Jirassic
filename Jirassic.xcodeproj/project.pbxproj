@@ -31,6 +31,7 @@
 		28A928791E8F78580022AB55 /* SQLiteMigrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteMigrator.swift */; };
 		28A9287A1E8FA8E90022AB55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28A9287B1E8FC9B90022AB55 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
+		28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9287C1E9030BA0022AB55 /* CloudKit.framework */; };
 		28E896631E830D6700722032 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
 		28E896711E83732200722032 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8966F1E83732200722032 /* AppDelegate.m */; };
 		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
@@ -225,6 +226,7 @@
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		28A928771E8F78580022AB55 /* SQLiteMigrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteMigrator.swift; sourceTree = "<group>"; };
+		28A9287C1E9030BA0022AB55 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		28E896621E830D6700722032 /* Placeholder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		28E8966E1E83732200722032 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "macOS-launcher/AppDelegate.h"; sourceTree = "<group>"; };
 		28E8966F1E83732200722032 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "macOS-launcher/AppDelegate.m"; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */,
 				28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */,
 				4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */,
 			);
@@ -421,6 +424,7 @@
 		4055B1371E0D82A800279430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28A9287C1E9030BA0022AB55 /* CloudKit.framework */,
 				28577EB91E8AF379002B07FD /* libsqlite3.tbd */,
 				4055B1381E0D82A900279430 /* ServiceManagement.framework */,
 			);
@@ -956,7 +960,13 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};

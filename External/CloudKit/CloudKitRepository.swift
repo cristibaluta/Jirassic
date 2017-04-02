@@ -13,7 +13,8 @@ class CloudKitRepository {
     
     fileprivate var tasks = [Task]()
     fileprivate var user: User?
-    let privateDB = CKContainer.default().privateCloudDatabase
+    fileprivate let privateDB = CKContainer.default().privateCloudDatabase
+    fileprivate let preferences = RCPreferences<LocalPreferences>()
     
     init() {
         CKContainer.default().accountStatus(completionHandler: { (status, error) in
@@ -21,6 +22,11 @@ class CloudKitRepository {
             RCLogErrorO(error)
         })
     }
+}
+
+extension CloudKitRepository {
+    
+    
 }
 
 extension CloudKitRepository: RepositoryUser {
@@ -57,35 +63,24 @@ extension CloudKitRepository: RepositoryTasks {
 
     func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
         
-        let predicate = NSPredicate(format: "TRUEPREDICATE")
+//        let predicate = NSPredicate(format: "TRUEPREDICATE")
+        let lastSyncDate: Date = preferences.get(.lastIcloudSync)
+        let predicate = NSPredicate(format: "creationDate >= %@", lastSyncDate as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)
-        privateDB.perform(query, inZoneWith: nil) { results, error in
-            RCLogO(results)
+        privateDB.perform(query, inZoneWith: nil) { (results: [CKRecord]?, error) in
+            
             RCLogErrorO(error)
-//            if error != nil {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.delegate?.errorUpdating(error)
-//                    return
-//                }
-//            } else {
-//                self.items.removeAll(keepCapacity: true)
-//                for record in results{
-//                    let establishment = Establishment(record: record as! CKRecord, database: self.publicDB)
-//                    self.items.append(establishment)
-//                }
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.delegate?.modelUpdated()
-//                    return
-//                }
-//            }
+            
+            if let results = results {
+                for record in results {
+                    RCLogO(record)
+                    self.privateDB.delete(withRecordID: record.recordID, completionHandler: { (res, err) in
+                        RCLogO(res)
+                        RCLogErrorO(err)
+                    })
+                }
+            }
         }
-//        let puser = PUser.currentUser()
-//        let query = PFQuery(className: PTask.parseClassName())
-//        query.limit = 200
-//        query.whereKey(kUserKey, equalTo: puser!)
-//        query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
-//            self?.processPTasks(objects, error: error, completion: completion)
-//            })
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
@@ -128,7 +123,14 @@ extension CloudKitRepository: RepositoryTasks {
         
         let ID = CKRecordID(recordName: task.objectId)
         let cktask = CKRecord(recordType: "Task", recordID: ID)
+        cktask["lastModifiedDate"] = Date() as CKRecordValue?
+//        cktask["creationDate"] = task.creationDate as CKRecordValue?
+        cktask["startDate"] = task.startDate as CKRecordValue?
+        cktask["endDate"] = task.endDate as CKRecordValue
         cktask["notes"] = task.notes as CKRecordValue?
+        cktask["taskNumber"] = task.taskNumber as CKRecordValue?
+        cktask["taskType"] = task.taskType.rawValue as CKRecordValue
+        cktask["objectId"] = task.objectId as CKRecordValue
         
         privateDB.save(cktask, completionHandler: { savedRecord, error in
             RCLogO(savedRecord)
@@ -150,19 +152,6 @@ extension CloudKitRepository: RepositoryTasks {
 //        })
         
         return task
-    }
-    
-    
-    // MARK: Issue
-    
-    func queryIssues (_ successBlock: ([String]) -> Void, errorBlock: (NSError?) -> Void) {
-        
-        let issues = [String]()
-        successBlock(issues)
-    }
-    
-    func saveIssue (_ issue: String) {
-        
     }
 }
 

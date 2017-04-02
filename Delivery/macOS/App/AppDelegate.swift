@@ -17,6 +17,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case roundDay = "roundDay"
     case usePercents = "usePercents"
     case firstLaunch = "firstLaunch"
+    case lastIcloudSync = "lastIcloudSync"
     
     func defaultValue() -> Any {
         switch self {
@@ -24,6 +25,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .roundDay:                 return false
         case .usePercents:              return true
         case .firstLaunch:              return true
+        case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
         }
     }
 }
@@ -50,7 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
-//		remoteRepository = CloudKitRepository()
+		remoteRepository = CloudKitRepository()
+//        (remoteRepository as? CloudKitRepository)?.fetch()
         
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
