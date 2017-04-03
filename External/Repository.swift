@@ -19,13 +19,13 @@ protocol RepositoryUser {
 
 protocol RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void)
+    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void)
     func queryTasksInDay (_ day: Date) -> [Task]
     func queryUnsyncedTasks() -> [Task]
-    func queryChangedTasks (sinceDate: Date) -> [Task]
+    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void)
     func deleteTask (_ dataToDelete: Task, completion: @escaping ((_ success: Bool) -> Void))
     // Save a task and returns the same task with a taskId generated if it didn't had
-    func saveTask (_ theTask: Task, completion: @escaping ((_ success: Bool) -> Void)) -> Task
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void))
     
 }
 

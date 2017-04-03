@@ -10,7 +10,7 @@ import Foundation
 
 extension SqliteRepository: RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
+    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
         let results: [STask] = queryWithPredicate(nil, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
@@ -36,13 +36,13 @@ extension SqliteRepository: RepositoryTasks {
         return tasks
     }
     
-    func queryChangedTasks (sinceDate: Date) -> [Task] {
+    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         
         let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())')"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
-        return tasks
+        completion(tasks, nil)
     }
     
     func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
@@ -54,28 +54,26 @@ extension SqliteRepository: RepositoryTasks {
         completion(deleted)
     }
     
-    func saveTask (_ task: Task, completion: @escaping (_ success: Bool) -> Void) -> Task {
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
         
+        RCLog("save to sqlite \(task)")
         let stask = staskFromTask(task)
-        let saved = stask.save()
-        //        RCLog("saved \(saved)")
-        completion(saved == 1)
-        
-        return taskFromSTask(stask)
+        let _ = stask.save()
+        completion( taskFromSTask(stask))
     }
 }
 
 extension SqliteRepository {
     
-    fileprivate func taskFromSTask (_ rtask: STask) -> Task {
+    fileprivate func taskFromSTask (_ stask: STask) -> Task {
         
-        return Task(lastModifiedDate: rtask.lastModifiedDate,
-                    startDate: rtask.startDate,
-                    endDate: rtask.endDate!,
-                    notes: rtask.notes,
-                    taskNumber: rtask.taskNumber,
-                    taskType: TaskType(rawValue: rtask.taskType)!,
-                    objectId: rtask.objectId!
+        return Task(lastModifiedDate: stask.lastModifiedDate,
+                    startDate: stask.startDate,
+                    endDate: stask.endDate!,
+                    notes: stask.notes,
+                    taskNumber: stask.taskNumber,
+                    taskType: TaskType(rawValue: stask.taskType)!,
+                    objectId: stask.objectId!
         )
     }
     

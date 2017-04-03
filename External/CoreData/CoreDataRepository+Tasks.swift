@@ -11,7 +11,7 @@ import CoreData
 
 extension CoreDataRepository: RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
+    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(nil, sortDescriptors: sortDescriptors)
@@ -41,13 +41,13 @@ extension CoreDataRepository: RepositoryTasks {
         return tasks
     }
     
-    func queryChangedTasks (sinceDate: Date) -> [Task] {
+    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         
         let predicate = NSPredicate(format: "lastModifiedDate > %@", sinceDate as CVarArg)
         let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         
-        return tasks
+        completion(tasks, nil)
     }
     
     func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
@@ -62,12 +62,12 @@ extension CoreDataRepository: RepositoryTasks {
         completion(true)
     }
     
-    func saveTask (_ task: Task, completion: @escaping (_ success: Bool) -> Void) -> Task {
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
         
         let ctask = ctaskFromTask(task)
         saveContext()
         
-        return taskFromCTask(ctask)
+        completion( taskFromCTask(ctask))
     }
 }
 

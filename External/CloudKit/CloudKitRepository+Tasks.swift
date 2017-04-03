@@ -11,9 +11,11 @@ import CloudKit
 
 extension CloudKitRepository: RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
-        let changeToken = UserDefaults.standard.serverChangeToken
-        fetchChangedRecords(token: changeToken)
+    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
+        let predicate = NSPredicate(value: true)
+        fetchRecords(ofType: "Task", predicate: predicate) { (records) in
+            completion(self.tasksFromCKTasks(records!), nil)
+        }
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
@@ -24,39 +26,31 @@ extension CloudKitRepository: RepositoryTasks {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
-    func queryChangedTasks (sinceDate: Date) -> [Task] {
-        fatalError()
+    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+        let changeToken = UserDefaults.standard.serverChangeToken
+        fetchChangedRecords(token: changeToken, previousRecords: [], completion: { records in
+            completion(self.tasksFromCKTasks(records), nil)
+        })
     }
     
-    func deleteTask (_ taskToDelete: Task, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
-        var indexToRemove = -1
-        var shouldRemove = false
-        for task in tasks {
-            indexToRemove += 1
-            if task.objectId == taskToDelete.objectId {
-                shouldRemove = true
-                //                ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-                //                    ptask.deleteEventually()
-                //                    completion(success: true)
-                //                })
-                break
+        cktaskOfTask(task) { (record) in
+            if let cktask = record {
+            
+                self.privateDB.delete(withRecordID: cktask.recordID, completionHandler: { (recordID, error) in
+                    RCLogO(recordID)
+                    RCLogErrorO(error)
+                    completion(error != nil)
+                })
+            } else {
+                completion(false)
             }
         }
-        if shouldRemove {
-            self.tasks.remove(at: indexToRemove)
-        }
     }
     
-    func saveTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) -> Task {
-        RCLogO("Update task \(task)")
-        // Update local array
-//        for i in 0..<tasks.count {
-//            if task.objectId == tasks[i].objectId {
-//                tasks[i] = task
-//                break
-//            }
-//        }
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
+        RCLogO("Save to cloudkit \(task)")
         
         // Query for the task from server if exists
         cktaskOfTask(task) { (record) in
@@ -72,12 +66,28 @@ extension CloudKitRepository: RepositoryTasks {
             cktask?["objectId"] = task.objectId as CKRecordValue
             
             self.privateDB.save(cktask!, completionHandler: { savedRecord, error in
+                
                 RCLogO(savedRecord)
                 RCLogErrorO(error)
-                completion(error != nil)
-            }) 
+                
+                if let record = savedRecord {
+                    let uploadedTask = self.taskFromCKTask(record)
+                    completion(uploadedTask)
+                }
+            })
+            
+            //                let modifyRecords = CKModifyRecordsOperation(recordsToSave:[recordToSave], recordIDsToDelete: nil)
+            //                modifyRecords.savePolicy = CKRecordSavePolicy.AllKeys
+            //                modifyRecords.qualityOfService = NSQualityOfService.UserInitiated
+            //                modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+            //                    if error == nil {
+            //                        print("Modified")
+            //                    }else {
+            //                        print(error)
+            //                    }
+            //                }
+            //                privateDB.addOperation(modifyRecords)
         }
-        return task
     }
 }
 
@@ -98,4 +108,27 @@ extension CloudKitRepository {
             }
         }
     }
+    
+    fileprivate func tasksFromCKTasks (_ cktasks: [CKRecord]) -> [Task] {
+        
+        var tasks = [Task]()
+        for cktask in cktasks {
+            tasks.append(self.taskFromCKTask(cktask))
+        }
+        
+        return tasks
+    }
+    
+    fileprivate func taskFromCKTask (_ cktask: CKRecord) -> Task {
+        
+        return Task(lastModifiedDate: Date(),
+                    startDate: cktask["startDate"] as? Date,
+                    endDate: cktask["endDate"] as! Date,
+                    notes: cktask["notes"] as? String,
+                    taskNumber: cktask["taskNumber"] as? String,
+                    taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
+                    objectId: cktask["objectId"] as! String
+        )
+    }
+    
 }

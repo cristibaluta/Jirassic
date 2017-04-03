@@ -11,7 +11,6 @@ import CloudKit
 
 class CloudKitRepository {
     
-    internal var tasks = [Task]()
     internal var user: User?
     internal let privateDB = CKContainer.default().privateCloudDatabase
     internal let customZone = CKRecordZone(zoneName: "TasksZone")
@@ -31,18 +30,20 @@ class CloudKitRepository {
 
 extension CloudKitRepository {
     
-    func fetchChangedRecords (token: CKServerChangeToken?) {
+    func fetchChangedRecords (token: CKServerChangeToken?, previousRecords: [CKRecord], completion: @escaping ((_ records: [CKRecord]) -> Void)) {
+        
+        var records = previousRecords
+        
 //        CKFetchRecordZoneChangesOperation
         let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
         
         op.recordChangedBlock = { record in
             RCLog(record)
+            records.append(record)
         }
-        
         op.recordWithIDWasDeletedBlock = { recordID in
             RCLog(recordID)
         }
-        
         op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
             
             RCLogO(serverChangeToken)
@@ -55,36 +56,23 @@ extension CloudKitRepository {
             UserDefaults.standard.serverChangeToken = serverChangeToken
             
             if op.moreComing {
-                self.fetchChangedRecords(token: serverChangeToken)
+                self.fetchChangedRecords(token: serverChangeToken, previousRecords: records, completion: completion)
             } else {
-//                let modifyRecords = CKModifyRecordsOperation(recordsToSave:[recordToSave], recordIDsToDelete: nil)
-//                modifyRecords.savePolicy = CKRecordSavePolicy.AllKeys
-//                modifyRecords.qualityOfService = NSQualityOfService.UserInitiated
-//                modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
-//                    if error == nil {
-//                        print("Modified")
-//                    }else {
-//                        print(error)
-//                    }
-//                }
-//                privateDB.addOperation(modifyRecords)
-                
+                completion(records)
             }
         }
-        
         privateDB.add(op)
     }
     
-    func fetchRecord (ofType type: String, predicate: NSPredicate, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
+    func fetchRecords (ofType type: String, predicate: NSPredicate, completion: @escaping ((_ ctask: [CKRecord]?) -> Void)) {
         
-//        let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
         let query = CKQuery(recordType: type, predicate: predicate)
         privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
             
             RCLogErrorO(error)
             
-            if let result = results?.first {
-                completion(result)
+            if let results = results {
+                completion(results)
             } else {
                 completion(nil)
             }
