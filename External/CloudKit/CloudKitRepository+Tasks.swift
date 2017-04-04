@@ -28,7 +28,10 @@ extension CloudKitRepository: RepositoryTasks {
     
     func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         let changeToken = UserDefaults.standard.serverChangeToken
-        fetchChangedRecords(token: changeToken, previousRecords: [], completion: { records in
+        fetchChangedRecords(token: changeToken, 
+                            previousRecords: [], 
+                            previousDeletedRecordsIds: [], 
+                            completion: { (records, deletedRecordsIds) in
             completion(self.tasksFromCKTasks(records), nil)
         })
     }

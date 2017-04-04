@@ -30,9 +30,13 @@ class CloudKitRepository {
 
 extension CloudKitRepository {
     
-    func fetchChangedRecords (token: CKServerChangeToken?, previousRecords: [CKRecord], completion: @escaping ((_ records: [CKRecord]) -> Void)) {
+    func fetchChangedRecords (token: CKServerChangeToken?, 
+                              previousRecords: [CKRecord], 
+                              previousDeletedRecordsIds: [CKRecordID], 
+                              completion: @escaping ((_ changedRecords: [CKRecord], _ deletedRecordsIds: [CKRecordID]) -> Void)) {
         
         var records = previousRecords
+        var deletedRecordsIds = previousDeletedRecordsIds
         
 //        CKFetchRecordZoneChangesOperation
         let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
@@ -43,6 +47,7 @@ extension CloudKitRepository {
         }
         op.recordWithIDWasDeletedBlock = { recordID in
             RCLog(recordID)
+            deletedRecordsIds.append(recordID)
         }
         op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
             
@@ -56,9 +61,12 @@ extension CloudKitRepository {
             UserDefaults.standard.serverChangeToken = serverChangeToken
             
             if op.moreComing {
-                self.fetchChangedRecords(token: serverChangeToken, previousRecords: records, completion: completion)
+                self.fetchChangedRecords(token: serverChangeToken, 
+                                         previousRecords: records, 
+                                         previousDeletedRecordsIds: deletedRecordsIds, 
+                                         completion: completion)
             } else {
-                completion(records)
+                completion(records, deletedRecordsIds)
             }
         }
         privateDB.add(op)
