@@ -78,18 +78,6 @@ extension CloudKitRepository: RepositoryTasks {
                     completion(uploadedTask)
                 }
             })
-            
-            //                let modifyRecords = CKModifyRecordsOperation(recordsToSave:[recordToSave], recordIDsToDelete: nil)
-            //                modifyRecords.savePolicy = CKRecordSavePolicy.AllKeys
-            //                modifyRecords.qualityOfService = NSQualityOfService.UserInitiated
-            //                modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
-            //                    if error == nil {
-            //                        print("Modified")
-            //                    }else {
-            //                        print(error)
-            //                    }
-            //                }
-            //                privateDB.addOperation(modifyRecords)
         }
     }
 }
@@ -130,7 +118,7 @@ extension CloudKitRepository {
                     notes: cktask["notes"] as? String,
                     taskNumber: cktask["taskNumber"] as? String,
                     taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
-                    objectId: cktask["objectId"] as! String
+                    objectId: cktask.recordID.recordName
         )
     }
     

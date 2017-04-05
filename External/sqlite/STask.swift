@@ -11,7 +11,6 @@ import Foundation
 class STask: SQLTable {
     
     var lastModifiedDate: Date?
-    var creationDate: Date?
     var startDate: Date?
     var endDate: Date?
     var notes: String?
@@ -24,6 +23,6 @@ class STask: SQLTable {
     }
     
     override var description: String {
-        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate)) \n creationDate: \(String(describing: creationDate)) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId))>"
+        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate)) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId))>"
     }
 }

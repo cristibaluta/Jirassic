@@ -55,6 +55,11 @@ class SyncTasks {
     func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         RCLog("2. getLatestServerChanges")
         remoteRepository.queryChangedTasks(sinceDate: Date(timeIntervalSince1970: 0)) { tasks, error in
+            for task in tasks {
+                self.localRepository.saveTask(task, completion: { (task) in
+                    RCLog("saved")
+                })
+            }
             completion(tasks.count > 0)
         }
     }

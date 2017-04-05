@@ -22,7 +22,7 @@ class CloudKitRepository {
             RCLogErrorO(error)
         })
         privateDB.save(customZone) { (recordZone, err) in
-            RCLog(recordZone)
+            RCLogO(recordZone)
             RCLogErrorO(err)
         }
     }
@@ -39,7 +39,7 @@ extension CloudKitRepository {
         var deletedRecordsIds = previousDeletedRecordsIds
         
 //        CKFetchRecordZoneChangesOperation
-        let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
+        let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: nil)
         
         op.recordChangedBlock = { record in
             RCLog(record)
