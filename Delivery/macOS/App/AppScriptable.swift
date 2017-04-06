@@ -26,8 +26,8 @@ extension NSApplication {
                 }
                 RCLog(dict)
                 let notes = dict["notes"] ?? ""
-                let branchName = dict["branchName"] ?? ""
-                let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : branchName
+                let taskTitle = dict["branchName"] ?? ""
+                let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : taskTitle
                 let taskType = dict["taskType"] != nil
                     ? TaskType(rawValue: Int(dict["taskType"]!)!)!
                     : TaskType.gitCommit
@@ -50,6 +50,7 @@ extension NSApplication {
                     endDate: Date(),
                     notes: notes,
                     taskNumber: taskNumber,
+                    taskTitle: taskTitle,
                     taskType: taskType,
                     objectId: (local: String.random(), remote: nil)
                 )

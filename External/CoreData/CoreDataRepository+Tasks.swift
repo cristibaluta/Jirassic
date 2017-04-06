@@ -95,6 +95,7 @@ extension CoreDataRepository {
                     endDate: ctask.endDate!,
                     notes: ctask.notes,
                     taskNumber: ctask.taskNumber,
+                    taskTitle: ctask.taskTitle,
                     taskType: TaskType(rawValue: ctask.taskType!.intValue)!,
                     objectId: (local: ctask.objectId!, remote: ctask.remoteId)
         )

@@ -76,6 +76,7 @@ extension CloudKitRepository: RepositoryTasks {
             cktask?["endDate"] = task.endDate as CKRecordValue
             cktask?["notes"] = task.notes as CKRecordValue?
             cktask?["taskNumber"] = task.taskNumber as CKRecordValue?
+            cktask?["taskTitle"] = task.taskTitle as CKRecordValue?
             cktask?["taskType"] = task.taskType.rawValue as CKRecordValue
             cktask?["objectId"] = task.objectId.local as CKRecordValue
             
@@ -128,6 +129,7 @@ extension CloudKitRepository {
                     endDate: cktask["endDate"] as! Date,
                     notes: cktask["notes"] as? String,
                     taskNumber: cktask["taskNumber"] as? String,
+                    taskTitle: cktask["taskTitle"] as? String,
                     taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
                     objectId: (local: cktask["objectId"] as! String, remote: cktask.recordID.recordName)
         )

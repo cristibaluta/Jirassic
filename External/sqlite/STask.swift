@@ -16,6 +16,7 @@ class STask: SQLTable {
     var endDate: Date?
     var notes: String?
     var taskNumber: String?
+    var taskTitle: String?
     var taskType: Int = 0
     var objectId: String?
     var remoteId: String?
@@ -25,6 +26,6 @@ class STask: SQLTable {
     }
     
     override var description: String {
-        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate ?? nil)) \n deleted: \(deleted) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId)) \n remoteId: \(String(describing: remoteId))>"
+        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate ?? nil)) \n deleted: \(deleted) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskTitle: \(String(describing: taskTitle)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId)) \n remoteId: \(String(describing: remoteId))>"
     }
 }

@@ -86,6 +86,7 @@ extension SqliteRepository {
                     endDate: stask.endDate!,
                     notes: stask.notes,
                     taskNumber: stask.taskNumber,
+                    taskTitle: stask.taskTitle,
                     taskType: TaskType(rawValue: stask.taskType)!,
                     objectId: (local: stask.objectId!, remote: stask.remoteId)
         )

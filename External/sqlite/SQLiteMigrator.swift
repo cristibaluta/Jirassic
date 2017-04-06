@@ -33,7 +33,7 @@ extension SQLiteMigrator {
         case .v1_0:
             let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS sversions (db_version REAL);")
             
-            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS stasks (lastModifiedDate DATETIME, deleted BOOL DEFAULT 0, startDate DATETIME, endDate DATETIME, notes TEXT, taskNumber TEXT, taskType INTEGER NOT NULL, objectId varchar(10) PRIMARY KEY, remoteId varchar(100));")
+            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS stasks (lastModifiedDate DATETIME, deleted BOOL DEFAULT 0, startDate DATETIME, endDate DATETIME, notes TEXT, taskNumber TEXT, taskTitle TEXT, taskType INTEGER NOT NULL, objectId varchar(10) PRIMARY KEY, remoteId varchar(100));")
             
             let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS ssettingss (startOfDayEnabled BOOL, lunchEnabled BOOL, scrumEnabled BOOL, meetingEnabled BOOL, autoTrackEnabled BOOL, trackingMode INTEGER, startOfDayTime DATETIME, endOfDayTime DATETIME, lunchTime DATETIME, scrumTime DATETIME, minSleepDuration DATETIME, i INTEGER NOT NULL PRIMARY KEY);")
             
