@@ -12,7 +12,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let predicate = "deleted is NULL"
+        let predicate = "deleted == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
@@ -21,7 +21,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasksInDay (_ day: Date) -> [Task] {
         
-        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())') AND deleted is NULL"
+        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())') AND deleted == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
@@ -34,7 +34,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = "lastModifiedDate is NULL AND deleted is NULL"
+        let predicate = "lastModifiedDate is NULL AND deleted == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
@@ -52,7 +52,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND deleted is NULL"
+        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND deleted == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         

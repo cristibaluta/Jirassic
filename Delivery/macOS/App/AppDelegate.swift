@@ -49,6 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // For testing
         //localPreferences.reset()
+        UserDefaults.standard.serverChangeToken = nil
         
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()

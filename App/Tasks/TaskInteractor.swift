@@ -16,7 +16,13 @@ class TaskInteractor: RepositoryInteractor {
 //            self.remoteRepository?.saveTask(savedTask, completion: { (task: Task) -> Void in
 //                
 //            })
-            self.sync()
+//            self.sync()
+            if let remoteRepository = remoteRepository {
+                let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+                sync.syncTask(savedTask, completion: { (success) in
+                    
+                })
+            }
         })
         
     }
