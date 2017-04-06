@@ -39,7 +39,7 @@ extension CloudKitRepository {
         var deletedRecordsIds = previousDeletedRecordsIds
         
 //        CKFetchRecordZoneChangesOperation
-        let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: nil)
+        let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
         
         op.recordChangedBlock = { record in
             RCLog(record)

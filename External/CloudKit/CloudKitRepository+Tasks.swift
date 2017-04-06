@@ -14,7 +14,7 @@ extension CloudKitRepository: RepositoryTasks {
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         let predicate = NSPredicate(value: true)
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in
-            completion(self.tasksFromCKTasks(records!), nil)
+            completion(self.tasksFromCKTasks(records ?? []), nil)
         }
     }
     
@@ -22,7 +22,18 @@ extension CloudKitRepository: RepositoryTasks {
         return []
     }
     
+    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
+        let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
+        fetchRecords(ofType: "Task", predicate: predicate) { (records) in
+            completion(self.tasksFromCKTasks(records ?? []), nil)
+        }
+    }
+    
     func queryUnsyncedTasks() -> [Task] {
+        fatalError("This method is not applicable to CloudKitRepository")
+    }
+    
+    func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void) {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
@@ -112,7 +123,7 @@ extension CloudKitRepository {
     
     fileprivate func taskFromCKTask (_ cktask: CKRecord) -> Task {
         
-        return Task(lastModifiedDate: Date(),
+        return Task(lastModifiedDate: cktask["modificationDate"] as? Date,
                     startDate: cktask["startDate"] as? Date,
                     endDate: cktask["endDate"] as! Date,
                     notes: cktask["notes"] as? String,

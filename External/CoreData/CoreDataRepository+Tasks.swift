@@ -13,8 +13,9 @@ extension CoreDataRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
+        let predicate = NSPredicate(format: "deleted == NO")
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
-        let results: [CTask] = queryWithPredicate(nil, sortDescriptors: sortDescriptors)
+        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)
         
         completion(tasks, nil)
@@ -22,9 +23,10 @@ extension CoreDataRepository: RepositoryTasks {
     
     func queryTasksInDay (_ day: Date) -> [Task] {
         
-        let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [
-            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
-            ])
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg),
+            NSPredicate(format: "deleted == NO")
+        ])
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)
@@ -32,18 +34,31 @@ extension CoreDataRepository: RepositoryTasks {
         return tasks
     }
     
+    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
+        completion(queryTasksInDay(day), nil)
+    }
+    
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = NSPredicate(format: "lastModifiedDate == nil")
+        let predicate = NSPredicate(format: "lastModifiedDate == nil AND deleted == NO")
         let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         
         return tasks
     }
     
+    func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void) {
+        
+        let predicate = NSPredicate(format: "deleted == YES")
+        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
+        let tasks = tasksFromCTasks(results)
+        
+        completion(tasks)
+    }
+    
     func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let predicate = NSPredicate(format: "lastModifiedDate > %@", sinceDate as CVarArg)
+        let predicate = NSPredicate(format: "lastModifiedDate > %@ AND deleted == NO", sinceDate as CVarArg)
         let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         

@@ -12,7 +12,8 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let results: [STask] = queryWithPredicate(nil, sortingKeyPath: "endDate")
+        let predicate = "deleted is NULL"
+        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
         completion(tasks, nil)
@@ -20,25 +21,38 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasksInDay (_ day: Date) -> [Task] {
         
-        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())')"
+        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())') AND deleted is NULL"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
         return tasks
     }
     
+    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
+        completion(queryTasksInDay(day), nil)
+    }
+    
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = "lastModifiedDate is NULL"
+        let predicate = "lastModifiedDate is NULL AND deleted is NULL"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
         return tasks
     }
     
+    func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void) {
+        
+        let predicate = "deleted == 1"
+        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
+        let tasks = tasksFromSTasks(results)
+        
+        completion(tasks)
+    }
+    
     func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())')"
+        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND deleted is NULL"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
