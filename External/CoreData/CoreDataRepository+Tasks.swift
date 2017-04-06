@@ -96,7 +96,7 @@ extension CoreDataRepository {
                     notes: ctask.notes,
                     taskNumber: ctask.taskNumber,
                     taskType: TaskType(rawValue: ctask.taskType!.intValue)!,
-                    objectId: ctask.objectId!
+                    objectId: (local: ctask.objectId!, remote: ctask.remoteId)
         )
     }
     
@@ -112,15 +112,13 @@ extension CoreDataRepository {
     
     fileprivate func ctaskFromTask (_ task: Task) -> CTask {
         
-        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
+        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId.local)
         let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
         var ctask: CTask? = tasks.first
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObject(forEntityName: String(describing: CTask.self),
                                                         into: managedObjectContext!) as? CTask
-        }
-        if ctask?.objectId == nil {
-            ctask?.objectId = task.objectId
+            ctask?.objectId = task.objectId.local
         }
         
         return updatedCTask(ctask!, withTask: task)

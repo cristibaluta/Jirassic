@@ -77,7 +77,7 @@ extension CloudKitRepository: RepositoryTasks {
             cktask?["notes"] = task.notes as CKRecordValue?
             cktask?["taskNumber"] = task.taskNumber as CKRecordValue?
             cktask?["taskType"] = task.taskType.rawValue as CKRecordValue
-            cktask?["objectId"] = task.objectId as CKRecordValue
+            cktask?["objectId"] = task.objectId.local as CKRecordValue
             
             self.privateDB.save(cktask!, completionHandler: { savedRecord, error in
                 
@@ -97,7 +97,7 @@ extension CloudKitRepository {
     
     func cktaskOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
         
-        let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
+        let predicate = NSPredicate(format: "objectId == %@", task.objectId.local as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)
         privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
             
@@ -115,7 +115,7 @@ extension CloudKitRepository {
         
         var tasks = [Task]()
         for cktask in cktasks {
-            tasks.append(self.taskFromCKTask(cktask))
+            tasks.append( taskFromCKTask(cktask) )
         }
         
         return tasks
@@ -129,7 +129,7 @@ extension CloudKitRepository {
                     notes: cktask["notes"] as? String,
                     taskNumber: cktask["taskNumber"] as? String,
                     taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
-                    objectId: cktask.recordID.recordName
+                    objectId: (local: cktask["objectId"] as! String, remote: cktask.recordID.recordName)
         )
     }
     

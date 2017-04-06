@@ -87,7 +87,7 @@ extension SqliteRepository {
                     notes: stask.notes,
                     taskNumber: stask.taskNumber,
                     taskType: TaskType(rawValue: stask.taskType)!,
-                    objectId: stask.objectId!
+                    objectId: (local: stask.objectId!, remote: stask.remoteId)
         )
     }
     
@@ -95,7 +95,7 @@ extension SqliteRepository {
         
         var tasks = [Task]()
         for rtask in rtasks {
-            tasks.append(self.taskFromSTask(rtask))
+            tasks.append( taskFromSTask(rtask) )
         }
         
         return tasks
@@ -103,29 +103,28 @@ extension SqliteRepository {
     
     fileprivate func staskFromTask (_ task: Task) -> STask {
         
-        let taskPredicate = "objectId == '\(task.objectId)'"
+        let taskPredicate = "objectId == '\(task.objectId.local)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
         var stask: STask? = tasks.first
         if stask == nil {
             stask = STask()
-        }
-        if stask!.objectId == nil {
-            stask!.objectId = task.objectId
+            stask!.objectId = task.objectId.local
         }
         
         return updatedSTask(stask!, withTask: task)
     }
     
     // Update only updatable properties. objectId can't be updated
-    fileprivate func updatedSTask (_ rtask: STask, withTask task: Task) -> STask {
+    fileprivate func updatedSTask (_ stask: STask, withTask task: Task) -> STask {
         
-        rtask.taskNumber = task.taskNumber
-        rtask.taskType = task.taskType.rawValue
-        rtask.notes = task.notes
-        rtask.startDate = task.startDate
-        rtask.endDate = task.endDate
-        rtask.lastModifiedDate = task.lastModifiedDate
+        stask.taskNumber = task.taskNumber
+        stask.taskType = task.taskType.rawValue
+        stask.notes = task.notes
+        stask.startDate = task.startDate
+        stask.endDate = task.endDate
+        stask.lastModifiedDate = task.lastModifiedDate
+        stask.remoteId = task.objectId.remote
         
-        return rtask
+        return stask
     }
 }

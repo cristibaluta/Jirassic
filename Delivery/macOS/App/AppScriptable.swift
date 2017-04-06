@@ -51,7 +51,7 @@ extension NSApplication {
                     notes: notes,
                     taskNumber: taskNumber,
                     taskType: taskType,
-                    objectId: String.random()
+                    objectId: (local: String.random(), remote: nil)
                 )
                 saveInteractor.saveTask(task)
                 

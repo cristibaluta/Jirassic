@@ -20,5 +20,6 @@ class CTask: NSManagedObject {
     @NSManaged var taskNumber: String?
     @NSManaged var taskType: NSNumber?
     @NSManaged var objectId: String?
+    @NSManaged var remoteId: String?
     
 }
