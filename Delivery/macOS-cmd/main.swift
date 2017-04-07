@@ -155,12 +155,14 @@ func insertIssue (arguments: [String]) {
     }
     
     let task = Task(
+        lastModifiedDate: nil,
         startDate: nil,
         endDate: Date(),
         notes: notes,
         taskNumber: taskNumber,
+        taskTitle: nil,
         taskType: taskType,
-        objectId: String.random()
+        objectId: (local: String.random(), remote: nil)
     )
 //    print(task)
     let saveInteractor = TaskInteractor(repository: localRepository)
@@ -220,7 +222,12 @@ if let command = Command(rawValue: commandStr) {
             list (dayOnDate: date)
             break
         case .reports:
-            reports (dayOnDate: Date())
+            var date = Date()
+            if arguments.count > 0 {
+                let arg = arguments.remove(at: 0)
+                date = Date(YYYYMMddString: arg)
+            }
+            reports (dayOnDate: date)
             break
         case .insert:
             insertIssue (arguments: arguments)

@@ -20,7 +20,7 @@ class SQLiteMigrator {
         let v = db.query(sql: "SELECT * FROM 'sversions';")
         if v.count == 0 {
             migrate(db: db, toVersion: .v1_0)
-            UserDefaults.standard.serverChangeToken = nil
+           // UserDefaults.standard.serverChangeToken = nil
         }
     }
 }
