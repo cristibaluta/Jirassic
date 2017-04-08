@@ -27,7 +27,6 @@ extension SqliteRepository: RepositorySettings {
             rsettings?.lunchTime = Date(hour: 13, minute: 0)
             rsettings?.scrumTime = Date(hour: 10, minute: 30)
             rsettings?.minSleepDuration = Date(hour: 0, minute: 13)
-            
         }
         return settingsFromRSettings(rsettings!)
     }

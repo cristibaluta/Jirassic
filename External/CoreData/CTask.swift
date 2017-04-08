@@ -13,6 +13,7 @@ import CoreData
 class CTask: NSManagedObject {
     
     @NSManaged var lastModifiedDate: Date?
+    @NSManaged var markedForDeletion: NSNumber?
     @NSManaged var creationDate: Date?
     @NSManaged var startDate: Date?
     @NSManaged var endDate: Date?
