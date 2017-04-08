@@ -65,14 +65,18 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks, nil)
     }
     
-    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
         guard let context = managedObjectContext else {
             return
         }
         
         let ctask = ctaskFromTask(task)
-        context.delete(ctask)
+        if forceDelete {
+            context.delete(ctask)
+        } else {
+//            ctask.deleted = true
+        }
         saveContext()
         completion(true)
     }

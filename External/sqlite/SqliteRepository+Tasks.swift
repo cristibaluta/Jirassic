@@ -59,13 +59,15 @@ extension SqliteRepository: RepositoryTasks {
         completion(tasks, nil)
     }
     
-    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
         let stask = staskFromTask(task)
-        stask.deleted = true
-        let saved = stask.save()
-        
-        completion(saved == 1)
+        if forceDelete {
+            completion( stask.delete() )
+        } else {
+            stask.deleted = true
+            completion( stask.save() == 1 )
+        }
     }
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {

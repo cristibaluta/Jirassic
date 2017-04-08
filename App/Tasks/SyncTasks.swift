@@ -12,7 +12,8 @@ class SyncTasks {
     
     fileprivate let localRepository: Repository!
     fileprivate let remoteRepository: Repository!
-    fileprivate  var tasksToSync = [Task]()
+    fileprivate var tasksToSave = [Task]()
+    fileprivate var tasksToDelete = [Task]()
     
     init (localRepository: Repository, remoteRepository: Repository) {
         self.localRepository = localRepository
@@ -21,33 +22,56 @@ class SyncTasks {
     
     func start (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         
-        tasksToSync = localRepository.queryUnsyncedTasks()
-        RCLog("1. unsyncedTasks = \(tasksToSync.count)")
-        syncNextTask { (success) in
-            self.getLatestServerChanges(completion)
+        tasksToSave = localRepository.queryUnsyncedTasks()
+        RCLog("1. unsyncedTasks = \(self.tasksToSave.count)")
+        localRepository.queryDeletedTasks { deletedTasks in
+            RCLog("1. deletedTasks = \(deletedTasks.count)")
+            self.tasksToDelete = deletedTasks
+            self.syncNextTask { (success) in
+                self.getLatestServerChanges(completion)
+            }
         }
     }
     
-    fileprivate func syncNextTask (_ completion: ((_ success: Bool) -> Void)?) {
+    fileprivate func syncNextTask (_ completion: @escaping ((_ success: Bool) -> Void)) {
         
-        guard tasksToSync.count > 0 else {
-            completion?(true)
-            return
+        var task = tasksToSave.first
+        if task != nil {
+            tasksToSave.remove(at: 0)
+            saveTask(task!, completion: { (success) in
+                self.syncNextTask(completion)
+            })
+        } else {
+            task = tasksToDelete.first
+            if task != nil {
+                tasksToDelete.remove(at: 0)
+                deleteTask(task!, completion: { (success) in
+                    self.syncNextTask(completion)
+                })
+            } else {
+                completion(true)
+            }
         }
-        let task = tasksToSync[0]
-        tasksToSync.remove(at: 0)
-        syncTask(task, completion: { (success) in
-            self.syncNextTask(completion)
-        })
     }
     
-    func syncTask (_ task: Task, completion: ((_ success: Bool) -> Void)?) {
+    func saveTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
-        RCLog("sync \(task)")
+        RCLog("sync save \(task)")
         _ = remoteRepository.saveTask(task) { (uploadedTask) in
             // After task was saved to server update it to local datastore
             _ = self.localRepository.saveTask(uploadedTask, completion: { (task) in
-                completion?(true)
+                completion(true)
+            })
+        }
+    }
+    
+    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
+        
+        RCLog("sync delete \(task)")
+        _ = remoteRepository.deleteTask(task, forceDelete: true) { (uploadedTask) in
+            // After task was saved to server update it to local datastore
+            _ = self.localRepository.deleteTask(task, forceDelete: true, completion: { (task) in
+                completion(true)
             })
         }
     }

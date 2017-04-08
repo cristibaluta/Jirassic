@@ -47,11 +47,11 @@ extension CloudKitRepository: RepositoryTasks {
         })
     }
     
-    func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
         cktaskOfTask(task) { (record) in
             if let cktask = record {
-            
+                
                 self.privateDB.delete(withRecordID: cktask.recordID, completionHandler: { (recordID, error) in
                     RCLogO(recordID)
                     RCLogErrorO(error)
