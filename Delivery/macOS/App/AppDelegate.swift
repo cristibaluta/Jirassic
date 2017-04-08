@@ -115,7 +115,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching (_ aNotification: Notification) {
         
         self.killLauncher()
-        
+        let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
+        RCLog(app)
+        RCLog(NSWorkspace.shared().runningApplications)
 //        if let _ = remoteRepository {
 //            
 //        } else {

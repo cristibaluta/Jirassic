@@ -28,7 +28,7 @@ class SyncTasks {
         }
     }
     
-    func syncNextTask (_ completion: ((_ success: Bool) -> Void)?) {
+    fileprivate func syncNextTask (_ completion: ((_ success: Bool) -> Void)?) {
         
         guard tasksToSync.count > 0 else {
             completion?(true)

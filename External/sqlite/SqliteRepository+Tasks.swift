@@ -62,10 +62,10 @@ extension SqliteRepository: RepositoryTasks {
     func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         let stask = staskFromTask(task)
-        let deleted = stask.delete()
-        //        RCLog("deleted \(deleted)")
+        stask.deleted = true
+        let saved = stask.save()
         
-        completion(deleted)
+        completion(saved == 1)
     }
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
