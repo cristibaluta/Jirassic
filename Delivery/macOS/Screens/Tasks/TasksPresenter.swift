@@ -96,11 +96,18 @@ extension TasksPresenter: TasksPresenterInput {
                 title: "Good morning!",
                 message: "Ready to begin your working day?",
                 buttonTitle: "Start day"))
-        } else if currentTasks.count == 1 && selectedListType != .report {
-            userInterface!.showMessage((
-                title: "No task yet.",
-                message: "When you're ready with your first task click \n'+' or 'Log time'",
-                buttonTitle: "Log time"))
+        } else if currentTasks.count == 1 {
+            if selectedListType == .report {
+                userInterface!.showMessage((
+                    title: "No task yet",
+                    message: "Go to 'All tasks' tab and log some time first!",
+                    buttonTitle: nil))
+            } else {
+                userInterface!.showMessage((
+                    title: "No task yet",
+                    message: "When you're ready with your first task click \n'+' or 'Log time'",
+                    buttonTitle: "Log time"))
+            }
         } else {
             appWireframe!.removePlaceholder()
         }

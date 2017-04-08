@@ -743,8 +743,8 @@
 			isa = PBXGroup;
 			children = (
 				406384881DE388C5004795A4 /* Tasks.storyboard */,
-				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
+				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
 				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
 				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
