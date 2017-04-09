@@ -50,13 +50,13 @@ extension SqliteRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+    func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
         
         let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND deleted == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
-        completion(tasks, nil)
+        completion(tasks, [], nil)
     }
     
     func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
@@ -67,6 +67,17 @@ extension SqliteRepository: RepositoryTasks {
         } else {
             stask.deleted = true
             completion( stask.save() == 1 )
+        }
+    }
+    
+    func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
+        
+        let taskPredicate = "objectId == '\(objectId.local ?? "")' OR remoteId == '\(objectId.remote ?? "")'"
+        let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
+        if let stask = tasks.first {
+            completion( stask.delete() )
+        } else {
+            completion( false )
         }
     }
     

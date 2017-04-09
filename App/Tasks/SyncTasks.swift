@@ -78,13 +78,18 @@ class SyncTasks {
     
     func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         RCLog("2. getLatestServerChanges")
-        remoteRepository.queryChangedTasks(sinceDate: Date(timeIntervalSince1970: 0)) { tasks, error in
-            for task in tasks {
+        remoteRepository.queryUpdates(sinceDate: Date(timeIntervalSince1970: 0)) { changedTasks, deletedTasksIds, error in
+            for task in changedTasks {
                 self.localRepository.saveTask(task, completion: { (task) in
-                    RCLog("saved")
+                    RCLog("saved to local db")
                 })
             }
-            completion(tasks.count > 0)
+            for remoteId in deletedTasksIds {
+                self.localRepository.deleteTask(objectId: (local: nil, remote: remoteId), completion: { (success) in
+                    RCLog(">>>>  deleted from local db: \(remoteId) \(success)")
+                })
+            }
+            completion(changedTasks.count > 0 || deletedTasksIds.count > 0)
         }
     }
 }

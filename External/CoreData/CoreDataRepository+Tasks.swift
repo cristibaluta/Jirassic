@@ -56,13 +56,13 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+    func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
         
         let predicate = NSPredicate(format: "lastModifiedDate > %@ AND markedForDeletion == NO", sinceDate as CVarArg)
         let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         
-        completion(tasks, nil)
+        completion(tasks, [], nil)
     }
     
     func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
@@ -79,6 +79,10 @@ extension CoreDataRepository: RepositoryTasks {
         }
         saveContext()
         completion(true)
+    }
+    
+    func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
+        
     }
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {

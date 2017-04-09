@@ -37,13 +37,16 @@ extension CloudKitRepository: RepositoryTasks {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
-    func queryChangedTasks (sinceDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+    func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
+        
         let changeToken = UserDefaults.standard.serverChangeToken
+        
         fetchChangedRecords(token: changeToken, 
                             previousRecords: [], 
                             previousDeletedRecordsIds: [], 
-                            completion: { (records, deletedRecordsIds) in
-            completion(self.tasksFromCKTasks(records), nil)
+                            completion: { (changedRecords, deletedRecordsIds) in
+                                
+            completion(self.tasksFromCKTasks(changedRecords), self.idsFromCKRecordIds(deletedRecordsIds), nil)
         })
     }
     
@@ -61,6 +64,11 @@ extension CloudKitRepository: RepositoryTasks {
                 completion(false)
             }
         }
+    }
+    
+    func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
+        
+        
     }
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
@@ -133,6 +141,16 @@ extension CloudKitRepository {
                     taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
                     objectId: (local: cktask["objectId"] as! String, remote: cktask.recordID.recordName)
         )
+    }
+    
+    fileprivate func idsFromCKRecordIds (_ ckrecords: [CKRecordID]) -> [String] {
+        
+        var ids = [String]()
+        for ckrecord in ckrecords {
+            ids.append( ckrecord.recordName )
+        }
+        
+        return ids
     }
     
 }

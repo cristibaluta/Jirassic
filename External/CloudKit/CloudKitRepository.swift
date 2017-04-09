@@ -35,7 +35,7 @@ extension CloudKitRepository {
                               previousDeletedRecordsIds: [CKRecordID], 
                               completion: @escaping ((_ changedRecords: [CKRecord], _ deletedRecordsIds: [CKRecordID]) -> Void)) {
         
-        var records = previousRecords
+        var changedRecords = previousRecords
         var deletedRecordsIds = previousDeletedRecordsIds
         
 //        CKFetchRecordZoneChangesOperation
@@ -43,7 +43,7 @@ extension CloudKitRepository {
         
         op.recordChangedBlock = { record in
             RCLog(record)
-            records.append(record)
+            changedRecords.append(record)
         }
         op.recordWithIDWasDeletedBlock = { recordID in
             RCLog(recordID)
@@ -62,11 +62,11 @@ extension CloudKitRepository {
             
             if op.moreComing {
                 self.fetchChangedRecords(token: serverChangeToken, 
-                                         previousRecords: records, 
+                                         previousRecords: changedRecords, 
                                          previousDeletedRecordsIds: deletedRecordsIds, 
                                          completion: completion)
             } else {
-                completion(records, deletedRecordsIds)
+                completion(changedRecords, deletedRecordsIds)
             }
         }
         privateDB.add(op)
