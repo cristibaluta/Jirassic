@@ -18,15 +18,20 @@ class CalendarScrollView: NSScrollView {
         }
         set {
             _weeks = newValue
+            guard let firstWeek = _weeks.first else {
+                return
+            }
             let now = Date()
-            if let firstWeek = _weeks.first { 
-                if firstWeek.date.isSameWeekAs(now) {
-                    if let firstDay = firstWeek.days.first {
-                        if !firstDay.date.isSameDayAs(now) {
-                            _weeks[0].days.insert(Day(date: now), at: 0)
-                        }
+            if firstWeek.date.isSameWeekAs(now) {
+                if let firstDay = firstWeek.days.first {
+                    if !firstDay.date.isSameDayAs(now) {
+                        _weeks[0].days.insert(Day(date: now), at: 0)
                     }
                 }
+            } else {
+                let week = Week(date: now)
+                week.days.append(Day(date: now))
+                _weeks.insert(week, at: 0)
             }
         }
     }
