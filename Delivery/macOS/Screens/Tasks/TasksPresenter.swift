@@ -54,7 +54,7 @@ extension TasksPresenter: TasksPresenterInput {
     
     func refreshUI() {
         reloadData()
-        updateNoTasksState()
+//        updateNoTasksState()
     }
     
     func reloadData() {
@@ -71,7 +71,6 @@ extension TasksPresenter: TasksPresenterInput {
                 wself.reloadTasksOnDay(todayDay, listType: wself.selectedListType)
             }
         }
-        
     }
     
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
