@@ -47,6 +47,7 @@ class TasksPresenter {
     fileprivate var selectedListType = ListType.allTasks
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var lastSelectedDay: Day?
+    fileprivate var interactor: ReadDaysInteractor?
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -59,11 +60,18 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadData() {
         
         let todayDay = Day(date: Date())
-        let reader = ReadDaysInteractor(repository: localRepository)
-        let weeks = reader.weeks()
-        userInterface?.showDates(weeks)
-        userInterface?.selectDay(todayDay)
-        reloadTasksOnDay(todayDay, listType: selectedListType)
+        interactor = ReadDaysInteractor(repository: localRepository)
+        interactor?.query { [weak self] weeks in
+            guard let wself = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                wself.userInterface?.showDates(weeks)
+                wself.userInterface?.selectDay(todayDay)
+                wself.reloadTasksOnDay(todayDay, listType: wself.selectedListType)
+            }
+        }
+        
     }
     
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
