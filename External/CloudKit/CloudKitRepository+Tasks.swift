@@ -68,7 +68,6 @@ extension CloudKitRepository: RepositoryTasks {
     
     func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
         
-        
     }
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
@@ -78,7 +77,7 @@ extension CloudKitRepository: RepositoryTasks {
         cktaskOfTask(task) { (record) in
             var cktask: CKRecord? = record
             if record == nil {
-                cktask = CKRecord(recordType: "Task", zoneID: self.customZone.zoneID)
+                cktask = CKRecord(recordType: "Task", recordID: CKRecordID(recordName: task.objectId.local, zoneID: self.customZone.zoneID))
             }
             cktask?["startDate"] = task.startDate as CKRecordValue?
             cktask?["endDate"] = task.endDate as CKRecordValue
@@ -90,6 +89,7 @@ extension CloudKitRepository: RepositoryTasks {
             
             self.privateDB.save(cktask!, completionHandler: { savedRecord, error in
                 
+                RCLog("Record after saved to ck")
                 RCLogO(savedRecord)
                 RCLogErrorO(error)
                 
@@ -152,5 +152,4 @@ extension CloudKitRepository {
         
         return ids
     }
-    
 }

@@ -49,6 +49,8 @@
 		28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928941E9110980022AB55 /* CloudKitRepository+User.swift */; };
 		28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */; };
 		28A928981E9761930022AB55 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */; };
+		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
+		28AFE7321E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		28E896631E830D6700722032 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
 		28E896711E83732200722032 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8966F1E83732200722032 /* AppDelegate.m */; };
 		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
@@ -254,6 +256,7 @@
 		28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Tasks.swift"; sourceTree = "<group>"; };
 		28A928941E9110980022AB55 /* CloudKitRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+User.swift"; sourceTree = "<group>"; };
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
+		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
 		28E896621E830D6700722032 /* Placeholder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		28E8966E1E83732200722032 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "macOS-launcher/AppDelegate.h"; sourceTree = "<group>"; };
 		28E8966F1E83732200722032 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "macOS-launcher/AppDelegate.m"; sourceTree = "<group>"; };
@@ -789,6 +792,7 @@
 				28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */,
 				28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */,
 				28A928941E9110980022AB55 /* CloudKitRepository+User.swift */,
+				28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -1120,6 +1124,7 @@
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
+				28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */,
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
 				4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */,
 				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
@@ -1231,6 +1236,7 @@
 				28A928911E910FF60022AB55 /* CoreDataRepository+User.swift in Sources */,
 				4065D41A1DD454DF00B73201 /* CoreDataRepository.swift in Sources */,
 				28A9288E1E910F970022AB55 /* CoreDataRepository+Settings.swift in Sources */,
+				28AFE7321E9A594500BAAD8C /* UserDefaults+token.swift in Sources */,
 				4065D4321DD457B500B73201 /* Conversions.swift in Sources */,
 				28A928821E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
 				4065D4331DD457E000B73201 /* RCLog.swift in Sources */,

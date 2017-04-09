@@ -38,7 +38,6 @@ extension CloudKitRepository {
         var changedRecords = previousRecords
         var deletedRecordsIds = previousDeletedRecordsIds
         
-//        CKFetchRecordZoneChangesOperation
         let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
         
         op.recordChangedBlock = { record in
@@ -51,11 +50,11 @@ extension CloudKitRepository {
         }
         op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
             
-            RCLogO(serverChangeToken)
-            RCLogO(data)
+//            RCLogO(serverChangeToken)
+//            RCLogO(data)
             RCLogErrorO(error)
             guard error == nil else {
-                
+                completion(changedRecords, deletedRecordsIds)
                 return
             }
             UserDefaults.standard.serverChangeToken = serverChangeToken
@@ -83,31 +82,6 @@ extension CloudKitRepository {
                 completion(results)
             } else {
                 completion(nil)
-            }
-        }
-    }
-}
-
-public extension UserDefaults {
-    
-    var serverChangeToken: CKServerChangeToken? {
-        get {
-            guard let data = self.value(forKey: "ChangeToken") as? Data else {
-                return nil
-            }
-            guard let token = NSKeyedUnarchiver.unarchiveObject(with: data) as? CKServerChangeToken else {
-                return nil
-            }
-            
-            return token
-        }
-        set {
-            if let token = newValue {
-                let data = NSKeyedArchiver.archivedData(withRootObject: token)
-                self.set(data, forKey: "ChangeToken")
-                self.synchronize()
-            } else {
-                self.removeObject(forKey: "ChangeToken")
             }
         }
     }

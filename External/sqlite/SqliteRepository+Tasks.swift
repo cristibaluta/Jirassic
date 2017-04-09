@@ -83,7 +83,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
         
-        RCLog("save to sqlite \(task)")
+//        RCLog("save to sqlite \(task)")
         let stask = staskFromTask(task)
         let _ = stask.save()
         completion( taskFromSTask(stask))

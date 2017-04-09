@@ -58,6 +58,7 @@ class SyncTasks {
         
         RCLog("sync save \(task)")
         _ = remoteRepository.saveTask(task) { (uploadedTask) in
+            RCLog("save uploadedTask \(uploadedTask)")
             // After task was saved to server update it to local datastore
             _ = self.localRepository.saveTask(uploadedTask, completion: { (task) in
                 completion(true)
