@@ -105,6 +105,8 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         }
         
         let saveInteractor = TaskInteractor(repository: localRepository)
-        saveInteractor.saveTask(task)
+        saveInteractor.saveTask(task, completion: { savedTask in
+            
+        })
     }
 }

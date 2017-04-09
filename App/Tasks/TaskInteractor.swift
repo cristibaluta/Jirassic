@@ -10,14 +10,19 @@ import Foundation
 
 class TaskInteractor: RepositoryInteractor {
 
-    func saveTask (_ task: Task) {
+    func saveTask (_ task: Task, completion: @escaping (_ savedTask: Task) -> Void) {
         
         self.repository.saveTask(task, completion: { (savedTask: Task) -> Void in
+            
             if let remoteRepository = remoteRepository {
                 let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
                 sync.saveTask(savedTask, completion: { (success) in
-                    
+                    DispatchQueue.main.async {
+                        completion(savedTask)
+                    }
                 })
+            } else {
+                completion(savedTask)
             }
         })
     }
@@ -33,14 +38,4 @@ class TaskInteractor: RepositoryInteractor {
             }
         })
     }
-    
-//    fileprivate func sync() {
-//        
-//        if let remoteRepository = remoteRepository {
-//            let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
-//            sync.start { hasIncomingChanges in
-//                
-//            }
-//        }
-//    }
 }
