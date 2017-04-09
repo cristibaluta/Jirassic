@@ -66,7 +66,7 @@ extension CloudKitRepository: RepositoryTasks {
         }
     }
     
-    func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (objectId: String, completion: @escaping ((_ success: Bool) -> Void)) {
         
     }
     
@@ -77,7 +77,7 @@ extension CloudKitRepository: RepositoryTasks {
         cktaskOfTask(task) { (record) in
             var cktask: CKRecord? = record
             if record == nil {
-                cktask = CKRecord(recordType: "Task", recordID: CKRecordID(recordName: task.objectId.local, zoneID: self.customZone.zoneID))
+                cktask = CKRecord(recordType: "Task", recordID: CKRecordID(recordName: task.objectId, zoneID: self.customZone.zoneID))
             }
             cktask?["startDate"] = task.startDate as CKRecordValue?
             cktask?["endDate"] = task.endDate as CKRecordValue
@@ -85,7 +85,7 @@ extension CloudKitRepository: RepositoryTasks {
             cktask?["taskNumber"] = task.taskNumber as CKRecordValue?
             cktask?["taskTitle"] = task.taskTitle as CKRecordValue?
             cktask?["taskType"] = task.taskType.rawValue as CKRecordValue
-            cktask?["objectId"] = task.objectId.local as CKRecordValue
+            cktask?["objectId"] = task.objectId as CKRecordValue
             
             self.privateDB.save(cktask!, completionHandler: { savedRecord, error in
                 
@@ -106,7 +106,7 @@ extension CloudKitRepository {
     
     func cktaskOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
         
-        let predicate = NSPredicate(format: "objectId == %@", task.objectId.local as CVarArg)
+        let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)
         privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
             
@@ -139,7 +139,7 @@ extension CloudKitRepository {
                     taskNumber: cktask["taskNumber"] as? String,
                     taskTitle: cktask["taskTitle"] as? String,
                     taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
-                    objectId: (local: cktask["objectId"] as! String, remote: cktask.recordID.recordName)
+                    objectId: cktask["objectId"] as! String
         )
     }
     

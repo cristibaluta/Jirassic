@@ -12,7 +12,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let predicate = "deleted == 0"
+        let predicate = "markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
@@ -21,7 +21,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasksInDay (_ day: Date) -> [Task] {
         
-        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())') AND deleted == 0"
+        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())') AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
@@ -34,7 +34,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = "lastModifiedDate is NULL AND deleted == 0"
+        let predicate = "lastModifiedDate is NULL AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
@@ -43,7 +43,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void) {
         
-        let predicate = "deleted == 1"
+        let predicate = "markedForDeletion == 1"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
@@ -52,7 +52,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND deleted == 0"
+        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
@@ -65,14 +65,14 @@ extension SqliteRepository: RepositoryTasks {
         if forceDelete {
             completion( stask.delete() )
         } else {
-            stask.deleted = true
+            stask.markedForDeletion = true
             completion( stask.save() == 1 )
         }
     }
     
-    func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (objectId: String, completion: @escaping ((_ success: Bool) -> Void)) {
         
-        let taskPredicate = "objectId == '\(objectId.local ?? "")' OR remoteId == '\(objectId.remote ?? "")'"
+        let taskPredicate = "objectId == '\(objectId)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
         if let stask = tasks.first {
             completion( stask.delete() )
@@ -101,7 +101,7 @@ extension SqliteRepository {
                     taskNumber: stask.taskNumber,
                     taskTitle: stask.taskTitle,
                     taskType: TaskType(rawValue: stask.taskType)!,
-                    objectId: (local: stask.objectId!, remote: stask.remoteId)
+                    objectId: stask.objectId!
         )
     }
     
@@ -117,12 +117,12 @@ extension SqliteRepository {
     
     fileprivate func staskFromTask (_ task: Task) -> STask {
         
-        let taskPredicate = "objectId == '\(task.objectId.local)'"
+        let taskPredicate = "objectId == '\(task.objectId)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
         var stask: STask? = tasks.first
         if stask == nil {
             stask = STask()
-            stask!.objectId = task.objectId.local
+            stask!.objectId = task.objectId
         }
         
         return updatedSTask(stask!, withTask: task)
@@ -137,7 +137,6 @@ extension SqliteRepository {
         stask.startDate = task.startDate
         stask.endDate = task.endDate
         stask.lastModifiedDate = task.lastModifiedDate
-        stask.remoteId = task.objectId.remote
         
         return stask
     }

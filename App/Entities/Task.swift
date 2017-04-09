@@ -72,7 +72,7 @@ struct Task {
     var taskNumber: String?
     var taskTitle: String?
 	var taskType: TaskType
-    var objectId: (local: String, remote: String?)
+    var objectId: String
 }
 
 extension Task {
@@ -80,14 +80,14 @@ extension Task {
     init () {
         self.endDate = Date()
         self.taskType = TaskType.issue
-        self.objectId = (local: String.random(), remote: nil)
+        self.objectId = String.random()
     }
     
 	init (dateEnd: Date, type: TaskType) {
 		
 		self.endDate = dateEnd
 		self.taskType = type
-        self.objectId = (local: String.random(), remote: nil)
+        self.objectId = String.random()
         
         var subtype: TaskSubtype?
 		
@@ -111,7 +111,7 @@ extension Task {
 	init (subtype: TaskSubtype) {
 		
         self.endDate = Date()
-        self.objectId = (local: String.random(), remote: nil)
+        self.objectId = String.random()
         self.notes = subtype.defaultNotes
         self.taskNumber = subtype.defaultTaskNumber
         

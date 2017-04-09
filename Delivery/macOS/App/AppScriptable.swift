@@ -54,7 +54,7 @@ extension NSApplication {
                     taskNumber: taskNumber,
                     taskTitle: taskTitle,
                     taskType: taskType,
-                    objectId: (local: String.random(), remote: nil)
+                    objectId: String.random()
                 )
                 saveInteractor.saveTask(task, completion: { savedTask in
                     // Not interested when the the task was saved to server

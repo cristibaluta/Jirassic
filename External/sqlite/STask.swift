@@ -11,7 +11,7 @@ import Foundation
 class STask: SQLTable {
     
     var lastModifiedDate: Date?
-    var deleted = false
+    var markedForDeletion = false
     var startDate: Date?
     var endDate: Date?
     var notes: String?
@@ -19,13 +19,12 @@ class STask: SQLTable {
     var taskTitle: String?
     var taskType: Int = 0
     var objectId: String?
-    var remoteId: String?
     
     override func primaryKey() -> String {
         return "objectId"
     }
     
     override var description: String {
-        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate ?? nil)) \n deleted: \(deleted) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskTitle: \(String(describing: taskTitle)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId)) \n remoteId: \(String(describing: remoteId))>"
+        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate ?? nil)) \n markedForDeletion: \(markedForDeletion) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskTitle: \(String(describing: taskTitle)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId))>"
     }
 }

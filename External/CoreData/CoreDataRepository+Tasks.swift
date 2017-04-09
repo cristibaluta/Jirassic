@@ -81,7 +81,7 @@ extension CoreDataRepository: RepositoryTasks {
         completion(true)
     }
     
-    func deleteTask (objectId: (local: String?, remote: String?), completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (objectId: String, completion: @escaping ((_ success: Bool) -> Void)) {
         
     }
     
@@ -105,7 +105,7 @@ extension CoreDataRepository {
                     taskNumber: ctask.taskNumber,
                     taskTitle: ctask.taskTitle,
                     taskType: TaskType(rawValue: ctask.taskType!.intValue)!,
-                    objectId: (local: ctask.objectId!, remote: ctask.remoteId)
+                    objectId: ctask.objectId!
         )
     }
     
@@ -121,13 +121,13 @@ extension CoreDataRepository {
     
     fileprivate func ctaskFromTask (_ task: Task) -> CTask {
         
-        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId.local)
+        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
         let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
         var ctask: CTask? = tasks.first
         if ctask == nil {
             ctask = NSEntityDescription.insertNewObject(forEntityName: String(describing: CTask.self),
                                                         into: managedObjectContext!) as? CTask
-            ctask?.objectId = task.objectId.local
+            ctask?.objectId = task.objectId
         }
         
         return updatedCTask(ctask!, withTask: task)

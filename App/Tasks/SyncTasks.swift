@@ -86,7 +86,7 @@ class SyncTasks {
                 })
             }
             for remoteId in deletedTasksIds {
-                self.localRepository.deleteTask(objectId: (local: nil, remote: remoteId), completion: { (success) in
+                self.localRepository.deleteTask(objectId: remoteId, completion: { (success) in
                     RCLog(">>>>  deleted from local db: \(remoteId) \(success)")
                 })
             }

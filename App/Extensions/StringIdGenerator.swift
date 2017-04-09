@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    static func random (_ length: Int = 10) -> String {
+    static func random (_ length: Int = 20) -> String {
         
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
