@@ -35,11 +35,12 @@ class TaskCell: NSTableRowView, CellProtocol {
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
 	
 	// Sets data to the cell
-	var _dateEnd = ""
+    var _dateEnd = Date()
+	var _dateEndHHmm = ""
 	var data: TaskCreationData {
 		get {
             let hm = Date.parseHHmm(self.dateEndTextField!.stringValue)
-            let date = Date().dateByUpdating(hour: hm.hour, minute: hm.min)
+            let date = _dateEnd.dateByUpdating(hour: hm.hour, minute: hm.min)
 			return (
                 dateStart: nil,
                 dateEnd: date,
@@ -49,8 +50,9 @@ class TaskCell: NSTableRowView, CellProtocol {
             )
 		}
 		set {
-            _dateEnd = newValue.dateEnd.HHmm()
-            dateEndTextField!.stringValue = _dateEnd
+            _dateEnd = newValue.dateEnd
+            _dateEndHHmm = _dateEnd.HHmm()
+            dateEndTextField!.stringValue = _dateEndHHmm
 			issueNrTextField!.stringValue = newValue.taskNumber
 			notesTextField!.stringValue = newValue.notes
 		}
@@ -159,10 +161,10 @@ extension TaskCell: NSTextFieldDelegate {
 		wasEdited = true
 		if obj.object as? NSTextField == dateEndTextField {
 			let predictor = PredictiveTimeTyping()
-			let comps = dateEndTextField!.stringValue.components(separatedBy: _dateEnd)
-			let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last
-			_dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
-			dateEndTextField?.stringValue = _dateEnd
+			let comps = dateEndTextField!.stringValue.components(separatedBy: _dateEndHHmm)
+			let newDigit = (comps.count == 1 && _dateEndHHmm != "") ? "" : comps.last
+			_dateEndHHmm = predictor.timeByAdding(newDigit!, to: _dateEndHHmm)
+			dateEndTextField?.stringValue = _dateEndHHmm
 		}
 	}
 	

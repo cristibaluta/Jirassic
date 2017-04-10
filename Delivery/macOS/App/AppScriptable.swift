@@ -42,7 +42,7 @@ extension NSApplication {
                     let comps = startDate.components()
                     let startDayMark = Task(dateEnd: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
                     saveInteractor.saveTask(startDayMark, completion: { savedTask in
-                        
+                        saveInteractor.syncTask(savedTask, completion: { (task) in })
                     })
                 }
                 
@@ -57,7 +57,7 @@ extension NSApplication {
                     objectId: String.random()
                 )
                 saveInteractor.saveTask(task, completion: { savedTask in
-                    // Not interested when the the task was saved to server
+                    saveInteractor.syncTask(savedTask, completion: { (task) in })
                 })
                 
                 UserNotifications().showNotification("Git commit added", informativeText: informativeText)

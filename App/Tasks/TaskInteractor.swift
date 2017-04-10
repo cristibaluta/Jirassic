@@ -12,20 +12,11 @@ class TaskInteractor: RepositoryInteractor {
 
     func saveTask (_ task: Task, completion: @escaping (_ savedTask: Task) -> Void) {
         
+        var task = task
+        task.lastModifiedDate = nil
+        
         self.repository.saveTask(task, completion: { (savedTask: Task) -> Void in
-            
-            if let _ = remoteRepository {
-                // This is called twice in a row, once by save and once by sync. Re-enable if the flow is fixed
-//                let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
-//                sync.saveTask(savedTask, completion: { (success) in
-//                    DispatchQueue.main.async {
-//                        completion(savedTask)
-//                    }
-//                })
-                completion(savedTask)
-            } else {
-                completion(savedTask)
-            }
+            completion(savedTask)
         })
     }
     
@@ -39,5 +30,17 @@ class TaskInteractor: RepositoryInteractor {
                 })
             }
         })
+    }
+    
+    func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
+        
+        if let remoteRepository = remoteRepository {
+            let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+            sync.saveTask(task, completion: { (success) in
+                DispatchQueue.main.async {
+                    completion(task)
+                }
+            })
+        }
     }
 }

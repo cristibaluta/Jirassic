@@ -149,7 +149,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task, completion: { savedTask in
-            
+            saveInteractor.syncTask(savedTask, completion: { (task) in })
         })
     }
     

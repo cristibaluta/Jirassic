@@ -776,9 +776,9 @@
 			isa = PBXGroup;
 			children = (
 				28577EA01E8ADBBD002B07FD /* sqlite */,
-				4065D3891DD3B44200B73201 /* CloudKit */,
 				4065D38B1DD3B44200B73201 /* CoreData */,
 				4065D3921DD3B44200B73201 /* InMemoryStorage */,
+				4065D3891DD3B44200B73201 /* CloudKit */,
 				4065D3941DD3B44200B73201 /* Repository.swift */,
 				4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */,
 			);
