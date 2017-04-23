@@ -14,7 +14,7 @@ extension CloudKitRepository: RepositoryTasks {
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         let predicate = NSPredicate(value: true)
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in
-            completion(self.tasksFromCKTasks(records ?? []), nil)
+            completion(self.tasksFromRecords(records ?? []), nil)
         }
     }
     
@@ -25,7 +25,7 @@ extension CloudKitRepository: RepositoryTasks {
     func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
         let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in
-            completion(self.tasksFromCKTasks(records ?? []), nil)
+            completion(self.tasksFromRecords(records ?? []), nil)
         }
     }
     
@@ -46,13 +46,13 @@ extension CloudKitRepository: RepositoryTasks {
                             previousDeletedRecordsIds: [], 
                             completion: { (changedRecords, deletedRecordsIds) in
                                 
-            completion(self.tasksFromCKTasks(changedRecords), self.idsFromCKRecordIds(deletedRecordsIds), nil)
+            completion(self.tasksFromRecords(changedRecords), self.stringIdsFromCKRecordIds(deletedRecordsIds), nil)
         })
     }
     
     func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
-        cktaskOfTask(task) { (record) in
+        recordOfTask(task) { (record) in
             if let cktask = record {
                 
                 self.privateDB.delete(withRecordID: cktask.recordID, completionHandler: { (recordID, error) in
@@ -74,27 +74,22 @@ extension CloudKitRepository: RepositoryTasks {
         RCLogO("Save to cloudkit \(task)")
         
         // Query for the task from server if exists
-        cktaskOfTask(task) { (record) in
-            var cktask: CKRecord? = record
+        recordOfTask(task) { (record) in
+            var record: CKRecord? = record
             if record == nil {
-                cktask = CKRecord(recordType: "Task", recordID: CKRecordID(recordName: task.objectId, zoneID: self.customZone.zoneID))
+                let recordId = CKRecordID(recordName: task.objectId, zoneID: self.customZone.zoneID)
+                record = CKRecord(recordType: "Task", recordID: recordId)
             }
-            cktask?["startDate"] = task.startDate as CKRecordValue?
-            cktask?["endDate"] = task.endDate as CKRecordValue
-            cktask?["notes"] = task.notes as CKRecordValue?
-            cktask?["taskNumber"] = task.taskNumber as CKRecordValue?
-            cktask?["taskTitle"] = task.taskTitle as CKRecordValue?
-            cktask?["taskType"] = task.taskType.rawValue as CKRecordValue
-            cktask?["objectId"] = task.objectId as CKRecordValue
+            record = self.updatedRecord(record!, withTask: task)
             
-            self.privateDB.save(cktask!, completionHandler: { savedRecord, error in
+            self.privateDB.save(record!, completionHandler: { savedRecord, error in
                 
                 RCLog("Record after saved to ck")
                 RCLogO(savedRecord)
                 RCLogErrorO(error)
                 
                 if let record = savedRecord {
-                    let uploadedTask = self.taskFromCKTask(record)
+                    let uploadedTask = self.taskFromRecord(record)
                     completion(uploadedTask)
                 }
             })
@@ -104,7 +99,7 @@ extension CloudKitRepository: RepositoryTasks {
 
 extension CloudKitRepository {
     
-    func cktaskOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
+    func recordOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
         
         let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)
@@ -120,30 +115,43 @@ extension CloudKitRepository {
         }
     }
     
-    fileprivate func tasksFromCKTasks (_ cktasks: [CKRecord]) -> [Task] {
+    fileprivate func tasksFromRecords (_ records: [CKRecord]) -> [Task] {
         
         var tasks = [Task]()
-        for cktask in cktasks {
-            tasks.append( taskFromCKTask(cktask) )
+        for record in records {
+            tasks.append( taskFromRecord(record) )
         }
         
         return tasks
     }
     
-    fileprivate func taskFromCKTask (_ cktask: CKRecord) -> Task {
+    fileprivate func taskFromRecord (_ record: CKRecord) -> Task {
         
-        return Task(lastModifiedDate: cktask["modificationDate"] as? Date,
-                    startDate: cktask["startDate"] as? Date,
-                    endDate: cktask["endDate"] as! Date,
-                    notes: cktask["notes"] as? String,
-                    taskNumber: cktask["taskNumber"] as? String,
-                    taskTitle: cktask["taskTitle"] as? String,
-                    taskType: TaskType(rawValue: (cktask["taskType"] as! NSNumber).intValue)!,
-                    objectId: cktask["objectId"] as! String
+        return Task(lastModifiedDate: record["modificationDate"] as? Date,
+                    startDate: record["startDate"] as? Date,
+                    endDate: record["endDate"] as! Date,
+                    notes: record["notes"] as? String,
+                    taskNumber: record["taskNumber"] as? String,
+                    taskTitle: record["taskTitle"] as? String,
+                    taskType: TaskType(rawValue: (record["taskType"] as! NSNumber).intValue)!,
+                    objectId: record["objectId"] as! String
         )
     }
     
-    fileprivate func idsFromCKRecordIds (_ ckrecords: [CKRecordID]) -> [String] {
+    fileprivate func updatedRecord (_ record: CKRecord, withTask task: Task) -> CKRecord {
+        
+        record["startDate"] = task.startDate as CKRecordValue?
+        record["endDate"] = task.endDate as CKRecordValue
+        record["notes"] = task.notes as CKRecordValue?
+        record["taskNumber"] = task.taskNumber as CKRecordValue?
+        record["taskTitle"] = task.taskTitle as CKRecordValue?
+        record["taskType"] = task.taskType.rawValue as CKRecordValue
+        record["objectId"] = task.objectId as CKRecordValue
+        
+        return record
+    }
+    
+    fileprivate func stringIdsFromCKRecordIds (_ ckrecords: [CKRecordID]) -> [String] {
         
         var ids = [String]()
         for ckrecord in ckrecords {

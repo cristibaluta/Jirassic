@@ -133,6 +133,7 @@ extension SqliteRepository {
         
         stask.taskNumber = task.taskNumber
         stask.taskType = task.taskType.rawValue
+        stask.taskTitle = task.taskTitle
         stask.notes = task.notes
         stask.startDate = task.startDate
         stask.endDate = task.endDate
