@@ -37,7 +37,7 @@ extension CloudKitRepository: RepositoryTasks {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
-    func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
         let changeToken = UserDefaults.standard.serverChangeToken
         
@@ -50,7 +50,7 @@ extension CloudKitRepository: RepositoryTasks {
         })
     }
     
-    func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
         recordOfTask(task) { (record) in
             if let cktask = record {

@@ -44,6 +44,10 @@ extension CoreDataRepository: RepositoryTasks {
         let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
         
+//        let predicate = NSPredicate(format: "lastModifiedDate > %@ AND markedForDeletion == NO", sinceDate as CVarArg)
+//        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
+//        let tasks = tasksFromCTasks(results)
+        
         return tasks
     }
     
@@ -56,23 +60,19 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        let predicate = NSPredicate(format: "lastModifiedDate > %@ AND markedForDeletion == NO", sinceDate as CVarArg)
-        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
-        let tasks = tasksFromCTasks(results)
-        
-        completion(tasks, [], nil)
+        completion(queryUnsyncedTasks(), [], nil)
     }
     
-    func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
         guard let context = managedObjectContext else {
             return
         }
         
         let ctask = ctaskFromTask(task)
-        if forceDelete {
+        if permanently {
             context.delete(ctask)
         } else {
             ctask.markedForDeletion = NSNumber(value: true)

@@ -34,7 +34,11 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = "lastModifiedDate is NULL AND markedForDeletion == 0"
+        var sinceDatePredicate = ""
+        if let sinceDate = UserDefaults.standard.localChangeDate {
+            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())')"
+        }
+        let predicate = "(lastModifiedDate is NULL\(sinceDatePredicate)) AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
         let tasks = tasksFromSTasks(results)
         
@@ -50,19 +54,19 @@ extension SqliteRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryUpdates (sinceDate: Date, completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        let predicate = "datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())') AND markedForDeletion == 0"
-        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
-        let tasks = tasksFromSTasks(results)
-        
-        completion(tasks, [], nil)
+        queryDeletedTasks { (deletedTasks) in
+            let unsyncedTasks = self.queryUnsyncedTasks()
+            let deletedTasksIds = deletedTasks.map{ $0.objectId }
+            completion(unsyncedTasks, deletedTasksIds, nil)
+        }
     }
     
-    func deleteTask (_ task: Task, forceDelete: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
+    func deleteTask (_ task: Task, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
         let stask = staskFromTask(task)
-        if forceDelete {
+        if permanently {
             completion( stask.delete() )
         } else {
             stask.markedForDeletion = true

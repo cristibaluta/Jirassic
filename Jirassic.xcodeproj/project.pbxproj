@@ -51,6 +51,8 @@
 		28A928981E9761930022AB55 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */; };
 		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		28AFE7321E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
+		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
+		28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28E896631E830D6700722032 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
 		28E896711E83732200722032 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8966F1E83732200722032 /* AppDelegate.m */; };
 		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
@@ -257,6 +259,7 @@
 		28A928941E9110980022AB55 /* CloudKitRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+User.swift"; sourceTree = "<group>"; };
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
+		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28E896621E830D6700722032 /* Placeholder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		28E8966E1E83732200722032 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "macOS-launcher/AppDelegate.h"; sourceTree = "<group>"; };
 		28E8966F1E83732200722032 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "macOS-launcher/AppDelegate.m"; sourceTree = "<group>"; };
@@ -450,6 +453,7 @@
 				28577EB31E8AF08F002B07FD /* SQLiteDB.swift */,
 				28577EB41E8AF08F002B07FD /* SQLTable.swift */,
 				28A928771E8F78580022AB55 /* SQLiteMigrator.swift */,
+				28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */,
 			);
 			path = sqlite;
 			sourceTree = "<group>";
@@ -1145,6 +1149,7 @@
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
+				28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
@@ -1224,6 +1229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */,
+				28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A9288B1E910F4D0022AB55 /* CoreDataRepository+Tasks.swift in Sources */,
 				4065D42D1DD4576C00B73201 /* Day.swift in Sources */,

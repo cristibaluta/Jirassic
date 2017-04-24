@@ -14,7 +14,6 @@ class CloudKitRepository {
     internal var user: User?
     internal let privateDB = CKContainer.default().privateCloudDatabase
     internal let customZone = CKRecordZone(zoneName: "TasksZone")
-    internal let preferences = RCPreferences<LocalPreferences>()
     
     init() {
         CKContainer.default().accountStatus(completionHandler: { (status, error) in

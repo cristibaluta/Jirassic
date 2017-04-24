@@ -49,6 +49,7 @@ class SyncTasks {
                     self.syncNextTask(completion)
                 })
             } else {
+                UserDefaults.standard.localChangeDate = Date()
                 completion(true)
             }
         }
@@ -69,9 +70,9 @@ class SyncTasks {
     func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         RCLog("sync delete \(task)")
-        _ = remoteRepository.deleteTask(task, forceDelete: true) { (uploadedTask) in
+        _ = remoteRepository.deleteTask(task, permanently: true) { (uploadedTask) in
             // After task was saved to server update it to local datastore
-            _ = self.localRepository.deleteTask(task, forceDelete: true, completion: { (task) in
+            _ = self.localRepository.deleteTask(task, permanently: true, completion: { (task) in
                 completion(true)
             })
         }
@@ -79,7 +80,7 @@ class SyncTasks {
     
     func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         RCLog("2. getLatestServerChanges")
-        remoteRepository.queryUpdates(sinceDate: Date(timeIntervalSince1970: 0)) { changedTasks, deletedTasksIds, error in
+        remoteRepository.queryUpdates { changedTasks, deletedTasksIds, error in
             for task in changedTasks {
                 self.localRepository.saveTask(task, completion: { (task) in
                     RCLog("saved to local db")

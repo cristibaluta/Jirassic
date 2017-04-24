@@ -22,7 +22,7 @@ class TaskInteractor: RepositoryInteractor {
     
     func deleteTask (_ task: Task) {
         
-        self.repository.deleteTask(task, forceDelete: false, completion: { (success: Bool) -> Void in
+        self.repository.deleteTask(task, permanently: false, completion: { (success: Bool) -> Void in
             if let remoteRepository = remoteRepository {
                 let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
                 sync.deleteTask(task, completion: { (success) in
