@@ -47,23 +47,30 @@ class TasksPresenter {
     fileprivate var selectedListType = ListType.allTasks
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var lastSelectedDay: Day?
+    fileprivate var interactor: ReadDaysInteractor?
 }
 
 extension TasksPresenter: TasksPresenterInput {
     
     func refreshUI() {
         reloadData()
-        updateNoTasksState()
+//        updateNoTasksState()
     }
     
     func reloadData() {
         
         let todayDay = Day(date: Date())
-        let reader = ReadDaysInteractor(repository: localRepository)
-        let weeks = reader.weeks()
-        userInterface?.showDates(weeks)
-        userInterface?.selectDay(todayDay)
-        reloadTasksOnDay(todayDay, listType: selectedListType)
+        interactor = ReadDaysInteractor(repository: localRepository)
+        interactor?.query { [weak self] weeks in
+            guard let wself = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                wself.userInterface?.showDates(weeks)
+                wself.userInterface?.selectDay(todayDay)
+                wself.reloadTasksOnDay(todayDay, listType: wself.selectedListType)
+            }
+        }
     }
     
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
@@ -96,11 +103,18 @@ extension TasksPresenter: TasksPresenterInput {
                 title: "Good morning!",
                 message: "Ready to begin your working day?",
                 buttonTitle: "Start day"))
-        } else if currentTasks.count == 1 && selectedListType != .report {
-            userInterface!.showMessage((
-                title: "No task yet.",
-                message: "When you're ready with your first task click \n'+' or 'Log time'",
-                buttonTitle: "Log time"))
+        } else if currentTasks.count == 1 {
+            if selectedListType == .report {
+                userInterface!.showMessage((
+                    title: "No task yet",
+                    message: "Go to 'All tasks' tab and log some time first!",
+                    buttonTitle: nil))
+            } else {
+                userInterface!.showMessage((
+                    title: "No task yet",
+                    message: "When you're ready with your first task click \n'+' or 'Log time'",
+                    buttonTitle: "Log time"))
+            }
         } else {
             appWireframe!.removePlaceholder()
         }
@@ -120,8 +134,9 @@ extension TasksPresenter: TasksPresenterInput {
         let now = Date()
         let task = Task(dateEnd: now, type: TaskType.startDay)
         let saveInteractor = TaskInteractor(repository: localRepository)
-        saveInteractor.saveTask(task)
-        reloadData()
+        saveInteractor.saveTask(task, completion: { savedTask in
+            self.reloadData()
+        })
     }
     
     func insertTaskWithData (_ taskData: TaskCreationData) {
@@ -133,7 +148,9 @@ extension TasksPresenter: TasksPresenterInput {
         task.taskType = taskData.taskType
         
         let saveInteractor = TaskInteractor(repository: localRepository)
-            saveInteractor.saveTask(task)
+        saveInteractor.saveTask(task, completion: { savedTask in
+            saveInteractor.syncTask(savedTask, completion: { (task) in })
+        })
     }
     
     func insertTaskAfterRow (_ row: Int) {

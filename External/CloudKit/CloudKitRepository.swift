@@ -11,168 +11,77 @@ import CloudKit
 
 class CloudKitRepository {
     
-    fileprivate var tasks = [Task]()
-    fileprivate var user: User?
-    let privateDB = CKContainer.default().privateCloudDatabase
+    internal var user: User?
+    internal let privateDB = CKContainer.default().privateCloudDatabase
+    internal let customZone = CKRecordZone(zoneName: "TasksZone")
     
     init() {
         CKContainer.default().accountStatus(completionHandler: { (status, error) in
             RCLog(status.rawValue)
             RCLogErrorO(error)
         })
-    }
-}
-
-extension CloudKitRepository: RepositoryUser {
-
-    func currentUser() -> User {
-        
-        if let user = self.user {
-            return user
+        privateDB.save(customZone) { (recordZone, err) in
+            RCLogO(recordZone)
+            RCLogErrorO(err)
         }
-        
-//        if let puser = PUser.currentUser() {
-//            self.user = User(isLoggedIn: true, email: puser.email, userId: puser.objectId, lastSyncDate: nil)
-//        } else {
-            self.user = User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
-//        }
-        
-        return self.user!
-    }
-    
-    func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        
-    }
-    
-    func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        
-    }
-    
-    func logout() {
-        user = nil
     }
 }
 
-extension CloudKitRepository: RepositoryTasks {
-
-    func queryTasks (_ page: Int, completion: ([Task], NSError?) -> Void) {
+extension CloudKitRepository {
+    
+    func fetchChangedRecords (token: CKServerChangeToken?, 
+                              previousRecords: [CKRecord], 
+                              previousDeletedRecordsIds: [CKRecordID], 
+                              completion: @escaping ((_ changedRecords: [CKRecord], _ deletedRecordsIds: [CKRecordID]) -> Void)) {
         
-        let predicate = NSPredicate(format: "TRUEPREDICATE")
-        let query = CKQuery(recordType: "Task", predicate: predicate)
-        privateDB.perform(query, inZoneWith: nil) { results, error in
-            RCLogO(results)
+        var changedRecords = previousRecords
+        var deletedRecordsIds = previousDeletedRecordsIds
+        
+        let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
+        
+        op.recordChangedBlock = { record in
+            RCLog(record)
+            changedRecords.append(record)
+        }
+        op.recordWithIDWasDeletedBlock = { recordID in
+            RCLog(recordID)
+            deletedRecordsIds.append(recordID)
+        }
+        op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
+            
+//            RCLogO(serverChangeToken)
+//            RCLogO(data)
             RCLogErrorO(error)
-//            if error != nil {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.delegate?.errorUpdating(error)
-//                    return
-//                }
-//            } else {
-//                self.items.removeAll(keepCapacity: true)
-//                for record in results{
-//                    let establishment = Establishment(record: record as! CKRecord, database: self.publicDB)
-//                    self.items.append(establishment)
-//                }
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.delegate?.modelUpdated()
-//                    return
-//                }
-//            }
-        }
-//        let puser = PUser.currentUser()
-//        let query = PFQuery(className: PTask.parseClassName())
-//        query.limit = 200
-//        query.whereKey(kUserKey, equalTo: puser!)
-//        query.findObjectsInBackgroundWithBlock( { [weak self] (objects: [PFObject]?, error: NSError?) in
-//            self?.processPTasks(objects, error: error, completion: completion)
-//            })
-    }
-    
-    func queryTasksInDay (_ day: Date) -> [Task] {
-        return []
-    }
-    
-    func queryUnsyncedTasks() -> [Task] {
-        fatalError("This method is not applicable to ParseRepository")
-    }
-    
-    func deleteTask (_ taskToDelete: Task, completion: ((_ success: Bool) -> Void)) {
-        
-        var indexToRemove = -1
-        var shouldRemove = false
-        for task in tasks {
-            indexToRemove += 1
-            if task.objectId == taskToDelete.objectId {
-                shouldRemove = true
-//                ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-//                    ptask.deleteEventually()
-//                    completion(success: true)
-//                })
-                break
+            guard error == nil else {
+                completion(changedRecords, deletedRecordsIds)
+                return
+            }
+            UserDefaults.standard.serverChangeToken = serverChangeToken
+            
+            if op.moreComing {
+                self.fetchChangedRecords(token: serverChangeToken, 
+                                         previousRecords: changedRecords, 
+                                         previousDeletedRecordsIds: deletedRecordsIds, 
+                                         completion: completion)
+            } else {
+                completion(changedRecords, deletedRecordsIds)
             }
         }
-        if shouldRemove {
-            self.tasks.remove(at: indexToRemove)
-        }
+        privateDB.add(op)
     }
     
-    func saveTask (_ task: Task, completion: ((_ success: Bool) -> Void)) -> Task {
-        RCLogO("Update task \(task)")
-        // Update local array
-        for i in 0..<tasks.count {
-            if task.objectId == tasks[i].objectId {
-                tasks[i] = task
-                break
+    func fetchRecords (ofType type: String, predicate: NSPredicate, completion: @escaping ((_ ctask: [CKRecord]?) -> Void)) {
+        
+        let query = CKQuery(recordType: type, predicate: predicate)
+        privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
+            
+            RCLogErrorO(error)
+            
+            if let results = results {
+                completion(results)
+            } else {
+                completion(nil)
             }
         }
-        
-        let ID = CKRecordID(recordName: task.objectId)
-        let cktask = CKRecord(recordType: "Task", recordID: ID)
-        cktask["notes"] = task.notes as CKRecordValue?
-        
-        privateDB.save(cktask, completionHandler: { savedRecord, error in
-            RCLogO(savedRecord)
-            RCLogErrorO(error)
-        }) 
-        
-//        ptaskOfTask(task, completion: { (ptask: PTask) -> Void in
-//            // Update the ptask with data from task
-//            ptask.date_task_finished = task.endDate
-//            ptask.notes = task.notes
-//            ptask.issue_type = task.issueType
-//            ptask.issue_id = task.issueId
-//            ptask.task_type = task.taskType
-//            ptask.saveEventually { (success, error) -> Void in
-//                RCLogO("Saved to Parse \(success)")
-//                RCLogErrorO(error)
-//                completion(success: success)
-//            }
-//        })
-        
-        return task
-    }
-    
-    
-    // MARK: Issue
-    
-    func queryIssues (_ successBlock: ([String]) -> Void, errorBlock: (NSError?) -> Void) {
-        
-        let issues = [String]()
-        successBlock(issues)
-    }
-    
-    func saveIssue (_ issue: String) {
-        
-    }
-}
-
-extension CloudKitRepository: RepositorySettings {
-    
-    func settings() -> Settings {
-        fatalError("Not applicable")
-    }
-    
-    func saveSettings (_ settings: Settings) {
-        fatalError("Not applicable")
     }
 }

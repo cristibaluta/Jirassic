@@ -98,8 +98,10 @@ extension TasksDataSource: NSTableViewDelegate {
             theData.endDate = updatedData.dateEnd
             self?.tasks[row] = theData// save the changes locally because the struct is passed by copying
             let saveInteractor = TaskInteractor(repository: localRepository)
-            saveInteractor.saveTask(theData)
-            tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
+            saveInteractor.saveTask(theData, completion: { savedTask in
+                saveInteractor.syncTask(savedTask, completion: { (task) in })
+                tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
+            })
         }
         cell.didRemoveCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came

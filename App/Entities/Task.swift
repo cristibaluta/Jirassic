@@ -65,12 +65,14 @@ enum TaskSubtype: Int {
 
 struct Task {
     
+    var lastModifiedDate: Date?
     var startDate: Date?
 	var endDate: Date
 	var notes: String?
-	var taskNumber: String?
+    var taskNumber: String?
+    var taskTitle: String?
 	var taskType: TaskType
-	var objectId: String
+    var objectId: String
 }
 
 extension Task {

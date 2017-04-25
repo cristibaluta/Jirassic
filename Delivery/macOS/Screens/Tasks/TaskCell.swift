@@ -35,11 +35,12 @@ class TaskCell: NSTableRowView, CellProtocol {
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
 	
 	// Sets data to the cell
-	var _dateEnd = ""
+    var _dateEnd = Date()
+	var _dateEndHHmm = ""
 	var data: TaskCreationData {
 		get {
             let hm = Date.parseHHmm(self.dateEndTextField!.stringValue)
-            let date = Date().dateByUpdating(hour: hm.hour, minute: hm.min)
+            let date = _dateEnd.dateByUpdating(hour: hm.hour, minute: hm.min)
 			return (
                 dateStart: nil,
                 dateEnd: date,
@@ -49,8 +50,9 @@ class TaskCell: NSTableRowView, CellProtocol {
             )
 		}
 		set {
-            _dateEnd = newValue.dateEnd.HHmm()
-            dateEndTextField!.stringValue = _dateEnd
+            _dateEnd = newValue.dateEnd
+            _dateEndHHmm = _dateEnd.HHmm()
+            dateEndTextField!.stringValue = _dateEndHHmm
 			issueNrTextField!.stringValue = newValue.taskNumber
 			notesTextField!.stringValue = newValue.notes
 		}
@@ -87,23 +89,25 @@ extension TaskCell {
 	override func drawBackground (in dirtyRect: NSRect) {
 		
         let width = dirtyRect.size.width - kCellLeftPadding * 2
-        let height = dirtyRect.size.height - kGapBetweenCells - 1
+        let height = dirtyRect.size.height - kGapBetweenCells - 2
         
 		if self.mouseInside {
             notesTextFieldRightConstrain!.constant = 90
-			let selectionRect = NSRect(x: kCellLeftPadding, y: 1, width: width, height: height)
+			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
-			NSColor(calibratedWhite: 0.0, alpha: 0.4).setStroke()
+			NSColor(calibratedWhite: 0.0, alpha: 1.0).setStroke()
 //			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 //			selectionPath.fill()
 			selectionPath.stroke()
 		} else {
             notesTextFieldRightConstrain!.constant = 0
-			let selectionRect = NSRect(x: kCellLeftPadding, y: 1, width: width, height: height)
-			NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
+			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
+//            NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
+            NSColor(calibratedWhite: 0.0, alpha: 0.2).setStroke()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-			selectionPath.fill()
+//            selectionPath.fill()
+            selectionPath.stroke()
 		}
 	}
 	
@@ -157,10 +161,10 @@ extension TaskCell: NSTextFieldDelegate {
 		wasEdited = true
 		if obj.object as? NSTextField == dateEndTextField {
 			let predictor = PredictiveTimeTyping()
-			let comps = dateEndTextField!.stringValue.components(separatedBy: _dateEnd)
-			let newDigit = (comps.count == 1 && _dateEnd != "") ? "" : comps.last
-			_dateEnd = predictor.timeByAdding(newDigit!, to: _dateEnd)
-			dateEndTextField?.stringValue = _dateEnd
+			let comps = dateEndTextField!.stringValue.components(separatedBy: _dateEndHHmm)
+			let newDigit = (comps.count == 1 && _dateEndHHmm != "") ? "" : comps.last
+			_dateEndHHmm = predictor.timeByAdding(newDigit!, to: _dateEndHHmm)
+			dateEndTextField?.stringValue = _dateEndHHmm
 		}
 	}
 	

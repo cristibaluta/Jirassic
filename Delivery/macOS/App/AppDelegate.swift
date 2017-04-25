@@ -17,6 +17,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case roundDay = "roundDay"
     case usePercents = "usePercents"
     case firstLaunch = "firstLaunch"
+    case lastIcloudSync = "lastIcloudSync"
     
     func defaultValue() -> Any {
         switch self {
@@ -24,6 +25,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .roundDay:                 return false
         case .usePercents:              return true
         case .firstLaunch:              return true
+        case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
         }
     }
 }
@@ -47,10 +49,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // For testing
         //localPreferences.reset()
+//        UserDefaults.standard.serverChangeToken = nil
         
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
-//		remoteRepository = CloudKitRepository()
+		remoteRepository = CloudKitRepository()
         
 		menu.onMouseDown = { [weak self] in
 			if let wself = self {
@@ -112,15 +115,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching (_ aNotification: Notification) {
         
         self.killLauncher()
-        
+        let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
+        RCLog(app)
+        RCLog(NSWorkspace.shared().runningApplications)
 //        if let _ = remoteRepository {
-//            CKContainer.default().accountStatus(completionHandler: { [weak self] (accountStatus, error) in
-//                if accountStatus == .noAccount {
-//                    self?.appWireframe.presentLoginController()
-//                } else {
-//                    self?.appWireframe.presentTasksController()
-//                }
-//            })
+//            
 //        } else {
 //            appWireframe.presentTasksController()
 //            appWireframe.presentTaskSuggestionController(startSleepDate: nil, endSleepDate: Date())
@@ -139,7 +138,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
-            RCLog(event.type.rawValue)
             self.activePopover?.performClose(nil)
         })
     }

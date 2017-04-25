@@ -11,7 +11,30 @@ import Cocoa
 class CalendarScrollView: NSScrollView {
 	
 	@IBOutlet fileprivate var outlineView: NSOutlineView?
-	var weeks = [Week]()
+    var _weeks = [Week]()
+    var weeks: [Week] {
+        get {
+            return _weeks
+        }
+        set {
+            _weeks = newValue
+            guard let firstWeek = _weeks.first else {
+                return
+            }
+            let now = Date()
+            if firstWeek.date.isSameWeekAs(now) {
+                if let firstDay = firstWeek.days.first {
+                    if !firstDay.date.isSameDayAs(now) {
+                        _weeks[0].days.insert(Day(date: now), at: 0)
+                    }
+                }
+            } else {
+                let week = Week(date: now)
+                week.days.append(Day(date: now))
+                _weeks.insert(week, at: 0)
+            }
+        }
+    }
 	var didSelectDay: ((_ day: Day) -> ())?
     var selectedDay: Day?
 	
@@ -73,8 +96,8 @@ extension CalendarScrollView: NSOutlineViewDataSource {
 		
 		if let item: AnyObject = item as AnyObject? {
 			switch item {
-			case let week as Week:
-				return week.days.count
+            case let week as Week:
+                return week.days.count
 			default:
 				return 0
 			}
@@ -90,19 +113,24 @@ extension CalendarScrollView: NSOutlineViewDelegate {
         
 		switch item {
 		case let week as Week:
+            
 			let view = outlineView.make(withIdentifier: "HeaderCell", owner: self) as! NSTableCellView
 			if let textField = view.textField {
 				textField.stringValue = week.date.weekInterval()
 			}
 			return view
+            
 		case let day as Day:
+            
 			let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
 			if let textField = view.textField {
-				textField.stringValue = day.date.ddEEEEE()
+                textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEEEE()
 			}
             let isToday = day.date.isSameDayAs(Date())
             view.imageView!.image = NSImage(named: isToday ? NSImageNameStatusPartiallyAvailable : NSImageNameStatusAvailable)
-			return view
+			
+            return view
+            
 		default:
 			return nil
 		}

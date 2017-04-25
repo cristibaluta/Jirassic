@@ -14,19 +14,38 @@ class ReadDaysInteractor: RepositoryInteractor {
 	
     override init (repository: Repository) {
         super.init(repository: repository)
+	}
+    
+    func query (_ completion: @escaping (_ weeks: [Week]) -> Void) {
         
-		self.repository.queryTasks(0, completion: { (tasks, error) in
+        repository.queryTasks(0, completion: { (tasks, error) in
             
             self.tasks = tasks
             self.tasks.sort { (task1: Task, task2: Task) -> Bool in
                 return task1.endDate.compare(task2.endDate) == .orderedDescending
             }
             
-            remoteRepository?.queryTasks(0, completion: { (tasks, error) in
-                
-            })
+            completion(self.weeks())
+            
+            if let remoteRepository = remoteRepository {
+                let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+                sync.start { hasIncomingChanges in
+                    if hasIncomingChanges {
+                        
+                        self.repository.queryTasks(0, completion: { (tasks, error) in
+                            
+                            self.tasks = tasks
+                            self.tasks.sort { (task1: Task, task2: Task) -> Bool in
+                                return task1.endDate.compare(task2.endDate) == .orderedDescending
+                            }
+                            
+                            completion(self.weeks())
+                        })
+                    }
+                }
+            }
         })
-	}
+    }
 	
 	func weeks() -> [Week] {
 		
@@ -37,7 +56,7 @@ class ReadDaysInteractor: RepositoryInteractor {
             if !task.endDate.isSameWeekAs(referenceDate) {
                 referenceDate = task.endDate
                 let obj = Week(date: task.endDate)
-                obj.days = days(obj)
+                obj.days = days(ofWeek: obj)
                 objects.append(obj)
             }
 		}
@@ -61,13 +80,13 @@ class ReadDaysInteractor: RepositoryInteractor {
 		return objects
 	}
 	
-	fileprivate func days (_ week: Week) -> [Day] {
+	fileprivate func days (ofWeek week: Week) -> [Day] {
 		
 		var objects = [Day]()
 		var referenceDate = Date.distantFuture
 		
 		for task in tasks {
-            if (task.endDate.isSameWeekAs(week.date)) {
+            if task.endDate.isSameWeekAs(week.date) {
                 if !task.endDate.isSameDayAs(referenceDate) {
                     referenceDate = task.endDate
                     let obj = Day(date: task.endDate)

@@ -22,7 +22,7 @@ class ReportCellPresenter: NSObject {
         cell.data = (
             dateStart: nil,
             dateEnd: Date(),
-            taskNumber: theReport.taskNumber,
+            taskNumber: theReport.taskNumber + " - " + theReport.title.replacingOccurrences(of: "_", with: " "),
             notes: theReport.notes,
             taskType: .issue
         )

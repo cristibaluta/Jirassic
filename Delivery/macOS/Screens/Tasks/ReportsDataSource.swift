@@ -24,7 +24,6 @@ class ReportsDataSource: NSObject {
             tableView.register(nib, forIdentifier: String(describing: ReportCell.self))
         }
     }
-    
 }
 
 extension ReportsDataSource: NSTableViewDataSource {
@@ -39,6 +38,7 @@ extension ReportsDataSource: NSTableViewDataSource {
         // Calculate height to fit content
         if tempCell == nil {
             tempCell = tableView.make(withIdentifier: String(describing: ReportCell.self), owner: self) as? ReportCell
+            tempCell?.frame = NSRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
         }
         ReportCellPresenter(cell: tempCell!).present(theReport: theData)
         

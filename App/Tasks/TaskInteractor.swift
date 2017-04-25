@@ -1,32 +1,46 @@
 //
-//  AddTask.swift
+//  TaskInteractor.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 19/10/15.
-//  Copyright © 2015 Cristian Baluta. All rights reserved.
+//  Copyright © 2017 Cristian Baluta. All rights reserved.
 //
 
 import Foundation
 
 class TaskInteractor: RepositoryInteractor {
 
-    func saveTask (_ task: Task) {
+    func saveTask (_ task: Task, completion: @escaping (_ savedTask: Task) -> Void) {
         
-        let savedTask = self.repository.saveTask(task, completion: { (success: Bool) -> Void in
-            
-        })
-        let _ = remoteRepository?.saveTask(savedTask, completion: { (success: Bool) -> Void in
-            
+        var task = task
+        task.lastModifiedDate = nil
+        
+        self.repository.saveTask(task, completion: { (savedTask: Task) -> Void in
+            completion(savedTask)
         })
     }
     
     func deleteTask (_ task: Task) {
         
-        self.repository.deleteTask(task, completion: { (success: Bool) -> Void in
-            
+        self.repository.deleteTask(task, permanently: false, completion: { (success: Bool) -> Void in
+            if let remoteRepository = remoteRepository {
+                let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+                sync.deleteTask(task, completion: { (success) in
+                    
+                })
+            }
         })
-        remoteRepository?.deleteTask(task, completion: { (success: Bool) -> Void in
-            
-        })
+    }
+    
+    func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
+        
+        if let remoteRepository = remoteRepository {
+            let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+            sync.saveTask(task, completion: { (success) in
+                DispatchQueue.main.async {
+                    completion(task)
+                }
+            })
+        }
     }
 }

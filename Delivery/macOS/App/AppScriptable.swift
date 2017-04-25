@@ -26,8 +26,8 @@ extension NSApplication {
                 }
                 RCLog(dict)
                 let notes = dict["notes"] ?? ""
-                let branchName = dict["branchName"] ?? ""
-                let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : branchName
+                let taskTitle = dict["branchName"] ?? ""
+                let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : taskTitle
                 let taskType = dict["taskType"] != nil
                     ? TaskType(rawValue: Int(dict["taskType"]!)!)!
                     : TaskType.gitCommit
@@ -41,18 +41,24 @@ extension NSApplication {
                     let startDate = settings.startOfDayTime.dateByKeepingTime()
                     let comps = startDate.components()
                     let startDayMark = Task(dateEnd: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
-                    saveInteractor.saveTask(startDayMark)
+                    saveInteractor.saveTask(startDayMark, completion: { savedTask in
+                        saveInteractor.syncTask(savedTask, completion: { (task) in })
+                    })
                 }
                 
                 let task = Task(
+                    lastModifiedDate: nil,
                     startDate: nil,
                     endDate: Date(),
                     notes: notes,
                     taskNumber: taskNumber,
+                    taskTitle: taskTitle,
                     taskType: taskType,
                     objectId: String.random()
                 )
-                saveInteractor.saveTask(task)
+                saveInteractor.saveTask(task, completion: { savedTask in
+                    saveInteractor.syncTask(savedTask, completion: { (task) in })
+                })
                 
                 UserNotifications().showNotification("Git commit added", informativeText: informativeText)
                 InternalNotifications.notifyAboutNewlyAddedTask(task)
