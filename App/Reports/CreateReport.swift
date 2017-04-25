@@ -167,8 +167,16 @@ extension CreateReport {
                 var report = reportsMap[taskNumber]
                 
                 if report == nil {
+                    
+                    var title = task.taskTitle
+                    let comps = title?.components(separatedBy: taskNumber)
+                    title = comps?.last
+                    title = title?.replacingOccurrences(of: "_", with: " ")
+                    title = title?.replacingOccurrences(of: "-", with: " ")
+                    
                     report = Report(
                         taskNumber: taskNumber,
+                        title: title ?? "",
                         notes: "• \(task.notes ?? "")",
                         duration: task.endDate.timeIntervalSince(startDate)
                     )
