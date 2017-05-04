@@ -14,11 +14,13 @@ class TasksViewController: NSViewController {
 	@IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView?
 	fileprivate var tasksScrollView: TasksScrollView?
     @IBOutlet fileprivate weak var listSegmentedControl: NSSegmentedControl?
+    @IBOutlet fileprivate weak var butRefresh: NSButton?
     @IBOutlet fileprivate weak var butSettings: NSButton?
     @IBOutlet fileprivate weak var butQuit: NSButton?
+    @IBOutlet fileprivate weak var refreshIndicator: NSProgressIndicator?
     
     weak var appWireframe: AppWireframe?
-    var tasksPresenter: TasksPresenterInput?
+    var presenter: TasksPresenterInput?
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,13 +34,13 @@ class TasksViewController: NSViewController {
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         
         calendarScrollView!.didSelectDay = { [weak self] (day: Day) in
-            self?.tasksPresenter!.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
+            self?.presenter!.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
         }
     }
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-        tasksPresenter!.refreshUI()
+        presenter!.initUI()
 	}
 	
     deinit {
@@ -67,9 +69,13 @@ extension TasksViewController {
         let listType = ListType(rawValue: sender.selectedSegment)!
         TaskTypeSelection().setType(listType)
         if let selectedDay = calendarScrollView!.selectedDay {
-            tasksPresenter!.reloadTasksOnDay(selectedDay, listType: listType)
+            presenter!.reloadTasksOnDay(selectedDay, listType: listType)
         }
 	}
+    
+    @IBAction func handleRefreshButton (_ sender: NSButton) {
+        presenter!.syncData()
+    }
     
     @IBAction func handleSettingsButton (_ sender: NSButton) {
         appWireframe!.flipToSettingsController()
@@ -83,14 +89,19 @@ extension TasksViewController {
 extension TasksViewController: TasksPresenterOutput {
     
     func showLoadingIndicator (_ show: Bool) {
-        
+        butRefresh!.isHidden = show
+        if show {
+            refreshIndicator!.startAnimation(nil)
+        } else {
+            refreshIndicator!.stopAnimation(nil)
+        }
     }
     
     func showMessage (_ message: MessageViewModel) {
         
         let controller = appWireframe!.presentPlaceholder(message, intoSplitView: splitView!)
         controller.didPressButton = {
-            self.tasksPresenter?.messageButtonDidPress()
+            self.presenter?.messageButtonDidPress()
         }
     }
     
@@ -115,14 +126,14 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView!.didRemoveRow = { [weak self] (row: Int) in
             RCLogO("Remove item at row \(row)")
             if row >= 0 {
-                self?.tasksPresenter!.removeTaskAtRow(row)
+                self?.presenter!.removeTaskAtRow(row)
                 self?.tasksScrollView!.removeTaskAtRow(row)
             }
         }
         tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
-                self?.tasksPresenter!.insertTaskAfterRow(row)
+                self?.presenter!.insertTaskAfterRow(row)
             }
         }
         
@@ -160,9 +171,9 @@ extension TasksViewController: TasksPresenterOutput {
         controller.dateEnd = date
         controller.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
             if let strongSelf = self {
-                strongSelf.tasksPresenter!.insertTaskWithData(taskData)
-                strongSelf.tasksPresenter!.updateNoTasksState()
-                strongSelf.tasksPresenter!.reloadData()
+                strongSelf.presenter!.insertTaskWithData(taskData)
+                strongSelf.presenter!.updateNoTasksState()
+                strongSelf.presenter!.reloadData()
                 strongSelf.appWireframe!.removeNewTaskController()
                 strongSelf.splitView!.isHidden = false
                 strongSelf.hideControls(false)
@@ -172,7 +183,7 @@ extension TasksViewController: TasksPresenterOutput {
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeNewTaskController()
                 strongSelf.splitView!.isHidden = false
-                strongSelf.tasksPresenter!.updateNoTasksState()
+                strongSelf.presenter!.updateNoTasksState()
                 strongSelf.hideControls(false)
             }
         }
@@ -190,6 +201,6 @@ extension TasksViewController {
 	}
 	
 	func handleNewTaskAdded (_ notif: Notification) {
-        tasksPresenter?.reloadData()
+        presenter?.reloadData()
 	}
 }

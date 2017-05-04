@@ -10,7 +10,8 @@ import Foundation
 
 protocol TasksPresenterInput: class {
     
-    func refreshUI()
+    func initUI()
+    func syncData()
     func reloadData()
     func reloadTasksOnDay (_ day: Day, listType: ListType)
     func updateNoTasksState()
@@ -52,12 +53,19 @@ class TasksPresenter {
 
 extension TasksPresenter: TasksPresenterInput {
     
-    func refreshUI() {
+    func initUI() {
         reloadData()
+        userInterface!.showLoadingIndicator(false)
 //        updateNoTasksState()
     }
     
+    func syncData() {
+        reloadData()
+    }
+    
     func reloadData() {
+        
+        userInterface!.showLoadingIndicator(true)
         
         let todayDay = Day(date: Date())
         interactor = ReadDaysInteractor(repository: localRepository)
@@ -66,8 +74,9 @@ extension TasksPresenter: TasksPresenterInput {
                 return
             }
             DispatchQueue.main.async {
-                wself.userInterface?.showDates(weeks)
-                wself.userInterface?.selectDay(todayDay)
+                wself.userInterface!.showLoadingIndicator(false)
+                wself.userInterface!.showDates(weeks)
+                wself.userInterface!.selectDay(todayDay)
                 wself.reloadTasksOnDay(todayDay, listType: wself.selectedListType)
             }
         }

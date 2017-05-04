@@ -55,7 +55,7 @@ class AppWireframe {
         let presenter = TasksPresenter()
         
         controller.appWireframe = self
-        controller.tasksPresenter = presenter
+        controller.presenter = presenter
         presenter.userInterface = controller
         presenter.appWireframe = self
         
