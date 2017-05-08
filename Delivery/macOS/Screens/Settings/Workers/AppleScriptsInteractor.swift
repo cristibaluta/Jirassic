@@ -23,17 +23,17 @@ class AppleScriptsInteractor {
         })
     }
     
-    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping (Bool) -> Void) {
-        
-        var values = "jira_url=\(settings.url!)\njira_user=\(settings.user!)"
-        if let password = settings.password {
-            values += "\njira_password=\(password)"
-        }
-        
-        scripts.setupJitWithValues(values, completion: { success in
-            completion(success)
-        })
-    }
+//    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping (Bool) -> Void) {
+//        
+//        var values = "jira_url=\(settings.url!)\njira_user=\(settings.user!)"
+//        if let password = settings.password {
+//            values += "\njira_password=\(password)"
+//        }
+//        
+//        scripts.setupJitWithValues(values, completion: { success in
+//            completion(success)
+//        })
+//    }
     
     func getSafariUrl (completion: @escaping (String) -> Void) {
         scripts.getSafariUrl(completion: completion)

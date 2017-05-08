@@ -78,6 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sleep.computerWakeUp = {
             
             guard !Date().isWeekend() else {
+                RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
             }
             let settings: Settings = SettingsInteractor().getAppSettings()
@@ -117,7 +118,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.killLauncher()
         let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
         RCLog(app)
-        RCLog(NSWorkspace.shared().runningApplications)
+//        RCLog(NSWorkspace.shared().runningApplications)
 //        if let _ = remoteRepository {
 //            
 //        } else {

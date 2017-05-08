@@ -15,14 +15,12 @@ protocol SettingsPresenterInput: class {
     func uninstallTools()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
-    func saveJiraSettings (_ settings: JiraSettings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 protocol SettingsPresenterOutput: class {
     
     func setJitIsInstalled (_ installed: Bool)
-    func setJiraSettings (_ settings: JiraSettings)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
@@ -42,17 +40,7 @@ extension SettingsPresenter: SettingsPresenterInput {
         scriptsInstaller.checkTools { (installed, compatible) in
             
             self.userInterface!.setJitIsInstalled( installed )
-            if installed {
-                self.scriptsInstaller.getJiraSettings { dict in
-                    let settings = JiraSettings(url: dict["url"],
-                                                user: dict["user"],
-                                                password: nil,
-                                                separator: dict["separator"])
-                    self.jiraSettingsDidLoad(settings)
-                }
-            } else {
-                self.jiraSettingsDidLoad(JiraSettings())
-            }
+            
         }
     }
     
@@ -84,18 +72,6 @@ extension SettingsPresenter: SettingsPresenterInput {
         interactor!.saveAppSettings(settings)
     }
     
-    func saveJiraSettings (_ settings: JiraSettings) {
-        RCLogO(settings)
-        scriptsInstaller.checkTools { (installed, compatible) in
-            
-            if installed {
-                self.scriptsInstaller.saveJiraSettings(settings, completion: { success in
-                    
-                })
-            }
-        }
-    }
-    
     func enabledLaunchAtStartup (_ enabled: Bool) {
         interactor!.enabledLaunchAtStartup(enabled)
     }
@@ -103,7 +79,4 @@ extension SettingsPresenter: SettingsPresenterInput {
 
 extension SettingsPresenter: SettingsInteractorOutput {
     
-    func jiraSettingsDidLoad (_ settings: JiraSettings) {
-        userInterface!.setJiraSettings(settings)
-    }
 }

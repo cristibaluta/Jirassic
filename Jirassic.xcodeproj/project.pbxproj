@@ -162,9 +162,7 @@
 		4065D4321DD457B500B73201 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Conversions.swift */; };
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
 		4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */; };
-		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
-		40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */; };
 		40FCE4261DF7646F00D4FD45 /* AppleScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */; };
 		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */; };
@@ -370,7 +368,6 @@
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D4101DD4534C00B73201 /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
-		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInstaller.swift; sourceTree = "<group>"; };
 		40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptsInteractor.swift; sourceTree = "<group>"; };
@@ -555,7 +552,6 @@
 				4065D31C1DD3B44200B73201 /* TaskTests.swift */,
 				4065D31D1DD3B44200B73201 /* User.swift */,
 				4065D31E1DD3B44200B73201 /* Week.swift */,
-				40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1145,7 +1141,6 @@
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* SyncTasks.swift in Sources */,
 				28A9288D1E910F970022AB55 /* CoreDataRepository+Settings.swift in Sources */,
-				40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
@@ -1228,7 +1223,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */,
 				28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A9288B1E910F4D0022AB55 /* CoreDataRepository+Tasks.swift in Sources */,
