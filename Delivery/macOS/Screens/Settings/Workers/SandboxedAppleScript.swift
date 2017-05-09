@@ -10,7 +10,7 @@ import Foundation
 import CoreServices
 import Carbon.OpenScripting
 
-class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
+class SandboxedAppleScript: AppleScriptProtocol {
     
     var scriptsDirectory: URL? {
         
@@ -83,10 +83,15 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
         })
     }
     
-    func getSafariUrl (completion: @escaping (String) -> Void) {
+    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
         
-        run (command: "getSafariUrl", args: nil, completion: { descriptor in
-            
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: browserId), at: 1)
+        
+        run (command: "getBrowserInfo", args: args, completion: { descriptor in
+            if let descriptor = descriptor {
+                completion(descriptor.atIndex(1)!.stringValue, descriptor.atIndex(2)!.stringValue)
+            }
         })
     }
     
@@ -112,7 +117,7 @@ class SandboxedAppleScriptInstaller: AppleScriptInstallerProtocol {
     }
 }
 
-extension SandboxedAppleScriptInstaller {
+extension SandboxedAppleScript {
     
     fileprivate func run (command: String, args: NSAppleEventDescriptor?, completion: @escaping (NSAppleEventDescriptor?) -> Void) {
         

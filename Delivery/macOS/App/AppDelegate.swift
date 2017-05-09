@@ -37,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activePopover: NSPopover?
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
+    fileprivate var browser = BrowserNotifications()
     fileprivate let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
@@ -111,14 +112,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+        
+        browser.browserIsFrontmostApplication = { (url, title) in
+            RCLog("A browser is frontmost app, check if is a codereview app")
+        }
 	}
 	
     func applicationDidFinishLaunching (_ aNotification: Notification) {
         
         self.killLauncher()
-        let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
-        RCLog(app)
-//        RCLog(NSWorkspace.shared().runningApplications)
+        
 //        if let _ = remoteRepository {
 //            
 //        } else {

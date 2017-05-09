@@ -8,19 +8,19 @@
 
 import Foundation
 
-protocol AppleScriptInstallerProtocol {
+protocol AppleScriptProtocol {
     
     var scriptsDirectory: URL? {get}
     func getScriptsVersion (completion: @escaping (String) -> Void)
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void)
-    func getSafariUrl (completion: @escaping (String) -> Void)
+    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
     func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
 }
 
-class AppleScriptInstaller: AppleScriptInstallerProtocol {
+class AppleScriptInteractor: AppleScriptProtocol {
     
     var scriptsDirectory: URL? {
         return nil
@@ -42,7 +42,7 @@ class AppleScriptInstaller: AppleScriptInstallerProtocol {
         
     }
     
-    func getSafariUrl (completion: @escaping (String) -> Void) {
+    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
         
     }
     

@@ -11,8 +11,8 @@ import Foundation
 protocol SettingsPresenterInput: class {
     
     func loadJitInfo()
-    func installTools()
-    func uninstallTools()
+//    func installTools()
+//    func uninstallTools()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
@@ -27,7 +27,7 @@ protocol SettingsPresenterOutput: class {
 
 class SettingsPresenter {
     
-    fileprivate var scriptsInstaller = AppleScriptsInteractor()
+    fileprivate var extensionsInstaller = ExtensionsInteractor()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -37,30 +37,29 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func loadJitInfo() {
         
-        scriptsInstaller.checkTools { (installed, compatible) in
+        extensionsInstaller.checkTools { (installed, compatible) in
             
             self.userInterface!.setJitIsInstalled( installed )
-            
         }
     }
     
-    func installTools() {
-        
-        scriptsInstaller.installTools { [weak self] (success) in
-            if success {
-                self?.loadJitInfo()
-            }
-        }
-    }
-    
-    func uninstallTools() {
-        
-        scriptsInstaller.uninstallTools { [weak self] (success) in
-            if success {
-                self?.loadJitInfo()
-            }
-        }
-    }
+//    func installTools() {
+//        
+//        extensionsInstaller.installTools { [weak self] (success) in
+//            if success {
+//                self?.loadJitInfo()
+//            }
+//        }
+//    }
+//    
+//    func uninstallTools() {
+//        
+//        extensionsInstaller.uninstallTools { [weak self] (success) in
+//            if success {
+//                self?.loadJitInfo()
+//            }
+//        }
+//    }
     
     func showSettings() {
         let settings = interactor!.getAppSettings()

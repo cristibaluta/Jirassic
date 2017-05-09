@@ -9,11 +9,11 @@
 import Foundation
 import Cocoa
 
-class AppleScriptsInteractor {
+class ExtensionsInteractor {
     
     fileprivate let scriptsName = "CommandLineTools"
     fileprivate let localBinPath = "/usr/local/bin/"
-    fileprivate let scripts: AppleScriptInstallerProtocol = SandboxedAppleScriptInstaller()
+    fileprivate let scripts: AppleScriptProtocol = SandboxedAppleScript()
     fileprivate let fileManager = FileManager.default
     
     func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
@@ -35,8 +35,8 @@ class AppleScriptsInteractor {
 //        })
 //    }
     
-    func getSafariUrl (completion: @escaping (String) -> Void) {
-        scripts.getSafariUrl(completion: completion)
+    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
+        scripts.getBrowserInfo(browserId: browserId, completion: completion)
     }
     
     func checkTools (completion: @escaping (_ installed: Bool, _ compatible: Bool) -> Void) {
@@ -96,7 +96,7 @@ class AppleScriptsInteractor {
     }
 }
 
-extension AppleScriptsInteractor {
+extension ExtensionsInteractor {
     
     fileprivate func isScriptInstalled() -> Bool {
         let scriptsDirectory = scripts.scriptsDirectory!
