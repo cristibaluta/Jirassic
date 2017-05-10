@@ -83,6 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
             }
+            self.codeReview.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
             
             if settings.autoTrackEnabled {
@@ -112,7 +113,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     .runWith(lastSleepDate: self.sleep.lastSleepDate)
                 }
             }
-            self.codeReview.start()
         }
         
         codeReview.codeReviewDidStart = {

@@ -24,7 +24,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZW-oy-bAn">
-                                <rect key="frame" x="20" y="104" width="166" height="18"/>
+                                <rect key="frame" x="20" y="134" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Lunch begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYU-uP-r49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -32,7 +32,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwE-DS-XUK">
-                                <rect key="frame" x="20" y="138" width="128" height="18"/>
+                                <rect key="frame" x="20" y="168" width="128" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Working between" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="U9A-hl-Ro2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -40,7 +40,7 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5K-eo-qyH">
-                                <rect key="frame" x="20" y="69" width="166" height="18"/>
+                                <rect key="frame" x="20" y="99" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Scrum begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -48,15 +48,15 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1zq-qp-TWl">
-                                <rect key="frame" x="20" y="34" width="197" height="18"/>
+                                <rect key="frame" x="20" y="64" width="197" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Ignore sleeps shorter than" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XNA-EY-JgP">
+                                <buttonCell key="cell" type="check" title="Ignore sleeps shorter than" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="XNA-EY-JgP">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
-                                <rect key="frame" x="185" y="135" width="62" height="27"/>
+                                <rect key="frame" x="185" y="165" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
                                     <font key="font" metaFont="system"/>
@@ -69,7 +69,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-af-j6l">
-                                <rect key="frame" x="316" y="135" width="62" height="27"/>
+                                <rect key="frame" x="316" y="165" width="62" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="0bs-wq-Tnf">
                                     <font key="font" metaFont="system"/>
@@ -82,7 +82,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
-                                <rect key="frame" x="185" y="101" width="61" height="27"/>
+                                <rect key="frame" x="185" y="131" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
                                     <font key="font" metaFont="system"/>
@@ -95,7 +95,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAP-W0-ldB">
-                                <rect key="frame" x="185" y="67" width="61" height="27"/>
+                                <rect key="frame" x="185" y="97" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="aAZ-cj-BOO">
                                     <font key="font" metaFont="system"/>
@@ -107,14 +107,14 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="jirassic cmd" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
-                                <rect key="frame" x="19" y="361" width="458" height="62"/>
+                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="shell support" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
+                                <rect key="frame" x="19" y="379" width="458" height="44"/>
                                 <view key="contentView" id="IpW-dh-bsa">
-                                    <rect key="frame" x="1" y="1" width="456" height="46"/>
+                                    <rect key="frame" x="1" y="1" width="456" height="28"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-O9-EL6">
-                                            <rect key="frame" x="8" y="16" width="18" height="18"/>
+                                            <rect key="frame" x="8" y="7" width="18" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="18" id="Iqo-Ou-c2Z"/>
                                                 <constraint firstAttribute="height" constant="18" id="du9-Gf-rJ9"/>
@@ -122,7 +122,7 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="Qr4-BQ-p3G"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPR-i0-dsI">
-                                            <rect key="frame" x="30" y="18" width="144" height="17"/>
+                                            <rect key="frame" x="30" y="9" width="144" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking shell support" id="saZ-NO-Pwy">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -130,7 +130,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-Bz-bTG">
-                                            <rect key="frame" x="333" y="13" width="112" height="19"/>
+                                            <rect key="frame" x="333" y="4" width="112" height="19"/>
                                             <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qjl-fl-R9u">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
@@ -150,17 +150,17 @@
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="X9O-Od-aqA"/>
+                                    <constraint firstAttribute="height" constant="40" id="X9O-Od-aqA"/>
                                 </constraints>
                             </box>
-                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="jit cmd" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
-                                <rect key="frame" x="19" y="293" width="458" height="62"/>
+                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="git support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
+                                <rect key="frame" x="19" y="329" width="458" height="44"/>
                                 <view key="contentView" id="VER-UY-CWS">
-                                    <rect key="frame" x="1" y="1" width="456" height="46"/>
+                                    <rect key="frame" x="1" y="1" width="456" height="28"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOk-sy-RjW">
-                                            <rect key="frame" x="8" y="16" width="18" height="18"/>
+                                            <rect key="frame" x="8" y="7" width="18" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="18" id="SIm-T9-0TU"/>
                                                 <constraint firstAttribute="height" constant="18" id="xT6-4i-Rnc"/>
@@ -168,16 +168,16 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="sfM-nO-Qon"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIr-VF-ZlZ">
-                                            <rect key="frame" x="30" y="18" width="144" height="17"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking shell support" id="gtO-Uc-gKr">
+                                            <rect key="frame" x="30" y="9" width="106" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking jit cmd" id="gtO-Uc-gKr">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-8J-4OB">
-                                            <rect key="frame" x="403" y="13" width="42" height="19"/>
-                                            <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je0-zz-99c">
+                                            <rect key="frame" x="333" y="4" width="112" height="19"/>
+                                            <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je0-zz-99c">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -196,7 +196,7 @@
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="gdg-M4-Obw"/>
+                                    <constraint firstAttribute="height" constant="40" id="gdg-M4-Obw"/>
                                 </constraints>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="cH4-ct-dhw">
@@ -206,13 +206,13 @@
                                 </constraints>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mfs-D5-P9c">
-                                <rect key="frame" x="12" y="221" width="470" height="5"/>
+                                <rect key="frame" x="12" y="271" width="470" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kNE-vc-TD5"/>
                                 </constraints>
                             </box>
                             <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUr-A2-ir2">
-                                <rect key="frame" x="216" y="31" width="61" height="27"/>
+                                <rect key="frame" x="216" y="61" width="61" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="R21-XD-uAZ">
                                     <font key="font" metaFont="system"/>
@@ -225,7 +225,7 @@
                                 </datePickerCell>
                             </datePicker>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-3o-iuE">
-                                <rect key="frame" x="20" y="188" width="250" height="18"/>
+                                <rect key="frame" x="20" y="218" width="250" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Log tasks when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="k5h-wa-doI">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -236,7 +236,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJX-Vo-Lzi">
-                                <rect key="frame" x="266" y="138" width="27" height="17"/>
+                                <rect key="frame" x="266" y="168" width="27" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="and" id="FCS-Ce-XyY">
                                     <font key="font" metaFont="system"/>
@@ -245,7 +245,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMP-6Q-4Qc">
-                                <rect key="frame" x="266" y="105" width="210" height="17"/>
+                                <rect key="frame" x="266" y="135" width="210" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(± 1 hour)" id="Gic-88-gQ8">
                                     <font key="font" metaFont="system"/>
@@ -254,7 +254,7 @@
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFE-Rj-eXW">
-                                <rect key="frame" x="270" y="184" width="252" height="24"/>
+                                <rect key="frame" x="270" y="214" width="252" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="N0R-bz-bQl">
                                     <font key="font" metaFont="system"/>
@@ -293,7 +293,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grC-mh-m0b">
-                                <rect key="frame" x="266" y="70" width="210" height="17"/>
+                                <rect key="frame" x="266" y="100" width="210" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(± 20 minutes)" id="nOX-56-304">
                                     <font key="font" metaFont="system"/>
@@ -302,13 +302,13 @@
                                 </textFieldCell>
                             </textField>
                             <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="code reviews" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-El-2HH">
-                                <rect key="frame" x="19" y="228" width="458" height="62"/>
+                                <rect key="frame" x="19" y="282" width="458" height="44"/>
                                 <view key="contentView" id="6fH-zX-nNt">
-                                    <rect key="frame" x="1" y="1" width="456" height="46"/>
+                                    <rect key="frame" x="1" y="1" width="456" height="28"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rjt-3L-RK3">
-                                            <rect key="frame" x="8" y="16" width="18" height="18"/>
+                                            <rect key="frame" x="8" y="7" width="18" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="18" id="FDE-5K-Ehz"/>
                                                 <constraint firstAttribute="height" constant="18" id="FJX-5w-fNG"/>
@@ -316,16 +316,16 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="QZj-mp-npJ"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3K-7B-H1S">
-                                            <rect key="frame" x="30" y="18" width="144" height="17"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking shell support" id="t9k-D2-Ewz">
+                                            <rect key="frame" x="30" y="9" width="189" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking code review support" id="t9k-D2-Ewz">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cWH-oR-ORO">
-                                            <rect key="frame" x="403" y="13" width="42" height="19"/>
-                                            <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="udb-qw-Ow9">
+                                            <rect key="frame" x="333" y="4" width="112" height="19"/>
+                                            <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="udb-qw-Ow9">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -344,13 +344,13 @@
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="xCz-vb-a0k"/>
+                                    <constraint firstAttribute="height" constant="40" id="xCz-vb-a0k"/>
                                 </constraints>
                             </box>
                         </subviews>
                         <constraints>
                             <constraint firstItem="0RH-El-2HH" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="2Mk-Nq-2zp"/>
-                            <constraint firstItem="mfs-D5-P9c" firstAttribute="top" secondItem="0RH-El-2HH" secondAttribute="bottom" constant="8" id="4m6-UK-lq8"/>
+                            <constraint firstItem="mfs-D5-P9c" firstAttribute="top" secondItem="0RH-El-2HH" secondAttribute="bottom" constant="12" id="4m6-UK-lq8"/>
                             <constraint firstItem="3jM-fr-ItS" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="22" id="7KI-r0-vOJ"/>
                             <constraint firstItem="nlR-CY-a5k" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="24" id="9VN-DO-g2f"/>
                             <constraint firstAttribute="trailing" secondItem="jgE-dH-Hh6" secondAttribute="trailing" constant="20" id="BR0-UX-Ylu"/>

@@ -17,7 +17,7 @@ class CodeReviewNotification {
     var tasksNumbers = [String]()
     
     fileprivate let delay = 10.0
-    fileprivate let minCodeRedDuration = 10.0
+    fileprivate let minCodeReviewDuration = 10.0
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
     fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
     fileprivate var timer: Timer?
@@ -95,7 +95,7 @@ class CodeReviewNotification {
         }
         self.endDate = Date()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= minCodeRedDuration {
+        if duration >= minCodeReviewDuration {
             self.codeReviewDidEnd?()
         }
         startDate = nil
