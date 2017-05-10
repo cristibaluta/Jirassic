@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activePopover: NSPopover?
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
-    fileprivate var browser = BrowserNotifications()
+    fileprivate var codeReview = CodeReviewNotification()
     fileprivate let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
@@ -75,6 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
         sleep.computerWentToSleep = {
             self.removeActivePopup()
+            self.codeReview.stop()
         }
         sleep.computerWakeUp = {
             
@@ -111,10 +112,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     .runWith(lastSleepDate: self.sleep.lastSleepDate)
                 }
             }
+            self.codeReview.start()
         }
         
-        browser.browserIsFrontmostApplication = { (url, title) in
-            RCLog("A browser is frontmost app, check if is a codereview app")
+        codeReview.codeReviewDidStart = {
+            RCLog("Start code review")
+        }
+        codeReview.codeReviewDidEnd = {
+            RCLog("End code review")
+            let task = Task(
+                lastModifiedDate: nil,
+                startDate: self.codeReview.startDate,
+                endDate: self.codeReview.endDate!,
+                notes: "Code review for tasks: \(self.codeReview.tasksNumbers)",
+                taskNumber: "coderev",
+                taskTitle: "",
+                taskType: .coderev,
+                objectId: String.random()
+            )
+            let saveInteractor = TaskInteractor(repository: localRepository)
+            saveInteractor.saveTask(task, completion: { savedTask in
+                saveInteractor.syncTask(savedTask, completion: { (task) in })
+            })
         }
 	}
 	

@@ -90,7 +90,9 @@ class SandboxedAppleScript: AppleScriptProtocol {
         
         run (command: "getBrowserInfo", args: args, completion: { descriptor in
             if let descriptor = descriptor {
-                completion(descriptor.atIndex(1)!.stringValue, descriptor.atIndex(2)!.stringValue)
+                let url = descriptor.atIndex(1)?.stringValue ?? ""
+                let title = descriptor.atIndex(1)?.stringValue ?? ""
+                completion(url, title)
             }
         })
     }
@@ -149,8 +151,8 @@ extension SandboxedAppleScript {
             
             let result = try NSUserAppleScriptTask(url: scriptURL)
             result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
-                RCLogO(descriptor)
-                RCLogErrorO(error)
+//                RCLogO(descriptor)
+//                RCLogErrorO(error)
                 DispatchQueue.main.sync {
                     completion(descriptor)
                 }

@@ -27,3 +27,9 @@ Date(year: 2017, month: 5, day: 5, hour: 0, minute:0)
 NSCalendar.current.isDate(Date(year: 2017, month: 5, day: 5, hour: 0, minute:0), 
                           inSameDayAs: Date(year: 2017, month: 5, day: 5, hour: 23, minute:59))
 print ( gregorian.startOfDay(for: Date()) )
+
+let taskIdEreg = "([A-Z]+-[0-9])\\w+"
+let title = "Pull Request #2411: IOS-1690 Push Notifications Handle"
+let regex = try! NSRegularExpression(pattern: taskIdEreg, options: [])
+let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.characters.count))
+(title as NSString).substring(with: match!.range)
