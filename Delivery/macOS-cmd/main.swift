@@ -162,11 +162,13 @@ func insertIssue (arguments: [String]) {
         taskNumber: taskNumber,
         taskTitle: nil,
         taskType: taskType,
-        objectId: (local: String.random(), remote: nil)
+        objectId: String.random()
     )
 //    print(task)
     let saveInteractor = TaskInteractor(repository: localRepository)
-    saveInteractor.saveTask(task)
+    saveInteractor.saveTask(task, completion: {_ in 
+        
+    })
     
     print("Task saved")
 }
@@ -205,7 +207,7 @@ func insert (taskType: Command, arguments: [String]) {
     
 //    print(task!)
     let saveInteractor = TaskInteractor(repository: localRepository)
-    saveInteractor.saveTask(task!)
+    saveInteractor.saveTask(task!, completion: { _ in })
     
     print(taskType.rawValue.capitalized + " saved")
 }
