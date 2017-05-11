@@ -14,10 +14,10 @@ class CodeReviewNotification {
     var codeReviewDidEnd: (() -> Void)?
     var startDate: Date?
     var endDate: Date?
-    var tasksNumbers = [String]()
+    var reviewedTasks = [String]()
     
     fileprivate let delay = 10.0
-    fileprivate let minCodeReviewDuration = 10.0
+    fileprivate let minCodeReviewDuration = 1.0.minToSec
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
     fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
     fileprivate var timer: Timer?
@@ -65,8 +65,8 @@ class CodeReviewNotification {
                 let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.characters.count))
                 if let match = match {
                     let taskNumber = (title as NSString).substring(with: match.range)
-                    if !self.tasksNumbers.contains(taskNumber) {
-                        self.tasksNumbers.append(taskNumber)
+                    if !self.reviewedTasks.contains(taskNumber) {
+                        self.reviewedTasks.append(taskNumber)
                     }
                 }
             }
@@ -84,7 +84,7 @@ class CodeReviewNotification {
             return
         }
         startDate = Date()
-        tasksNumbers = [String]()
+        reviewedTasks = [String]()
         codeReviewDidStart?()
     }
     
@@ -97,6 +97,8 @@ class CodeReviewNotification {
         let duration = self.endDate!.timeIntervalSince(startDate!)
         if duration >= minCodeReviewDuration {
             self.codeReviewDidEnd?()
+        } else {
+            RCLog("Discard code review session with duration \(duration) < \(minCodeReviewDuration)")
         }
         startDate = nil
     }

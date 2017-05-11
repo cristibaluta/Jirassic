@@ -106,25 +106,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     // Do not track time exceeded the working duration
                     return
                 }
-                if settings.trackingMode == .notif {
+                switch settings.trackingMode {
+                case .notif:
                     self.presentTaskSuggestionPopup()
-                } else {
-                    ComputerWakeUpInteractor(repository: localRepository)
-                    .runWith(lastSleepDate: self.sleep.lastSleepDate)
+                    break
+                case .auto:
+                    ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep.lastSleepDate)
+                    break
                 }
             }
         }
         
         codeReview.codeReviewDidStart = {
-            RCLog("Start code review")
+            RCLog("Start code review \(Date())")
         }
         codeReview.codeReviewDidEnd = {
-            RCLog("End code review")
+            RCLog("End code review \(Date())")
             let task = Task(
                 lastModifiedDate: nil,
                 startDate: self.codeReview.startDate,
                 endDate: self.codeReview.endDate!,
-                notes: "Code review for tasks: \(self.codeReview.tasksNumbers)",
+                notes: "Code review for tasks: \(self.codeReview.reviewedTasks)",
                 taskNumber: "coderev",
                 taskTitle: "",
                 taskType: .coderev,

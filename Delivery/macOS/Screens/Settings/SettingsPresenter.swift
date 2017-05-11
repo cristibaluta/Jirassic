@@ -20,7 +20,9 @@ protocol SettingsPresenterInput: class {
 
 protocol SettingsPresenterOutput: class {
     
-    func setJitIsInstalled (_ installed: Bool)
+    func setJitCmdIsInstalled (_ installed: Bool)
+    func setJirassicCmdIsInstalled (_ installed: Bool)
+    func setCodeReviewIsInstalled (_ installed: Bool)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
@@ -37,9 +39,11 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func loadJitInfo() {
         
-        extensionsInstaller.checkTools { (installed, compatible) in
+        extensionsInstaller.getVersions { (versions) in
             
-            self.userInterface!.setJitIsInstalled( installed )
+            self.userInterface!.setJitCmdIsInstalled( versions.jitCmd )
+            self.userInterface!.setJirassicCmdIsInstalled( versions.jirassicCmd )
+            self.userInterface!.setCodeReviewIsInstalled( versions.codeReview )
         }
     }
     

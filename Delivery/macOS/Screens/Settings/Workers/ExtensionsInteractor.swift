@@ -11,7 +11,8 @@ import Cocoa
 
 class ExtensionsInteractor {
     
-    fileprivate let scriptsName = "CommandLineTools"
+    fileprivate let shellSupportScriptName = "ShellSupport"
+    fileprivate let codeReviewScriptName = "CodeReview"
     fileprivate let localBinPath = "/usr/local/bin/"
     fileprivate let scripts: AppleScriptProtocol = SandboxedAppleScript()
     fileprivate let fileManager = FileManager.default
@@ -39,23 +40,32 @@ class ExtensionsInteractor {
         scripts.getBrowserInfo(browserId: browserId, completion: completion)
     }
     
-    func checkTools (completion: @escaping (_ installed: Bool, _ compatible: Bool) -> Void) {
+    func getVersions (completion: @escaping (_ versions: VersionsCompatibility) -> Void) {
         
-        guard isScriptInstalled() else {
-            completion(false, false)
-            return
-        }
-        scripts.getScriptsVersion(completion: { scriptsVersion in
-            self.scripts.getJitInfo(completion: { dict in
-                let jitVersion = dict["version"] ?? ""
-                self.scripts.getJirassicVersion(completion: { jirassicVersion in
-                    let versions = Versions(scripts: scriptsVersion, jitCmd: jitVersion, jirassicCmd: jirassicVersion)
-                    completion( true, Versioning.isCompatibleWithTools(versions) )
+        scripts.getScriptVersion (script: shellSupportScriptName, completion: { shellSupportScriptVersion in
+            self.scripts.getScriptVersion (script: self.codeReviewScriptName, completion: { codeReviewScriptVersion in
+            
+                self.scripts.getJitInfo(completion: { dict in
+                    let jitVersion = dict["version"] ?? ""
+                    
+                    self.scripts.getJirassicVersion(completion: { jirassicVersion in
+                        
+                        let versions = Versions(scripts: shellSupportScriptVersion, 
+                                                jitCmd: jitVersion, 
+                                                jirassicCmd: jirassicVersion, 
+                                                codeReview: codeReviewScriptVersion)
+                        
+                        let compatibility = Versioning.isCompatible(versions)
+                        
+                        completion(compatibility)
+                    })
                 })
             })
         })
     }
     
+    // Not accepted in appstore apps
+    /*
     func installTools (_ completion: @escaping (Bool) -> Void) {
         
         if isScriptInstalled() {
@@ -71,7 +81,7 @@ class ExtensionsInteractor {
             uninstallCmds({ success in
                 if success {
                     
-                    if let bookmark = UserDefaults.standard.object(forKey: self.scriptsName) as? NSData as Data? {
+                    if let bookmark = UserDefaults.standard.object(forKey: self.shellSupportScriptName) as? NSData as Data? {
                         var stale = false
                         if let url = try? URL(resolvingBookmarkData: bookmark, options: URL.BookmarkResolutionOptions.withSecurityScope,
                                               relativeTo: nil,
@@ -93,19 +103,25 @@ class ExtensionsInteractor {
         } else {
             completion(false)
         }
-    }
+    }*/
 }
 
 extension ExtensionsInteractor {
     
-    fileprivate func isScriptInstalled() -> Bool {
+    fileprivate func isShellSupportInstalled() -> Bool {
         let scriptsDirectory = scripts.scriptsDirectory!
-        return fileManager.fileExists(atPath: scriptsDirectory.appendingPathComponent("\(scriptsName).scpt").path)
+        return fileManager.fileExists(atPath: scriptsDirectory.appendingPathComponent("\(shellSupportScriptName).scpt").path)
     }
     
+    fileprivate func isCodeReviewInstalled() -> Bool {
+        let scriptsDirectory = scripts.scriptsDirectory!
+        return fileManager.fileExists(atPath: scriptsDirectory.appendingPathComponent("\(codeReviewScriptName).scpt").path)
+    }
+    
+    /*
     fileprivate func installScriptAndCmds (_ completion: @escaping (Bool) -> Void) {
         
-        installScript(script: scriptsName, { success in
+        installScript(script: shellSupportScriptName, { success in
             self.installCmds(completion)
         })
     }
@@ -130,7 +146,7 @@ extension ExtensionsInteractor {
                                                                 includingResourceValuesForKeys: nil,
                                                                 relativeTo: nil)
                     
-                    UserDefaults.standard.set(bookmark, forKey: self.scriptsName)
+                    UserDefaults.standard.set(bookmark, forKey: self.shellSupportScriptName)
                     UserDefaults.standard.synchronize()
                     
                     completion(true)
@@ -161,4 +177,5 @@ extension ExtensionsInteractor {
             completion(success)
         })
     }
+ */
 }

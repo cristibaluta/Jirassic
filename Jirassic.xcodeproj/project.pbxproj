@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2801DD3B1E468B92005B5842 /* CommandLineTools.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */; };
 		2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */; };
 		2803A0C81EC04816005F9389 /* NSRunningApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803A0C71EC04816005F9389 /* NSRunningApplication.swift */; };
 		2803A0CA1EC184FF005F9389 /* CodeReviewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */; };
@@ -231,7 +230,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = CommandLineTools.scpt; sourceTree = "<group>"; };
 		2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHeaderView.swift; sourceTree = "<group>"; };
 		2803A0C71EC04816005F9389 /* NSRunningApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSRunningApplication.swift; sourceTree = "<group>"; };
 		2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeReviewNotification.swift; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 				4065D35B1DD3B44200B73201 /* Images.xcassets */,
 				4065D35C1DD3B44200B73201 /* Info.plist */,
 				28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */,
-				2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */,
 				4065D3611DD3B44200B73201 /* jirassic.sdef */,
 				4051D5F71E0EA320002042BB /* Jirassic.entitlements */,
 				4065D35F1DD3B44200B73201 /* jirassic */,
@@ -1069,7 +1066,6 @@
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D41DD3B44200B73201 /* jit in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
-				2801DD3B1E468B92005B5842 /* CommandLineTools.scpt in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,

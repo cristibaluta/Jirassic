@@ -113,11 +113,25 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
-    func setJitIsInstalled (_ installed: Bool) {
+    func setJitCmdIsInstalled (_ installed: Bool) {
         
         jitImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField.stringValue = installed ? "Jit installed" : "Jit is not installed yet"
+        jitTextField.stringValue = installed ? "Jit cmd installed" : "Jit is not installed yet"
         butInstallJit.isHidden = installed
+    }
+    
+    func setJirassicCmdIsInstalled (_ installed: Bool) {
+        
+        jirassicImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+        jirassicTextField.stringValue = installed ? "Jirassic cmd installed" : "Jirassic cmd is not installed yet"
+        butInstallJirassic.isHidden = installed
+    }
+    
+    func setCodeReviewIsInstalled (_ installed: Bool) {
+        
+        coderevImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+        coderevTextField.stringValue = installed ? "Code review installed" : "Code review is not installed yet"
+        butInstallCoderev.isHidden = installed
     }
     
     func showAppSettings (_ settings: Settings) {

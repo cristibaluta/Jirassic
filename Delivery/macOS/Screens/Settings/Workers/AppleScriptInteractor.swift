@@ -11,7 +11,7 @@ import Foundation
 protocol AppleScriptProtocol {
     
     var scriptsDirectory: URL? {get}
-    func getScriptsVersion (completion: @escaping (String) -> Void)
+    func getScriptVersion (script: String, completion: @escaping (String) -> Void)
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void)
@@ -26,7 +26,7 @@ class AppleScriptInteractor: AppleScriptProtocol {
         return nil
     }
     
-    func getScriptsVersion (completion: @escaping (String) -> Void) {
+    func getScriptVersion (script: String, completion: @escaping (String) -> Void) {
         
     }
     

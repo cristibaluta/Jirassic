@@ -1,5 +1,5 @@
 //
-//  SandboxedAppleScriptInstaller.swift
+//  SandboxedAppleScriptt.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 20/11/2016.
@@ -12,6 +12,8 @@ import Carbon.OpenScripting
 
 class SandboxedAppleScript: AppleScriptProtocol {
     
+    fileprivate let shellSupportScriptName = "ShellSupport"
+    fileprivate let codeReviewScriptName = "CodeReview"
     var scriptsDirectory: URL? {
         
         return try? FileManager.default.url(for: .applicationScriptsDirectory,
@@ -20,9 +22,9 @@ class SandboxedAppleScript: AppleScriptProtocol {
                                             create: true)
     }
     
-    func getScriptsVersion (completion: @escaping (String) -> Void) {
+    func getScriptVersion (script: String, completion: @escaping (String) -> Void) {
         
-        run (command: "getScriptVersion", args: nil, completion: { descriptor in
+        run (command: "getScriptVersion", scriptNamed: script, args: nil, completion: { descriptor in
             if let descriptor = descriptor {
                 completion( descriptor.stringValue! )
             } else {
@@ -37,7 +39,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "runShellScript", args: args, completion: { descriptor in
+        run (command: "runShellScript", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
             
             var dict: [String: String] = [:]
             if let descriptor = descriptor {
@@ -63,7 +65,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "runShellScript", args: args, completion: { descriptor in
+        run (command: "runShellScript", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor {
                 completion( descriptor.stringValue! )
             } else {
@@ -78,7 +80,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "runShellScript", args: args, completion: { descriptor in
+        run (command: "runShellScript", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }
@@ -88,7 +90,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: browserId), at: 1)
         
-        run (command: "getBrowserInfo", args: args, completion: { descriptor in
+        run (command: "getBrowserInfo", scriptNamed: codeReviewScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor {
                 let url = descriptor.atIndex(1)?.stringValue ?? ""
                 let title = descriptor.atIndex(1)?.stringValue ?? ""
@@ -103,7 +105,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         args.insert(NSAppleEventDescriptor(string: from), at: 1)
         args.insert(NSAppleEventDescriptor(string: to), at: 2)
         
-        run (command: "install", args: args, completion: { descriptor in
+        run (command: "install", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }
@@ -113,7 +115,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: from), at: 1)
         
-        run (command: "uninstall", args: args, completion: { descriptor in
+        run (command: "uninstall", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }
@@ -121,13 +123,13 @@ class SandboxedAppleScript: AppleScriptProtocol {
 
 extension SandboxedAppleScript {
     
-    fileprivate func run (command: String, args: NSAppleEventDescriptor?, completion: @escaping (NSAppleEventDescriptor?) -> Void) {
+    fileprivate func run (command: String, scriptNamed: String, args: NSAppleEventDescriptor?, completion: @escaping (NSAppleEventDescriptor?) -> Void) {
         
         guard let scriptsDirectory = self.scriptsDirectory else {
             completion(nil)
             return
         }
-        let scriptURL = scriptsDirectory.appendingPathComponent("CommandLineTools.scpt")
+        let scriptURL = scriptsDirectory.appendingPathComponent(scriptNamed + ".scpt")
         
         do {
             var pid = ProcessInfo.processInfo.processIdentifier
