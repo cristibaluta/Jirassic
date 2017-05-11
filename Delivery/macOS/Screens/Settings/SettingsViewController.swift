@@ -59,6 +59,7 @@ class SettingsViewController: NSViewController {
 	// MARK: Actions
     
     @IBAction func handleInstallButton (_ sender: NSButton) {
+        NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
 //        if sender.title == "Install" {
 //            presenter!.installTools()
 //        } else {
