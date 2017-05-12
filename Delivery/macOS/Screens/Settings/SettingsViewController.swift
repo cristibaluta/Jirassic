@@ -14,14 +14,14 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var jitImageView: NSImageView!
     @IBOutlet fileprivate var jitTextField: NSTextField!
     @IBOutlet fileprivate var butInstallJit: NSButton!
-    // Jira
-    @IBOutlet fileprivate var jiraUrlTextField: NSTextField!
-    @IBOutlet fileprivate var jiraUserTextField: NSTextField!
-    @IBOutlet fileprivate var jiraPasswordTextField: NSTextField!
-    @IBOutlet fileprivate var jiraCredentialsBox: NSBox!
-    @IBOutlet fileprivate var shellSupportBox: NSBox!
-    @IBOutlet fileprivate var shellSupportTextField: NSTextField!
-    @IBOutlet fileprivate var butSaveJiraSettings: NSButton!
+    // Jirassic
+    @IBOutlet fileprivate var jirassicImageView: NSImageView!
+    @IBOutlet fileprivate var jirassicTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallJirassic: NSButton!
+    // Code reviews support
+    @IBOutlet fileprivate var coderevImageView: NSImageView!
+    @IBOutlet fileprivate var coderevTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallCoderev: NSButton!
     // Settings
     @IBOutlet fileprivate var butEnableStartOfDay: NSButton!
     @IBOutlet fileprivate var butEnableLunch: NSButton!
@@ -48,7 +48,7 @@ class SettingsViewController: NSViewController {
         butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
         butEnableLunch.toolTip = "Lunch and nap logs are ignored when calculating the amount of worked hours."
         butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
-        shellSupportTextField.stringValue = "1) Install the apple script to '~/Library/Application Scripts'\n\n2) Apple script installs jit and jirassic command line tools to '/usr/local/bin'\n   - jit: Replacement for git\n   - jirassic: Use Jirassic from the cmd"
+//        shellSupportTextField.stringValue = "1) Install the apple script to '~/Library/Application Scripts'\n\n2) Apple script installs jit and jirassic command line tools to '/usr/local/bin'\n   - jit: Replacement for git\n   - jirassic: Use Jirassic from the cmd"
     }
     
     deinit {
@@ -58,21 +58,22 @@ class SettingsViewController: NSViewController {
 	
 	// MARK: Actions
     
-    @IBAction func handleInstallJitButton (_ sender: NSButton) {
-        if sender.title == "Install" {
-            presenter!.installTools()
-        } else {
-            presenter!.uninstallTools()
-        }
+    @IBAction func handleInstallButton (_ sender: NSButton) {
+        NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+//        if sender.title == "Install" {
+//            presenter!.installTools()
+//        } else {
+//            presenter!.uninstallTools()
+//        }
     }
     
     @IBAction func handleSaveJiraSettingsButton (_ sender: NSButton) {
         
-        let settings = JiraSettings(url: jiraUrlTextField.stringValue,
-                                    user: jiraUserTextField.stringValue,
-                                    password: jiraPasswordTextField.stringValue != "" ? jiraPasswordTextField.stringValue : nil,
-                                    separator: nil)
-        presenter!.saveJiraSettings(settings)
+//        let settings = JiraSettings(url: jiraUrlTextField.stringValue,
+//                                    user: jiraUserTextField.stringValue,
+//                                    password: jiraPasswordTextField.stringValue != "" ? jiraPasswordTextField.stringValue : nil,
+//                                    separator: nil)
+//        presenter!.saveJiraSettings(settings)
     }
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {
@@ -113,20 +114,25 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
-    func setJitIsInstalled (_ installed: Bool) {
+    func setJitCmdIsInstalled (_ installed: Bool) {
         
         jitImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField.stringValue = installed ? "Command line tools are installed" : "Command line tools are not installed yet"
-        butInstallJit.title = installed ? "Uninstall" : "Install"
-        jiraCredentialsBox.isHidden = !installed
-        shellSupportBox.isHidden = installed
+        jitTextField.stringValue = installed ? "Commit to git with Jit. Run 'jit' in Terminal for more info" : "Not installed yet"
+        butInstallJit.isHidden = installed
     }
     
-    func setJiraSettings (_ settings: JiraSettings) {
+    func setJirassicCmdIsInstalled (_ installed: Bool) {
         
-        jiraUrlTextField.stringValue = settings.url ?? ""
-        jiraUserTextField.stringValue = settings.user ?? ""
-//        jiraPasswordTextField!.stringValue = nil
+        jirassicImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+        jirassicTextField.stringValue = installed ? "Run 'jirassic' in Terminal for more info" : "Not installed yet"
+        butInstallJirassic.isHidden = installed
+    }
+    
+    func setCodeReviewIsInstalled (_ installed: Bool) {
+        
+        coderevImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+        coderevTextField.stringValue = installed ? "Time spent in stash is tracked as code review" : "Not installed yet"
+        butInstallCoderev.isHidden = installed
     }
     
     func showAppSettings (_ settings: Settings) {

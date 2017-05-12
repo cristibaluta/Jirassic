@@ -37,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activePopover: NSPopover?
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
+    fileprivate var codeReview = CodeReviewNotification()
     fileprivate let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
@@ -74,12 +75,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
         sleep.computerWentToSleep = {
             self.removeActivePopup()
+            self.codeReview.stop()
         }
         sleep.computerWakeUp = {
             
             guard !Date().isWeekend() else {
+                RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
             }
+            self.codeReview.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
             
             if settings.autoTrackEnabled {
@@ -102,22 +106,43 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     // Do not track time exceeded the working duration
                     return
                 }
-                if settings.trackingMode == .notif {
+                switch settings.trackingMode {
+                case .notif:
                     self.presentTaskSuggestionPopup()
-                } else {
-                    ComputerWakeUpInteractor(repository: localRepository)
-                    .runWith(lastSleepDate: self.sleep.lastSleepDate)
+                    break
+                case .auto:
+                    ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep.lastSleepDate)
+                    break
                 }
             }
+        }
+        
+        codeReview.codeReviewDidStart = {
+            RCLog("Start code review \(Date())")
+        }
+        codeReview.codeReviewDidEnd = {
+            RCLog("End code review \(Date())")
+            let task = Task(
+                lastModifiedDate: nil,
+                startDate: self.codeReview.startDate,
+                endDate: self.codeReview.endDate!,
+                notes: "Code review" + (self.codeReview.reviewedTasks.count > 1 ? " for tasks: \(self.codeReview.reviewedTasks.joined(separator: ", "))" : ""),
+                taskNumber: "coderev",
+                taskTitle: "",
+                taskType: .coderev,
+                objectId: String.random()
+            )
+            let saveInteractor = TaskInteractor(repository: localRepository)
+            saveInteractor.saveTask(task, completion: { savedTask in
+                saveInteractor.syncTask(savedTask, completion: { (task) in })
+            })
         }
 	}
 	
     func applicationDidFinishLaunching (_ aNotification: Notification) {
         
         self.killLauncher()
-        let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
-        RCLog(app)
-        RCLog(NSWorkspace.shared().runningApplications)
+        
 //        if let _ = remoteRepository {
 //            
 //        } else {

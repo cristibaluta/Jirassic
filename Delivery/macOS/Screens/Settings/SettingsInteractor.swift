@@ -18,7 +18,6 @@ protocol SettingsInteractorInput: class {
 
 protocol SettingsInteractorOutput: class {
     
-    func jiraSettingsDidLoad (_ settings: JiraSettings)
 }
 
 class SettingsInteractor {

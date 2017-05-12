@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2801DD3B1E468B92005B5842 /* CommandLineTools.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */; };
 		2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */; };
+		2803A0CA1EC184FF005F9389 /* CodeReviewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
@@ -162,12 +162,10 @@
 		4065D4321DD457B500B73201 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3261DD3B44200B73201 /* Conversions.swift */; };
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
 		4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */; };
-		40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
-		40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */; };
-		40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */; };
-		40FCE4261DF7646F00D4FD45 /* AppleScriptsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */; };
-		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */; };
+		40FCE4251DF7646F00D4FD45 /* AppleScriptInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */; };
+		40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */; };
+		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */; };
 		40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */; };
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
@@ -231,8 +229,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = CommandLineTools.scpt; sourceTree = "<group>"; };
 		2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHeaderView.swift; sourceTree = "<group>"; };
+		2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeReviewNotification.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
@@ -370,11 +368,10 @@
 		4065D4061DD4532100B73201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D4101DD4534C00B73201 /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
-		40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraSettings.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInstaller.swift; sourceTree = "<group>"; };
-		40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptsInteractor.swift; sourceTree = "<group>"; };
-		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScriptInstaller.swift; sourceTree = "<group>"; };
+		40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInteractor.swift; sourceTree = "<group>"; };
+		40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInteractor.swift; sourceTree = "<group>"; };
+		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScript.swift; sourceTree = "<group>"; };
 		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Welcome.storyboard; path = Welcome/Welcome.storyboard; sourceTree = "<group>"; };
@@ -498,7 +495,6 @@
 				4065D35B1DD3B44200B73201 /* Images.xcassets */,
 				4065D35C1DD3B44200B73201 /* Info.plist */,
 				28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */,
-				2801DD3A1E468B92005B5842 /* CommandLineTools.scpt */,
 				4065D3611DD3B44200B73201 /* jirassic.sdef */,
 				4051D5F71E0EA320002042BB /* Jirassic.entitlements */,
 				4065D35F1DD3B44200B73201 /* jirassic */,
@@ -555,7 +551,6 @@
 				4065D31C1DD3B44200B73201 /* TaskTests.swift */,
 				4065D31D1DD3B44200B73201 /* User.swift */,
 				4065D31E1DD3B44200B73201 /* Week.swift */,
-				40E0923E1DE1CDBB001EF5DA /* JiraSettings.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -708,6 +703,7 @@
 				4065D3681DD3B44200B73201 /* InternalNotifications.swift */,
 				4065D3691DD3B44200B73201 /* UserNotifications.swift */,
 				4065D36A1DD3B44200B73201 /* SleepNotifications.swift */,
+				2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -875,9 +871,9 @@
 		40FCE4211DF7646F00D4FD45 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
-				40FCE4231DF7646F00D4FD45 /* AppleScriptsInteractor.swift */,
-				40FCE4221DF7646F00D4FD45 /* AppleScriptInstaller.swift */,
-				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift */,
+				40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */,
+				40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */,
+				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1067,7 +1063,6 @@
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				4065D3D41DD3B44200B73201 /* jit in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
-				2801DD3B1E468B92005B5842 /* CommandLineTools.scpt in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
@@ -1104,6 +1099,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2803A0CA1EC184FF005F9389 /* CodeReviewNotification.swift in Sources */,
 				4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */,
 				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
@@ -1139,13 +1135,12 @@
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
-				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScriptInstaller.swift in Sources */,
+				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* SyncTasks.swift in Sources */,
 				28A9288D1E910F970022AB55 /* CoreDataRepository+Settings.swift in Sources */,
-				40E0923F1DE1CDBB001EF5DA /* JiraSettings.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
@@ -1170,7 +1165,7 @@
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
 				28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */,
-				40FCE4261DF7646F00D4FD45 /* AppleScriptsInteractor.swift in Sources */,
+				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
@@ -1181,7 +1176,7 @@
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
 				4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
-				40FCE4251DF7646F00D4FD45 /* AppleScriptInstaller.swift in Sources */,
+				40FCE4251DF7646F00D4FD45 /* AppleScriptInteractor.swift in Sources */,
 				28A928781E8F78580022AB55 /* SQLiteMigrator.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
@@ -1228,7 +1223,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40FCE4201DF42A3E00D4FD45 /* JiraSettings.swift in Sources */,
 				28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A9288B1E910F4D0022AB55 /* CoreDataRepository+Tasks.swift in Sources */,

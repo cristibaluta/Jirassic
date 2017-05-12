@@ -11,25 +11,25 @@ import Foundation
 protocol SettingsPresenterInput: class {
     
     func loadJitInfo()
-    func installTools()
-    func uninstallTools()
+//    func installTools()
+//    func uninstallTools()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
-    func saveJiraSettings (_ settings: JiraSettings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 protocol SettingsPresenterOutput: class {
     
-    func setJitIsInstalled (_ installed: Bool)
-    func setJiraSettings (_ settings: JiraSettings)
+    func setJitCmdIsInstalled (_ installed: Bool)
+    func setJirassicCmdIsInstalled (_ installed: Bool)
+    func setCodeReviewIsInstalled (_ installed: Bool)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 class SettingsPresenter {
     
-    fileprivate var scriptsInstaller = AppleScriptsInteractor()
+    fileprivate var extensionsInstaller = ExtensionsInteractor()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -39,40 +39,31 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func loadJitInfo() {
         
-        scriptsInstaller.checkTools { (installed, compatible) in
+        extensionsInstaller.getVersions { (versions) in
             
-            self.userInterface!.setJitIsInstalled( installed )
-            if installed {
-                self.scriptsInstaller.getJiraSettings { dict in
-                    let settings = JiraSettings(url: dict["url"],
-                                                user: dict["user"],
-                                                password: nil,
-                                                separator: dict["separator"])
-                    self.jiraSettingsDidLoad(settings)
-                }
-            } else {
-                self.jiraSettingsDidLoad(JiraSettings())
-            }
+            self.userInterface!.setJitCmdIsInstalled( versions.jitCmd )
+            self.userInterface!.setJirassicCmdIsInstalled( versions.jirassicCmd )
+            self.userInterface!.setCodeReviewIsInstalled( versions.codeReview )
         }
     }
     
-    func installTools() {
-        
-        scriptsInstaller.installTools { [weak self] (success) in
-            if success {
-                self?.loadJitInfo()
-            }
-        }
-    }
-    
-    func uninstallTools() {
-        
-        scriptsInstaller.uninstallTools { [weak self] (success) in
-            if success {
-                self?.loadJitInfo()
-            }
-        }
-    }
+//    func installTools() {
+//        
+//        extensionsInstaller.installTools { [weak self] (success) in
+//            if success {
+//                self?.loadJitInfo()
+//            }
+//        }
+//    }
+//    
+//    func uninstallTools() {
+//        
+//        extensionsInstaller.uninstallTools { [weak self] (success) in
+//            if success {
+//                self?.loadJitInfo()
+//            }
+//        }
+//    }
     
     func showSettings() {
         let settings = interactor!.getAppSettings()
@@ -84,18 +75,6 @@ extension SettingsPresenter: SettingsPresenterInput {
         interactor!.saveAppSettings(settings)
     }
     
-    func saveJiraSettings (_ settings: JiraSettings) {
-        RCLogO(settings)
-        scriptsInstaller.checkTools { (installed, compatible) in
-            
-            if installed {
-                self.scriptsInstaller.saveJiraSettings(settings, completion: { success in
-                    
-                })
-            }
-        }
-    }
-    
     func enabledLaunchAtStartup (_ enabled: Bool) {
         interactor!.enabledLaunchAtStartup(enabled)
     }
@@ -103,7 +82,4 @@ extension SettingsPresenter: SettingsPresenterInput {
 
 extension SettingsPresenter: SettingsInteractorOutput {
     
-    func jiraSettingsDidLoad (_ settings: JiraSettings) {
-        userInterface!.setJiraSettings(settings)
-    }
 }
