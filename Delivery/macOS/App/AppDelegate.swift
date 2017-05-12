@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 lastModifiedDate: nil,
                 startDate: self.codeReview.startDate,
                 endDate: self.codeReview.endDate!,
-                notes: "Code review for tasks: \(self.codeReview.reviewedTasks)",
+                notes: "Code review" + (self.codeReview.reviewedTasks.count > 1 ? " for tasks: \(self.codeReview.reviewedTasks.joined(separator: ", "))" : ""),
                 taskNumber: "coderev",
                 taskTitle: "",
                 taskType: .coderev,
