@@ -117,21 +117,21 @@ extension SettingsViewController: SettingsPresenterOutput {
     func setJitCmdIsInstalled (_ installed: Bool) {
         
         jitImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField.stringValue = installed ? "Jit cmd installed" : "Jit is not installed yet"
+        jitTextField.stringValue = installed ? "Commit to git with Jit. Run 'jit' in Terminal for more info" : "Not installed yet"
         butInstallJit.isHidden = installed
     }
     
     func setJirassicCmdIsInstalled (_ installed: Bool) {
         
         jirassicImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jirassicTextField.stringValue = installed ? "Jirassic cmd installed" : "Jirassic cmd is not installed yet"
+        jirassicTextField.stringValue = installed ? "Run 'jirassic' in Terminal for more info" : "Not installed yet"
         butInstallJirassic.isHidden = installed
     }
     
     func setCodeReviewIsInstalled (_ installed: Bool) {
         
         coderevImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        coderevTextField.stringValue = installed ? "Code review installed" : "Code review is not installed yet"
+        coderevTextField.stringValue = installed ? "Time spent in stash is tracked as code review" : "Not installed yet"
         butInstallCoderev.isHidden = installed
     }
     

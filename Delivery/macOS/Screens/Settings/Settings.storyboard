@@ -107,7 +107,7 @@
                                     <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
                                 </datePickerCell>
                             </datePicker>
-                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="shell support" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
+                            <box autoresizesSubviews="NO" toolTip="jirassic is the command line tool of this app" borderType="line" title="shell support" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
                                 <rect key="frame" x="19" y="379" width="458" height="44"/>
                                 <view key="contentView" id="IpW-dh-bsa">
                                     <rect key="frame" x="1" y="1" width="456" height="28"/>
@@ -153,8 +153,9 @@
                                     <constraint firstAttribute="height" constant="40" id="X9O-Od-aqA"/>
                                 </constraints>
                             </box>
-                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="git support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
+                            <box autoresizesSubviews="NO" borderType="line" title="git support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
                                 <rect key="frame" x="19" y="329" width="458" height="44"/>
+                                <string key="toolTip">jit is a git wrapper that adds some convenience functionality for Jira. Commiting with Jit logs the messages as task to Jirassic</string>
                                 <view key="contentView" id="VER-UY-CWS">
                                     <rect key="frame" x="1" y="1" width="456" height="28"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +302,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box autoresizesSubviews="NO" toolTip="Jit is a git cli replacement. It does what git is doing with the benefit of logging to Jirassic every commit you do." borderType="line" title="code reviews" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-El-2HH">
+                            <box autoresizesSubviews="NO" toolTip="Time spent in stash in a browser is counted as code review time" borderType="line" title="code reviews" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-El-2HH">
                                 <rect key="frame" x="19" y="282" width="458" height="44"/>
                                 <view key="contentView" id="6fH-zX-nNt">
                                     <rect key="frame" x="1" y="1" width="456" height="28"/>
