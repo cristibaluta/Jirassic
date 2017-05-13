@@ -54,7 +54,7 @@ class TasksScrollView: NSScrollView {
         
         let headerView = ReportsHeaderView()
         headerView.didChangeSettings = { [weak self] in
-            self?.didChangeSettings?()
+            self?.didChangeSettings!()
         }
         tableView!.headerView = headerView
         

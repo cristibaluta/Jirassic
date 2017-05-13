@@ -155,6 +155,11 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView!.constrainToSuperview()
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
+        tasksScrollView!.didChangeSettings = { [weak self] in
+            if let wself = self {
+                wself.handleSegmentedControl(wself.listSegmentedControl!)
+            }
+        }
     }
     
     func selectDay (_ day: Day) {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */; };
 		2803A0CA1EC184FF005F9389 /* CodeReviewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
@@ -229,7 +228,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHeaderView.swift; sourceTree = "<group>"; };
 		2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeReviewNotification.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
@@ -420,14 +418,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2801DD6D1E4787E2005B5842 /* ReportHeader */ = {
-			isa = PBXGroup;
-			children = (
-				2801DD6E1E47882E005B5842 /* ReportHeaderView.swift */,
-			);
-			name = ReportHeader;
-			sourceTree = "<group>";
-		};
 		28279E9A1E8300E200EAF9FC /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,7 +746,6 @@
 				28A5F2811E586426002BE564 /* DataSource.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
-				2801DD6D1E4787E2005B5842 /* ReportHeader */,
 				407318511DEAAAE00046F409 /* ReportCell */,
 				407318501DEAAACC0046F409 /* TaskCell */,
 				407318521DEAAB010046F409 /* NonTaskCell */,
@@ -1152,7 +1141,6 @@
 				28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				28577EAF1E8ADC53002B07FD /* STask.swift in Sources */,
-				2801DD6F1E47882E005B5842 /* ReportHeaderView.swift in Sources */,
 				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
 				28A928931E91104B0022AB55 /* CloudKitRepository+Tasks.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,

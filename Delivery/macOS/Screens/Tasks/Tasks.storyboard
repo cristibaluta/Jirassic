@@ -361,7 +361,7 @@
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Duration:" id="7OY-10-nAh">
                                     <font key="font" metaFont="system" size="30"/>
-                                    <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.82619418381409326" green="0.18153228834003118" blue="0.1534976840571827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
