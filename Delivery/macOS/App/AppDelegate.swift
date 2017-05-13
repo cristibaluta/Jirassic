@@ -187,6 +187,7 @@ extension AppDelegate {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
+        popover.animates = false
         appWireframe.removeCurrentController()
         _ = appWireframe.presentTasksController()
         appWireframe.showPopover(popover, fromIcon: menu.iconView!)
