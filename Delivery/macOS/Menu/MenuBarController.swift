@@ -1,6 +1,6 @@
 //
 //  MenuBarController.swift
-//  Jira Logger
+//  Jirassic
 //
 //  Created by Baluta Cristian on 26/03/15.
 //  Copyright (c) 2015 Cristian Baluta. All rights reserved.
@@ -10,14 +10,18 @@ import Cocoa
 
 class MenuBarController: NSObject {
 	
-    let bar = NSStatusBar.system()
-    var item: NSStatusItem!
-	var iconView: MenuBarIconView?
-	var onMouseDown: (() -> ())?
+    fileprivate let bar = NSStatusBar.system()
+    fileprivate var item: NSStatusItem!
+	var iconView: MenuBarIconView!
+    
+    var onOpen: (() -> ())?
+    var onClose: (() -> ())?
     var appearsDisabled: Bool? {
-        didSet {
-//            item?.button?.appearsDisabled = appearsDisabled!
-            item.view?.alphaValue = 0.3
+        set {
+            iconView.alphaValue = newValue == true ? 0.4 : 1.0
+        }
+        get {
+            return iconView.alphaValue != 1.0
         }
     }
 	
@@ -25,35 +29,32 @@ class MenuBarController: NSObject {
 		super.init()
 		
 		let length: CGFloat = -1 //NSVariableStatusItemLength
-        item = bar.statusItem(withLength: length)        
-//        item.button?.image = NSImage(named: "MenuBarIcon-Normal")!
-//        item.button?.alternateImage = NSImage(named: "MenuBarIcon-Selected")!
-//        
-//        item.menu = NSMenu()
-//        item.menu?.delegate = self
+        item = bar.statusItem(withLength: length)
 		
 		iconView = MenuBarIconView(item: item)
-		iconView?.onMouseDown = {
-			self.onMouseDown?()
+		iconView.onMouseDown = {
+            if self.iconView.isSelected {
+                self.onOpen?()
+            } else {
+                self.onClose?()
+            }
 		}
 		item.view = iconView
-        appearsDisabled = true
-        
-        appearsDisabled = true
 	}
     
     func handleQuitButton() {
         NSApplication.shared().terminate(nil)
     }
+    
+    func simulateOpen() {
+        if iconView.isSelected == false {
+            iconView.mouseDown(with: NSEvent())
+        }
+    }
+    
+    func simulateClose() {
+        if iconView.isSelected == true {
+            iconView.mouseDown(with: NSEvent())
+        }
+    }
 }
-//
-//extension MenuBarController: NSMenuDelegate {
-//    
-//    func menuWillOpen (_ menu: NSMenu) {
-//        
-//        if NSEvent.pressedMouseButtons() == 1 {
-//            onMouseDown?()
-//            item?.menu?.cancelTracking()
-//        }
-//    }
-//}

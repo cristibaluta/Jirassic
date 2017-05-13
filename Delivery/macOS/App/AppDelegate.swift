@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
     fileprivate var codeReview = CodeReviewNotification()
-    fileprivate let menu = MenuBarController()
+    let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
     class func sharedApp() -> AppDelegate {
@@ -56,21 +56,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         localRepository = SqliteRepository()
 		remoteRepository = CloudKitRepository()
         
-		menu.onMouseDown = { [weak self] in
-			if let wself = self {
-                if (wself.menu.iconView?.isSelected == true) {
-                    wself.removeActivePopup()
-                    
-                    let firstLaunch = wself.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
-                    if firstLaunch {
-                        wself.presentWelcomePopup()
-                    } else {
-                        wself.presentTasksPopup()
-                    }
-				} else {
-                    wself.removeActivePopup()
-				}
-			}
+		menu.onOpen = {
+            self.removeActivePopup()
+            let firstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
+            if firstLaunch {
+                self.presentWelcomePopup()
+            } else {
+                self.presentTasksPopup()
+            }
+        }
+        menu.onClose = {
+            self.removeActivePopup()
         }
 		
         sleep.computerWentToSleep = {
@@ -143,12 +139,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.killLauncher()
         
-//        if let _ = remoteRepository {
-//            
-//        } else {
-//            appWireframe.presentTasksController()
-//            appWireframe.presentTaskSuggestionController(startSleepDate: nil, endSleepDate: Date())
-//        }
         //        let currentUser = UserInteractor(data: localRepository).currentUser()
         //		if currentUser.isLoggedIn {
         //            appWireframe?.presentTasksController()
@@ -158,12 +148,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-			self.menu.iconView?.mouseDown(with: NSEvent())
+			self.menu.simulateOpen()
 		})
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
-            self.activePopover?.performClose(nil)
+            self.menu.simulateClose()
         })
     }
 	
@@ -180,7 +170,7 @@ extension AppDelegate {
         popover.contentViewController = appWireframe.appViewController
         appWireframe.removeCurrentController()
         _ = appWireframe.presentWelcomeController()
-        appWireframe.showPopover(popover, fromIcon: menu.iconView!)
+        appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     
     fileprivate func presentTasksPopup() {
@@ -190,7 +180,7 @@ extension AppDelegate {
         popover.animates = false
         appWireframe.removeCurrentController()
         _ = appWireframe.presentTasksController()
-        appWireframe.showPopover(popover, fromIcon: menu.iconView!)
+        appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     
     func removeActivePopup() {
@@ -209,7 +199,7 @@ extension AppDelegate {
         popover.contentViewController = appWireframe.appViewController
         _ = appWireframe.presentTaskSuggestionController (startSleepDate: sleep.lastSleepDate,
                                                           endSleepDate: Date())
-        appWireframe.showPopover(popover, fromIcon: menu.iconView!)
+        appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
 }
 

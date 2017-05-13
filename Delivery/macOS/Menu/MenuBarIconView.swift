@@ -15,21 +15,22 @@ class MenuBarIconView : NSView {
     
     var onMouseDown: (() -> ())?
     
+    var _isSelected = false
     var isSelected: Bool {
-		
-        didSet {
-            self.image = NSImage(named: isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
-            if (isSelected != oldValue) {
-                self.needsDisplay = true
-            }
+        get {
+            return _isSelected
+        }
+        set {
+            _isSelected = newValue
+            self.image = NSImage(named: _isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
+            self.needsDisplay = true
         }
     }
     
     init (item: NSStatusItem) {
-		
-        self.image = NSImage(named: "MenuBarIcon-Normal")!
+        
         self.item = item
-        self.isSelected = false
+        self.image = NSImage(named: "MenuBarIcon-Normal")!
         
         let thickness = NSStatusBar.system().thickness
         let rect = CGRect(x: 0, y: 0, width: thickness, height: thickness)
@@ -52,7 +53,7 @@ class MenuBarIconView : NSView {
     }
     
     override func mouseDown (with theEvent: NSEvent) {
-        isSelected = !self.isSelected
+        self.isSelected = !_isSelected
         onMouseDown?()
     }
     

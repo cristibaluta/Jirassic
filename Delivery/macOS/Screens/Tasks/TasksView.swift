@@ -12,7 +12,7 @@ class TasksView: NSView {
     
     override func mouseUp (with theEvent: NSEvent) {
         if theEvent.clickCount == 2 {
-            AppDelegate.sharedApp().removeActivePopup()
+            AppDelegate.sharedApp().menu.simulateClose()
         }
     }
     
