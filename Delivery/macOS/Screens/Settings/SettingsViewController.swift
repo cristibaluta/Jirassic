@@ -46,7 +46,7 @@ class SettingsViewController: NSViewController {
         presenter!.loadJitInfo()
         presenter!.showSettings()
         butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
-        butEnableLunch.toolTip = "Lunch and nap logs are ignored when calculating the amount of worked hours."
+        butEnableLunch.toolTip = "Lunch and waste logs are ignored when calculating the amount of worked hours."
         butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
 //        shellSupportTextField.stringValue = "1) Install the apple script to '~/Library/Application Scripts'\n\n2) Apple script installs jit and jirassic command line tools to '/usr/local/bin'\n   - jit: Replacement for git\n   - jirassic: Use Jirassic from the cmd"
     }

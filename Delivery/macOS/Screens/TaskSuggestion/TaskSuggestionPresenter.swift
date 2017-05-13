@@ -33,7 +33,7 @@ class TaskSuggestionPresenter {
             case 0: return .scrumEnd
             case 1: return .meetingEnd
             case 2: return .lunchEnd
-            case 3: return .napEnd
+            case 3: return .wasteEnd
             case 4: return .learningEnd
             default: return .issueEnd
         }
@@ -45,7 +45,7 @@ class TaskSuggestionPresenter {
         case .scrum: return 0
         case .meeting: return 1
         case .lunch: return 2
-        case .nap: return 3
+        case .waste: return 3
         case .learning: return 4
         default: return -1
         }

@@ -88,7 +88,7 @@ class NewTaskViewController: NSViewController {
             case 1: return .scrumEnd
             case 2: return .meetingEnd
             case 3: return .lunchEnd
-            case 4: return .napEnd
+            case 4: return .wasteEnd
             case 5: return .learningEnd
             case 6: return .coderevEnd
             default: return .issueEnd
@@ -102,7 +102,7 @@ class NewTaskViewController: NSViewController {
         case 1: return .scrum
         case 2: return .meeting
         case 3: return .lunch
-        case 4: return .nap
+        case 4: return .waste
         case 5: return .learning
         case 6: return .coderev
         default: return .issue
@@ -146,7 +146,7 @@ extension NewTaskViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        setTaskDataWithTaskType(selectedTaskType())
+        setTaskDataWithTaskType( selectedTaskType() )
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {

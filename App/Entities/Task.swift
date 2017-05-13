@@ -16,7 +16,7 @@ enum TaskType: Int {
 	case lunch = 3
 	case meeting = 4
     case gitCommit = 5
-    case nap = 6
+    case waste = 6
     case learning = 7
     case coderev = 8
 }
@@ -32,11 +32,11 @@ enum TaskSubtype: Int {
 //	case MeetingBegin = 6
 	case meetingEnd = 7
     case gitCommitEnd = 8
-//    case napBegin = 9
-    case napEnd = 10
-    //    case learningBegin = 11
+//    case wasteBegin = 9
+    case wasteEnd = 10
+//    case learningBegin = 11
     case learningEnd = 12
-    //    case coderevBegin = 13
+//    case coderevBegin = 13
     case coderevEnd = 14
     
     var defaultTaskNumber: String? {
@@ -44,7 +44,7 @@ enum TaskSubtype: Int {
             case .scrumEnd: return "scrum"
             case .lunchEnd: return "lunch"
             case .meetingEnd: return "meeting"
-            case .napEnd: return "nap"
+            case .wasteEnd: return "waste"
             case .learningEnd: return "learning"
             case .coderevEnd: return "coderev"
             default: return nil
@@ -54,8 +54,8 @@ enum TaskSubtype: Int {
         switch self {
             case .scrumEnd: return "Scrum meeting"
             case .lunchEnd: return "Lunch break"
-            case .meetingEnd: return "Internal meeting"
-            case .napEnd: return "Nap time"
+            case .meetingEnd: return "Meeting"
+            case .wasteEnd: return "Wasted time"
             case .learningEnd: return "Learning time"
             case .coderevEnd: return "Code reviews"
             default: return ""
@@ -98,7 +98,7 @@ extension Task {
 			case TaskType.lunch:	subtype = .lunchEnd
 			case TaskType.meeting:	subtype = .meetingEnd
             case TaskType.gitCommit:subtype = .gitCommitEnd
-            case TaskType.nap:      subtype = .napEnd
+            case TaskType.waste:      subtype = .wasteEnd
             case TaskType.learning: subtype = .learningEnd
             case TaskType.coderev:  subtype = .coderevEnd
         }
@@ -121,7 +121,7 @@ extension Task {
 			case .lunchEnd:		self.taskType = TaskType.lunch
 			case .meetingEnd:	self.taskType = TaskType.meeting
             case .gitCommitEnd:	self.taskType = TaskType.gitCommit
-            case .napEnd:       self.taskType = TaskType.nap
+            case .wasteEnd:     self.taskType = TaskType.waste
             case .learningEnd:  self.taskType = TaskType.learning
             case .coderevEnd:   self.taskType = TaskType.coderev
 		}

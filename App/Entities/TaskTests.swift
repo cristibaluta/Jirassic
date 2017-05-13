@@ -18,7 +18,7 @@ class TaskTests: XCTestCase {
 		XCTAssert(Task(subtype: .lunchEnd).taskType == TaskType.lunch)
 		XCTAssert(Task(subtype: .meetingEnd).taskType == TaskType.meeting)
         XCTAssert(Task(subtype: .gitCommitEnd).taskType == TaskType.gitCommit)
-        XCTAssert(Task(subtype: .napEnd).taskType == TaskType.nap)
+        XCTAssert(Task(subtype: .wasteEnd).taskType == TaskType.waste)
         XCTAssert(Task(subtype: .learningEnd).taskType == TaskType.learning)
         XCTAssert(Task(subtype: .coderevEnd).taskType == TaskType.coderev)
     }

@@ -24,7 +24,7 @@ enum Command: String {
     case scrum = "scrum"
     case lunch = "lunch"
     case meeting = "meeting"
-    case nap = "nap"
+    case waste = "waste"
     case learning = "learning"
     case coderev = "coderev"
     case version = "version"
@@ -36,7 +36,7 @@ func printHelp() {
     print("     list [yyyy.mm.dd] If date is missing list tasks from today")
     print("     reports [yyyy.mm.dd] [-no-round] If date is missing list reports from today")
     print("     insert -nr <task number> -notes <notes> -duration <mm>")
-    print("     [scrum, lunch, meeting, nap, learning, coderev] <duration>  Duration in minutes")
+    print("     [scrum, lunch, meeting, waste, learning, coderev] <duration>  Duration in minutes")
     print("")
 }
 
@@ -187,7 +187,7 @@ func insert (taskType: Command, arguments: [String]) {
             break
         case .meeting: task = Task(subtype: .meetingEnd)
             break
-        case .nap: task = Task(subtype: .napEnd)
+        case .waste: task = Task(subtype: .wasteEnd)
             break
         case .learning: task = Task(subtype: .learningEnd)
             break
@@ -234,7 +234,7 @@ if let command = Command(rawValue: commandStr) {
         case .insert:
             insertIssue (arguments: arguments)
             break
-        case .scrum, .lunch, .meeting, .nap, .learning, .coderev:
+        case .scrum, .lunch, .meeting, .waste, .learning, .coderev:
             insert (taskType: command, arguments: arguments)
             break
         case .version:

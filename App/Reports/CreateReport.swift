@@ -214,7 +214,7 @@ extension CreateReport {
     
     fileprivate func isTrackingAllowed (taskType: TaskType) -> Bool {
         switch taskType {
-            case .lunch, .nap: return false
+            case .lunch, .waste: return false
             default: return true
         }
     }

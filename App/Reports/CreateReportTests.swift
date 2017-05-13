@@ -48,15 +48,15 @@ class CreateReportTests: XCTestCase {
         t1_3.taskNumber = "coderev"
         t1_3.notes = "Code reviews part 2"
         
-        var nap = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 36), type: TaskType.nap)
-        nap.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
+        var waste = Task(dateEnd: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 36), type: TaskType.waste)
+        waste.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
         
 		var t2 = Task()
         t2.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
         t2.taskNumber = "IOS-4"
         t2.notes = "Note 6"
 		
-		tasks = [t0, t1, scrum, lunch, t1_1, t1_2, t1_3, nap, t2]
+		tasks = [t0, t1, scrum, lunch, t1_1, t1_2, t1_3, waste, t2]
     }
     
     override func tearDown() {
@@ -67,7 +67,7 @@ class CreateReportTests: XCTestCase {
     func testGroupByTaskNumber() {
         
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
-        XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch and nap are ignored")
+        XCTAssert(reports.count == 5, "There should be only 5 unique task numbers. Lunch and waste are ignored")
         for i1 in 0..<reports.count {
             for i2 in 0..<reports.count {
                 if i1 != i2 {

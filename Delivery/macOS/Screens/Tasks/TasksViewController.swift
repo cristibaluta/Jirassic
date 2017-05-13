@@ -17,6 +17,8 @@ class TasksViewController: NSViewController {
     @IBOutlet fileprivate weak var butRefresh: NSButton?
     @IBOutlet fileprivate weak var butSettings: NSButton?
     @IBOutlet fileprivate weak var butQuit: NSButton?
+    @IBOutlet fileprivate weak var butMinimize: NSButton?
+    @IBOutlet fileprivate weak var butFullScreen: NSButton?
     @IBOutlet fileprivate weak var refreshIndicator: NSProgressIndicator?
     
     weak var appWireframe: AppWireframe?
@@ -50,7 +52,10 @@ class TasksViewController: NSViewController {
     
     fileprivate func hideControls (_ hide: Bool) {
         butSettings!.isHidden = hide
+        butRefresh!.isHidden = hide
         butQuit!.isHidden = hide
+        butMinimize!.isHidden = hide
+        butFullScreen!.isHidden = hide
         listSegmentedControl?.isHidden = hide
     }
 }

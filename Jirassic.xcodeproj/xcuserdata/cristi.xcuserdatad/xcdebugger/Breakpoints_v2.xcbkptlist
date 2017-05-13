@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Delivery/macOS/Screens/Tasks/TasksViewController.swift"
-            timestampString = "516372100.098153"
+            timestampString = "516373438.357513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "presentNewTaskController(withInitialDate:)"
             landmarkType = "7">
          </BreakpointContent>
