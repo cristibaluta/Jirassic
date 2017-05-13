@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4065D40F1DD4534C00B73201"
                BuildableName = "jirassic"
-               BlueprintName = "jirassic"
+               BlueprintName = "jirassic-cmd"
                ReferencedContainer = "container:Jirassic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4065D40F1DD4534C00B73201"
             BuildableName = "jirassic"
-            BlueprintName = "jirassic"
+            BlueprintName = "jirassic-cmd"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -57,7 +57,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4065D40F1DD4534C00B73201"
             BuildableName = "jirassic"
-            BlueprintName = "jirassic"
+            BlueprintName = "jirassic-cmd"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -76,7 +76,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4065D40F1DD4534C00B73201"
             BuildableName = "jirassic"
-            BlueprintName = "jirassic"
+            BlueprintName = "jirassic-cmd"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

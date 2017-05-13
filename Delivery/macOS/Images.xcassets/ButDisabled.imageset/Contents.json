@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "ButClose.png",
+      "filename" : "ButDisabled.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "ButClose@2x.png",
+      "filename" : "ButDisabled@2x.png",
       "scale" : "2x"
     }
   ],
