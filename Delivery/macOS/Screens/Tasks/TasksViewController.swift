@@ -89,6 +89,10 @@ extension TasksViewController {
     @IBAction func handleQuitAppButton (_ sender: NSButton) {
         NSApplication.shared().terminate(nil)
     }
+    
+    @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
+        AppDelegate.sharedApp().menu.simulateClose()
+    }
 }
 
 extension TasksViewController: TasksPresenterOutput {
