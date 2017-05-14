@@ -10,15 +10,8 @@ import Foundation
 
 extension SqliteRepository: RepositoryUser {
     
-    func currentUser() -> User {
-        
-        //        let userPredicate = NSPredicate(format: "isLoggedIn == YES")
-        //        let cusers: [RUser] = queryWithPredicate(userPredicate, sortDescriptors: nil)
-        //        if let cuser = cusers.last {
-        //            return User(isLoggedIn: true, email: cuser.email, userId: cuser.userId, lastSyncDate: cuser.lastSyncDate)
-        //        }
-        
-        return User(isLoggedIn: false, email: nil, userId: nil, lastSyncDate: nil)
+    func getUser(_ completion: @escaping ((_ user: User?) -> Void)) {
+        fatalError("This method is not applicable to local Repository")
     }
     
     func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
@@ -30,5 +23,6 @@ extension SqliteRepository: RepositoryUser {
     }
     
     func logout() {
+        fatalError("This method is not applicable to local Repository")
     }
 }

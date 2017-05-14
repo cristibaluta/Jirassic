@@ -12,15 +12,24 @@ import CloudKit
 class CloudKitRepository {
     
     internal var user: User?
-    internal let privateDB = CKContainer.default().privateCloudDatabase
-    internal let customZone = CKRecordZone(zoneName: "TasksZone")
+    internal var privateDB: CKDatabase?
+    internal var customZone: CKRecordZone?
     
     init() {
-        CKContainer.default().accountStatus(completionHandler: { (status, error) in
-            RCLog(status.rawValue)
-            RCLogErrorO(error)
-        })
-        privateDB.save(customZone) { (recordZone, err) in
+        getUser { [weak self] (user) in
+            if let user = user {
+                self?.user = user
+                self?.initDB()
+            }
+        }
+    }
+    
+    func initDB() {
+        
+        privateDB = CKContainer.default().privateCloudDatabase
+        customZone = CKRecordZone(zoneName: "TasksZone")
+        
+        privateDB!.save(customZone!) { (recordZone, err) in
             RCLogO(recordZone)
             RCLogErrorO(err)
         }
@@ -33,6 +42,11 @@ extension CloudKitRepository {
                               previousRecords: [CKRecord], 
                               previousDeletedRecordsIds: [CKRecordID], 
                               completion: @escaping ((_ changedRecords: [CKRecord], _ deletedRecordsIds: [CKRecordID]) -> Void)) {
+        
+        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+            RCLog("Not logged in")
+            return
+        }
         
         var changedRecords = previousRecords
         var deletedRecordsIds = previousDeletedRecordsIds
@@ -67,10 +81,16 @@ extension CloudKitRepository {
                 completion(changedRecords, deletedRecordsIds)
             }
         }
+        
         privateDB.add(op)
     }
     
     func fetchRecords (ofType type: String, predicate: NSPredicate, completion: @escaping ((_ ctask: [CKRecord]?) -> Void)) {
+        
+        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+            RCLog("Not logged in")
+            return
+        }
         
         let query = CKQuery(recordType: type, predicate: predicate)
         privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in

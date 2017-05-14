@@ -126,36 +126,36 @@ extension SettingsViewController: SettingsPresenterOutput {
         
         if scriptInstalled {
             jirassicImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
-            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Shell support script installed but jirassic cmd is outdated"
+            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Applescript installed but jirassic cmd is outdated/uninstalled"
         } else {
             jirassicImageView.image = NSImage(named: NSImageNameStatusUnavailable)
             jirassicTextField.stringValue = "Not installed yet"
         }
-        butInstallJirassic.isHidden = scriptInstalled
+        butInstallJirassic.isHidden = scriptInstalled && compatible
     }
     
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
         
         if scriptInstalled {
             jitImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
-            jitTextField.stringValue = compatible ? "Commit to git with Jit. Run 'jit' in Terminal for more info" : "Shell support script installed but jit cmd is outdated or not installed"
+            jitTextField.stringValue = compatible ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info" : "Applescript installed but jit cmd is outdated/uninstalled"
         } else {
             jitImageView.image = NSImage(named: NSImageNameStatusUnavailable)
             jitTextField.stringValue = "Not installed yet"
         }
-        butInstallJit.isHidden = scriptInstalled
+        butInstallJit.isHidden = scriptInstalled && compatible
     }
     
     func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool) {
         
         if scriptInstalled {
             coderevImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-            coderevTextField.stringValue = compatible ? "Time spent in stash is tracked as code review" : "Shell support script installed but outdated"
+            coderevTextField.stringValue = compatible ? "Jirassic can read the url of your browser and it will log time based on it" : "Applescript installed but outdated"
         } else {
             coderevImageView.image = NSImage(named: NSImageNameStatusUnavailable)
             coderevTextField.stringValue = "Not installed yet"
         }
-        butInstallCoderev.isHidden = scriptInstalled
+        butInstallCoderev.isHidden = scriptInstalled && compatible
     }
     
     func showAppSettings (_ settings: Settings) {
@@ -190,6 +190,11 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func enabledLaunchAtStartup (_ enabled: Bool) {
         butEnableLaunchAtStartup.state = enabled ? NSOnState : NSOffState
+    }
+    
+    func enabledBackup (_ enabled: Bool, title: String) {
+        butBackup.state = enabled ? NSOnState : NSOffState
+        butBackup.title = title
     }
     
 }

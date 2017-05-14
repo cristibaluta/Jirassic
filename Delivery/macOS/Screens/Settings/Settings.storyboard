@@ -269,8 +269,8 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-Bz-bTG">
-                                                                <rect key="frame" x="330" y="9" width="112" height="19"/>
-                                                                <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qjl-fl-R9u">
+                                                                <rect key="frame" x="361" y="9" width="81" height="19"/>
+                                                                <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qjl-fl-R9u">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
                                                                 </buttonCell>
@@ -316,8 +316,8 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-8J-4OB">
-                                                                <rect key="frame" x="330" y="9" width="112" height="19"/>
-                                                                <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je0-zz-99c">
+                                                                <rect key="frame" x="361" y="9" width="81" height="19"/>
+                                                                <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je0-zz-99c">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
                                                                 </buttonCell>
@@ -362,8 +362,8 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cWH-oR-ORO">
-                                                                <rect key="frame" x="330" y="122" width="112" height="19"/>
-                                                                <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="udb-qw-Ow9">
+                                                                <rect key="frame" x="361" y="122" width="81" height="19"/>
+                                                                <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="udb-qw-Ow9">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
                                                                 </buttonCell>
@@ -514,7 +514,7 @@
                                 </tabViewItems>
                             </tabView>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8O-jk-cLw">
-                                <rect key="frame" x="20" y="53" width="126" height="18"/>
+                                <rect key="frame" x="20" y="53" width="466" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Backup to iCloud" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4DA-1R-L49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

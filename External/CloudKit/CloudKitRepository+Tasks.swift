@@ -52,10 +52,15 @@ extension CloudKitRepository: RepositoryTasks {
     
     func deleteTask (_ task: Task, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
         
+        guard let privateDB = self.privateDB else {
+            RCLog("Not logged in")
+            return
+        }
+        
         recordOfTask(task) { (record) in
             if let cktask = record {
                 
-                self.privateDB.delete(withRecordID: cktask.recordID, completionHandler: { (recordID, error) in
+                privateDB.delete(withRecordID: cktask.recordID, completionHandler: { (recordID, error) in
                     RCLogO(recordID)
                     RCLogErrorO(error)
                     completion(error != nil)
@@ -73,16 +78,21 @@ extension CloudKitRepository: RepositoryTasks {
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
         RCLogO("Save to cloudkit \(task)")
         
+        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+            RCLog("Not logged in")
+            return
+        }
+        
         // Query for the task from server if exists
         recordOfTask(task) { (record) in
             var record: CKRecord? = record
             if record == nil {
-                let recordId = CKRecordID(recordName: task.objectId, zoneID: self.customZone.zoneID)
+                let recordId = CKRecordID(recordName: task.objectId, zoneID: customZone.zoneID)
                 record = CKRecord(recordType: "Task", recordID: recordId)
             }
             record = self.updatedRecord(record!, withTask: task)
             
-            self.privateDB.save(record!, completionHandler: { savedRecord, error in
+            privateDB.save(record!, completionHandler: { savedRecord, error in
                 
                 RCLog("Record after saved to ck")
                 RCLogO(savedRecord)
@@ -100,6 +110,11 @@ extension CloudKitRepository: RepositoryTasks {
 extension CloudKitRepository {
     
     func recordOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
+        
+        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+            RCLog("Not logged in")
+            return
+        }
         
         let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)

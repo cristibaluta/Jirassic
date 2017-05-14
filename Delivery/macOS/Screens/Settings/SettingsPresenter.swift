@@ -24,6 +24,7 @@ protocol SettingsPresenterOutput: class {
     func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
+    func enabledBackup (_ enabled: Bool, title: String)
 }
 
 class SettingsPresenter {
@@ -54,6 +55,7 @@ extension SettingsPresenter: SettingsPresenterInput {
         let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
         userInterface!.enabledLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
+        enabledBackup(settings.enableBackup)
     }
     
     func saveAppSettings (_ settings: Settings) {
@@ -63,8 +65,17 @@ extension SettingsPresenter: SettingsPresenterInput {
     func enabledBackup (_ enabled: Bool) {
         if enabled {
             remoteRepository = CloudKitRepository()
+            remoteRepository?.getUser({ (user) in
+                if user == nil {
+                    self.userInterface?.enabledBackup(false, title: "Backup to iCloud (You are not logged in)")
+                    remoteRepository = nil
+                } else {
+                    self.userInterface?.enabledBackup(true, title: "Backup to iCloud")
+                }
+            })
         } else {
             remoteRepository = nil
+            self.userInterface?.enabledBackup(enabled, title: "Backup to iCloud")
         }
     }
     

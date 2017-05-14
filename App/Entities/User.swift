@@ -9,11 +9,9 @@
 import Foundation
 
 struct User {
-
-	var isLoggedIn: Bool
+    
 	var email: String?
     var userId: String?
-    var lastSyncDate: Date?
 }
 
 typealias UserCredentials = (email: String, password: String)

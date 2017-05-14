@@ -34,6 +34,7 @@ class TasksViewController: NSViewController {
         
 		registerForNotifications()
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
+        hideControls(false)
         
         calendarScrollView!.didSelectDay = { [weak self] (day: Day) in
             self?.presenter!.reloadTasksOnDay(day, listType: ListType(rawValue: (self?.listSegmentedControl!.selectedSegment)!)!)
@@ -52,7 +53,7 @@ class TasksViewController: NSViewController {
     
     fileprivate func hideControls (_ hide: Bool) {
         butSettings!.isHidden = hide
-        butRefresh!.isHidden = hide
+        butRefresh!.isHidden = remoteRepository == nil ? true : hide
         butQuit!.isHidden = hide
         butMinimize!.isHidden = hide
         butFullScreen!.isHidden = hide
@@ -98,7 +99,7 @@ extension TasksViewController {
 extension TasksViewController: TasksPresenterOutput {
     
     func showLoadingIndicator (_ show: Bool) {
-        butRefresh!.isHidden = show
+        butRefresh!.isHidden = remoteRepository == nil ? true : show
         if show {
             refreshIndicator!.startAnimation(nil)
         } else {

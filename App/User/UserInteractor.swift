@@ -13,8 +13,8 @@ class UserInteractor: RepositoryInteractor {
     var onLoginSuccess: (() -> ())?
     var onLoginFailure: (() -> ())?
     
-    func currentUser() -> User {
-        return self.repository.currentUser()
+    func getUser(_ completion: @escaping ((_ user: User?) -> Void)) {
+        self.repository.getUser(completion)
     }
     
     func loginWithCredentials (_ credentials: UserCredentials) {

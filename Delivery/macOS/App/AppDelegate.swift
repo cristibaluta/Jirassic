@@ -56,6 +56,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         localRepository = SqliteRepository()
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()
+            remoteRepository?.getUser({ (user) in
+                if user == nil {
+                    remoteRepository = nil
+                }
+            })
         }
         
 		menu.onOpen = {

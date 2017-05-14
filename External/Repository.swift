@@ -10,7 +10,7 @@ import Foundation
 
 protocol RepositoryUser {
     
-    func currentUser() -> User
+    func getUser (_ completion: @escaping ((_ user: User?) -> Void))
     func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void)
     func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void)
     func logout()
