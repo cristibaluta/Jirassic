@@ -66,7 +66,7 @@ extension SqliteRepository: RepositorySettings {
                         minCodeRevDuration: ssettings.minCodeRevDuration!,
                         codeRevLink: ssettings.codeRevLink!,
                         minWasteDuration: ssettings.minWasteDuration!,
-                        wasteLinks: ssettings.wasteLinks!.components(separatedBy: ",")
+                        wasteLinks: ssettings.wasteLinks!.toArray()
         )
     }
     
@@ -94,7 +94,7 @@ extension SqliteRepository: RepositorySettings {
         ssettings?.minCodeRevDuration = settings.minCodeRevDuration
         ssettings?.codeRevLink = settings.codeRevLink
         ssettings?.minWasteDuration = settings.minWasteDuration
-        ssettings?.wasteLinks = settings.wasteLinks.joined(separator: ",")
+        ssettings?.wasteLinks = settings.wasteLinks.toString()
         
         return ssettings!
     }

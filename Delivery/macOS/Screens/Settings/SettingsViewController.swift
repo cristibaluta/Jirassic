@@ -92,7 +92,7 @@ class SettingsViewController: NSViewController {
             minCodeRevDuration: minCodeRevDurationTimePicker.dateValue,
             codeRevLink: codeReviewsLinkTextField.stringValue,
             minWasteDuration: minWasteDurationTimePicker.dateValue,
-            wasteLinks: wastedTimeLinksTextField.stringValue.components(separatedBy: ",")
+            wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
         )
         presenter!.saveAppSettings(settings)
         
@@ -179,7 +179,7 @@ extension SettingsViewController: SettingsPresenterOutput {
         butTrackCodeReviews.state = settings.trackCodeReviews ? NSOnState : NSOffState
         butTrackWastedTime.state = settings.trackWastedTime ? NSOnState : NSOffState
         codeReviewsLinkTextField.stringValue = settings.codeRevLink
-        wastedTimeLinksTextField.stringValue = settings.wasteLinks.joined(separator: ",")
+        wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
         minCodeRevDurationTimePicker.dateValue = settings.minCodeRevDuration
         minWasteDurationTimePicker.dateValue = settings.minWasteDuration
         
