@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2803A0CA1EC184FF005F9389 /* CodeReviewNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */; };
+		280F507B1EC8541D007416AB /* ExtensionsInstallerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
@@ -229,6 +230,7 @@
 
 /* Begin PBXFileReference section */
 		2803A0C91EC184FF005F9389 /* CodeReviewNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeReviewNotification.swift; sourceTree = "<group>"; };
+		280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInstallerInteractor.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
@@ -861,6 +863,7 @@
 			isa = PBXGroup;
 			children = (
 				40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */,
+				280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */,
 				40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */,
 				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */,
 			);
@@ -1089,6 +1092,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2803A0CA1EC184FF005F9389 /* CodeReviewNotification.swift in Sources */,
+				280F507B1EC8541D007416AB /* ExtensionsInstallerInteractor.swift in Sources */,
 				4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */,
 				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,

@@ -159,23 +159,24 @@ extension SQLiteDB {
 			// Text & BLOB values passed to a C-API do not work correctly if they are not marked as transient.
 			for ndx in 1...cnt {
 //				NSLog("Binding: \(params![ndx-1]) at Index: \(ndx)")
+                let i: Int = Int(ndx) - 1
 				// Check for data types
-				if let txt = params![ndx - 1] as? String {
-                    flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
-				} else if let data = params![ndx-1] as? NSData {
-					flag = sqlite3_bind_blob(stmt, CInt(ndx), data.bytes, CInt(data.length), SQLITE_TRANSIENT)
-				} else if let date = params![ndx-1] as? Date {
-					let txt = fmt.string(from:date)
-					flag = sqlite3_bind_text(stmt, CInt(ndx), txt, -1, SQLITE_TRANSIENT)
-				} else if let val = params![ndx-1] as? Bool {
+				if let txt = params![i] as? String {
+                    flag = sqlite3_bind_text(stmt, ndx, txt, -1, SQLITE_TRANSIENT)
+				} else if let data = params![i] as? NSData {
+					flag = sqlite3_bind_blob(stmt, ndx, data.bytes, CInt(data.length), SQLITE_TRANSIENT)
+				} else if let date = params![i] as? Date {
+					let txt = fmt.string(from: date)
+					flag = sqlite3_bind_text(stmt, ndx, txt, -1, SQLITE_TRANSIENT)
+				} else if let val = params![i] as? Bool {
 					let num = val ? 1 : 0
-					flag = sqlite3_bind_int(stmt, CInt(ndx), CInt(num))
-				} else if let val = params![ndx-1] as? Double {
-					flag = sqlite3_bind_double(stmt, CInt(ndx), CDouble(val))
-				} else if let val = params![ndx-1] as? Int {
-					flag = sqlite3_bind_int(stmt, CInt(ndx), CInt(val))
+					flag = sqlite3_bind_int(stmt, ndx, CInt(num))
+				} else if let val = params![i] as? Double {
+					flag = sqlite3_bind_double(stmt, ndx, CDouble(val))
+				} else if let val = params![i] as? Int {
+					flag = sqlite3_bind_int(stmt, ndx, CInt(val))
 				} else {
-					flag = sqlite3_bind_null(stmt, CInt(ndx))
+					flag = sqlite3_bind_null(stmt, ndx)
 				}
 				// Check for errors
 				if flag != SQLITE_OK {

@@ -10,9 +10,7 @@ import Foundation
 
 protocol SettingsPresenterInput: class {
     
-    func loadJitInfo()
-//    func installTools()
-//    func uninstallTools()
+    func checkExtensions()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
     func enabledBackup (_ enabled: Bool)
@@ -21,16 +19,16 @@ protocol SettingsPresenterInput: class {
 
 protocol SettingsPresenterOutput: class {
     
-    func setJitCmdIsInstalled (_ installed: Bool)
-    func setJirassicCmdIsInstalled (_ installed: Bool)
-    func setCodeReviewIsInstalled (_ installed: Bool)
+    func setJirassicStatus (compatible: Bool, scriptInstalled: Bool)
+    func setJitStatus (compatible: Bool, scriptInstalled: Bool)
+    func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
 class SettingsPresenter {
     
-    fileprivate var extensionsInstaller = ExtensionsInteractor()
+    fileprivate var extensions = ExtensionsInteractor()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -38,33 +36,19 @@ class SettingsPresenter {
 
 extension SettingsPresenter: SettingsPresenterInput {
     
-    func loadJitInfo() {
+    func checkExtensions() {
         
-        extensionsInstaller.getVersions { (versions) in
+        extensions.getVersions { (versions) in
             
-            self.userInterface!.setJitCmdIsInstalled( versions.jitCmd )
-            self.userInterface!.setJirassicCmdIsInstalled( versions.jirassicCmd )
-            self.userInterface!.setCodeReviewIsInstalled( versions.codeReview )
+            let compatibility = Versioning.isCompatible(versions)
+            self.userInterface!.setJirassicStatus(compatible: compatibility.jirassicCmd, 
+                                                  scriptInstalled: versions.shellScript != "" )
+            self.userInterface!.setJitStatus(compatible: compatibility.jitCmd, 
+                                             scriptInstalled: versions.shellScript != "" )
+            self.userInterface!.setCodeReviewStatus(compatible: compatibility.browserScript, 
+                                                    scriptInstalled: versions.browserScript != "" )
         }
     }
-    
-//    func installTools() {
-//        
-//        extensionsInstaller.installTools { [weak self] (success) in
-//            if success {
-//                self?.loadJitInfo()
-//            }
-//        }
-//    }
-//    
-//    func uninstallTools() {
-//        
-//        extensionsInstaller.uninstallTools { [weak self] (success) in
-//            if success {
-//                self?.loadJitInfo()
-//            }
-//        }
-//    }
     
     func showSettings() {
         let settings = interactor!.getAppSettings()

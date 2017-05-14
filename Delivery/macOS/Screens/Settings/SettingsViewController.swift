@@ -52,7 +52,7 @@ class SettingsViewController: NSViewController {
         super.viewDidAppear()
         createLayer()
         
-        presenter!.loadJitInfo()
+        presenter!.checkExtensions()
         presenter!.showSettings()
 //        butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
 //        butEnableLunch.toolTip = "Lunch and waste logs are ignored when calculating the amount of worked hours."
@@ -69,20 +69,6 @@ class SettingsViewController: NSViewController {
     
     @IBAction func handleInstallButton (_ sender: NSButton) {
         NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
-//        if sender.title == "Install" {
-//            presenter!.installTools()
-//        } else {
-//            presenter!.uninstallTools()
-//        }
-    }
-    
-    @IBAction func handleSaveJiraSettingsButton (_ sender: NSButton) {
-        
-//        let settings = JiraSettings(url: jiraUrlTextField.stringValue,
-//                                    user: jiraUserTextField.stringValue,
-//                                    password: jiraPasswordTextField.stringValue != "" ? jiraPasswordTextField.stringValue : nil,
-//                                    separator: nil)
-//        presenter!.saveJiraSettings(settings)
     }
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {
@@ -136,25 +122,40 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
-    func setJitCmdIsInstalled (_ installed: Bool) {
+    func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
         
-        jitImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jitTextField.stringValue = installed ? "Commit to git with Jit. Run 'jit' in Terminal for more info" : "Not installed yet"
-        butInstallJit.isHidden = installed
+        if scriptInstalled {
+            jirassicImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
+            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Shell support script installed but jirassic cmd is outdated"
+        } else {
+            jirassicImageView.image = NSImage(named: NSImageNameStatusUnavailable)
+            jirassicTextField.stringValue = "Not installed yet"
+        }
+        butInstallJirassic.isHidden = scriptInstalled
     }
     
-    func setJirassicCmdIsInstalled (_ installed: Bool) {
+    func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
         
-        jirassicImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        jirassicTextField.stringValue = installed ? "Run 'jirassic' in Terminal for more info" : "Not installed yet"
-        butInstallJirassic.isHidden = installed
+        if scriptInstalled {
+            jitImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
+            jitTextField.stringValue = compatible ? "Commit to git with Jit. Run 'jit' in Terminal for more info" : "Shell support script installed but jit cmd is outdated or not installed"
+        } else {
+            jitImageView.image = NSImage(named: NSImageNameStatusUnavailable)
+            jitTextField.stringValue = "Not installed yet"
+        }
+        butInstallJit.isHidden = scriptInstalled
     }
     
-    func setCodeReviewIsInstalled (_ installed: Bool) {
+    func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool) {
         
-        coderevImageView.image = NSImage(named: installed ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-        coderevTextField.stringValue = installed ? "Time spent in stash is tracked as code review" : "Not installed yet"
-        butInstallCoderev.isHidden = installed
+        if scriptInstalled {
+            coderevImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+            coderevTextField.stringValue = compatible ? "Time spent in stash is tracked as code review" : "Shell support script installed but outdated"
+        } else {
+            coderevImageView.image = NSImage(named: NSImageNameStatusUnavailable)
+            coderevTextField.stringValue = "Not installed yet"
+        }
+        butInstallCoderev.isHidden = scriptInstalled
     }
     
     func showAppSettings (_ settings: Settings) {
