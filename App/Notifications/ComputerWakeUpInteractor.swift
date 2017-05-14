@@ -27,13 +27,13 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
         if let type = estimationForDate(date) {
             if type == .startDay {
-                if settings!.startOfDayEnabled {
+                if settings!.trackStartOfDay {
                     let startDate = settings!.startOfDayTime.dateByKeepingTime()
                     if Date() > startDate {
                         save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                     }
                 }
-            } else if (type == .scrum && settings!.scrumEnabled) || (type == .lunch && settings!.lunchEnabled) {
+            } else if (type == .scrum && settings!.trackScrum) || (type == .lunch && settings!.trackLunch) {
                 
                 var task = Task(dateEnd: Date(), type: type)
                 task.startDate = date
@@ -64,7 +64,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             }
             break
         case .meeting:
-            if settings!.meetingEnabled {
+            if settings!.trackMeetings {
                 return TaskType.meeting
             }
             break

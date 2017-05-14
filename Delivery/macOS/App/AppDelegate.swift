@@ -54,7 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
-		remoteRepository = CloudKitRepository()
+        if SettingsInteractor().getAppSettings().enableBackup {
+            remoteRepository = CloudKitRepository()
+        }
         
 		menu.onOpen = {
             self.removeActivePopup()
@@ -70,7 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 		
         sleep.computerWentToSleep = {
-            self.removeActivePopup()
+            self.menu.simulateClose()
             self.codeReview.stop()
         }
         sleep.computerWakeUp = {
@@ -82,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.codeReview.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
             
-            if settings.autoTrackEnabled {
+            if settings.autotrack {
                 
                 let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
                 let minSleepDuration = Double(settings.minSleepDuration.components().minute).minToSec +
@@ -102,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     // Do not track time exceeded the working duration
                     return
                 }
-                switch settings.trackingMode {
+                switch settings.autotrackingMode {
                 case .notif:
                     self.presentTaskSuggestionPopup()
                     break

@@ -15,6 +15,7 @@ protocol SettingsPresenterInput: class {
 //    func uninstallTools()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
+    func enabledBackup (_ enabled: Bool)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
@@ -73,6 +74,14 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func saveAppSettings (_ settings: Settings) {
         interactor!.saveAppSettings(settings)
+    }
+    
+    func enabledBackup (_ enabled: Bool) {
+        if enabled {
+            remoteRepository = CloudKitRepository()
+        } else {
+            remoteRepository = nil
+        }
     }
     
     func enabledLaunchAtStartup (_ enabled: Bool) {

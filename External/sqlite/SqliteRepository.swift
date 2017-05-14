@@ -34,7 +34,7 @@ class SqliteRepository {
 //        RCLog(dbUrl)
         
         db = SQLiteDB(url: dbUrl)
-        _ = SQLiteMigrator(db: db)
+        _ = SQLiteSchema(db: db)
     }
     
     internal func queryWithPredicate<T: SQLTable> (_ predicate: String?, sortingKeyPath: String?) -> [T] {

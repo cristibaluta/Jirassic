@@ -16,19 +16,28 @@ extension CoreDataRepository: RepositorySettings {
         let results: [CSettings] = queryWithPredicate(nil, sortDescriptors: nil)
         var csettings: CSettings? = results.first
         if csettings == nil {
+            // Default values
             csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
                                                             into: managedObjectContext!) as? CSettings
-            csettings?.startOfDayEnabled = 1
-            csettings?.lunchEnabled = 1
-            csettings?.scrumEnabled = 1
-            csettings?.meetingEnabled = 1
-            csettings?.autoTrackEnabled = 1
-            csettings?.trackingMode = 1
+            csettings?.autotrack = 1
+            csettings?.autotrackingMode = 1
+            csettings?.trackLunch = 1
+            csettings?.trackScrum = 1
+            csettings?.trackMeetings = 1
+            csettings?.trackCodeReviews = 1
+            csettings?.trackWastedTime = 1
+            csettings?.trackStartOfDay = 1
+            csettings?.enableBackup = 1
             csettings?.startOfDayTime = Date(hour: 9, minute: 0)
             csettings?.endOfDayTime = Date(hour: 17, minute: 0)
             csettings?.lunchTime = Date(hour: 13, minute: 0)
             csettings?.scrumTime = Date(hour: 10, minute: 30)
             csettings?.minSleepDuration = Date(hour: 0, minute: 13)
+            csettings?.minCodeRevDuration = Date(hour: 0, minute: 3)
+            csettings?.minWasteDuration = Date(hour: 0, minute: 5)
+            csettings?.codeRevLink = nil
+            csettings?.wasteLinks = ["facebook.com", "youtube.com"]
+            
             saveContext()
         }
         return settingsFromCSettings(csettings!)
@@ -42,17 +51,26 @@ extension CoreDataRepository: RepositorySettings {
     
     fileprivate func settingsFromCSettings (_ csettings: CSettings) -> Settings {
         
-        return Settings(startOfDayEnabled: csettings.startOfDayEnabled!.boolValue,
-                        lunchEnabled: csettings.lunchEnabled!.boolValue,
-                        scrumEnabled: csettings.scrumEnabled!.boolValue,
-                        meetingEnabled: csettings.meetingEnabled!.boolValue,
-                        autoTrackEnabled: csettings.autoTrackEnabled!.boolValue,
-                        trackingMode: TaskTrackingMode(rawValue: csettings.trackingMode!.intValue)!,
-                        startOfDayTime: csettings.startOfDayTime!,
-                        endOfDayTime: csettings.endOfDayTime!,
-                        lunchTime: csettings.lunchTime!,
-                        scrumTime: csettings.scrumTime!,
-                        minSleepDuration: csettings.minSleepDuration!
+        return Settings(
+            
+            autotrack: csettings.autotrack!.boolValue,
+            autotrackingMode: TrackingMode(rawValue: csettings.autotrackingMode!.intValue)!,
+            trackLunch: csettings.trackLunch!.boolValue,
+            trackScrum: csettings.trackScrum!.boolValue,
+            trackMeetings: csettings.trackMeetings!.boolValue,
+            trackCodeReviews: csettings.trackCodeReviews!.boolValue,
+            trackWastedTime: csettings.trackWastedTime!.boolValue,
+            trackStartOfDay: csettings.trackStartOfDay!.boolValue,
+            enableBackup: csettings.enableBackup!.boolValue,
+            startOfDayTime: csettings.startOfDayTime!,
+            endOfDayTime: csettings.endOfDayTime!,
+            lunchTime: csettings.lunchTime!,
+            scrumTime: csettings.scrumTime!,
+            minSleepDuration: csettings.minSleepDuration!,
+            minCodeRevDuration: csettings.minCodeRevDuration!,
+            codeRevLink: csettings.codeRevLink!,
+            minWasteDuration: csettings.minWasteDuration!,
+            wasteLinks: csettings.wasteLinks!
         )
     }
     
@@ -64,17 +82,25 @@ extension CoreDataRepository: RepositorySettings {
             csettings = NSEntityDescription.insertNewObject(forEntityName: String(describing: CSettings.self),
                                                             into: managedObjectContext!) as? CSettings
         }
-        csettings?.startOfDayEnabled = NSNumber(value: settings.startOfDayEnabled)
-        csettings?.lunchEnabled = NSNumber(value: settings.lunchEnabled)
-        csettings?.scrumEnabled = NSNumber(value: settings.scrumEnabled)
-        csettings?.meetingEnabled = NSNumber(value: settings.meetingEnabled)
-        csettings?.autoTrackEnabled = NSNumber(value: settings.autoTrackEnabled)
-        csettings?.trackingMode = NSNumber(value: settings.trackingMode.rawValue)
+        
+        csettings?.autotrack = NSNumber(value: settings.autotrack)
+        csettings?.autotrackingMode = NSNumber(value: settings.autotrackingMode.rawValue)
+        csettings?.trackLunch = NSNumber(value: settings.trackLunch)
+        csettings?.trackScrum = NSNumber(value: settings.trackScrum)
+        csettings?.trackMeetings = NSNumber(value: settings.trackMeetings)
+        csettings?.trackCodeReviews = NSNumber(value: settings.trackCodeReviews)
+        csettings?.trackWastedTime = NSNumber(value: settings.trackWastedTime)
+        csettings?.trackStartOfDay = NSNumber(value: settings.trackStartOfDay)
+        csettings?.enableBackup = NSNumber(value: settings.enableBackup)
         csettings?.startOfDayTime = settings.startOfDayTime
         csettings?.endOfDayTime = settings.endOfDayTime
         csettings?.lunchTime = settings.lunchTime
         csettings?.scrumTime = settings.scrumTime
         csettings?.minSleepDuration = settings.minSleepDuration
+        csettings?.minCodeRevDuration = settings.minCodeRevDuration
+        csettings?.codeRevLink = settings.codeRevLink
+        csettings?.minWasteDuration = settings.minWasteDuration
+        csettings?.wasteLinks = settings.wasteLinks
         
         return csettings!
     }

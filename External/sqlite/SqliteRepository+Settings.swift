@@ -15,41 +15,58 @@ extension SqliteRepository: RepositorySettings {
         let results: [SSettings] = queryWithPredicate(nil, sortingKeyPath: nil)
         var ssettings: SSettings? = results.first
         if ssettings == nil {
+            // Default values
             ssettings = SSettings()
-            ssettings?.startOfDayEnabled = true
-            ssettings?.lunchEnabled = true
-            ssettings?.scrumEnabled = true
-            ssettings?.meetingEnabled = true
-            ssettings?.autoTrackEnabled = true
-            ssettings?.trackingMode = 1
+            ssettings?.autotrack = true
+            ssettings?.autotrackingMode = 1
+            ssettings?.trackLunch = true
+            ssettings?.trackScrum = true
+            ssettings?.trackMeetings = true
+            ssettings?.trackCodeReviews = true
+            ssettings?.trackWastedTime = true
+            ssettings?.trackStartOfDay = true
+            ssettings?.enableBackup = true
             ssettings?.startOfDayTime = Date(hour: 9, minute: 0)
             ssettings?.endOfDayTime = Date(hour: 17, minute: 0)
             ssettings?.lunchTime = Date(hour: 13, minute: 0)
             ssettings?.scrumTime = Date(hour: 10, minute: 30)
             ssettings?.minSleepDuration = Date(hour: 0, minute: 13)
+            ssettings?.minCodeRevDuration = Date(hour: 0, minute: 3)
+            ssettings?.minWasteDuration = Date(hour: 0, minute: 5)
+            ssettings?.codeRevLink = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
+            ssettings?.wasteLinks = "facebook.com,youtube.com"
         }
+        
         return settingsFromSSettings(ssettings!)
     }
     
     func saveSettings (_ settings: Settings) {
         
-        let _ = ssettingsFromSettings(settings)
+        let ssettings = ssettingsFromSettings(settings)
+        print( ssettings.save())
         
     }
     
     fileprivate func settingsFromSSettings (_ ssettings: SSettings) -> Settings {
         
-        return Settings(startOfDayEnabled: ssettings.startOfDayEnabled,
-                        lunchEnabled: ssettings.lunchEnabled,
-                        scrumEnabled: ssettings.scrumEnabled,
-                        meetingEnabled: ssettings.meetingEnabled,
-                        autoTrackEnabled: ssettings.autoTrackEnabled,
-                        trackingMode: TaskTrackingMode(rawValue: ssettings.trackingMode)!,
+        return Settings(autotrack: ssettings.autotrack,
+                        autotrackingMode: TrackingMode(rawValue: ssettings.autotrackingMode)!,
+                        trackLunch: ssettings.trackLunch,
+                        trackScrum: ssettings.trackScrum,
+                        trackMeetings: ssettings.trackMeetings,
+                        trackCodeReviews: ssettings.trackCodeReviews,
+                        trackWastedTime: ssettings.trackWastedTime,
+                        trackStartOfDay: ssettings.trackStartOfDay,
+                        enableBackup: ssettings.enableBackup,
                         startOfDayTime: ssettings.startOfDayTime!,
                         endOfDayTime: ssettings.endOfDayTime!,
                         lunchTime: ssettings.lunchTime!,
                         scrumTime: ssettings.scrumTime!,
-                        minSleepDuration: ssettings.minSleepDuration!
+                        minSleepDuration: ssettings.minSleepDuration!,
+                        minCodeRevDuration: ssettings.minCodeRevDuration!,
+                        codeRevLink: ssettings.codeRevLink!,
+                        minWasteDuration: ssettings.minWasteDuration!,
+                        wasteLinks: ssettings.wasteLinks!.components(separatedBy: ",")
         )
     }
     
@@ -60,17 +77,24 @@ extension SqliteRepository: RepositorySettings {
         if ssettings == nil {
             ssettings = SSettings()
         }
-        ssettings?.startOfDayEnabled = settings.startOfDayEnabled
-        ssettings?.lunchEnabled = settings.lunchEnabled
-        ssettings?.scrumEnabled = settings.scrumEnabled
-        ssettings?.meetingEnabled = settings.meetingEnabled
-        ssettings?.autoTrackEnabled = settings.autoTrackEnabled
-        ssettings?.trackingMode = settings.trackingMode.rawValue
+        ssettings?.autotrack = settings.autotrack
+        ssettings?.autotrackingMode = settings.autotrackingMode.rawValue
+        ssettings?.trackLunch = settings.trackLunch
+        ssettings?.trackScrum = settings.trackScrum
+        ssettings?.trackMeetings = settings.trackMeetings
+        ssettings?.trackCodeReviews = settings.trackCodeReviews
+        ssettings?.trackWastedTime = settings.trackWastedTime
+        ssettings?.trackStartOfDay = settings.trackStartOfDay
+        ssettings?.enableBackup = settings.enableBackup
         ssettings?.startOfDayTime = settings.startOfDayTime
         ssettings?.endOfDayTime = settings.endOfDayTime
         ssettings?.lunchTime = settings.lunchTime
         ssettings?.scrumTime = settings.scrumTime
         ssettings?.minSleepDuration = settings.minSleepDuration
+        ssettings?.minCodeRevDuration = settings.minCodeRevDuration
+        ssettings?.codeRevLink = settings.codeRevLink
+        ssettings?.minWasteDuration = settings.minWasteDuration
+        ssettings?.wasteLinks = settings.wasteLinks.joined(separator: ",")
         
         return ssettings!
     }

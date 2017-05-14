@@ -9,32 +9,41 @@
 import Cocoa
 
 class SettingsViewController: NSViewController {
-	
-    // Jit
-    @IBOutlet fileprivate var jitImageView: NSImageView!
-    @IBOutlet fileprivate var jitTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJit: NSButton!
-    // Jirassic
+    
+    // Extensions
+    // shell
     @IBOutlet fileprivate var jirassicImageView: NSImageView!
     @IBOutlet fileprivate var jirassicTextField: NSTextField!
     @IBOutlet fileprivate var butInstallJirassic: NSButton!
-    // Code reviews support
+    // git
+    @IBOutlet fileprivate var jitImageView: NSImageView!
+    @IBOutlet fileprivate var jitTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallJit: NSButton!
+    // browser: code reviews and wasted time
     @IBOutlet fileprivate var coderevImageView: NSImageView!
     @IBOutlet fileprivate var coderevTextField: NSTextField!
     @IBOutlet fileprivate var butInstallCoderev: NSButton!
+    @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
+    @IBOutlet fileprivate var butTrackWastedTime: NSButton!
+    @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
+    @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
+    
     // Settings
-    @IBOutlet fileprivate var butEnableStartOfDay: NSButton!
-    @IBOutlet fileprivate var butEnableLunch: NSButton!
-    @IBOutlet fileprivate var butEnableScrum: NSButton!
-    @IBOutlet fileprivate var butEnableMeetings: NSButton!
-    @IBOutlet fileprivate var butEnableAutoTrack: NSButton!
     @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
-    @IBOutlet fileprivate var trackingModeSegmentedControl: NSSegmentedControl!
+    @IBOutlet fileprivate var butAutotrack: NSButton!
+    @IBOutlet fileprivate var autotrackingModeSegmentedControl: NSSegmentedControl!
+    @IBOutlet fileprivate var butTrackStartOfDay: NSButton!
+    @IBOutlet fileprivate var butTrackLunch: NSButton!
+    @IBOutlet fileprivate var butTrackScrum: NSButton!
+    @IBOutlet fileprivate var butTrackMeetings: NSButton!
     @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var endOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
     @IBOutlet fileprivate var scrumTimePicker: NSDatePicker!
     @IBOutlet fileprivate var minSleepDurationTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var minCodeRevDurationTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var minWasteDurationTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var butBackup: NSButton!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
@@ -45,9 +54,9 @@ class SettingsViewController: NSViewController {
         
         presenter!.loadJitInfo()
         presenter!.showSettings()
-        butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
-        butEnableLunch.toolTip = "Lunch and waste logs are ignored when calculating the amount of worked hours."
-        butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
+//        butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
+//        butEnableLunch.toolTip = "Lunch and waste logs are ignored when calculating the amount of worked hours."
+//        butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
 //        shellSupportTextField.stringValue = "1) Install the apple script to '~/Library/Application Scripts'\n\n2) Apple script installs jit and jirassic command line tools to '/usr/local/bin'\n   - jit: Replacement for git\n   - jirassic: Use Jirassic from the cmd"
     }
     
@@ -78,17 +87,26 @@ class SettingsViewController: NSViewController {
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {
 		
-        let settings = Settings(startOfDayEnabled: butEnableStartOfDay.state == NSOnState,
-                                lunchEnabled: butEnableLunch.state == NSOnState,
-                                scrumEnabled: butEnableScrum.state == NSOnState,
-                                meetingEnabled: butEnableMeetings.state == NSOnState,
-                                autoTrackEnabled: butEnableAutoTrack.state == NSOnState,
-                                trackingMode: TaskTrackingMode(rawValue: trackingModeSegmentedControl.selectedSegment)!,
-                                startOfDayTime: startOfDayTimePicker.dateValue,
-                                endOfDayTime: endOfDayTimePicker.dateValue,
-                                lunchTime: lunchTimePicker.dateValue,
-                                scrumTime: scrumTimePicker.dateValue,
-                                minSleepDuration: minSleepDurationTimePicker.dateValue
+        let settings = Settings(
+            
+            autotrack: butAutotrack.state == NSOnState,
+            autotrackingMode: TrackingMode(rawValue: autotrackingModeSegmentedControl.selectedSegment)!,
+            trackLunch: butTrackLunch.state == NSOnState,
+            trackScrum: butTrackScrum.state == NSOnState,
+            trackMeetings: true,//butTrackMeetings.state == NSOnState,
+            trackCodeReviews: butTrackCodeReviews.state == NSOnState,
+            trackWastedTime: butTrackWastedTime.state == NSOnState,
+            trackStartOfDay: butTrackStartOfDay.state == NSOnState,
+            enableBackup: butBackup.state == NSOnState,
+            startOfDayTime: startOfDayTimePicker.dateValue,
+            endOfDayTime: endOfDayTimePicker.dateValue,
+            lunchTime: lunchTimePicker.dateValue,
+            scrumTime: scrumTimePicker.dateValue,
+            minSleepDuration: minSleepDurationTimePicker.dateValue,
+            minCodeRevDuration: minCodeRevDurationTimePicker.dateValue,
+            codeRevLink: codeReviewsLinkTextField.stringValue,
+            minWasteDuration: minWasteDurationTimePicker.dateValue,
+            wasteLinks: wastedTimeLinksTextField.stringValue.components(separatedBy: ",")
         )
         presenter!.saveAppSettings(settings)
         
@@ -96,7 +114,11 @@ class SettingsViewController: NSViewController {
 	}
     
     @IBAction func handleAutoTrackButton (_ sender: NSButton) {
-        trackingModeSegmentedControl.isEnabled = sender.state == NSOnState
+        autotrackingModeSegmentedControl.isEnabled = sender.state == NSOnState
+    }
+    
+    @IBAction func handleBackupButton (_ sender: NSButton) {
+        presenter!.enabledBackup(sender.state == NSOnState)
     }
     
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
@@ -137,19 +159,32 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func showAppSettings (_ settings: Settings) {
         
-        butEnableStartOfDay.state = settings.startOfDayEnabled ? NSOnState : NSOffState
-        butEnableLunch.state = settings.lunchEnabled ? NSOnState : NSOffState
-        butEnableScrum.state = settings.scrumEnabled ? NSOnState : NSOffState
-        butEnableMeetings.state = settings.meetingEnabled ? NSOnState : NSOffState
-        butEnableAutoTrack.state = settings.autoTrackEnabled ? NSOnState : NSOffState
+        // Tracking
         
-        trackingModeSegmentedControl.selectedSegment = settings.trackingMode.rawValue
+        butAutotrack.state = settings.autotrack ? NSOnState : NSOffState
+        autotrackingModeSegmentedControl.selectedSegment = settings.autotrackingMode.rawValue
+        minSleepDurationTimePicker.dateValue = settings.minSleepDuration
+        butTrackStartOfDay.state = settings.trackStartOfDay ? NSOnState : NSOffState
+        butTrackLunch.state = settings.trackLunch ? NSOnState : NSOffState
+        butTrackScrum.state = settings.trackScrum ? NSOnState : NSOffState
         
         startOfDayTimePicker.dateValue = settings.startOfDayTime
         endOfDayTimePicker.dateValue = settings.endOfDayTime
         lunchTimePicker.dateValue = settings.lunchTime
         scrumTimePicker.dateValue = settings.scrumTime
-        minSleepDurationTimePicker.dateValue = settings.minSleepDuration
+        
+        // Extensions
+        
+        butTrackCodeReviews.state = settings.trackCodeReviews ? NSOnState : NSOffState
+        butTrackWastedTime.state = settings.trackWastedTime ? NSOnState : NSOffState
+        codeReviewsLinkTextField.stringValue = settings.codeRevLink
+        wastedTimeLinksTextField.stringValue = settings.wasteLinks.joined(separator: ",")
+        minCodeRevDurationTimePicker.dateValue = settings.minCodeRevDuration
+        minWasteDurationTimePicker.dateValue = settings.minWasteDuration
+        
+        // Generic
+        
+        butBackup.state = settings.enableBackup ? NSOnState : NSOffState
     }
     
     func enabledLaunchAtStartup (_ enabled: Bool) {
