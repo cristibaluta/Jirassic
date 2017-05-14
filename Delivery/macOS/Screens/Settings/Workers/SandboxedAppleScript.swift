@@ -12,8 +12,10 @@ import Carbon.OpenScripting
 
 class SandboxedAppleScript: AppleScriptProtocol {
     
-    fileprivate let shellSupportScriptName = "ShellSupport"
-    fileprivate let codeReviewScriptName = "CodeReview"
+    fileprivate let commandRunShellScript = "runShellScript"
+    fileprivate let commandGetScriptVersion = "getScriptVersion"
+    fileprivate let commandGetBrowserInfo = "getBrowserInfo"
+    
     var scriptsDirectory: URL? {
         
         return try? FileManager.default.url(for: .applicationScriptsDirectory,
@@ -24,7 +26,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
     
     func getScriptVersion (script: String, completion: @escaping (String) -> Void) {
         
-        run (command: "getScriptVersion", scriptNamed: script, args: nil, completion: { descriptor in
+        run (command: commandGetScriptVersion, scriptNamed: script, args: nil, completion: { descriptor in
             if let descriptor = descriptor {
                 completion( descriptor.stringValue! )
             } else {
@@ -39,7 +41,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "runShellScript", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             
             var dict: [String: String] = [:]
             if let descriptor = descriptor {
@@ -65,7 +67,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "runShellScript", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor {
                 completion( descriptor.stringValue! )
             } else {
@@ -80,7 +82,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: "runShellScript", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }
@@ -90,11 +92,13 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: browserId), at: 1)
         
-        run (command: "getBrowserInfo", scriptNamed: codeReviewScriptName, args: args, completion: { descriptor in
+        run (command: commandGetBrowserInfo, scriptNamed: kBrowserSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor {
                 let url = descriptor.atIndex(1)?.stringValue ?? ""
                 let title = descriptor.atIndex(1)?.stringValue ?? ""
                 completion(url, title)
+            } else {
+                RCLog("Cannot get browser info")
             }
         })
     }
@@ -105,7 +109,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         args.insert(NSAppleEventDescriptor(string: from), at: 1)
         args.insert(NSAppleEventDescriptor(string: to), at: 2)
         
-        run (command: "install", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
+        run (command: "install", scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }
@@ -115,7 +119,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: from), at: 1)
         
-        run (command: "uninstall", scriptNamed: shellSupportScriptName, args: args, completion: { descriptor in
+        run (command: "uninstall", scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             completion(descriptor != nil)
         })
     }

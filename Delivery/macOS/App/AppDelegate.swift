@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activePopover: NSPopover?
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
-    fileprivate var codeReview = CodeReviewNotification()
+    fileprivate var browser = BrowserNotification()
     let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
@@ -78,7 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
         sleep.computerWentToSleep = {
             self.menu.simulateClose()
-            self.codeReview.stop()
+            self.browser.stop()
         }
         sleep.computerWakeUp = {
             
@@ -86,7 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
             }
-            self.codeReview.start()
+            self.browser.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
             
             if settings.autotrack {
@@ -120,17 +120,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        codeReview.codeReviewDidStart = {
+        browser.codeReviewDidStart = {
             RCLog("Start code review \(Date())")
         }
-        codeReview.codeReviewDidEnd = {
+        browser.codeReviewDidEnd = {
             RCLog("End code review \(Date())")
             let task = Task(
                 lastModifiedDate: nil,
-                startDate: self.codeReview.startDate,
-                endDate: self.codeReview.endDate!,
-                notes: "Code review" + (self.codeReview.reviewedTasks.count > 1 ? " for tasks: \(self.codeReview.reviewedTasks.joined(separator: ", "))" : ""),
+                startDate: self.browser.startDate,
+                endDate: self.browser.endDate!,
+                notes: "Code review" + (self.browser.reviewedTasks.count > 1 ? " for tasks: \(self.browser.reviewedTasks.joined(separator: ", "))" : ""),
                 taskNumber: "coderev",
+                taskTitle: "",
+                taskType: .coderev,
+                objectId: String.random()
+            )
+            let saveInteractor = TaskInteractor(repository: localRepository)
+            saveInteractor.saveTask(task, completion: { savedTask in
+                saveInteractor.syncTask(savedTask, completion: { (task) in })
+            })
+        }
+        browser.wastingTimeDidStart = {
+            RCLog("Start wasting time \(Date())")
+        }
+        browser.wastingTimeDidEnd = {
+            RCLog("End wasting time \(Date())")
+            let task = Task(
+                lastModifiedDate: nil,
+                startDate: self.browser.startDate,
+                endDate: self.browser.endDate!,
+                notes: "Wasted time",
+                taskNumber: "waste",
                 taskTitle: "",
                 taskType: .coderev,
                 objectId: String.random()
