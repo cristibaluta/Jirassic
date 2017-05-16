@@ -20,9 +20,7 @@ class BrowserNotification {
     var reviewedTasks = [String]()
     var taskType: TaskType?
     
-    fileprivate let delay = 10.0
-    fileprivate let minCodeReviewDuration = 1.0.minToSec
-    fileprivate let minWastingTimeDuration = 1.0.minToSec
+    fileprivate let delay = 15.0
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
     fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
     fileprivate var timer: Timer?
@@ -130,6 +128,9 @@ extension BrowserNotification {
         taskType = .coderev
         self.endDate = Date()
         let duration = self.endDate!.timeIntervalSince(startDate!)
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let minCodeReviewDuration = Double(settings.minCodeRevDuration.components().minute).minToSec +
+                                    Double(settings.minCodeRevDuration.components().hour).hoursToSec
         if duration >= minCodeReviewDuration {
             self.codeReviewDidEnd?()
         } else {
@@ -162,10 +163,13 @@ extension BrowserNotification {
         }
         self.endDate = Date()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= minWastingTimeDuration {
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let minWastingDuration = Double(settings.minWasteDuration.components().minute).minToSec +
+                                 Double(settings.minWasteDuration.components().hour).hoursToSec
+        if duration >= minWastingDuration {
             self.wastingTimeDidEnd?()
         } else {
-            RCLog("Discard wasting time session with duration \(duration) < \(minWastingTimeDuration)")
+            RCLog("Discard wasting time session with duration \(duration) < \(minWastingDuration)")
         }
         startDate = nil
     }
