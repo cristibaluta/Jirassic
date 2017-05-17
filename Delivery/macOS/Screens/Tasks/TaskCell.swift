@@ -65,6 +65,7 @@ class TaskCell: NSTableRowView, CellProtocol {
             
         }
     }
+    var isDark: Bool = false
     
 	override func awakeFromNib() {
         super.awakeFromNib()

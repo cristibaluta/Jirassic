@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
     fileprivate var browser = BrowserNotification()
-    fileprivate let theme = AppTheme()
+    let theme = AppTheme()
     let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	

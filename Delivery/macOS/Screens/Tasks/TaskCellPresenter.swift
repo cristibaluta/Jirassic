@@ -53,6 +53,7 @@ class TaskCellPresenter: NSObject {
 			taskType: .issue
 		)
 //		cell.duration = duration
-		cell.statusImage?.image = statusImage
+        cell.statusImage?.image = statusImage
+        cell.isDark = AppDelegate.sharedApp().theme.isDark
 	}
 }

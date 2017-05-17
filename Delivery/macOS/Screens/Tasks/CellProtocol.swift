@@ -13,6 +13,7 @@ protocol CellProtocol {
 	var statusImage: NSImageView? {get}
 	var data: TaskCreationData {get set}
 	var duration: String {get set}
+    var isDark: Bool {get set}
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())? {get set}
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())? {get set}

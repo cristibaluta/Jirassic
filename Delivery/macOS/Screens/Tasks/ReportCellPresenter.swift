@@ -31,5 +31,6 @@ class ReportCellPresenter: NSObject {
             ? "\(Date.secondsToPercentTime(theReport.duration))"
             : Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell.statusImage?.image = NSImage(named: NSImageNameStatusAvailable)
+        cell.isDark = AppDelegate.sharedApp().theme.isDark
     }
 }

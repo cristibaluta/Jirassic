@@ -59,6 +59,7 @@ class ReportCell: NSTableRowView, CellProtocol {
             return 6 + titleTextField.height + 4 + notesTextField.height + 6
         }
     }
+    var isDark: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -87,6 +88,11 @@ extension ReportCell {
         bgColor = NSColor.white
         butCopy!.needsLayout = true
         self.needsDisplay = true
+        if isDark == true {
+            taskNrTextField?.textColor = NSColor.black
+            notesTextField?.textColor = NSColor.darkGray
+            durationTextField?.textColor = NSColor.darkGray
+        }
     }
     
     override func mouseExited (with theEvent: NSEvent) {
@@ -94,6 +100,11 @@ extension ReportCell {
         bgColor = NSColor.clear
         butCopy!.needsLayout = true
         self.needsDisplay = true
+        if isDark == true {
+            taskNrTextField?.textColor = NSColor.white
+            notesTextField?.textColor = NSColor.lightGray
+            durationTextField?.textColor = NSColor.lightGray
+        }
     }
     
     override func updateTrackingAreas() {
