@@ -125,10 +125,16 @@ extension BrowserNotification {
         guard isInCodeRev() else {
             return
         }
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+        let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
+        guard workedDuration < dayDuration else {
+            // Do not track time exceeded the working duration
+            return
+        }
         taskType = .coderev
         self.endDate = Date()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        let settings: Settings = SettingsInteractor().getAppSettings()
         let minCodeReviewDuration = Double(settings.minCodeRevDuration.components().minute).minToSec +
                                     Double(settings.minCodeRevDuration.components().hour).hoursToSec
         if duration >= minCodeReviewDuration {
@@ -161,9 +167,15 @@ extension BrowserNotification {
         guard isWastingTime() else {
             return
         }
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+        let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
+        guard workedDuration < dayDuration else {
+            // Do not track time exceeded the working duration
+            return
+        }
         self.endDate = Date()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        let settings: Settings = SettingsInteractor().getAppSettings()
         let minWastingDuration = Double(settings.minWasteDuration.components().minute).minToSec +
                                  Double(settings.minWasteDuration.components().hour).hoursToSec
         if duration >= minWastingDuration {
