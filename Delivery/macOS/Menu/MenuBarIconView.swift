@@ -22,7 +22,13 @@ class MenuBarIconView : NSView {
         }
         set {
             _isSelected = newValue
-            self.image = NSImage(named: _isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
+            self.image = NSImage(named: isDark == true || _isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
+            self.needsDisplay = true
+        }
+    }
+    var isDark: Bool? {
+        didSet {
+            self.image = NSImage(named: isDark == true ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
             self.needsDisplay = true
         }
     }

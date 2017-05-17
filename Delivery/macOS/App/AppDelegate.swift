@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var appWireframe = AppWireframe()
     fileprivate var sleep = SleepNotifications()
     fileprivate var browser = BrowserNotification()
+    fileprivate let theme = AppTheme()
     let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
@@ -63,6 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             })
         }
         
+        menu.isDark = theme.isDark
 		menu.onOpen = {
             self.removeActivePopup()
             let firstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
@@ -74,6 +76,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         menu.onClose = {
             self.removeActivePopup()
+        }
+        
+        theme.onChange = {
+            self.menu.isDark = self.theme.isDark
         }
 		
         sleep.computerWentToSleep = {

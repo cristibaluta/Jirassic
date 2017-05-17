@@ -24,6 +24,11 @@ class MenuBarController: NSObject {
             return iconView.alphaValue != 1.0
         }
     }
+    var isDark: Bool? {
+        didSet {
+            iconView.isDark = isDark
+        }
+    }
 	
 	override init() {
 		super.init()
