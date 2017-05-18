@@ -14,13 +14,15 @@ class NewTaskViewController: NSViewController {
 	@IBOutlet fileprivate weak var issueIdTextField: NSTextField!
 	@IBOutlet fileprivate weak var notesTextField: NSTextField!
 	@IBOutlet fileprivate weak var endDateTextField: NSTextField!
-	@IBOutlet fileprivate weak var durationTextField: NSTextField!
+    @IBOutlet fileprivate weak var durationTextField: NSTextField!
+    @IBOutlet fileprivate weak var durationButton: NSButton!
 	
-	var onOptionChosen: ((_ taskData: TaskCreationData) -> Void)?
-	var onCancelChosen: ((Void) -> Void)?
+	var onSave: ((_ taskData: TaskCreationData) -> Void)?
+	var onCancel: ((Void) -> Void)?
     fileprivate var activeEditingTextFieldContent = ""
     fileprivate var issueTypes = [String]()
     fileprivate let predictor = PredictiveTimeTyping()
+    fileprivate var isUsingDuration = true
 	
 	// Sets the end date of the task to the UI picker. It can be edited and requested back
     var initialDate = Date()
@@ -34,6 +36,16 @@ class NewTaskViewController: NSViewController {
 			self.endDateTextField?.stringValue = newValue.HHmm()
 		}
 	}
+    var dateStart: Date? {
+        get {
+            let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
+            return self.initialDate.dateByUpdating(hour: hm.hour, minute: hm.min)
+        }
+        set {
+//            self.initialDate = newValue
+//            self.endDateTextField?.stringValue = newValue.HHmm()
+        }
+    }
     var duration: TimeInterval {
         get {
             if self.durationTextField!.stringValue == "" {
@@ -69,7 +81,7 @@ class NewTaskViewController: NSViewController {
             notes: self.notes,
             taskType: taskType
         )
-        self.onOptionChosen?(taskData)
+        self.onSave?(taskData)
     }
     
     override func viewDidLoad() {
@@ -98,14 +110,14 @@ class NewTaskViewController: NSViewController {
     fileprivate func selectedTaskType() -> TaskType {
         
         switch taskTypeSegmentedControl!.selectedSegment {
-        case 0: return .issue
-        case 1: return .scrum
-        case 2: return .meeting
-        case 3: return .lunch
-        case 4: return .waste
-        case 5: return .learning
-        case 6: return .coderev
-        default: return .issue
+            case 0: return .issue
+            case 1: return .scrum
+            case 2: return .meeting
+            case 3: return .lunch
+            case 4: return .waste
+            case 5: return .learning
+            case 6: return .coderev
+            default: return .issue
         }
     }
 }
@@ -150,6 +162,22 @@ extension NewTaskViewController {
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {
-        self.onCancelChosen?()
+        self.onCancel?()
+    }
+    
+    @IBAction func handleDurationButton (_ sender: NSButton) {
+        isUsingDuration = !isUsingDuration
+        if isUsingDuration {
+            sender.title = "Duration:"
+        } else {
+            sender.title = "Started at:"
+        }
+    }
+}
+
+extension NewTaskViewController {
+    
+    override func mouseDown(with event: NSEvent) {
+        RCLog(event)
     }
 }

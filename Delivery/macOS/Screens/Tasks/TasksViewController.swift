@@ -183,8 +183,9 @@ extension TasksViewController: TasksPresenterOutput {
         hideControls(true)
         
         let controller = appWireframe!.presentNewTaskController()
+        controller.dateStart = nil
         controller.dateEnd = date
-        controller.onOptionChosen = { [weak self] (taskData: TaskCreationData) -> Void in
+        controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
             if let strongSelf = self {
                 strongSelf.presenter!.insertTaskWithData(taskData)
                 strongSelf.presenter!.updateNoTasksState()
@@ -194,7 +195,7 @@ extension TasksViewController: TasksPresenterOutput {
                 strongSelf.hideControls(false)
             }
         }
-        controller.onCancelChosen = { [weak self] in
+        controller.onCancel = { [weak self] in
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeNewTaskController()
                 strongSelf.splitView!.isHidden = false

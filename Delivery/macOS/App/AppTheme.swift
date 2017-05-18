@@ -7,14 +7,25 @@
 //
 
 import Foundation
+import Cocoa
 
 class AppTheme {
     
-    var isDark: Bool = false
+    var isDark: Bool {
+        get {
+            return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+        }
+    }
     var onChange: (() -> ())?
+    var highlightColor: NSColor {
+        get {
+            return isDark
+                    ? NSColor(red: 200/255.0, green: 120/255.0, blue: 100/255.0, alpha: 1.0)
+                    : NSColor(red: 200/255.0, green: 120/255.0, blue: 180/255.0, alpha: 1.0)
+        }
+    }
     
     init() {
-        isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
         DistributedNotificationCenter.default.addObserver(self, 
                                                           selector: #selector(interfaceModeChanged(sender:)), 
                                                           name: NSNotification.Name(rawValue: "AppleInterfaceThemeChangedNotification"), 
@@ -23,7 +34,6 @@ class AppTheme {
     }
 
     @objc func interfaceModeChanged (sender: NSNotification) {
-        isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
         onChange?()
     }
 }
