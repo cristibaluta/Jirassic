@@ -14,44 +14,51 @@ class NewTaskViewController: NSViewController {
 	@IBOutlet fileprivate weak var issueIdTextField: NSTextField!
 	@IBOutlet fileprivate weak var notesTextField: NSTextField!
 	@IBOutlet fileprivate weak var endDateTextField: NSTextField!
-    @IBOutlet fileprivate weak var durationTextField: NSTextField!
-    @IBOutlet fileprivate weak var durationButton: NSButton!
+    @IBOutlet fileprivate weak var startDateTextField: NSTextField!
+    @IBOutlet fileprivate weak var startDateButton: NSButton!
 	
 	var onSave: ((_ taskData: TaskCreationData) -> Void)?
 	var onCancel: ((Void) -> Void)?
     fileprivate var activeEditingTextFieldContent = ""
     fileprivate var issueTypes = [String]()
     fileprivate let predictor = PredictiveTimeTyping()
-    fileprivate var isUsingDuration = true
+    fileprivate var isUsingDuration = false
 	
-	// Sets the end date of the task to the UI picker. It can be edited and requested back
+    var dateStart: Date? {
+        get {
+            if isUsingDuration {
+                return self.duration > 0 ? self.dateEnd.addingTimeInterval(-self.duration) : nil
+            } else {
+                if self.startDateTextField!.stringValue == "" {
+                    return nil
+                }
+                let hm = Date.parseHHmm(self.startDateTextField!.stringValue)
+                return self.initialDate.dateByUpdating(hour: hm.hour, minute: hm.min)
+            }
+        }
+        set {
+            if let startDate = newValue {
+                self.startDateTextField?.stringValue = startDate.HHmm()
+            }
+        }
+    }
     var initialDate = Date()
 	var dateEnd: Date {
 		get {
-			let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
-			return self.initialDate.dateByUpdating(hour: hm.hour, minute: hm.min)
+            let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
+            return self.initialDate.dateByUpdating(hour: hm.hour, minute: hm.min)
 		}
 		set {
             self.initialDate = newValue
 			self.endDateTextField?.stringValue = newValue.HHmm()
 		}
 	}
-    var dateStart: Date? {
-        get {
-            let hm = Date.parseHHmm(self.endDateTextField!.stringValue)
-            return self.initialDate.dateByUpdating(hour: hm.hour, minute: hm.min)
-        }
-        set {
-//            self.initialDate = newValue
-//            self.endDateTextField?.stringValue = newValue.HHmm()
-        }
-    }
     var duration: TimeInterval {
         get {
-            if self.durationTextField!.stringValue == "" {
+            if self.startDateTextField!.stringValue == "" {
                 return 0.0
             }
-            let hm = Date.parseHHmm(self.durationTextField!.stringValue)
+            let hm = Date.parseHHmm(self.startDateTextField!.stringValue)
             return Double(hm.min).minToSec + Double(hm.hour).hoursToSec
         }
     }
@@ -72,25 +79,9 @@ class NewTaskViewController: NSViewController {
 		}
 	}
 	
-    func setTaskDataWithTaskType (_ taskType: TaskType) {
-        
-        let taskData = TaskCreationData(
-            dateStart: self.duration > 0 ? self.dateEnd.addingTimeInterval(-self.duration) : nil,
-            dateEnd: self.dateEnd,
-            taskNumber: self.taskNumber,
-            notes: self.notes,
-            taskType: taskType
-        )
-        self.onSave?(taskData)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTypeSegmentedControl?.selectedSegment = 0
-    }
-    
-    override func viewDidLayout() {
-        
     }
     
     fileprivate func selectedTaskSubtype() -> TaskSubtype {
@@ -127,7 +118,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
     override func controlTextDidBeginEditing (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
-            guard textField == endDateTextField || textField == durationTextField else {
+            guard textField == endDateTextField || textField == startDateTextField else {
                 return
             }
             activeEditingTextFieldContent = textField.stringValue
@@ -137,7 +128,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
     override func controlTextDidChange (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
-            guard textField == endDateTextField || textField == durationTextField else {
+            guard textField == endDateTextField || textField == startDateTextField else {
                 return
             }
             let comps = textField.stringValue.characters.map { String($0) }
@@ -155,10 +146,19 @@ extension NewTaskViewController {
         let subtype = selectedTaskSubtype()
         issueIdTextField.stringValue = subtype.defaultTaskNumber ?? ""
         notesTextField.stringValue = subtype.defaultNotes
+        issueIdTextField.isEnabled = sender.selectedSegment == 0
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        setTaskDataWithTaskType( selectedTaskType() )
+        
+        let taskData = TaskCreationData(
+            dateStart: self.dateStart,
+            dateEnd: self.dateEnd,
+            taskNumber: self.taskNumber,
+            notes: self.notes,
+            taskType: selectedTaskType()
+        )
+        self.onSave?(taskData)
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {

@@ -183,7 +183,7 @@ extension TasksViewController: TasksPresenterOutput {
         hideControls(true)
         
         let controller = appWireframe!.presentNewTaskController()
-        controller.dateStart = nil
+        controller.dateStart = nil// TODO Add scrum start date when around scrum date
         controller.dateEnd = date
         controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
             if let strongSelf = self {

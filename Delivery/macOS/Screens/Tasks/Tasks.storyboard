@@ -457,10 +457,11 @@ Gw
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="durationTextField" destination="mxx-cb-Hab" id="NzE-xE-H4G"/>
                         <outlet property="endDateTextField" destination="DPg-gd-JXL" id="GgI-9X-fqc"/>
                         <outlet property="issueIdTextField" destination="y40-BP-zYc" id="E3l-sg-86B"/>
                         <outlet property="notesTextField" destination="ist-jg-ccy" id="eKA-HB-3DJ"/>
+                        <outlet property="startDateButton" destination="fLj-PP-dAI" id="1cM-qb-VfN"/>
+                        <outlet property="startDateTextField" destination="mxx-cb-Hab" id="84g-uh-htZ"/>
                         <outlet property="taskTypeSegmentedControl" destination="Zcb-sO-3NH" id="D9B-Mr-4LU"/>
                     </connections>
                 </viewController>

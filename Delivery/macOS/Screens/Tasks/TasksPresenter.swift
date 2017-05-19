@@ -153,6 +153,7 @@ extension TasksPresenter: TasksPresenterInput {
         var task = Task(subtype: TaskSubtype.issueEnd)
         task.notes = taskData.notes
         task.taskNumber = taskData.taskNumber
+        task.startDate = taskData.dateStart
         task.endDate = taskData.dateEnd
         task.taskType = taskData.taskType
         
