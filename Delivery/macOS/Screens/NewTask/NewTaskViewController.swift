@@ -22,11 +22,11 @@ class NewTaskViewController: NSViewController {
     fileprivate var activeEditingTextFieldContent = ""
     fileprivate var issueTypes = [String]()
     fileprivate let predictor = PredictiveTimeTyping()
-    fileprivate var isUsingDuration = false
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
     var dateStart: Date? {
         get {
-            if isUsingDuration {
+            if localPreferences.bool(.useDuration) {
                 return self.duration > 0 ? self.dateEnd.addingTimeInterval(-self.duration) : nil
             } else {
                 if self.startDateTextField!.stringValue == "" {
@@ -82,6 +82,7 @@ class NewTaskViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTypeSegmentedControl?.selectedSegment = 0
+        setupStartDateButtonTitle()
     }
     
     fileprivate func selectedTaskSubtype() -> TaskSubtype {
@@ -110,6 +111,10 @@ class NewTaskViewController: NSViewController {
             case 6: return .coderev
             default: return .issue
         }
+    }
+    
+    fileprivate func setupStartDateButtonTitle() {
+        startDateButton.title = localPreferences.bool(.useDuration) ? "Duration:" : "Started at:"
     }
 }
 
@@ -166,12 +171,9 @@ extension NewTaskViewController {
     }
     
     @IBAction func handleDurationButton (_ sender: NSButton) {
-        isUsingDuration = !isUsingDuration
-        if isUsingDuration {
-            sender.title = "Duration:"
-        } else {
-            sender.title = "Started at:"
-        }
+        
+        localPreferences.set(!localPreferences.bool(.useDuration), forKey: .useDuration)
+        setupStartDateButtonTitle()
     }
 }
 

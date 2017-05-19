@@ -16,16 +16,18 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case launchAtStartup = "launchAtStartup"
     case roundDay = "roundDay"
     case usePercents = "usePercents"
+    case useDuration = "useDuration"
     case firstLaunch = "firstLaunch"
     case lastIcloudSync = "lastIcloudSync"
     
     func defaultValue() -> Any {
         switch self {
-        case .launchAtStartup:          return false
-        case .roundDay:                 return false
-        case .usePercents:              return true
-        case .firstLaunch:              return true
-        case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
+            case .launchAtStartup:          return false
+            case .roundDay:                 return false
+            case .usePercents:              return true
+            case .useDuration:              return false
+            case .firstLaunch:              return true
+            case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
         }
     }
 }
