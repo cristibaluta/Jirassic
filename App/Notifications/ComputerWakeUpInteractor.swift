@@ -43,7 +43,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     }
     
     func estimationForDate (_ date: Date) -> TaskType? {
-	
+        
 		let existingTasks = reader!.tasksInDay(Date())
         
         guard existingTasks.count > 0 else {

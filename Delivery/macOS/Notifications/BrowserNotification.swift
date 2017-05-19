@@ -23,8 +23,10 @@ class BrowserNotification {
     fileprivate let delay = 15.0
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
     fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
+    fileprivate let browsersIds = ["com.apple.Safari", "com.google.Chrome"]
     fileprivate var timer: Timer?
     fileprivate var extensionsInteractor = ExtensionsInteractor()
+    fileprivate var reader: ReadTasksInteractor?
     
     init() {
         start()
@@ -50,7 +52,7 @@ class BrowserNotification {
         let appId = app.bundleIdentifier!
         RCLogO(appId)
         
-        guard appId == "com.apple.Safari" || appId == "com.google.Chrome" else {
+        guard browsersIds.contains(appId) else {
             if let taskType = self.taskType {
                 switch taskType {
                 case .waste:
@@ -63,6 +65,20 @@ class BrowserNotification {
                     break
                 }
             }
+            return
+        }
+        
+        reader = ReadTasksInteractor(repository: localRepository)
+        let existingTasks = reader!.tasksInDay(Date())
+        
+        guard let startDay = existingTasks.first else {
+            return
+        }
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let maxDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+        let workedDuration = Date().timeIntervalSince( startDay.endDate )
+        guard workedDuration < maxDuration else {
+            // Do not track browser events past working duration
             return
         }
         
@@ -125,15 +141,9 @@ extension BrowserNotification {
         guard isInCodeRev() else {
             return
         }
-        let settings: Settings = SettingsInteractor().getAppSettings()
-        let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
-        let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
-        guard workedDuration < dayDuration else {
-            // Do not track time exceeded the working duration
-            return
-        }
         taskType = .coderev
         self.endDate = Date()
+        let settings = localRepository.settings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
         let minCodeReviewDuration = Double(settings.minCodeRevDuration.components().minute).minToSec +
                                     Double(settings.minCodeRevDuration.components().hour).hoursToSec
@@ -167,14 +177,8 @@ extension BrowserNotification {
         guard isWastingTime() else {
             return
         }
-        let settings: Settings = SettingsInteractor().getAppSettings()
-        let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
-        let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
-        guard workedDuration < dayDuration else {
-            // Do not track time exceeded the working duration
-            return
-        }
         self.endDate = Date()
+        let settings: Settings = SettingsInteractor().getAppSettings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
         let minWastingDuration = Double(settings.minWasteDuration.components().minute).minToSec +
                                  Double(settings.minWasteDuration.components().hour).hoursToSec

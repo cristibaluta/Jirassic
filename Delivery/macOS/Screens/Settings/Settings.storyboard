@@ -106,106 +106,6 @@
                                                         </segments>
                                                     </segmentedCell>
                                                 </segmentedControl>
-                                                <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="083-aj-alE">
-                                                    <rect key="frame" x="172" y="82" width="215" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <view key="contentView" id="B13-aL-mkR">
-                                                        <rect key="frame" x="2" y="2" width="211" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <subviews>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smT-1N-RAw">
-                                                                <rect key="frame" x="94" y="10" width="119" height="17"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(± 1 hour)" id="kz3-is-EBg">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                            </textField>
-                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
-                                                                <rect key="frame" x="13" y="7" width="61" height="27"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <date key="date" timeIntervalSinceReferenceDate="-595947600">
-                                                                        <!--1982-02-12 11:00:00 +0000-->
-                                                                    </date>
-                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                                                                </datePickerCell>
-                                                            </datePicker>
-                                                        </subviews>
-                                                    </view>
-                                                </box>
-                                                <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fnn-Bk-3GW">
-                                                    <rect key="frame" x="172" y="135" width="215" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <view key="contentView" id="vmK-dN-BfX">
-                                                        <rect key="frame" x="2" y="2" width="211" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <subviews>
-                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
-                                                                <rect key="frame" x="14" y="7" width="62" height="27"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <date key="date" timeIntervalSinceReferenceDate="-595962000">
-                                                                        <!--1982-02-12 07:00:00 +0000-->
-                                                                    </date>
-                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                                                                </datePickerCell>
-                                                            </datePicker>
-                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-af-j6l">
-                                                                <rect key="frame" x="141" y="7" width="62" height="27"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="0bs-wq-Tnf">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <date key="date" timeIntervalSinceReferenceDate="-595933200">
-                                                                        <!--1982-02-12 15:00:00 +0000-->
-                                                                    </date>
-                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                                                                </datePickerCell>
-                                                            </datePicker>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJX-Vo-Lzi">
-                                                                <rect key="frame" x="91" y="10" width="27" height="17"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="and" id="FCS-Ce-XyY">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                            </textField>
-                                                        </subviews>
-                                                    </view>
-                                                </box>
-                                                <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lg7-XJ-LRw">
-                                                    <rect key="frame" x="209" y="208" width="91" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <view key="contentView" id="SFp-65-qgh">
-                                                        <rect key="frame" x="2" y="2" width="87" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <subviews>
-                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUr-A2-ir2">
-                                                                <rect key="frame" x="14" y="6" width="61" height="27"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="R21-XD-uAZ">
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <date key="date" timeIntervalSinceReferenceDate="-595993620">
-                                                                        <!--1982-02-11 22:13:00 +0000-->
-                                                                    </date>
-                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                                                                </datePickerCell>
-                                                            </datePicker>
-                                                        </subviews>
-                                                    </view>
-                                                </box>
                                                 <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="cna-sP-P5a">
                                                     <rect key="frame" x="177" y="33" width="195" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -235,6 +135,106 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
+                                                        </subviews>
+                                                    </view>
+                                                </box>
+                                                <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="VZB-rc-kuS">
+                                                    <rect key="frame" x="175" y="82" width="195" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <view key="contentView" ambiguous="YES" id="fdk-Et-dPB">
+                                                        <rect key="frame" x="1" y="1" width="193" height="35"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8gc-d3-bDV">
+                                                                <rect key="frame" x="88" y="9" width="63" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(± 1 hour)" id="wOp-E3-vhp">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vu-o2-nUg">
+                                                                <rect key="frame" x="14" y="6" width="61" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Z2v-Uf-Tor">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <date key="date" timeIntervalSinceReferenceDate="-595947600">
+                                                                        <!--1982-02-12 11:00:00 +0000-->
+                                                                    </date>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                                                </datePickerCell>
+                                                            </datePicker>
+                                                        </subviews>
+                                                    </view>
+                                                </box>
+                                                <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="uEd-CC-Sfv">
+                                                    <rect key="frame" x="175" y="136" width="195" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <view key="contentView" ambiguous="YES" id="6XG-3v-y76">
+                                                        <rect key="frame" x="1" y="1" width="193" height="35"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4N-A7-wyY">
+                                                                <rect key="frame" x="14" y="6" width="62" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Ney-zJ-UfZ">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <date key="date" timeIntervalSinceReferenceDate="-595962000">
+                                                                        <!--1982-02-12 07:00:00 +0000-->
+                                                                    </date>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                                                </datePickerCell>
+                                                            </datePicker>
+                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDS-af-j6l">
+                                                                <rect key="frame" x="123" y="6" width="62" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="0bs-wq-Tnf">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <date key="date" timeIntervalSinceReferenceDate="-595933200">
+                                                                        <!--1982-02-12 15:00:00 +0000-->
+                                                                    </date>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                                                </datePickerCell>
+                                                            </datePicker>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJX-Vo-Lzi">
+                                                                <rect key="frame" x="83" y="9" width="27" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="and" id="FCS-Ce-XyY">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                    </view>
+                                                </box>
+                                                <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="9no-ar-A0j">
+                                                    <rect key="frame" x="208" y="206" width="89" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <view key="contentView" ambiguous="YES" id="aCg-FU-TRo">
+                                                        <rect key="frame" x="1" y="1" width="87" height="35"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUr-A2-ir2">
+                                                                <rect key="frame" x="14" y="6" width="61" height="27"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="R21-XD-uAZ">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <date key="date" timeIntervalSinceReferenceDate="-595993620">
+                                                                        <!--1982-02-11 22:13:00 +0000-->
+                                                                    </date>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                                                </datePickerCell>
+                                                            </datePicker>
                                                         </subviews>
                                                     </view>
                                                 </box>
@@ -460,9 +460,9 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUw-lL-oql">
-                                                                <rect key="frame" x="173" y="99" width="70" height="17"/>
+                                                                <rect key="frame" x="173" y="99" width="151" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Matching urls" id="6rb-3Y-Tkb">
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Matching urls (string/regex)" id="6rb-3Y-Tkb">
                                                                     <font key="font" metaFont="system" size="10"/>
                                                                     <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
