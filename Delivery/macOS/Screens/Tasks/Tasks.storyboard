@@ -300,6 +300,7 @@
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y40-BP-zYc">
                                 <rect key="frame" x="129" y="289" width="364" height="36"/>
+                                <string key="toolTip">Usually Jira task ids which are of form LETTER-NUMBER, but can be anything really, important is that same task should have same id</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="tso-NK-ZJ4"/>
                                 </constraints>
@@ -344,7 +345,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPg-gd-JXL">
+                            <textField toolTip="Predictive time typing. Just start typing numbers even if end reached" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPg-gd-JXL">
                                 <rect key="frame" x="185" y="120" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="iE8-jD-Mtz"/>
@@ -358,12 +359,12 @@
                                     <outlet property="delegate" destination="F9u-wL-YtO" id="fHO-V8-eqT"/>
                                 </connections>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-cb-Hab">
+                            <textField toolTip="Predictive time typing. Just start typing numbers even if end reached" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-cb-Hab">
                                 <rect key="frame" x="185" y="73" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="e1n-Kk-PGQ"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="--:--" id="frP-2O-7IU">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="--:-- (optional)" id="frP-2O-7IU">
                                     <font key="font" metaFont="systemBold" size="30"/>
                                     <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
