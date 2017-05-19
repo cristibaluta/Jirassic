@@ -8,10 +8,10 @@
 
 import Foundation
 
-class TaskTypeEstimator: NSObject {
+class TaskTypeEstimator {
 
-	let scrumVariationAllowed = 20.0.minToSec
-	let lunchVariationAllowed = 60.0.minToSec
+	fileprivate let scrumVariationAllowed = 20.0.minToSec
+	fileprivate let lunchVariationAllowed = 60.0.minToSec
 	
     func taskTypeAroundDate (_ date: Date, withSettings settings: Settings) -> TaskType {
 		
@@ -50,6 +50,7 @@ class TaskTypeEstimator: NSObject {
         if abs(date.timeIntervalSinceNow) > duration {
             return TaskType.meeting
         }
+        
         
 		return TaskType.issue
 	}

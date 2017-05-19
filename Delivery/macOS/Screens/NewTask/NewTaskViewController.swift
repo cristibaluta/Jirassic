@@ -50,7 +50,8 @@ class NewTaskViewController: NSViewController {
 		}
 		set {
             self.initialDate = newValue
-			self.endDateTextField?.stringValue = newValue.HHmm()
+            self.endDateTextField?.stringValue = newValue.HHmm()
+            self.estimateTaskType()
 		}
 	}
     var duration: TimeInterval {
@@ -81,13 +82,13 @@ class NewTaskViewController: NSViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskTypeSegmentedControl?.selectedSegment = 0
+        taskTypeSegmentedControl.selectedSegment = 0
         setupStartDateButtonTitle()
     }
     
     fileprivate func selectedTaskSubtype() -> TaskSubtype {
         
-        switch taskTypeSegmentedControl!.selectedSegment {
+        switch taskTypeSegmentedControl.selectedSegment {
             case 0: return .issueEnd
             case 1: return .scrumEnd
             case 2: return .meetingEnd
@@ -101,7 +102,7 @@ class NewTaskViewController: NSViewController {
     
     fileprivate func selectedTaskType() -> TaskType {
         
-        switch taskTypeSegmentedControl!.selectedSegment {
+        switch taskTypeSegmentedControl.selectedSegment {
             case 0: return .issue
             case 1: return .scrum
             case 2: return .meeting
@@ -110,6 +111,20 @@ class NewTaskViewController: NSViewController {
             case 5: return .learning
             case 6: return .coderev
             default: return .issue
+        }
+    }
+    
+    fileprivate func estimateTaskType() {
+        
+        let typeEstimator = TaskTypeEstimator()
+        let settings = SettingsInteractor().getAppSettings()
+        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(initialDate, withSettings: settings)
+        if estimatedType == .scrum {
+            taskTypeSegmentedControl.selectedSegment = 1
+            handleSegmentedControl(taskTypeSegmentedControl)
+            
+            let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumTime)
+            self.dateStart = self.initialDate.dateByUpdating(hour: settingsScrumTime.hour!, minute: settingsScrumTime.minute!)
         }
     }
     
