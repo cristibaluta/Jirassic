@@ -20,7 +20,6 @@ class DaysViewController: UITableViewController {
 		refreshControl.addTarget(self, action: #selector(DaysViewController.reloadData), for: .valueChanged)
 		self.refreshControl = refreshControl
         
-        UserDefaults.standard.serverChangeToken = nil
 		reloadData()
 	}
 	

@@ -13,7 +13,7 @@ extension CoreDataRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
         
-        let predicate = NSPredicate(format: "markedForDeletion == NO")
+        let predicate = NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: sortDescriptors)
         let tasks = tasksFromCTasks(results)
@@ -25,7 +25,7 @@ extension CoreDataRepository: RepositoryTasks {
         
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg),
-            NSPredicate(format: "markedForDeletion == NO")
+            NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
         ])
         let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
         let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
