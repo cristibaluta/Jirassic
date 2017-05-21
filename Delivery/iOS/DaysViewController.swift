@@ -25,11 +25,6 @@ class DaysViewController: UITableViewController {
 	
 	func reloadData() {
         
-//        let task = Task(dateEnd: Date(), type: .startDay)
-//        localRepository.saveTask(task, completion: { (savedTask: Task) -> Void in
-//            RCLog(savedTask)
-//        })
-        
         let interactor = ReadDaysInteractor(repository: localRepository)
         interactor.query { (weeks) in
             
@@ -46,20 +41,10 @@ class DaysViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTasksSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                //				(segue.destinationViewController as! TasksViewController).currentDay = days[indexPath.row]
+                (segue.destination as! TasksViewController).currentDay = days[indexPath.row]
             }
         }
     }
-    
-//    func reloadTasksOnDay (_ day: Day) {
-//        
-//        let reader = ReadTasksInteractor(repository: localRepository)
-//        let currentTasks = reader.tasksInDay(day.date)
-//        
-//        let reportInteractor = CreateReport()
-//        let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: nil)
-//        let currentReports = reports.reversed()
-//    }
 }
 
 extension DaysViewController {

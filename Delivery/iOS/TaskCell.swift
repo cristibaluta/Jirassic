@@ -13,7 +13,8 @@ class TaskCell: UITableViewCell {
 	@IBOutlet var circleWhite: UIView?
 	@IBOutlet var circleDark: UIView?
 	@IBOutlet var taskNrLabel: UILabel?
-	@IBOutlet var dateLabel: UILabel?
+    @IBOutlet var dateLabel: UILabel?
+    @IBOutlet var titleLabel: UILabel?
 	@IBOutlet var notesLabel: UILabel?
 	
     override func awakeFromNib() {
@@ -22,11 +23,4 @@ class TaskCell: UITableViewCell {
 		circleWhite?.layer.cornerRadius = circleWhite!.frame.size.width/2
 		circleDark?.layer.cornerRadius = circleDark!.frame.size.width/2
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
