@@ -87,4 +87,8 @@ class DateTests: XCTestCase {
 		XCTAssertTrue(weekBounds.0.compare(Date(year: 2016, month: 1, day: 4, hour: 0, minute: 0)) == .orderedSame, "")
 		XCTAssertTrue(weekBounds.1.compare(Date(year: 2016, month: 1, day: 10, hour: 23, minute: 59, second: 59)) == .orderedSame, "")
 	}
+    
+    func testIsSameDay() {
+        
+    }
 }
