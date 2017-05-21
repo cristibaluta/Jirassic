@@ -53,7 +53,7 @@
 		280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
 		280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
 		280D70FA1ED0E7B0005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280D70F91ED0E7B0005D2689 /* CloudKit.framework */; };
-		280D70FC1ED1F540005D2689 /* logo_lines.png in Resources */ = {isa = PBXBuildFile; fileRef = 280D70FB1ED1F540005D2689 /* logo_lines.png */; };
+		280D71011ED21A4F005D2689 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280D71001ED21A4F005D2689 /* Splash@2x.png */; };
 		280F507B1EC8541D007416AB /* ExtensionsInstallerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */; };
 		280F507D1EC868B0007416AB /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
@@ -270,10 +270,10 @@
 		2803A0C91EC184FF005F9389 /* BrowserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserNotification.swift; sourceTree = "<group>"; };
 		280D70B01ECC09D9005D2689 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		280D70B61ECFE06A005D2689 /* Jirassic Scrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic Scrum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		280D70C41ECFE06A005D2689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		280D70F81ED0E7A6005D2689 /* Jirassic Scrum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic Scrum.entitlements"; sourceTree = "<group>"; };
 		280D70F91ED0E7B0005D2689 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
-		280D70FB1ED1F540005D2689 /* logo_lines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_lines.png; sourceTree = "<group>"; };
+		280D70FD1ED20CBE005D2689 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		280D70FF1ED21989005D2689 /* Jirassic Scrum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic Scrum.entitlements"; sourceTree = "<group>"; };
+		280D71001ED21A4F005D2689 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
 		280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInstallerInteractor.swift; sourceTree = "<group>"; };
 		280F507C1EC868B0007416AB /* StringArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArray.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
@@ -359,7 +359,6 @@
 		4065D3461DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4065D3471DD3B44200B73201 /* DaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
 		4065D3491DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4065D34A1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D34B1DD3B44200B73201 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4065D34D1DD3B44200B73201 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
 		4065D34E1DD3B44200B73201 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -472,14 +471,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		280D70B71ECFE06A005D2689 /* Jirassic iOS */ = {
-			isa = PBXGroup;
-			children = (
-				280D70C41ECFE06A005D2689 /* Info.plist */,
-			);
-			path = "Jirassic iOS";
-			sourceTree = "<group>";
-		};
 		28279E9A1E8300E200EAF9FC /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,13 +550,11 @@
 		4065D2FB1DD3A1AA00B73201 = {
 			isa = PBXGroup;
 			children = (
-				280D70F81ED0E7A6005D2689 /* Jirassic Scrum.entitlements */,
 				4065D3161DD3B44200B73201 /* App */,
 				4065D3401DD3B44200B73201 /* Delivery */,
 				4065D3881DD3B44200B73201 /* External */,
 				4065D3991DD3B44200B73201 /* Vendor */,
 				4065D4031DD4532100B73201 /* JirassicTests */,
-				280D70B71ECFE06A005D2689 /* Jirassic iOS */,
 				4065D3051DD3A1AA00B73201 /* Products */,
 				4055B1371E0D82A800279430 /* Frameworks */,
 			);
@@ -700,9 +689,10 @@
 				4065D34F1DD3B44200B73201 /* TasksViewController.swift */,
 				4065D34E1DD3B44200B73201 /* TaskCell.swift */,
 				4065D34D1DD3B44200B73201 /* NonTaskCell.swift */,
+				280D71001ED21A4F005D2689 /* Splash@2x.png */,
 				4065D3491DD3B44200B73201 /* Images.xcassets */,
-				280D70FB1ED1F540005D2689 /* logo_lines.png */,
-				4065D34A1DD3B44200B73201 /* Info.plist */,
+				280D70FD1ED20CBE005D2689 /* Info.plist */,
+				280D70FF1ED21989005D2689 /* Jirassic Scrum.entitlements */,
 				4065D3451DD3B44200B73201 /* Main.storyboard */,
 				4065D3431DD3B44200B73201 /* LaunchScreen.xib */,
 			);
@@ -1140,10 +1130,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				280D70FC1ED1F540005D2689 /* logo_lines.png in Resources */,
 				280D70C91ECFE5B1005D2689 /* LaunchScreen.xib in Resources */,
 				280D70CD1ECFE5DC005D2689 /* Images.xcassets in Resources */,
 				280D70CA1ECFE5BD005D2689 /* Main.storyboard in Resources */,
+				280D71011ED21A4F005D2689 /* Splash@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,10 +1445,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Jirassic Scrum.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/iOS/Jirassic Scrum.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
-				INFOPLIST_FILE = "Jirassic iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;
@@ -1473,10 +1463,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Jirassic Scrum.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/iOS/Jirassic Scrum.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
-				INFOPLIST_FILE = "Jirassic iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;

@@ -20,7 +20,7 @@
                     <color key="textColor" red="0.82619418379999998" green="0.18153228830000001" blue="0.1534976841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_lines.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Co-43-sBV">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Co-43-sBV">
                     <rect key="frame" x="140" y="140" width="200" height="200"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="48U-DK-pCe"/>
@@ -41,6 +41,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo_lines.png" width="1024" height="1024"/>
+        <image name="Splash.png" width="200" height="200"/>
     </resources>
 </document>
