@@ -51,17 +51,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4c-hm-ycU">
+                                <rect key="frame" x="156" y="397" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="handleLoginButton:" destination="pGT-tt-fL9" eventType="touchUpInside" id="Ldj-i1-ioz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="b4t-lD-bTw" firstAttribute="centerX" secondItem="D52-14-Kez" secondAttribute="centerX" id="A2N-Dx-zHx"/>
+                            <constraint firstItem="F4c-hm-ycU" firstAttribute="top" secondItem="fW5-5D-GpD" secondAttribute="bottom" constant="8" id="EMz-Es-LIe"/>
                             <constraint firstItem="fW5-5D-GpD" firstAttribute="centerX" secondItem="D52-14-Kez" secondAttribute="centerX" id="OGS-Ja-8J1"/>
                             <constraint firstItem="b4t-lD-bTw" firstAttribute="centerY" secondItem="D52-14-Kez" secondAttribute="centerY" id="TS4-Nn-TVO"/>
                             <constraint firstItem="fW5-5D-GpD" firstAttribute="top" secondItem="b4t-lD-bTw" secondAttribute="bottom" constant="8" id="cdG-xq-Ouk"/>
+                            <constraint firstItem="F4c-hm-ycU" firstAttribute="centerX" secondItem="D52-14-Kez" secondAttribute="centerX" id="jcL-IC-LEj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Q5D-WZ-kV0"/>
                     <connections>
+                        <outlet property="butLogin" destination="F4c-hm-ycU" id="I5O-P7-dec"/>
+                        <outlet property="infoTextField" destination="fW5-5D-GpD" id="BVV-vy-291"/>
                         <segue destination="pGg-6v-bdr" kind="show" identifier="ShowDaysSegue" id="SRI-lJ-09U"/>
                     </connections>
                 </viewController>
