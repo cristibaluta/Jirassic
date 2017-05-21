@@ -98,7 +98,7 @@ extension Task {
 			case TaskType.lunch:	subtype = .lunchEnd
 			case TaskType.meeting:	subtype = .meetingEnd
             case TaskType.gitCommit:subtype = .gitCommitEnd
-            case TaskType.waste:      subtype = .wasteEnd
+            case TaskType.waste:    subtype = .wasteEnd
             case TaskType.learning: subtype = .learningEnd
             case TaskType.coderev:  subtype = .coderevEnd
         }

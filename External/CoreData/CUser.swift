@@ -14,7 +14,5 @@ class CUser: NSManagedObject {
     
     @NSManaged var userId: String?
     @NSManaged var email: String?
-    @NSManaged var lastSyncDate: Date?
-    @NSManaged var isLoggedIn: NSNumber?
 
 }

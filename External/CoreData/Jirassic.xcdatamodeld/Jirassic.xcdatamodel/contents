@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="CSettings" representedClassName=".CSettings" syncable="YES">
-        <attribute name="autoTrackEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="autotrack" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="autotrackingMode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="codeRevLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enableBackup" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="endOfDayTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="lunchEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lunchTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="meetingEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="minCodeRevDuration" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="minSleepDuration" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="scrumEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="minWasteDuration" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="scrumTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="startOfDayEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startOfDayTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="trackingMode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trackCodeReviews" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trackLunch" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trackMeetings" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trackScrum" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trackStartOfDay" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trackWastedTime" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="wasteLinks" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <entity name="CTask" representedClassName=".CTask" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -21,17 +28,16 @@
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="taskNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="CUser" representedClassName=".CUser" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="lastSyncDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CSettings" positionX="-54" positionY="45" width="128" height="210"/>
-        <element name="CTask" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="CUser" positionX="-54" positionY="54" width="128" height="105"/>
+        <element name="CSettings" positionX="-54" positionY="45" width="128" height="315"/>
+        <element name="CTask" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="CUser" positionX="-54" positionY="54" width="128" height="75"/>
     </elements>
 </model>

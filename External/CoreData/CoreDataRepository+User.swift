@@ -12,25 +12,18 @@ import CoreData
 extension CoreDataRepository: RepositoryUser {
     
     func getUser (_ completion: @escaping ((_ user: User?) -> Void)) {
-        
-        let userPredicate = NSPredicate(format: "isLoggedIn == YES")
-        let cusers: [CUser] = queryWithPredicate(userPredicate, sortDescriptors: nil)
-        if let cuser = cusers.last {
-            completion( User(email: cuser.email, userId: cuser.userId) )
-        } else {
-            completion(nil)
-        }
+        fatalError("This method is not applicable to local Repository")
     }
     
     func loginWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        fatalError("This method is not applicable to CoreDataRepository")
+        fatalError("This method is not applicable to local Repository")
     }
     
     func registerWithCredentials (_ credentials: UserCredentials, completion: (NSError?) -> Void) {
-        fatalError("This method is not applicable to CoreDataRepository")
+        fatalError("This method is not applicable to local Repository")
     }
     
     func logout() {
-        
+        fatalError("This method is not applicable to local Repository")
     }
 }

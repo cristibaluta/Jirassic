@@ -14,19 +14,29 @@ class CoreDataRepository {
     fileprivate let databaseName = "Jirassic"
     
     lazy var applicationDocumentsDirectory: URL = {
-        let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        let baseUrl = urls.last!
-        let url = baseUrl.appendingPathComponent(self.databaseName)
-//        print(url)
         
-        if !FileManager.default.fileExists(atPath: url.path) {
-            do {
-                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
-            } catch _ {
-                return baseUrl
+        #if os(iOS)
+            
+            let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return urls.last as URL!
+            
+        #else
+            
+            let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            let baseUrl = urls.last!
+            let url = baseUrl.appendingPathComponent(self.databaseName)
+            RCLog(url)
+            
+            if !FileManager.default.fileExists(atPath: url.path) {
+                do {
+                    try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+                } catch _ {
+                    return baseUrl
+                }
             }
-        }
-        return url
+            return url
+            
+        #endif
     }()
     
     func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {

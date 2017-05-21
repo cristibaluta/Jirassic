@@ -1,5 +1,5 @@
 //
-//  FirebaseRepository.swift
+//  CloudKitRepository.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 09/06/16.
@@ -63,9 +63,10 @@ extension CloudKitRepository {
         }
         op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
             
-//            RCLogO(serverChangeToken)
-//            RCLogO(data)
+            RCLogO(serverChangeToken)
+            RCLogO(data)
             RCLogErrorO(error)
+            
             guard error == nil else {
                 completion(changedRecords, deletedRecordsIds)
                 return

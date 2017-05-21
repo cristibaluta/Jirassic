@@ -27,7 +27,7 @@ class TasksViewController: UITableViewController {
 		//		self.navigationItem.rightBarButtonItem = addButton
 		
 		self.title = self.currentDay!.date.EEEEMMdd()
-		self.tasks = ReadDayInteractor(data: localRepository).tasksForDayOfDate(self.currentDay!.date)
+//		self.tasks = ReadDaysInteractor(repository: localRepository).tasksForDayOfDate(self.currentDay!.date)
 		self.tableView.reloadData()
 	}
 	
@@ -40,65 +40,65 @@ class TasksViewController: UITableViewController {
 
 extension TasksViewController {
 	
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return tasks.count
 	}
 	
-	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
 		let theData = tasks[indexPath.row]
 		
-		if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
+		if theData.taskType == .issue {
 			
-			return NSString(string: theData.notes!).boundingRectWithSize(
-				CGSize(width: self.view.frame.size.width - 48, height: 999),
-				options: NSStringDrawingOptions.UsesLineFragmentOrigin,
-				attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)],
+            return NSString(string: theData.notes!).boundingRect(
+                with: CGSize(width: self.view.frame.size.width - 48, height: 999),
+				options: NSStringDrawingOptions.usesLineFragmentOrigin,
+				attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)],
 				context: nil).size.height + 56
 		} else {
 			return 50
 		}
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let theData = tasks[indexPath.row]
 		
-		if Int(theData.taskType!.intValue) == TaskType.Issue.rawValue {
-			let cell = tableView.dequeueReusableCellWithIdentifier("TaskCell", forIndexPath: indexPath) as! TaskCell
-			cell.taskNrLabel!.text = theData.issueId
-			cell.dateLabel!.text = theData.endDate?.HHmm()
+		if theData.taskType == .issue {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
+			cell.taskNrLabel!.text = theData.taskNumber
+			cell.dateLabel!.text = theData.endDate.HHmm()
 			cell.notesLabel!.text = theData.notes
 			return cell
 		}
 		else {
-			let cell = tableView.dequeueReusableCellWithIdentifier("NonTaskCell", forIndexPath: indexPath) as! NonTaskCell
-			if Int(theData.taskType!.intValue) == TaskType.Start.rawValue {
-				cell.circleWhite?.hidden = false
+			let cell = tableView.dequeueReusableCell(withIdentifier: "NonTaskCell", for: indexPath) as! NonTaskCell
+			if theData.taskType == .startDay {
+				cell.circleWhite?.isHidden = false
 				cell.notesLabel!.text = theData.notes
 			} else {
-				cell.circleWhite?.hidden = true
+				cell.circleWhite?.isHidden = true
 				let thePreviousData = tasks[indexPath.row+1]
-				cell.notesLabel!.text = "\(theData.notes!) \(thePreviousData.endDate!.HHmm()) - \(theData.endDate!.HHmm())"
+				cell.notesLabel!.text = "\(theData.notes!) \(thePreviousData.endDate.HHmm()) - \(theData.endDate.HHmm())"
 			}
 			return cell
 		}
 	}
 	
-	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		// Return false if you do not want the specified item to be editable.
 		return true
 	}
 	
-	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-		if editingStyle == .Delete {
-			tasks.removeAtIndex(indexPath.row)
-			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-		} else if editingStyle == .Insert {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			tasks.remove(at: indexPath.row)
+			tableView.deleteRows(at: [indexPath], with: .fade)
+		} else if editingStyle == .insert {
 			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
 		}
 	}

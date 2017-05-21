@@ -14,7 +14,6 @@ class CTask: NSManagedObject {
     
     @NSManaged var lastModifiedDate: Date?
     @NSManaged var markedForDeletion: NSNumber?
-    @NSManaged var creationDate: Date?
     @NSManaged var startDate: Date?
     @NSManaged var endDate: Date?
     @NSManaged var notes: String?
@@ -22,6 +21,5 @@ class CTask: NSManagedObject {
     @NSManaged var taskTitle: String?
     @NSManaged var taskType: NSNumber?
     @NSManaged var objectId: String?
-    @NSManaged var remoteId: String?
     
 }

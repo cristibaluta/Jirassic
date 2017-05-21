@@ -40,13 +40,17 @@ extension CoreDataRepository: RepositoryTasks {
     
     func queryUnsyncedTasks() -> [Task] {
         
-        let predicate = NSPredicate(format: "lastModifiedDate == nil AND markedForDeletion == NO")
-        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
+        var subpredicates = [
+            NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
+        ]
+        if let sinceDate = UserDefaults.standard.localChangeDate {
+            subpredicates.append(NSPredicate(format: "lastModifiedDate == nil || lastModifiedDate > %@", sinceDate as CVarArg))
+        } else {
+            subpredicates.append(NSPredicate(format: "lastModifiedDate == nil"))
+        }
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: subpredicates)
+        let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: nil)
         let tasks = tasksFromCTasks(results)
-        
-//        let predicate = NSPredicate(format: "lastModifiedDate > %@ AND markedForDeletion == NO", sinceDate as CVarArg)
-//        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: nil)
-//        let tasks = tasksFromCTasks(results)
         
         return tasks
     }
@@ -138,6 +142,7 @@ extension CoreDataRepository {
         
         ctask.taskNumber = task.taskNumber
         ctask.taskType = NSNumber(value: task.taskType.rawValue)
+        ctask.taskTitle = task.taskTitle
         ctask.notes = task.notes
         ctask.startDate = task.startDate
         ctask.endDate = task.endDate

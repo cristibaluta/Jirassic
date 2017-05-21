@@ -79,6 +79,7 @@ class SyncTasks {
     }
     
     func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
+        
         RCLog("2. getLatestServerChanges")
         remoteRepository.queryUpdates { changedTasks, deletedTasksIds, error in
             for task in changedTasks {
