@@ -44,21 +44,21 @@ class DateTests: XCTestCase {
 	func testRoundDateUpToNearestQuarter() {
 		
 		var date = Date(hour: 13, minute: 8)
-		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 10)) == .orderedSame, "")
+		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 12)) == .orderedSame, "")
 		
 		date = Date(hour: 13, minute: 17)
-		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 20)) == .orderedSame, "")
+		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 18)) == .orderedSame, "")
 		
 		date = Date(hour: 13, minute: 28)
 		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 30)) == .orderedSame, "")
         
         date = Date(hour: 13, minute: 31)
-        XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 40)) == .orderedSame, "")
+        XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 36)) == .orderedSame, "")
         
 		date = Date(hour: 13, minute: 44)
-		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 50)) == .orderedSame, "")
+		XCTAssertTrue(date.round().compare(Date(hour: 13, minute: 48)) == .orderedSame, "")
 		
-		date = Date(hour: 13, minute: 54)
+		date = Date(hour: 13, minute: 55)
 		XCTAssertTrue(date.round().compare(Date(hour: 14, minute: 0)) == .orderedSame, "")
 	}
 	
@@ -89,6 +89,8 @@ class DateTests: XCTestCase {
 	}
     
     func testIsSameDay() {
-        
+        let date1 = Date(year: 2016, month: 1, day: 9, hour: 23, minute: 50)
+        let date2 = Date(year: 2016, month: 1, day: 10, hour: 0, minute: 30)
+        XCTAssertFalse(date1.isSameDayAs(date2))
     }
 }
