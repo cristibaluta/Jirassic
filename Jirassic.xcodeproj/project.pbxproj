@@ -54,6 +54,8 @@
 		280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
 		280D70FA1ED0E7B0005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280D70F91ED0E7B0005D2689 /* CloudKit.framework */; };
 		280D71011ED21A4F005D2689 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280D71001ED21A4F005D2689 /* Splash@2x.png */; };
+		280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
+		280D71031ED35A3E005D2689 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		280F507B1EC8541D007416AB /* ExtensionsInstallerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */; };
 		280F507D1EC868B0007416AB /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
@@ -139,9 +141,7 @@
 		4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3581DD3B44200B73201 /* AppScriptable.swift */; };
 		4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
-		4065D3D21DD3B44200B73201 /* jirassic in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35F1DD3B44200B73201 /* jirassic */; };
 		4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
-		4065D3D41DD3B44200B73201 /* jit in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3621DD3B44200B73201 /* jit */; };
 		4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3651DD3B44200B73201 /* MenuBarController.swift */; };
 		4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3661DD3B44200B73201 /* MenuBarIconView.swift */; };
 		4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3681DD3B44200B73201 /* InternalNotifications.swift */; };
@@ -368,9 +368,7 @@
 		4065D35A1DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4065D35B1DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4065D35C1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4065D35F1DD3B44200B73201 /* jirassic */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jirassic; sourceTree = "<group>"; };
 		4065D3611DD3B44200B73201 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = jirassic.sdef; sourceTree = "<group>"; };
-		4065D3621DD3B44200B73201 /* jit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jit; sourceTree = "<group>"; };
 		4065D3651DD3B44200B73201 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
 		4065D3661DD3B44200B73201 /* MenuBarIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarIconView.swift; sourceTree = "<group>"; };
 		4065D3681DD3B44200B73201 /* InternalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalNotifications.swift; sourceTree = "<group>"; };
@@ -539,8 +537,6 @@
 				28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */,
 				4065D3611DD3B44200B73201 /* jirassic.sdef */,
 				4051D5F71E0EA320002042BB /* Jirassic.entitlements */,
-				4065D35F1DD3B44200B73201 /* jirassic */,
-				4065D3621DD3B44200B73201 /* jit */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1148,13 +1144,11 @@
 			files = (
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
-				4065D3D41DD3B44200B73201 /* jit in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
-				4065D3D21DD3B44200B73201 /* jirassic in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
@@ -1377,10 +1371,12 @@
 				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D4171DD4536200B73201 /* main.swift in Sources */,
 				4065D42B1DD4576500B73201 /* Settings.swift in Sources */,
+				280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */,
 				4065D4281DD4574D00B73201 /* User.swift in Sources */,
 				4065D4311DD457B000B73201 /* DateExtension.swift in Sources */,
 				28577EB01E8ADC53002B07FD /* STask.swift in Sources */,
 				4065D4291DD4575B00B73201 /* Week.swift in Sources */,
+				280D71031ED35A3E005D2689 /* StringArray.swift in Sources */,
 				28577EB21E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */,
 				28577EB61E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
