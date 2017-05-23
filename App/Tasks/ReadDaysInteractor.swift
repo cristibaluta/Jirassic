@@ -16,6 +16,9 @@ class ReadDaysInteractor: RepositoryInteractor {
         super.init(repository: repository)
 	}
     
+    /*
+     Query the objects from the repository before getting the weeks and days
+     */
     func query (_ completion: @escaping (_ weeks: [Week]) -> Void) {
         
         repository.queryTasks(0, completion: { (tasks, error) in

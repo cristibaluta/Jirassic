@@ -56,6 +56,7 @@
 		280D71011ED21A4F005D2689 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280D71001ED21A4F005D2689 /* Splash@2x.png */; };
 		280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		280D71031ED35A3E005D2689 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
+		280D71181ED4CFCB005D2689 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		280F507B1EC8541D007416AB /* ExtensionsInstallerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */; };
 		280F507D1EC868B0007416AB /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
@@ -273,6 +274,7 @@
 		280D70FD1ED20CBE005D2689 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		280D70FF1ED21989005D2689 /* Jirassic Scrum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic Scrum.entitlements"; sourceTree = "<group>"; };
 		280D71001ED21A4F005D2689 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
+		280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDaysInteractorTests.swift; sourceTree = "<group>"; };
 		280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInstallerInteractor.swift; sourceTree = "<group>"; };
 		280F507C1EC868B0007416AB /* StringArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArray.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */,
+				280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */,
 				4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */,
 				28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */,
 				4065D3301DD3B44200B73201 /* TaskFinder.swift */,
@@ -1337,6 +1340,7 @@
 				4065D41F1DD4561A00B73201 /* TaskCellTests.swift in Sources */,
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
 				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
+				280D71181ED4CFCB005D2689 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
@@ -1722,6 +1726,7 @@
 				280D70C71ECFE06A005D2689 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4055B1311E0D802300279430 /* Build configuration list for PBXNativeTarget "JirassicLauncher" */ = {
 			isa = XCConfigurationList;

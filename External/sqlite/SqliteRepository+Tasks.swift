@@ -21,7 +21,7 @@ extension SqliteRepository: RepositoryTasks {
     
     func queryTasksInDay (_ day: Date) -> [Task] {
         
-        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmss())') AND datetime('\(day.endOfDay().YYYYMMddHHmmss())') AND markedForDeletion == 0"
+        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmssGMT())') AND datetime('\(day.endOfDay().YYYYMMddHHmmssGMT())') AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
@@ -37,7 +37,7 @@ extension SqliteRepository: RepositoryTasks {
         RCLogO("Query tasks since last sync date \(String(describing: UserDefaults.standard.localChangeDate))")
         var sinceDatePredicate = ""
         if let sinceDate = UserDefaults.standard.localChangeDate {
-            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmss())')"
+            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmssGMT())')"
         }
         let predicate = "(lastModifiedDate is NULL\(sinceDatePredicate)) AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
