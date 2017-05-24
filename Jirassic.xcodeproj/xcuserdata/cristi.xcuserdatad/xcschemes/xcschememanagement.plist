@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>Jirassic no cloud.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Jirassic.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -38,6 +43,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>280D70B51ECFE06A005D2689</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>280D711C1ED5EE7F005D2689</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "App/Extensions/DateExtension.swift"
-            timestampString = "513631840.2093"
+            timestampString = "517267120.572787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "endOfDay()"
             landmarkType = "7">
          </BreakpointContent>

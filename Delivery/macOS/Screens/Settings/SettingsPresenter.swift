@@ -63,6 +63,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     }
     
     func enabledBackup (_ enabled: Bool) {
+        #if ICLOUD
         if enabled {
             remoteRepository = CloudKitRepository()
             remoteRepository?.getUser({ (user) in
@@ -77,6 +78,7 @@ extension SettingsPresenter: SettingsPresenterInput {
             remoteRepository = nil
             self.userInterface?.enabledBackup(enabled, title: "Backup to iCloud")
         }
+        #endif
     }
     
     func enabledLaunchAtStartup (_ enabled: Bool) {

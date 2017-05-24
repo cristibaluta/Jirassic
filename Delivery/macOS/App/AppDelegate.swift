@@ -57,6 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
+        #if ICLOUD
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()
             remoteRepository?.getUser({ (user) in
@@ -65,6 +66,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             })
         }
+        #else
+        RCLog("Icloud is not supported in this target, continuing without...")
+        #endif
         
         menu.isDark = theme.isDark
 		menu.onOpen = {
@@ -174,13 +178,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.killLauncher()
         
-        //        let currentUser = UserInteractor(data: localRepository).currentUser()
-        //		if currentUser.isLoggedIn {
-        //            appWireframe?.presentTasksController()
-        //		} else {
-        //            appWireframe?.presentLoginController()
-        //		}
-        
 		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
 			self.menu.simulateOpen()
@@ -193,7 +190,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 	
     func applicationWillTerminate (_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        
     }
 }
 

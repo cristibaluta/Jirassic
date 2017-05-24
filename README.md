@@ -26,7 +26,7 @@ Jirassic is a Mac app that stays in the status bar and listens for clues that so
 ![Screenshot](https://s1.postimg.org/tq0jtk65b/Screen_Shot_2017-04-01_at_17.45.21.png)
 
 # Compile
-Xcode8 and swift3 is needed. You will also need a developer account and an app identifier with iCloud enabled, since you can't use jirassic's iCloud container
+Xcode8 and swift3 is needed. Use the target 'Jirassic no cloud' because it is configured to run without signing, but that means backup to iCloud will not be available. If you need iCloud you can use the Jirassic target after you create your own iCloud container and provisioning. The downside is you can't commit to the project with that target modified and pulling changes might have conflicts.
 
 # Licence & contribution
 Jirassic is a paid software in the Appstore, for this reason you are not allowed to resell or distribute this software. It is not recommended to take it from unknown sources either, you don't know what malicious changes someone did to it. If you wish to contribute with code note that you will not be paid, we still hope you contribute with creating issues to make it a better software.
