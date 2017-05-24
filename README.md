@@ -11,7 +11,8 @@ Jirassic is a Mac app that stays in the status bar and listens for clues that so
 - Track code reviews
 - Track wasted time (your boss will love this)
 
-![Screenshot](https://s24.postimg.org/bsyvies2t/Screenshot.png)
+![Screenshot](https://s3.postimg.org/txo1juatf/Tasks.png)
+![Screenshot](https://s16.postimg.org/u10ss7i85/Sengs.png)
 
 # How it works
 - When you come in the office in the morning Jirassic will ask you to start the day
