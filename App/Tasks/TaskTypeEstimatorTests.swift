@@ -27,7 +27,7 @@ class TaskTypeEstimatorTests: XCTestCase {
                             scrumTime: Date(hour: 10, minute: 30),
                             minSleepDuration: Date(hour: 0, minute: 20),
                             minCodeRevDuration: Date(hour: 0, minute: 5),
-                            codeRevLink: "bitbucket.com",
+                            codeRevLink: "bitbucket",
                             minWasteDuration: Date(hour: 0, minute: 5),
                             wasteLinks: ["facebook.com", "twitter.com"]
     )

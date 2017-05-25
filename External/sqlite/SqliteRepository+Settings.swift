@@ -34,7 +34,7 @@ extension SqliteRepository: RepositorySettings {
             ssettings?.minCodeRevDuration = Date(hour: 0, minute: 3)
             ssettings?.minWasteDuration = Date(hour: 0, minute: 5)
             ssettings?.codeRevLink = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
-            ssettings?.wasteLinks = "facebook.com,youtube.com"
+            ssettings?.wasteLinks = "facebook.com,youtube.com,twitter.com"
         }
         
         return settingsFromSSettings(ssettings!)

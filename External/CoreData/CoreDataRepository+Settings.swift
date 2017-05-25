@@ -36,7 +36,7 @@ extension CoreDataRepository: RepositorySettings {
             csettings?.minCodeRevDuration = Date(hour: 0, minute: 3)
             csettings?.minWasteDuration = Date(hour: 0, minute: 5)
             csettings?.codeRevLink = ""
-            csettings?.wasteLinks = ["facebook.com", "youtube.com"]
+            csettings?.wasteLinks = ["facebook.com", "youtube.com", "twitter.com"]
             
             saveContext()
         }

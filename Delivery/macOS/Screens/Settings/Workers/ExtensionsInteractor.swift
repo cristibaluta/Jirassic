@@ -14,7 +14,15 @@ let kLocalBinPath = "/usr/local/bin/"
 
 class ExtensionsInteractor {
     
-    fileprivate let scripts: AppleScriptProtocol = SandboxedAppleScript()
+    fileprivate let scripts: AppleScriptProtocol!
+    
+    init() {
+        #if ICLOUD
+            scripts = SandboxedAppleScript()
+        #else
+            scripts = AppleScriptInteractor()
+        #endif
+    }
     
     func getJiraSettings (completion: @escaping ([String: String]) -> Void) {
         
