@@ -59,7 +59,7 @@ class SettingsViewController: NSViewController {
 //        butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
 //        shellSupportTextField.stringValue = "1) Install the apple script to '~/Library/Application Scripts'\n\n2) Apple script installs jit and jirassic command line tools to '/usr/local/bin'\n   - jit: Replacement for git\n   - jirassic: Use Jirassic from the cmd"
         
-        #if !ICLOUD
+        #if !APPSTORE
             butBackup.isEnabled = false
             butBackup.state = NSOffState
             butEnableLaunchAtStartup.isEnabled = false

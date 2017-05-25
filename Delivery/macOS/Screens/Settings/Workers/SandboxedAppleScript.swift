@@ -76,17 +76,6 @@ class SandboxedAppleScript: AppleScriptProtocol {
         })
     }
     
-    func setupJitWithValues (_ settings: String, completion: @escaping (Bool) -> Void) {
-        
-        let command = "/usr/local/bin/jit setup \"\(settings)\""
-        let args = NSAppleEventDescriptor.list()
-        args.insert(NSAppleEventDescriptor(string: command), at: 1)
-        
-        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            completion(descriptor != nil)
-        })
-    }
-    
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
         
         let args = NSAppleEventDescriptor.list()

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-               BuildableName = "Jirassic Scrum.app"
-               BlueprintName = "Jirassic Scrum"
+               BuildableName = "Jirassic iOS.app"
+               BlueprintName = "Jirassic iOS"
                ReferencedContainer = "container:Jirassic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-            BuildableName = "Jirassic Scrum.app"
-            BlueprintName = "Jirassic Scrum"
+            BuildableName = "Jirassic iOS.app"
+            BlueprintName = "Jirassic iOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-            BuildableName = "Jirassic Scrum.app"
-            BlueprintName = "Jirassic Scrum"
+            BuildableName = "Jirassic iOS.app"
+            BlueprintName = "Jirassic iOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-            BuildableName = "Jirassic Scrum.app"
-            BlueprintName = "Jirassic Scrum"
+            BuildableName = "Jirassic iOS.app"
+            BlueprintName = "Jirassic iOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

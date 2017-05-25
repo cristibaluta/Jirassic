@@ -57,7 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 //        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
-        #if ICLOUD
+        #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()
             remoteRepository?.getUser({ (user) in

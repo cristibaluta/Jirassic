@@ -63,7 +63,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     }
     
     func enabledBackup (_ enabled: Bool) {
-        #if ICLOUD
+        #if APPSTORE
         if enabled {
             remoteRepository = CloudKitRepository()
             remoteRepository?.getUser({ (user) in

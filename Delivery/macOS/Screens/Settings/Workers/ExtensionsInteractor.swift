@@ -17,7 +17,7 @@ class ExtensionsInteractor {
     fileprivate let scripts: AppleScriptProtocol!
     
     init() {
-        #if ICLOUD
+        #if APPSTORE
             scripts = SandboxedAppleScript()
         #else
             scripts = AppleScriptInteractor()
