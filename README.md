@@ -30,7 +30,7 @@ Xcode8 and swift3 is needed. Use the target 'Jirassic no cloud' because it is co
 
 ## Installing cmd
 
-jirassic cmd is already compiled and you can install it by running this commands in Terminal to download the executable and to give it permissions
+jirassic cmd is compiled for AppStore Jirassic and it won't see the database of the non AppStore app. You can install it by running this commands in Terminal to download the executable and to give it permissions
 
     sudo curl -o /usr/local/bin/jirassic https://raw.githubusercontent.com/ralcr/Jirassic/master/build/jirassic
     sudo chmod +x /usr/local/bin/jirassic

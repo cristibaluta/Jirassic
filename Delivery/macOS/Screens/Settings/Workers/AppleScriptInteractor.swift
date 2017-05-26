@@ -106,7 +106,7 @@ class AppleScriptInteractor: AppleScriptProtocol {
         
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
-        let request = try! URLRequest(url: URL(string: from)!)
+        let request = URLRequest(url: URL(string: from)!)
         
         let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
             if let tempLocalUrl = tempLocalUrl, error == nil {
@@ -142,7 +142,7 @@ class AppleScriptInteractor: AppleScriptProtocol {
                 }
                 
             } else {
-                print("Failure: %@", error?.localizedDescription)
+                RCLog("Failure: \(error!.localizedDescription)")
             }
         }
         task.resume()
