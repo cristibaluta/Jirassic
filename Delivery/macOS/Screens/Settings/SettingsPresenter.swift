@@ -33,7 +33,9 @@ protocol SettingsPresenterOutput: class {
 class SettingsPresenter {
     
     fileprivate var extensions = ExtensionsInteractor()
+    #if !APPSTORE
     fileprivate var extensionsInstaller = ExtensionsInstallerInteractor()
+    #endif
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -91,15 +93,19 @@ extension SettingsPresenter: SettingsPresenterInput {
     }
     
     func installJirassic() {
+        #if !APPSTORE
         extensionsInstaller.installJirassic { (success) in
             self.userInterface!.setJirassicStatus(compatible: true, scriptInstalled: success)
         }
+        #endif
     }
     
     func installJit() {
+        #if !APPSTORE
         extensionsInstaller.installJit { (success) in
             self.userInterface!.setJitStatus(compatible: true, scriptInstalled: success)
         }
+        #endif
     }
 }
 

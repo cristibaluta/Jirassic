@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-               BuildableName = "Jirassic Scrum.app"
-               BlueprintName = "Jirassic Scrum"
+               BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
+               BuildableName = "Jirassic.app"
+               BlueprintName = "Jirassic macOS"
                ReferencedContainer = "container:Jirassic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-            BuildableName = "Jirassic Scrum.app"
-            BlueprintName = "Jirassic Scrum"
+            BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
+            BuildableName = "Jirassic.app"
+            BlueprintName = "Jirassic macOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-            BuildableName = "Jirassic Scrum.app"
-            BlueprintName = "Jirassic Scrum"
+            BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
+            BuildableName = "Jirassic.app"
+            BlueprintName = "Jirassic macOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "280D70B51ECFE06A005D2689"
-            BuildableName = "Jirassic Scrum.app"
-            BlueprintName = "Jirassic Scrum"
+            BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
+            BuildableName = "Jirassic.app"
+            BlueprintName = "Jirassic macOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

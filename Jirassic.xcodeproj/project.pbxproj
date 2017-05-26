@@ -432,7 +432,7 @@
 		405B15621DEF3F2A0009871C /* TaskSuggestionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionPresenter.swift; path = TaskSuggestion/TaskSuggestionPresenter.swift; sourceTree = "<group>"; };
 		405B15651DEF75660009871C /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		406384881DE388C5004795A4 /* Tasks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
-		4065D3041DD3A1AA00B73201 /* Jirassic AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic AppStore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4065D3041DD3A1AA00B73201 /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D3181DD3B44200B73201 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		4065D3191DD3B44200B73201 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		4065D31A1DD3B44200B73201 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -682,7 +682,7 @@
 		4065D3051DD3A1AA00B73201 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4065D3041DD3A1AA00B73201 /* Jirassic AppStore.app */,
+				4065D3041DD3A1AA00B73201 /* Jirassic.app */,
 				4065D4021DD4532100B73201 /* JirassicTests.xctest */,
 				4065D4101DD4534C00B73201 /* jirassic */,
 				4055B1231E0D802300279430 /* JirassicLauncher.app */,
@@ -1137,7 +1137,7 @@
 			);
 			name = "Jirassic AppStore";
 			productName = Jirassic;
-			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic AppStore.app */;
+			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4065D4011DD4532100B73201 /* JirassicTests */ = {
@@ -1929,7 +1929,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1954,7 +1954,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.osx;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
