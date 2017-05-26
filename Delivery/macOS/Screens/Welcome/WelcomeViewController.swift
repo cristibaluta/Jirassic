@@ -25,6 +25,7 @@ class WelcomeViewController: NSViewController {
     
     @IBAction func handleSettingsButton (_ sender: NSButton) {
         localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
+        localPreferences.set(1, forKey: .settingsActiveTab)
         appWireframe!.flipToSettingsController()
     }
 }

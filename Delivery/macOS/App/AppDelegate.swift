@@ -19,6 +19,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case useDuration = "useDuration"
     case firstLaunch = "firstLaunch"
     case lastIcloudSync = "lastIcloudSync"
+    case settingsActiveTab = "settingsActiveTab"
     
     func defaultValue() -> Any {
         switch self {
@@ -28,6 +29,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .useDuration:              return false
             case .firstLaunch:              return true
             case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
+            case .settingsActiveTab:        return 0
         }
     }
 }
@@ -52,10 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		super.init()
         
         // For testing
-        //localPreferences.reset()
+//        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
         
-//        localRepository = CoreDataRepository()
         localRepository = SqliteRepository()
         #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {

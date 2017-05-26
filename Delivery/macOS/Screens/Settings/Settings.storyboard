@@ -9,7 +9,7 @@
         <!--Settings View Controller-->
         <scene sceneID="0zN-Dv-kP5">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="J1c-ZL-C5e" customClass="SettingsViewController" customModule="Jirassic_AppStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="J1c-ZL-C5e" customClass="SettingsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JAR-dh-Pss">
                         <rect key="frame" x="0.0" y="0.0" width="494" height="494"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -509,6 +509,9 @@
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
+                                <connections>
+                                    <outlet property="delegate" destination="J1c-ZL-C5e" id="UY5-ii-yWV"/>
+                                </connections>
                             </tabView>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8O-jk-cLw">
                                 <rect key="frame" x="23" y="53" width="126" height="18"/>
@@ -557,6 +560,7 @@
                         <outlet property="minWasteDurationTimePicker" destination="ggi-Wx-ib8" id="9aj-uF-gxM"/>
                         <outlet property="scrumTimePicker" destination="tAP-W0-ldB" id="4dp-QB-pWf"/>
                         <outlet property="startOfDayTimePicker" destination="y4N-A7-wyY" id="jTW-Fv-a7I"/>
+                        <outlet property="tabView" destination="ilB-xI-gPh" id="1ps-ok-xbn"/>
                         <outlet property="wastedTimeLinksTextField" destination="LYr-XD-psG" id="Wgd-Gv-PTI"/>
                     </connections>
                 </viewController>

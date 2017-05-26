@@ -27,6 +27,7 @@ protocol SettingsPresenterOutput: class {
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
     func enabledBackup (_ enabled: Bool, title: String)
+    func selectTab (atIndex index: Int)
 }
 
 class SettingsPresenter {
@@ -59,6 +60,7 @@ extension SettingsPresenter: SettingsPresenterInput {
         userInterface!.showAppSettings(settings)
         userInterface!.enabledLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
         enabledBackup(settings.enableBackup)
+        userInterface!.selectTab(atIndex: localPreferences.int(.settingsActiveTab))
     }
     
     func saveAppSettings (_ settings: Settings) {

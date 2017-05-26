@@ -10,6 +10,7 @@ import Cocoa
 
 class SettingsViewController: NSViewController {
     
+    @IBOutlet fileprivate var tabView: NSTabView!
     // Extensions
     // shell
     @IBOutlet fileprivate var jirassicImageView: NSImageView!
@@ -218,4 +219,14 @@ extension SettingsViewController: SettingsPresenterOutput {
         butBackup.title = title
     }
     
+    func selectTab (atIndex index: Int) {
+        tabView.selectTabViewItem(at: index)
+    }
+}
+
+extension SettingsViewController: NSTabViewDelegate {
+    
+    func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
+        RCPreferences<LocalPreferences>().set(tabViewItem?.label == "Tracking" ? 0 : 1, forKey: .settingsActiveTab)
+    }
 }
