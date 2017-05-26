@@ -1,4 +1,4 @@
-# Jirassic is for agile developers
+# Jirassic for 9 to 5
 
 Using the browser or paper and pen to track your work is not for the age of artificial intelligence, you have to keep a tab open along the other 100, you have to remember how much time you’ve spent on tasks, you have to deal with the heavy Jira UI. Jirassic purpose is to replace this primitive workflow and track everything automatically.
 
