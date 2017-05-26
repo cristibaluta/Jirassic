@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +9,7 @@
         <!--Settings View Controller-->
         <scene sceneID="0zN-Dv-kP5">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="J1c-ZL-C5e" customClass="SettingsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="J1c-ZL-C5e" customClass="SettingsViewController" customModule="Jirassic_AppStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JAR-dh-Pss">
                         <rect key="frame" x="0.0" y="0.0" width="494" height="494"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -276,7 +275,7 @@
                                                                     <font key="font" metaFont="cellTitle"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="handleInstallButton:" target="J1c-ZL-C5e" id="seC-BD-v74"/>
+                                                                    <action selector="handleInstallJirassicButton:" target="J1c-ZL-C5e" id="FG9-hn-2so"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -323,7 +322,7 @@
                                                                     <font key="font" metaFont="cellTitle"/>
                                                                 </buttonCell>
                                                                 <connections>
-                                                                    <action selector="handleInstallButton:" target="J1c-ZL-C5e" id="F1k-cW-FJs"/>
+                                                                    <action selector="handleInstallJitButton:" target="J1c-ZL-C5e" id="kOO-c4-g2d"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -368,9 +367,6 @@
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
                                                                 </buttonCell>
-                                                                <connections>
-                                                                    <action selector="handleInstallButton:" target="J1c-ZL-C5e" id="aTX-JV-UMX"/>
-                                                                </connections>
                                                             </button>
                                                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgB-xt-0PL">
                                                                 <rect key="frame" x="30" y="69" width="139" height="18"/>

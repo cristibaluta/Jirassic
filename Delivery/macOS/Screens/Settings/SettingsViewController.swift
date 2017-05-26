@@ -74,8 +74,22 @@ class SettingsViewController: NSViewController {
 	
 	// MARK: Actions
     
-    @IBAction func handleInstallButton (_ sender: NSButton) {
-        NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+    @IBAction func handleInstallJitButton (_ sender: NSButton) {
+        #if APPSTORE
+            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+        #else
+//            presenter?.installJit()
+            NSWorkspace.shared().open( URL(string: "https://github.com/ralcr/Jit")!)
+        #endif
+    }
+    
+    @IBAction func handleInstallJirassicButton (_ sender: NSButton) {
+        #if APPSTORE
+            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+        #else
+//            presenter?.installJirassic()
+            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+        #endif
     }
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {

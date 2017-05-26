@@ -28,5 +28,17 @@ Jirassic is a Mac app that stays in the status bar and listens for clues that so
 # Compile
 Xcode8 and swift3 is needed. Use the target 'Jirassic no cloud' because it is configured to run without signing, but that means backup to iCloud will not be available. If you need iCloud you can use the Jirassic target after you create your own iCloud container and provisioning. The downside is you can't commit to the project with that target modified and pulling changes might have conflicts.
 
+## Installing cmd
+
+jirassic cmd is already compiled and you can install it by running this commands in Terminal to download the executable and to give it permissions
+
+    sudo curl -o /usr/local/bin/jirassic https://raw.githubusercontent.com/ralcr/Jirassic/master/build/jirassic
+    sudo chmod +x /usr/local/bin/jirassic
+
+Verify installation in Jirassic/settings/extensions or type into terminal
+
+    jirassic
+
+
 # Licence & contribution
 Jirassic is a paid software in the Appstore, for this reason you are not allowed to resell or distribute this software. It is not recommended to take it from unknown sources either, you don't know what malicious changes someone did to it. If you wish to contribute with code note that you will not be paid, we still hope you contribute with creating issues to make it a better software.

@@ -50,7 +50,7 @@ class BrowserNotification {
         
         let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
         let appId = app.bundleIdentifier!
-        RCLogO(appId)
+//        RCLogO(appId)
         
         guard browsersIds.contains(appId) else {
             if let taskType = self.taskType {

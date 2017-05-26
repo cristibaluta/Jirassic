@@ -92,15 +92,16 @@ class SandboxedAppleScript: AppleScriptProtocol {
         })
     }
     
-    func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
+    func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
         
-        let args = NSAppleEventDescriptor.list()
-        args.insert(NSAppleEventDescriptor(string: from), at: 1)
-        args.insert(NSAppleEventDescriptor(string: to), at: 2)
-        
-        run (command: "install", scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            completion(descriptor != nil)
-        })
+        fatalError("Copy files not supported in AppStore")
+//        let args = NSAppleEventDescriptor.list()
+//        args.insert(NSAppleEventDescriptor(string: from), at: 1)
+//        args.insert(NSAppleEventDescriptor(string: to), at: 2)
+//        
+//        run (command: "install", scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+//            completion(descriptor != nil)
+//        })
     }
     
     func removeFile (from: String, completion: @escaping (Bool) -> Void) {

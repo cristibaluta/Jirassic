@@ -11,7 +11,7 @@ import Cocoa
 
 class ExtensionsInstallerInteractor: ExtensionsInteractor {
     
-    fileprivate let scripts: AppleScriptProtocol = SandboxedAppleScript()
+    fileprivate let scripts: AppleScriptProtocol = AppleScriptInteractor()
     fileprivate let fileManager = FileManager.default
     
 //    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping (Bool) -> Void) {
@@ -26,13 +26,18 @@ class ExtensionsInstallerInteractor: ExtensionsInteractor {
 //        })
 //    }
     
-    func installTools (_ completion: @escaping (Bool) -> Void) {
+    func installJirassic (_ completion: @escaping (Bool) -> Void) {
         
-        if isShellSupportInstalled() {
-            installCmds(completion)
-        } else {
-            installScriptAndCmds(completion)
-        }
+        scripts.downloadFile(from: "https://raw.githubusercontent.com/ralcr/Jit/master/build/jit", to: "/usr/local/bin/jirassic", completion: { success in
+            completion(success)
+        })
+    }
+    
+    func installJit (_ completion: @escaping (Bool) -> Void) {
+        
+        scripts.downloadFile(from: "https://raw.githubusercontent.com/ralcr/Jit/master/build/jit", to: "/usr/local/bin/jit", completion: { success in
+            completion(success)
+        })
     }
     
     func uninstallTools (_ completion: @escaping (Bool) -> Void) {
@@ -81,7 +86,7 @@ extension ExtensionsInstallerInteractor {
     fileprivate func installScriptAndCmds (_ completion: @escaping (Bool) -> Void) {
         
         installScript(script: kShellSupportScriptName, { success in
-            self.installCmds(completion)
+            self.installJit(completion)
         })
     }
     
@@ -121,14 +126,14 @@ extension ExtensionsInstallerInteractor {
         completion(true)
     }
     
-    fileprivate func installCmds (_ completion: @escaping (Bool) -> Void) {
-        
-        let bundlePath = Bundle.main.url(forResource: "jit", withExtension: nil)!.deletingLastPathComponent()
-        
-        scripts.copyFile(from: bundlePath.path + "/", to: kLocalBinPath, completion: { success in
-            completion(success)
-        })
-    }
+//    fileprivate func installJit (_ completion: @escaping (Bool) -> Void) {
+//        
+//        let bundlePath = Bundle.main.url(forResource: "jit", withExtension: nil)!.deletingLastPathComponent()
+//        
+//        scripts.downloadFile(from: bundlePath.path + "/", to: kLocalBinPath, completion: { success in
+//            completion(success)
+//        })
+//    }
     
     fileprivate func uninstallCmds (_ completion: @escaping (Bool) -> Void) {
         

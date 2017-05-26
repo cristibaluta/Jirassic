@@ -17,7 +17,7 @@ protocol AppleScriptProtocol {
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
-    func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void)
+    func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
 }
 
@@ -99,16 +99,53 @@ class AppleScriptInteractor: AppleScriptProtocol {
         })
     }
     
-    func copyFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
+    func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
         
-//        let asc = NSAppleScript(source: "do shell script \"sudo cp \(bundledJitPath) \(jitInstallationPath)\" with administrator privileges")
-//        if let response = asc?.executeAndReturnError(nil) {
-//            print(response)
-//            completion(true)
-//        } else {
-//            print("Could not copy Jit from \(bundledJitPath) to \(jitInstallationPath)")
-//            completion(false)
-//        }
+//        let asc = NSAppleScript(source: "do shell script \"sudo cp \(from) \(to)\" with administrator privileges")
+        
+        
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig)
+        let request = try! URLRequest(url: URL(string: from)!)
+        
+        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                // Success
+                if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                    RCLog("Success: \(statusCode)")
+                }
+                
+//                do {
+//                    try FileManager.default.copyItem(at: tempLocalUrl, to: URL(fileURLWithPath: to))
+//                    completion(true)
+//                } catch (let writeError) {
+//                    print("error writing file \(to) : \(writeError)")
+//                    completion(false)
+//                }
+                
+                RCLog(from)
+                RCLog(to)
+                let asc = NSAppleScript(source: "do shell script \"sudo cp \(tempLocalUrl.path) \(to)\" with administrator privileges")
+                if let response = asc?.executeAndReturnError(nil) {
+                    RCLog(response)
+                    let asc = NSAppleScript(source: "chmod +x \(to)")
+                    if let response = asc?.executeAndReturnError(nil) {
+                        RCLog(response)
+                        completion(true)
+                    } else {
+                        RCLog("Could not download Jit from \(from) to \(to)")
+                        completion(false)
+                    }
+                } else {
+                    RCLog("Could not download Jit from \(from) to \(to)")
+                    completion(false)
+                }
+                
+            } else {
+                print("Failure: %@", error?.localizedDescription)
+            }
+        }
+        task.resume()
     }
     
     func removeFile (from: String, completion: @escaping (Bool) -> Void) {

@@ -15,6 +15,8 @@ protocol SettingsPresenterInput: class {
     func saveAppSettings (_ settings: Settings)
     func enabledBackup (_ enabled: Bool)
     func enabledLaunchAtStartup (_ enabled: Bool)
+    func installJirassic()
+    func installJit()
 }
 
 protocol SettingsPresenterOutput: class {
@@ -30,6 +32,7 @@ protocol SettingsPresenterOutput: class {
 class SettingsPresenter {
     
     fileprivate var extensions = ExtensionsInteractor()
+    fileprivate var extensionsInstaller = ExtensionsInstallerInteractor()
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -83,6 +86,18 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func enabledLaunchAtStartup (_ enabled: Bool) {
         interactor!.enabledLaunchAtStartup(enabled)
+    }
+    
+    func installJirassic() {
+        extensionsInstaller.installJirassic { (success) in
+            self.userInterface!.setJirassicStatus(compatible: true, scriptInstalled: success)
+        }
+    }
+    
+    func installJit() {
+        extensionsInstaller.installJit { (success) in
+            self.userInterface!.setJitStatus(compatible: true, scriptInstalled: success)
+        }
     }
 }
 
