@@ -22,7 +22,10 @@ Jirassic is a Mac app that stays in the status bar and listens for clues that so
 
 # Shell support
 - jit-cmd Use 'jit commit' to commit to git then automatically log the commit message to Jirassic. But it comes with much more useful commands https://github.com/ralcr/Jit
-- jirassic-cmd Use Jirassic from the command line, you can manipulate the Jirassic database directly from the command line, the app does not have to be open. You can install it by running this commands in Terminal:
+- jirassic-cmd Use Jirassic from the command line, you can manipulate the Jirassic database directly from the command line, the app does not have to be open.
+
+### Install jirassic cmd
+You can install it by running this commands in Terminal:
 
     sudo curl -o /usr/local/bin/jirassic https://raw.githubusercontent.com/ralcr/Jirassic/master/build/jirassic
     sudo chmod +x /usr/local/bin/jirassic
