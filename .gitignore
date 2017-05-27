@@ -6,4 +6,6 @@
 
 *.xccheckout
 
+xcuserdata
+
 web
