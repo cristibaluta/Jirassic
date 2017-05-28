@@ -68,6 +68,33 @@ class SettingsViewController: NSViewController {
         #endif
     }
     
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        
+        let settings = Settings(
+            
+            autotrack: butAutotrack.state == NSOnState,
+            autotrackingMode: TrackingMode(rawValue: autotrackingModeSegmentedControl.selectedSegment)!,
+            trackLunch: butTrackLunch.state == NSOnState,
+            trackScrum: butTrackScrum.state == NSOnState,
+            trackMeetings: true,//butTrackMeetings.state == NSOnState,
+            trackCodeReviews: butTrackCodeReviews.state == NSOnState,
+            trackWastedTime: butTrackWastedTime.state == NSOnState,
+            trackStartOfDay: butTrackStartOfDay.state == NSOnState,
+            enableBackup: butBackup.state == NSOnState,
+            startOfDayTime: startOfDayTimePicker.dateValue,
+            endOfDayTime: endOfDayTimePicker.dateValue,
+            lunchTime: lunchTimePicker.dateValue,
+            scrumTime: scrumTimePicker.dateValue,
+            minSleepDuration: minSleepDurationTimePicker.dateValue,
+            minCodeRevDuration: minCodeRevDurationTimePicker.dateValue,
+            codeRevLink: codeReviewsLinkTextField.stringValue,
+            minWasteDuration: minWasteDurationTimePicker.dateValue,
+            wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
+        )
+        presenter!.saveAppSettings(settings)
+    }
+    
     deinit {
         RCLog("deinit")
     }
@@ -95,29 +122,6 @@ class SettingsViewController: NSViewController {
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {
 		
-        let settings = Settings(
-            
-            autotrack: butAutotrack.state == NSOnState,
-            autotrackingMode: TrackingMode(rawValue: autotrackingModeSegmentedControl.selectedSegment)!,
-            trackLunch: butTrackLunch.state == NSOnState,
-            trackScrum: butTrackScrum.state == NSOnState,
-            trackMeetings: true,//butTrackMeetings.state == NSOnState,
-            trackCodeReviews: butTrackCodeReviews.state == NSOnState,
-            trackWastedTime: butTrackWastedTime.state == NSOnState,
-            trackStartOfDay: butTrackStartOfDay.state == NSOnState,
-            enableBackup: butBackup.state == NSOnState,
-            startOfDayTime: startOfDayTimePicker.dateValue,
-            endOfDayTime: endOfDayTimePicker.dateValue,
-            lunchTime: lunchTimePicker.dateValue,
-            scrumTime: scrumTimePicker.dateValue,
-            minSleepDuration: minSleepDurationTimePicker.dateValue,
-            minCodeRevDuration: minCodeRevDurationTimePicker.dateValue,
-            codeRevLink: codeReviewsLinkTextField.stringValue,
-            minWasteDuration: minWasteDurationTimePicker.dateValue,
-            wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
-        )
-        presenter!.saveAppSettings(settings)
-        
         appWireframe!.flipToTasksController()
 	}
     
