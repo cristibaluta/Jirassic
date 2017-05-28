@@ -62,8 +62,6 @@ extension CreateReport {
         var lastTaskEndDate = tasks.first!.endDate
         
         for task in tasks {
-            RCLog(task.taskType)
-            RCLog(task.notes)
             guard isTrackingAllowed(taskType: task.taskType) else {
                 untrackedDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
                 continue
@@ -128,7 +126,7 @@ extension CreateReport {
         var order = [String]()
         var groups = [String: [Task]]()
         for task in tasks {
-            if task.taskType == TaskType.startDay {
+            guard isDisplayingAllowed(taskType: task.taskType) else {
                 continue
             }
             let taskNumber = task.taskNumber ?? ""
@@ -225,5 +223,9 @@ extension CreateReport {
             case .startDay, .scrum, .meeting, .learning: return false
             default: return true
         }
+    }
+    
+    fileprivate func isDisplayingAllowed (taskType: TaskType) -> Bool {
+        return taskType != .startDay
     }
 }

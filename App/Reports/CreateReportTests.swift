@@ -120,10 +120,10 @@ class CreateReportTests: XCTestCase {
         XCTAssert(reports.count == 6)
         
         XCTAssert(reports[1].taskNumber == "scrum")
-        XCTAssert(reports[1].duration == 20.minToSec)
+        XCTAssert(reports[1].duration == 18.minToSec)
         
         XCTAssert(reports[5].taskNumber == "learning")
-        XCTAssert(reports[5].duration == 20.minToSec)
+        XCTAssert(reports[5].duration == 18.minToSec)
     }
     
 }

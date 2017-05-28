@@ -33,10 +33,11 @@
         NSURL *url = [NSURL fileURLWithPath:[workspace fullPathForApplication:@"Jirassic.app"]];
         NSLog(@"Jirassic url %@", url);
         NSError *error = nil;
-        NSArray *arguments = @[@"launchedByLauncher"];
+//        NSArray *arguments = @[@"launchedByLauncher"];
+        NSDictionary *config = @{NSWorkspaceLaunchConfigurationEnvironment: @{@"launchedByLauncher": @YES}};
         [workspace launchApplicationAtURL:url
                                   options:NSWorkspaceLaunchDefault
-                            configuration:@{NSWorkspaceLaunchConfigurationArguments: arguments}
+                            configuration:config
                                     error:&error];
     }
     [self terminate];

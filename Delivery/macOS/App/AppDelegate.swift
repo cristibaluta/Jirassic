@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let theme = AppTheme()
     let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
-    fileprivate var animatesOpen = false
+    fileprivate var animatesOpen = true
 	
     class func sharedApp() -> AppDelegate {
         return NSApplication.shared().delegate as! AppDelegate
@@ -181,18 +181,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.killLauncher()
         
-        let arguments = ProcessInfo.processInfo.arguments
-        RCLog(arguments)
-//        let alert = NSAlert()
-//        alert.messageText = "\(arguments)"
-//        alert.runModal()
-        
-        animatesOpen = true
         let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             
-            // TODO: You should check if launchedByLauncher arg is present, but don't know how
-            if arguments.count != 2 {
+            if !UserDefaults.standard.bool(forKey: "launchedByLauncher") {
                 self.menu.simulateOpen()
             } else {
                 self.presentTaskSuggestionPopup()
