@@ -39,6 +39,7 @@ class ReportsHeaderView: NSTableHeaderView {
         butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
         butRound.setButtonType(NSSwitchButton)
         butRound.state = localPreferences.bool(.roundDay)  ? NSOnState : NSOffState
+        butRound.toolTip = "This time can be set in 'Settings/Tracking/Working between'"
         
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
