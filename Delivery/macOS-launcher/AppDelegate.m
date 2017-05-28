@@ -1,6 +1,5 @@
 //
 //  AppDelegate.m
-//  cmdclauncher
 //
 //  Created by Cristian Baluta on 18/03/2017.
 //  Copyright © 2017 Imagin soft. All rights reserved.
@@ -27,8 +26,18 @@
                                                                 name:@"killme" 
                                                               object:identifier];
         
-        BOOL launched = [[NSWorkspace sharedWorkspace] launchApplication:@"Jirassic.app"];
-        NSLog(@"Jirassic launched %i", launched);
+//        BOOL launched = [[NSWorkspace sharedWorkspace] launchApplication:@"Jirassic.app"];
+//        NSLog(@"Jirassic launched %i", launched);
+        
+        NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+        NSURL *url = [NSURL fileURLWithPath:[workspace fullPathForApplication:@"Jirassic.app"]];
+        NSLog(@"Jirassic url %@", url);
+        NSError *error = nil;
+        NSArray *arguments = @[@"launchedByLauncher"];
+        [workspace launchApplicationAtURL:url
+                                  options:NSWorkspaceLaunchDefault
+                            configuration:@{NSWorkspaceLaunchConfigurationArguments: arguments}
+                                    error:&error];
     }
     [self terminate];
 }

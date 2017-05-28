@@ -45,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let theme = AppTheme()
     let menu = MenuBarController()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    fileprivate var animatesOpen = false
 	
     class func sharedApp() -> AppDelegate {
         return NSApplication.shared().delegate as! AppDelegate
@@ -78,7 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if firstLaunch {
                 self.presentWelcomePopup()
             } else {
-                self.presentTasksPopup()
+                self.presentTasksPopup(animated: self.animatesOpen)
+                self.animatesOpen = false
             }
         }
         menu.onClose = {
@@ -123,12 +125,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     return
                 }
                 switch settings.autotrackingMode {
-                case .notif:
-                    self.presentTaskSuggestionPopup()
-                    break
-                case .auto:
-                    ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep.lastSleepDate)
-                    break
+                    case .notif:
+                        self.presentTaskSuggestionPopup()
+                        break
+                    case .auto:
+                        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep.lastSleepDate)
+                        break
                 }
             }
         }
@@ -179,10 +181,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.killLauncher()
         
-		let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-		DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-			self.menu.simulateOpen()
-		})
+        let arguments = ProcessInfo.processInfo.arguments
+        RCLog(arguments)
+//        let alert = NSAlert()
+//        alert.messageText = "\(arguments)"
+//        alert.runModal()
+        
+        animatesOpen = true
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+            
+            // TODO: You should check if launchedByLauncher arg is present, but don't know how
+            if arguments.count != 2 {
+                self.menu.simulateOpen()
+            } else {
+                self.presentTaskSuggestionPopup()
+            }
+        })
+        
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
@@ -206,11 +222,11 @@ extension AppDelegate {
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     
-    fileprivate func presentTasksPopup() {
+    fileprivate func presentTasksPopup (animated: Bool) {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
-        popover.animates = false
+        popover.animates = animated
         appWireframe.removeCurrentController()
         _ = appWireframe.presentTasksController()
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
