@@ -12,24 +12,53 @@ class ReportsHeaderView: NSTableHeaderView {
     
     fileprivate var butRound: NSButton
     fileprivate var butPercents: NSButton
+    fileprivate var totalTimeTextField: NSTextField
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     var didChangeSettings: (() -> ())?
+    var totalTime: String {
+        get {
+            return ""
+        }
+        set {
+            totalTimeTextField.stringValue = newValue
+        }
+    }
+    var targetTime: Double {
+        get {
+            return 0.0
+        }
+        set {
+            butRound.attributedTitle = NSAttributedString(string: "Round to \(newValue) hours", attributes: attributes)
+        }
+    }
+    fileprivate let attributes = [NSForegroundColorAttributeName: NSColor.white]
     
     init() {
         
         butRound = NSButton()
         butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
-        butRound.attributedTitle = NSAttributedString(string: "Round to 8 hours", attributes: [ NSForegroundColorAttributeName : NSColor.white])
         butRound.setButtonType(NSSwitchButton)
         butRound.state = localPreferences.bool(.roundDay)  ? NSOnState : NSOffState
         
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
-        butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: [ NSForegroundColorAttributeName : NSColor.white])
+        butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: attributes)
         butPercents.setButtonType(NSSwitchButton)
         butPercents.state = localPreferences.bool(.usePercents) ? NSOnState : NSOffState
         
+        totalTimeTextField = NSTextField()
+        totalTimeTextField.alignment = NSTextAlignment.right
+        totalTimeTextField.drawsBackground = false
+        totalTimeTextField.isBordered = false
+        totalTimeTextField.isEnabled = false
+        totalTimeTextField.focusRingType = .none
+        totalTimeTextField.textColor = NSColor.white
+        totalTimeTextField.backgroundColor = NSColor.clear
+        
         super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
+        
+        self.totalTime = ""
+        self.targetTime = 8.0
         
         butRound.target = self
         butRound.action = #selector(self.handleRoundButton)
@@ -47,6 +76,9 @@ class ReportsHeaderView: NSTableHeaderView {
         
         self.addSubview(butPercents)
         self.addSubview(butRound)
+        
+        totalTimeTextField.frame = NSRect(x: dirtyRect.size.width - 80, y: 22, width: 64, height: 20)
+        self.addSubview(totalTimeTextField)
     }
 }
 

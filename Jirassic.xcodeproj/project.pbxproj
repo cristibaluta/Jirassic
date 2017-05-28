@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
+		280300D71EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
+		280300D81EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
+		280300D91EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
 		2803A0CA1EC184FF005F9389 /* BrowserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803A0C91EC184FF005F9389 /* BrowserNotification.swift */; };
 		280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 280C1D411ED74EF900C126A1 /* BrowserSupport.scpt */; };
 		280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 280C1D421ED74EF900C126A1 /* ShellSupport.scpt */; };
@@ -373,6 +377,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsInteractor.swift; path = Statistics/StatisticsInteractor.swift; sourceTree = "<group>"; };
 		2803A0C91EC184FF005F9389 /* BrowserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserNotification.swift; sourceTree = "<group>"; };
 		280C1D411ED74EF900C126A1 /* BrowserSupport.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrowserSupport.scpt; sourceTree = "<group>"; };
 		280C1D421ED74EF900C126A1 /* ShellSupport.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShellSupport.scpt; sourceTree = "<group>"; };
@@ -589,6 +594,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		280300D41EDB5E6D000A763E /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */,
+			);
+			name = Statistics;
+			sourceTree = "<group>";
+		};
 		28279E9A1E8300E200EAF9FC /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +713,7 @@
 				4065D3271DD3B44200B73201 /* Notifications */,
 				4065D32A1DD3B44200B73201 /* Reports */,
 				4065D32D1DD3B44200B73201 /* Tasks */,
+				280300D41EDB5E6D000A763E /* Statistics */,
 				4065D3371DD3B44200B73201 /* Time */,
 				4065D33B1DD3B44200B73201 /* User */,
 			);
@@ -1377,6 +1391,7 @@
 				280D70F11ECFE8D0005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D70D01ECFE5EA005D2689 /* TaskCell.swift in Sources */,
 				280D70D81ECFE82E005D2689 /* ViewAutolayout.swift in Sources */,
+				280300D81EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				280D70D91ECFE835005D2689 /* Conversions.swift in Sources */,
 				280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D70E41ECFE88F005D2689 /* CTask.swift in Sources */,
@@ -1484,6 +1499,7 @@
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D71B81ED6043D005D2689 /* RCPreferences.swift in Sources */,
 				280D71B91ED6043D005D2689 /* RCLog.swift in Sources */,
+				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1551,6 +1567,7 @@
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
+				280300D71EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				28577EAF1E8ADC53002B07FD /* STask.swift in Sources */,
 				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
@@ -1641,6 +1658,7 @@
 				28A928851E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
 				4065D42C1DD4576800B73201 /* Report.swift in Sources */,
 				28A928981E9761930022AB55 /* SyncTasks.swift in Sources */,
+				280300D91EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D4171DD4536200B73201 /* main.swift in Sources */,
 				4065D42B1DD4576500B73201 /* Settings.swift in Sources */,

@@ -12,6 +12,7 @@ class TasksScrollView: NSScrollView {
 	
     fileprivate var tableView: NSTableView!
     fileprivate var dataSource: DataSource?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
 	var didAddRow: ((_ row: Int) -> ())?
     var didRemoveRow: ((_ row: Int) -> ())?
@@ -56,6 +57,11 @@ class TasksScrollView: NSScrollView {
         headerView.didChangeSettings = { [weak self] in
             self?.didChangeSettings!()
         }
+        headerView.targetTime = 8.0
+        let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
+        headerView.totalTime = localPreferences.bool(.usePercents) 
+            ? "\(Date.secondsToPercentTime(totalTime))"
+            : Date(timeIntervalSince1970: totalTime).HHmmGMT()
         tableView!.headerView = headerView
         
         self.dataSource = dataSource

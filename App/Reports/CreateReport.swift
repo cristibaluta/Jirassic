@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CreateReport: NSObject {
+class CreateReport {
     
     func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
 		
