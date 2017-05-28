@@ -167,7 +167,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 notes: "Wasted time",
                 taskNumber: "waste",
                 taskTitle: "",
-                taskType: .coderev,
+                taskType: .waste,
                 objectId: String.random()
             )
             let saveInteractor = TaskInteractor(repository: localRepository)

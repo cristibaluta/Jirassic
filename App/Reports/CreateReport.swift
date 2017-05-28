@@ -39,7 +39,8 @@ extension CreateReport {
             task = tasks[i]
             
             if let startDate = task.startDate {
-                // Task with begining and ending defined
+                // Tasks with begining and ending defined are inlined tasks.
+                // Extract them in front of the actual task. This will take from the time of the actual task
                 let duration = task.endDate.timeIntervalSince(startDate)
                 task.startDate = nil
                 task.endDate = previousDate.addingTimeInterval(duration)
@@ -47,7 +48,6 @@ extension CreateReport {
                 previousDate = task.endDate
 //                print("inlined \(startDate)")
             } else {
-                // Add the task but substract the time from the inlined tasks
                 arr.append(task)
                 previousDate = task.endDate
             }
@@ -62,7 +62,8 @@ extension CreateReport {
         var lastTaskEndDate = tasks.first!.endDate
         
         for task in tasks {
-            
+            RCLog(task.taskType)
+            RCLog(task.notes)
             guard isTrackingAllowed(taskType: task.taskType) else {
                 untrackedDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
                 continue
