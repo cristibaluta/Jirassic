@@ -85,10 +85,10 @@ class SettingsViewController: NSViewController {
             endOfDayTime: endOfDayTimePicker.dateValue,
             lunchTime: lunchTimePicker.dateValue,
             scrumTime: scrumTimePicker.dateValue,
-            minSleepDuration: Date(hour:0, minute: minSleepDurationSlider.integerValue),
-            minCodeRevDuration: Date(hour:0, minute: minCodeRevDurationSlider.integerValue),
+            minSleepDuration: minSleepDurationSlider.integerValue,
+            minCodeRevDuration: minCodeRevDurationSlider.integerValue,
             codeRevLink: codeReviewsLinkTextField.stringValue,
-            minWasteDuration: Date(hour:0, minute: minWasteDurationSlider.integerValue),
+            minWasteDuration: minWasteDurationSlider.integerValue,
             wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
         )
         presenter!.saveAppSettings(settings)
@@ -201,7 +201,7 @@ extension SettingsViewController: SettingsPresenterOutput {
         
         butAutotrack.state = settings.autotrack ? NSOnState : NSOffState
         autotrackingModeSegmentedControl.selectedSegment = settings.autotrackingMode.rawValue
-        minSleepDurationSlider.integerValue = settings.minSleepDuration.components().minute
+        minSleepDurationSlider.integerValue = settings.minSleepDuration
         handleMinSleepDuration(minSleepDurationSlider)
         butTrackStartOfDay.state = settings.trackStartOfDay ? NSOnState : NSOffState
         butTrackLunch.state = settings.trackLunch ? NSOnState : NSOffState
@@ -218,9 +218,9 @@ extension SettingsViewController: SettingsPresenterOutput {
         butTrackWastedTime.state = settings.trackWastedTime ? NSOnState : NSOffState
         codeReviewsLinkTextField.stringValue = settings.codeRevLink
         wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
-        minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration.components().minute
+        minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration
         handleMinCodeRevDuration(minCodeRevDurationSlider)
-        minWasteDurationSlider.integerValue = settings.minWasteDuration.components().minute
+        minWasteDurationSlider.integerValue = settings.minWasteDuration
         handleMinWasteDuration(minWasteDurationSlider)
         
         // Generic

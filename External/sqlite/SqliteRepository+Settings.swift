@@ -30,9 +30,9 @@ extension SqliteRepository: RepositorySettings {
             ssettings?.endOfDayTime = Date(hour: 17, minute: 0)
             ssettings?.lunchTime = Date(hour: 13, minute: 0)
             ssettings?.scrumTime = Date(hour: 10, minute: 30)
-            ssettings?.minSleepDuration = Date(hour: 0, minute: 13)
-            ssettings?.minCodeRevDuration = Date(hour: 0, minute: 3)
-            ssettings?.minWasteDuration = Date(hour: 0, minute: 5)
+            ssettings?.minSleepDuration = 13
+            ssettings?.minCodeRevDuration = 2
+            ssettings?.minWasteDuration = 5
             ssettings?.codeRevLink = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
             ssettings?.wasteLinks = "facebook.com,youtube.com,twitter.com"
         }
@@ -62,10 +62,10 @@ extension SqliteRepository: RepositorySettings {
                         endOfDayTime: ssettings.endOfDayTime!,
                         lunchTime: ssettings.lunchTime!,
                         scrumTime: ssettings.scrumTime!,
-                        minSleepDuration: ssettings.minSleepDuration!,
-                        minCodeRevDuration: ssettings.minCodeRevDuration!,
+                        minSleepDuration: ssettings.minSleepDuration,
+                        minCodeRevDuration: ssettings.minCodeRevDuration,
                         codeRevLink: ssettings.codeRevLink!,
-                        minWasteDuration: ssettings.minWasteDuration!,
+                        minWasteDuration: ssettings.minWasteDuration,
                         wasteLinks: ssettings.wasteLinks!.toArray()
         )
     }

@@ -24,10 +24,10 @@ class SSettings: SQLTable {
     var endOfDayTime: Date? = nil
     var lunchTime: Date? = nil
     var scrumTime: Date? = nil
-    var minSleepDuration: Date? = nil
-    var minCodeRevDuration: Date? = nil
+    var minSleepDuration: Int = 0
+    var minCodeRevDuration: Int = 0
     var codeRevLink: String? = nil
-    var minWasteDuration: Date? = nil
+    var minWasteDuration: Int = 0
     var wasteLinks: String? = nil
     
     var i: Int = 0

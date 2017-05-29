@@ -66,7 +66,7 @@ extension CoreDataRepository: RepositorySettings {
             endOfDayTime: csettings.endOfDayTime!,
             lunchTime: csettings.lunchTime!,
             scrumTime: csettings.scrumTime!,
-            minSleepDuration: csettings.minSleepDuration!,
+            minSleepDuration: csettings.minSleepDuration,
             minCodeRevDuration: csettings.minCodeRevDuration!,
             codeRevLink: csettings.codeRevLink!,
             minWasteDuration: csettings.minWasteDuration!,

@@ -43,14 +43,10 @@ class TaskTypeEstimator {
 			return TaskType.lunch
 		}
         
-        // Check if meeting
-        var settingsMeetingTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.minSleepDuration)
-        let duration = Double(settingsMeetingTime.hour!).hoursToSec + Double(settingsMeetingTime.minute!).minToSec
-        
-        if abs(date.timeIntervalSinceNow) > duration {
+        // Check if enough time to be considered a meeting
+        if abs(date.timeIntervalSinceNow) > Double(settings.minSleepDuration) {
             return TaskType.meeting
         }
-        
         
 		return TaskType.issue
 	}

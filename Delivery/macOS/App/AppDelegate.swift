@@ -107,10 +107,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if settings.autotrack {
                 
                 let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
-                let minSleepDuration = Double(settings.minSleepDuration.components().minute).minToSec +
-                                       Double(settings.minSleepDuration.components().hour).hoursToSec
                 
-                guard sleepDuration >= minSleepDuration else {
+                guard sleepDuration >= Double(settings.minSleepDuration) else {
                     return
                 }
                 let startDate = settings.startOfDayTime.dateByKeepingTime()

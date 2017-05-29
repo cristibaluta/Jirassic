@@ -145,12 +145,10 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings = localRepository.settings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        let minCodeReviewDuration = Double(settings.minCodeRevDuration.components().minute).minToSec +
-                                    Double(settings.minCodeRevDuration.components().hour).hoursToSec
-        if duration >= minCodeReviewDuration {
+        if duration >= Double(settings.minCodeRevDuration) {
             self.codeReviewDidEnd?()
         } else {
-            RCLog("Discard code review session with duration \(duration) < \(minCodeReviewDuration)")
+            RCLog("Discard code review session with duration \(duration) < \(settings.minCodeRevDuration)")
         }
         startDate = nil
     }
@@ -180,12 +178,10 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings: Settings = SettingsInteractor().getAppSettings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        let minWastingDuration = Double(settings.minWasteDuration.components().minute).minToSec +
-                                 Double(settings.minWasteDuration.components().hour).hoursToSec
-        if duration >= minWastingDuration {
+        if duration >= Double(settings.minWasteDuration) {
             self.wastingTimeDidEnd?()
         } else {
-            RCLog("Discard wasting time session with duration \(duration) < \(minWastingDuration)")
+            RCLog("Discard wasting time session with duration \(duration) < \(settings.minWasteDuration)")
         }
         startDate = nil
     }

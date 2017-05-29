@@ -29,9 +29,9 @@ struct Settings {
     var endOfDayTime: Date
     var lunchTime: Date
     var scrumTime: Date
-    var minSleepDuration: Date
-    var minCodeRevDuration: Date
+    var minSleepDuration: Int
+    var minCodeRevDuration: Int
     var codeRevLink: String
-    var minWasteDuration: Date
+    var minWasteDuration: Int
     var wasteLinks: [String]
 }
