@@ -41,9 +41,12 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var endOfDayTimePicker: NSDatePicker!
     @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
     @IBOutlet fileprivate var scrumTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var minSleepDurationTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var minCodeRevDurationTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var minWasteDurationTimePicker: NSDatePicker!
+    @IBOutlet fileprivate var minSleepDurationLabel: NSTextField!
+    @IBOutlet fileprivate var minSleepDurationSlider: NSSlider!
+    @IBOutlet fileprivate var minCodeRevDurationLabel: NSTextField!
+    @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
+    @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
+    @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
     @IBOutlet fileprivate var butBackup: NSButton!
     
     weak var appWireframe: AppWireframe?
@@ -55,10 +58,6 @@ class SettingsViewController: NSViewController {
         
         presenter!.checkExtensions()
         presenter!.showSettings()
-//        butEnableStartOfDay.toolTip = "Working hours. Automatic logs can happen only in this interval. If you started the day at a different hour the end of the day shifts accordingly."
-//        butEnableLunch.toolTip = "Lunch and waste logs are ignored when calculating the amount of worked hours."
-//        butEnableMeetings.toolTip = "Valid intervals are considered meetings by default."
-//        shellSupportTextField.stringValue = "1) Install the apple script to '~/Library/Application Scripts'\n\n2) Apple script installs jit and jirassic command line tools to '/usr/local/bin'\n   - jit: Replacement for git\n   - jirassic: Use Jirassic from the cmd"
         
         #if !APPSTORE
             butBackup.isEnabled = false
@@ -86,10 +85,10 @@ class SettingsViewController: NSViewController {
             endOfDayTime: endOfDayTimePicker.dateValue,
             lunchTime: lunchTimePicker.dateValue,
             scrumTime: scrumTimePicker.dateValue,
-            minSleepDuration: minSleepDurationTimePicker.dateValue,
-            minCodeRevDuration: minCodeRevDurationTimePicker.dateValue,
+            minSleepDuration: Date(hour:0, minute: minSleepDurationSlider.integerValue),
+            minCodeRevDuration: Date(hour:0, minute: minCodeRevDurationSlider.integerValue),
             codeRevLink: codeReviewsLinkTextField.stringValue,
-            minWasteDuration: minWasteDurationTimePicker.dateValue,
+            minWasteDuration: Date(hour:0, minute: minWasteDurationSlider.integerValue),
             wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
         )
         presenter!.saveAppSettings(settings)
@@ -98,10 +97,10 @@ class SettingsViewController: NSViewController {
     deinit {
         RCLog("deinit")
     }
+}
+
+extension SettingsViewController {
 	
-	
-	// MARK: Actions
-    
     @IBAction func handleInstallJitButton (_ sender: NSButton) {
         #if APPSTORE
             NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
@@ -135,6 +134,18 @@ class SettingsViewController: NSViewController {
     
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
         presenter!.enabledLaunchAtStartup(sender.state == NSOnState)
+    }
+    
+    @IBAction func handleMinSleepDuration (_ sender: NSSlider) {
+        minSleepDurationLabel.stringValue = "Ignore sleeps shorter than \(sender.integerValue) minutes"
+    }
+    
+    @IBAction func handleMinCodeRevDuration (_ sender: NSSlider) {
+        minCodeRevDurationLabel.stringValue = "\(sender.integerValue) min"
+    }
+    
+    @IBAction func handleMinWasteDuration (_ sender: NSSlider) {
+        minWasteDurationLabel.stringValue = "\(sender.integerValue) min"
     }
 }
 
@@ -190,7 +201,8 @@ extension SettingsViewController: SettingsPresenterOutput {
         
         butAutotrack.state = settings.autotrack ? NSOnState : NSOffState
         autotrackingModeSegmentedControl.selectedSegment = settings.autotrackingMode.rawValue
-        minSleepDurationTimePicker.dateValue = settings.minSleepDuration
+        minSleepDurationSlider.integerValue = settings.minSleepDuration.components().minute
+        handleMinSleepDuration(minSleepDurationSlider)
         butTrackStartOfDay.state = settings.trackStartOfDay ? NSOnState : NSOffState
         butTrackLunch.state = settings.trackLunch ? NSOnState : NSOffState
         butTrackScrum.state = settings.trackScrum ? NSOnState : NSOffState
@@ -206,8 +218,10 @@ extension SettingsViewController: SettingsPresenterOutput {
         butTrackWastedTime.state = settings.trackWastedTime ? NSOnState : NSOffState
         codeReviewsLinkTextField.stringValue = settings.codeRevLink
         wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
-        minCodeRevDurationTimePicker.dateValue = settings.minCodeRevDuration
-        minWasteDurationTimePicker.dateValue = settings.minWasteDuration
+        minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration.components().minute
+        handleMinCodeRevDuration(minCodeRevDurationSlider)
+        minWasteDurationSlider.integerValue = settings.minWasteDuration.components().minute
+        handleMinWasteDuration(minWasteDurationSlider)
         
         // Generic
         
