@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rS3-R9-Ivy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-BlackOblique</string>
+            <string>Avenir-Book</string>
+            <string>Avenir-BookOblique</string>
+            <string>Avenir-Heavy</string>
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Master-->
         <scene sceneID="cUi-kZ-frf">
@@ -28,7 +39,7 @@
         <!--Login View Controller-->
         <scene sceneID="EsZ-fK-YUx">
             <objects>
-                <viewController id="pGT-tt-fL9" customClass="LoginViewController" customModule="Jirassic_Scrum" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pGT-tt-fL9" customClass="LoginViewController" customModule="Jirassic_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qls-sY-lCN"/>
                         <viewControllerLayoutGuide type="bottom" id="H8a-Vv-fAg"/>
@@ -83,7 +94,7 @@
         <!--Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <tableViewController title="Master" id="pGg-6v-bdr" customClass="DaysViewController" customModule="Jirassic_Scrum" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Master" id="pGg-6v-bdr" customClass="DaysViewController" customModule="Jirassic_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +108,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2pz-XF-uhl">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="62.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -126,13 +137,13 @@
         <!--Tasks View Controller-->
         <scene sceneID="iy0-h1-6m5">
             <objects>
-                <tableViewController id="Ne8-5p-NMX" customClass="TasksViewController" customModule="Jirassic_Scrum" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ne8-5p-NMX" customClass="TasksViewController" customModule="Jirassic_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="158" sectionHeaderHeight="22" sectionFooterHeight="22" id="EHJ-KF-bI6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="158" id="lba-rR-GTL" customClass="TaskCell" customModule="Jirassic_Scrum" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="158" id="lba-rR-GTL" customClass="TaskCell" customModule="Jirassic_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="375" height="158"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lba-rR-GTL" id="2tP-Kw-4Mv">
@@ -238,7 +249,7 @@
                                     <outlet property="titleLabel" destination="R8k-VZ-rhw" id="T8J-MO-ndH"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NonTaskCell" rowHeight="57" id="4X7-kF-Wim" customClass="NonTaskCell" customModule="Jirassic_Scrum" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NonTaskCell" rowHeight="57" id="4X7-kF-Wim" customClass="NonTaskCell" customModule="Jirassic_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="180" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4X7-kF-Wim" id="yb0-IS-u2w">
@@ -247,7 +258,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgy-d4-nxc">
                                             <rect key="frame" x="10" y="11" width="357" height="29"/>
-                                            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL1-iN-yxg">
                                             <rect key="frame" x="38" y="15" width="329" height="21"/>
@@ -255,7 +266,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="XtS-vA-zWj"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" white="0.59517299107142863" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7x-ia-d8x">

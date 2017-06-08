@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
+        self.window?.tintColor = UIColor.red
+        
 		return true
 	}
 

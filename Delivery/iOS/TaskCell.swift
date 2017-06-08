@@ -20,7 +20,7 @@ class TaskCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-		circleWhite?.layer.cornerRadius = circleWhite!.frame.size.width/2
-		circleDark?.layer.cornerRadius = circleDark!.frame.size.width/2
+		circleWhite?.layer.cornerRadius = circleWhite!.frame.size.width / 2
+		circleDark?.layer.cornerRadius = circleDark!.frame.size.width / 2
     }
 }
