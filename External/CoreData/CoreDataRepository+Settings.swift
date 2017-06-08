@@ -32,9 +32,9 @@ extension CoreDataRepository: RepositorySettings {
             csettings?.endOfDayTime = Date(hour: 17, minute: 0)
             csettings?.lunchTime = Date(hour: 13, minute: 0)
             csettings?.scrumTime = Date(hour: 10, minute: 30)
-            csettings?.minSleepDuration = Date(hour: 0, minute: 13)
-            csettings?.minCodeRevDuration = Date(hour: 0, minute: 3)
-            csettings?.minWasteDuration = Date(hour: 0, minute: 5)
+            csettings?.minSleepDuration = NSNumber(value: 13)
+            csettings?.minCodeRevDuration = NSNumber(value: 3)
+            csettings?.minWasteDuration = NSNumber(value: 5)
             csettings?.codeRevLink = ""
             csettings?.wasteLinks = ["facebook.com", "youtube.com", "twitter.com"]
             
@@ -66,10 +66,10 @@ extension CoreDataRepository: RepositorySettings {
             endOfDayTime: csettings.endOfDayTime!,
             lunchTime: csettings.lunchTime!,
             scrumTime: csettings.scrumTime!,
-            minSleepDuration: csettings.minSleepDuration,
-            minCodeRevDuration: csettings.minCodeRevDuration!,
+            minSleepDuration: csettings.minSleepDuration!.intValue,
+            minCodeRevDuration: csettings.minCodeRevDuration!.intValue,
             codeRevLink: csettings.codeRevLink!,
-            minWasteDuration: csettings.minWasteDuration!,
+            minWasteDuration: csettings.minWasteDuration!.intValue,
             wasteLinks: csettings.wasteLinks!
         )
     }
@@ -96,10 +96,10 @@ extension CoreDataRepository: RepositorySettings {
         csettings?.endOfDayTime = settings.endOfDayTime
         csettings?.lunchTime = settings.lunchTime
         csettings?.scrumTime = settings.scrumTime
-        csettings?.minSleepDuration = settings.minSleepDuration
-        csettings?.minCodeRevDuration = settings.minCodeRevDuration
+        csettings?.minSleepDuration = NSNumber(value: settings.minSleepDuration)
+        csettings?.minCodeRevDuration = NSNumber(value: settings.minCodeRevDuration)
         csettings?.codeRevLink = settings.codeRevLink
-        csettings?.minWasteDuration = settings.minWasteDuration
+        csettings?.minWasteDuration = NSNumber(value: settings.minWasteDuration)
         csettings?.wasteLinks = settings.wasteLinks
         
         return csettings!

@@ -25,10 +25,10 @@ class CSettings: NSManagedObject {
     @NSManaged var endOfDayTime: Date?
     @NSManaged var lunchTime: Date?
     @NSManaged var scrumTime: Date?
-    @NSManaged var minSleepDuration: Date?
-    @NSManaged var minCodeRevDuration: Date?
+    @NSManaged var minSleepDuration: NSNumber?
+    @NSManaged var minCodeRevDuration: NSNumber?
     @NSManaged var codeRevLink: String?
-    @NSManaged var minWasteDuration: Date?
+    @NSManaged var minWasteDuration: NSNumber?
     @NSManaged var wasteLinks: [String]?
     
 }
