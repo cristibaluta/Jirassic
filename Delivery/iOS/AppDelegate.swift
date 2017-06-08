@@ -10,6 +10,7 @@ import UIKit
 
 var localRepository: Repository!
 var remoteRepository: Repository?
+let appRed = UIColor(red: 240.0/255, green: 40.0/255, blue: 40.0/255, alpha: 1.0)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
-        self.window?.tintColor = UIColor.red
+        self.window?.tintColor = appRed
         
 		return true
 	}

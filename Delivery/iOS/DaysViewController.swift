@@ -16,7 +16,7 @@ class DaysViewController: UITableViewController {
 		super.viewDidLoad()
         
 		let refreshControl = UIRefreshControl()
-		refreshControl.tintColor = UIColor(red: 240.0/255, green: 40.0/255, blue: 40.0/255, alpha: 1.0)
+        refreshControl.tintColor = appRed
 		refreshControl.addTarget(self, action: #selector(DaysViewController.reloadData), for: .valueChanged)
 		self.refreshControl = refreshControl
         
