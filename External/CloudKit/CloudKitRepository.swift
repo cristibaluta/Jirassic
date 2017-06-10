@@ -12,7 +12,7 @@ import CloudKit
 class CloudKitRepository {
     
     internal var user: User?
-    internal let container = CKContainer(identifier: "iCloud.com.ralcr.Jirassic.osx")
+    internal let container = CKContainer(identifier: "iCloud.com.jirassic.macos")
     internal var privateDB: CKDatabase?
     internal var customZone: CKRecordZone?
     
@@ -28,7 +28,7 @@ class CloudKitRepository {
     func initDB() {
         
         privateDB = container.privateCloudDatabase
-        customZone = CKRecordZone(zoneName: "TasksZone")
+        customZone = CKRecordZone(zoneName: "TasksZone_Test")
         
         privateDB!.save(customZone!) { (recordZone, err) in
             RCLogO(recordZone)

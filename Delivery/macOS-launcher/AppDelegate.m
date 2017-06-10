@@ -11,11 +11,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
-    NSString *identifier = @"com.ralcr.Jirassic.osx";
+    NSString *appIdentifier = @"com.jirassic.macos";
     
     BOOL alreadyRunning = NO;
     for (NSRunningApplication *app in [NSWorkspace sharedWorkspace].runningApplications) {
-        if ([app.bundleIdentifier isEqualToString:identifier]) {
+        if ([app.bundleIdentifier isEqualToString:appIdentifier]) {
             alreadyRunning = YES;
             break;
         }
@@ -24,7 +24,7 @@
         [[NSDistributedNotificationCenter defaultCenter] addObserver:self 
                                                             selector:@selector(terminate) 
                                                                 name:@"killme" 
-                                                              object:identifier];
+                                                              object:appIdentifier];
         
 //        BOOL launched = [[NSWorkspace sharedWorkspace] launchApplication:@"Jirassic.app"];
 //        NSLog(@"Jirassic launched %i", launched);

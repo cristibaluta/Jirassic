@@ -8,6 +8,8 @@
 
 import Cocoa
 
+let launcherIdentifier = "com.jirassic.macos.launcher"
+
 extension AppDelegate {
 
 //    func launchAtStartup() {
@@ -21,10 +23,8 @@ extension AppDelegate {
     
     func killLauncher() {
         
-        let identifier = "com.ralcr.Jirassic.osx.launcher"
-        
         for app in NSWorkspace.shared().runningApplications {
-            if app.bundleIdentifier == identifier {
+            if app.bundleIdentifier == launcherIdentifier {
                 DistributedNotificationCenter.default()
                     .postNotificationName(NSNotification.Name(rawValue: "killme"),
                                           object: Bundle.main.bundleIdentifier!,
