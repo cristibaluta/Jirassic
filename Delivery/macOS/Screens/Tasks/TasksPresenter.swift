@@ -143,7 +143,7 @@ extension TasksPresenter: TasksPresenterInput {
         let now = Date()
         let task = Task(dateEnd: now, type: TaskType.startDay)
         let saveInteractor = TaskInteractor(repository: localRepository)
-        saveInteractor.saveTask(task, completion: { savedTask in
+        saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             self.reloadData()
         })
     }
@@ -158,8 +158,8 @@ extension TasksPresenter: TasksPresenterInput {
         task.taskType = taskData.taskType
         
         let saveInteractor = TaskInteractor(repository: localRepository)
-        saveInteractor.saveTask(task, completion: { savedTask in
-            saveInteractor.syncTask(savedTask, completion: { (task) in })
+        saveInteractor.saveTask(task, allowSyncing: false, completion: { savedTask in
+            
         })
     }
     

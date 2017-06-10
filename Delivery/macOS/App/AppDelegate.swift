@@ -149,8 +149,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 objectId: String.random()
             )
             let saveInteractor = TaskInteractor(repository: localRepository)
-            saveInteractor.saveTask(task, completion: { savedTask in
-                saveInteractor.syncTask(savedTask, completion: { (task) in })
+            saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
+                
             })
         }
         browser.wastingTimeDidStart = {
@@ -169,8 +169,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 objectId: String.random()
             )
             let saveInteractor = TaskInteractor(repository: localRepository)
-            saveInteractor.saveTask(task, completion: { savedTask in
-                saveInteractor.syncTask(savedTask, completion: { (task) in })
+            saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
+                
             })
         }
 	}

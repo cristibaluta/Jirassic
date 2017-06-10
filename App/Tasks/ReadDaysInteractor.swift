@@ -33,8 +33,8 @@ class ReadDaysInteractor: RepositoryInteractor {
             if let remoteRepository = remoteRepository {
                 let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
                 sync.start { hasIncomingChanges in
+                    
                     if hasIncomingChanges {
-                        
                         self.repository.queryTasks(0, completion: { (tasks, error) in
                             
                             self.tasks = tasks

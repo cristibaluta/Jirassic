@@ -33,6 +33,7 @@ class RCSync<T> {
         }
     }
     
+    // Send to CloudKit the changes recursivelly then call the completion block
     fileprivate func syncNext (_ completion: @escaping ((_ success: Bool) -> Void)) {
         
         var task = tasksToSave.first

@@ -10,12 +10,15 @@ import Foundation
 
 class TaskInteractor: RepositoryInteractor {
 
-    func saveTask (_ task: Task, completion: @escaping (_ savedTask: Task) -> Void) {
+    func saveTask (_ task: Task, allowSyncing: Bool, completion: @escaping (_ savedTask: Task) -> Void) {
         
         var task = task
         task.lastModifiedDate = nil
         
-        self.repository.saveTask(task, completion: { (savedTask: Task) -> Void in
+        self.repository.saveTask(task, completion: { [weak self] (savedTask: Task) -> Void in
+            if allowSyncing {
+                self?.syncTask(savedTask, completion: { (task) in })
+            }
             completion(savedTask)
         })
     }
@@ -32,7 +35,7 @@ class TaskInteractor: RepositoryInteractor {
         })
     }
     
-    func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
+    fileprivate func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
         
         if let remoteRepository = remoteRepository {
             let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)

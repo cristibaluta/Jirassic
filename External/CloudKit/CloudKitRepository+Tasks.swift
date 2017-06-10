@@ -57,7 +57,7 @@ extension CloudKitRepository: RepositoryTasks {
             return
         }
         
-        recordOfTask(task) { (record) in
+        fetchCKRecordOfTask(task) { (record) in
             if let cktask = record {
                 
                 privateDB.delete(withRecordID: cktask.recordID, completionHandler: { (recordID, error) in
@@ -76,15 +76,15 @@ extension CloudKitRepository: RepositoryTasks {
     }
     
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
-        RCLogO("Save to cloudkit \(task)")
+        RCLogO("1. Save to cloudkit \(task)")
         
         guard let customZone = self.customZone, let privateDB = self.privateDB else {
-            RCLog("Not logged in")
+            RCLog("Can't save, not logged in to iCloud")
             return
         }
         
         // Query for the task from server if exists
-        recordOfTask(task) { (record) in
+        fetchCKRecordOfTask(task) { (record) in
             var record: CKRecord? = record
             if record == nil {
                 let recordId = CKRecordID(recordName: task.objectId, zoneID: customZone.zoneID)
@@ -94,7 +94,7 @@ extension CloudKitRepository: RepositoryTasks {
             
             privateDB.save(record!, completionHandler: { savedRecord, error in
                 
-                RCLog("Record after saved to ck")
+                RCLog("2. Record after saving to CloudKit")
                 RCLogO(savedRecord)
                 RCLogErrorO(error)
                 
@@ -109,7 +109,7 @@ extension CloudKitRepository: RepositoryTasks {
 
 extension CloudKitRepository {
     
-    func recordOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
+    func fetchCKRecordOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
         
         guard let customZone = self.customZone, let privateDB = self.privateDB else {
             RCLog("Not logged in")
