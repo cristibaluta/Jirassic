@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.ralcr.Jirassic.osx</string>
+		<string>iCloud.com.jirassic.macos</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
