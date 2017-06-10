@@ -8,18 +8,19 @@
 
 import Foundation
 
-enum SQLiteSchemaVersion: Double {
-    case v1_0 = 1.0
+enum SQLiteSchemaVersion: Int {
+    case v1 = 1
 }
 
 class SQLiteSchema {
     
+    fileprivate let expectedVersion: SQLiteSchemaVersion = .v1
+    
     init (db: SQLiteDB) {
         
-        // Get current version
-        let v = db.query(sql: "SELECT * FROM 'sversions';")
-        if v.count == 0 {
-            migrate(db: db, toVersion: .v1_0)
+        RCLog(db.version)
+        if db.version != expectedVersion.rawValue {
+            migrate(db: db, toVersion: expectedVersion)
             UserDefaults.standard.serverChangeToken = nil
         }
     }
@@ -30,9 +31,7 @@ extension SQLiteSchema {
     func migrate (db: SQLiteDB, toVersion version: SQLiteSchemaVersion) {
         
         switch version {
-        case .v1_0:
-            let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS sversions (db_version REAL);")
-            
+        case .v1:
             let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS stasks (lastModifiedDate DATETIME, markedForDeletion BOOL DEFAULT 0, startDate DATETIME, endDate DATETIME, notes TEXT, taskNumber TEXT, taskTitle TEXT, taskType INTEGER NOT NULL, objectId varchar(30) PRIMARY KEY);")
             
             let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS ssettingss (autotrack BOOL, autotrackingMode INTEGER, trackLunch BOOL, trackScrum BOOL, trackMeetings BOOL, trackCodeReviews BOOL, trackWastedTime BOOL, trackStartOfDay BOOL, enableBackup BOOL, startOfDayTime DATETIME, endOfDayTime DATETIME, lunchTime DATETIME, scrumTime DATETIME, minSleepDuration INTEGER, minCodeRevDuration INTEGER, codeRevLink TEXT, minWasteDuration INTEGER, wasteLinks TEXT, i INTEGER NOT NULL PRIMARY KEY);")
@@ -40,6 +39,6 @@ extension SQLiteSchema {
             let _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS susers (userId TEXT, email TEXT, lastSyncDate DATETIME, isLoggedIn BOOL, i INTEGER NOT NULL PRIMARY KEY);")
             break
         }
-        let _ = db.execute(sql: "INSERT INTO sversions (db_version) values(\(version.rawValue));")
+        db.version = version.rawValue
     }
 }

@@ -31,7 +31,7 @@ class ReadDaysInteractor: RepositoryInteractor {
             completion(self.weeks())
             
             if let remoteRepository = remoteRepository {
-                let sync = SyncTasks(localRepository: self.repository, remoteRepository: remoteRepository)
+                let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
                 sync.start { hasIncomingChanges in
                     if hasIncomingChanges {
                         

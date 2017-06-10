@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SyncTasks {
+class RCSync<T> {
     
     fileprivate let localRepository: Repository!
     fileprivate let remoteRepository: Repository!
@@ -27,26 +27,26 @@ class SyncTasks {
         localRepository.queryDeletedTasks { deletedTasks in
             RCLog("1. deletedTasks = \(deletedTasks.count)")
             self.tasksToDelete = deletedTasks
-            self.syncNextTask { (success) in
+            self.syncNext { (success) in
                 self.getLatestServerChanges(completion)
             }
         }
     }
     
-    fileprivate func syncNextTask (_ completion: @escaping ((_ success: Bool) -> Void)) {
+    fileprivate func syncNext (_ completion: @escaping ((_ success: Bool) -> Void)) {
         
         var task = tasksToSave.first
         if task != nil {
             tasksToSave.remove(at: 0)
             saveTask(task!, completion: { (success) in
-                self.syncNextTask(completion)
+                self.syncNext(completion)
             })
         } else {
             task = tasksToDelete.first
             if task != nil {
                 tasksToDelete.remove(at: 0)
                 deleteTask(task!, completion: { (success) in
-                    self.syncNextTask(completion)
+                    self.syncNext(completion)
                 })
             } else {
                 UserDefaults.standard.localChangeDate = Date()

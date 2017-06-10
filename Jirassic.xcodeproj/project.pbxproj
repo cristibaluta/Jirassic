@@ -35,7 +35,7 @@
 		280D70DA1ECFE83F005D2689 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
 		280D70DC1ECFE84C005D2689 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
-		280D70DD1ECFE856005D2689 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */; };
+		280D70DD1ECFE856005D2689 /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* RCSync.swift */; };
 		280D70DE1ECFE870005D2689 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		280D70DF1ECFE888005D2689 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
 		280D70E01ECFE88F005D2689 /* CoreDataRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */; };
@@ -80,7 +80,7 @@
 		280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
 		280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
-		280D71421ED6043D005D2689 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */; };
+		280D71421ED6043D005D2689 /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* RCSync.swift */; };
 		280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3301DD3B44200B73201 /* TaskFinder.swift */; };
 		280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3321DD3B44200B73201 /* TaskInteractor.swift */; };
 		280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
@@ -192,7 +192,7 @@
 		28A9287A1E8FA8E90022AB55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28A9287B1E8FC9B90022AB55 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9287C1E9030BA0022AB55 /* CloudKit.framework */; };
-		28A9287F1E90D8BD0022AB55 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */; };
+		28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* RCSync.swift */; };
 		28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */; };
 		28A928821E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */; };
 		28A928841E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */; };
@@ -202,7 +202,7 @@
 		28A928931E91104B0022AB55 /* CloudKitRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */; };
 		28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928941E9110980022AB55 /* CloudKitRepository+User.swift */; };
 		28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */; };
-		28A928981E9761930022AB55 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */; };
+		28A928981E9761930022AB55 /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9287E1E90D8BD0022AB55 /* RCSync.swift */; };
 		28AA50081EDCD51300AAF03D /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
 		28AA50091EDCD51300AAF03D /* CoreDataRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */; };
 		28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */; };
@@ -407,7 +407,7 @@
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		28A928771E8F78580022AB55 /* SQLiteSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteSchema.swift; sourceTree = "<group>"; };
 		28A9287C1E9030BA0022AB55 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncTasks.swift; sourceTree = "<group>"; };
+		28A9287E1E90D8BD0022AB55 /* RCSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCSync.swift; sourceTree = "<group>"; };
 		28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Tasks.swift"; sourceTree = "<group>"; };
 		28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+User.swift"; sourceTree = "<group>"; };
 		28A928861E910EA70022AB55 /* SqliteRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Settings.swift"; sourceTree = "<group>"; };
@@ -773,7 +773,7 @@
 				4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */,
 				280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */,
 				4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */,
-				28A9287E1E90D8BD0022AB55 /* SyncTasks.swift */,
+				28A9287E1E90D8BD0022AB55 /* RCSync.swift */,
 				4065D3301DD3B44200B73201 /* TaskFinder.swift */,
 				4065D3311DD3B44200B73201 /* TaskFinderTests.swift */,
 				4065D3321DD3B44200B73201 /* TaskInteractor.swift */,
@@ -1369,7 +1369,7 @@
 				280D70F01ECFE8CC005D2689 /* Repository.swift in Sources */,
 				280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */,
 				280D70DE1ECFE870005D2689 /* UserInteractor.swift in Sources */,
-				280D70DD1ECFE856005D2689 /* SyncTasks.swift in Sources */,
+				280D70DD1ECFE856005D2689 /* RCSync.swift in Sources */,
 				280D70E11ECFE88F005D2689 /* CoreDataRepository+Settings.swift in Sources */,
 				280D70C81ECFE5AC005D2689 /* AppDelegate.swift in Sources */,
 				280D70E21ECFE88F005D2689 /* CoreDataRepository+User.swift in Sources */,
@@ -1425,7 +1425,7 @@
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
 				280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
-				280D71421ED6043D005D2689 /* SyncTasks.swift in Sources */,
+				280D71421ED6043D005D2689 /* RCSync.swift in Sources */,
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
@@ -1553,7 +1553,7 @@
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
-				28A9287F1E90D8BD0022AB55 /* SyncTasks.swift in Sources */,
+				28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
@@ -1657,7 +1657,7 @@
 				4065D42A1DD4576000B73201 /* Task.swift in Sources */,
 				28A928851E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
 				4065D42C1DD4576800B73201 /* Report.swift in Sources */,
-				28A928981E9761930022AB55 /* SyncTasks.swift in Sources */,
+				28A928981E9761930022AB55 /* RCSync.swift in Sources */,
 				280300D91EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D4171DD4536200B73201 /* main.swift in Sources */,

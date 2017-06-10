@@ -75,7 +75,7 @@ class SQLiteDB: NSObject {
             return version
         }
         set {
-            _ = execute(sql: "PRAGMA user_version=\(version)")
+            _ = execute(sql: "PRAGMA user_version=\(newValue)")
         }
     }
 }
