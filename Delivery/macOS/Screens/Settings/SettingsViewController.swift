@@ -119,6 +119,10 @@ extension SettingsViewController {
         #endif
     }
     
+    @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {
+        NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+    }
+    
 	@IBAction func handleSaveButton (_ sender: NSButton) {
 		
         appWireframe!.flipToTasksController()
