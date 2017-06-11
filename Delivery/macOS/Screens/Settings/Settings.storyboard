@@ -67,14 +67,14 @@
                                                     </buttonCell>
                                                 </button>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="N5K-eo-qyH">
-                                                    <rect key="frame" x="10" y="40" width="166" height="18"/>
+                                                    <rect key="frame" x="10" y="42" width="166" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Scrum begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N7u-i6-lhB">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                 </button>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="xBu-3o-iuE">
-                                                    <rect key="frame" x="10" y="275" width="250" height="18"/>
+                                                    <rect key="frame" x="10" y="273" width="250" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Log tasks when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="k5h-wa-doI">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -238,7 +238,7 @@
                                                 <constraint firstItem="gZW-oy-bAn" firstAttribute="top" secondItem="mwE-DS-XUK" secondAttribute="bottom" constant="43" id="6hQ-Dd-asf"/>
                                                 <constraint firstItem="mwE-DS-XUK" firstAttribute="leading" secondItem="gZW-oy-bAn" secondAttribute="leading" id="8VF-lO-x0k"/>
                                                 <constraint firstItem="cna-sP-P5a" firstAttribute="top" secondItem="VZB-rc-kuS" secondAttribute="bottom" constant="19" id="8vx-hN-z0q"/>
-                                                <constraint firstItem="xBu-3o-iuE" firstAttribute="baseline" secondItem="PFE-Rj-eXW" secondAttribute="baseline" id="Fog-lm-l77"/>
+                                                <constraint firstItem="xBu-3o-iuE" firstAttribute="baseline" secondItem="PFE-Rj-eXW" secondAttribute="baseline" constant="2" id="Fog-lm-l77"/>
                                                 <constraint firstItem="gZW-oy-bAn" firstAttribute="centerY" secondItem="VZB-rc-kuS" secondAttribute="centerY" id="GmI-BA-R3d"/>
                                                 <constraint firstItem="PFE-Rj-eXW" firstAttribute="trailing" secondItem="EAs-It-4Pn" secondAttribute="trailing" id="JtH-Qn-za5"/>
                                                 <constraint firstItem="uEd-CC-Sfv" firstAttribute="top" secondItem="EAs-It-4Pn" secondAttribute="bottom" constant="34" id="M4a-fr-NMa"/>
@@ -251,7 +251,7 @@
                                                 <constraint firstItem="uEd-CC-Sfv" firstAttribute="leading" secondItem="VZB-rc-kuS" secondAttribute="leading" id="aja-GG-9Cc"/>
                                                 <constraint firstItem="VZB-rc-kuS" firstAttribute="trailing" secondItem="cna-sP-P5a" secondAttribute="trailing" id="cn3-Wy-7Ra"/>
                                                 <constraint firstItem="PFE-Rj-eXW" firstAttribute="top" secondItem="wtI-B7-gYI" secondAttribute="top" constant="28" id="crx-Ik-i9J"/>
-                                                <constraint firstItem="N5K-eo-qyH" firstAttribute="top" secondItem="gZW-oy-bAn" secondAttribute="bottom" constant="45" id="eVa-B2-vm7"/>
+                                                <constraint firstItem="N5K-eo-qyH" firstAttribute="top" secondItem="gZW-oy-bAn" secondAttribute="bottom" constant="43" id="eVa-B2-vm7"/>
                                                 <constraint firstItem="PFE-Rj-eXW" firstAttribute="leading" secondItem="EAs-It-4Pn" secondAttribute="leading" id="euz-XV-AsP"/>
                                                 <constraint firstItem="fQC-7n-Iq6" firstAttribute="leading" secondItem="wtI-B7-gYI" secondAttribute="leading" constant="14" id="fMc-bj-vMu"/>
                                                 <constraint firstItem="EAs-It-4Pn" firstAttribute="top" secondItem="PFE-Rj-eXW" secondAttribute="bottom" constant="32" id="gpI-uk-Y3m"/>
@@ -269,7 +269,7 @@
                                             <rect key="frame" x="10" y="33" width="468" height="320"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <box autoresizesSubviews="NO" toolTip="jirassic is the command line tool of this app" borderType="line" title="shell support" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
+                                                <box autoresizesSubviews="NO" toolTip="jirassic is the command line tool of this app" borderType="line" title="Shell support" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-dH-Hh6">
                                                     <rect key="frame" x="7" y="248" width="454" height="54"/>
                                                     <view key="contentView" id="IpW-dh-bsa">
                                                         <rect key="frame" x="1" y="1" width="452" height="38"/>
@@ -292,7 +292,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-Bz-bTG">
-                                                                <rect key="frame" x="361" y="9" width="81" height="19"/>
+                                                                <rect key="frame" x="361" y="11" width="81" height="19"/>
                                                                 <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qjl-fl-R9u">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
@@ -305,7 +305,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="bRA-Bz-bTG" secondAttribute="trailing" constant="10" id="1kh-Y6-Kwt"/>
                                                             <constraint firstItem="WPR-i0-dsI" firstAttribute="leading" secondItem="1zu-O9-EL6" secondAttribute="trailing" constant="6" id="HJj-Qm-W0w"/>
-                                                            <constraint firstItem="bRA-Bz-bTG" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" id="cgU-QA-Icq"/>
+                                                            <constraint firstItem="bRA-Bz-bTG" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" constant="-2" id="cgU-QA-Icq"/>
                                                             <constraint firstItem="1zu-O9-EL6" firstAttribute="leading" secondItem="IpW-dh-bsa" secondAttribute="leading" constant="8" id="gbH-wg-DLx"/>
                                                             <constraint firstItem="1zu-O9-EL6" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" constant="-2" id="uev-JG-oDN"/>
                                                             <constraint firstItem="WPR-i0-dsI" firstAttribute="centerY" secondItem="IpW-dh-bsa" secondAttribute="centerY" constant="-3" id="wUI-3t-mBp"/>
@@ -315,7 +315,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="X9O-Od-aqA"/>
                                                     </constraints>
                                                 </box>
-                                                <box autoresizesSubviews="NO" borderType="line" title="git support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
+                                                <box autoresizesSubviews="NO" borderType="line" title="Git support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
                                                     <rect key="frame" x="7" y="183" width="454" height="54"/>
                                                     <string key="toolTip">jit is a git wrapper that adds some convenience functionality for Jira. Commiting with Jit logs the messages as task to Jirassic</string>
                                                     <view key="contentView" id="VER-UY-CWS">
@@ -339,7 +339,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qdj-8J-4OB">
-                                                                <rect key="frame" x="361" y="9" width="81" height="19"/>
+                                                                <rect key="frame" x="361" y="11" width="81" height="19"/>
                                                                 <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je0-zz-99c">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
@@ -350,7 +350,7 @@
                                                             </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="Qdj-8J-4OB" firstAttribute="centerY" secondItem="VER-UY-CWS" secondAttribute="centerY" id="5Ys-xq-WsZ"/>
+                                                            <constraint firstItem="Qdj-8J-4OB" firstAttribute="centerY" secondItem="VER-UY-CWS" secondAttribute="centerY" constant="-2" id="5Ys-xq-WsZ"/>
                                                             <constraint firstAttribute="trailing" secondItem="Qdj-8J-4OB" secondAttribute="trailing" constant="10" id="Igk-9V-EDz"/>
                                                             <constraint firstItem="xIr-VF-ZlZ" firstAttribute="centerY" secondItem="VER-UY-CWS" secondAttribute="centerY" constant="-3" id="q4U-fL-QlX"/>
                                                             <constraint firstItem="BOk-sy-RjW" firstAttribute="centerY" secondItem="VER-UY-CWS" secondAttribute="centerY" constant="-2" id="sFr-Rw-ZhU"/>
@@ -362,7 +362,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="gdg-M4-Obw"/>
                                                     </constraints>
                                                 </box>
-                                                <box autoresizesSubviews="NO" toolTip="Time spent in stash in a browser is counted as code review time" borderType="line" title="browser support" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-El-2HH">
+                                                <box autoresizesSubviews="NO" toolTip="Time spent in stash in a browser is counted as code review time" borderType="line" title="Browser support" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-El-2HH">
                                                     <rect key="frame" x="7" y="8" width="454" height="164"/>
                                                     <view key="contentView" id="6fH-zX-nNt">
                                                         <rect key="frame" x="1" y="1" width="452" height="148"/>
