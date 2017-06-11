@@ -773,7 +773,6 @@
 				4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */,
 				280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */,
 				4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */,
-				28A9287E1E90D8BD0022AB55 /* RCSync.swift */,
 				4065D3301DD3B44200B73201 /* TaskFinder.swift */,
 				4065D3311DD3B44200B73201 /* TaskFinderTests.swift */,
 				4065D3321DD3B44200B73201 /* TaskInteractor.swift */,
@@ -1005,6 +1004,7 @@
 		4065D3991DD3B44200B73201 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				28A9287E1E90D8BD0022AB55 /* RCSync.swift */,
 				28E896761E83845100722032 /* RCPreferences.swift */,
 				4065D39A1DD3B44200B73201 /* RCLog.swift */,
 			);

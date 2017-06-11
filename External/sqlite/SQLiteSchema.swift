@@ -18,7 +18,6 @@ class SQLiteSchema {
     
     init (db: SQLiteDB) {
         
-        RCLog(db.version)
         if db.version != expectedVersion.rawValue {
             migrate(db: db, toVersion: expectedVersion)
             UserDefaults.standard.serverChangeToken = nil

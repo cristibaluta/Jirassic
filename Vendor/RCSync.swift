@@ -12,8 +12,8 @@ class RCSync<T> {
     
     fileprivate let localRepository: Repository!
     fileprivate let remoteRepository: Repository!
-    fileprivate var tasksToSave = [Task]()
-    fileprivate var tasksToDelete = [Task]()
+    fileprivate var objectsToSave = [Task]()
+    fileprivate var objectsToDelete = [Task]()
     
     init (localRepository: Repository, remoteRepository: Repository) {
         self.localRepository = localRepository
@@ -22,11 +22,11 @@ class RCSync<T> {
     
     func start (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         
-        tasksToSave = localRepository.queryUnsyncedTasks()
-        RCLog("1. unsyncedTasks = \(self.tasksToSave.count)")
+        objectsToSave = localRepository.queryUnsyncedTasks()
+        RCLog("1. unsyncedTasks = \(self.objectsToSave.count)")
         localRepository.queryDeletedTasks { deletedTasks in
             RCLog("1. deletedTasks = \(deletedTasks.count)")
-            self.tasksToDelete = deletedTasks
+            self.objectsToDelete = deletedTasks
             self.syncNext { (success) in
                 self.getLatestServerChanges(completion)
             }
@@ -36,16 +36,16 @@ class RCSync<T> {
     // Send to CloudKit the changes recursivelly then call the completion block
     fileprivate func syncNext (_ completion: @escaping ((_ success: Bool) -> Void)) {
         
-        var task = tasksToSave.first
+        var task = objectsToSave.first
         if task != nil {
-            tasksToSave.remove(at: 0)
+            objectsToSave.remove(at: 0)
             saveTask(task!, completion: { (success) in
                 self.syncNext(completion)
             })
         } else {
-            task = tasksToDelete.first
+            task = objectsToDelete.first
             if task != nil {
-                tasksToDelete.remove(at: 0)
+                objectsToDelete.remove(at: 0)
                 deleteTask(task!, completion: { (success) in
                     self.syncNext(completion)
                 })
@@ -79,7 +79,7 @@ class RCSync<T> {
         }
     }
     
-    func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
+    fileprivate func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         
         RCLog("2. getLatestServerChanges")
         remoteRepository.queryUpdates { changedTasks, deletedTasksIds, error in
