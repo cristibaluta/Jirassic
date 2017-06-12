@@ -26,21 +26,22 @@
                                                                 name:@"killme" 
                                                               object:appIdentifier];
         
-//        BOOL launched = [[NSWorkspace sharedWorkspace] launchApplication:@"Jirassic.app"];
-//        NSLog(@"Jirassic launched %i", launched);
+        BOOL launched = [[NSWorkspace sharedWorkspace] launchApplication:@"Jirassic.app"];
+        NSLog(@"Jirassic launched %i", launched);
         
-        NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-        NSURL *url = [NSURL fileURLWithPath:[workspace fullPathForApplication:@"Jirassic.app"]];
-        NSLog(@"Jirassic url %@", url);
-        NSError *error = nil;
-//        NSArray *arguments = @[@"launchedByLauncher"];
-        NSDictionary *config = @{NSWorkspaceLaunchConfigurationEnvironment: @{@"launchedByLauncher": @YES}};
-        [workspace launchApplicationAtURL:url
-                                  options:NSWorkspaceLaunchDefault
-                            configuration:config
-                                    error:&error];
+//        NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+//        NSURL *url = [NSURL fileURLWithPath:[workspace fullPathForApplication:@"Jirassic.app"]];
+//        NSLog(@"Jirassic url %@", url);
+//        NSError *error = nil;
+////        NSArray *arguments = @[@"launchedByLauncher"];
+//        NSDictionary *config = @{NSWorkspaceLaunchConfigurationEnvironment: @{@"launchedByLauncher": @YES}};
+//        [workspace launchApplicationAtURL:url
+//                                  options:NSWorkspaceLaunchDefault
+//                            configuration:config
+//                                    error:&error];
+    } else {
+        [self terminate];
     }
-    [self terminate];
 }
 
 - (void)terminate {
