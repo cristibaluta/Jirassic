@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="17A264c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,17 +20,8 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
                         </imageView>
-                        <textField hidden="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAU-4V-M8t">
-                            <rect key="frame" x="2" y="-29" width="51" height="15"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="" id="dAn-XR-e3z">
-                                <font key="font" metaFont="system" size="10"/>
-                                <color key="textColor" red="0.23037979813145845" green="0.3580610079360585" blue="0.53380055877382193" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                            <rect key="frame" x="60" y="19" width="128" height="20"/>
+                        <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                            <rect key="frame" x="30" y="19" width="158" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Bd8-bF-FUz"/>
                             </constraints>
@@ -43,8 +34,8 @@
                                 <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
                             </connections>
                         </textField>
-                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                            <rect key="frame" x="60" y="2" width="128" height="17"/>
+                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
+                            <rect key="frame" x="30" y="2" width="158" height="17"/>
                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" title="Notes" placeholderString="What did you do in this task?" drawsBackground="YES" id="PIu-Xg-tz0">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -102,7 +93,7 @@
                         <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="mpD-Z5-CaT" secondAttribute="trailing" constant="-2" id="EHw-5b-Lpz"/>
                         <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="137" id="GXk-TS-g3i"/>
                         <constraint firstAttribute="bottom" secondItem="mpD-Z5-CaT" secondAttribute="bottom" constant="5" id="SdS-02-fCE"/>
-                        <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="nlM-Fp-eXf" secondAttribute="leading" constant="60" id="UnF-KY-oDx"/>
+                        <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="nlM-Fp-eXf" secondAttribute="leading" constant="30" id="UnF-KY-oDx"/>
                         <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" constant="1" id="VTp-j8-otJ"/>
                         <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" id="Zxl-PT-glX"/>
                         <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="4" id="i80-2L-3fg"/>
@@ -115,7 +106,7 @@
                         <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="2" id="yz7-nz-o73"/>
                     </constraints>
                 </customView>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
                     <rect key="frame" x="14" y="4" width="51" height="10"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="9iT-gw-b28"/>
