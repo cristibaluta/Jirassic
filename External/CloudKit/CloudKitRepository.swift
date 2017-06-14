@@ -28,7 +28,7 @@ class CloudKitRepository {
     func initDB() {
         
         privateDB = container.privateCloudDatabase
-        customZone = CKRecordZone(zoneName: "TasksZone_Test")
+        customZone = CKRecordZone(zoneName: "TasksZone")
         
         privateDB!.save(customZone!) { (recordZone, err) in
             RCLogO(recordZone)
