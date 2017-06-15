@@ -59,7 +59,6 @@
 		280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
 		280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
 		280D70FA1ED0E7B0005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280D70F91ED0E7B0005D2689 /* CloudKit.framework */; };
-		280D71011ED21A4F005D2689 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 280D71001ED21A4F005D2689 /* Splash@2x.png */; };
 		280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		280D71031ED35A3E005D2689 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		280D71181ED4CFCB005D2689 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
@@ -386,7 +385,6 @@
 		280D70F91ED0E7B0005D2689 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		280D70FD1ED20CBE005D2689 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		280D70FF1ED21989005D2689 /* Jirassic Scrum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic Scrum.entitlements"; sourceTree = "<group>"; };
-		280D71001ED21A4F005D2689 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
 		280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDaysInteractorTests.swift; sourceTree = "<group>"; };
 		280D711D1ED5EE7F005D2689 /* Jirassic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jirassic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		280D71BA1ED60677005D2689 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -823,7 +821,6 @@
 				4065D34F1DD3B44200B73201 /* TasksViewController.swift */,
 				4065D34E1DD3B44200B73201 /* TaskCell.swift */,
 				4065D34D1DD3B44200B73201 /* NonTaskCell.swift */,
-				280D71001ED21A4F005D2689 /* Splash@2x.png */,
 				4065D3491DD3B44200B73201 /* Images.xcassets */,
 				280D70FD1ED20CBE005D2689 /* Info.plist */,
 				280D70FF1ED21989005D2689 /* Jirassic Scrum.entitlements */,
@@ -1295,7 +1292,6 @@
 				280D70C91ECFE5B1005D2689 /* LaunchScreen.xib in Resources */,
 				280D70CD1ECFE5DC005D2689 /* Images.xcassets in Resources */,
 				280D70CA1ECFE5BD005D2689 /* Main.storyboard in Resources */,
-				280D71011ED21A4F005D2689 /* Splash@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
