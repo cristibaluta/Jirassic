@@ -1730,7 +1730,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
@@ -1748,7 +1748,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.Jirassic.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
