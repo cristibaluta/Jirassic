@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "17.04.01"
+let appVersion = "17.06.14"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -31,7 +31,9 @@ enum Command: String {
 }
 
 func printHelp() {
+    print("")
     print("jirassic \(appVersion) - (c)2017 Imagin soft")
+    print("")
     print("Usage:")
     print("     list [yyyy.mm.dd] If date is missing list tasks from today")
     print("     reports [yyyy.mm.dd] [-no-round] If date is missing list reports from today")
@@ -42,7 +44,7 @@ func printHelp() {
 
 let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
 let libraryDirectory = urls.first!
-let jirassicSandboxedAppSupportDir = libraryDirectory.appendingPathComponent("Containers/com.ralcr.Jirassic.osx/Data/Library/Application Support/Jirassic")
+let jirassicSandboxedAppSupportDir = libraryDirectory.appendingPathComponent("Containers/com.jirassic.macos/Data/Library/Application Support/Jirassic")
 //print(urls)
 //print(jirassicSandboxedAppSupportDir)
 // /Users/Cristian/Library/Containers/com.ralcr.Jirassic.osx/Data/Library/Application%20Support/Jirassic/
@@ -166,7 +168,7 @@ func insertIssue (arguments: [String]) {
     )
 //    print(task)
     let saveInteractor = TaskInteractor(repository: localRepository)
-    saveInteractor.saveTask(task, completion: {_ in 
+    saveInteractor.saveTask(task, allowSyncing: false, completion: {_ in 
         
     })
     
@@ -200,14 +202,15 @@ func insert (taskType: Command, arguments: [String]) {
     if let duration = arguments.first {
         if let d = Double(duration) {
             if d > 0 {
-                task?.startDate = task?.endDate.addingTimeInterval(d)
+                let startDate = task?.endDate.addingTimeInterval(d)
+                task?.startDate = startDate
             }
         }
     }
     
 //    print(task!)
     let saveInteractor = TaskInteractor(repository: localRepository)
-    saveInteractor.saveTask(task!, completion: { _ in })
+    saveInteractor.saveTask(task!, allowSyncing: false, completion: { _ in })
     
     print(taskType.rawValue.capitalized + " saved")
 }
