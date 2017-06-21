@@ -87,15 +87,14 @@ class BrowserNotification {
             RCLog(url)
 //            RCLog(title)
             
-            let settings = localRepository.settings()
-            
-            // Check codereview
-            
-            let coderevLink = settings.codeRevLink != "" ? settings.codeRevLink : self.stashUrlEreg
-            let coderevRegex = try! NSRegularExpression(pattern: coderevLink, options: [])
-            var matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
-            
-            if matches.count > 0 && self.isInCodeRev() {
+            if self.isCodeRevLink(url) {
+                if self.isWastingTime() {
+                    self.handleWastingTimeEnd()
+                }
+                if !self.isInCodeRev() {
+                    self.handleCodeRevStart()
+                }
+                // Store the task you are reviewing
                 let regex = try! NSRegularExpression(pattern: self.taskIdEreg, options: [])
                 let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.characters.count))
                 if let match = match {
@@ -104,21 +103,22 @@ class BrowserNotification {
                         self.reviewedTasks.append(taskNumber)
                     }
                 }
-                match != nil ? self.handleCodeRevStart() : self.handleCodeRevEnd()
             }
-                
-            // Check wasting timeIntervalSince
-            
-            else if matches.count == 0 {
-                for link in settings.wasteLinks {
-                    let regex = try! NSRegularExpression(pattern: link, options: [])
-                    matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
-                    if matches.count > 0 {
-                        
-                        break
-                    }
+            else if self.isWastingTimeLink(url) {
+                if self.isInCodeRev() {
+                    self.handleCodeRevEnd()
                 }
-                matches.count > 0 ? self.handleWastingTimeStart() : self.handleWastingTimeEnd()
+                if !self.isWastingTime() {
+                    self.handleWastingTimeStart()
+                }
+            }
+            else {
+                if self.isInCodeRev() {
+                    self.handleCodeRevEnd()
+                }
+                if self.isWastingTime() {
+                    self.handleWastingTimeEnd()
+                }
             }
         })
     }
@@ -131,6 +131,7 @@ extension BrowserNotification {
         guard !isInCodeRev() else {
             return
         }
+        taskType = .coderev
         startDate = Date()
         reviewedTasks = [String]()
         codeReviewDidStart?()
@@ -141,16 +142,25 @@ extension BrowserNotification {
         guard isInCodeRev() else {
             return
         }
-        taskType = .coderev
         self.endDate = Date()
         let settings = localRepository.settings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= Double(settings.minCodeRevDuration) {
+        if duration >= Double(settings.minCodeRevDuration).minToSec {
             self.codeReviewDidEnd?()
         } else {
-            RCLog("Discard code review session with duration \(duration) < \(settings.minCodeRevDuration)")
+            RCLog("Discard code review session with duration \(duration) < \(Double(settings.minCodeRevDuration).minToSec)")
         }
         startDate = nil
+    }
+    
+    fileprivate func isCodeRevLink (_ url: String) -> Bool {
+        
+        let settings = localRepository.settings()
+        let coderevLink = settings.codeRevLink != "" ? settings.codeRevLink : self.stashUrlEreg
+        let coderevRegex = try! NSRegularExpression(pattern: coderevLink, options: [])
+        let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
+        
+        return matches.count > 0
     }
     
     fileprivate func isInCodeRev() -> Bool {
@@ -178,12 +188,25 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings: Settings = SettingsInteractor().getAppSettings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= Double(settings.minWasteDuration) {
+        if duration >= Double(settings.minWasteDuration).minToSec {
             self.wastingTimeDidEnd?()
         } else {
-            RCLog("Discard wasting time session with duration \(duration) < \(settings.minWasteDuration)")
+            RCLog("Discard wasting time session with duration \(duration) < \(Double(settings.minWasteDuration).minToSec)")
         }
         startDate = nil
+    }
+    
+    fileprivate func isWastingTimeLink (_ url: String) -> Bool {
+        
+        let settings = localRepository.settings()
+        for link in settings.wasteLinks {
+            let regex = try! NSRegularExpression(pattern: link, options: [])
+            let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
+            if matches.count > 0 {
+                return true
+            }
+        }
+        return false
     }
     
     fileprivate func isWastingTime() -> Bool {
