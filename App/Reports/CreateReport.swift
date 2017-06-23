@@ -31,7 +31,7 @@ extension CreateReport {
         
         var arr = [Task]()
         var task = tasks.first!
-        var previousDate = task.endDate
+        var previousEndDate = task.endDate
         arr.append(task)
         
         for i in 1..<tasks.count {
@@ -43,13 +43,13 @@ extension CreateReport {
                 // Extract them in front of the actual task. This will take from the time of the actual task
                 let duration = task.endDate.timeIntervalSince(startDate)
                 task.startDate = nil
-                task.endDate = previousDate.addingTimeInterval(duration)
+                task.endDate = previousEndDate.addingTimeInterval(duration)
                 arr.append(task)
-                previousDate = task.endDate
+                previousEndDate = task.endDate
 //                print("inlined \(startDate)")
             } else {
                 arr.append(task)
-                previousDate = task.endDate
+                previousEndDate = task.endDate
             }
         }
         return arr
@@ -62,14 +62,16 @@ extension CreateReport {
         var lastTaskEndDate = tasks.first!.endDate
         
         for task in tasks {
-            guard isTrackingAllowed(taskType: task.taskType) else {
+            if isTrackingAllowed(taskType: task.taskType) {
+                var tempTask = task
+                tempTask.endDate = task.endDate.addingTimeInterval(-untrackedDuration)
+                arr.append(tempTask)
+                lastTaskEndDate = tempTask.endDate
+                untrackedDuration = 0.0
+            } else {
                 untrackedDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
-                continue
+                lastTaskEndDate = task.endDate
             }
-            var tempTask = task
-            tempTask.endDate = task.endDate.addingTimeInterval(-untrackedDuration)
-            arr.append(tempTask)
-            lastTaskEndDate = tempTask.endDate
         }
         return arr
     }
