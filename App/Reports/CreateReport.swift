@@ -59,18 +59,16 @@ extension CreateReport {
         
         var arr = [Task]()
         var untrackedDuration = 0.0
-        var lastTaskEndDate = tasks.first!.endDate
+        var previousTaskOriginalEndDate = tasks.first!.endDate
         
         for task in tasks {
+            previousTaskOriginalEndDate = task.endDate
             if isTrackingAllowed(taskType: task.taskType) {
                 var tempTask = task
                 tempTask.endDate = task.endDate.addingTimeInterval(-untrackedDuration)
                 arr.append(tempTask)
-                lastTaskEndDate = tempTask.endDate
-                untrackedDuration = 0.0
             } else {
-                untrackedDuration += task.endDate.timeIntervalSince(lastTaskEndDate)
-                lastTaskEndDate = task.endDate
+                untrackedDuration += task.endDate.timeIntervalSince(previousTaskOriginalEndDate)
             }
         }
         return arr
