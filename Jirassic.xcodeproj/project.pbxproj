@@ -61,7 +61,6 @@
 		280D70FA1ED0E7B0005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280D70F91ED0E7B0005D2689 /* CloudKit.framework */; };
 		280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		280D71031ED35A3E005D2689 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
-		280D71181ED4CFCB005D2689 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		280D712C1ED6043D005D2689 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
 		280D712D1ED6043D005D2689 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
 		280D712E1ED6043D005D2689 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31A1DD3B44200B73201 /* Settings.swift */; };
@@ -183,6 +182,7 @@
 		28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
+		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -400,6 +400,7 @@
 		28577EB41E8AF08F002B07FD /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -1622,7 +1623,7 @@
 				4065D41F1DD4561A00B73201 /* TaskCellTests.swift in Sources */,
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
 				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
-				280D71181ED4CFCB005D2689 /* ReadDaysInteractorTests.swift in Sources */,
+				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
@@ -2110,9 +2111,10 @@
 		4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */,
 				4065D3911DD3B44200B73201 /* Jirassic.xcdatamodel */,
 			);
-			currentVersion = 4065D3911DD3B44200B73201 /* Jirassic.xcdatamodel */;
+			currentVersion = 287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */;
 			path = Jirassic.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

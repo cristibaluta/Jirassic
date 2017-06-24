@@ -20,7 +20,7 @@ class TaskInteractorTests: XCTestCase {
         XCTAssert(tasksBeforeInsert.count == 0, "We added one task, we should receive one task")
         
         let task = Task(dateEnd: Date(), type: TaskType.issue)
-        interactor.saveTask(task, completion: { task in })
+        interactor.saveTask(task, allowSyncing: false, completion: { task in })
         
         let tasks = repository.queryTasksInDay(Date())
         XCTAssert(tasks.count == 1, "We added one task, we should receive one task")

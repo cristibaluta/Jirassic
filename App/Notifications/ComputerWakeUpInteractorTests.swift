@@ -26,7 +26,7 @@ class ComputerWakeUpInteractorTests: XCTestCase {
         
         let task = Task(dateEnd: Date(hour: 9, minute: 0), type: .startDay)
         let saveInteractor = TaskInteractor(repository: repository)
-        saveInteractor.saveTask(task, completion: { task in })
+        saveInteractor.saveTask(task, allowSyncing: false, completion: { task in })
         
         let interactor = ComputerWakeUpInteractorMock(repository: repository)
         
