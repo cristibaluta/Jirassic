@@ -45,15 +45,18 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func checkExtensions() {
         
-        extensions.getVersions { (versions) in
+        extensions.getVersions { [weak self] (versions) in
             
+            guard let userInterface = self?.userInterface else {
+                return
+            }
             let compatibility = Versioning.isCompatible(versions)
-            self.userInterface!.setJirassicStatus(compatible: compatibility.jirassicCmd, 
-                                                  scriptInstalled: versions.shellScript != "" )
-            self.userInterface!.setJitStatus(compatible: compatibility.jitCmd, 
-                                             scriptInstalled: versions.shellScript != "" )
-            self.userInterface!.setCodeReviewStatus(compatible: compatibility.browserScript, 
-                                                    scriptInstalled: versions.browserScript != "" )
+            userInterface.setJirassicStatus(compatible: compatibility.jirassicCmd, 
+                                            scriptInstalled: versions.shellScript != "" )
+            userInterface.setJitStatus(compatible: compatibility.jitCmd, 
+                                       scriptInstalled: versions.shellScript != "" )
+            userInterface.setCodeReviewStatus(compatible: compatibility.browserScript, 
+                                              scriptInstalled: versions.browserScript != "" )
         }
     }
     

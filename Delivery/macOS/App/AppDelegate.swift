@@ -97,7 +97,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         sleep.computerWakeUp = {
             
-            guard !Date().isWeekend() else {
+            let isWeekend = Date().isWeekend()
+            let isDayStarted = ReadTasksInteractor(repository: localRepository).tasksInDay(Date()).count > 0
+            guard !isWeekend || (isDayStarted && isWeekend) else {
                 RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
             }

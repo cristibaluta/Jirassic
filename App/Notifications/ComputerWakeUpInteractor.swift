@@ -10,9 +10,9 @@ import Foundation
 
 class ComputerWakeUpInteractor: RepositoryInteractor {
     
-    var settings: Settings?
+    var settings: Settings!
     let typeEstimator = TaskTypeEstimator()
-    let reader: ReadTasksInteractor?
+    let reader: ReadTasksInteractor!
     
     override init (repository: Repository) {
         settings = SettingsInteractor().getAppSettings()
@@ -27,13 +27,13 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
         if let type = estimationForDate(date) {
             if type == .startDay {
-                if settings!.trackStartOfDay {
-                    let startDate = settings!.startOfDayTime.dateByKeepingTime()
+                if settings.trackStartOfDay {
+                    let startDate = settings.startOfDayTime.dateByKeepingTime()
                     if Date() > startDate {
                         save(task: Task(dateEnd: Date(), type: TaskType.startDay))
                     }
                 }
-            } else if (type == .scrum && settings!.trackScrum) || (type == .lunch && settings!.trackLunch) {
+            } else if (type == .scrum && settings.trackScrum) || (type == .lunch && settings.trackLunch) {
                 
                 var task = Task(dateEnd: Date(), type: type)
                 task.startDate = date
@@ -44,13 +44,13 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     
     func estimationForDate (_ date: Date) -> TaskType? {
         
-		let existingTasks = reader!.tasksInDay(Date())
+		let existingTasks = reader.tasksInDay(Date())
         
         guard existingTasks.count > 0 else {
             return TaskType.startDay
         }
         
-        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date, withSettings: settings!)
+        let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(date, withSettings: settings)
         
         switch estimatedType {
         case .scrum:
@@ -64,7 +64,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             }
             break
         case .meeting:
-            if settings!.trackMeetings {
+            if settings.trackMeetings {
                 return TaskType.meeting
             }
             break
