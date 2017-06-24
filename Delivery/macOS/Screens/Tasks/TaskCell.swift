@@ -71,6 +71,7 @@ class TaskCell: NSTableRowView, CellProtocol {
         super.awakeFromNib()
 		showMouseOverControls(false)
         notesTextFieldRightConstrain!.constant = 0
+        dateEndTextField!.textColor = AppDelegate.sharedApp().theme.textColor
 	}
 }
 
@@ -96,7 +97,7 @@ extension TaskCell {
             notesTextFieldRightConstrain!.constant = 90
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
-			NSColor(calibratedWhite: 0.0, alpha: 1.0).setStroke()
+            AppDelegate.sharedApp().theme.highlightLineColor.setStroke()
 //			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 //			selectionPath.fill()
@@ -105,7 +106,7 @@ extension TaskCell {
             notesTextFieldRightConstrain!.constant = 0
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 //            NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
-            NSColor(calibratedWhite: 0.0, alpha: 0.2).setStroke()
+            AppDelegate.sharedApp().theme.lineColor.setStroke()
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 //            selectionPath.fill()
             selectionPath.stroke()

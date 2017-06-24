@@ -71,9 +71,14 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	override func awakeFromNib() {
         super.awakeFromNib()
         
-		self.butRemove.isHidden = true
-		self.butAdd.isHidden = true
-        self.butRemove.wantsLayer = true
+		butRemove.isHidden = true
+		butAdd.isHidden = true
+        butRemove.wantsLayer = true
+        dateStartTextField!.textColor = AppDelegate.sharedApp().theme.textColor
+        dateEndTextField!.textColor = AppDelegate.sharedApp().theme.textColor
+        if AppDelegate.sharedApp().theme.isDark {
+            notesTextField!.textColor = NSColor.white
+        }
 //        self.butRemove.layer?.backgroundColor = NSColor.clear.cgColor
 	}
 	
