@@ -197,6 +197,10 @@
 		2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */; };
 		2892B2AA1F0950F90085BAC2 /* RCHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A91F0950F90085BAC2 /* RCHttp.swift */; };
 		2892B2AB1F0950F90085BAC2 /* RCHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A91F0950F90085BAC2 /* RCHttp.swift */; };
+		2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
+		2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
+		2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
+		2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -422,6 +426,9 @@
 		2892B2A31F094BEF0085BAC2 /* JIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JIssue.swift; sourceTree = "<group>"; };
 		2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWorkAttribute.swift; sourceTree = "<group>"; };
 		2892B2A91F0950F90085BAC2 /* RCHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCHttp.swift; sourceTree = "<group>"; };
+		2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
+		2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -660,6 +667,16 @@
 				2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */,
 			);
 			path = Jira;
+			sourceTree = "<group>";
+		};
+		2892B2B31F0A19B70085BAC2 /* KeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */,
+				2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */,
+				2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */,
+			);
+			path = KeychainWrapper;
 			sourceTree = "<group>";
 		};
 		4055B1371E0D82A800279430 /* Frameworks */ = {
@@ -1037,6 +1054,7 @@
 		4065D3991DD3B44200B73201 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2892B2B31F0A19B70085BAC2 /* KeychainWrapper */,
 				28A9287E1E90D8BD0022AB55 /* RCSync.swift */,
 				28E896761E83845100722032 /* RCPreferences.swift */,
 				4065D39A1DD3B44200B73201 /* RCLog.swift */,
@@ -1480,6 +1498,7 @@
 				280D71611ED6043D005D2689 /* MenuBarIconView.swift in Sources */,
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
+				2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
 				280D71681ED6043D005D2689 /* TaskSuggestionViewController.swift in Sources */,
@@ -1532,6 +1551,7 @@
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				280D71B11ED6043D005D2689 /* CloudKitRepository.swift in Sources */,
 				280D71B21ED6043D005D2689 /* CloudKitRepository+Tasks.swift in Sources */,
+				2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */,
 				280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */,
 				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
@@ -1576,6 +1596,7 @@
 				28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
+				2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				2892B2AB1F0950F90085BAC2 /* RCHttp.swift in Sources */,
 				2892B2A21F094B7E0085BAC2 /* JAuthor.swift in Sources */,
@@ -1624,6 +1645,7 @@
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
 				28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */,
+				2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
