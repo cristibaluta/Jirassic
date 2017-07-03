@@ -108,6 +108,13 @@ extension Date {
         f.dateFormat = "YYYY-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
+    
+    func YYYYMMddT00() -> String {
+        let f = DateFormatter()
+        f.timeZone = TimeZone(abbreviation: "GMT")
+        f.dateFormat = "YYYY-MM-ddT00:00:00.000+0000"
+        return f.string(from: self)
+    }
 }
 
 extension Date {

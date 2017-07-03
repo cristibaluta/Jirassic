@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,7 +84,7 @@
                                                     </connections>
                                                 </button>
                                                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PFE-Rj-eXW">
-                                                    <rect key="frame" x="260" y="269" width="253" height="24"/>
+                                                    <rect key="frame" x="260" y="269" width="261" height="24"/>
                                                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="N0R-bz-bQl">
                                                         <font key="font" metaFont="system"/>
                                                         <segments>
@@ -223,7 +223,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EAs-It-4Pn">
-                                                    <rect key="frame" x="260" y="215" width="253" height="24"/>
+                                                    <rect key="frame" x="260" y="215" width="261" height="24"/>
                                                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="5" maxValue="30" doubleValue="13" tickMarkPosition="above" numberOfTickMarks="10" sliderType="linear" id="MJb-q8-BoR"/>
                                                     <connections>
                                                         <action selector="handleMinSleepDuration:" target="J1c-ZL-C5e" id="0ve-IQ-qbc"/>
@@ -264,7 +264,7 @@
                                             </constraints>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Extensions" identifier="2" id="m45-1s-GLV">
+                                    <tabViewItem label="Input" identifier="2" id="m45-1s-GLV">
                                         <view key="view" id="Emo-no-xIp">
                                             <rect key="frame" x="10" y="33" width="468" height="320"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -549,6 +549,84 @@
                                                 <constraint firstItem="0RH-El-2HH" firstAttribute="top" secondItem="3jM-fr-ItS" secondAttribute="bottom" constant="15" id="Wzg-MB-pqt"/>
                                                 <constraint firstItem="0RH-El-2HH" firstAttribute="leading" secondItem="Emo-no-xIp" secondAttribute="leading" constant="10" id="sjo-yl-pym"/>
                                                 <constraint firstAttribute="trailing" secondItem="3jM-fr-ItS" secondAttribute="trailing" constant="10" id="tyR-GI-nqH"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Output" identifier="" id="CmN-S9-nY2">
+                                        <view key="view" id="7kV-hj-vtB">
+                                            <rect key="frame" x="10" y="33" width="468" height="320"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <box autoresizesSubviews="NO" toolTip="Time spent in stash in a browser is counted as code review time" borderType="line" title="Jira Tempo" translatesAutoresizingMaskIntoConstraints="NO" id="V11-Ub-ryf">
+                                                    <rect key="frame" x="7" y="190" width="454" height="114"/>
+                                                    <view key="contentView" id="I80-FR-sdL">
+                                                        <rect key="frame" x="1" y="1" width="452" height="98"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9l5-i0-SQm">
+                                                                <rect key="frame" x="11" y="15" width="73" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Credentials" id="A3B-6R-Mma">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vfe-kh-HCL">
+                                                                <rect key="frame" x="11" y="44" width="78" height="17"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira base url" id="q81-5F-4Tq">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQN-rm-vzo">
+                                                                <rect key="frame" x="11" y="69" width="304" height="18"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <buttonCell key="cell" type="check" title="Go to reports tab and press the sharing button" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2Wa-do-cgd">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                            </button>
+                                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-yh-8pM">
+                                                                <rect key="frame" x="110" y="12" width="132" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="User" bezelStyle="round" id="Ry1-TL-Cfb">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-6c-9X1">
+                                                                <rect key="frame" x="110" y="42" width="322" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Base url" bezelStyle="round" id="eE6-y8-Ybn">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQM-R1-9T4">
+                                                                <rect key="frame" x="255" y="12" width="177" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Password" bezelStyle="round" id="b0J-nk-VYE">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="WjA-3J-HMQ"/>
+                                                    </constraints>
+                                                </box>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="V11-Ub-ryf" firstAttribute="leading" secondItem="7kV-hj-vtB" secondAttribute="leading" constant="10" id="N5k-3t-LoG"/>
+                                                <constraint firstItem="V11-Ub-ryf" firstAttribute="top" secondItem="7kV-hj-vtB" secondAttribute="top" constant="16" id="hRt-OY-leU"/>
+                                                <constraint firstAttribute="trailing" secondItem="V11-Ub-ryf" secondAttribute="trailing" constant="10" id="xyo-Fo-hWW"/>
                                             </constraints>
                                         </view>
                                     </tabViewItem>
