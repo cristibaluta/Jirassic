@@ -32,7 +32,7 @@ extension JiraRepository {
     
     fileprivate func reportToJReport(_ report: Report) -> JReport {
         
-        let author = JAuthor(avatar: "", displayName: "", name: "", _self: "")
+        let author = JAuthor(name: self.user)
         let issue = JIssue(key: "", projectId: 0)
         let jreport = JReport(comment: report.notes, 
                               dateStarted: "", 

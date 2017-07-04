@@ -10,8 +10,5 @@ import Foundation
 
 struct JAuthor {
     
-    var avatar: String
-    var displayName: String
     var name: String
-    var _self: String
 }
