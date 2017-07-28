@@ -13,6 +13,7 @@ extension JiraRepository {
     func fetchReports (ofDay day: Date, completion: (() -> Void)?) {
         // https://jira.fortech.ro/rest/tempo-timesheets/3/worklogs/?dateFrom=2017-06-01&dateTo=2017-06-30&username=cristianbal
         
+        
     }
     
     func deleteReports (ofDay day: Date, completion: ((Bool) -> Void)?) {
