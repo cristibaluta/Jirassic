@@ -353,6 +353,13 @@
 			remoteGlobalIDString = 4065D3031DD3A1AA00B73201;
 			remoteInfo = Jirassic;
 		};
+		566C09141F2B985C0058D90A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4065D2FC1DD3A1AA00B73201 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 280D711C1ED5EE7F005D2689;
+			remoteInfo = "Jirassic macOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1246,6 +1253,7 @@
 			);
 			dependencies = (
 				4065D4081DD4532100B73201 /* PBXTargetDependency */,
+				566C09151F2B985C0058D90A /* PBXTargetDependency */,
 			);
 			name = JirassicTests;
 			productName = JirassicTests;
@@ -1784,6 +1792,11 @@
 			isa = PBXTargetDependency;
 			target = 4065D3031DD3A1AA00B73201 /* Jirassic AppStore */;
 			targetProxy = 4065D4071DD4532100B73201 /* PBXContainerItemProxy */;
+		};
+		566C09151F2B985C0058D90A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 280D711C1ED5EE7F005D2689 /* Jirassic macOS */;
+			targetProxy = 566C09141F2B985C0058D90A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
