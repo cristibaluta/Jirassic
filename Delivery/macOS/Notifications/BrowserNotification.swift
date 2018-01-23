@@ -48,7 +48,7 @@ class BrowserNotification {
     
     @objc func handleTimer (timer: Timer) {
         
-        let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
+        let app: NSRunningApplication = NSWorkspace.shared.frontmostApplication!
         let appId = app.bundleIdentifier!
 //        RCLogO(appId)
         
@@ -96,7 +96,7 @@ class BrowserNotification {
                 }
                 // Store the task you are reviewing
                 let regex = try! NSRegularExpression(pattern: self.taskIdEreg, options: [])
-                let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.characters.count))
+                let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.count))
                 if let match = match {
                     let taskNumber = (title as NSString).substring(with: match.range)
                     if !self.reviewedTasks.contains(taskNumber) {
@@ -158,7 +158,7 @@ extension BrowserNotification {
         let settings = localRepository.settings()
         let coderevLink = settings.codeRevLink != "" ? settings.codeRevLink : self.stashUrlEreg
         let coderevRegex = try! NSRegularExpression(pattern: coderevLink, options: [])
-        let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
+        let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
         
         return matches.count > 0
     }
@@ -201,7 +201,7 @@ extension BrowserNotification {
         let settings = localRepository.settings()
         for link in settings.wasteLinks {
             let regex = try! NSRegularExpression(pattern: link, options: [])
-            let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
+            let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
             if matches.count > 0 {
                 return true
             }

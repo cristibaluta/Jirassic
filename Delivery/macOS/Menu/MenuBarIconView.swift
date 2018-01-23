@@ -22,13 +22,13 @@ class MenuBarIconView : NSView {
         }
         set {
             _isSelected = newValue
-            self.image = NSImage(named: isDark == true || _isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
+            self.image = NSImage(named: NSImage.Name(rawValue: isDark == true || _isSelected ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal"))!
             self.needsDisplay = true
         }
     }
     var isDark: Bool? {
         didSet {
-            self.image = NSImage(named: isDark == true ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal")!
+            self.image = NSImage(named: NSImage.Name(rawValue: isDark == true ? "MenuBarIcon-Selected" : "MenuBarIcon-Normal"))!
             self.needsDisplay = true
         }
     }
@@ -36,9 +36,9 @@ class MenuBarIconView : NSView {
     init (item: NSStatusItem) {
         
         self.item = item
-        self.image = NSImage(named: "MenuBarIcon-Normal")!
+        self.image = NSImage(named: NSImage.Name(rawValue: "MenuBarIcon-Normal"))!
         
-        let thickness = NSStatusBar.system().thickness
+        let thickness = NSStatusBar.system.thickness
         let rect = CGRect(x: 0, y: 0, width: thickness, height: thickness)
         
         super.init(frame: rect)

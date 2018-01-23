@@ -19,6 +19,7 @@ enum TaskType: Int {
     case waste = 6
     case learning = 7
     case coderev = 8
+    case endDay = 9
 }
 
 enum TaskSubtype: Int {
@@ -94,6 +95,7 @@ extension Task {
 		switch (type) {
 			case TaskType.issue:	subtype = .issueEnd
 			case TaskType.startDay:	self.notes = "Working day started"
+            case TaskType.endDay:   self.notes = "Working day ended"
 			case TaskType.scrum:	subtype = .scrumEnd
 			case TaskType.lunch:	subtype = .lunchEnd
 			case TaskType.meeting:	subtype = .meetingEnd

@@ -69,14 +69,14 @@ class ReportCell: NSTableRowView, CellProtocol {
     
     override func draw (_ dirtyRect: NSRect) {
         bgColor.set()
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
     }
     
     @IBAction func handleCopyButton (_ sender: NSButton) {
         
         let string = "\(taskNrTextField!.stringValue)\n\(notesTextField!.stringValue)"
-        NSPasteboard.general().clearContents()
-        NSPasteboard.general().writeObjects([string as NSPasteboardWriting])
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
     }
     
 }
@@ -120,7 +120,7 @@ extension ReportCell {
         if (trackingArea == nil) {
             trackingArea = NSTrackingArea(
                 rect: self.bounds,
-                options: [NSTrackingAreaOptions.inVisibleRect, .activeAlways, .mouseEnteredAndExited],
+                options: [NSTrackingArea.Options.inVisibleRect, NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited],
                 owner: self,
                 userInfo: nil
             )

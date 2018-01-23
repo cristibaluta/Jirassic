@@ -88,7 +88,7 @@ extension TasksViewController {
     }
     
     @IBAction func handleQuitAppButton (_ sender: NSButton) {
-        NSApplication.shared().terminate(nil)
+        NSApplication.shared.terminate(nil)
     }
     
     @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
@@ -216,7 +216,7 @@ extension TasksViewController {
 			object: nil)
 	}
 	
-	func handleNewTaskAdded (_ notif: Notification) {
+	@objc func handleNewTaskAdded (_ notif: Notification) {
         presenter?.reloadData()
 	}
 }

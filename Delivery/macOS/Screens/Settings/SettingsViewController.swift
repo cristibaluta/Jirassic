@@ -61,9 +61,9 @@ class SettingsViewController: NSViewController {
         
         #if !APPSTORE
             butBackup.isEnabled = false
-            butBackup.state = NSOffState
+            butBackup.state = NSControl.StateValue.off
             butEnableLaunchAtStartup.isEnabled = false
-            butEnableLaunchAtStartup.state = NSOffState
+            butEnableLaunchAtStartup.state = NSControl.StateValue.off
         #endif
     }
     
@@ -72,15 +72,15 @@ class SettingsViewController: NSViewController {
         
         let settings = Settings(
             
-            autotrack: butAutotrack.state == NSOnState,
+            autotrack: butAutotrack.state == NSControl.StateValue.on,
             autotrackingMode: TrackingMode(rawValue: autotrackingModeSegmentedControl.selectedSegment)!,
-            trackLunch: butTrackLunch.state == NSOnState,
-            trackScrum: butTrackScrum.state == NSOnState,
-            trackMeetings: true,//butTrackMeetings.state == NSOnState,
-            trackCodeReviews: butTrackCodeReviews.state == NSOnState,
-            trackWastedTime: butTrackWastedTime.state == NSOnState,
-            trackStartOfDay: butTrackStartOfDay.state == NSOnState,
-            enableBackup: butBackup.state == NSOnState,
+            trackLunch: butTrackLunch.state == NSControl.StateValue.on,
+            trackScrum: butTrackScrum.state == NSControl.StateValue.on,
+            trackMeetings: true,//butTrackMeetings.state == NSControl.StateValue.on,
+            trackCodeReviews: butTrackCodeReviews.state == NSControl.StateValue.on,
+            trackWastedTime: butTrackWastedTime.state == NSControl.StateValue.on,
+            trackStartOfDay: butTrackStartOfDay.state == NSControl.StateValue.on,
+            enableBackup: butBackup.state == NSControl.StateValue.on,
             startOfDayTime: startOfDayTimePicker.dateValue,
             endOfDayTime: endOfDayTimePicker.dateValue,
             lunchTime: lunchTimePicker.dateValue,
@@ -103,24 +103,24 @@ extension SettingsViewController {
 	
     @IBAction func handleInstallJitButton (_ sender: NSButton) {
         #if APPSTORE
-            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+            NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
         #else
 //            presenter?.installJit()
-            NSWorkspace.shared().open( URL(string: "https://github.com/ralcr/Jit")!)
+            NSWorkspace.shared.open( URL(string: "https://github.com/ralcr/Jit")!)
         #endif
     }
     
     @IBAction func handleInstallJirassicButton (_ sender: NSButton) {
         #if APPSTORE
-            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+            NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
         #else
 //            presenter?.installJirassic()
-            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+            NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
         #endif
     }
     
     @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {
-        NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
+        NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
     }
     
 	@IBAction func handleSaveButton (_ sender: NSButton) {
@@ -129,15 +129,15 @@ extension SettingsViewController {
 	}
     
     @IBAction func handleAutoTrackButton (_ sender: NSButton) {
-        autotrackingModeSegmentedControl.isEnabled = sender.state == NSOnState
+        autotrackingModeSegmentedControl.isEnabled = sender.state == NSControl.StateValue.on
     }
     
     @IBAction func handleBackupButton (_ sender: NSButton) {
-        presenter!.enabledBackup(sender.state == NSOnState)
+        presenter!.enabledBackup(sender.state == NSControl.StateValue.on)
     }
     
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
-        presenter!.enabledLaunchAtStartup(sender.state == NSOnState)
+        presenter!.enabledLaunchAtStartup(sender.state == NSControl.StateValue.on)
     }
     
     @IBAction func handleMinSleepDuration (_ sender: NSSlider) {
@@ -166,10 +166,10 @@ extension SettingsViewController: SettingsPresenterOutput {
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
         
         if scriptInstalled {
-            jirassicImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
+            jirassicImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
             jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Applescript installed but jirassic cmd is outdated/uninstalled"
         } else {
-            jirassicImageView.image = NSImage(named: NSImageNameStatusUnavailable)
+            jirassicImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             jirassicTextField.stringValue = "Not installed yet"
         }
         butInstallJirassic.isHidden = scriptInstalled && compatible
@@ -178,10 +178,10 @@ extension SettingsViewController: SettingsPresenterOutput {
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
         
         if scriptInstalled {
-            jitImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
+            jitImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
             jitTextField.stringValue = compatible ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info" : "Applescript installed but jit cmd is outdated/uninstalled"
         } else {
-            jitImageView.image = NSImage(named: NSImageNameStatusUnavailable)
+            jitImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             jitTextField.stringValue = "Not installed yet"
         }
         butInstallJit.isHidden = scriptInstalled && compatible
@@ -190,10 +190,10 @@ extension SettingsViewController: SettingsPresenterOutput {
     func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool) {
         
         if scriptInstalled {
-            coderevImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
+            coderevImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusUnavailable)
             coderevTextField.stringValue = compatible ? "Jirassic can read the url of your browser and it will log time based on it" : "Applescript installed but outdated"
         } else {
-            coderevImageView.image = NSImage(named: NSImageNameStatusUnavailable)
+            coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             coderevTextField.stringValue = "Not installed yet"
         }
         butInstallCoderev.isHidden = scriptInstalled && compatible
@@ -203,13 +203,13 @@ extension SettingsViewController: SettingsPresenterOutput {
         
         // Tracking
         
-        butAutotrack.state = settings.autotrack ? NSOnState : NSOffState
+        butAutotrack.state = settings.autotrack ? NSControl.StateValue.on : NSControl.StateValue.off
         autotrackingModeSegmentedControl.selectedSegment = settings.autotrackingMode.rawValue
         minSleepDurationSlider.integerValue = settings.minSleepDuration
         handleMinSleepDuration(minSleepDurationSlider)
-        butTrackStartOfDay.state = settings.trackStartOfDay ? NSOnState : NSOffState
-        butTrackLunch.state = settings.trackLunch ? NSOnState : NSOffState
-        butTrackScrum.state = settings.trackScrum ? NSOnState : NSOffState
+        butTrackStartOfDay.state = settings.trackStartOfDay ? NSControl.StateValue.on : NSControl.StateValue.off
+        butTrackLunch.state = settings.trackLunch ? NSControl.StateValue.on : NSControl.StateValue.off
+        butTrackScrum.state = settings.trackScrum ? NSControl.StateValue.on : NSControl.StateValue.off
         
         startOfDayTimePicker.dateValue = settings.startOfDayTime
         endOfDayTimePicker.dateValue = settings.endOfDayTime
@@ -218,8 +218,8 @@ extension SettingsViewController: SettingsPresenterOutput {
         
         // Extensions
         
-        butTrackCodeReviews.state = settings.trackCodeReviews ? NSOnState : NSOffState
-        butTrackWastedTime.state = settings.trackWastedTime ? NSOnState : NSOffState
+        butTrackCodeReviews.state = settings.trackCodeReviews ? NSControl.StateValue.on : NSControl.StateValue.off
+        butTrackWastedTime.state = settings.trackWastedTime ? NSControl.StateValue.on : NSControl.StateValue.off
         codeReviewsLinkTextField.stringValue = settings.codeRevLink
         wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
         minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration
@@ -229,15 +229,15 @@ extension SettingsViewController: SettingsPresenterOutput {
         
         // Generic
         
-        butBackup.state = settings.enableBackup ? NSOnState : NSOffState
+        butBackup.state = settings.enableBackup ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     func enabledLaunchAtStartup (_ enabled: Bool) {
-        butEnableLaunchAtStartup.state = enabled ? NSOnState : NSOffState
+        butEnableLaunchAtStartup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     func enabledBackup (_ enabled: Bool, title: String) {
-        butBackup.state = enabled ? NSOnState : NSOffState
+        butBackup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         butBackup.title = title
     }
     

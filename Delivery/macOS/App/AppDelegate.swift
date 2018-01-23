@@ -10,6 +10,7 @@ import Cocoa
 
 var localRepository: Repository!
 var remoteRepository: Repository?
+let hookup = Hookup()
 
 enum LocalPreferences: String, RCPreferencesProtocol {
     
@@ -48,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     fileprivate var animatesOpen = true
 	
     class func sharedApp() -> AppDelegate {
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate
     }
     
 	override init() {

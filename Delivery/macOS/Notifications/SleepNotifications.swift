@@ -23,10 +23,10 @@ class SleepNotifications: NSObject {
 //			name: NSNotification.Name.NSWorkspaceWillSleep,
 //			object: nil)
         
-        NSWorkspace.shared().notificationCenter.addObserver(
+        NSWorkspace.shared.notificationCenter.addObserver(
             self,
             selector: #selector(SleepNotifications.receiveSleepNotification(_:)),
-			name: NSNotification.Name.NSWorkspaceScreensDidSleep,
+			name: NSWorkspace.screensDidSleepNotification,
 			object: nil)
 		
 //        NSWorkspace.shared().notificationCenter.addObserver(
@@ -35,24 +35,24 @@ class SleepNotifications: NSObject {
 //			name: NSNotification.Name.NSWorkspaceDidWake,
 //			object: nil)
         
-        NSWorkspace.shared().notificationCenter.addObserver(
+        NSWorkspace.shared.notificationCenter.addObserver(
             self,
             selector: #selector(SleepNotifications.receiveWakeNotification(_:)),
-			name: NSNotification.Name.NSWorkspaceScreensDidWake,
+			name: NSWorkspace.screensDidWakeNotification,
 			object: nil)
 	}
 	
 	deinit {
-		NSWorkspace.shared().notificationCenter.removeObserver(self)
+		NSWorkspace.shared.notificationCenter.removeObserver(self)
 	}
 	
-	func receiveSleepNotification (_ notif: Notification) {
+	@objc func receiveSleepNotification (_ notif: Notification) {
 		RCLogO(notif)
 		lastSleepDate = Date()
 		computerWentToSleep?()
 	}
 	
-	func receiveWakeNotification (_ notif: Notification) {
+	@objc func receiveWakeNotification (_ notif: Notification) {
 		RCLogO(notif)
 		computerWakeUp?()
 	}

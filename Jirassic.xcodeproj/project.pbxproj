@@ -182,6 +182,8 @@
 		28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
+		28667B5D1FCB7017007B98E3 /* Hookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* Hookup.swift */; };
+		28667B5E1FCB7017007B98E3 /* Hookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* Hookup.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -418,6 +420,7 @@
 		28577EB41E8AF08F002B07FD /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		28667B5C1FCB7017007B98E3 /* Hookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hookup.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* Jira+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Jira+Reports.swift"; sourceTree = "<group>"; };
@@ -656,6 +659,30 @@
 			path = sqlite;
 			sourceTree = "<group>";
 		};
+		28667B591FCADF4E007B98E3 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				28667B5A1FCADF68007B98E3 /* JiraTempo */,
+				28667B5B1FCADF73007B98E3 /* Hookup */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		28667B5A1FCADF68007B98E3 /* JiraTempo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JiraTempo;
+			sourceTree = "<group>";
+		};
+		28667B5B1FCADF73007B98E3 /* Hookup */ = {
+			isa = PBXGroup;
+			children = (
+				28667B5C1FCB7017007B98E3 /* Hookup.swift */,
+			);
+			path = Hookup;
+			sourceTree = "<group>";
+		};
 		2892B2961F0949D70085BAC2 /* Jira */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +916,7 @@
 				4065D3641DD3B44200B73201 /* Menu */,
 				4065D3511DD3B44200B73201 /* Animations */,
 				4065D36B1DD3B44200B73201 /* Screens */,
+				28667B591FCADF4E007B98E3 /* Modules */,
 				4065D3671DD3B44200B73201 /* Notifications */,
 				405B15641DEF66EE0009871C /* Resources */,
 			);
@@ -1249,7 +1277,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
@@ -1268,6 +1296,7 @@
 					280D711C1ED5EE7F005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -1289,7 +1318,7 @@
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1306,6 +1335,7 @@
 					4065D4011DD4532100B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 						TestTargetID = 4065D3031DD3A1AA00B73201;
 					};
@@ -1474,6 +1504,7 @@
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
+				28667B5D1FCB7017007B98E3 /* Hookup.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
@@ -1613,6 +1644,7 @@
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
+				28667B5E1FCB7017007B98E3 /* Hookup.swift in Sources */,
 				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
@@ -1843,7 +1875,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1861,7 +1894,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1915,7 +1949,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1923,7 +1959,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1965,7 +2005,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1973,7 +2015,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -2019,7 +2065,8 @@
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2043,7 +2090,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2059,7 +2107,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
 			name = Debug;
@@ -2076,7 +2125,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
 			name = Release;

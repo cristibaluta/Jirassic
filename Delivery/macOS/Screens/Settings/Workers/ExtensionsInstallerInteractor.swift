@@ -96,11 +96,11 @@ extension ExtensionsInstallerInteractor {
         panel.nameFieldStringValue = "\(script).scpt"
         panel.directoryURL = scripts.scriptsDirectory!
         panel.message = "Please select: User / Library / Application Scripts / com.ralcr.Jirassic.osx"
-        panel.level = Int(CGWindowLevelForKey(.maximumWindow))
+        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         
         panel.begin { (result) in
             
-            if result == NSFileHandlingPanelOKButton {
+            if result.rawValue == NSFileHandlingPanelOKButton {
                 
                 let scriptPath = Bundle.main.url(forResource: script, withExtension: ".scpt")
                 do {

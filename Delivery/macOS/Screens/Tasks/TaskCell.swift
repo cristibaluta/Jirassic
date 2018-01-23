@@ -137,7 +137,7 @@ extension TaskCell {
 		if trackingArea == nil {
 			trackingArea = NSTrackingArea(
 				rect: NSZeroRect,
-				options: [NSTrackingAreaOptions.inVisibleRect, .activeAlways, .mouseEnteredAndExited],
+				options: [NSTrackingArea.Options.inVisibleRect, NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited],
 				owner: self,
 				userInfo: nil
 			)

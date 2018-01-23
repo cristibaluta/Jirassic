@@ -16,8 +16,8 @@ extension String {
         var randomString = ""
         
         for _ in 0..<length {
-            let randomValue = arc4random_uniform(UInt32(base.characters.count))
-            randomString += "\(base[base.characters.index(base.startIndex, offsetBy: Int(randomValue))])"
+            let randomValue = arc4random_uniform(UInt32(base.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
         
         return randomString

@@ -77,11 +77,11 @@ class TasksScrollView: NSScrollView {
         self.hasVerticalScroller = true
         
         tableView = NSTableView(frame: self.frame)
-        tableView!.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
+        tableView!.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
         tableView!.backgroundColor = NSColor.clear
         tableView!.headerView = nil
         
-        let column = NSTableColumn(identifier: "taskColumn")
+        let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "taskColumn"))
         column.width = 400
         tableView.addTableColumn(column)
         

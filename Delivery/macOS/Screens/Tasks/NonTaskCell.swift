@@ -138,9 +138,9 @@ extension NonTaskCell {
 		if (trackingArea == nil) {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
 				options: [
-                    NSTrackingAreaOptions.inVisibleRect,
-                    NSTrackingAreaOptions.activeAlways,
-                    NSTrackingAreaOptions.mouseEnteredAndExited
+                    NSTrackingArea.Options.inVisibleRect,
+                    NSTrackingArea.Options.activeAlways,
+                    NSTrackingArea.Options.mouseEnteredAndExited
                 ],
 				owner: self,
 				userInfo: nil)

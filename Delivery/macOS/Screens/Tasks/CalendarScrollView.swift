@@ -114,7 +114,7 @@ extension CalendarScrollView: NSOutlineViewDelegate {
 		switch item {
 		case let week as Week:
             
-			let view = outlineView.make(withIdentifier: "HeaderCell", owner: self) as! NSTableCellView
+			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
 				textField.stringValue = week.date.weekInterval()
 			}
@@ -122,12 +122,12 @@ extension CalendarScrollView: NSOutlineViewDelegate {
             
 		case let day as Day:
             
-			let view = outlineView.make(withIdentifier: "DataCell", owner: self) as! NSTableCellView
+			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
                 textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEEEE()
 			}
             let isToday = day.date.isSameDayAs(Date())
-            view.imageView!.image = NSImage(named: isToday ? NSImageNameStatusPartiallyAvailable : NSImageNameStatusAvailable)
+            view.imageView!.image = NSImage(named: isToday ? NSImage.Name.statusPartiallyAvailable : NSImage.Name.statusAvailable)
 			
             return view
             

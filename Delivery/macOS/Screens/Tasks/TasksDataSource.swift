@@ -24,14 +24,14 @@ class TasksDataSource: NSObject {
         self.tableView = tableView
         self.tasks = tasks
         
-        assert(NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) != nil, "err")
         
-        if let nib = NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: String(describing: TaskCell.self))
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)))
         }
-        if let nib = NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: String(describing: NonTaskCell.self))
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)))
         }
     }
     
@@ -40,10 +40,10 @@ class TasksDataSource: NSObject {
         var cell: CellProtocol? = nil
         switch taskType {
         case TaskType.issue, TaskType.gitCommit:
-            cell = self.tableView.make(withIdentifier: String(describing: TaskCell.self), owner: self) as? TaskCell
+            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)), owner: self) as? TaskCell
             break
         default:
-            cell = self.tableView.make(withIdentifier: String(describing: NonTaskCell.self), owner: self) as? NonTaskCell
+            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)), owner: self) as? NonTaskCell
             break
         }
         
@@ -57,7 +57,7 @@ class TasksDataSource: NSObject {
     func removeTaskAtRow (_ row: Int) {
         tasks.remove(at: row)
         tableView.removeRows(at: IndexSet(integer: row), 
-                             withAnimation: NSTableViewAnimationOptions.effectFade)
+                             withAnimation: NSTableView.AnimationOptions.effectFade)
     }
 }
 

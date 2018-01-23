@@ -10,7 +10,7 @@ import Cocoa
 
 class MenuBarController: NSObject {
 	
-    fileprivate let bar = NSStatusBar.system()
+    fileprivate let bar = NSStatusBar.system
     fileprivate var item: NSStatusItem!
 	var iconView: MenuBarIconView!
     
@@ -48,7 +48,7 @@ class MenuBarController: NSObject {
 	}
     
     func handleQuitButton() {
-        NSApplication.shared().terminate(nil)
+        NSApplication.shared.terminate(nil)
     }
     
     func simulateOpen() {
