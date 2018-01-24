@@ -12,7 +12,7 @@ let SQLITE_DATE = SQLITE_NULL + 1
 fileprivate let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
 fileprivate let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
-@objc(SQLiteDB)
+@objcMembers
 class SQLiteDB: NSObject {
     
     static var sql_logs_enabled = false
@@ -281,7 +281,7 @@ extension SQLiteDB {
 			var tmp = String(validatingUTF8:buf!)!.uppercased()
 			// Remove bracketed section
 			if let pos = tmp.range(of:"(") {
-				tmp = tmp.substring(to:pos.lowerBound)
+				tmp = String(tmp[..<pos.lowerBound])
 			}
 			// Remove unsigned?
 			// Remove spaces

@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(SQLTable)
+@objcMembers
 class SQLTable: NSObject {
     
 	private var table = ""
@@ -16,7 +16,7 @@ class SQLTable: NSObject {
 	private static var table: String {
 		let cls = "\(classForCoder())".lowercased()
 		let ndx = cls.index(before: cls.endIndex)
-		let tnm = cls.hasSuffix("y") ? cls.substring(to: ndx) + "ies" : cls + "s"
+		let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : cls + "s"
 		return tnm
 	}
 	
@@ -25,7 +25,7 @@ class SQLTable: NSObject {
 		// Table name
 		let cls = "\(classForCoder)".lowercased()
 		let ndx = cls.index(before:cls.endIndex)
-		let tnm = cls.hasSuffix("y") ? cls.substring(to:ndx) + "ies" : cls + "s"
+		let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : cls + "s"
 		self.table = tnm
 	}
 	

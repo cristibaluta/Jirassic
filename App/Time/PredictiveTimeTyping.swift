@@ -18,7 +18,7 @@ class PredictiveTimeTyping {
         if (string == "") {
 			let charsToDelete = to.count == 3 ? 2 : 1
 			let rangeToKeep = to.startIndex..<to.index(to.endIndex, offsetBy: -charsToDelete)
-			return to.substring(with: rangeToKeep)
+            return String(to[rangeToKeep])
         }
 		
 		let timeComps = to.components(separatedBy: ":")
@@ -32,7 +32,7 @@ class PredictiveTimeTyping {
 			
 			if min.count == 2 {
 				let rangeToKeep = min.startIndex..<min.index(min.endIndex, offsetBy: -1)
-				return "\(hr):\(min.substring(with: rangeToKeep))\(string)"
+				return "\(hr):\(min[rangeToKeep])\(string)"
 			} else {
 				m = decimalValueOf(min, newDigit: string)
 			}
