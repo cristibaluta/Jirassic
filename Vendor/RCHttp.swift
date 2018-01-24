@@ -13,27 +13,56 @@ import Cocoa
 
 class RCHttp {
 	
-	var url: String?
-	var task: URLSessionTask?
+    var baseURL: URL! = nil
+	private var task: URLSessionTask?
+    private var user: String?
+    private var password: String?
 	
-	convenience init (baseURL: String, endpoint: String?) {
+	convenience init (baseURL: String) {
 		self.init()
-		let separator = endpoint != nil ? "/" : ""
-		let end = endpoint != nil ? endpoint : ""
-		url = String("\(baseURL)\(separator)\(end!)")
+		self.baseURL = URL(string: baseURL)
 	}
     
     func authenticate (user: String, password: String) {
-        
+        self.user = user
+        self.password = password
     }
 	
+    
+    func get (at path: String, success: @escaping (Any) -> Void, failure: @escaping ([String: Any]) -> Void) {
+        
+        let url = baseURL.appendingPathComponent(path)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // Authenticate
+        if let user = self.user, let password = self.password {
+            let loginData = "\(user):\(password)".data(using: String.Encoding.utf8)!
+            let base64LoginData = loginData.base64EncodedString()
+            request.setValue("Basic \(base64LoginData)", forHTTPHeaderField: "Authorization")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("\(error!)")
+                return
+            }
+            print(data)
+            if let httpStatus = response as? HTTPURLResponse {
+                // check status code returned by the http server
+                print("status code = \(httpStatus.statusCode)")
+                // process result
+            }
+        }
+        task.resume()
+    }
 	
 	//pragma mark post data sync and async
 
-	func post (dictionary: Dictionary<String, AnyObject>, completion: @escaping (NSDictionary) -> Void, errorHandler: @escaping (NSDictionary) -> Void) {
+    func post (at path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping (NSDictionary) -> Void) {
 	
 		var postStr = ""
-		for (key, vale) in dictionary {
+		for (key, vale) in parameters {
 			postStr = "\(postStr)\(key)=\(vale)&"
 		}
 		
@@ -41,7 +70,7 @@ class RCHttp {
 		let postLength = String (postData.count)
 		
 		let request = NSMutableURLRequest()
-		request.url = URL(string: url!)
+		request.url = baseURL
 		request.httpMethod = "POST"
 		request.setValue(postLength, forHTTPHeaderField: "Content-Length")
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -54,15 +83,15 @@ class RCHttp {
 			
 //			RCLogO( NSString(data:data, encoding: 0));
 
-			if (error == nil) {
-				var json: NSDictionary = ["text":"Json parse error"]
+			if error == nil {
+				var json: NSDictionary = ["text": "Json parse error"]
 				if let d = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) {
 					json = d as! NSDictionary
 				}
-				completion(json)
+				success(json)
 			}
 			else {
-				errorHandler(["text":"Download error"])
+				failure(["text": "Download error"])
 			}
 		})
 		task?.resume()
@@ -70,8 +99,8 @@ class RCHttp {
 	
 	func upload (data: Data, filename: String, completion: @escaping (NSDictionary) -> Void, error: @escaping (NSDictionary) -> Void) {
 		
-		let request :NSMutableURLRequest = NSMutableURLRequest()
-		request.url = URL(string: url!)
+		let request = NSMutableURLRequest()
+		request.url = baseURL
 		request.httpMethod = "POST"
 //		request.setValue(postLength, forHTTPHeaderField:"Content-Length")
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -101,7 +130,7 @@ class RCHttp {
 				}
 				completion(json!);
 			}
-			error(["text": "Dwnlad error"])
+			error(["text": "Download error"])
 		})
 		task?.resume()
 	}

@@ -21,6 +21,13 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case firstLaunch = "firstLaunch"
     case lastIcloudSync = "lastIcloudSync"
     case settingsActiveTab = "settingsActiveTab"
+    case settingsJiraUrl = "settingsJiraUrl"
+    case settingsJiraUser = "settingsJiraUser"
+    case settingsJiraPassword = "settingsJiraPassword"
+    case settingsJiraProjectId = "settingsJiraProjectId"
+    case settingsJiraProjectKey = "settingsJiraProjectKey"
+    case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
+    case settingsHookupCmdName = "settingsHookupCmdName"
     
     func defaultValue() -> Any {
         switch self {
@@ -31,6 +38,13 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .firstLaunch:              return true
             case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
             case .settingsActiveTab:        return 0
+            case .settingsJiraUrl:          return ""
+            case .settingsJiraUser:         return ""
+            case .settingsJiraPassword:     return ""
+            case .settingsJiraProjectId:    return ""
+            case .settingsJiraProjectKey:   return ""
+            case .settingsJiraProjectIssueKey:return ""
+            case .settingsHookupCmdName:    return ""
         }
     }
 }

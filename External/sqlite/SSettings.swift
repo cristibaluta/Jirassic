@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class SSettings: SQLTable {
+class SSettings: SQLTable {
     
     var autotrack: Bool = false
     var autotrackingMode: Int = 0

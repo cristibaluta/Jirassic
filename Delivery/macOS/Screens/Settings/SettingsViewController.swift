@@ -11,26 +11,10 @@ import Cocoa
 class SettingsViewController: NSViewController {
     
     @IBOutlet fileprivate var tabView: NSTabView!
-    // Extensions
-    // shell
-    @IBOutlet fileprivate var jirassicImageView: NSImageView!
-    @IBOutlet fileprivate var jirassicTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJirassic: NSButton!
-    // git
-    @IBOutlet fileprivate var jitImageView: NSImageView!
-    @IBOutlet fileprivate var jitTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJit: NSButton!
-    // browser: code reviews and wasted time
-    @IBOutlet fileprivate var coderevImageView: NSImageView!
-    @IBOutlet fileprivate var coderevTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallCoderev: NSButton!
-    @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
-    @IBOutlet fileprivate var butTrackWastedTime: NSButton!
-    @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
-    @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
-    
-    // Settings
+    @IBOutlet fileprivate var butBackup: NSButton!
     @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
+    
+    // Tracking tab
     @IBOutlet fileprivate var butAutotrack: NSButton!
     @IBOutlet fileprivate var autotrackingModeSegmentedControl: NSSegmentedControl!
     @IBOutlet fileprivate var butTrackStartOfDay: NSButton!
@@ -47,10 +31,37 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
     @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
     @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
-    @IBOutlet fileprivate var butBackup: NSButton!
+    
+    // Input tab
+    // shell
+    @IBOutlet fileprivate var jirassicImageView: NSImageView!
+    @IBOutlet fileprivate var jirassicTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallJirassic: NSButton!
+    // git
+    @IBOutlet fileprivate var jitImageView: NSImageView!
+    @IBOutlet fileprivate var jitTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallJit: NSButton!
+    // browser support: code reviews and wasted time
+    @IBOutlet fileprivate var coderevImageView: NSImageView!
+    @IBOutlet fileprivate var coderevTextField: NSTextField!
+    @IBOutlet fileprivate var butInstallCoderev: NSButton!
+    @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
+    @IBOutlet fileprivate var butTrackWastedTime: NSButton!
+    @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
+    @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
+    
+    // Output tab
+    @IBOutlet fileprivate var jiraBaseUrlTextField: NSTextField!
+    @IBOutlet fileprivate var jiraUserTextField: NSTextField!
+    @IBOutlet fileprivate var jiraPasswordTextField: NSTextField!
+    @IBOutlet fileprivate var jiraProjectNamePopup: NSPopUpButton!
+    @IBOutlet fileprivate var jiraProjectIssueNamePopup: NSPopUpButton!
+    @IBOutlet fileprivate var hookupNameTextField: NSTextField!
+    
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -58,6 +69,13 @@ class SettingsViewController: NSViewController {
         
         presenter!.checkExtensions()
         presenter!.showSettings()
+        
+        jiraBaseUrlTextField.stringValue = localPreferences.string(.settingsJiraUrl)
+        jiraUserTextField.stringValue = localPreferences.string(.settingsJiraUser)
+        jiraPasswordTextField.stringValue = localPreferences.string(.settingsJiraPassword)
+        jiraProjectNamePopup.removeAllItems()
+        jiraProjectIssueNamePopup.removeAllItems()
+        hookupNameTextField.stringValue = localPreferences.string(.settingsHookupCmdName)
         
         #if !APPSTORE
             butBackup.isEnabled = false
@@ -92,6 +110,13 @@ class SettingsViewController: NSViewController {
             wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
         )
         presenter!.saveAppSettings(settings)
+        
+        localPreferences.set(jiraBaseUrlTextField.stringValue, forKey: .settingsJiraUrl)
+        localPreferences.set(jiraUserTextField.stringValue, forKey: .settingsJiraUser)
+        localPreferences.set(jiraPasswordTextField.stringValue, forKey: .settingsJiraPassword)
+        localPreferences.set(jiraProjectNamePopup.selectedItem?.title ?? "", forKey: .settingsJiraProjectKey)
+        localPreferences.set(jiraProjectIssueNamePopup.selectedItem?.title ?? "", forKey: .settingsJiraProjectIssueKey)
+        localPreferences.set(hookupNameTextField.stringValue, forKey: .settingsHookupCmdName)
     }
     
     deinit {
@@ -123,10 +148,9 @@ extension SettingsViewController {
         NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
     }
     
-	@IBAction func handleSaveButton (_ sender: NSButton) {
-		
+    @IBAction func handleSaveButton (_ sender: NSButton) {
         appWireframe!.flipToTasksController()
-	}
+    }
     
     @IBAction func handleAutoTrackButton (_ sender: NSButton) {
         autotrackingModeSegmentedControl.isEnabled = sender.state == NSControl.StateValue.on
@@ -249,6 +273,8 @@ extension SettingsViewController: SettingsPresenterOutput {
 extension SettingsViewController: NSTabViewDelegate {
     
     func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
-        RCPreferences<LocalPreferences>().set(tabViewItem?.label == "Tracking" ? 0 : 1, forKey: .settingsActiveTab)
+        if let item = tabViewItem {
+            localPreferences.set( tabView.indexOfTabViewItem(item), forKey: .settingsActiveTab)
+        }
     }
 }

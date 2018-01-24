@@ -13,7 +13,7 @@ struct JReport {
     var comment: String
     var dateStarted: String//YYYY-MM-ddT00:00:00.000+0000
     var timeSpentSeconds: Int
-    var author: JAuthor
-    var issue: JIssue
+//    var author: JAuthor
+//    var issue: JIssue
     var workAttributeValues: [JWorkAttribute]
 }

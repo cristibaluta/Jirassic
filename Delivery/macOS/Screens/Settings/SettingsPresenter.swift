@@ -38,6 +38,8 @@ class SettingsPresenter {
     #endif
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
+    var jiraTempoInteractor = JiraTempo()
+    var hookup = Hookup()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 }
 

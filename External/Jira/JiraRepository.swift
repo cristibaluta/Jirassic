@@ -10,16 +10,13 @@ import Foundation
 
 class JiraRepository {
     
-    var url: String
-    var user: String
-    var password: String
     var request: RCHttp?
+    var user: String!
     
     init (url: String, user: String, password: String) {
-        self.url = url
+        
         self.user = user
-        self.password = password
-        self.request = RCHttp()
+        self.request = RCHttp(baseURL: url)
         self.request?.authenticate(user: user, password: password)
     }
 }
