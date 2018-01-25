@@ -57,6 +57,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var jiraProjectNamePopup: NSPopUpButton!
     @IBOutlet fileprivate var jiraProjectIssueNamePopup: NSPopUpButton!
     @IBOutlet fileprivate var hookupNameTextField: NSTextField!
+    @IBOutlet fileprivate var jiraProgressIndicator: NSProgressIndicator!
     
     
     weak var appWireframe: AppWireframe?
@@ -267,6 +268,12 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func selectTab (atIndex index: Int) {
         tabView.selectTabViewItem(at: index)
+    }
+    
+    func enabledJiraProgressIndicator (_ enabled: Bool) {
+        enabled
+            ? jiraProgressIndicator.startAnimation(nil)
+            : jiraProgressIndicator.stopAnimation(nil)
     }
 }
 

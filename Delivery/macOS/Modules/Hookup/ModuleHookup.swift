@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Hookup {
+class ModuleHookup {
     
     func insert(task: Task) {
         RCLog(task)

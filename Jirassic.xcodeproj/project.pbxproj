@@ -173,8 +173,8 @@
 		284192D82018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
 		284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
 		284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
-		284192DD2018A8B200E64A9A /* JiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* JiraTempo.swift */; };
-		284192DE2018A8B200E64A9A /* JiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* JiraTempo.swift */; };
+		284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
+		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -188,8 +188,8 @@
 		28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
-		28667B5D1FCB7017007B98E3 /* Hookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* Hookup.swift */; };
-		28667B5E1FCB7017007B98E3 /* Hookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* Hookup.swift */; };
+		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
+		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -425,7 +425,7 @@
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
-		284192DC2018A8B200E64A9A /* JiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempo.swift; sourceTree = "<group>"; };
+		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 		28577EB41E8AF08F002B07FD /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		28667B5C1FCB7017007B98E3 /* Hookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hookup.swift; sourceTree = "<group>"; };
+		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
@@ -684,7 +684,7 @@
 		28667B5A1FCADF68007B98E3 /* JiraTempo */ = {
 			isa = PBXGroup;
 			children = (
-				284192DC2018A8B200E64A9A /* JiraTempo.swift */,
+				284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */,
 			);
 			path = JiraTempo;
 			sourceTree = "<group>";
@@ -692,7 +692,7 @@
 		28667B5B1FCADF73007B98E3 /* Hookup */ = {
 			isa = PBXGroup;
 			children = (
-				28667B5C1FCB7017007B98E3 /* Hookup.swift */,
+				28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */,
 			);
 			path = Hookup;
 			sourceTree = "<group>";
@@ -1518,8 +1518,8 @@
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
-				284192DD2018A8B200E64A9A /* JiraTempo.swift in Sources */,
-				28667B5D1FCB7017007B98E3 /* Hookup.swift in Sources */,
+				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
+				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
@@ -1662,7 +1662,7 @@
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
-				28667B5E1FCB7017007B98E3 /* Hookup.swift in Sources */,
+				28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
@@ -1675,7 +1675,7 @@
 				2892B29C1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
 				28AA500F1EDCD51D00AAF03D /* Jirassic.xcdatamodeld in Sources */,
 				28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
-				284192DE2018A8B200E64A9A /* JiraTempo.swift in Sources */,
+				284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,

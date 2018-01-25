@@ -28,6 +28,7 @@ protocol SettingsPresenterOutput: class {
     func enabledLaunchAtStartup (_ enabled: Bool)
     func enabledBackup (_ enabled: Bool, title: String)
     func selectTab (atIndex index: Int)
+    func enabledJiraProgressIndicator (_ enabled: Bool)
 }
 
 class SettingsPresenter {
@@ -38,8 +39,8 @@ class SettingsPresenter {
     #endif
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
-    var jiraTempoInteractor = JiraTempo()
-    var hookup = Hookup()
+    var jiraTempoInteractor = ModuleJiraTempo()
+    var hookup = ModuleHookup()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 }
 

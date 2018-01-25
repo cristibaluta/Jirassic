@@ -8,7 +8,7 @@
 
 import Foundation
 
-class JiraTempo {
+class ModuleJiraTempo {
     
     let repository: JiraRepository!
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
