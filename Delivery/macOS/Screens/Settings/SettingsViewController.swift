@@ -268,6 +268,9 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func selectTab (atIndex index: Int) {
         tabView.selectTabViewItem(at: index)
+        if index == 2 {
+            presenter?.showJiraProjects()
+        }
     }
     
     func enabledJiraProgressIndicator (_ enabled: Bool) {

@@ -10,7 +10,7 @@ import Cocoa
 
 var localRepository: Repository!
 var remoteRepository: Repository?
-let hookup = Hookup()
+let hookup = ModuleHookup()
 
 enum LocalPreferences: String, RCPreferencesProtocol {
     

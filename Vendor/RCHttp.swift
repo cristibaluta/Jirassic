@@ -31,6 +31,11 @@ class RCHttp {
     
     func get (at path: String, success: @escaping (Any) -> Void, failure: @escaping ([String: Any]) -> Void) {
         
+        guard baseURL != nil else {
+            print("URL was not set")
+            failure([:])
+            return
+        }
         let url = baseURL.appendingPathComponent(path)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

@@ -19,6 +19,14 @@ class ModuleJiraTempo {
                                     password: localPreferences.string(.settingsJiraPassword))
     }
     
+    func fetchProjects (completion: @escaping (([JProject]) -> Void)) {
+        repository.fetchProjects(completion: completion)
+    }
+    
+    func fetchProjectIssues (projectKey: String, completion: @escaping (([JProjectIssue]) -> Void)) {
+        repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
+    }
+    
     func insert (reports: [Report]) {
         
         let project = JProject(id: localPreferences.string(.settingsJiraProjectId),

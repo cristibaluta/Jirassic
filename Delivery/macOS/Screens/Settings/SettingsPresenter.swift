@@ -17,6 +17,7 @@ protocol SettingsPresenterInput: class {
     func enabledLaunchAtStartup (_ enabled: Bool)
     func installJirassic()
     func installJit()
+    func showJiraProjects()
 }
 
 protocol SettingsPresenterOutput: class {
@@ -112,6 +113,12 @@ extension SettingsPresenter: SettingsPresenterInput {
             self.userInterface!.setJitStatus(compatible: true, scriptInstalled: success)
         }
         #endif
+    }
+    
+    func showJiraProjects() {
+        jiraTempoInteractor.fetchProjects { (projects) in
+            RCLog(projects)
+        }
     }
 }
 
