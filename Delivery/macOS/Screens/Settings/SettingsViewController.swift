@@ -278,6 +278,11 @@ extension SettingsViewController: SettingsPresenterOutput {
             ? jiraProgressIndicator.startAnimation(nil)
             : jiraProgressIndicator.stopAnimation(nil)
     }
+
+    func showJiraProjects (_ projects: [String]) {
+        jiraProjectNamePopup.addItems(withTitles: projects)
+        jiraProjectNamePopup.selectItem(withTitle: "")
+    }
 }
 
 extension SettingsViewController: NSTabViewDelegate {

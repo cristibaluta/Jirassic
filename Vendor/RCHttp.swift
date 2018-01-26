@@ -50,14 +50,21 @@ class RCHttp {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("\(error!)")
+                failure([:])
                 return
             }
-            print(data)
-            if let httpStatus = response as? HTTPURLResponse {
-                // check status code returned by the http server
-                print("status code = \(httpStatus.statusCode)")
-                // process result
+            if let d = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) {
+                success(d)
+            } else {
+                failure([:])
             }
+//            print(data)
+//            if let httpStatus = response as? HTTPURLResponse {
+//                // check status code returned by the http server
+//                print("status code = \(httpStatus.statusCode)")
+//                // process result
+//
+//            }
         }
         task.resume()
     }

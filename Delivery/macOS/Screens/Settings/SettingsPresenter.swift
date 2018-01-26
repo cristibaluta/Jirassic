@@ -30,6 +30,7 @@ protocol SettingsPresenterOutput: class {
     func enabledBackup (_ enabled: Bool, title: String)
     func selectTab (atIndex index: Int)
     func enabledJiraProgressIndicator (_ enabled: Bool)
+    func showJiraProjects (_ projects: [String])
 }
 
 class SettingsPresenter {
@@ -117,7 +118,11 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func showJiraProjects() {
         jiraTempoInteractor.fetchProjects { (projects) in
-            RCLog(projects)
+//            RCLog(projects)
+            let titles = projects.map { $0.name }
+            DispatchQueue.main.async {
+                self.userInterface!.showJiraProjects(titles)
+            }
         }
     }
 }
