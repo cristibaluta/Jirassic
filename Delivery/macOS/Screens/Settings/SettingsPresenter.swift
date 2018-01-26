@@ -17,7 +17,8 @@ protocol SettingsPresenterInput: class {
     func enabledLaunchAtStartup (_ enabled: Bool)
     func installJirassic()
     func installJit()
-    func showJiraProjects()
+    func loadJiraProjects()
+    func loadJiraProjectIssues(for projectKey: String)
 }
 
 protocol SettingsPresenterOutput: class {
@@ -31,6 +32,7 @@ protocol SettingsPresenterOutput: class {
     func selectTab (atIndex index: Int)
     func enabledJiraProgressIndicator (_ enabled: Bool)
     func showJiraProjects (_ projects: [String])
+    func showJiraProjectIssues (_ issues: [String])
 }
 
 class SettingsPresenter {
@@ -116,12 +118,24 @@ extension SettingsPresenter: SettingsPresenterInput {
         #endif
     }
     
-    func showJiraProjects() {
+    func loadJiraProjects() {
+        userInterface!.enabledJiraProgressIndicator(true)
         jiraTempoInteractor.fetchProjects { (projects) in
-//            RCLog(projects)
-            let titles = projects.map { $0.name }
+            let titles = projects.map { $0.key }
             DispatchQueue.main.async {
+                self.userInterface!.enabledJiraProgressIndicator(false)
                 self.userInterface!.showJiraProjects(titles)
+            }
+        }
+    }
+
+    func loadJiraProjectIssues(for projectKey: String) {
+        userInterface!.enabledJiraProgressIndicator(true)
+        jiraTempoInteractor.fetchProjectIssues (projectKey: projectKey) { (projects) in
+            let titles = projects.map { $0.key }
+            DispatchQueue.main.async {
+                self.userInterface!.enabledJiraProgressIndicator(false)
+                self.userInterface!.showJiraProjectIssues(titles)
             }
         }
     }
