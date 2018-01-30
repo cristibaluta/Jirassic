@@ -315,7 +315,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="X9O-Od-aqA"/>
                                                     </constraints>
                                                 </box>
-                                                <box autoresizesSubviews="NO" borderType="line" title="Git support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
+                                                <box autoresizesSubviews="NO" borderType="line" title="Jit support" translatesAutoresizingMaskIntoConstraints="NO" id="3jM-fr-ItS">
                                                     <rect key="frame" x="7" y="183" width="454" height="54"/>
                                                     <string key="toolTip">jit is a git wrapper that adds some convenience functionality for Jira. Commiting with Jit logs the messages as task to Jirassic</string>
                                                     <view key="contentView" id="VER-UY-CWS">
@@ -629,7 +629,7 @@
                                                                 <rect key="frame" x="11" y="139" width="405" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Send reports to jira tempo by pressing the share button." id="2o3-Qd-Eak">
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
@@ -711,7 +711,7 @@
                                                                 <rect key="frame" x="11" y="40" width="404" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Every log added to the app is sent to the custom cmd tool as well" id="3eU-OH-dkx">
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>

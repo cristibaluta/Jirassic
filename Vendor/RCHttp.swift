@@ -36,7 +36,8 @@ class RCHttp {
             failure([:])
             return
         }
-        let url = baseURL.appendingPathComponent(path)
+        let fullPath = baseURL.appendingPathComponent(path).absoluteString.removingPercentEncoding!
+        let url = URL(string: fullPath)!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
@@ -48,17 +49,26 @@ class RCHttp {
         }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
+            guard let httpStatus = response as? HTTPURLResponse, let data = data, error == nil else {
                 print("GET \(url) -> \(error!)")
                 failure([:])
                 return
             }
-            print(data)
-            if let httpStatus = response as? HTTPURLResponse {
-                // check status code returned by the http server
-                print("status code = \(httpStatus.statusCode)")
-                // process result
+            print("status code = \(httpStatus.statusCode)")
+//            print(String(data: data, encoding: String.Encoding.utf8))
+            if let d = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) {
+                success(d)
+            } else {
+                print("Not a valid json for url \(url)")
+                failure([:])
             }
+//            print(data)
+//            if let httpStatus = response as? HTTPURLResponse {
+//                // check status code returned by the http server
+//                print("status code = \(httpStatus.statusCode)")
+//                // process result
+//
+//            }
         }
         task.resume()
     }
