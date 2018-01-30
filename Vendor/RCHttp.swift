@@ -49,7 +49,8 @@ class RCHttp {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
-                print("\(error!)")
+                print("GET \(url) -> \(error!)")
+                failure([:])
                 return
             }
             print(data)

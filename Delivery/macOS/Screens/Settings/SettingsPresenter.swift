@@ -116,8 +116,10 @@ extension SettingsPresenter: SettingsPresenterInput {
     }
     
     func showJiraProjects() {
-        jiraTempoInteractor.fetchProjects { (projects) in
+        userInterface?.enabledJiraProgressIndicator(true)
+        jiraTempoInteractor.fetchProjects { [weak self] (projects) in
             RCLog(projects)
+            self?.userInterface?.enabledJiraProgressIndicator(false)
         }
     }
 }
