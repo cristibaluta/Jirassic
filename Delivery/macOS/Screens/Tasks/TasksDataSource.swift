@@ -10,6 +10,7 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
+let kEndCellHeight = CGFloat(115.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
@@ -26,12 +27,16 @@ class TasksDataSource: NSObject {
         
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: EndCell.self)), bundle: Bundle.main) != nil, "err")
         
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)))
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)))
+        }
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: EndCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)))
         }
     }
     
@@ -42,6 +47,9 @@ class TasksDataSource: NSObject {
         case TaskType.issue, TaskType.gitCommit:
             cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)), owner: self) as? TaskCell
             break
+//        case TaskType.endDay:
+//            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)), owner: self) as? EndCell
+//            break
         default:
             cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)), owner: self) as? NonTaskCell
             break
@@ -72,10 +80,12 @@ extension TasksDataSource: NSTableViewDataSource {
         let theData = tasks[row]
         // Return predefined height
         switch theData.taskType {
-            case TaskType.issue, TaskType.gitCommit:
-                return kTaskCellHeight
-            default:
-                return kNonTaskCellHeight
+        case TaskType.issue, TaskType.gitCommit:
+            return kTaskCellHeight
+        case TaskType.endDay:
+            return kEndCellHeight
+        default:
+            return kNonTaskCellHeight
         }
     }
 }

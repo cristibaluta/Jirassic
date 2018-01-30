@@ -76,10 +76,10 @@ class SettingsViewController: NSViewController {
         jiraPasswordTextField.stringValue = localPreferences.string(.settingsJiraPassword)
         jiraProjectNamePopup.removeAllItems()
         jiraProjectNamePopup.target = self
-        jiraProjectNamePopup.action = Selector("jiraProjectNamePopupSelected:")
+        jiraProjectNamePopup.action = #selector(SettingsViewController.jiraProjectNamePopupSelected(_:))
         jiraProjectIssueNamePopup.removeAllItems()
         jiraProjectIssueNamePopup.target = self
-        jiraProjectIssueNamePopup.action = Selector("jiraProjectIssueNamePopupSelected:")
+        jiraProjectIssueNamePopup.action = #selector(SettingsViewController.jiraProjectIssueNamePopupSelected(_:))
         hookupNameTextField.stringValue = localPreferences.string(.settingsHookupCmdName)
         
         #if !APPSTORE

@@ -245,6 +245,12 @@
 		28E8967A1E83845900722032 /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E896761E83845100722032 /* RCPreferences.swift */; };
 		28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */; };
 		28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9381E59EC1500B360A4 /* TasksView.swift */; };
+		28FB264220203EA300AEA38D /* EndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB264120203EA300AEA38D /* EndCell.xib */; };
+		28FB264320203EA300AEA38D /* EndCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB264120203EA300AEA38D /* EndCell.xib */; };
+		28FB264520203ECD00AEA38D /* EndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* EndCell.swift */; };
+		28FB264620203ECD00AEA38D /* EndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* EndCell.swift */; };
+		28FB264820203EE200AEA38D /* EndCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264720203EE200AEA38D /* EndCellPresenter.swift */; };
+		28FB264920203EE200AEA38D /* EndCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264720203EE200AEA38D /* EndCellPresenter.swift */; };
 		4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
 		4055B1361E0D821500279430 /* JirassicLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4055B1231E0D802300279430 /* JirassicLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
@@ -470,6 +476,9 @@
 		28E896761E83845100722032 /* RCPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCPreferences.swift; sourceTree = "<group>"; };
 		28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
 		28EDE9381E59EC1500B360A4 /* TasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		28FB264120203EA300AEA38D /* EndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndCell.xib; sourceTree = "<group>"; };
+		28FB264420203ECD00AEA38D /* EndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndCell.swift; sourceTree = "<group>"; };
+		28FB264720203EE200AEA38D /* EndCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndCellPresenter.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
 		4051D5F71E0EA320002042BB /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
@@ -724,6 +733,9 @@
 		28FB264020203D3400AEA38D /* ShareCell */ = {
 			isa = PBXGroup;
 			children = (
+				28FB264120203EA300AEA38D /* EndCell.xib */,
+				28FB264420203ECD00AEA38D /* EndCell.swift */,
+				28FB264720203EE200AEA38D /* EndCellPresenter.swift */,
 			);
 			name = ShareCell;
 			sourceTree = "<group>";
@@ -1409,6 +1421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
+				28FB264220203EA300AEA38D /* EndCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
@@ -1448,6 +1461,7 @@
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
+				28FB264320203EA300AEA38D /* EndCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1531,6 +1545,7 @@
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
+				28FB264820203EE200AEA38D /* EndCellPresenter.swift in Sources */,
 				280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
 				280D71421ED6043D005D2689 /* RCSync.swift in Sources */,
@@ -1572,6 +1587,7 @@
 				280D71761ED6043D005D2689 /* SettingsInteractor.swift in Sources */,
 				280D71781ED6043D005D2689 /* NewTaskViewController.swift in Sources */,
 				280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */,
+				28FB264520203ECD00AEA38D /* EndCell.swift in Sources */,
 				280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */,
 				280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */,
 				280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */,
@@ -1661,6 +1677,7 @@
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
 				28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */,
+				28FB264920203EE200AEA38D /* EndCellPresenter.swift in Sources */,
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
 				4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */,
 				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
@@ -1676,6 +1693,7 @@
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
+				28FB264620203ECD00AEA38D /* EndCell.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
