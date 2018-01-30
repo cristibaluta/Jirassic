@@ -146,6 +146,9 @@ extension TasksViewController: TasksPresenterOutput {
                 self?.presenter!.insertTaskAfterRow(row)
             }
         }
+        tasksScrollView!.didEndDay = { [weak self] (_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void in
+            self?.presenter!.endDay()
+        }
         
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false

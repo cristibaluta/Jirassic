@@ -730,14 +730,14 @@
 			path = KeychainWrapper;
 			sourceTree = "<group>";
 		};
-		28FB264020203D3400AEA38D /* ShareCell */ = {
+		28FB264020203D3400AEA38D /* EndCell */ = {
 			isa = PBXGroup;
 			children = (
 				28FB264120203EA300AEA38D /* EndCell.xib */,
 				28FB264420203ECD00AEA38D /* EndCell.swift */,
 				28FB264720203EE200AEA38D /* EndCellPresenter.swift */,
 			);
-			name = ShareCell;
+			name = EndCell;
 			sourceTree = "<group>";
 		};
 		4055B1371E0D82A800279430 /* Frameworks */ = {
@@ -1049,7 +1049,7 @@
 				28A5F2811E586426002BE564 /* DataSource.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
-				28FB264020203D3400AEA38D /* ShareCell */,
+				28FB264020203D3400AEA38D /* EndCell */,
 				407318511DEAAAE00046F409 /* ReportCell */,
 				407318501DEAAACC0046F409 /* TaskCell */,
 				407318521DEAAB010046F409 /* NonTaskCell */,

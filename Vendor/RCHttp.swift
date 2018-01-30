@@ -42,11 +42,7 @@ class RCHttp {
         request.httpMethod = "GET"
         
         // Authenticate
-        if let user = self.user, let password = self.password {
-            let loginData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-            let base64LoginData = loginData.base64EncodedString()
-            request.setValue("Basic \(base64LoginData)", forHTTPHeaderField: "Authorization")
-        }
+        request = authenticate(request)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let httpStatus = response as? HTTPURLResponse, let data = data, error == nil else {
@@ -75,40 +71,40 @@ class RCHttp {
 	
 	//pragma mark post data sync and async
 
-    func post (at path: String, parameters: [String: Any], success: @escaping (NSDictionary) -> Void, failure: @escaping (NSDictionary) -> Void) {
-	
-		var postStr = ""
-		for (key, vale) in parameters {
-			postStr = "\(postStr)\(key)=\(vale)&"
-		}
-		
-		let postData = postStr.data(using: String.Encoding.ascii, allowLossyConversion: true)!
-		let postLength = String (postData.count)
-		
-		let request = NSMutableURLRequest()
-		request.url = baseURL
+    func post (at path: String, parameters: [String: Any], success: @escaping (Any) -> Void, failure: @escaping ([String: Any]) -> Void) {
+
+        guard baseURL != nil else {
+            print("URL was not set")
+            failure([:])
+            return
+        }
+        let fullPath = baseURL.appendingPathComponent(path).absoluteString.removingPercentEncoding!
+        let url = URL(string: fullPath)!
+        let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+
+		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
-		request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-		request.httpBody = postData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.httpBody = jsonData
+        request = authenticate(request)
 		
 		let session = URLSession(configuration: URLSessionConfiguration.ephemeral)
 		task = session.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) in
 			
-			// notice that I can omit the types of data, response and error
-			
-//			RCLogO( NSString(data:data, encoding: 0));
+            guard let httpStatus = response as? HTTPURLResponse, let data = data, error == nil else {
+                print("POST \(url) -> \(error!)")
+                failure([:])
+                return
+            }
+			print("status code = \(httpStatus.statusCode)")
+//            RCLogO( NSString(data: data!, encoding: 0));
 
-			if error == nil {
-				var json: NSDictionary = ["text": "Json parse error"]
-				if let d = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) {
-					json = d as! NSDictionary
-				}
-				success(json)
-			}
-			else {
-				failure(["text": "Download error"])
-			}
+            if let d = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)  {
+                success(d)
+            } else {
+                print("Not a valid json for url \(url)")
+                failure([:])
+            }
 		})
 		task?.resume()
 	}
@@ -166,4 +162,14 @@ class RCHttp {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = false
 #endif
 	}
+
+    private func authenticate (_ request: URLRequest) -> URLRequest {
+        var req = request
+        if let user = self.user, let password = self.password {
+            let loginData = "\(user):\(password)".data(using: String.Encoding.utf8)!
+            let base64LoginData = loginData.base64EncodedString()
+            req.setValue("Basic \(base64LoginData)", forHTTPHeaderField: "Authorization")
+        }
+        return req
+    }
 }

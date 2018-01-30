@@ -17,6 +17,7 @@ protocol TasksPresenterInput: class {
     func updateNoTasksState()
     func messageButtonDidPress()
     func startDay()
+    func endDay()
     func insertTaskWithData (_ taskData: TaskCreationData)
     func insertTaskAfterRow (_ row: Int)
     func removeTaskAtRow (_ row: Int)
@@ -49,6 +50,8 @@ class TasksPresenter {
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var lastSelectedDay: Day?
     fileprivate var interactor: ReadDaysInteractor?
+    fileprivate var jiraTempoInteractor = ModuleJiraTempo()
+    fileprivate var hookup = ModuleHookup()
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -83,7 +86,8 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
-        
+
+        lastSelectedDay = day
         let settings = SettingsInteractor().getAppSettings()
         let targetHoursInDay = localPreferences.bool(.roundDay) 
             ? settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime) 
@@ -116,7 +120,7 @@ extension TasksPresenter: TasksPresenterInput {
             if selectedListType == .report {
                 userInterface!.showMessage((
                     title: "No task yet",
-                    message: "Go to 'All tasks' tab and log some time first!",
+                    message: "Go to 'All tasks' tab and log some tasks first!",
                     buttonTitle: nil))
             } else {
                 userInterface!.showMessage((
@@ -147,7 +151,30 @@ extension TasksPresenter: TasksPresenterInput {
             self.reloadData()
         })
     }
-    
+
+    func endDay() {
+
+//        let now = Date()
+//        let task = Task(dateEnd: now, type: TaskType.endDay)
+//        let saveInteractor = TaskInteractor(repository: localRepository)
+//        saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
+//            //self.reloadData()
+//        })
+
+        let settings = SettingsInteractor().getAppSettings()
+        let targetHoursInDay = localPreferences.bool(.roundDay)
+            ? settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+            : nil
+        let reader = ReadTasksInteractor(repository: localRepository)
+        let date = lastSelectedDay?.date ?? Date()
+        let tasks = reader.tasksInDay(date)
+
+        let reportInteractor = CreateReport()
+        let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+
+        jiraTempoInteractor.upload(reports: reports, date: date)
+    }
+
     func insertTaskWithData (_ taskData: TaskCreationData) {
         
         var task = Task(subtype: TaskSubtype.issueEnd)

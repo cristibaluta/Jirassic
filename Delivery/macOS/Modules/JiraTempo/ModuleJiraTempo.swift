@@ -27,7 +27,7 @@ class ModuleJiraTempo {
         repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
     }
     
-    func insert (reports: [Report]) {
+    func upload (reports: [Report], date: Date) {
         
         let project = JProject(id: localPreferences.string(.settingsJiraProjectId),
                                key: localPreferences.string(.settingsJiraProjectKey),
@@ -37,7 +37,7 @@ class ModuleJiraTempo {
                                          key: localPreferences.string(.settingsJiraProjectIssueKey),
                                          url: "")
         
-        repository.postReports(reports, in: project, to: projectIssue) {
+        repository.postReports(reports, in: project, to: projectIssue, date: date) {
             
         }
     }

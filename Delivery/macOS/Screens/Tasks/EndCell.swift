@@ -16,7 +16,9 @@ class EndCell: NSTableRowView {
     @IBOutlet fileprivate var butShare: NSButton?
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
     fileprivate var bgColor: NSColor = NSColor.clear
-    
+
+    var didEndDay: ((_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,10 +29,18 @@ class EndCell: NSTableRowView {
     }
     
     @IBAction func handleShareButton (_ sender: NSButton) {
-        
+
     }
     
     @IBAction func handleEndButton (_ sender: NSButton) {
-        
+        didEndDay?(true, true)
+    }
+
+    func showProgressIndicator (_ show: Bool) {
+        if show {
+            progressIndicator.startAnimation(nil)
+        } else {
+            progressIndicator.stopAnimation(nil)
+        }
     }
 }

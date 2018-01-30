@@ -10,7 +10,7 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
-let kEndCellHeight = CGFloat(115.0)
+let kEndCellHeight = CGFloat(180.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
@@ -18,8 +18,9 @@ class TasksDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate var tasks: [Task] = []
-    var didAddRow: ((_ row: Int) -> ())?
-    var didRemoveRow: ((_ row: Int) -> ())?
+    var didAddRow: ((_ row: Int) -> Void)?
+    var didRemoveRow: ((_ row: Int) -> Void)?
+    var didEndDay: ((_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void)?
     
     init (tableView: NSTableView, tasks: [Task]) {
         self.tableView = tableView
@@ -72,18 +73,19 @@ class TasksDataSource: NSObject {
 extension TasksDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
-        return tasks.count
+        return tasks.count + 1
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        
+
+        guard row < tasks.count else {
+            return kEndCellHeight
+        }
         let theData = tasks[row]
         // Return predefined height
         switch theData.taskType {
         case TaskType.issue, TaskType.gitCommit:
             return kTaskCellHeight
-        case TaskType.endDay:
-            return kEndCellHeight
         default:
             return kNonTaskCellHeight
         }
@@ -93,7 +95,15 @@ extension TasksDataSource: NSTableViewDataSource {
 extension TasksDataSource: NSTableViewDelegate {
     
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
+
+        guard row < tasks.count else {
+            let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)), owner: self) as? EndCell
+            cell?.didEndDay = { [weak self] (shouldSaveToJira: Bool, shouldRoundTime: Bool) in
+                self?.didEndDay!(shouldSaveToJira, shouldRoundTime)
+            }
+            return cell
+        }
+
         var theData = tasks[row]
         //let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
