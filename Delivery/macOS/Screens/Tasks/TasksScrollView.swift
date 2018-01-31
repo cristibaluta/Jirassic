@@ -63,9 +63,9 @@ class TasksScrollView: NSScrollView {
         }
         
         let settings = SettingsInteractor().getAppSettings()
-        headerView.targetTime = Date.secondsToPercentTime(settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime))
+        headerView.workdayTime = Date.secondsToPercentTime(settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime))
         let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
-        headerView.totalTime = localPreferences.bool(.usePercents) 
+        headerView.workedTime = localPreferences.bool(.usePercents)
             ? "\(Date.secondsToPercentTime(totalTime))"
             : Date(timeIntervalSince1970: totalTime).HHmmGMT()
         tableView!.headerView = headerView

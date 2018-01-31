@@ -167,6 +167,7 @@ extension SQLiteDB {
 					flag = sqlite3_bind_blob(stmt, ndx, data.bytes, CInt(data.length), SQLITE_TRANSIENT)
 				} else if let date = params![i] as? Date {
 					let txt = fmt.string(from: date)
+                    RCLog("Converting date \(date) to string \(txt)")
 					flag = sqlite3_bind_text(stmt, ndx, txt, -1, SQLITE_TRANSIENT)
 				} else if let val = params![i] as? Bool {
 					let num = val ? 1 : 0

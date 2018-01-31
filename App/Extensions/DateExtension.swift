@@ -212,7 +212,9 @@ extension Date {
 	
 	static func parseHHmm (_ hhmm: String) -> (hour: Int, min: Int) {
 		let hm = hhmm.components(separatedBy: ":")
-		return (hour: Int(hm.first!)!, min: Int(hm.last!)!)
+        let hh = Int(hm[0]) ?? 0
+        let mm = Int(hm[1]) ?? 0
+		return (hour: hh, min: mm)
 	}
 }
 
@@ -309,9 +311,9 @@ extension Date {
     
     fileprivate func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
         
-        let division = 6
-        let rest = min % division
-        let newMin = rest == 0 ? min : (min + division - rest)
+        let divisions = 6
+        let rest = min % divisions
+        let newMin = rest == 0 ? min : (min + divisions - rest)
         
         return (newMin >= 60 ? 1 : 0, newMin >= 60 ? 0 : newMin)
         

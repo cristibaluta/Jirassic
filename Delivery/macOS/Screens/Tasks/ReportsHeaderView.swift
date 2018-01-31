@@ -15,7 +15,8 @@ class ReportsHeaderView: NSTableHeaderView {
     fileprivate var totalTimeTextField: NSTextField
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     var didChangeSettings: (() -> ())?
-    var totalTime: String {
+    // In hours
+    var workedTime: String {
         get {
             return ""
         }
@@ -23,7 +24,7 @@ class ReportsHeaderView: NSTableHeaderView {
             totalTimeTextField.stringValue = newValue
         }
     }
-    var targetTime: Double {
+    var workdayTime: Double {
         get {
             return 0.0
         }
@@ -58,8 +59,8 @@ class ReportsHeaderView: NSTableHeaderView {
         
         super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
         
-        self.totalTime = ""
-        self.targetTime = 8.0
+        self.workedTime = ""
+        self.workdayTime = 8.0
         
         butRound.target = self
         butRound.action = #selector(self.handleRoundButton)
