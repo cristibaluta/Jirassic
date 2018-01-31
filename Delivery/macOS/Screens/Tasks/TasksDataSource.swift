@@ -10,7 +10,8 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
-let kEndCellHeight = CGFloat(180.0)
+let kEndCellSmallHeight = CGFloat(70.0)
+let kEndCellLargeHeight = CGFloat(135.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
@@ -73,13 +74,16 @@ class TasksDataSource: NSObject {
 extension TasksDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
+        guard tasks.count > 0 else {
+            return 0
+        }
         return tasks.count + 1
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 
         guard row < tasks.count else {
-            return kEndCellHeight
+            return kEndCellSmallHeight
         }
         let theData = tasks[row]
         // Return predefined height
@@ -100,6 +104,9 @@ extension TasksDataSource: NSTableViewDelegate {
             let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)), owner: self) as? EndCell
             cell?.didEndDay = { [weak self] (shouldSaveToJira: Bool, shouldRoundTime: Bool) in
                 self?.didEndDay!(shouldSaveToJira, shouldRoundTime)
+            }
+            cell?.didAddTask = { [weak self] in
+                self?.didAddRow!(tableView.numberOfRows-1)
             }
             return cell
         }

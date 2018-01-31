@@ -11,12 +11,13 @@ import Cocoa
 class EndCell: NSTableRowView {
     
     var statusImage: NSImageView?
-    @IBOutlet fileprivate var statusTextField: NSTextField?
+//    @IBOutlet fileprivate var statusTextField: NSTextField?
+    @IBOutlet fileprivate var butAdd: NSButton?
     @IBOutlet fileprivate var butEnd: NSButton?
-    @IBOutlet fileprivate var butShare: NSButton?
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
     fileprivate var bgColor: NSColor = NSColor.clear
 
+    var didAddTask: (() -> Void)?
     var didEndDay: ((_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void)?
 
     override func awakeFromNib() {
@@ -28,8 +29,8 @@ class EndCell: NSTableRowView {
         dirtyRect.fill()
     }
     
-    @IBAction func handleShareButton (_ sender: NSButton) {
-
+    @IBAction func handleAddButton (_ sender: NSButton) {
+        didAddTask?()
     }
     
     @IBAction func handleEndButton (_ sender: NSButton) {

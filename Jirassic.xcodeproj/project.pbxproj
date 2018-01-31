@@ -733,8 +733,8 @@
 		28FB264020203D3400AEA38D /* EndCell */ = {
 			isa = PBXGroup;
 			children = (
-				28FB264120203EA300AEA38D /* EndCell.xib */,
 				28FB264420203ECD00AEA38D /* EndCell.swift */,
+				28FB264120203EA300AEA38D /* EndCell.xib */,
 				28FB264720203EE200AEA38D /* EndCellPresenter.swift */,
 			);
 			name = EndCell;
