@@ -31,9 +31,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
     @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
     @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
-    
-    // Input tab
-    @IBOutlet fileprivate var inputsTableView: NSTableView!
+
     // shell
     @IBOutlet fileprivate var jirassicImageView: NSImageView!
     @IBOutlet fileprivate var jirassicTextField: NSTextField!
@@ -50,9 +48,11 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var butTrackWastedTime: NSButton!
     @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
     @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
-    
+
+    // Input tab
+    @IBOutlet fileprivate var inputsScrollView: InputsScrollView!
     // Output tab
-    @IBOutlet fileprivate var outputsScrollView: NSScrollView!
+    @IBOutlet fileprivate var outputsScrollView: OutputsScrollView!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?

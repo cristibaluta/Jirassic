@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="GitCell" id="c22-O7-iKe" customClass="GitCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" borderType="line" title="Git support" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-ST-fW3">
+                    <rect key="frame" x="-3" y="-4" width="486" height="54"/>
+                    <string key="toolTip">jit is a git wrapper that adds some convenience functionality for Jira. Commiting with Jit logs the messages as task to Jirassic</string>
+                    <view key="contentView" id="bAm-pg-lwW">
+                        <rect key="frame" x="1" y="1" width="484" height="38"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="soa-Mf-B56">
+                                <rect key="frame" x="8" y="12" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="UD3-CQ-0Cq"/>
+                                    <constraint firstAttribute="width" constant="18" id="WP7-bD-H6R"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="g96-Mm-inb"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaJ-WV-hc1">
+                                <rect key="frame" x="30" y="14" width="106" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking jit cmd" id="ASn-hr-APm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-Wf-3ng">
+                                <rect key="frame" x="393" y="11" width="81" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HFX-xw-W3U">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="UaJ-WV-hc1" firstAttribute="centerY" secondItem="bAm-pg-lwW" secondAttribute="centerY" constant="-3" id="Ulp-XU-74I"/>
+                            <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
+                            <constraint firstItem="UaJ-WV-hc1" firstAttribute="leading" secondItem="soa-Mf-B56" secondAttribute="trailing" constant="6" id="cxN-iS-Ne9"/>
+                            <constraint firstAttribute="trailing" secondItem="y1X-Wf-3ng" secondAttribute="trailing" constant="10" id="dRf-Za-uMg"/>
+                            <constraint firstItem="y1X-Wf-3ng" firstAttribute="centerY" secondItem="bAm-pg-lwW" secondAttribute="centerY" constant="-2" id="dbc-sN-BWp"/>
+                            <constraint firstItem="soa-Mf-B56" firstAttribute="centerY" secondItem="bAm-pg-lwW" secondAttribute="centerY" constant="-2" id="gOb-gu-MK9"/>
+                        </constraints>
+                    </view>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RQm-ST-fW3" secondAttribute="trailing" id="BYR-JA-3Lb"/>
+                <constraint firstItem="RQm-ST-fW3" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="JBL-AC-Gsa"/>
+                <constraint firstItem="RQm-ST-fW3" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="LjE-yW-nNP"/>
+                <constraint firstAttribute="bottom" secondItem="RQm-ST-fW3" secondAttribute="bottom" id="PzK-Ow-0JE"/>
+            </constraints>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSStatusNone" width="16" height="16"/>
+    </resources>
+</document>
