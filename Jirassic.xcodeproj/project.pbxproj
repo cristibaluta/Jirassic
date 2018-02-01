@@ -190,6 +190,12 @@
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
+		287195152022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
+		287195162022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
+		287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
+		287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
+		2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951A2022ECF7001C237E /* OutputsScrollView.swift */; };
+		2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951A2022ECF7001C237E /* OutputsScrollView.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -251,6 +257,16 @@
 		28FB264620203ECD00AEA38D /* EndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* EndCell.swift */; };
 		28FB264820203EE200AEA38D /* EndCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264720203EE200AEA38D /* EndCellPresenter.swift */; };
 		28FB264920203EE200AEA38D /* EndCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264720203EE200AEA38D /* EndCellPresenter.swift */; };
+		28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
+		28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
+		28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
+		28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
+		28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265720224E9B00AEA38D /* HookupCell.xib */; };
+		28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265720224E9B00AEA38D /* HookupCell.xib */; };
+		28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265A20224EA700AEA38D /* HookupCell.swift */; };
+		28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265A20224EA700AEA38D /* HookupCell.swift */; };
+		28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */; };
+		28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */; };
 		4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
 		4055B1361E0D821500279430 /* JirassicLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4055B1231E0D802300279430 /* JirassicLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
@@ -441,6 +457,9 @@
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
+		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
+		287195172022E8BC001C237E /* OutputTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTableViewDataSource.swift; sourceTree = "<group>"; };
+		2871951A2022ECF7001C237E /* OutputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputsScrollView.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
@@ -479,6 +498,11 @@
 		28FB264120203EA300AEA38D /* EndCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndCell.xib; sourceTree = "<group>"; };
 		28FB264420203ECD00AEA38D /* EndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndCell.swift; sourceTree = "<group>"; };
 		28FB264720203EE200AEA38D /* EndCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndCellPresenter.swift; sourceTree = "<group>"; };
+		28FB265020224E3A00AEA38D /* JiraTempoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoCell.swift; sourceTree = "<group>"; };
+		28FB265320224E5B00AEA38D /* JiraTempoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JiraTempoCell.xib; sourceTree = "<group>"; };
+		28FB265720224E9B00AEA38D /* HookupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HookupCell.xib; sourceTree = "<group>"; };
+		28FB265A20224EA700AEA38D /* HookupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupCell.swift; sourceTree = "<group>"; };
+		28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoPresenter.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
 		4051D5F71E0EA320002042BB /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
@@ -738,6 +762,44 @@
 				28FB264720203EE200AEA38D /* EndCellPresenter.swift */,
 			);
 			name = EndCell;
+			sourceTree = "<group>";
+		};
+		28FB264D20224DE200AEA38D /* Input */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		28FB264E20224DEB00AEA38D /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				2871951A2022ECF7001C237E /* OutputsScrollView.swift */,
+				287195172022E8BC001C237E /* OutputTableViewDataSource.swift */,
+				28FB264F20224E0A00AEA38D /* JiraTempo */,
+				28FB265620224E8600AEA38D /* Hookup */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		28FB264F20224E0A00AEA38D /* JiraTempo */ = {
+			isa = PBXGroup;
+			children = (
+				28FB265020224E3A00AEA38D /* JiraTempoCell.swift */,
+				28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */,
+				28FB265320224E5B00AEA38D /* JiraTempoCell.xib */,
+			);
+			path = JiraTempo;
+			sourceTree = "<group>";
+		};
+		28FB265620224E8600AEA38D /* Hookup */ = {
+			isa = PBXGroup;
+			children = (
+				28FB265A20224EA700AEA38D /* HookupCell.swift */,
+				287195142022E1E2001C237E /* HookupPresenter.swift */,
+				28FB265720224E9B00AEA38D /* HookupCell.xib */,
+			);
+			path = Hookup;
 			sourceTree = "<group>";
 		};
 		4055B1371E0D82A800279430 /* Frameworks */ = {
@@ -1031,6 +1093,8 @@
 				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
 				40E092401DE385E4001EF5DA /* Settings.storyboard */,
+				28FB264E20224DEB00AEA38D /* Output */,
+				28FB264D20224DE200AEA38D /* Input */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1425,6 +1489,7 @@
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
+				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
@@ -1432,6 +1497,7 @@
 				280D71C51ED608D6005D2689 /* ReportCell.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
 				280D71C61ED608D6005D2689 /* TaskCell.xib in Resources */,
+				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				280D71C71ED608D6005D2689 /* NonTaskCell.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
 			);
@@ -1450,12 +1516,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
+				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
+				28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
@@ -1534,6 +1602,7 @@
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
 				280D71321ED6043D005D2689 /* Week.swift in Sources */,
+				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
@@ -1556,6 +1625,7 @@
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
 				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
 				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
+				28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
@@ -1565,6 +1635,7 @@
 				280D715F1ED6043D005D2689 /* AppTheme.swift in Sources */,
 				280D71601ED6043D005D2689 /* MenuBarController.swift in Sources */,
 				280D71611ED6043D005D2689 /* MenuBarIconView.swift in Sources */,
+				2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
 				2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
@@ -1575,6 +1646,7 @@
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
 				280D716E1ED6043D005D2689 /* LoginPresenter.swift in Sources */,
+				28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */,
 				280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */,
 				2892B2AA1F0950F90085BAC2 /* RCHttp.swift in Sources */,
 				2892B29E1F094B0D0085BAC2 /* JReport.swift in Sources */,
@@ -1592,6 +1664,7 @@
 				280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */,
 				280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */,
 				280D717E1ED6043D005D2689 /* TasksDataSource.swift in Sources */,
+				287195152022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				280D717F1ED6043D005D2689 /* ReportsDataSource.swift in Sources */,
 				280D71801ED6043D005D2689 /* ReportsHeaderView.swift in Sources */,
 				280D71811ED6043D005D2689 /* DataSource.swift in Sources */,
@@ -1625,6 +1698,7 @@
 				280D71B21ED6043D005D2689 /* CloudKitRepository+Tasks.swift in Sources */,
 				2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */,
+				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */,
 				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
@@ -1659,6 +1733,7 @@
 				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
 				405B15661DEF75660009871C /* AppViewController.swift in Sources */,
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
+				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
@@ -1722,6 +1797,7 @@
 				4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */,
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
+				28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */,
 				28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */,
 				2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
@@ -1735,6 +1811,7 @@
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */,
+				2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				28577EB11E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
@@ -1746,8 +1823,10 @@
 				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				28AA50091EDCD51300AAF03D /* CoreDataRepository+Tasks.swift in Sources */,
+				287195162022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
+				28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				28E8967A1E83845900722032 /* RCPreferences.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A928841E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
@@ -1759,6 +1838,7 @@
 				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
+				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				405B15631DEF3F2A0009871C /* TaskSuggestionPresenter.swift in Sources */,
 				4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */,
 				28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */,

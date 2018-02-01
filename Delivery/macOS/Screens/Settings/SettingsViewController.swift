@@ -33,6 +33,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
     
     // Input tab
+    @IBOutlet fileprivate var inputsTableView: NSTableView!
     // shell
     @IBOutlet fileprivate var jirassicImageView: NSImageView!
     @IBOutlet fileprivate var jirassicTextField: NSTextField!
@@ -51,14 +52,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
     
     // Output tab
-    @IBOutlet fileprivate var jiraBaseUrlTextField: NSTextField!
-    @IBOutlet fileprivate var jiraUserTextField: NSTextField!
-    @IBOutlet fileprivate var jiraPasswordTextField: NSTextField!
-    @IBOutlet fileprivate var jiraProjectNamePopup: NSPopUpButton!
-    @IBOutlet fileprivate var jiraProjectIssueNamePopup: NSPopUpButton!
-    @IBOutlet fileprivate var hookupNameTextField: NSTextField!
-    @IBOutlet fileprivate var jiraProgressIndicator: NSProgressIndicator!
-    
+    @IBOutlet fileprivate var outputsScrollView: NSScrollView!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
@@ -70,17 +64,6 @@ class SettingsViewController: NSViewController {
         
         presenter!.checkExtensions()
         presenter!.showSettings()
-        
-        jiraBaseUrlTextField.stringValue = localPreferences.string(.settingsJiraUrl)
-        jiraUserTextField.stringValue = localPreferences.string(.settingsJiraUser)
-        jiraPasswordTextField.stringValue = localPreferences.string(.settingsJiraPassword)
-        jiraProjectNamePopup.removeAllItems()
-        jiraProjectNamePopup.target = self
-        jiraProjectNamePopup.action = #selector(SettingsViewController.jiraProjectNamePopupSelected(_:))
-        jiraProjectIssueNamePopup.removeAllItems()
-        jiraProjectIssueNamePopup.target = self
-        jiraProjectIssueNamePopup.action = #selector(SettingsViewController.jiraProjectIssueNamePopupSelected(_:))
-        hookupNameTextField.stringValue = localPreferences.string(.settingsHookupCmdName)
         
         #if !APPSTORE
             butBackup.isEnabled = false
@@ -116,12 +99,6 @@ class SettingsViewController: NSViewController {
         )
         presenter!.saveAppSettings(settings)
         
-        localPreferences.set(jiraBaseUrlTextField.stringValue, forKey: .settingsJiraUrl)
-        localPreferences.set(jiraUserTextField.stringValue, forKey: .settingsJiraUser)
-        localPreferences.set(jiraPasswordTextField.stringValue, forKey: .settingsJiraPassword)
-//        localPreferences.set(jiraProjectNamePopup.selectedItem?.title ?? "", forKey: .settingsJiraProjectKey)
-//        localPreferences.set(jiraProjectIssueNamePopup.selectedItem?.title ?? "", forKey: .settingsJiraProjectIssueKey)
-        localPreferences.set(hookupNameTextField.stringValue, forKey: .settingsHookupCmdName)
     }
     
     deinit {
@@ -179,17 +156,6 @@ extension SettingsViewController {
     
     @IBAction func handleMinWasteDuration (_ sender: NSSlider) {
         minWasteDurationLabel.stringValue = "\(sender.integerValue) min"
-    }
-
-    @IBAction func jiraProjectNamePopupSelected (_ sender: NSPopUpButton) {
-        if let title = sender.selectedItem?.title {
-            localPreferences.set(title, forKey: .settingsJiraProjectKey)
-            presenter!.loadJiraProjectIssues(for: title)
-        }
-    }
-
-    @IBAction func jiraProjectIssueNamePopupSelected (_ sender: NSPopUpButton) {
-        localPreferences.set(sender.selectedItem?.title ?? "", forKey: .settingsJiraProjectIssueKey)
     }
 }
 
@@ -284,24 +250,8 @@ extension SettingsViewController: SettingsPresenterOutput {
     func selectTab (atIndex index: Int) {
         tabView.selectTabViewItem(at: index)
         if index == 2 {
-            presenter?.loadJiraProjects()
+//            presenter?.loadJiraProjects()
         }
-    }
-    
-    func enabledJiraProgressIndicator (_ enabled: Bool) {
-        enabled
-            ? jiraProgressIndicator.startAnimation(nil)
-            : jiraProgressIndicator.stopAnimation(nil)
-    }
-
-    func showJiraProjects (_ projects: [String]) {
-        jiraProjectNamePopup.addItems(withTitles: projects)
-        jiraProjectNamePopup.selectItem(withTitle: localPreferences.string(.settingsJiraProjectKey))
-    }
-
-    func showJiraProjectIssues (_ issues: [String]) {
-        jiraProjectIssueNamePopup.addItems(withTitles: issues)
-        jiraProjectIssueNamePopup.selectItem(withTitle: localPreferences.string(.settingsJiraProjectIssueKey))
     }
 }
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="HookupCell" id="c22-O7-iKe" customClass="HookupCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" borderType="line" title="Hookups" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Mt-WYx">
+                    <rect key="frame" x="-3" y="-4" width="486" height="84"/>
+                    <string key="toolTip">When you add a log to the app it is sent to the custom cmd tool named here. Useful if you want to do something custom with the begining and end of the day.</string>
+                    <view key="contentView" id="ZSq-u6-jDQ">
+                        <rect key="frame" x="1" y="1" width="484" height="68"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b27-6N-xUR">
+                                <rect key="frame" x="11" y="40" width="404" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Every log added to the app is sent to the custom cmd tool as well" id="lL2-dX-L8R">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fZ-Cp-eRf">
+                                <rect key="frame" x="11" y="15" width="94" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="cmd tool name" id="mU5-gT-oxO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-eE-Nay">
+                                <rect key="frame" x="110" y="13" width="354" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="cmd tool name" bezelStyle="round" id="aEb-dy-B5y">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="110" id="0hv-CJ-oUG"/>
+                            <constraint firstAttribute="bottom" secondItem="Iya-eE-Nay" secondAttribute="bottom" constant="13" id="FbL-CZ-099"/>
+                            <constraint firstAttribute="trailing" secondItem="Iya-eE-Nay" secondAttribute="trailing" constant="20" id="rQW-Wa-C1V"/>
+                        </constraints>
+                    </view>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Fpy-Mt-WYx" secondAttribute="trailing" id="nh3-SO-LZj"/>
+                <constraint firstItem="Fpy-Mt-WYx" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="oom-bt-TOY"/>
+                <constraint firstItem="Fpy-Mt-WYx" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="pkk-tz-Ldp"/>
+                <constraint firstAttribute="bottom" secondItem="Fpy-Mt-WYx" secondAttribute="bottom" id="sez-Ws-3bx"/>
+            </constraints>
+            <connections>
+                <outlet property="hookupNameTextField" destination="Iya-eE-Nay" id="o3i-AN-ae3"/>
+            </connections>
+        </customView>
+    </objects>
+</document>
