@@ -16,7 +16,9 @@ class BrowserCell: NSTableRowView {
     @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
     @IBOutlet fileprivate var butTrackWastedTime: NSButton!
     @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
+    @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
     @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
+    @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
     
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 
@@ -25,28 +27,35 @@ class BrowserCell: NSTableRowView {
 
     }
 
+    func showSettings (_ settings: SettingsBrowser) {
+
+        butTrackCodeReviews.state = settings.trackCodeReviews ? NSControl.StateValue.on : NSControl.StateValue.off
+        butTrackWastedTime.state = settings.trackWastedTime ? NSControl.StateValue.on : NSControl.StateValue.off
+        codeReviewsLinkTextField.stringValue = settings.codeRevLink
+        wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
+        minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration
+        handleMinCodeRevDuration(minCodeRevDurationSlider)
+        minWasteDurationSlider.integerValue = settings.minWasteDuration
+        handleMinWasteDuration(minWasteDurationSlider)
+    }
+
+    func settings() -> SettingsBrowser {
+        return SettingsBrowser(
+            trackCodeReviews: butTrackCodeReviews.state == NSControl.StateValue.on,
+            trackWastedTime: butTrackWastedTime.state == NSControl.StateValue.on,
+            minCodeRevDuration: minCodeRevDurationSlider.integerValue,
+            codeRevLink: codeReviewsLinkTextField.stringValue,
+            minWasteDuration: minWasteDurationSlider.integerValue,
+            wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
+        )
+    }
+
     func save() {
 
     }
 
     @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {
         NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-    }
-
-    @IBAction func handleAutoTrackButton (_ sender: NSButton) {
-//        autotrackingModeSegmentedControl.isEnabled = sender.state == NSControl.StateValue.on
-    }
-
-    @IBAction func handleBackupButton (_ sender: NSButton) {
-//        presenter!.enabledBackup(sender.state == NSControl.StateValue.on)
-    }
-
-    @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
-//        presenter!.enabledLaunchAtStartup(sender.state == NSControl.StateValue.on)
-    }
-
-    @IBAction func handleMinSleepDuration (_ sender: NSSlider) {
-//        minSleepDurationLabel.stringValue = "Ignore sleeps shorter than \(sender.integerValue) minutes"
     }
 
     @IBAction func handleMinCodeRevDuration (_ sender: NSSlider) {

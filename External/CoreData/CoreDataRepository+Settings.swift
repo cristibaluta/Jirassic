@@ -58,8 +58,6 @@ extension CoreDataRepository: RepositorySettings {
             trackLunch: csettings.trackLunch!.boolValue,
             trackScrum: csettings.trackScrum!.boolValue,
             trackMeetings: csettings.trackMeetings!.boolValue,
-            trackCodeReviews: csettings.trackCodeReviews!.boolValue,
-            trackWastedTime: csettings.trackWastedTime!.boolValue,
             trackStartOfDay: csettings.trackStartOfDay!.boolValue,
             enableBackup: csettings.enableBackup!.boolValue,
             startOfDayTime: csettings.startOfDayTime!,
@@ -67,10 +65,14 @@ extension CoreDataRepository: RepositorySettings {
             lunchTime: csettings.lunchTime!,
             scrumTime: csettings.scrumTime!,
             minSleepDuration: csettings.minSleepDuration!.intValue,
-            minCodeRevDuration: csettings.minCodeRevDuration!.intValue,
-            codeRevLink: csettings.codeRevLink!,
-            minWasteDuration: csettings.minWasteDuration!.intValue,
-            wasteLinks: csettings.wasteLinks!
+            settingsBrowser: SettingsBrowser(
+                trackCodeReviews: csettings.trackCodeReviews!.boolValue,
+                trackWastedTime: csettings.trackWastedTime!.boolValue,
+                minCodeRevDuration: csettings.minCodeRevDuration!.intValue,
+                codeRevLink: csettings.codeRevLink!,
+                minWasteDuration: csettings.minWasteDuration!.intValue,
+                wasteLinks: csettings.wasteLinks!
+            )
         )
     }
     
@@ -88,8 +90,8 @@ extension CoreDataRepository: RepositorySettings {
         csettings?.trackLunch = NSNumber(value: settings.trackLunch)
         csettings?.trackScrum = NSNumber(value: settings.trackScrum)
         csettings?.trackMeetings = NSNumber(value: settings.trackMeetings)
-        csettings?.trackCodeReviews = NSNumber(value: settings.trackCodeReviews)
-        csettings?.trackWastedTime = NSNumber(value: settings.trackWastedTime)
+        csettings?.trackCodeReviews = NSNumber(value: settings.settingsBrowser.trackCodeReviews)
+        csettings?.trackWastedTime = NSNumber(value: settings.settingsBrowser.trackWastedTime)
         csettings?.trackStartOfDay = NSNumber(value: settings.trackStartOfDay)
         csettings?.enableBackup = NSNumber(value: settings.enableBackup)
         csettings?.startOfDayTime = settings.startOfDayTime
@@ -97,10 +99,10 @@ extension CoreDataRepository: RepositorySettings {
         csettings?.lunchTime = settings.lunchTime
         csettings?.scrumTime = settings.scrumTime
         csettings?.minSleepDuration = NSNumber(value: settings.minSleepDuration)
-        csettings?.minCodeRevDuration = NSNumber(value: settings.minCodeRevDuration)
-        csettings?.codeRevLink = settings.codeRevLink
-        csettings?.minWasteDuration = NSNumber(value: settings.minWasteDuration)
-        csettings?.wasteLinks = settings.wasteLinks
+        csettings?.minCodeRevDuration = NSNumber(value: settings.settingsBrowser.minCodeRevDuration)
+        csettings?.codeRevLink = settings.settingsBrowser.codeRevLink
+        csettings?.minWasteDuration = NSNumber(value: settings.settingsBrowser.minWasteDuration)
+        csettings?.wasteLinks = settings.settingsBrowser.wasteLinks
         
         return csettings!
     }

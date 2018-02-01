@@ -42,6 +42,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleInstallBrowserSupportButton:" target="c22-O7-iKe" id="fFv-nu-DAg"/>
+                                </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jf7-bI-xVD">
                                 <rect key="frame" x="11" y="69" width="104" height="18"/>
@@ -115,6 +118,9 @@
                                     <constraint firstAttribute="width" constant="80" id="TwN-0D-9Mi"/>
                                 </constraints>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="2" tickMarkPosition="above" sliderType="linear" id="oTh-a3-gDg"/>
+                                <connections>
+                                    <action selector="handleMinCodeRevDuration:" target="c22-O7-iKe" id="Utf-L9-O8n"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Soi-9n-x1W">
                                 <rect key="frame" x="392" y="53" width="84" height="17"/>
@@ -134,6 +140,9 @@
                                     <constraint firstAttribute="width" constant="80" id="RyL-LY-XwR"/>
                                 </constraints>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" tickMarkPosition="above" sliderType="linear" id="eR2-ny-v3K"/>
+                                <connections>
+                                    <action selector="handleMinWasteDuration:" target="c22-O7-iKe" id="DFD-k3-Jzq"/>
+                                </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ben-v1-cTm">
                                 <rect key="frame" x="392" y="10" width="84" height="17"/>
@@ -185,6 +194,17 @@
                 <constraint firstAttribute="bottom" secondItem="x9z-3V-m6f" secondAttribute="bottom" id="lvN-Yp-YZs"/>
                 <constraint firstAttribute="trailing" secondItem="x9z-3V-m6f" secondAttribute="trailing" id="vlA-0C-XeH"/>
             </constraints>
+            <connections>
+                <outlet property="butInstallCoderev" destination="vGY-13-5C7" id="eid-CY-eD1"/>
+                <outlet property="butTrackCodeReviews" destination="jf7-bI-xVD" id="PWl-MC-Zdy"/>
+                <outlet property="butTrackWastedTime" destination="HAL-xr-Jo3" id="dnX-y4-L74"/>
+                <outlet property="codeReviewsLinkTextField" destination="azj-Uv-crK" id="c6v-Mx-JTP"/>
+                <outlet property="coderevImageView" destination="UMH-Mo-8NK" id="xes-N0-uN6"/>
+                <outlet property="coderevTextField" destination="SDw-Zo-fFC" id="Vb0-ip-kRo"/>
+                <outlet property="minCodeRevDurationSlider" destination="GeU-aa-ZaF" id="JWv-92-EFw"/>
+                <outlet property="minWasteDurationSlider" destination="Mfq-fM-cOv" id="MBz-zQ-A2x"/>
+                <outlet property="wastedTimeLinksTextField" destination="cnD-7C-bnm" id="8u1-lM-iHF"/>
+            </connections>
         </customView>
     </objects>
     <resources>

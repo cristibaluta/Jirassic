@@ -20,8 +20,6 @@ struct Settings {
     var trackLunch: Bool
     var trackScrum: Bool
     var trackMeetings: Bool
-    var trackCodeReviews: Bool
-    var trackWastedTime: Bool
     var trackStartOfDay: Bool
     var enableBackup: Bool
     
@@ -30,6 +28,15 @@ struct Settings {
     var lunchTime: Date
     var scrumTime: Date
     var minSleepDuration: Int
+
+    var settingsBrowser: SettingsBrowser
+}
+
+struct SettingsBrowser {
+
+    var trackCodeReviews: Bool
+    var trackWastedTime: Bool
+
     var minCodeRevDuration: Int
     var codeRevLink: String
     var minWasteDuration: Int

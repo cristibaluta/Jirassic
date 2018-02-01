@@ -145,10 +145,10 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings = localRepository.settings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= Double(settings.minCodeRevDuration).minToSec {
+        if duration >= Double(settings.settingsBrowser.minCodeRevDuration).minToSec {
             self.codeReviewDidEnd?()
         } else {
-            RCLog("Discard code review session with duration \(duration) < \(Double(settings.minCodeRevDuration).minToSec)")
+            RCLog("Discard code review session with duration \(duration) < \(Double(settings.settingsBrowser.minCodeRevDuration).minToSec)")
         }
         startDate = nil
     }
@@ -156,7 +156,7 @@ extension BrowserNotification {
     fileprivate func isCodeRevLink (_ url: String) -> Bool {
         
         let settings = localRepository.settings()
-        let coderevLink = settings.codeRevLink != "" ? settings.codeRevLink : self.stashUrlEreg
+        let coderevLink = settings.settingsBrowser.codeRevLink != "" ? settings.settingsBrowser.codeRevLink : self.stashUrlEreg
         let coderevRegex = try! NSRegularExpression(pattern: coderevLink, options: [])
         let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
         
@@ -188,10 +188,10 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings: Settings = SettingsInteractor().getAppSettings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= Double(settings.minWasteDuration).minToSec {
+        if duration >= Double(settings.settingsBrowser.minWasteDuration).minToSec {
             self.wastingTimeDidEnd?()
         } else {
-            RCLog("Discard wasting time session with duration \(duration) < \(Double(settings.minWasteDuration).minToSec)")
+            RCLog("Discard wasting time session with duration \(duration) < \(Double(settings.settingsBrowser.minWasteDuration).minToSec)")
         }
         startDate = nil
     }
@@ -199,7 +199,7 @@ extension BrowserNotification {
     fileprivate func isWastingTimeLink (_ url: String) -> Bool {
         
         let settings = localRepository.settings()
-        for link in settings.wasteLinks {
+        for link in settings.settingsBrowser.wasteLinks {
             let regex = try! NSRegularExpression(pattern: link, options: [])
             let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
             if matches.count > 0 {

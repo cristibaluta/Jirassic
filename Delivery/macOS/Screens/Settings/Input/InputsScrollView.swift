@@ -26,4 +26,12 @@ class InputsScrollView: NSScrollView {
         
         tableView.reloadData()
     }
+
+    func showSettings (_ settings: SettingsBrowser) {
+        
+    }
+
+    func settings() -> SettingsBrowser {
+        return dataSource!.settingsBrowser()
+    }
 }

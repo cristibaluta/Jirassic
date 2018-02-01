@@ -8,10 +8,10 @@
 
 import Cocoa
 
-let kShellCellHeight = CGFloat(30.0)
-let kJitCellHeight = CGFloat(30.0)
-let kGitCellHeight = CGFloat(30.0)
-let kBrowserCellHeight = CGFloat(80.0)
+let kShellCellHeight = CGFloat(50.0)
+let kJitCellHeight = CGFloat(50.0)
+let kGitCellHeight = CGFloat(50.0)
+let kBrowserCellHeight = CGFloat(160.0)
 
 enum InputType {
     case shell
@@ -24,6 +24,7 @@ class InputsTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate let cells: [InputType] = [.shell, .jit, .git, .browser]
+    fileprivate var browserCell: BrowserCell?
     
     init (tableView: NSTableView) {
         self.tableView = tableView
@@ -46,6 +47,10 @@ class InputsTableViewDataSource: NSObject {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)))
         }
     }
+
+    func settingsBrowser() -> SettingsBrowser {
+        return browserCell!.settings()
+    }
 }
 
 extension InputsTableViewDataSource: NSTableViewDataSource {
@@ -63,9 +68,9 @@ extension InputsTableViewDataSource: NSTableViewDataSource {
         case .jit:
             return kJitCellHeight
         case .git:
-            return kJitCellHeight
+            return kGitCellHeight
         case .browser:
-            return kJitCellHeight
+            return kBrowserCellHeight
         }
     }
 }
@@ -84,7 +89,8 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
         case .git:
             cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self)
         case .browser:
-            cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self)
+            browserCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self) as? BrowserCell
+            cell = browserCell!
         }
         
         return cell

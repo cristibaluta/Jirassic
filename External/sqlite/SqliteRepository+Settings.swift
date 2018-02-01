@@ -54,8 +54,6 @@ extension SqliteRepository: RepositorySettings {
                         trackLunch: ssettings.trackLunch,
                         trackScrum: ssettings.trackScrum,
                         trackMeetings: ssettings.trackMeetings,
-                        trackCodeReviews: ssettings.trackCodeReviews,
-                        trackWastedTime: ssettings.trackWastedTime,
                         trackStartOfDay: ssettings.trackStartOfDay,
                         enableBackup: ssettings.enableBackup,
                         startOfDayTime: ssettings.startOfDayTime!,
@@ -63,10 +61,14 @@ extension SqliteRepository: RepositorySettings {
                         lunchTime: ssettings.lunchTime!,
                         scrumTime: ssettings.scrumTime!,
                         minSleepDuration: ssettings.minSleepDuration,
-                        minCodeRevDuration: ssettings.minCodeRevDuration,
-                        codeRevLink: ssettings.codeRevLink!,
-                        minWasteDuration: ssettings.minWasteDuration,
-                        wasteLinks: ssettings.wasteLinks!.toArray()
+                        settingsBrowser: SettingsBrowser(
+                            trackCodeReviews: ssettings.trackCodeReviews,
+                            trackWastedTime: ssettings.trackWastedTime,
+                            minCodeRevDuration: ssettings.minCodeRevDuration,
+                            codeRevLink: ssettings.codeRevLink!,
+                            minWasteDuration: ssettings.minWasteDuration,
+                            wasteLinks: ssettings.wasteLinks!.toArray()
+                        )
         )
     }
     
@@ -82,8 +84,8 @@ extension SqliteRepository: RepositorySettings {
         ssettings?.trackLunch = settings.trackLunch
         ssettings?.trackScrum = settings.trackScrum
         ssettings?.trackMeetings = settings.trackMeetings
-        ssettings?.trackCodeReviews = settings.trackCodeReviews
-        ssettings?.trackWastedTime = settings.trackWastedTime
+        ssettings?.trackCodeReviews = settings.settingsBrowser.trackCodeReviews
+        ssettings?.trackWastedTime = settings.settingsBrowser.trackWastedTime
         ssettings?.trackStartOfDay = settings.trackStartOfDay
         ssettings?.enableBackup = settings.enableBackup
         ssettings?.startOfDayTime = settings.startOfDayTime
@@ -91,10 +93,10 @@ extension SqliteRepository: RepositorySettings {
         ssettings?.lunchTime = settings.lunchTime
         ssettings?.scrumTime = settings.scrumTime
         ssettings?.minSleepDuration = settings.minSleepDuration
-        ssettings?.minCodeRevDuration = settings.minCodeRevDuration
-        ssettings?.codeRevLink = settings.codeRevLink
-        ssettings?.minWasteDuration = settings.minWasteDuration
-        ssettings?.wasteLinks = settings.wasteLinks.toString()
+        ssettings?.minCodeRevDuration = settings.settingsBrowser.minCodeRevDuration
+        ssettings?.codeRevLink = settings.settingsBrowser.codeRevLink
+        ssettings?.minWasteDuration = settings.settingsBrowser.minWasteDuration
+        ssettings?.wasteLinks = settings.settingsBrowser.wasteLinks.toString()
         
         return ssettings!
     }

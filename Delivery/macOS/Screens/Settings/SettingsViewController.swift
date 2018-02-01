@@ -27,27 +27,6 @@ class SettingsViewController: NSViewController {
     @IBOutlet fileprivate var scrumTimePicker: NSDatePicker!
     @IBOutlet fileprivate var minSleepDurationLabel: NSTextField!
     @IBOutlet fileprivate var minSleepDurationSlider: NSSlider!
-    @IBOutlet fileprivate var minCodeRevDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
-    @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
-
-    // shell
-    @IBOutlet fileprivate var jirassicImageView: NSImageView!
-    @IBOutlet fileprivate var jirassicTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJirassic: NSButton!
-    // git
-    @IBOutlet fileprivate var jitImageView: NSImageView!
-    @IBOutlet fileprivate var jitTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJit: NSButton!
-    // browser support: code reviews and wasted time
-    @IBOutlet fileprivate var coderevImageView: NSImageView!
-    @IBOutlet fileprivate var coderevTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallCoderev: NSButton!
-    @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
-    @IBOutlet fileprivate var butTrackWastedTime: NSButton!
-    @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
-    @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
 
     // Input tab
     @IBOutlet fileprivate var inputsScrollView: InputsScrollView!
@@ -83,8 +62,6 @@ class SettingsViewController: NSViewController {
             trackLunch: butTrackLunch.state == NSControl.StateValue.on,
             trackScrum: butTrackScrum.state == NSControl.StateValue.on,
             trackMeetings: true,//butTrackMeetings.state == NSControl.StateValue.on,
-            trackCodeReviews: butTrackCodeReviews.state == NSControl.StateValue.on,
-            trackWastedTime: butTrackWastedTime.state == NSControl.StateValue.on,
             trackStartOfDay: butTrackStartOfDay.state == NSControl.StateValue.on,
             enableBackup: butBackup.state == NSControl.StateValue.on,
             startOfDayTime: startOfDayTimePicker.dateValue,
@@ -92,13 +69,9 @@ class SettingsViewController: NSViewController {
             lunchTime: lunchTimePicker.dateValue,
             scrumTime: scrumTimePicker.dateValue,
             minSleepDuration: minSleepDurationSlider.integerValue,
-            minCodeRevDuration: minCodeRevDurationSlider.integerValue,
-            codeRevLink: codeReviewsLinkTextField.stringValue,
-            minWasteDuration: minWasteDurationSlider.integerValue,
-            wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
+            settingsBrowser: inputsScrollView.settings()
         )
         presenter!.saveAppSettings(settings)
-        
     }
     
     deinit {
@@ -108,28 +81,6 @@ class SettingsViewController: NSViewController {
 
 extension SettingsViewController {
 	
-    @IBAction func handleInstallJitButton (_ sender: NSButton) {
-        #if APPSTORE
-            NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #else
-//            presenter?.installJit()
-            NSWorkspace.shared.open( URL(string: "https://github.com/ralcr/Jit")!)
-        #endif
-    }
-    
-    @IBAction func handleInstallJirassicButton (_ sender: NSButton) {
-        #if APPSTORE
-            NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #else
-//            presenter?.installJirassic()
-            NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #endif
-    }
-    
-    @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {
-        NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-    }
-    
     @IBAction func handleSaveButton (_ sender: NSButton) {
         appWireframe!.flipToTasksController()
     }
@@ -149,14 +100,6 @@ extension SettingsViewController {
     @IBAction func handleMinSleepDuration (_ sender: NSSlider) {
         minSleepDurationLabel.stringValue = "Ignore sleeps shorter than \(sender.integerValue) minutes"
     }
-    
-    @IBAction func handleMinCodeRevDuration (_ sender: NSSlider) {
-        minCodeRevDurationLabel.stringValue = "\(sender.integerValue) min"
-    }
-    
-    @IBAction func handleMinWasteDuration (_ sender: NSSlider) {
-        minWasteDurationLabel.stringValue = "\(sender.integerValue) min"
-    }
 }
 
 extension SettingsViewController: Animatable {
@@ -171,38 +114,38 @@ extension SettingsViewController: SettingsPresenterOutput {
     
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
         
-        if scriptInstalled {
-            jirassicImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Applescript installed but jirassic cmd is outdated/uninstalled"
-        } else {
-            jirassicImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            jirassicTextField.stringValue = "Not installed yet"
-        }
-        butInstallJirassic.isHidden = scriptInstalled && compatible
+//        if scriptInstalled {
+//            jirassicImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+//            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Applescript installed but jirassic cmd is outdated/uninstalled"
+//        } else {
+//            jirassicImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+//            jirassicTextField.stringValue = "Not installed yet"
+//        }
+//        butInstallJirassic.isHidden = scriptInstalled && compatible
     }
     
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
         
-        if scriptInstalled {
-            jitImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-            jitTextField.stringValue = compatible ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info" : "Applescript installed but jit cmd is outdated/uninstalled"
-        } else {
-            jitImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            jitTextField.stringValue = "Not installed yet"
-        }
-        butInstallJit.isHidden = scriptInstalled && compatible
+//        if scriptInstalled {
+//            jitImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+//            jitTextField.stringValue = compatible ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info" : "Applescript installed but jit cmd is outdated/uninstalled"
+//        } else {
+//            jitImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+//            jitTextField.stringValue = "Not installed yet"
+//        }
+//        butInstallJit.isHidden = scriptInstalled && compatible
     }
     
     func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool) {
         
-        if scriptInstalled {
-            coderevImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusUnavailable)
-            coderevTextField.stringValue = compatible ? "Jirassic can read the url of your browser and it will log time based on it" : "Applescript installed but outdated"
-        } else {
-            coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            coderevTextField.stringValue = "Not installed yet"
-        }
-        butInstallCoderev.isHidden = scriptInstalled && compatible
+//        if scriptInstalled {
+//            coderevImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusUnavailable)
+//            coderevTextField.stringValue = compatible ? "Jirassic can read the url of your browser and it will log time based on it" : "Applescript installed but outdated"
+//        } else {
+//            coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+//            coderevTextField.stringValue = "Not installed yet"
+//        }
+//        butInstallCoderev.isHidden = scriptInstalled && compatible
     }
     
     func showAppSettings (_ settings: Settings) {
@@ -221,17 +164,8 @@ extension SettingsViewController: SettingsPresenterOutput {
         endOfDayTimePicker.dateValue = settings.endOfDayTime
         lunchTimePicker.dateValue = settings.lunchTime
         scrumTimePicker.dateValue = settings.scrumTime
-        
-        // Extensions
-        
-        butTrackCodeReviews.state = settings.trackCodeReviews ? NSControl.StateValue.on : NSControl.StateValue.off
-        butTrackWastedTime.state = settings.trackWastedTime ? NSControl.StateValue.on : NSControl.StateValue.off
-        codeReviewsLinkTextField.stringValue = settings.codeRevLink
-        wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
-        minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration
-        handleMinCodeRevDuration(minCodeRevDurationSlider)
-        minWasteDurationSlider.integerValue = settings.minWasteDuration
-        handleMinWasteDuration(minWasteDurationSlider)
+
+        inputsScrollView.showSettings(settings.settingsBrowser)
         
         // Generic
         
