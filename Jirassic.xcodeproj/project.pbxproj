@@ -1111,8 +1111,6 @@
 				4065D3751DD3B44200B73201 /* SettingsViewController.swift */,
 				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
-				569C4C522021CD950049FBF1 /* Output */,
-				569C4C512021CD7D0049FBF1 /* Input */,
 				40E092401DE385E4001EF5DA /* Settings.storyboard */,
 				287195232022FEA4001C237E /* Tracking */,
 				28FB264E20224DEB00AEA38D /* Output */,
@@ -1280,20 +1278,6 @@
 				5685C7661DE8721100CA545E /* LoginViewController.swift */,
 			);
 			path = Account;
-			sourceTree = "<group>";
-		};
-		569C4C512021CD7D0049FBF1 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
-		569C4C522021CD950049FBF1 /* Output */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Output;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
