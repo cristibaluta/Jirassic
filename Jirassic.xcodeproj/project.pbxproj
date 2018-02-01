@@ -196,6 +196,12 @@
 		287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
 		2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951A2022ECF7001C237E /* OutputsScrollView.swift */; };
 		2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951A2022ECF7001C237E /* OutputsScrollView.swift */; };
+		2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951D2022FD14001C237E /* InputsScrollView.swift */; };
+		2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951D2022FD14001C237E /* InputsScrollView.swift */; };
+		287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
+		287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
+		287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
+		287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -460,6 +466,9 @@
 		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
 		287195172022E8BC001C237E /* OutputTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTableViewDataSource.swift; sourceTree = "<group>"; };
 		2871951A2022ECF7001C237E /* OutputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputsScrollView.swift; sourceTree = "<group>"; };
+		2871951D2022FD14001C237E /* InputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsScrollView.swift; sourceTree = "<group>"; };
+		287195202022FD87001C237E /* InputsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsTableViewDataSource.swift; sourceTree = "<group>"; };
+		287195242022FEBA001C237E /* TrackingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScrollView.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
@@ -730,6 +739,14 @@
 			path = Hookup;
 			sourceTree = "<group>";
 		};
+		287195232022FEA4001C237E /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				287195242022FEBA001C237E /* TrackingScrollView.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
 		2892B2961F0949D70085BAC2 /* Jira */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,6 +784,8 @@
 		28FB264D20224DE200AEA38D /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				2871951D2022FD14001C237E /* InputsScrollView.swift */,
+				287195202022FD87001C237E /* InputsTableViewDataSource.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -1093,6 +1112,7 @@
 				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
 				40E092401DE385E4001EF5DA /* Settings.storyboard */,
+				287195232022FEA4001C237E /* Tracking */,
 				28FB264E20224DEB00AEA38D /* Output */,
 				28FB264D20224DE200AEA38D /* Input */,
 			);
@@ -1608,6 +1628,7 @@
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
+				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
 				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
@@ -1625,6 +1646,7 @@
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
 				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
 				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
+				287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */,
 				28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
@@ -1703,6 +1725,7 @@
 				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
+				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D71B81ED6043D005D2689 /* RCPreferences.swift in Sources */,
 				280D71B91ED6043D005D2689 /* RCLog.swift in Sources */,
@@ -1735,6 +1758,7 @@
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
 				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
+				287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
@@ -1768,6 +1792,7 @@
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
+				2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				28FB264620203ECD00AEA38D /* EndCell.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
@@ -1827,6 +1852,7 @@
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
+				287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				28E8967A1E83845900722032 /* RCPreferences.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A928841E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
