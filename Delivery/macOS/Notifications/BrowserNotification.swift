@@ -200,6 +200,9 @@ extension BrowserNotification {
         
         let settings = localRepository.settings()
         for link in settings.settingsBrowser.wasteLinks {
+            guard link != "" else {
+                continue
+            }
             let regex = try! NSRegularExpression(pattern: link, options: [])
             let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
             if matches.count > 0 {
