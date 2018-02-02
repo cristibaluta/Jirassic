@@ -24,10 +24,11 @@ class InputsTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate let cells: [InputType] = [.shell, .jit, .git, .browser]
-    fileprivate var browserCell: BrowserCell?
+    fileprivate var browserCell: BrowserCell? // We need to retrieve data from this cell
     
     init (tableView: NSTableView) {
         self.tableView = tableView
+        super.init()
 
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ShellCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JitCell.self)), bundle: Bundle.main) != nil, "err")
@@ -45,9 +46,14 @@ class InputsTableViewDataSource: NSObject {
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: BrowserCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)))
+            browserCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self) as? BrowserCell
         }
     }
 
+    func showSettingsBrowser (_ settings: SettingsBrowser) {
+        browserCell!.showSettings(settings)
+    }
+    
     func settingsBrowser() -> SettingsBrowser {
         return browserCell!.settings()
     }
@@ -89,7 +95,6 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
         case .git:
             cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self)
         case .browser:
-            browserCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self) as? BrowserCell
             cell = browserCell!
         }
         

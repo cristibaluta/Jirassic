@@ -28,7 +28,7 @@ class InputsScrollView: NSScrollView {
     }
 
     func showSettings (_ settings: SettingsBrowser) {
-        
+        dataSource!.showSettingsBrowser(settings)
     }
 
     func settings() -> SettingsBrowser {
