@@ -14,6 +14,7 @@ extension SqliteRepository: RepositorySettings {
         
         let results: [SSettings] = queryWithPredicate(nil, sortingKeyPath: nil)
         var ssettings: SSettings? = results.first
+        RCLog(">>>>>>>>>> get startOfDayTime \(ssettings?.startOfDayTime)")
         if ssettings == nil {
             // Default values
             ssettings = SSettings()
@@ -43,6 +44,7 @@ extension SqliteRepository: RepositorySettings {
     func saveSettings (_ settings: Settings) {
         
         let ssettings = ssettingsFromSettings(settings)
+        RCLog(">>>>>>>>>> save startOfDayTime \(ssettings.startOfDayTime)")
         print( ssettings.save())
         
     }

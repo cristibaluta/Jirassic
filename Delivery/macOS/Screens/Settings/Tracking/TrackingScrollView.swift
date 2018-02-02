@@ -19,7 +19,7 @@ class TrackingScrollView: NSScrollView {
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: String(describing: TrackingView.self)),
                                  owner: nil,
                                  topLevelObjects: &views)
-        RCLog(views)
+//        RCLog(views)
         if let v = views {
             for view in v {
                 if let tv = view as? TrackingView {
@@ -28,8 +28,6 @@ class TrackingScrollView: NSScrollView {
                 }
             }
         }
-        RCLog(views?.object(at: 0))
-        RCLog(views?.object(at: 1))
     }
     
     func showSettings (_ settings: SettingsTracking) {
