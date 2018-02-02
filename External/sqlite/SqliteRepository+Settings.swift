@@ -27,10 +27,10 @@ extension SqliteRepository: RepositorySettings {
             ssettings?.trackWastedTime = true
             ssettings?.trackStartOfDay = true
             ssettings?.enableBackup = true
-            ssettings?.startOfDayTime = Date(hour: 9, minute: 0)
-            ssettings?.endOfDayTime = Date(hour: 17, minute: 0)
-            ssettings?.lunchTime = Date(hour: 13, minute: 0)
-            ssettings?.scrumTime = Date(hour: 10, minute: 30)
+            ssettings?.startOfDayTime = Date(date: Date(timeIntervalSince1970: 0), hour: 9, minute: 0)
+            ssettings?.endOfDayTime = Date(date: Date(timeIntervalSince1970: 0), hour: 17, minute: 0)
+            ssettings?.lunchTime = Date(date: Date(timeIntervalSince1970: 0), hour: 13, minute: 0)
+            ssettings?.scrumTime = Date(date: Date(timeIntervalSince1970: 0), hour: 10, minute: 30)
             ssettings?.minSleepDuration = 13
             ssettings?.minCodeRevDuration = 2
             ssettings?.minWasteDuration = 5
@@ -46,6 +46,7 @@ extension SqliteRepository: RepositorySettings {
         let ssettings = ssettingsFromSettings(settings)
         RCLog(">>>>>>>>>> save startOfDayTime \(ssettings.startOfDayTime)")
         print( ssettings.save())
+        RCLog(">>>>>>>>>> save startOfDayTime \(self.settings().settingsTracking.startOfDayTime)")
         
     }
     

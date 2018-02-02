@@ -72,7 +72,7 @@ class SQLTable: NSObject {
 			let t = self.init()
 			for (key, _) in data {
 				if let val = row[key] {
-					t.setValue(val, forKey:key)
+					t.setValue(val, forKey: key)
 				}
 			}
 			res.append(t)
