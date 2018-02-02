@@ -16,7 +16,7 @@ class TaskTypeEstimator {
     func taskTypeAroundDate (_ date: Date, withSettings settings: Settings) -> TaskType {
 		
 		// Check if the date is around scrum time
-        var settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumTime)
+        var settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
 		comps.hour = settingsScrumTime.hour
@@ -31,7 +31,7 @@ class TaskTypeEstimator {
 		
 		
         // Check if the date is around lunch break
-        var settingsLunchTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.lunchTime)
+        var settingsLunchTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.lunchTime)
 		
 		comps.hour = settingsLunchTime.hour
 		comps.minute = settingsLunchTime.minute
@@ -44,7 +44,7 @@ class TaskTypeEstimator {
 		}
         
         // Check if enough time to be considered a meeting
-        if abs(date.timeIntervalSinceNow) > Double(settings.minSleepDuration) {
+        if abs(date.timeIntervalSinceNow) > Double(settings.settingsTracking.minSleepDuration) {
             return TaskType.meeting
         }
         

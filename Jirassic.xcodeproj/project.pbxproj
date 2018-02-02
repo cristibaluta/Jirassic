@@ -202,6 +202,10 @@
 		287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
 		287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
 		287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
+		2871952820241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
+		2871952920241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
+		2871952B20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
+		2871952C20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -493,6 +497,8 @@
 		2871951D2022FD14001C237E /* InputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsScrollView.swift; sourceTree = "<group>"; };
 		287195202022FD87001C237E /* InputsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsTableViewDataSource.swift; sourceTree = "<group>"; };
 		287195242022FEBA001C237E /* TrackingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScrollView.swift; sourceTree = "<group>"; };
+		2871952720241A6C001C237E /* TrackingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingView.xib; sourceTree = "<group>"; };
+		2871952A20241B25001C237E /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
@@ -779,6 +785,8 @@
 			isa = PBXGroup;
 			children = (
 				287195242022FEBA001C237E /* TrackingScrollView.swift */,
+				2871952A20241B25001C237E /* TrackingView.swift */,
+				2871952720241A6C001C237E /* TrackingView.xib */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -1599,6 +1607,7 @@
 				280D71C51ED608D6005D2689 /* ReportCell.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
 				280D71C61ED608D6005D2689 /* TaskCell.xib in Resources */,
+				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
 				280D71C71ED608D6005D2689 /* NonTaskCell.xib in Resources */,
@@ -1622,6 +1631,7 @@
 				569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
+				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
@@ -1718,6 +1728,7 @@
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
 				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
+				2871952B20241B25001C237E /* TrackingView.swift in Sources */,
 				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
@@ -1933,6 +1944,7 @@
 				28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
 				28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */,
+				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,

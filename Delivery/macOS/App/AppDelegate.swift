@@ -121,25 +121,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.browser.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
             
-            if settings.autotrack {
+            if settings.settingsTracking.autotrack {
                 
                 let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
                 
-                guard sleepDuration >= Double(settings.minSleepDuration) else {
+                guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration) else {
                     return
                 }
-                let startDate = settings.startOfDayTime.dateByKeepingTime()
+                let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
                 guard Date() > startDate else {
                     return
                 }
                 
-                let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
-                let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
+                let dayDuration = settings.settingsTracking.endOfDayTime.timeIntervalSince(settings.settingsTracking.startOfDayTime)
+                let workedDuration = Date().timeIntervalSince( settings.settingsTracking.startOfDayTime.dateByKeepingTime())
                 guard workedDuration < dayDuration else {
                     // Do not track time exceeded the working duration
                     return
                 }
-                switch settings.autotrackingMode {
+                switch settings.settingsTracking.autotrackingMode {
                     case .notif:
                         self.presentTaskSuggestionPopup()
                         break

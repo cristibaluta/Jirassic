@@ -38,7 +38,7 @@ extension NSApplication {
                 let currentTasks = reader.tasksInDay(Date())
                 if currentTasks.count == 0 {
                     let settings: Settings = SettingsInteractor().getAppSettings()
-                    let startDate = settings.startOfDayTime.dateByKeepingTime()
+                    let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
                     let comps = startDate.components()
                     let startDayMark = Task(dateEnd: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
                     saveInteractor.saveTask(startDayMark, allowSyncing: true, completion: { savedTask in

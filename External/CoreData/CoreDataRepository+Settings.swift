@@ -53,18 +53,20 @@ extension CoreDataRepository: RepositorySettings {
         
         return Settings(
             
-            autotrack: csettings.autotrack!.boolValue,
-            autotrackingMode: TrackingMode(rawValue: csettings.autotrackingMode!.intValue)!,
-            trackLunch: csettings.trackLunch!.boolValue,
-            trackScrum: csettings.trackScrum!.boolValue,
-            trackMeetings: csettings.trackMeetings!.boolValue,
-            trackStartOfDay: csettings.trackStartOfDay!.boolValue,
             enableBackup: csettings.enableBackup!.boolValue,
-            startOfDayTime: csettings.startOfDayTime!,
-            endOfDayTime: csettings.endOfDayTime!,
-            lunchTime: csettings.lunchTime!,
-            scrumTime: csettings.scrumTime!,
-            minSleepDuration: csettings.minSleepDuration!.intValue,
+            settingsTracking: SettingsTracking(
+                autotrack: csettings.autotrack!.boolValue,
+                autotrackingMode: TrackingMode(rawValue: csettings.autotrackingMode!.intValue)!,
+                trackLunch: csettings.trackLunch!.boolValue,
+                trackScrum: csettings.trackScrum!.boolValue,
+                trackMeetings: csettings.trackMeetings!.boolValue,
+                trackStartOfDay: csettings.trackStartOfDay!.boolValue,
+                startOfDayTime: csettings.startOfDayTime!,
+                endOfDayTime: csettings.endOfDayTime!,
+                lunchTime: csettings.lunchTime!,
+                scrumTime: csettings.scrumTime!,
+                minSleepDuration: csettings.minSleepDuration!.intValue
+            ),
             settingsBrowser: SettingsBrowser(
                 trackCodeReviews: csettings.trackCodeReviews!.boolValue,
                 trackWastedTime: csettings.trackWastedTime!.boolValue,
@@ -85,20 +87,20 @@ extension CoreDataRepository: RepositorySettings {
                                                             into: managedObjectContext!) as? CSettings
         }
         
-        csettings?.autotrack = NSNumber(value: settings.autotrack)
-        csettings?.autotrackingMode = NSNumber(value: settings.autotrackingMode.rawValue)
-        csettings?.trackLunch = NSNumber(value: settings.trackLunch)
-        csettings?.trackScrum = NSNumber(value: settings.trackScrum)
-        csettings?.trackMeetings = NSNumber(value: settings.trackMeetings)
+        csettings?.autotrack = NSNumber(value: settings.settingsTracking.autotrack)
+        csettings?.autotrackingMode = NSNumber(value: settings.settingsTracking.autotrackingMode.rawValue)
+        csettings?.trackLunch = NSNumber(value: settings.settingsTracking.trackLunch)
+        csettings?.trackScrum = NSNumber(value: settings.settingsTracking.trackScrum)
+        csettings?.trackMeetings = NSNumber(value: settings.settingsTracking.trackMeetings)
         csettings?.trackCodeReviews = NSNumber(value: settings.settingsBrowser.trackCodeReviews)
         csettings?.trackWastedTime = NSNumber(value: settings.settingsBrowser.trackWastedTime)
-        csettings?.trackStartOfDay = NSNumber(value: settings.trackStartOfDay)
+        csettings?.trackStartOfDay = NSNumber(value: settings.settingsTracking.trackStartOfDay)
         csettings?.enableBackup = NSNumber(value: settings.enableBackup)
-        csettings?.startOfDayTime = settings.startOfDayTime
-        csettings?.endOfDayTime = settings.endOfDayTime
-        csettings?.lunchTime = settings.lunchTime
-        csettings?.scrumTime = settings.scrumTime
-        csettings?.minSleepDuration = NSNumber(value: settings.minSleepDuration)
+        csettings?.startOfDayTime = settings.settingsTracking.startOfDayTime
+        csettings?.endOfDayTime = settings.settingsTracking.endOfDayTime
+        csettings?.lunchTime = settings.settingsTracking.lunchTime
+        csettings?.scrumTime = settings.settingsTracking.scrumTime
+        csettings?.minSleepDuration = NSNumber(value: settings.settingsTracking.minSleepDuration)
         csettings?.minCodeRevDuration = NSNumber(value: settings.settingsBrowser.minCodeRevDuration)
         csettings?.codeRevLink = settings.settingsBrowser.codeRevLink
         csettings?.minWasteDuration = NSNumber(value: settings.settingsBrowser.minWasteDuration)

@@ -123,7 +123,7 @@ class NewTaskViewController: NSViewController {
             taskTypeSegmentedControl.selectedSegment = 1
             handleSegmentedControl(taskTypeSegmentedControl)
             
-            let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumTime)
+            let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
             self.dateStart = self.initialDate.dateByUpdating(hour: settingsScrumTime.hour!, minute: settingsScrumTime.minute!)
         }
     }

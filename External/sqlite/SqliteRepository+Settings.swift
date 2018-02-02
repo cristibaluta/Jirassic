@@ -49,18 +49,20 @@ extension SqliteRepository: RepositorySettings {
     
     fileprivate func settingsFromSSettings (_ ssettings: SSettings) -> Settings {
         
-        return Settings(autotrack: ssettings.autotrack,
-                        autotrackingMode: TrackingMode(rawValue: ssettings.autotrackingMode)!,
-                        trackLunch: ssettings.trackLunch,
-                        trackScrum: ssettings.trackScrum,
-                        trackMeetings: ssettings.trackMeetings,
-                        trackStartOfDay: ssettings.trackStartOfDay,
-                        enableBackup: ssettings.enableBackup,
-                        startOfDayTime: ssettings.startOfDayTime!,
-                        endOfDayTime: ssettings.endOfDayTime!,
-                        lunchTime: ssettings.lunchTime!,
-                        scrumTime: ssettings.scrumTime!,
-                        minSleepDuration: ssettings.minSleepDuration,
+        return Settings(enableBackup: ssettings.enableBackup,
+                        settingsTracking: SettingsTracking(
+                            autotrack: ssettings.autotrack,
+                            autotrackingMode: TrackingMode(rawValue: ssettings.autotrackingMode)!,
+                            trackLunch: ssettings.trackLunch,
+                            trackScrum: ssettings.trackScrum,
+                            trackMeetings: ssettings.trackMeetings,
+                            trackStartOfDay: ssettings.trackStartOfDay,
+                            startOfDayTime: ssettings.startOfDayTime!,
+                            endOfDayTime: ssettings.endOfDayTime!,
+                            lunchTime: ssettings.lunchTime!,
+                            scrumTime: ssettings.scrumTime!,
+                            minSleepDuration: ssettings.minSleepDuration
+                        ),
                         settingsBrowser: SettingsBrowser(
                             trackCodeReviews: ssettings.trackCodeReviews,
                             trackWastedTime: ssettings.trackWastedTime,
@@ -79,20 +81,20 @@ extension SqliteRepository: RepositorySettings {
         if ssettings == nil {
             ssettings = SSettings()
         }
-        ssettings?.autotrack = settings.autotrack
-        ssettings?.autotrackingMode = settings.autotrackingMode.rawValue
-        ssettings?.trackLunch = settings.trackLunch
-        ssettings?.trackScrum = settings.trackScrum
-        ssettings?.trackMeetings = settings.trackMeetings
+        ssettings?.autotrack = settings.settingsTracking.autotrack
+        ssettings?.autotrackingMode = settings.settingsTracking.autotrackingMode.rawValue
+        ssettings?.trackLunch = settings.settingsTracking.trackLunch
+        ssettings?.trackScrum = settings.settingsTracking.trackScrum
+        ssettings?.trackMeetings = settings.settingsTracking.trackMeetings
         ssettings?.trackCodeReviews = settings.settingsBrowser.trackCodeReviews
         ssettings?.trackWastedTime = settings.settingsBrowser.trackWastedTime
-        ssettings?.trackStartOfDay = settings.trackStartOfDay
+        ssettings?.trackStartOfDay = settings.settingsTracking.trackStartOfDay
         ssettings?.enableBackup = settings.enableBackup
-        ssettings?.startOfDayTime = settings.startOfDayTime
-        ssettings?.endOfDayTime = settings.endOfDayTime
-        ssettings?.lunchTime = settings.lunchTime
-        ssettings?.scrumTime = settings.scrumTime
-        ssettings?.minSleepDuration = settings.minSleepDuration
+        ssettings?.startOfDayTime = settings.settingsTracking.startOfDayTime
+        ssettings?.endOfDayTime = settings.settingsTracking.endOfDayTime
+        ssettings?.lunchTime = settings.settingsTracking.lunchTime
+        ssettings?.scrumTime = settings.settingsTracking.scrumTime
+        ssettings?.minSleepDuration = settings.settingsTracking.minSleepDuration
         ssettings?.minCodeRevDuration = settings.settingsBrowser.minCodeRevDuration
         ssettings?.codeRevLink = settings.settingsBrowser.codeRevLink
         ssettings?.minWasteDuration = settings.settingsBrowser.minWasteDuration

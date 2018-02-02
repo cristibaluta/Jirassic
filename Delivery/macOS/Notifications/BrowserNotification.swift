@@ -75,7 +75,7 @@ class BrowserNotification {
             return
         }
         let settings: Settings = SettingsInteractor().getAppSettings()
-        let maxDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+        let maxDuration = settings.settingsTracking.endOfDayTime.timeIntervalSince(settings.settingsTracking.startOfDayTime)
         let workedDuration = Date().timeIntervalSince( startDay.endDate )
         guard workedDuration < maxDuration else {
             // Do not track browser events past working duration

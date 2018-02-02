@@ -10,12 +10,34 @@ import Cocoa
 
 class TrackingScrollView: NSScrollView {
     
-    @IBOutlet fileprivate var tableView: NSTableView!
+    private var trackingView: TrackingView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        var views: NSArray?
+        Bundle.main.loadNibNamed(NSNib.Name(rawValue: String(describing: TrackingView.self)),
+                                 owner: nil,
+                                 topLevelObjects: &views)
+        RCLog(views)
+        if let v = views {
+            for view in v {
+                if let tv = view as? TrackingView {
+                    trackingView = tv
+                    self.addSubview(tv)
+                }
+            }
+        }
+        RCLog(views?.object(at: 0))
+        RCLog(views?.object(at: 1))
+    }
+    
+    func showSettings (_ settings: SettingsTracking) {
+        trackingView!.showSettings(settings)
+    }
+    
+    func settings() -> SettingsTracking {
+        return trackingView!.settings()
     }
 }
 

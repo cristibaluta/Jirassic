@@ -15,21 +15,25 @@ enum TrackingMode: Int {
 
 struct Settings {
     
+    var enableBackup: Bool
+    var settingsTracking: SettingsTracking
+    var settingsBrowser: SettingsBrowser
+}
+
+struct SettingsTracking {
+    
     var autotrack: Bool
     var autotrackingMode: TrackingMode
     var trackLunch: Bool
     var trackScrum: Bool
     var trackMeetings: Bool
     var trackStartOfDay: Bool
-    var enableBackup: Bool
     
     var startOfDayTime: Date
     var endOfDayTime: Date
     var lunchTime: Date
     var scrumTime: Date
     var minSleepDuration: Int
-
-    var settingsBrowser: SettingsBrowser
 }
 
 struct SettingsBrowser {
