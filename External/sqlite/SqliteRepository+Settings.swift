@@ -37,16 +37,16 @@ extension SqliteRepository: RepositorySettings {
             ssettings?.codeRevLink = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
             ssettings?.wasteLinks = "facebook.com,youtube.com,twitter.com"
         }
-        
+
         return settingsFromSSettings(ssettings!)
     }
     
     func saveSettings (_ settings: Settings) {
         
         let ssettings = ssettingsFromSettings(settings)
-        RCLog(">>>>>>>>>> save startOfDayTime \(ssettings.startOfDayTime)")
+        RCLog(">>>>>>>>>> SAVE startOfDayTime \(ssettings.startOfDayTime)")
         print( ssettings.save())
-        RCLog(">>>>>>>>>> save startOfDayTime \(self.settings().settingsTracking.startOfDayTime)")
+        RCLog(">>>>>>>>>> SAVED startOfDayTime \(self.settings().settingsTracking.startOfDayTime)")
         
     }
     
