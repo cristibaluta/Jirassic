@@ -16,8 +16,10 @@ class BrowserCell: NSTableRowView {
     @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
     @IBOutlet fileprivate var butTrackWastedTime: NSButton!
     @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
+    @IBOutlet fileprivate var minCodeRevDurationLabel: NSTextField!
     @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
     @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
+    @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
     @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
     
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -53,16 +55,30 @@ class BrowserCell: NSTableRowView {
     func save() {
 
     }
+    
+    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {
+        
+        if scriptInstalled {
+            coderevImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusUnavailable)
+            coderevTextField.stringValue = compatible
+                ? "Jirassic can read the url of your browser and it will log time based on it"
+                : "Applescript installed but outdated"
+        } else {
+            coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            coderevTextField.stringValue = "Not installed yet"
+        }
+        butInstallCoderev.isHidden = scriptInstalled && compatible
+    }
 
     @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {
         NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
     }
 
     @IBAction func handleMinCodeRevDuration (_ sender: NSSlider) {
-//        minCodeRevDurationLabel.stringValue = "\(sender.integerValue) min"
+        minCodeRevDurationLabel.stringValue = "\(sender.integerValue) min"
     }
 
     @IBAction func handleMinWasteDuration (_ sender: NSSlider) {
-//        minWasteDurationLabel.stringValue = "\(sender.integerValue) min"
+        minWasteDurationLabel.stringValue = "\(sender.integerValue) min"
     }
 }

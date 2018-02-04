@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" toolTip="jirassic is the command line tool of this app" borderType="line" title="Shell support" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-kY-nCa">
+                <box autoresizesSubviews="NO" borderType="line" title="Shell support" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-kY-nCa">
                     <rect key="frame" x="-3" y="-4" width="486" height="124"/>
                     <view key="contentView" id="p7S-Nq-3V4">
                         <rect key="frame" x="1" y="1" width="484" height="108"/>
@@ -42,6 +42,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleInstallButton:" target="c22-O7-iKe" id="Py5-Gq-MOk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -61,6 +64,11 @@
                 <constraint firstAttribute="trailing" secondItem="Lym-kY-nCa" secondAttribute="trailing" id="oii-Gh-c1o"/>
                 <constraint firstAttribute="bottom" secondItem="Lym-kY-nCa" secondAttribute="bottom" id="yG9-v9-fsW"/>
             </constraints>
+            <connections>
+                <outlet property="butInstall" destination="9NN-ai-rt7" id="BfR-qh-ZdY"/>
+                <outlet property="statusImageView" destination="Ozs-A1-GHW" id="pSu-Tm-Bfc"/>
+                <outlet property="textField" destination="fgI-x9-bZH" id="pBd-aQ-GDx"/>
+            </connections>
             <point key="canvasLocation" x="140" y="92"/>
         </customView>
     </objects>

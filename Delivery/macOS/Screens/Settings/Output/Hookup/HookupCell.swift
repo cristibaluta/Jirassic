@@ -10,6 +10,9 @@ import Cocoa
 
 class HookupCell: NSTableRowView {
     
+    @IBOutlet fileprivate var statusImageView: NSImageView!
+    @IBOutlet fileprivate var textField: NSTextField!
+    @IBOutlet fileprivate var butInstall: NSButton!
     @IBOutlet fileprivate var hookupNameTextField: NSTextField!
     
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()

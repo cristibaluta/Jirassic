@@ -16,7 +16,6 @@
             <subviews>
                 <box autoresizesSubviews="NO" borderType="line" title="Jit support" translatesAutoresizingMaskIntoConstraints="NO" id="LH9-Gr-LTu">
                     <rect key="frame" x="-3" y="-4" width="486" height="54"/>
-                    <string key="toolTip">jit is a git wrapper that adds some convenience functionality for Jira. Commiting with Jit logs the messages as task to Jirassic</string>
                     <view key="contentView" id="Ns2-hK-EP5">
                         <rect key="frame" x="1" y="1" width="484" height="38"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,6 +42,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleInstallButton:" target="c22-O7-iKe" id="YYU-9g-Xh2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -62,6 +64,11 @@
                 <constraint firstItem="LH9-Gr-LTu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="UTI-3S-2RP"/>
                 <constraint firstItem="LH9-Gr-LTu" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="VzY-Un-Lg4"/>
             </constraints>
+            <connections>
+                <outlet property="butInstall" destination="ZYg-1V-a4C" id="Whq-ZH-cbb"/>
+                <outlet property="statusImageView" destination="J2T-Jl-X5Z" id="dsS-tK-EW3"/>
+                <outlet property="textField" destination="6xF-lx-omh" id="XcO-Rt-Ksk"/>
+            </connections>
         </customView>
     </objects>
     <resources>

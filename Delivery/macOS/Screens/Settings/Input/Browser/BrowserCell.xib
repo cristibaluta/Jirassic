@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="160"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" toolTip="Time spent in stash in a browser is counted as code review or wasted time." borderType="line" title="Browser support" translatesAutoresizingMaskIntoConstraints="NO" id="x9z-3V-m6f">
+                <box autoresizesSubviews="NO" borderType="line" title="Browser support" translatesAutoresizingMaskIntoConstraints="NO" id="x9z-3V-m6f">
                     <rect key="frame" x="-3" y="-4" width="486" height="164"/>
                     <view key="contentView" id="yhf-nW-mNO">
                         <rect key="frame" x="1" y="1" width="484" height="148"/>
@@ -201,7 +201,9 @@
                 <outlet property="codeReviewsLinkTextField" destination="azj-Uv-crK" id="c6v-Mx-JTP"/>
                 <outlet property="coderevImageView" destination="UMH-Mo-8NK" id="xes-N0-uN6"/>
                 <outlet property="coderevTextField" destination="SDw-Zo-fFC" id="Vb0-ip-kRo"/>
+                <outlet property="minCodeRevDurationLabel" destination="Soi-9n-x1W" id="1HR-tC-Psz"/>
                 <outlet property="minCodeRevDurationSlider" destination="GeU-aa-ZaF" id="JWv-92-EFw"/>
+                <outlet property="minWasteDurationLabel" destination="ben-v1-cTm" id="3Tf-ed-s8J"/>
                 <outlet property="minWasteDurationSlider" destination="Mfq-fM-cOv" id="MBz-zQ-A2x"/>
                 <outlet property="wastedTimeLinksTextField" destination="cnD-7C-bnm" id="8u1-lM-iHF"/>
             </connections>

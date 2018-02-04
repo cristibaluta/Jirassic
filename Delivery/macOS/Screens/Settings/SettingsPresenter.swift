@@ -23,7 +23,7 @@ protocol SettingsPresenterOutput: class {
     
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool)
     func setJitStatus (compatible: Bool, scriptInstalled: Bool)
-    func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool)
+    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
     func enabledBackup (_ enabled: Bool, title: String)
@@ -56,8 +56,8 @@ extension SettingsPresenter: SettingsPresenterInput {
                                             scriptInstalled: versions.shellScript != "" )
             userInterface.setJitStatus(compatible: compatibility.jitCmd, 
                                        scriptInstalled: versions.shellScript != "" )
-            userInterface.setCodeReviewStatus(compatible: compatibility.browserScript, 
-                                              scriptInstalled: versions.browserScript != "" )
+            userInterface.setBrowserStatus(compatible: compatibility.browserScript,
+                                           scriptInstalled: versions.browserScript != "" )
         }
     }
     

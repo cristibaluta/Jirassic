@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="511" height="178"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" toolTip="Send your logs to Jira. All the logs in a day are sent to Jira as a single worklog in the selected project and issue name." borderType="line" title="Jira Tempo" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-h3-hcI">
+                <box autoresizesSubviews="NO" borderType="line" title="Jira Tempo" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-h3-hcI">
                     <rect key="frame" x="-3" y="-4" width="517" height="182"/>
                     <view key="contentView" id="gTj-S0-GSV">
                         <rect key="frame" x="1" y="1" width="515" height="166"/>

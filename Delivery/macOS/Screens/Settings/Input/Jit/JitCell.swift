@@ -24,6 +24,20 @@ class JitCell: NSTableRowView {
     func save() {
 
     }
+    
+    func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
+        
+        if scriptInstalled {
+            statusImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+            textField.stringValue = compatible
+                ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info"
+                : "Applescript installed but jit cmd is outdated/uninstalled"
+        } else {
+            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            textField.stringValue = "Not installed yet"
+        }
+        butInstall.isHidden = scriptInstalled && compatible
+    }
 
     @IBAction func handleInstallButton (_ sender: NSButton) {
         #if APPSTORE

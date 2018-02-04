@@ -20,6 +20,20 @@ class ShellCell: NSTableRowView {
         super.awakeFromNib()
 
     }
+    
+    func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
+        
+        if scriptInstalled {
+            statusImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+            textField.stringValue = compatible
+                ? "Run 'jirassic' in Terminal for more info"
+                : "Applescript installed but jirassic cmd is outdated/uninstalled"
+        } else {
+            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            textField.stringValue = "Not installed yet"
+        }
+        butInstall.isHidden = scriptInstalled && compatible
+    }
 
     func save() {
 

@@ -82,39 +82,15 @@ extension SettingsViewController: Animatable {
 extension SettingsViewController: SettingsPresenterOutput {
     
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
-        
-//        if scriptInstalled {
-//            jirassicImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-//            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Applescript installed but jirassic cmd is outdated/uninstalled"
-//        } else {
-//            jirassicImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-//            jirassicTextField.stringValue = "Not installed yet"
-//        }
-//        butInstallJirassic.isHidden = scriptInstalled && compatible
+        inputsScrollView.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
-        
-//        if scriptInstalled {
-//            jitImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-//            jitTextField.stringValue = compatible ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info" : "Applescript installed but jit cmd is outdated/uninstalled"
-//        } else {
-//            jitImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-//            jitTextField.stringValue = "Not installed yet"
-//        }
-//        butInstallJit.isHidden = scriptInstalled && compatible
+        inputsScrollView.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
-    func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool) {
-        
-//        if scriptInstalled {
-//            coderevImageView.image = NSImage(named: compatible ? NSImage.Name.statusAvailable : NSImage.Name.statusUnavailable)
-//            coderevTextField.stringValue = compatible ? "Jirassic can read the url of your browser and it will log time based on it" : "Applescript installed but outdated"
-//        } else {
-//            coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-//            coderevTextField.stringValue = "Not installed yet"
-//        }
-//        butInstallCoderev.isHidden = scriptInstalled && compatible
+    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {
+        inputsScrollView.setBrowserStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
     func showAppSettings (_ settings: Settings) {

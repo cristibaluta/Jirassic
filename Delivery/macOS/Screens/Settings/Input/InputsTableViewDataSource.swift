@@ -10,7 +10,7 @@ import Cocoa
 
 let kShellCellHeight = CGFloat(50.0)
 let kJitCellHeight = CGFloat(50.0)
-let kGitCellHeight = CGFloat(50.0)
+let kGitCellHeight = CGFloat(110.0)
 let kBrowserCellHeight = CGFloat(160.0)
 
 enum InputType {
@@ -24,7 +24,10 @@ class InputsTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate let cells: [InputType] = [.shell, .jit, .git, .browser]
-    fileprivate var browserCell: BrowserCell? // We need to retrieve data from this cell
+    var shellCell: ShellCell?
+    var jitCell: JitCell?
+    var gitCell: GitCell?
+    var browserCell: BrowserCell?
     
     init (tableView: NSTableView) {
         self.tableView = tableView
@@ -37,12 +40,15 @@ class InputsTableViewDataSource: NSObject {
         
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ShellCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)))
+            shellCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)), owner: self) as? ShellCell
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JitCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)))
+            jitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)), owner: self) as? JitCell
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: GitCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)))
+            gitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self) as? GitCell
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: BrowserCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)))
@@ -89,11 +95,11 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
         let outputType = cells[row]
         switch outputType {
         case .shell:
-            cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)), owner: self)
+            cell = shellCell!
         case .jit:
-            cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)), owner: self)
+            cell = jitCell!
         case .git:
-            cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self)
+            cell = gitCell!
         case .browser:
             cell = browserCell!
         }
@@ -101,4 +107,3 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
         return cell
     }
 }
-

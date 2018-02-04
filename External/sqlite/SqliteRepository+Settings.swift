@@ -14,7 +14,6 @@ extension SqliteRepository: RepositorySettings {
         
         let results: [SSettings] = queryWithPredicate(nil, sortingKeyPath: nil)
         var ssettings: SSettings? = results.first
-        RCLog(">>>>>>>>>> get startOfDayTime \(ssettings?.startOfDayTime)")
         if ssettings == nil {
             // Default values
             ssettings = SSettings()
@@ -27,10 +26,10 @@ extension SqliteRepository: RepositorySettings {
             ssettings?.trackWastedTime = true
             ssettings?.trackStartOfDay = true
             ssettings?.enableBackup = true
-            ssettings?.startOfDayTime = Date(year: 2017, month: 6, day: 15, hour: 9, minute: 0)
+            ssettings?.startOfDayTime = Date(hour: 9, minute: 0)
             ssettings?.endOfDayTime = Date(hour: 17, minute: 0)
-            ssettings?.lunchTime = Date(date: Date(timeIntervalSince1970: 0), hour: 13, minute: 0)
-            ssettings?.scrumTime = Date(date: Date(timeIntervalSince1970: 0), hour: 10, minute: 30)
+            ssettings?.lunchTime = Date(hour: 13, minute: 0)
+            ssettings?.scrumTime = Date(hour: 10, minute: 30)
             ssettings?.minSleepDuration = 13
             ssettings?.minCodeRevDuration = 2
             ssettings?.minWasteDuration = 5
@@ -44,10 +43,7 @@ extension SqliteRepository: RepositorySettings {
     func saveSettings (_ settings: Settings) {
         
         let ssettings = ssettingsFromSettings(settings)
-        RCLog(">>>>>>>>>> SAVE startOfDayTime \(ssettings.startOfDayTime)")
-        print( ssettings.save())
-        RCLog(">>>>>>>>>> SAVED startOfDayTime \(self.settings().settingsTracking.startOfDayTime)")
-        
+        print(ssettings.save())
     }
     
     fileprivate func settingsFromSSettings (_ ssettings: SSettings) -> Settings {

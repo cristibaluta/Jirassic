@@ -61,6 +61,11 @@ class SandboxedAppleScript: AppleScriptProtocol {
         })
     }
     
+    func getGitLogs (for day: Date, completion: @escaping (String) -> Void) {
+        // error "fatal: Not a git repository (or any of the parent directories): .git" number 128
+        // do shell script "git -C ~/Documents/Jirassic log"
+    }
+    
     func getJirassicVersion (completion: @escaping (String) -> Void) {
         
         let command = "/usr/local/bin/jirassic version"

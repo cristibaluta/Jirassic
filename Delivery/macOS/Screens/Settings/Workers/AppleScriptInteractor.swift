@@ -15,6 +15,7 @@ protocol AppleScriptProtocol {
     var scriptsDirectory: URL? {get}
     func getScriptVersion (script: String, completion: @escaping (String) -> Void)
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
+    func getGitLogs (for day: Date, completion: @escaping (String) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void)
@@ -29,6 +30,12 @@ class AppleScriptInteractor: AppleScriptProtocol {
     
     var scriptsDirectory: URL? {
         return Bundle.main.resourceURL
+    }
+    
+    init() {
+        #if APPSTORE
+            fatalError("For Appstore SandboxedAppleScript must be used")
+        #endif
     }
     
     func getScriptVersion (script: String, completion: @escaping (String) -> Void) {
@@ -66,6 +73,10 @@ class AppleScriptInteractor: AppleScriptProtocol {
             
             completion(dict)
         })
+    }
+    
+    func getGitLogs (for day: Date, completion: @escaping (String) -> Void) {
+        
     }
     
     func getJirassicVersion (completion: @escaping (String) -> Void) {

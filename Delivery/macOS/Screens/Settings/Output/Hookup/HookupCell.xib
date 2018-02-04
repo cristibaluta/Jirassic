@@ -16,7 +16,6 @@
             <subviews>
                 <box autoresizesSubviews="NO" borderType="line" title="Hookups" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Mt-WYx">
                     <rect key="frame" x="-3" y="-4" width="486" height="84"/>
-                    <string key="toolTip">When you add a log to the app it is sent to the custom cmd tool named here. Useful if you want to do something custom with the begining and end of the day.</string>
                     <view key="contentView" id="ZSq-u6-jDQ">
                         <rect key="frame" x="1" y="1" width="484" height="68"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
