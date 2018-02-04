@@ -214,6 +214,8 @@
 		287195322025C364001C237E /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
 		287195332025C367001C237E /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
 		287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */; };
+		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
+		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -507,6 +509,7 @@
 		287195242022FEBA001C237E /* TrackingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScrollView.swift; sourceTree = "<group>"; };
 		2871952720241A6C001C237E /* TrackingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingView.xib; sourceTree = "<group>"; };
 		2871952A20241B25001C237E /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
+		287195352027CAD9001C237E /* TimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInteractor.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
@@ -1037,6 +1040,7 @@
 			children = (
 				4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */,
 				4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */,
+				287195352027CAD9001C237E /* TimeInteractor.swift */,
 			);
 			path = Time;
 			sourceTree = "<group>";
@@ -1734,6 +1738,7 @@
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
+				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
 				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
@@ -1882,6 +1887,7 @@
 				569C4C5C202319490049FBF1 /* ShellPresenter.swift in Sources */,
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
 				569C4C65202319870049FBF1 /* GitCell.swift in Sources */,
+				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */,

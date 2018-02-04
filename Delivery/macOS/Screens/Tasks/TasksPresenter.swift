@@ -90,7 +90,7 @@ extension TasksPresenter: TasksPresenterInput {
         lastSelectedDay = day
         let settings = SettingsInteractor().getAppSettings()
         let targetHoursInDay = localPreferences.bool(.roundDay) 
-            ? settings.settingsTracking.endOfDayTime.timeIntervalSince(settings.settingsTracking.startOfDayTime)
+            ? TimeInteractor(settings: settings).workingDayLength()
             : nil
         let reader = ReadTasksInteractor(repository: localRepository)
         currentTasks = reader.tasksInDay(day.date)
@@ -157,7 +157,7 @@ extension TasksPresenter: TasksPresenterInput {
 
         let settings = SettingsInteractor().getAppSettings()
         let targetHoursInDay = localPreferences.bool(.roundDay)
-            ? settings.settingsTracking.endOfDayTime.timeIntervalSince(settings.settingsTracking.startOfDayTime)
+            ? TimeInteractor(settings: settings).workingDayLength()
             : nil
         let reader = ReadTasksInteractor(repository: localRepository)
         let date = lastSelectedDay?.date ?? Date()

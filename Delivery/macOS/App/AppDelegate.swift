@@ -133,8 +133,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     return
                 }
                 
-                let dayDuration = settings.settingsTracking.endOfDayTime.timeIntervalSince(settings.settingsTracking.startOfDayTime)
-                let workedDuration = Date().timeIntervalSince( settings.settingsTracking.startOfDayTime.dateByKeepingTime())
+                let timeInteractor = TimeInteractor(settings: settings)
+                let dayDuration = timeInteractor.workingDayLength()
+                let workedDuration = timeInteractor.workedDayLength()
                 guard workedDuration < dayDuration else {
                     // Do not track time exceeded the working duration
                     return
