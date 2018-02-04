@@ -26,4 +26,9 @@ class OutputsScrollView: NSScrollView {
         
         tableView.reloadData()
     }
+    
+    func save() {
+        dataSource?.jiraCell?.save()
+        dataSource?.hookupCell?.save()
+    }
 }

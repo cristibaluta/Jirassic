@@ -37,5 +37,9 @@ class TrackingScrollView: NSScrollView {
     func settings() -> SettingsTracking {
         return trackingView!.settings()
     }
+    
+    func save() {
+        
+    }
 }
 

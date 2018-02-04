@@ -66,6 +66,21 @@ class SandboxedAppleScript: AppleScriptProtocol {
         // do shell script "git -C ~/Documents/Jirassic log"
     }
     
+    func call (command: String, arguments: [String: Any], completion: @escaping (String) -> Void) {
+        
+        let command = "/usr/local/bin/jirassic version"
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+            if let descriptor = descriptor {
+                completion( descriptor.stringValue! )
+            } else {
+                completion("")
+            }
+        })
+    }
+    
     func getJirassicVersion (completion: @escaping (String) -> Void) {
         
         let command = "/usr/local/bin/jirassic version"

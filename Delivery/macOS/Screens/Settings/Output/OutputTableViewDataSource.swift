@@ -20,18 +20,23 @@ class OutputTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate let cells: [OutputType] = [.jiraTempo, .hookup]
+    var jiraCell: JiraTempoCell?
+    var hookupCell: HookupCell?
     
     init (tableView: NSTableView) {
         self.tableView = tableView
+        super.init()
         
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JiraTempoCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: HookupCell.self)), bundle: Bundle.main) != nil, "err")
         
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JiraTempoCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)))
+            jiraCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)), owner: self) as? JiraTempoCell
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: HookupCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)))
+            hookupCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)), owner: self) as? HookupCell
         }
     }
 }
@@ -62,9 +67,9 @@ extension OutputTableViewDataSource: NSTableViewDelegate {
         let outputType = cells[row]
         switch outputType {
         case .jiraTempo:
-            cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)), owner: self)
+            cell = jiraCell!
         case .hookup:
-            cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)), owner: self)
+            cell = hookupCell!
         }
         
         return cell

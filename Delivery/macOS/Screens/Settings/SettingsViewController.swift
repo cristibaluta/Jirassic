@@ -48,6 +48,10 @@ class SettingsViewController: NSViewController {
             settingsBrowser: inputsScrollView.settings()
         )
         presenter!.saveAppSettings(settings)
+        
+        trackingScrollView.save()
+        inputsScrollView.save()
+        outputsScrollView.save()
     }
     
     deinit {

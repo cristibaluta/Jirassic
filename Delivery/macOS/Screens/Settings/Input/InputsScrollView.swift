@@ -35,6 +35,13 @@ class InputsScrollView: NSScrollView {
         return dataSource!.settingsBrowser()
     }
     
+    func save() {
+        dataSource?.shellCell?.save()
+        dataSource?.jitCell?.save()
+        dataSource?.gitCell?.save()
+        dataSource?.browserCell?.save()
+    }
+    
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
         dataSource?.shellCell?.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
