@@ -167,7 +167,6 @@ extension SQLiteDB {
 					flag = sqlite3_bind_blob(stmt, ndx, data.bytes, CInt(data.length), SQLITE_TRANSIENT)
 				} else if let date = params![i] as? Date {
 					let txt = fmt.string(from: date)
-                    RCLog("Converting date \(date) to string \(txt)")
 					flag = sqlite3_bind_text(stmt, ndx, txt, -1, SQLITE_TRANSIENT)
 				} else if let val = params![i] as? Bool {
 					let num = val ? 1 : 0
@@ -360,10 +359,16 @@ extension SQLiteDB {
 					strptime(txt, "%Y-%m-%d %H:%M:%S", &time)
 					time.tm_isdst = -1
 					let diff = TimeZone.current.secondsFromGMT()
-					let t = mktime(&time) + diff
-					let ti = TimeInterval(t)
-					let val = Date(timeIntervalSince1970: ti)
-					return val
+                    let tz = TimeZone.current
+                    var t = Double(mktime(&time) + diff)
+                    var ti = TimeInterval(t)
+                    var val = Date(timeIntervalSince1970: ti)
+                    if tz.isDaylightSavingTime(for: val) {
+                        t = t + tz.daylightSavingTimeOffset(for: val)
+                        ti = TimeInterval(t)
+                        val = Date(timeIntervalSince1970: ti)
+                    }
+                    return val
 				}
 			}
 			// If not a text date, then it's a time interval

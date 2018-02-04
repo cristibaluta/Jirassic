@@ -206,6 +206,14 @@
 		2871952920241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
 		2871952B20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
 		2871952C20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
+		2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
+		2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */; };
+		2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */; };
+		287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288F1E910FF60022AB55 /* CoreDataRepository+User.swift */; };
+		287195312025C360001C237E /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38D1DD3B44200B73201 /* CSettings.swift */; };
+		287195322025C364001C237E /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
+		287195332025C367001C237E /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
+		287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
@@ -1718,6 +1726,8 @@
 				280D712D1ED6043D005D2689 /* Report.swift in Sources */,
 				280D712E1ED6043D005D2689 /* Settings.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
+				287195312025C360001C237E /* CSettings.swift in Sources */,
+				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
 				280D71321ED6043D005D2689 /* Week.swift in Sources */,
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
@@ -1751,6 +1761,8 @@
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
+				287195322025C364001C237E /* CTask.swift in Sources */,
+				287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */,
 				280D715C1ED6043D005D2689 /* AppScriptable.swift in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
@@ -1766,10 +1778,13 @@
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
 				280D71681ED6043D005D2689 /* TaskSuggestionViewController.swift in Sources */,
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
+				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
+				2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */,
 				280D716E1ED6043D005D2689 /* LoginPresenter.swift in Sources */,
 				28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */,
+				287195332025C367001C237E /* CUser.swift in Sources */,
 				280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */,
 				2892B2AA1F0950F90085BAC2 /* RCHttp.swift in Sources */,
 				2892B29E1F094B0D0085BAC2 /* JReport.swift in Sources */,
@@ -1818,6 +1833,7 @@
 				569C4C6A202319A20049FBF1 /* BrowserCell.swift in Sources */,
 				280D71A31ED6043D005D2689 /* SUser.swift in Sources */,
 				280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */,
+				2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */,
 				280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */,
 				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,

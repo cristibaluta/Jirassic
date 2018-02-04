@@ -35,7 +35,7 @@ extension CoreDataRepository: RepositorySettings {
             csettings?.minSleepDuration = NSNumber(value: 13)
             csettings?.minCodeRevDuration = NSNumber(value: 3)
             csettings?.minWasteDuration = NSNumber(value: 5)
-            csettings?.codeRevLink = ""
+            csettings?.codeRevLink = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
             csettings?.wasteLinks = ["facebook.com", "youtube.com", "twitter.com"]
             
             saveContext()

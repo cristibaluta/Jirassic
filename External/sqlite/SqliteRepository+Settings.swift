@@ -27,8 +27,8 @@ extension SqliteRepository: RepositorySettings {
             ssettings?.trackWastedTime = true
             ssettings?.trackStartOfDay = true
             ssettings?.enableBackup = true
-            ssettings?.startOfDayTime = Date(date: Date(timeIntervalSince1970: 0), hour: 9, minute: 0)
-            ssettings?.endOfDayTime = Date(date: Date(timeIntervalSince1970: 0), hour: 17, minute: 0)
+            ssettings?.startOfDayTime = Date(year: 2017, month: 6, day: 15, hour: 9, minute: 0)
+            ssettings?.endOfDayTime = Date(hour: 17, minute: 0)
             ssettings?.lunchTime = Date(date: Date(timeIntervalSince1970: 0), hour: 13, minute: 0)
             ssettings?.scrumTime = Date(date: Date(timeIntervalSince1970: 0), hour: 10, minute: 30)
             ssettings?.minSleepDuration = 13

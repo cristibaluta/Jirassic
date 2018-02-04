@@ -47,8 +47,7 @@ extension JiraRepository {
         ]
         request?.post(at: path, parameters: parameters, success: { (response) in
             
-            if let projects = response as? [[String: Any]] {
-                
+            if let _ = response as? [[String: Any]] {
                 completion?()
             } else {
                 completion?()
