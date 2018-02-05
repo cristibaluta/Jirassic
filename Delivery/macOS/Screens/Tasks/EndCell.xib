@@ -10,11 +10,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="EndCell" id="c22-O7-iKe" customClass="EndCell" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="454" height="133"/>
+            <rect key="frame" x="0.0" y="0.0" width="454" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-jr-se2">
-                    <rect key="frame" x="245" y="89" width="84" height="22"/>
+                    <rect key="frame" x="245" y="19" width="84" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1EQ-yN-ZBK"/>
                         <constraint firstAttribute="width" constant="84" id="gDa-WP-xPg"/>
@@ -27,31 +27,14 @@
                         <action selector="handleEndButton:" target="c22-O7-iKe" id="3tQ-gd-afy"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tah-B7-8dk">
-                    <rect key="frame" x="12" y="47" width="196" height="18"/>
-                    <buttonCell key="cell" type="check" title="Save worklogs to Jira Tempo" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7nb-1I-wFr">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AtL-mZ-RuN">
-                    <rect key="frame" x="12" y="18" width="108" height="18"/>
-                    <buttonCell key="cell" type="check" title="Round to 8hrs" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SCo-uI-Pfq">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fml-cT-5yK">
-                    <rect key="frame" x="12" y="126" width="430" height="5"/>
+                    <rect key="frame" x="12" y="56" width="430" height="5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="96f-HX-A9C"/>
                     </constraints>
                 </box>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mZR-Tv-F9j">
-                    <rect key="frame" x="219" y="48" width="16" height="16"/>
-                </progressIndicator>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-uQ-oVI">
-                    <rect key="frame" x="125" y="89" width="84" height="22"/>
+                    <rect key="frame" x="125" y="19" width="84" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="84" id="aIF-Ua-EvT"/>
                         <constraint firstAttribute="height" constant="21" id="cUp-G5-Pf2"/>
@@ -66,26 +49,19 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="mZR-Tv-F9j" firstAttribute="leading" secondItem="tah-B7-8dk" secondAttribute="trailing" constant="13" id="1HM-op-uE9"/>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="top" secondItem="fml-cT-5yK" secondAttribute="bottom" constant="17" id="6cZ-dP-phn"/>
                 <constraint firstItem="fml-cT-5yK" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="9Jz-X4-20q"/>
                 <constraint firstItem="fml-cT-5yK" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="4" id="ByD-hE-4uG"/>
-                <constraint firstItem="AtL-mZ-RuN" firstAttribute="top" secondItem="tah-B7-8dk" secondAttribute="bottom" constant="15" id="Cbl-Xa-D6o"/>
-                <constraint firstItem="tah-B7-8dk" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="Q0q-hs-Ic6"/>
                 <constraint firstItem="uAc-jr-se2" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" constant="60" id="dgs-ZV-IMs"/>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" constant="-60" id="fZ0-Zs-OZd"/>
-                <constraint firstItem="tah-B7-8dk" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="70" id="hGW-Uh-aur"/>
                 <constraint firstItem="uAc-jr-se2" firstAttribute="top" secondItem="fml-cT-5yK" secondAttribute="bottom" constant="17" id="hwQ-GT-A8j"/>
-                <constraint firstItem="AtL-mZ-RuN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="s14-7f-20n"/>
                 <constraint firstAttribute="trailing" secondItem="fml-cT-5yK" secondAttribute="trailing" constant="12" id="vTl-3U-bzo"/>
-                <constraint firstItem="mZR-Tv-F9j" firstAttribute="centerY" secondItem="tah-B7-8dk" secondAttribute="centerY" id="zuF-da-77c"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="hGd-uQ-oVI" id="3iX-M6-W2m"/>
                 <outlet property="butEnd" destination="uAc-jr-se2" id="R9i-Su-IxH"/>
-                <outlet property="progressIndicator" destination="mZR-Tv-F9j" id="CDh-LR-AvN"/>
             </connections>
-            <point key="canvasLocation" x="126" y="98.5"/>
+            <point key="canvasLocation" x="126" y="63.5"/>
         </customView>
     </objects>
 </document>

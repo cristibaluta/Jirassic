@@ -21,7 +21,7 @@ class TasksDataSource: NSObject {
     fileprivate var tasks: [Task] = []
     var didAddRow: ((_ row: Int) -> Void)?
     var didRemoveRow: ((_ row: Int) -> Void)?
-    var didEndDay: ((_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void)?
+    var didEndDay: ((_ tasks: [Task]) -> Void)?
     
     init (tableView: NSTableView, tasks: [Task]) {
         self.tableView = tableView
@@ -102,8 +102,11 @@ extension TasksDataSource: NSTableViewDelegate {
 
         guard row < tasks.count else {
             let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)), owner: self) as? EndCell
-            cell?.didEndDay = { [weak self] (shouldSaveToJira: Bool, shouldRoundTime: Bool) in
-                self?.didEndDay!(shouldSaveToJira, shouldRoundTime)
+
+            cell?.didEndDay = { [weak self] () in
+                if let wself = self {
+                    wself.didEndDay!(wself.tasks)
+                }
             }
             cell?.didAddTask = { [weak self] in
                 self?.didAddRow!(tableView.numberOfRows-1)

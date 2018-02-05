@@ -383,6 +383,12 @@
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
+		564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
+		564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
+		564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
+		564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
+		564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* EndDay.storyboard */; };
+		564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* EndDay.storyboard */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -658,6 +664,9 @@
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Welcome.storyboard; path = Welcome/Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		564E55F2202883DB00CE4C76 /* EndDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayViewController.swift; sourceTree = "<group>"; };
+		564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayPresenter.swift; sourceTree = "<group>"; };
+		564E55F82028857300CE4C76 /* EndDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndDay.storyboard; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -1151,6 +1160,7 @@
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
 				4065D3701DD3B44200B73201 /* NewTask */,
+				564E55F12028839F00CE4C76 /* EndDay */,
 				4065D3761DD3B44200B73201 /* Tasks */,
 			);
 			path = Screens;
@@ -1326,6 +1336,16 @@
 				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
 			);
 			name = Welcome;
+			sourceTree = "<group>";
+		};
+		564E55F12028839F00CE4C76 /* EndDay */ = {
+			isa = PBXGroup;
+			children = (
+				564E55F2202883DB00CE4C76 /* EndDayViewController.swift */,
+				564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */,
+				564E55F82028857300CE4C76 /* EndDay.storyboard */,
+			);
+			path = EndDay;
 			sourceTree = "<group>";
 		};
 		5685C7621DE8721100CA545E /* Account */ = {
@@ -1617,6 +1637,7 @@
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
 				280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */,
 				280D71C51ED608D6005D2689 /* ReportCell.xib in Resources */,
+				564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
 				280D71C61ED608D6005D2689 /* TaskCell.xib in Resources */,
 				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
@@ -1659,6 +1680,7 @@
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
+				564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */,
 				28FB264320203EA300AEA38D /* EndCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1778,6 +1800,7 @@
 				2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
+				564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
 				2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
@@ -1852,6 +1875,7 @@
 				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
+				564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D71B81ED6043D005D2689 /* RCPreferences.swift in Sources */,
@@ -1927,6 +1951,7 @@
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
+				564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
 				2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				28FB264620203ECD00AEA38D /* EndCell.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */,
@@ -2001,6 +2026,7 @@
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
+				564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
 				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				405B15631DEF3F2A0009871C /* TaskSuggestionPresenter.swift in Sources */,

@@ -17,7 +17,7 @@ class TasksScrollView: NSScrollView {
 	var didAddRow: ((_ row: Int) -> ())?
     var didRemoveRow: ((_ row: Int) -> ())?
     var didChangeSettings: (() -> ())?
-    var didEndDay: ((_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> ())?
+    var didEndDay: ((_ tasks: [Task]) -> ())?
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -42,8 +42,8 @@ class TasksScrollView: NSScrollView {
         dataSource.didRemoveRow = { [weak self] (row: Int) -> Void in
             self?.didRemoveRow!(row)
         }
-        dataSource.didEndDay = { [weak self] (_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void in
-            self?.didEndDay!(shouldSaveToJira, shouldRoundTime)
+        dataSource.didEndDay = { [weak self] (tasks: [Task]) -> Void in
+            self?.didEndDay!(tasks)
         }
         
         self.dataSource = dataSource

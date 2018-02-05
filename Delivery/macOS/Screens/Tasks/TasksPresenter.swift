@@ -32,6 +32,7 @@ protocol TasksPresenterOutput: class {
     func showReports (_ reports: [Report])
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
+    func presentEndDayController (date: Date)
 }
 
 enum ListType: Int {
@@ -50,8 +51,6 @@ class TasksPresenter {
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var lastSelectedDay: Day?
     fileprivate var interactor: ReadDaysInteractor?
-    fileprivate var jiraTempoInteractor = ModuleJiraTempo()
-    fileprivate var hookup = ModuleHookup()
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -147,26 +146,7 @@ extension TasksPresenter: TasksPresenterInput {
     }
 
     func endDay() {
-
-//        let now = Date()
-//        let task = Task(dateEnd: now, type: TaskType.endDay)
-//        let saveInteractor = TaskInteractor(repository: localRepository)
-//        saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
-//            //self.reloadData()
-//        })
-
-        let settings = SettingsInteractor().getAppSettings()
-        let targetHoursInDay = localPreferences.bool(.roundDay)
-            ? TimeInteractor(settings: settings).workingDayLength()
-            : nil
-        let reader = ReadTasksInteractor(repository: localRepository)
-        let date = lastSelectedDay?.date ?? Date()
-        let tasks = reader.tasksInDay(date)
-
-        let reportInteractor = CreateReport()
-        let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
-
-        jiraTempoInteractor.upload(reports: reports, date: date)
+        userInterface!.presentEndDayController(date: lastSelectedDay?.date ?? Date())
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {

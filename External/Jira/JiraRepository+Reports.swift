@@ -21,16 +21,16 @@ extension JiraRepository {
 //    }
     
     // POST https://.../rest/tempo-timesheets/3/worklogs/
-    func postReports (_ reports: [Report], in project: JProject, to issue: JProjectIssue, date: Date, completion: (() -> Void)?) {
+    func postWorklog (_ worklog: String,
+                      duration: Double,
+                      in project: JProject,
+                      to issue: JProjectIssue,
+                      date: Date,
+                      completion: (() -> Void)?) {
         // Join reports into a single string
         
         // Send to jira
-        var comment = ""
-        var duration = 0.0
-        for report in reports {
-            comment += report.taskNumber + " - " + report.title + "\n" + report.notes + "\n\n"
-            duration += report.duration
-        }
+
         let dateStarted = date.YYYYMMddT00()//"2017-07-03T00:00:00.000+0000"
         let path = "rest/tempo-timesheets/3/worklogs"
         let parameters: [String: Any] = [
@@ -41,7 +41,7 @@ extension JiraRepository {
             "author": [
                 "name": self.user
             ],
-            "comment": comment,
+            "comment": worklog,
             "dateStarted": dateStarted,
             "timeSpentSeconds": duration
         ]

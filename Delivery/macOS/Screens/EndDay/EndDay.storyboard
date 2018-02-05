@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--End Day View Controller-->
+        <scene sceneID="Y9Q-wg-vcI">
+            <objects>
+                <viewController storyboardIdentifier="EndDayViewController" id="LR9-OL-5Y4" customClass="EndDayViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="xUO-DE-YPz">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="395"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqu-Zg-xM9">
+                                <rect key="frame" x="20" y="142" width="466" height="183"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Jdu-Ay-7Ab">
+                                    <rect key="frame" x="0.0" y="0.0" width="466" height="183"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="wK7-5f-7YU">
+                                            <rect key="frame" x="0.0" y="0.0" width="466" height="183"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="466" height="183"/>
+                                            <size key="maxSize" width="466" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="R84-Za-yfV">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="5Yq-da-2Pg">
+                                    <rect key="frame" x="450" y="0.0" width="16" height="183"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="G1R-uM-dDo">
+                                <rect key="frame" x="20" y="60" width="466" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="JRc-Mb-zOf"/>
+                                </constraints>
+                            </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Hy-HX-Oze">
+                                <rect key="frame" x="26" y="13" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="CjD-3M-9rs"/>
+                                    <constraint firstAttribute="height" constant="21" id="y8x-Nz-0aN"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wAK-6E-hjL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleCancelButton:" target="LR9-OL-5Y4" id="h6s-4B-DJV"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jhb-VM-Iem">
+                                <rect key="frame" x="108" y="13" width="71" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4Ur-Sz-KYl"/>
+                                    <constraint firstAttribute="width" constant="59" id="LMI-Jb-d3M"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ohC-cQ-84i">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="LR9-OL-5Y4" id="ieE-2d-hYj"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DJx-8o-bWg">
+                                <rect key="frame" x="30" y="109" width="196" height="18"/>
+                                <buttonCell key="cell" type="check" title="Save worklogs to Jira Tempo" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Qc2-9K-nvB">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3H-Wf-oUT">
+                                <rect key="frame" x="30" y="80" width="108" height="18"/>
+                                <buttonCell key="cell" type="check" title="Round to 8hrs" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CDM-8b-1hm">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-ZA-8OA">
+                                <rect key="frame" x="181" y="23" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jhb-VM-Iem" secondAttribute="bottom" constant="20" id="2OV-9w-laU"/>
+                            <constraint firstItem="6MC-ZA-8OA" firstAttribute="leading" secondItem="jhb-VM-Iem" secondAttribute="trailing" constant="8" id="4PM-aR-ybc"/>
+                            <constraint firstItem="Lqu-Zg-xM9" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="70" id="JYR-ja-FXY"/>
+                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="-20" id="P8a-4p-4D8"/>
+                            <constraint firstItem="G1R-uM-dDo" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="Xcd-AZ-Ebs"/>
+                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="top" secondItem="DJx-8o-bWg" secondAttribute="bottom" constant="15" id="cda-mb-Tjf"/>
+                            <constraint firstItem="Lqu-Zg-xM9" firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="-80" id="eun-2P-Ix2"/>
+                            <constraint firstItem="Lqu-Zg-xM9" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="jJ1-Ez-wbB"/>
+                            <constraint firstItem="DJx-8o-bWg" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="32" id="n4X-qT-lkL"/>
+                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="32" id="o1f-w3-mNs"/>
+                            <constraint firstAttribute="trailing" secondItem="Lqu-Zg-xM9" secondAttribute="trailing" constant="14" id="o1i-IS-CWv"/>
+                            <constraint firstItem="6MC-ZA-8OA" firstAttribute="centerY" secondItem="jhb-VM-Iem" secondAttribute="centerY" id="oX1-MF-Gns"/>
+                            <constraint firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="62" id="rXW-sM-eDL"/>
+                            <constraint firstItem="jhb-VM-Iem" firstAttribute="leading" secondItem="8Hy-HX-Oze" secondAttribute="trailing" constant="12" id="reg-5S-ARk"/>
+                            <constraint firstAttribute="bottom" secondItem="8Hy-HX-Oze" secondAttribute="bottom" constant="20" id="tcA-Mi-7dR"/>
+                            <constraint firstAttribute="trailing" secondItem="G1R-uM-dDo" secondAttribute="trailing" constant="14" id="v59-je-XFi"/>
+                            <constraint firstItem="8Hy-HX-Oze" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="32" id="zpB-AT-934"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressIndicator" destination="6MC-ZA-8OA" id="5Y9-gL-iEP"/>
+                        <outlet property="worklogTextView" destination="wK7-5f-7YU" id="06y-Ez-hrO"/>
+                    </connections>
+                </viewController>
+                <customObject id="Y1B-OI-dLQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="658" y="230.5"/>
+        </scene>
+    </scenes>
+</document>

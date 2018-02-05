@@ -146,7 +146,7 @@ extension TasksViewController: TasksPresenterOutput {
                 self?.presenter!.insertTaskAfterRow(row)
             }
         }
-        tasksScrollView!.didEndDay = { [weak self] (_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void in
+        tasksScrollView!.didEndDay = { [weak self] (_ tasks: [Task]) -> Void in
             self?.presenter!.endDay()
         }
         
@@ -201,6 +201,31 @@ extension TasksViewController: TasksPresenterOutput {
         controller.onCancel = { [weak self] in
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeNewTaskController()
+                strongSelf.splitView!.isHidden = false
+                strongSelf.presenter!.updateNoTasksState()
+                strongSelf.hideControls(false)
+            }
+        }
+    }
+
+    func presentEndDayController (date: Date) {
+
+        splitView!.isHidden = true
+        appWireframe!.removePlaceholder()
+        hideControls(true)
+
+        let controller = appWireframe!.presentEndDayController(date: date)
+        controller.onSave = { [weak self] in
+            if let strongSelf = self {
+                strongSelf.presenter!.updateNoTasksState()
+                strongSelf.appWireframe!.removeEndDayController()
+                strongSelf.splitView!.isHidden = false
+                strongSelf.hideControls(false)
+            }
+        }
+        controller.onCancel = { [weak self] in
+            if let strongSelf = self {
+                strongSelf.appWireframe!.removeEndDayController()
                 strongSelf.splitView!.isHidden = false
                 strongSelf.presenter!.updateNoTasksState()
                 strongSelf.hideControls(false)

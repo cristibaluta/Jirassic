@@ -27,7 +27,7 @@ class ModuleJiraTempo {
         repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
     }
     
-    func upload (reports: [Report], date: Date) {
+    func upload (worklog: String, duration: Double, date: Date) {
         
         let project = JProject(id: localPreferences.string(.settingsJiraProjectId),
                                key: localPreferences.string(.settingsJiraProjectKey),
@@ -36,9 +36,18 @@ class ModuleJiraTempo {
         let projectIssue = JProjectIssue(id: "",
                                          key: localPreferences.string(.settingsJiraProjectIssueKey),
                                          url: "")
-        
-        repository.postReports(reports, in: project, to: projectIssue, date: date) {
-            
+
+        repository.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date) {
+
         }
     }
+
+//    func upload (reports: [Report]) {
+//        var comment = ""
+//        var duration = 0.0
+//        for report in reports {
+//            comment += report.taskNumber + " - " + report.title + "\n" + report.notes + "\n\n"
+//            duration += report.duration
+//        }
+//    }
 }

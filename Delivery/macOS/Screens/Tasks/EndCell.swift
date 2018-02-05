@@ -9,16 +9,13 @@
 import Cocoa
 
 class EndCell: NSTableRowView {
-    
-    var statusImage: NSImageView?
-//    @IBOutlet fileprivate var statusTextField: NSTextField?
+
     @IBOutlet fileprivate var butAdd: NSButton?
     @IBOutlet fileprivate var butEnd: NSButton?
-    @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
-    fileprivate var bgColor: NSColor = NSColor.clear
+    private var bgColor: NSColor = NSColor.clear
 
     var didAddTask: (() -> Void)?
-    var didEndDay: ((_ shouldSaveToJira: Bool, _ shouldRoundTime: Bool) -> Void)?
+    var didEndDay: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,14 +31,6 @@ class EndCell: NSTableRowView {
     }
     
     @IBAction func handleEndButton (_ sender: NSButton) {
-        didEndDay?(true, true)
-    }
-
-    func showProgressIndicator (_ show: Bool) {
-        if show {
-            progressIndicator.startAnimation(nil)
-        } else {
-            progressIndicator.stopAnimation(nil)
-        }
+        didEndDay?()
     }
 }
