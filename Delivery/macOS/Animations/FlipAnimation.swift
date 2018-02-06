@@ -29,9 +29,10 @@ class FlipAnimation: NSObject {
 		rotationAnimation.delegate = self
 		
 		// Add perspective
-		var mt = CATransform3DIdentity
-		mt.m34 = CGFloat(1.0 / 1000)
-		layer.transform = mt
+		var perpectiveTransform = CATransform3DIdentity
+		perpectiveTransform.m34 = CGFloat(1.0 / 1000)
+		layer.transform = perpectiveTransform
+        layer.anchorPoint = CGPoint(x: 0.5, y: 0)
 		layer.add(rotationAnimation, forKey:"flip")
 		self.layer = layer
 	}
@@ -50,9 +51,9 @@ class FlipAnimation: NSObject {
 		rotationAnimation.delegate = self
 		
 		// Add perspective
-		var mt = CATransform3DIdentity
-		mt.m34 = CGFloat(1.0 / 1000)
-		self.layer?.transform = mt
+//        var perpectiveTransform = CATransform3DIdentity
+//        perpectiveTransform.m34 = CGFloat(1.0 / 1000)
+//        self.layer?.transform = perpectiveTransform
 		self.layer?.add(rotationAnimation, forKey:"flip")
 	}
 }
