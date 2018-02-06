@@ -59,7 +59,7 @@ extension Date {
 		return f.string(from: self)
 	}
 	
-	func MMdd() -> String {
+	func MMMMdd() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "MMMM dd"
 		return f.string(from: self)
@@ -78,19 +78,20 @@ extension Date {
 		return f.string(from: self)
 	}
 	
-	func EEMMdd() -> String {
+	func EEMMMMdd() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "EE, MMMM dd"
 		return f.string(from: self)
 	}
 	
-	func ddEEEEE() -> String {
+	func ddEEE() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "dd • EEE"
 		return f.string(from: self)
 	}
 	
-	func EEEEMMdd() -> String {
+    // eg. Thursday, February 01
+	func EEEEMMMMdd() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "EEEE, MMMM dd"
 		return f.string(from: self)

@@ -28,6 +28,8 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsJiraProjectKey = "settingsJiraProjectKey"
     case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
     case settingsHookupCmdName = "settingsHookupCmdName"
+    case enableJira = "enableJira"
+    case enableHookup = "enableHookup"
     
     func defaultValue() -> Any {
         switch self {
@@ -45,6 +47,8 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .settingsJiraProjectKey:   return ""
             case .settingsJiraProjectIssueKey:return ""
             case .settingsHookupCmdName:    return ""
+            case .enableJira:               return true
+            case .enableHookup:             return true
         }
     }
 }
@@ -244,6 +248,7 @@ extension AppDelegate {
         if let popover = activePopover {
             appWireframe.hidePopover(popover)
             appWireframe.removeNewTaskController()
+            appWireframe.removeEndDayController()
             appWireframe.removePlaceholder()
             appWireframe.removeCurrentController()
             activePopover = nil

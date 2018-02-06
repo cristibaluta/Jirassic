@@ -14,7 +14,10 @@ protocol EndDayPresenterInput {
 }
 
 protocol EndDayPresenterOutput {
+    func showJira (enabled: Bool, available: Bool)
+    func showHookup (enabled: Bool, available: Bool)
     func showWorklog (_ worklog: String)
+    func showRounding (enabled: Bool, title: String)
     func showProgressIndicator (_ show: Bool)
 }
 

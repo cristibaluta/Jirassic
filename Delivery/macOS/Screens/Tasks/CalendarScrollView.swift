@@ -124,7 +124,7 @@ extension CalendarScrollView: NSOutlineViewDelegate {
             
 			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
-                textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEEEE()
+                textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEE()
 			}
             let isToday = day.date.isSameDayAs(Date())
             view.imageView!.image = NSImage(named: isToday ? NSImage.Name.statusPartiallyAvailable : NSImage.Name.statusAvailable)
