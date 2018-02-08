@@ -27,7 +27,7 @@ class ModuleJiraTempo {
         repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
     }
     
-    func upload (worklog: String, duration: Double, date: Date) {
+    func upload (worklog: String, duration: Double, date: Date, completion: @escaping (_ success: Bool) -> Void) {
         
         let project = JProject(id: localPreferences.string(.settingsJiraProjectId),
                                key: localPreferences.string(.settingsJiraProjectKey),
@@ -37,8 +37,8 @@ class ModuleJiraTempo {
                                          key: localPreferences.string(.settingsJiraProjectIssueKey),
                                          url: "")
 
-        repository.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date) {
-
+        repository.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date) { success in
+            completion(success)
         }
     }
 

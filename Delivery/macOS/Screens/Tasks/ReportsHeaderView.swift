@@ -39,7 +39,7 @@ class ReportsHeaderView: NSTableHeaderView {
         butRound = NSButton()
         butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
         butRound.setButtonType(.switch)
-        butRound.state = localPreferences.bool(.roundDay)  ? NSControl.StateValue.on : NSControl.StateValue.off
+        butRound.state = localPreferences.bool(.enableRoundingDay) ? NSControl.StateValue.on : NSControl.StateValue.off
         butRound.toolTip = "This time can be set in 'Settings/Tracking/Working between'"
         
         butPercents = NSButton()
@@ -87,7 +87,7 @@ class ReportsHeaderView: NSTableHeaderView {
 extension ReportsHeaderView {
     
     @objc func handleRoundButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == NSControl.StateValue.on, forKey: .roundDay)
+        localPreferences.set(sender.state == NSControl.StateValue.on, forKey: .enableRoundingDay)
         didChangeSettings?()
     }
     

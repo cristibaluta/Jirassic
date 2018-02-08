@@ -26,7 +26,7 @@ extension JiraRepository {
                       in project: JProject,
                       to issue: JProjectIssue,
                       date: Date,
-                      completion: (() -> Void)?) {
+                      completion: ((_ success: Bool) -> Void)?) {
         // Join reports into a single string
         
         // Send to jira
@@ -48,13 +48,13 @@ extension JiraRepository {
         request?.post(at: path, parameters: parameters, success: { (response) in
             
             if let _ = response as? [[String: Any]] {
-                completion?()
+                completion?(true)
             } else {
-                completion?()
+                completion?(false)
             }
             
         }, failure: { (err) in
-            completion?()
+            completion?(false)
         })
     }
 }

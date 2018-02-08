@@ -83,6 +83,9 @@ Gw
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleJiraButton:" target="LR9-OL-5Y4" id="1YZ-9j-0Y9"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3H-Wf-oUT">
                                 <rect key="frame" x="30" y="80" width="108" height="18"/>
@@ -90,6 +93,9 @@ Gw
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleRoundButton:" target="LR9-OL-5Y4" id="BXJ-cO-g4y"/>
+                                </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-ZA-8OA">
                                 <rect key="frame" x="181" y="23" width="16" height="16"/>
@@ -111,6 +117,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleJiraSetupButton:" target="LR9-OL-5Y4" id="kzC-Cw-Una"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -140,6 +149,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="butJira" destination="DJx-8o-bWg" id="nis-T2-YJw"/>
+                        <outlet property="butJiraSetup" destination="dyl-se-zFG" id="QNT-n7-drp"/>
                         <outlet property="butRound" destination="e3H-Wf-oUT" id="NSb-qd-3q0"/>
                         <outlet property="butSave" destination="jhb-VM-Iem" id="6Ov-Fp-hgl"/>
                         <outlet property="dateTextField" destination="dTz-me-jZu" id="3wB-X0-3KT"/>

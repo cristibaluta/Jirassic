@@ -8,6 +8,12 @@
 
 import Cocoa
 
+enum SettingsTab: Int {
+    case tracking = 0
+    case input = 1
+    case output = 2
+}
+
 class SettingsViewController: NSViewController {
     
     @IBOutlet fileprivate var tabView: NSTabView!
@@ -114,9 +120,9 @@ extension SettingsViewController: SettingsPresenterOutput {
         butBackup.title = title
     }
     
-    func selectTab (atIndex index: Int) {
-        tabView.selectTabViewItem(at: index)
-        if index == 2 {
+    func selectTab (_ tab: SettingsTab) {
+        tabView.selectTabViewItem(at: tab.rawValue)
+        if tab == .output {
 //            presenter?.loadJiraProjects()
         }
     }

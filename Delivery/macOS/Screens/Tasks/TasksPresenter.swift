@@ -88,7 +88,7 @@ extension TasksPresenter: TasksPresenterInput {
 
         lastSelectedDay = day
         let settings = SettingsInteractor().getAppSettings()
-        let targetHoursInDay = localPreferences.bool(.roundDay) 
+        let targetHoursInDay = localPreferences.bool(.enableRoundingDay) 
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
         let reader = ReadTasksInteractor(repository: localRepository)

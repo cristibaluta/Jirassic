@@ -104,6 +104,7 @@ class AppWireframe {
         let presenter = EndDayPresenter()
 
         controller.presenter = presenter
+        controller.appWireframe = self
         presenter.userInterface = controller
 
         return controller
@@ -273,6 +274,7 @@ extension AppWireframe {
         flip.animationReachedMiddle = {
             self.removeCurrentController()
             self.removePlaceholder()
+            self.removeEndDayController()
             self.addController(settingsController)
             self.currentController = settingsController
         }

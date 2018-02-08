@@ -15,7 +15,6 @@ let hookup = ModuleHookup()
 enum LocalPreferences: String, RCPreferencesProtocol {
     
     case launchAtStartup = "launchAtStartup"
-    case roundDay = "roundDay"
     case usePercents = "usePercents"
     case useDuration = "useDuration"
     case firstLaunch = "firstLaunch"
@@ -29,17 +28,17 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
     case settingsHookupCmdName = "settingsHookupCmdName"
     case enableJira = "enableJira"
+    case enableRoundingDay = "enableRoundingDay"
     case enableHookup = "enableHookup"
     
     func defaultValue() -> Any {
         switch self {
             case .launchAtStartup:          return false
-            case .roundDay:                 return false
             case .usePercents:              return true
             case .useDuration:              return false
             case .firstLaunch:              return true
             case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
-            case .settingsActiveTab:        return 0
+            case .settingsActiveTab:        return SettingsTab.tracking.rawValue
             case .settingsJiraUrl:          return ""
             case .settingsJiraUser:         return ""
             case .settingsJiraPassword:     return ""
@@ -48,6 +47,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .settingsJiraProjectIssueKey:return ""
             case .settingsHookupCmdName:    return ""
             case .enableJira:               return true
+            case .enableRoundingDay:        return false
             case .enableHookup:             return true
         }
     }

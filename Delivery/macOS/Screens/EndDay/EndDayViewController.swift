@@ -15,7 +15,7 @@ class EndDayViewController: NSViewController {
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
     @IBOutlet fileprivate var butRound: NSButton!
     @IBOutlet fileprivate var butJira: NSButton!
-    @IBOutlet fileprivate var butSetupJira: NSButton!
+    @IBOutlet fileprivate var butJiraSetup: NSButton!
     @IBOutlet fileprivate var butSave: NSButton!
 
     var onSave: (() -> Void)?
@@ -23,6 +23,7 @@ class EndDayViewController: NSViewController {
     var presenter: EndDayPresenterInput?
     var date: Date?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    weak var appWireframe: AppWireframe?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,24 +38,36 @@ class EndDayViewController: NSViewController {
     @IBAction func handleSaveButton (_ sender: NSButton) {
         presenter?.save(jiraTempo: true, roundTime: true, worklog: worklogTextView.string)
     }
+    
+    @IBAction func handleJiraButton (_ sender: NSButton) {
+        localPreferences.set(sender.state == .on, forKey: .enableJira)
+    }
+    
+    @IBAction func handleJiraSetupButton (_ sender: NSButton) {
+        localPreferences.set(SettingsTab.output.rawValue, forKey: .settingsActiveTab)
+        appWireframe!.flipToSettingsController()
+    }
+    
+    @IBAction func handleRoundButton (_ sender: NSButton) {
+        localPreferences.set(sender.state == .on, forKey: .enableRoundingDay)
+    }
 }
 
 extension EndDayViewController: EndDayPresenterOutput {
 
     func showJira (enabled: Bool, available: Bool) {
-        
+        butJira.isEnabled = available
+        butJira.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        butJiraSetup.isHidden = available
     }
     
-    func showHookup (enabled: Bool, available: Bool) {
-        
+    func showRounding (enabled: Bool, title: String) {
+        butRound.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        butRound.title = title
     }
     
     func showWorklog (_ worklog: String) {
         worklogTextView.string = worklog
-    }
-
-    func showRounding (enabled: Bool, title: String) {
-        butRound.state = localPreferences.bool(.roundDay)  ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     func showProgressIndicator (_ show: Bool) {
