@@ -15,16 +15,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqu-Zg-xM9">
-                                <rect key="frame" x="20" y="142" width="466" height="183"/>
+                                <rect key="frame" x="20" y="162" width="466" height="163"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Jdu-Ay-7Ab">
-                                    <rect key="frame" x="0.0" y="0.0" width="466" height="183"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="466" height="163"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="wK7-5f-7YU">
-                                            <rect key="frame" x="0.0" y="0.0" width="466" height="183"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="466" height="163"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="466" height="183"/>
+                                            <size key="minSize" width="466" height="163"/>
                                             <size key="maxSize" width="466" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -36,7 +36,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="5Yq-da-2Pg">
-                                    <rect key="frame" x="450" y="0.0" width="16" height="183"/>
+                                    <rect key="frame" x="450" y="0.0" width="16" height="163"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -46,8 +46,14 @@
                                     <constraint firstAttribute="height" constant="1" id="JRc-Mb-zOf"/>
                                 </constraints>
                             </box>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="kZt-Oo-yDt">
+                                <rect key="frame" x="20" y="150" width="466" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="zzc-um-gUN"/>
+                                </constraints>
+                            </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Hy-HX-Oze">
-                                <rect key="frame" x="26" y="13" width="82" height="32"/>
+                                <rect key="frame" x="14" y="13" width="82" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="CjD-3M-9rs"/>
                                     <constraint firstAttribute="height" constant="21" id="y8x-Nz-0aN"/>
@@ -64,7 +70,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jhb-VM-Iem">
-                                <rect key="frame" x="108" y="13" width="71" height="32"/>
+                                <rect key="frame" x="96" y="13" width="71" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4Ur-Sz-KYl"/>
                                     <constraint firstAttribute="width" constant="59" id="LMI-Jb-d3M"/>
@@ -78,7 +84,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DJx-8o-bWg">
-                                <rect key="frame" x="30" y="109" width="196" height="18"/>
+                                <rect key="frame" x="18" y="126" width="196" height="18"/>
                                 <buttonCell key="cell" type="check" title="Save worklogs to Jira Tempo" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Qc2-9K-nvB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -87,8 +93,18 @@ Gw
                                     <action selector="handleJiraButton:" target="LR9-OL-5Y4" id="1YZ-9j-0Y9"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVj-Yj-wgF">
+                                <rect key="frame" x="18" y="98" width="205" height="18"/>
+                                <buttonCell key="cell" type="check" title="Send end event to the hookup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rr6-eU-hiV">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleHookupButton:" target="LR9-OL-5Y4" id="Jg2-NY-JVE"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3H-Wf-oUT">
-                                <rect key="frame" x="30" y="80" width="108" height="18"/>
+                                <rect key="frame" x="18" y="72" width="108" height="18"/>
                                 <buttonCell key="cell" type="check" title="Round to 8hrs" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CDM-8b-1hm">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -98,7 +114,7 @@ Gw
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-ZA-8OA">
-                                <rect key="frame" x="181" y="23" width="16" height="16"/>
+                                <rect key="frame" x="169" y="23" width="16" height="16"/>
                             </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTz-me-jZu">
                                 <rect key="frame" x="18" y="342" width="470" height="36"/>
@@ -112,7 +128,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dyl-se-zFG">
-                                <rect key="frame" x="250" y="108" width="48" height="19"/>
+                                <rect key="frame" x="238" y="125" width="48" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iFy-zt-lMz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -121,33 +137,50 @@ Gw
                                     <action selector="handleJiraSetupButton:" target="LR9-OL-5Y4" id="kzC-Cw-Una"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NII-4l-3AP">
+                                <rect key="frame" x="193" y="23" width="295" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira tempo error" id="dMu-sV-zHf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="sVj-Yj-wgF" firstAttribute="leading" secondItem="DJx-8o-bWg" secondAttribute="leading" id="102-17-Kea"/>
+                            <constraint firstItem="G1R-uM-dDo" firstAttribute="top" secondItem="kZt-Oo-yDt" secondAttribute="bottom" constant="89" id="1rL-6L-UTi"/>
                             <constraint firstAttribute="bottom" secondItem="jhb-VM-Iem" secondAttribute="bottom" constant="20" id="2OV-9w-laU"/>
                             <constraint firstItem="6MC-ZA-8OA" firstAttribute="leading" secondItem="jhb-VM-Iem" secondAttribute="trailing" constant="8" id="4PM-aR-ybc"/>
+                            <constraint firstItem="DJx-8o-bWg" firstAttribute="top" secondItem="kZt-Oo-yDt" secondAttribute="bottom" constant="10" id="5dR-bM-pOJ"/>
+                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="leading" secondItem="sVj-Yj-wgF" secondAttribute="leading" id="CTx-Se-kEo"/>
+                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="top" secondItem="sVj-Yj-wgF" secondAttribute="bottom" constant="12" id="FYK-Gz-NGa"/>
                             <constraint firstItem="dTz-me-jZu" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="17" id="HTj-Ic-vbB"/>
+                            <constraint firstItem="NII-4l-3AP" firstAttribute="centerY" secondItem="6MC-ZA-8OA" secondAttribute="centerY" id="I2L-aA-ieL"/>
                             <constraint firstItem="Lqu-Zg-xM9" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="70" id="JYR-ja-FXY"/>
-                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="-20" id="P8a-4p-4D8"/>
+                            <constraint firstItem="kZt-Oo-yDt" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="O3J-gV-yLt"/>
+                            <constraint firstAttribute="trailing" secondItem="kZt-Oo-yDt" secondAttribute="trailing" constant="14" id="TSb-SX-exY"/>
                             <constraint firstItem="dyl-se-zFG" firstAttribute="leading" secondItem="DJx-8o-bWg" secondAttribute="trailing" constant="26" id="TWN-2q-6Xk"/>
                             <constraint firstAttribute="trailing" secondItem="dTz-me-jZu" secondAttribute="trailing" constant="14" id="U2s-Kk-429"/>
                             <constraint firstItem="G1R-uM-dDo" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="Xcd-AZ-Ebs"/>
-                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="top" secondItem="DJx-8o-bWg" secondAttribute="bottom" constant="15" id="cda-mb-Tjf"/>
-                            <constraint firstItem="Lqu-Zg-xM9" firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="-80" id="eun-2P-Ix2"/>
+                            <constraint firstItem="kZt-Oo-yDt" firstAttribute="top" secondItem="Lqu-Zg-xM9" secondAttribute="bottom" constant="9" id="cvO-h3-wsf"/>
                             <constraint firstItem="dyl-se-zFG" firstAttribute="centerY" secondItem="DJx-8o-bWg" secondAttribute="centerY" id="g9g-BP-jW0"/>
                             <constraint firstItem="Lqu-Zg-xM9" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="jJ1-Ez-wbB"/>
-                            <constraint firstItem="DJx-8o-bWg" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="32" id="n4X-qT-lkL"/>
-                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="32" id="o1f-w3-mNs"/>
+                            <constraint firstItem="DJx-8o-bWg" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="n4X-qT-lkL"/>
                             <constraint firstAttribute="trailing" secondItem="Lqu-Zg-xM9" secondAttribute="trailing" constant="14" id="o1i-IS-CWv"/>
                             <constraint firstItem="6MC-ZA-8OA" firstAttribute="centerY" secondItem="jhb-VM-Iem" secondAttribute="centerY" id="oX1-MF-Gns"/>
+                            <constraint firstItem="sVj-Yj-wgF" firstAttribute="top" secondItem="DJx-8o-bWg" secondAttribute="bottom" constant="14" id="qm7-fL-HUz"/>
+                            <constraint firstAttribute="trailing" secondItem="NII-4l-3AP" secondAttribute="trailing" constant="14" id="rRA-Zi-Qj0"/>
                             <constraint firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="62" id="rXW-sM-eDL"/>
                             <constraint firstItem="jhb-VM-Iem" firstAttribute="leading" secondItem="8Hy-HX-Oze" secondAttribute="trailing" constant="12" id="reg-5S-ARk"/>
                             <constraint firstAttribute="bottom" secondItem="8Hy-HX-Oze" secondAttribute="bottom" constant="20" id="tcA-Mi-7dR"/>
                             <constraint firstItem="dTz-me-jZu" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="v2F-Im-dY2"/>
                             <constraint firstAttribute="trailing" secondItem="G1R-uM-dDo" secondAttribute="trailing" constant="14" id="v59-je-XFi"/>
-                            <constraint firstItem="8Hy-HX-Oze" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="32" id="zpB-AT-934"/>
+                            <constraint firstItem="8Hy-HX-Oze" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="zpB-AT-934"/>
+                            <constraint firstItem="NII-4l-3AP" firstAttribute="leading" secondItem="6MC-ZA-8OA" secondAttribute="trailing" constant="10" id="zqN-Qw-fh3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="butHookup" destination="sVj-Yj-wgF" id="hMP-M1-MUd"/>
                         <outlet property="butJira" destination="DJx-8o-bWg" id="nis-T2-YJw"/>
                         <outlet property="butJiraSetup" destination="dyl-se-zFG" id="QNT-n7-drp"/>
                         <outlet property="butRound" destination="e3H-Wf-oUT" id="NSb-qd-3q0"/>

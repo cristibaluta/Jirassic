@@ -13,9 +13,10 @@ class EndDayViewController: NSViewController {
     @IBOutlet fileprivate var dateTextField: NSTextField!
     @IBOutlet fileprivate var worklogTextView: NSTextView!
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
-    @IBOutlet fileprivate var butRound: NSButton!
     @IBOutlet fileprivate var butJira: NSButton!
     @IBOutlet fileprivate var butJiraSetup: NSButton!
+    @IBOutlet fileprivate var butHookup: NSButton!
+    @IBOutlet fileprivate var butRound: NSButton!
     @IBOutlet fileprivate var butSave: NSButton!
 
     var onSave: (() -> Void)?
@@ -29,6 +30,9 @@ class EndDayViewController: NSViewController {
         super.viewDidLoad()
         presenter!.setup(date: date!)
         dateTextField.stringValue = date!.EEEEMMMMdd()
+        
+        worklogTextView.drawsBackground = false
+        worklogTextView.backgroundColor = NSColor.clear
     }
 
     @IBAction func handleCancelButton (_ sender: NSButton) {
@@ -48,6 +52,10 @@ class EndDayViewController: NSViewController {
         appWireframe!.flipToSettingsController()
     }
     
+    @IBAction func handleHookupButton (_ sender: NSButton) {
+        localPreferences.set(sender.state == .on, forKey: .enableHookup)
+    }
+    
     @IBAction func handleRoundButton (_ sender: NSButton) {
         localPreferences.set(sender.state == .on, forKey: .enableRoundingDay)
     }
@@ -59,6 +67,11 @@ extension EndDayViewController: EndDayPresenterOutput {
         butJira.isEnabled = available
         butJira.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         butJiraSetup.isHidden = available
+    }
+    
+    func showHookup (enabled: Bool, available: Bool) {
+        butHookup.isEnabled = available
+        butHookup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     func showRounding (enabled: Bool, title: String) {

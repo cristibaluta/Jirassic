@@ -15,8 +15,9 @@ protocol EndDayPresenterInput: class {
 
 protocol EndDayPresenterOutput: class {
     func showJira (enabled: Bool, available: Bool)
-    func showWorklog (_ worklog: String)
+    func showHookup (enabled: Bool, available: Bool)
     func showRounding (enabled: Bool, title: String)
+    func showWorklog (_ worklog: String)
     func showProgressIndicator (_ show: Bool)
 }
 
@@ -66,9 +67,14 @@ extension EndDayPresenter: EndDayPresenterInput {
             && localPreferences.string(.settingsJiraPassword) != ""
             && localPreferences.string(.settingsJiraProjectKey) != ""
             && localPreferences.string(.settingsJiraProjectIssueKey) != ""
-        let isEnabled = isJiraAvailable && localPreferences.bool(.enableJira)
+        let isJiraEnabled = isJiraAvailable && localPreferences.bool(.enableJira)
         
-        userInterface!.showJira(enabled: isEnabled, available: isJiraAvailable)
+        userInterface!.showJira(enabled: isJiraEnabled, available: isJiraAvailable)
+        
+        // Setup Hookup button
+        let isHookupAvailable = localPreferences.bool(.enableHookup)
+        let isHookupEnabled = isHookupAvailable && localPreferences.bool(.enableJira)
+        userInterface!.showHookup(enabled: isHookupEnabled, available: isHookupAvailable)
         
         // Setup round button
         userInterface!.showRounding (enabled: isRoundingEnabled, title: "Round worklog time to \(String(describing: targetHoursInDay)) hours")
