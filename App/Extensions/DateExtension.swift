@@ -97,6 +97,13 @@ extension Date {
 		return f.string(from: self)
 	}
     
+    // eg. Thursday, February 01
+    func EEEEMMMdd() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "EEEE, MMM dd"
+        return f.string(from: self)
+    }
+    
     func YYYYMMddHHmmss() -> String {
         let f = DateFormatter()
         f.dateFormat = "YYYY-MM-dd HH:mm:ss"

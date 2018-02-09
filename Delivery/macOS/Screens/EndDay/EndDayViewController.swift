@@ -29,7 +29,7 @@ class EndDayViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter!.setup(date: date!)
-        dateTextField.stringValue = date!.EEEEMMMMdd()
+        dateTextField.stringValue = date!.EEEEMMMdd()
         
         worklogTextView.drawsBackground = false
         worklogTextView.backgroundColor = NSColor.clear

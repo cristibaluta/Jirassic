@@ -34,7 +34,7 @@ class EndDayPresenter {
 extension EndDayPresenter: EndDayPresenterInput {
 
     func setup (date: Date) {
-
+        
         //        let now = Date()
         //        let task = Task(dateEnd: now, type: TaskType.endDay)
         //        let saveInteractor = TaskInteractor(repository: localRepository)
@@ -49,16 +49,17 @@ extension EndDayPresenter: EndDayPresenterInput {
             : nil
         let reader = ReadTasksInteractor(repository: localRepository)
         let tasks = reader.tasksInDay(date)
-
+        
         let reportInteractor = CreateReport()
         let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
-
+        
         var comment = ""
         for report in reports {
             comment += report.taskNumber + " - " + report.title + "\n" + report.notes + "\n\n"
             duration += report.duration
         }
-
+        let workedHours = Int((targetHoursInDay ?? duration) / 3600)
+        
         userInterface!.showWorklog(comment)
         
         // Setup Jira button
@@ -77,11 +78,11 @@ extension EndDayPresenter: EndDayPresenterInput {
         userInterface!.showHookup(enabled: isHookupEnabled, available: isHookupAvailable)
         
         // Setup round button
-        userInterface!.showRounding (enabled: isRoundingEnabled, title: "Round worklog time to \(String(describing: targetHoursInDay)) hours")
+        userInterface!.showRounding (enabled: isRoundingEnabled, title: "Round worklog time to \(String(describing: workedHours)) hours")
     }
-
+    
     func save (jiraTempo: Bool, roundTime: Bool, worklog: String) {
-
+        
         userInterface!.showProgressIndicator(true)
         jiraTempoInteractor.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
             self?.userInterface!.showProgressIndicator(false)
