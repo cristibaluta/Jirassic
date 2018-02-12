@@ -11,22 +11,48 @@ import Foundation
 @objcMembers
 class SQLTable: NSObject {
     
-	private var table = ""
+    /// Internal reference to the SQLite table name as determined based on the name of the `SQLTable` sub-class name. The sub-class name should be in the singular - for example, Task for a tasks table.
+    internal var table = ""
+    /// Internal dictionary to keep track of whether a specific table was verfied to be in existence in the database. This dictionary is used to automatically create the table if it does not exist in the DB.
+    private static var verified = [String: Bool]()
+    private var db = SQLiteDB.shared
 	
-	private static var table: String {
+    /// Static variable indicating the table name - used in class methods since the instance variable `table` is not accessible in class methods.
+    private static var table: String {
 		let cls = "\(classForCoder())".lowercased()
 		let ndx = cls.index(before: cls.endIndex)
-		let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : cls + "s"
+        let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : (cls.hasSuffix("s") ? cls + "es" : cls + "s")
 		return tnm
 	}
 	
 	required override init() {
 		super.init()
-		// Table name
-		let cls = "\(classForCoder)".lowercased()
-		let ndx = cls.index(before:cls.endIndex)
-		let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : cls + "s"
-		self.table = tnm
+        self.table = type(of: self).table
+        let verified = SQLTable.verified[table]
+        if verified == nil || !verified! {
+            // Verify that the table exists in DB
+            var sql = "SELECT name FROM sqlite_master WHERE type='table' AND lower(name)='\(table)'"
+            let cnt = db?.query(sql:sql).count
+            if cnt == 1 {
+                // Table exists, proceed
+                SQLTable.verified[table] = true
+            } else if cnt == 0 {
+                // Table does not exist, create it
+                sql = "CREATE TABLE IF NOT EXISTS \(table) ("
+                // Columns
+                let cols = values()
+                sql += getColumnSQL(columns:cols)
+                // Close query
+                sql += ")"
+                let rc = db?.execute(sql:sql)
+                if rc == 0 {
+                    assert(false, "Error creating table - \(table) with SQL: \(sql)")
+                }
+                SQLTable.verified[table] = true
+            } else {
+                assert(false, "Got more than one table in DB with same name! Count: \(String(describing: cnt)) for \(table)")
+            }
+        }
 	}
 	
 	// MARK:- Table property management
@@ -37,14 +63,6 @@ class SQLTable: NSObject {
 	func ignoredKeys() -> [String] {
 		return []
 	}
-	
-	func setPrimaryKey (val: Any) {
-		setValue(val, forKey: primaryKey())
-	}
-
-	func getPrimaryKey() -> Any? {
-		return value(forKey: primaryKey())
-	} 
 	
 	// MARK:- Class Methods
 	class func rows (filter: String = "", order: String = "", limit: Int = 0) -> [SQLTable] {
@@ -60,7 +78,7 @@ class SQLTable: NSObject {
 		}
 		return self.rowsFor(sql: sql)
 	}
-
+    
 	class func rowsFor (sql: String = "") -> [SQLTable] {
 		var res = [SQLTable]()
 		let tmp = self.init()
@@ -78,7 +96,6 @@ class SQLTable: NSObject {
 			res.append(t)
 		}
 		return res
-		
 	}
 	
 	class func rowBy (id: Any) -> SQLTable? {
@@ -245,7 +262,7 @@ class SQLTable: NSObject {
 //		return res
 //	}
 	
-	private func values() -> [String: Any] {
+	internal func values() -> [String: Any] {
 		var res = [String: Any]()
 		let obj = Mirror(reflecting: self)
 		for (_, attr) in obj.children.enumerated() {
@@ -254,31 +271,18 @@ class SQLTable: NSObject {
 				if ignoredKeys().contains(name) || name.hasSuffix(".storage") {
 					continue
 				}
-				res[name] = get(value: attr.value)
+                res[name] = attr.value
 			}
 		}
 		return res
 	}
-	
-	private func get (value: Any) -> Any {
-		if value is String {
-			return value as! String
-		} else if value is Int {
-			return value as! Int
-		} else if value is Float {
-			return value as! Float
-		} else if value is Double {
-			return value as! Double
-		} else if value is Bool {
-			return value as! Bool
-		} else if value is Date {
-			return value as! Date
-		} else if value is NSData {
-			return value as! NSData
-		}
-		return NSNull()
-	}
-	
+    
+    /// Returns a valid SQL statement and matching list of bound parameters needed to insert a new row into the database or to update an existing row of data.
+    ///
+    /// - Parameters:
+    ///   - data: A dictionary of property names and their corresponding values that need to be persisted to the underlying table.
+    ///   - forInsert: A boolean value indicating whether this is an insert or update action.
+    /// - Returns: A tuple containing a valid SQL command to persist data to the underlying table and the bound parameters for the SQL command, if any.
 	private func getSQL (data: [String: Any], forInsert: Bool = true) -> (String, [Any]?) {
 		var sql = ""
 		var params: [Any]? = nil
@@ -332,4 +336,46 @@ class SQLTable: NSObject {
         if SQLiteDB.sql_logs_enabled { print("Final SQL: \(sql) with parameters: \(String(describing: params))") }
 		return (sql, params)
 	}
+    
+    /// Returns a valid SQL fragment for creating the columns, with the correct data type, for the underlying table.
+    ///
+    /// - Parameter columns: A dictionary of property names and their corresponding values for the `SQLTable` sub-class
+    /// - Returns: A string containing an SQL fragment for delcaring the columns for the underlying table with the correct data type
+    private func getColumnSQL (columns: [String: Any]) -> String {
+        var sql = ""
+        for key in columns.keys {
+            let val = columns[key]!
+            var col = "'\(key)' "
+            if val is Int {
+                // Integers
+                col += "INTEGER"
+                if key == primaryKey() {
+                    col += " PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE"
+                }
+            } else {
+                // Other values
+                if val is Float || val is Double {
+                    col += "REAL"
+                } else if val is Bool {
+                    col += "BOOLEAN"
+                } else if val is Date {
+                    col += "DATE"
+                } else if val is NSData {
+                    col += "BLOB"
+                } else {
+                    // Default to text
+                    col += "TEXT"
+                }
+                if key == primaryKey() {
+                    col += " PRIMARY KEY NOT NULL UNIQUE"
+                }
+            }
+            if sql.isEmpty {
+                sql = col
+            } else {
+                sql += ", " + col
+            }
+        }
+        return sql
+    }
 }
