@@ -137,9 +137,9 @@ Gw
                                     <action selector="handleJiraSetupButton:" target="LR9-OL-5Y4" id="kzC-Cw-Una"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NII-4l-3AP">
-                                <rect key="frame" x="193" y="23" width="295" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira tempo error" id="dMu-sV-zHf">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NII-4l-3AP">
+                                <rect key="frame" x="236" y="127" width="252" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Jira tempo error" id="dMu-sV-zHf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -154,6 +154,14 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OM5-SU-HEV">
+                                <rect key="frame" x="403" y="99" width="85" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Hookup error" id="5bK-h0-ANe">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sVj-Yj-wgF" firstAttribute="leading" secondItem="DJx-8o-bWg" secondAttribute="leading" id="102-17-Kea"/>
@@ -161,11 +169,12 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="jhb-VM-Iem" secondAttribute="bottom" constant="20" id="2OV-9w-laU"/>
                             <constraint firstItem="6MC-ZA-8OA" firstAttribute="leading" secondItem="jhb-VM-Iem" secondAttribute="trailing" constant="8" id="4PM-aR-ybc"/>
                             <constraint firstItem="DJx-8o-bWg" firstAttribute="top" secondItem="kZt-Oo-yDt" secondAttribute="bottom" constant="10" id="5dR-bM-pOJ"/>
+                            <constraint firstItem="NII-4l-3AP" firstAttribute="centerY" secondItem="DJx-8o-bWg" secondAttribute="centerY" id="BEx-LC-Kk5"/>
                             <constraint firstItem="e3H-Wf-oUT" firstAttribute="leading" secondItem="sVj-Yj-wgF" secondAttribute="leading" id="CTx-Se-kEo"/>
                             <constraint firstItem="e3H-Wf-oUT" firstAttribute="top" secondItem="sVj-Yj-wgF" secondAttribute="bottom" constant="12" id="FYK-Gz-NGa"/>
                             <constraint firstItem="dTz-me-jZu" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="17" id="HTj-Ic-vbB"/>
-                            <constraint firstItem="NII-4l-3AP" firstAttribute="centerY" secondItem="6MC-ZA-8OA" secondAttribute="centerY" id="I2L-aA-ieL"/>
                             <constraint firstItem="Lqu-Zg-xM9" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="100" id="JYR-ja-FXY"/>
+                            <constraint firstAttribute="trailing" secondItem="OM5-SU-HEV" secondAttribute="trailing" constant="14" id="MOo-FR-ezr"/>
                             <constraint firstItem="kZt-Oo-yDt" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="O3J-gV-yLt"/>
                             <constraint firstAttribute="trailing" secondItem="kZt-Oo-yDt" secondAttribute="trailing" constant="14" id="TSb-SX-exY"/>
                             <constraint firstItem="dyl-se-zFG" firstAttribute="leading" secondItem="DJx-8o-bWg" secondAttribute="trailing" constant="26" id="TWN-2q-6Xk"/>
@@ -174,6 +183,7 @@ Gw
                             <constraint firstItem="kZt-Oo-yDt" firstAttribute="top" secondItem="Lqu-Zg-xM9" secondAttribute="bottom" constant="9" id="cvO-h3-wsf"/>
                             <constraint firstItem="dyl-se-zFG" firstAttribute="centerY" secondItem="DJx-8o-bWg" secondAttribute="centerY" id="g9g-BP-jW0"/>
                             <constraint firstItem="Lqu-Zg-xM9" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="jJ1-Ez-wbB"/>
+                            <constraint firstItem="OM5-SU-HEV" firstAttribute="centerY" secondItem="sVj-Yj-wgF" secondAttribute="centerY" id="kcC-uH-E77"/>
                             <constraint firstItem="DJx-8o-bWg" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="n4X-qT-lkL"/>
                             <constraint firstAttribute="trailing" secondItem="Lqu-Zg-xM9" secondAttribute="trailing" constant="14" id="o1i-IS-CWv"/>
                             <constraint firstItem="6MC-ZA-8OA" firstAttribute="centerY" secondItem="jhb-VM-Iem" secondAttribute="centerY" id="oX1-MF-Gns"/>
@@ -185,7 +195,6 @@ Gw
                             <constraint firstItem="dTz-me-jZu" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="v2F-Im-dY2"/>
                             <constraint firstAttribute="trailing" secondItem="G1R-uM-dDo" secondAttribute="trailing" constant="14" id="v59-je-XFi"/>
                             <constraint firstItem="8Hy-HX-Oze" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="zpB-AT-934"/>
-                            <constraint firstItem="NII-4l-3AP" firstAttribute="leading" secondItem="6MC-ZA-8OA" secondAttribute="trailing" constant="10" id="zqN-Qw-fh3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -195,6 +204,8 @@ Gw
                         <outlet property="butRound" destination="e3H-Wf-oUT" id="NSb-qd-3q0"/>
                         <outlet property="butSave" destination="jhb-VM-Iem" id="6Ov-Fp-hgl"/>
                         <outlet property="dateTextField" destination="dTz-me-jZu" id="3wB-X0-3KT"/>
+                        <outlet property="hookupErrorTextField" destination="OM5-SU-HEV" id="icS-Ks-C9H"/>
+                        <outlet property="jiraErrorTextField" destination="NII-4l-3AP" id="lnB-OC-xvv"/>
                         <outlet property="progressIndicator" destination="6MC-ZA-8OA" id="5Y9-gL-iEP"/>
                         <outlet property="worklogTextView" destination="wK7-5f-7YU" id="06y-Ez-hrO"/>
                     </connections>

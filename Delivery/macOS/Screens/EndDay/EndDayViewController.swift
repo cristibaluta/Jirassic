@@ -15,7 +15,9 @@ class EndDayViewController: NSViewController {
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
     @IBOutlet fileprivate var butJira: NSButton!
     @IBOutlet fileprivate var butJiraSetup: NSButton!
+    @IBOutlet fileprivate var jiraErrorTextField: NSTextField!
     @IBOutlet fileprivate var butHookup: NSButton!
+    @IBOutlet fileprivate var hookupErrorTextField: NSTextField!
     @IBOutlet fileprivate var butRound: NSButton!
     @IBOutlet fileprivate var butSave: NSButton!
 
@@ -30,6 +32,8 @@ class EndDayViewController: NSViewController {
         super.viewDidLoad()
         presenter!.setup(date: date!)
         dateTextField.stringValue = date!.EEEEMMMdd()
+        jiraErrorTextField.stringValue = ""
+        hookupErrorTextField.stringValue = ""
         
         worklogTextView.drawsBackground = false
         worklogTextView.backgroundColor = NSColor.clear
