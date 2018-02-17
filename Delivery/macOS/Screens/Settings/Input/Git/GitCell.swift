@@ -8,23 +8,26 @@
 
 import Cocoa
 
-class GitCell: NSTableRowView {
+class GitCell: NSTableRowView, Saveable {
 
     @IBOutlet fileprivate var statusImageView: NSImageView!
-    @IBOutlet fileprivate var textField: NSTextField!
+    @IBOutlet fileprivate var emailsTextField: NSTextField!
+    @IBOutlet fileprivate var pathsTextField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!
 
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        emailsTextField.stringValue = localPreferences.string(.settingsGitAuthors)
+        pathsTextField.stringValue = localPreferences.string(.settingsGitPaths)
     }
-
+    
     func save() {
-
+        localPreferences.set(emailsTextField.stringValue, forKey: .settingsGitAuthors)
+        localPreferences.set(pathsTextField.stringValue, forKey: .settingsGitPaths)
     }
-
+    
     @IBAction func handleInstallButton (_ sender: NSButton) {
         #if APPSTORE
             NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)

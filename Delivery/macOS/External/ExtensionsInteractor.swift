@@ -20,7 +20,7 @@ class ExtensionsInteractor {
         #if APPSTORE
             scripts = SandboxedAppleScript()
         #else
-            scripts = AppleScriptInteractor()
+            scripts = AppleScript()
         #endif
     }
     
@@ -33,6 +33,10 @@ class ExtensionsInteractor {
     
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
         scripts.getBrowserInfo(browserId: browserId, completion: completion)
+    }
+    
+    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
+        scripts.getGitLogs(at: path, date: date, completion: completion)
     }
     
     func getVersions (completion: @escaping (_ versions: Versions) -> Void) {

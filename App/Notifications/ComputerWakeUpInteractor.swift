@@ -20,31 +20,32 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         super.init(repository: repository)
     }
     
-	func runWith (lastSleepDate date: Date?) {
+    func runWith (lastSleepDate: Date?, currentDate: Date) {
 		
-        guard let date = date else {
+        guard let lastSleepDate = lastSleepDate else {
             return
         }
-        if let type = estimationForDate(date) {
+        if let type = estimationForDate(lastSleepDate, currentDate: currentDate) {
             if type == .startDay {
                 if settings.settingsTracking.trackStartOfDay {
                     let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
-                    if Date() > startDate {
-                        save(task: Task(dateEnd: Date(), type: TaskType.startDay))
+                    if currentDate > startDate {
+                        let task = Task(dateEnd: currentDate, type: TaskType.startDay)
+                        save(task: task)
                     }
                 }
             } else if (type == .scrum && settings.settingsTracking.trackScrum) || (type == .lunch && settings.settingsTracking.trackLunch) {
                 
-                var task = Task(dateEnd: Date(), type: type)
-                task.startDate = date
+                var task = Task(dateEnd: currentDate, type: type)
+                task.startDate = lastSleepDate
                 save(task: task)
             }
         }
     }
     
-    func estimationForDate (_ date: Date) -> TaskType? {
+    func estimationForDate (_ date: Date, currentDate: Date) -> TaskType? {
         
-		let existingTasks = reader.tasksInDay(Date())
+		let existingTasks = reader.tasksInDay(currentDate)
         
         guard existingTasks.count > 0 else {
             return TaskType.startDay

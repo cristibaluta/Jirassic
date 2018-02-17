@@ -15,14 +15,14 @@ protocol AppleScriptProtocol {
     var scriptsDirectory: URL? {get}
     func getScriptVersion (script: String, completion: @escaping (String) -> Void)
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
-    func getGitLogs (for day: Date, completion: @escaping (String) -> Void)
+    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     func removeFile (from: String, completion: @escaping (Bool) -> Void)
 }
 
-class AppleScriptInteractor: AppleScriptProtocol {
+class AppleScript: AppleScriptProtocol {
     
     fileprivate let commandRunShellScript = "runShellScript"
     fileprivate let commandGetScriptVersion = "getScriptVersion"
@@ -75,7 +75,7 @@ class AppleScriptInteractor: AppleScriptProtocol {
         })
     }
     
-    func getGitLogs (for day: Date, completion: @escaping (String) -> Void) {
+    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
         
     }
     
@@ -164,7 +164,7 @@ class AppleScriptInteractor: AppleScriptProtocol {
     }
 }
 
-extension AppleScriptInteractor {
+extension AppleScript {
     
     fileprivate func run (command: String, scriptNamed: String, args: NSAppleEventDescriptor?, completion: @escaping (NSAppleEventDescriptor?) -> Void) {
         

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class HookupCell: NSTableRowView {
+class HookupCell: NSTableRowView, Saveable {
     
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var textField: NSTextField!

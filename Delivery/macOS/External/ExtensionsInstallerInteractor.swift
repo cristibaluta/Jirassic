@@ -11,7 +11,7 @@ import Cocoa
 
 class ExtensionsInstallerInteractor: ExtensionsInteractor {
     
-    fileprivate let scripts: AppleScriptProtocol = AppleScriptInteractor()
+    fileprivate let scripts: AppleScriptProtocol = AppleScript()
     fileprivate let fileManager = FileManager.default
     
 //    func saveJiraSettings (_ settings: JiraSettings, completion: @escaping (Bool) -> Void) {

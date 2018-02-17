@@ -51,6 +51,7 @@ class TasksPresenter {
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var lastSelectedDay: Day?
     fileprivate var interactor: ReadDaysInteractor?
+    fileprivate let moduleGit = ModuleGitLogs()
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -95,17 +96,33 @@ extension TasksPresenter: TasksPresenterInput {
         currentTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
-        if listType == .report {
-            let reportInteractor = CreateReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
-            currentReports = reports.reversed()
-            userInterface!.showReports(currentReports)
-        }
-        else {
-            userInterface!.showTasks(currentTasks)
+        moduleGit.logs(on: day.date) { tasks in
+            RCLog(tasks)
+            self.currentTasks = tasks
+            if listType == .report {
+                let reportInteractor = CreateReport()
+                let reports = reportInteractor.reports(fromTasks: self.currentTasks, targetHoursInDay: targetHoursInDay)
+                self.currentReports = reports.reversed()
+                self.userInterface!.showReports(self.currentReports)
+            }
+            else {
+                self.userInterface!.showTasks(self.currentTasks)
+            }
+            
+            self.updateNoTasksState()
         }
         
-        updateNoTasksState()
+//        if listType == .report {
+//            let reportInteractor = CreateReport()
+//            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
+//            currentReports = reports.reversed()
+//            userInterface!.showReports(currentReports)
+//        }
+//        else {
+//            userInterface!.showTasks(currentTasks)
+//        }
+//
+//        updateNoTasksState()
     }
     
     func updateNoTasksState() {

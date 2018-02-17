@@ -27,6 +27,8 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsJiraProjectKey = "settingsJiraProjectKey"
     case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
     case settingsHookupCmdName = "settingsHookupCmdName"
+    case settingsGitPaths = "settingsGitPaths"
+    case settingsGitAuthors = "settingsGitAuthors"
     case enableJira = "enableJira"
     case enableRoundingDay = "enableRoundingDay"
     case enableHookup = "enableHookup"
@@ -46,6 +48,8 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .settingsJiraProjectKey:   return ""
             case .settingsJiraProjectIssueKey:return ""
             case .settingsHookupCmdName:    return ""
+            case .settingsGitPaths:         return ""
+            case .settingsGitAuthors:       return ""
             case .enableJira:               return true
             case .enableRoundingDay:        return false
             case .enableHookup:             return true
@@ -149,7 +153,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         self.presentTaskSuggestionPopup()
                         break
                     case .auto:
-                        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep.lastSleepDate)
+                        ComputerWakeUpInteractor(repository: localRepository)
+                            .runWith(lastSleepDate: self.sleep.lastSleepDate, currentDate: Date())
                         break
                 }
             }

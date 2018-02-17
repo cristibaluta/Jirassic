@@ -27,8 +27,8 @@ class SandboxedAppleScript: AppleScriptProtocol {
     func getScriptVersion (script: String, completion: @escaping (String) -> Void) {
         
         run (command: commandGetScriptVersion, scriptNamed: script, args: nil, completion: { descriptor in
-            if let descriptor = descriptor {
-                completion( descriptor.stringValue! )
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion(result)
             } else {
                 completion("")
             }
@@ -61,9 +61,24 @@ class SandboxedAppleScript: AppleScriptProtocol {
         })
     }
     
-    func getGitLogs (for day: Date, completion: @escaping (String) -> Void) {
+    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
+        // https://www.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
         // error "fatal: Not a git repository (or any of the parent directories): .git" number 128
-        // do shell script "git -C ~/Documents/Jirassic log"
+        // do shell script git -C ~/Documents/ebikeconnect/bsa-ios log --after="2018-2-6" --before="2018-2-7" --pretty=format:"%at;%ae;%s;%D"
+        
+        let startDate = date.YYYYMMddT00()
+        let endDate = date.addingTimeInterval(24*3600).YYYYMMddT00()
+        let command = "git -C \(path) log --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%at;%ae;%s;%D\""
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion(result)
+            } else {
+                completion("")
+            }
+        })
     }
     
     func call (command: String, arguments: [String: Any], completion: @escaping (String) -> Void) {
@@ -73,8 +88,8 @@ class SandboxedAppleScript: AppleScriptProtocol {
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
         run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            if let descriptor = descriptor {
-                completion( descriptor.stringValue! )
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion(result)
             } else {
                 completion("")
             }
@@ -88,8 +103,8 @@ class SandboxedAppleScript: AppleScriptProtocol {
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
         run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            if let descriptor = descriptor {
-                completion( descriptor.stringValue! )
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion(result)
             } else {
                 completion("")
             }
@@ -108,6 +123,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
                 completion(url, title)
             } else {
                 RCLog("Cannot get browser info")
+                completion("", "")
             }
         })
     }
@@ -167,8 +183,8 @@ extension SandboxedAppleScript {
             
             let result = try NSUserAppleScriptTask(url: scriptURL)
             result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
-//                RCLogO(descriptor)
-//                RCLogErrorO(error)
+                RCLogO(descriptor)
+                RCLogErrorO(error)
                 DispatchQueue.main.sync {
                     completion(descriptor)
                 }

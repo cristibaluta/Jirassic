@@ -30,12 +30,12 @@ class ComputerWakeUpInteractorTests: XCTestCase {
         
         let interactor = ComputerWakeUpInteractorMock(repository: repository)
         
-        interactor.runWith(lastSleepDate: Date(hour: 10, minute: 30))
+        interactor.runWith(lastSleepDate: Date(hour: 10, minute: 30), currentDate: Date(hour: 10, minute: 55))
         XCTAssert(interactor.log_called)
         XCTAssert(interactor.taskType_received == .scrum)
         
         interactor.log_called = false
-        interactor.runWith(lastSleepDate: Date(hour: 12, minute: 45))
+        interactor.runWith(lastSleepDate: Date(hour: 12, minute: 45), currentDate: Date(hour: 13, minute: 30))
         XCTAssert(interactor.log_called)
         XCTAssert(interactor.taskType_received == .lunch)
     }

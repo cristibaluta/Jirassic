@@ -21,7 +21,7 @@ class SQLTable: NSObject {
     private static var table: String {
 		let cls = "\(classForCoder())".lowercased()
 		let ndx = cls.index(before: cls.endIndex)
-        let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : (cls.hasSuffix("s") ? cls + "es" : cls + "s")
+        let tnm = cls.hasSuffix("y") ? cls[..<ndx] + "ies" : (cls.hasSuffix("s") ? cls + "s" : cls + "s")
 		return tnm
 	}
 	
