@@ -117,7 +117,8 @@ class SandboxedAppleScript: AppleScriptProtocol {
     
     func getGitBranch (at path: String, of commitNumber: String, completion: @escaping (String) -> Void) {
         
-        let command = "git -C \(path) log \(commitNumber)..HEAD --ancestry-path --merges --oneline | tail -n 1"
+//        let command = "git -C \(path) log \(commitNumber)..HEAD --ancestry-path --merges --oneline | tail -n 1"
+        let command = "git -C \(path) branch --contains \(commitNumber)"
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
