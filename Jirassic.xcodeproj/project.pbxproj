@@ -241,6 +241,12 @@
 		28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */; };
 		28A283A020385BE000DDCB63 /* GitCommitsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */; };
 		28A283A220385F8C00DDCB63 /* GitCommitsParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */; };
+		28A283A52038AFB100DDCB63 /* JirassicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A42038AFB100DDCB63 /* JirassicCell.swift */; };
+		28A283A62038AFB100DDCB63 /* JirassicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A42038AFB100DDCB63 /* JirassicCell.swift */; };
+		28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A283A72038AFC500DDCB63 /* JirassicCell.xib */; };
+		28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A283A72038AFC500DDCB63 /* JirassicCell.xib */; };
+		28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
+		28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -541,6 +547,9 @@
 		28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogsTests.swift; sourceTree = "<group>"; };
 		28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitsParser.swift; sourceTree = "<group>"; };
 		28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitsParserTests.swift; sourceTree = "<group>"; };
+		28A283A42038AFB100DDCB63 /* JirassicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JirassicCell.swift; sourceTree = "<group>"; };
+		28A283A72038AFC500DDCB63 /* JirassicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JirassicCell.xib; sourceTree = "<group>"; };
+		28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParser.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -859,8 +868,18 @@
 				28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */,
 				28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */,
 				28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */,
+				28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */,
 			);
 			path = GitLogs;
+			sourceTree = "<group>";
+		};
+		28A283A32038AF9600DDCB63 /* JirassicCmd */ = {
+			isa = PBXGroup;
+			children = (
+				28A283A42038AFB100DDCB63 /* JirassicCell.swift */,
+				28A283A72038AFC500DDCB63 /* JirassicCell.xib */,
+			);
+			path = JirassicCmd;
 			sourceTree = "<group>";
 		};
 		28FB264020203D3400AEA38D /* EndCell */ = {
@@ -878,6 +897,7 @@
 			children = (
 				2871951D2022FD14001C237E /* InputsScrollView.swift */,
 				287195202022FD87001C237E /* InputsTableViewDataSource.swift */,
+				28A283A32038AF9600DDCB63 /* JirassicCmd */,
 				569C4C53202318F50049FBF1 /* Shell */,
 				569C4C56202319120049FBF1 /* Jit */,
 				569C4C552023190A0049FBF1 /* Git */,
@@ -1656,6 +1676,7 @@
 			files = (
 				569C4C7920231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				569C4C70202319DE0049FBF1 /* ShellCell.xib in Resources */,
+				28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
 				28FB264220203EA300AEA38D /* EndCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
@@ -1712,6 +1733,7 @@
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
 				564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */,
 				28FB264320203EA300AEA38D /* EndCell.xib in Resources */,
+				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1850,6 +1872,7 @@
 				28A283972037975600DDCB63 /* Saveable.swift in Sources */,
 				280D71711ED6043D005D2689 /* ExtensionsInstallerInteractor.swift in Sources */,
 				280D71721ED6043D005D2689 /* AppleScript.swift in Sources */,
+				28A283A52038AFB100DDCB63 /* JirassicCell.swift in Sources */,
 				280D71731ED6043D005D2689 /* SandboxedAppleScript.swift in Sources */,
 				280D71741ED6043D005D2689 /* SettingsViewController.swift in Sources */,
 				280D71751ED6043D005D2689 /* SettingsPresenter.swift in Sources */,
@@ -1858,6 +1881,7 @@
 				28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */,
 				28FB264520203ECD00AEA38D /* EndCell.swift in Sources */,
+				28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */,
 				280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */,
 				280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */,
@@ -2005,6 +2029,7 @@
 				28A283982037975600DDCB63 /* Saveable.swift in Sources */,
 				28AA50081EDCD51300AAF03D /* CoreDataRepository.swift in Sources */,
 				280300D71EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
+				28A283A62038AFB100DDCB63 /* JirassicCell.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				28577EAF1E8ADC53002B07FD /* STask.swift in Sources */,
 				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
@@ -2013,6 +2038,7 @@
 				28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				284192D82018841700E64A9A /* JProject.swift in Sources */,
 				28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */,
+				28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,

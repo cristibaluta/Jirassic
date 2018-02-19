@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="JirassicCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" borderType="line" title="Jirassic cmd support" translatesAutoresizingMaskIntoConstraints="NO" id="IK4-a7-zIn">
+                    <rect key="frame" x="-3" y="-4" width="486" height="84"/>
+                    <view key="contentView" id="mvN-gG-3yr">
+                        <rect key="frame" x="1" y="1" width="484" height="68"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H8T-Jx-U7l">
+                                <rect key="frame" x="8" y="27" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="18" id="7XW-4D-pJK"/>
+                                    <constraint firstAttribute="height" constant="18" id="m39-ch-mer"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="frd-Mt-kCo"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HoL-An-9LP">
+                                <rect key="frame" x="30" y="29" width="144" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking shell support" id="2za-y1-xof">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ni8-Be-50n">
+                                <rect key="frame" x="393" y="26" width="81" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YiR-4q-fq7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleInstallButton:" target="c22-O7-iKe" id="pgk-eP-54u"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="H8T-Jx-U7l" firstAttribute="leading" secondItem="mvN-gG-3yr" secondAttribute="leading" constant="8" id="Ay5-nz-osP"/>
+                            <constraint firstAttribute="trailing" secondItem="Ni8-Be-50n" secondAttribute="trailing" constant="10" id="RQ8-uU-Hdw"/>
+                            <constraint firstItem="HoL-An-9LP" firstAttribute="leading" secondItem="H8T-Jx-U7l" secondAttribute="trailing" constant="6" id="rU5-pc-0cC"/>
+                            <constraint firstItem="H8T-Jx-U7l" firstAttribute="centerY" secondItem="mvN-gG-3yr" secondAttribute="centerY" constant="-2" id="t54-tg-6LN"/>
+                            <constraint firstItem="HoL-An-9LP" firstAttribute="centerY" secondItem="mvN-gG-3yr" secondAttribute="centerY" constant="-3" id="tcK-Eq-fsA"/>
+                            <constraint firstItem="Ni8-Be-50n" firstAttribute="centerY" secondItem="mvN-gG-3yr" secondAttribute="centerY" constant="-2" id="yTF-qf-Pqk"/>
+                        </constraints>
+                    </view>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="IK4-a7-zIn" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="F5m-rO-Qa8"/>
+                <constraint firstAttribute="bottom" secondItem="IK4-a7-zIn" secondAttribute="bottom" id="IcA-j3-0Od"/>
+                <constraint firstAttribute="trailing" secondItem="IK4-a7-zIn" secondAttribute="trailing" id="OWK-v9-nrh"/>
+                <constraint firstItem="IK4-a7-zIn" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="vto-TC-aXn"/>
+            </constraints>
+            <connections>
+                <outlet property="butInstall" destination="Ni8-Be-50n" id="ZmP-gy-DSh"/>
+                <outlet property="statusImageView" destination="H8T-Jx-U7l" id="wSR-tP-dmY"/>
+                <outlet property="textField" destination="HoL-An-9LP" id="w2A-ZU-wsx"/>
+            </connections>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSStatusNone" width="16" height="16"/>
+    </resources>
+</document>

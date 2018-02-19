@@ -29,8 +29,8 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="g96-Mm-inb"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaJ-WV-hc1">
-                                <rect key="frame" x="30" y="111" width="106" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking jit cmd" id="ASn-hr-APm">
+                                <rect key="frame" x="30" y="111" width="111" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking git cmd" id="ASn-hr-APm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -55,9 +55,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-Pe-PXu">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-Pe-PXu">
                                 <rect key="frame" x="105" y="48" width="369" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. me@email.com,me2@email.com" bezelStyle="round" id="WAw-xv-jpg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -67,7 +66,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Et-wb-aOF">
                                 <rect key="frame" x="11" y="80" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Send reports to jira tempo by pressing the share button." id="icW-RF-Xg3">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Make reports from git commits" id="icW-RF-Xg3">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -82,9 +81,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-mX-fgI">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-mX-fgI">
                                 <rect key="frame" x="105" y="18" width="369" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. ~/Documents/Project1,~/Documents/Project2" bezelStyle="round" id="DYZ-2W-Nvk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -95,10 +93,16 @@
                         <constraints>
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="FbD-qf-Pro"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="10" id="I1j-nR-ahD"/>
+                            <constraint firstItem="Teq-Pe-PXu" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="105" id="MzN-47-ObN"/>
+                            <constraint firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" constant="10" id="QKJ-yE-dBF"/>
+                            <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="68" id="QoI-0h-dla"/>
+                            <constraint firstItem="pe2-mX-fgI" firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" id="bB1-0f-g1v"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
+                            <constraint firstItem="pe2-mX-fgI" firstAttribute="leading" secondItem="Teq-Pe-PXu" secondAttribute="leading" id="cUM-b9-bvW"/>
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="leading" secondItem="soa-Mf-B56" secondAttribute="trailing" constant="6" id="cxN-iS-Ne9"/>
                             <constraint firstAttribute="trailing" secondItem="y1X-Wf-3ng" secondAttribute="trailing" constant="10" id="dRf-Za-uMg"/>
+                            <constraint firstItem="pe2-mX-fgI" firstAttribute="top" secondItem="Teq-Pe-PXu" secondAttribute="bottom" constant="8" id="kxT-OC-8sg"/>
                         </constraints>
                     </view>
                 </box>
@@ -114,6 +118,7 @@
                 <outlet property="emailsTextField" destination="Teq-Pe-PXu" id="KBh-qB-qXs"/>
                 <outlet property="pathsTextField" destination="pe2-mX-fgI" id="Dkm-JH-rZc"/>
                 <outlet property="statusImageView" destination="soa-Mf-B56" id="RNd-RY-fIT"/>
+                <outlet property="statusTextField" destination="UaJ-WV-hc1" id="3Sk-ha-tws"/>
             </connections>
         </customView>
     </objects>

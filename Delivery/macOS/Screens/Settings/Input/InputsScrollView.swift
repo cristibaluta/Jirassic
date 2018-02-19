@@ -42,12 +42,20 @@ class InputsScrollView: NSScrollView {
         dataSource?.browserCell?.save()
     }
     
+    func setShellStatus (compatible: Bool, scriptInstalled: Bool) {
+        dataSource?.shellCell?.setShellStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    }
+    
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
-        dataSource?.shellCell?.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+        dataSource?.jirassicCell?.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
         dataSource?.jitCell?.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    }
+    
+    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool) {
+        dataSource?.gitCell?.setGitStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
     }
     
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {

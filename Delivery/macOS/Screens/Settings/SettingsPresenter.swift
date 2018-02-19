@@ -21,8 +21,10 @@ protocol SettingsPresenterInput: class {
 
 protocol SettingsPresenterOutput: class {
     
+    func setShellStatus (compatible: Bool, scriptInstalled: Bool)
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool)
     func setJitStatus (compatible: Bool, scriptInstalled: Bool)
+    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool)
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool)
     func showAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
@@ -52,9 +54,13 @@ extension SettingsPresenter: SettingsPresenterInput {
                 return
             }
             let compatibility = Versioning.isCompatible(versions)
-            userInterface.setJirassicStatus(compatible: compatibility.jirassicCmd, 
+            userInterface.setShellStatus(compatible: compatibility.jirassicCmd,
+                                         scriptInstalled: versions.shellScript != "" )
+            userInterface.setJirassicStatus(compatible: compatibility.jirassicCmd,
                                             scriptInstalled: versions.shellScript != "" )
             userInterface.setJitStatus(compatible: compatibility.jitCmd, 
+                                       scriptInstalled: versions.shellScript != "" )
+            userInterface.setGitStatus(commandInstalled: true,
                                        scriptInstalled: versions.shellScript != "" )
             userInterface.setBrowserStatus(compatible: compatibility.browserScript,
                                            scriptInstalled: versions.browserScript != "" )

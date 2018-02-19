@@ -9,22 +9,26 @@
 import Cocoa
 
 let kShellCellHeight = CGFloat(50.0)
+let kJirassicCellHeight = CGFloat(50.0)
 let kJitCellHeight = CGFloat(50.0)
 let kGitCellHeight = CGFloat(150.0)
 let kBrowserCellHeight = CGFloat(160.0)
 
 enum InputType {
     case shell
+    case jirassic
     case jit
     case git
     case browser
+    static var all: [InputType] = [.shell, .jirassic, .jit, .git, .browser]
 }
 
 class InputsTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
-    fileprivate let cells: [InputType] = [.shell, .jit, .git, .browser]
+    fileprivate let cells: [InputType] = InputType.all
     var shellCell: ShellCell?
+    var jirassicCell: JirassicCell?
     var jitCell: JitCell?
     var gitCell: GitCell?
     var browserCell: BrowserCell?
@@ -34,6 +38,7 @@ class InputsTableViewDataSource: NSObject {
         super.init()
 
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ShellCell.self)), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JirassicCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JitCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: GitCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: BrowserCell.self)), bundle: Bundle.main) != nil, "err")
@@ -41,6 +46,10 @@ class InputsTableViewDataSource: NSObject {
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ShellCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)))
             shellCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)), owner: self) as? ShellCell
+        }
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JirassicCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JirassicCell.self)))
+            jirassicCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JirassicCell.self)), owner: self) as? JirassicCell
         }
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JitCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)))
@@ -77,6 +86,8 @@ extension InputsTableViewDataSource: NSTableViewDataSource {
         switch inputType {
         case .shell:
             return kShellCellHeight
+        case .jirassic:
+            return kJirassicCellHeight
         case .jit:
             return kJitCellHeight
         case .git:
@@ -96,6 +107,8 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
         switch outputType {
         case .shell:
             cell = shellCell!
+        case .jirassic:
+            cell = jirassicCell!
         case .jit:
             cell = jitCell!
         case .git:

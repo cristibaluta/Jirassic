@@ -61,22 +61,71 @@ class SandboxedAppleScript: AppleScriptProtocol {
         })
     }
     
-    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
-        // https://www.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
-        // error "fatal: Not a git repository (or any of the parent directories): .git" number 128
-        // do shell script git -C ~/Documents/ebikeconnect/bsa-ios log --after="2018-2-6" --before="2018-2-7" --pretty=format:"%at;%ae;%s;%D"
+    func checkIfGitInstalled (completion: @escaping (Bool) -> Void) {
         
-        let startDate = date.YYYYMMddT00()
-        let endDate = date.addingTimeInterval(24*3600).YYYYMMddT00()
-        let command = "git -C \(path) log --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%at;%ae;%s;%D\""
+        let command = "command -v git"
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
         run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor, let result = descriptor.stringValue {
-                completion(result)
+                completion(result == "true")
+            } else {
+                completion(false)
+            }
+        })
+    }
+    
+    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void) {
+        
+        let command = "git -C \(path) rev-parse --is-inside-work-tree"
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion(result == "true")
+            } else {
+                completion(false)
+            }
+        })
+    }
+    
+    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
+        // https://www.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
+        // error "fatal: Not a git repository (or any of the parent directories): .git" number 128
+        // do shell script git -C ~/Documents/proj log --after="2018-2-6" --before="2018-2-7" --pretty=format:"%at;%ae;%s;%D"
+        
+        let startDate = date.YYYYMMddT00()
+        let endDate = date.addingTimeInterval(24*3600).YYYYMMddT00()
+        let command = "git -C \(path) log --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%h;%at;%ae;%s;%D\""
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                if result.contains("fatal: Not a git repository (or any of the parent directories): .git") {
+                    completion("")
+                } else {
+                    completion(result)
+                }
             } else {
                 completion("")
+            }
+        })
+    }
+    
+    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {
+        
+        let command = "git -C \(path) branch"
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
+        
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion([])
+            } else {
+                completion([])
             }
         })
     }

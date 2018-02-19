@@ -91,12 +91,20 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
+    func setShellStatus (compatible: Bool, scriptInstalled: Bool) {
+        inputsScrollView.setShellStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    }
+    
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
         inputsScrollView.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
         inputsScrollView.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    }
+    
+    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool) {
+        inputsScrollView.setGitStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
     }
     
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {

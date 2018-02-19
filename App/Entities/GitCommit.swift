@@ -10,6 +10,7 @@ import Foundation
 
 struct GitCommit {
     
+    var commitNumber: String
     var date: Date
     var authorEmail: String
     var message: String

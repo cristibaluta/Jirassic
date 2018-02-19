@@ -1,5 +1,5 @@
 //
-//  AppleScriptInstaller.swift
+//  AppleScript.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 20/11/2016.
@@ -15,7 +15,10 @@ protocol AppleScriptProtocol {
     var scriptsDirectory: URL? {get}
     func getScriptVersion (script: String, completion: @escaping (String) -> Void)
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
+    func checkIfGitInstalled (completion: @escaping (Bool) -> Void)
+    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void)
     func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void)
+    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void)
@@ -34,7 +37,7 @@ class AppleScript: AppleScriptProtocol {
     
     init() {
         #if APPSTORE
-            fatalError("For Appstore SandboxedAppleScript must be used")
+            fatalError("For sandboxed apps, SandboxedAppleScript must be used")
         #endif
     }
     
@@ -75,7 +78,19 @@ class AppleScript: AppleScriptProtocol {
         })
     }
     
+    func checkIfGitInstalled (completion: @escaping (Bool) -> Void) {
+        
+    }
+    
+    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
     func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
+        
+    }
+    
+    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {
         
     }
     
