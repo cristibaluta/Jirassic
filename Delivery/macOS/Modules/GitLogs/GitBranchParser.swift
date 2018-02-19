@@ -16,7 +16,7 @@ class GitBranchParser {
         self.raw = raw
     }
     
-//    func toGitCommits() -> [GitCommit] {
+    func branchName() -> String {
 //        // "50cfe7b2 Merge pull request #567 in BSEAPP/bsa-ios from APP-3007__User_Accept_of_Declaration_of_consent_for_Fitness to master"
 //        var commits = [GitCommit]()
 //        
@@ -24,6 +24,6 @@ class GitBranchParser {
 //        let results = r.split(separator: "\n").map { String($0) }
 //        
 //        
-//        return commits
-//    }
+        return ""
+    }
 }
