@@ -248,7 +248,7 @@ extension SandboxedAppleScript {
             
             let result = try NSUserAppleScriptTask(url: scriptURL)
             result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
-                RCLogO(descriptor)
+//                RCLogO(descriptor)
                 RCLogErrorO(error)
                 DispatchQueue.main.sync {
                     completion(descriptor)

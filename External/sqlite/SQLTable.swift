@@ -188,8 +188,8 @@ class SQLTable: NSObject {
 		var insert = true
 		if let rid = data[key] {
 			var val = "\(rid)"
-			if rid is String {
-				val = "'\(rid)'"
+			if let _rid = rid as? String {
+				val = "'\(_rid)'"
 			}
 			let sql = "SELECT COUNT(*) AS count FROM \(table) WHERE \(primaryKey())=\(val)"
 			let arr = db.query(sql: sql)
