@@ -18,6 +18,7 @@ protocol AppleScriptProtocol {
     func checkIfGitInstalled (completion: @escaping (Bool) -> Void)
     func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void)
     func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void)
+    func getGitBranch (at path: String, of commitNumber: String, completion: @escaping (String) -> Void)
     func getGitBranches (at path: String, completion: @escaping ([String]) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
@@ -87,6 +88,10 @@ class AppleScript: AppleScriptProtocol {
     }
     
     func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
+        
+    }
+    
+    func getGitBranch (at path: String, of commitNumber: String, completion: @escaping (String) -> Void) {
         
     }
     
