@@ -96,7 +96,7 @@ extension TasksPresenter: TasksPresenterInput {
         currentTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
-        moduleGit.logs(on: day.date) { tasks in
+        moduleGit.logs(onDate: day.date) { tasks in
             RCLog(tasks)
             self.currentTasks = tasks
             if listType == .report {

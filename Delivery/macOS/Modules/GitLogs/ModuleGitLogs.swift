@@ -14,15 +14,15 @@ class ModuleGitLogs {
     private let localPreferences = RCPreferences<LocalPreferences>()
     
     func isGitInstalled (completion: @escaping (Bool) -> Void) {
-        extensions.checkIfGitInstalled(completion: completion)
+        checkIfGitInstalled(completion: completion)
     }
     
-    func logs (on date: Date, completion: @escaping (([Task]) -> Void)) {
+    func logs (onDate date: Date, completion: @escaping (([Task]) -> Void)) {
         
         var tasks = [Task]()
         
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
-        logs(on: date, paths: paths, previousCommits: []) { commits in
+        logs(onDate: date, paths: paths, previousCommits: []) { commits in
             //todo: filter out commits that don't belong to my users
             for commit in commits {
                 let task = Task(lastModifiedDate: nil,
@@ -40,7 +40,7 @@ class ModuleGitLogs {
         }
     }
     
-    private func logs (on date: Date, paths: [String], previousCommits: [GitCommit], completion: @escaping (([GitCommit]) -> Void)) {
+    private func logs (onDate date: Date, paths: [String], previousCommits: [GitCommit], completion: @escaping (([GitCommit]) -> Void)) {
         
         var commits = previousCommits
         var paths = paths
@@ -51,7 +51,7 @@ class ModuleGitLogs {
         }
         paths.removeFirst()
         
-        extensions.getGitLogs(at: path, date: date, completion: { rawResults in
+        getGitLogs(at: path, date: date, completion: { rawResults in
             
             let parser = GitCommitsParser(raw: rawResults)
             let rawCommits = parser.toGitCommits()
@@ -59,7 +59,7 @@ class ModuleGitLogs {
             // Obtain branch names where missing
             self.getBranchName(at: path, previousCommits: rawCommits, completion: { commitsWithBranches in
                 commits += commitsWithBranches
-                self.logs(on: date, paths: paths, previousCommits: commits, completion: completion)
+                self.logs(onDate: date, paths: paths, previousCommits: commits, completion: completion)
             })
             
         })
@@ -78,7 +78,7 @@ class ModuleGitLogs {
         }
         if i > -1 {
             var commitToFix = commits[i]
-            extensions.getGitBranch(at: path, containing: commitToFix.commitNumber, completion: { rawBranches in
+            getGitBranch(at: path, containing: commitToFix.commitNumber, completion: { rawBranches in
                 commitToFix.branchName = GitBranchParser(raw: rawBranches).branchName()
                 commits[i] = commitToFix
                 self.getBranchName(at: path, previousCommits: commits, completion: completion)
@@ -87,4 +87,70 @@ class ModuleGitLogs {
             completion(commits)
         }
     }
+}
+
+extension ModuleGitLogs {
+    
+    func checkIfGitInstalled (completion: @escaping (Bool) -> Void) {
+        
+        let command = "command -v git"
+        extensions.run (command: command, completion: { result in
+            completion(result == "true")
+        })
+    }
+    
+    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void) {
+        
+        let command = "git -C \(path) rev-parse --is-inside-work-tree"
+        extensions.run (command: command, completion: { result in
+            completion(result == "true")
+        })
+    }
+    
+    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
+        // https://www.kernel.org/pub/software/scm/git/docs/git-log.html#_pretty_formats
+        // error "fatal: Not a git repository (or any of the parent directories): .git" number 128
+        // do shell script git -C ~/Documents/proj log --after="2018-2-6" --before="2018-2-7" --pretty=format:"%at;%ae;%s;%D"
+        
+        let startDate = date.YYYYMMddT00()
+        let endDate = date.addingTimeInterval(24*3600).YYYYMMddT00()
+        let command = "git -C \(path) log --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%h;%at;%ae;%s;%D\""
+        extensions.run (command: command, completion: { result in
+            if let result = result {
+                if result.contains("fatal: Not a git repository (or any of the parent directories): .git") {
+                    completion("")
+                } else {
+                    completion(result)
+                }
+            } else {
+                completion("")
+            }
+        })
+    }
+    
+    func getGitBranch (at path: String, containing commitNumber: String, completion: @escaping (String) -> Void) {
+        
+        //        let command = "git -C \(path) log \(commitNumber)..HEAD --ancestry-path --merges --oneline | tail -n 1"
+        let command = "git -C \(path) branch --contains \(commitNumber)"
+        extensions.run (command: command, completion: { result in
+            if let result = result {
+                completion(result)
+            } else {
+                completion("")
+            }
+        })
+    }
+    
+    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {
+        
+        let command = "git -C \(path) branch"
+        extensions.run (command: command, completion: { result in
+            if let result = result {
+                completion([])
+            } else {
+                completion([])
+            }
+        })
+    }
+    
 }

@@ -35,24 +35,8 @@ class ExtensionsInteractor {
         scripts.getBrowserInfo(browserId: browserId, completion: completion)
     }
     
-    func checkIfGitInstalled (completion: @escaping (Bool) -> Void) {
-        scripts.checkIfGitInstalled (completion: completion)
-    }
-    
-    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void) {
-        scripts.checkGitRepository(at: path, completion: completion)
-    }
-    
-    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
-        scripts.getGitLogs(at: path, date: date, completion: completion)
-    }
-    
-    func getGitBranch (at path: String, containing commitNumber: String, completion: @escaping (String) -> Void) {
-        scripts.getGitBranch(at: path, containing: commitNumber, completion: completion)
-    }
-    
-    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {
-        scripts.getGitBranches(at: path, completion: completion)
+    func run (command: String, completion: @escaping (String?) -> Void) {
+        scripts.run(command: command, completion: completion)
     }
     
     func getVersions (completion: @escaping (_ versions: Versions) -> Void) {

@@ -13,13 +13,9 @@ import Carbon.OpenScripting
 protocol AppleScriptProtocol {
     
     var scriptsDirectory: URL? {get}
+    func run (command: String, completion: @escaping (String?) -> Void)
     func getScriptVersion (script: String, completion: @escaping (String) -> Void)
     func getJitInfo (completion: @escaping ([String: String]) -> Void)
-    func checkIfGitInstalled (completion: @escaping (Bool) -> Void)
-    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void)
-    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void)
-    func getGitBranch (at path: String, containing commitNumber: String, completion: @escaping (String) -> Void)
-    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void)
     func getJirassicVersion (completion: @escaping (String) -> Void)
     func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void)
@@ -79,24 +75,18 @@ class AppleScript: AppleScriptProtocol {
         })
     }
     
-    func checkIfGitInstalled (completion: @escaping (Bool) -> Void) {
+    func run (command: String, completion: @escaping (String?) -> Void) {
         
-    }
-    
-    func checkGitRepository (at path: String, completion: @escaping (Bool) -> Void) {
+        let args = NSAppleEventDescriptor.list()
+        args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-    }
-    
-    func getGitLogs (at path: String, date: Date, completion: @escaping (String) -> Void) {
-        
-    }
-    
-    func getGitBranch (at path: String, containing commitNumber: String, completion: @escaping (String) -> Void) {
-        
-    }
-    
-    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {
-        
+        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
+            if let descriptor = descriptor, let result = descriptor.stringValue {
+                completion(result)
+            } else {
+                completion(nil)
+            }
+        })
     }
     
     func getJirassicVersion (completion: @escaping (String) -> Void) {
