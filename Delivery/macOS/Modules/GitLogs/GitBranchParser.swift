@@ -17,13 +17,25 @@ class GitBranchParser {
     }
     
     func branchName() -> String {
-//        // "50cfe7b2 Merge pull request #567 in BSEAPP/bsa-ios from APP-3007__User_Accept_of_Declaration_of_consent_for_Fitness to master"
-//        var commits = [GitCommit]()
-//        
-//        let r = raw.replacingOccurrences(of: "\r", with: "\n")
-//        let results = r.split(separator: "\n").map { String($0) }
-//        
-//        
-        return ""
+        return branches().first ?? ""
+    }
+    
+    func branches() -> [String] {
+        
+        var arr = [String]()
+        
+        let r = raw.replacingOccurrences(of: "\r", with: "\n")
+            .replacingOccurrences(of: "*", with: "")
+            .replacingOccurrences(of: " ", with: "")
+        
+        let results = r.split(separator: "\n").map { String($0) }
+        
+        for result in results {
+            if result.count > 0 {
+                arr.append(result)
+            }
+        }
+        
+        return arr
     }
 }

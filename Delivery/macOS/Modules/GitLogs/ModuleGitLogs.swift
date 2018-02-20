@@ -29,8 +29,8 @@ class ModuleGitLogs {
                                 startDate: nil,
                                 endDate: commit.date,
                                 notes: commit.message,
-                                taskNumber: nil,
-                                taskTitle: nil,
+                                taskNumber: nil,//todo: obtain task number from branch name
+                                taskTitle: commit.branchName,
                                 taskType: .gitCommit,
                                 objectId: String.random())
                 tasks.append(task)
@@ -78,8 +78,8 @@ class ModuleGitLogs {
         }
         if i > -1 {
             var commitToFix = commits[i]
-            extensions.getGitBranch(at: path, containing: commitToFix.commitNumber, completion: { branches in
-                commitToFix.branchName = branches
+            extensions.getGitBranch(at: path, containing: commitToFix.commitNumber, completion: { rawBranches in
+                commitToFix.branchName = GitBranchParser(raw: rawBranches).branchName()
                 commits[i] = commitToFix
                 self.getBranchName(at: path, previousCommits: commits, completion: completion)
             })

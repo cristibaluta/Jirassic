@@ -247,6 +247,7 @@
 		28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A283A72038AFC500DDCB63 /* JirassicCell.xib */; };
 		28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
 		28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
+		28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -550,6 +551,7 @@
 		28A283A42038AFB100DDCB63 /* JirassicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JirassicCell.swift; sourceTree = "<group>"; };
 		28A283A72038AFC500DDCB63 /* JirassicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JirassicCell.xib; sourceTree = "<group>"; };
 		28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParser.swift; sourceTree = "<group>"; };
+		28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParserTests.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -869,6 +871,7 @@
 				28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */,
 				28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */,
 				28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */,
+				28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */,
 			);
 			path = GitLogs;
 			sourceTree = "<group>";
@@ -2110,6 +2113,7 @@
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
+				28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
 				40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */,
 				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
