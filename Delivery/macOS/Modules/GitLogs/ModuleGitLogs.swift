@@ -23,13 +23,13 @@ class ModuleGitLogs {
         
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(on: date, paths: paths, previousCommits: []) { commits in
-            
+            //todo: filter out commits that don't belong to my users
             for commit in commits {
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
                                 endDate: commit.date,
                                 notes: commit.message,
-                                taskNumber: nil,//todo: obtain task number from branch name
+                                taskNumber: nil,//todo: obtain task number from branch name. see Jit.
                                 taskTitle: commit.branchName,
                                 taskType: .gitCommit,
                                 objectId: String.random())
