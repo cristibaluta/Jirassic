@@ -248,6 +248,9 @@
 		28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
 		28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
 		28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */; };
+		28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */; };
+		28A283B1203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */; };
+		28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -552,6 +555,8 @@
 		28A283A72038AFC500DDCB63 /* JirassicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JirassicCell.xib; sourceTree = "<group>"; };
 		28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParser.swift; sourceTree = "<group>"; };
 		28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParserTests.swift; sourceTree = "<group>"; };
+		28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractor.swift; sourceTree = "<group>"; };
+		28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractorTests.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -1092,6 +1097,8 @@
 				4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */,
 				4065D3351DD3B44200B73201 /* TaskTypeEstimatorTests.swift */,
 				4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */,
+				28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */,
+				28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1862,6 +1869,7 @@
 				280D71681ED6043D005D2689 /* TaskSuggestionViewController.swift in Sources */,
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
 				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
+				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
 				2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */,
@@ -2019,6 +2027,7 @@
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
+				28A283B1203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				2892B29C1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
 				28AA500F1EDCD51D00AAF03D /* Jirassic.xcdatamodeld in Sources */,
 				28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
@@ -2121,6 +2130,7 @@
 				28A283A220385F8C00DDCB63 /* GitCommitsParserTests.swift in Sources */,
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
 				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,
+				28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */,
 				4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

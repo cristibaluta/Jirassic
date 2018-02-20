@@ -93,12 +93,13 @@ extension TasksPresenter: TasksPresenterInput {
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
         let reader = ReadTasksInteractor(repository: localRepository)
-        currentTasks = reader.tasksInDay(day.date)
+        let localTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
-        moduleGit.logs(onDate: day.date) { tasks in
-            RCLog(tasks)
-            self.currentTasks = tasks
+        moduleGit.logs(onDate: day.date) { gitTasks in
+            
+            self.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
+            
             if listType == .report {
                 let reportInteractor = CreateReport()
                 let reports = reportInteractor.reports(fromTasks: self.currentTasks, targetHoursInDay: targetHoursInDay)
