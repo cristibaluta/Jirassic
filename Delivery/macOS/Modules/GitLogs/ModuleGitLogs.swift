@@ -54,10 +54,37 @@ class ModuleGitLogs {
         extensions.getGitLogs(at: path, date: date, completion: { rawResults in
             
             let parser = GitCommitsParser(raw: rawResults)
-            commits += parser.toGitCommits()
+            let rawCommits = parser.toGitCommits()
             
-            self.logs(on: date, paths: paths, previousCommits: commits, completion: completion)
+            // Obtain branch names where missing
+            self.getBranchName(at: path, previousCommits: rawCommits, completion: { commitsWithBranches in
+                commits += commitsWithBranches
+                self.logs(on: date, paths: paths, previousCommits: commits, completion: completion)
+            })
             
         })
+    }
+    
+    private func getBranchName (at path: String, previousCommits: [GitCommit], completion: @escaping (([GitCommit]) -> Void)) {
+        
+        var i: Int = -1, j = 0
+        var commits = previousCommits
+        for c in commits {
+            if c.branchName == nil {
+                i = j
+                break
+            }
+            j += 1
+        }
+        if i > -1 {
+            var commitToFix = commits[i]
+            extensions.getGitBranch(at: path, containing: commitToFix.commitNumber, completion: { branches in
+                commitToFix.branchName = branches
+                commits[i] = commitToFix
+                self.getBranchName(at: path, previousCommits: commits, completion: completion)
+            })
+        } else {
+            completion(commits)
+        }
     }
 }

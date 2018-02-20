@@ -47,8 +47,8 @@ class ExtensionsInteractor {
         scripts.getGitLogs(at: path, date: date, completion: completion)
     }
     
-    func getGitBranch (at path: String, of commitNumber: String, completion: @escaping (String) -> Void) {
-        scripts.getGitBranch(at: path, of: commitNumber, completion: completion)
+    func getGitBranch (at path: String, containing commitNumber: String, completion: @escaping (String) -> Void) {
+        scripts.getGitBranch(at: path, containing: commitNumber, completion: completion)
     }
     
     func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {

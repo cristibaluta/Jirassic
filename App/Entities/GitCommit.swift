@@ -14,5 +14,5 @@ struct GitCommit {
     var date: Date
     var authorEmail: String
     var message: String
-    var branchName: String
+    var branchName: String?
 }

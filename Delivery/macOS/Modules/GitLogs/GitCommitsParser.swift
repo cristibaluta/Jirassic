@@ -39,7 +39,7 @@ class GitCommitsParser {
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp)!)
         let email = comps.count > 0 ? comps.removeFirst() : ""
         let message = comps.count > 0 ? comps.removeFirst() : ""
-        let branchName = comps.count > 0 ? comps.removeFirst() : ""
+        let branchName = comps.count > 0 ? comps.removeFirst() : nil
         
         return GitCommit(commitNumber: commitNumber,
                          date: date,
