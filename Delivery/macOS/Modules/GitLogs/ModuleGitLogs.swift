@@ -140,17 +140,4 @@ extension ModuleGitLogs {
             }
         })
     }
-    
-    func getGitBranches (at path: String, completion: @escaping ([String]) -> Void) {
-        
-        let command = "git -C \(path) branch"
-        extensions.run (command: command, completion: { result in
-            if let result = result {
-                completion([])
-            } else {
-                completion([])
-            }
-        })
-    }
-    
 }
