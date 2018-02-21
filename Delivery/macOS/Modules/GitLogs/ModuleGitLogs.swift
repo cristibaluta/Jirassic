@@ -20,11 +20,18 @@ class ModuleGitLogs {
     func logs (onDate date: Date, completion: @escaping (([Task]) -> Void)) {
         
         var tasks = [Task]()
+        let allowedAuthors: [String] = localPreferences.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
         
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(onDate: date, paths: paths, previousCommits: []) { commits in
             //todo: filter out commits that don't belong to my users
             for commit in commits {
+                guard allowedAuthors.contains(commit.authorEmail) else {
+                    continue
+                }
+                // Get taskNumber from branchName
+                
+                
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
                                 endDate: commit.date,

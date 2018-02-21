@@ -99,7 +99,6 @@ extension TasksPresenter: TasksPresenterInput {
         moduleGit.logs(onDate: day.date) { gitTasks in
             
             self.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
-            self.currentTasks.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
             
             if listType == .report {
                 let reportInteractor = CreateReport()
