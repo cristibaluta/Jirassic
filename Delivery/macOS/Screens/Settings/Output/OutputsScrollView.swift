@@ -31,4 +31,8 @@ class OutputsScrollView: NSScrollView {
         dataSource?.jiraCell?.save()
         dataSource?.hookupCell?.save()
     }
+    
+    func setHookupStatus (commandInstalled: Bool, scriptInstalled: Bool) {
+        dataSource?.hookupCell?.setHookupStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
+    }
 }

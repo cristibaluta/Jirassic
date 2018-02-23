@@ -111,6 +111,10 @@ extension SettingsViewController: SettingsPresenterOutput {
         inputsScrollView.setBrowserStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
+    func setHookupStatus (commandInstalled: Bool, scriptInstalled: Bool) {
+        outputsScrollView.setHookupStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
+    }
+    
     func showAppSettings (_ settings: Settings) {
         
         trackingScrollView.showSettings(settings.settingsTracking)

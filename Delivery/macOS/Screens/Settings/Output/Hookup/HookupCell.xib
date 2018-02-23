@@ -11,13 +11,13 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="HookupCell" id="c22-O7-iKe" customClass="HookupCell" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" borderType="line" title="Hookups" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Mt-WYx">
-                    <rect key="frame" x="-3" y="-4" width="486" height="84"/>
+                    <rect key="frame" x="-3" y="-4" width="486" height="124"/>
                     <view key="contentView" id="ZSq-u6-jDQ">
-                        <rect key="frame" x="1" y="1" width="484" height="68"/>
+                        <rect key="frame" x="1" y="1" width="484" height="108"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b27-6N-xUR">
@@ -46,24 +46,63 @@
                                     <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yvd-TR-Y8n">
+                                <rect key="frame" x="354" y="80" width="112" height="18"/>
+                                <buttonCell key="cell" type="check" title="Enable hookup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VCv-6g-2qD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleEnableButton:" target="c22-O7-iKe" id="rEM-kp-26p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="110" id="0hv-CJ-oUG"/>
+                            <constraint firstItem="Yvd-TR-Y8n" firstAttribute="top" secondItem="ZSq-u6-jDQ" secondAttribute="top" constant="12" id="ENt-8T-NCz"/>
                             <constraint firstAttribute="bottom" secondItem="Iya-eE-Nay" secondAttribute="bottom" constant="13" id="FbL-CZ-099"/>
+                            <constraint firstAttribute="trailing" secondItem="Yvd-TR-Y8n" secondAttribute="trailing" constant="20" id="KX6-2Y-Zby"/>
                             <constraint firstAttribute="trailing" secondItem="Iya-eE-Nay" secondAttribute="trailing" constant="20" id="rQW-Wa-C1V"/>
                         </constraints>
                     </view>
                 </box>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vab-FZ-KUf">
+                    <rect key="frame" x="10" y="77" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="BJj-aW-htN"/>
+                        <constraint firstAttribute="width" constant="18" id="y1y-gJ-GEO"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="3Rh-Ib-RZF"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTM-Hh-or6">
+                    <rect key="frame" x="32" y="78" width="140" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking hookup cmd" id="RRt-S7-Jdp">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="LTM-Hh-or6" firstAttribute="top" secondItem="Vab-FZ-KUf" secondAttribute="top" id="LBz-Y1-yIu"/>
+                <constraint firstItem="Vab-FZ-KUf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="Wo4-bi-vVB"/>
+                <constraint firstItem="Vab-FZ-KUf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="jb5-rb-scr"/>
                 <constraint firstAttribute="trailing" secondItem="Fpy-Mt-WYx" secondAttribute="trailing" id="nh3-SO-LZj"/>
                 <constraint firstItem="Fpy-Mt-WYx" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="oom-bt-TOY"/>
                 <constraint firstItem="Fpy-Mt-WYx" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="pkk-tz-Ldp"/>
                 <constraint firstAttribute="bottom" secondItem="Fpy-Mt-WYx" secondAttribute="bottom" id="sez-Ws-3bx"/>
+                <constraint firstItem="LTM-Hh-or6" firstAttribute="leading" secondItem="Vab-FZ-KUf" secondAttribute="trailing" constant="6" id="vkf-Q8-gRV"/>
             </constraints>
             <connections>
+                <outlet property="butEnable" destination="Yvd-TR-Y8n" id="M4h-df-ozN"/>
                 <outlet property="hookupNameTextField" destination="Iya-eE-Nay" id="o3i-AN-ae3"/>
+                <outlet property="statusImageView" destination="Vab-FZ-KUf" id="hhL-on-F9D"/>
+                <outlet property="statusTextField" destination="LTM-Hh-or6" id="uPs-rA-D8v"/>
             </connections>
+            <point key="canvasLocation" x="139" y="186.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSStatusNone" width="16" height="16"/>
+    </resources>
 </document>

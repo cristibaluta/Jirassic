@@ -21,6 +21,7 @@ class GitCell: NSTableRowView, Saveable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         emailsTextField.stringValue = localPreferences.string(.settingsGitAuthors)
         pathsTextField.stringValue = localPreferences.string(.settingsGitPaths)
         butEnable.state = localPreferences.bool(.enableGit) ? .on : .off
