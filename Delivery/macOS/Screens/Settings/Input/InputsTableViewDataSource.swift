@@ -11,7 +11,7 @@ import Cocoa
 let kShellCellHeight = CGFloat(50.0)
 let kJirassicCellHeight = CGFloat(50.0)
 let kJitCellHeight = CGFloat(50.0)
-let kGitCellHeight = CGFloat(150.0)
+let kGitCellHeight = CGFloat(180.0)
 let kBrowserCellHeight = CGFloat(160.0)
 
 enum InputType {

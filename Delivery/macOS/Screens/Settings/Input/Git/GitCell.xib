@@ -11,17 +11,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="GitCell" id="c22-O7-iKe" customClass="GitCell" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="175"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" borderType="line" title="Git support" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-ST-fW3">
-                    <rect key="frame" x="-3" y="-4" width="486" height="154"/>
+                    <rect key="frame" x="-3" y="-4" width="486" height="179"/>
                     <view key="contentView" id="bAm-pg-lwW">
-                        <rect key="frame" x="1" y="1" width="484" height="138"/>
+                        <rect key="frame" x="1" y="1" width="484" height="163"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="soa-Mf-B56">
-                                <rect key="frame" x="8" y="110" width="18" height="18"/>
+                                <rect key="frame" x="8" y="135" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="UD3-CQ-0Cq"/>
                                     <constraint firstAttribute="width" constant="18" id="WP7-bD-H6R"/>
@@ -29,7 +29,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="g96-Mm-inb"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaJ-WV-hc1">
-                                <rect key="frame" x="30" y="111" width="111" height="17"/>
+                                <rect key="frame" x="30" y="136" width="111" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking git cmd" id="ASn-hr-APm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -37,7 +37,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-Wf-3ng">
-                                <rect key="frame" x="393" y="109" width="81" height="19"/>
+                                <rect key="frame" x="393" y="134" width="81" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HFX-xw-W3U">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWM-Qg-ewd">
-                                <rect key="frame" x="11" y="50" width="59" height="17"/>
+                                <rect key="frame" x="11" y="43" width="59" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Git users" id="kAp-st-pbb">
                                     <font key="font" metaFont="system"/>
@@ -56,7 +56,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-Pe-PXu">
-                                <rect key="frame" x="105" y="48" width="369" height="22"/>
+                                <rect key="frame" x="105" y="41" width="369" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. me@email.com,me2@email.com" bezelStyle="round" id="WAw-xv-jpg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -64,16 +64,16 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Et-wb-aOF">
-                                <rect key="frame" x="11" y="80" width="405" height="17"/>
+                                <rect key="frame" x="11" y="70" width="439" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Make reports from git commits" id="icW-RF-Xg3">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Provide the emails you commit with and projects paths separted by comma." id="icW-RF-Xg3">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PbW-vi-SiM">
-                                <rect key="frame" x="11" y="20" width="75" height="17"/>
+                                <rect key="frame" x="11" y="13" width="75" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Git projects" id="mji-eX-EsZ">
                                     <font key="font" metaFont="system"/>
@@ -82,20 +82,31 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-mX-fgI">
-                                <rect key="frame" x="105" y="18" width="369" height="22"/>
+                                <rect key="frame" x="105" y="11" width="369" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. ~/Documents/Project1,~/Documents/Project2" bezelStyle="round" id="DYZ-2W-Nvk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdD-wR-eck">
+                                <rect key="frame" x="11" y="105" width="409" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Enable (when git is enabled, future commits with Jit will not log)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3Yb-0f-n6k">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleEnableButton:" target="c22-O7-iKe" id="p4A-yZ-CJh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="FbD-qf-Pro"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="10" id="I1j-nR-ahD"/>
                             <constraint firstItem="Teq-Pe-PXu" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="105" id="MzN-47-ObN"/>
                             <constraint firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" constant="10" id="QKJ-yE-dBF"/>
-                            <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="68" id="QoI-0h-dla"/>
+                            <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="100" id="QoI-0h-dla"/>
                             <constraint firstItem="pe2-mX-fgI" firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" id="bB1-0f-g1v"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
@@ -114,12 +125,14 @@
                 <constraint firstAttribute="bottom" secondItem="RQm-ST-fW3" secondAttribute="bottom" id="PzK-Ow-0JE"/>
             </constraints>
             <connections>
+                <outlet property="butEnable" destination="mdD-wR-eck" id="B22-V1-sXE"/>
                 <outlet property="butInstall" destination="y1X-Wf-3ng" id="65a-Gm-QVx"/>
                 <outlet property="emailsTextField" destination="Teq-Pe-PXu" id="KBh-qB-qXs"/>
                 <outlet property="pathsTextField" destination="pe2-mX-fgI" id="Dkm-JH-rZc"/>
                 <outlet property="statusImageView" destination="soa-Mf-B56" id="RNd-RY-fIT"/>
                 <outlet property="statusTextField" destination="UaJ-WV-hc1" id="3Sk-ha-tws"/>
             </connections>
+            <point key="canvasLocation" x="139" y="180.5"/>
         </customView>
     </objects>
     <resources>

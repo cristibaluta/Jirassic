@@ -37,7 +37,7 @@ extension SettingsInteractor: SettingsInteractorInput {
     }
     
     func saveAppSettings (_ settings: Settings) {
-        RCLog(settings)
+        RCLog("Saving \(settings)")
         localRepository!.saveSettings(settings)
     }
     

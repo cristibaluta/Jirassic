@@ -29,6 +29,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsHookupCmdName = "settingsHookupCmdName"
     case settingsGitPaths = "settingsGitPaths"
     case settingsGitAuthors = "settingsGitAuthors"
+    case enableGit = "enableGit"
     case enableJira = "enableJira"
     case enableRoundingDay = "enableRoundingDay"
     case enableHookup = "enableHookup"
@@ -50,6 +51,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .settingsHookupCmdName:    return ""
             case .settingsGitPaths:         return ""
             case .settingsGitAuthors:       return ""
+            case .enableGit:                return true
             case .enableJira:               return true
             case .enableRoundingDay:        return false
             case .enableHookup:             return true

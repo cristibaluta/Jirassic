@@ -40,6 +40,7 @@ class SettingsPresenter {
     #endif
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
+    var gitModule = ModuleGitLogs()
     var hookup = ModuleHookup()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 }
@@ -60,10 +61,15 @@ extension SettingsPresenter: SettingsPresenterInput {
                                             scriptInstalled: versions.shellScript != "" )
             userInterface.setJitStatus(compatible: compatibility.jitCmd, 
                                        scriptInstalled: versions.shellScript != "" )
-            userInterface.setGitStatus(commandInstalled: true,
-                                       scriptInstalled: versions.shellScript != "" )
+            
             userInterface.setBrowserStatus(compatible: compatibility.browserScript,
                                            scriptInstalled: versions.browserScript != "" )
+            
+            // Git requires extra call
+            self?.gitModule.checkIfGitInstalled(completion: { isInstalled in
+                userInterface.setGitStatus(commandInstalled: isInstalled,
+                                           scriptInstalled: versions.shellScript != "" )
+            })
         }
     }
     

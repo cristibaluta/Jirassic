@@ -100,9 +100,9 @@ extension ModuleGitLogs {
     
     func checkIfGitInstalled (completion: @escaping (Bool) -> Void) {
         
-        let command = "command -v git"
+        let command = "command -v git"// Returns the path to git if exists
         extensions.run (command: command, completion: { result in
-            completion(result == "true")
+            completion(result != nil)
         })
     }
     
