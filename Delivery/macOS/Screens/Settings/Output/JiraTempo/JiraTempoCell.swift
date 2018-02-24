@@ -23,6 +23,10 @@ class JiraTempoCell: NSTableRowView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        baseUrlTextField.delegate = self
+        userTextField.delegate = self
+        passwordTextField.delegate = self
+        
         baseUrlTextField.stringValue = localPreferences.string(.settingsJiraUrl)
         userTextField.stringValue = localPreferences.string(.settingsJiraUser)
         passwordTextField.stringValue = localPreferences.string(.settingsJiraPassword)
@@ -73,5 +77,16 @@ extension JiraTempoCell: JiraTempoPresenterOutput {
         projectIssueNamePopup.removeAllItems()
         projectIssueNamePopup.addItems(withTitles: issues)
         projectIssueNamePopup.selectItem(withTitle: selectedIssue)
+    }
+}
+
+extension JiraTempoCell: NSTextFieldDelegate {
+    
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        save()
+        guard baseUrlTextField.stringValue != "", userTextField.stringValue != "", passwordTextField.stringValue != "" else {
+            return
+        }
+        presenter.checkCredentials()
     }
 }

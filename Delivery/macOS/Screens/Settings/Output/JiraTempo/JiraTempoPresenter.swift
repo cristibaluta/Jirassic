@@ -11,6 +11,7 @@ import Foundation
 protocol JiraTempoPresenterInput: class {
     
     func setupUserInterface()
+    func checkCredentials()
     func loadProjects()
     func loadProjectIssues (for projectKey: String)
 }
@@ -30,6 +31,10 @@ class JiraTempoPresenter {
 }
 
 extension JiraTempoPresenter: JiraTempoPresenterInput {
+    
+    func checkCredentials() {
+        loadProjects()
+    }
     
     func setupUserInterface() {
         
@@ -71,4 +76,5 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
             }
         }
     }
+    
 }
