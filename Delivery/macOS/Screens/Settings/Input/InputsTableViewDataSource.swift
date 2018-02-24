@@ -20,7 +20,7 @@ enum InputType {
     case jit
     case git
     case browser
-    static var all: [InputType] = [.shell, .jirassic, .jit, .git, .browser]
+    static var all: [InputType] = [.shell, .jirassic, .git, .browser]
 }
 
 class InputsTableViewDataSource: NSObject {
