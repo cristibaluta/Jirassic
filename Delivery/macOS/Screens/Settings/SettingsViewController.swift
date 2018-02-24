@@ -103,8 +103,8 @@ extension SettingsViewController: SettingsPresenterOutput {
         inputsScrollView.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
-    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool) {
-        inputsScrollView.setGitStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
+    func setGitStatus (scriptInstalled: Bool) {
+        inputsScrollView.setGitStatus (scriptInstalled: scriptInstalled)
     }
     
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {

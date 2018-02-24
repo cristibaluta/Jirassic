@@ -47,7 +47,7 @@ class HookupPresenter {
             }
             if wself.isShellScriptInstalled == true {
                 wself.userInterface?.setStatusImage(commandInstalled ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-                wself.userInterface?.setStatusText(commandInstalled ? "Start/End day actions will be sent to this cmd" : "Cmd does not exist")
+                wself.userInterface?.setStatusText(commandInstalled ? "Start/End day actions will be sent to this custom cmd" : "Custom cmd is not reachable")
             } else {
                 wself.userInterface?.setStatusImage(NSImage.Name.statusUnavailable)
                 wself.userInterface?.setStatusText("Not possible to use custom cmd, please install shell support first!")

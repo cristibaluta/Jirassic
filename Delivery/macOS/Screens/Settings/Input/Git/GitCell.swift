@@ -17,33 +17,15 @@ class GitCell: NSTableRowView, Saveable {
     @IBOutlet fileprivate var pathsTextField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!
 
+    var presenter: GitPresenterInput = GitPresenter()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        emailsTextField.stringValue = localPreferences.string(.settingsGitAuthors)
-        pathsTextField.stringValue = localPreferences.string(.settingsGitPaths)
-        butEnable.state = localPreferences.bool(.enableGit) ? .on : .off
-    }
-    
-    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool) {
-        
-        if scriptInstalled {
-            statusImageView.image = NSImage(named: commandInstalled
-                ? NSImage.Name.statusAvailable
-                : NSImage.Name.statusPartiallyAvailable)
-            statusTextField.stringValue = commandInstalled
-                ? "Commits made with git will appear in Jirassic as tasks."
-                : "Git is not installed"
-        } else {
-            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            statusTextField.stringValue = "Not possible to use git, please install shell support first!"
-        }
-        butInstall.isHidden = scriptInstalled && commandInstalled
-        emailsTextField.isEnabled = scriptInstalled && commandInstalled
-        pathsTextField.isEnabled = scriptInstalled && commandInstalled
-        butEnable.isEnabled = scriptInstalled && commandInstalled
+        (presenter as! GitPresenter).userInterface = self
+        butEnable.isHidden = true
+        emailsTextField.delegate = self
+        pathsTextField.delegate = self
     }
     
     func save() {
@@ -60,6 +42,52 @@ class GitCell: NSTableRowView, Saveable {
     }
     
     @IBAction func handleEnableButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == .on, forKey: .enableGit)
+        presenter.enableGit(sender.state == .on)
+    }
+}
+
+extension GitCell: NSTextFieldDelegate {
+    
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        save()
+    }
+}
+
+extension GitCell: GitPresenterOutput {
+    
+    func setStatusImage (_ imageName: NSImage.Name) {
+        statusImageView.image = NSImage(named: imageName)
+    }
+    func setStatusText (_ text: String) {
+        statusTextField.stringValue = text
+    }
+    func setButInstall (enabled: Bool) {
+        butInstall.isHidden = !enabled
+        butEnable.isHidden = enabled
+    }
+    func setButEnable (on: Bool?, enabled: Bool?) {
+        if let isOn = on {
+            butEnable.title = isOn ? "Enabled" : "Disabled"
+            butEnable.state = isOn ? .on : .off
+        }
+        if let enabled = enabled {
+            butEnable.isEnabled = enabled
+        }
+    }
+    func setPaths (_ paths: String?, enabled: Bool?) {
+        if let paths = paths {
+            pathsTextField.stringValue = paths
+        }
+        if let enabled = enabled {
+            pathsTextField.isEnabled = enabled
+        }
+    }
+    func setEmails (_ emails: String?, enabled: Bool?) {
+        if let emails = emails {
+            emailsTextField.stringValue = emails
+        }
+        if let enabled = enabled {
+            emailsTextField.isEnabled = enabled
+        }
     }
 }

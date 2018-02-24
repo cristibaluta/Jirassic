@@ -24,7 +24,7 @@ protocol SettingsPresenterOutput: class {
     func setShellStatus (compatible: Bool, scriptInstalled: Bool)
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool)
     func setJitStatus (compatible: Bool, scriptInstalled: Bool)
-    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool)
+    func setGitStatus (scriptInstalled: Bool)
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool)
     func setHookupStatus (scriptInstalled: Bool)
     func showAppSettings (_ settings: Settings)
@@ -41,7 +41,6 @@ class SettingsPresenter {
     #endif
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
-    var gitModule = ModuleGitLogs()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 }
 
@@ -66,10 +65,7 @@ extension SettingsPresenter: SettingsPresenterInput {
                                            scriptInstalled: versions.browserScript != "")
             
             // Git requires extra call
-            self?.gitModule.checkIfGitInstalled(completion: { isInstalled in
-                userInterface.setGitStatus(commandInstalled: isInstalled,
-                                           scriptInstalled: versions.shellScript != "")
-            })
+            userInterface.setGitStatus(scriptInstalled: versions.shellScript != "")
             
             // Hookup requires extra call
             userInterface.setHookupStatus(scriptInstalled: versions.shellScript != "")

@@ -54,8 +54,8 @@ class InputsScrollView: NSScrollView {
         dataSource?.jitCell?.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
-    func setGitStatus (commandInstalled: Bool, scriptInstalled: Bool) {
-        dataSource?.gitCell?.setGitStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
+    func setGitStatus (scriptInstalled: Bool) {
+        dataSource?.gitCell?.presenter.isShellScriptInstalled = scriptInstalled
     }
     
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {

@@ -15,11 +15,12 @@ class HookupCell: NSTableRowView, Saveable {
     @IBOutlet fileprivate var butEnable: NSButton!
     @IBOutlet fileprivate var hookupNameTextField: NSTextField!
     
-    var presenter: HookupPresenterInput?
+    var presenter: HookupPresenterInput = HookupPresenter()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         hookupNameTextField.delegate = self
+        (presenter as! HookupPresenter).userInterface = self
     }
     
     func save() {
@@ -27,7 +28,7 @@ class HookupCell: NSTableRowView, Saveable {
     }
     
     @IBAction func handleEnableButton (_ sender: NSButton) {
-        presenter?.enableHookup(sender.state == .on)
+        presenter.enableHookup(sender.state == .on)
     }
 }
 
@@ -61,6 +62,6 @@ extension HookupCell: HookupPresenterOutput {
 extension HookupCell: NSTextFieldDelegate {
     
     override func controlTextDidEndEditing(_ obj: Notification) {
-        presenter?.refresh(withCommand: hookupNameTextField.stringValue)
+        presenter.refresh(withCommand: hookupNameTextField.stringValue)
     }
 }
