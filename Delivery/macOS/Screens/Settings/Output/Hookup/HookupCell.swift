@@ -15,38 +15,52 @@ class HookupCell: NSTableRowView, Saveable {
     @IBOutlet fileprivate var butEnable: NSButton!
     @IBOutlet fileprivate var hookupNameTextField: NSTextField!
     
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    var presenter: HookupPresenterInput?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        hookupNameTextField.stringValue = localPreferences.string(.settingsHookupCmdName)
-        butEnable.state = localPreferences.bool(.enableHookup) ? .on : .off
+        hookupNameTextField.delegate = self
     }
     
     func save() {
-        localPreferences.set(hookupNameTextField.stringValue, forKey: .settingsHookupCmdName)
-    }
-    
-    
-    func setHookupStatus (commandInstalled: Bool, scriptInstalled: Bool) {
-        
-        if scriptInstalled {
-            statusImageView.image = NSImage(named: commandInstalled
-                ? NSImage.Name.statusAvailable
-                : NSImage.Name.statusPartiallyAvailable)
-            statusTextField.stringValue = commandInstalled
-                ? "Start/End day actions will be sent to this cmd"
-                : "Cmd does not exist"
-        } else {
-            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            statusTextField.stringValue = "Not possible to use custom cmd, please install shell support first!"
-        }
-        hookupNameTextField.isEnabled = scriptInstalled
-        butEnable.isEnabled = scriptInstalled
+        // Already saved
     }
     
     @IBAction func handleEnableButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == .on, forKey: .enableHookup)
+        presenter?.enableHookup(sender.state == .on)
+    }
+}
+
+extension HookupCell: HookupPresenterOutput {
+    
+    func setStatusImage (_ imageName: NSImage.Name) {
+        statusImageView.image = NSImage(named: imageName)
+    }
+    func setStatusText (_ text: String) {
+        statusTextField.stringValue = text
+    }
+    func setButEnable (on: Bool?, enabled: Bool?) {
+        if let isOn = on {
+            butEnable.title = isOn ? "Enabled" : "Disabled"
+            butEnable.state = isOn ? .on : .off
+        }
+        if let enabled = enabled {
+            butEnable.isEnabled = enabled
+        }
+    }
+    func setCommand (path: String?, enabled: Bool?) {
+        if let path = path {
+            hookupNameTextField.stringValue = path
+        }
+        if let enabled = enabled {
+            hookupNameTextField.isEnabled = enabled
+        }
+    }
+}
+
+extension HookupCell: NSTextFieldDelegate {
+    
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        presenter?.refresh(withCommand: hookupNameTextField.stringValue)
     }
 }

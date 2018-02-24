@@ -32,7 +32,7 @@ class OutputsScrollView: NSScrollView {
         dataSource?.hookupCell?.save()
     }
     
-    func setHookupStatus (commandInstalled: Bool, scriptInstalled: Bool) {
-        dataSource?.hookupCell?.setHookupStatus (commandInstalled: commandInstalled, scriptInstalled: scriptInstalled)
+    func setHookupStatus (scriptInstalled: Bool) {
+        dataSource?.hookupCell?.presenter?.isShellScriptInstalled = scriptInstalled
     }
 }

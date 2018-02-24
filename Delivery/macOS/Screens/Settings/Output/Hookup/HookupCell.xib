@@ -21,51 +21,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b27-6N-xUR">
-                                <rect key="frame" x="11" y="40" width="404" height="17"/>
+                                <rect key="frame" x="11" y="40" width="406" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Every log added to the app is sent to the custom cmd tool as well" id="lL2-dX-L8R">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="To find the full path to your custom cmd type in terminal &quot;which cmd-name&quot;" id="lL2-dX-L8R">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fZ-Cp-eRf">
-                                <rect key="frame" x="11" y="15" width="77" height="17"/>
+                                <rect key="frame" x="11" y="15" width="102" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="path to cmd" id="mU5-gT-oxO">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Full path to cmd" id="mU5-gT-oxO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-eE-Nay">
-                                <rect key="frame" x="110" y="13" width="354" height="22"/>
+                                <rect key="frame" x="130" y="13" width="334" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. /usr/local/bin/cmdName" bezelStyle="round" id="aEb-dy-B5y">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yvd-TR-Y8n">
-                                <rect key="frame" x="354" y="80" width="112" height="18"/>
-                                <buttonCell key="cell" type="check" title="Enable hookup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VCv-6g-2qD">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleEnableButton:" target="c22-O7-iKe" id="rEM-kp-26p"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="110" id="0hv-CJ-oUG"/>
-                            <constraint firstItem="Yvd-TR-Y8n" firstAttribute="top" secondItem="ZSq-u6-jDQ" secondAttribute="top" constant="12" id="ENt-8T-NCz"/>
+                            <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="130" id="0hv-CJ-oUG"/>
                             <constraint firstAttribute="bottom" secondItem="Iya-eE-Nay" secondAttribute="bottom" constant="13" id="FbL-CZ-099"/>
-                            <constraint firstAttribute="trailing" secondItem="Yvd-TR-Y8n" secondAttribute="trailing" constant="20" id="KX6-2Y-Zby"/>
                             <constraint firstAttribute="trailing" secondItem="Iya-eE-Nay" secondAttribute="trailing" constant="20" id="rQW-Wa-C1V"/>
                         </constraints>
                     </view>
                 </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-Wa-fQ9">
+                    <rect key="frame" x="400" y="76" width="60" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Enabled" alternateTitle="Disabled" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cHn-29-2sZ">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleEnableButton:" target="c22-O7-iKe" id="zM4-E4-JSc"/>
+                    </connections>
+                </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vab-FZ-KUf">
                     <rect key="frame" x="10" y="77" width="18" height="18"/>
                     <constraints>
@@ -85,6 +83,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="LTM-Hh-or6" firstAttribute="top" secondItem="Vab-FZ-KUf" secondAttribute="top" id="LBz-Y1-yIu"/>
+                <constraint firstItem="VoS-Wa-fQ9" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="W6f-VP-lxq"/>
                 <constraint firstItem="Vab-FZ-KUf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="Wo4-bi-vVB"/>
                 <constraint firstItem="Vab-FZ-KUf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="jb5-rb-scr"/>
                 <constraint firstAttribute="trailing" secondItem="Fpy-Mt-WYx" secondAttribute="trailing" id="nh3-SO-LZj"/>
@@ -92,9 +91,10 @@
                 <constraint firstItem="Fpy-Mt-WYx" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="pkk-tz-Ldp"/>
                 <constraint firstAttribute="bottom" secondItem="Fpy-Mt-WYx" secondAttribute="bottom" id="sez-Ws-3bx"/>
                 <constraint firstItem="LTM-Hh-or6" firstAttribute="leading" secondItem="Vab-FZ-KUf" secondAttribute="trailing" constant="6" id="vkf-Q8-gRV"/>
+                <constraint firstAttribute="trailing" secondItem="VoS-Wa-fQ9" secondAttribute="trailing" constant="20" id="x7V-Wp-rdS"/>
             </constraints>
             <connections>
-                <outlet property="butEnable" destination="Yvd-TR-Y8n" id="M4h-df-ozN"/>
+                <outlet property="butEnable" destination="VoS-Wa-fQ9" id="MJj-d1-4f1"/>
                 <outlet property="hookupNameTextField" destination="Iya-eE-Nay" id="o3i-AN-ae3"/>
                 <outlet property="statusImageView" destination="Vab-FZ-KUf" id="hhL-on-F9D"/>
                 <outlet property="statusTextField" destination="LTM-Hh-or6" id="uPs-rA-D8v"/>

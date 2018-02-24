@@ -37,6 +37,9 @@ class OutputTableViewDataSource: NSObject {
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: HookupCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)))
             hookupCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)), owner: self) as? HookupCell
+            let presenter = HookupPresenter()
+            presenter.userInterface = hookupCell
+            hookupCell?.presenter = presenter
         }
     }
 }
