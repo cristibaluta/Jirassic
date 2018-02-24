@@ -56,6 +56,9 @@ class TasksScrollView: NSScrollView {
         let dataSource = ReportsDataSource(tableView: tableView, reports: reports)
         tableView!.dataSource = dataSource
         tableView!.delegate = dataSource
+        if #available(OSX 10.13, *) {
+            tableView!.usesAutomaticRowHeights = true
+        }
         
         let headerView = ReportsHeaderView()
         headerView.didChangeSettings = { [weak self] in

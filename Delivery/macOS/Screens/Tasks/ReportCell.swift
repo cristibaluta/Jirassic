@@ -64,6 +64,7 @@ class ReportCell: NSTableRowView, CellProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
         butCopyWidthConstraint?.constant = 0
+        taskNrTextField?.preferredMaxLayoutWidth = CGFloat(300)
         ensureTrackingArea()
     }
     

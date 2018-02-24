@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="216" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
                     <rect key="frame" x="59" y="27" width="216" height="17"/>
                     <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task number" drawsBackground="YES" id="dlI-ub-5hj">
                         <font key="font" metaFont="systemBold"/>
@@ -22,10 +22,10 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="281" y="29" width="51" height="15"/>
+                    <rect key="frame" x="281" y="27" width="51" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="47" id="2nv-uf-Elb"/>
-                        <constraint firstAttribute="height" constant="15" id="6CB-mp-rwI"/>
+                        <constraint firstAttribute="height" constant="17" id="6CB-mp-rwI"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="right" placeholderString="00:00" id="kk5-M4-fbR">
                         <font key="font" metaFont="system"/>
@@ -47,12 +47,12 @@
                         <action selector="handleCopyButton:" target="c22-O7-iKe" id="YdM-J6-5Wg"/>
                     </connections>
                 </button>
-                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-oc-wrR">
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="333" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-oc-wrR">
                     <rect key="frame" x="12" y="6" width="333" height="17"/>
-                    <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task number" drawsBackground="YES" id="29U-pf-bPN">
+                    <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Task notes" drawsBackground="YES" id="29U-pf-bPN">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textFieldCell>
                 </textField>
             </subviews>

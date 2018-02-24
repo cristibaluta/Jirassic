@@ -34,6 +34,9 @@ extension ReportsDataSource: NSTableViewDataSource {
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         
+        guard #available(OSX 10.13, *) else {
+            return CGFloat(0)
+        }
         let theData = reports[row]
         // Calculate height to fit content
         if tempCell == nil {
