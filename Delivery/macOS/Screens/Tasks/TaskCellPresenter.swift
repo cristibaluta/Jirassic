@@ -55,5 +55,6 @@ class TaskCellPresenter: NSObject {
 //		cell.duration = duration
         cell.statusImage?.image = statusImage
         cell.isDark = AppDelegate.sharedApp().theme.isDark
+        cell.isEditable = theTask.taskType != .gitCommit
 	}
 }

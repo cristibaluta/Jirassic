@@ -67,6 +67,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
         }
     }
     var isDark: Bool = false
+    var isEditable: Bool = true
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
