@@ -1,5 +1,5 @@
 //
-//  ShareCell.swift
+//  FooterCell.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 30/01/2018.

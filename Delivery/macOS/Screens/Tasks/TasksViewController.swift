@@ -99,6 +99,7 @@ extension TasksViewController {
 extension TasksViewController: TasksPresenterOutput {
     
     func showLoadingIndicator (_ show: Bool) {
+        
         butRefresh!.isHidden = remoteRepository == nil ? true : show
         if show {
             refreshIndicator!.startAnimation(nil)

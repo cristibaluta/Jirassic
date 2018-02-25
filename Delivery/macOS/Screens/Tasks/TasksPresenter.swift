@@ -100,6 +100,7 @@ extension TasksPresenter: TasksPresenterInput {
             updateNoTasksState()
             return
         }
+        userInterface!.showLoadingIndicator(true)
         moduleGit.logs(onDate: day.date) { [weak self] gitTasks in
             
             guard let wself = self else {
@@ -118,6 +119,7 @@ extension TasksPresenter: TasksPresenterInput {
             }
             
             wself.updateNoTasksState()
+            wself.userInterface!.showLoadingIndicator(false)
         }
     }
     
