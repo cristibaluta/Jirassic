@@ -233,10 +233,11 @@ extension AppWireframe {
     }
 
     // EndDay
-    func presentEndDayController (date: Date) -> EndDayViewController {
+    func presentEndDayController (date: Date, tasks: [Task]) -> EndDayViewController {
 
         let controller = self.endDayViewController
         controller.date = date
+        controller.tasks = tasks
         addController(controller)
         controller.view.constrainToSuperview()
         _endDayViewController = controller

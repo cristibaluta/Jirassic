@@ -9,7 +9,7 @@
 import Foundation
 
 protocol EndDayPresenterInput: class {
-    func setup (date: Date)
+    func setup (date: Date, tasks: [Task])
     func save (jiraTempo: Bool, hookup: Bool, roundTime: Bool, worklog: String)
 }
 
@@ -26,6 +26,7 @@ class EndDayPresenter {
     weak var userInterface: EndDayPresenterOutput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var jiraTempoInteractor = ModuleJiraTempo()
+    fileprivate var gitModule = ModuleGitLogs()
     fileprivate var hookupModule = ModuleHookup()
     var duration = 0.0
     var date: Date?
@@ -33,22 +34,18 @@ class EndDayPresenter {
 
 extension EndDayPresenter: EndDayPresenterInput {
 
-    func setup (date: Date) {
-        
-        //        let now = Date()
-        //        let task = Task(dateEnd: now, type: TaskType.endDay)
-        //        let saveInteractor = TaskInteractor(repository: localRepository)
-        //        saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
-        //            //self.reloadData()
-        //        })
+    func setup (date: Date, tasks: [Task]) {
         self.date = date
+        show(tasks: tasks)
+    }
+    
+    private func show (tasks: [Task]) {
+        
         let settings = SettingsInteractor().getAppSettings()
         let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
         let targetHoursInDay = isRoundingEnabled
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
-        let reader = ReadTasksInteractor(repository: localRepository)
-        let tasks = reader.tasksInDay(date)
         
         let reportInteractor = CreateReport()
         let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)

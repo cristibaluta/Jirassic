@@ -32,7 +32,7 @@ protocol TasksPresenterOutput: class {
     func showReports (_ reports: [Report])
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
-    func presentEndDayController (date: Date)
+    func presentEndDayController (date: Date, tasks: [Task])
 }
 
 enum ListType: Int {
@@ -96,34 +96,29 @@ extension TasksPresenter: TasksPresenterInput {
         let localTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
-        moduleGit.logs(onDate: day.date) { gitTasks in
+        guard localPreferences.bool(.enableGit) else {
+            updateNoTasksState()
+            return
+        }
+        moduleGit.logs(onDate: day.date) { [weak self] gitTasks in
             
-            self.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
+            guard let wself = self else {
+                return
+            }
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
             
             if listType == .report {
                 let reportInteractor = CreateReport()
-                let reports = reportInteractor.reports(fromTasks: self.currentTasks, targetHoursInDay: targetHoursInDay)
-                self.currentReports = reports.reversed()
-                self.userInterface!.showReports(self.currentReports)
+                let reports = reportInteractor.reports(fromTasks: wself.currentTasks, targetHoursInDay: targetHoursInDay)
+                wself.currentReports = reports.reversed()
+                wself.userInterface!.showReports(wself.currentReports)
             }
             else {
-                self.userInterface!.showTasks(self.currentTasks)
+                wself.userInterface!.showTasks(wself.currentTasks)
             }
             
-            self.updateNoTasksState()
+            wself.updateNoTasksState()
         }
-        
-//        if listType == .report {
-//            let reportInteractor = CreateReport()
-//            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
-//            currentReports = reports.reversed()
-//            userInterface!.showReports(currentReports)
-//        }
-//        else {
-//            userInterface!.showTasks(currentTasks)
-//        }
-//
-//        updateNoTasksState()
     }
     
     func updateNoTasksState() {
@@ -165,7 +160,7 @@ extension TasksPresenter: TasksPresenterInput {
     }
 
     func endDay() {
-        userInterface!.presentEndDayController(date: lastSelectedDay?.date ?? Date())
+        userInterface!.presentEndDayController(date: lastSelectedDay?.date ?? Date(), tasks: currentTasks)
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {

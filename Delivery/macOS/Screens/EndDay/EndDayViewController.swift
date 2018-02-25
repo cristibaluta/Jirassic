@@ -25,18 +25,21 @@ class EndDayViewController: NSViewController {
     var onCancel: (() -> Void)?
     var presenter: EndDayPresenterInput?
     var date: Date?
+    var tasks: [Task]?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     weak var appWireframe: AppWireframe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter!.setup(date: date!)
+        
         dateTextField.stringValue = date!.EEEEMMMdd()
         jiraErrorTextField.stringValue = ""
         hookupErrorTextField.stringValue = ""
         
         worklogTextView.drawsBackground = false
         worklogTextView.backgroundColor = NSColor.clear
+        
+        presenter!.setup(date: date!, tasks: tasks!)
     }
     
     @IBAction func handleCancelButton (_ sender: NSButton) {
