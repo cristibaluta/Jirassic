@@ -19,7 +19,7 @@ class ModuleHookup {
         checkIfCommandInstalled(cmd: cmd, completion: completion)
     }
     
-    func insert (task: Task) {
+    func insert (task: Task, completion: ((_ success: Bool) -> Void)? = nil) {
         
         let cmd = localPreferences.string(.settingsHookupCmdName)
         let json = buildJson (task: task)
@@ -28,15 +28,20 @@ class ModuleHookup {
         extensions.run (command: command, completion: { result in
             
             guard let validJson = result else {
+                completion?(false)
                 return
             }
             guard let data = validJson.data(using: String.Encoding.utf8) else {
+                completion?(false)
                 return
             }
-            guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String], let dict = jdict else {
+            guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
+                let dict = jdict else {
+                completion?(false)
                 return
             }
             RCLog(dict)
+            completion?(dict["success"] == "true")
         })
     }
     

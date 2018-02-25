@@ -19,6 +19,8 @@ protocol EndDayPresenterOutput: class {
     func showRounding (enabled: Bool, title: String)
     func showWorklog (_ worklog: String)
     func showProgressIndicator (_ show: Bool)
+    func showJiraError (_ error: String)
+    func showHookupError (_ error: String)
 }
 
 class EndDayPresenter {
@@ -30,6 +32,13 @@ class EndDayPresenter {
     fileprivate var hookupModule = ModuleHookup()
     var duration = 0.0
     var date: Date?
+    var isJiraAvailable: Bool {
+        return localPreferences.string(.settingsJiraUrl) != ""
+            && localPreferences.string(.settingsJiraUser) != ""
+            && localPreferences.string(.settingsJiraPassword) != ""
+            && localPreferences.string(.settingsJiraProjectKey) != ""
+            && localPreferences.string(.settingsJiraProjectIssueKey) != ""
+    }
 }
 
 extension EndDayPresenter: EndDayPresenterInput {
@@ -60,11 +69,6 @@ extension EndDayPresenter: EndDayPresenterInput {
         userInterface!.showWorklog(comment)
         
         // Setup Jira button
-        let isJiraAvailable = localPreferences.string(.settingsJiraUrl) != ""
-            && localPreferences.string(.settingsJiraUser) != ""
-            && localPreferences.string(.settingsJiraPassword) != ""
-            && localPreferences.string(.settingsJiraProjectKey) != ""
-            && localPreferences.string(.settingsJiraProjectIssueKey) != ""
         let isJiraEnabled = isJiraAvailable && localPreferences.bool(.enableJira)
         
         userInterface!.showJira(enabled: isJiraEnabled, available: isJiraAvailable)
@@ -80,18 +84,28 @@ extension EndDayPresenter: EndDayPresenterInput {
     
     func save (jiraTempo: Bool, hookup: Bool, roundTime: Bool, worklog: String) {
         
-        if jiraTempo {
+        userInterface!.showJiraError("")
+        userInterface!.showHookupError("")
+        
+        if isJiraAvailable && jiraTempo {
             userInterface!.showProgressIndicator(true)
             jiraTempoInteractor.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
                 DispatchQueue.main.async {
                     self?.userInterface!.showProgressIndicator(false)
+                    if !success {
+                        self?.userInterface!.showHookupError("Couldn't save worklog to Jira")
+                    }
                 }
             }
         }
         
         if hookup {
             let task = Task(endDate: Date(), type: .endDay)
-            hookupModule.insert(task: task)
+            hookupModule.insert(task: task) { [weak self] success in
+                if !success {
+                    self?.userInterface!.showHookupError("Couldn't call hookup")
+                }
+            }
         }
     }
 }

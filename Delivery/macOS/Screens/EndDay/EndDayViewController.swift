@@ -101,4 +101,12 @@ extension EndDayViewController: EndDayPresenterOutput {
             progressIndicator.stopAnimation(nil)
         }
     }
+    
+    func showJiraError (_ error: String) {
+        jiraErrorTextField.stringValue = error
+    }
+    
+    func showHookupError (_ error: String) {
+        hookupErrorTextField.stringValue = error
+    }
 }
