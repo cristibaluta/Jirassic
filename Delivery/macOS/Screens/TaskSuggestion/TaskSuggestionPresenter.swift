@@ -108,5 +108,8 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             
         })
+        if task.taskType == .startDay {
+            ModuleHookup().insert(task: task)
+        }
     }
 }

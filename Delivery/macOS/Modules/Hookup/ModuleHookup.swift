@@ -26,7 +26,17 @@ class ModuleHookup {
         let command = "\(cmd) insert \"\(json)\""
         
         extensions.run (command: command, completion: { result in
-            RCLog(result)
+            
+            guard let validJson = result else {
+                return
+            }
+            guard let data = validJson.data(using: String.Encoding.utf8) else {
+                return
+            }
+            guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String], let dict = jdict else {
+                return
+            }
+            RCLog(dict)
         })
     }
     
