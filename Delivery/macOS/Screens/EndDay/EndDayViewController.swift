@@ -76,17 +76,17 @@ extension EndDayViewController: EndDayPresenterOutput {
     
     func showJira (enabled: Bool, available: Bool) {
         butJira.isEnabled = available
-        butJira.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        butJira.state = enabled ? .on : .off
         butJiraSetup.isHidden = available
     }
     
     func showHookup (enabled: Bool, available: Bool) {
         butHookup.isEnabled = available
-        butHookup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        butHookup.state = enabled ? .on : .off
     }
     
     func showRounding (enabled: Bool, title: String) {
-        butRound.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        butRound.state = enabled ? .on : .off
         butRound.title = title
     }
     

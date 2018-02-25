@@ -10,8 +10,8 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
-let kEndCellSmallHeight = CGFloat(70.0)
-let kEndCellLargeHeight = CGFloat(135.0)
+let kFooterCellSmallHeight = CGFloat(70.0)
+let kFooterCellLargeHeight = CGFloat(135.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
@@ -29,7 +29,7 @@ class TasksDataSource: NSObject {
         
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) != nil, "err")
         assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: EndCell.self)), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: FooterCell.self)), bundle: Bundle.main) != nil, "err")
         
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)))
@@ -37,8 +37,8 @@ class TasksDataSource: NSObject {
         if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) {
             tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)))
         }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: EndCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)))
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: FooterCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: FooterCell.self)))
         }
     }
     
@@ -49,9 +49,6 @@ class TasksDataSource: NSObject {
         case TaskType.issue, TaskType.gitCommit:
             cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)), owner: self) as? TaskCell
             break
-//        case TaskType.endDay:
-//            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)), owner: self) as? EndCell
-//            break
         default:
             cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)), owner: self) as? NonTaskCell
             break
@@ -83,7 +80,7 @@ extension TasksDataSource: NSTableViewDataSource {
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 
         guard row < tasks.count else {
-            return kEndCellSmallHeight
+            return kFooterCellSmallHeight
         }
         let theData = tasks[row]
         // Return predefined height
@@ -101,7 +98,7 @@ extension TasksDataSource: NSTableViewDelegate {
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
         guard row < tasks.count else {
-            let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: EndCell.self)), owner: self) as? EndCell
+            let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: FooterCell.self)), owner: self) as? FooterCell
 
             cell?.didEndDay = { [weak self] () in
                 if let wself = self {

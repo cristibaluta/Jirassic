@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class EndCell: NSTableRowView {
+class FooterCell: NSTableRowView {
 
     @IBOutlet fileprivate var butAdd: NSButton?
     @IBOutlet fileprivate var butEnd: NSButton?
