@@ -92,16 +92,8 @@ extension EndDayPresenter: EndDayPresenterInput {
             }
         }
         
-        if hookup /*&& date?.isSameDayAs(Date()) == true*/ {
-            let task = Task(lastModifiedDate: nil,
-                            startDate: nil,
-                            endDate: Date(),
-                            notes: worklog,
-                            taskNumber: nil,
-                            taskTitle: "",
-                            taskType: .endDay,
-                            objectId: "")
-            
+        if hookup {
+            let task = Task(endDate: Date(), type: .endDay)
             hookupModule.insert(task: task)
         }
     }

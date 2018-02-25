@@ -40,7 +40,7 @@ extension NSApplication {
                     let settings: Settings = SettingsInteractor().getAppSettings()
                     let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
                     let comps = startDate.components()
-                    let startDayMark = Task(dateEnd: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
+                    let startDayMark = Task(endDate: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
                     saveInteractor.saveTask(startDayMark, allowSyncing: true, completion: { savedTask in
                         
                     })

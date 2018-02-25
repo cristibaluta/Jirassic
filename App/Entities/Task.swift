@@ -84,9 +84,9 @@ extension Task {
         self.objectId = String.random()
     }
     
-	init (dateEnd: Date, type: TaskType) {
+	init (endDate: Date, type: TaskType) {
 		
-		self.endDate = dateEnd
+		self.endDate = endDate
 		self.taskType = type
         self.objectId = String.random()
         

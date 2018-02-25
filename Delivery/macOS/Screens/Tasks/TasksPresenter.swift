@@ -156,11 +156,12 @@ extension TasksPresenter: TasksPresenterInput {
     func startDay() {
         
         let now = Date()
-        let task = Task(dateEnd: now, type: TaskType.startDay)
+        let task = Task(endDate: now, type: TaskType.startDay)
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             self.reloadData()
         })
+        ModuleHookup().insert(task: task)
     }
 
     func endDay() {

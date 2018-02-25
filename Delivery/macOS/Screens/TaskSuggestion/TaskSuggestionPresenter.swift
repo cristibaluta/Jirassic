@@ -94,7 +94,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         var task: Task
         
         if isStartOfDay {
-            task = Task(dateEnd: endSleepDate!, type: TaskType.startDay)
+            task = Task(endDate: endSleepDate!, type: TaskType.startDay)
         } else {
             let type = taskSubtype(forIndex: selectedSegment)
             task = Task(subtype: type)

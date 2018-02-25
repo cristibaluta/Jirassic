@@ -30,13 +30,13 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
                 if settings.settingsTracking.trackStartOfDay {
                     let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
                     if currentDate > startDate {
-                        let task = Task(dateEnd: currentDate, type: TaskType.startDay)
+                        let task = Task(endDate: currentDate, type: TaskType.startDay)
                         save(task: task)
                     }
                 }
             } else if (type == .scrum && settings.settingsTracking.trackScrum) || (type == .lunch && settings.settingsTracking.trackLunch) {
                 
-                var task = Task(dateEnd: currentDate, type: type)
+                var task = Task(endDate: currentDate, type: type)
                 task.startDate = lastSleepDate
                 save(task: task)
             }
