@@ -10,7 +10,7 @@ import Foundation
 
 protocol EndDayPresenterInput: class {
     func setup (date: Date)
-    func save (jiraTempo: Bool, roundTime: Bool, worklog: String)
+    func save (jiraTempo: Bool, hookup: Bool, roundTime: Bool, worklog: String)
 }
 
 protocol EndDayPresenterOutput: class {
@@ -26,7 +26,7 @@ class EndDayPresenter {
     weak var userInterface: EndDayPresenterOutput?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var jiraTempoInteractor = ModuleJiraTempo()
-    fileprivate var hookup = ModuleHookup()
+    fileprivate var hookupModule = ModuleHookup()
     var duration = 0.0
     var date: Date?
 }
@@ -81,12 +81,28 @@ extension EndDayPresenter: EndDayPresenterInput {
         userInterface!.showRounding (enabled: isRoundingEnabled, title: "Round worklog time to \(String(describing: workedHours)) hours")
     }
     
-    func save (jiraTempo: Bool, roundTime: Bool, worklog: String) {
+    func save (jiraTempo: Bool, hookup: Bool, roundTime: Bool, worklog: String) {
         
-        userInterface!.showProgressIndicator(true)
-        jiraTempoInteractor.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
-            self?.userInterface!.showProgressIndicator(false)
+        if jiraTempo {
+            userInterface!.showProgressIndicator(true)
+            jiraTempoInteractor.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
+                DispatchQueue.main.async {
+                    self?.userInterface!.showProgressIndicator(false)
+                }
+            }
+        }
+        
+        if hookup /*&& date?.isSameDayAs(Date()) == true*/ {
+            let task = Task(lastModifiedDate: nil,
+                            startDate: nil,
+                            endDate: Date(),
+                            notes: worklog,
+                            taskNumber: nil,
+                            taskTitle: "",
+                            taskType: .endDay,
+                            objectId: "")
             
+            hookupModule.insert(task: task)
         }
     }
 }

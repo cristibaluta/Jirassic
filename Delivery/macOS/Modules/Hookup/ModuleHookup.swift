@@ -14,13 +14,35 @@ class ModuleHookup {
     private let localPreferences = RCPreferences<LocalPreferences>()
     
     func isHookupInstalled (completion: @escaping (Bool) -> Void) {
+        
         let cmd = localPreferences.string(.settingsHookupCmdName)
         checkIfCommandInstalled(cmd: cmd, completion: completion)
     }
     
     func insert (task: Task) {
+        
         let cmd = localPreferences.string(.settingsHookupCmdName)
-        RCLog("Sending this task \(task) to hookup: \(cmd)")
+        let json = buildJson (task: task)
+        let command = "\(cmd) insert \"\(json)\""
+        
+        extensions.run (command: command, completion: { result in
+            RCLog(result)
+        })
+    }
+    
+    /// Json sent to shell to be valid must be a string with ' instead of " and no breaklines
+    private func buildJson (task: Task) -> String {
+        
+        var jsonCredentials = "'credentials':{}"
+        if localPreferences.bool(.enableHookupCredentials) {
+            let url = localPreferences.string(.settingsJiraUrl)
+            let user = localPreferences.string(.settingsJiraUser)
+            let password = localPreferences.string(.settingsJiraPassword)
+            jsonCredentials = "'credentials':{'url':'\(url)', 'user':'\(user)', 'password':'\(password)'}"
+        }
+        let jsonTask = "'task':{'taskType':\(task.taskType.rawValue)}"
+        
+        return "{\(jsonCredentials), \(jsonTask)}"
     }
 }
 

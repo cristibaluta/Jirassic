@@ -9,7 +9,7 @@
 import Cocoa
 
 class EndDayViewController: NSViewController {
-
+    
     @IBOutlet fileprivate var dateTextField: NSTextField!
     @IBOutlet fileprivate var worklogTextView: NSTextView!
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
@@ -20,14 +20,14 @@ class EndDayViewController: NSViewController {
     @IBOutlet fileprivate var hookupErrorTextField: NSTextField!
     @IBOutlet fileprivate var butRound: NSButton!
     @IBOutlet fileprivate var butSave: NSButton!
-
+    
     var onSave: (() -> Void)?
     var onCancel: (() -> Void)?
     var presenter: EndDayPresenterInput?
     var date: Date?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     weak var appWireframe: AppWireframe?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter!.setup(date: date!)
@@ -38,13 +38,17 @@ class EndDayViewController: NSViewController {
         worklogTextView.drawsBackground = false
         worklogTextView.backgroundColor = NSColor.clear
     }
-
+    
     @IBAction func handleCancelButton (_ sender: NSButton) {
         self.onCancel?()
     }
-
+    
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        presenter?.save(jiraTempo: true, roundTime: true, worklog: worklogTextView.string)
+        
+        presenter?.save(jiraTempo: localPreferences.bool(.enableJira),
+                        hookup: localPreferences.bool(.enableHookup),
+                        roundTime: localPreferences.bool(.enableRoundingDay),
+                        worklog: worklogTextView.string)
     }
     
     @IBAction func handleJiraButton (_ sender: NSButton) {
@@ -66,7 +70,7 @@ class EndDayViewController: NSViewController {
 }
 
 extension EndDayViewController: EndDayPresenterOutput {
-
+    
     func showJira (enabled: Bool, available: Bool) {
         butJira.isEnabled = available
         butJira.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
