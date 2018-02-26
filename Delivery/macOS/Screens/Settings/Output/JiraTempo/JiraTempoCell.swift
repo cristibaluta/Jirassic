@@ -39,6 +39,7 @@ class JiraTempoCell: NSTableRowView {
         
         (presenter as! JiraTempoPresenter).userInterface = self
         presenter.setupUserInterface()
+        presenter.checkCredentials()
     }
     
     func save() {
