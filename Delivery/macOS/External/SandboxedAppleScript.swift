@@ -63,11 +63,13 @@ class SandboxedAppleScript: AppleScriptProtocol {
     
     func run (command: String, completion: @escaping (String?) -> Void) {
         
+        RCLog("Running command: \(command)")
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
         run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor, let result = descriptor.stringValue {
+                RCLog("Result for command: \(command): \(result)")
                 completion(result)
             } else {
                 completion(nil)

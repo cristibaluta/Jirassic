@@ -24,20 +24,21 @@ class ModuleGitLogs {
         
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(onDate: date, paths: paths, previousCommits: []) { commits in
-            //todo: filter out commits that don't belong to my users
+            // Filter out commits that don't belong to my users
             for commit in commits {
                 guard allowedAuthors.contains(commit.authorEmail) else {
                     continue
                 }
-                // Get taskNumber from branchName
-                
+                let branchParser = ParseGitBranch(branchName: commit.branchName ?? "")
+                let taskNumber = branchParser.taskNumber()
+                let taskTitle = branchParser.taskTitle()
                 
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
                                 endDate: commit.date,
                                 notes: commit.message,
-                                taskNumber: nil,//todo: obtain task number from branch name. see Jit.
-                                taskTitle: commit.branchName,
+                                taskNumber: taskNumber,
+                                taskTitle: taskTitle,
                                 taskType: .gitCommit,
                                 objectId: String.random())
                 tasks.append(task)

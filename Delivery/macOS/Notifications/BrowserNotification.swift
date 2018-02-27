@@ -22,7 +22,6 @@ class BrowserNotification {
     
     fileprivate let delay = 15.0
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
-    fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
     fileprivate let browsersIds = ["com.apple.Safari", "com.google.Chrome"]
     fileprivate var timer: Timer?
     fileprivate var extensionsInteractor = ExtensionsInteractor()
@@ -94,11 +93,9 @@ class BrowserNotification {
                 if !self.isInCodeRev() {
                     self.handleCodeRevStart()
                 }
-                // Store the task you are reviewing
-                let regex = try! NSRegularExpression(pattern: self.taskIdEreg, options: [])
-                let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.count))
-                if let match = match {
-                    let taskNumber = (title as NSString).substring(with: match.range)
+                // Find the taskNumber of the branch you're reviewing
+                let branchParser = ParseGitBranch(branchName: title)
+                if let taskNumber = branchParser.taskNumber() {
                     if !self.reviewedTasks.contains(taskNumber) {
                         self.reviewedTasks.append(taskNumber)
                     }
