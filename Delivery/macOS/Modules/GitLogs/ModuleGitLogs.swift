@@ -30,8 +30,8 @@ class ModuleGitLogs {
                     continue
                 }
                 let branchParser = ParseGitBranch(branchName: commit.branchName ?? "")
-                let taskNumber = branchParser.taskNumber()
                 let taskTitle = branchParser.taskTitle()
+                let taskNumber = branchParser.taskNumber() ?? taskTitle
                 
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
