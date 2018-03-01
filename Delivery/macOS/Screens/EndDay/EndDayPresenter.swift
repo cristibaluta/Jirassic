@@ -76,7 +76,7 @@ extension EndDayPresenter: EndDayPresenterInput {
         // Setup Hookup button
         let isHookupAvailable = localPreferences.bool(.enableHookup)
         let isHookupEnabled = isHookupAvailable && localPreferences.bool(.enableJira)
-        userInterface!.showHookup(enabled: isHookupEnabled, available: isHookupAvailable)
+        userInterface!.showHookup(enabled: isHookupEnabled, available: isHookupAvailable && date!.isSameDayAs(Date()))
         
         // Setup round button
         userInterface!.showRounding (enabled: isRoundingEnabled, title: "Round worklog time to \(String(describing: workedHours)) hours")
@@ -93,13 +93,13 @@ extension EndDayPresenter: EndDayPresenterInput {
                 DispatchQueue.main.async {
                     self?.userInterface!.showProgressIndicator(false)
                     if !success {
-                        self?.userInterface!.showHookupError("Couldn't save worklog to Jira")
+                        self?.userInterface!.showJiraError("Couldn't save worklog to Jira")
                     }
                 }
             }
         }
         
-        if hookup {
+        if hookup && date!.isSameDayAs(Date()) {
             let task = Task(endDate: Date(), type: .endDay)
             hookupModule.insert(task: task) { [weak self] success in
                 if !success {
