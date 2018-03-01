@@ -69,7 +69,7 @@ class SandboxedAppleScript: AppleScriptProtocol {
         
         run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor, let result = descriptor.stringValue {
-                RCLog("Result for command: \(command): \(result)")
+                RCLog("Result: \(result)")
                 completion(result)
             } else {
                 completion(nil)
