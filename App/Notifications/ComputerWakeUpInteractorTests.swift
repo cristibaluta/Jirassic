@@ -24,7 +24,7 @@ class ComputerWakeUpInteractorTests: XCTestCase {
         
         let repository = InMemoryCoreDataRepository()
         
-        let task = Task(dateEnd: Date(hour: 9, minute: 0), type: .startDay)
+        let task = Task(endDate: Date(hour: 9, minute: 0), type: .startDay)
         let saveInteractor = TaskInteractor(repository: repository)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { task in })
         

@@ -285,6 +285,7 @@
 		28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
 		28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
 		28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
+		28CBB59A20474755006F9D3A /* ParseGitBranchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */; };
 		28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */; };
 		28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */; };
 		28E896631E830D6700722032 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
@@ -576,6 +577,7 @@
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
+		28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranchTests.swift; sourceTree = "<group>"; };
 		28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProjectIssue.swift; sourceTree = "<group>"; };
 		28E896621E830D6700722032 /* Placeholder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		28E8966E1E83732200722032 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "macOS-launcher/AppDelegate.h"; sourceTree = "<group>"; };
@@ -895,6 +897,7 @@
 			isa = PBXGroup;
 			children = (
 				28CBB595204554A2006F9D3A /* ParseGitBranch.swift */,
+				28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -2134,6 +2137,7 @@
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
+				28CBB59A20474755006F9D3A /* ParseGitBranchTests.swift in Sources */,
 				40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */,
 				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
 				28A2839D203839E000DDCB63 /* ModuleGitLogsTests.swift in Sources */,

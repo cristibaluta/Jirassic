@@ -14,10 +14,10 @@ class TaskFinderTests: XCTestCase {
     func testMissingTasks() {
         
         let tasks = [
-            Task(dateEnd: Date(), type: TaskType.issue),
-            Task(dateEnd: Date(), type: TaskType.startDay),
-            Task(dateEnd: Date(), type: TaskType.meeting),
-            Task(dateEnd: Date(), type: TaskType.gitCommit)
+            Task(endDate: Date(), type: TaskType.issue),
+            Task(endDate: Date(), type: TaskType.startDay),
+            Task(endDate: Date(), type: TaskType.meeting),
+            Task(endDate: Date(), type: TaskType.gitCommit)
         ]
         
         let taskFinder = TaskFinder()
@@ -28,12 +28,12 @@ class TaskFinderTests: XCTestCase {
     func testExistingTasks() {
         
         let tasks = [
-            Task(dateEnd: Date(), type: TaskType.issue),
-            Task(dateEnd: Date(), type: TaskType.startDay),
-            Task(dateEnd: Date(), type: TaskType.scrum),
-            Task(dateEnd: Date(), type: TaskType.lunch),
-            Task(dateEnd: Date(), type: TaskType.meeting),
-            Task(dateEnd: Date(), type: TaskType.gitCommit)
+            Task(endDate: Date(), type: TaskType.issue),
+            Task(endDate: Date(), type: TaskType.startDay),
+            Task(endDate: Date(), type: TaskType.scrum),
+            Task(endDate: Date(), type: TaskType.lunch),
+            Task(endDate: Date(), type: TaskType.meeting),
+            Task(endDate: Date(), type: TaskType.gitCommit)
         ]
         
         let taskFinder = TaskFinder()

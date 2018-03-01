@@ -12,14 +12,14 @@ import XCTest
 class MergeTasksInteractorTests: XCTestCase {
 
     func testMerge() {
-        let tasks = [Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 9, minute: 30, second: 50), type: .issue),
-                     Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 13, minute: 10, second: 0), type: .lunch),
-                     Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
-                     Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 16, minute: 30, second: 50), type: .gitCommit)
+        let tasks = [Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 9, minute: 30, second: 50), type: .issue),
+                     Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 13, minute: 10, second: 0), type: .lunch),
+                     Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
+                     Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 16, minute: 30, second: 50), type: .gitCommit)
         ]
-        let gitTasks = [Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
-                        Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 16, minute: 30, second: 50), type: .gitCommit),
-                        Task(dateEnd: Date(year: 2018, month: 2, day: 20, hour: 18, minute: 0, second: 0), type: .gitCommit)
+        let gitTasks = [Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
+                        Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 16, minute: 30, second: 50), type: .gitCommit),
+                        Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 18, minute: 0, second: 0), type: .gitCommit)
         ]
         
         let mergedTasks = MergeTasksInteractor().merge(tasks: tasks, with: gitTasks)

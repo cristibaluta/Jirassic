@@ -10,7 +10,7 @@ import Foundation
 
 class ParseGitBranch {
     
-    fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
+    fileprivate let taskIdEreg = "(([A-Z])+-([0-9])+)"
     
     var branchName: String
     
@@ -38,5 +38,6 @@ class ParseGitBranch {
         return branchName.replacingOccurrences(of: taskNumber ?? "", with: "")
             .replacingOccurrences(of: "-", with: " ")
             .replacingOccurrences(of: "_", with: " ")
+            .trimmingCharacters(in: NSCharacterSet.whitespaces)
     }
 }
