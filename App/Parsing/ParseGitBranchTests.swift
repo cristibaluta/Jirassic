@@ -27,11 +27,20 @@ class ParseGitBranchTests: XCTestCase {
     }
     
     func testMergeCommitMessage() {
-        // Merge pull request #619 in BSEAPP/bsa-ios from APP-3494-ios-remove-a-confirmation-e-mail to master;
+        
+        let parser = ParseGitBranch(branchName: "Merge pull request #619 in MYAPP/proj from AA-1234_some_branch_name to master;")
+        XCTAssert(parser.taskNumber() == "AA-1234")
+        XCTAssert(parser.taskTitle() == "some branch name")
     }
     
-    func testBranchesFromLog() {
-        // origin/Enable_disable_nyon_framework_file_logs, Enable_disable_nyon_framework_file_logs
-        // origin/APP-1695-sync-devices-on-ush
+    func testBranchesGivenByGitLog() {
+        
+        var parser = ParseGitBranch(branchName: "origin/some_branch_name, some_branch_name")
+        XCTAssertNil(parser.taskNumber())
+        XCTAssert(parser.taskTitle() == "some branch name")
+        
+        parser = ParseGitBranch(branchName: "origin/AA-1234_some_branch_name")
+        XCTAssert(parser.taskNumber() == "AA-1234")
+        XCTAssert(parser.taskTitle() == "some branch name")
     }
 }
