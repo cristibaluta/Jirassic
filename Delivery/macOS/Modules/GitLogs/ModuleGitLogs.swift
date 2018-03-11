@@ -20,15 +20,10 @@ class ModuleGitLogs {
     func logs (onDate date: Date, completion: @escaping (([Task]) -> Void)) {
         
         var tasks = [Task]()
-        let allowedAuthors: [String] = localPreferences.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
         
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(onDate: date, paths: paths, previousCommits: []) { commits in
-            // Filter out commits that don't belong to my users
             for commit in commits {
-                guard allowedAuthors.contains(commit.authorEmail) else {
-                    continue
-                }
                 let branchParser = ParseGitBranch(branchName: commit.branchName ?? "")
                 let taskTitle = branchParser.taskTitle()
                 let taskNumber = branchParser.taskNumber() ?? taskTitle
@@ -59,10 +54,14 @@ class ModuleGitLogs {
         }
         paths.removeFirst()
         
+        let allowedAuthors: [String] = localPreferences.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
+        
         getGitLogs(at: path, date: date, completion: { rawResults in
             
             let parser = GitCommitsParser(raw: rawResults)
-            let rawCommits = parser.toGitCommits()
+            var rawCommits: [GitCommit] = parser.toGitCommits()
+            // Filter out commits that don't belong to my users
+            rawCommits = rawCommits.flatMap({ return allowedAuthors.contains($0.authorEmail) ? $0 : nil })
             
             // Obtain branch names where missing
             self.getBranchName(at: path, previousCommits: rawCommits, completion: { commitsWithBranches in
@@ -87,7 +86,8 @@ class ModuleGitLogs {
         if i > -1 {
             var commitToFix = commits[i]
             getGitBranch(at: path, containing: commitToFix.commitNumber, completion: { rawBranches in
-                commitToFix.branchName = GitBranchParser(raw: rawBranches).branchName()
+                let parser = GitBranchParser(raw: rawBranches)
+                commitToFix.branchName = parser.firstBranchName()
                 commits[i] = commitToFix
                 self.getBranchName(at: path, previousCommits: commits, completion: completion)
             })

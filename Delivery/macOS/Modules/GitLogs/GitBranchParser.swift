@@ -16,7 +16,7 @@ class GitBranchParser {
         self.raw = raw
     }
     
-    func branchName() -> String {
+    func firstBranchName() -> String {
         return branches().first ?? ""
     }
     

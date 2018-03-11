@@ -33,7 +33,7 @@ class GitBranchParserTests: XCTestCase {
     func testBranchName() {
         
         let parser = GitBranchParser(raw: raw)
-        let branchName = parser.branchName()
+        let branchName = parser.firstBranchName()
         XCTAssert(branchName == "branch1")
     }
 }
