@@ -83,9 +83,8 @@ class BrowserNotification {
         
         extensionsInteractor.getBrowserInfo(browserId: appId, completion: { (url, title) in
             
-            RCLog(url)
-//            RCLog(title)
-            
+            RCLog("Analyzing url: \(url), title: \(title)")
+
             if self.isCodeRevLink(url) {
                 if self.isWastingTime() {
                     self.handleWastingTimeEnd()
@@ -154,7 +153,9 @@ extension BrowserNotification {
         
         let settings = localRepository.settings()
         let coderevLink = settings.settingsBrowser.codeRevLink != "" ? settings.settingsBrowser.codeRevLink : self.stashUrlEreg
-        let coderevRegex = try! NSRegularExpression(pattern: coderevLink, options: [])
+        guard let coderevRegex = try? NSRegularExpression(pattern: coderevLink, options: []) else {
+            return false
+        }
         let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
         
         return matches.count > 0

@@ -64,6 +64,9 @@ class ModuleGitLogs {
             rawCommits = rawCommits.flatMap({ return allowedAuthors.contains($0.authorEmail) ? $0 : nil })
             
             // Obtain branch names where missing
+            // 1)
+
+            // 2) 
             self.getBranchName(at: path, previousCommits: rawCommits, completion: { commitsWithBranches in
                 commits += commitsWithBranches
                 self.logs(onDate: date, paths: paths, previousCommits: commits, completion: completion)
