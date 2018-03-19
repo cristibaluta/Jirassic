@@ -116,7 +116,8 @@ extension CalendarScrollView: NSOutlineViewDelegate {
             
 			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
-				textField.stringValue = week.date.weekInterval()
+                textField.font = NSFont.boldSystemFont(ofSize: 10)
+                textField.stringValue = week.date.weekInterval()
 			}
 			return view
             
@@ -126,8 +127,6 @@ extension CalendarScrollView: NSOutlineViewDelegate {
 			if let textField = view.textField {
                 textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEE()
 			}
-            let isToday = day.date.isSameDayAs(Date())
-            view.imageView!.image = NSImage(named: isToday ? NSImage.Name.statusPartiallyAvailable : NSImage.Name.statusAvailable)
 			
             return view
             
@@ -144,6 +143,7 @@ extension CalendarScrollView: NSOutlineViewDelegate {
 		
         if let outlineView = notification.object as? NSOutlineView {
             let selectedRow = outlineView.selectedRow
+
             if let selectedObject = outlineView.item(atRow: selectedRow) as? Day {
                 selectedDay = selectedObject
                 didSelectDay?(selectedObject)

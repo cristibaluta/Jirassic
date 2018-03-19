@@ -31,8 +31,8 @@ class TimeBox: NSBox {
         timeTextField = NSTextField()
         timeTextField?.font = NSFont.boldSystemFont(ofSize: 10)
         timeTextField?.textColor = NSColor.darkGray//AppDelegate.sharedApp().theme.textColor
-        timeTextField?.backgroundColor = NSColor.clear
-        timeTextField?.drawsBackground = false
+        timeTextField?.backgroundColor = NSColor.white
+        timeTextField?.drawsBackground = true
         timeTextField?.alignment = .center
         timeTextField?.placeholderString = "00:00"
         timeTextField?.delegate = self
@@ -75,6 +75,8 @@ extension TimeBox: NSTextFieldDelegate {
     override func controlTextDidBeginEditing (_ obj: Notification) {
         isEditing = true
         partialValue = stringValue
+        self.borderColor = NSColor.darkGray
+        timeTextField?.textColor = NSColor.black
     }
     
     override func controlTextDidChange (_ obj: Notification) {
@@ -90,6 +92,8 @@ extension TimeBox: NSTextFieldDelegate {
             wasEdited = false
             didEndEditing?()
         }
+        self.borderColor = NSColor.white
+        timeTextField?.textColor = NSColor.darkGray
     }
     
     func control (_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
