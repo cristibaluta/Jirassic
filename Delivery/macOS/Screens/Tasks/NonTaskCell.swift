@@ -11,18 +11,16 @@ import Cocoa
 class NonTaskCell: NSTableRowView, CellProtocol {
 	
     var statusImage: NSImageView?
-    @IBOutlet fileprivate var dateStartTextField: NSTextField!
+    @IBOutlet fileprivate var dateStartTextField: TimeBox!
     @IBOutlet fileprivate var dateStartTextFieldWidthContraint: NSLayoutConstraint!
-	@IBOutlet fileprivate var dateEndTextField: NSTextField!
+	@IBOutlet fileprivate var dateEndTextField: TimeBox!
+    @IBOutlet fileprivate var dateEndTextFieldWidthContraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var notesTextField: NSTextField!
 	@IBOutlet fileprivate var notesTextFieldTrailingContraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var butRemove: NSButton!
 	@IBOutlet fileprivate var butAdd: NSButton!
     
-    fileprivate var isEditing = false
-    fileprivate var wasEdited = false
     fileprivate var trackingArea: NSTrackingArea?
-    fileprivate var currentlyEditingTime = ""
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
@@ -52,7 +50,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
                 self.dateStartTextFieldWidthContraint.constant = 40
             } else {
                 self.dateStartTextField.stringValue = ""
-                self.dateStartTextFieldWidthContraint.constant = 0
+                self.dateStartTextFieldWidthContraint.constant = 10
             }
             self.dateEndTextField.stringValue = newValue.dateEnd.HHmm()
 			self.notesTextField.stringValue = newValue.notes
@@ -75,12 +73,15 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		butRemove.isHidden = true
 		butAdd.isHidden = true
         butRemove.wantsLayer = true
-        dateStartTextField!.textColor = AppDelegate.sharedApp().theme.textColor
-        dateEndTextField!.textColor = AppDelegate.sharedApp().theme.textColor
+        dateStartTextField.didEndEditing = {
+            self.didEndEditingCell?(self)
+        }
+        dateEndTextField.didEndEditing = {
+            self.didEndEditingCell?(self)
+        }
         if AppDelegate.sharedApp().theme.isDark {
             notesTextField!.textColor = NSColor.white
         }
-//        self.butRemove.layer?.backgroundColor = NSColor.clear.cgColor
 	}
 	
 	override func drawBackground (in dirtyRect: NSRect) {
@@ -136,7 +137,7 @@ extension NonTaskCell {
 	
 	func ensureTrackingArea() {
         
-		if (trackingArea == nil) {
+		if trackingArea == nil {
 			trackingArea = NSTrackingArea(rect: NSZeroRect,
 				options: [
                     NSTrackingArea.Options.inVisibleRect,
@@ -152,63 +153,8 @@ extension NonTaskCell {
 		super.updateTrackingAreas()
         
 		self.ensureTrackingArea()
-		if !(self.trackingAreas as NSArray).contains(self.trackingArea!) {
+		if !self.trackingAreas.contains(self.trackingArea!) {
 			self.addTrackingArea(self.trackingArea!)
 		}
 	}
-}
-
-extension NonTaskCell: NSTextFieldDelegate {
-    
-    override func controlTextDidBeginEditing (_ obj: Notification) {
-        isEditing = true
-        if obj.object as? NSTextField == dateEndTextField {
-            currentlyEditingTime = self.dateEndTextField.stringValue
-        }
-        else if obj.object as? NSTextField == dateStartTextField {
-            currentlyEditingTime = self.dateStartTextField.stringValue
-        }
-    }
-    
-    override func controlTextDidChange (_ obj: Notification) {
-        wasEdited = true
-        if obj.object as? NSTextField == dateEndTextField {
-            let predictor = PredictiveTimeTyping()
-            let comps = dateEndTextField.stringValue.components(separatedBy: currentlyEditingTime)
-            let newDigit = (comps.count == 1 && currentlyEditingTime != "") ? "" : comps.last
-            currentlyEditingTime = predictor.timeByAdding(newDigit!, to: currentlyEditingTime)
-            dateEndTextField.stringValue = currentlyEditingTime
-        }
-        else if obj.object as? NSTextField == dateStartTextField {
-            let predictor = PredictiveTimeTyping()
-            let comps = dateStartTextField.stringValue.components(separatedBy: currentlyEditingTime)
-            let newDigit = (comps.count == 1 && currentlyEditingTime != "") ? "" : comps.last
-            currentlyEditingTime = predictor.timeByAdding(newDigit!, to: currentlyEditingTime)
-            dateStartTextField.stringValue = currentlyEditingTime
-        }
-    }
-    
-    override func controlTextDidEndEditing (_ obj: Notification) {
-        if wasEdited {
-            wasEdited = false
-            self.didEndEditingCell?(self)
-        }
-    }
-    
-    func control (_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-        
-        // Detect enter key
-        if control as? NSTextField == dateStartTextField {
-            if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
-                self.didEndEditingCell?(self)
-                wasEdited = false
-            }
-        } else if control as? NSTextField == dateEndTextField {
-            if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
-                self.didEndEditingCell?(self)
-                wasEdited = false
-            }
-        }
-        return false
-    }
 }

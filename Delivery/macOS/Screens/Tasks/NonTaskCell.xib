@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="341" height="34"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
                     <rect key="frame" x="92" y="11" width="241" height="13"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold" size="10"/>
@@ -23,34 +25,35 @@
                         <outlet property="delegate" destination="c22-O7-iKe" id="nXg-Io-bJL"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lST-kg-vHw">
-                    <rect key="frame" x="46" y="11" width="40" height="13"/>
+                <box boxType="custom" cornerRadius="7" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="tqo-U8-RGc" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
+                    <rect key="frame" x="14" y="10" width="36" height="14"/>
+                    <view key="contentView" id="L9X-k7-ZjZ">
+                        <rect key="frame" x="1" y="1" width="34" height="12"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
                     <constraints>
-                        <constraint firstAttribute="width" constant="36" id="pBM-eW-VC3"/>
+                        <constraint firstAttribute="height" constant="14" id="1dM-lX-jYV"/>
+                        <constraint firstAttribute="width" constant="36" id="Tar-cs-kbw"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="AGM-TZ-JvH">
-                        <font key="font" metaFont="systemBold" size="10"/>
-                        <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" red="0.95654549870466321" green="0.8732215654873634" blue="0.28354544712949603" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="c22-O7-iKe" id="6oz-2c-sdW"/>
-                    </connections>
-                </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vij-9X-OHu">
-                    <rect key="frame" x="14" y="11" width="36" height="13"/>
+                </box>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fcN-XA-oCk">
+                    <rect key="frame" x="50" y="14" width="4" height="5"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="32" id="B9a-kG-NYM"/>
+                        <constraint firstAttribute="height" constant="1" id="Bpr-3g-lTg"/>
+                        <constraint firstAttribute="width" constant="4" id="zg7-3f-p14"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="TeL-qA-PlH">
-                        <font key="font" metaFont="systemBold" size="10"/>
-                        <color key="textColor" red="0.25829608180000002" green="0.25765414619999999" blue="0.43782722509999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                    </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="c22-O7-iKe" id="g1M-9h-Iiw"/>
-                    </connections>
-                </textField>
+                </box>
+                <box boxType="custom" cornerRadius="7" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="MAr-Mi-Hug" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
+                    <rect key="frame" x="54" y="10" width="36" height="14"/>
+                    <view key="contentView" id="0O8-z5-GYa">
+                        <rect key="frame" x="1" y="1" width="34" height="12"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="JBJ-mO-VHe"/>
+                        <constraint firstAttribute="height" constant="14" id="tgs-FZ-bha"/>
+                    </constraints>
+                </box>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="JnH-wo-pJy">
                     <rect key="frame" x="309" y="10" width="16" height="16"/>
                     <constraints>
@@ -81,26 +84,29 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstItem="MAr-Mi-Hug" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="6Sh-mu-aqc"/>
                 <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="1" id="BfB-re-cQN"/>
-                <constraint firstItem="lST-kg-vHw" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="D8t-bg-E8e"/>
+                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="MAr-Mi-Hug" secondAttribute="trailing" constant="4" id="Esg-fT-F47"/>
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Qz6-sT-SxZ"/>
-                <constraint firstItem="lST-kg-vHw" firstAttribute="leading" secondItem="Vij-9X-OHu" secondAttribute="trailing" id="ZNP-Xn-e4a"/>
-                <constraint firstItem="Vij-9X-OHu" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="fAA-TK-DmT"/>
-                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="lST-kg-vHw" secondAttribute="trailing" constant="10" id="mvq-aK-1Tv"/>
+                <constraint firstItem="tqo-U8-RGc" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="b1p-AL-fPW"/>
+                <constraint firstItem="tqo-U8-RGc" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="nm2-hB-hAj"/>
+                <constraint firstItem="fcN-XA-oCk" firstAttribute="leading" secondItem="tqo-U8-RGc" secondAttribute="trailing" id="o4A-Iw-pTL"/>
                 <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
-                <constraint firstItem="Vij-9X-OHu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="yzV-uz-dJR"/>
+                <constraint firstItem="MAr-Mi-Hug" firstAttribute="leading" secondItem="fcN-XA-oCk" secondAttribute="trailing" id="pUb-Dr-W8u"/>
+                <constraint firstItem="fcN-XA-oCk" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="vbi-Bq-Lf4"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
                 <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>
-                <outlet property="dateEndTextField" destination="lST-kg-vHw" id="LtE-hF-xlK"/>
-                <outlet property="dateStartTextField" destination="Vij-9X-OHu" id="GgF-ID-enr"/>
-                <outlet property="dateStartTextFieldWidthContraint" destination="B9a-kG-NYM" id="gXj-1B-zeX"/>
+                <outlet property="dateEndTextField" destination="MAr-Mi-Hug" id="vwx-gw-aaE"/>
+                <outlet property="dateEndTextFieldWidthContraint" destination="JBJ-mO-VHe" id="jQZ-o4-73N"/>
+                <outlet property="dateStartTextField" destination="tqo-U8-RGc" id="97u-xp-y1h"/>
+                <outlet property="dateStartTextFieldWidthContraint" destination="Tar-cs-kbw" id="SE2-ik-ARb"/>
                 <outlet property="notesTextField" destination="mSe-2c-CEz" id="jmn-xA-2rK"/>
-                <outlet property="notesTextFieldTrailingContraint" destination="OxX-q5-0hQ" id="9o2-k6-ZCc"/>
+                <outlet property="notesTextFieldTrailingContraint" destination="OxX-q5-0hQ" id="Rc7-3M-NaS"/>
             </connections>
             <point key="canvasLocation" x="256.5" y="173"/>
         </customView>

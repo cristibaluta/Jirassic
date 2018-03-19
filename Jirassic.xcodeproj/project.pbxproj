@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2801388F205F86460051B532 /* TimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801388E205F86460051B532 /* TimeBox.swift */; };
+		28013890205F86460051B532 /* TimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801388E205F86460051B532 /* TimeBox.swift */; };
 		280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
 		280300D71EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
 		280300D81EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
@@ -501,6 +503,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2801388E205F86460051B532 /* TimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBox.swift; sourceTree = "<group>"; };
 		280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsInteractor.swift; path = Statistics/StatisticsInteractor.swift; sourceTree = "<group>"; };
 		2803A0C91EC184FF005F9389 /* BrowserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserNotification.swift; sourceTree = "<group>"; };
 		280C1D411ED74EF900C126A1 /* BrowserSupport.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrowserSupport.scpt; sourceTree = "<group>"; };
@@ -776,6 +779,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2801388D205F86250051B532 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2801388E205F86460051B532 /* TimeBox.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		280300D41EDB5E6D000A763E /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1167,6 +1178,7 @@
 		4065D3501DD3B44200B73201 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				2801388D205F86250051B532 /* Components */,
 				4065D3531DD3B44200B73201 /* App */,
 				4065D3641DD3B44200B73201 /* Menu */,
 				4065D3511DD3B44200B73201 /* Animations */,
@@ -1852,6 +1864,7 @@
 				280D71421ED6043D005D2689 /* RCSync.swift in Sources */,
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
+				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
@@ -2010,6 +2023,7 @@
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
+				28013890205F86460051B532 /* TimeBox.swift in Sources */,
 				2892B2AB1F0950F90085BAC2 /* RCHttp.swift in Sources */,
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,

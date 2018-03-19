@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -108,35 +109,30 @@
                         <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="2" id="yz7-nz-o73"/>
                     </constraints>
                 </customView>
-                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="14" y="0.0" width="51" height="14"/>
+                <box boxType="custom" cornerRadius="7" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UTX-pz-ZnX" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
+                    <rect key="frame" x="14" y="0.0" width="36" height="14"/>
+                    <view key="contentView" id="EVi-OW-h99">
+                        <rect key="frame" x="1" y="1" width="34" height="12"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
                     <constraints>
-                        <constraint firstAttribute="height" constant="14" id="9iT-gw-b28"/>
-                        <constraint firstAttribute="width" constant="47" id="Msf-to-ooV"/>
+                        <constraint firstAttribute="width" constant="36" id="Pn7-Qy-ohv"/>
+                        <constraint firstAttribute="height" constant="14" id="hqY-fV-JSI"/>
                     </constraints>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="00:00" id="kk5-M4-fbR">
-                        <font key="font" metaFont="systemBold" size="10"/>
-                        <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="c22-O7-iKe" id="VaH-Ay-I8Z"/>
-                    </connections>
-                </textField>
+                </box>
             </subviews>
             <constraints>
                 <constraint firstItem="nlM-Fp-eXf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="5pK-hC-WL3"/>
-                <constraint firstItem="HS2-iB-3Ta" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="LiY-cP-mAT"/>
-                <constraint firstAttribute="bottom" secondItem="HS2-iB-3Ta" secondAttribute="bottom" id="MkA-hl-Elx"/>
+                <constraint firstAttribute="bottom" secondItem="UTX-pz-ZnX" secondAttribute="bottom" id="ByP-aF-wgx"/>
+                <constraint firstItem="UTX-pz-ZnX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="GHp-Kf-eDz"/>
                 <constraint firstItem="nlM-Fp-eXf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="ly0-hP-Uy0"/>
-                <constraint firstItem="HS2-iB-3Ta" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="bottom" constant="2" id="o4g-Ov-ZdM"/>
                 <constraint firstAttribute="trailing" secondItem="nlM-Fp-eXf" secondAttribute="trailing" constant="10" id="yya-mA-7J5"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
                 <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
                 <outlet property="contentView" destination="nlM-Fp-eXf" id="Mbb-tX-J7N"/>
-                <outlet property="dateEndTextField" destination="HS2-iB-3Ta" id="fDF-KM-JEr"/>
+                <outlet property="dateEndTextField" destination="UTX-pz-ZnX" id="aub-uX-L1y"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
                 <outlet property="line1" destination="mpD-Z5-CaT" id="C5p-dQ-v8c"/>
                 <outlet property="line2" destination="EWV-4g-F8D" id="EVg-sQ-hHA"/>
