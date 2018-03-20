@@ -36,13 +36,6 @@
                         <constraint firstAttribute="width" constant="36" id="Tar-cs-kbw"/>
                     </constraints>
                 </box>
-                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fcN-XA-oCk">
-                    <rect key="frame" x="50" y="14" width="4" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="Bpr-3g-lTg"/>
-                        <constraint firstAttribute="width" constant="4" id="zg7-3f-p14"/>
-                    </constraints>
-                </box>
                 <box boxType="custom" cornerRadius="7" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="MAr-Mi-Hug" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
                     <rect key="frame" x="54" y="10" width="36" height="14"/>
                     <view key="contentView" id="0O8-z5-GYa">
@@ -90,13 +83,11 @@
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
+                <constraint firstItem="MAr-Mi-Hug" firstAttribute="leading" secondItem="tqo-U8-RGc" secondAttribute="trailing" constant="4" id="PLI-Pf-PaE"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Qz6-sT-SxZ"/>
                 <constraint firstItem="tqo-U8-RGc" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="b1p-AL-fPW"/>
                 <constraint firstItem="tqo-U8-RGc" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="nm2-hB-hAj"/>
-                <constraint firstItem="fcN-XA-oCk" firstAttribute="leading" secondItem="tqo-U8-RGc" secondAttribute="trailing" id="o4A-Iw-pTL"/>
                 <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
-                <constraint firstItem="MAr-Mi-Hug" firstAttribute="leading" secondItem="fcN-XA-oCk" secondAttribute="trailing" id="pUb-Dr-W8u"/>
-                <constraint firstItem="fcN-XA-oCk" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="vbi-Bq-Lf4"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
@@ -104,7 +95,7 @@
                 <outlet property="dateEndTextField" destination="MAr-Mi-Hug" id="vwx-gw-aaE"/>
                 <outlet property="dateEndTextFieldWidthContraint" destination="JBJ-mO-VHe" id="jQZ-o4-73N"/>
                 <outlet property="dateStartTextField" destination="tqo-U8-RGc" id="97u-xp-y1h"/>
-                <outlet property="dateStartTextFieldWidthContraint" destination="Tar-cs-kbw" id="SE2-ik-ARb"/>
+                <outlet property="dateStartTextFieldLeadingContraint" destination="nm2-hB-hAj" id="KQC-NV-HgF"/>
                 <outlet property="notesTextField" destination="mSe-2c-CEz" id="jmn-xA-2rK"/>
                 <outlet property="notesTextFieldTrailingContraint" destination="OxX-q5-0hQ" id="Rc7-3M-NaS"/>
             </connections>

@@ -116,7 +116,7 @@ extension CalendarScrollView: NSOutlineViewDelegate {
             
 			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
-                textField.font = NSFont.boldSystemFont(ofSize: 10)
+                textField.font = NSFont.boldSystemFont(ofSize: 14)
                 textField.stringValue = week.date.weekInterval()
 			}
 			return view
@@ -125,6 +125,8 @@ extension CalendarScrollView: NSOutlineViewDelegate {
             
 			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
+                textField.font = NSFont.boldSystemFont(ofSize: 12)
+                textField.textColor = NSColor.lightGray
                 textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEE()
 			}
 			

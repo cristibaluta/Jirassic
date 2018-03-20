@@ -12,9 +12,8 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	
     var statusImage: NSImageView?
     @IBOutlet fileprivate var dateStartTextField: TimeBox!
-    @IBOutlet fileprivate var dateStartTextFieldWidthContraint: NSLayoutConstraint!
+    @IBOutlet fileprivate var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var dateEndTextField: TimeBox!
-    @IBOutlet fileprivate var dateEndTextFieldWidthContraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var notesTextField: NSTextField!
 	@IBOutlet fileprivate var notesTextFieldTrailingContraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var butRemove: NSButton!
@@ -47,10 +46,11 @@ class NonTaskCell: NSTableRowView, CellProtocol {
             _data = newValue
             if let dateStart = newValue.dateStart {
                 self.dateStartTextField.stringValue = dateStart.HHmm()
-                self.dateStartTextFieldWidthContraint.constant = 40
+                self.dateStartTextField.isHidden = false
+                self.dateStartTextFieldLeadingContraint.constant = 14
             } else {
-                self.dateStartTextField.stringValue = ""
-                self.dateStartTextFieldWidthContraint.constant = 10
+                self.dateStartTextField.isHidden = true
+                self.dateStartTextFieldLeadingContraint.constant = 14 - 36 - 4
             }
             self.dateEndTextField.stringValue = newValue.dateEnd.HHmm()
 			self.notesTextField.stringValue = newValue.notes
