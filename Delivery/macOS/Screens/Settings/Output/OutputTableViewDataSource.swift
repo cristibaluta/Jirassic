@@ -9,7 +9,7 @@
 import Cocoa
 
 let kJiraTempoCellHeight = CGFloat(180.0)
-let kHookupCellHeight = CGFloat(120.0)
+let kHookupCellHeight = CGFloat(160.0)
 
 enum OutputType {
     case jiraTempo

@@ -12,6 +12,7 @@ import Cocoa
 protocol HookupPresenterInput: class {
     var isShellScriptInstalled: Bool? {get set}
     func enableHookup (_ enabled: Bool)
+    func enableCredentials (_ enabled: Bool)
     func refresh (withCommand command: String)
 }
 
@@ -19,6 +20,7 @@ protocol HookupPresenterOutput: class {
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
     func setButEnable (on: Bool?, enabled: Bool?)
+    func setButEnableCredentials (on: Bool?, enabled: Bool?)
     func setCommand (path: String?, enabled: Bool?)
 }
 
@@ -57,6 +59,9 @@ class HookupPresenter {
             
             wself.userInterface?.setButEnable(on: wself.localPreferences.bool(.enableHookup),
                                               enabled: commandInstalled)
+            
+            wself.userInterface?.setButEnableCredentials(on: wself.localPreferences.bool(.enableHookupCredentials),
+                                                         enabled: commandInstalled)
         })
     }
 }
@@ -67,6 +72,10 @@ extension HookupPresenter: HookupPresenterInput {
         localPreferences.set(enabled, forKey: .enableHookup)
         userInterface?.setCommand(path: nil, enabled: enabled)
         userInterface?.setButEnable(on: enabled, enabled: nil)
+    }
+    
+    func enableCredentials (_ enabled: Bool) {
+        localPreferences.set(enabled, forKey: .enableHookupCredentials)
     }
     
     func refresh (withCommand command: String) {
