@@ -34,6 +34,7 @@ class TimeBox: NSBox {
         timeTextField?.backgroundColor = NSColor.white
         timeTextField?.drawsBackground = true
         timeTextField?.alignment = .center
+        timeTextField?.focusRingType = .none
         timeTextField?.placeholderString = "00:00"
         timeTextField?.delegate = self
         
@@ -71,14 +72,44 @@ class TimeBox: NSBox {
 }
 
 extension TimeBox: NSTextFieldDelegate {
-    
-    override func controlTextDidBeginEditing (_ obj: Notification) {
+
+    public func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
         isEditing = true
         partialValue = stringValue
         self.borderColor = NSColor.darkGray
         timeTextField?.textColor = NSColor.black
+
+        return true
     }
-    
+
+    public func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        if wasEdited {
+            wasEdited = false
+            didEndEditing?()
+        }
+        self.borderColor = NSColor.white
+        timeTextField?.textColor = NSColor.darkGray
+
+        return true
+    }
+
+    public func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+
+        // Detect Enter key
+        if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            didEndEditing?()
+            wasEdited = false
+        }
+        return false
+    }
+
+//    override func controlTextDidBeginEditing (_ obj: Notification) {
+//        isEditing = true
+//        partialValue = stringValue
+//        self.borderColor = NSColor.darkGray
+//        timeTextField?.textColor = NSColor.black
+//    }
+
     override func controlTextDidChange (_ obj: Notification) {
         wasEdited = true
         let comps = stringValue.components(separatedBy: partialValue)
@@ -87,22 +118,12 @@ extension TimeBox: NSTextFieldDelegate {
         stringValue = partialValue
     }
     
-    override func controlTextDidEndEditing (_ obj: Notification) {
-        if wasEdited {
-            wasEdited = false
-            didEndEditing?()
-        }
-        self.borderColor = NSColor.white
-        timeTextField?.textColor = NSColor.darkGray
-    }
-    
-    func control (_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-        
-        // Detect Enter key
-        if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
-            didEndEditing?()
-            wasEdited = false
-        }
-        return false
-    }
+//    override func controlTextDidEndEditing (_ obj: Notification) {
+//        if wasEdited {
+//            wasEdited = false
+//            didEndEditing?()
+//        }
+//        self.borderColor = NSColor.white
+//        timeTextField?.textColor = NSColor.darkGray
+//    }
 }

@@ -14,11 +14,15 @@ class PredictiveTimeTyping {
 	
 		var returnString = string
 		
-		// Deal with backspace
-        if (string == "") {
+        guard string != "" else {
+            // Deal with backspace
 			let charsToDelete = to.count == 3 ? 2 : 1
 			let rangeToKeep = to.startIndex..<to.index(to.endIndex, offsetBy: -charsToDelete)
             return String(to[rangeToKeep])
+        }
+        guard Int(string) != nil else {
+            // New digit is not numeric, return previous string
+            return to
         }
 		
 		let timeComps = to.components(separatedBy: ":")
@@ -101,7 +105,7 @@ class PredictiveTimeTyping {
     func decimalValueOf (_ existingText: String, newDigit: String) -> Int {
 		
         if existingText.count > 0 && newDigit.count > 0 {
-            return Int(existingText)! * 10 + Int(newDigit)!;
+            return Int(existingText)! * 10 + Int(newDigit)!
         }
 		if let d = Int(newDigit) {
 			return d
