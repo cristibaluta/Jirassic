@@ -36,9 +36,11 @@ class BrowserCell: NSTableRowView {
         codeReviewsLinkTextField.stringValue = settings.codeRevLink
         wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
         minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration
-        handleMinCodeRevDuration(minCodeRevDurationSlider)
         minWasteDurationSlider.integerValue = settings.minWasteDuration
-        handleMinWasteDuration(minWasteDurationSlider)
+        handleMinCodeRevDuration( minCodeRevDurationSlider )
+        handleMinWasteDuration( minWasteDurationSlider )
+        enableCodeReview( settings.trackCodeReviews )
+        enableWastedTime( settings.trackWastedTime )
     }
 
     func settings() -> SettingsBrowser {
@@ -68,6 +70,24 @@ class BrowserCell: NSTableRowView {
             coderevTextField.stringValue = "Not installed yet"
         }
         butInstallCoderev.isHidden = scriptInstalled && compatible
+    }
+    
+    func enableCodeReview (_ enable: Bool) {
+        codeReviewsLinkTextField.isEnabled = enable
+        minCodeRevDurationSlider.isEnabled = enable
+    }
+
+    func enableWastedTime (_ enable: Bool) {
+        wastedTimeLinksTextField.isEnabled = enable
+        minWasteDurationSlider.isEnabled = enable
+    }
+
+    @IBAction func handleCodeReviewButton (_ sender: NSButton) {
+        enableCodeReview(sender.state == NSControl.StateValue.on)
+    }
+
+    @IBAction func handleWastedTimeButton (_ sender: NSButton) {
+        enableWastedTime(sender.state == NSControl.StateValue.on)
     }
 
     @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {

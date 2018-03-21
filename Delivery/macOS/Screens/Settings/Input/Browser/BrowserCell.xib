@@ -53,6 +53,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleCodeReviewButton:" target="c22-O7-iKe" id="HpS-Rd-uun"/>
+                                </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HAL-xr-Jo3">
                                 <rect key="frame" x="11" y="23" width="98" height="18"/>
@@ -61,6 +64,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleWastedTimeButton:" target="c22-O7-iKe" id="1SW-PO-ViW"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="azj-Uv-crK">
                                 <rect key="frame" x="120" y="66" width="242" height="22"/>
