@@ -21,7 +21,7 @@ class TasksViewController: UITableViewController {
 		//		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
 		//		self.navigationItem.rightBarButtonItem = addButton
 		
-		self.title = currentDay!.date.EEEEMMdd()
+		self.title = currentDay!.date.EEEEMMMMdd()
         
         let reader = ReadTasksInteractor(repository: localRepository)
         tasks = reader.tasksInDay(currentDay!.date)
@@ -60,12 +60,12 @@ extension TasksViewController {
             return NSString(string: theData.taskTitle ?? "").boundingRect(
                 with: CGSize(width: self.view.frame.size.width - 48, height: 999),
 				options: NSStringDrawingOptions.usesLineFragmentOrigin,
-				attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)],
+				attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)],
 				context: nil).size.height +
                 NSString(string: theData.notes ?? "").boundingRect(
                     with: CGSize(width: self.view.frame.size.width - 48, height: 999),
                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                    attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 17)],
+                    attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)],
                     context: nil).size.height + 75
 		} else {
 			return 50

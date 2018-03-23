@@ -1607,6 +1607,7 @@
 					280D70B51ECFE06A005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -2267,7 +2268,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2285,7 +2287,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
