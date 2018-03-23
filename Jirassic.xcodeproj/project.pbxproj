@@ -407,6 +407,7 @@
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
+		561153842065600D00EFCC4A /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
 		564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
 		564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
 		564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
@@ -1847,6 +1848,7 @@
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
+				561153842065600D00EFCC4A /* InMemoryCoreDataRepository.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
 				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
