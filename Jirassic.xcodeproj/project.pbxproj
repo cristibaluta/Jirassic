@@ -179,6 +179,8 @@
 		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
 		2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
+		2845B139206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
+		2845B13A206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -527,6 +529,7 @@
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
 		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
+		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -806,6 +809,14 @@
 				28E896621E830D6700722032 /* Placeholder.storyboard */,
 			);
 			path = Placeholder;
+			sourceTree = "<group>";
+		};
+		2845B137206703A8006EFB3B /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				2845B138206703C5006EFB3B /* Keychain.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		28577EA01E8ADBBD002B07FD /* sqlite */ = {
@@ -1310,6 +1321,7 @@
 		4065D3881DD3B44200B73201 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				2845B137206703A8006EFB3B /* Keychain */,
 				2892B2961F0949D70085BAC2 /* Jira */,
 				28577EA01E8ADBBD002B07FD /* sqlite */,
 				4065D38B1DD3B44200B73201 /* CoreData */,
@@ -1965,6 +1977,7 @@
 				280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */,
 				2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */,
 				280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */,
+				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
 				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				280D71B11ED6043D005D2689 /* CloudKitRepository.swift in Sources */,
@@ -2095,6 +2108,7 @@
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
 				569C4C68202319930049FBF1 /* GitPresenter.swift in Sources */,
 				28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */,
+				2845B13A206703C5006EFB3B /* Keychain.swift in Sources */,
 				28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */,
 				2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,

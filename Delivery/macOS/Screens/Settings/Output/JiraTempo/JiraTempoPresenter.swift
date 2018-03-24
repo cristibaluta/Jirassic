@@ -14,6 +14,7 @@ protocol JiraTempoPresenterInput: class {
     func checkCredentials()
     func loadProjects()
     func loadProjectIssues (for projectKey: String)
+    func save (url: String, user: String, password: String)
 }
 
 protocol JiraTempoPresenterOutput: class {
@@ -29,6 +30,7 @@ class JiraTempoPresenter {
     weak var userInterface: JiraTempoPresenterOutput?
     fileprivate var moduleJira = ModuleJiraTempo()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    fileprivate var existingPassword = ""
 }
 
 extension JiraTempoPresenter: JiraTempoPresenterInput {
@@ -40,6 +42,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     func setupUserInterface() {
         
         userInterface!.showErrorMessage("")
+        existingPassword = Keychain.getPassword()
         
         let selectedProjectName = localPreferences.string(.settingsJiraProjectKey)
         let projects = selectedProjectName != "" ? [selectedProjectName] : []
@@ -102,4 +105,13 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
         }
     }
     
+    func save (url: String, user: String, password: String) {
+        
+        localPreferences.set(url, forKey: .settingsJiraUrl)
+        localPreferences.set(user, forKey: .settingsJiraUser)
+        if password != existingPassword {
+            Keychain.setPassword(password)
+            existingPassword = password
+        }
+    }
 }

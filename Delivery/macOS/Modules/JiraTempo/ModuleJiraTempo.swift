@@ -15,7 +15,7 @@ class ModuleJiraTempo {
     var isReachable: Bool {
         return localPreferences.string(.settingsJiraUrl) != ""
             && localPreferences.string(.settingsJiraUser) != ""
-            && KeychainWrapper.standard.string(forKey: "jira_password") != nil
+            && Keychain.getPassword() != ""
             && localPreferences.string(.settingsJiraProjectKey) != ""
             && localPreferences.string(.settingsJiraProjectIssueKey) != ""
     }
@@ -23,7 +23,7 @@ class ModuleJiraTempo {
     init() {
         repository = JiraRepository(url: localPreferences.string(.settingsJiraUrl),
                                     user: localPreferences.string(.settingsJiraUser),
-                                    password: KeychainWrapper.standard.string(forKey: "jira_password") ?? "")
+                                    password: Keychain.getPassword())
     }
     
     func fetchProjects (completion: @escaping (([JProject]?) -> Void)) {

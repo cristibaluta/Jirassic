@@ -30,7 +30,7 @@ class JiraTempoCell: NSTableRowView {
         
         baseUrlTextField.stringValue = localPreferences.string(.settingsJiraUrl)
         userTextField.stringValue = localPreferences.string(.settingsJiraUser)
-        passwordTextField.stringValue = KeychainWrapper.standard.string(forKey: "jira_password") ?? ""
+        passwordTextField.stringValue = Keychain.getPassword()
         
         projectNamePopup.target = self
         projectNamePopup.action = #selector(JiraTempoCell.projectNamePopupSelected(_:))
@@ -44,10 +44,9 @@ class JiraTempoCell: NSTableRowView {
     }
     
     func save() {
-        localPreferences.set(baseUrlTextField.stringValue, forKey: .settingsJiraUrl)
-        localPreferences.set(userTextField.stringValue, forKey: .settingsJiraUser)
-        let saveSuccessful: Bool = KeychainWrapper.standard.set(passwordTextField.stringValue, forKey: "jira_password")
-        RCLog(saveSuccessful)
+        presenter.save(url: baseUrlTextField.stringValue,
+                       user: userTextField.stringValue,
+                       password: passwordTextField.stringValue)
     }
     
     @IBAction func projectNamePopupSelected (_ sender: NSPopUpButton) {
