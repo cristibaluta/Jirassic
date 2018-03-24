@@ -52,7 +52,7 @@ class ModuleHookup {
         if localPreferences.bool(.enableHookupCredentials) {
             let url = localPreferences.string(.settingsJiraUrl)
             let user = localPreferences.string(.settingsJiraUser)
-            let password = localPreferences.string(.settingsJiraPassword)
+            let password = KeychainWrapper.standard.string(forKey: "jira_password") ?? ""
             jsonCredentials = "'credentials':{'url':'\(url)', 'user':'\(user)', 'password':'\(password)'}"
         }
         let jsonTask = "'task':{'taskType':\(task.taskType.rawValue)}"

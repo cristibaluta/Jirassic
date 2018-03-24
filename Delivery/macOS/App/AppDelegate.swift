@@ -22,7 +22,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsActiveTab = "settingsActiveTab"
     case settingsJiraUrl = "settingsJiraUrl"
     case settingsJiraUser = "settingsJiraUser"
-    case settingsJiraPassword = "settingsJiraPassword"
+//    case settingsJiraPassword = "settingsJiraPassword"
     case settingsJiraProjectId = "settingsJiraProjectId"
     case settingsJiraProjectKey = "settingsJiraProjectKey"
     case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
@@ -45,7 +45,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .settingsActiveTab:        return SettingsTab.tracking.rawValue
             case .settingsJiraUrl:          return ""
             case .settingsJiraUser:         return ""
-            case .settingsJiraPassword:     return ""
+//            case .settingsJiraPassword:     return ""
             case .settingsJiraProjectId:    return ""
             case .settingsJiraProjectKey:   return ""
             case .settingsJiraProjectIssueKey:return ""

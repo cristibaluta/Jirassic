@@ -12,11 +12,18 @@ class ModuleJiraTempo {
     
     let repository: JiraRepository!
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    var isReachable: Bool {
+        return localPreferences.string(.settingsJiraUrl) != ""
+            && localPreferences.string(.settingsJiraUser) != ""
+            && KeychainWrapper.standard.string(forKey: "jira_password") != nil
+            && localPreferences.string(.settingsJiraProjectKey) != ""
+            && localPreferences.string(.settingsJiraProjectIssueKey) != ""
+    }
     
     init() {
         repository = JiraRepository(url: localPreferences.string(.settingsJiraUrl),
                                     user: localPreferences.string(.settingsJiraUser),
-                                    password: localPreferences.string(.settingsJiraPassword))
+                                    password: KeychainWrapper.standard.string(forKey: "jira_password") ?? "")
     }
     
     func fetchProjects (completion: @escaping (([JProject]) -> Void)) {

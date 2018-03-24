@@ -39,9 +39,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sac-XU-YOc">
-                                <rect key="frame" x="110" y="75" width="132" height="22"/>
+                                <rect key="frame" x="110" y="75" width="180" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="gch-lX-jiT"/>
+                                    <constraint firstAttribute="width" constant="180" id="gch-lX-jiT"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="User" bezelStyle="round" id="pEb-he-QBb">
                                     <font key="font" metaFont="system"/>
@@ -52,14 +52,6 @@
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-B9-4w3">
                                 <rect key="frame" x="110" y="105" width="385" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Base url" bezelStyle="round" id="wMy-gy-TCi">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cho-NP-ZQ4">
-                                <rect key="frame" x="255" y="75" width="240" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Password" bezelStyle="round" id="QYV-xp-j3B">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -140,22 +132,33 @@
                                 <rect key="frame" x="250" y="18" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rsL-Fg-y5y">
+                                <rect key="frame" x="303" y="75" width="192" height="22"/>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="K3o-5p-cpk">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                            </secureTextField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CuW-rz-EzX" secondAttribute="trailing" constant="12" id="15m-bS-tAR"/>
                             <constraint firstItem="sac-XU-YOc" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="110" id="4br-0t-eIK"/>
                             <constraint firstItem="sac-XU-YOc" firstAttribute="top" secondItem="CyJ-B9-4w3" secondAttribute="bottom" constant="8" id="7xE-GW-gSS"/>
                             <constraint firstItem="CuW-rz-EzX" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="12" id="Gq0-Qp-5F2"/>
+                            <constraint firstItem="rsL-Fg-y5y" firstAttribute="leading" secondItem="sac-XU-YOc" secondAttribute="trailing" constant="13" id="HiH-RJ-exW"/>
                             <constraint firstAttribute="trailing" secondItem="lWn-53-lCO" secondAttribute="trailing" constant="20" id="Jho-md-2Ke"/>
-                            <constraint firstItem="cho-NP-ZQ4" firstAttribute="leading" secondItem="sac-XU-YOc" secondAttribute="trailing" constant="13" id="LYc-0O-p8G"/>
                             <constraint firstAttribute="bottom" secondItem="lWn-53-lCO" secondAttribute="bottom" constant="19" id="OUY-c5-KyC"/>
+                            <constraint firstAttribute="trailing" secondItem="rsL-Fg-y5y" secondAttribute="trailing" constant="20" id="Z7P-Es-F9W"/>
                             <constraint firstItem="CyJ-B9-4w3" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="110" id="aHi-Dl-LqN"/>
                             <constraint firstItem="32U-E8-26L" firstAttribute="centerY" secondItem="lWn-53-lCO" secondAttribute="centerY" id="fab-In-Jps"/>
                             <constraint firstItem="lWn-53-lCO" firstAttribute="leading" secondItem="32U-E8-26L" secondAttribute="trailing" constant="13" id="fpa-Z6-cIc"/>
-                            <constraint firstItem="cho-NP-ZQ4" firstAttribute="top" secondItem="CyJ-B9-4w3" secondAttribute="bottom" constant="8" id="fqI-Fe-1yd"/>
                             <constraint firstAttribute="trailing" secondItem="CyJ-B9-4w3" secondAttribute="trailing" constant="20" id="nkc-2p-q0g"/>
+                            <constraint firstItem="rsL-Fg-y5y" firstAttribute="top" secondItem="CyJ-B9-4w3" secondAttribute="bottom" constant="8" id="ofg-KM-fs5"/>
                             <constraint firstItem="CyJ-B9-4w3" firstAttribute="top" secondItem="gTj-S0-GSV" secondAttribute="top" constant="39" id="q3H-Ya-5zF"/>
-                            <constraint firstAttribute="trailing" secondItem="cho-NP-ZQ4" secondAttribute="trailing" constant="20" id="qtx-0p-iF8"/>
                             <constraint firstAttribute="bottom" secondItem="CuW-rz-EzX" secondAttribute="bottom" constant="53" id="sqs-KE-wdd"/>
                         </constraints>
                     </view>
@@ -169,7 +172,7 @@
             </constraints>
             <connections>
                 <outlet property="baseUrlTextField" destination="CyJ-B9-4w3" id="JSp-IA-c8g"/>
-                <outlet property="passwordTextField" destination="cho-NP-ZQ4" id="X53-ur-6dr"/>
+                <outlet property="passwordTextField" destination="rsL-Fg-y5y" id="Udo-c2-eFM"/>
                 <outlet property="progressIndicator" destination="xNx-oi-lgq" id="gMc-22-FKl"/>
                 <outlet property="projectIssueNamePopup" destination="lWn-53-lCO" id="WFo-Qo-mOQ"/>
                 <outlet property="projectNamePopup" destination="sAK-lu-hJn" id="eea-aj-pZQ"/>

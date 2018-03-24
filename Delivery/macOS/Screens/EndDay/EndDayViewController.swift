@@ -48,10 +48,11 @@ class EndDayViewController: NSViewController {
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
         
-        presenter?.save(jiraTempo: localPreferences.bool(.enableJira),
-                        hookup: localPreferences.bool(.enableHookup),
-                        roundTime: localPreferences.bool(.enableRoundingDay),
-                        worklog: worklogTextView.string)
+        presenter?.save(worklog: worklogTextView.string,
+                        toJiraTempo: localPreferences.bool(.enableJira),
+                        toHookup: localPreferences.bool(.enableHookup),
+                        roundTime: localPreferences.bool(.enableRoundingDay)
+                        )
     }
     
     @IBAction func handleJiraButton (_ sender: NSButton) {
