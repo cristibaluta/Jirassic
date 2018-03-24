@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 protocol HookupPresenterInput: class {
+    
     var isShellScriptInstalled: Bool? {get set}
     func enableHookup (_ enabled: Bool)
     func enableCredentials (_ enabled: Bool)
@@ -17,6 +18,7 @@ protocol HookupPresenterInput: class {
 }
 
 protocol HookupPresenterOutput: class {
+    
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
     func setButEnable (on: Bool?, enabled: Bool?)
@@ -42,7 +44,7 @@ class HookupPresenter {
     
     func refresh() {
         
-        hookupModule.isHookupInstalled(completion: { [weak self] commandInstalled in
+        hookupModule.isReachable(completion: { [weak self] commandInstalled in
             
             guard let wself = self else {
                 return

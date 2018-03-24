@@ -26,11 +26,11 @@ class ModuleJiraTempo {
                                     password: KeychainWrapper.standard.string(forKey: "jira_password") ?? "")
     }
     
-    func fetchProjects (completion: @escaping (([JProject]) -> Void)) {
+    func fetchProjects (completion: @escaping (([JProject]?) -> Void)) {
         repository.fetchProjects(completion: completion)
     }
     
-    func fetchProjectIssues (projectKey: String, completion: @escaping (([JProjectIssue]) -> Void)) {
+    func fetchProjectIssues (projectKey: String, completion: @escaping (([JProjectIssue]?) -> Void)) {
         repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
     }
     

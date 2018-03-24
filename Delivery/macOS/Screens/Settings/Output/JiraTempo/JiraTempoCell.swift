@@ -13,6 +13,7 @@ class JiraTempoCell: NSTableRowView {
     @IBOutlet fileprivate var baseUrlTextField: NSTextField!
     @IBOutlet fileprivate var userTextField: NSTextField!
     @IBOutlet fileprivate var passwordTextField: NSTextField!
+    @IBOutlet fileprivate var errorTextField: NSTextField!
     @IBOutlet fileprivate var projectNamePopup: NSPopUpButton!
     @IBOutlet fileprivate var projectIssueNamePopup: NSPopUpButton!
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
@@ -80,13 +81,19 @@ extension JiraTempoCell: JiraTempoPresenterOutput {
         projectIssueNamePopup.addItems(withTitles: issues)
         projectIssueNamePopup.selectItem(withTitle: selectedIssue)
     }
+    
+    func showErrorMessage (_ message: String) {
+        errorTextField.stringValue = message
+    }
 }
 
 extension JiraTempoCell: NSTextFieldDelegate {
     
     override func controlTextDidEndEditing(_ obj: Notification) {
         save()
-        guard baseUrlTextField.stringValue != "", userTextField.stringValue != "", passwordTextField.stringValue != "" else {
+        guard baseUrlTextField.stringValue != "",
+            userTextField.stringValue != "",
+            passwordTextField.stringValue != "" else {
             return
         }
         presenter.checkCredentials()

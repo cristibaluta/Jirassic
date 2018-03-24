@@ -13,7 +13,7 @@ class ModuleHookup {
     private let extensions = ExtensionsInteractor()
     private let localPreferences = RCPreferences<LocalPreferences>()
     
-    func isHookupInstalled (completion: @escaping (Bool) -> Void) {
+    func isReachable (completion: @escaping (Bool) -> Void) {
         
         let cmd = localPreferences.string(.settingsHookupCmdName)
         checkIfCommandInstalled(cmd: cmd, completion: completion)

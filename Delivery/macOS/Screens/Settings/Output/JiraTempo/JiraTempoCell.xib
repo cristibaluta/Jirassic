@@ -77,9 +77,18 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-XD-xeR">
                                 <rect key="frame" x="11" y="137" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Send reports to jira tempo by pressing the share button." id="BeJ-Kq-eHi">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Save worklogs to jira tempo from the 'End Day' screen" id="BeJ-Kq-eHi">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6l-NZ-sMH">
+                                <rect key="frame" x="11" y="52" width="405" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Error" id="6TL-Ue-k0c">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" red="0.82619418379999998" green="0.18153228830000001" blue="0.1534976841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -172,6 +181,7 @@
             </constraints>
             <connections>
                 <outlet property="baseUrlTextField" destination="CyJ-B9-4w3" id="JSp-IA-c8g"/>
+                <outlet property="errorTextField" destination="u6l-NZ-sMH" id="5bI-aO-BMD"/>
                 <outlet property="passwordTextField" destination="rsL-Fg-y5y" id="Udo-c2-eFM"/>
                 <outlet property="progressIndicator" destination="xNx-oi-lgq" id="gMc-22-FKl"/>
                 <outlet property="projectIssueNamePopup" destination="lWn-53-lCO" id="WFo-Qo-mOQ"/>

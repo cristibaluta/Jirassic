@@ -13,9 +13,9 @@ class ModuleGitLogs {
     private let extensions = ExtensionsInteractor()
     private let localPreferences = RCPreferences<LocalPreferences>()
     
-    func isGitInstalled (completion: @escaping (Bool) -> Void) {
-        checkIfGitInstalled(completion: completion)
-    }
+//    func isReachable (completion: @escaping (Bool) -> Void) {
+//        checkIfGitInstalled(completion: completion)
+//    }
     
     func logs (onDate date: Date, completion: @escaping (([Task]) -> Void)) {
         
