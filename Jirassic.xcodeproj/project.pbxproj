@@ -2263,6 +2263,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/iOS/Jirassic Scrum.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2272,6 +2273,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -2282,6 +2284,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/iOS/Jirassic Scrum.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2292,6 +2295,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

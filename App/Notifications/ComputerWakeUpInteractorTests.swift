@@ -20,15 +20,17 @@ class ComputerWakeUpInteractorMock: ComputerWakeUpInteractor {
 
 class ComputerWakeUpInteractorTests: XCTestCase {
     
-    func testScrum() {
+    func testScrumAndLunch() {
         
         let repository = InMemoryCoreDataRepository()
+        let settings = Settings(enableBackup: false, settingsTracking: SettingsTracking(autotrack: true, autotrackingMode: TrackingMode.auto, trackLunch: true, trackScrum: true, trackMeetings: true, trackStartOfDay: true, startOfDayTime: Date(hour: 9, minute: 0), endOfDayTime: Date(hour: 17, minute: 0), lunchTime: Date(hour: 12, minute: 30), scrumTime: Date(hour: 10, minute: 30), minSleepDuration: 10), settingsBrowser: SettingsBrowser(trackCodeReviews: true, trackWastedTime: true, minCodeRevDuration: 5, codeRevLink: "", minWasteDuration: 5, wasteLinks: []))
         
+        // Insert start of the day otherwise scrum can't be detected
         let task = Task(endDate: Date(hour: 9, minute: 0), type: .startDay)
         let saveInteractor = TaskInteractor(repository: repository)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { task in })
         
-        let interactor = ComputerWakeUpInteractorMock(repository: repository)
+        let interactor = ComputerWakeUpInteractorMock(repository: repository, settings: settings)
         
         interactor.runWith(lastSleepDate: Date(hour: 10, minute: 30), currentDate: Date(hour: 10, minute: 55))
         XCTAssert(interactor.log_called)

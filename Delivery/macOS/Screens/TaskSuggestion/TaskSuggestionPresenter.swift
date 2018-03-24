@@ -64,7 +64,8 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         userInterface!.setTime(time)
         
         if let startDate = startSleepDate {
-            let interactor = ComputerWakeUpInteractor(repository: localRepository)
+            let settings: Settings = SettingsInteractor().getAppSettings()
+            let interactor = ComputerWakeUpInteractor(repository: localRepository, settings: settings)
             if let type = interactor.estimationForDate(startDate, currentDate: Date()) {
                 if type == .startDay {
                     isStartOfDay = true

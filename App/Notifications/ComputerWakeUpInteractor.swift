@@ -14,8 +14,8 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     let typeEstimator = TaskTypeEstimator()
     let reader: ReadTasksInteractor!
     
-    override init (repository: Repository) {
-        settings = SettingsInteractor().getAppSettings()
+    init (repository: Repository, settings: Settings) {
+        self.settings = settings
         reader = ReadTasksInteractor(repository: repository)
         super.init(repository: repository)
     }
@@ -43,7 +43,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         }
     }
     
-    func estimationForDate (_ date: Date, currentDate: Date) -> TaskType? {
+    internal func estimationForDate (_ date: Date, currentDate: Date) -> TaskType? {
         
 		let existingTasks = reader.tasksInDay(currentDate)
         
@@ -75,7 +75,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         return nil
 	}
     
-    func save (task: Task) {
+    internal func save (task: Task) {
         let saveInteractor = TaskInteractor(repository: localRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             InternalNotifications.notifyAboutNewlyAddedTask(savedTask)

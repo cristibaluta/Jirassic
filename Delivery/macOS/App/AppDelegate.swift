@@ -157,7 +157,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         self.presentTaskSuggestionPopup()
                         break
                     case .auto:
-                        ComputerWakeUpInteractor(repository: localRepository)
+                        ComputerWakeUpInteractor(repository: localRepository, settings: settings)
                             .runWith(lastSleepDate: self.sleep.lastSleepDate, currentDate: Date())
                         break
                 }
