@@ -1,4 +1,6 @@
 language: swift
 osx_image: xcode9.2
-script:
-    - xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic AppStore" -destination "platform=macOS,name=My Mac" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+xcode_project: Jirassic.xcodeproj # path to your xcodeproj folder
+xcode_scheme: Jirassic AppStore
+# script:
+    # - xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic AppStore" -destination "platform=macOS,name=My Mac" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
