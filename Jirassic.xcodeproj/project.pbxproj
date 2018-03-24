@@ -177,6 +177,8 @@
 		284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
 		284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
 		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
+		2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
+		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -524,6 +526,7 @@
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
+		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -1408,6 +1411,7 @@
 			children = (
 				40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */,
 				280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */,
+				2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */,
 				40FCE4221DF7646F00D4FD45 /* AppleScript.swift */,
 				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */,
 			);
@@ -1934,6 +1938,7 @@
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
 				280D71841ED6043D005D2689 /* ReportCell.swift in Sources */,
+				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				280D71861ED6043D005D2689 /* ReportCellPresenter.swift in Sources */,
 				280D71871ED6043D005D2689 /* TaskCell.swift in Sources */,
 				280D718A1ED6043D005D2689 /* TaskCellPresenter.swift in Sources */,
@@ -2105,6 +2110,7 @@
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */,
 				2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
+				2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				28577EB11E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,

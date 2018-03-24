@@ -93,7 +93,6 @@
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
                 <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>
                 <outlet property="dateEndTextField" destination="MAr-Mi-Hug" id="vwx-gw-aaE"/>
-                <outlet property="dateEndTextFieldWidthContraint" destination="JBJ-mO-VHe" id="jQZ-o4-73N"/>
                 <outlet property="dateStartTextField" destination="tqo-U8-RGc" id="97u-xp-y1h"/>
                 <outlet property="dateStartTextFieldLeadingContraint" destination="nm2-hB-hAj" id="KQC-NV-HgF"/>
                 <outlet property="notesTextField" destination="mSe-2c-CEz" id="jmn-xA-2rK"/>
