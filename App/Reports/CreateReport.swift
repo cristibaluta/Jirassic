@@ -12,10 +12,12 @@ class CreateReport {
     
     func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
 		
-		guard tasks.count > 1 else {
+        // .endDay task is not part of reports
+        let filteredTasks = tasks.filter({ $0.taskType != .endDay })
+		guard filteredTasks.count > 1 else {
 			return []
         }
-        var processedTasks = splitOverlappingTasks(tasks)
+        var processedTasks = splitOverlappingTasks(filteredTasks)
         processedTasks = removeUntrackableTasks(processedTasks)
         processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
         let groups = groupByTaskNumber(processedTasks)
