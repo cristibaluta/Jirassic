@@ -152,6 +152,10 @@ extension Date {
         return NSCalendar.current.isDate(self, inSameDayAs: date)
 	}
     
+    @inline(__always) func isToday() -> Bool {
+        return isSameDayAs( Date() )
+    }
+    
     func isWeekend() -> Bool {
         return gregorian.isDateInWeekend(self)
     }

@@ -1,5 +1,5 @@
 //
-//  Zeta.swift
+//  Conversions.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 06/11/2016.
@@ -15,6 +15,10 @@ extension Double {
     }
     
     var hoursToSec: Double {
-        return self * 60 * 60
+        return self * 3600
+    }
+    
+    var secToHours: Double {
+        return self / 3600
     }
 }
