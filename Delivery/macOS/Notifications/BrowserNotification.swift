@@ -78,14 +78,19 @@ class BrowserNotification {
         
         reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let existingTasks = reader!.tasksInDay(Date())
+        let isDayStarted = existingTasks.count > 0
+        let isDayEnded = existingTasks.contains(where: { $0.taskType == .endDay })
         
-        guard let startDay = existingTasks.first else {
+        guard let startDayTask = existingTasks.first else {
+            return
+        }
+        guard isDayStarted && !isDayEnded else {
+            RCLog("Day started but also ended, won't continue analyzing the url")
             return
         }
         let settings: Settings = SettingsInteractor().getAppSettings()
-        // TODO: Date() is in current timezone but dates from settings are in UTC
         let maxDuration = TimeInteractor(settings: settings).workingDayLength()
-        let workedDuration = Date().timeIntervalSince( startDay.endDate )
+        let workedDuration = Date().timeIntervalSince( startDayTask.endDate )
         guard workedDuration < maxDuration else {
             // Do not track browser events past working duration
             return

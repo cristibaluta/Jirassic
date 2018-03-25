@@ -122,11 +122,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         sleep.computerWakeUp = {
             
+            let tasks = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+                        .tasksInDay(Date())
             let isWeekend = Date().isWeekend()
-            let isDayStarted = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-                .tasksInDay(Date()).count > 0
+            let isDayStarted = tasks.count > 0
+            let isDayEnded = tasks.contains(where: { $0.taskType == .endDay })
             guard !isWeekend || (isDayStarted && isWeekend) else {
                 RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
+                return
+            }
+            guard !isDayEnded else {
+                RCLog(">>>>>>> Day ended, won't analyze further <<<<<<<<")
                 return
             }
             self.browser.start()
