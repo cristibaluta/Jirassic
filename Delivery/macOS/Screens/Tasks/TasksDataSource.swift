@@ -108,10 +108,13 @@ extension TasksDataSource: NSTableViewDelegate {
             cell?.didAddTask = { [weak self] in
                 self?.didAddRow!(tableView.numberOfRows-1)
             }
+            cell?.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
+            
             return cell
         }
 
         var theData = tasks[row]
+        
         //let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
         var cell: CellProtocol = cellForTaskType(theData.taskType)

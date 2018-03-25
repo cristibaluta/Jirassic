@@ -10,15 +10,16 @@ import Cocoa
 
 class FooterCell: NSTableRowView {
 
-    @IBOutlet fileprivate var butAdd: NSButton?
-    @IBOutlet fileprivate var butEnd: NSButton?
-    private var bgColor: NSColor = NSColor.clear
+    @IBOutlet fileprivate var butAdd: NSButton!
+    @IBOutlet fileprivate var butEnd: NSButton!
+    private var bgColor = NSColor.clear
 
     var didAddTask: (() -> Void)?
     var didEndDay: (() -> Void)?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var isDayEnded: Bool? {
+        didSet {
+            self.butEnd.title = isDayEnded == true ? "Worklogs" : "End day"
+        }
     }
     
     override func draw (_ dirtyRect: NSRect) {
