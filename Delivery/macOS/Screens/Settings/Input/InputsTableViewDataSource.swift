@@ -43,11 +43,11 @@ class InputsTableViewDataSource: NSObject {
         GitCell.register(in: tableView)
         BrowserCell.register(in: tableView)
         
-        shellCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)), owner: self) as? ShellCell
-        jirassicCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JirassicCell.self)), owner: self) as? JirassicCell
-        jitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)), owner: self) as? JitCell
-        gitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self) as? GitCell
-        browserCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self) as? BrowserCell
+        shellCell = ShellCell.instantiate(in: self.tableView)
+        jirassicCell = JirassicCell.instantiate(in: self.tableView)
+        jitCell = JitCell.instantiate(in: self.tableView)
+        gitCell = GitCell.instantiate(in: self.tableView)
+        browserCell = BrowserCell.instantiate(in: self.tableView)
     }
 
     func showSettingsBrowser (_ settings: SettingsBrowser) {

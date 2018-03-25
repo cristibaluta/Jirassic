@@ -30,8 +30,8 @@ class OutputTableViewDataSource: NSObject {
         JiraTempoCell.register(in: tableView)
         HookupCell.register(in: tableView)
         
-        jiraCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)), owner: self) as? JiraTempoCell
-        hookupCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)), owner: self) as? HookupCell
+        jiraCell = JiraTempoCell.instantiate(in: self.tableView)
+        hookupCell = HookupCell.instantiate(in: self.tableView)
     }
 }
 

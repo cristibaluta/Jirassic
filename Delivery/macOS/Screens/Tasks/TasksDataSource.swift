@@ -37,10 +37,10 @@ class TasksDataSource: NSObject {
         var cell: CellProtocol? = nil
         switch taskType {
         case TaskType.issue, TaskType.gitCommit:
-            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)), owner: self) as? TaskCell
+            cell = TaskCell.instantiate(in: self.tableView)
             break
         default:
-            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)), owner: self) as? NonTaskCell
+            cell = NonTaskCell.instantiate(in: self.tableView)
             break
         }
         
@@ -88,17 +88,17 @@ extension TasksDataSource: NSTableViewDelegate {
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
         guard row < tasks.count else {
-            let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: FooterCell.self)), owner: self) as? FooterCell
+            let cell = FooterCell.instantiate(in: self.tableView)
 
-            cell?.didEndDay = { [weak self] () in
+            cell.didEndDay = { [weak self] () in
                 if let wself = self {
                     wself.didEndDay!(wself.tasks)
                 }
             }
-            cell?.didAddTask = { [weak self] in
+            cell.didAddTask = { [weak self] in
                 self?.didAddRow!(tableView.numberOfRows-1)
             }
-            cell?.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
+            cell.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
             
             return cell
         }

@@ -19,12 +19,12 @@
 extension TableViewCell {
     
     class func register (in tableView: TableView) {
-        return  register(in: tableView, type: self)
+        return register(in: tableView, type: self)
     }
     
-    fileprivate class func register<T> (in tableView: TableView, type: T.Type) {
+    private class func register<T> (in tableView: TableView, type: T.Type) {
         #if os(iOS)
-            return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
+//            return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
             let className = String(describing: self)
             assert(NSNib(nibNamed: NSNib.Name(rawValue: className), bundle: Bundle.main) != nil, "err")
@@ -34,5 +34,17 @@ extension TableViewCell {
             }
         #endif
     }
+    
+    class func instantiate (in tableView: TableView) -> Self {
+        return instantiate(in: tableView, type: self)
+    }
+    
+    private class func instantiate<T> (in tableView: TableView, type: T.Type) -> T {
+        #if os(iOS)
+//            return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
+        #else
+            let className = String(describing: self)
+            return tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: className), owner: self) as! T
+        #endif
+    }
 }
-
