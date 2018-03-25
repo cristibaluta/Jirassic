@@ -133,10 +133,11 @@ class AppleScript: AppleScriptProtocol {
         })
     }
     
-    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
+    func getBrowserInfo (browserId: String, browserName: String, completion: @escaping (String, String) -> Void) {
         
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: browserId), at: 1)
+        args.insert(NSAppleEventDescriptor(string: browserName), at: 2)
         
         run (command: commandGetBrowserInfo, scriptNamed: kBrowserSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor {

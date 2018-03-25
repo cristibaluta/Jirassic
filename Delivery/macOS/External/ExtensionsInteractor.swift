@@ -31,8 +31,8 @@ class ExtensionsInteractor {
         })
     }
     
-    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void) {
-        scripts.getBrowserInfo(browserId: browserId, completion: completion)
+    func getBrowserInfo (browserId: String, browserName: String, completion: @escaping (String, String) -> Void) {
+        scripts.getBrowserInfo(browserId: browserId, browserName: browserName, completion: completion)
     }
     
     func run (command: String, completion: @escaping (String?) -> Void) {

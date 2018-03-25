@@ -22,7 +22,8 @@ class BrowserNotification {
     
     fileprivate let delay = 15.0
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
-    fileprivate let browsersIds = ["com.apple.Safari", "com.google.Chrome"]
+    fileprivate let browsersIds = ["com.apple.Safari", "com.apple.SafariTechnologyPreview",
+                                   "com.google.Chrome", "com.google.Chrome.canary", "org.chromium.Chromium", "com.vivaldi.Vivaldi"]
     fileprivate var timer: Timer?
     fileprivate var extensionsInteractor = ExtensionsInteractor()
     fileprivate var reader: ReadTasksInteractor?
@@ -47,9 +48,17 @@ class BrowserNotification {
     
     @objc func handleTimer (timer: Timer) {
         
-        let app: NSRunningApplication = NSWorkspace.shared.frontmostApplication!
-        let appId = app.bundleIdentifier!
+        guard let app: NSRunningApplication = NSWorkspace.shared.frontmostApplication,
+              let appId = app.bundleIdentifier,
+              var appName = app.localizedName else {
+            return
+        }
+        // Google Chrome Canary does not return the correct localizedName, so override it
+        if appId == "com.google.Chrome.canary" {
+            appName = "Google Chrome Canary"
+        }
 //        RCLogO(appId)
+//        RCLogO(appName)
         
         guard browsersIds.contains(appId) else {
             if let taskType = self.taskType {
@@ -74,6 +83,7 @@ class BrowserNotification {
             return
         }
         let settings: Settings = SettingsInteractor().getAppSettings()
+        // TODO: Date() is in current timezone but dates from settings are in UTC
         let maxDuration = TimeInteractor(settings: settings).workingDayLength()
         let workedDuration = Date().timeIntervalSince( startDay.endDate )
         guard workedDuration < maxDuration else {
@@ -81,10 +91,10 @@ class BrowserNotification {
             return
         }
         
-        extensionsInteractor.getBrowserInfo(browserId: appId, completion: { (url, title) in
+        extensionsInteractor.getBrowserInfo(browserId: appId, browserName: appName, completion: { (url, title) in
             
             RCLog("Analyzing url: \(url), title: \(title)")
-
+            
             if self.isCodeRevLink(url) {
                 if self.isWastingTime() {
                     self.handleWastingTimeEnd()

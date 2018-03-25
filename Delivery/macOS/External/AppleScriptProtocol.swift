@@ -20,7 +20,7 @@ protocol AppleScriptProtocol {
     
     func getJirassicVersion (completion: @escaping (String) -> Void)
     
-    func getBrowserInfo (browserId: String, completion: @escaping (String, String) -> Void)
+    func getBrowserInfo (browserId: String, browserName: String, completion: @escaping (String, String) -> Void)
     
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void)
     
