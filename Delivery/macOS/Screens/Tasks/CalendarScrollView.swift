@@ -24,13 +24,13 @@ class CalendarScrollView: NSScrollView {
             let now = Date()
             if firstWeek.date.isSameWeekAs(now) {
                 if let firstDay = firstWeek.days.first {
-                    if !firstDay.date.isSameDayAs(now) {
-                        _weeks[0].days.insert(Day(date: now), at: 0)
+                    if !firstDay.dateStart.isSameDayAs(now) {
+                        _weeks[0].days.insert(Day(dateStart: now, dateEnd: nil), at: 0)
                     }
                 }
             } else {
                 let week = Week(date: now)
-                week.days.append(Day(date: now))
+                week.days.append( Day(dateStart: now, dateEnd: nil) )
                 _weeks.insert(week, at: 0)
             }
         }
@@ -56,7 +56,7 @@ class CalendarScrollView: NSScrollView {
             i += 1
             for day in week.days {
                 i += 1
-                if day.date.isSameDayAs(dayToSelect.date) {
+                if day.dateStart.isSameDayAs(dayToSelect.dateStart) {
                     let indexSet = IndexSet(integer: i)
                     outlineView?.selectRowIndexes(indexSet, byExtendingSelection: true)
                     break
@@ -126,8 +126,8 @@ extension CalendarScrollView: NSOutlineViewDelegate {
 			let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"), owner: self) as! NSTableCellView
 			if let textField = view.textField {
                 textField.font = NSFont.boldSystemFont(ofSize: 12)
-                textField.textColor = NSColor.lightGray
-                textField.stringValue = day.date.isSameDayAs(Date()) ? "Today" : day.date.ddEEE()
+                textField.textColor = day.dateEnd == nil ? NSColor.lightGray : NSColor.darkGray
+                textField.stringValue = day.dateStart.isToday() ? "Today" : day.dateStart.ddEEE()
 			}
 			
             return view

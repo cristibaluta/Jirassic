@@ -70,7 +70,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         userInterface!.showLoadingIndicator(true)
         
-        let todayDay = Day(date: Date())
+        let todayDay = Day(dateStart: Date(), dateEnd: nil)
         interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
         interactor?.query { [weak self] weeks in
             guard let wself = self else {
@@ -93,7 +93,7 @@ extension TasksPresenter: TasksPresenterInput {
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
         let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        let localTasks = reader.tasksInDay(day.date)
+        let localTasks = reader.tasksInDay(day.dateStart)
         selectedListType = listType
         
         guard localPreferences.bool(.enableGit) else {
@@ -101,7 +101,7 @@ extension TasksPresenter: TasksPresenterInput {
             return
         }
         userInterface!.showLoadingIndicator(true)
-        moduleGit.logs(onDate: day.date) { [weak self] gitTasks in
+        moduleGit.logs(onDate: day.dateStart) { [weak self] gitTasks in
             
             guard let wself = self else {
                 return
@@ -162,7 +162,7 @@ extension TasksPresenter: TasksPresenterInput {
     }
 
     func endDay() {
-        userInterface!.presentEndDayController(date: lastSelectedDay?.date ?? Date(), tasks: currentTasks)
+        userInterface!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {

@@ -10,9 +10,11 @@ import Foundation
 
 class Day {
 
-	let date: Date
+	let dateStart: Date
+    let dateEnd: Date?
 	
-	init (date: Date) {
-		self.date = date
+    init (dateStart: Date, dateEnd: Date?) {
+		self.dateStart = dateStart
+        self.dateEnd = dateEnd
 	}
 }

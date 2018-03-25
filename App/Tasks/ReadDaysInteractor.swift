@@ -81,13 +81,20 @@ class ReadDaysInteractor: RepositoryInteractor {
 	func days() -> [Day] {
 		
 		var objects = [Day]()
+        var obj: Day?
 		var referenceDate = Date.distantFuture
 		
 		for task in tasks {
-            if !task.endDate.isSameDayAs(referenceDate) {
+            if task.endDate.isSameDayAs(referenceDate) {
+                if task.taskType == .endDay {
+                    let tempObj = objects.removeLast()
+                    obj = Day(dateStart: tempObj.dateStart, dateEnd: task.endDate)
+                    objects.append(obj!)
+                }
+            } else {
                 referenceDate = task.endDate
-                let obj = Day(date: task.endDate)
-                objects.append(obj)
+                obj = Day(dateStart: task.endDate, dateEnd: nil)
+                objects.append(obj!)
             }
 		}
 		
@@ -103,14 +110,21 @@ class ReadDaysInteractor: RepositoryInteractor {
 	private func days (ofWeek week: Week) -> [Day] {
 		
 		var objects = [Day]()
+        var obj: Day?
 		var referenceDate = Date.distantFuture
+        var endDate: Date?
 		
+        // Tasks are sorted descending
 		for task in tasks {
             if task.endDate.isSameWeekAs(week.date) {
                 if !task.endDate.isSameDayAs(referenceDate) {
+                    if task.taskType == .endDay {
+                        endDate = task.endDate
+                    }
                     referenceDate = task.endDate
-                    let obj = Day(date: task.endDate)
-                    objects.append(obj)
+                    obj = Day(dateStart: task.endDate, dateEnd: endDate)
+                    objects.append(obj!)
+                    endDate = nil
                 }
             }
 		}
