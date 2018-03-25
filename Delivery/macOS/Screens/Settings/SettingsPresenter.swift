@@ -13,8 +13,8 @@ protocol SettingsPresenterInput: class {
     func checkExtensions()
     func showSettings()
     func saveAppSettings (_ settings: Settings)
-    func enabledBackup (_ enabled: Bool)
-    func enabledLaunchAtStartup (_ enabled: Bool)
+    func enableBackup (_ enabled: Bool)
+    func enableLaunchAtStartup (_ enabled: Bool)
     func installJirassic()
     func installJit()
 }
@@ -28,8 +28,8 @@ protocol SettingsPresenterOutput: class {
     func setBrowserStatus (compatible: Bool, scriptInstalled: Bool)
     func setHookupStatus (scriptInstalled: Bool)
     func showAppSettings (_ settings: Settings)
-    func enabledLaunchAtStartup (_ enabled: Bool)
-    func enabledBackup (_ enabled: Bool, title: String)
+    func enableBackup (_ enabled: Bool, title: String)
+    func enableLaunchAtStartup (_ enabled: Bool)
     func selectTab (_ tab: SettingsTab)
 }
 
@@ -75,8 +75,8 @@ extension SettingsPresenter: SettingsPresenterInput {
     func showSettings() {
         let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
-        userInterface!.enabledLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
-        enabledBackup(settings.enableBackup)
+        userInterface!.enableLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
+        enableBackup(settings.enableBackup)
         userInterface!.selectTab( SettingsTab(rawValue: localPreferences.int(.settingsActiveTab))! )
     }
     
@@ -84,26 +84,27 @@ extension SettingsPresenter: SettingsPresenterInput {
         interactor!.saveAppSettings(settings)
     }
     
-    func enabledBackup (_ enabled: Bool) {
+    func enableBackup (_ enabled: Bool) {
         #if APPSTORE
         if enabled {
+            // Create global instance of remoteRepository defined in AppDelegate
             remoteRepository = CloudKitRepository()
             remoteRepository?.getUser({ (user) in
                 if user == nil {
-                    self.userInterface?.enabledBackup(false, title: "Backup to iCloud (You are not logged in)")
+                    self.userInterface?.enableBackup(false, title: "Backup to iCloud (You are not logged in)")
                     remoteRepository = nil
                 } else {
-                    self.userInterface?.enabledBackup(true, title: "Backup to iCloud")
+                    self.userInterface?.enableBackup(true, title: "Backup to iCloud")
                 }
             })
         } else {
             remoteRepository = nil
-            self.userInterface?.enabledBackup(enabled, title: "Backup to iCloud")
+            self.userInterface?.enableBackup(enabled, title: "Backup to iCloud")
         }
         #endif
     }
     
-    func enabledLaunchAtStartup (_ enabled: Bool) {
+    func enableLaunchAtStartup (_ enabled: Bool) {
         interactor!.enabledLaunchAtStartup(enabled)
     }
     

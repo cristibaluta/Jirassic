@@ -72,11 +72,11 @@ extension SettingsViewController {
     }
     
     @IBAction func handleBackupButton (_ sender: NSButton) {
-        presenter!.enabledBackup(sender.state == NSControl.StateValue.on)
+        presenter!.enableBackup(sender.state == NSControl.StateValue.on)
     }
     
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
-        presenter!.enabledLaunchAtStartup(sender.state == NSControl.StateValue.on)
+        presenter!.enableLaunchAtStartup(sender.state == NSControl.StateValue.on)
     }
     
 }
@@ -123,11 +123,11 @@ extension SettingsViewController: SettingsPresenterOutput {
         butBackup.state = settings.enableBackup ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
-    func enabledLaunchAtStartup (_ enabled: Bool) {
+    func enableLaunchAtStartup (_ enabled: Bool) {
         butEnableLaunchAtStartup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
-    func enabledBackup (_ enabled: Bool, title: String) {
+    func enableBackup (_ enabled: Bool, title: String) {
         butBackup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         butBackup.title = title
     }
