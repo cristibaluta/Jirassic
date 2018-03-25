@@ -67,7 +67,7 @@ class BrowserNotification {
             return
         }
         
-        reader = ReadTasksInteractor(repository: localRepository)
+        reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let existingTasks = reader!.tasksInDay(Date())
         
         guard let startDay = existingTasks.first else {

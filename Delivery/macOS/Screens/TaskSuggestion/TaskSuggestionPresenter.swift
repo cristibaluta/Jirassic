@@ -65,7 +65,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         
         if let startDate = startSleepDate {
             let settings: Settings = SettingsInteractor().getAppSettings()
-            let interactor = ComputerWakeUpInteractor(repository: localRepository, settings: settings)
+            let interactor = ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
             if let type = interactor.estimationForDate(startDate, currentDate: Date()) {
                 if type == .startDay {
                     isStartOfDay = true
@@ -105,7 +105,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
             task.endDate = endSleepDate!
         }
         
-        let saveInteractor = TaskInteractor(repository: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             
         })

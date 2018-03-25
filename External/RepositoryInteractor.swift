@@ -11,8 +11,10 @@ import Foundation
 class RepositoryInteractor {
     
     var repository: Repository!
+    var remoteRepository: Repository?
     
-    init (repository: Repository) {
+    init (repository: Repository, remoteRepository: Repository?) {
         self.repository = repository
+        self.remoteRepository = remoteRepository
     }
 }

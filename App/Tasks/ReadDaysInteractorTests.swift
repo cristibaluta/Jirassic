@@ -23,7 +23,7 @@ class ReadDaysInteractorTests: XCTestCase {
         let task3 = Task(endDate: Date(year: 2017, month: 5, day: 24, hour: 10, minute: 0), type: TaskType.startDay)
         repository.saveTask(task3, completion: { task in })
         
-        let interactor = ReadDaysInteractor(repository: repository)
+        let interactor = ReadDaysInteractor(repository: repository, remoteRepository: nil)
         // This is synchronous query
         interactor.query { (weeks) in
             XCTAssertTrue(weeks.first!.days.count == 2)

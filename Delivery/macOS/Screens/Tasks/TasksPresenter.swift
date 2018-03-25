@@ -71,7 +71,7 @@ extension TasksPresenter: TasksPresenterInput {
         userInterface!.showLoadingIndicator(true)
         
         let todayDay = Day(date: Date())
-        interactor = ReadDaysInteractor(repository: localRepository)
+        interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
         interactor?.query { [weak self] weeks in
             guard let wself = self else {
                 return
@@ -92,7 +92,7 @@ extension TasksPresenter: TasksPresenterInput {
         let targetHoursInDay = localPreferences.bool(.enableRoundingDay) 
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
-        let reader = ReadTasksInteractor(repository: localRepository)
+        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let localTasks = reader.tasksInDay(day.date)
         selectedListType = listType
         
@@ -154,7 +154,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         let now = Date()
         let task = Task(endDate: now, type: TaskType.startDay)
-        let saveInteractor = TaskInteractor(repository: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             self.reloadData()
         })
@@ -174,7 +174,7 @@ extension TasksPresenter: TasksPresenterInput {
         task.endDate = taskData.dateEnd
         task.taskType = taskData.taskType
         
-        let saveInteractor = TaskInteractor(repository: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { savedTask in
             
         })
@@ -197,11 +197,11 @@ extension TasksPresenter: TasksPresenterInput {
         
         let task = currentTasks[row]
         currentTasks.remove(at: row)
-        let deleteInteractor = TaskInteractor(repository: localRepository)
+        let deleteInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         deleteInteractor.deleteTask(task)
         updateNoTasksState()
         if currentTasks.count == 0 {
-            let reader = ReadDaysInteractor(repository: localRepository)
+            let reader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
             userInterface?.showDates(reader.weeks())
         }
     }

@@ -124,7 +124,7 @@ extension TasksDataSource: NSTableViewDelegate {
             theData.startDate = updatedData.dateStart
             theData.endDate = updatedData.dateEnd
             self?.tasks[row] = theData// save the changes locally because the struct is passed by copying
-            let saveInteractor = TaskInteractor(repository: localRepository)
+            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(theData, allowSyncing: true, completion: { savedTask in
                 tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
             })

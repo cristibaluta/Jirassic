@@ -123,7 +123,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sleep.computerWakeUp = {
             
             let isWeekend = Date().isWeekend()
-            let isDayStarted = ReadTasksInteractor(repository: localRepository).tasksInDay(Date()).count > 0
+            let isDayStarted = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+                .tasksInDay(Date()).count > 0
             guard !isWeekend || (isDayStarted && isWeekend) else {
                 RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
@@ -155,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         self.presentTaskSuggestionPopup()
                         break
                     case .auto:
-                        ComputerWakeUpInteractor(repository: localRepository, settings: settings)
+                        ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
                             .runWith(lastSleepDate: self.sleep.lastSleepDate, currentDate: Date())
                         break
                 }
@@ -177,7 +178,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskType: .coderev,
                 objectId: String.random()
             )
-            let saveInteractor = TaskInteractor(repository: localRepository)
+            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
                 
             })
@@ -197,7 +198,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskType: .waste,
                 objectId: String.random()
             )
-            let saveInteractor = TaskInteractor(repository: localRepository)
+            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
                 
             })

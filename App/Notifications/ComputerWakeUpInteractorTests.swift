@@ -27,10 +27,10 @@ class ComputerWakeUpInteractorTests: XCTestCase {
         
         // Insert start of the day otherwise scrum can't be detected
         let task = Task(endDate: Date(hour: 9, minute: 0), type: .startDay)
-        let saveInteractor = TaskInteractor(repository: repository)
+        let saveInteractor = TaskInteractor(repository: repository, remoteRepository: nil)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { task in })
         
-        let interactor = ComputerWakeUpInteractorMock(repository: repository, settings: settings)
+        let interactor = ComputerWakeUpInteractorMock(repository: repository, remoteRepository: nil, settings: settings)
         
         interactor.runWith(lastSleepDate: Date(hour: 10, minute: 30), currentDate: Date(hour: 10, minute: 55))
         XCTAssert(interactor.log_called)

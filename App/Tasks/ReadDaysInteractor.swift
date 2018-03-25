@@ -12,8 +12,8 @@ class ReadDaysInteractor: RepositoryInteractor {
 	
 	private var tasks = [Task]()
 	
-    override init (repository: Repository) {
-        super.init(repository: repository)
+    override init (repository: Repository, remoteRepository: Repository?) {
+        super.init(repository: repository, remoteRepository: remoteRepository)
 	}
     
     /*
@@ -27,9 +27,9 @@ class ReadDaysInteractor: RepositoryInteractor {
                 return
             }
             _self.tasks = tasks
-            completion(_self.weeks())
+            completion( _self.weeks() )
             
-            if let remoteRepository = remoteRepository {
+            if let remoteRepository = _self.remoteRepository {
                 
                 let sync = RCSync<Task>(localRepository: _self.repository, remoteRepository: remoteRepository)
                 sync.start { hasIncomingChanges in

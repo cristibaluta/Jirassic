@@ -34,8 +34,8 @@ extension NSApplication {
             : TaskType.gitCommit
         let informativeText = "\(taskNumber): \(notes)"
         
-        let saveInteractor = TaskInteractor(repository: localRepository)
-        let reader = ReadTasksInteractor(repository: localRepository)
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let currentTasks = reader.tasksInDay(Date())
         if currentTasks.count == 0 {
             let settings: Settings = SettingsInteractor().getAppSettings()
