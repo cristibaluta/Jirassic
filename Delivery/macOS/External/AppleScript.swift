@@ -26,6 +26,21 @@ class AppleScript: AppleScriptProtocol {
         validateTarget()
         return Bundle.main.resourceURL
     }
+    var binPaths: [String] {
+        // Paths given by the app: /Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin
+        // Paths given by  Terminal echo $PATH: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+        // There is surely something weird here
+        // Lets just remove paths matching xcode and insert usr/local/bin if does not exist
+        let localBin = "/usr/local/bin"
+        let envPaths = ProcessInfo.processInfo.environment["PATH"] ?? ""
+        var paths = envPaths.split(separator: ":").map({ String($0) })
+        paths = paths.filter({ !$0.contains("Xcode.app") })
+        if !paths.contains(localBin) {
+            paths.insert(localBin, at: 0)
+        }
+        
+        return paths
+    }
     
     func run (command: String, completion: @escaping (String?) -> Void) {
         
@@ -57,17 +72,28 @@ class AppleScript: AppleScriptProtocol {
     }
     
     func getJitInfo (completion: @escaping ([String: String]) -> Void) {
+        getJitInfo (paths: binPaths, completion: completion)
+    }
+    
+    private func getJitInfo (paths: [String], completion: @escaping ([String: String]) -> Void) {
         
-        let command = "/usr/local/bin/jit info"
+        guard paths.count > 0 else {
+            completion([:])
+            return
+        }
+        var remainingPaths = paths
+        let path = remainingPaths.removeFirst()
+        let command = "\(path)/jit info"
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
         run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
             
-            var dict: [String: String] = [:]
-            if let descriptor = descriptor {
+            if let descriptor = descriptor, let rawJson = descriptor.stringValue {
                 
-                let validJson = descriptor.stringValue!.replacingOccurrences(of: "'", with: "\"")
+                // json received from jit contains ' instead " because otherwise is not valid when passed
+                let validJson = rawJson.replacingOccurrences(of: "'", with: "\"")
+                var dict: [String: String] = [:]
                 if let data = validJson.data(using: String.Encoding.utf8) {
                     if let d = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
                         if let _d = d {
@@ -75,15 +101,26 @@ class AppleScript: AppleScriptProtocol {
                         }
                     }
                 }
+                completion(dict)
+            } else {
+                self.getJitInfo (paths: remainingPaths, completion: completion)
             }
-            
-            completion(dict)
         })
     }
     
     func getJirassicVersion (completion: @escaping (String) -> Void) {
+        getJirassicVersion(paths: binPaths, completion: completion)
+    }
+    
+    private  func getJirassicVersion (paths: [String], completion: @escaping (String) -> Void) {
         
-        let command = "/usr/local/bin/jirassic version"
+        guard paths.count > 0 else {
+            completion("")
+            return
+        }
+        var remainingPaths = paths
+        let path = remainingPaths.removeFirst()
+        let command = "\(path)/jirassic version"
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
@@ -91,7 +128,7 @@ class AppleScript: AppleScriptProtocol {
             if let descriptor = descriptor, let result = descriptor.stringValue {
                 completion(result)
             } else {
-                completion("")
+                self.getJirassicVersion(paths: remainingPaths, completion: completion)
             }
         })
     }
@@ -104,7 +141,7 @@ class AppleScript: AppleScriptProtocol {
         run (command: commandGetBrowserInfo, scriptNamed: kBrowserSupportScriptName, args: args, completion: { descriptor in
             if let descriptor = descriptor {
                 let url = descriptor.atIndex(1)?.stringValue ?? ""
-                let title = descriptor.atIndex(1)?.stringValue ?? ""
+                let title = descriptor.atIndex(2)?.stringValue ?? ""
                 completion(url, title)
             } else {
                 RCLog("Cannot get browser info")
@@ -115,7 +152,7 @@ class AppleScript: AppleScriptProtocol {
     
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
         
-//        let asc = NSAppleScript(source: "do shell script \"sudo cp \(from) \(to)\" with administrator privileges")
+        //        let asc = NSAppleScript(source: "do shell script \"sudo cp \(from) \(to)\" with administrator privileges")
         
         
         let sessionConfig = URLSessionConfiguration.default
@@ -129,13 +166,13 @@ class AppleScript: AppleScriptProtocol {
                     RCLog("Success: \(statusCode)")
                 }
                 
-//                do {
-//                    try FileManager.default.copyItem(at: tempLocalUrl, to: URL(fileURLWithPath: to))
-//                    completion(true)
-//                } catch (let writeError) {
-//                    print("error writing file \(to) : \(writeError)")
-//                    completion(false)
-//                }
+                //                do {
+                //                    try FileManager.default.copyItem(at: tempLocalUrl, to: URL(fileURLWithPath: to))
+                //                    completion(true)
+                //                } catch (let writeError) {
+                //                    print("error writing file \(to) : \(writeError)")
+                //                    completion(false)
+                //                }
                 
                 RCLog(from)
                 RCLog(to)
