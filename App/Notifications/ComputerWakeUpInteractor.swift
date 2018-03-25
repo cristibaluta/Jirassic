@@ -14,37 +14,38 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     let typeEstimator = TaskTypeEstimator()
     let reader: ReadTasksInteractor!
     
-    override init (repository: Repository) {
-        settings = SettingsInteractor().getAppSettings()
-        reader = ReadTasksInteractor(repository: repository)
-        super.init(repository: repository)
+    init (repository: Repository, remoteRepository: Repository?, settings: Settings) {
+        self.settings = settings
+        reader = ReadTasksInteractor(repository: repository, remoteRepository: remoteRepository)
+        super.init(repository: repository, remoteRepository: remoteRepository)
     }
     
-	func runWith (lastSleepDate date: Date?) {
+    func runWith (lastSleepDate: Date?, currentDate: Date) {
 		
-        guard let date = date else {
+        guard let lastSleepDate = lastSleepDate else {
             return
         }
-        if let type = estimationForDate(date) {
+        if let type = estimationForDate(lastSleepDate, currentDate: currentDate) {
             if type == .startDay {
-                if settings.trackStartOfDay {
-                    let startDate = settings.startOfDayTime.dateByKeepingTime()
-                    if Date() > startDate {
-                        save(task: Task(dateEnd: Date(), type: TaskType.startDay))
+                if settings.settingsTracking.trackStartOfDay {
+                    let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
+                    if currentDate > startDate {
+                        let task = Task(endDate: currentDate, type: TaskType.startDay)
+                        save(task: task)
                     }
                 }
-            } else if (type == .scrum && settings.trackScrum) || (type == .lunch && settings.trackLunch) {
+            } else if (type == .scrum && settings.settingsTracking.trackScrum) || (type == .lunch && settings.settingsTracking.trackLunch) {
                 
-                var task = Task(dateEnd: Date(), type: type)
-                task.startDate = date
+                var task = Task(endDate: currentDate, type: type)
+                task.startDate = lastSleepDate
                 save(task: task)
             }
         }
     }
     
-    func estimationForDate (_ date: Date) -> TaskType? {
+    internal func estimationForDate (_ date: Date, currentDate: Date) -> TaskType? {
         
-		let existingTasks = reader.tasksInDay(Date())
+		let existingTasks = reader.tasksInDay(currentDate)
         
         guard existingTasks.count > 0 else {
             return TaskType.startDay
@@ -64,7 +65,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             }
             break
         case .meeting:
-            if settings.trackMeetings {
+            if settings.settingsTracking.trackMeetings {
                 return TaskType.meeting
             }
             break
@@ -74,8 +75,8 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
         return nil
 	}
     
-    func save (task: Task) {
-        let saveInteractor = TaskInteractor(repository: localRepository)
+    internal func save (task: Task) {
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: self.remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             InternalNotifications.notifyAboutNewlyAddedTask(savedTask)
         })

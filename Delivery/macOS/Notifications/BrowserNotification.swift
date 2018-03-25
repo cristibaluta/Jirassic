@@ -22,7 +22,6 @@ class BrowserNotification {
     
     fileprivate let delay = 15.0
     fileprivate let stashUrlEreg = "(http|https)://(.+)/projects/(.+)/repos/(.+)/pull-requests"
-    fileprivate let taskIdEreg = "([A-Z]+-[0-9])\\w+"
     fileprivate let browsersIds = ["com.apple.Safari", "com.google.Chrome"]
     fileprivate var timer: Timer?
     fileprivate var extensionsInteractor = ExtensionsInteractor()
@@ -48,7 +47,7 @@ class BrowserNotification {
     
     @objc func handleTimer (timer: Timer) {
         
-        let app: NSRunningApplication = NSWorkspace.shared().frontmostApplication!
+        let app: NSRunningApplication = NSWorkspace.shared.frontmostApplication!
         let appId = app.bundleIdentifier!
 //        RCLogO(appId)
         
@@ -68,14 +67,14 @@ class BrowserNotification {
             return
         }
         
-        reader = ReadTasksInteractor(repository: localRepository)
+        reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let existingTasks = reader!.tasksInDay(Date())
         
         guard let startDay = existingTasks.first else {
             return
         }
         let settings: Settings = SettingsInteractor().getAppSettings()
-        let maxDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
+        let maxDuration = TimeInteractor(settings: settings).workingDayLength()
         let workedDuration = Date().timeIntervalSince( startDay.endDate )
         guard workedDuration < maxDuration else {
             // Do not track browser events past working duration
@@ -84,9 +83,8 @@ class BrowserNotification {
         
         extensionsInteractor.getBrowserInfo(browserId: appId, completion: { (url, title) in
             
-            RCLog(url)
-//            RCLog(title)
-            
+            RCLog("Analyzing url: \(url), title: \(title)")
+
             if self.isCodeRevLink(url) {
                 if self.isWastingTime() {
                     self.handleWastingTimeEnd()
@@ -94,11 +92,9 @@ class BrowserNotification {
                 if !self.isInCodeRev() {
                     self.handleCodeRevStart()
                 }
-                // Store the task you are reviewing
-                let regex = try! NSRegularExpression(pattern: self.taskIdEreg, options: [])
-                let match = regex.firstMatch(in: title, options: [], range: NSRange(location: 0, length: title.characters.count))
-                if let match = match {
-                    let taskNumber = (title as NSString).substring(with: match.range)
+                // Find the taskNumber of the branch you're reviewing
+                let branchParser = ParseGitBranch(branchName: title)
+                if let taskNumber = branchParser.taskNumber() {
                     if !self.reviewedTasks.contains(taskNumber) {
                         self.reviewedTasks.append(taskNumber)
                     }
@@ -145,10 +141,10 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings = localRepository.settings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= Double(settings.minCodeRevDuration).minToSec {
+        if duration >= Double(settings.settingsBrowser.minCodeRevDuration).minToSec {
             self.codeReviewDidEnd?()
         } else {
-            RCLog("Discard code review session with duration \(duration) < \(Double(settings.minCodeRevDuration).minToSec)")
+            RCLog("Discard code review session with duration \(duration) < \(Double(settings.settingsBrowser.minCodeRevDuration).minToSec)")
         }
         startDate = nil
     }
@@ -156,9 +152,11 @@ extension BrowserNotification {
     fileprivate func isCodeRevLink (_ url: String) -> Bool {
         
         let settings = localRepository.settings()
-        let coderevLink = settings.codeRevLink != "" ? settings.codeRevLink : self.stashUrlEreg
-        let coderevRegex = try! NSRegularExpression(pattern: coderevLink, options: [])
-        let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
+        let coderevLink = settings.settingsBrowser.codeRevLink != "" ? settings.settingsBrowser.codeRevLink : self.stashUrlEreg
+        guard let coderevRegex = try? NSRegularExpression(pattern: coderevLink, options: []) else {
+            return false
+        }
+        let matches = coderevRegex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
         
         return matches.count > 0
     }
@@ -188,10 +186,10 @@ extension BrowserNotification {
         self.endDate = Date()
         let settings: Settings = SettingsInteractor().getAppSettings()
         let duration = self.endDate!.timeIntervalSince(startDate!)
-        if duration >= Double(settings.minWasteDuration).minToSec {
+        if duration >= Double(settings.settingsBrowser.minWasteDuration).minToSec {
             self.wastingTimeDidEnd?()
         } else {
-            RCLog("Discard wasting time session with duration \(duration) < \(Double(settings.minWasteDuration).minToSec)")
+            RCLog("Discard wasting time session with duration \(duration) < \(Double(settings.settingsBrowser.minWasteDuration).minToSec)")
         }
         startDate = nil
     }
@@ -199,9 +197,12 @@ extension BrowserNotification {
     fileprivate func isWastingTimeLink (_ url: String) -> Bool {
         
         let settings = localRepository.settings()
-        for link in settings.wasteLinks {
+        for link in settings.settingsBrowser.wasteLinks {
+            guard link != "" else {
+                continue
+            }
             let regex = try! NSRegularExpression(pattern: link, options: [])
-            let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.characters.count))
+            let matches = regex.matches(in: url, options: [], range: NSRange(location: 0, length: url.count))
             if matches.count > 0 {
                 return true
             }

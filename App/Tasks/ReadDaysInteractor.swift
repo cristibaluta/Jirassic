@@ -10,43 +10,54 @@ import Foundation
 
 class ReadDaysInteractor: RepositoryInteractor {
 	
-	fileprivate var tasks = [Task]()
+	private var tasks = [Task]()
 	
-    override init (repository: Repository) {
-        super.init(repository: repository)
+    override init (repository: Repository, remoteRepository: Repository?) {
+        super.init(repository: repository, remoteRepository: remoteRepository)
 	}
     
     /*
-     Query the objects from the repository before getting the weeks and days
+     Query the objects from the local repository then from remote if enabled
      */
     func query (_ completion: @escaping (_ weeks: [Week]) -> Void) {
         
-        repository.queryTasks(0, completion: { (tasks, error) in
+        queryLocalTasks({ [weak self] (tasks: [Task]) in
             
-            self.tasks = tasks
-            self.tasks.sort { (task1: Task, task2: Task) -> Bool in
-                return task1.endDate.compare(task2.endDate) == .orderedDescending
+            guard let _self = self else {
+                return
             }
+            _self.tasks = tasks
+            completion( _self.weeks() )
             
-            completion(self.weeks())
-            
-            if let remoteRepository = remoteRepository {
-                let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
+            if let remoteRepository = _self.remoteRepository {
+                
+                let sync = RCSync<Task>(localRepository: _self.repository, remoteRepository: remoteRepository)
                 sync.start { hasIncomingChanges in
                     
                     if hasIncomingChanges {
-                        self.repository.queryTasks(0, completion: { (tasks, error) in
+                        _self.queryLocalTasks({ [weak self] (tasks: [Task]) in
                             
-                            self.tasks = tasks
-                            self.tasks.sort { (task1: Task, task2: Task) -> Bool in
-                                return task1.endDate.compare(task2.endDate) == .orderedDescending
+                            guard let _self = self else {
+                                return
                             }
-                            
-                            completion(self.weeks())
+                            _self.tasks = tasks
+                            completion(_self.weeks())
                         })
                     }
                 }
             }
+        })
+    }
+    
+    private func queryLocalTasks (_ completion: @escaping (_ tasks: [Task]) -> Void) {
+        
+        repository.queryTasks(0, completion: { [weak self] (tasks, error) in
+            
+            guard let _self = self else {
+                return
+            }
+            let tasks = _self.sorted(tasks: tasks)
+            completion(tasks)
         })
     }
 	
@@ -83,7 +94,13 @@ class ReadDaysInteractor: RepositoryInteractor {
 		return objects
 	}
 	
-	fileprivate func days (ofWeek week: Week) -> [Day] {
+    private func sorted (tasks: [Task]) -> [Task] {
+        return tasks.sorted { (task1: Task, task2: Task) -> Bool in
+            return task1.endDate.compare(task2.endDate) == .orderedDescending
+        }
+    }
+    
+	private func days (ofWeek week: Week) -> [Day] {
 		
 		var objects = [Day]()
 		var referenceDate = Date.distantFuture

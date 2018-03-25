@@ -37,7 +37,7 @@ class UserInteractor: RepositoryInteractor {
     
     fileprivate func register (_ credentials: UserCredentials) {
         
-        let registerInteractor = RegisterUserInteractor(repository: self.repository)
+        let registerInteractor = RegisterUserInteractor(repository: self.repository, remoteRepository: self.remoteRepository)
         registerInteractor.onRegisterSuccess = { [weak self] in
             self?.onLoginSuccess?()
         }

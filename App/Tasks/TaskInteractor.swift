@@ -26,7 +26,7 @@ class TaskInteractor: RepositoryInteractor {
     func deleteTask (_ task: Task) {
         
         self.repository.deleteTask(task, permanently: false, completion: { (success: Bool) -> Void in
-            if let remoteRepository = remoteRepository {
+            if let remoteRepository = self.remoteRepository {
                 let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
                 sync.deleteTask(task, completion: { (success) in
                     
@@ -37,7 +37,7 @@ class TaskInteractor: RepositoryInteractor {
     
     fileprivate func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
         
-        if let remoteRepository = remoteRepository {
+        if let remoteRepository = self.remoteRepository {
             let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
             sync.saveTask(task, completion: { (success) in
                 DispatchQueue.main.async {

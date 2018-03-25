@@ -17,6 +17,7 @@ class TasksScrollView: NSScrollView {
 	var didAddRow: ((_ row: Int) -> ())?
     var didRemoveRow: ((_ row: Int) -> ())?
     var didChangeSettings: (() -> ())?
+    var didEndDay: ((_ tasks: [Task]) -> ())?
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -41,6 +42,9 @@ class TasksScrollView: NSScrollView {
         dataSource.didRemoveRow = { [weak self] (row: Int) -> Void in
             self?.didRemoveRow!(row)
         }
+        dataSource.didEndDay = { [weak self] (tasks: [Task]) -> Void in
+            self?.didEndDay!(tasks)
+        }
         
         self.dataSource = dataSource
     }
@@ -52,6 +56,9 @@ class TasksScrollView: NSScrollView {
         let dataSource = ReportsDataSource(tableView: tableView, reports: reports)
         tableView!.dataSource = dataSource
         tableView!.delegate = dataSource
+        if #available(OSX 10.13, *) {
+            tableView!.usesAutomaticRowHeights = true
+        }
         
         let headerView = ReportsHeaderView()
         headerView.didChangeSettings = { [weak self] in
@@ -59,9 +66,9 @@ class TasksScrollView: NSScrollView {
         }
         
         let settings = SettingsInteractor().getAppSettings()
-        headerView.targetTime = Date.secondsToPercentTime(settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime))
+        headerView.workdayTime = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength())
         let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
-        headerView.totalTime = localPreferences.bool(.usePercents) 
+        headerView.workedTime = localPreferences.bool(.usePercents)
             ? "\(Date.secondsToPercentTime(totalTime))"
             : Date(timeIntervalSince1970: totalTime).HHmmGMT()
         tableView!.headerView = headerView
@@ -77,11 +84,11 @@ class TasksScrollView: NSScrollView {
         self.hasVerticalScroller = true
         
         tableView = NSTableView(frame: self.frame)
-        tableView!.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
+        tableView!.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
         tableView!.backgroundColor = NSColor.clear
         tableView!.headerView = nil
         
-        let column = NSTableColumn(identifier: "taskColumn")
+        let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "taskColumn"))
         column.width = 400
         tableView.addTableColumn(column)
         

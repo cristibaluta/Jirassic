@@ -4,7 +4,8 @@
 	<suite name="Jirassic Suite" code="Note" description="Jirassic-specific classes.">
 		
 		<class name="task" plural="tasks" code="gitt" description="Add Git commits to Jirassic as tasks that finished.">
-			<cocoa class="NSApplication"/>
+			
+            <cocoa class="NSApplication"/>
 			<type type="text"/>
 			
 			<responds-to name="logCommit:ofBranch:">
@@ -14,19 +15,7 @@
 			<property name="task" code="iMod" type="text" access="rw" description="Add a commit message to Jirassic">
 				<cocoa key="tasks"/>
 			</property>
-			
-			<record-type name="commit details" code="gitc">
-				<property name="branch" code="gitb" type="text" description="The commit branch">
-					<cocoa key="NSCopies"/>
-				</property>
-				<property name="message" code="gitm" type="text" description="The commit message">
-					<cocoa key="NSCopies"/>
-				</property>
-			</record-type>
-
-			<property name="commit" code="comc" type="commit details" access="rw" description="Commit a message">
-				<cocoa key="commit"/>
-			</property>
+            
 		</class>
 		
 	</suite>￼

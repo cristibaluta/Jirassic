@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="HookupCell" id="c22-O7-iKe" customClass="HookupCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" borderType="line" title="Hookups" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Mt-WYx">
+                    <rect key="frame" x="-3" y="-4" width="486" height="164"/>
+                    <view key="contentView" id="ZSq-u6-jDQ">
+                        <rect key="frame" x="1" y="1" width="484" height="148"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b27-6N-xUR">
+                                <rect key="frame" x="11" y="80" width="406" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="To find the full path to your custom cmd type in terminal &quot;which cmd-name&quot;" id="lL2-dX-L8R">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fZ-Cp-eRf">
+                                <rect key="frame" x="11" y="55" width="102" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Full path to cmd" id="mU5-gT-oxO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-eE-Nay">
+                                <rect key="frame" x="130" y="50" width="334" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. /usr/local/bin/cmdName" bezelStyle="round" id="aEb-dy-B5y">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="130" id="0hv-CJ-oUG"/>
+                            <constraint firstItem="Iya-eE-Nay" firstAttribute="top" secondItem="ZSq-u6-jDQ" secondAttribute="top" constant="76" id="19n-Ft-7VE"/>
+                            <constraint firstAttribute="trailing" secondItem="Iya-eE-Nay" secondAttribute="trailing" constant="20" id="rQW-Wa-C1V"/>
+                        </constraints>
+                    </view>
+                </box>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="1n4-yT-yeV">
+                    <rect key="frame" x="8" y="19" width="194" height="18"/>
+                    <buttonCell key="cell" type="check" title="Include credentials from Jira" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wCg-nU-14d">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleEnableCredentialsButton:" target="c22-O7-iKe" id="OgZ-8x-bua"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-Wa-fQ9">
+                    <rect key="frame" x="400" y="116" width="60" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Enabled" alternateTitle="Disabled" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cHn-29-2sZ">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleEnableButton:" target="c22-O7-iKe" id="zM4-E4-JSc"/>
+                    </connections>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vab-FZ-KUf">
+                    <rect key="frame" x="10" y="117" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="BJj-aW-htN"/>
+                        <constraint firstAttribute="width" constant="18" id="y1y-gJ-GEO"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="3Rh-Ib-RZF"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTM-Hh-or6">
+                    <rect key="frame" x="32" y="118" width="140" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking hookup cmd" id="RRt-S7-Jdp">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1n4-yT-yeV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="7FC-0O-z6m"/>
+                <constraint firstAttribute="bottom" secondItem="1n4-yT-yeV" secondAttribute="bottom" constant="21" id="Fnt-B4-6oF"/>
+                <constraint firstItem="LTM-Hh-or6" firstAttribute="top" secondItem="Vab-FZ-KUf" secondAttribute="top" id="LBz-Y1-yIu"/>
+                <constraint firstItem="VoS-Wa-fQ9" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="W6f-VP-lxq"/>
+                <constraint firstItem="Vab-FZ-KUf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="Wo4-bi-vVB"/>
+                <constraint firstItem="Vab-FZ-KUf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="jb5-rb-scr"/>
+                <constraint firstAttribute="trailing" secondItem="Fpy-Mt-WYx" secondAttribute="trailing" id="nh3-SO-LZj"/>
+                <constraint firstItem="Fpy-Mt-WYx" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="oom-bt-TOY"/>
+                <constraint firstItem="Fpy-Mt-WYx" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="pkk-tz-Ldp"/>
+                <constraint firstAttribute="bottom" secondItem="Fpy-Mt-WYx" secondAttribute="bottom" id="sez-Ws-3bx"/>
+                <constraint firstItem="LTM-Hh-or6" firstAttribute="leading" secondItem="Vab-FZ-KUf" secondAttribute="trailing" constant="6" id="vkf-Q8-gRV"/>
+                <constraint firstAttribute="trailing" secondItem="VoS-Wa-fQ9" secondAttribute="trailing" constant="20" id="x7V-Wp-rdS"/>
+            </constraints>
+            <connections>
+                <outlet property="butEnable" destination="VoS-Wa-fQ9" id="MJj-d1-4f1"/>
+                <outlet property="butEnableCredentials" destination="1n4-yT-yeV" id="pQg-tM-OGH"/>
+                <outlet property="hookupNameTextField" destination="Iya-eE-Nay" id="o3i-AN-ae3"/>
+                <outlet property="statusImageView" destination="Vab-FZ-KUf" id="hhL-on-F9D"/>
+                <outlet property="statusTextField" destination="LTM-Hh-or6" id="uPs-rA-D8v"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="204"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSStatusNone" width="16" height="16"/>
+    </resources>
+</document>

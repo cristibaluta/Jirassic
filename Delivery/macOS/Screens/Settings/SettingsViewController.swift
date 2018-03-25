@@ -8,49 +8,27 @@
 
 import Cocoa
 
+enum SettingsTab: Int {
+    case tracking = 0
+    case input = 1
+    case output = 2
+}
+
 class SettingsViewController: NSViewController {
     
     @IBOutlet fileprivate var tabView: NSTabView!
-    // Extensions
-    // shell
-    @IBOutlet fileprivate var jirassicImageView: NSImageView!
-    @IBOutlet fileprivate var jirassicTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJirassic: NSButton!
-    // git
-    @IBOutlet fileprivate var jitImageView: NSImageView!
-    @IBOutlet fileprivate var jitTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallJit: NSButton!
-    // browser: code reviews and wasted time
-    @IBOutlet fileprivate var coderevImageView: NSImageView!
-    @IBOutlet fileprivate var coderevTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallCoderev: NSButton!
-    @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
-    @IBOutlet fileprivate var butTrackWastedTime: NSButton!
-    @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
-    @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
-    
-    // Settings
-    @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
-    @IBOutlet fileprivate var butAutotrack: NSButton!
-    @IBOutlet fileprivate var autotrackingModeSegmentedControl: NSSegmentedControl!
-    @IBOutlet fileprivate var butTrackStartOfDay: NSButton!
-    @IBOutlet fileprivate var butTrackLunch: NSButton!
-    @IBOutlet fileprivate var butTrackScrum: NSButton!
-    @IBOutlet fileprivate var butTrackMeetings: NSButton!
-    @IBOutlet fileprivate var startOfDayTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var endOfDayTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var lunchTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var scrumTimePicker: NSDatePicker!
-    @IBOutlet fileprivate var minSleepDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minSleepDurationSlider: NSSlider!
-    @IBOutlet fileprivate var minCodeRevDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
-    @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
     @IBOutlet fileprivate var butBackup: NSButton!
+    @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
+    // Tracking tab
+    @IBOutlet fileprivate var trackingScrollView: TrackingScrollView!
+    // Input tab
+    @IBOutlet fileprivate var inputsScrollView: InputsScrollView!
+    // Output tab
+    @IBOutlet fileprivate var outputsScrollView: OutputsScrollView!
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 	
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -61,9 +39,9 @@ class SettingsViewController: NSViewController {
         
         #if !APPSTORE
             butBackup.isEnabled = false
-            butBackup.state = NSOffState
+            butBackup.state = NSControl.StateValue.off
             butEnableLaunchAtStartup.isEnabled = false
-            butEnableLaunchAtStartup.state = NSOffState
+            butEnableLaunchAtStartup.state = NSControl.StateValue.off
         #endif
     }
     
@@ -71,27 +49,15 @@ class SettingsViewController: NSViewController {
         super.viewWillDisappear()
         
         let settings = Settings(
-            
-            autotrack: butAutotrack.state == NSOnState,
-            autotrackingMode: TrackingMode(rawValue: autotrackingModeSegmentedControl.selectedSegment)!,
-            trackLunch: butTrackLunch.state == NSOnState,
-            trackScrum: butTrackScrum.state == NSOnState,
-            trackMeetings: true,//butTrackMeetings.state == NSOnState,
-            trackCodeReviews: butTrackCodeReviews.state == NSOnState,
-            trackWastedTime: butTrackWastedTime.state == NSOnState,
-            trackStartOfDay: butTrackStartOfDay.state == NSOnState,
-            enableBackup: butBackup.state == NSOnState,
-            startOfDayTime: startOfDayTimePicker.dateValue,
-            endOfDayTime: endOfDayTimePicker.dateValue,
-            lunchTime: lunchTimePicker.dateValue,
-            scrumTime: scrumTimePicker.dateValue,
-            minSleepDuration: minSleepDurationSlider.integerValue,
-            minCodeRevDuration: minCodeRevDurationSlider.integerValue,
-            codeRevLink: codeReviewsLinkTextField.stringValue,
-            minWasteDuration: minWasteDurationSlider.integerValue,
-            wasteLinks: wastedTimeLinksTextField.stringValue.toArray()
+            enableBackup: butBackup.state == NSControl.StateValue.on,
+            settingsTracking: trackingScrollView.settings(),
+            settingsBrowser: inputsScrollView.settings()
         )
         presenter!.saveAppSettings(settings)
+        
+        trackingScrollView.save()
+        inputsScrollView.save()
+        outputsScrollView.save()
     }
     
     deinit {
@@ -101,56 +67,18 @@ class SettingsViewController: NSViewController {
 
 extension SettingsViewController {
 	
-    @IBAction func handleInstallJitButton (_ sender: NSButton) {
-        #if APPSTORE
-            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #else
-//            presenter?.installJit()
-            NSWorkspace.shared().open( URL(string: "https://github.com/ralcr/Jit")!)
-        #endif
-    }
-    
-    @IBAction func handleInstallJirassicButton (_ sender: NSButton) {
-        #if APPSTORE
-            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #else
-//            presenter?.installJirassic()
-            NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #endif
-    }
-    
-    @IBAction func handleInstallBrowserSupportButton (_ sender: NSButton) {
-        NSWorkspace.shared().open( URL(string: "http://www.jirassic.com/#extensions")!)
-    }
-    
-	@IBAction func handleSaveButton (_ sender: NSButton) {
-		
+    @IBAction func handleSaveButton (_ sender: NSButton) {
         appWireframe!.flipToTasksController()
-	}
-    
-    @IBAction func handleAutoTrackButton (_ sender: NSButton) {
-        autotrackingModeSegmentedControl.isEnabled = sender.state == NSOnState
     }
     
     @IBAction func handleBackupButton (_ sender: NSButton) {
-        presenter!.enabledBackup(sender.state == NSOnState)
+        presenter!.enableBackup(sender.state == NSControl.StateValue.on)
     }
     
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
-        presenter!.enabledLaunchAtStartup(sender.state == NSOnState)
+        presenter!.enableLaunchAtStartup(sender.state == NSControl.StateValue.on)
     }
     
-    @IBAction func handleMinSleepDuration (_ sender: NSSlider) {
-        minSleepDurationLabel.stringValue = "Ignore sleeps shorter than \(sender.integerValue) minutes"
-    }
-    
-    @IBAction func handleMinCodeRevDuration (_ sender: NSSlider) {
-        minCodeRevDurationLabel.stringValue = "\(sender.integerValue) min"
-    }
-    
-    @IBAction func handleMinWasteDuration (_ sender: NSSlider) {
-        minWasteDurationLabel.stringValue = "\(sender.integerValue) min"
-    }
 }
 
 extension SettingsViewController: Animatable {
@@ -163,92 +91,60 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
+    func setShellStatus (compatible: Bool, scriptInstalled: Bool) {
+        inputsScrollView.setShellStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    }
+    
     func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
-        
-        if scriptInstalled {
-            jirassicImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
-            jirassicTextField.stringValue = compatible ? "Run 'jirassic' in Terminal for more info" : "Applescript installed but jirassic cmd is outdated/uninstalled"
-        } else {
-            jirassicImageView.image = NSImage(named: NSImageNameStatusUnavailable)
-            jirassicTextField.stringValue = "Not installed yet"
-        }
-        butInstallJirassic.isHidden = scriptInstalled && compatible
+        inputsScrollView.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
     func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
-        
-        if scriptInstalled {
-            jitImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusPartiallyAvailable)
-            jitTextField.stringValue = compatible ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info" : "Applescript installed but jit cmd is outdated/uninstalled"
-        } else {
-            jitImageView.image = NSImage(named: NSImageNameStatusUnavailable)
-            jitTextField.stringValue = "Not installed yet"
-        }
-        butInstallJit.isHidden = scriptInstalled && compatible
+        inputsScrollView.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
     }
     
-    func setCodeReviewStatus (compatible: Bool, scriptInstalled: Bool) {
-        
-        if scriptInstalled {
-            coderevImageView.image = NSImage(named: compatible ? NSImageNameStatusAvailable : NSImageNameStatusUnavailable)
-            coderevTextField.stringValue = compatible ? "Jirassic can read the url of your browser and it will log time based on it" : "Applescript installed but outdated"
-        } else {
-            coderevImageView.image = NSImage(named: NSImageNameStatusUnavailable)
-            coderevTextField.stringValue = "Not installed yet"
-        }
-        butInstallCoderev.isHidden = scriptInstalled && compatible
+    func setGitStatus (scriptInstalled: Bool) {
+        inputsScrollView.setGitStatus (scriptInstalled: scriptInstalled)
+    }
+    
+    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {
+        inputsScrollView.setBrowserStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    }
+    
+    func setHookupStatus (scriptInstalled: Bool) {
+        outputsScrollView.setHookupStatus (scriptInstalled: scriptInstalled)
     }
     
     func showAppSettings (_ settings: Settings) {
         
-        // Tracking
+        trackingScrollView.showSettings(settings.settingsTracking)
+        inputsScrollView.showSettings(settings.settingsBrowser)
         
-        butAutotrack.state = settings.autotrack ? NSOnState : NSOffState
-        autotrackingModeSegmentedControl.selectedSegment = settings.autotrackingMode.rawValue
-        minSleepDurationSlider.integerValue = settings.minSleepDuration
-        handleMinSleepDuration(minSleepDurationSlider)
-        butTrackStartOfDay.state = settings.trackStartOfDay ? NSOnState : NSOffState
-        butTrackLunch.state = settings.trackLunch ? NSOnState : NSOffState
-        butTrackScrum.state = settings.trackScrum ? NSOnState : NSOffState
-        
-        startOfDayTimePicker.dateValue = settings.startOfDayTime
-        endOfDayTimePicker.dateValue = settings.endOfDayTime
-        lunchTimePicker.dateValue = settings.lunchTime
-        scrumTimePicker.dateValue = settings.scrumTime
-        
-        // Extensions
-        
-        butTrackCodeReviews.state = settings.trackCodeReviews ? NSOnState : NSOffState
-        butTrackWastedTime.state = settings.trackWastedTime ? NSOnState : NSOffState
-        codeReviewsLinkTextField.stringValue = settings.codeRevLink
-        wastedTimeLinksTextField.stringValue = settings.wasteLinks.toString()
-        minCodeRevDurationSlider.integerValue = settings.minCodeRevDuration
-        handleMinCodeRevDuration(minCodeRevDurationSlider)
-        minWasteDurationSlider.integerValue = settings.minWasteDuration
-        handleMinWasteDuration(minWasteDurationSlider)
-        
-        // Generic
-        
-        butBackup.state = settings.enableBackup ? NSOnState : NSOffState
+        butBackup.state = settings.enableBackup ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
-    func enabledLaunchAtStartup (_ enabled: Bool) {
-        butEnableLaunchAtStartup.state = enabled ? NSOnState : NSOffState
+    func enableLaunchAtStartup (_ enabled: Bool) {
+        butEnableLaunchAtStartup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
-    func enabledBackup (_ enabled: Bool, title: String) {
-        butBackup.state = enabled ? NSOnState : NSOffState
+    func enableBackup (_ enabled: Bool, title: String) {
+        butBackup.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
         butBackup.title = title
     }
     
-    func selectTab (atIndex index: Int) {
-        tabView.selectTabViewItem(at: index)
+    func selectTab (_ tab: SettingsTab) {
+        tabView.selectTabViewItem(at: tab.rawValue)
+        if tab == .output {
+//            presenter?.loadJiraProjects()
+        }
     }
 }
 
 extension SettingsViewController: NSTabViewDelegate {
     
     func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
-        RCPreferences<LocalPreferences>().set(tabViewItem?.label == "Tracking" ? 0 : 1, forKey: .settingsActiveTab)
+        if let item = tabViewItem {
+            localPreferences.set( tabView.indexOfTabViewItem(item), forKey: .settingsActiveTab)
+        }
     }
 }

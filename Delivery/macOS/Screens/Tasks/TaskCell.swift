@@ -10,19 +10,19 @@ import Cocoa
 
 class TaskCell: NSTableRowView, CellProtocol {
     
-    @IBOutlet var contentView: NSView?
+    @IBOutlet var contentView: NSView!
     
 	@IBOutlet var statusImage: NSImageView?
-	@IBOutlet fileprivate var dateEndTextField: NSTextField?
-	@IBOutlet fileprivate var issueNrTextField: NSTextField?
-    @IBOutlet fileprivate var notesTextField: NSTextField?
-    @IBOutlet fileprivate var notesTextFieldRightConstrain: NSLayoutConstraint?
+	@IBOutlet fileprivate var dateEndTextField: TimeBox!
+	@IBOutlet fileprivate var issueNrTextField: NSTextField!
+    @IBOutlet fileprivate var notesTextField: NSTextField!
+    @IBOutlet fileprivate var notesTextFieldRightConstrain: NSLayoutConstraint!
     
-    @IBOutlet fileprivate var butAdd: NSButton?
-	@IBOutlet fileprivate var butRemove: NSButton?
+    @IBOutlet fileprivate var butAdd: NSButton!
+	@IBOutlet fileprivate var butRemove: NSButton!
     
-    @IBOutlet fileprivate var line1: NSBox?
-    @IBOutlet fileprivate var line2: NSBox?
+    @IBOutlet fileprivate var line1: NSBox!
+    @IBOutlet fileprivate var line2: NSBox!
 	
 	fileprivate var isEditing = false
 	fileprivate var wasEdited = false
@@ -44,17 +44,17 @@ class TaskCell: NSTableRowView, CellProtocol {
 			return (
                 dateStart: nil,
                 dateEnd: date,
-                taskNumber: self.issueNrTextField!.stringValue,
-                notes: self.notesTextField!.stringValue,
+                taskNumber: self.issueNrTextField.stringValue,
+                notes: self.notesTextField.stringValue,
                 taskType: .issue
             )
 		}
 		set {
             _dateEnd = newValue.dateEnd
             _dateEndHHmm = _dateEnd.HHmm()
-            dateEndTextField!.stringValue = _dateEndHHmm
-			issueNrTextField!.stringValue = newValue.taskNumber
-			notesTextField!.stringValue = newValue.notes
+            dateEndTextField.stringValue = _dateEndHHmm
+			issueNrTextField.stringValue = newValue.taskNumber
+			notesTextField.stringValue = newValue.notes
 		}
 	}
     var duration: String {
@@ -66,12 +66,21 @@ class TaskCell: NSTableRowView, CellProtocol {
         }
     }
     var isDark: Bool = false
+    var isEditable: Bool = true {
+        didSet {
+            dateEndTextField.isEditable = isEditable
+            issueNrTextField.isEditable = isEditable
+            notesTextField.isEditable = isEditable
+        }
+    }
     
 	override func awakeFromNib() {
         super.awakeFromNib()
 		showMouseOverControls(false)
-        notesTextFieldRightConstrain!.constant = 0
-        dateEndTextField!.textColor = AppDelegate.sharedApp().theme.textColor
+        notesTextFieldRightConstrain.constant = 0
+        dateEndTextField.didEndEditing = {
+            self.didEndEditingCell?(self)
+        }
 	}
 }
 
@@ -126,18 +135,20 @@ extension TaskCell {
 	}
 	
 	func showMouseOverControls (_ show: Bool) {
-		self.butRemove?.isHidden = !show
-		self.butAdd?.isHidden = !show
-        line1?.isHidden = !show
-        line2?.isHidden = !show
-		self.dateEndTextField?.isEditable = show
+		self.butRemove.isHidden = !show
+		self.butAdd.isHidden = !show
+        line1.isHidden = !show
+        line2.isHidden = !show
+		self.dateEndTextField?.isEditable = isEditable && show
 	}
 	
 	func ensureTrackingArea() {
 		if trackingArea == nil {
 			trackingArea = NSTrackingArea(
 				rect: NSZeroRect,
-				options: [NSTrackingAreaOptions.inVisibleRect, .activeAlways, .mouseEnteredAndExited],
+				options: [NSTrackingArea.Options.inVisibleRect,
+                          NSTrackingArea.Options.activeAlways,
+                          NSTrackingArea.Options.mouseEnteredAndExited],
 				owner: self,
 				userInfo: nil
 			)
@@ -147,45 +158,8 @@ extension TaskCell {
 	override func updateTrackingAreas() {
 		super.updateTrackingAreas()
 		self.ensureTrackingArea()
-		if !(self.trackingAreas as NSArray).contains(self.trackingArea!) {
-			self.addTrackingArea(self.trackingArea!);
+		if !self.trackingAreas.contains(self.trackingArea!) {
+			self.addTrackingArea(self.trackingArea!)
 		}
-	}
-}
-
-extension TaskCell: NSTextFieldDelegate {
-	
-	override func controlTextDidBeginEditing (_ obj: Notification) {
-		isEditing = true
-	}
-	
-	override func controlTextDidChange (_ obj: Notification) {
-		wasEdited = true
-		if obj.object as? NSTextField == dateEndTextField {
-			let predictor = PredictiveTimeTyping()
-			let comps = dateEndTextField!.stringValue.components(separatedBy: _dateEndHHmm)
-			let newDigit = (comps.count == 1 && _dateEndHHmm != "") ? "" : comps.last
-			_dateEndHHmm = predictor.timeByAdding(newDigit!, to: _dateEndHHmm)
-			dateEndTextField?.stringValue = _dateEndHHmm
-		}
-	}
-	
-	override func controlTextDidEndEditing (_ obj: Notification) {
-        if wasEdited {
-            wasEdited = false
-			self.didEndEditingCell?(self)
-		}
-	}
-	
-	func control (_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-		
-		if control as? NSTextField == dateEndTextField {
-			RCLog(commandSelector)
-			if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
-				self.didEndEditingCell?(self)
-				wasEdited = false
-			}
-		}
-		return false
 	}
 }

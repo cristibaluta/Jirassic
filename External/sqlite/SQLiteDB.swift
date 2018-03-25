@@ -12,7 +12,7 @@ let SQLITE_DATE = SQLITE_NULL + 1
 fileprivate let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
 fileprivate let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
-@objc(SQLiteDB)
+@objcMembers
 class SQLiteDB: NSObject {
     
     static var sql_logs_enabled = false
@@ -281,7 +281,7 @@ extension SQLiteDB {
 			var tmp = String(validatingUTF8:buf!)!.uppercased()
 			// Remove bracketed section
 			if let pos = tmp.range(of:"(") {
-				tmp = tmp.substring(to:pos.lowerBound)
+				tmp = String(tmp[..<pos.lowerBound])
 			}
 			// Remove unsigned?
 			// Remove spaces
@@ -359,10 +359,16 @@ extension SQLiteDB {
 					strptime(txt, "%Y-%m-%d %H:%M:%S", &time)
 					time.tm_isdst = -1
 					let diff = TimeZone.current.secondsFromGMT()
-					let t = mktime(&time) + diff
-					let ti = TimeInterval(t)
-					let val = Date(timeIntervalSince1970: ti)
-					return val
+                    let tz = TimeZone.current
+                    var t = Double(mktime(&time) + diff)
+                    var ti = TimeInterval(t)
+                    var val = Date(timeIntervalSince1970: ti)
+                    if tz.isDaylightSavingTime(for: val) {
+                        t = t + tz.daylightSavingTimeOffset(for: val)
+                        ti = TimeInterval(t)
+                        val = Date(timeIntervalSince1970: ti)
+                    }
+                    return val
 				}
 			}
 			// If not a text date, then it's a time interval

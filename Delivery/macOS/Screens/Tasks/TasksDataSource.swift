@@ -10,6 +10,8 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
+let kFooterCellSmallHeight = CGFloat(70.0)
+let kFooterCellLargeHeight = CGFloat(135.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
@@ -17,21 +19,26 @@ class TasksDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
     fileprivate var tasks: [Task] = []
-    var didAddRow: ((_ row: Int) -> ())?
-    var didRemoveRow: ((_ row: Int) -> ())?
+    var didAddRow: ((_ row: Int) -> Void)?
+    var didRemoveRow: ((_ row: Int) -> Void)?
+    var didEndDay: ((_ tasks: [Task]) -> Void)?
     
     init (tableView: NSTableView, tasks: [Task]) {
         self.tableView = tableView
         self.tasks = tasks
         
-        assert(NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) != nil, "err")
+        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: FooterCell.self)), bundle: Bundle.main) != nil, "err")
         
-        if let nib = NSNib(nibNamed: String(describing: TaskCell.self), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: String(describing: TaskCell.self))
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)))
         }
-        if let nib = NSNib(nibNamed: String(describing: NonTaskCell.self), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: String(describing: NonTaskCell.self))
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)))
+        }
+        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: FooterCell.self)), bundle: Bundle.main) {
+            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: FooterCell.self)))
         }
     }
     
@@ -40,10 +47,10 @@ class TasksDataSource: NSObject {
         var cell: CellProtocol? = nil
         switch taskType {
         case TaskType.issue, TaskType.gitCommit:
-            cell = self.tableView.make(withIdentifier: String(describing: TaskCell.self), owner: self) as? TaskCell
+            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)), owner: self) as? TaskCell
             break
         default:
-            cell = self.tableView.make(withIdentifier: String(describing: NonTaskCell.self), owner: self) as? NonTaskCell
+            cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)), owner: self) as? NonTaskCell
             break
         }
         
@@ -57,25 +64,31 @@ class TasksDataSource: NSObject {
     func removeTaskAtRow (_ row: Int) {
         tasks.remove(at: row)
         tableView.removeRows(at: IndexSet(integer: row), 
-                             withAnimation: NSTableViewAnimationOptions.effectFade)
+                             withAnimation: NSTableView.AnimationOptions.effectFade)
     }
 }
 
 extension TasksDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
-        return tasks.count
+        guard tasks.count > 0 else {
+            return 0
+        }
+        return tasks.count + 1
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        
+
+        guard row < tasks.count else {
+            return kFooterCellSmallHeight
+        }
         let theData = tasks[row]
         // Return predefined height
         switch theData.taskType {
-            case TaskType.issue, TaskType.gitCommit:
-                return kTaskCellHeight
-            default:
-                return kNonTaskCellHeight
+        case TaskType.issue, TaskType.gitCommit:
+            return kTaskCellHeight
+        default:
+            return kNonTaskCellHeight
         }
     }
 }
@@ -83,7 +96,21 @@ extension TasksDataSource: NSTableViewDataSource {
 extension TasksDataSource: NSTableViewDelegate {
     
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
+
+        guard row < tasks.count else {
+            let cell = self.tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: FooterCell.self)), owner: self) as? FooterCell
+
+            cell?.didEndDay = { [weak self] () in
+                if let wself = self {
+                    wself.didEndDay!(wself.tasks)
+                }
+            }
+            cell?.didAddTask = { [weak self] in
+                self?.didAddRow!(tableView.numberOfRows-1)
+            }
+            return cell
+        }
+
         var theData = tasks[row]
         //let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
@@ -97,7 +124,7 @@ extension TasksDataSource: NSTableViewDelegate {
             theData.startDate = updatedData.dateStart
             theData.endDate = updatedData.dateEnd
             self?.tasks[row] = theData// save the changes locally because the struct is passed by copying
-            let saveInteractor = TaskInteractor(repository: localRepository)
+            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(theData, allowSyncing: true, completion: { savedTask in
                 tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
             })

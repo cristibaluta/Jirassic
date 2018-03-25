@@ -19,54 +19,50 @@ extension NSApplication {
         RCLog(json)
         let validJson = json.replacingOccurrences(of: "'", with: "\"")
         
-        if let data = validJson.data(using: String.Encoding.utf8) {
-            do {
-                guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String] else {
-                    return
-                }
-                RCLog(dict)
-                let notes = dict["notes"] ?? ""
-                let taskTitle = dict["branchName"] ?? ""
-                let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : taskTitle
-                let taskType = dict["taskType"] != nil
-                    ? TaskType(rawValue: Int(dict["taskType"]!)!)!
-                    : TaskType.gitCommit
-                let informativeText = "\(taskNumber): \(notes)"
-                
-                let saveInteractor = TaskInteractor(repository: localRepository)
-                let reader = ReadTasksInteractor(repository: localRepository)
-                let currentTasks = reader.tasksInDay(Date())
-                if currentTasks.count == 0 {
-                    let settings: Settings = SettingsInteractor().getAppSettings()
-                    let startDate = settings.startOfDayTime.dateByKeepingTime()
-                    let comps = startDate.components()
-                    let startDayMark = Task(dateEnd: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
-                    saveInteractor.saveTask(startDayMark, allowSyncing: true, completion: { savedTask in
-                        
-                    })
-                }
-                
-                let task = Task(
-                    lastModifiedDate: nil,
-                    startDate: nil,
-                    endDate: Date(),
-                    notes: notes,
-                    taskNumber: taskNumber,
-                    taskTitle: taskTitle,
-                    taskType: taskType,
-                    objectId: String.random()
-                )
-                saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
-                    
-                })
-                
-                UserNotifications().showNotification("Git commit added", informativeText: informativeText)
-                InternalNotifications.notifyAboutNewlyAddedTask(task)
-            }
-            catch let error as NSError {
-                RCLogErrorO(error)
-            }
+        guard let data = validJson.data(using: String.Encoding.utf8) else {
+            return
         }
+        guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String], let dict = jdict else {
+            return
+        }
+        RCLog(dict)
+        let notes = dict["notes"] ?? ""
+        let taskTitle = dict["branchName"] ?? ""
+        let taskNumber = dict["taskNumber"] != "null" ? dict["taskNumber"]! : taskTitle
+        let taskType = dict["taskType"] != nil
+            ? TaskType(rawValue: Int(dict["taskType"]!)!)!
+            : TaskType.gitCommit
+        let informativeText = "\(taskNumber): \(notes)"
+        
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        let currentTasks = reader.tasksInDay(Date())
+        if currentTasks.count == 0 {
+            let settings: Settings = SettingsInteractor().getAppSettings()
+            let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
+            let comps = startDate.components()
+            let startDayMark = Task(endDate: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
+            saveInteractor.saveTask(startDayMark, allowSyncing: true, completion: { savedTask in
+                
+            })
+        }
+        
+        let task = Task(
+            lastModifiedDate: nil,
+            startDate: nil,
+            endDate: Date(),
+            notes: notes,
+            taskNumber: taskNumber,
+            taskTitle: taskTitle,
+            taskType: taskType,
+            objectId: String.random()
+        )
+        saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
+            
+        })
+        
+        UserNotifications().showNotification("Git commit added", informativeText: informativeText)
+        InternalNotifications.notifyAboutNewlyAddedTask(task)
 	}
 	
 	func logCommit (_ commit: String, ofBranch: String) {

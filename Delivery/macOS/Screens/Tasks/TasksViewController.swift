@@ -88,7 +88,7 @@ extension TasksViewController {
     }
     
     @IBAction func handleQuitAppButton (_ sender: NSButton) {
-        NSApplication.shared().terminate(nil)
+        NSApplication.shared.terminate(nil)
     }
     
     @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
@@ -99,6 +99,7 @@ extension TasksViewController {
 extension TasksViewController: TasksPresenterOutput {
     
     func showLoadingIndicator (_ show: Bool) {
+        
         butRefresh!.isHidden = remoteRepository == nil ? true : show
         if show {
             refreshIndicator!.startAnimation(nil)
@@ -145,6 +146,9 @@ extension TasksViewController: TasksPresenterOutput {
             if row >= 0 {
                 self?.presenter!.insertTaskAfterRow(row)
             }
+        }
+        tasksScrollView!.didEndDay = { [weak self] (_ tasks: [Task]) -> Void in
+            self?.presenter!.endDay()
         }
         
         tasksScrollView!.reloadData()
@@ -204,6 +208,31 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
     }
+
+    func presentEndDayController (date: Date, tasks: [Task]) {
+
+        splitView!.isHidden = true
+        appWireframe!.removePlaceholder()
+        hideControls(true)
+
+        let controller = appWireframe!.presentEndDayController(date: date, tasks: tasks)
+        controller.onSave = { [weak self] in
+            if let strongSelf = self {
+                strongSelf.presenter!.updateNoTasksState()
+                strongSelf.appWireframe!.removeEndDayController()
+                strongSelf.splitView!.isHidden = false
+                strongSelf.hideControls(false)
+            }
+        }
+        controller.onCancel = { [weak self] in
+            if let strongSelf = self {
+                strongSelf.appWireframe!.removeEndDayController()
+                strongSelf.splitView!.isHidden = false
+                strongSelf.presenter!.updateNoTasksState()
+                strongSelf.hideControls(false)
+            }
+        }
+    }
 }
 
 extension TasksViewController {
@@ -216,7 +245,7 @@ extension TasksViewController {
 			object: nil)
 	}
 	
-	func handleNewTaskAdded (_ notif: Notification) {
+	@objc func handleNewTaskAdded (_ notif: Notification) {
         presenter?.reloadData()
 	}
 }

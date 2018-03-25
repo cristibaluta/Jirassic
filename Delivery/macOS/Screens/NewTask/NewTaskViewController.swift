@@ -18,7 +18,7 @@ class NewTaskViewController: NSViewController {
     @IBOutlet fileprivate weak var startDateButton: NSButton!
 	
 	var onSave: ((_ taskData: TaskCreationData) -> Void)?
-	var onCancel: ((Void) -> Void)?
+	var onCancel: (() -> Void)?
     fileprivate var activeEditingTextFieldContent = ""
     fileprivate var issueTypes = [String]()
     fileprivate let predictor = PredictiveTimeTyping()
@@ -123,7 +123,7 @@ class NewTaskViewController: NSViewController {
             taskTypeSegmentedControl.selectedSegment = 1
             handleSegmentedControl(taskTypeSegmentedControl)
             
-            let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.scrumTime)
+            let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
             self.dateStart = self.initialDate.dateByUpdating(hour: settingsScrumTime.hour!, minute: settingsScrumTime.minute!)
         }
     }
@@ -151,8 +151,8 @@ extension NewTaskViewController: NSTextFieldDelegate {
             guard textField == endDateTextField || textField == startDateTextField else {
                 return
             }
-            let comps = textField.stringValue.characters.map { String($0) }
-            let newDigit = activeEditingTextFieldContent.characters.count > comps.count ? "" : comps.last
+            let comps = textField.stringValue.map { String($0) }
+            let newDigit = activeEditingTextFieldContent.count > comps.count ? "" : comps.last
             activeEditingTextFieldContent = predictor.timeByAdding(newDigit!, to: activeEditingTextFieldContent)
             textField.stringValue = activeEditingTextFieldContent
         }

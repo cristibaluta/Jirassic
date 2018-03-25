@@ -59,7 +59,7 @@ extension Date {
 		return f.string(from: self)
 	}
 	
-	func MMdd() -> String {
+	func MMMMdd() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "MMMM dd"
 		return f.string(from: self)
@@ -78,23 +78,31 @@ extension Date {
 		return f.string(from: self)
 	}
 	
-	func EEMMdd() -> String {
+	func EEMMMMdd() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "EE, MMMM dd"
 		return f.string(from: self)
 	}
 	
-	func ddEEEEE() -> String {
+	func ddEEE() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "dd • EEE"
 		return f.string(from: self)
 	}
 	
-	func EEEEMMdd() -> String {
+    // eg. Thursday, February 01
+	func EEEEMMMMdd() -> String {
 		let f = DateFormatter()
 		f.dateFormat = "EEEE, MMMM dd"
 		return f.string(from: self)
 	}
+    
+    // eg. Thursday, February 01
+    func EEEEMMMdd() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "EEEE, MMM dd"
+        return f.string(from: self)
+    }
     
     func YYYYMMddHHmmss() -> String {
         let f = DateFormatter()
@@ -107,6 +115,13 @@ extension Date {
         f.timeZone = TimeZone(abbreviation: "GMT")
         f.dateFormat = "YYYY-MM-dd HH:mm:ss"
         return f.string(from: self)
+    }
+    
+    func YYYYMMddT00() -> String {
+        let f = DateFormatter()
+        f.timeZone = TimeZone(abbreviation: "GMT")
+        f.dateFormat = "YYYY-MM-dd"
+        return f.string(from: self) + "T00:00:00.000+0000"
     }
 }
 
@@ -205,7 +220,9 @@ extension Date {
 	
 	static func parseHHmm (_ hhmm: String) -> (hour: Int, min: Int) {
 		let hm = hhmm.components(separatedBy: ":")
-		return (hour: Int(hm.first!)!, min: Int(hm.last!)!)
+        let hh = Int(hm[0]) ?? 0
+        let mm = Int(hm[1]) ?? 0
+		return (hour: hh, min: mm)
 	}
 }
 
@@ -302,9 +319,9 @@ extension Date {
     
     fileprivate func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
         
-        let division = 6
-        let rest = min % division
-        let newMin = rest == 0 ? min : (min + division - rest)
+        let divisions = 6
+        let rest = min % divisions
+        let newMin = rest == 0 ? min : (min + divisions - rest)
         
         return (newMin >= 60 ? 1 : 0, newMin >= 60 ? 0 : newMin)
         

@@ -19,6 +19,7 @@ class AppWireframe {
     fileprivate var currentController: NSViewController?
     fileprivate var _placeholderViewController: PlaceholderViewController?
     fileprivate var _newTaskViewController: NewTaskViewController?
+    fileprivate var _endDayViewController: EndDayViewController?
     
     var appViewController: AppViewController {
         
@@ -96,6 +97,19 @@ class AppWireframe {
     fileprivate var placeholderViewController: PlaceholderViewController {
         return PlaceholderViewController.instantiateFromStoryboard("Placeholder")
     }
+
+    fileprivate var endDayViewController: EndDayViewController {
+
+        let controller = EndDayViewController.instantiateFromStoryboard("EndDay")
+        let presenter = EndDayPresenter()
+
+        controller.presenter = presenter
+        controller.appWireframe = self
+        presenter.userInterface = controller
+
+        return controller
+    }
+
 }
 
 extension AppWireframe {
@@ -175,7 +189,8 @@ extension AppWireframe {
         
         return controller
     }
-    
+
+    // Placeholder
     func presentPlaceholder (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) -> PlaceholderViewController {
         
         var controller = _placeholderViewController
@@ -198,7 +213,8 @@ extension AppWireframe {
             _placeholderViewController = nil
         }
     }
-    
+
+    // NewTask
     func presentNewTaskController() -> NewTaskViewController {
         
         let controller = self.newTaskViewController
@@ -213,6 +229,26 @@ extension AppWireframe {
         if let controller = _newTaskViewController {
             removeController(controller)
             _newTaskViewController = nil
+        }
+    }
+
+    // EndDay
+    func presentEndDayController (date: Date, tasks: [Task]) -> EndDayViewController {
+
+        let controller = self.endDayViewController
+        controller.date = date
+        controller.tasks = tasks
+        addController(controller)
+        controller.view.constrainToSuperview()
+        _endDayViewController = controller
+
+        return controller
+    }
+
+    func removeEndDayController() {
+        if let controller = _endDayViewController {
+            removeController(controller)
+            _endDayViewController = nil
         }
     }
 }
@@ -239,6 +275,7 @@ extension AppWireframe {
         flip.animationReachedMiddle = {
             self.removeCurrentController()
             self.removePlaceholder()
+            self.removeEndDayController()
             self.addController(settingsController)
             self.currentController = settingsController
         }

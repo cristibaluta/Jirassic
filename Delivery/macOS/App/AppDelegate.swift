@@ -10,26 +10,51 @@ import Cocoa
 
 var localRepository: Repository!
 var remoteRepository: Repository?
+let hookup = ModuleHookup()
 
 enum LocalPreferences: String, RCPreferencesProtocol {
     
     case launchAtStartup = "launchAtStartup"
-    case roundDay = "roundDay"
     case usePercents = "usePercents"
     case useDuration = "useDuration"
     case firstLaunch = "firstLaunch"
     case lastIcloudSync = "lastIcloudSync"
     case settingsActiveTab = "settingsActiveTab"
+    case settingsJiraUrl = "settingsJiraUrl"
+    case settingsJiraUser = "settingsJiraUser"
+    case settingsJiraProjectId = "settingsJiraProjectId"
+    case settingsJiraProjectKey = "settingsJiraProjectKey"
+    case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
+    case settingsHookupCmdName = "settingsHookupCmdName"
+    case settingsGitPaths = "settingsGitPaths"
+    case settingsGitAuthors = "settingsGitAuthors"
+    case enableGit = "enableGit"
+    case enableJira = "enableJira"
+    case enableRoundingDay = "enableRoundingDay"
+    case enableHookup = "enableHookup"
+    case enableHookupCredentials = "enableHookupCredentials"
     
     func defaultValue() -> Any {
         switch self {
             case .launchAtStartup:          return false
-            case .roundDay:                 return false
             case .usePercents:              return true
             case .useDuration:              return false
             case .firstLaunch:              return true
             case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
-            case .settingsActiveTab:        return 0
+            case .settingsActiveTab:        return SettingsTab.tracking.rawValue
+            case .settingsJiraUrl:          return ""
+            case .settingsJiraUser:         return ""
+            case .settingsJiraProjectId:    return ""
+            case .settingsJiraProjectKey:   return ""
+            case .settingsJiraProjectIssueKey:return ""
+            case .settingsHookupCmdName:    return ""
+            case .settingsGitPaths:         return ""
+            case .settingsGitAuthors:       return ""
+            case .enableGit:                return true
+            case .enableJira:               return true
+            case .enableRoundingDay:        return false
+            case .enableHookup:             return true
+            case .enableHookupCredentials:  return true
         }
     }
 }
@@ -48,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     fileprivate var animatesOpen = true
 	
     class func sharedApp() -> AppDelegate {
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate
     }
     
 	override init() {
@@ -98,7 +123,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sleep.computerWakeUp = {
             
             let isWeekend = Date().isWeekend()
-            let isDayStarted = ReadTasksInteractor(repository: localRepository).tasksInDay(Date()).count > 0
+            let isDayStarted = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+                .tasksInDay(Date()).count > 0
             guard !isWeekend || (isDayStarted && isWeekend) else {
                 RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
                 return
@@ -106,30 +132,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.browser.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
             
-            if settings.autotrack {
+            if settings.settingsTracking.autotrack {
                 
                 let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
                 
-                guard sleepDuration >= Double(settings.minSleepDuration) else {
+                guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration) else {
                     return
                 }
-                let startDate = settings.startOfDayTime.dateByKeepingTime()
+                let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
                 guard Date() > startDate else {
                     return
                 }
                 
-                let dayDuration = settings.endOfDayTime.timeIntervalSince(settings.startOfDayTime)
-                let workedDuration = Date().timeIntervalSince( settings.startOfDayTime.dateByKeepingTime())
+                let timeInteractor = TimeInteractor(settings: settings)
+                let dayDuration = timeInteractor.workingDayLength()
+                let workedDuration = timeInteractor.workedDayLength()
                 guard workedDuration < dayDuration else {
                     // Do not track time exceeded the working duration
                     return
                 }
-                switch settings.autotrackingMode {
+                switch settings.settingsTracking.autotrackingMode {
                     case .notif:
                         self.presentTaskSuggestionPopup()
                         break
                     case .auto:
-                        ComputerWakeUpInteractor(repository: localRepository).runWith(lastSleepDate: self.sleep.lastSleepDate)
+                        ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
+                            .runWith(lastSleepDate: self.sleep.lastSleepDate, currentDate: Date())
                         break
                 }
             }
@@ -150,7 +178,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskType: .coderev,
                 objectId: String.random()
             )
-            let saveInteractor = TaskInteractor(repository: localRepository)
+            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
                 
             })
@@ -170,7 +198,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskType: .waste,
                 objectId: String.random()
             )
-            let saveInteractor = TaskInteractor(repository: localRepository)
+            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
                 
             })
@@ -228,6 +256,7 @@ extension AppDelegate {
         if let popover = activePopover {
             appWireframe.hidePopover(popover)
             appWireframe.removeNewTaskController()
+            appWireframe.removeEndDayController()
             appWireframe.removePlaceholder()
             appWireframe.removeCurrentController()
             activePopover = nil

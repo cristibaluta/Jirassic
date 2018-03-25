@@ -181,7 +181,9 @@ extension CreateReport {
                     )
                 } else {
                     report!.duration += task.endDate.timeIntervalSince(task.startDate!)
-                    report!.notes = "\(report!.notes)\n• \(task.notes ?? "")"
+                    if !report!.notes.contains(task.notes ?? "") {
+                        report!.notes = "\(report!.notes)\n• \(task.notes ?? "")"
+                    }
                 }
                 reportsMap[taskNumber] = report
             }

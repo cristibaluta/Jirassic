@@ -29,17 +29,17 @@ class TaskCellPresenter: NSObject {
                 case TaskType.issue:
 //                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
 //                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
-                    statusImage = NSImage(named: NSImageNameStatusAvailable)
+                    statusImage = NSImage(named: NSImage.Name.statusAvailable)
                     break
                     
                 case TaskType.gitCommit:
 //                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
 //                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
-                    statusImage = NSImage(named: "GitIcon")
+                    statusImage = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
                     break
                     
                 default:
-                    statusImage = NSImage(named: NSImageNameStatusUnavailable)
+                    statusImage = NSImage(named: NSImage.Name.statusUnavailable)
             }
         } else {
             statusImage = nil
@@ -55,5 +55,6 @@ class TaskCellPresenter: NSObject {
 //		cell.duration = duration
         cell.statusImage?.image = statusImage
         cell.isDark = AppDelegate.sharedApp().theme.isDark
+        cell.isEditable = theTask.taskType != .gitCommit
 	}
 }

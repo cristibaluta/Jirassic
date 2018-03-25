@@ -15,7 +15,8 @@ class ReportsHeaderView: NSTableHeaderView {
     fileprivate var totalTimeTextField: NSTextField
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     var didChangeSettings: (() -> ())?
-    var totalTime: String {
+    // In hours
+    var workedTime: String {
         get {
             return ""
         }
@@ -23,7 +24,7 @@ class ReportsHeaderView: NSTableHeaderView {
             totalTimeTextField.stringValue = newValue
         }
     }
-    var targetTime: Double {
+    var workdayTime: Double {
         get {
             return 0.0
         }
@@ -31,21 +32,21 @@ class ReportsHeaderView: NSTableHeaderView {
             butRound.attributedTitle = NSAttributedString(string: "Round to \(newValue) hours", attributes: attributes)
         }
     }
-    fileprivate let attributes = [NSForegroundColorAttributeName: NSColor.white]
+    fileprivate let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
     
     init() {
         
         butRound = NSButton()
         butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
         butRound.setButtonType(.switch)
-        butRound.state = localPreferences.bool(.roundDay)  ? NSOnState : NSOffState
+        butRound.state = localPreferences.bool(.enableRoundingDay) ? NSControl.StateValue.on : NSControl.StateValue.off
         butRound.toolTip = "This time can be set in 'Settings/Tracking/Working between'"
         
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
         butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: attributes)
         butPercents.setButtonType(.switch)
-        butPercents.state = localPreferences.bool(.usePercents) ? NSOnState : NSOffState
+        butPercents.state = localPreferences.bool(.usePercents) ? NSControl.StateValue.on : NSControl.StateValue.off
         
         totalTimeTextField = NSTextField()
         totalTimeTextField.alignment = NSTextAlignment.right
@@ -58,8 +59,8 @@ class ReportsHeaderView: NSTableHeaderView {
         
         super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
         
-        self.totalTime = ""
-        self.targetTime = 8.0
+        self.workedTime = ""
+        self.workdayTime = 8.0
         
         butRound.target = self
         butRound.action = #selector(self.handleRoundButton)
@@ -73,7 +74,7 @@ class ReportsHeaderView: NSTableHeaderView {
     
     override func draw(_ dirtyRect: NSRect) {
         NSColor.darkGray.set()
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
         
         self.addSubview(butPercents)
         self.addSubview(butRound)
@@ -85,13 +86,13 @@ class ReportsHeaderView: NSTableHeaderView {
 
 extension ReportsHeaderView {
     
-    func handleRoundButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == NSOnState, forKey: .roundDay)
+    @objc func handleRoundButton (_ sender: NSButton) {
+        localPreferences.set(sender.state == NSControl.StateValue.on, forKey: .enableRoundingDay)
         didChangeSettings?()
     }
     
-    func handlePercentsButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == NSOnState, forKey: .usePercents)
+    @objc func handlePercentsButton (_ sender: NSButton) {
+        localPreferences.set(sender.state == NSControl.StateValue.on, forKey: .usePercents)
         didChangeSettings?()
     }
 }

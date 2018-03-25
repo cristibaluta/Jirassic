@@ -14,11 +14,15 @@ class PredictiveTimeTyping {
 	
 		var returnString = string
 		
-		// Deal with backspace
-        if (string == "") {
-			let charsToDelete = to.characters.count == 3 ? 2 : 1
-			let rangeToKeep = to.startIndex..<to.characters.index(to.endIndex, offsetBy: -charsToDelete)
-			return to.substring(with: rangeToKeep)
+        guard string != "" else {
+            // Deal with backspace
+			let charsToDelete = to.count == 3 ? 2 : 1
+			let rangeToKeep = to.startIndex..<to.index(to.endIndex, offsetBy: -charsToDelete)
+            return String(to[rangeToKeep])
+        }
+        guard Int(string) != nil else {
+            // New digit is not numeric, return previous string
+            return to
         }
 		
 		let timeComps = to.components(separatedBy: ":")
@@ -30,9 +34,9 @@ class PredictiveTimeTyping {
 			let min = timeComps.last!
 			var minToAdd = ""
 			
-			if min.characters.count == 2 {
-				let rangeToKeep = min.startIndex..<min.characters.index(min.endIndex, offsetBy: -1)
-				return "\(hr):\(min.substring(with: rangeToKeep))\(string)"
+			if min.count == 2 {
+				let rangeToKeep = min.startIndex..<min.index(min.endIndex, offsetBy: -1)
+				return "\(hr):\(min[rangeToKeep])\(string)"
 			} else {
 				m = decimalValueOf(min, newDigit: string)
 			}
@@ -69,7 +73,7 @@ class PredictiveTimeTyping {
 			else if (h >= 3) {
 				returnString = "0\(h):"
 			}
-			else if (hr.characters.count >= 1) {
+			else if (hr.count >= 1) {
 				returnString = "0\(h):"
 			}
 		}
@@ -82,7 +86,7 @@ class PredictiveTimeTyping {
         var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: Date())
         let hm = string.components(separatedBy: ":")
 		
-		if (string.characters.count == 0) {
+		if (string.count == 0) {
 			comps.hour = 0
 			comps.minute = 0
 		}
@@ -100,8 +104,8 @@ class PredictiveTimeTyping {
 	// This method will combine strings and convert the result to number
     func decimalValueOf (_ existingText: String, newDigit: String) -> Int {
 		
-        if existingText.characters.count > 0 && newDigit.characters.count > 0 {
-            return Int(existingText)! * 10 + Int(newDigit)!;
+        if existingText.count > 0 && newDigit.count > 0 {
+            return Int(existingText)! * 10 + Int(newDigit)!
         }
 		if let d = Int(newDigit) {
 			return d

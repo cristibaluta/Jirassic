@@ -17,13 +17,13 @@ class DaysViewController: UITableViewController {
         
 		let refreshControl = UIRefreshControl()
         refreshControl.tintColor = appRed
-		refreshControl.addTarget(self, action: #selector(DaysViewController.reloadData), for: .valueChanged)
+		refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
 		self.refreshControl = refreshControl
         
 		reloadData()
 	}
 	
-	func reloadData() {
+    @objc func reloadData() {
         
         let interactor = ReadDaysInteractor(repository: localRepository)
         interactor.query { (weeks) in
@@ -61,7 +61,7 @@ extension DaysViewController {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
 		let object = days[indexPath.row]
-		cell.textLabel!.text = object.date.EEEEMMdd()
+		cell.textLabel!.text = object.date.EEEEMMMMdd()
 		return cell
 	}
 }

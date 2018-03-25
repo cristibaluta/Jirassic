@@ -23,7 +23,7 @@ extension AppDelegate {
     
     func killLauncher() {
         
-        for app in NSWorkspace.shared().runningApplications {
+        for app in NSWorkspace.shared.runningApplications {
             if app.bundleIdentifier == launcherIdentifier {
                 DistributedNotificationCenter.default()
                     .postNotificationName(NSNotification.Name(rawValue: "killme"),

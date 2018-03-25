@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2801388F205F86460051B532 /* TimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801388E205F86460051B532 /* TimeBox.swift */; };
+		28013890205F86460051B532 /* TimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801388E205F86460051B532 /* TimeBox.swift */; };
 		280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
 		280300D71EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
 		280300D81EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */; };
@@ -107,7 +109,7 @@
 		280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7661DE8721100CA545E /* LoginViewController.swift */; };
 		280D71701ED6043D005D2689 /* ExtensionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */; };
 		280D71711ED6043D005D2689 /* ExtensionsInstallerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */; };
-		280D71721ED6043D005D2689 /* AppleScriptInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */; };
+		280D71721ED6043D005D2689 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScript.swift */; };
 		280D71731ED6043D005D2689 /* SandboxedAppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */; };
 		280D71741ED6043D005D2689 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3751DD3B44200B73201 /* SettingsViewController.swift */; };
 		280D71751ED6043D005D2689 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3741DD3B44200B73201 /* SettingsPresenter.swift */; };
@@ -169,6 +171,16 @@
 		280F507D1EC868B0007416AB /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
+		284192D72018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
+		284192D82018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
+		284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
+		284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
+		284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
+		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
+		2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
+		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
+		2845B139206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
+		2845B13A206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -182,7 +194,69 @@
 		28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
+		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
+		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
+		287195152022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
+		287195162022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
+		287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
+		287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
+		2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951A2022ECF7001C237E /* OutputsScrollView.swift */; };
+		2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951A2022ECF7001C237E /* OutputsScrollView.swift */; };
+		2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951D2022FD14001C237E /* InputsScrollView.swift */; };
+		2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951D2022FD14001C237E /* InputsScrollView.swift */; };
+		287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
+		287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
+		287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
+		287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
+		2871952820241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
+		2871952920241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
+		2871952B20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
+		2871952C20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
+		2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
+		2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */; };
+		2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */; };
+		287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288F1E910FF60022AB55 /* CoreDataRepository+User.swift */; };
+		287195312025C360001C237E /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38D1DD3B44200B73201 /* CSettings.swift */; };
+		287195322025C364001C237E /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
+		287195332025C367001C237E /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
+		287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3901DD3B44200B73201 /* Jirassic.xcdatamodeld */; };
+		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
+		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
+		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
+		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
+		2892B29B1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */; };
+		2892B29C1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */; };
+		2892B29E1F094B0D0085BAC2 /* JReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B29D1F094B0D0085BAC2 /* JReport.swift */; };
+		2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B29D1F094B0D0085BAC2 /* JReport.swift */; };
+		2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */; };
+		2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */; };
+		2892B2AA1F0950F90085BAC2 /* RCHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A91F0950F90085BAC2 /* RCHttp.swift */; };
+		2892B2AB1F0950F90085BAC2 /* RCHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A91F0950F90085BAC2 /* RCHttp.swift */; };
+		2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
+		2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
+		2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
+		2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
+		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
+		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
+		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
+		28A283982037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
+		28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839920382BBB00DDCB63 /* GitCommit.swift */; };
+		28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839920382BBB00DDCB63 /* GitCommit.swift */; };
+		28A2839D203839E000DDCB63 /* ModuleGitLogsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */; };
+		28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */; };
+		28A283A020385BE000DDCB63 /* GitCommitsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */; };
+		28A283A220385F8C00DDCB63 /* GitCommitsParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */; };
+		28A283A52038AFB100DDCB63 /* JirassicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A42038AFB100DDCB63 /* JirassicCell.swift */; };
+		28A283A62038AFB100DDCB63 /* JirassicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A42038AFB100DDCB63 /* JirassicCell.swift */; };
+		28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A283A72038AFC500DDCB63 /* JirassicCell.xib */; };
+		28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A283A72038AFC500DDCB63 /* JirassicCell.xib */; };
+		28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
+		28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */; };
+		28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */; };
+		28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */; };
+		28A283B1203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */; };
+		28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -214,6 +288,12 @@
 		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
+		28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
+		28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
+		28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
+		28CBB59A20474755006F9D3A /* ParseGitBranchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */; };
+		28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */; };
+		28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */; };
 		28E896631E830D6700722032 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
 		28E896711E83732200722032 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8966F1E83732200722032 /* AppDelegate.m */; };
 		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
@@ -221,6 +301,20 @@
 		28E8967A1E83845900722032 /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E896761E83845100722032 /* RCPreferences.swift */; };
 		28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */; };
 		28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9381E59EC1500B360A4 /* TasksView.swift */; };
+		28FB264220203EA300AEA38D /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB264120203EA300AEA38D /* FooterCell.xib */; };
+		28FB264320203EA300AEA38D /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB264120203EA300AEA38D /* FooterCell.xib */; };
+		28FB264520203ECD00AEA38D /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* FooterCell.swift */; };
+		28FB264620203ECD00AEA38D /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* FooterCell.swift */; };
+		28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
+		28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
+		28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
+		28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
+		28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265720224E9B00AEA38D /* HookupCell.xib */; };
+		28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265720224E9B00AEA38D /* HookupCell.xib */; };
+		28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265A20224EA700AEA38D /* HookupCell.swift */; };
+		28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265A20224EA700AEA38D /* HookupCell.swift */; };
+		28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */; };
+		28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */; };
 		4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
 		4055B1361E0D821500279430 /* JirassicLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4055B1231E0D802300279430 /* JirassicLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
@@ -310,18 +404,49 @@
 		4065D4331DD457E000B73201 /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D39A1DD3B44200B73201 /* RCLog.swift */; };
 		4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */; };
 		40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
-		40FCE4251DF7646F00D4FD45 /* AppleScriptInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */; };
+		40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4221DF7646F00D4FD45 /* AppleScript.swift */; };
 		40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */; };
 		40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */; };
 		40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */; };
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
+		561153842065600D00EFCC4A /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
+		564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
+		564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
+		564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
+		564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
+		564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* EndDay.storyboard */; };
+		564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* EndDay.storyboard */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
 		5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7661DE8721100CA545E /* LoginViewController.swift */; };
 		5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C76B1DE8724400CA545E /* AccountViewController.swift */; };
+		569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C572023193B0049FBF1 /* ShellCell.swift */; };
+		569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C572023193B0049FBF1 /* ShellCell.swift */; };
+		569C4C5B202319490049FBF1 /* ShellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5A202319490049FBF1 /* ShellPresenter.swift */; };
+		569C4C5C202319490049FBF1 /* ShellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5A202319490049FBF1 /* ShellPresenter.swift */; };
+		569C4C5E202319630049FBF1 /* JitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5D202319630049FBF1 /* JitCell.swift */; };
+		569C4C5F202319630049FBF1 /* JitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5D202319630049FBF1 /* JitCell.swift */; };
+		569C4C61202319760049FBF1 /* JitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C60202319760049FBF1 /* JitPresenter.swift */; };
+		569C4C62202319760049FBF1 /* JitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C60202319760049FBF1 /* JitPresenter.swift */; };
+		569C4C64202319870049FBF1 /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C63202319870049FBF1 /* GitCell.swift */; };
+		569C4C65202319870049FBF1 /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C63202319870049FBF1 /* GitCell.swift */; };
+		569C4C67202319930049FBF1 /* GitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C66202319930049FBF1 /* GitPresenter.swift */; };
+		569C4C68202319930049FBF1 /* GitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C66202319930049FBF1 /* GitPresenter.swift */; };
+		569C4C6A202319A20049FBF1 /* BrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C69202319A20049FBF1 /* BrowserCell.swift */; };
+		569C4C6B202319A20049FBF1 /* BrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C69202319A20049FBF1 /* BrowserCell.swift */; };
+		569C4C6D202319CA0049FBF1 /* BrowserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C6C202319CA0049FBF1 /* BrowserPresenter.swift */; };
+		569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C6C202319CA0049FBF1 /* BrowserPresenter.swift */; };
+		569C4C70202319DE0049FBF1 /* ShellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C6F202319DE0049FBF1 /* ShellCell.xib */; };
+		569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C6F202319DE0049FBF1 /* ShellCell.xib */; };
+		569C4C73202319EE0049FBF1 /* JitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C72202319EE0049FBF1 /* JitCell.xib */; };
+		569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C72202319EE0049FBF1 /* JitCell.xib */; };
+		569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C75202319FC0049FBF1 /* GitCell.xib */; };
+		569C4C77202319FC0049FBF1 /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C75202319FC0049FBF1 /* GitCell.xib */; };
+		569C4C7920231A0B0049FBF1 /* BrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C7820231A0B0049FBF1 /* BrowserCell.xib */; };
+		569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C7820231A0B0049FBF1 /* BrowserCell.xib */; };
 		56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */; };
 /* End PBXBuildFile section */
 
@@ -332,6 +457,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4065D3031DD3A1AA00B73201;
 			remoteInfo = Jirassic;
+		};
+		566C09141F2B985C0058D90A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4065D2FC1DD3A1AA00B73201 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 280D711C1ED5EE7F005D2689;
+			remoteInfo = "Jirassic macOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -376,6 +508,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2801388E205F86460051B532 /* TimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBox.swift; sourceTree = "<group>"; };
 		280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsInteractor.swift; path = Statistics/StatisticsInteractor.swift; sourceTree = "<group>"; };
 		2803A0C91EC184FF005F9389 /* BrowserNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserNotification.swift; sourceTree = "<group>"; };
 		280C1D411ED74EF900C126A1 /* BrowserSupport.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrowserSupport.scpt; sourceTree = "<group>"; };
@@ -392,6 +525,11 @@
 		280F507C1EC868B0007416AB /* StringArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArray.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
+		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
+		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
+		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
+		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
+		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -400,7 +538,37 @@
 		28577EB41E8AF08F002B07FD /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
+		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
+		287195172022E8BC001C237E /* OutputTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTableViewDataSource.swift; sourceTree = "<group>"; };
+		2871951A2022ECF7001C237E /* OutputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputsScrollView.swift; sourceTree = "<group>"; };
+		2871951D2022FD14001C237E /* InputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsScrollView.swift; sourceTree = "<group>"; };
+		287195202022FD87001C237E /* InputsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsTableViewDataSource.swift; sourceTree = "<group>"; };
+		287195242022FEBA001C237E /* TrackingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScrollView.swift; sourceTree = "<group>"; };
+		2871952720241A6C001C237E /* TrackingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingView.xib; sourceTree = "<group>"; };
+		2871952A20241B25001C237E /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
+		287195352027CAD9001C237E /* TimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInteractor.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
+		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
+		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
+		2892B29D1F094B0D0085BAC2 /* JReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JReport.swift; sourceTree = "<group>"; };
+		2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWorkAttribute.swift; sourceTree = "<group>"; };
+		2892B2A91F0950F90085BAC2 /* RCHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCHttp.swift; sourceTree = "<group>"; };
+		2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
+		2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		28A283932037874600DDCB63 /* ModuleGitLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogs.swift; sourceTree = "<group>"; };
+		28A283962037975600DDCB63 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
+		28A2839920382BBB00DDCB63 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
+		28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogsTests.swift; sourceTree = "<group>"; };
+		28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitsParser.swift; sourceTree = "<group>"; };
+		28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitsParserTests.swift; sourceTree = "<group>"; };
+		28A283A42038AFB100DDCB63 /* JirassicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JirassicCell.swift; sourceTree = "<group>"; };
+		28A283A72038AFC500DDCB63 /* JirassicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JirassicCell.xib; sourceTree = "<group>"; };
+		28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParser.swift; sourceTree = "<group>"; };
+		28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchParserTests.swift; sourceTree = "<group>"; };
+		28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractor.swift; sourceTree = "<group>"; };
+		28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractorTests.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -418,6 +586,9 @@
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
+		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
+		28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranchTests.swift; sourceTree = "<group>"; };
+		28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProjectIssue.swift; sourceTree = "<group>"; };
 		28E896621E830D6700722032 /* Placeholder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		28E8966E1E83732200722032 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "macOS-launcher/AppDelegate.h"; sourceTree = "<group>"; };
 		28E8966F1E83732200722032 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "macOS-launcher/AppDelegate.m"; sourceTree = "<group>"; };
@@ -426,6 +597,13 @@
 		28E896761E83845100722032 /* RCPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCPreferences.swift; sourceTree = "<group>"; };
 		28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
 		28EDE9381E59EC1500B360A4 /* TasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		28FB264120203EA300AEA38D /* FooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
+		28FB264420203ECD00AEA38D /* FooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
+		28FB265020224E3A00AEA38D /* JiraTempoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoCell.swift; sourceTree = "<group>"; };
+		28FB265320224E5B00AEA38D /* JiraTempoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JiraTempoCell.xib; sourceTree = "<group>"; };
+		28FB265720224E9B00AEA38D /* HookupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HookupCell.xib; sourceTree = "<group>"; };
+		28FB265A20224EA700AEA38D /* HookupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupCell.swift; sourceTree = "<group>"; };
+		28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoPresenter.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
 		4051D5F71E0EA320002042BB /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
@@ -524,18 +702,33 @@
 		4065D4101DD4534C00B73201 /* jirassic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jirassic; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
 		40E092401DE385E4001EF5DA /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScriptInteractor.swift; sourceTree = "<group>"; };
+		40FCE4221DF7646F00D4FD45 /* AppleScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleScript.swift; sourceTree = "<group>"; };
 		40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInteractor.swift; sourceTree = "<group>"; };
 		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScript.swift; sourceTree = "<group>"; };
 		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Welcome.storyboard; path = Welcome/Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		564E55F2202883DB00CE4C76 /* EndDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayViewController.swift; sourceTree = "<group>"; };
+		564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayPresenter.swift; sourceTree = "<group>"; };
+		564E55F82028857300CE4C76 /* EndDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndDay.storyboard; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		5685C7661DE8721100CA545E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5685C76B1DE8724400CA545E /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		569C4C572023193B0049FBF1 /* ShellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellCell.swift; sourceTree = "<group>"; };
+		569C4C5A202319490049FBF1 /* ShellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellPresenter.swift; sourceTree = "<group>"; };
+		569C4C5D202319630049FBF1 /* JitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitCell.swift; sourceTree = "<group>"; };
+		569C4C60202319760049FBF1 /* JitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitPresenter.swift; sourceTree = "<group>"; };
+		569C4C63202319870049FBF1 /* GitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCell.swift; sourceTree = "<group>"; };
+		569C4C66202319930049FBF1 /* GitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitPresenter.swift; sourceTree = "<group>"; };
+		569C4C69202319A20049FBF1 /* BrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserCell.swift; sourceTree = "<group>"; };
+		569C4C6C202319CA0049FBF1 /* BrowserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserPresenter.swift; sourceTree = "<group>"; };
+		569C4C6F202319DE0049FBF1 /* ShellCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShellCell.xib; sourceTree = "<group>"; };
+		569C4C72202319EE0049FBF1 /* JitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JitCell.xib; sourceTree = "<group>"; };
+		569C4C75202319FC0049FBF1 /* GitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GitCell.xib; sourceTree = "<group>"; };
+		569C4C7820231A0B0049FBF1 /* BrowserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowserCell.xib; sourceTree = "<group>"; };
 		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -593,6 +786,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2801388D205F86250051B532 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2801388E205F86460051B532 /* TimeBox.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		280300D41EDB5E6D000A763E /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +809,14 @@
 				28E896621E830D6700722032 /* Placeholder.storyboard */,
 			);
 			path = Placeholder;
+			sourceTree = "<group>";
+		};
+		2845B137206703A8006EFB3B /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				2845B138206703C5006EFB3B /* Keychain.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		28577EA01E8ADBBD002B07FD /* sqlite */ = {
@@ -626,6 +835,151 @@
 				28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */,
 			);
 			path = sqlite;
+			sourceTree = "<group>";
+		};
+		28667B591FCADF4E007B98E3 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				28A28392203786F600DDCB63 /* GitLogs */,
+				28667B5A1FCADF68007B98E3 /* JiraTempo */,
+				28667B5B1FCADF73007B98E3 /* Hookup */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		28667B5A1FCADF68007B98E3 /* JiraTempo */ = {
+			isa = PBXGroup;
+			children = (
+				284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */,
+			);
+			path = JiraTempo;
+			sourceTree = "<group>";
+		};
+		28667B5B1FCADF73007B98E3 /* Hookup */ = {
+			isa = PBXGroup;
+			children = (
+				28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */,
+			);
+			path = Hookup;
+			sourceTree = "<group>";
+		};
+		287195232022FEA4001C237E /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				287195242022FEBA001C237E /* TrackingScrollView.swift */,
+				2871952A20241B25001C237E /* TrackingView.swift */,
+				2871952720241A6C001C237E /* TrackingView.xib */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		2892B2961F0949D70085BAC2 /* Jira */ = {
+			isa = PBXGroup;
+			children = (
+				2892B2971F094A170085BAC2 /* JiraRepository.swift */,
+				2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */,
+				284192D92018855B00E64A9A /* JiraRepository+Projects.swift */,
+				2892B29D1F094B0D0085BAC2 /* JReport.swift */,
+				2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */,
+				284192D62018841700E64A9A /* JProject.swift */,
+				28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */,
+			);
+			path = Jira;
+			sourceTree = "<group>";
+		};
+		2892B2B31F0A19B70085BAC2 /* KeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */,
+				2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */,
+				2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */,
+			);
+			path = KeychainWrapper;
+			sourceTree = "<group>";
+		};
+		28A28392203786F600DDCB63 /* GitLogs */ = {
+			isa = PBXGroup;
+			children = (
+				28A283932037874600DDCB63 /* ModuleGitLogs.swift */,
+				28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */,
+				28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */,
+				28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */,
+				28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */,
+				28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */,
+			);
+			path = GitLogs;
+			sourceTree = "<group>";
+		};
+		28A283A32038AF9600DDCB63 /* JirassicCmd */ = {
+			isa = PBXGroup;
+			children = (
+				28A283A42038AFB100DDCB63 /* JirassicCell.swift */,
+				28A283A72038AFC500DDCB63 /* JirassicCell.xib */,
+			);
+			path = JirassicCmd;
+			sourceTree = "<group>";
+		};
+		28CBB59420455467006F9D3A /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				28CBB595204554A2006F9D3A /* ParseGitBranch.swift */,
+				28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */,
+			);
+			path = Parsing;
+			sourceTree = "<group>";
+		};
+		28FB264020203D3400AEA38D /* FooterCell */ = {
+			isa = PBXGroup;
+			children = (
+				28FB264420203ECD00AEA38D /* FooterCell.swift */,
+				28FB264120203EA300AEA38D /* FooterCell.xib */,
+			);
+			name = FooterCell;
+			sourceTree = "<group>";
+		};
+		28FB264D20224DE200AEA38D /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				2871951D2022FD14001C237E /* InputsScrollView.swift */,
+				287195202022FD87001C237E /* InputsTableViewDataSource.swift */,
+				28A283A32038AF9600DDCB63 /* JirassicCmd */,
+				569C4C53202318F50049FBF1 /* Shell */,
+				569C4C56202319120049FBF1 /* Jit */,
+				569C4C552023190A0049FBF1 /* Git */,
+				569C4C54202319010049FBF1 /* Browser */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		28FB264E20224DEB00AEA38D /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				2871951A2022ECF7001C237E /* OutputsScrollView.swift */,
+				287195172022E8BC001C237E /* OutputTableViewDataSource.swift */,
+				28FB264F20224E0A00AEA38D /* JiraTempo */,
+				28FB265620224E8600AEA38D /* Hookup */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		28FB264F20224E0A00AEA38D /* JiraTempo */ = {
+			isa = PBXGroup;
+			children = (
+				28FB265020224E3A00AEA38D /* JiraTempoCell.swift */,
+				28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */,
+				28FB265320224E5B00AEA38D /* JiraTempoCell.xib */,
+			);
+			path = JiraTempo;
+			sourceTree = "<group>";
+		};
+		28FB265620224E8600AEA38D /* Hookup */ = {
+			isa = PBXGroup;
+			children = (
+				28FB265A20224EA700AEA38D /* HookupCell.swift */,
+				287195142022E1E2001C237E /* HookupPresenter.swift */,
+				28FB265720224E9B00AEA38D /* HookupCell.xib */,
+			);
+			path = Hookup;
 			sourceTree = "<group>";
 		};
 		4055B1371E0D82A800279430 /* Frameworks */ = {
@@ -715,6 +1069,7 @@
 				280300D41EDB5E6D000A763E /* Statistics */,
 				4065D3371DD3B44200B73201 /* Time */,
 				4065D33B1DD3B44200B73201 /* User */,
+				28CBB59420455467006F9D3A /* Parsing */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -729,6 +1084,7 @@
 				4065D31C1DD3B44200B73201 /* TaskTests.swift */,
 				4065D31D1DD3B44200B73201 /* User.swift */,
 				4065D31E1DD3B44200B73201 /* Week.swift */,
+				28A2839920382BBB00DDCB63 /* GitCommit.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -779,6 +1135,8 @@
 				4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */,
 				4065D3351DD3B44200B73201 /* TaskTypeEstimatorTests.swift */,
 				4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */,
+				28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */,
+				28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -788,6 +1146,7 @@
 			children = (
 				4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */,
 				4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */,
+				287195352027CAD9001C237E /* TimeInteractor.swift */,
 			);
 			path = Time;
 			sourceTree = "<group>";
@@ -838,6 +1197,9 @@
 				4065D3641DD3B44200B73201 /* Menu */,
 				4065D3511DD3B44200B73201 /* Animations */,
 				4065D36B1DD3B44200B73201 /* Screens */,
+				2801388D205F86250051B532 /* Components */,
+				40FCE4211DF7646F00D4FD45 /* External */,
+				28667B591FCADF4E007B98E3 /* Modules */,
 				4065D3671DD3B44200B73201 /* Notifications */,
 				405B15641DEF66EE0009871C /* Resources */,
 			);
@@ -897,6 +1259,7 @@
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
 				4065D3701DD3B44200B73201 /* NewTask */,
+				564E55F12028839F00CE4C76 /* EndDay */,
 				4065D3761DD3B44200B73201 /* Tasks */,
 			);
 			path = Screens;
@@ -913,11 +1276,14 @@
 		4065D3721DD3B44200B73201 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				40FCE4211DF7646F00D4FD45 /* Workers */,
 				4065D3751DD3B44200B73201 /* SettingsViewController.swift */,
 				4065D3741DD3B44200B73201 /* SettingsPresenter.swift */,
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
+				28A283962037975600DDCB63 /* Saveable.swift */,
 				40E092401DE385E4001EF5DA /* Settings.storyboard */,
+				287195232022FEA4001C237E /* Tracking */,
+				28FB264E20224DEB00AEA38D /* Output */,
+				28FB264D20224DE200AEA38D /* Input */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -936,6 +1302,7 @@
 				28A5F2811E586426002BE564 /* DataSource.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
+				28FB264020203D3400AEA38D /* FooterCell */,
 				407318511DEAAAE00046F409 /* ReportCell */,
 				407318501DEAAACC0046F409 /* TaskCell */,
 				407318521DEAAB010046F409 /* NonTaskCell */,
@@ -954,6 +1321,8 @@
 		4065D3881DD3B44200B73201 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				2845B137206703A8006EFB3B /* Keychain */,
+				2892B2961F0949D70085BAC2 /* Jira */,
 				28577EA01E8ADBBD002B07FD /* sqlite */,
 				4065D38B1DD3B44200B73201 /* CoreData */,
 				4065D3921DD3B44200B73201 /* InMemoryStorage */,
@@ -1002,9 +1371,11 @@
 		4065D3991DD3B44200B73201 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2892B2B31F0A19B70085BAC2 /* KeychainWrapper */,
 				28A9287E1E90D8BD0022AB55 /* RCSync.swift */,
 				28E896761E83845100722032 /* RCPreferences.swift */,
 				4065D39A1DD3B44200B73201 /* RCLog.swift */,
+				2892B2A91F0950F90085BAC2 /* RCHttp.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -1047,15 +1418,16 @@
 			name = NonTaskCell;
 			sourceTree = "<group>";
 		};
-		40FCE4211DF7646F00D4FD45 /* Workers */ = {
+		40FCE4211DF7646F00D4FD45 /* External */ = {
 			isa = PBXGroup;
 			children = (
 				40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */,
 				280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */,
-				40FCE4221DF7646F00D4FD45 /* AppleScriptInteractor.swift */,
+				2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */,
+				40FCE4221DF7646F00D4FD45 /* AppleScript.swift */,
 				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */,
 			);
-			path = Workers;
+			path = External;
 			sourceTree = "<group>";
 		};
 		40FCE42A1DFC3F4F00D4FD45 /* Welcome */ = {
@@ -1065,6 +1437,16 @@
 				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
 			);
 			name = Welcome;
+			sourceTree = "<group>";
+		};
+		564E55F12028839F00CE4C76 /* EndDay */ = {
+			isa = PBXGroup;
+			children = (
+				564E55F2202883DB00CE4C76 /* EndDayViewController.swift */,
+				564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */,
+				564E55F82028857300CE4C76 /* EndDay.storyboard */,
+			);
+			path = EndDay;
 			sourceTree = "<group>";
 		};
 		5685C7621DE8721100CA545E /* Account */ = {
@@ -1077,6 +1459,46 @@
 				5685C7661DE8721100CA545E /* LoginViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		569C4C53202318F50049FBF1 /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				569C4C572023193B0049FBF1 /* ShellCell.swift */,
+				569C4C5A202319490049FBF1 /* ShellPresenter.swift */,
+				569C4C6F202319DE0049FBF1 /* ShellCell.xib */,
+			);
+			path = Shell;
+			sourceTree = "<group>";
+		};
+		569C4C54202319010049FBF1 /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				569C4C69202319A20049FBF1 /* BrowserCell.swift */,
+				569C4C6C202319CA0049FBF1 /* BrowserPresenter.swift */,
+				569C4C7820231A0B0049FBF1 /* BrowserCell.xib */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
+		569C4C552023190A0049FBF1 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				569C4C63202319870049FBF1 /* GitCell.swift */,
+				569C4C66202319930049FBF1 /* GitPresenter.swift */,
+				569C4C75202319FC0049FBF1 /* GitCell.xib */,
+			);
+			path = Git;
+			sourceTree = "<group>";
+		};
+		569C4C56202319120049FBF1 /* Jit */ = {
+			isa = PBXGroup;
+			children = (
+				569C4C5D202319630049FBF1 /* JitCell.swift */,
+				569C4C60202319760049FBF1 /* JitPresenter.swift */,
+				569C4C72202319EE0049FBF1 /* JitCell.xib */,
+			);
+			path = Jit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1164,6 +1586,7 @@
 			);
 			dependencies = (
 				4065D4081DD4532100B73201 /* PBXTargetDependency */,
+				566C09151F2B985C0058D90A /* PBXTargetDependency */,
 			);
 			name = JirassicTests;
 			productName = JirassicTests;
@@ -1195,12 +1618,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1214,6 +1638,7 @@
 					280D711C1ED5EE7F005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -1225,7 +1650,7 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1235,8 +1660,8 @@
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1252,6 +1677,7 @@
 					4065D4011DD4532100B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 						TestTargetID = 4065D3031DD3A1AA00B73201;
 					};
@@ -1300,19 +1726,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569C4C7920231A0B0049FBF1 /* BrowserCell.xib in Resources */,
+				569C4C70202319DE0049FBF1 /* ShellCell.xib in Resources */,
+				28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
+				28FB264220203EA300AEA38D /* FooterCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
+				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
 				280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */,
 				280D71C51ED608D6005D2689 /* ReportCell.xib in Resources */,
+				564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
 				280D71C61ED608D6005D2689 /* TaskCell.xib in Resources */,
+				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
+				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
+				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
 				280D71C71ED608D6005D2689 /* NonTaskCell.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
+				569C4C73202319EE0049FBF1 /* JitCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,18 +1764,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
+				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
+				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
+				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
+				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
+				28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
+				569C4C77202319FC0049FBF1 /* GitCell.xib in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
+				564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */,
+				28FB264320203EA300AEA38D /* FooterCell.xib in Resources */,
+				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,6 +1837,7 @@
 				280300D81EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				280D70D91ECFE835005D2689 /* Conversions.swift in Sources */,
 				280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */,
+				28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				280D70E41ECFE88F005D2689 /* CTask.swift in Sources */,
 				280D70D41ECFE7FF005D2689 /* Task.swift in Sources */,
 				280D70D51ECFE803005D2689 /* User.swift in Sources */,
@@ -1406,97 +1853,151 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D712C1ED6043D005D2689 /* Day.swift in Sources */,
+				2892B29B1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
 				280D712D1ED6043D005D2689 /* Report.swift in Sources */,
 				280D712E1ED6043D005D2689 /* Settings.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
+				287195312025C360001C237E /* CSettings.swift in Sources */,
+				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
 				280D71321ED6043D005D2689 /* Week.swift in Sources */,
+				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
+				561153842065600D00EFCC4A /* InMemoryCoreDataRepository.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
+				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
+				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
+				2871952B20241B25001C237E /* TrackingView.swift in Sources */,
+				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
+				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
+				569C4C5B202319490049FBF1 /* ShellPresenter.swift in Sources */,
 				280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
 				280D71421ED6043D005D2689 /* RCSync.swift in Sources */,
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
+				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
 				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
 				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
+				287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */,
+				28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
+				287195322025C364001C237E /* CTask.swift in Sources */,
+				287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */,
 				280D715C1ED6043D005D2689 /* AppScriptable.swift in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
 				280D715F1ED6043D005D2689 /* AppTheme.swift in Sources */,
+				28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				280D71601ED6043D005D2689 /* MenuBarController.swift in Sources */,
 				280D71611ED6043D005D2689 /* MenuBarIconView.swift in Sources */,
+				569C4C67202319930049FBF1 /* GitPresenter.swift in Sources */,
+				2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
+				564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
+				2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
 				280D71681ED6043D005D2689 /* TaskSuggestionViewController.swift in Sources */,
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
+				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
+				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
+				2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */,
 				280D716E1ED6043D005D2689 /* LoginPresenter.swift in Sources */,
+				28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */,
+				287195332025C367001C237E /* CUser.swift in Sources */,
 				280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */,
+				2892B2AA1F0950F90085BAC2 /* RCHttp.swift in Sources */,
+				2892B29E1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				280D71701ED6043D005D2689 /* ExtensionsInteractor.swift in Sources */,
+				28A283972037975600DDCB63 /* Saveable.swift in Sources */,
 				280D71711ED6043D005D2689 /* ExtensionsInstallerInteractor.swift in Sources */,
-				280D71721ED6043D005D2689 /* AppleScriptInteractor.swift in Sources */,
+				280D71721ED6043D005D2689 /* AppleScript.swift in Sources */,
+				28A283A52038AFB100DDCB63 /* JirassicCell.swift in Sources */,
 				280D71731ED6043D005D2689 /* SandboxedAppleScript.swift in Sources */,
 				280D71741ED6043D005D2689 /* SettingsViewController.swift in Sources */,
 				280D71751ED6043D005D2689 /* SettingsPresenter.swift in Sources */,
 				280D71761ED6043D005D2689 /* SettingsInteractor.swift in Sources */,
 				280D71781ED6043D005D2689 /* NewTaskViewController.swift in Sources */,
+				28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */,
+				28FB264520203ECD00AEA38D /* FooterCell.swift in Sources */,
+				28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */,
 				280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */,
 				280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */,
 				280D717E1ED6043D005D2689 /* TasksDataSource.swift in Sources */,
+				28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
+				287195152022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				280D717F1ED6043D005D2689 /* ReportsDataSource.swift in Sources */,
 				280D71801ED6043D005D2689 /* ReportsHeaderView.swift in Sources */,
 				280D71811ED6043D005D2689 /* DataSource.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
 				280D71841ED6043D005D2689 /* ReportCell.swift in Sources */,
+				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				280D71861ED6043D005D2689 /* ReportCellPresenter.swift in Sources */,
 				280D71871ED6043D005D2689 /* TaskCell.swift in Sources */,
 				280D718A1ED6043D005D2689 /* TaskCellPresenter.swift in Sources */,
 				280D718B1ED6043D005D2689 /* NonTaskCell.swift in Sources */,
+				569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */,
+				569C4C64202319870049FBF1 /* GitCell.swift in Sources */,
+				569C4C6D202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				280D718D1ED6043D005D2689 /* InternalNotifications.swift in Sources */,
 				280D718E1ED6043D005D2689 /* UserNotifications.swift in Sources */,
 				280D718F1ED6043D005D2689 /* SleepNotifications.swift in Sources */,
+				2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				280D71901ED6043D005D2689 /* BrowserNotification.swift in Sources */,
 				280D719D1ED6043D005D2689 /* SqliteRepository.swift in Sources */,
+				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
+				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
+				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				280D719F1ED6043D005D2689 /* SqliteRepository+User.swift in Sources */,
 				280D71A01ED6043D005D2689 /* SqliteRepository+Settings.swift in Sources */,
 				280D71A11ED6043D005D2689 /* SSettings.swift in Sources */,
 				280D71A21ED6043D005D2689 /* STask.swift in Sources */,
+				569C4C6A202319A20049FBF1 /* BrowserCell.swift in Sources */,
 				280D71A31ED6043D005D2689 /* SUser.swift in Sources */,
 				280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */,
+				2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */,
 				280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */,
+				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
 				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				280D71B11ED6043D005D2689 /* CloudKitRepository.swift in Sources */,
 				280D71B21ED6043D005D2689 /* CloudKitRepository+Tasks.swift in Sources */,
+				2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */,
+				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */,
+				569C4C5E202319630049FBF1 /* JitCell.swift in Sources */,
+				28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */,
+				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
+				564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
+				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D71B81ED6043D005D2689 /* RCPreferences.swift in Sources */,
 				280D71B91ED6043D005D2689 /* RCLog.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
+				569C4C61202319760049FBF1 /* JitPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1516,23 +2017,35 @@
 				2803A0CA1EC184FF005F9389 /* BrowserNotification.swift in Sources */,
 				4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */,
 				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
+				2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
 				4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */,
+				569C4C5F202319630049FBF1 /* JitCell.swift in Sources */,
 				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
 				405B15661DEF75660009871C /* AppViewController.swift in Sources */,
+				569C4C5C202319490049FBF1 /* ShellPresenter.swift in Sources */,
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
+				569C4C65202319870049FBF1 /* GitCell.swift in Sources */,
+				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,
+				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
+				287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
+				569C4C6B202319A20049FBF1 /* BrowserCell.swift in Sources */,
 				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
 				28AA500B1EDCD51300AAF03D /* CoreDataRepository+User.swift in Sources */,
 				28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
+				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
+				2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
+				28013890205F86460051B532 /* TimeBox.swift in Sources */,
+				2892B2AB1F0950F90085BAC2 /* RCHttp.swift in Sources */,
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
@@ -1540,46 +2053,69 @@
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
 				4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */,
 				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
+				569C4C62202319760049FBF1 /* JitPresenter.swift in Sources */,
+				569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */,
 				2823C9351E4F69970055D036 /* Versioning.swift in Sources */,
 				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
+				28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
+				28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
+				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
+				564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
+				2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */,
+				28FB264620203ECD00AEA38D /* FooterCell.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
+				28A283B1203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
+				2892B29C1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
 				28AA500F1EDCD51D00AAF03D /* Jirassic.xcdatamodeld in Sources */,
 				28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
+				284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
+				569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
+				28A283982037975600DDCB63 /* Saveable.swift in Sources */,
 				28AA50081EDCD51300AAF03D /* CoreDataRepository.swift in Sources */,
 				280300D71EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
+				28A283A62038AFB100DDCB63 /* JirassicCell.swift in Sources */,
 				4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */,
 				28577EAF1E8ADC53002B07FD /* STask.swift in Sources */,
 				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
 				28A928931E91104B0022AB55 /* CloudKitRepository+Tasks.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
+				28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
+				284192D82018841700E64A9A /* JProject.swift in Sources */,
 				28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */,
+				28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
 				4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */,
+				28A283A020385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
+				569C4C68202319930049FBF1 /* GitPresenter.swift in Sources */,
+				28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */,
+				2845B13A206703C5006EFB3B /* Keychain.swift in Sources */,
 				28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */,
+				2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
 				28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */,
+				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
@@ -1587,6 +2123,8 @@
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */,
+				2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
+				2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				28577EB11E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
@@ -1594,21 +2132,29 @@
 				4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				28AA50101EDCD52300AAF03D /* InMemoryCoreDataRepository.swift in Sources */,
-				40FCE4251DF7646F00D4FD45 /* AppleScriptInteractor.swift in Sources */,
+				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
 				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				28AA50091EDCD51300AAF03D /* CoreDataRepository+Tasks.swift in Sources */,
+				287195162022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
+				28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
+				287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				28E8967A1E83845900722032 /* RCPreferences.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A928841E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
+				2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
+				2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */,
+				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
+				564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
+				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				405B15631DEF3F2A0009871C /* TaskSuggestionPresenter.swift in Sources */,
 				4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */,
 				28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */,
@@ -1626,11 +2172,16 @@
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
+				28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
+				28CBB59A20474755006F9D3A /* ParseGitBranchTests.swift in Sources */,
 				40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */,
 				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
+				28A2839D203839E000DDCB63 /* ModuleGitLogsTests.swift in Sources */,
+				28A283A220385F8C00DDCB63 /* GitCommitsParserTests.swift in Sources */,
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
 				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,
+				28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */,
 				4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1681,6 +2232,11 @@
 			target = 4065D3031DD3A1AA00B73201 /* Jirassic AppStore */;
 			targetProxy = 4065D4071DD4532100B73201 /* PBXContainerItemProxy */;
 		};
+		566C09151F2B985C0058D90A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 280D711C1ED5EE7F005D2689 /* Jirassic macOS */;
+			targetProxy = 566C09141F2B985C0058D90A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1727,6 +2283,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/iOS/Jirassic Scrum.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1734,7 +2291,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1745,6 +2304,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/iOS/Jirassic Scrum.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1752,8 +2312,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1771,7 +2333,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1789,7 +2352,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1801,6 +2365,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS-launcher/JirassicLauncher.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
@@ -1808,6 +2373,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3509678e-d1ba-4d07-bf3c-684b4c4fa932";
+				PROVISIONING_PROFILE_SPECIFIER = "jirassic launcher dev";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1822,13 +2389,15 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS-launcher/JirassicLauncher.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1843,7 +2412,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1851,7 +2422,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1893,7 +2468,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1901,7 +2478,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1933,6 +2514,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1945,9 +2527,12 @@
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
+				PROVISIONING_PROFILE = "f679af74-4f51-4414-a117-26fcd2203fad";
+				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1958,8 +2543,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/Realm",
@@ -1970,8 +2556,10 @@
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1987,7 +2575,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
 			name = Debug;
@@ -2004,7 +2593,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
 			};
 			name = Release;

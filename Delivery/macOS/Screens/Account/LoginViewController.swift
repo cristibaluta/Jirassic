@@ -35,7 +35,7 @@ class LoginViewController: NSViewController {
         super.viewDidLoad()
 		
         if let repository = remoteRepository {
-            UserInteractor(repository: repository).getUser({ (user) in
+            UserInteractor(repository: repository, remoteRepository: remoteRepository).getUser({ (user) in
                 
             })
 //            if user.isLoggedIn {

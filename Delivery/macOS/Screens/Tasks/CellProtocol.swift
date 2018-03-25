@@ -14,6 +14,7 @@ protocol CellProtocol {
 	var data: TaskCreationData {get set}
 	var duration: String {get set}
     var isDark: Bool {get set}
+    var isEditable: Bool {get set}
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())? {get set}
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())? {get set}

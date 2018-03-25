@@ -24,7 +24,7 @@ extension ViewController {
         #if os(iOS)
             return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
-            return NSStoryboard(name: name, bundle: nil).instantiateController(withIdentifier: String(describing: self)) as! T
+            return NSStoryboard(name: NSStoryboard.Name(rawValue: name), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: String(describing: self))) as! T
         #endif
     }
 }
