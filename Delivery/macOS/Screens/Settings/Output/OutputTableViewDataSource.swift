@@ -27,17 +27,11 @@ class OutputTableViewDataSource: NSObject {
         self.tableView = tableView
         super.init()
         
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JiraTempoCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: HookupCell.self)), bundle: Bundle.main) != nil, "err")
+        JiraTempoCell.register(in: tableView)
+        HookupCell.register(in: tableView)
         
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JiraTempoCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)))
-            jiraCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)), owner: self) as? JiraTempoCell
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: HookupCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)))
-            hookupCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)), owner: self) as? HookupCell
-        }
+        jiraCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JiraTempoCell.self)), owner: self) as? JiraTempoCell
+        hookupCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: HookupCell.self)), owner: self) as? HookupCell
     }
 }
 

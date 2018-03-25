@@ -27,19 +27,9 @@ class TasksDataSource: NSObject {
         self.tableView = tableView
         self.tasks = tasks
         
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: FooterCell.self)), bundle: Bundle.main) != nil, "err")
-        
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: TaskCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: TaskCell.self)))
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: NonTaskCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: NonTaskCell.self)))
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: FooterCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: FooterCell.self)))
-        }
+        TaskCell.register(in: tableView)
+        NonTaskCell.register(in: tableView)
+        FooterCell.register(in: tableView)
     }
     
     fileprivate func cellForTaskType (_ taskType: TaskType) -> CellProtocol {

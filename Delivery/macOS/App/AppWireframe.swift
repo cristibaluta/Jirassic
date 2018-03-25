@@ -75,7 +75,7 @@ class AppWireframe {
     }
     
     fileprivate var newTaskViewController: NewTaskViewController {
-        return NewTaskViewController.instantiateFromStoryboard("Tasks")
+        return NewTaskViewController.instantiateFromStoryboard("NewTask")
     }
     
     fileprivate var settingsViewController: SettingsViewController {

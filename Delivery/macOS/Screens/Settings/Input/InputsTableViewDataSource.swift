@@ -37,32 +37,17 @@ class InputsTableViewDataSource: NSObject {
         self.tableView = tableView
         super.init()
 
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ShellCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JirassicCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JitCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: GitCell.self)), bundle: Bundle.main) != nil, "err")
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: BrowserCell.self)), bundle: Bundle.main) != nil, "err")
+        ShellCell.register(in: tableView)
+        JirassicCell.register(in: tableView)
+        JitCell.register(in: tableView)
+        GitCell.register(in: tableView)
+        BrowserCell.register(in: tableView)
         
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ShellCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)))
-            shellCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)), owner: self) as? ShellCell
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JirassicCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JirassicCell.self)))
-            jirassicCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JirassicCell.self)), owner: self) as? JirassicCell
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: JitCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)))
-            jitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)), owner: self) as? JitCell
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: GitCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)))
-            gitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self) as? GitCell
-        }
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: BrowserCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)))
-            browserCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self) as? BrowserCell
-        }
+        shellCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ShellCell.self)), owner: self) as? ShellCell
+        jirassicCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JirassicCell.self)), owner: self) as? JirassicCell
+        jitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: JitCell.self)), owner: self) as? JitCell
+        gitCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: GitCell.self)), owner: self) as? GitCell
+        browserCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: BrowserCell.self)), owner: self) as? BrowserCell
     }
 
     func showSettingsBrowser (_ settings: SettingsBrowser) {

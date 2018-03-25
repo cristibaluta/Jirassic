@@ -18,11 +18,7 @@ class ReportsDataSource: NSObject {
         self.tableView = tableView
         self.reports = reports
         
-        assert(NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ReportCell.self)), bundle: Bundle.main) != nil, "err")
-        
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: String(describing: ReportCell.self)), bundle: Bundle.main) {
-            tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: String(describing: ReportCell.self)))
-        }
+        ReportCell.register(in: tableView)
     }
 }
 

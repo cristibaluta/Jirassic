@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Task View Controller-->
+        <scene sceneID="7RE-0q-yop">
+            <objects>
+                <viewController storyboardIdentifier="NewTaskViewController" id="F9u-wL-YtO" customClass="NewTaskViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2VI-8P-899">
+                        <rect key="frame" x="0.0" y="0.0" width="491" height="395"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zcb-sO-3NH">
+                                <rect key="frame" x="11" y="356" width="470" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="EqY-k0-xKz"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="RjR-Sg-a3G">
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <segments>
+                                        <segment label="Task"/>
+                                        <segment label="Scrum" selected="YES" tag="1"/>
+                                        <segment label="Meeting"/>
+                                        <segment label="Food"/>
+                                        <segment label="Waste"/>
+                                        <segment label="Learning"/>
+                                        <segment label="Code review"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="handleSegmentedControl:" target="F9u-wL-YtO" id="Qz9-hN-VLM"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtF-se-LHC">
+                                <rect key="frame" x="18" y="289" width="105" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="FXi-CV-1IZ"/>
+                                    <constraint firstAttribute="width" constant="101" id="N40-Yc-Ypw"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Task id:" id="c4M-jx-g5g">
+                                    <font key="font" metaFont="system" size="30"/>
+                                    <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y40-BP-zYc">
+                                <rect key="frame" x="129" y="289" width="364" height="36"/>
+                                <string key="toolTip">Usually Jira task ids which are of form LETTER-NUMBER, but can be anything really, important is that same task should have same id</string>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="tso-NK-ZJ4"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="AB-1234" id="uiW-Wx-Tjd">
+                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-HO-BYa">
+                                <rect key="frame" x="22" y="239" width="91" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Yyb-xS-t71"/>
+                                    <constraint firstAttribute="width" constant="87" id="vHw-HL-Gaz"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Notes:" id="pjH-6e-jCU">
+                                    <font key="font" metaFont="system" size="30"/>
+                                    <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ist-jg-ccy">
+                                <rect key="frame" x="128" y="75" width="352" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Qw5-78-2gi"/>
+                                </constraints>
+                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do in this task?" id="crs-Z5-x5B">
+                                    <font key="font" metaFont="system" size="30"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="062-p9-Ntt">
+                                <rect key="frame" x="22" y="120" width="157" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="tga-R0-QC0"/>
+                                    <constraint firstAttribute="height" constant="36" id="uxr-VV-36A"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Finished at:" id="DXl-Nj-4zo">
+                                    <font key="font" metaFont="system" size="30"/>
+                                    <color key="textColor" red="0.7843137255" green="0.1176470588" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField toolTip="Predictive time typing. Just start typing numbers even if end reached" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPg-gd-JXL">
+                                <rect key="frame" x="185" y="120" width="295" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="iE8-jD-Mtz"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="--:--" id="yqi-NX-ojs">
+                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="F9u-wL-YtO" id="fHO-V8-eqT"/>
+                                </connections>
+                            </textField>
+                            <textField toolTip="Predictive time typing. Just start typing numbers even if end reached" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-cb-Hab">
+                                <rect key="frame" x="185" y="73" width="295" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="e1n-Kk-PGQ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" placeholderString="--:-- (optional)" id="frP-2O-7IU">
+                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <color key="textColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="F9u-wL-YtO" id="1fe-RJ-JbE"/>
+                                </connections>
+                            </textField>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="juH-D0-Zmt">
+                                <rect key="frame" x="12" y="60" width="466" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="XZY-Ua-juc"/>
+                                </constraints>
+                            </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="auP-Xn-Vxm">
+                                <rect key="frame" x="18" y="13" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="lvo-Ix-qzc"/>
+                                    <constraint firstAttribute="height" constant="21" id="y1K-d3-3qt"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1sr-ss-MUW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleCancelButton:" target="F9u-wL-YtO" id="CoS-eI-4Ib"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Udr-Tx-Jyo">
+                                <rect key="frame" x="100" y="13" width="71" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="Bhb-qu-L6e"/>
+                                    <constraint firstAttribute="height" constant="21" id="QvM-qM-5UY"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xrw-vR-wUg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemBold"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="F9u-wL-YtO" id="KO1-iX-7yw"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fLj-PP-dAI">
+                                <rect key="frame" x="22" y="73" width="157" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="K0l-hC-62p"/>
+                                    <constraint firstAttribute="height" constant="36" id="ZMO-JJ-gOK"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" title="Started at:" bezelStyle="regularSquare" image="buttonCell:fJI-tX-xDz:image" imagePosition="overlaps" alignment="left" state="on" imageScaling="proportionallyDown" inset="2" id="fJI-tX-xDz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="30"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleDurationButton:" target="F9u-wL-YtO" id="2lZ-AT-SEp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mxx-cb-Hab" firstAttribute="top" secondItem="DPg-gd-JXL" secondAttribute="bottom" constant="11" id="03O-vP-1W3"/>
+                            <constraint firstAttribute="bottom" secondItem="auP-Xn-Vxm" secondAttribute="bottom" constant="20" id="0gt-C8-INU"/>
+                            <constraint firstItem="y40-BP-zYc" firstAttribute="leading" secondItem="xtF-se-LHC" secondAttribute="trailing" constant="10" id="1jB-jH-g1Y"/>
+                            <constraint firstItem="Zcb-sO-3NH" firstAttribute="centerX" secondItem="2VI-8P-899" secondAttribute="centerX" id="3Ut-HA-Ykx"/>
+                            <constraint firstItem="fLj-PP-dAI" firstAttribute="top" secondItem="062-p9-Ntt" secondAttribute="bottom" constant="11" id="5kO-XW-qwC"/>
+                            <constraint firstItem="juH-D0-Zmt" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="12" id="7qg-Ff-X5g"/>
+                            <constraint firstItem="xtF-se-LHC" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="20" id="8oH-eg-O6k"/>
+                            <constraint firstAttribute="trailing" secondItem="juH-D0-Zmt" secondAttribute="trailing" constant="13" id="97I-tR-Dhp"/>
+                            <constraint firstItem="DPg-gd-JXL" firstAttribute="leading" secondItem="062-p9-Ntt" secondAttribute="trailing" constant="10" id="ApV-6L-5TY"/>
+                            <constraint firstItem="xtF-se-LHC" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="70" id="C8o-N4-OIb"/>
+                            <constraint firstAttribute="trailing" secondItem="mxx-cb-Hab" secondAttribute="trailing" constant="13" id="CHw-mR-0lg"/>
+                            <constraint firstItem="fLj-PP-dAI" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="22" id="DG8-lS-CvA"/>
+                            <constraint firstAttribute="trailing" secondItem="DPg-gd-JXL" secondAttribute="trailing" constant="13" id="KUU-xs-Arj"/>
+                            <constraint firstItem="mxx-cb-Hab" firstAttribute="leading" secondItem="fLj-PP-dAI" secondAttribute="trailing" constant="8" id="LWb-Vv-VYn"/>
+                            <constraint firstItem="juH-D0-Zmt" firstAttribute="top" secondItem="fLj-PP-dAI" secondAttribute="bottom" constant="10" id="Ljn-sN-sm3"/>
+                            <constraint firstAttribute="trailing" secondItem="ist-jg-ccy" secondAttribute="trailing" constant="13" id="N1X-1Z-8FL"/>
+                            <constraint firstItem="juH-D0-Zmt" firstAttribute="top" secondItem="mxx-cb-Hab" secondAttribute="bottom" constant="10" id="Tef-tv-2Uc"/>
+                            <constraint firstItem="y40-BP-zYc" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="70" id="WmT-d4-MM3"/>
+                            <constraint firstItem="Zcb-sO-3NH" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="20" id="XFE-Om-xUy"/>
+                            <constraint firstItem="062-p9-Ntt" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="Yag-dG-pd3"/>
+                            <constraint firstItem="auP-Xn-Vxm" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="ZUp-lg-zgV"/>
+                            <constraint firstItem="ggD-HO-BYa" firstAttribute="top" secondItem="xtF-se-LHC" secondAttribute="bottom" constant="14" id="bFB-BT-hO4"/>
+                            <constraint firstAttribute="bottom" secondItem="juH-D0-Zmt" secondAttribute="bottom" constant="62" id="eKk-xw-2DM"/>
+                            <constraint firstItem="ist-jg-ccy" firstAttribute="top" secondItem="xtF-se-LHC" secondAttribute="bottom" constant="14" id="fhs-NQ-KzR"/>
+                            <constraint firstItem="Udr-Tx-Jyo" firstAttribute="leading" secondItem="auP-Xn-Vxm" secondAttribute="trailing" constant="12" id="irU-rZ-tUw"/>
+                            <constraint firstItem="ist-jg-ccy" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="130" id="n1q-yr-JcY"/>
+                            <constraint firstAttribute="trailing" secondItem="y40-BP-zYc" secondAttribute="trailing" id="q7p-ky-fiq"/>
+                            <constraint firstAttribute="bottom" secondItem="Udr-Tx-Jyo" secondAttribute="bottom" constant="20" id="t6E-TZ-gFj"/>
+                            <constraint firstItem="ggD-HO-BYa" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="vxV-tg-zLl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="endDateTextField" destination="DPg-gd-JXL" id="GgI-9X-fqc"/>
+                        <outlet property="issueIdTextField" destination="y40-BP-zYc" id="E3l-sg-86B"/>
+                        <outlet property="notesTextField" destination="ist-jg-ccy" id="eKA-HB-3DJ"/>
+                        <outlet property="startDateButton" destination="fLj-PP-dAI" id="1cM-qb-VfN"/>
+                        <outlet property="startDateTextField" destination="mxx-cb-Hab" id="84g-uh-htZ"/>
+                        <outlet property="taskTypeSegmentedControl" destination="Zcb-sO-3NH" id="D9B-Mr-4LU"/>
+                    </connections>
+                </viewController>
+                <customObject id="zgj-up-ac7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95.5" y="230.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="buttonCell:fJI-tX-xDz:image" width="1" height="1">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
+GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
+c1dOU0NvbG9ygAKADRIgwwAAgAOAC1Z7MSwgMX3SFQoWGFpOUy5vYmplY3RzoReABIAK0hUKGh2iGxyA
+BYAGgAkQANIgCiEiXxAUTlNUSUZGUmVwcmVzZW50YXRpb26AB4AITxEIxE1NACoAAAAKAAAAEAEAAAMA
+AAABAAEAAAEBAAMAAAABAAEAAAECAAMAAAACAAgACAEDAAMAAAABAAEAAAEGAAMAAAABAAEAAAEKAAMA
+AAABAAEAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAIAAAEWAAMAAAABAAEAAAEXAAQA
+AAABAAAAAgEcAAMAAAABAAEAAAEoAAMAAAABAAIAAAFSAAMAAAABAAEAAAFTAAMAAAACAAEAAYdzAAcA
+AAf0AAAA0AAAAAAAAAf0YXBwbAIgAABtbnRyR1JBWVhZWiAH0AACAA4ADAAAAABhY3NwQVBQTAAAAABu
+b25lAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVkZXNjAAAAwAAAAG9kc2NtAAABMAAABmZjcHJ0AAAHmAAAADh3
+dHB0AAAH0AAAABRrVFJDAAAH5AAAAA5kZXNjAAAAAAAAABVHZW5lcmljIEdyYXkgUHJvZmlsZQAAAAAA
+AAAAAAAAFUdlbmVyaWMgR3JheSBQcm9maWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAbWx1YwAAAAAAAAAfAAAADHNrU0sAAAAqAAABhGVuVVMAAAAoAAABrmNhRVMA
+AAAsAAAB1nZpVk4AAAAsAAACAnB0QlIAAAAqAAACLnVrVUEAAAAsAAACWGZyRlUAAAAqAAAChGh1SFUA
+AAAuAAACrnpoVFcAAAAQAAAC3G5iTk8AAAAsAAAC7GtvS1IAAAAYAAADGGNzQ1oAAAAkAAADMGhlSUwA
+AAAgAAADVHJvUk8AAAAkAAADdGRlREUAAAA6AAADmGl0SVQAAAAuAAAD0nN2U0UAAAAuAAAEAHpoQ04A
+AAAQAAAELmphSlAAAAAWAAAEPmVsR1IAAAAkAAAEVHB0UE8AAAA4AAAEeG5sTkwAAAAqAAAEsGVzRVMA
+AAAoAAAE2nRoVEgAAAAkAAAFAnRyVFIAAAAiAAAFJmZpRkkAAAAsAAAFSGhySFIAAAA6AAAFdHBsUEwA
+AAA2AAAFrnJ1UlUAAAAmAAAF5GFyRUcAAAAoAAAGCmRhREsAAAA0AAAGMgBWAWEAZQBvAGIAZQBjAG4A
+/QAgAHMAaQB2AP0AIABwAHIAbwBmAGkAbABHAGUAbgBlAHIAaQBjACAARwByAGEAeQAgAFAAcgBvAGYA
+aQBsAGUAUABlAHIAZgBpAGwAIABkAGUAIABnAHIAaQBzACAAZwBlAG4A6AByAGkAYwBDHqUAdQAgAGgA
+7ABuAGgAIABNAOAAdQAgAHgA4QBtACAAQwBoAHUAbgBnAFAAZQByAGYAaQBsACAAQwBpAG4AegBhACAA
+RwBlAG4A6QByAGkAYwBvBBcEMAQzBDAEOwRMBD0EOAQ5ACAEPwRABD4ERAQwBDkEOwAgAEcAcgBhAHkA
+UAByAG8AZgBpAGwAIABnAOkAbgDpAHIAaQBxAHUAZQAgAGcAcgBpAHMAwQBsAHQAYQBsAOEAbgBvAHMA
+IABzAHoA/AByAGsAZQAgAHAAcgBvAGYAaQBskBp1KHBwlo6Ccl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsA
+IABnAHIA5QB0AG8AbgBlAHAAcgBvAGYAaQBsx3y8GAAgAEcAcgBhAHkAINUEuFzTDMd8AE8AYgBlAGMA
+bgD9ACABYQBlAGQA/QAgAHAAcgBvAGYAaQBsBeQF6AXVBeQF2QXcACAARwByAGEAeQAgBdsF3AXcBdkA
+UAByAG8AZgBpAGwAIABnAHIAaQAgAGcAZQBuAGUAcgBpAGMAQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAA
+RwByAGEAdQBzAHQAdQBmAGUAbgAtAFAAcgBvAGYAaQBsAFAAcgBvAGYAaQBsAG8AIABnAHIAaQBnAGkA
+bwAgAGcAZQBuAGUAcgBpAGMAbwBHAGUAbgBlAHIAaQBzAGsAIABnAHIA5QBzAGsAYQBsAGUAcAByAG8A
+ZgBpAGxmbpAacHBepmPPj/Blh072TgCCLDCwMOwwpDDXMO0w1TChMKQw6wOTA7UDvQO5A7oDzAAgA8AD
+wQO/A8YDrwO7ACADswO6A8EDuQBQAGUAcgBmAGkAbAAgAGcAZQBuAOkAcgBpAGMAbwAgAGQAZQAgAGMA
+aQBuAHoAZQBuAHQAbwBzAEEAbABnAGUAbQBlAGUAbgAgAGcAcgBpAGoAcwBwAHIAbwBmAGkAZQBsAFAA
+ZQByAGYAaQBsACAAZwByAGkAcwAgAGcAZQBuAOkAcgBpAGMAbw5CDhsOIw5EDh8OJQ5MDioONQ5ADhcO
+Mg4XDjEOSA4nDkQOGwBHAGUAbgBlAGwAIABHAHIAaQAgAFAAcgBvAGYAaQBsAGkAWQBsAGUAaQBuAGUA
+bgAgAGgAYQByAG0AYQBhAHAAcgBvAGYAaQBpAGwAaQBHAGUAbgBlAHIAaQENAGsAaQAgAHAAcgBvAGYA
+aQBsACAAcwBpAHYAaQBoACAAdABvAG4AbwB2AGEAVQBuAGkAdwBlAHIAcwBhAGwAbgB5ACAAcAByAG8A
+ZgBpAGwAIABzAHoAYQByAG8BWwBjAGkEHgQxBEkEOAQ5ACAEQQQ1BEAESwQ5ACAEPwRABD4ERAQ4BDsE
+TAZFBkQGQQAgBioGOQYxBkoGQQAgAEcAcgBhAHkAIAYnBkQGOQYnBkUARwBlAG4AZQByAGUAbAAgAGcA
+cgDlAHQAbwBuAGUAYgBlAHMAawByAGkAdgBlAGwAcwBlAAB0ZXh0AAAAAENvcHlyaWdodCAyMDA3IEFw
+cGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQuAFhZWiAAAAAAAADzUQABAAAAARbMY3VydgAAAAAA
+AAABAc0AANIlJicoWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoycpKlpOU0lt
+YWdlUmVwWE5TT2JqZWN00iUmLC1XTlNBcnJheaIsKtIlJi8wXk5TTXV0YWJsZUFycmF5oy8sKtMyMwo0
+NTZXTlNXaGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAzSJSY4OVdOU0NvbG9yojgq0iUmOzxXTlNJbWFn
+ZaI7Kl8QD05TS2V5ZWRBcmNoaXZlctE/QFRyb290gAEACAARABoAIwAtADIANwBGAEwAVwBeAGUAcgB5
+AIEAgwCFAIoAjACOAJUAmgClAKcAqQCrALAAswC1ALcAuQC7AMAA1wDZANsJowmoCbMJvAnPCdMJ3gnn
+CewJ9An3CfwKCwoPChYKHgorCjAKMgo0CjkKQQpECkkKUQpUCmYKaQpuAAAAAAAAAgEAAAAAAAAAQQAA
+AAAAAAAAAAAAAAAACnA
+</mutableData>
+        </image>
+    </resources>
+</document>
