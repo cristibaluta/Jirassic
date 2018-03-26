@@ -21,10 +21,10 @@ class TasksViewController: UITableViewController {
 		//		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
 		//		self.navigationItem.rightBarButtonItem = addButton
 		
-		self.title = currentDay!.date.EEEEMMMMdd()
+		self.title = currentDay!.dateStart.EEEEMMMMdd()
         
-        let reader = ReadTasksInteractor(repository: localRepository)
-        tasks = reader.tasksInDay(currentDay!.date)
+        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        tasks = reader.tasksInDay(currentDay!.dateStart)
         
         //        let reportInteractor = CreateReport()
         //        let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: nil)

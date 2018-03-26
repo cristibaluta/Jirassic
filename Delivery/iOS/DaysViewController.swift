@@ -25,7 +25,7 @@ class DaysViewController: UITableViewController {
 	
     @objc func reloadData() {
         
-        let interactor = ReadDaysInteractor(repository: localRepository)
+        let interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
         interactor.query { (weeks) in
             
             self.days = interactor.days()
@@ -61,7 +61,7 @@ extension DaysViewController {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
 		let object = days[indexPath.row]
-		cell.textLabel!.text = object.date.EEEEMMMMdd()
+		cell.textLabel!.text = object.dateStart.EEEEMMMMdd()
 		return cell
 	}
 }
