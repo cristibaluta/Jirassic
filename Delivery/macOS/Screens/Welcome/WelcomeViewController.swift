@@ -11,6 +11,8 @@ import Cocoa
 class WelcomeViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
+    @IBOutlet var butSettings: NSButton!
+    @IBOutlet var butStart: NSButton!
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     
     override func viewDidLoad() {

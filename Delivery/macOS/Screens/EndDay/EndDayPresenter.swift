@@ -109,7 +109,7 @@ extension EndDayPresenter: EndDayPresenterInput {
                 DispatchQueue.main.async {
                     self?.userInterface!.showProgressIndicator(false)
                     if !success {
-                        self?.userInterface!.showJiraError("Couldn't save worklog to Jira")
+                        self?.userInterface!.showJiraError("Couldn't save the worklogs to Jira")
                     }
                 }
             }
@@ -119,7 +119,7 @@ extension EndDayPresenter: EndDayPresenterInput {
         if toHookup && self.date!.isSameDayAs(endDayDate) {
             moduleHookup.insert(task: endDayTask) { [weak self] success in
                 if !success {
-                    self?.userInterface!.showHookupError("Couldn't call hookup")
+                    self?.userInterface!.showHookupError("Couldn't call the hookup")
                 }
             }
         }
