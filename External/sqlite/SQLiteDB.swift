@@ -344,31 +344,10 @@ extension SQLiteDB {
 				let txt = String(validatingUTF8: uptr)!
 				let set = CharacterSet(charactersIn: "-:")
 				if txt.rangeOfCharacter(from: set) != nil {
-					// Convert to time
-					var time = tm(tm_sec: 0, 
-					              tm_min: 0, 
-					              tm_hour: 0, 
-					              tm_mday: 0, 
-					              tm_mon: 0, 
-					              tm_year: 0, 
-					              tm_wday: 0, 
-					              tm_yday: 0, 
-					              tm_isdst: 0, 
-					              tm_gmtoff: 0, 
-					              tm_zone: nil)
-					strptime(txt, "%Y-%m-%d %H:%M:%S", &time)
-					time.tm_isdst = -1
-					let diff = TimeZone.current.secondsFromGMT()
-                    let tz = TimeZone.current
-                    var t = Double(mktime(&time) + diff)
-                    var ti = TimeInterval(t)
-                    var val = Date(timeIntervalSince1970: ti)
-                    if tz.isDaylightSavingTime(for: val) {
-                        t = t + tz.daylightSavingTimeOffset(for: val)
-                        ti = TimeInterval(t)
-                        val = Date(timeIntervalSince1970: ti)
-                    }
-                    return val
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+                    dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+                    return dateFormatter.date(from: txt)!
 				}
 			}
 			// If not a text date, then it's a time interval
