@@ -42,23 +42,23 @@ class InputsScrollView: NSScrollView {
         dataSource?.browserCell?.save()
     }
     
-    func setShellStatus (compatible: Bool, scriptInstalled: Bool) {
-        dataSource?.shellCell?.setShellStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setShellStatus (available: Bool, compatible: Bool) {
+        dataSource?.shellCell?.setShellStatus (available: available, compatible: compatible)
     }
     
-    func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
-        dataSource?.jirassicCell?.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setJirassicStatus (available: Bool, compatible: Bool) {
+        dataSource?.jirassicCell?.setJirassicStatus (available: available, compatible: compatible)
     }
     
-    func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
-        dataSource?.jitCell?.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setJitStatus (available: Bool, compatible: Bool) {
+        dataSource?.jitCell?.setJitStatus (available: available, compatible: compatible)
     }
     
-    func setGitStatus (scriptInstalled: Bool) {
-        dataSource?.gitCell?.presenter.isShellScriptInstalled = scriptInstalled
+    func setGitStatus (available: Bool) {
+        dataSource?.gitCell?.presenter.isShellScriptInstalled = available
     }
     
-    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {
-        dataSource?.browserCell?.setBrowserStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setBrowserStatus (available: Bool, compatible: Bool) {
+        dataSource?.browserCell?.setBrowserStatus (available: available, compatible: compatible)
     }
 }

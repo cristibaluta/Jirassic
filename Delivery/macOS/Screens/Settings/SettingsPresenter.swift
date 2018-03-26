@@ -21,12 +21,12 @@ protocol SettingsPresenterInput: class {
 
 protocol SettingsPresenterOutput: class {
     
-    func setShellStatus (compatible: Bool, scriptInstalled: Bool)
-    func setJirassicStatus (compatible: Bool, scriptInstalled: Bool)
-    func setJitStatus (compatible: Bool, scriptInstalled: Bool)
-    func setGitStatus (scriptInstalled: Bool)
-    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool)
-    func setHookupStatus (scriptInstalled: Bool)
+    func setShellStatus (available: Bool, compatible: Bool)
+    func setJirassicStatus (available: Bool, compatible: Bool)
+    func setJitStatus (available: Bool, compatible: Bool)
+    func setGitStatus (available: Bool)
+    func setBrowserStatus (available: Bool, compatible: Bool)
+    func setHookupStatus (available: Bool)
     func showAppSettings (_ settings: Settings)
     func enableBackup (_ enabled: Bool, title: String)
     func enableLaunchAtStartup (_ enabled: Bool)
@@ -53,22 +53,29 @@ extension SettingsPresenter: SettingsPresenterInput {
             guard let userInterface = self?.userInterface else {
                 return
             }
-            let compatibility = Versioning.isCompatible(versions)
-            userInterface.setShellStatus(compatible: compatibility.jirassicCmd,
-                                         scriptInstalled: versions.shellScript != "")
-            userInterface.setJirassicStatus(compatible: compatibility.jirassicCmd,
-                                            scriptInstalled: versions.shellScript != "")
-            userInterface.setJitStatus(compatible: compatibility.jitCmd, 
-                                       scriptInstalled: versions.shellScript != "")
-            
-            userInterface.setBrowserStatus(compatible: compatibility.browserScript,
-                                           scriptInstalled: versions.browserScript != "")
+            let compatibility = Versioning.compatibilityMap(versions)
+
+            // Setup shell script
+            userInterface.setShellStatus(available: versions.shellScript != "",
+                                         compatible: compatibility.shellScript)
+
+            // Setup jirassic cmd
+            userInterface.setJirassicStatus(available: versions.jirassicCmd != "",
+                                            compatible: compatibility.jirassicCmd)
+
+            // Setup jit cmd
+            userInterface.setJitStatus(available: versions.shellScript != "",
+                                       compatible: compatibility.jitCmd)
+
+            // Setup browser script
+            userInterface.setBrowserStatus(available: versions.browserScript != "",
+                                           compatible: compatibility.browserScript)
             
             // Git requires extra call
-            userInterface.setGitStatus(scriptInstalled: versions.shellScript != "")
+            userInterface.setGitStatus(available: versions.shellScript != "")
             
             // Hookup requires extra call
-            userInterface.setHookupStatus(scriptInstalled: versions.shellScript != "")
+            userInterface.setHookupStatus(available: versions.shellScript != "")
         }
     }
     
@@ -111,7 +118,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     func installJirassic() {
         #if !APPSTORE
         extensionsInstaller.installJirassic { (success) in
-            self.userInterface!.setJirassicStatus(compatible: true, scriptInstalled: success)
+            self.userInterface!.setJirassicStatus(available: success, compatible: true)
         }
         #endif
     }
@@ -119,7 +126,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     func installJit() {
         #if !APPSTORE
         extensionsInstaller.installJit { (success) in
-            self.userInterface!.setJitStatus(compatible: true, scriptInstalled: success)
+            self.userInterface!.setJitStatus(available: success, compatible: true)
         }
         #endif
     }

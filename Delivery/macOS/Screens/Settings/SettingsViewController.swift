@@ -91,28 +91,28 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
-    func setShellStatus (compatible: Bool, scriptInstalled: Bool) {
-        inputsScrollView.setShellStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setShellStatus (available: Bool, compatible: Bool) {
+        inputsScrollView.setShellStatus (available: available, compatible: compatible)
     }
     
-    func setJirassicStatus (compatible: Bool, scriptInstalled: Bool) {
-        inputsScrollView.setJirassicStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setJirassicStatus (available: Bool, compatible: Bool) {
+        inputsScrollView.setJirassicStatus (available: available, compatible: compatible)
     }
     
-    func setJitStatus (compatible: Bool, scriptInstalled: Bool) {
-        inputsScrollView.setJitStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setJitStatus (available: Bool, compatible: Bool) {
+        inputsScrollView.setJitStatus (available: available, compatible: compatible)
     }
     
-    func setGitStatus (scriptInstalled: Bool) {
-        inputsScrollView.setGitStatus (scriptInstalled: scriptInstalled)
+    func setGitStatus (available: Bool) {
+        inputsScrollView.setGitStatus (available: available)
     }
     
-    func setBrowserStatus (compatible: Bool, scriptInstalled: Bool) {
-        inputsScrollView.setBrowserStatus (compatible: compatible, scriptInstalled: scriptInstalled)
+    func setBrowserStatus (available: Bool, compatible: Bool) {
+        inputsScrollView.setBrowserStatus (available: available, compatible: compatible)
     }
     
-    func setHookupStatus (scriptInstalled: Bool) {
-        outputsScrollView.setHookupStatus (scriptInstalled: scriptInstalled)
+    func setHookupStatus (available: Bool) {
+        outputsScrollView.setHookupStatus (available: available)
     }
     
     func showAppSettings (_ settings: Settings) {

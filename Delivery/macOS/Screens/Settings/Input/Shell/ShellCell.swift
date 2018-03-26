@@ -19,9 +19,9 @@ class ShellCell: NSTableRowView {
 
     }
     
-    func setShellStatus (compatible: Bool, scriptInstalled: Bool) {
+    func setShellStatus (available: Bool, compatible: Bool) {
         
-        if scriptInstalled {
+        if available {
             statusImageView.image = NSImage(named: compatible
                 ? NSImage.Name.statusAvailable
                 : NSImage.Name.statusPartiallyAvailable)
@@ -32,7 +32,7 @@ class ShellCell: NSTableRowView {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             textField.stringValue = "Not installed yet"
         }
-        butInstall.isHidden = scriptInstalled && compatible
+        butInstall.isHidden = available && compatible
     }
 
     func save() {
