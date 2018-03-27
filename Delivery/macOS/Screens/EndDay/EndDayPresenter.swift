@@ -58,7 +58,8 @@ extension EndDayPresenter: EndDayPresenterInput {
             comment += report.taskNumber + " - " + report.title + "\n" + report.notes + "\n\n"
             duration += report.duration
         }
-        let workedHours = (targetHoursInDay ?? duration.hoursToSec).secToHours
+//        let workedHours = (targetHoursInDay ?? duration.hoursToSec).secToHours
+        let workedHours = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength() )
         
         userInterface!.showWorklog(comment)
         setupJiraButton()

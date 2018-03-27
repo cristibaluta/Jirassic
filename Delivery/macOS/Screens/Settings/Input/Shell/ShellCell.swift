@@ -26,8 +26,8 @@ class ShellCell: NSTableRowView {
                 ? NSImage.Name.statusAvailable
                 : NSImage.Name.statusPartiallyAvailable)
             textField.stringValue = compatible
-                ? "Shell support installed"
-                : "Applescript outdated"
+                ? "Installed, Jirassic is now able to communicate with the outside world"
+                : "Outdated, please update!"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             textField.stringValue = "Not installed yet"

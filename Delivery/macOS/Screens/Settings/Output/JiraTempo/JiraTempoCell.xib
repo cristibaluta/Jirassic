@@ -46,7 +46,7 @@
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="User" bezelStyle="round" id="pEb-he-QBb">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-B9-4w3">
@@ -67,7 +67,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32U-E8-26L">
-                                <rect key="frame" x="304" y="21" width="73" height="17"/>
+                                <rect key="frame" x="271" y="21" width="73" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Issue name" id="2XS-9S-G2g">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -99,7 +99,7 @@
                                 </constraints>
                             </box>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sAK-lu-hJn">
-                                <rect key="frame" x="108" y="12" width="137" height="26"/>
+                                <rect key="frame" x="108" y="12" width="140" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="3iE-pL-kt9" id="YAM-5t-F1C">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -117,9 +117,9 @@
                                 </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-53-lCO">
-                                <rect key="frame" x="386" y="16" width="112" height="26"/>
+                                <rect key="frame" x="353" y="16" width="145" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="2Lw-sn-lt0"/>
+                                    <constraint firstAttribute="width" constant="140" id="2Lw-sn-lt0"/>
                                     <constraint firstAttribute="height" constant="21" id="vfu-LW-94d"/>
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="nac-xQ-QzF" id="HQY-RV-FzS">
@@ -138,7 +138,7 @@
                                 </connections>
                             </popUpButton>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-oi-lgq">
-                                <rect key="frame" x="250" y="18" width="16" height="16"/>
+                                <rect key="frame" x="13" y="53" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rsL-Fg-y5y">

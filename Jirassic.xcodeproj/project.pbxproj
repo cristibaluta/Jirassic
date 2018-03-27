@@ -120,16 +120,9 @@
 		280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3771DD3B44200B73201 /* CalendarScrollView.swift */; };
 		280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3841DD3B44200B73201 /* TasksScrollView.swift */; };
 		280D717E1ED6043D005D2689 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
-		280D717F1ED6043D005D2689 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
-		280D71801ED6043D005D2689 /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */; };
 		280D71811ED6043D005D2689 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
 		280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3781DD3B44200B73201 /* CellProtocol.swift */; };
 		280D71831ED6043D005D2689 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9381E59EC1500B360A4 /* TasksView.swift */; };
-		280D71841ED6043D005D2689 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37C1DD3B44200B73201 /* ReportCell.swift */; };
-		280D71861ED6043D005D2689 /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */; };
-		280D71871ED6043D005D2689 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37F1DD3B44200B73201 /* TaskCell.swift */; };
-		280D718A1ED6043D005D2689 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */; };
-		280D718B1ED6043D005D2689 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37A1DD3B44200B73201 /* NonTaskCell.swift */; };
 		280D718D1ED6043D005D2689 /* InternalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3681DD3B44200B73201 /* InternalNotifications.swift */; };
 		280D718E1ED6043D005D2689 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3691DD3B44200B73201 /* UserNotifications.swift */; };
 		280D718F1ED6043D005D2689 /* SleepNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D36A1DD3B44200B73201 /* SleepNotifications.swift */; };
@@ -163,9 +156,6 @@
 		280D71C21ED608D6005D2689 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E092401DE385E4001EF5DA /* Settings.storyboard */; };
 		280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406384881DE388C5004795A4 /* Tasks.storyboard */; };
-		280D71C51ED608D6005D2689 /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D37D1DD3B44200B73201 /* ReportCell.xib */; };
-		280D71C61ED608D6005D2689 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3801DD3B44200B73201 /* TaskCell.xib */; };
-		280D71C71ED608D6005D2689 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D37B1DD3B44200B73201 /* NonTaskCell.xib */; };
 		280D71C81ED608D6005D2689 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
 		280D71C91ED60908005D2689 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
 		280F507D1EC868B0007416AB /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
@@ -185,6 +175,31 @@
 		2845B13D206832A1006EFB3B /* NewTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2845B13B206832A1006EFB3B /* NewTask.storyboard */; };
 		2845B13F2068351F006EFB3B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B13E2068351F006EFB3B /* TableViewCell.swift */; };
 		2845B1402068351F006EFB3B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B13E2068351F006EFB3B /* TableViewCell.swift */; };
+		2845B149206AE3A8006EFB3B /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B144206AE3A8006EFB3B /* ReportCell.swift */; };
+		2845B14A206AE3A8006EFB3B /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B144206AE3A8006EFB3B /* ReportCell.swift */; };
+		2845B14B206AE3A8006EFB3B /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B145206AE3A8006EFB3B /* ReportCell.xib */; };
+		2845B14C206AE3A8006EFB3B /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B145206AE3A8006EFB3B /* ReportCell.xib */; };
+		2845B14D206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */; };
+		2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */; };
+		2845B14F206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
+		2845B150206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
+		2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
+		2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
+		2845B160206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell.swift */; };
+		2845B161206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell.swift */; };
+		2845B162206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
+		2845B163206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
+		2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
+		2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
+		2845B166206AE468006EFB3B /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* FooterCell.swift */; };
+		2845B167206AE468006EFB3B /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* FooterCell.swift */; };
+		2845B168206AE468006EFB3B /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* FooterCell.xib */; };
+		2845B169206AE468006EFB3B /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* FooterCell.xib */; };
+		2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
+		2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
+		2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
+		2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
+		2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B154206AE467006EFB3B /* TaskCellTests.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -262,7 +277,6 @@
 		28A283B1203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */; };
 		28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
-		28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
 		28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
 		28A928791E8F78580022AB55 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
@@ -303,12 +317,7 @@
 		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
 		28E896751E83770D00722032 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E896731E83770D00722032 /* MainMenu.xib */; };
 		28E8967A1E83845900722032 /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E896761E83845100722032 /* RCPreferences.swift */; };
-		28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */; };
 		28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9381E59EC1500B360A4 /* TasksView.swift */; };
-		28FB264220203EA300AEA38D /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB264120203EA300AEA38D /* FooterCell.xib */; };
-		28FB264320203EA300AEA38D /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB264120203EA300AEA38D /* FooterCell.xib */; };
-		28FB264520203ECD00AEA38D /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* FooterCell.swift */; };
-		28FB264620203ECD00AEA38D /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB264420203ECD00AEA38D /* FooterCell.swift */; };
 		28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
 		28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
 		28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
@@ -367,14 +376,6 @@
 		4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3751DD3B44200B73201 /* SettingsViewController.swift */; };
 		4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3771DD3B44200B73201 /* CalendarScrollView.swift */; };
 		4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3781DD3B44200B73201 /* CellProtocol.swift */; };
-		4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37A1DD3B44200B73201 /* NonTaskCell.swift */; };
-		4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D37B1DD3B44200B73201 /* NonTaskCell.xib */; };
-		4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37C1DD3B44200B73201 /* ReportCell.swift */; };
-		4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D37D1DD3B44200B73201 /* ReportCell.xib */; };
-		4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */; };
-		4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D37F1DD3B44200B73201 /* TaskCell.swift */; };
-		4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3801DD3B44200B73201 /* TaskCell.xib */; };
-		4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */; };
 		4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3831DD3B44200B73201 /* TasksPresenter.swift */; };
 		4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3841DD3B44200B73201 /* TasksScrollView.swift */; };
 		4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3851DD3B44200B73201 /* TasksViewController.swift */; };
@@ -385,7 +386,6 @@
 		4065D4171DD4536200B73201 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3871DD3B44200B73201 /* main.swift */; };
 		4065D4181DD454C500B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
-		4065D41F1DD4561A00B73201 /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3821DD3B44200B73201 /* TaskCellTests.swift */; };
 		4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */; };
 		4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */; };
 		4065D4221DD4562900B73201 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31C1DD3B44200B73201 /* TaskTests.swift */; };
@@ -536,6 +536,19 @@
 		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		2845B13B206832A1006EFB3B /* NewTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTask.storyboard; sourceTree = "<group>"; };
 		2845B13E2068351F006EFB3B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		2845B144206AE3A8006EFB3B /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
+		2845B145206AE3A8006EFB3B /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
+		2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCellPresenter.swift; sourceTree = "<group>"; };
+		2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
+		2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
+		2845B154206AE467006EFB3B /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTests.swift; sourceTree = "<group>"; };
+		2845B155206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		2845B156206AE467006EFB3B /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		2845B157206AE467006EFB3B /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
+		2845B159206AE467006EFB3B /* FooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
+		2845B15A206AE467006EFB3B /* FooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
+		2845B15C206AE467006EFB3B /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
+		2845B15D206AE467006EFB3B /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -576,7 +589,6 @@
 		28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractor.swift; sourceTree = "<group>"; };
 		28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractorTests.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
-		28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		28A928771E8F78580022AB55 /* SQLiteSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteSchema.swift; sourceTree = "<group>"; };
 		28A9287C1E9030BA0022AB55 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -601,10 +613,7 @@
 		28E896701E83732200722032 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "macOS-launcher/main.m"; sourceTree = "<group>"; };
 		28E896741E83770D00722032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "macOS-launcher/Base.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		28E896761E83845100722032 /* RCPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCPreferences.swift; sourceTree = "<group>"; };
-		28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
 		28EDE9381E59EC1500B360A4 /* TasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
-		28FB264120203EA300AEA38D /* FooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
-		28FB264420203ECD00AEA38D /* FooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
 		28FB265020224E3A00AEA38D /* JiraTempoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoCell.swift; sourceTree = "<group>"; };
 		28FB265320224E5B00AEA38D /* JiraTempoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JiraTempoCell.xib; sourceTree = "<group>"; };
 		28FB265720224E9B00AEA38D /* HookupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HookupCell.xib; sourceTree = "<group>"; };
@@ -680,15 +689,6 @@
 		4065D3751DD3B44200B73201 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4065D3771DD3B44200B73201 /* CalendarScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarScrollView.swift; sourceTree = "<group>"; };
 		4065D3781DD3B44200B73201 /* CellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
-		4065D37A1DD3B44200B73201 /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
-		4065D37B1DD3B44200B73201 /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
-		4065D37C1DD3B44200B73201 /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
-		4065D37D1DD3B44200B73201 /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
-		4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCellPresenter.swift; sourceTree = "<group>"; };
-		4065D37F1DD3B44200B73201 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		4065D3801DD3B44200B73201 /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
-		4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
-		4065D3821DD3B44200B73201 /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTests.swift; sourceTree = "<group>"; };
 		4065D3831DD3B44200B73201 /* TasksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
 		4065D3841DD3B44200B73201 /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
 		4065D3851DD3B44200B73201 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
@@ -825,6 +825,63 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
+		2845B141206AE2A4006EFB3B /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */,
+				2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */,
+				2845B143206AE3A8006EFB3B /* ReportCell */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		2845B142206AE342006EFB3B /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		2845B143206AE3A8006EFB3B /* ReportCell */ = {
+			isa = PBXGroup;
+			children = (
+				2845B144206AE3A8006EFB3B /* ReportCell.swift */,
+				2845B145206AE3A8006EFB3B /* ReportCell.xib */,
+				2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */,
+			);
+			path = ReportCell;
+			sourceTree = "<group>";
+		};
+		2845B153206AE467006EFB3B /* TaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				2845B155206AE467006EFB3B /* TaskCell.swift */,
+				2845B156206AE467006EFB3B /* TaskCell.xib */,
+				2845B154206AE467006EFB3B /* TaskCellTests.swift */,
+				2845B157206AE467006EFB3B /* TaskCellPresenter.swift */,
+			);
+			path = TaskCell;
+			sourceTree = "<group>";
+		};
+		2845B158206AE467006EFB3B /* FooterCell */ = {
+			isa = PBXGroup;
+			children = (
+				2845B159206AE467006EFB3B /* FooterCell.swift */,
+				2845B15A206AE467006EFB3B /* FooterCell.xib */,
+			);
+			path = FooterCell;
+			sourceTree = "<group>";
+		};
+		2845B15B206AE467006EFB3B /* NonTaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				2845B15C206AE467006EFB3B /* NonTaskCell.swift */,
+				2845B15D206AE467006EFB3B /* NonTaskCell.xib */,
+			);
+			path = NonTaskCell;
+			sourceTree = "<group>";
+		};
 		28577EA01E8ADBBD002B07FD /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,15 +989,6 @@
 				28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */,
 			);
 			path = Parsing;
-			sourceTree = "<group>";
-		};
-		28FB264020203D3400AEA38D /* FooterCell */ = {
-			isa = PBXGroup;
-			children = (
-				28FB264420203ECD00AEA38D /* FooterCell.swift */,
-				28FB264120203EA300AEA38D /* FooterCell.xib */,
-			);
-			name = FooterCell;
 			sourceTree = "<group>";
 		};
 		28FB264D20224DE200AEA38D /* Input */ = {
@@ -1267,7 +1315,9 @@
 				4065D3721DD3B44200B73201 /* Settings */,
 				4065D3701DD3B44200B73201 /* NewTask */,
 				564E55F12028839F00CE4C76 /* EndDay */,
+				2845B142206AE342006EFB3B /* Calendar */,
 				4065D3761DD3B44200B73201 /* Tasks */,
+				2845B141206AE2A4006EFB3B /* Reports */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1302,18 +1352,14 @@
 				406384881DE388C5004795A4 /* Tasks.storyboard */,
 				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
 				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
-				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
-				28A5F27F1E578A1A002BE564 /* ReportsDataSource.swift */,
-				28EDE9361E5957A800B360A4 /* ReportsHeaderView.swift */,
 				28A5F2811E586426002BE564 /* DataSource.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
-				28FB264020203D3400AEA38D /* FooterCell */,
-				407318511DEAAAE00046F409 /* ReportCell */,
-				407318501DEAAACC0046F409 /* TaskCell */,
-				407318521DEAAB010046F409 /* NonTaskCell */,
+				2845B158206AE467006EFB3B /* FooterCell */,
+				2845B15B206AE467006EFB3B /* NonTaskCell */,
+				2845B153206AE467006EFB3B /* TaskCell */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1394,36 +1440,6 @@
 				4065D4061DD4532100B73201 /* Info.plist */,
 			);
 			path = JirassicTests;
-			sourceTree = "<group>";
-		};
-		407318501DEAAACC0046F409 /* TaskCell */ = {
-			isa = PBXGroup;
-			children = (
-				4065D37F1DD3B44200B73201 /* TaskCell.swift */,
-				4065D3801DD3B44200B73201 /* TaskCell.xib */,
-				4065D3821DD3B44200B73201 /* TaskCellTests.swift */,
-				4065D3811DD3B44200B73201 /* TaskCellPresenter.swift */,
-			);
-			name = TaskCell;
-			sourceTree = "<group>";
-		};
-		407318511DEAAAE00046F409 /* ReportCell */ = {
-			isa = PBXGroup;
-			children = (
-				4065D37C1DD3B44200B73201 /* ReportCell.swift */,
-				4065D37D1DD3B44200B73201 /* ReportCell.xib */,
-				4065D37E1DD3B44200B73201 /* ReportCellPresenter.swift */,
-			);
-			name = ReportCell;
-			sourceTree = "<group>";
-		};
-		407318521DEAAB010046F409 /* NonTaskCell */ = {
-			isa = PBXGroup;
-			children = (
-				4065D37A1DD3B44200B73201 /* NonTaskCell.swift */,
-				4065D37B1DD3B44200B73201 /* NonTaskCell.xib */,
-			);
-			name = NonTaskCell;
 			sourceTree = "<group>";
 		};
 		40FCE4211DF7646F00D4FD45 /* External */ = {
@@ -1738,7 +1754,6 @@
 				569C4C70202319DE0049FBF1 /* ShellCell.xib in Resources */,
 				28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
-				28FB264220203EA300AEA38D /* FooterCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				2845B13C206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
@@ -1748,15 +1763,16 @@
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
 				280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */,
-				280D71C51ED608D6005D2689 /* ReportCell.xib in Resources */,
 				564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */,
+				2845B162206AE468006EFB3B /* TaskCell.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
-				280D71C61ED608D6005D2689 /* TaskCell.xib in Resources */,
 				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
+				2845B14B206AE3A8006EFB3B /* ReportCell.xib in Resources */,
 				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
-				280D71C71ED608D6005D2689 /* NonTaskCell.xib in Resources */,
+				2845B168206AE468006EFB3B /* FooterCell.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
+				2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				569C4C73202319EE0049FBF1 /* JitCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1774,27 +1790,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */,
-				4065D3E61DD3B44200B73201 /* NonTaskCell.xib in Resources */,
 				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
+				2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
-				4065D3EB1DD3B44200B73201 /* TaskCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
-				4065D3E81DD3B44200B73201 /* ReportCell.xib in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				2845B13D206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
 				28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
+				2845B14C206AE3A8006EFB3B /* ReportCell.xib in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				569C4C77202319FC0049FBF1 /* GitCell.xib in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
+				2845B163206AE468006EFB3B /* TaskCell.xib in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
 				564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */,
-				28FB264320203EA300AEA38D /* FooterCell.xib in Resources */,
+				2845B169206AE468006EFB3B /* FooterCell.xib in Resources */,
 				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1896,6 +1912,7 @@
 				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
+				2845B160206AE468006EFB3B /* TaskCell.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
 				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
 				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
@@ -1909,6 +1926,8 @@
 				280D715C1ED6043D005D2689 /* AppScriptable.swift in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
+				2845B14D206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
+				2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */,
 				280D715F1ED6043D005D2689 /* AppTheme.swift in Sources */,
 				28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				280D71601ED6043D005D2689 /* MenuBarController.swift in Sources */,
@@ -1933,6 +1952,7 @@
 				287195332025C367001C237E /* CUser.swift in Sources */,
 				280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */,
 				2892B2AA1F0950F90085BAC2 /* RCHttp.swift in Sources */,
+				2845B149206AE3A8006EFB3B /* ReportCell.swift in Sources */,
 				2892B29E1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				280D71701ED6043D005D2689 /* ExtensionsInteractor.swift in Sources */,
 				2845B13F2068351F006EFB3B /* TableViewCell.swift in Sources */,
@@ -1947,25 +1967,20 @@
 				280D71781ED6043D005D2689 /* NewTaskViewController.swift in Sources */,
 				28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */,
-				28FB264520203ECD00AEA38D /* FooterCell.swift in Sources */,
+				2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
 				28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */,
+				2845B14F206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */,
 				280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */,
 				280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */,
 				280D717E1ED6043D005D2689 /* TasksDataSource.swift in Sources */,
 				28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
 				287195152022E1E2001C237E /* HookupPresenter.swift in Sources */,
-				280D717F1ED6043D005D2689 /* ReportsDataSource.swift in Sources */,
-				280D71801ED6043D005D2689 /* ReportsHeaderView.swift in Sources */,
 				280D71811ED6043D005D2689 /* DataSource.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
-				280D71841ED6043D005D2689 /* ReportCell.swift in Sources */,
+				2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
-				280D71861ED6043D005D2689 /* ReportCellPresenter.swift in Sources */,
-				280D71871ED6043D005D2689 /* TaskCell.swift in Sources */,
-				280D718A1ED6043D005D2689 /* TaskCellPresenter.swift in Sources */,
-				280D718B1ED6043D005D2689 /* NonTaskCell.swift in Sources */,
 				569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */,
 				569C4C64202319870049FBF1 /* GitCell.swift in Sources */,
 				569C4C6D202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
@@ -1978,6 +1993,7 @@
 				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
+				2845B166206AE468006EFB3B /* FooterCell.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				280D719F1ED6043D005D2689 /* SqliteRepository+User.swift in Sources */,
 				280D71A01ED6043D005D2689 /* SqliteRepository+Settings.swift in Sources */,
@@ -2049,7 +2065,6 @@
 				569C4C6B202319A20049FBF1 /* BrowserCell.swift in Sources */,
 				4065D3A31DD3B44200B73201 /* DateExtension.swift in Sources */,
 				28AA500B1EDCD51300AAF03D /* CoreDataRepository+User.swift in Sources */,
-				28A5F2801E578A1A002BE564 /* ReportsDataSource.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
@@ -2062,10 +2077,10 @@
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
 				28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */,
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
-				4065D3EC1DD3B44200B73201 /* TaskCellPresenter.swift in Sources */,
 				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
 				569C4C62202319760049FBF1 /* JitPresenter.swift in Sources */,
 				569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */,
+				2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
 				2823C9351E4F69970055D036 /* Versioning.swift in Sources */,
 				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
@@ -2076,12 +2091,11 @@
 				28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */,
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
-				4065D3EA1DD3B44200B73201 /* TaskCell.swift in Sources */,
+				2845B14A206AE3A8006EFB3B /* ReportCell.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
 				564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
 				2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */,
-				28FB264620203ECD00AEA38D /* FooterCell.swift in Sources */,
 				28A9287F1E90D8BD0022AB55 /* RCSync.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
@@ -2097,6 +2111,7 @@
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
+				2845B150206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */,
 				28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				28A283982037975600DDCB63 /* Saveable.swift in Sources */,
 				28AA50081EDCD51300AAF03D /* CoreDataRepository.swift in Sources */,
@@ -2126,21 +2141,22 @@
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
-				28EDE9371E5957A800B360A4 /* ReportsHeaderView.swift in Sources */,
 				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
+				2845B167206AE468006EFB3B /* FooterCell.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
-				4065D3E91DD3B44200B73201 /* ReportCellPresenter.swift in Sources */,
 				28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */,
+				2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */,
 				2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				28577EB11E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
+				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				28AA50101EDCD52300AAF03D /* InMemoryCoreDataRepository.swift in Sources */,
@@ -2151,18 +2167,18 @@
 				287195162022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
+				2845B161206AE468006EFB3B /* TaskCell.swift in Sources */,
 				28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				28E8967A1E83845900722032 /* RCPreferences.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A928841E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
 				2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
-				4065D3E71DD3B44200B73201 /* ReportCell.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
+				2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
 				2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
-				4065D3E51DD3B44200B73201 /* NonTaskCell.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
 				564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
@@ -2178,11 +2194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4065D41F1DD4561A00B73201 /* TaskCellTests.swift in Sources */,
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
 				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
+				2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
