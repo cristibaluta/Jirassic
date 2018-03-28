@@ -46,24 +46,24 @@ class HookupPresenter {
         
         hookupModule.isReachable(completion: { [weak self] commandInstalled in
             
-            guard let wself = self else {
+            guard let wself = self, let userInterface = wself.userInterface else {
                 return
             }
             if wself.isShellScriptInstalled == true {
-                wself.userInterface?.setStatusImage(commandInstalled ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-                wself.userInterface?.setStatusText(commandInstalled ? "Start/End day actions will be sent to this custom cmd" : "Custom cmd is not reachable")
+                userInterface.setStatusImage(commandInstalled ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+                userInterface.setStatusText(commandInstalled ? "Start/End day actions will be sent to this custom cmd" : "Custom cmd is not reachable")
             } else {
-                wself.userInterface?.setStatusImage(NSImage.Name.statusUnavailable)
-                wself.userInterface?.setStatusText("Not possible to use custom cmd, please install shell support first!")
+                userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+                userInterface.setStatusText("Not possible to use custom cmd, please install shell support first!")
             }
-            wself.userInterface?.setCommand(path: wself.localPreferences.string(.settingsHookupCmdName),
-                                            enabled: wself.localPreferences.bool(.enableHookup))
+            userInterface.setCommand(path: wself.localPreferences.string(.settingsHookupCmdName),
+                                     enabled: wself.localPreferences.bool(.enableHookup))
             
-            wself.userInterface?.setButEnable(on: wself.localPreferences.bool(.enableHookup),
-                                              enabled: commandInstalled)
+            userInterface.setButEnable(on: wself.localPreferences.bool(.enableHookup),
+                                       enabled: commandInstalled)
             
-            wself.userInterface?.setButEnableCredentials(on: wself.localPreferences.bool(.enableHookupCredentials),
-                                                         enabled: commandInstalled)
+            userInterface.setButEnableCredentials(on: wself.localPreferences.bool(.enableHookupCredentials),
+                                                  enabled: commandInstalled)
         })
     }
 }
@@ -72,8 +72,8 @@ extension HookupPresenter: HookupPresenterInput {
     
     func enableHookup (_ enabled: Bool) {
         localPreferences.set(enabled, forKey: .enableHookup)
-        userInterface?.setCommand(path: nil, enabled: enabled)
-        userInterface?.setButEnable(on: enabled, enabled: nil)
+        userInterface!.setCommand(path: nil, enabled: enabled)
+        userInterface!.setButEnable(on: enabled, enabled: nil)
     }
     
     func enableCredentials (_ enabled: Bool) {

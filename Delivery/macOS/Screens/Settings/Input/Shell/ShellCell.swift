@@ -9,11 +9,11 @@
 import Cocoa
 
 class ShellCell: NSTableRowView {
-
+    
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var textField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -34,11 +34,11 @@ class ShellCell: NSTableRowView {
         }
         butInstall.isHidden = available && compatible
     }
-
+    
     func save() {
-
+        // Nothing to save
     }
-
+    
     @IBAction func handleInstallButton (_ sender: NSButton) {
         #if APPSTORE
             NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)

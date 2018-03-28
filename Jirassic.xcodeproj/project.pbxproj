@@ -433,8 +433,6 @@
 		569C4C5C202319490049FBF1 /* ShellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5A202319490049FBF1 /* ShellPresenter.swift */; };
 		569C4C5E202319630049FBF1 /* JitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5D202319630049FBF1 /* JitCell.swift */; };
 		569C4C5F202319630049FBF1 /* JitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5D202319630049FBF1 /* JitCell.swift */; };
-		569C4C61202319760049FBF1 /* JitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C60202319760049FBF1 /* JitPresenter.swift */; };
-		569C4C62202319760049FBF1 /* JitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C60202319760049FBF1 /* JitPresenter.swift */; };
 		569C4C64202319870049FBF1 /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C63202319870049FBF1 /* GitCell.swift */; };
 		569C4C65202319870049FBF1 /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C63202319870049FBF1 /* GitCell.swift */; };
 		569C4C67202319930049FBF1 /* GitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C66202319930049FBF1 /* GitPresenter.swift */; };
@@ -726,7 +724,6 @@
 		569C4C572023193B0049FBF1 /* ShellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellCell.swift; sourceTree = "<group>"; };
 		569C4C5A202319490049FBF1 /* ShellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellPresenter.swift; sourceTree = "<group>"; };
 		569C4C5D202319630049FBF1 /* JitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitCell.swift; sourceTree = "<group>"; };
-		569C4C60202319760049FBF1 /* JitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitPresenter.swift; sourceTree = "<group>"; };
 		569C4C63202319870049FBF1 /* GitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCell.swift; sourceTree = "<group>"; };
 		569C4C66202319930049FBF1 /* GitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitPresenter.swift; sourceTree = "<group>"; };
 		569C4C69202319A20049FBF1 /* BrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserCell.swift; sourceTree = "<group>"; };
@@ -1519,7 +1516,6 @@
 			isa = PBXGroup;
 			children = (
 				569C4C5D202319630049FBF1 /* JitCell.swift */,
-				569C4C60202319760049FBF1 /* JitPresenter.swift */,
 				569C4C72202319EE0049FBF1 /* JitCell.xib */,
 			);
 			path = Jit;
@@ -2024,7 +2020,6 @@
 				280D71B81ED6043D005D2689 /* RCPreferences.swift in Sources */,
 				280D71B91ED6043D005D2689 /* RCLog.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
-				569C4C61202319760049FBF1 /* JitPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2078,7 +2073,6 @@
 				28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */,
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
 				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
-				569C4C62202319760049FBF1 /* JitPresenter.swift in Sources */,
 				569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */,
 				2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
 				2823C9351E4F69970055D036 /* Versioning.swift in Sources */,

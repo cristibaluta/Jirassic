@@ -56,24 +56,25 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     func loadProjects() {
         
         userInterface!.enableProgressIndicator(true)
+        userInterface!.showErrorMessage("")
         
         moduleJira.fetchProjects { [weak self] (projects) in
             
-            guard let wself = self else {
-                return
-            }
             DispatchQueue.main.async {
                 
-                wself.userInterface!.enableProgressIndicator(false)
+                guard let wself = self, let userInterface = wself.userInterface else {
+                    return
+                }
+                userInterface.enableProgressIndicator(false)
                 
                 guard let projects = projects else {
-                    wself.userInterface!.showErrorMessage("Error: Wrong credentials or server not reachable.")
+                    userInterface.showErrorMessage("Error: Wrong credentials or server not reachable.")
                     return
                 }
                 let titles = projects.map { $0.key }
                 let selectedProjectKey = wself.localPreferences.string(.settingsJiraProjectKey)
                 
-                wself.userInterface!.showProjects(titles, selectedProject: selectedProjectKey)
+                userInterface.showProjects(titles, selectedProject: selectedProjectKey)
                 if projects.count > 0 && selectedProjectKey != "" {
                     wself.loadProjectIssues(for: selectedProjectKey)
                 }
@@ -84,23 +85,24 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     func loadProjectIssues (for projectKey: String) {
         
         userInterface!.enableProgressIndicator(true)
+        userInterface!.showErrorMessage("")
         
         moduleJira.fetchProjectIssues (projectKey: projectKey) { [weak self] (issues) in
             
-            guard let wself = self else {
-                return
-            }
             DispatchQueue.main.async {
                 
-                wself.userInterface!.enableProgressIndicator(false)
+                guard let wself = self, let userInterface = wself.userInterface else {
+                    return
+                }
+                userInterface.enableProgressIndicator(false)
                 
                 guard let issues = issues else {
-                    wself.userInterface!.showErrorMessage("Error: Server not reachable.")
+                    userInterface.showErrorMessage("Error: Server not reachable.")
                     return
                 }
                 let titles = issues.map { $0.key }
                 
-                wself.userInterface!.showProjectIssues(titles, selectedIssue: wself.localPreferences.string(.settingsJiraProjectIssueKey))
+                userInterface.showProjectIssues(titles, selectedIssue: wself.localPreferences.string(.settingsJiraProjectIssueKey))
             }
         }
     }

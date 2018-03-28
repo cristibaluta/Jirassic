@@ -44,25 +44,26 @@ class GitPresenter {
         
         gitModule.checkIfGitInstalled(completion: { [weak self] commandInstalled in
             
-            guard let wself = self else {
+            guard let wself = self, let userInterface = wself.userInterface else {
                 return
             }
             if wself.isShellScriptInstalled == true {
-                wself.userInterface?.setStatusImage(commandInstalled ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-                wself.userInterface?.setStatusText(commandInstalled ? "Commits made with Git will appear in Jirassic as tasks." : "Git is not installed")
+                userInterface.setStatusImage(commandInstalled ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+                userInterface.setStatusText(commandInstalled ? "Commits made with Git will appear in Jirassic as tasks." : "Git is not installed")
             } else {
-                wself.userInterface?.setStatusImage(NSImage.Name.statusUnavailable)
-                wself.userInterface?.setStatusText("Not possible to use Git, please install shell support first!")
+                userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+                userInterface.setStatusText("Not possible to use Git, please install shell support first!")
             }
-            wself.userInterface?.setPaths(wself.localPreferences.string(.settingsGitPaths),
-                                          enabled: wself.localPreferences.bool(.enableGit))
+            userInterface.setPaths(wself.localPreferences.string(.settingsGitPaths),
+                                   enabled: wself.localPreferences.bool(.enableGit))
             
-            wself.userInterface?.setEmails(wself.localPreferences.string(.settingsGitAuthors),
-                                           enabled: wself.localPreferences.bool(.enableGit))
+            userInterface.setEmails(wself.localPreferences.string(.settingsGitAuthors),
+                                    enabled: wself.localPreferences.bool(.enableGit))
             
-            wself.userInterface?.setButEnable(on: wself.localPreferences.bool(.enableGit),
-                                              enabled: commandInstalled)
-            wself.userInterface?.setButInstall(enabled: wself.isShellScriptInstalled == false)
+            userInterface.setButEnable(on: wself.localPreferences.bool(.enableGit),
+                                       enabled: commandInstalled)
+            
+            userInterface.setButInstall(enabled: wself.isShellScriptInstalled == false)
         })
     }
 }

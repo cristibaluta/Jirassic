@@ -74,7 +74,7 @@ extension HookupCell: HookupPresenterOutput {
 
 extension HookupCell: NSTextFieldDelegate {
     
-    override func controlTextDidEndEditing(_ obj: Notification) {
+    override func controlTextDidEndEditing (_ obj: Notification) {
         presenter.refresh(withCommand: hookupNameTextField.stringValue)
     }
 }
