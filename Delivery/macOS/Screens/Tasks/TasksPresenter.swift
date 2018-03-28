@@ -77,9 +77,12 @@ extension TasksPresenter: TasksPresenterInput {
                 return
             }
             DispatchQueue.main.async {
-                wself.userInterface!.showLoadingIndicator(false)
-                wself.userInterface!.showDates(weeks)
-                wself.userInterface!.selectDay(todayDay)
+                guard let userInterface = wself.userInterface else {
+                    return
+                }
+                userInterface.showLoadingIndicator(false)
+                userInterface.showDates(weeks)
+                userInterface.selectDay(todayDay)
                 wself.reloadTasksOnDay(todayDay, listType: wself.selectedListType)
             }
         }
