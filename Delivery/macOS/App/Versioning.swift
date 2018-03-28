@@ -24,8 +24,9 @@ struct Versioning {
         
         var compatibility = compatibilityMaps[appVersion]
         if compatibility == nil {
-            // TODO: Get automatically the last defined version if current does not exist
-            compatibility = compatibilityMaps["18.04.04"]
+            let sortedKeys = compatibilityMaps.keys.sorted()
+            let lastKey = sortedKeys.last!
+            compatibility = compatibilityMaps[lastKey]
         }
         
         return (
