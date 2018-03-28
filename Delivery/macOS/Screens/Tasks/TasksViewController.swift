@@ -92,7 +92,7 @@ extension TasksViewController {
     }
     
     @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
-        AppDelegate.sharedApp().menu.simulateClose()
+        AppDelegate.sharedApp().menu.triggerClose()
     }
 }
 

@@ -117,7 +117,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 		
         sleep.computerWentToSleep = {
-            self.menu.simulateClose()
+            self.menu.triggerClose()
             self.browser.stop()
         }
         sleep.computerWakeUp = {
@@ -219,7 +219,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             
             if !UserDefaults.standard.bool(forKey: "launchedByLauncher") {
-                self.menu.simulateOpen()
+                self.menu.triggerOpen()
             } else {
                 self.presentTaskSuggestionPopup()
             }
@@ -228,7 +228,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
         
         NSEvent.addGlobalMonitorForEvents(matching: .rightMouseDown, handler: { event in
-            self.menu.simulateClose()
+            self.menu.triggerClose()
         })
     }
 	

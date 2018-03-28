@@ -24,6 +24,7 @@ class TasksDataSource: NSObject {
     var didEndDay: ((_ tasks: [Task]) -> Void)?
     
     init (tableView: NSTableView, tasks: [Task]) {
+        
         self.tableView = tableView
         self.tasks = tasks
         

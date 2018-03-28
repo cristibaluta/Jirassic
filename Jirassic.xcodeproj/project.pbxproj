@@ -879,6 +879,19 @@
 			path = NonTaskCell;
 			sourceTree = "<group>";
 		};
+		2845B16F206C2888006EFB3B /* AllTasks */ = {
+			isa = PBXGroup;
+			children = (
+				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
+				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
+				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
+				2845B158206AE467006EFB3B /* FooterCell */,
+				2845B15B206AE467006EFB3B /* NonTaskCell */,
+				2845B153206AE467006EFB3B /* TaskCell */,
+			);
+			path = AllTasks;
+			sourceTree = "<group>";
+		};
 		28577EA01E8ADBBD002B07FD /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
@@ -1314,7 +1327,6 @@
 				564E55F12028839F00CE4C76 /* EndDay */,
 				2845B142206AE342006EFB3B /* Calendar */,
 				4065D3761DD3B44200B73201 /* Tasks */,
-				2845B141206AE2A4006EFB3B /* Reports */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1349,14 +1361,10 @@
 				406384881DE388C5004795A4 /* Tasks.storyboard */,
 				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
 				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
-				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
-				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
-				28A5F2811E586426002BE564 /* DataSource.swift */,
-				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
-				2845B158206AE467006EFB3B /* FooterCell */,
-				2845B15B206AE467006EFB3B /* NonTaskCell */,
-				2845B153206AE467006EFB3B /* TaskCell */,
+				28A5F2811E586426002BE564 /* DataSource.swift */,
+				2845B16F206C2888006EFB3B /* AllTasks */,
+				2845B141206AE2A4006EFB3B /* Reports */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";

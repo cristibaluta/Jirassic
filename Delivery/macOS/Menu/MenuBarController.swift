@@ -16,6 +16,7 @@ class MenuBarController: NSObject {
     
     var onOpen: (() -> ())?
     var onClose: (() -> ())?
+    
     var appearsDisabled: Bool? {
         set {
             iconView.alphaValue = newValue == true ? 0.4 : 1.0
@@ -51,13 +52,13 @@ class MenuBarController: NSObject {
         NSApplication.shared.terminate(nil)
     }
     
-    func simulateOpen() {
+    func triggerOpen() {
         if iconView.isSelected == false {
             iconView.mouseDown(with: NSEvent())
         }
     }
     
-    func simulateClose() {
+    func triggerClose() {
         if iconView.isSelected == true {
             iconView.mouseDown(with: NSEvent())
         }

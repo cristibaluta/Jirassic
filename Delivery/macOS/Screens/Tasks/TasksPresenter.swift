@@ -73,11 +73,8 @@ extension TasksPresenter: TasksPresenterInput {
         let todayDay = Day(dateStart: Date(), dateEnd: nil)
         interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
         interactor?.query { [weak self] weeks in
-            guard let wself = self else {
-                return
-            }
             DispatchQueue.main.async {
-                guard let userInterface = wself.userInterface else {
+                guard let wself = self, let userInterface = wself.userInterface else {
                     return
                 }
                 userInterface.showLoadingIndicator(false)
@@ -104,9 +101,10 @@ extension TasksPresenter: TasksPresenterInput {
             return
         }
         userInterface!.showLoadingIndicator(true)
+        
         moduleGit.logs(onDate: day.dateStart) { [weak self] gitTasks in
             
-            guard let wself = self else {
+            guard let wself = self, let userInterface = wself.userInterface else {
                 return
             }
             wself.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
@@ -115,14 +113,14 @@ extension TasksPresenter: TasksPresenterInput {
                 let reportInteractor = CreateReport()
                 let reports = reportInteractor.reports(fromTasks: wself.currentTasks, targetHoursInDay: targetHoursInDay)
                 wself.currentReports = reports.reversed()
-                wself.userInterface!.showReports(wself.currentReports)
+                userInterface.showReports(wself.currentReports)
             }
             else {
-                wself.userInterface!.showTasks(wself.currentTasks)
+                userInterface.showTasks(wself.currentTasks)
             }
             
             wself.updateNoTasksState()
-            wself.userInterface!.showLoadingIndicator(false)
+            userInterface.showLoadingIndicator(false)
         }
     }
     
@@ -158,8 +156,8 @@ extension TasksPresenter: TasksPresenterInput {
         let now = Date()
         let task = Task(endDate: now, type: TaskType.startDay)
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
-            self.reloadData()
+        saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
+            self?.reloadData()
         })
         ModuleHookup().insert(task: task)
     }
