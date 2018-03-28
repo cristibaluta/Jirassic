@@ -53,16 +53,14 @@ extension EndDayPresenter: EndDayPresenterInput {
         let reportInteractor = CreateReport()
         let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         
-        var comment = ""
-        for report in reports {
-            comment += report.taskNumber + " - " + report.title + "\n" + report.notes + "\n\n"
-        }
+        let lines = reports.map({ $0.taskNumber + " - " + $0.title + "\n" + $0.notes })
+        let message = lines.joined(separator: "\n\n")
         
         let workdayLength = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength() )
         let workedLength = Date.secondsToPercentTime( StatisticsInteractor().workedTime(fromReports: reports) )
         duration = isRoundingEnabled ? workdayLength : workedLength
         
-        userInterface!.showWorklog(comment)
+        userInterface!.showWorklog(message)
         setupJiraButton()
         setupHookupButton()
         setupRoundingButton(workdayLength: workdayLength, workedLength: workedLength)
@@ -109,9 +107,12 @@ extension EndDayPresenter: EndDayPresenterInput {
             userInterface!.showProgressIndicator(true)
             moduleJira.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
                 DispatchQueue.main.async {
-                    self?.userInterface!.showProgressIndicator(false)
+                    guard let userInterface = self?.userInterface else {
+                        return
+                    }
+                    userInterface.showProgressIndicator(false)
                     if !success {
-                        self?.userInterface!.showJiraError("Couldn't save the worklogs to Jira")
+                        userInterface.showJiraError("Couldn't save the worklogs to Jira")
                     }
                 }
             }
@@ -120,8 +121,11 @@ extension EndDayPresenter: EndDayPresenterInput {
         // Call hookup only for the current day
         if toHookup && self.date!.isSameDayAs(endDayDate) {
             moduleHookup.insert(task: endDayTask) { [weak self] success in
+                guard let userInterface = self?.userInterface else {
+                    return
+                }
                 if !success {
-                    self?.userInterface!.showHookupError("Couldn't call the hookup")
+                    userInterface.showHookupError("Couldn't call the hookup")
                 }
             }
         }

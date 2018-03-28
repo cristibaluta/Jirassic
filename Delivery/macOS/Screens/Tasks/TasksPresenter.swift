@@ -108,6 +108,18 @@ extension TasksPresenter: TasksPresenterInput {
                 return
             }
             wself.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
+            let startTask = wself.currentTasks.filter({ $0.taskType == .startDay }).first
+            let endTask = wself.currentTasks.filter({ $0.taskType == .endDay }).first
+            wself.currentTasks = wself.currentTasks.filter({
+                if startTask != nil && endTask != nil {
+                    return $0.endDate >= startTask!.endDate && $0.endDate <= endTask!.endDate
+                } else if startTask != nil {
+                    return $0.endDate >= startTask!.endDate
+                } else if endTask != nil {
+                    return $0.endDate <= endTask!.endDate
+                }
+                return false
+            })
             
             if listType == .report {
                 let reportInteractor = CreateReport()

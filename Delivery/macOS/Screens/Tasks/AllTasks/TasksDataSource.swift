@@ -54,18 +54,14 @@ class TasksDataSource: NSObject {
     
     func removeTaskAtRow (_ row: Int) {
         tasks.remove(at: row)
-        tableView.removeRows(at: IndexSet(integer: row), 
-                             withAnimation: NSTableView.AnimationOptions.effectFade)
+        tableView.removeRows(at: IndexSet(integer: row), withAnimation: .effectFade)
     }
 }
 
 extension TasksDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
-        guard tasks.count > 0 else {
-            return 0
-        }
-        return tasks.count + 1
+        return tasks.count == 0 ? 0 : (tasks.count + 1)
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -89,15 +85,15 @@ extension TasksDataSource: NSTableViewDelegate {
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
         guard row < tasks.count else {
+            
             let cell = FooterCell.instantiate(in: self.tableView)
-
             cell.didEndDay = { [weak self] () in
                 if let wself = self {
                     wself.didEndDay!(wself.tasks)
                 }
             }
             cell.didAddTask = { [weak self] in
-                self?.didAddRow!(tableView.numberOfRows-1)
+                self?.didAddRow!(tableView.numberOfRows - 1)
             }
             cell.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
             
@@ -105,10 +101,9 @@ extension TasksDataSource: NSTableViewDelegate {
         }
 
         var theData = tasks[row]
-        
-        //let thePreviousData: Task? = (row + 1 < tasks!.count) ? tasks![row+1] : nil
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
-        var cell: CellProtocol = cellForTaskType(theData.taskType)
+        
+        var cell: CellProtocol = self.cellForTaskType(theData.taskType)
         TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
         
         cell.didEndEditingCell = { [weak self] (cell: CellProtocol) in

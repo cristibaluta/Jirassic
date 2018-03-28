@@ -10,16 +10,16 @@ import Cocoa
 
 class TasksViewController: NSViewController {
 	
-	@IBOutlet fileprivate weak var splitView: NSSplitView?
-	@IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView?
+	@IBOutlet fileprivate weak var splitView: NSSplitView!
+	@IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView!
 	fileprivate var tasksScrollView: TasksScrollView?
-    @IBOutlet fileprivate weak var listSegmentedControl: NSSegmentedControl?
-    @IBOutlet fileprivate weak var butRefresh: NSButton?
-    @IBOutlet fileprivate weak var butSettings: NSButton?
-    @IBOutlet fileprivate weak var butQuit: NSButton?
-    @IBOutlet fileprivate weak var butMinimize: NSButton?
-    @IBOutlet fileprivate weak var butFullScreen: NSButton?
-    @IBOutlet fileprivate weak var refreshIndicator: NSProgressIndicator?
+    @IBOutlet fileprivate weak var listSegmentedControl: NSSegmentedControl!
+    @IBOutlet fileprivate weak var butRefresh: NSButton!
+    @IBOutlet fileprivate weak var butSettings: NSButton!
+    @IBOutlet fileprivate weak var butQuit: NSButton!
+    @IBOutlet fileprivate weak var butMinimize: NSButton!
+    @IBOutlet fileprivate weak var butFullScreen: NSButton!
+    @IBOutlet fileprivate weak var refreshIndicator: NSProgressIndicator!
     
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
@@ -52,12 +52,12 @@ class TasksViewController: NSViewController {
 	}
     
     fileprivate func hideControls (_ hide: Bool) {
-        butSettings!.isHidden = hide
-        butRefresh!.isHidden = remoteRepository == nil ? true : hide
-        butQuit!.isHidden = hide
-        butMinimize!.isHidden = hide
-        butFullScreen!.isHidden = hide
-        listSegmentedControl?.isHidden = hide
+        butSettings.isHidden = hide
+        butRefresh.isHidden = remoteRepository == nil ? true : hide
+        butQuit.isHidden = hide
+        butMinimize.isHidden = hide
+        butFullScreen.isHidden = hide
+        listSegmentedControl.isHidden = hide
     }
 }
 
@@ -102,9 +102,9 @@ extension TasksViewController: TasksPresenterOutput {
         
         butRefresh!.isHidden = remoteRepository == nil ? true : show
         if show {
-            refreshIndicator!.startAnimation(nil)
+            refreshIndicator.startAnimation(nil)
         } else {
-            refreshIndicator!.stopAnimation(nil)
+            refreshIndicator.stopAnimation(nil)
         }
     }
     
@@ -118,8 +118,8 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showDates (_ weeks: [Week]) {
         
-        calendarScrollView?.weeks = weeks
-        calendarScrollView?.reloadData()
+        calendarScrollView.weeks = weeks
+        calendarScrollView.reloadData()
     }
     
     func showTasks (_ tasks: [Task]) {
@@ -132,7 +132,7 @@ extension TasksViewController: TasksPresenterOutput {
         r.origin = NSPoint.zero
         tasksScrollView = TasksScrollView(tasks: tasks)
         tasksScrollView!.frame = r
-        splitView!.subviews[SplitViewColumn.tasks.rawValue].addSubview(tasksScrollView!)
+        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(tasksScrollView!)
         tasksScrollView!.constrainToSuperview()
         tasksScrollView!.didRemoveRow = { [weak self] (row: Int) in
             RCLogO("Remove item at row \(row)")
@@ -161,7 +161,7 @@ extension TasksViewController: TasksPresenterOutput {
             tasksScrollView?.removeFromSuperview()
             tasksScrollView = nil
         }
-        var r = splitView!.subviews[SplitViewColumn.tasks.rawValue].frame
+        var r = splitView.subviews[SplitViewColumn.tasks.rawValue].frame
         r.origin = NSPoint.zero
         tasksScrollView = TasksScrollView(reports: reports)
         tasksScrollView!.frame = r
@@ -170,19 +170,19 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView!.reloadData()
         tasksScrollView!.isHidden = false
         tasksScrollView!.didChangeSettings = { [weak self] in
-            if let wself = self {
-                wself.handleSegmentedControl(wself.listSegmentedControl!)
+            if let strongSelf = self {
+                strongSelf.handleSegmentedControl(strongSelf.listSegmentedControl)
             }
         }
     }
     
     func selectDay (_ day: Day) {
-        calendarScrollView!.selectDay(day)
+        calendarScrollView.selectDay(day)
     }
     
     func presentNewTaskController (withInitialDate date: Date) {
         
-        splitView!.isHidden = true
+        splitView.isHidden = true
         appWireframe!.removePlaceholder()
         hideControls(true)
         
@@ -195,14 +195,14 @@ extension TasksViewController: TasksPresenterOutput {
                 strongSelf.presenter!.updateNoTasksState()
                 strongSelf.presenter!.reloadData()
                 strongSelf.appWireframe!.removeNewTaskController()
-                strongSelf.splitView!.isHidden = false
+                strongSelf.splitView.isHidden = false
                 strongSelf.hideControls(false)
             }
         }
         controller.onCancel = { [weak self] in
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeNewTaskController()
-                strongSelf.splitView!.isHidden = false
+                strongSelf.splitView.isHidden = false
                 strongSelf.presenter!.updateNoTasksState()
                 strongSelf.hideControls(false)
             }
@@ -211,7 +211,7 @@ extension TasksViewController: TasksPresenterOutput {
 
     func presentEndDayController (date: Date, tasks: [Task]) {
 
-        splitView!.isHidden = true
+        splitView.isHidden = true
         appWireframe!.removePlaceholder()
         hideControls(true)
 
@@ -220,14 +220,14 @@ extension TasksViewController: TasksPresenterOutput {
             if let strongSelf = self {
                 strongSelf.presenter!.updateNoTasksState()
                 strongSelf.appWireframe!.removeEndDayController()
-                strongSelf.splitView!.isHidden = false
+                strongSelf.splitView.isHidden = false
                 strongSelf.hideControls(false)
             }
         }
         controller.onCancel = { [weak self] in
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeEndDayController()
-                strongSelf.splitView!.isHidden = false
+                strongSelf.splitView.isHidden = false
                 strongSelf.presenter!.updateNoTasksState()
                 strongSelf.hideControls(false)
             }
