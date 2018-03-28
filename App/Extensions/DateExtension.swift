@@ -123,6 +123,12 @@ extension Date {
         f.dateFormat = "YYYY-MM-dd"
         return f.string(from: self) + "T00:00:00.000+0000"
     }
+    
+    func YY() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "YY"
+        return f.string(from: self)
+    }
 }
 
 extension Date {
@@ -132,9 +138,9 @@ extension Date {
 		let f = DateFormatter()
 		f.dateFormat = "MMM dd"
 		if bounds.0.isSameMonthAs(bounds.1) {
-			return "\(f.string(from: bounds.0)) - \(bounds.1.day())"
+			return "\(f.string(from: bounds.0)) - \(bounds.1.day())   '\(bounds.0.YY())"
 		}
-		return "\(f.string(from: bounds.0)) - \(f.string(from: bounds.1))"
+		return "\(f.string(from: bounds.0)) - \(f.string(from: bounds.1))   '\(bounds.0.YY())"
 	}
 }
 
