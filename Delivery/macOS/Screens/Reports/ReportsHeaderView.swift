@@ -60,7 +60,7 @@ class ReportsHeaderView: NSTableHeaderView {
         super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
         
         self.workedTime = ""
-        self.workdayTime = 8.0
+        self.workdayTime = 0.0
         
         butRound.target = self
         butRound.action = #selector(self.handleRoundButton)

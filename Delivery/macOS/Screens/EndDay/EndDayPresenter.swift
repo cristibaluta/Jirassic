@@ -56,15 +56,16 @@ extension EndDayPresenter: EndDayPresenterInput {
         var comment = ""
         for report in reports {
             comment += report.taskNumber + " - " + report.title + "\n" + report.notes + "\n\n"
-            duration += report.duration
         }
-//        let workedHours = (targetHoursInDay ?? duration.hoursToSec).secToHours
-        let workedHours = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength() )
+        
+        let workdayLength = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength() )
+        let workedLength = Date.secondsToPercentTime( StatisticsInteractor().workedTime(fromReports: reports) )
+        duration = isRoundingEnabled ? workdayLength : workedLength
         
         userInterface!.showWorklog(comment)
         setupJiraButton()
         setupHookupButton()
-        setupRoundingButton(hours: workedHours)
+        setupRoundingButton(workdayLength: workdayLength, workedLength: workedLength)
     }
     
     private func setupJiraButton() {
@@ -80,10 +81,10 @@ extension EndDayPresenter: EndDayPresenterInput {
                                   available: isHookupAvailable && self.date!.isToday())
     }
     
-    private func setupRoundingButton (hours: TimeInterval) {
+    private func setupRoundingButton (workdayLength: TimeInterval, workedLength: TimeInterval) {
         let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
         userInterface!.showRounding(enabled: isRoundingEnabled,
-                                    title: "Round worklog time to \(String(describing: hours)) hours")
+                                    title: "Round worklogs time to \(String(describing: workdayLength)) hours. Actual worked time is \(String(describing: workedLength))")
     }
     
     func save (worklog: String, toJiraTempo: Bool, toHookup: Bool, roundTime: Bool) {
