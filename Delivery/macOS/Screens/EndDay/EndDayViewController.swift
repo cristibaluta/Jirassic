@@ -11,6 +11,7 @@ import Cocoa
 class EndDayViewController: NSViewController {
     
     @IBOutlet fileprivate var dateTextField: NSTextField!
+    @IBOutlet fileprivate var durationTextField: NSTextField!
     @IBOutlet fileprivate var worklogTextView: NSTextView!
     @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
     @IBOutlet fileprivate var butJira: NSButton!
@@ -26,7 +27,6 @@ class EndDayViewController: NSViewController {
     var presenter: EndDayPresenterInput?
     var date: Date?
     var tasks: [Task]?
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     weak var appWireframe: AppWireframe?
     
     override func viewDidLoad() {
@@ -47,29 +47,24 @@ class EndDayViewController: NSViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        
-        presenter?.save(worklog: worklogTextView.string,
-                        toJiraTempo: localPreferences.bool(.enableJira),
-                        toHookup: localPreferences.bool(.enableHookup),
-                        roundTime: localPreferences.bool(.enableRoundingDay)
-                        )
+        presenter!.save(worklog: worklogTextView.string)
     }
     
     @IBAction func handleJiraButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == .on, forKey: .enableJira)
+        presenter!.enableJira(sender.state == .on)
     }
     
     @IBAction func handleJiraSetupButton (_ sender: NSButton) {
-        localPreferences.set(SettingsTab.output.rawValue, forKey: .settingsActiveTab)
+        RCPreferences<LocalPreferences>().set(SettingsTab.output.rawValue, forKey: .settingsActiveTab)
         appWireframe!.flipToSettingsController()
     }
     
     @IBAction func handleHookupButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == .on, forKey: .enableHookup)
+        presenter!.enableHookup(sender.state == .on)
     }
     
     @IBAction func handleRoundButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == .on, forKey: .enableRoundingDay)
+        presenter!.enableRounding(sender.state == .on)
     }
 }
 
@@ -91,23 +86,27 @@ extension EndDayViewController: EndDayPresenterOutput {
         butRound.title = title
     }
     
+    func showDuration (_ duration: Double) {
+        durationTextField.stringValue = String(describing: duration)
+    }
+    
     func showWorklog (_ worklog: String) {
         worklogTextView.string = worklog
     }
     
     func showProgressIndicator (_ show: Bool) {
-        if show {
-            progressIndicator.startAnimation(nil)
-        } else {
-            progressIndicator.stopAnimation(nil)
-        }
+        show
+            ? progressIndicator.startAnimation(nil)
+            : progressIndicator.stopAnimation(nil)
     }
     
-    func showJiraError (_ error: String) {
-        jiraErrorTextField.stringValue = error
+    func showJiraMessage (_ message: String, isError: Bool) {
+        jiraErrorTextField.stringValue = message
+        jiraErrorTextField.textColor = isError ? NSColor.red : NSColor.green
     }
     
-    func showHookupError (_ error: String) {
-        hookupErrorTextField.stringValue = error
+    func showHookupMessage (_ message: String, isError: Bool) {
+        hookupErrorTextField.stringValue = message
+        hookupErrorTextField.textColor = isError ? NSColor.red : NSColor.green
     }
 }

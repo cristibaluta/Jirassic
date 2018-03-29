@@ -10,17 +10,21 @@ import Foundation
 
 protocol EndDayPresenterInput: class {
     func setup (date: Date, tasks: [Task])
-    func save (worklog: String, toJiraTempo: Bool, toHookup: Bool, roundTime: Bool)
+    func save (worklog: String)
+    func enableJira (_ enabled: Bool)
+    func enableHookup (_ enabled: Bool)
+    func enableRounding (_ enabled: Bool)
 }
 
 protocol EndDayPresenterOutput: class {
     func showJira (enabled: Bool, available: Bool)
     func showHookup (enabled: Bool, available: Bool)
     func showRounding (enabled: Bool, title: String)
+    func showDuration (_ duration: Double)
     func showWorklog (_ worklog: String)
     func showProgressIndicator (_ show: Bool)
-    func showJiraError (_ error: String)
-    func showHookupError (_ error: String)
+    func showJiraMessage (_ message: String, isError: Bool)
+    func showHookupMessage (_ message: String, isError: Bool)
 }
 
 class EndDayPresenter {
@@ -30,6 +34,7 @@ class EndDayPresenter {
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var moduleJira = ModuleJiraTempo()
     fileprivate var moduleHookup = ModuleHookup()
+    fileprivate let reportsInteractor = CreateReport()
     fileprivate var workdayLength = 0.0
     fileprivate var workedLength = 0.0
     fileprivate var tasks: [Task] = []
@@ -45,32 +50,39 @@ extension EndDayPresenter: EndDayPresenterInput {
     
     private func show (tasks: [Task]) {
         
-        let settings = SettingsInteractor().getAppSettings()
-        let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
-        let targetHoursInDay = isRoundingEnabled
-            ? TimeInteractor(settings: settings).workingDayLength()
-            : nil
-        
-        let reportInteractor = CreateReport()
-        let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+        let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
         
         let lines = reports.map({ (_ report: Report) -> String in
-            let taskNumber = report.taskNumber
-            let taskTitle = report.title
-            let title = taskNumber == "meeting" ? "Meetings:" : (taskTitle == "" ? taskNumber : (taskNumber + " - " + taskTitle))
+            let title = self.title(from: report)
             let body = report.notes
             return title + "\n" + body
         })
         let message = lines.joined(separator: "\n\n")
         
+        let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
-        workedLength = StatisticsInteractor().workedTime(fromTasks: tasks, targetHoursInDay: nil)
+        workedLength = StatisticsInteractor().workedTime(fromReports: reports)
 
+        userInterface!.showDuration(Date.secondsToPercentTime(localPreferences.bool(.enableRoundingDay) ? workdayLength : workedLength))
         userInterface!.showWorklog(message)
         setupJiraButton()
         setupHookupButton()
         setupRoundingButton(workdayLength: Date.secondsToPercentTime(workdayLength),
                             workedLength: Date.secondsToPercentTime(workedLength))
+    }
+    
+    private func title (from report: Report) -> String {
+        let taskNumber = report.taskNumber
+        let taskTitle = report.title
+        switch taskNumber {
+        case "meeting": return "Meetings:"
+        case "coderev": return ""
+        default:
+            switch taskTitle {
+            case "": return taskNumber
+            default: return taskNumber + " - " + taskTitle
+            }
+        }
     }
     
     private func setupJiraButton() {
@@ -87,15 +99,18 @@ extension EndDayPresenter: EndDayPresenterInput {
     }
     
     private func setupRoundingButton (workdayLength: TimeInterval, workedLength: TimeInterval) {
-        let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
-        userInterface!.showRounding(enabled: isRoundingEnabled,
-                                    title: "Round worklogs time to \(String(describing: workdayLength)) hours. Actual worked time is \(String(describing: workedLength))")
+        userInterface!.showRounding(enabled: localPreferences.bool(.enableRoundingDay),
+                                    title: "Round worklogs duration to \(String(describing: workdayLength)) hours")
     }
     
-    func save (worklog: String, toJiraTempo: Bool, toHookup: Bool, roundTime: Bool) {
+    func save (worklog: String) {
         
-        userInterface!.showJiraError("")
-        userInterface!.showHookupError("")
+        let toJiraTempo = localPreferences.bool(.enableJira)
+        let toHookup = localPreferences.bool(.enableHookup)
+        let roundTime = localPreferences.bool(.enableRoundingDay)
+        
+        userInterface!.showJiraMessage("", isError: false)
+        userInterface!.showHookupMessage("", isError: false)
         
         // Find if the day ended already
         let currentEndDayTask: Task? = self.tasks.last
@@ -110,17 +125,17 @@ extension EndDayPresenter: EndDayPresenterInput {
             }
         }
         
-        if moduleJira.isReachable && toJiraTempo {
+        // Save to jira tempo
+        if toJiraTempo  && moduleJira.isReachable {
             userInterface!.showProgressIndicator(true)
             let duration = roundTime ? workdayLength : workedLength
             moduleJira.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
                 DispatchQueue.main.async {
-                    guard let userInterface = self?.userInterface else {
-                        return
-                    }
-                    userInterface.showProgressIndicator(false)
-                    if !success {
-                        userInterface.showJiraError("Couldn't save the worklogs to Jira")
+                    if let userInterface = self?.userInterface {
+                        userInterface.showProgressIndicator(false)
+                        success
+                            ? userInterface.showJiraMessage("Worklogs saved to Jira", isError: false)
+                            : userInterface.showJiraMessage("Couldn't save the worklogs to Jira", isError: true)
                     }
                 }
             }
@@ -129,13 +144,25 @@ extension EndDayPresenter: EndDayPresenterInput {
         // Call hookup only for the current day
         if toHookup && self.date!.isSameDayAs(endDayDate) {
             moduleHookup.insert(task: endDayTask) { [weak self] success in
-                guard let userInterface = self?.userInterface else {
-                    return
-                }
-                if !success {
-                    userInterface.showHookupError("Couldn't call the hookup")
+                if let userInterface = self?.userInterface {
+                    success
+                        ? userInterface.showHookupMessage("Hookup called", isError: false)
+                        : userInterface.showHookupMessage("Couldn't call the hookup", isError: true)
                 }
             }
         }
+    }
+    
+    func enableJira (_ enabled: Bool) {
+        localPreferences.set(enabled, forKey: .enableJira)
+    }
+    
+    func enableHookup (_ enabled: Bool) {
+        localPreferences.set(enabled, forKey: .enableHookup)
+    }
+    
+    func enableRounding (_ enabled: Bool) {
+        localPreferences.set(enabled, forKey: .enableRoundingDay)
+        userInterface!.showDuration(Date.secondsToPercentTime(localPreferences.bool(.enableRoundingDay) ? workdayLength : workedLength))
     }
 }
