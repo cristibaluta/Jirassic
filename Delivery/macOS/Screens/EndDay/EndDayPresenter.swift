@@ -26,11 +26,12 @@ protocol EndDayPresenterOutput: class {
 class EndDayPresenter {
     
     weak var userInterface: EndDayPresenterOutput?
+    var date: Date?
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     fileprivate var moduleJira = ModuleJiraTempo()
     fileprivate var moduleHookup = ModuleHookup()
-    var duration = 0.0
-    var date: Date?
+    fileprivate var workdayLength = 0.0
+    fileprivate var workedLength = 0.0
     fileprivate var tasks: [Task] = []
 }
 
@@ -53,17 +54,23 @@ extension EndDayPresenter: EndDayPresenterInput {
         let reportInteractor = CreateReport()
         let reports = reportInteractor.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         
-        let lines = reports.map({ $0.taskNumber + " - " + $0.title + "\n" + $0.notes })
+        let lines = reports.map({ (_ report: Report) -> String in
+            let taskNumber = report.taskNumber
+            let taskTitle = report.title
+            let title = taskNumber == "meeting" ? "Meetings:" : (taskTitle == "" ? taskNumber : (taskNumber + " - " + taskTitle))
+            let body = report.notes
+            return title + "\n" + body
+        })
         let message = lines.joined(separator: "\n\n")
         
-        let workdayLength = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength() )
-        let workedLength = Date.secondsToPercentTime( StatisticsInteractor().workedTime(fromReports: reports) )
-        duration = isRoundingEnabled ? workdayLength : workedLength
-        
+        workdayLength = TimeInteractor(settings: settings).workingDayLength()
+        workedLength = StatisticsInteractor().workedTime(fromTasks: tasks, targetHoursInDay: nil)
+
         userInterface!.showWorklog(message)
         setupJiraButton()
         setupHookupButton()
-        setupRoundingButton(workdayLength: workdayLength, workedLength: workedLength)
+        setupRoundingButton(workdayLength: Date.secondsToPercentTime(workdayLength),
+                            workedLength: Date.secondsToPercentTime(workedLength))
     }
     
     private func setupJiraButton() {
@@ -105,6 +112,7 @@ extension EndDayPresenter: EndDayPresenterInput {
         
         if moduleJira.isReachable && toJiraTempo {
             userInterface!.showProgressIndicator(true)
+            let duration = roundTime ? workdayLength : workedLength
             moduleJira.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
                 DispatchQueue.main.async {
                     guard let userInterface = self?.userInterface else {

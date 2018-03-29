@@ -210,7 +210,7 @@ extension Date {
 	}
 	
 	static func secondsToPercentTime (_ time: Double) -> Double {
-		return time / 3600
+        return Double(Darwin.round((time / 3600) * 100) / 100)
 	}
 	
     func dateByUpdating (hour: Int, minute: Int, second: Int = 0) -> Date {
