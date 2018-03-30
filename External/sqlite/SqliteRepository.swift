@@ -25,7 +25,7 @@ class SqliteRepository {
         open(atUrl: documentsDirectory)
     }
     
-    fileprivate func open (atUrl url: URL) {
+    private func open (atUrl url: URL) {
         
         if !FileManager.default.fileExists(atPath: url.path) {
             try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)

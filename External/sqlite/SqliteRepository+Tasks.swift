@@ -11,17 +11,21 @@ import Foundation
 extension SqliteRepository: RepositoryTasks {
     
     func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
-        
-        let predicate = "markedForDeletion == 0"
-        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
-        let tasks = tasksFromSTasks(results)
-        
-        completion(tasks, nil)
+
+        DispatchQueue(label: "request", attributes: []).async {
+            let predicate = "markedForDeletion == 0"
+            let results: [STask] = self.queryWithPredicate(predicate, sortingKeyPath: "endDate")
+            let tasks = self.tasksFromSTasks(results)
+
+            completion(tasks, nil)
+        }
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
-        
-        let predicate = "datetime(endDate) BETWEEN datetime('\(day.startOfDay().YYYYMMddHHmmssGMT())') AND datetime('\(day.endOfDay().YYYYMMddHHmmssGMT())') AND markedForDeletion == 0"
+
+        let startDate = day.startOfDay().YYYYMMddHHmmssGMT()
+        let endDate = day.endOfDay().YYYYMMddHHmmssGMT()
+        let predicate = "datetime(endDate) BETWEEN datetime('\(startDate)') AND datetime('\(endDate)') AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
         
