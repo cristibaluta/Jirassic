@@ -134,7 +134,7 @@ Gw
                                 <rect key="frame" x="397" y="99" width="85" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Hookup error" id="5bK-h0-ANe">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>

@@ -105,9 +105,9 @@ extension EndDayPresenter: EndDayPresenterInput {
     
     func save (worklog: String) {
         
-        let toJiraTempo = localPreferences.bool(.enableJira)
-        let toHookup = localPreferences.bool(.enableHookup)
-        let roundTime = localPreferences.bool(.enableRoundingDay)
+        let isJiraEnabled = localPreferences.bool(.enableJira)
+        let isHookupEnabled = localPreferences.bool(.enableHookup)
+        let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
         
         userInterface!.showJiraMessage("", isError: false)
         userInterface!.showHookupMessage("", isError: false)
@@ -126,9 +126,9 @@ extension EndDayPresenter: EndDayPresenterInput {
         }
         
         // Save to jira tempo
-        if toJiraTempo  && moduleJira.isReachable {
+        if isJiraEnabled  && moduleJira.isReachable {
             userInterface!.showProgressIndicator(true)
-            let duration = roundTime ? workdayLength : workedLength
+            let duration = isRoundingEnabled ? workdayLength : workedLength
             moduleJira.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
                 DispatchQueue.main.async {
                     if let userInterface = self?.userInterface {
@@ -142,7 +142,7 @@ extension EndDayPresenter: EndDayPresenterInput {
         }
         
         // Call hookup only for the current day
-        if toHookup && self.date!.isSameDayAs(endDayDate) {
+        if isHookupEnabled && self.date!.isToday() {
             moduleHookup.insert(task: endDayTask) { [weak self] success in
                 if let userInterface = self?.userInterface {
                     success
