@@ -66,6 +66,11 @@ class NonTaskCell: NSTableRowView, CellProtocol {
     }
     var isDark: Bool = false
     var isEditable: Bool = true
+    var isIgnored: Bool = false {
+        didSet {
+            self.notesTextField!.alphaValue = isIgnored ? 0.5 : 1.0
+        }
+    }
 	
 	override func awakeFromNib() {
         super.awakeFromNib()

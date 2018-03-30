@@ -61,6 +61,7 @@ class ReportCell: NSTableRowView, CellProtocol {
     }
     var isDark: Bool = false
     var isEditable: Bool = true
+    var isIgnored: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -73,6 +73,7 @@ class TaskCell: NSTableRowView, CellProtocol {
             notesTextField.isEditable = isEditable
         }
     }
+    var isIgnored: Bool = false
     
 	override func awakeFromNib() {
         super.awakeFromNib()

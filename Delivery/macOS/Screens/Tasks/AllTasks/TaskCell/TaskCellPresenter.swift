@@ -56,5 +56,6 @@ class TaskCellPresenter: NSObject {
         cell.statusImage?.image = statusImage
         cell.isDark = AppDelegate.sharedApp().theme.isDark
         cell.isEditable = theTask.taskType != .gitCommit
+        cell.isIgnored = theTask.taskType == .lunch || theTask.taskType == .waste
 	}
 }
