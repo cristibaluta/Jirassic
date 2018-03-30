@@ -12,18 +12,20 @@ class FooterCell: NSTableRowView {
 
     @IBOutlet fileprivate var butAdd: NSButton!
     @IBOutlet fileprivate var butEnd: NSButton!
-    private var bgColor = NSColor.clear
+    @IBOutlet fileprivate var butWorklogs: NSButton!
 
     var didAddTask: (() -> Void)?
     var didEndDay: (() -> Void)?
     var isDayEnded: Bool? {
         didSet {
-            self.butEnd.title = isDayEnded == true ? "Worklogs" : "End day"
+            self.butAdd.isHidden = isDayEnded!
+            self.butEnd.isHidden = isDayEnded!
+            self.butWorklogs.isHidden = !isDayEnded!
         }
     }
     
     override func draw (_ dirtyRect: NSRect) {
-        bgColor.set()
+        NSColor.clear.set()
         dirtyRect.fill()
     }
     

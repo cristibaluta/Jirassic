@@ -13,6 +13,26 @@
             <rect key="frame" x="0.0" y="0.0" width="454" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fml-cT-5yK">
+                    <rect key="frame" x="12" y="56" width="430" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="96f-HX-A9C"/>
+                    </constraints>
+                </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
+                    <rect key="frame" x="177" y="20" width="100" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="LcH-xv-Khy"/>
+                        <constraint firstAttribute="height" constant="21" id="ZSP-mf-RSN"/>
+                    </constraints>
+                    <buttonCell key="cell" type="inline" title="View worklogs" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyn-Uj-MYd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleEndButton:" target="c22-O7-iKe" id="tmK-88-I42"/>
+                    </connections>
+                </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-jr-se2">
                     <rect key="frame" x="245" y="19" width="84" height="22"/>
                     <constraints>
@@ -27,12 +47,6 @@
                         <action selector="handleEndButton:" target="c22-O7-iKe" id="3tQ-gd-afy"/>
                     </connections>
                 </button>
-                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fml-cT-5yK">
-                    <rect key="frame" x="12" y="56" width="430" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="96f-HX-A9C"/>
-                    </constraints>
-                </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-uQ-oVI">
                     <rect key="frame" x="125" y="19" width="84" height="22"/>
                     <constraints>
@@ -55,11 +69,14 @@
                 <constraint firstItem="uAc-jr-se2" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" constant="60" id="dgs-ZV-IMs"/>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" constant="-60" id="fZ0-Zs-OZd"/>
                 <constraint firstItem="uAc-jr-se2" firstAttribute="top" secondItem="fml-cT-5yK" secondAttribute="bottom" constant="17" id="hwQ-GT-A8j"/>
+                <constraint firstItem="Ca7-bt-zzl" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="sSl-2c-0RA"/>
+                <constraint firstItem="Ca7-bt-zzl" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="tBT-qw-lNA"/>
                 <constraint firstAttribute="trailing" secondItem="fml-cT-5yK" secondAttribute="trailing" constant="12" id="vTl-3U-bzo"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="hGd-uQ-oVI" id="3iX-M6-W2m"/>
                 <outlet property="butEnd" destination="uAc-jr-se2" id="R9i-Su-IxH"/>
+                <outlet property="butWorklogs" destination="Ca7-bt-zzl" id="OPQ-12-3Lv"/>
             </connections>
             <point key="canvasLocation" x="126" y="63.5"/>
         </customView>
