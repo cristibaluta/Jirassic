@@ -128,7 +128,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let isDayStarted = tasks.count > 0
             let isDayEnded = tasks.contains(where: { $0.taskType == .endDay })
             guard !isWeekend || (isDayStarted && isWeekend) else {
-                RCLog(">>>>>>> It's weekend, we don't work on weekends <<<<<<<<")
+                RCLog(">>>>>>> It's weekend, won't track weekends <<<<<<<<")
                 return
             }
             guard !isDayEnded else {
@@ -137,35 +137,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             self.browser.start()
             let settings: Settings = SettingsInteractor().getAppSettings()
+            guard settings.settingsTracking.autotrack else {
+                RCLog(">>>>>>> Autotracking disabled, won't present suggestions to user <<<<<<<<")
+                return
+            }
             
-            if settings.settingsTracking.autotrack {
-                
-                let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
-                
-                guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration) else {
-                    return
-                }
-                let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
-                guard Date() > startDate else {
-                    return
-                }
-                
-                let timeInteractor = TimeInteractor(settings: settings)
-                let dayDuration = timeInteractor.workingDayLength()
-                let workedDuration = timeInteractor.workedDayLength()
-                guard workedDuration < dayDuration else {
-                    // Do not track time exceeded the working duration
-                    return
-                }
-                switch settings.settingsTracking.autotrackingMode {
-                    case .notif:
-                        self.presentTaskSuggestionPopup()
-                        break
-                    case .auto:
-                        ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
-                            .runWith(lastSleepDate: self.sleep.lastSleepDate, currentDate: Date())
-                        break
-                }
+            let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
+            guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration) else {
+                RCLog(">>>>>>> Sleep duration is shorter than the minimum required \(sleepDuration) >= \(Double(settings.settingsTracking.minSleepDuration)) <<<<<<<<")
+                return
+            }
+            let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
+            guard Date() > startDate else {
+                return
+            }
+            
+            let timeInteractor = TimeInteractor(settings: settings)
+            let dayDuration = timeInteractor.workingDayLength()
+            let workedDuration = timeInteractor.workedDayLength()
+            guard workedDuration < dayDuration else {
+                // Do not track time exceeded the working duration
+                return
+            }
+            switch settings.settingsTracking.autotrackingMode {
+                case .notif:
+                    self.removeActivePopup()
+                    self.presentTaskSuggestionPopup()
+                    break
+                case .auto:
+                    ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
+                        .runWith(lastSleepDate: self.sleep.lastSleepDate, currentDate: Date())
+                    break
             }
         }
         
