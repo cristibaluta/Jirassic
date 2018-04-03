@@ -52,6 +52,7 @@ class TasksPresenter {
     fileprivate var lastSelectedDay: Day?
     fileprivate var interactor: ReadDaysInteractor?
     fileprivate let moduleGit = ModuleGitLogs()
+    fileprivate let reportInteractor = CreateReport()
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -88,16 +89,14 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
 
         lastSelectedDay = day
-        let settings = SettingsInteractor().getAppSettings()
-        let targetHoursInDay = localPreferences.bool(.enableRoundingDay) 
-            ? TimeInteractor(settings: settings).workingDayLength()
-            : nil
-        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        let localTasks = reader.tasksInDay(day.dateStart)
         selectedListType = listType
         
+        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        let localTasks = reader.tasksInDay(day.dateStart)
+        currentTasks = localTasks
+        
         guard localPreferences.bool(.enableGit) else {
-            updateNoTasksState()
+            reload (with: localTasks)
             return
         }
         userInterface!.showLoadingIndicator(true)
@@ -121,19 +120,25 @@ extension TasksPresenter: TasksPresenterInput {
                 return false
             })
             
-            if listType == .report {
-                let reportInteractor = CreateReport()
-                let reports = reportInteractor.reports(fromTasks: wself.currentTasks, targetHoursInDay: targetHoursInDay)
-                wself.currentReports = reports.reversed()
-                userInterface.showReports(wself.currentReports)
-            }
-            else {
-                userInterface.showTasks(wself.currentTasks)
-            }
-            
-            wself.updateNoTasksState()
+            wself.reload (with: localTasks)
             userInterface.showLoadingIndicator(false)
         }
+    }
+    
+    private func reload (with tasks: [Task]) {
+        
+        if selectedListType == .report {
+            let settings = SettingsInteractor().getAppSettings()
+            let targetHoursInDay = localPreferences.bool(.enableRoundingDay)
+                ? TimeInteractor(settings: settings).workingDayLength()
+                : nil
+            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
+            currentReports = reports.reversed()
+            userInterface!.showReports(currentReports)
+        } else {
+            userInterface!.showTasks(currentTasks)
+        }
+        updateNoTasksState()
     }
     
     func updateNoTasksState() {
