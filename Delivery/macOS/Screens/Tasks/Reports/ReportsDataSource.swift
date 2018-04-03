@@ -30,14 +30,14 @@ extension ReportsDataSource: NSTableViewDataSource {
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         
-        guard #available(OSX 10.13, *) else {
+        if #available(OSX 10.13, *) {
             // This version of osx supports cell autoresizing
-            return CGFloat(0)
+            return CGFloat(50)
         }
         let theData = reports[row]
         // Calculate height to fit content
         if tempCell == nil {
-            tempCell = ReportCell.instantiate(in: self.tableView)
+            tempCell = ReportCell.instantiate(in: tableView)
             tempCell?.frame = NSRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
         }
         ReportCellPresenter(cell: tempCell!).present(theReport: theData)
