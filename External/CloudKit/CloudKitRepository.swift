@@ -69,6 +69,7 @@ extension CloudKitRepository {
             RCLogErrorO(error)
             
             guard error == nil else {
+                // todo: handle error: <CKError 0x60c0002414a0: "Change Token Expired" (21/2026); server message = "client knowledge differs from server knowledge";
                 completion(changedRecords, deletedRecordsIds)
                 return
             }
