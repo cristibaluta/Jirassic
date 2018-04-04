@@ -29,17 +29,16 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fZ-Cp-eRf">
-                                <rect key="frame" x="11" y="55" width="102" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Full path to cmd" id="mU5-gT-oxO">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fZ-Cp-eRf">
+                                <rect key="frame" x="11" y="53" width="57" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Full path" id="mU5-gT-oxO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-eE-Nay">
-                                <rect key="frame" x="130" y="50" width="334" height="22"/>
+                                <rect key="frame" x="76" y="50" width="339" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. /usr/local/bin/cmdName" bezelStyle="round" id="aEb-dy-B5y">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -48,12 +47,23 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="130" id="0hv-CJ-oUG"/>
                             <constraint firstItem="Iya-eE-Nay" firstAttribute="top" secondItem="ZSq-u6-jDQ" secondAttribute="top" constant="76" id="19n-Ft-7VE"/>
-                            <constraint firstAttribute="trailing" secondItem="Iya-eE-Nay" secondAttribute="trailing" constant="20" id="rQW-Wa-C1V"/>
+                            <constraint firstItem="Iya-eE-Nay" firstAttribute="leading" secondItem="8fZ-Cp-eRf" secondAttribute="trailing" constant="10" id="BYD-6H-UII"/>
+                            <constraint firstItem="8fZ-Cp-eRf" firstAttribute="leading" secondItem="ZSq-u6-jDQ" secondAttribute="leading" constant="13" id="ULL-ne-ObK"/>
+                            <constraint firstItem="Iya-eE-Nay" firstAttribute="centerY" secondItem="8fZ-Cp-eRf" secondAttribute="centerY" id="v0B-fo-NXP"/>
                         </constraints>
                     </view>
                 </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dcr-sd-lMl">
+                    <rect key="frame" x="422" y="48" width="38" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Pick" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="77k-UQ-WrO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handlePickButton:" target="c22-O7-iKe" id="TIA-DH-w8i"/>
+                    </connections>
+                </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="1n4-yT-yeV">
                     <rect key="frame" x="8" y="19" width="194" height="18"/>
                     <buttonCell key="cell" type="check" title="Include credentials from Jira" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wCg-nU-14d">
@@ -95,8 +105,11 @@
                 <constraint firstItem="1n4-yT-yeV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="7FC-0O-z6m"/>
                 <constraint firstAttribute="bottom" secondItem="1n4-yT-yeV" secondAttribute="bottom" constant="21" id="Fnt-B4-6oF"/>
                 <constraint firstItem="LTM-Hh-or6" firstAttribute="top" secondItem="Vab-FZ-KUf" secondAttribute="top" id="LBz-Y1-yIu"/>
+                <constraint firstItem="dcr-sd-lMl" firstAttribute="leading" secondItem="Iya-eE-Nay" secondAttribute="trailing" constant="9" id="Pcu-86-WlR"/>
+                <constraint firstAttribute="trailing" secondItem="dcr-sd-lMl" secondAttribute="trailing" constant="20" id="Rsf-rL-ggY"/>
                 <constraint firstItem="VoS-Wa-fQ9" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="W6f-VP-lxq"/>
                 <constraint firstItem="Vab-FZ-KUf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="Wo4-bi-vVB"/>
+                <constraint firstItem="dcr-sd-lMl" firstAttribute="centerY" secondItem="Iya-eE-Nay" secondAttribute="centerY" id="jRc-5y-5DC"/>
                 <constraint firstItem="Vab-FZ-KUf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="jb5-rb-scr"/>
                 <constraint firstAttribute="trailing" secondItem="Fpy-Mt-WYx" secondAttribute="trailing" id="nh3-SO-LZj"/>
                 <constraint firstItem="Fpy-Mt-WYx" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="oom-bt-TOY"/>
@@ -108,6 +121,7 @@
             <connections>
                 <outlet property="butEnable" destination="VoS-Wa-fQ9" id="MJj-d1-4f1"/>
                 <outlet property="butEnableCredentials" destination="1n4-yT-yeV" id="pQg-tM-OGH"/>
+                <outlet property="butPick" destination="dcr-sd-lMl" id="73a-9D-9oW"/>
                 <outlet property="hookupNameTextField" destination="Iya-eE-Nay" id="o3i-AN-ae3"/>
                 <outlet property="statusImageView" destination="Vab-FZ-KUf" id="hhL-on-F9D"/>
                 <outlet property="statusTextField" destination="LTM-Hh-or6" id="uPs-rA-D8v"/>

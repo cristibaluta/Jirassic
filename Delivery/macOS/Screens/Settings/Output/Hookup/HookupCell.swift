@@ -15,6 +15,7 @@ class HookupCell: NSTableRowView, Saveable {
     @IBOutlet fileprivate var butEnable: NSButton!
     @IBOutlet fileprivate var hookupNameTextField: NSTextField!
     @IBOutlet fileprivate var butEnableCredentials: NSButton!
+    @IBOutlet fileprivate var butPick: NSButton!
     
     var presenter: HookupPresenterInput = HookupPresenter()
     
@@ -34,6 +35,10 @@ class HookupCell: NSTableRowView, Saveable {
     
     @IBAction func handleEnableCredentialsButton (_ sender: NSButton) {
         presenter.enableCredentials(sender.state == .on)
+    }
+    
+    @IBAction func handlePickButton (_ sender: NSButton) {
+        presenter.pickCLI()
     }
 }
 
@@ -61,6 +66,9 @@ extension HookupCell: HookupPresenterOutput {
         if let enabled = enabled {
             butEnableCredentials.isEnabled = enabled
         }
+    }
+    func setButPick (enabled: Bool) {
+        butPick.isEnabled = enabled
     }
     func setCommand (path: String?, enabled: Bool?) {
         if let path = path {

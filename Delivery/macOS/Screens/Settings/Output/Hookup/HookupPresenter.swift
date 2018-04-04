@@ -15,6 +15,7 @@ protocol HookupPresenterInput: class {
     func enableHookup (_ enabled: Bool)
     func enableCredentials (_ enabled: Bool)
     func refresh (withCommand command: String)
+    func pickCLI()
 }
 
 protocol HookupPresenterOutput: class {
@@ -23,6 +24,7 @@ protocol HookupPresenterOutput: class {
     func setStatusText (_ text: String)
     func setButEnable (on: Bool?, enabled: Bool?)
     func setButEnableCredentials (on: Bool?, enabled: Bool?)
+    func setButPick (enabled: Bool)
     func setCommand (path: String?, enabled: Bool?)
 }
 
@@ -64,6 +66,8 @@ class HookupPresenter {
             
             userInterface.setButEnableCredentials(on: wself.localPreferences.bool(.enableHookupCredentials),
                                                   enabled: commandInstalled)
+            
+            userInterface.setButPick(enabled: wself.localPreferences.bool(.enableHookup))
         })
     }
 }
@@ -74,6 +78,7 @@ extension HookupPresenter: HookupPresenterInput {
         localPreferences.set(enabled, forKey: .enableHookup)
         userInterface!.setCommand(path: nil, enabled: enabled)
         userInterface!.setButEnable(on: enabled, enabled: nil)
+        userInterface!.setButPick(enabled: enabled)
     }
     
     func enableCredentials (_ enabled: Bool) {
@@ -81,8 +86,35 @@ extension HookupPresenter: HookupPresenterInput {
     }
     
     func refresh (withCommand command: String) {
-        // Set the command to userDefaults and it will be read by the hokup module from there
+        // Set the command to userDefaults and it will be read by the hookup module from there
         localPreferences.set(command, forKey: .settingsHookupCmdName)
         refresh()
+    }
+    
+    
+    func pickCLI() {
+        
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        panel.allowsMultipleSelection = false
+        panel.showsHiddenFiles = true
+        panel.allowedFileTypes = [""]
+        panel.message = "Please select a CLI app"
+        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
+        panel.begin { [weak self] (result) -> Void in
+            
+            guard let wself = self else {
+                return
+            }
+            if result.rawValue == NSFileHandlingPanelOKButton {
+                if let url = panel.urls.first {
+                    var path = url.absoluteString
+                    path = path.replacingOccurrences(of: "file://", with: "")
+                    
+                    wself.refresh (withCommand: path)
+                }
+            }
+        }
     }
 }
