@@ -163,7 +163,7 @@ class CreateReportTests: XCTestCase {
         t4_3.taskNumber = "coderev"
         t4_3.notes = "3"
         var t4_4 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 16, minute: 59), type: .coderev)
-        t4_4.startDate = Date(year: 2018, month: 4, day: 3, hour: 16, minute: 59)
+        t4_4.startDate = Date(year: 2018, month: 4, day: 3, hour: 16, minute: 56)
         t4_4.taskNumber = "coderev"
         t4_4.notes = "4"
         

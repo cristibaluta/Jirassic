@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="175"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" borderType="line" title="Git support" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-ST-fW3">
+                <box autoresizesSubviews="NO" borderType="line" title="Git support (experimental)" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-ST-fW3">
                     <rect key="frame" x="-3" y="-4" width="486" height="179"/>
                     <view key="contentView" id="bAm-pg-lwW">
                         <rect key="frame" x="1" y="1" width="484" height="163"/>
