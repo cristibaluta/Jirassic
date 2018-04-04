@@ -46,6 +46,16 @@
                                     <action selector="handleInstallButton:" target="c22-O7-iKe" id="WPT-aA-DoM"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ndj-0G-pnP">
+                                <rect key="frame" x="436" y="25" width="38" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Pick" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yOb-N1-jfv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handlePickButton:" target="c22-O7-iKe" id="gYH-lc-GaZ"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWM-Qg-ewd">
                                 <rect key="frame" x="11" y="63" width="59" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -82,7 +92,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-mX-fgI">
-                                <rect key="frame" x="105" y="24" width="369" height="22"/>
+                                <rect key="frame" x="105" y="24" width="323" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. ~/Documents/Project1,~/Documents/Project2" bezelStyle="round" id="DYZ-2W-Nvk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -103,11 +113,12 @@
                         <constraints>
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="FbD-qf-Pro"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="10" id="I1j-nR-ahD"/>
+                            <constraint firstAttribute="trailing" secondItem="ndj-0G-pnP" secondAttribute="trailing" constant="10" id="Jj0-Zd-wvr"/>
                             <constraint firstItem="Teq-Pe-PXu" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="105" id="MzN-47-ObN"/>
+                            <constraint firstItem="ndj-0G-pnP" firstAttribute="centerY" secondItem="pe2-mX-fgI" secondAttribute="centerY" id="OBS-s1-lZA"/>
                             <constraint firstAttribute="trailing" secondItem="U0o-hB-0FO" secondAttribute="trailing" constant="10" id="POF-Sc-fND"/>
                             <constraint firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" constant="10" id="QKJ-yE-dBF"/>
                             <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="80" id="QoI-0h-dla"/>
-                            <constraint firstItem="pe2-mX-fgI" firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" id="bB1-0f-g1v"/>
                             <constraint firstItem="U0o-hB-0FO" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="10" id="bNh-7u-PrV"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
@@ -115,6 +126,7 @@
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="leading" secondItem="soa-Mf-B56" secondAttribute="trailing" constant="6" id="cxN-iS-Ne9"/>
                             <constraint firstAttribute="trailing" secondItem="y1X-Wf-3ng" secondAttribute="trailing" constant="10" id="dRf-Za-uMg"/>
                             <constraint firstItem="pe2-mX-fgI" firstAttribute="top" secondItem="Teq-Pe-PXu" secondAttribute="bottom" constant="15" id="kxT-OC-8sg"/>
+                            <constraint firstItem="ndj-0G-pnP" firstAttribute="leading" secondItem="pe2-mX-fgI" secondAttribute="trailing" constant="8" id="ug3-c4-5fq"/>
                         </constraints>
                     </view>
                 </box>
@@ -128,6 +140,7 @@
             <connections>
                 <outlet property="butEnable" destination="U0o-hB-0FO" id="ffr-bV-tCg"/>
                 <outlet property="butInstall" destination="y1X-Wf-3ng" id="65a-Gm-QVx"/>
+                <outlet property="butPick" destination="ndj-0G-pnP" id="GFu-eK-WbP"/>
                 <outlet property="emailsTextField" destination="Teq-Pe-PXu" id="KBh-qB-qXs"/>
                 <outlet property="pathsTextField" destination="pe2-mX-fgI" id="Dkm-JH-rZc"/>
                 <outlet property="statusImageView" destination="soa-Mf-B56" id="RNd-RY-fIT"/>

@@ -10,12 +10,17 @@ import Foundation
 import Cocoa
 
 protocol GitPresenterInput: class {
+    
     var isShellScriptInstalled: Bool? {get set}
+    
     func enableGit (_ enabled: Bool)
     func refresh (withCommand command: String)
+    func pickPath()
+    func save (emails: String, paths: String)
 }
 
 protocol GitPresenterOutput: class {
+    
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
     func setButInstall (enabled: Bool)
@@ -27,7 +32,7 @@ protocol GitPresenterOutput: class {
 class GitPresenter {
     
     weak var userInterface: GitPresenterOutput?
-    let gitModule = ModuleGitLogs()
+    fileprivate let gitModule = ModuleGitLogs()
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     
     var isShellScriptInstalled: Bool? {
@@ -81,5 +86,46 @@ extension GitPresenter: GitPresenterInput {
         // Set the command to userDefaults and it will be read by the hokup module from there
 //        localPreferences.set(command, forKey: .settingsHookupCmdName)
         refresh()
+    }
+    
+    func pickPath() {
+        
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.message = "Please pick a git project you want to create reports from"
+        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
+        panel.begin { [weak self] (result) -> Void in
+            
+            guard let wself = self, let userInterface = wself.userInterface else {
+                return
+            }
+            if result.rawValue == NSFileHandlingPanelOKButton {
+                if let url = panel.urls.first {
+                    var path = url.absoluteString
+                    path = path.replacingOccurrences(of: "file://", with: "")
+                    path.removeLast()
+                    // TODO: Validate if the picked project is a git project
+                    
+                    let existingPaths = wself.localPreferences.string(.settingsGitPaths)
+                    let updatedPaths = existingPaths == "" ? path : (existingPaths + "," + path)
+                    wself.savePaths(updatedPaths)
+                    userInterface.setPaths(updatedPaths, enabled: wself.localPreferences.bool(.enableGit))
+                }
+            }
+        }
+    }
+    
+    func save (emails: String, paths: String) {
+        saveEmails(emails)
+        savePaths(paths)
+    }
+    
+    private func saveEmails (_ emails: String) {
+        localPreferences.set(emails, forKey: .settingsGitAuthors)
+    }
+    private func savePaths (_ paths: String) {
+        localPreferences.set(paths, forKey: .settingsGitPaths)
     }
 }

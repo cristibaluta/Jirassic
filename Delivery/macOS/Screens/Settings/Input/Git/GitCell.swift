@@ -16,9 +16,9 @@ class GitCell: NSTableRowView, Saveable {
     @IBOutlet fileprivate var emailsTextField: NSTextField!
     @IBOutlet fileprivate var pathsTextField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!
+    @IBOutlet fileprivate var butPick: NSButton!
 
     var presenter: GitPresenterInput = GitPresenter()
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,8 +29,7 @@ class GitCell: NSTableRowView, Saveable {
     }
     
     func save() {
-        localPreferences.set(emailsTextField.stringValue, forKey: .settingsGitAuthors)
-        localPreferences.set(pathsTextField.stringValue, forKey: .settingsGitPaths)
+        presenter.save(emails: emailsTextField.stringValue, paths: pathsTextField.stringValue)
     }
     
     @IBAction func handleInstallButton (_ sender: NSButton) {
@@ -43,6 +42,10 @@ class GitCell: NSTableRowView, Saveable {
     
     @IBAction func handleEnableButton (_ sender: NSButton) {
         presenter.enableGit(sender.state == .on)
+    }
+    
+    @IBAction func handlePickButton (_ sender: NSButton) {
+        presenter.pickPath()
     }
 }
 
@@ -80,6 +83,7 @@ extension GitCell: GitPresenterOutput {
         }
         if let enabled = enabled {
             pathsTextField.isEnabled = enabled
+            butPick.isEnabled = enabled
         }
     }
     func setEmails (_ emails: String?, enabled: Bool?) {
