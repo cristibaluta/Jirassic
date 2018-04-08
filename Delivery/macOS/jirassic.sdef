@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+
 <dictionary title="Jirassic Terminology">
-	<suite name="Jirassic Suite" code="Note" description="Jirassic-specific classes.">
-		
-		<class name="task" plural="tasks" code="gitt" description="Add Git commits to Jirassic as tasks that finished.">
-			
-            <cocoa class="NSApplication"/>
-			<type type="text"/>
-			
-			<responds-to name="logCommit:ofBranch:">
-				<cocoa method="logCommit:ofBranch:"/>
-			</responds-to>
-			
-			<property name="task" code="iMod" type="text" access="rw" description="Add a commit message to Jirassic">
-				<cocoa key="tasks"/>
-			</property>
-            
-		</class>
-		
+    
+	<suite name="Jirassic Suite" code="jirs" description="Jirassic commands">
+        <command name="create task" code="crtetask" description="Create a new Task from a given json">
+            <cocoa class="Jirassic.NewTaskCommand"/>
+            <direct-parameter description="The json encoded">
+                <type type="text"/>
+            </direct-parameter>
+        </command>
 	</suite>￼
+    
 </dictionary>

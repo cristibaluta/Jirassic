@@ -91,7 +91,6 @@
 		280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
 		280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
 		280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B15651DEF75660009871C /* AppViewController.swift */; };
-		280D715C1ED6043D005D2689 /* AppScriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3581DD3B44200B73201 /* AppScriptable.swift */; };
 		280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
 		280D715E1ED6043D005D2689 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
 		280D715F1ED6043D005D2689 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D70B01ECC09D9005D2689 /* AppTheme.swift */; };
@@ -328,6 +327,8 @@
 		28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265A20224EA700AEA38D /* HookupCell.swift */; };
 		28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */; };
 		28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */; };
+		28FE1887207A520B00DF796E /* NewTaskCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE1886207A520B00DF796E /* NewTaskCommand.swift */; };
+		28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE1886207A520B00DF796E /* NewTaskCommand.swift */; };
 		4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4051D5F81E0EA48A002042BB /* AppLauncher.swift */; };
 		4055B1361E0D821500279430 /* JirassicLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4055B1231E0D802300279430 /* JirassicLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
@@ -361,7 +362,6 @@
 		4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3521DD3B44200B73201 /* FlipAnimation.swift */; };
 		4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
 		4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
-		4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3581DD3B44200B73201 /* AppScriptable.swift */; };
 		4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
 		4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
@@ -617,6 +617,7 @@
 		28FB265720224E9B00AEA38D /* HookupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HookupCell.xib; sourceTree = "<group>"; };
 		28FB265A20224EA700AEA38D /* HookupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupCell.swift; sourceTree = "<group>"; };
 		28FB265D2022DC2B00AEA38D /* JiraTempoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoPresenter.swift; sourceTree = "<group>"; };
+		28FE1886207A520B00DF796E /* NewTaskCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskCommand.swift; sourceTree = "<group>"; };
 		4051D5EF1E0EA0EA002042BB /* JirassicLauncher.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = JirassicLauncher.entitlements; path = "macOS-launcher/JirassicLauncher.entitlements"; sourceTree = "<group>"; };
 		4051D5F01E0EA0EA002042BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "macOS-launcher/Info.plist"; sourceTree = "<group>"; };
 		4051D5F71E0EA320002042BB /* Jirassic.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
@@ -671,7 +672,6 @@
 		4065D3521DD3B44200B73201 /* FlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
 		4065D3541DD3B44200B73201 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4065D3551DD3B44200B73201 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
-		4065D3581DD3B44200B73201 /* AppScriptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScriptable.swift; sourceTree = "<group>"; };
 		4065D35A1DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4065D35B1DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4065D35C1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1046,6 +1046,14 @@
 			path = Hookup;
 			sourceTree = "<group>";
 		};
+		28FE1885207A516300DF796E /* AppleScriptCommands */ = {
+			isa = PBXGroup;
+			children = (
+				28FE1886207A520B00DF796E /* NewTaskCommand.swift */,
+			);
+			path = AppleScriptCommands;
+			sourceTree = "<group>";
+		};
 		4055B1371E0D82A800279430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1287,7 +1295,6 @@
 				4065D3541DD3B44200B73201 /* AppDelegate.swift */,
 				4065D3551DD3B44200B73201 /* AppWireframe.swift */,
 				405B15651DEF75660009871C /* AppViewController.swift */,
-				4065D3581DD3B44200B73201 /* AppScriptable.swift */,
 				4051D5F81E0EA48A002042BB /* AppLauncher.swift */,
 				2823C9341E4F69970055D036 /* Versioning.swift */,
 				280D70B01ECC09D9005D2689 /* AppTheme.swift */,
@@ -1380,6 +1387,7 @@
 		4065D3881DD3B44200B73201 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				28FE1885207A516300DF796E /* AppleScriptCommands */,
 				2845B137206703A8006EFB3B /* Keychain */,
 				2892B2961F0949D70085BAC2 /* Jira */,
 				28577EA01E8ADBBD002B07FD /* sqlite */,
@@ -1927,7 +1935,6 @@
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
 				287195322025C364001C237E /* CTask.swift in Sources */,
 				287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */,
-				280D715C1ED6043D005D2689 /* AppScriptable.swift in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
 				2845B14D206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
@@ -1943,6 +1950,7 @@
 				564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
 				2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
+				28FE1887207A520B00DF796E /* NewTaskCommand.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
 				280D71681ED6043D005D2689 /* TaskSuggestionViewController.swift in Sources */,
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
@@ -2073,6 +2081,7 @@
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
+				28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */,
 				28013890205F86460051B532 /* TimeBox.swift in Sources */,
 				2892B2AB1F0950F90085BAC2 /* RCHttp.swift in Sources */,
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
@@ -2159,7 +2168,6 @@
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
 				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
-				4065D3CD1DD3B44200B73201 /* AppScriptable.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				28AA50101EDCD52300AAF03D /* InMemoryCoreDataRepository.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,

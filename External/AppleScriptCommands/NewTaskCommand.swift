@@ -1,29 +1,29 @@
 //
-//  ScriptableApplication.swift
+//  NewTaskCommand.swift
 //  Jirassic
 //
-//  Created by Baluta Cristian on 28/11/15.
-//  Copyright © 2015 Cristian Baluta. All rights reserved.
+//  Created by Cristian Baluta on 08/04/2018.
+//  Copyright © 2018 Imagin soft. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-extension NSApplication {
-	
-	func tasks() -> String {
-		return "Tasks returned from Jirassic"
-	}
-	
-	func setTasks (_ json: String) {
+class NewTaskCommand: NSScriptCommand {
+    
+    override func execute() -> Any? {
         
+        guard let json = arguments?[""] as? String else {
+            RCLogErrorO("Invalid argument")
+            return nil
+        }
         RCLog(json)
         let validJson = json.replacingOccurrences(of: "'", with: "\"")
         
         guard let data = validJson.data(using: String.Encoding.utf8) else {
-            return
+            return nil
         }
         guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String], let dict = jdict else {
-            return
+            return nil
         }
         RCLog(dict)
         let notes = dict["notes"] ?? ""
@@ -34,19 +34,14 @@ extension NSApplication {
             : TaskType.gitCommit
         let informativeText = "\(taskNumber): \(notes)"
         
-        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        // If the day was not started, start it now
         let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let currentTasks = reader.tasksInDay(Date())
         if currentTasks.count == 0 {
-            let settings: Settings = SettingsInteractor().getAppSettings()
-            let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
-            let comps = startDate.components()
-            let startDayMark = Task(endDate: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
-            saveInteractor.saveTask(startDayMark, allowSyncing: true, completion: { savedTask in
-                
-            })
+            startDay()
         }
         
+        // Save task
         let task = Task(
             lastModifiedDate: nil,
             startDate: nil,
@@ -57,16 +52,28 @@ extension NSApplication {
             taskType: taskType,
             objectId: String.random()
         )
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
             
         })
         
+        // Notify app
         UserNotifications().showNotification("Git commit added", informativeText: informativeText)
         InternalNotifications.notifyAboutNewlyAddedTask(task)
-	}
-	
-	func logCommit (_ commit: String, ofBranch: String) {
-		RCLog(commit)
-		RCLog(ofBranch)
-	}
+        
+        return nil
+    }
+    
+    private func startDay() {
+        
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
+        let comps = startDate.components()
+        let startDayMark = Task(endDate: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
+        
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        saveInteractor.saveTask(startDayMark, allowSyncing: true, completion: { savedTask in
+            
+        })
+    }
 }
