@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="CocoaHookupCell" id="YTY-Kw-amg" customClass="CocoaHookupCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="95"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" borderType="line" title="Mac app hookup" translatesAutoresizingMaskIntoConstraints="NO" id="xNH-Yj-HPf">
+                    <rect key="frame" x="-3" y="-4" width="486" height="99"/>
+                    <view key="contentView" id="SmN-FM-OwR">
+                        <rect key="frame" x="1" y="1" width="484" height="83"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTc-yG-dc9">
+                                <rect key="frame" x="11" y="24" width="66" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="App name" id="TuV-EQ-2xI">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v58-82-ta2">
+                                <rect key="frame" x="85" y="21" width="330" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. MyApp.app" bezelStyle="round" id="JCw-fB-pJn">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="v58-82-ta2" firstAttribute="centerY" secondItem="QTc-yG-dc9" secondAttribute="centerY" id="0s6-dB-0F1"/>
+                            <constraint firstItem="v58-82-ta2" firstAttribute="top" secondItem="SmN-FM-OwR" secondAttribute="top" constant="40" id="Mrf-pq-EBg"/>
+                            <constraint firstItem="QTc-yG-dc9" firstAttribute="leading" secondItem="SmN-FM-OwR" secondAttribute="leading" constant="13" id="Xv2-wD-zyh"/>
+                            <constraint firstItem="v58-82-ta2" firstAttribute="leading" secondItem="QTc-yG-dc9" secondAttribute="trailing" constant="10" id="zZJ-zE-3mT"/>
+                        </constraints>
+                    </view>
+                </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JmU-05-Npj">
+                    <rect key="frame" x="422" y="19" width="38" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Pick" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C0K-FN-cjf">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handlePickButton:" target="YTY-Kw-amg" id="epF-pC-JBe"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfe-CT-saf">
+                    <rect key="frame" x="400" y="51" width="60" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Enabled" alternateTitle="Disabled" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lnA-op-zQd">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleEnableButton:" target="YTY-Kw-amg" id="Lgr-ms-Ibd"/>
+                    </connections>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GxR-Fq-RaO">
+                    <rect key="frame" x="10" y="52" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="4W0-dU-UbB"/>
+                        <constraint firstAttribute="width" constant="18" id="aqR-4P-WS0"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="SFj-G6-cgh"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OgZ-Bi-Ohj">
+                    <rect key="frame" x="32" y="53" width="137" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking hookup app" id="80X-MS-tDZ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="xNH-Yj-HPf" firstAttribute="leading" secondItem="YTY-Kw-amg" secondAttribute="leading" id="27F-E4-Xic"/>
+                <constraint firstItem="GxR-Fq-RaO" firstAttribute="top" secondItem="YTY-Kw-amg" secondAttribute="top" constant="25" id="2uz-Yn-64U"/>
+                <constraint firstAttribute="trailing" secondItem="JmU-05-Npj" secondAttribute="trailing" constant="20" id="3Zr-9P-jHV"/>
+                <constraint firstItem="JmU-05-Npj" firstAttribute="leading" secondItem="v58-82-ta2" secondAttribute="trailing" constant="9" id="4Q3-Ay-eIq"/>
+                <constraint firstAttribute="trailing" secondItem="dfe-CT-saf" secondAttribute="trailing" constant="20" id="5fN-2s-I0F"/>
+                <constraint firstItem="OgZ-Bi-Ohj" firstAttribute="leading" secondItem="GxR-Fq-RaO" secondAttribute="trailing" constant="6" id="Mhb-69-LzN"/>
+                <constraint firstItem="GxR-Fq-RaO" firstAttribute="leading" secondItem="YTY-Kw-amg" secondAttribute="leading" constant="10" id="Otd-HJ-i0a"/>
+                <constraint firstAttribute="bottom" secondItem="xNH-Yj-HPf" secondAttribute="bottom" id="dEp-wb-vHl"/>
+                <constraint firstItem="OgZ-Bi-Ohj" firstAttribute="top" secondItem="GxR-Fq-RaO" secondAttribute="top" id="oKQ-9o-t9Y"/>
+                <constraint firstAttribute="trailing" secondItem="xNH-Yj-HPf" secondAttribute="trailing" id="qLR-Ir-hrG"/>
+                <constraint firstItem="JmU-05-Npj" firstAttribute="centerY" secondItem="v58-82-ta2" secondAttribute="centerY" id="r3I-gv-4lA"/>
+                <constraint firstItem="xNH-Yj-HPf" firstAttribute="top" secondItem="YTY-Kw-amg" secondAttribute="top" id="sjq-7u-DIS"/>
+                <constraint firstItem="dfe-CT-saf" firstAttribute="top" secondItem="YTY-Kw-amg" secondAttribute="top" constant="25" id="w0Y-w9-nAu"/>
+            </constraints>
+            <connections>
+                <outlet property="butEnable" destination="dfe-CT-saf" id="pCE-JV-qxH"/>
+                <outlet property="butPick" destination="JmU-05-Npj" id="efT-Rd-zS4"/>
+                <outlet property="hookupNameTextField" destination="v58-82-ta2" id="Eo8-Oa-tNa"/>
+                <outlet property="statusImageView" destination="GxR-Fq-RaO" id="GTh-OK-pwz"/>
+                <outlet property="statusTextField" destination="OgZ-Bi-Ohj" id="pgW-Cc-B2k"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="171.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSStatusNone" width="16" height="16"/>
+    </resources>
+</document>

@@ -10,18 +10,21 @@ import Cocoa
 
 let kJiraTempoCellHeight = CGFloat(180.0)
 let kHookupCellHeight = CGFloat(160.0)
+let kCocoaHookupCellHeight = CGFloat(95.0)
 
 enum OutputType {
     case jiraTempo
-    case hookup
+    case cliHookup
+    case cocoaHookup
 }
 
 class OutputTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
-    fileprivate let cells: [OutputType] = [.jiraTempo, .hookup]
+    fileprivate let cells: [OutputType] = [.jiraTempo, .cliHookup, .cocoaHookup]
     var jiraCell: JiraTempoCell?
-    var hookupCell: HookupCell?
+    var cliHookupCell: HookupCell?
+    var cocoaHookupCell: CocoaHookupCell?
     
     init (tableView: NSTableView) {
         self.tableView = tableView
@@ -29,9 +32,11 @@ class OutputTableViewDataSource: NSObject {
         
         JiraTempoCell.register(in: tableView)
         HookupCell.register(in: tableView)
+        CocoaHookupCell.register(in: tableView)
         
         jiraCell = JiraTempoCell.instantiate(in: self.tableView)
-        hookupCell = HookupCell.instantiate(in: self.tableView)
+        cliHookupCell = HookupCell.instantiate(in: self.tableView)
+        cocoaHookupCell = CocoaHookupCell.instantiate(in: self.tableView)
     }
 }
 
@@ -47,8 +52,10 @@ extension OutputTableViewDataSource: NSTableViewDataSource {
         switch outputType {
         case .jiraTempo:
             return kJiraTempoCellHeight
-        case .hookup:
+        case .cliHookup:
             return kHookupCellHeight
+        case .cocoaHookup:
+            return kCocoaHookupCellHeight
         }
     }
 }
@@ -62,8 +69,10 @@ extension OutputTableViewDataSource: NSTableViewDelegate {
         switch outputType {
         case .jiraTempo:
             cell = jiraCell!
-        case .hookup:
-            cell = hookupCell!
+        case .cliHookup:
+            cell = cliHookupCell!
+        case .cocoaHookup:
+            cell = cocoaHookupCell!
         }
         
         return cell

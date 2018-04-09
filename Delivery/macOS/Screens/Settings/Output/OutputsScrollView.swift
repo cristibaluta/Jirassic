@@ -29,10 +29,12 @@ class OutputsScrollView: NSScrollView {
     
     func save() {
         dataSource?.jiraCell?.save()
-        dataSource?.hookupCell?.save()
+        dataSource?.cliHookupCell?.save()
+        dataSource?.cocoaHookupCell?.save()
     }
     
     func setHookupStatus (available: Bool) {
-        dataSource?.hookupCell?.presenter.isShellScriptInstalled = available
+        dataSource?.cliHookupCell?.presenter.isShellScriptInstalled = available
+        dataSource?.cocoaHookupCell?.presenter.isShellScriptInstalled = available
     }
 }

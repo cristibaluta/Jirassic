@@ -13,10 +13,16 @@ class ModuleHookup {
     private let extensions = ExtensionsInteractor()
     private let localPreferences = RCPreferences<LocalPreferences>()
     
-    func isReachable (completion: @escaping (Bool) -> Void) {
+    func isCmdReachable (completion: @escaping (Bool) -> Void) {
         
         let cmd = localPreferences.string(.settingsHookupCmdName)
         checkIfCommandInstalled(cmd: cmd, completion: completion)
+    }
+    
+    func isAppReachable (completion: @escaping (Bool) -> Void) {
+        
+        let appName = localPreferences.string(.settingsHookupAppName)
+        checkIfAppInstalled(appName: appName, completion: completion)
     }
     
     func insert (task: Task, completion: ((_ success: Bool) -> Void)? = nil) {
@@ -69,6 +75,14 @@ extension ModuleHookup {
         extensions.run (command: command, completion: { result in
             completion(result != nil)
         })
+    }
+    
+    func checkIfAppInstalled (appName: String, completion: @escaping (Bool) -> Void) {
+        
+        //let command = "command -v \(cmd)"// Returns the path to git if exists
+        //extensions.run (command: command, completion: { result in
+            completion(true)
+        //})
     }
     
 }

@@ -46,7 +46,7 @@ class HookupPresenter {
     
     func refresh() {
         
-        hookupModule.isReachable(completion: { [weak self] commandInstalled in
+        hookupModule.isCmdReachable(completion: { [weak self] commandInstalled in
             
             guard let wself = self, let userInterface = wself.userInterface else {
                 return

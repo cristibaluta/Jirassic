@@ -26,12 +26,14 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsJiraProjectKey = "settingsJiraProjectKey"
     case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
     case settingsHookupCmdName = "settingsHookupCmdName"
+    case settingsHookupAppName = "settingsHookupAppName"
     case settingsGitPaths = "settingsGitPaths"
     case settingsGitAuthors = "settingsGitAuthors"
     case enableGit = "enableGit"
     case enableJira = "enableJira"
     case enableRoundingDay = "enableRoundingDay"
     case enableHookup = "enableHookup"
+    case enableCocoaHookup = "enableCocoaHookup"
     case enableHookupCredentials = "enableHookupCredentials"
     
     func defaultValue() -> Any {
@@ -48,12 +50,14 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .settingsJiraProjectKey:   return ""
             case .settingsJiraProjectIssueKey:return ""
             case .settingsHookupCmdName:    return ""
+            case .settingsHookupAppName:    return ""
             case .settingsGitPaths:         return ""
             case .settingsGitAuthors:       return ""
-            case .enableGit:                return true
+            case .enableGit:                return false
             case .enableJira:               return true
             case .enableRoundingDay:        return false
-            case .enableHookup:             return true
+            case .enableHookup:             return false
+            case .enableCocoaHookup:        return false
             case .enableHookupCredentials:  return true
         }
     }

@@ -40,11 +40,14 @@ extension TableViewCell {
     }
     
     private class func instantiate<T> (in tableView: TableView, type: T.Type) -> T {
+        let className = String(describing: self)
         #if os(iOS)
 //            return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
-            let className = String(describing: self)
-            return tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: className), owner: self) as! T
+            guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: className), owner: self) as? T else {
+                fatalError("Cell \(className) might not be registered in thsi tableView")
+            }
+            return cell
         #endif
     }
 }

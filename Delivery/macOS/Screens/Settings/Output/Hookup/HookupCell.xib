@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="160"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" borderType="line" title="Hookups" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Mt-WYx">
+                <box autoresizesSubviews="NO" borderType="line" title="CLI hookup" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-Mt-WYx">
                     <rect key="frame" x="-3" y="-4" width="486" height="164"/>
                     <view key="contentView" id="ZSq-u6-jDQ">
                         <rect key="frame" x="1" y="1" width="484" height="148"/>
