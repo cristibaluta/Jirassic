@@ -27,28 +27,51 @@ class ModuleHookup {
     
     func insert (task: Task, completion: ((_ success: Bool) -> Void)? = nil) {
         
-        let cmd = localPreferences.string(.settingsHookupCmdName)
-        let json = buildJson (task: task)
-        let command = "\(cmd) insert \"\(json)\""
+        let isHookupEnabled = localPreferences.bool(.enableHookup)
+        let isCocoaHookupEnabled = localPreferences.bool(.enableCocoaHookup)
         
-        extensions.run (command: command, completion: { result in
+        // Call cli hookup
+        if isHookupEnabled {
+            let cliName = localPreferences.string(.settingsHookupCmdName)
+            let json = buildJson (task: task)
+            let command = "\(cliName) insert \"\(json)\""
             
-            guard let validJson = result else {
-                completion?(false)
-                return
+            extensions.run (command: command, completion: { result in
+                
+                guard let validJson = result else {
+                    completion?(false)
+                    return
+                }
+                guard let data = validJson.data(using: String.Encoding.utf8) else {
+                    completion?(false)
+                    return
+                }
+                guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
+                    let dict = jdict else {
+                    completion?(false)
+                    return
+                }
+                RCLog(dict)
+                completion?(dict["success"] == "true")
+            })
+        }
+        
+        // Call cocoa hookups
+        // Only start/end types are supported
+        if isCocoaHookupEnabled {
+            let appName = localPreferences.string(.settingsHookupAppName)
+            var command = ""
+            if task.taskType == .startDay {
+                command = "osascript -e \"tell application \\\"\(appName)\\\" to start\""
+            } else if task.taskType == .endDay {
+                command = "osascript -e \"tell application \\\"\(appName)\\\" to stop\""
             }
-            guard let data = validJson.data(using: String.Encoding.utf8) else {
-                completion?(false)
-                return
+            if command != "" {
+                extensions.run (command: command, completion: { result in
+                    // Do nothing
+                })
             }
-            guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
-                let dict = jdict else {
-                completion?(false)
-                return
-            }
-            RCLog(dict)
-            completion?(dict["success"] == "true")
-        })
+        }
     }
     
     /// Json sent to shell to be valid must be a string with ' instead of " and no breaklines

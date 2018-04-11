@@ -91,7 +91,7 @@ extension CocoaHookupPresenter: CocoaHookupPresenterInput {
         panel.allowsMultipleSelection = false
         panel.showsHiddenFiles = false
         panel.allowedFileTypes = ["app"]
-        panel.message = "Please select a Cocoa app with support for AppleScript"
+        panel.message = "Please select the custom .app with support for Jirassic AppleScript"
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.begin { [weak self] (result) -> Void in
             
@@ -100,10 +100,12 @@ extension CocoaHookupPresenter: CocoaHookupPresenterInput {
             }
             if result.rawValue == NSFileHandlingPanelOKButton {
                 if let url = panel.urls.first {
-                    var path = url.absoluteString
-                    path = path.replacingOccurrences(of: "file://", with: "")
-                    
-                    wself.refresh (withApp: path)
+                    let appName = url.absoluteString
+                        .components(separatedBy: "/")
+                        .last?
+                        .replacingOccurrences(of: ".app", with: "")
+                        .replacingOccurrences(of: "%20", with: " ")
+                    wself.refresh (withApp: appName ?? "")
                 }
             }
         }

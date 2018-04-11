@@ -107,6 +107,7 @@ extension EndDayPresenter: EndDayPresenterInput {
         
         let isJiraEnabled = localPreferences.bool(.enableJira)
         let isHookupEnabled = localPreferences.bool(.enableHookup)
+        let isCocoaHookupEnabled = localPreferences.bool(.enableCocoaHookup)
         let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
         
         userInterface!.showJiraMessage("", isError: false)
@@ -142,7 +143,7 @@ extension EndDayPresenter: EndDayPresenterInput {
         }
         
         // Call hookup only for the current day
-        if isHookupEnabled && self.date!.isToday() {
+        if (isHookupEnabled || isCocoaHookupEnabled) && self.date!.isToday() {
             moduleHookup.insert(task: endDayTask) { [weak self] success in
                 if let userInterface = self?.userInterface {
                     success
