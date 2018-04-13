@@ -69,7 +69,20 @@ extension CloudKitRepository {
             RCLogErrorO(error)
             
             guard error == nil else {
-                // todo: handle error: <CKError 0x60c0002414a0: "Change Token Expired" (21/2026); server message = "client knowledge differs from server knowledge";
+                if let ckerror = error as? CKError {
+                    switch ckerror {
+                    case CKError.changeTokenExpired:
+                        // Reset the token and try to do the request again
+                        UserDefaults.standard.serverChangeToken = nil
+                        self.fetchChangedRecords(token: nil,
+                                                 previousRecords: changedRecords,
+                                                 previousDeletedRecordsIds: deletedRecordsIds,
+                                                 completion: completion)
+                        return
+                    default:
+                        break
+                    }
+                }
                 completion(changedRecords, deletedRecordsIds)
                 return
             }
