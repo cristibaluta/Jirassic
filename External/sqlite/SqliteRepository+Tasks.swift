@@ -10,30 +10,26 @@ import Foundation
 
 extension SqliteRepository: RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
+    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
 
-        DispatchQueue(label: "request", attributes: []).async {
-            let predicate = "markedForDeletion == 0"
-            let results: [STask] = self.queryWithPredicate(predicate, sortingKeyPath: "endDate")
-            let tasks = self.tasksFromSTasks(results)
-
+        queue.async {
+            let tasks = self.tasksBetween (startDate: startDate, endDate: endDate)
             completion(tasks, nil)
         }
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
 
-        let startDate = day.startOfDay().YYYYMMddHHmmssGMT()
-        let endDate = day.endOfDay().YYYYMMddHHmmssGMT()
-        let predicate = "datetime(endDate) BETWEEN datetime('\(startDate)') AND datetime('\(endDate)') AND markedForDeletion == 0"
-        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
-        let tasks = tasksFromSTasks(results)
-        
+        let tasks = tasksBetween (startDate: day.startOfDay(), endDate: day.endOfDay())
         return tasks
     }
     
     func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
-        completion(queryTasksInDay(day), nil)
+
+        queue.async {
+            let tasks = self.queryTasksInDay(day)
+            completion(tasks, nil)
+        }
     }
     
     func queryUnsyncedTasks() -> [Task] {
@@ -100,7 +96,18 @@ extension SqliteRepository: RepositoryTasks {
 }
 
 extension SqliteRepository {
-    
+
+    fileprivate func tasksBetween (startDate: Date, endDate: Date) -> [Task] {
+
+        let startDate = startDate.YYYYMMddHHmmssGMT()
+        let endDate = endDate.YYYYMMddHHmmssGMT()
+        let predicate = "datetime(endDate) BETWEEN datetime('\(startDate)') AND datetime('\(endDate)') AND markedForDeletion == 0"
+        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
+        let tasks = tasksFromSTasks(results)
+
+        return tasks
+    }
+
     fileprivate func taskFromSTask (_ stask: STask) -> Task {
         
         return Task(lastModifiedDate: stask.lastModifiedDate,

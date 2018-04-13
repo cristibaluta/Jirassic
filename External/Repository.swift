@@ -19,7 +19,7 @@ protocol RepositoryUser {
 
 protocol RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void)
+    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void)
     func queryTasksInDay (_ day: Date) -> [Task]
     func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void)
     func queryUnsyncedTasks() -> [Task]

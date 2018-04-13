@@ -11,26 +11,15 @@ import CoreData
 
 extension CoreDataRepository: RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
-        
-        let predicate = NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
-        let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
-        let results: [CTask] = queryWithPredicate(predicate, sortDescriptors: sortDescriptors)
-        let tasks = tasksFromCTasks(results)
-        
+    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+
+        let tasks = tasksBetween(startDate: startDate, endDate: endDate)
         completion(tasks, nil)
     }
     
     func queryTasksInDay (_ day: Date) -> [Task] {
-        
-        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg),
-            NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
-        ])
-        let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
-        let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
-        let tasks = tasksFromCTasks(results)
-        
+
+        let tasks = tasksBetween(startDate: day.startOfDay(), endDate: day.endOfDay())
         return tasks
     }
     
@@ -99,7 +88,20 @@ extension CoreDataRepository: RepositoryTasks {
 }
 
 extension CoreDataRepository {
-    
+
+    fileprivate func tasksBetween (startDate: Date, endDate: Date) -> [Task] {
+
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "endDate >= %@ AND endDate <= %@", startDate as CVarArg, endDate as CVarArg),
+            NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
+            ])
+        let sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
+        let results: [CTask] = queryWithPredicate(compoundPredicate, sortDescriptors: sortDescriptors)
+        let tasks = tasksFromCTasks(results)
+
+        return tasks
+    }
+
     fileprivate func taskFromCTask (_ ctask: CTask) -> Task {
         
         return Task(lastModifiedDate: ctask.lastModifiedDate,

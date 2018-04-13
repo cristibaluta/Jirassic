@@ -11,8 +11,8 @@ import CloudKit
 
 extension CloudKitRepository: RepositoryTasks {
     
-    func queryTasks (_ page: Int, completion: @escaping ([Task], NSError?) -> Void) {
-        let predicate = NSPredicate(value: true)
+    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+        let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", startDate as CVarArg, endDate as CVarArg)
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in
             completion(self.tasksFromRecords(records ?? []), nil)
         }
@@ -23,10 +23,7 @@ extension CloudKitRepository: RepositoryTasks {
     }
     
     func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
-        let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", day.startOfDay() as CVarArg, day.endOfDay() as CVarArg)
-        fetchRecords(ofType: "Task", predicate: predicate) { (records) in
-            completion(self.tasksFromRecords(records ?? []), nil)
-        }
+        queryTasks(startDate: day.startOfDay(), endDate: day.endOfDay(), completion: completion)
     }
     
     func queryUnsyncedTasks() -> [Task] {

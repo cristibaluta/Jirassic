@@ -13,6 +13,7 @@ class SqliteRepository {
     fileprivate let appName = "Jirassic"
     fileprivate let databaseName = "Jirassic"
     fileprivate var db: SQLiteDB!
+    internal let queue = DispatchQueue(label: "fetch_tasks", attributes: [])
     
     init() {
         let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)

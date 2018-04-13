@@ -18,43 +18,50 @@ class ReadDaysInteractor: RepositoryInteractor {
     
     /*
      Query the objects from the local repository then from remote if enabled
+     completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
      */
     func query (_ completion: @escaping (_ weeks: [Week]) -> Void) {
-        
-        queryLocalTasks({ [weak self] (tasks: [Task]) in
+        query(startingDate: Date(timeIntervalSince1970: 0), completion: completion)
+    }
+
+    /*
+     Query the objects from the local repository then from remote if enabled
+     completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
+     */
+    func query (startingDate: Date, completion: @escaping (_ weeks: [Week]) -> Void) {
+
+        queryLocalTasks(startDate: startingDate, endDate: Date()) { [weak self] (tasks: [Task]) in
             
             guard let _self = self else {
                 return
             }
             _self.tasks = tasks
-            completion( _self.weeks() )
+            completion(_self.weeks())
             
             if let remoteRepository = _self.remoteRepository {
                 
                 let sync = RCSync<Task>(localRepository: _self.repository, remoteRepository: remoteRepository)
                 sync.start { [weak self] hasIncomingChanges in
                     
-                    if hasIncomingChanges {
+                    guard let _self = self, hasIncomingChanges else {
+                        return
+                    }
+                    _self.queryLocalTasks(startDate: startingDate, endDate: Date()) { [weak self] (tasks: [Task]) in
+
                         guard let _self = self else {
                             return
                         }
-                        _self.queryLocalTasks({ [weak self] (tasks: [Task]) in
-                            
-                            guard let _self = self else {
-                                return
-                            }
-                            _self.tasks = tasks
-                            completion(_self.weeks())
-                        })
+                        _self.tasks = tasks
+                        completion(_self.weeks())
                     }
                 }
             }
-        })
+        }
     }
-    
-    private func queryLocalTasks (_ completion: @escaping (_ tasks: [Task]) -> Void) {
+
+    private func queryLocalTasks (startDate: Date, endDate: Date, _ completion: @escaping (_ tasks: [Task]) -> Void) {
         
-        repository.queryTasks(0, completion: { [weak self] (tasks, error) in
+        repository.queryTasks(startDate: startDate, endDate: endDate, completion: { [weak self] (tasks, error) in
             
             guard let _self = self else {
                 return

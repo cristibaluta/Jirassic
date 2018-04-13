@@ -73,7 +73,7 @@ extension TasksPresenter: TasksPresenterInput {
         
         let todayDay = Day(dateStart: Date(), dateEnd: nil)
         interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        interactor?.query { [weak self] weeks in
+        interactor?.query(startingDate: Date(timeIntervalSinceNow: -2.monthsToSec).startOfDay()) { [weak self] weeks in
             DispatchQueue.main.async {
                 guard let wself = self, let userInterface = wself.userInterface else {
                     return
