@@ -1,24 +1,23 @@
-# Jirassic for 9 to 5
+# Jirassic - Jira Time Tracker
 
-Using the browser or paper and pen to track your work is not for the age of artificial intelligence, you have to keep a tab open along the other 100, you have to remember how much time you’ve spent on tasks, you have to deal with the heavy Jira UI. Jirassic purpose is to replace this primitive workflow and track everything automatically.
-
-Jirassic is a Mac app that stays in the status bar and listens for clues that something happened, you either finished a task, a meeting, the lunch...
+Jirassic is a Mac app that stays in the status bar and listens for clues that something happened, you either finished a task, a meeting, the lunch... At the end of the day creates a worklog which you can save to Jira Tempo. Its purpose is to replace primitive tracking methods or relying on memory and do everything automatically.
 
 # Features
-- Track automatically the time you’ve spent on tasks based on git commits made through the jirassic shell support
+- Track automatically the time you’ve spent on tasks based on git commits
 - Track lunch break
 - Track daily scrum meetings
 - Track code reviews
 - Track wasted time (your boss will love this)
+- Save worklogs to Jira Tempo
 
 ![Screenshot](https://s3.postimg.org/txo1juatf/Tasks.png)
 ![Screenshot](https://s16.postimg.org/u10ss7i85/Sengs.png)
 
 # How it works
 - When you come in the office in the morning Jirassic will ask you to start the day
-- Tasks are logged when you finish them, not when you start. The premise is that you're always doing something productive, but don't worry you can log wasted time too, just that it will not add to the total worked time
-- Tasks can be logged in multiple ways: manually by clicking + on an existing item in the list; automatically when commiting to git with Jit cli; for the time spent away from the computer you'll be asked what did you do; from command line with jirassic cli
-- At the end of the day/week/month you can go to reports tab and copy paste the logs to jira timesheets (we are working in doing this step automatic)
+- Tasks are logged when you finish them, not when you start. The premise is that you're always doing something, but don't worry you can log wasted time too, just that it will not add to the total worked time
+- Tasks can be logged in multiple ways: manually by clicking + on an existing item in the list; automatically when commiting to git; for the time spent away from the computer you'll be asked what did you do and presented with some suggestions; from command line with jirassic cli
+- At the end of the day/week/month you can save the worklogs to Jira Tempo or go to reports tab and see them in more detail.
 
 # Shell support
 - jit-cmd Use 'jit commit' to commit to git then automatically log the commit message to Jirassic. But it comes with much more useful commands https://github.com/ralcr/Jit
@@ -34,7 +33,7 @@ You can install it by running this commands in Terminal:
 ![Screenshot](https://s1.postimg.org/tq0jtk65b/Screen_Shot_2017-04-01_at_17.45.21.png)
 
 # Compile
-Xcode8 and swift3 is needed. Use the target 'Jirassic macOS' because it is configured to run without signing, that means backup to iCloud will not be available. If you need iCloud you can use the Jirassic AppStore target after you create your own iCloud container and provisioning. The downside is you can't commit to the project with that target modified and pulling changes might have conflicts.
+Xcode9 and swift4 is needed. Use the target 'Jirassic macOS' because it is configured to run without signing, that means backup to iCloud will not be available. If you need iCloud you can use the Jirassic AppStore target after you create your own iCloud container and provisioning.
 
 # Licence & contribution
-Jirassic is a paid software in the Appstore, for this reason you are not allowed to resell or distribute this software. It is not recommended to take it from unknown sources either, you don't know what malicious changes someone did to it. If you wish to contribute with code note that you will not be paid, we still hope you contribute with creating issues to make it a better software.
+Jirassic is free in the Appstore but with some IAP for some features, for this reason you are not allowed to resell or distribute this software. If you wish to contribute with code note that you will not be paid, we still hope you contribute with creating issues to make it a better software.
