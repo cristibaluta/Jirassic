@@ -125,7 +125,7 @@ extension ModuleGitLogs {
         
         let startDate = date.YYYYMMddT00()
         let endDate = date.addingTimeInterval(24*3600).YYYYMMddT00()
-        let command = "git -C \(path) log --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%h;%at;%ae;%s;%D\""
+        let command = "git -C \(path) log --reflog --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%h;%at;%ae;%s;%D\""
         extensions.run (command: command, completion: { result in
             if let result = result {
                 if result.contains("fatal: Not a git repository (or any of the parent directories): .git") {
