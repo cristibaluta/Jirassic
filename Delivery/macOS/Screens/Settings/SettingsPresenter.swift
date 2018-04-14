@@ -94,19 +94,19 @@ extension SettingsPresenter: SettingsPresenterInput {
     func enableBackup (_ enabled: Bool) {
         #if APPSTORE
         if enabled {
-            // Create global instance of remoteRepository defined in AppDelegate
+            // Init the global instance of remoteRepository in AppDelegate
             remoteRepository = CloudKitRepository()
             remoteRepository?.getUser({ (user) in
                 if user == nil {
-                    self.userInterface?.enableBackup(false, title: "Backup to iCloud (You are not logged in)")
+                    self.userInterface?.enableBackup(false, title: "Syncing with iCloud not possible, you are not logged into iCloud")
                     remoteRepository = nil
                 } else {
-                    self.userInterface?.enableBackup(true, title: "Backup to iCloud")
+                    self.userInterface?.enableBackup(true, title: "Sync with iCloud and iOS app")
                 }
             })
         } else {
             remoteRepository = nil
-            self.userInterface?.enableBackup(enabled, title: "Backup to iCloud")
+            self.userInterface?.enableBackup(enabled, title: "Sync with iCloud and iOS app")
         }
         #endif
     }

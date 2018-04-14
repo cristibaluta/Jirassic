@@ -90,7 +90,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="468" height="320"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="tsH-pN-Vqh">
                                                         <rect key="frame" x="0.0" y="0.0" width="468" height="320"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="HWC-ZC-fvP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="468" height="320"/>
@@ -167,7 +167,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="468" height="320"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="VgE-cV-kf8">
                                                         <rect key="frame" x="0.0" y="0.0" width="468" height="320"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="6Sc-7S-gpi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="468" height="320"/>
@@ -241,9 +241,9 @@
                                 </connections>
                             </tabView>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8O-jk-cLw">
-                                <rect key="frame" x="23" y="53" width="126" height="18"/>
+                                <rect key="frame" x="23" y="53" width="201" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Backup to iCloud" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4DA-1R-L49">
+                                <buttonCell key="cell" type="check" title="Sync with iCloud and iOS app" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4DA-1R-L49">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

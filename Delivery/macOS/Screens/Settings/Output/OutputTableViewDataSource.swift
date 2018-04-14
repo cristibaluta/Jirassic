@@ -8,10 +8,6 @@
 
 import Cocoa
 
-let kJiraTempoCellHeight = CGFloat(180.0)
-let kHookupCellHeight = CGFloat(160.0)
-let kCocoaHookupCellHeight = CGFloat(95.0)
-
 enum OutputType {
     case jiraTempo
     case cliHookup
@@ -51,11 +47,11 @@ extension OutputTableViewDataSource: NSTableViewDataSource {
         let outputType = cells[row]
         switch outputType {
         case .jiraTempo:
-            return kJiraTempoCellHeight
+            return JiraTempoCell.height
         case .cliHookup:
-            return kHookupCellHeight
+            return HookupCell.height
         case .cocoaHookup:
-            return kCocoaHookupCellHeight
+            return CocoaHookupCell.height
         }
     }
 }

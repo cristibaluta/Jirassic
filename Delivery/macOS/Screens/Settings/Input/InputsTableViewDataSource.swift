@@ -8,19 +8,13 @@
 
 import Cocoa
 
-let kShellCellHeight = CGFloat(50.0)
-let kJirassicCellHeight = CGFloat(50.0)
-let kJitCellHeight = CGFloat(50.0)
-let kGitCellHeight = CGFloat(170.0)
-let kBrowserCellHeight = CGFloat(170.0)
-
 enum InputType {
     case shell
     case jirassic
-    case jit
     case git
+    case jit
     case browser
-    static var all: [InputType] = [.shell, .jirassic, .git, .browser]
+    static var all: [InputType] = [.shell, .jirassic, .git, .jit, .browser]
 }
 
 class InputsTableViewDataSource: NSObject {
@@ -70,15 +64,15 @@ extension InputsTableViewDataSource: NSTableViewDataSource {
         let inputType = cells[row]
         switch inputType {
         case .shell:
-            return kShellCellHeight
+            return ShellCell.height
         case .jirassic:
-            return kJirassicCellHeight
-        case .jit:
-            return kJitCellHeight
+            return JirassicCell.height
         case .git:
-            return kGitCellHeight
+            return GitCell.height
+        case .jit:
+            return JitCell.height
         case .browser:
-            return kBrowserCellHeight
+            return BrowserCell.height
         }
     }
 }
@@ -94,10 +88,10 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
             cell = shellCell!
         case .jirassic:
             cell = jirassicCell!
-        case .jit:
-            cell = jitCell!
         case .git:
             cell = gitCell!
+        case .jit:
+            cell = jitCell!
         case .browser:
             cell = browserCell!
         }

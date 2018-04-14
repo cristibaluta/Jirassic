@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" borderType="line" title="Jirassic cmd support" translatesAutoresizingMaskIntoConstraints="NO" id="IK4-a7-zIn">
+                <box autoresizesSubviews="NO" borderType="line" title="Jirassic CLI support" translatesAutoresizingMaskIntoConstraints="NO" id="IK4-a7-zIn">
                     <rect key="frame" x="-3" y="-4" width="486" height="84"/>
                     <view key="contentView" id="mvN-gG-3yr">
                         <rect key="frame" x="1" y="1" width="484" height="68"/>

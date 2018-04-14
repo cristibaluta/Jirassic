@@ -10,6 +10,8 @@ import Cocoa
 
 class GitCell: NSTableRowView, Saveable {
 
+    static let height = CGFloat(195)
+    
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var butEnable: NSButton!
     @IBOutlet fileprivate var statusTextField: NSTextField!

@@ -10,6 +10,8 @@ import Cocoa
 
 class CocoaHookupCell: NSTableRowView, Saveable {
     
+    static let height = CGFloat(95)
+    
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var statusTextField: NSTextField!
     @IBOutlet fileprivate var butEnable: NSButton!

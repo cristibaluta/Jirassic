@@ -94,7 +94,7 @@ extension GitPresenter: GitPresenterInput {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        panel.message = "Please pick a git project you want to create reports from"
+        panel.message = "Select the root of the git project you want to create reports from"
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.begin { [weak self] (result) -> Void in
             

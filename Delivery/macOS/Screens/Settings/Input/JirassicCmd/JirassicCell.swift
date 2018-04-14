@@ -10,6 +10,7 @@ import Cocoa
 
 class JirassicCell: NSTableRowView {
     
+    static let height = CGFloat(60)
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var textField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!
@@ -26,8 +27,8 @@ class JirassicCell: NSTableRowView {
                 ? NSImage.Name.statusAvailable
                 : NSImage.Name.statusPartiallyAvailable)
             textField.stringValue = compatible
-                ? "Run 'jirassic' in Terminal for more info"
-                : "Jirassic cmd is outdated or uninstalled, please install!"
+                ? "Installed, run 'jirassic' in Terminal for more info"
+                : "Outdated or uninstalled, please install!"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             textField.stringValue = "Install shell support first!"

@@ -10,6 +10,8 @@ import Cocoa
 
 class ShellCell: NSTableRowView {
     
+    static let height = CGFloat(60)
+    
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var textField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!

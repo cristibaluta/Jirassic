@@ -435,8 +435,6 @@
 		5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C76B1DE8724400CA545E /* AccountViewController.swift */; };
 		569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C572023193B0049FBF1 /* ShellCell.swift */; };
 		569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C572023193B0049FBF1 /* ShellCell.swift */; };
-		569C4C5B202319490049FBF1 /* ShellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5A202319490049FBF1 /* ShellPresenter.swift */; };
-		569C4C5C202319490049FBF1 /* ShellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5A202319490049FBF1 /* ShellPresenter.swift */; };
 		569C4C5E202319630049FBF1 /* JitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5D202319630049FBF1 /* JitCell.swift */; };
 		569C4C5F202319630049FBF1 /* JitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C5D202319630049FBF1 /* JitCell.swift */; };
 		569C4C64202319870049FBF1 /* GitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C4C63202319870049FBF1 /* GitCell.swift */; };
@@ -731,7 +729,6 @@
 		5685C7661DE8721100CA545E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5685C76B1DE8724400CA545E /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		569C4C572023193B0049FBF1 /* ShellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellCell.swift; sourceTree = "<group>"; };
-		569C4C5A202319490049FBF1 /* ShellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellPresenter.swift; sourceTree = "<group>"; };
 		569C4C5D202319630049FBF1 /* JitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JitCell.swift; sourceTree = "<group>"; };
 		569C4C63202319870049FBF1 /* GitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCell.swift; sourceTree = "<group>"; };
 		569C4C66202319930049FBF1 /* GitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitPresenter.swift; sourceTree = "<group>"; };
@@ -1522,7 +1519,6 @@
 			isa = PBXGroup;
 			children = (
 				569C4C572023193B0049FBF1 /* ShellCell.swift */,
-				569C4C5A202319490049FBF1 /* ShellPresenter.swift */,
 				569C4C6F202319DE0049FBF1 /* ShellCell.xib */,
 			);
 			path = Shell;
@@ -1938,7 +1934,6 @@
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
-				569C4C5B202319490049FBF1 /* ShellPresenter.swift in Sources */,
 				280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
 				280D71421ED6043D005D2689 /* RCSync.swift in Sources */,
@@ -2086,7 +2081,6 @@
 				569C4C5F202319630049FBF1 /* JitCell.swift in Sources */,
 				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
 				405B15661DEF75660009871C /* AppViewController.swift in Sources */,
-				569C4C5C202319490049FBF1 /* ShellPresenter.swift in Sources */,
 				4065D3FC1DD3B44200B73201 /* RCLog.swift in Sources */,
 				569C4C65202319870049FBF1 /* GitCell.swift in Sources */,
 				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,

@@ -10,6 +10,8 @@ import Cocoa
 
 class JiraTempoCell: NSTableRowView {
     
+    static let height = CGFloat(200)
+    
     @IBOutlet fileprivate var baseUrlTextField: NSTextField!
     @IBOutlet fileprivate var userTextField: NSTextField!
     @IBOutlet fileprivate var passwordTextField: NSTextField!

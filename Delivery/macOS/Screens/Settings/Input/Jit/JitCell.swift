@@ -10,6 +10,8 @@ import Cocoa
 
 class JitCell: NSTableRowView {
 
+    static let height = CGFloat(135)
+    
     @IBOutlet fileprivate var statusImageView: NSImageView!
     @IBOutlet fileprivate var textField: NSTextField!
     @IBOutlet fileprivate var butInstall: NSButton!
@@ -33,11 +35,11 @@ class JitCell: NSTableRowView {
                 : NSImage.Name.statusPartiallyAvailable)
             
             textField.stringValue = compatible
-                ? "Commits made with Jit will log time to Jirassic. Run 'jit' in Terminal for more info"
-                : "Applescript installed but jit cmd is outdated/uninstalled"
+                ? "Installed, run 'jit' in Terminal for more info"
+                : "Applescript installed but 'jit' CLI is outdated/uninstalled"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            textField.stringValue = "Not installed yet"
+            textField.stringValue = "Install shell support first!"
         }
         butInstall.isHidden = available && compatible
     }

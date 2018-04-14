@@ -10,6 +10,8 @@ import Cocoa
 
 class BrowserCell: NSTableRowView {
 
+    static let height = CGFloat(180)
+    
     @IBOutlet fileprivate var coderevImageView: NSImageView!
     @IBOutlet fileprivate var coderevTextField: NSTextField!
     @IBOutlet fileprivate var butInstallCoderev: NSButton!
@@ -26,7 +28,6 @@ class BrowserCell: NSTableRowView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 
     func showSettings (_ settings: SettingsBrowser) {
