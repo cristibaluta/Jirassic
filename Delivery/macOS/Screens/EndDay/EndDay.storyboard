@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="70" id="CjD-3M-9rs"/>
                                     <constraint firstAttribute="height" constant="21" id="y8x-Nz-0aN"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wAK-6E-hjL">
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wAK-6E-hjL">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">

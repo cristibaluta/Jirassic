@@ -46,12 +46,12 @@
                     </connections>
                 </button>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jIg-Xc-Qbw">
-                    <rect key="frame" x="256" y="315" width="259" height="24"/>
+                    <rect key="frame" x="256" y="315" width="159" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Rdk-FP-9v8">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="Automatically"/>
-                            <segment label="Through notification" selected="YES" tag="1"/>
+                            <segment label="Ask" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
@@ -188,12 +188,20 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tN8-4C-2i5">
-                    <rect key="frame" x="256" y="261" width="259" height="24"/>
+                    <rect key="frame" x="256" y="261" width="159" height="24"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="5" maxValue="30" doubleValue="13" tickMarkPosition="above" numberOfTickMarks="10" sliderType="linear" id="DzM-oD-W38"/>
                     <connections>
                         <action selector="handleMinSleepDuration:" target="c22-O7-iKe" id="Aah-HW-b2s"/>
                     </connections>
                 </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXx-ul-UhD">
+                    <rect key="frame" x="388" y="203" width="109" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(excluding lunch)" id="hTJ-hO-7NI">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="HF2-Ra-st6" firstAttribute="top" secondItem="QZa-7i-ghA" secondAttribute="bottom" constant="44" id="3h3-cM-vK1"/>
@@ -210,10 +218,12 @@
                 <constraint firstItem="HF2-Ra-st6" firstAttribute="leading" secondItem="wac-II-n6f" secondAttribute="leading" id="Iaa-tA-6M9"/>
                 <constraint firstItem="l1p-kb-Dga" firstAttribute="top" secondItem="tN8-4C-2i5" secondAttribute="bottom" constant="34" id="JZq-hW-zPS"/>
                 <constraint firstItem="wac-II-n6f" firstAttribute="centerY" secondItem="bmw-w2-81i" secondAttribute="centerY" id="KQq-ce-nai"/>
+                <constraint firstItem="eXx-ul-UhD" firstAttribute="leading" secondItem="nCg-8V-yCx" secondAttribute="trailing" constant="22" id="KwA-B9-c9x"/>
                 <constraint firstItem="bmw-w2-81i" firstAttribute="leading" secondItem="Kuw-aQ-8xH" secondAttribute="leading" id="LZI-kt-oF4"/>
                 <constraint firstItem="UNt-JQ-D2v" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="13" id="P7o-Ll-BlU"/>
                 <constraint firstItem="jIg-Xc-Qbw" firstAttribute="leading" secondItem="UNt-JQ-D2v" secondAttribute="trailing" constant="10" id="TME-m2-gvK"/>
                 <constraint firstItem="QZa-7i-ghA" firstAttribute="leading" secondItem="UNt-JQ-D2v" secondAttribute="leading" id="UDy-7Q-kC4"/>
+                <constraint firstItem="eXx-ul-UhD" firstAttribute="centerY" secondItem="HF2-Ra-st6" secondAttribute="centerY" id="Ymi-jo-Zty"/>
                 <constraint firstItem="NDv-L1-vNy" firstAttribute="top" secondItem="wac-II-n6f" secondAttribute="bottom" constant="43" id="agf-HU-QHf"/>
                 <constraint firstItem="HF2-Ra-st6" firstAttribute="centerY" secondItem="l1p-kb-Dga" secondAttribute="centerY" id="cSt-Sk-yxT"/>
                 <constraint firstItem="jIg-Xc-Qbw" firstAttribute="leading" secondItem="tN8-4C-2i5" secondAttribute="leading" id="ltu-3u-bO9"/>

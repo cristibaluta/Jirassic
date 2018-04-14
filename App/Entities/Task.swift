@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Never change the indexes since will break existing tasks
 enum TaskType: Int {
 	
 	case issue = 0
@@ -33,11 +34,11 @@ enum TaskSubtype: Int {
 //	case MeetingBegin = 6
 	case meetingEnd = 7
     case gitCommitEnd = 8
-//    case wasteBegin = 9
+//  case wasteBegin = 9
     case wasteEnd = 10
-//    case learningBegin = 11
+//  case learningBegin = 11
     case learningEnd = 12
-//    case coderevBegin = 13
+//  case coderevBegin = 13
     case coderevEnd = 14
     
     var defaultTaskNumber: String? {
@@ -56,7 +57,7 @@ enum TaskSubtype: Int {
             case .scrumEnd: return "Scrum meeting"
             case .lunchEnd: return "Lunch break"
             case .meetingEnd: return "Meeting"
-            case .wasteEnd: return "Wasted time"
+            case .wasteEnd: return "Social & Media"
             case .learningEnd: return "Learning time"
             case .coderevEnd: return "Code reviews"
             default: return ""

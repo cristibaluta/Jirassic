@@ -204,8 +204,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 lastModifiedDate: nil,
                 startDate: self.browser.startDate,
                 endDate: self.browser.endDate!,
-                notes: "Wasted time",
-                taskNumber: "waste",
+                notes: TaskSubtype.wasteEnd.defaultNotes,
+                taskNumber: TaskSubtype.wasteEnd.defaultTaskNumber,
                 taskTitle: "",
                 taskType: .waste,
                 objectId: String.random()
@@ -221,6 +221,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.killLauncher()
         
+        // Open with a delay because the popup doesn't play well otherwise
         let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             
