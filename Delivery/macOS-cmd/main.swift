@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "17.06.14"
+let appVersion = "18.04.14"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -51,6 +51,7 @@ let jirassicSandboxedAppSupportDir = libraryDirectory.appendingPathComponent("Co
 // /Users/Cristian/Library/Application%20Support/Jirassic/
 let localRepository: Repository! = SqliteRepository(documentsDirectory: jirassicSandboxedAppSupportDir)
 var remoteRepository: Repository?
+let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
 
 
 //let settings = localRepository!.settings()
@@ -72,7 +73,6 @@ guard arguments.count > 0 else {
 
 func dayStarted() -> Bool {
     
-    let reader = ReadTasksInteractor(repository: localRepository)
     let currentTasks = reader.tasksInDay(Date())
     guard currentTasks.count > 0 else {
         print("Working day was not started yet. Run jirassic start.")
@@ -84,7 +84,6 @@ func dayStarted() -> Bool {
 func list (dayOnDate date: Date) {
     
     print("")
-    let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
     if tasks.count > 0 {
         for task in tasks {
@@ -100,7 +99,6 @@ func list (dayOnDate date: Date) {
 func reports (dayOnDate date: Date) {
     
     print("")
-    let reader = ReadTasksInteractor(repository: localRepository)
     let tasks = reader.tasksInDay(date)
     let reportsInteractor = CreateReport()
     let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
@@ -167,7 +165,7 @@ func insertIssue (arguments: [String]) {
         objectId: String.random()
     )
 //    print(task)
-    let saveInteractor = TaskInteractor(repository: localRepository)
+    let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
     saveInteractor.saveTask(task, allowSyncing: false, completion: {_ in 
         
     })
@@ -209,7 +207,7 @@ func insert (taskType: Command, arguments: [String]) {
     }
     
 //    print(task!)
-    let saveInteractor = TaskInteractor(repository: localRepository)
+    let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: nil)
     saveInteractor.saveTask(task!, allowSyncing: false, completion: { _ in })
     
     print(taskType.rawValue.capitalized + " saved")
