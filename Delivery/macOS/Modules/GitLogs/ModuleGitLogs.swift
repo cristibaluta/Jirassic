@@ -61,7 +61,7 @@ class ModuleGitLogs {
             let parser = GitCommitsParser(raw: rawResults)
             var rawCommits: [GitCommit] = parser.toGitCommits()
             // Filter out commits that don't belong to my users
-            rawCommits = rawCommits.flatMap({ return allowedAuthors.contains($0.authorEmail) ? $0 : nil })
+            rawCommits = rawCommits.filter({ allowedAuthors.contains($0.authorEmail) })
             
             // Obtain branch names where missing
             // 1)
