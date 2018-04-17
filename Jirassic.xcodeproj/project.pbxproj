@@ -241,6 +241,8 @@
 		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
+		288BB67E2085252900CF720A /* WizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB67D2085252900CF720A /* WizardViewController.swift */; };
+		288BB67F2085252900CF720A /* WizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB67D2085252900CF720A /* WizardViewController.swift */; };
 		2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2971F094A170085BAC2 /* JiraRepository.swift */; };
 		2892B29B1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */; };
@@ -570,6 +572,7 @@
 		2871952A20241B25001C237E /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		287195352027CAD9001C237E /* TimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInteractor.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
+		288BB67D2085252900CF720A /* WizardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WizardViewController.swift; path = Welcome/WizardViewController.swift; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
 		2892B29D1F094B0D0085BAC2 /* JReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JReport.swift; sourceTree = "<group>"; };
@@ -1488,6 +1491,7 @@
 			isa = PBXGroup;
 			children = (
 				40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */,
+				288BB67D2085252900CF720A /* WizardViewController.swift */,
 				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
 			);
 			name = Welcome;
@@ -1917,6 +1921,7 @@
 				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
 				280D71321ED6043D005D2689 /* Week.swift in Sources */,
+				288BB67E2085252900CF720A /* WizardViewController.swift in Sources */,
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
@@ -2203,6 +2208,7 @@
 				28E8967A1E83845900722032 /* RCPreferences.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				28A928841E910E5E0022AB55 /* SqliteRepository+User.swift in Sources */,
+				288BB67F2085252900CF720A /* WizardViewController.swift in Sources */,
 				2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
 				2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
