@@ -29,17 +29,14 @@ extension AView {
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: String(describing: T.self)),
                                  owner: nil,
                                  topLevelObjects: &views)
-        RCLog(views)
         if let v = views {
             for _v in v {
                 if let __v = _v as? T {
                     view = __v
-//                    self.addSubview(__v)
                 }
             }
         }
         return view!
-//        return NSStoryboard(name: NSStoryboard.Name(rawValue: name), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: String(describing: self))) as! T
         #endif
     }
 }

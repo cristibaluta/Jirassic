@@ -34,19 +34,38 @@ class WizardViewController: NSViewController {
             goTo(step: wizardStep)
         }
     }
-    
+
     func goTo (step: WizardStep) {
+
+        removeCurrentContent()
         self.step = step
+        levelIndicator.intValue = Int32(step.rawValue + 1)
         switch step {
         case .shell:
             titleLabel.stringValue = "Shell Support"
             subtitleLabel.stringValue = "Jirassic needs shell support to communicate with Git and the Browser.\nShell is accessed through the AppleScript which for security reasons you need to install manually."
-            contentView = WizardAppleScriptView.instantiateFromXib()
-            containerView.addSubview(contentView!)
+            let applescriptView = WizardAppleScriptView.instantiateFromXib()
+            applescriptView.titleLabel.stringValue = "Install ShellSupport.scpt"
+            applescriptView.subtitleLabel.stringValue = "Go to this page, copy the script and run it in Terminal. We'll wait!"
+            applescriptView.onSkip = {
+                self.handleNextButton(self.butSkip)
+            }
+            containerView.addSubview(applescriptView)
+            applescriptView.constrainToSuperview()
+            contentView = applescriptView
             break
         case .browser:
             titleLabel.stringValue = "Browser Support"
             subtitleLabel.stringValue = "Jirassic will be able to read the url when the browser is active and it will detect when you do code reviews and when you waste time on social media."
+            let applescriptView = WizardAppleScriptView.instantiateFromXib()
+            applescriptView.titleLabel.stringValue = "Install BrowserSupport.scpt"
+            applescriptView.subtitleLabel.stringValue = "Go to this page, copy the script and run it in Terminal. We'll wait!"
+            applescriptView.onSkip = {
+                self.handleNextButton(self.butSkip)
+            }
+            containerView.addSubview(applescriptView)
+            applescriptView.constrainToSuperview()
+            contentView = applescriptView
             break
         case .git:
             titleLabel.stringValue = "Git"
@@ -58,6 +77,13 @@ class WizardViewController: NSViewController {
             break
         case .finished:
             break
+        }
+    }
+
+    private func removeCurrentContent() {
+        if let view = contentView {
+            view.removeFromSuperview()
+            contentView = nil
         }
     }
     

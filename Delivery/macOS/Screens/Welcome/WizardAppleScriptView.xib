@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,18 +13,16 @@
             <rect key="frame" x="0.0" y="0.0" width="364" height="114"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaX-Kg-JaV">
-                    <rect key="frame" x="22" y="78" width="173" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YaX-Kg-JaV">
+                    <rect key="frame" x="18" y="83" width="328" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Install ShellSupport.scpt" id="6qk-B1-qkH">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D80-Ry-3Af">
-                    <rect key="frame" x="24" y="13" width="112" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D80-Ry-3Af">
+                    <rect key="frame" x="20" y="15" width="112" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t8d-oT-UYR">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
@@ -33,48 +31,46 @@
                         <action selector="handleInstructionsButton:" target="c22-O7-iKe" id="uCk-l1-ezT"/>
                     </connections>
                 </button>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMB-C3-OU2">
-                    <rect key="frame" x="19" y="29" width="342" height="45"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="dts-K7-i66">
-                        <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView ambiguous="YES" editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="XTD-lc-vjk">
-                                <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <size key="minSize" width="342" height="45"/>
-                                <size key="maxSize" width="463" height="10000000"/>
-                                <attributedString key="textStorage">
-                                    <fragment content="Go to this page, copy the script and run it in Terminal, we'll wait!">
-                                        <attributes>
-                                            <font key="NSFont" size="12" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Xuz-2v-wQj">
-                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="FL0-ef-cMP">
-                        <rect key="frame" x="326" y="0.0" width="16" height="45"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="EOg-KL-gzY">
-                    <rect key="frame" x="330" y="16" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="EOg-KL-gzY">
+                    <rect key="frame" x="20" y="17" width="16" height="16"/>
                 </progressIndicator>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-5X-6dd">
+                    <rect key="frame" x="18" y="45" width="328" height="34"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Go to this page, copy the script and run it in Terminal, we'll wait!" id="Ee9-gZ-rdQ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-jO-LoT">
+                    <rect key="frame" x="305" y="15" width="39" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Skip" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-3q-4FU">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleSkipButton:" target="c22-O7-iKe" id="Kc6-8Q-vqL"/>
+                    </connections>
+                </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="EOg-KL-gzY" firstAttribute="leading" secondItem="D80-Ry-3Af" secondAttribute="leading" id="98X-Pq-h7S"/>
+                <constraint firstItem="YaX-Kg-JaV" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="14" id="AcE-VY-CmF"/>
+                <constraint firstItem="D80-Ry-3Af" firstAttribute="top" secondItem="Clu-5X-6dd" secondAttribute="bottom" constant="11" id="BZD-u7-HX2"/>
+                <constraint firstAttribute="bottom" secondItem="D80-Ry-3Af" secondAttribute="bottom" constant="16" id="GQc-BZ-0V0"/>
+                <constraint firstAttribute="trailing" secondItem="Clu-5X-6dd" secondAttribute="trailing" constant="20" id="IE0-nd-NsH"/>
+                <constraint firstItem="EOg-KL-gzY" firstAttribute="centerY" secondItem="D80-Ry-3Af" secondAttribute="centerY" id="OUW-QJ-fqV"/>
+                <constraint firstAttribute="trailing" secondItem="YaX-Kg-JaV" secondAttribute="trailing" constant="20" id="PWl-XP-Bsi"/>
+                <constraint firstItem="D80-Ry-3Af" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="a7D-Yt-6Mq"/>
+                <constraint firstItem="RQ5-jO-LoT" firstAttribute="centerY" secondItem="D80-Ry-3Af" secondAttribute="centerY" id="cz3-Iw-lCl"/>
+                <constraint firstItem="Clu-5X-6dd" firstAttribute="top" secondItem="YaX-Kg-JaV" secondAttribute="bottom" constant="4" id="gOD-Tm-Glw"/>
+                <constraint firstItem="Clu-5X-6dd" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="hn7-AF-wKf"/>
+                <constraint firstAttribute="trailing" secondItem="RQ5-jO-LoT" secondAttribute="trailing" constant="20" id="pWV-uL-B04"/>
+                <constraint firstItem="YaX-Kg-JaV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="tXC-og-bof"/>
+            </constraints>
             <connections>
                 <outlet property="progressIndicator" destination="EOg-KL-gzY" id="XD2-sn-Pms"/>
+                <outlet property="subtitleLabel" destination="Clu-5X-6dd" id="Y3N-vu-6Zj"/>
                 <outlet property="titleLabel" destination="YaX-Kg-JaV" id="KZi-YJ-EZi"/>
             </connections>
             <point key="canvasLocation" x="81" y="90"/>

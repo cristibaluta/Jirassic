@@ -13,6 +13,7 @@ class WizardAppleScriptView: NSView {
     @IBOutlet var titleLabel: NSTextField!
     @IBOutlet var subtitleLabel: NSTextField!
     @IBOutlet var progressIndicator: NSProgressIndicator!
+    var onSkip: (() -> Void)?
     
     @IBAction func handleInstructionsButton (_ sender: NSButton) {
         #if APPSTORE
@@ -22,5 +23,8 @@ class WizardAppleScriptView: NSView {
         NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
         #endif
     }
-    
+
+    @IBAction func handleSkipButton (_ sender: NSButton) {
+        onSkip?()
+    }
 }

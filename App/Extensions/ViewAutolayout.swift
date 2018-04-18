@@ -102,7 +102,15 @@ extension View {
 		self.superview!.addConstraint(constraint)
 		return constraint
 	}
-	
+
+    func centerX (_ offset: CGFloat) -> NSLayoutConstraint {
+        let constraint = NSLayoutConstraint(item: self,
+                                            attribute: centerXAttribute(), relatedBy: equalRelation(),
+                                            toItem: self.superview!, attribute: centerXAttribute(), multiplier: 1, constant: offset)
+        self.superview!.addConstraint(constraint)
+        return constraint
+    }
+
 	func centerY (_ offset: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: self,
 			attribute: centerYAttribute(), relatedBy: equalRelation(),
@@ -118,7 +126,8 @@ extension View {
     func bottomAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.bottom }
     func widthAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.width }
     func heightAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.height }
-    func centerYAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.bottom }
+    func centerXAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.centerX }
+    func centerYAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.centerY }
     func noAttribute() -> NSLayoutAttribute { return NSLayoutAttribute.notAnAttribute }
     func equalRelation() -> NSLayoutRelation { return NSLayoutRelation.equal }
     #else
@@ -128,7 +137,8 @@ extension View {
     func bottomAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.bottom }
     func widthAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.width }
     func heightAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.height }
-    func centerYAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.bottom }
+    func centerXAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.centerX }
+    func centerYAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.centerY }
     func noAttribute() -> NSLayoutConstraint.Attribute { return NSLayoutConstraint.Attribute.notAnAttribute }
     func equalRelation() -> NSLayoutConstraint.Relation { return NSLayoutConstraint.Relation.equal }
     #endif
