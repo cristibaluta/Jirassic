@@ -21,8 +21,8 @@ class WizardViewController: NSViewController {
     weak var appWireframe: AppWireframe?
     @IBOutlet var titleLabel: NSTextField!
     @IBOutlet var subtitleLabel: NSTextField!
-    @IBOutlet var instructionsLabel: NSTextField!
-    @IBOutlet var butInstructions: NSButton!
+    @IBOutlet var containerView: NSView!
+    var contentView: NSView?
     @IBOutlet var butSkip: NSButton!
     @IBOutlet var levelIndicator: NSLevelIndicator!
     private let localPreferences = RCPreferences<LocalPreferences>()
@@ -41,6 +41,8 @@ class WizardViewController: NSViewController {
         case .shell:
             titleLabel.stringValue = "Shell Support"
             subtitleLabel.stringValue = "Jirassic needs shell support to communicate with Git and the Browser.\nShell is accessed through the AppleScript which for security reasons you need to install manually."
+            contentView = WizardAppleScriptView.instantiateFromXib()
+            containerView.addSubview(contentView!)
             break
         case .browser:
             titleLabel.stringValue = "Browser Support"
@@ -57,15 +59,6 @@ class WizardViewController: NSViewController {
         case .finished:
             break
         }
-    }
-    
-    @IBAction func handleInstructionsButton (_ sender: NSButton) {
-        #if APPSTORE
-        NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #else
-        //            presenter?.installJirassic()
-        NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
-        #endif
     }
     
     @IBAction func handleNextButton (_ sender: NSButton) {
