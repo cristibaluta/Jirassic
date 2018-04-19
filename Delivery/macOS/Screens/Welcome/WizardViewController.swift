@@ -30,6 +30,7 @@ class WizardViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createLayer()
         if let wizardStep = WizardStep(rawValue: self.localPreferences.int(.wizardStep)) {
             goTo(step: wizardStep)
         }
@@ -70,12 +71,27 @@ class WizardViewController: NSViewController {
         case .git:
             titleLabel.stringValue = "Git"
             subtitleLabel.stringValue = "Create reports from git commits to help you write the worklogs."
+            let gitView = WizardGitView.instantiateFromXib()
+            gitView.onSkip = {
+                self.handleNextButton(self.butSkip)
+            }
+            containerView.addSubview(gitView)
+            gitView.constrainToSuperview()
+            contentView = gitView
             break
         case .jira:
             titleLabel.stringValue = "Jira Tempo"
             subtitleLabel.stringValue = "Jirassic can post your worklogs directly to Jira Tempo."
+            let jiraView = WizardJiraView.instantiateFromXib()
+            jiraView.onSkip = {
+                self.handleNextButton(self.butSkip)
+            }
+            containerView.addSubview(jiraView)
+            jiraView.constrainToSuperview()
+            contentView = jiraView
             break
         case .finished:
+            self.handleNextButton(self.butSkip)
             break
         }
     }
@@ -100,4 +116,12 @@ class WizardViewController: NSViewController {
         appWireframe!.flipToTasksController()
     }
     
+}
+
+extension WizardViewController: Animatable {
+    
+    func createLayer() {
+        view.layer = CALayer()
+        view.wantsLayer = true
+    }
 }

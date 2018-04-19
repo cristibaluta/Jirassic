@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +31,7 @@
                         <action selector="handleInstructionsButton:" target="c22-O7-iKe" id="uCk-l1-ezT"/>
                     </connections>
                 </button>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="EOg-KL-gzY">
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="EOg-KL-gzY">
                     <rect key="frame" x="20" y="17" width="16" height="16"/>
                 </progressIndicator>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-5X-6dd">
@@ -43,8 +43,8 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-jO-LoT">
-                    <rect key="frame" x="305" y="15" width="39" height="19"/>
-                    <buttonCell key="cell" type="roundRect" title="Skip" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-3q-4FU">
+                    <rect key="frame" x="303" y="15" width="41" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Next" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-3q-4FU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
@@ -69,6 +69,8 @@
                 <constraint firstItem="YaX-Kg-JaV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="tXC-og-bof"/>
             </constraints>
             <connections>
+                <outlet property="butLink" destination="D80-Ry-3Af" id="5ns-DL-xLI"/>
+                <outlet property="butSkip" destination="RQ5-jO-LoT" id="Rls-jd-Hso"/>
                 <outlet property="progressIndicator" destination="EOg-KL-gzY" id="XD2-sn-Pms"/>
                 <outlet property="subtitleLabel" destination="Clu-5X-6dd" id="Y3N-vu-6Zj"/>
                 <outlet property="titleLabel" destination="YaX-Kg-JaV" id="KZi-YJ-EZi"/>

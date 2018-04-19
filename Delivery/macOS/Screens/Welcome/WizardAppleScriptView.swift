@@ -12,10 +12,14 @@ class WizardAppleScriptView: NSView {
     
     @IBOutlet var titleLabel: NSTextField!
     @IBOutlet var subtitleLabel: NSTextField!
+    @IBOutlet var butLink: NSButton!
+    @IBOutlet var butSkip: NSButton!
     @IBOutlet var progressIndicator: NSProgressIndicator!
     var onSkip: (() -> Void)?
     
     @IBAction func handleInstructionsButton (_ sender: NSButton) {
+        progressIndicator.startAnimation(nil)
+        butLink.isHidden = true
         #if APPSTORE
         NSWorkspace.shared.open( URL(string: "http://www.jirassic.com/#extensions")!)
         #else

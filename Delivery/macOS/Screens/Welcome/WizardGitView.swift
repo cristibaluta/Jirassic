@@ -6,4 +6,15 @@
 //  Copyright © 2018 Imagin soft. All rights reserved.
 //
 
-import Foundation
+import Cocoa
+
+class WizardGitView: NSView {
+    
+    @IBOutlet var butSelectProject: NSButton!
+    @IBOutlet var butSkip: NSButton!
+    var onSkip: (() -> Void)?
+    
+    @IBAction func handleSkipButton (_ sender: NSButton) {
+        onSkip?()
+    }
+}
