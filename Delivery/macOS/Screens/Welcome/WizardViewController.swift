@@ -70,7 +70,7 @@ class WizardViewController: NSViewController {
             break
         case .git:
             titleLabel.stringValue = "Git"
-            subtitleLabel.stringValue = "Create reports from git commits to help you write the worklogs."
+            subtitleLabel.stringValue = "Include the git commits in the reports, to help you write more accurate worklogs."
             let gitView = WizardGitView.instantiateFromXib()
             gitView.onSkip = {
                 self.handleNextButton(self.butSkip)
@@ -89,6 +89,7 @@ class WizardViewController: NSViewController {
             containerView.addSubview(jiraView)
             jiraView.constrainToSuperview()
             contentView = jiraView
+            butSkip.title = "Finish setup"
             break
         case .finished:
             self.handleNextButton(self.butSkip)
