@@ -33,10 +33,10 @@ class WizardJiraView: NSView {
         passwordTextField.stringValue = Keychain.getPassword()
         
         projectNamePopup.target = self
-        projectNamePopup.action = #selector(JiraTempoCell.projectNamePopupSelected(_:))
+        projectNamePopup.action = #selector(projectNamePopupSelected(_:))
         
         projectIssueNamePopup.target = self
-        projectIssueNamePopup.action = #selector(JiraTempoCell.projectIssueNamePopupSelected(_:))
+        projectIssueNamePopup.action = #selector(projectIssueNamePopupSelected(_:))
         
         (presenter as! JiraTempoPresenter).userInterface = self
         presenter.setupUserInterface()
@@ -61,6 +61,17 @@ class WizardJiraView: NSView {
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
         onSkip?()
+    }
+
+    @IBAction func projectNamePopupSelected (_ sender: NSPopUpButton) {
+        if let title = sender.selectedItem?.title {
+            localPreferences.set(title, forKey: .settingsJiraProjectKey)
+            presenter.loadProjectIssues(for: title)
+        }
+    }
+
+    @IBAction func projectIssueNamePopupSelected (_ sender: NSPopUpButton) {
+        localPreferences.set(sender.selectedItem?.title ?? "", forKey: .settingsJiraProjectIssueKey)
     }
 }
 

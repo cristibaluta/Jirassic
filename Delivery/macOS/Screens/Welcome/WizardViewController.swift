@@ -94,7 +94,7 @@ class WizardViewController: NSViewController {
             break
         case .jira:
             titleLabel.stringValue = "Jira Tempo"
-            subtitleLabel.stringValue = "Jirassic can post your worklogs directly to Jira Tempo, very convenient and very fast."
+            subtitleLabel.stringValue = "Jirassic can post your worklogs directly to Jira Tempo, very convenient and very fast. Please login then select the project and issue you want to post the worklogs to."
             let jiraView = WizardJiraView.instantiateFromXib()
             jiraView.onSkip = { [weak self] in
                 if let wself = self {

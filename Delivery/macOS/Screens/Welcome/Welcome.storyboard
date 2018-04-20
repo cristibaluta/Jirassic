@@ -73,7 +73,7 @@
                                             <rect key="frame" x="18" y="58" width="326" height="51"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="g8z-Mj-eKj">
                                                 <font key="font" metaFont="system"/>
-                                                <string key="title">Enable shell support to create reports from Git commits, detect code review sessions, and call 3rd party hookups. Or setup Jira.</string>
+                                                <string key="title">Enable shell support to create reports from Git commits, detect code review sessions, and call 3rd party hookups. Or just setup Jira.</string>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -147,11 +147,11 @@
             <objects>
                 <viewController storyboardIdentifier="WizardViewController" id="DoA-87-gY5" customClass="WizardViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="hxG-ku-CMn">
-                        <rect key="frame" x="0.0" y="0.0" width="558" height="485"/>
+                        <rect key="frame" x="0.0" y="0.0" width="558" height="484"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cHg-Ny-SMJ">
-                                <rect key="frame" x="-2" y="379" width="562" height="34"/>
+                                <rect key="frame" x="-2" y="378" width="562" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="rKd-Gz-JT5"/>
                                 </constraints>
@@ -162,7 +162,7 @@
                                 </textFieldCell>
                             </textField>
                             <box ambiguous="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-CK-kNW">
-                                <rect key="frame" x="97" y="146" width="364" height="114"/>
+                                <rect key="frame" x="97" y="145" width="364" height="114"/>
                                 <view key="contentView" ambiguous="YES" id="YWu-lk-2KH">
                                     <rect key="frame" x="1" y="1" width="362" height="112"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
                                 <levelIndicatorCell key="cell" alignment="left" doubleValue="1" maxValue="4" warningValue="2" criticalValue="2" id="Zn3-qo-pvX"/>
                             </levelIndicator>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jEi-lE-OZv">
-                                <rect key="frame" x="38" y="342" width="482" height="17"/>
+                                <rect key="frame" x="38" y="341" width="482" height="17"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Multiline Label" id="Bu7-35-0yU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
