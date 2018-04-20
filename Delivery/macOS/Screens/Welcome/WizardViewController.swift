@@ -81,7 +81,7 @@ class WizardViewController: NSViewController {
             break
         case .git:
             titleLabel.stringValue = "Git"
-            subtitleLabel.stringValue = "Include the git commits in the reports, to help you write more accurate worklogs."
+            subtitleLabel.stringValue = "Include the git commits in the reports, to help you write more accurate worklogs. Chose the user and project you work on!"
             let gitView = WizardGitView.instantiateFromXib()
             gitView.onSkip = { [weak self] in
                 if let wself = self {
