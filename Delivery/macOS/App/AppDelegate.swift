@@ -87,7 +87,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
         localPreferences.reset(.wizardStep)
-        localPreferences.set(2, forKey: .wizardStep)
+        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
+        localPreferences.set(0, forKey: .wizardStep)
         
         localRepository = SqliteRepository()
         #if APPSTORE

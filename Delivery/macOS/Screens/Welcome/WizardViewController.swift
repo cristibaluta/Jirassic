@@ -36,6 +36,11 @@ class WizardViewController: NSViewController {
         }
     }
 
+    deinit {
+        RCLog("deinit")
+        removeCurrentContent()
+    }
+    
     func goTo (step: WizardStep) {
 
         removeCurrentContent()
@@ -47,9 +52,12 @@ class WizardViewController: NSViewController {
             subtitleLabel.stringValue = "Jirassic needs shell support to communicate with Git and the Browser.\nShell is accessed through the AppleScript which for security reasons you need to install manually."
             let applescriptView = WizardAppleScriptView.instantiateFromXib()
             applescriptView.titleLabel.stringValue = "Install ShellSupport.scpt"
-            applescriptView.subtitleLabel.stringValue = "Go to this page, copy the script and run it in Terminal. We'll wait!"
-            applescriptView.onSkip = {
-                self.handleNextButton(self.butSkip)
+            applescriptView.subtitle = "Go to jirassic.com, copy the install script and run it in your Terminal. We'll wait!"
+            applescriptView.scriptName = kShellSupportScriptName
+            applescriptView.onSkip = { [weak self] in
+                if let wself = self {
+                    wself.handleNextButton(wself.butSkip)
+                }
             }
             containerView.addSubview(applescriptView)
             applescriptView.constrainToSuperview()
@@ -60,9 +68,12 @@ class WizardViewController: NSViewController {
             subtitleLabel.stringValue = "Jirassic will be able to read the url when the browser is active and it will detect when you do code reviews and when you waste time on social media."
             let applescriptView = WizardAppleScriptView.instantiateFromXib()
             applescriptView.titleLabel.stringValue = "Install BrowserSupport.scpt"
-            applescriptView.subtitleLabel.stringValue = "Go to this page, copy the script and run it in Terminal. We'll wait!"
-            applescriptView.onSkip = {
-                self.handleNextButton(self.butSkip)
+            applescriptView.subtitle = "Go to jirassic.com, copy the install script and run it in your Terminal. We'll wait!"
+            applescriptView.scriptName = kBrowserSupportScriptName
+            applescriptView.onSkip = { [weak self] in
+                if let wself = self {
+                    wself.handleNextButton(wself.butSkip)
+                }
             }
             containerView.addSubview(applescriptView)
             applescriptView.constrainToSuperview()
@@ -72,8 +83,10 @@ class WizardViewController: NSViewController {
             titleLabel.stringValue = "Git"
             subtitleLabel.stringValue = "Include the git commits in the reports, to help you write more accurate worklogs."
             let gitView = WizardGitView.instantiateFromXib()
-            gitView.onSkip = {
-                self.handleNextButton(self.butSkip)
+            gitView.onSkip = { [weak self] in
+                if let wself = self {
+                    wself.handleNextButton(wself.butSkip)
+                }
             }
             containerView.addSubview(gitView)
             gitView.constrainToSuperview()
@@ -81,10 +94,12 @@ class WizardViewController: NSViewController {
             break
         case .jira:
             titleLabel.stringValue = "Jira Tempo"
-            subtitleLabel.stringValue = "Jirassic can post your worklogs directly to Jira Tempo."
+            subtitleLabel.stringValue = "Jirassic can post your worklogs directly to Jira Tempo, very convenient and very fast."
             let jiraView = WizardJiraView.instantiateFromXib()
-            jiraView.onSkip = {
-                self.handleNextButton(self.butSkip)
+            jiraView.onSkip = { [weak self] in
+                if let wself = self {
+                    wself.handleNextButton(wself.butSkip)
+                }
             }
             containerView.addSubview(jiraView)
             jiraView.constrainToSuperview()
@@ -100,6 +115,9 @@ class WizardViewController: NSViewController {
     private func removeCurrentContent() {
         if let view = contentView {
             view.removeFromSuperview()
+            if let v = view as? WizardAppleScriptView {
+                v.invalidate()
+            }
             contentView = nil
         }
     }
@@ -116,7 +134,6 @@ class WizardViewController: NSViewController {
         localPreferences.set(WizardStep.finished.rawValue, forKey: .wizardStep)
         appWireframe!.flipToTasksController()
     }
-    
 }
 
 extension WizardViewController: Animatable {

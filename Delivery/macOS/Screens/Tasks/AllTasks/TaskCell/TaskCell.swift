@@ -74,6 +74,11 @@ class TaskCell: NSTableRowView, CellProtocol {
         }
     }
     var isIgnored: Bool = false
+    var color: NSColor = NSColor.black {
+        didSet {
+            self.notesTextField!.textColor = color
+        }
+    }
     
 	override func awakeFromNib() {
         super.awakeFromNib()

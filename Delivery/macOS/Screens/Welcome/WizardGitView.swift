@@ -33,24 +33,17 @@ class WizardGitView: NSView {
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
+        save()
         onSkip?()
     }
 }
 
 extension WizardGitView: GitPresenterOutput {
     
-    func setStatusImage (_ imageName: NSImage.Name) {
-        
-    }
-    func setStatusText (_ text: String) {
-        
-    }
-    func setButInstall (enabled: Bool) {
-        
-    }
-    func setButEnable (on: Bool?, enabled: Bool?) {
-        
-    }
+    func setStatusImage (_ imageName: NSImage.Name) {}
+    func setStatusText (_ text: String) {}
+    func setButInstall (enabled: Bool) {}
+    func setButEnable (on: Bool?, enabled: Bool?) {}
     func setPaths (_ paths: String?, enabled: Bool?) {
         if let paths = paths {
             pathsTextField.stringValue = paths

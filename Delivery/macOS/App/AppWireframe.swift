@@ -313,4 +313,19 @@ extension AppWireframe {
         flip.animationFinished = {}
         flip.startWithLayer(layerToAnimate())
     }
+    
+    func flipToWizardController() {
+        
+        let wizardController = self.wizardViewController
+        let flip = FlipAnimation()
+        flip.animationReachedMiddle = {
+            self.removeCurrentController()
+            self.removePlaceholder()
+            self.removeEndDayController()
+            self.addController(wizardController)
+            self.currentController = wizardController
+        }
+        flip.animationFinished = {}
+        flip.startWithLayer(layerToAnimate())
+    }
 }

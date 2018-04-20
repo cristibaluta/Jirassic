@@ -78,7 +78,6 @@ extension SettingsViewController {
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
         presenter!.enableLaunchAtStartup(sender.state == NSControl.StateValue.on)
     }
-    
 }
 
 extension SettingsViewController: Animatable {

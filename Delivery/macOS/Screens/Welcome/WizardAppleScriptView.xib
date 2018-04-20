@@ -10,11 +10,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" customClass="WizardAppleScriptView" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="364" height="114"/>
+            <rect key="frame" x="0.0" y="0.0" width="364" height="143"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YaX-Kg-JaV">
-                    <rect key="frame" x="18" y="83" width="328" height="17"/>
+                    <rect key="frame" x="18" y="96" width="328" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Install ShellSupport.scpt" id="6qk-B1-qkH">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -22,7 +22,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D80-Ry-3Af">
-                    <rect key="frame" x="20" y="15" width="112" height="19"/>
+                    <rect key="frame" x="20" y="19" width="112" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="View instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t8d-oT-UYR">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
@@ -32,10 +32,10 @@
                     </connections>
                 </button>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="EOg-KL-gzY">
-                    <rect key="frame" x="20" y="17" width="16" height="16"/>
+                    <rect key="frame" x="144" y="21" width="16" height="16"/>
                 </progressIndicator>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-5X-6dd">
-                    <rect key="frame" x="18" y="45" width="328" height="34"/>
+                    <rect key="frame" x="18" y="58" width="328" height="34"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Go to this page, copy the script and run it in Terminal, we'll wait!" id="Ee9-gZ-rdQ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -43,7 +43,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-jO-LoT">
-                    <rect key="frame" x="303" y="15" width="41" height="19"/>
+                    <rect key="frame" x="303" y="19" width="41" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="Next" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gQo-3q-4FU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
@@ -54,10 +54,10 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="EOg-KL-gzY" firstAttribute="leading" secondItem="D80-Ry-3Af" secondAttribute="leading" id="98X-Pq-h7S"/>
-                <constraint firstItem="YaX-Kg-JaV" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="14" id="AcE-VY-CmF"/>
-                <constraint firstItem="D80-Ry-3Af" firstAttribute="top" secondItem="Clu-5X-6dd" secondAttribute="bottom" constant="11" id="BZD-u7-HX2"/>
-                <constraint firstAttribute="bottom" secondItem="D80-Ry-3Af" secondAttribute="bottom" constant="16" id="GQc-BZ-0V0"/>
+                <constraint firstItem="YaX-Kg-JaV" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="30" id="AcE-VY-CmF"/>
+                <constraint firstItem="D80-Ry-3Af" firstAttribute="top" secondItem="Clu-5X-6dd" secondAttribute="bottom" constant="20" id="BZD-u7-HX2"/>
+                <constraint firstItem="EOg-KL-gzY" firstAttribute="leading" secondItem="D80-Ry-3Af" secondAttribute="trailing" constant="12" id="D4H-vR-qpA"/>
+                <constraint firstAttribute="bottom" secondItem="D80-Ry-3Af" secondAttribute="bottom" constant="20" id="GQc-BZ-0V0"/>
                 <constraint firstAttribute="trailing" secondItem="Clu-5X-6dd" secondAttribute="trailing" constant="20" id="IE0-nd-NsH"/>
                 <constraint firstItem="EOg-KL-gzY" firstAttribute="centerY" secondItem="D80-Ry-3Af" secondAttribute="centerY" id="OUW-QJ-fqV"/>
                 <constraint firstAttribute="trailing" secondItem="YaX-Kg-JaV" secondAttribute="trailing" constant="20" id="PWl-XP-Bsi"/>
