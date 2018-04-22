@@ -12,7 +12,7 @@ class FlipAnimation: NSObject {
 
 	var animationReachedMiddle: (() -> ())?
 	var animationFinished: (() -> ())?
-	var layer: CALayer?
+	weak var layer: CALayer?
 	
 	func startWithLayer (_ layer: CALayer) {
 		
@@ -56,6 +56,12 @@ class FlipAnimation: NSObject {
 //        self.layer?.transform = perpectiveTransform
 		self.layer?.add(rotationAnimation, forKey:"flip")
 	}
+    
+    func clean() {
+        self.animationReachedMiddle = nil
+        self.animationFinished = nil
+        self.layer = nil
+    }
 }
 
 extension FlipAnimation: CAAnimationDelegate {
@@ -69,6 +75,7 @@ extension FlipAnimation: CAAnimationDelegate {
         }
         else if anim.value(forKey: "flip") as! String == "flipAnimationOutwards" {
             self.animationFinished!()
+            clean()
         }
     }
 }

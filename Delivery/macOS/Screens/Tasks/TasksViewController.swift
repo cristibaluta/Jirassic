@@ -246,6 +246,6 @@ extension TasksViewController {
 	}
 	
 	@objc func handleNewTaskAdded (_ notif: Notification) {
-        presenter?.reloadData()
+        presenter!.reloadData()
 	}
 }

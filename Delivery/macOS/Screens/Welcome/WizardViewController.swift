@@ -35,10 +35,14 @@ class WizardViewController: NSViewController {
             goTo(step: wizardStep)
         }
     }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+        removeCurrentContent()
+    }
 
     deinit {
         RCLog("deinit")
-        removeCurrentContent()
     }
     
     func goTo (step: WizardStep) {
@@ -125,6 +129,7 @@ class WizardViewController: NSViewController {
     @IBAction func handleNextButton (_ sender: NSButton) {
         if let nextStep = WizardStep(rawValue: step.rawValue + 1) {
             goTo(step: nextStep)
+            localPreferences.set(nextStep.rawValue, forKey: .wizardStep)
         } else {
             handleSkipButton(sender)
         }

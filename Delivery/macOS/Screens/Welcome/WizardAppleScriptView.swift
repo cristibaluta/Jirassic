@@ -35,11 +35,12 @@ class WizardAppleScriptView: NSView {
     }
     
     func invalidate() {
+        timer?.invalidate()
+        timer = nil
     }
     
     deinit {
-        timer?.invalidate()
-        timer = nil
+        invalidate()
         RCLog("deinit")
     }
     
