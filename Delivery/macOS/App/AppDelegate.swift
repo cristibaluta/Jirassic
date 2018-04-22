@@ -18,7 +18,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case usePercents = "usePercents"
     case useDuration = "useDuration"
     case firstLaunch = "firstLaunch"
-    case lastIcloudSync = "lastIcloudSync"
+    case wizardStep = "wizardStep"
     case settingsActiveTab = "settingsActiveTab"
     case settingsJiraUrl = "settingsJiraUrl"
     case settingsJiraUser = "settingsJiraUser"
@@ -42,7 +42,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
             case .usePercents:              return true
             case .useDuration:              return false
             case .firstLaunch:              return true
-            case .lastIcloudSync:           return Date(timeIntervalSince1970: 0)
+            case .wizardStep:               return WizardStep.shell.rawValue
             case .settingsActiveTab:        return SettingsTab.tracking.rawValue
             case .settingsJiraUrl:          return ""
             case .settingsJiraUser:         return ""
@@ -86,6 +86,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // For testing
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
+        localPreferences.reset(.wizardStep)
+        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
+        localPreferences.set(0, forKey: .wizardStep)
         
         localRepository = SqliteRepository()
         #if APPSTORE
@@ -105,9 +108,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.onOpen = {
             self.removeActivePopup()
             let firstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
+            let wizardStep = self.localPreferences.int(.wizardStep)
             if firstLaunch {
                 self.presentWelcomePopup()
-            } else {
+            }
+            else if wizardStep != WizardStep.finished.rawValue {
+                self.presentWizard()
+            }
+            else {
                 self.presentTasksPopup(animated: self.animatesOpen)
                 self.animatesOpen = false
             }
@@ -252,6 +260,15 @@ extension AppDelegate {
         popover.contentViewController = appWireframe.appViewController
         appWireframe.removeCurrentController()
         _ = appWireframe.presentWelcomeController()
+        appWireframe.showPopover(popover, fromIcon: menu.iconView)
+    }
+    
+    fileprivate func presentWizard() {
+        let popover = NSPopover()
+        activePopover = popover
+        popover.contentViewController = appWireframe.appViewController
+        appWireframe.removeCurrentController()
+        _ = appWireframe.presentWizardController()
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     

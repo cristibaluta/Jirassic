@@ -16,6 +16,7 @@ protocol CellProtocol {
     var isDark: Bool {get set}
     var isEditable: Bool {get set}
     var isIgnored: Bool {get set}
+    var color: NSColor {get set}
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())? {get set}
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())? {get set}

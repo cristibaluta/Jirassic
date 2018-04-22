@@ -39,6 +39,14 @@ class AppWireframe {
         return controller
     }
     
+    fileprivate var wizardViewController: WizardViewController {
+        
+        let controller = WizardViewController.instantiateFromStoryboard("Welcome")
+        controller.appWireframe = self
+        
+        return controller
+    }
+    
     fileprivate var loginViewController: LoginViewController {
         
         let controller = LoginViewController.instantiateFromStoryboard("Login")
@@ -153,6 +161,16 @@ extension AppWireframe {
         
         appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
         let controller = self.welcomeViewController
+        addController(controller)
+        currentController = controller
+        
+        return controller
+    }
+    
+    func presentWizardController() -> WizardViewController {
+        
+        appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
+        let controller = self.wizardViewController
         addController(controller)
         currentController = controller
         
@@ -291,6 +309,21 @@ extension AppWireframe {
             self.removeController(self.currentController!)
             self.addController(loginController)
             self.currentController = loginController
+        }
+        flip.animationFinished = {}
+        flip.startWithLayer(layerToAnimate())
+    }
+    
+    func flipToWizardController() {
+        
+        let wizardController = self.wizardViewController
+        let flip = FlipAnimation()
+        flip.animationReachedMiddle = {
+            self.removeCurrentController()
+            self.removePlaceholder()
+            self.removeEndDayController()
+            self.addController(wizardController)
+            self.currentController = wizardController
         }
         flip.animationFinished = {}
         flip.startWithLayer(layerToAnimate())

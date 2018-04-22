@@ -10,7 +10,7 @@ import Cocoa
 
 class BrowserCell: NSTableRowView {
 
-    static let height = CGFloat(310)
+    static let height = CGFloat(270)
     
     @IBOutlet fileprivate var coderevImageView: NSImageView!
     @IBOutlet fileprivate var coderevTextField: NSTextField!

@@ -26,18 +26,25 @@ class TaskCellPresenter: NSObject {
             // When we have a previous item to compare dates with
             switch theTask.taskType {
                 
-                case TaskType.issue:
+                case .issue:
 //                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
 //                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                     statusImage = NSImage(named: NSImage.Name.statusAvailable)
                     break
                     
-                case TaskType.gitCommit:
+                case .gitCommit:
 //                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
 //                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
                     statusImage = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
                     break
-                    
+                
+                case .coderev:
+                    cell.color = NSColor.lightGray
+                case .startDay:
+                    cell.color = NSColor.orange
+                case .endDay:
+                    cell.color = NSColor.orange
+                
                 default:
                     statusImage = NSImage(named: NSImage.Name.statusUnavailable)
             }

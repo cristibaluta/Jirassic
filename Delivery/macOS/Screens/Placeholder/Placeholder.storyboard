@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,24 +29,18 @@
                                     <action selector="handleStartButton:" target="eiK-MM-LiK" id="Pxp-zE-b0E"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-io-OfB">
-                                <rect key="frame" x="-2" y="139" width="454" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="o0g-0n-8No"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning! Ready for your first task?" id="4yf-MA-WY8">
-                                    <font key="font" metaFont="system"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-io-OfB">
+                                <rect key="frame" x="18" y="139" width="414" height="22"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Ready to begin your working day?" id="4yf-MA-WY8">
+                                    <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="windowFrameColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pqi-kL-eQt">
-                                <rect key="frame" x="-2" y="169" width="454" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="ePv-0m-7Vx"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No task yet!" id="bZw-Ma-Ra6">
-                                    <font key="font" metaFont="system" size="20"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqi-kL-eQt">
+                                <rect key="frame" x="-2" y="169" width="454" height="31"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Good morning!" id="bZw-Ma-Ra6">
+                                    <font key="font" metaFont="system" size="26"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -55,9 +50,9 @@
                             <constraint firstAttribute="trailing" secondItem="pqi-kL-eQt" secondAttribute="trailing" id="EqZ-EB-3Hd"/>
                             <constraint firstAttribute="centerX" secondItem="vXy-HK-p1X" secondAttribute="centerX" id="Jjz-id-Bhj"/>
                             <constraint firstItem="Icp-io-OfB" firstAttribute="bottom" secondItem="vXy-HK-p1X" secondAttribute="bottom" constant="-34" id="QXN-Xc-iD9"/>
-                            <constraint firstItem="Icp-io-OfB" firstAttribute="leading" secondItem="o3K-nw-a6h" secondAttribute="leading" id="Qwy-xs-YxL"/>
+                            <constraint firstItem="Icp-io-OfB" firstAttribute="leading" secondItem="o3K-nw-a6h" secondAttribute="leading" constant="20" id="Qwy-xs-YxL"/>
                             <constraint firstItem="Icp-io-OfB" firstAttribute="top" secondItem="pqi-kL-eQt" secondAttribute="bottom" constant="8" id="c0N-1H-Xrc"/>
-                            <constraint firstAttribute="trailing" secondItem="Icp-io-OfB" secondAttribute="trailing" id="nab-tg-Fuv"/>
+                            <constraint firstAttribute="trailing" secondItem="Icp-io-OfB" secondAttribute="trailing" constant="20" id="nab-tg-Fuv"/>
                             <constraint firstAttribute="centerY" secondItem="Icp-io-OfB" secondAttribute="centerY" id="oiz-ur-I8h"/>
                             <constraint firstItem="pqi-kL-eQt" firstAttribute="leading" secondItem="o3K-nw-a6h" secondAttribute="leading" id="pyI-Nn-O1j"/>
                         </constraints>

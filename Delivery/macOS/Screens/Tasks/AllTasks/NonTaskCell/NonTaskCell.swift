@@ -71,6 +71,11 @@ class NonTaskCell: NSTableRowView, CellProtocol {
             self.notesTextField!.alphaValue = isIgnored ? 0.5 : 1.0
         }
     }
+    var color: NSColor = NSColor.black {
+        didSet {
+            self.notesTextField!.textColor = color
+        }
+    }
 	
 	override func awakeFromNib() {
         super.awakeFromNib()

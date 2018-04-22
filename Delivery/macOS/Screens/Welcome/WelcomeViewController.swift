@@ -20,6 +20,10 @@ class WelcomeViewController: NSViewController {
         createLayer()
     }
     
+    deinit {
+        RCLog("deinit")
+    }
+    
     @IBAction func handleStartButton (_ sender: NSButton) {
         localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
         appWireframe!.flipToTasksController()
@@ -28,7 +32,7 @@ class WelcomeViewController: NSViewController {
     @IBAction func handleSettingsButton (_ sender: NSButton) {
         localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
         localPreferences.set(1, forKey: .settingsActiveTab)
-        appWireframe!.flipToSettingsController()
+        appWireframe!.flipToWizardController()
     }
 }
 
