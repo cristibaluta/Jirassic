@@ -86,9 +86,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // For testing
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
-        localPreferences.reset(.wizardStep)
-        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
-        localPreferences.set(0, forKey: .wizardStep)
+//        localPreferences.reset(.wizardStep)
+//        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
+//        localPreferences.set(0, forKey: .wizardStep)
         
         localRepository = SqliteRepository()
         #if APPSTORE
@@ -284,12 +284,12 @@ extension AppDelegate {
     
     func removeActivePopup() {
         if let popover = activePopover {
+            activePopover = nil
             appWireframe.hidePopover(popover)
             appWireframe.removeNewTaskController()
             appWireframe.removeEndDayController()
             appWireframe.removePlaceholder()
             appWireframe.removeCurrentController()
-            activePopover = nil
         }
     }
     

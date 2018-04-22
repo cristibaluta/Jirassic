@@ -65,7 +65,7 @@ class WizardViewController: NSViewController {
             break
         case .browser:
             titleLabel.stringValue = "Browser Support"
-            subtitleLabel.stringValue = "Jirassic will be able to read the url when the browser is active and it will detect when you do code reviews and when you waste time on social media."
+            subtitleLabel.stringValue = "Jirassic will be able to read the url of the active browser and it will detect when you do code reviews and when you waste time on social media."
             let applescriptView = WizardAppleScriptView.instantiateFromXib()
             applescriptView.titleLabel.stringValue = "Install BrowserSupport.scpt"
             applescriptView.subtitle = "Go to jirassic.com, copy the install script and run it in your Terminal. We'll wait!"
