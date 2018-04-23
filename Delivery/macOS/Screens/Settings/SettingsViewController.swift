@@ -16,15 +16,16 @@ enum SettingsTab: Int {
 
 class SettingsViewController: NSViewController {
     
-    @IBOutlet fileprivate var tabView: NSTabView!
+    @IBOutlet fileprivate var segmentedControl: NSSegmentedControl!
+    @IBOutlet fileprivate var container: NSBox!
     @IBOutlet fileprivate var butBackup: NSButton!
     @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
     // Tracking tab
-    @IBOutlet fileprivate var trackingScrollView: TrackingScrollView!
+    fileprivate var trackingView: TrackingView?
     // Input tab
-    @IBOutlet fileprivate var inputsScrollView: InputsScrollView!
+    fileprivate var inputsScrollView: InputsScrollView?
     // Output tab
-    @IBOutlet fileprivate var outputsScrollView: OutputsScrollView!
+    fileprivate var outputsScrollView: OutputsScrollView?
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
@@ -33,6 +34,10 @@ class SettingsViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         createLayer()
+        
+        trackingView = TrackingView.instantiateFromXib()
+        inputsScrollView = InputsScrollView.instantiateFromXib()
+        outputsScrollView = OutputsScrollView.instantiateFromXib()
         
         presenter!.checkExtensions()
         presenter!.showSettings()
@@ -50,18 +55,24 @@ class SettingsViewController: NSViewController {
         
         let settings = Settings(
             enableBackup: butBackup.state == NSControl.StateValue.on,
-            settingsTracking: trackingScrollView.settings(),
-            settingsBrowser: inputsScrollView.settings()
+            settingsTracking: trackingView!.settings(),
+            settingsBrowser: inputsScrollView!.settings()
         )
         presenter!.saveAppSettings(settings)
         
-        trackingScrollView.save()
-        inputsScrollView.save()
-        outputsScrollView.save()
+        trackingView?.save()
+        inputsScrollView?.save()
+        outputsScrollView?.save()
     }
     
     deinit {
         RCLog("deinit")
+    }
+    
+    func removeSelectedTabView() {
+        trackingView!.removeFromSuperview()
+        inputsScrollView!.removeFromSuperview()
+        outputsScrollView!.removeFromSuperview()
     }
 }
 
@@ -78,6 +89,19 @@ extension SettingsViewController {
     @IBAction func handleLaunchAtStartupButton (_ sender: NSButton) {
         presenter!.enableLaunchAtStartup(sender.state == NSControl.StateValue.on)
     }
+    
+    @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
+        let tab = SettingsTab(rawValue: sender.selectedSegment)!
+        presenter!.selectTab(tab)
+    }
+    
+    @IBAction func handleQuitAppButton (_ sender: NSButton) {
+        NSApplication.shared.terminate(nil)
+    }
+    
+    @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
+        AppDelegate.sharedApp().menu.triggerClose()
+    }
 }
 
 extension SettingsViewController: Animatable {
@@ -91,33 +115,33 @@ extension SettingsViewController: Animatable {
 extension SettingsViewController: SettingsPresenterOutput {
     
     func setShellStatus (available: Bool, compatible: Bool) {
-        inputsScrollView.setShellStatus (available: available, compatible: compatible)
+        inputsScrollView?.setShellStatus (available: available, compatible: compatible)
     }
     
     func setJirassicStatus (available: Bool, compatible: Bool) {
-        inputsScrollView.setJirassicStatus (available: available, compatible: compatible)
+        inputsScrollView?.setJirassicStatus (available: available, compatible: compatible)
     }
     
     func setJitStatus (available: Bool, compatible: Bool) {
-        inputsScrollView.setJitStatus (available: available, compatible: compatible)
+        inputsScrollView?.setJitStatus (available: available, compatible: compatible)
     }
     
     func setGitStatus (available: Bool) {
-        inputsScrollView.setGitStatus (available: available)
+        inputsScrollView?.setGitStatus (available: available)
     }
     
     func setBrowserStatus (available: Bool, compatible: Bool) {
-        inputsScrollView.setBrowserStatus (available: available, compatible: compatible)
+        inputsScrollView?.setBrowserStatus (available: available, compatible: compatible)
     }
     
     func setHookupStatus (available: Bool) {
-        outputsScrollView.setHookupStatus (available: available)
+        outputsScrollView?.setHookupStatus (available: available)
     }
     
     func showAppSettings (_ settings: Settings) {
         
-        trackingScrollView.showSettings(settings.settingsTracking)
-        inputsScrollView.showSettings(settings.settingsBrowser)
+        trackingView?.showSettings(settings.settingsTracking)
+        inputsScrollView?.showSettings(settings.settingsBrowser)
         
         butBackup.state = settings.enableBackup ? NSControl.StateValue.on : NSControl.StateValue.off
     }
@@ -132,18 +156,18 @@ extension SettingsViewController: SettingsPresenterOutput {
     }
     
     func selectTab (_ tab: SettingsTab) {
-        tabView.selectTabViewItem(at: tab.rawValue)
-        if tab == .output {
-//            presenter?.loadJiraProjects()
-        }
-    }
-}
-
-extension SettingsViewController: NSTabViewDelegate {
-    
-    func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
-        if let item = tabViewItem {
-            localPreferences.set( tabView.indexOfTabViewItem(item), forKey: .settingsActiveTab)
+        removeSelectedTabView()
+        segmentedControl!.selectedSegment = tab.rawValue
+        switch tab {
+        case .tracking:
+            container.addSubview(trackingView!)
+            trackingView!.constrainToSuperview()
+        case .input:
+            container.addSubview(inputsScrollView!)
+            inputsScrollView!.constrainToSuperview()
+        case .output:
+            container.addSubview(outputsScrollView!)
+            outputsScrollView!.constrainToSuperview()
         }
     }
 }

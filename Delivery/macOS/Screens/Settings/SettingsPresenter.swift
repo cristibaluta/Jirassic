@@ -12,6 +12,7 @@ protocol SettingsPresenterInput: class {
     
     func checkExtensions()
     func showSettings()
+    func selectTab (_ tab: SettingsTab)
     func saveAppSettings (_ settings: Settings)
     func enableBackup (_ enabled: Bool)
     func enableLaunchAtStartup (_ enabled: Bool)
@@ -84,7 +85,13 @@ extension SettingsPresenter: SettingsPresenterInput {
         userInterface!.showAppSettings(settings)
         userInterface!.enableLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
         enableBackup(settings.enableBackup)
-        userInterface!.selectTab( SettingsTab(rawValue: localPreferences.int(.settingsActiveTab))! )
+        let lastActiveSettingsTab = SettingsTab(rawValue: localPreferences.int(.settingsActiveTab))!
+        selectTab(lastActiveSettingsTab)
+    }
+    
+    func selectTab (_ tab: SettingsTab) {
+        localPreferences.set(tab.rawValue, forKey: .settingsActiveTab)
+        userInterface!.selectTab(tab)
     }
     
     func saveAppSettings (_ settings: Settings) {

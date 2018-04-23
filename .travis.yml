@@ -1,7 +1,28 @@
 language: swift
 os: osx
-osx_image: xcode9.2
+osx_image: xcode9.3
+cache: bundler
 xcode_project: Jirassic.xcodeproj # path to your xcodeproj folder
 xcode_scheme: Jirassic AppStore
-script: xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic AppStore"
-    # - xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic AppStore" -destination "platform=macOS,name=My Mac" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+before_script:
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TravisExample_Ad_Hoc.mobileprovision.enc -d -a -out scripts/profile/TravisExample_Ad_Hoc.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- ./travis_signing/add-key.sh
+- ./travis_signing/update-bundle.sh
+script:
+- xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic AppStore"
+after_script:
+- ./scripts/remove-key.sh
+after_success:
+- ./scripts/sign-and-upload.sh
+env:
+  global:
+  - APP_NAME="Jirassic"
+  - 'DEVELOPER_NAME="iPhone Distribution: Mattes Groeger"'
+  - PROFILE_NAME="TravisExample_Ad_Hoc"
+  - INFO_PLIST="Delivery/macOS/Info.plist"
+  - BUNDLE_DISPLAY_NAME="Jirassic"
+  - secure: JKux0mDIyS8HyBE37WWqz+HXjEFOx6ZtocfXj+W6GIuysS9o8bIleGupQ6DFbG3r8zKHuY1U+NdJRmRs6cWSZ6XaSTMw0eWtxGlTXR4S6v5TilUYppKZZyVsIJOPF0TTk9LzDMhmC2gnKs3+GXqYdHzDnyDRWZM63u4MvSVbKP8=
+  - secure: TSCkFLq9w0LllxSv52XOQoBLYOG6VSdfi1DpSRNnRdv70wbxmrCK1vBlUZ/12GZcvif5Ct8eAIirdFUBFgh6pGbzm0oUMElEO9vN8tBtTHcxnjgGKUt8AzPk4xjA13xLK7IiZ/IlWHOWknlYeu4g93zr73b47z32J7p3EznlHwk=
+  - secure: a/QX6AUA/406aqVADBrSLWdvaPULf2t+YYW+pG5jhcTptmxYYWJSnYPYqzz0Sm8jSTr29KAc5PKordz6S//jtQv0On6jYQVpDlIn46E3QCVAg8k4e/d56j/zGSctz0jM+yxWocK9OH2UPs1pyxGH8C7vLN1T0WvYBiy3YiOOwv8=

@@ -224,8 +224,6 @@
 		2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871951D2022FD14001C237E /* InputsScrollView.swift */; };
 		287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
 		287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195202022FD87001C237E /* InputsTableViewDataSource.swift */; };
-		287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
-		287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195242022FEBA001C237E /* TrackingScrollView.swift */; };
 		2871952820241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
 		2871952920241A6C001C237E /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2871952720241A6C001C237E /* TrackingView.xib */; };
 		2871952B20241B25001C237E /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2871952A20241B25001C237E /* TrackingView.swift */; };
@@ -263,6 +261,10 @@
 		2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
 		2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
 		2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
+		2892E80B208D9B42004E5298 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80A208D9B42004E5298 /* InputsScrollView.xib */; };
+		2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80A208D9B42004E5298 /* InputsScrollView.xib */; };
+		2892E80E208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
+		2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -581,7 +583,6 @@
 		2871951A2022ECF7001C237E /* OutputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputsScrollView.swift; sourceTree = "<group>"; };
 		2871951D2022FD14001C237E /* InputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsScrollView.swift; sourceTree = "<group>"; };
 		287195202022FD87001C237E /* InputsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsTableViewDataSource.swift; sourceTree = "<group>"; };
-		287195242022FEBA001C237E /* TrackingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingScrollView.swift; sourceTree = "<group>"; };
 		2871952720241A6C001C237E /* TrackingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingView.xib; sourceTree = "<group>"; };
 		2871952A20241B25001C237E /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		287195352027CAD9001C237E /* TimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInteractor.swift; sourceTree = "<group>"; };
@@ -598,6 +599,8 @@
 		2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
 		2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		2892E80A208D9B42004E5298 /* InputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputsScrollView.xib; sourceTree = "<group>"; };
+		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
 		28A283932037874600DDCB63 /* ModuleGitLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogs.swift; sourceTree = "<group>"; };
 		28A283962037975600DDCB63 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		28A2839920382BBB00DDCB63 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
@@ -969,7 +972,6 @@
 		287195232022FEA4001C237E /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				287195242022FEBA001C237E /* TrackingScrollView.swift */,
 				2871952A20241B25001C237E /* TrackingView.swift */,
 				2871952720241A6C001C237E /* TrackingView.xib */,
 			);
@@ -1035,6 +1037,7 @@
 			isa = PBXGroup;
 			children = (
 				2871951D2022FD14001C237E /* InputsScrollView.swift */,
+				2892E80A208D9B42004E5298 /* InputsScrollView.xib */,
 				287195202022FD87001C237E /* InputsTableViewDataSource.swift */,
 				28A283A32038AF9600DDCB63 /* JirassicCmd */,
 				569C4C53202318F50049FBF1 /* Shell */,
@@ -1049,6 +1052,7 @@
 			isa = PBXGroup;
 			children = (
 				2871951A2022ECF7001C237E /* OutputsScrollView.swift */,
+				2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */,
 				287195172022E8BC001C237E /* OutputTableViewDataSource.swift */,
 				28FB264F20224E0A00AEA38D /* JiraTempo */,
 				28FB265620224E8600AEA38D /* Hookup */,
@@ -1810,11 +1814,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2892E80E208D9DD0004E5298 /* OutputsScrollView.xib in Resources */,
 				569C4C7920231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				569C4C70202319DE0049FBF1 /* ShellCell.xib in Resources */,
 				28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				288BB6812087152B00CF720A /* WizardAppleScriptView.xib in Resources */,
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
+				2892E80B208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				2845B13C206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
@@ -1858,11 +1864,13 @@
 				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
 				2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
+				2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */,
 				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				2845B13D206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
+				2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
 				28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
@@ -1987,7 +1995,6 @@
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
 				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
 				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
-				287195252022FEBA001C237E /* TrackingScrollView.swift in Sources */,
 				28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
@@ -2129,7 +2136,6 @@
 				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
-				287195262022FEBA001C237E /* TrackingScrollView.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,

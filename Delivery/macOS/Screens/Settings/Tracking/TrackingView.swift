@@ -65,4 +65,8 @@ class TrackingView: NSView {
             minSleepDuration: minSleepDurationSlider.integerValue
         )
     }
+    
+    func save() {
+        
+    }
 }
