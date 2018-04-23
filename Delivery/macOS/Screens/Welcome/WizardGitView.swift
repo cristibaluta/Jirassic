@@ -15,11 +15,14 @@ class WizardGitView: NSView {
     @IBOutlet fileprivate var butPick: NSButton!
     @IBOutlet var butSkip: NSButton!
     var onSkip: (() -> Void)?
+    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
     
     var presenter: GitPresenterInput = GitPresenter()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Git is disabled by default, we need to enable in order to be able to make changes
+        localPreferences.set(true, forKey: .enableGit)
         (presenter as! GitPresenter).userInterface = self
         presenter.isShellScriptInstalled = true
     }
@@ -33,6 +36,10 @@ class WizardGitView: NSView {
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
+        // If git was not setup, disable it
+        if emailsTextField.stringValue == "" || pathsTextField.stringValue == "" {
+            localPreferences.set(false, forKey: .enableGit)
+        }
         save()
         onSkip?()
     }

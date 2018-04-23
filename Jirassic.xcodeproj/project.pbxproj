@@ -265,6 +265,8 @@
 		2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80A208D9B42004E5298 /* InputsScrollView.xib */; };
 		2892E80E208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
 		2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
+		2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
+		2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -601,6 +603,7 @@
 		2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		2892E80A208D9B42004E5298 /* InputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputsScrollView.xib; sourceTree = "<group>"; };
 		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
+		2892E810208E6275004E5298 /* LocalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferences.swift; sourceTree = "<group>"; };
 		28A283932037874600DDCB63 /* ModuleGitLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogs.swift; sourceTree = "<group>"; };
 		28A283962037975600DDCB63 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		28A2839920382BBB00DDCB63 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
@@ -1344,6 +1347,7 @@
 				4051D5F81E0EA48A002042BB /* AppLauncher.swift */,
 				2823C9341E4F69970055D036 /* Versioning.swift */,
 				280D70B01ECC09D9005D2689 /* AppTheme.swift */,
+				2892E810208E6275004E5298 /* LocalPreferences.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -2000,6 +2004,7 @@
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
 				287195322025C364001C237E /* CTask.swift in Sources */,
+				2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */,
 				287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
@@ -2248,6 +2253,7 @@
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				28AA50091EDCD51300AAF03D /* CoreDataRepository+Tasks.swift in Sources */,
 				287195162022E1E2001C237E /* HookupPresenter.swift in Sources */,
+				2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */,
 				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
 				2845B161206AE468006EFB3B /* TaskCell.swift in Sources */,
@@ -2640,7 +2646,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
@@ -2669,7 +2675,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
