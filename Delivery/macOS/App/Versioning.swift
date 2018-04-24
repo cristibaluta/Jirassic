@@ -16,7 +16,8 @@ struct Versioning {
     static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     static let compatibilityMaps: [String: Versions] = [
         "17.06.14": (shellScript: "1.0", browserScript: "1.0", jirassicCmd: "17.06.14", jitCmd: "17.06.14"),
-        "18.04.04": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "17.06.14", jitCmd: "17.06.14")
+        "18.04.04": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "17.06.14", jitCmd: "17.06.14"),
+        "18.04.25": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "18.04.25", jitCmd: "18.04.25")
         // Add a new compatibility for each app version that needs one
     ]
     

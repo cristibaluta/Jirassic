@@ -18,7 +18,6 @@ class TasksViewController: NSViewController {
     @IBOutlet fileprivate weak var butSettings: NSButton!
     @IBOutlet fileprivate weak var butQuit: NSButton!
     @IBOutlet fileprivate weak var butMinimize: NSButton!
-    @IBOutlet fileprivate weak var butFullScreen: NSButton!
     @IBOutlet fileprivate weak var refreshIndicator: NSProgressIndicator!
     
     weak var appWireframe: AppWireframe?
@@ -56,7 +55,6 @@ class TasksViewController: NSViewController {
         butRefresh.isHidden = remoteRepository == nil ? true : hide
         butQuit.isHidden = hide
         butMinimize.isHidden = hide
-        butFullScreen.isHidden = hide
         listSegmentedControl.isHidden = hide
     }
 }

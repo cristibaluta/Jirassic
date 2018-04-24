@@ -32,13 +32,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	override init() {
 		super.init()
         
-        // For testing
+        #if DEBUG
+        // Simulate a freshly installed app by resetting the preferences
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
-        localPreferences.reset(.wizardStep)
-        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
-        localPreferences.set(0, forKey: .wizardStep)
-        localPreferences.set(false, forKey: .enableGit)
+//        localPreferences.reset(.wizardStep)
+//        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
+//        localPreferences.set(0, forKey: .wizardStep)
+//        localPreferences.set(false, forKey: .enableGit)
+        #endif
         
         localRepository = SqliteRepository()
         #if APPSTORE
@@ -57,9 +59,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.isDark = theme.isDark
 		menu.onOpen = {
             self.removeActivePopup()
-            let firstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
+            let isFirstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
             let wizardStep = self.localPreferences.int(.wizardStep)
-            if firstLaunch {
+            if isFirstLaunch {
                 self.presentWelcomePopup()
             }
             else if wizardStep != WizardStep.finished.rawValue {

@@ -36,10 +36,10 @@ class JitCell: NSTableRowView {
             
             textField.stringValue = compatible
                 ? "Installed, run 'jit' in Terminal for more info"
-                : "Applescript installed but 'jit' CLI is outdated/uninstalled"
+                : "Jit is outdated or not installed, please install the latest version!"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            textField.stringValue = "Install shell support first!"
+            textField.stringValue = "Cannot determine Jit compatibility, install shell support first!"
         }
         butInstall.isHidden = available && compatible
     }

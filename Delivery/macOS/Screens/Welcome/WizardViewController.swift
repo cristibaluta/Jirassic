@@ -139,6 +139,14 @@ class WizardViewController: NSViewController {
         localPreferences.set(WizardStep.finished.rawValue, forKey: .wizardStep)
         appWireframe!.flipToTasksController()
     }
+    
+    @IBAction func handleQuitAppButton (_ sender: NSButton) {
+        NSApplication.shared.terminate(nil)
+    }
+    
+    @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
+        AppDelegate.sharedApp().menu.triggerClose()
+    }
 }
 
 extension WizardViewController: Animatable {

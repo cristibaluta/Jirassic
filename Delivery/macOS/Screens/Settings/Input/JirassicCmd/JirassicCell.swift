@@ -28,10 +28,10 @@ class JirassicCell: NSTableRowView {
                 : NSImage.Name.statusPartiallyAvailable)
             textField.stringValue = compatible
                 ? "Installed, run 'jirassic' in Terminal for more info"
-                : "Outdated or uninstalled, please install!"
+                : "Outdated or not installed, please install the latest version!"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            textField.stringValue = "Install shell support first!"
+            textField.stringValue = "Cannot determine compatibility, install shell support first!"
         }
         butInstall.isHidden = available && compatible
     }

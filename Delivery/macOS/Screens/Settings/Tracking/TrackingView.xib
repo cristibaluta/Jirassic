@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,28 +14,28 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="wac-II-n6f">
-                    <rect key="frame" x="11" y="145" width="166" height="18"/>
+                    <rect key="frame" x="11" y="118" width="166" height="18"/>
                     <buttonCell key="cell" type="check" title="Lunch begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Vph-zn-2b8">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button toolTip="Working hours not including the lunch break" translatesAutoresizingMaskIntoConstraints="NO" id="HF2-Ra-st6">
-                    <rect key="frame" x="11" y="202" width="128" height="18"/>
+                    <rect key="frame" x="11" y="175" width="128" height="18"/>
                     <buttonCell key="cell" type="check" title="Working between" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8L9-IG-yRe">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="NDv-L1-vNy">
-                    <rect key="frame" x="11" y="88" width="166" height="18"/>
+                    <rect key="frame" x="11" y="61" width="166" height="18"/>
                     <buttonCell key="cell" type="check" title="Scrum begins around" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="y7O-oz-hLe">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="UNt-JQ-D2v">
-                    <rect key="frame" x="11" y="319" width="239" height="18"/>
+                    <rect key="frame" x="11" y="292" width="239" height="18"/>
                     <buttonCell key="cell" type="check" title="Log tasks when computer wakes up" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yJ1-ae-fOV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -46,7 +45,7 @@
                     </connections>
                 </button>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jIg-Xc-Qbw">
-                    <rect key="frame" x="256" y="315" width="159" height="24"/>
+                    <rect key="frame" x="256" y="288" width="159" height="24"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Rdk-FP-9v8">
                         <font key="font" metaFont="system"/>
                         <segments>
@@ -56,7 +55,7 @@
                     </segmentedCell>
                 </segmentedControl>
                 <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Kuw-aQ-8xH">
-                    <rect key="frame" x="176" y="79" width="193" height="37"/>
+                    <rect key="frame" x="176" y="52" width="193" height="37"/>
                     <view key="contentView" id="c0z-Nc-3cP">
                         <rect key="frame" x="1" y="1" width="191" height="35"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,7 +93,7 @@
                     </constraints>
                 </box>
                 <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="bmw-w2-81i">
-                    <rect key="frame" x="176" y="135" width="193" height="37"/>
+                    <rect key="frame" x="176" y="108" width="193" height="37"/>
                     <view key="contentView" id="A7G-pB-dME">
                         <rect key="frame" x="1" y="1" width="191" height="35"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +128,7 @@
                     </view>
                 </box>
                 <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="l1p-kb-Dga">
-                    <rect key="frame" x="176" y="192" width="193" height="37"/>
+                    <rect key="frame" x="176" y="165" width="193" height="37"/>
                     <view key="contentView" id="nCg-8V-yCx">
                         <rect key="frame" x="1" y="1" width="191" height="35"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +179,7 @@
                     </view>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QZa-7i-ghA">
-                    <rect key="frame" x="11" y="262" width="233" height="17"/>
+                    <rect key="frame" x="11" y="235" width="233" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ignore sleeps shorter than 10 minutes" id="CUp-FW-k1J">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -188,14 +187,14 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tN8-4C-2i5">
-                    <rect key="frame" x="256" y="261" width="159" height="24"/>
+                    <rect key="frame" x="256" y="234" width="159" height="24"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="5" maxValue="30" doubleValue="13" tickMarkPosition="above" numberOfTickMarks="10" sliderType="linear" id="DzM-oD-W38"/>
                     <connections>
                         <action selector="handleMinSleepDuration:" target="c22-O7-iKe" id="Aah-HW-b2s"/>
                     </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXx-ul-UhD">
-                    <rect key="frame" x="388" y="203" width="109" height="17"/>
+                    <rect key="frame" x="388" y="176" width="109" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(excluding lunch)" id="hTJ-hO-7NI">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -232,7 +231,7 @@
                 <constraint firstItem="wac-II-n6f" firstAttribute="top" secondItem="HF2-Ra-st6" secondAttribute="bottom" constant="43" id="o4o-Ul-oEg"/>
                 <constraint firstItem="l1p-kb-Dga" firstAttribute="trailing" secondItem="bmw-w2-81i" secondAttribute="trailing" id="oz2-Rn-c4W"/>
                 <constraint firstItem="QZa-7i-ghA" firstAttribute="top" secondItem="UNt-JQ-D2v" secondAttribute="bottom" constant="42" id="qql-8J-jZ6"/>
-                <constraint firstItem="UNt-JQ-D2v" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="23" id="t0B-hr-fXc"/>
+                <constraint firstItem="UNt-JQ-D2v" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="50" id="t0B-hr-fXc"/>
                 <constraint firstItem="bmw-w2-81i" firstAttribute="trailing" secondItem="Kuw-aQ-8xH" secondAttribute="trailing" id="tcG-0A-Puc"/>
             </constraints>
             <connections>

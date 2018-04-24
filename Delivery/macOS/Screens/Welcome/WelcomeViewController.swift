@@ -11,6 +11,7 @@ import Cocoa
 class WelcomeViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
+    @IBOutlet var box: NSBox!
     @IBOutlet var butSettings: NSButton!
     @IBOutlet var butStart: NSButton!
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
@@ -18,6 +19,9 @@ class WelcomeViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createLayer()
+        if AppTheme().isDark {
+            box.fillColor = NSColor.clear
+        }
     }
     
     deinit {
@@ -26,13 +30,21 @@ class WelcomeViewController: NSViewController {
     
     @IBAction func handleStartButton (_ sender: NSButton) {
         localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
+        localPreferences.set(WizardStep.finished.rawValue, forKey: .wizardStep)
         appWireframe!.flipToTasksController()
     }
     
     @IBAction func handleSettingsButton (_ sender: NSButton) {
         localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
-        localPreferences.set(1, forKey: .settingsActiveTab)
         appWireframe!.flipToWizardController()
+    }
+    
+    @IBAction func handleQuitAppButton (_ sender: NSButton) {
+        NSApplication.shared.terminate(nil)
+    }
+    
+    @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
+        AppDelegate.sharedApp().menu.triggerClose()
     }
 }
 

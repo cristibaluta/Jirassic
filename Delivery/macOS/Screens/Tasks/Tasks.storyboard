@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wHU-IX-gfU">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wHU-IX-gfU">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -151,34 +150,6 @@
                                     <real value="250"/>
                                 </holdingPriorities>
                             </splitView>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="rhx-UQ-KmF">
-                                <rect key="frame" x="7" y="398" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="UPH-5F-Pfw"/>
-                                    <constraint firstAttribute="height" constant="24" id="nf4-3J-Lbd"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ButClose" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="At4-An-7dD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="1xF-Xg-9zG"/>
-                                </connections>
-                            </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="6Em-gu-4cj">
-                                <rect key="frame" x="30" y="398" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="00Y-zk-eER"/>
-                                    <constraint firstAttribute="height" constant="24" id="umL-wH-4FS"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ButMinimize" imagePosition="only" alignment="center" alternateImage="ButMinimize" imageScaling="proportionallyDown" inset="2" id="bPg-k2-O5r">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleMinimizeAppButton:" target="wHU-IX-gfU" id="fTq-Ud-XRG"/>
-                                </connections>
-                            </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="95a-7I-VNJ">
                                 <rect key="frame" x="173" y="399" width="146" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="fYS-Rm-Q7V">
@@ -192,17 +163,6 @@
                                     <action selector="handleSegmentedControl:" target="wHU-IX-gfU" id="1hR-gG-H11"/>
                                 </connections>
                             </segmentedControl>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="PZL-RZ-Mym">
-                                <rect key="frame" x="53" y="398" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="OQQ-Tx-zmt"/>
-                                    <constraint firstAttribute="height" constant="24" id="dHv-4q-uIG"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ButDisabled" imagePosition="only" alignment="center" alternateImage="ButDisabled" imageScaling="proportionallyDown" inset="2" id="IPE-Op-n48">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lYQ-Lm-GnG">
                                 <rect key="frame" x="438" y="403" width="16" height="16"/>
                             </progressIndicator>
@@ -220,35 +180,52 @@
                                     <action selector="handleRefreshButton:" target="wHU-IX-gfU" id="NFp-1V-gaM"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dKg-L3-iYb">
+                                <rect key="frame" x="12" y="401" width="38" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rbt-IB-xge">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleQuitAppButton:" target="wHU-IX-gfU" id="Unl-fe-pMn"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uwg-ZV-XEf">
+                                <rect key="frame" x="60" y="401" width="20" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="^" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XAx-PW-mjs">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleMinimizeAppButton:" target="wHU-IX-gfU" id="8JQ-19-WTf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="lYQ-Lm-GnG" firstAttribute="centerY" secondItem="GOP-YB-kkJ" secondAttribute="centerY" id="1Vd-we-oBW"/>
-                            <constraint firstItem="PZL-RZ-Mym" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="7Lu-To-KpL"/>
+                            <constraint firstItem="uwg-ZV-XEf" firstAttribute="centerY" secondItem="dKg-L3-iYb" secondAttribute="centerY" id="3m4-yi-xBZ"/>
                             <constraint firstItem="95a-7I-VNJ" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="BIc-JC-FRc"/>
+                            <constraint firstItem="dKg-L3-iYb" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="22" id="EDa-6H-Km8"/>
                             <constraint firstAttribute="trailing" secondItem="sOM-pv-IVs" secondAttribute="trailing" constant="12" id="EDp-gv-hVw"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="IOj-nH-o5u"/>
                             <constraint firstAttribute="trailing" secondItem="pVs-CS-Pcx" secondAttribute="trailing" id="Txh-8R-Xmj"/>
-                            <constraint firstItem="rhx-UQ-KmF" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="Xmr-U7-0TU"/>
+                            <constraint firstItem="uwg-ZV-XEf" firstAttribute="leading" secondItem="dKg-L3-iYb" secondAttribute="trailing" constant="10" id="Uqr-uo-mGH"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="c6a-uG-6en"/>
                             <constraint firstAttribute="bottom" secondItem="pVs-CS-Pcx" secondAttribute="bottom" id="jOP-OI-xoU"/>
-                            <constraint firstItem="rhx-UQ-KmF" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="7" id="k7t-tb-cZf"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="60" id="kgn-ml-hof"/>
                             <constraint firstItem="95a-7I-VNJ" firstAttribute="centerX" secondItem="FwC-dy-0bY" secondAttribute="centerX" id="lHI-TJ-Zn1"/>
                             <constraint firstAttribute="trailing" secondItem="SJz-Xr-YhG" secondAttribute="trailing" constant="12" id="leq-Tf-xCq"/>
-                            <constraint firstItem="PZL-RZ-Mym" firstAttribute="leading" secondItem="rhx-UQ-KmF" secondAttribute="trailing" constant="22" id="m8X-lr-c5u"/>
-                            <constraint firstItem="6Em-gu-4cj" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="nTL-hi-2Or"/>
+                            <constraint firstItem="dKg-L3-iYb" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="nTc-sS-BE0"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="62" id="rPW-Au-hGz"/>
                             <constraint firstItem="lYQ-Lm-GnG" firstAttribute="centerX" secondItem="GOP-YB-kkJ" secondAttribute="centerX" id="tnZ-eU-hgu"/>
-                            <constraint firstItem="6Em-gu-4cj" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="30" id="w02-IC-8NC"/>
                             <constraint firstItem="GOP-YB-kkJ" firstAttribute="top" secondItem="sOM-pv-IVs" secondAttribute="top" id="xFb-Fn-yNs"/>
                             <constraint firstItem="pVs-CS-Pcx" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="xh1-lJ-1K2"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="GOP-YB-kkJ" secondAttribute="trailing" id="yab-oA-B2u"/>
                         </constraints>
                     </customView>
                     <connections>
-                        <outlet property="butFullScreen" destination="PZL-RZ-Mym" id="Ao4-DV-ynR"/>
-                        <outlet property="butMinimize" destination="6Em-gu-4cj" id="09K-jk-iiO"/>
-                        <outlet property="butQuit" destination="rhx-UQ-KmF" id="vrD-UN-ztp"/>
+                        <outlet property="butMinimize" destination="uwg-ZV-XEf" id="n7a-2i-PGD"/>
+                        <outlet property="butQuit" destination="dKg-L3-iYb" id="UTl-h4-8iX"/>
                         <outlet property="butRefresh" destination="GOP-YB-kkJ" id="okT-iV-BcZ"/>
                         <outlet property="butSettings" destination="sOM-pv-IVs" id="kgx-pV-DJa"/>
                         <outlet property="calendarScrollView" destination="TP3-Rr-lmx" id="Zzl-gR-bBE"/>
@@ -370,9 +347,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ButClose" width="13" height="13"/>
-        <image name="ButDisabled" width="13" height="13"/>
-        <image name="ButMinimize" width="13" height="13"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
     </resources>
