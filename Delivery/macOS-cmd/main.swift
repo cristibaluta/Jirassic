@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.04.14"
+let appVersion = "18.04.25"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -32,7 +32,7 @@ enum Command: String {
 
 func printHelp() {
     print("")
-    print("jirassic \(appVersion) - (c)2017 Imagin soft")
+    print("jirassic \(appVersion) - (c)2018 Imagin soft")
     print("")
     print("Usage:")
     print("     list [yyyy.mm.dd] If date is missing list tasks from today")
