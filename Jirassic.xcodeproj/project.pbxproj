@@ -160,6 +160,10 @@
 		284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
 		284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
 		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
+		2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152120A6547E009F3EE1 /* KeychainWrapper.swift */; };
+		2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152120A6547E009F3EE1 /* KeychainWrapper.swift */; };
+		2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */; };
+		2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */; };
 		2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B139206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
@@ -249,10 +253,6 @@
 		2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B29D1F094B0D0085BAC2 /* JReport.swift */; };
 		2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */; };
 		2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */; };
-		2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
-		2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */; };
-		2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
-		2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */; };
 		2892E80B208D9B42004E5298 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80A208D9B42004E5298 /* InputsScrollView.xib */; };
 		2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80A208D9B42004E5298 /* InputsScrollView.xib */; };
 		2892E80E208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
@@ -552,6 +552,9 @@
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
+		2845152120A6547E009F3EE1 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		2845152220A6547E009F3EE1 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
+		2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
 		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		2845B13B206832A1006EFB3B /* NewTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTask.storyboard; sourceTree = "<group>"; };
@@ -595,9 +598,6 @@
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
 		2892B29D1F094B0D0085BAC2 /* JReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JReport.swift; sourceTree = "<group>"; };
 		2892B2A61F094C800085BAC2 /* JWorkAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWorkAttribute.swift; sourceTree = "<group>"; };
-		2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
-		2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
-		2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		2892E80A208D9B42004E5298 /* InputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputsScrollView.xib; sourceTree = "<group>"; };
 		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
 		2892E810208E6275004E5298 /* LocalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferences.swift; sourceTree = "<group>"; };
@@ -854,6 +854,24 @@
 			path = Placeholder;
 			sourceTree = "<group>";
 		};
+		2845151820A6547E009F3EE1 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				2845152020A6547E009F3EE1 /* SwiftKeychainWrapper */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		2845152020A6547E009F3EE1 /* SwiftKeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				2845152120A6547E009F3EE1 /* KeychainWrapper.swift */,
+				2845152220A6547E009F3EE1 /* SwiftKeychainWrapper.h */,
+				2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */,
+			);
+			path = SwiftKeychainWrapper;
+			sourceTree = "<group>";
+		};
 		2845B137206703A8006EFB3B /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,16 +1015,6 @@
 				28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */,
 			);
 			path = Jira;
-			sourceTree = "<group>";
-		};
-		2892B2B31F0A19B70085BAC2 /* KeychainWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				2892B2B51F0A19B70085BAC2 /* KeychainWrapper.swift */,
-				2892B2B61F0A19B70085BAC2 /* SwiftKeychainWrapper.h */,
-				2892B2B71F0A19B70085BAC2 /* KeychainItemAccessibility.swift */,
-			);
-			path = KeychainWrapper;
 			sourceTree = "<group>";
 		};
 		28A28392203786F600DDCB63 /* GitLogs */ = {
@@ -1493,10 +1501,10 @@
 		4065D3991DD3B44200B73201 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2845151820A6547E009F3EE1 /* Keychain */,
 				565E19E020A5E245003A5E2A /* RCHttp */,
 				565E19D120A5E191003A5E2A /* RCPreferences */,
 				565E19C220A5E007003A5E2A /* RCLog */,
-				2892B2B31F0A19B70085BAC2 /* KeychainWrapper */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -2070,7 +2078,6 @@
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
 				564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
-				2892B2BC1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
 				28FE1887207A520B00DF796E /* NewTaskCommand.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
@@ -2078,6 +2085,7 @@
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
 				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
 				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
+				2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
@@ -2129,6 +2137,7 @@
 				280D719D1ED6043D005D2689 /* SqliteRepository.swift in Sources */,
 				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
+				2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				2845B166206AE468006EFB3B /* FooterCell.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
@@ -2146,7 +2155,6 @@
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				280D71B11ED6043D005D2689 /* CloudKitRepository.swift in Sources */,
 				280D71B21ED6043D005D2689 /* CloudKitRepository+Tasks.swift in Sources */,
-				2892B2BA1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */,
@@ -2200,7 +2208,6 @@
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
-				2892B2BD1F0A19B70085BAC2 /* KeychainItemAccessibility.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */,
 				28013890205F86460051B532 /* TimeBox.swift in Sources */,
@@ -2272,7 +2279,6 @@
 				28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */,
 				2845B13A206703C5006EFB3B /* Keychain.swift in Sources */,
 				28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */,
-				2892B2BB1F0A19B70085BAC2 /* KeychainWrapper.swift in Sources */,
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
@@ -2296,6 +2302,7 @@
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
 				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
+				2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
 				28AA50101EDCD52300AAF03D /* InMemoryCoreDataRepository.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
 				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
@@ -2320,6 +2327,7 @@
 				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
+				2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
 				564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
 				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,

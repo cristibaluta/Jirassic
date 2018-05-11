@@ -10,3 +10,6 @@
 [submodule "Vendor/RCHttp"]
 	path = Vendor/RCHttp
 	url = https://github.com/ralcr/RCHttp.git
+[submodule "Vendor/Keychain"]
+	path = Vendor/Keychain
+	url = https://github.com/jrendel/SwiftKeychainWrapper.git
