@@ -31,7 +31,7 @@ class JirassicCell: NSTableRowView {
                 : "Outdated or not installed, please install the latest version!"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
-            textField.stringValue = "Cannot determine compatibility, install shell support first!"
+            textField.stringValue = "Not installed, please follow instructions!"
         }
         butInstall.isHidden = available && compatible
     }
