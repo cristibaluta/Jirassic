@@ -107,7 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
-            guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration) else {
+            guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration).minToSec else {
                 RCLog(">>>>>>> Sleep duration is shorter than the minimum required \(sleepDuration) >= \(Double(settings.settingsTracking.minSleepDuration)) <<<<<<<<")
                 return
             }
