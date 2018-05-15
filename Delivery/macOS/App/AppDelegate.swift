@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let isDayStarted = tasks.count > 0
             let isDayEnded = tasks.contains(where: { $0.taskType == .endDay })
             guard !isWeekend || (isDayStarted && isWeekend) else {
-                RCLog(">>>>>>> It's weekend, won't track weekends <<<<<<<<")
+                RCLog(">>>>>>> It's weekend, won't track weekends unless the day was started <<<<<<<<")
                 return
             }
             guard !isDayEnded else {
@@ -108,11 +108,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             let sleepDuration = Date().timeIntervalSince(self.sleep.lastSleepDate ?? Date())
             guard sleepDuration >= Double(settings.settingsTracking.minSleepDuration).minToSec else {
-                RCLog(">>>>>>> Sleep duration is shorter than the minimum required \(sleepDuration) >= \(Double(settings.settingsTracking.minSleepDuration)) <<<<<<<<")
+                RCLog(">>>>>>> Sleep duration is shorter than the minimum required: \(sleepDuration) < \(Double(settings.settingsTracking.minSleepDuration).minToSec) <<<<<<<<")
                 return
             }
             let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
             guard Date() > startDate else {
+                RCLog(">>>>>>> Date earlier than startDay date, won't analyze further <<<<<<<<")
                 return
             }
             
