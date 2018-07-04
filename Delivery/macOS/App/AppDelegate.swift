@@ -176,6 +176,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
             })
         }
+        ModuleCalendar().loadEvents()
 	}
 	
     func applicationDidFinishLaunching (_ aNotification: Notification) {

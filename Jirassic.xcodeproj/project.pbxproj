@@ -438,6 +438,8 @@
 		565E19F020A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		565E19F120A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		565E19F220A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
+		5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */; };
+		5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
 		5685C7681DE8721100CA545E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
 		5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7651DE8721100CA545E /* LoginPresenter.swift */; };
@@ -753,6 +755,7 @@
 		565E19E220A5E245003A5E2A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		565E19E620A5E245003A5E2A /* RCHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCHttp.swift; sourceTree = "<group>"; };
 		565E19EF20A5E336003A5E2A /* RCSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCSync.swift; sourceTree = "<group>"; };
+		5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCalendar.swift; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5685C7651DE8721100CA545E /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -971,6 +974,7 @@
 		28667B591FCADF4E007B98E3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5683DC3C20ECDEA30000A138 /* Calendar */,
 				28A28392203786F600DDCB63 /* GitLogs */,
 				28667B5A1FCADF68007B98E3 /* JiraTempo */,
 				28667B5B1FCADF73007B98E3 /* Hookup */,
@@ -1601,6 +1605,14 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		5683DC3C20ECDEA30000A138 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		5685C7621DE8721100CA545E /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -2063,6 +2075,7 @@
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
 				287195322025C364001C237E /* CTask.swift in Sources */,
+				5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
 				2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */,
 				287195342025C36C001C237E /* Jirassic.xcdatamodeld in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
@@ -2231,6 +2244,7 @@
 				4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */,
 				2845B14A206AE3A8006EFB3B /* ReportCell.swift in Sources */,
 				288BB6882087169F00CF720A /* ViewXib.swift in Sources */,
+				5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
 				564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
