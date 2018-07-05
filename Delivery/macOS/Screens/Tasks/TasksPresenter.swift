@@ -45,14 +45,15 @@ class TasksPresenter {
     
     weak var appWireframe: AppWireframe?
     weak var userInterface: TasksPresenterOutput?
-    fileprivate var currentTasks = [Task]()
-    fileprivate var currentReports = [Report]()
-    fileprivate var selectedListType = ListType.allTasks
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
-    fileprivate var lastSelectedDay: Day?
-    fileprivate var interactor: ReadDaysInteractor?
-    fileprivate let moduleGit = ModuleGitLogs()
-    fileprivate let reportInteractor = CreateReport()
+    private var currentTasks = [Task]()
+    private var currentReports = [Report]()
+    private var selectedListType = ListType.allTasks
+    private let pref = RCPreferences<LocalPreferences>()
+    private var lastSelectedDay: Day?
+    private var interactor: ReadDaysInteractor?
+    private let moduleGit = ModuleGitLogs()
+    private let moduleCalendar = ModuleCalendar()
+    private let reportInteractor = CreateReport()
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -95,7 +96,7 @@ extension TasksPresenter: TasksPresenterInput {
         let localTasks = reader.tasksInDay(day.dateStart)
         currentTasks = localTasks
         
-        guard localPreferences.bool(.enableGit) else {
+        guard pref.bool(.enableGit) else {
             reload (with: localTasks)
             return
         }
@@ -106,7 +107,7 @@ extension TasksPresenter: TasksPresenterInput {
             guard let wself = self, let userInterface = wself.userInterface else {
                 return
             }
-            wself.currentTasks = MergeTasksInteractor().merge(tasks: localTasks, with: gitTasks)
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: gitTasks)
             let startTask = wself.currentTasks.filter({ $0.taskType == .startDay }).first
             let endTask = wself.currentTasks.filter({ $0.taskType == .endDay }).first
             wself.currentTasks = wself.currentTasks.filter({
@@ -123,13 +124,24 @@ extension TasksPresenter: TasksPresenterInput {
             wself.reload (with: localTasks)
             userInterface.showLoadingIndicator(false)
         }
+
+        moduleCalendar.events(onDate: day.dateStart) { [weak self] (calendarTasks) in
+
+            guard let wself = self, let userInterface = wself.userInterface else {
+                return
+            }
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: calendarTasks)
+
+            wself.reload (with: localTasks)
+            userInterface.showLoadingIndicator(false)
+        }
     }
     
     private func reload (with tasks: [Task]) {
         
         if selectedListType == .report {
             let settings = SettingsInteractor().getAppSettings()
-            let targetHoursInDay = localPreferences.bool(.enableRoundingDay)
+            let targetHoursInDay = pref.bool(.enableRoundingDay)
                 ? TimeInteractor(settings: settings).workingDayLength()
                 : nil
             let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)

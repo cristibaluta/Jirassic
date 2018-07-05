@@ -974,7 +974,7 @@
 		28667B591FCADF4E007B98E3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				5683DC3C20ECDEA30000A138 /* Calendar */,
+				5683DC3C20ECDEA30000A138 /* CalendarEvents */,
 				28A28392203786F600DDCB63 /* GitLogs */,
 				28667B5A1FCADF68007B98E3 /* JiraTempo */,
 				28667B5B1FCADF73007B98E3 /* Hookup */,
@@ -1605,12 +1605,12 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		5683DC3C20ECDEA30000A138 /* Calendar */ = {
+		5683DC3C20ECDEA30000A138 /* CalendarEvents */ = {
 			isa = PBXGroup;
 			children = (
 				5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */,
 			);
-			path = Calendar;
+			path = CalendarEvents;
 			sourceTree = "<group>";
 		};
 		5685C7621DE8721100CA545E /* Account */ = {
