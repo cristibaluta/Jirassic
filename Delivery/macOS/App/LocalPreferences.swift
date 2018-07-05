@@ -31,6 +31,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case enableHookup = "enableHookup"
     case enableCocoaHookup = "enableCocoaHookup"
     case enableHookupCredentials = "enableHookupCredentials"
+    case enableCalendar = "enableCalendar"
     
     func defaultValue() -> Any {
         switch self {
@@ -55,6 +56,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .enableHookup:             return false
         case .enableCocoaHookup:        return false
         case .enableHookupCredentials:  return false
+        case .enableCalendar:           return false
         }
     }
 }

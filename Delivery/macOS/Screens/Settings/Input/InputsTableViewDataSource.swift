@@ -14,7 +14,8 @@ enum InputType {
     case git
     case jit
     case browser
-    static var all: [InputType] = [.shell, .jirassic, .git, .jit, .browser]
+    case calendar
+    static var all: [InputType] = [.shell, .jirassic, .git, .jit, .browser, .calendar]
 }
 
 class InputsTableViewDataSource: NSObject {
@@ -26,6 +27,7 @@ class InputsTableViewDataSource: NSObject {
     var jitCell: JitCell?
     var gitCell: GitCell?
     var browserCell: BrowserCell?
+    var calendarCell: CalendarCell?
     
     init (tableView: NSTableView) {
         self.tableView = tableView
@@ -36,12 +38,14 @@ class InputsTableViewDataSource: NSObject {
         JitCell.register(in: tableView)
         GitCell.register(in: tableView)
         BrowserCell.register(in: tableView)
+        CalendarCell.register(in: tableView)
         
         shellCell = ShellCell.instantiate(in: self.tableView)
         jirassicCell = JirassicCell.instantiate(in: self.tableView)
         jitCell = JitCell.instantiate(in: self.tableView)
         gitCell = GitCell.instantiate(in: self.tableView)
         browserCell = BrowserCell.instantiate(in: self.tableView)
+        calendarCell = CalendarCell.instantiate(in: self.tableView)
     }
 
     func showSettingsBrowser (_ settings: SettingsBrowser) {
@@ -73,6 +77,8 @@ extension InputsTableViewDataSource: NSTableViewDataSource {
             return JitCell.height
         case .browser:
             return BrowserCell.height
+        case .calendar:
+            return CalendarCell.height
         }
     }
 }
@@ -81,21 +87,21 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
     
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        var cell: NSView! = nil
-        let outputType = cells[row]
-        switch outputType {
+        switch cells[row] {
         case .shell:
-            cell = shellCell!
+            return shellCell!
         case .jirassic:
-            cell = jirassicCell!
+            return jirassicCell!
         case .git:
-            cell = gitCell!
+            return gitCell!
         case .jit:
-            cell = jitCell!
+            return jitCell!
         case .browser:
-            cell = browserCell!
+            return browserCell!
+        case .calendar:
+            return calendarCell!
         }
         
-        return cell
+        return nil
     }
 }

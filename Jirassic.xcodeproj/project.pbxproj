@@ -318,6 +318,12 @@
 		28E896721E83732200722032 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E896701E83732200722032 /* main.m */; };
 		28E896751E83770D00722032 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E896731E83770D00722032 /* MainMenu.xib */; };
 		28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EDE9381E59EC1500B360A4 /* TasksView.swift */; };
+		28EE1F5E20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */; };
+		28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */; };
+		28EE1F6120EE8D6100C5C1D6 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */; };
+		28EE1F6220EE8D6100C5C1D6 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */; };
+		28EE1F6420EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */; };
+		28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */; };
 		28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
 		28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
 		28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
@@ -639,6 +645,9 @@
 		28E896701E83732200722032 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "macOS-launcher/main.m"; sourceTree = "<group>"; };
 		28E896741E83770D00722032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "macOS-launcher/Base.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		28EDE9381E59EC1500B360A4 /* TasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
 		28FB265020224E3A00AEA38D /* JiraTempoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoCell.swift; sourceTree = "<group>"; };
 		28FB265320224E5B00AEA38D /* JiraTempoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JiraTempoCell.xib; sourceTree = "<group>"; };
 		28FB265720224E9B00AEA38D /* HookupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HookupCell.xib; sourceTree = "<group>"; };
@@ -1052,12 +1061,23 @@
 			path = Parsing;
 			sourceTree = "<group>";
 		};
+		28EE1F5C20EE8CE600C5C1D6 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */,
+				28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */,
+				28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		28FB264D20224DE200AEA38D /* Input */ = {
 			isa = PBXGroup;
 			children = (
 				2871951D2022FD14001C237E /* InputsScrollView.swift */,
 				2892E80A208D9B42004E5298 /* InputsScrollView.xib */,
 				287195202022FD87001C237E /* InputsTableViewDataSource.swift */,
+				28EE1F5C20EE8CE600C5C1D6 /* Calendar */,
 				28A283A32038AF9600DDCB63 /* JirassicCmd */,
 				569C4C53202318F50049FBF1 /* Shell */,
 				569C4C56202319120049FBF1 /* Jit */,
@@ -1895,6 +1915,7 @@
 				288BB6812087152B00CF720A /* WizardAppleScriptView.xib in Resources */,
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
 				2892E80B208D9B42004E5298 /* InputsScrollView.xib in Resources */,
+				28EE1F6120EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				2845B13C206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
@@ -1962,6 +1983,7 @@
 				564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */,
 				2845B169206AE468006EFB3B /* FooterCell.xib in Resources */,
 				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
+				28EE1F6220EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2031,6 +2053,7 @@
 				280D712C1ED6043D005D2689 /* Day.swift in Sources */,
 				2892B29B1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
 				280D712D1ED6043D005D2689 /* Report.swift in Sources */,
+				28EE1F6420EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				280D712E1ED6043D005D2689 /* Settings.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
 				287195312025C360001C237E /* CSettings.swift in Sources */,
@@ -2155,6 +2178,7 @@
 				2845B166206AE468006EFB3B /* FooterCell.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				280D719F1ED6043D005D2689 /* SqliteRepository+User.swift in Sources */,
+				28EE1F5E20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
 				280D71A01ED6043D005D2689 /* SqliteRepository+Settings.swift in Sources */,
 				280D71A11ED6043D005D2689 /* SSettings.swift in Sources */,
 				280D71A21ED6043D005D2689 /* STask.swift in Sources */,
@@ -2300,6 +2324,7 @@
 				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
+				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
 				2845B167206AE468006EFB3B /* FooterCell.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
@@ -2314,6 +2339,7 @@
 				56D90CFC20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				565E19D020A5E007003A5E2A /* RCLog.swift in Sources */,
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
+				28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
