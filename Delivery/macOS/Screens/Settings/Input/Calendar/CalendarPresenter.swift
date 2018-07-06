@@ -12,6 +12,8 @@ import Cocoa
 protocol CalendarPresenterInput: class {
     
     func enable (_ enabled: Bool)
+    func enableCalendar (_ calendarTitle: String)
+    func disableCalendar (_ calendarTitle: String)
     func refresh ()
     func authorize()
 }
@@ -21,6 +23,7 @@ protocol CalendarPresenterOutput: class {
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
     func setCalendarStatus (authorized: Bool, enabled: Bool)
+    func setCalendars (_ calendars: [String], selected: [String])
 }
 
 class CalendarPresenter {
@@ -28,7 +31,15 @@ class CalendarPresenter {
     weak var userInterface: CalendarPresenterOutput?
     private let calendarModule = ModuleCalendar()
     private let pref = RCPreferences<LocalPreferences>()
-    
+
+    private var selectedCalendars: [String] {
+        get {
+            return pref.string(.settingsSelectedCalendars).split(separator: ",").map({String($0)})
+        }
+        set {
+            pref.set(newValue.joined(separator: ","), forKey: .settingsSelectedCalendars)
+        }
+    }
 }
 
 extension CalendarPresenter: CalendarPresenterInput {
@@ -36,7 +47,18 @@ extension CalendarPresenter: CalendarPresenterInput {
     func enable (_ enabled: Bool) {
         pref.set(enabled, forKey: .enableCalendar)
     }
-    
+
+    func enableCalendar (_ calendarTitle: String) {
+        var calendars = selectedCalendars
+        calendars.append(calendarTitle)
+        selectedCalendars = calendars
+    }
+
+    func disableCalendar (_ calendarTitle: String) {
+        let calendars = selectedCalendars.filter() { $0 != calendarTitle }
+        selectedCalendars = calendars
+    }
+
     func authorize() {
         calendarModule.authorize { (authorized) in
             DispatchQueue.main.async {
@@ -57,17 +79,6 @@ extension CalendarPresenter: CalendarPresenterInput {
             userInterface!.setStatusText("Calendar.app was not authorized yet")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         }
-    
-//            userInterface.setPaths(wself.localPreferences.string(.settingsGitPaths),
-//                                   enabled: wself.localPreferences.bool(.enableGit))
-//
-//            userInterface.setEmails(wself.localPreferences.string(.settingsGitAuthors),
-//                                    enabled: wself.localPreferences.bool(.enableGit))
-//
-//            userInterface.setButEnable(on: wself.localPreferences.bool(.enableGit),
-//                                       enabled: commandInstalled)
-//
-//            userInterface.setButInstall(enabled: wself.isShellScriptInstalled == false)
-//        })
+        userInterface!.setCalendars(calendarModule.allCalendarsTitles(), selected: selectedCalendars)
     }
 }

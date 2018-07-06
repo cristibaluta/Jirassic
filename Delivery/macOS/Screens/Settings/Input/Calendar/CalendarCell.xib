@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,9 +45,10 @@
                                     <action selector="handleAuthorizeButton:" target="c22-O7-iKe" id="BSd-KR-FGc"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWM-Qg-ewd">
-                                <rect key="frame" x="11" y="79" width="65" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Calendars" id="kAp-st-pbb">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWM-Qg-ewd">
+                                <rect key="frame" x="11" y="79" width="69" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Calendars:" id="kAp-st-pbb">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -71,14 +72,6 @@
                                     <action selector="handleEnableButton:" target="c22-O7-iKe" id="wzF-kw-Tcs"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0k-K3-Qoi">
-                                <rect key="frame" x="206" y="77" width="61" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WeA-Ol-gR7">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="7Et-wb-aOF" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="33" id="9Fc-i0-3re"/>
@@ -87,7 +80,6 @@
                             <constraint firstItem="soa-Mf-B56" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="20" id="I1j-nR-ahD"/>
                             <constraint firstAttribute="trailing" secondItem="U0o-hB-0FO" secondAttribute="trailing" constant="10" id="POF-Sc-fND"/>
                             <constraint firstItem="U0o-hB-0FO" firstAttribute="centerY" secondItem="y1X-Wf-3ng" secondAttribute="centerY" id="S5x-AY-5qS"/>
-                            <constraint firstItem="cWM-Qg-ewd" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="13" id="ZOq-Hd-4XN"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="leading" secondItem="soa-Mf-B56" secondAttribute="trailing" constant="6" id="cxN-iS-Ne9"/>

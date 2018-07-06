@@ -101,7 +101,5 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
         case .calendar:
             return calendarCell!
         }
-        
-        return nil
     }
 }
