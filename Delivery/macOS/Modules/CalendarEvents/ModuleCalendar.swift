@@ -69,9 +69,9 @@ class ModuleCalendar {
                                         startDate: event.startDate,
                                         endDate: event.endDate,
                                         notes: event.title,
-                                        taskNumber: "event",
+                                        taskNumber: "calendar",
                                         taskTitle: event.title,
-                                        taskType: .meeting,
+                                        taskType: .calendar,
                                         objectId: String.random())
                         tasks.append(task)
                     }
