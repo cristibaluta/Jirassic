@@ -130,7 +130,8 @@ extension TasksPresenter: TasksPresenterInput {
             guard let wself = self, let userInterface = wself.userInterface else {
                 return
             }
-            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: calendarTasks)
+            let passedCalendarTasks = calendarTasks.filter({ $0.endDate.compare(Date()) == .orderedAscending })
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: passedCalendarTasks)
 
             wself.reload (with: localTasks)
             userInterface.showLoadingIndicator(false)

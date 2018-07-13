@@ -52,7 +52,7 @@ enum TaskSubtype: Int {
             case .wasteEnd: return "waste"
             case .learningEnd: return "learning"
             case .coderevEnd: return "coderev"
-            case .calendarEnd: return "calendar"
+            case .calendarEnd: return "meeting"
             default: return nil
         }
     }

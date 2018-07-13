@@ -69,7 +69,7 @@ class ModuleCalendar {
                                         startDate: event.startDate,
                                         endDate: event.endDate,
                                         notes: event.title,
-                                        taskNumber: "calendar",
+                                        taskNumber: TaskSubtype.calendarEnd.defaultTaskNumber,
                                         taskTitle: event.title,
                                         taskType: .calendar,
                                         objectId: String.random())
