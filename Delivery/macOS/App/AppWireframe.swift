@@ -65,7 +65,7 @@ class AppWireframe {
         
         controller.appWireframe = self
         controller.presenter = presenter
-        presenter.userInterface = controller
+        presenter.ui = controller
         presenter.appWireframe = self
         
         return controller
