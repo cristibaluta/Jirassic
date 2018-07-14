@@ -20,6 +20,7 @@ protocol CalendarPresenterInput: class {
 
 protocol CalendarPresenterOutput: class {
     
+    func enable (_ enabled: Bool)
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
     func setCalendarStatus (authorized: Bool, enabled: Bool)
@@ -31,32 +32,24 @@ class CalendarPresenter {
     weak var userInterface: CalendarPresenterOutput?
     private let calendarModule = ModuleCalendar()
     private let pref = RCPreferences<LocalPreferences>()
-
-    private var selectedCalendars: [String] {
-        get {
-            return pref.string(.settingsSelectedCalendars).split(separator: ",").map({String($0)})
-        }
-        set {
-            pref.set(newValue.joined(separator: ","), forKey: .settingsSelectedCalendars)
-        }
-    }
 }
 
 extension CalendarPresenter: CalendarPresenterInput {
 
     func enable (_ enabled: Bool) {
         pref.set(enabled, forKey: .enableCalendar)
+        userInterface!.enable(enabled)
     }
 
     func enableCalendar (_ calendarTitle: String) {
-        var calendars = selectedCalendars
+        var calendars = calendarModule.selectedCalendars
         calendars.append(calendarTitle)
-        selectedCalendars = calendars
+        calendarModule.selectedCalendars = calendars
     }
 
     func disableCalendar (_ calendarTitle: String) {
-        let calendars = selectedCalendars.filter() { $0 != calendarTitle }
-        selectedCalendars = calendars
+        let calendars = calendarModule.selectedCalendars.filter() { $0 != calendarTitle }
+        calendarModule.selectedCalendars = calendars
     }
 
     func authorize() {
@@ -72,13 +65,14 @@ extension CalendarPresenter: CalendarPresenterInput {
         if calendarModule.isAuthorizationDetermined {
             
             userInterface!.setStatusImage(calendarModule.isAuthorized ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-            userInterface!.setStatusText(calendarModule.isAuthorized ? "Calendar.app is accessible" : "Calendar.app was not authorized")
+            userInterface!.setStatusText(calendarModule.isAuthorized ? "Calendar.app is accessible" : "Calendar.app can be authorized from System Preferences / Security&Privacy / Privacy / Calendars")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         } else {
             userInterface!.setStatusImage(NSImage.Name.statusUnavailable)
             userInterface!.setStatusText("Calendar.app was not authorized yet")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         }
-        userInterface!.setCalendars(calendarModule.allCalendarsTitles(), selected: selectedCalendars)
+        userInterface!.setCalendars(calendarModule.allCalendarsTitles(), selected: calendarModule.selectedCalendars)
+        userInterface!.enable(pref.bool(.enableCalendar))
     }
 }

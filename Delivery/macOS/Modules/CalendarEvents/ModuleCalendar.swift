@@ -12,14 +12,23 @@ import EventKit
 class ModuleCalendar {
 
     private let eventStore = EKEventStore()
-    private var allowedCalendars: [String] = ["Work", "Calendar"]
-
+    private let pref = RCPreferences<LocalPreferences>()
+    
     var isAuthorizationDetermined: Bool {
         return EKEventStore.authorizationStatus(for: .event) != .notDetermined
     }
     
     var isAuthorized: Bool {
         return EKEventStore.authorizationStatus(for: .event) == .authorized
+    }
+    
+    var selectedCalendars: [String] {
+        get {
+            return pref.string(.settingsSelectedCalendars).split(separator: ",").map({String($0)})
+        }
+        set {
+            pref.set(newValue.joined(separator: ","), forKey: .settingsSelectedCalendars)
+        }
     }
     
     func authorize(_ completion: @escaping (Bool) -> Void) {
@@ -49,22 +58,19 @@ class ModuleCalendar {
         var tasks = [Task]()
 
         authorize { (granted) in
-
+            
             guard granted else {
+                completion([])
                 return
             }
-            let allcalendars = self.allCalendars()
-            for calendar in allcalendars {
-                RCLog(calendar.title)
-                if self.allowedCalendars.contains(calendar.title) {
+            for calendar in self.allCalendars() {
+                
+                if self.selectedCalendars.contains(calendar.title) {
+                    
                     let eventsPredicate = self.eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendar])
                     let events: [EKEvent] = self.eventStore.events(matching: eventsPredicate)
+                    
                     for event in events {
-//                            RCLog(event)
-                        RCLog(event.startDate)
-                        RCLog(event.endDate)
-                        RCLog(event.title)
-
                         let task = Task(lastModifiedDate: nil,
                                         startDate: event.startDate,
                                         endDate: event.endDate,
