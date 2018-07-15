@@ -185,15 +185,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box ambiguous="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-CK-kNW">
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="b3I-CK-kNW">
                                 <rect key="frame" x="97" y="145" width="364" height="114"/>
-                                <view key="contentView" ambiguous="YES" id="YWu-lk-2KH">
+                                <view key="contentView" id="YWu-lk-2KH">
                                     <rect key="frame" x="1" y="1" width="362" height="112"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="364" id="5XS-B5-QlH"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="114" id="aiA-vp-zhY"/>
+                                    <constraint firstAttribute="height" priority="250" constant="114" id="aiA-vp-zhY"/>
                                 </constraints>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LWS-Sc-Yau">
@@ -264,6 +264,7 @@
                     <connections>
                         <outlet property="butSkip" destination="LWS-Sc-Yau" id="7jf-MB-lj7"/>
                         <outlet property="containerView" destination="YWu-lk-2KH" id="5Zd-ED-Y0m"/>
+                        <outlet property="containerViewHeightConstrain" destination="aiA-vp-zhY" id="FkF-jy-JQV"/>
                         <outlet property="levelIndicator" destination="bul-Rz-Luj" id="glc-Bt-tWg"/>
                         <outlet property="subtitleLabel" destination="jEi-lE-OZv" id="azY-kd-UNL"/>
                         <outlet property="titleLabel" destination="cHg-Ny-SMJ" id="9OH-fm-DtA"/>

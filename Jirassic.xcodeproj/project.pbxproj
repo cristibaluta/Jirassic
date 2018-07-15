@@ -237,6 +237,10 @@
 		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
+		287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
+		287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
+		287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
+		287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
 		288BB67E2085252900CF720A /* WizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB67D2085252900CF720A /* WizardViewController.swift */; };
 		288BB67F2085252900CF720A /* WizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB67D2085252900CF720A /* WizardViewController.swift */; };
 		288BB6812087152B00CF720A /* WizardAppleScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288BB6802087152B00CF720A /* WizardAppleScriptView.xib */; };
@@ -598,9 +602,11 @@
 		2871952A20241B25001C237E /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		287195352027CAD9001C237E /* TimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInteractor.swift; sourceTree = "<group>"; };
 		287558461EFE646D009A2503 /* Jirassic 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Jirassic 1.1.xcdatamodel"; sourceTree = "<group>"; };
-		288BB67D2085252900CF720A /* WizardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WizardViewController.swift; path = Welcome/WizardViewController.swift; sourceTree = "<group>"; };
-		288BB6802087152B00CF720A /* WizardAppleScriptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WizardAppleScriptView.xib; path = Welcome/WizardAppleScriptView.xib; sourceTree = "<group>"; };
-		288BB6832087157F00CF720A /* WizardAppleScriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WizardAppleScriptView.swift; path = Welcome/WizardAppleScriptView.swift; sourceTree = "<group>"; };
+		287B358620FBAFC40022F43E /* WizardCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardCalendarView.swift; sourceTree = "<group>"; };
+		287B358920FBAFD60022F43E /* WizardCalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardCalendarView.xib; sourceTree = "<group>"; };
+		288BB67D2085252900CF720A /* WizardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardViewController.swift; sourceTree = "<group>"; };
+		288BB6802087152B00CF720A /* WizardAppleScriptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardAppleScriptView.xib; sourceTree = "<group>"; };
+		288BB6832087157F00CF720A /* WizardAppleScriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardAppleScriptView.swift; sourceTree = "<group>"; };
 		288BB6862087169F00CF720A /* ViewXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewXib.swift; sourceTree = "<group>"; };
 		2892B2971F094A170085BAC2 /* JiraRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRepository.swift; sourceTree = "<group>"; };
 		2892B29A1F094A760085BAC2 /* JiraRepository+Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Reports.swift"; sourceTree = "<group>"; };
@@ -749,7 +755,7 @@
 		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScript.swift; sourceTree = "<group>"; };
 		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
-		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Welcome.storyboard; path = Welcome/Welcome.storyboard; sourceTree = "<group>"; };
+		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		564E55F2202883DB00CE4C76 /* EndDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayViewController.swift; sourceTree = "<group>"; };
 		564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayPresenter.swift; sourceTree = "<group>"; };
@@ -781,10 +787,10 @@
 		569C4C75202319FC0049FBF1 /* GitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GitCell.xib; sourceTree = "<group>"; };
 		569C4C7820231A0B0049FBF1 /* BrowserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowserCell.xib; sourceTree = "<group>"; };
 		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
-		56D90CF720876F1100F24442 /* WizardJiraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WizardJiraView.swift; path = Welcome/WizardJiraView.swift; sourceTree = "<group>"; };
-		56D90CFA20876F2B00F24442 /* WizardGitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WizardGitView.swift; path = Welcome/WizardGitView.swift; sourceTree = "<group>"; };
-		56D90CFD20876F3C00F24442 /* WizardGitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WizardGitView.xib; path = Welcome/WizardGitView.xib; sourceTree = "<group>"; };
-		56D90D0020876F4900F24442 /* WizardJiraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WizardJiraView.xib; path = Welcome/WizardJiraView.xib; sourceTree = "<group>"; };
+		56D90CF720876F1100F24442 /* WizardJiraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardJiraView.swift; sourceTree = "<group>"; };
+		56D90CFA20876F2B00F24442 /* WizardGitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardGitView.swift; sourceTree = "<group>"; };
+		56D90CFD20876F3C00F24442 /* WizardGitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardGitView.xib; sourceTree = "<group>"; };
+		56D90D0020876F4900F24442 /* WizardJiraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardJiraView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1014,6 +1020,23 @@
 				2871952720241A6C001C237E /* TrackingView.xib */,
 			);
 			path = Tracking;
+			sourceTree = "<group>";
+		};
+		287B358520FBAD160022F43E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				288BB67D2085252900CF720A /* WizardViewController.swift */,
+				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
+				288BB6832087157F00CF720A /* WizardAppleScriptView.swift */,
+				288BB6802087152B00CF720A /* WizardAppleScriptView.xib */,
+				56D90CFA20876F2B00F24442 /* WizardGitView.swift */,
+				56D90CFD20876F3C00F24442 /* WizardGitView.xib */,
+				287B358620FBAFC40022F43E /* WizardCalendarView.swift */,
+				287B358920FBAFD60022F43E /* WizardCalendarView.xib */,
+				56D90CF720876F1100F24442 /* WizardJiraView.swift */,
+				56D90D0020876F4900F24442 /* WizardJiraView.xib */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		2892B2961F0949D70085BAC2 /* Jira */ = {
@@ -1413,6 +1436,7 @@
 			children = (
 				28279E9A1E8300E200EAF9FC /* Placeholder */,
 				40FCE42A1DFC3F4F00D4FD45 /* Welcome */,
+				287B358520FBAD160022F43E /* Onboarding */,
 				405B155F1DEF3CE20009871C /* TaskSuggestion */,
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
@@ -1557,14 +1581,6 @@
 			isa = PBXGroup;
 			children = (
 				40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */,
-				288BB67D2085252900CF720A /* WizardViewController.swift */,
-				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
-				288BB6832087157F00CF720A /* WizardAppleScriptView.swift */,
-				288BB6802087152B00CF720A /* WizardAppleScriptView.xib */,
-				56D90CFA20876F2B00F24442 /* WizardGitView.swift */,
-				56D90CFD20876F3C00F24442 /* WizardGitView.xib */,
-				56D90CF720876F1100F24442 /* WizardJiraView.swift */,
-				56D90D0020876F4900F24442 /* WizardJiraView.xib */,
 			);
 			name = Welcome;
 			sourceTree = "<group>";
@@ -1921,6 +1937,7 @@
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
 				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
+				287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
 				56D90CFE20876F3C00F24442 /* WizardGitView.xib in Resources */,
@@ -1966,6 +1983,7 @@
 				2845B13D206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
 				2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */,
+				287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
 				28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
@@ -2203,6 +2221,7 @@
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
 				564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
+				287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 			);
@@ -2371,6 +2390,7 @@
 				564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
 				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
+				287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */,
 				405B15631DEF3F2A0009871C /* TaskSuggestionPresenter.swift in Sources */,
 				4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */,
 				28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */,

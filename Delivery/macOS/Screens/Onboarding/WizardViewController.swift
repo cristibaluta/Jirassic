@@ -12,26 +12,30 @@ enum WizardStep: Int {
     case shell = 0
     case browser = 1
     case git = 2
-    case jira = 3
-    case finished = 4
+    case calendar = 3
+    case jira = 4
+    case finished = 5
 }
 
 class WizardViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
-    @IBOutlet var titleLabel: NSTextField!
-    @IBOutlet var subtitleLabel: NSTextField!
-    @IBOutlet var containerView: NSView!
-    var contentView: NSView?
-    @IBOutlet var butSkip: NSButton!
-    @IBOutlet var levelIndicator: NSLevelIndicator!
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    @IBOutlet private var titleLabel: NSTextField!
+    @IBOutlet private var subtitleLabel: NSTextField!
+    @IBOutlet private var containerView: NSView!
+    @IBOutlet private var containerViewHeightConstrain: NSLayoutConstraint!
+    private var contentView: NSView?
+    @IBOutlet private var butSkip: NSButton!
+    @IBOutlet private var levelIndicator: NSLevelIndicator!
+    private let pref = RCPreferences<LocalPreferences>()
     private var step: WizardStep = WizardStep.shell
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createLayer()
-        if let wizardStep = WizardStep(rawValue: self.localPreferences.int(.wizardStep)) {
+        levelIndicator.maxValue = 5
+        if let wizardStep = WizardStep(rawValue: self.pref.int(.wizardStep)) {
             goTo(step: wizardStep)
         }
     }
@@ -66,6 +70,7 @@ class WizardViewController: NSViewController {
             containerView.addSubview(applescriptView)
             applescriptView.constrainToSuperview()
             contentView = applescriptView
+            containerViewHeightConstrain.constant = 114
             break
         case .browser:
             titleLabel.stringValue = "Browser Support"
@@ -82,6 +87,7 @@ class WizardViewController: NSViewController {
             containerView.addSubview(applescriptView)
             applescriptView.constrainToSuperview()
             contentView = applescriptView
+            containerViewHeightConstrain.constant = 114
             break
         case .git:
             titleLabel.stringValue = "Git"
@@ -95,6 +101,21 @@ class WizardViewController: NSViewController {
             containerView.addSubview(gitView)
             gitView.constrainToSuperview()
             contentView = gitView
+            containerViewHeightConstrain.constant = 114
+            break
+        case .calendar:
+            titleLabel.stringValue = "Calendar.app"
+            subtitleLabel.stringValue = "Includes calendar events in the reports as meetings."
+            let calendarView = WizardCalendarView.instantiateFromXib()
+            calendarView.onSkip = { [weak self] in
+                if let wself = self {
+                    wself.handleNextButton(wself.butSkip)
+                }
+            }
+            containerView.addSubview(calendarView)
+            calendarView.constrainToSuperview()
+            contentView = calendarView
+            containerViewHeightConstrain.constant = 200
             break
         case .jira:
             titleLabel.stringValue = "Jira Tempo"
@@ -108,6 +129,7 @@ class WizardViewController: NSViewController {
             containerView.addSubview(jiraView)
             jiraView.constrainToSuperview()
             contentView = jiraView
+            containerViewHeightConstrain.constant = 114
             butSkip.title = "Finish setup"
             break
         case .finished:
@@ -129,14 +151,14 @@ class WizardViewController: NSViewController {
     @IBAction func handleNextButton (_ sender: NSButton) {
         if let nextStep = WizardStep(rawValue: step.rawValue + 1) {
             goTo(step: nextStep)
-            localPreferences.set(nextStep.rawValue, forKey: .wizardStep)
+            pref.set(nextStep.rawValue, forKey: .wizardStep)
         } else {
             handleSkipButton(sender)
         }
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
-        localPreferences.set(WizardStep.finished.rawValue, forKey: .wizardStep)
+        pref.set(WizardStep.finished.rawValue, forKey: .wizardStep)
         appWireframe!.flipToTasksController()
     }
     

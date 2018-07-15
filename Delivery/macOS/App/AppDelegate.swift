@@ -18,12 +18,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet var window: NSWindow?
     var activePopover: NSPopover?
     var appWireframe = AppWireframe()
-    fileprivate var sleep = SleepNotifications()
-    fileprivate var browser = BrowserNotification()
+    private var sleep = SleepNotifications()
+    private var browser = BrowserNotification()
     let theme = AppTheme()
     let menu = MenuBarController()
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
-    fileprivate var animatesOpen = true
+    private let localPreferences = RCPreferences<LocalPreferences>()
+    private var animatesOpen = true
 	
     class func sharedApp() -> AppDelegate {
         return NSApplication.shared.delegate as! AppDelegate
@@ -207,7 +207,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate {
     
-    fileprivate func presentWelcomePopup() {
+    private func presentWelcomePopup() {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
@@ -216,7 +216,7 @@ extension AppDelegate {
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     
-    fileprivate func presentWizard() {
+    private func presentWizard() {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
@@ -225,7 +225,7 @@ extension AppDelegate {
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     
-    fileprivate func presentTasksPopup (animated: Bool) {
+    private func presentTasksPopup (animated: Bool) {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
@@ -246,7 +246,7 @@ extension AppDelegate {
         }
     }
     
-    fileprivate func presentTaskSuggestionPopup() {
+    private func presentTaskSuggestionPopup() {
         let popover = NSPopover()
         activePopover = popover
         popover.contentViewController = appWireframe.appViewController
