@@ -23,6 +23,7 @@ protocol CalendarPresenterOutput: class {
     func enable (_ enabled: Bool)
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
+    func setDescriptionText (_ text: String)
     func setCalendarStatus (authorized: Bool, enabled: Bool)
     func setCalendars (_ calendars: [String], selected: [String])
 }
@@ -63,9 +64,9 @@ extension CalendarPresenter: CalendarPresenterInput {
     func refresh() {
         
         if calendarModule.isAuthorizationDetermined {
-            
             userInterface!.setStatusImage(calendarModule.isAuthorized ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
-            userInterface!.setStatusText(calendarModule.isAuthorized ? "Calendar.app is accessible" : "Calendar.app can be authorized from System Preferences / Security&Privacy / Privacy / Calendars")
+            userInterface!.setStatusText(calendarModule.isAuthorized ? "Calendar.app is accessible" : "Calendar.app is not authorized")
+            userInterface!.setDescriptionText(calendarModule.isAuthorized ? "Events from the selected calendars will appear in Jirassic as tasks" : "Authorize from: System Preferences / Security&Privacy / Privacy / Calendars")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         } else {
             userInterface!.setStatusImage(NSImage.Name.statusUnavailable)
