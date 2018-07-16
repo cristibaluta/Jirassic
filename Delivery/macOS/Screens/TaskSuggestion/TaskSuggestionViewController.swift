@@ -10,9 +10,9 @@ import Cocoa
 
 class TaskSuggestionViewController: NSViewController {
     
-    @IBOutlet fileprivate weak var segmentedControl: NSSegmentedControl?
-    @IBOutlet fileprivate weak var titleTextField: NSTextField!
-    @IBOutlet fileprivate weak var notesTextField: NSTextField!
+    @IBOutlet private weak var segmentedControl: NSSegmentedControl?
+    @IBOutlet private weak var titleTextField: NSTextField!
+    @IBOutlet private weak var notesTextField: NSTextField!
     
     var presenter: TaskSuggestionPresenterInput?
     var startSleepDate: Date?

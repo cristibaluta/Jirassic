@@ -58,17 +58,14 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
             if !TaskFinder().scrumExists(existingTasks) {
                 return TaskType.scrum
             }
-            break
         case .lunch:
             if !TaskFinder().lunchExists(existingTasks) {
                 return TaskType.lunch
             }
-            break
         case .meeting:
             if settings.settingsTracking.trackMeetings {
                 return TaskType.meeting
             }
-            break
         default:
             return nil
         }

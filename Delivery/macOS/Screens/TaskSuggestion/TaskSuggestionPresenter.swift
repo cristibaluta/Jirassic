@@ -24,10 +24,10 @@ protocol TaskSuggestionPresenterOutput: class {
 class TaskSuggestionPresenter {
     
     weak var userInterface: TaskSuggestionPresenterOutput?
-    fileprivate var isStartOfDay = false
-    fileprivate let startWorkText = "Good morning, ready to start work?"
+    private var isStartOfDay = false
+    private let startWorkText = "Good morning, ready to start work?"
     
-    fileprivate func taskSubtype (forIndex index: Int) -> TaskSubtype {
+    private func taskSubtype (forIndex index: Int) -> TaskSubtype {
         
         switch index {
             case 0: return .scrumEnd
@@ -39,15 +39,15 @@ class TaskSuggestionPresenter {
         }
     }
     
-    fileprivate func selectedSegment (forTaskType taskType: TaskType) -> Int {
+    private func selectedSegment (forTaskType taskType: TaskType) -> Int {
         
         switch taskType {
-        case .scrum: return 0
-        case .meeting: return 1
-        case .lunch: return 2
-        case .waste: return 3
-        case .learning: return 4
-        default: return -1
+            case .scrum: return 0
+            case .meeting: return 1
+            case .lunch: return 2
+            case .waste: return 3
+            case .learning: return 4
+            default: return -1
         }
     }
 }
