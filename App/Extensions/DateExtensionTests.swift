@@ -93,4 +93,23 @@ class DateTests: XCTestCase {
         let date2 = Date(year: 2016, month: 1, day: 10, hour: 0, minute: 30)
         XCTAssertFalse(date1.isSameDayAs(date2))
     }
+    
+    func testIsAlmostSameHour() {
+        var date1 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 00)
+        var date2 = Date(year: 2016, month: 1, day: 9, hour: 11, minute: 50)
+        XCTAssert(date1.isAlmostSameHourAs(date2))
+        
+        date1 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 00)
+        date2 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 10)
+        XCTAssert(date1.isAlmostSameHourAs(date2))
+        
+        date1 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 00)
+        date2 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 11)
+        XCTAssertFalse(date1.isAlmostSameHourAs(date2))
+        
+        date1 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 00)
+        date2 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 1)
+        XCTAssert(date1.isAlmostSameHourAs(date2, devianceSeconds: 60.0))
+        
+    }
 }

@@ -158,6 +158,11 @@ extension Date {
         return NSCalendar.current.isDate(self, inSameDayAs: date)
 	}
     
+    @inline(__always) func isAlmostSameHourAs (_ date: Date, devianceSeconds: Double = 600.0) -> Bool {
+        let timestampDiff = date.timeIntervalSince(self)
+        return abs(timestampDiff) <= devianceSeconds
+    }
+    
     @inline(__always) func isToday() -> Bool {
         return isSameDayAs( Date() )
     }

@@ -10,8 +10,8 @@ import Foundation
 
 class TaskTypeEstimator {
 
-	fileprivate let scrumVariationAllowed = 20.0.minToSec
-	fileprivate let lunchVariationAllowed = 60.0.minToSec
+	private let scrumVariationAllowed = 20.0.minToSec
+	private let lunchVariationAllowed = 60.0.minToSec
 	
     func taskTypeAroundDate (_ date: Date, withSettings settings: Settings) -> TaskType {
 		
@@ -23,11 +23,10 @@ class TaskTypeEstimator {
 		comps.minute = settingsScrumTime.minute
 		comps.second = 0
 		let scrumDate = gregorian.date(from: comps)
-		var timestamp = date.timeIntervalSince(scrumDate!)
 		
-		if abs(timestamp) <= scrumVariationAllowed {
-			return TaskType.scrum
-		}
+        if date.isAlmostSameHourAs(scrumDate!, devianceSeconds: scrumVariationAllowed) {
+            return TaskType.scrum
+        }
 		
 		
         // Check if the date is around lunch break
@@ -37,9 +36,8 @@ class TaskTypeEstimator {
 		comps.minute = settingsLunchTime.minute
 		comps.second = 0
 		let lunchDate = gregorian.date(from: comps)
-		timestamp = date.timeIntervalSince(lunchDate!)
 		
-		if abs(timestamp) <= lunchVariationAllowed {
+		if date.isAlmostSameHourAs(lunchDate!, devianceSeconds: lunchVariationAllowed) {
 			return TaskType.lunch
 		}
         

@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
             guard Date() > startDate else {
-                RCLog(">>>>>>> Date earlier than startDay date, won't analyze further <<<<<<<<")
+                RCLog(">>>>>>> Woke up earlier than the predefined startDay, won't analyze further <<<<<<<<")
                 return
             }
             
