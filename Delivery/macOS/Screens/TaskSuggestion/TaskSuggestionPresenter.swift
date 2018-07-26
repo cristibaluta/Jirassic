@@ -24,10 +24,11 @@ protocol TaskSuggestionPresenterOutput: class {
 class TaskSuggestionPresenter {
     
     weak var userInterface: TaskSuggestionPresenterOutput?
-    fileprivate var isStartOfDay = false
-    fileprivate let startWorkText = "Good morning, ready to start work?"
+    private var isStartOfDay = false
+    private let startWorkText = "Good morning, ready to start work?"
+    private let moduleCalendar = ModuleCalendar()
     
-    fileprivate func taskSubtype (forIndex index: Int) -> TaskSubtype {
+    private func taskSubtype (forIndex index: Int) -> TaskSubtype {
         
         switch index {
             case 0: return .scrumEnd
@@ -39,15 +40,15 @@ class TaskSuggestionPresenter {
         }
     }
     
-    fileprivate func selectedSegment (forTaskType taskType: TaskType) -> Int {
+    private func selectedSegment (forTaskType taskType: TaskType) -> Int {
         
         switch taskType {
-        case .scrum: return 0
-        case .meeting: return 1
-        case .lunch: return 2
-        case .waste: return 3
-        case .learning: return 4
-        default: return -1
+            case .scrum: return 0
+            case .meeting: return 1
+            case .lunch: return 2
+            case .waste: return 3
+            case .learning: return 4
+            default: return -1
         }
     }
 }
@@ -66,7 +67,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         if let startDate = startSleepDate {
             let settings: Settings = SettingsInteractor().getAppSettings()
             let interactor = ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
-            if let type = interactor.estimationForDate(startDate, currentDate: Date()) {
+            if let type = interactor.estimationForDate(startDate, currentDate: endSleepDate ?? Date()) {
                 if type == .startDay {
                     isStartOfDay = true
                     userInterface!.setNotes(startWorkText)
@@ -74,6 +75,19 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                 } else {
                     let index = selectedSegment(forTaskType: type)
                     selectSegment(atIndex: index)
+                    // If selected segment is meeting, try to see if the meeting is a calendar event and populate with that data
+                    if type == .meeting {
+                        moduleCalendar.events(onDate: startDate) { (tasks) in
+                            for task in tasks {
+                                if task.startDate!.isAlmostSameHourAs(startDate) &&
+                                    task.endDate.isAlmostSameHourAs(endSleepDate!, devianceSeconds: 30.0.minToSec) {
+                                    
+                                    self.userInterface!.setNotes(task.notes ?? "")
+                                    break
+                                }
+                            }
+                        }
+                    }
                 }
             }
         } else {

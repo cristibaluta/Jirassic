@@ -40,13 +40,18 @@ class TaskCellPresenter: NSObject {
                 
                 case .coderev:
                     cell.color = NSColor.lightGray
+                    statusImage = nil
                 case .startDay:
                     cell.color = NSColor.orange
+                    statusImage = nil
                 case .endDay:
                     cell.color = NSColor.orange
+                    statusImage = nil
+                case .calendar:
+                    statusImage = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
                 
                 default:
-                    statusImage = NSImage(named: NSImage.Name.statusUnavailable)
+                    statusImage = nil//NSImage(named: NSImage.Name.statusUnavailable)
             }
         } else {
             statusImage = nil

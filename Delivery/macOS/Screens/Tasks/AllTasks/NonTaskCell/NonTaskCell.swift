@@ -9,8 +9,9 @@
 import Cocoa
 
 class NonTaskCell: NSTableRowView, CellProtocol {
-	
-    var statusImage: NSImageView?
+
+    @IBOutlet var statusImage: NSImageView?
+    @IBOutlet fileprivate var statusImageWidthContraint: NSLayoutConstraint!
     @IBOutlet fileprivate var dateStartTextField: TimeBox!
     @IBOutlet fileprivate var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var dateEndTextField: TimeBox!

@@ -21,6 +21,7 @@ enum TaskType: Int {
     case learning = 7
     case coderev = 8
     case endDay = 9
+    case calendar = 10
 }
 
 enum TaskSubtype: Int {
@@ -40,6 +41,8 @@ enum TaskSubtype: Int {
     case learningEnd = 12
 //  case coderevBegin = 13
     case coderevEnd = 14
+//    case calendarBegin = 15
+    case calendarEnd = 16
     
     var defaultTaskNumber: String? {
         switch self {
@@ -49,6 +52,7 @@ enum TaskSubtype: Int {
             case .wasteEnd: return "waste"
             case .learningEnd: return "learning"
             case .coderevEnd: return "coderev"
+            case .calendarEnd: return "meeting"
             default: return nil
         }
     }
@@ -60,6 +64,7 @@ enum TaskSubtype: Int {
             case .wasteEnd: return "Social & Media"
             case .learningEnd: return "Learning time"
             case .coderevEnd: return "Code reviews"
+            case .calendarEnd: return "Calendar event"
             default: return ""
         }
     }
@@ -104,6 +109,7 @@ extension Task {
             case TaskType.waste:    subtype = .wasteEnd
             case TaskType.learning: subtype = .learningEnd
             case TaskType.coderev:  subtype = .coderevEnd
+            case TaskType.calendar: subtype = .calendarEnd
         }
         if let s = subtype {
             self.taskNumber = s.defaultTaskNumber
@@ -127,6 +133,7 @@ extension Task {
             case .wasteEnd:     self.taskType = TaskType.waste
             case .learningEnd:  self.taskType = TaskType.learning
             case .coderevEnd:   self.taskType = TaskType.coderev
+            case .calendarEnd:   self.taskType = TaskType.calendar
 		}
 	}
 }

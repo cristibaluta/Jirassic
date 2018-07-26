@@ -40,6 +40,7 @@ class InputsScrollView: NSScrollView {
         dataSource?.jitCell?.save()
         dataSource?.gitCell?.save()
         dataSource?.browserCell?.save()
+        dataSource?.calendarCell?.save()
     }
     
     func setShellStatus (available: Bool, compatible: Bool) {
