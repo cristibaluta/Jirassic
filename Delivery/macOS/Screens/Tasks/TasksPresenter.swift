@@ -96,12 +96,17 @@ extension TasksPresenter: TasksPresenterInput {
         ui!.showLoadingIndicator(true)
         
         self.fetchLocalTasks(day) {
-        self.fetchGitLogs(day) {
-        self.fetchCalendarEvents(day) {
-            self.displayData (self.currentTasks)
-            self.ui!.showLoadingIndicator(false)
-        }
-        }
+            guard !self.currentTasks.isEmpty else {
+                self.displayTasks (self.currentTasks)
+                self.ui!.showLoadingIndicator(false)
+                return
+            }
+            self.fetchGitLogs(day) {
+            self.fetchCalendarEvents(day) {
+                self.displayTasks (self.currentTasks)
+                self.ui!.showLoadingIndicator(false)
+            }
+            }
         }
     }
     
@@ -161,7 +166,7 @@ extension TasksPresenter: TasksPresenterInput {
         }
     }
     
-    private func displayData (_ tasks: [Task]) {
+    private func displayTasks (_ tasks: [Task]) {
         
         switch selectedListType {
         case .report:
