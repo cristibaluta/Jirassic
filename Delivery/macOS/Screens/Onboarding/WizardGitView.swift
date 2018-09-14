@@ -49,7 +49,9 @@ extension WizardGitView: GitPresenterOutput {
     
     func setStatusImage (_ imageName: NSImage.Name) {}
     func setStatusText (_ text: String) {}
+    func setDescriptionText (_ text: String) {}
     func setButInstall (enabled: Bool) {}
+    func setButPurchase(enabled: Bool) {}
     func setButEnable (on: Bool?, enabled: Bool?) {}
     func setPaths (_ paths: String?, enabled: Bool?) {
         if let paths = paths {

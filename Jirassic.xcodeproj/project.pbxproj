@@ -152,6 +152,10 @@
 		280D71C81ED608D6005D2689 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
 		280D71C91ED60908005D2689 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
 		280F507D1EC868B0007416AB /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
+		2812F61E2145031B008EE81E /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812F61C2145031A008EE81E /* IAPHelper.swift */; };
+		2812F61F2145031B008EE81E /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812F61C2145031A008EE81E /* IAPHelper.swift */; };
+		2812F6202145031B008EE81E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812F61D2145031A008EE81E /* Store.swift */; };
+		2812F6212145031B008EE81E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812F61D2145031A008EE81E /* Store.swift */; };
 		2823C9351E4F69970055D036 /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823C9341E4F69970055D036 /* Versioning.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
 		284192D72018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
@@ -559,6 +563,8 @@
 		280D71BA1ED60677005D2689 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInstallerInteractor.swift; sourceTree = "<group>"; };
 		280F507C1EC868B0007416AB /* StringArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArray.swift; sourceTree = "<group>"; };
+		2812F61C2145031A008EE81E /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		2812F61D2145031A008EE81E /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
@@ -861,6 +867,15 @@
 				280300D51EDB5ECA000A763E /* StatisticsInteractor.swift */,
 			);
 			name = Statistics;
+			sourceTree = "<group>";
+		};
+		2812F61B2145031A008EE81E /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				2812F61C2145031A008EE81E /* IAPHelper.swift */,
+				2812F61D2145031A008EE81E /* Store.swift */,
+			);
+			path = IAP;
 			sourceTree = "<group>";
 		};
 		28279E9A1E8300E200EAF9FC /* Placeholder */ = {
@@ -1374,6 +1389,7 @@
 		4065D3501DD3B44200B73201 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				2812F61B2145031A008EE81E /* IAP */,
 				4065D3531DD3B44200B73201 /* App */,
 				4065D3641DD3B44200B73201 /* Menu */,
 				4065D3511DD3B44200B73201 /* Animations */,
@@ -2093,6 +2109,7 @@
 				2871952B20241B25001C237E /* TrackingView.swift in Sources */,
 				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
+				2812F61E2145031B008EE81E /* IAPHelper.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
@@ -2140,6 +2157,7 @@
 				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
 				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
+				2812F6202145031B008EE81E /* Store.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
@@ -2267,6 +2285,7 @@
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */,
 				28013890205F86460051B532 /* TimeBox.swift in Sources */,
+				2812F6212145031B008EE81E /* Store.swift in Sources */,
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
@@ -2280,6 +2299,7 @@
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
+				2812F61F2145031B008EE81E /* IAPHelper.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
 				28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,

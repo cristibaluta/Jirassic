@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,13 +97,23 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U0o-hB-0FO">
-                                <rect key="frame" x="414" y="144" width="60" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Enabled" alternateTitle="Disabled" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a8i-lq-vV3">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
+                                <rect key="frame" x="10" y="145" width="22" height="18"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="a8i-lq-vV3">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleEnableButton:" target="c22-O7-iKe" id="wci-nY-phu"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4bE-gv-9uR">
+                                <rect key="frame" x="407" y="144" width="67" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Purchase" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pkq-VQ-bKH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handlePurchaseButton:" target="c22-O7-iKe" id="Erb-Du-E6I"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -116,9 +125,9 @@
                             <constraint firstAttribute="trailing" secondItem="ndj-0G-pnP" secondAttribute="trailing" constant="10" id="Jj0-Zd-wvr"/>
                             <constraint firstItem="Teq-Pe-PXu" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="105" id="MzN-47-ObN"/>
                             <constraint firstItem="ndj-0G-pnP" firstAttribute="centerY" secondItem="pe2-mX-fgI" secondAttribute="centerY" id="OBS-s1-lZA"/>
-                            <constraint firstAttribute="trailing" secondItem="U0o-hB-0FO" secondAttribute="trailing" constant="10" id="POF-Sc-fND"/>
                             <constraint firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" constant="10" id="QKJ-yE-dBF"/>
                             <constraint firstItem="U0o-hB-0FO" firstAttribute="centerY" secondItem="y1X-Wf-3ng" secondAttribute="centerY" id="S5x-AY-5qS"/>
+                            <constraint firstItem="U0o-hB-0FO" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="12" id="UXE-Z0-hnh"/>
                             <constraint firstItem="PbW-vi-SiM" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="13" id="Xqf-UW-0Yb"/>
                             <constraint firstItem="cWM-Qg-ewd" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="13" id="ZOq-Hd-4XN"/>
                             <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="7Et-wb-aOF" secondAttribute="bottom" constant="15" id="aS4-Fs-9Vw"/>
@@ -126,8 +135,10 @@
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
                             <constraint firstItem="pe2-mX-fgI" firstAttribute="leading" secondItem="Teq-Pe-PXu" secondAttribute="leading" id="cUM-b9-bvW"/>
                             <constraint firstItem="UaJ-WV-hc1" firstAttribute="leading" secondItem="soa-Mf-B56" secondAttribute="trailing" constant="6" id="cxN-iS-Ne9"/>
+                            <constraint firstItem="4bE-gv-9uR" firstAttribute="trailing" secondItem="y1X-Wf-3ng" secondAttribute="trailing" id="dA0-2s-PpL"/>
                             <constraint firstAttribute="trailing" secondItem="y1X-Wf-3ng" secondAttribute="trailing" constant="10" id="dRf-Za-uMg"/>
                             <constraint firstItem="cWM-Qg-ewd" firstAttribute="centerY" secondItem="Teq-Pe-PXu" secondAttribute="centerY" id="hPf-oh-FLx"/>
+                            <constraint firstItem="4bE-gv-9uR" firstAttribute="centerY" secondItem="y1X-Wf-3ng" secondAttribute="centerY" id="iNC-NR-qmb"/>
                             <constraint firstItem="PbW-vi-SiM" firstAttribute="centerY" secondItem="pe2-mX-fgI" secondAttribute="centerY" id="jCo-aS-WaG"/>
                             <constraint firstItem="pe2-mX-fgI" firstAttribute="top" secondItem="Teq-Pe-PXu" secondAttribute="bottom" constant="15" id="kxT-OC-8sg"/>
                             <constraint firstItem="ndj-0G-pnP" firstAttribute="leading" secondItem="pe2-mX-fgI" secondAttribute="trailing" constant="8" id="ug3-c4-5fq"/>
@@ -146,6 +157,8 @@
                 <outlet property="butEnable" destination="U0o-hB-0FO" id="ffr-bV-tCg"/>
                 <outlet property="butInstall" destination="y1X-Wf-3ng" id="65a-Gm-QVx"/>
                 <outlet property="butPick" destination="ndj-0G-pnP" id="GFu-eK-WbP"/>
+                <outlet property="butPurchase" destination="4bE-gv-9uR" id="Dhw-n1-Krs"/>
+                <outlet property="descriptionTextField" destination="7Et-wb-aOF" id="gUa-u0-loh"/>
                 <outlet property="emailsTextField" destination="Teq-Pe-PXu" id="KBh-qB-qXs"/>
                 <outlet property="pathsTextField" destination="pe2-mX-fgI" id="Dkm-JH-rZc"/>
                 <outlet property="statusImageView" destination="soa-Mf-B56" id="RNd-RY-fIT"/>

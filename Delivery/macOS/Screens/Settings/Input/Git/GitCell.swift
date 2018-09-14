@@ -12,13 +12,15 @@ class GitCell: NSTableRowView, Saveable {
 
     static let height = CGFloat(195)
     
-    @IBOutlet fileprivate var statusImageView: NSImageView!
-    @IBOutlet fileprivate var butEnable: NSButton!
-    @IBOutlet fileprivate var statusTextField: NSTextField!
-    @IBOutlet fileprivate var emailsTextField: NSTextField!
-    @IBOutlet fileprivate var pathsTextField: NSTextField!
-    @IBOutlet fileprivate var butInstall: NSButton!
-    @IBOutlet fileprivate var butPick: NSButton!
+    @IBOutlet private var statusImageView: NSImageView!
+    @IBOutlet private var butEnable: NSButton!
+    @IBOutlet private var statusTextField: NSTextField!
+    @IBOutlet private var descriptionTextField: NSTextField!
+    @IBOutlet private var emailsTextField: NSTextField!
+    @IBOutlet private var pathsTextField: NSTextField!
+    @IBOutlet private var butInstall: NSButton!
+    @IBOutlet private var butPurchase: NSButton!
+    @IBOutlet private var butPick: NSButton!
 
     var presenter: GitPresenterInput = GitPresenter()
 
@@ -26,6 +28,7 @@ class GitCell: NSTableRowView, Saveable {
         super.awakeFromNib()
         (presenter as! GitPresenter).userInterface = self
         butEnable.isHidden = true
+        butPurchase.isHidden = true
         emailsTextField.delegate = self
         pathsTextField.delegate = self
     }
@@ -40,6 +43,10 @@ class GitCell: NSTableRowView, Saveable {
         #else
             NSWorkspace.shared.open( URL(string: "https://github.com/ralcr/Jit")!)
         #endif
+    }
+    
+    @IBAction func handlePurchaseButton (_ sender: NSButton) {
+        presenter.purchase()
     }
     
     @IBAction func handleEnableButton (_ sender: NSButton) {
@@ -66,18 +73,20 @@ extension GitCell: GitPresenterOutput {
     func setStatusText (_ text: String) {
         statusTextField.stringValue = text
     }
+    func setDescriptionText (_ text: String) {
+        descriptionTextField.stringValue = text
+    }
     func setButInstall (enabled: Bool) {
         butInstall.isHidden = !enabled
-        butEnable.isHidden = enabled
+    }
+    func setButPurchase (enabled: Bool) {
+        butPurchase.isHidden = !enabled
     }
     func setButEnable (on: Bool?, enabled: Bool?) {
         if let isOn = on {
-            butEnable.title = isOn ? "Enabled" : "Disabled"
             butEnable.state = isOn ? .on : .off
         }
-        if let enabled = enabled {
-            butEnable.isEnabled = enabled
-        }
+        butEnable.isHidden = enabled == false
     }
     func setPaths (_ paths: String?, enabled: Bool?) {
         if let paths = paths {

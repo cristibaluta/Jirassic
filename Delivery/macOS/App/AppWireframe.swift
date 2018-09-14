@@ -125,7 +125,7 @@ extension AppWireframe {
 	func showPopover (_ popover: NSPopover, fromIcon icon: NSView) {
 		let edge = NSRectEdge.minY
 		let rect = icon.frame
-		popover.show(relativeTo: rect, of: icon, preferredEdge: edge);
+		popover.show(relativeTo: rect, of: icon, preferredEdge: edge)
 	}
 	
 	func hidePopover (_ popover: NSPopover) {

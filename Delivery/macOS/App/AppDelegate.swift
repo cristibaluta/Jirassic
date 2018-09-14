@@ -42,6 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        localPreferences.set(false, forKey: .enableGit)
         #endif
         
+        self.window?.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
+        
         localRepository = SqliteRepository()
         #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {
