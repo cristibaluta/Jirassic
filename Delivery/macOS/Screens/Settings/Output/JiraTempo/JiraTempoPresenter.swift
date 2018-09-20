@@ -58,7 +58,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
         userInterface!.enableProgressIndicator(true)
         userInterface!.showErrorMessage("")
         
-        moduleJira.fetchProjects { [weak self] (projects) in
+        moduleJira.fetchProjects(success: { [weak self] (projects) in
             
             DispatchQueue.main.async {
                 
@@ -67,10 +67,6 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
                 }
                 userInterface.enableProgressIndicator(false)
                 
-                guard let projects = projects else {
-                    userInterface.showErrorMessage("Error: Wrong credentials or server not reachable.")
-                    return
-                }
                 let titles = projects.map { $0.key }
                 let selectedProjectKey = wself.localPreferences.string(.settingsJiraProjectKey)
                 
@@ -79,7 +75,19 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
                     wself.loadProjectIssues(for: selectedProjectKey)
                 }
             }
-        }
+            
+        }, failure: { [weak self] (error) in
+            
+            DispatchQueue.main.async {
+                
+                guard let wself = self, let userInterface = wself.userInterface else {
+                    return
+                }
+                userInterface.enableProgressIndicator(false)
+                userInterface.showErrorMessage("Error: \(error._code == -1001 ? "Server not reachable." : error.localizedDescription)")
+            }
+            
+        })
     }
     
     func loadProjectIssues (for projectKey: String) {

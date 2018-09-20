@@ -12,7 +12,7 @@ extension JiraRepository {
     
     // GET https://.../rest/api/2/project
     // Returns an array of projects
-    func fetchProjects (completion: @escaping (([JProject]?) -> Void)) {
+    func fetchProjects (success: @escaping ([JProject]) -> Void, failure: @escaping (Error) -> Void) {
         
         let path = "rest/api/2/project"
         request?.get(at: path, success: { (response) in
@@ -27,10 +27,10 @@ extension JiraRepository {
                     jprojects.append(jproject)
                 }
             }
-            completion(jprojects)
+            success(jprojects)
             
         }, failure: { (err) in
-            completion(nil)
+            failure(err)
         })
     }
     

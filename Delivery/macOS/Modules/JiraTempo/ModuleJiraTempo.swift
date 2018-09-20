@@ -26,8 +26,8 @@ class ModuleJiraTempo {
                                     password: Keychain.getPassword())
     }
     
-    func fetchProjects (completion: @escaping (([JProject]?) -> Void)) {
-        repository.fetchProjects(completion: completion)
+    func fetchProjects (success: @escaping ([JProject]) -> Void, failure: @escaping (Error) -> Void) {
+        repository.fetchProjects(success: success, failure: failure)
     }
     
     func fetchProjectIssues (projectKey: String, completion: @escaping (([JProjectIssue]?) -> Void)) {
