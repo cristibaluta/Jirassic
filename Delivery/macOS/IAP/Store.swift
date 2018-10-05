@@ -32,6 +32,7 @@ class Store {
     }
     
     var isGitPurchased: Bool {
+        return true
         return localPref.bool(.full) || localPref.bool(.git)
     }
     

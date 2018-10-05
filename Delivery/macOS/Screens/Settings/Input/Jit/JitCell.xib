@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,6 +26,17 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="fIl-5O-cqT"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-Sa-Pob">
+                                <rect key="frame" x="8" y="85" width="22" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Zgx-ob-TCr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleEnableButton:" target="c22-O7-iKe" id="qMu-c7-3zZ"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-lx-omh">
                                 <rect key="frame" x="30" y="86" width="99" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking jit CLI" id="3lc-gE-RWN">
@@ -78,6 +87,7 @@
                 <constraint firstItem="LH9-Gr-LTu" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="VzY-Un-Lg4"/>
             </constraints>
             <connections>
+                <outlet property="butEnable" destination="5pv-Sa-Pob" id="0Ft-4p-NBx"/>
                 <outlet property="butInstall" destination="ZYg-1V-a4C" id="Whq-ZH-cbb"/>
                 <outlet property="statusImageView" destination="J2T-Jl-X5Z" id="dsS-tK-EW3"/>
                 <outlet property="textField" destination="6xF-lx-omh" id="XcO-Rt-Ksk"/>

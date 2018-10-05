@@ -10,8 +10,14 @@ import Foundation
 
 class NewTaskCommand: NSScriptCommand {
     
+    let pref = RCPreferences<LocalPreferences>()
+    
     override func execute() -> Any? {
         
+        guard pref.bool(.enableJit) else {
+            RCLogErrorO("Jit is not enabled.")
+            return nil
+        }
         guard let json = arguments?[""] as? String else {
             RCLogErrorO("Invalid argument")
             return nil

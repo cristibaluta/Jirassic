@@ -12,15 +12,17 @@ class JitCell: NSTableRowView {
 
     static let height = CGFloat(135)
     
-    @IBOutlet fileprivate var statusImageView: NSImageView!
-    @IBOutlet fileprivate var textField: NSTextField!
-    @IBOutlet fileprivate var butInstall: NSButton!
+    @IBOutlet private var statusImageView: NSImageView!
+    @IBOutlet private var textField: NSTextField!
+    @IBOutlet private var butInstall: NSButton!
+    @IBOutlet private var butEnable: NSButton!
 
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private let prefs = RCPreferences<LocalPreferences>()
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        butEnable.isHidden = true
+        statusImageView.isHidden = false
     }
 
     func save() {
@@ -37,11 +39,15 @@ class JitCell: NSTableRowView {
             textField.stringValue = compatible
                 ? "Installed, run 'jit' in Terminal for more info"
                 : "Jit is outdated or not installed, please install the latest version!"
+            
+            butEnable.state = prefs.bool(.enableJit) ? .on : .off
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             textField.stringValue = "Cannot determine Jit compatibility, install shell support first!"
         }
         butInstall.isHidden = available && compatible
+        butEnable.isHidden = !(available && compatible)
+        statusImageView.isHidden = available && compatible
     }
 
     @IBAction func handleInstallButton (_ sender: NSButton) {
@@ -51,6 +57,10 @@ class JitCell: NSTableRowView {
             //            presenter?.installJit()
             NSWorkspace.shared.open( URL(string: "https://github.com/ralcr/Jit")!)
         #endif
+    }
+    
+    @IBAction func handleEnableButton (_ sender: NSButton) {
+        prefs.set(sender.state == .on, forKey: .enableJit)
     }
 }
 
