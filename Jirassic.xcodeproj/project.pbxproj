@@ -201,6 +201,9 @@
 		2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
 		2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
 		2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B154206AE467006EFB3B /* TaskCellTests.swift */; };
+		285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
+		285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
+		285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -590,6 +593,7 @@
 		2845B15A206AE467006EFB3B /* FooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
 		2845B15C206AE467006EFB3B /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
 		2845B15D206AE467006EFB3B /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
+		285465A1216C84E10052CB6A /* CreateMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReport.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -1314,6 +1318,7 @@
 			children = (
 				4065D32B1DD3B44200B73201 /* CreateReport.swift */,
 				4065D32C1DD3B44200B73201 /* CreateReportTests.swift */,
+				285465A1216C84E10052CB6A /* CreateMonthReport.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -2117,6 +2122,7 @@
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
+				285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
 				56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */,
 				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
@@ -2348,6 +2354,7 @@
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
+				285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
 				4065D3D71DD3B44200B73201 /* MenuBarIconView.swift in Sources */,
 				28A283A020385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
@@ -2452,6 +2459,7 @@
 				28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				28577EAE1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28A9287B1E8FC9B90022AB55 /* CreateReport.swift in Sources */,
+				285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
 				4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */,
 				28A928881E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				4065D4321DD457B500B73201 /* Conversions.swift in Sources */,
