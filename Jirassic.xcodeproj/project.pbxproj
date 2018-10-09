@@ -483,6 +483,7 @@
 		569C4C7920231A0B0049FBF1 /* BrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C7820231A0B0049FBF1 /* BrowserCell.xib */; };
 		569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C7820231A0B0049FBF1 /* BrowserCell.xib */; };
 		56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */; };
+		56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */; };
 		56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D90CF720876F1100F24442 /* WizardJiraView.swift */; };
 		56D90CF920876F1100F24442 /* WizardJiraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D90CF720876F1100F24442 /* WizardJiraView.swift */; };
 		56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D90CFA20876F2B00F24442 /* WizardGitView.swift */; };
@@ -797,6 +798,7 @@
 		569C4C75202319FC0049FBF1 /* GitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GitCell.xib; sourceTree = "<group>"; };
 		569C4C7820231A0B0049FBF1 /* BrowserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowserCell.xib; sourceTree = "<group>"; };
 		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
+		56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReportTests.swift; sourceTree = "<group>"; };
 		56D90CF720876F1100F24442 /* WizardJiraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardJiraView.swift; sourceTree = "<group>"; };
 		56D90CFA20876F2B00F24442 /* WizardGitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardGitView.swift; sourceTree = "<group>"; };
 		56D90CFD20876F3C00F24442 /* WizardGitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardGitView.xib; sourceTree = "<group>"; };
@@ -1319,6 +1321,7 @@
 				4065D32B1DD3B44200B73201 /* CreateReport.swift */,
 				4065D32C1DD3B44200B73201 /* CreateReportTests.swift */,
 				285465A1216C84E10052CB6A /* CreateMonthReport.swift */,
+				56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -2431,6 +2434,7 @@
 			files = (
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
 				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
+				56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */,
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */,

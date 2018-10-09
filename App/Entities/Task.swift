@@ -133,7 +133,7 @@ extension Task {
             case .wasteEnd:     self.taskType = TaskType.waste
             case .learningEnd:  self.taskType = TaskType.learning
             case .coderevEnd:   self.taskType = TaskType.coderev
-            case .calendarEnd:   self.taskType = TaskType.calendar
+            case .calendarEnd:  self.taskType = TaskType.calendar
 		}
 	}
 }
