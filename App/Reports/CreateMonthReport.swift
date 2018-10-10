@@ -10,7 +10,8 @@ import Foundation
 
 class CreateMonthReport {
 
-    let createReport = CreateReport()
+    private let createReport = CreateReport()
+
     /// Returns reports collected from all days in the month
     /// @parameters
     /// tasks - All tasks in a month
@@ -21,31 +22,45 @@ class CreateMonthReport {
         }
 
         // Group tasks by days
-        var days = [[Task]]()
+        var tasksByDay = [[Task]]()
         for task in tasks {
             var t = [Task]()
             if referenceDate.isSameDayAs(task.endDate) {
                 t.append(task)
             } else {
                 referenceDate = task.endDate
-                days.append(t)
+                tasksByDay.append(t)
                 t = []
                 t.append(task)
             }
         }
 
         // Iterate over days and create reports
-        var dayReports = [[Report]]()
-        for day in days {
-            let r = createReport.reports(fromTasks: day, targetHoursInDay: targetHoursInDay)
-            dayReports.append(r)
+        var reportsByDay = [[Report]]()
+        for tasks in tasksByDay {
+            let report = createReport.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+            reportsByDay.append(report)
         }
 
-        var reports = [Report]()
-        for day in dayReports {
-
+        // Group reports by task number
+        // Acumulate durations
+        // Do not add notes
+        var reportsByTaskNumber = [String: Report]()
+        for day in reportsByDay {
+            for report in day {
+                var r = reportsByTaskNumber[report.taskNumber]
+                if r == nil {
+                    reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
+                                                                    title: report.title,
+                                                                    notes: "",
+                                                                    duration: report.duration)
+                } else {
+                    r?.duration += report.duration
+                    reportsByTaskNumber[report.taskNumber] = r
+                }
+            }
         }
 
-        return reports
+        return Array(reportsByTaskNumber.values)
     }
 }
