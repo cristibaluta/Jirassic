@@ -23,15 +23,18 @@ class CreateMonthReport {
 
         // Group tasks by days
         var tasksByDay = [[Task]]()
+        var tasksInDay = [Task]()
         for task in tasks {
-            var t = [Task]()
             if referenceDate.isSameDayAs(task.endDate) {
-                t.append(task)
+                tasksInDay.append(task)
             } else {
+                tasksByDay.append(tasksInDay)
+                tasksInDay = []
+                tasksInDay.append(task)
                 referenceDate = task.endDate
-                tasksByDay.append(t)
-                t = []
-                t.append(task)
+            }
+            if task.objectId == tasks.last?.objectId {
+                tasksByDay.append(tasksInDay)
             }
         }
 
