@@ -50,6 +50,7 @@ class CreateMonthReport {
         // Do not add notes
         var reportsByTaskNumber = [String: Report]()
         for day in reportsByDay {
+//            print(day)
             for report in day {
                 var r = reportsByTaskNumber[report.taskNumber]
                 if r == nil {

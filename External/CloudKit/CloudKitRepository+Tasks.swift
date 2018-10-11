@@ -10,7 +10,11 @@ import Foundation
 import CloudKit
 
 extension CloudKitRepository: RepositoryTasks {
-    
+
+    func queryTasks (startDate: Date, endDate: Date) -> [Task] {
+        return []
+    }
+
     func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
         let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", startDate as CVarArg, endDate as CVarArg)
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in

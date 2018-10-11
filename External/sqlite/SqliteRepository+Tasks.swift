@@ -9,11 +9,17 @@
 import Foundation
 
 extension SqliteRepository: RepositoryTasks {
-    
+
+    func queryTasks (startDate: Date, endDate: Date) -> [Task] {
+
+        let tasks = self.tasksBetween (startDate: startDate, endDate: endDate)
+        return tasks
+    }
+
     func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
 
         queue.async {
-            let tasks = self.tasksBetween (startDate: startDate, endDate: endDate)
+            let tasks = self.queryTasks (startDate: startDate, endDate: endDate)
             completion(tasks, nil)
         }
     }

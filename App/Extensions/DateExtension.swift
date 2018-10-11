@@ -259,16 +259,13 @@ extension Date {
         
         return dates;
     }
-    
+
     func startOfMonth() -> Date {
-        
-        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
-        comps.day = 1
-        comps.hour = 0
-        comps.minute = 0
-        comps.second = 0
-        
-        return gregorian.date(from: comps)!
+        return gregorian.date(from: gregorian.dateComponents([.year, .month], from: gregorian.startOfDay(for: self)))!
+    }
+
+    func endOfMonth() -> Date {
+        return gregorian.date(byAdding: DateComponents(month: 1, day: -1, hour: 23, minute: 59, second: 59), to: self.startOfMonth())!
     }
 }
 

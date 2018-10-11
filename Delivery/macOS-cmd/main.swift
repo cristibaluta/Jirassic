@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.04.25"
+let appVersion = "18.10.11"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -62,6 +62,8 @@ let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: 
 var arguments = ProcessInfo.processInfo.arguments
 //arguments.append("list")
 //arguments.append("2017.03.01")
+//arguments.append("reports")
+//arguments.append("2018.07")
 //print(arguments)
 
 arguments.remove(at: 0)// First arg is the filepath and needs to be removed
@@ -96,7 +98,7 @@ func list (dayOnDate date: Date) {
     print("")
 }
 
-func reports (dayOnDate date: Date) {
+func reports (forDay date: Date) {
     
     print("")
     let tasks = reader.tasksInDay(date)
@@ -111,6 +113,26 @@ func reports (dayOnDate date: Date) {
             print(report.notes)
             print("")
         }
+    } else {
+        print("No tasks!")
+    }
+    print("")
+}
+
+func reports (forMonth date: Date) {
+
+    print("")
+    let tasks = reader.tasksInMonth(date)
+    let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: 8*3600)
+    var totalDuration = 0.0
+    if reports.count > 0 {
+        for report in reports {
+            let duration = Date(timeIntervalSince1970: report.duration).HHmmGMT()
+            totalDuration += report.duration
+            print(report.taskNumber + report.title + " (" + duration + ")")
+            print("")
+        }
+        print("Total duration: \(totalDuration) \(Date(timeIntervalSince1970: totalDuration).HHmmGMT())")
     } else {
         print("No tasks!")
     }
@@ -228,9 +250,17 @@ if let command = Command(rawValue: commandStr) {
             var date = Date()
             if arguments.count > 0 {
                 let arg = arguments.remove(at: 0)
-                date = Date(YYYYMMddString: arg)
+                if arg.components(separatedBy: ".").count == 2 {
+                    // We have only year and month. Add a day and call the month reports
+                    date = Date(YYYYMMddString: "\(arg).01")
+                    reports (forMonth: date)
+                    break
+                } else if arg.components(separatedBy: ".").count == 3 {
+                    // We have year, month and day
+                    date = Date(YYYYMMddString: arg)
+                }
             }
-            reports (dayOnDate: date)
+            reports (forDay: date)
             break
         case .insert:
             insertIssue (arguments: arguments)
