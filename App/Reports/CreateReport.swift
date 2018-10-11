@@ -29,7 +29,7 @@ class CreateReport {
 
 extension CreateReport {
     
-    private func splitOverlappingTasks (_ tasks: [Task]) -> [Task] {
+    fileprivate func splitOverlappingTasks (_ tasks: [Task]) -> [Task] {
         
         var arr = [Task]()
         var task = tasks.first!
@@ -57,7 +57,7 @@ extension CreateReport {
         return arr
     }
     
-    private func removeUntrackableTasks (_ tasks: [Task]) -> [Task] {
+    fileprivate func removeUntrackableTasks (_ tasks: [Task]) -> [Task] {
         
         var arr = [Task]()
         var untrackedDuration = 0.0
@@ -76,7 +76,7 @@ extension CreateReport {
         return arr
     }
     
-    private func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double?) -> [Task] {
+    fileprivate func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double?) -> [Task] {
         
         // How many tasks should be adjusted
         let numberOfTasksToAdjust = tasks.filter({ isRoundingAllowed(taskType: $0.taskType) }).count
@@ -123,7 +123,7 @@ extension CreateReport {
         return roundedTasks
     }
     
-    private func groupByTaskNumber (_ tasks: [Task]) -> (groups: [String: [Task]], order: [String]) {
+    fileprivate func groupByTaskNumber (_ tasks: [Task]) -> (groups: [String: [Task]], order: [String]) {
         
         var order = [String]()
         var groups = [String: [Task]]()
@@ -149,7 +149,7 @@ extension CreateReport {
         return (groups: groups, order: order)
     }
     
-    private func reportsFromGroups (_ groups: [String: [Task]]) -> [Report] {
+    fileprivate func reportsFromGroups (_ groups: [String: [Task]]) -> [Report] {
         
         var reportsMap = [String: Report]()
         
@@ -194,7 +194,7 @@ extension CreateReport {
         return Array(reportsMap.values)
 	}
     
-    private func sortReports (_ reports: [Report], withOrder order: [String]) -> [Report] {
+    fileprivate func sortReports (_ reports: [Report], withOrder order: [String]) -> [Report] {
         
         var orderedReports = [Report]()
         
@@ -215,21 +215,21 @@ extension CreateReport {
 
 extension CreateReport {
     
-    private func isTrackingAllowed (taskType: TaskType) -> Bool {
+    fileprivate func isTrackingAllowed (taskType: TaskType) -> Bool {
         switch taskType {
             case .lunch, .waste: return false
             default: return true
         }
     }
     
-    private func isRoundingAllowed (taskType: TaskType) -> Bool {
+    fileprivate func isRoundingAllowed (taskType: TaskType) -> Bool {
         switch taskType {
             case .startDay, .scrum, .meeting, .learning: return false
             default: return true
         }
     }
     
-    private func isDisplayingAllowed (taskType: TaskType) -> Bool {
+    fileprivate func isDisplayingAllowed (taskType: TaskType) -> Bool {
         return taskType != .startDay
     }
 }

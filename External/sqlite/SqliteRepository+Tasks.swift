@@ -33,8 +33,10 @@ extension SqliteRepository: RepositoryTasks {
     }
     
     func queryUnsyncedTasks() -> [Task] {
-        
+
+        #if !CMD
         RCLogO("Query tasks since last sync date \(String(describing: UserDefaults.standard.localChangeDate))")
+        #endif
         var sinceDatePredicate = ""
         if let sinceDate = UserDefaults.standard.localChangeDate {
             sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmssGMT())')"

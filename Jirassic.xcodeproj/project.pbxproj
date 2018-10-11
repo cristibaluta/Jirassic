@@ -2885,7 +2885,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/Realm",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"CMD=1",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
+				OTHER_SWIFT_FLAGS = "-D CMD";
 				PRODUCT_NAME = jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -2900,7 +2906,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/Realm",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "CMD=1";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
+				OTHER_SWIFT_FLAGS = "-D CMD";
 				PRODUCT_NAME = jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
