@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.10.11"
+let appVersion = "18.10.12"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -35,10 +35,10 @@ func printHelp() {
     print("jirassic \(appVersion) - (c)2018 Imagin soft")
     print("")
     print("Usage:")
-    print("     list [yyyy.mm.dd] If date is missing list tasks from today")
-    print("     reports [yyyy.mm.dd] [-no-round] If date is missing list reports from today")
+    print("     list [yyyy.mm.dd]  If date is missing list tasks from today")
+    print("     reports [yyyy.mm.dd|yyyy.mm] [hours per day]  If date is missing, list reports from today")
     print("     insert -nr <task number> -notes <notes> -duration <mm>")
-    print("     [scrum, lunch, meeting, waste, learning, coderev] <duration>  Duration in minutes")
+    print("     scrum|lunch|meeting|waste|learning|coderev <duration>  Duration in minutes")
     print("")
 }
 
@@ -64,6 +64,7 @@ var arguments = ProcessInfo.processInfo.arguments
 //arguments.append("2017.03.01")
 //arguments.append("reports")
 //arguments.append("2018.07")
+//arguments.append("6")
 //print(arguments)
 
 arguments.remove(at: 0)// First arg is the filepath and needs to be removed
@@ -98,12 +99,13 @@ func list (dayOnDate date: Date) {
     print("")
 }
 
-func reports (forDay date: Date) {
+func reports (forDay date: Date, targetHoursInDay: Double?) {
     
     print("")
     let tasks = reader.tasksInDay(date)
     let reportsInteractor = CreateReport()
-    let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
+    let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
+    let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
     if reports.count > 0 {
         for report in reports {
             let duration = false
@@ -119,14 +121,15 @@ func reports (forDay date: Date) {
     print("")
 }
 
-func reports (forMonth date: Date) {
+func reports (forMonth date: Date, targetHoursInDay: Double?) {
 
     print("")
     print("Reports for the month of \(date.startOfMonth().MMMMdd()) - \(date.endOfMonth().MMMMdd()) \(date.YYYY())")
     print("")
     
     let tasks = reader.tasksInMonth(date)
-    let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: 8*3600)
+    let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
+    let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: duration)
     var totalDuration = 0.0
     if reports.count > 0 {
         for report in reports {
@@ -250,19 +253,23 @@ if let command = Command(rawValue: commandStr) {
             break
         case .reports:
             var date = Date()
+            var duration: Double? = nil
+            if arguments.count >= 2 {
+                duration = Double(arguments[1])
+            }
             if arguments.count > 0 {
                 let arg = arguments.remove(at: 0)
                 if arg.components(separatedBy: ".").count == 2 {
                     // We have only year and month. Add a day and call the month reports
                     date = Date(YYYYMMddString: "\(arg).01")
-                    reports (forMonth: date)
+                    reports (forMonth: date, targetHoursInDay: duration)
                     break
                 } else if arg.components(separatedBy: ".").count == 3 {
                     // We have year, month and day
                     date = Date(YYYYMMddString: arg)
                 }
             }
-            reports (forDay: date)
+            reports (forDay: date, targetHoursInDay: duration)
             break
         case .insert:
             insertIssue (arguments: arguments)
