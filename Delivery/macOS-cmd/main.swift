@@ -105,16 +105,17 @@ func reports (forDay date: Date, targetHoursInDay: Double?) {
     let tasks = reader.tasksInDay(date)
     let reportsInteractor = CreateReport()
     let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
+    var totalDuration = 0.0
     let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
     if reports.count > 0 {
         for report in reports {
-            let duration = false
-                ? "\(Date.secondsToPercentTime(report.duration))"
-                : Date(timeIntervalSince1970: report.duration).HHmmGMT()
-            print("Duration: " + duration + " task id: " + report.taskNumber)
+            totalDuration += report.duration
+            print("\(report.taskNumber) \(report.title) (" + report.duration.secToHoursAndMinutesFormatted + ")")
+            print(report.duration)
             print(report.notes)
             print("")
         }
+        print("Total duration: \(totalDuration.secToHoursAndMinutesFormatted)")
     } else {
         print("No tasks!")
     }
@@ -129,8 +130,8 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
     
     let tasks = reader.tasksInMonth(date)
     let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
-    let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: duration)
     var totalDuration = 0.0
+    let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: duration)
     if reports.count > 0 {
         for report in reports {
             totalDuration += report.duration
