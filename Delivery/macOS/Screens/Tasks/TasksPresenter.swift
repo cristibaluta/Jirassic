@@ -156,10 +156,17 @@ extension TasksPresenter: TasksPresenterInput {
         
         moduleCalendar.events(onDate: day.dateStart) { [weak self] (calendarTasks) in
             
-            guard let wself = self else {
+            guard let wself = self,
+                let startOfDayDate = wself.currentTasks.first?.endDate else {
+                completion()
                 return
             }
-            let passedCalendarTasks = calendarTasks.filter({ $0.endDate.compare(Date()) == .orderedAscending })
+            // Keep calendar items between start of day and current date
+            let passedCalendarTasks = calendarTasks.filter({
+                $0.endDate.compare(Date()) == .orderedAscending &&
+                $0.endDate.compare(startOfDayDate) == .orderedDescending
+            })
+
             wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: passedCalendarTasks)
             
             completion()
