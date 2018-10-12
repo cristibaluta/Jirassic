@@ -122,17 +122,19 @@ func reports (forDay date: Date) {
 func reports (forMonth date: Date) {
 
     print("")
+    print("Reports for the month of \(date.startOfMonth().MMMMdd()) - \(date.endOfMonth().MMMMdd()) \(date.YYYY())")
+    print("")
+    
     let tasks = reader.tasksInMonth(date)
     let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: 8*3600)
     var totalDuration = 0.0
     if reports.count > 0 {
         for report in reports {
-            let duration = Date(timeIntervalSince1970: report.duration).HHmmGMT()
             totalDuration += report.duration
-            print(report.taskNumber + report.title + " (" + duration + ")")
+            print(report.taskNumber + report.title + " (" + report.duration.secToHoursAndMinutesFormatted + ")")
             print("")
         }
-        print("Total duration: \(totalDuration) \(Date(timeIntervalSince1970: totalDuration).HHmmGMT())")
+        print("Total duration: \(totalDuration.secToHoursAndMinutesFormatted)")
     } else {
         print("No tasks!")
     }

@@ -29,8 +29,6 @@ class ReadTasksInteractor: RepositoryInteractor {
     func tasksInMonth (_ date: Date) -> [Task] {
         let startDate = date.startOfMonth()
         let endDate = date.endOfMonth()
-        print(startDate)
-        print(endDate)
         return self.repository.queryTasks(startDate: startDate, endDate: endDate)
     }
 }
