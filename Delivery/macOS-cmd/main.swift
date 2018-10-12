@@ -135,8 +135,7 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
     if reports.count > 0 {
         for report in reports {
             totalDuration += report.duration
-            print(report.taskNumber + report.title + " (" + report.duration.secToHoursAndMinutesFormatted + ")")
-            print("")
+            print("• \(report.taskNumber)\(report.title) (" + report.duration.secToHoursAndMinutesFormatted + ")")
         }
         print("Total duration: \(totalDuration.secToHoursAndMinutesFormatted)")
     } else {
