@@ -130,6 +130,7 @@ extension TasksPresenter: TasksPresenterInput {
                 return
             }
             wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: gitTasks)
+            // Filter git commits between start and end tasks
             let startTask = wself.currentTasks.filter({ $0.taskType == .startDay }).first
             let endTask = wself.currentTasks.filter({ $0.taskType == .endDay }).first
             wself.currentTasks = wself.currentTasks.filter({
