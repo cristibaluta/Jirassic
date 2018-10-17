@@ -42,7 +42,7 @@ extension CreateReport {
             
             if let startDate = task.startDate {
                 // Tasks with begining and ending defined are inlined tasks.
-                // Extract them in front of the actual task. This will take from the time of the actual task
+                // Extract them in front of the overlapped task. This will take from the time of the actual task
                 let duration = task.endDate.timeIntervalSince(startDate)
                 task.startDate = nil
                 task.endDate = previousEndDate.addingTimeInterval(duration)
