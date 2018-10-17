@@ -9,6 +9,39 @@
 import XCTest
 @testable import Jirassic
 
+func buildTasks(_ str: String, date: String = "2018.10.10") -> [Task] {
+    var tasks = [Task]()
+    // startDate: Date? | endDate: Date | notes: String? | taskNumber: String? | taskTitle: String? | taskType: TaskType
+    let lines =  str.components(separatedBy: ";")
+    for line in lines {
+        let comps = line.components(separatedBy: "|")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd.HH.mm"
+        let endDate = dateFormatter.date(from: date + "." + comps[1])
+        
+        var task = Task(endDate: endDate!, type: TaskType(rawValue: Int(comps[5])!)!)
+        
+        if comps[0] != "" {
+            task.startDate = dateFormatter.date(from: date + "." + comps[0])
+        }
+        // notes
+        if comps[2] != "" {
+            task.notes = comps[2]
+        }
+        // taskNumber
+        if comps[3] != "" {
+            task.taskNumber = comps[3]
+        }
+        // taskTitle
+        if comps[4] != "" {
+            task.taskTitle = comps[4]
+        }
+        tasks.append(task)
+    }
+    return tasks
+}
+
 class CreateReportTests: XCTestCase {
     
     let report = CreateReport()
@@ -119,38 +152,5 @@ class CreateReportTests: XCTestCase {
             totalDuration += report.duration
         }
         XCTAssert(totalDuration == targetHoursInDay)
-    }
-    
-    private func buildTasks(_ str: String) -> [Task] {
-        var tasks = [Task]()
-        // startDate: Date? | endDate: Date | notes: String? | taskNumber: String? | taskTitle: String? | taskType: TaskType
-        let lines =  str.components(separatedBy: ";")
-        for line in lines {
-            let comps = line.components(separatedBy: "|")
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY.MM.dd.HH.mm"
-            let endDate = dateFormatter.date(from: "2018.10.10." + comps[1])
-            
-            var task = Task(endDate: endDate!, type: TaskType(rawValue: Int(comps[5])!)!)
-            
-            if comps[0] != "" {
-                task.startDate = dateFormatter.date(from: "2018.10.10." + comps[0])
-            }
-            // notes
-            if comps[2] != "" {
-                task.notes = comps[2]
-            }
-            // taskNumber
-            if comps[3] != "" {
-                task.taskNumber = comps[3]
-            }
-            // taskTitle
-            if comps[4] != "" {
-                task.taskTitle = comps[4]
-            }
-            tasks.append(task)
-        }
-        return tasks
     }
 }

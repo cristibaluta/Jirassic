@@ -19,77 +19,27 @@ class CreateMonthReportTests: XCTestCase {
     override func setUp() {
 
         // day 1
-        let start1 = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 10), type: .startDay)
-
-        var d1_1 = Task()
-        d1_1.endDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 25)
-        d1_1.taskNumber = "coderev"
-        d1_1.notes = "Code reviews part 1"
-
-        var scrum1 = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 47), type: .scrum)
-        scrum1.startDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 30)
-
-        var lunch1 = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 13, minute: 51), type: .lunch)
-        lunch1.startDate = Date(year: 2015, month: 6, day: 1, hour: 12, minute: 45)
-
-        var d1_2 = Task()
-        d1_2.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 5)
-        d1_2.taskNumber = "TASK-1"
-        d1_2.notes = "Note 1"
-
-        var d1_3 = Task()
-        d1_3.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
-        d1_3.taskNumber = "TASK-3"
-        d1_3.notes = "Note 3"
-
-        var meeting1 = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 36), type: .meeting)
-        meeting1.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
-
-        var d1_4 = Task()
-        d1_4.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
-        d1_4.taskNumber = "TASK-4"
-        d1_4.notes = "Note 4"
-
-        let end1 = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0), type: .endDay)
-
-        tasks = [start1, d1_1, scrum1, lunch1, d1_2, d1_3, meeting1, d1_4, end1]
-
-
+        let str1 = "|10.10||||1;" +
+            "|10.25|Code reviews part 1|coderev||8;" +
+            "10.30|10.47||||2;" +
+            "12.45|13.51||||3;" +
+            "|14.5|Note 1|TASK-1||0;" +
+            "|14.50|Note 2|TASK-2||0;" +
+            "16.10|16.36|Some meeting|meeting||4;" +
+            "|18.0|Note 3|TASK-3||0;" +
+            "|18.0||||9"
+        tasks = buildTasks(str1, date: "2018.10.10")
+        
         // day 2
-        let start2 = Task(endDate: Date(year: 2015, month: 6, day: 2, hour: 10, minute: 10), type: .startDay)
-
-        var d2_1 = Task()
-        d2_1.endDate = Date(year: 2015, month: 6, day: 2, hour: 10, minute: 25)
-        d2_1.taskNumber = "coderev"
-        d2_1.notes = "Code reviews part 1"
-
-        var scrum2 = Task(endDate: Date(year: 2015, month: 6, day: 2, hour: 10, minute: 47), type: .scrum)
-        scrum2.startDate = Date(year: 2015, month: 6, day: 2, hour: 10, minute: 30)
-
-        var lunch2 = Task(endDate: Date(year: 2015, month: 6, day: 2, hour: 13, minute: 51), type: .lunch)
-        lunch2.startDate = Date(year: 2015, month: 6, day: 2, hour: 12, minute: 45)
-
-        var d2_2 = Task()
-        d2_2.endDate = Date(year: 2015, month: 6, day: 2, hour: 14, minute: 5)
-        d2_2.taskNumber = "TASK-1"
-        d2_2.notes = "Note 1"
-
-        var d2_3 = Task()
-        d2_3.endDate = Date(year: 2015, month: 6, day: 2, hour: 14, minute: 50)
-        d2_3.taskNumber = "TASK-5"
-        d2_3.notes = "Note 3"
-
-        var meeting2 = Task(endDate: Date(year: 2015, month: 6, day: 2, hour: 16, minute: 36), type: .meeting)
-        meeting2.startDate = Date(year: 2015, month: 6, day: 2, hour: 16, minute: 10)
-
-        var d2_4 = Task()
-        d2_4.endDate = Date(year: 2015, month: 6, day: 2, hour: 18, minute: 0)
-        d2_4.taskNumber = "TASK-6"
-        d2_4.notes = "Note 4"
-
-        let end2 = Task(endDate: Date(year: 2015, month: 6, day: 2, hour: 18, minute: 0), type: .endDay)
-
-        tasks += [start2, d2_1, scrum2, lunch2, d2_2, d2_3, meeting2, d2_4, end2]
+        let str2 = "|9.20||||1;" +
+            "|10.25|Code reviews part 1|coderev||8;" +
+            "10.30|10.55||||2;" +
+            "12.45|13.51||||3;" +
+            "|14.5|Note 1|TASK-1||0;" +
+            "|14.50|Note 4|TASK-4||0;" +
+            "|17.30|Note 5|TASK-5||0;" +
+            "|17.30||||9"
+        tasks += buildTasks(str2, date: "2018.10.11")
     }
 
     override func tearDown() {
