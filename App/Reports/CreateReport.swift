@@ -116,7 +116,7 @@ extension CreateReport {
         
         // Handle the last task separately, add the remaining time till targetHoursInDay
         task = tasks.last!
-        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(requiredHours).round()
+        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(requiredHours)
         task.startDate = previousDate
         roundedTasks.append(task)
         
