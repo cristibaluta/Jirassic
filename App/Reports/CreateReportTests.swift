@@ -106,7 +106,7 @@ class CreateReportTests: XCTestCase {
             "14.13|14.21|coderev 2|coderev||8;" +
             "16.4|16.7|coderev 3|coderev||8;" +
             "16.56|16.59|coderev 4|coderev||8;" +
-            "|17.42|Note 3|APP-3730||0"
+            "|17.30|Note 3|APP-3730||0"
         tasks = buildTasks(str)
         
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)

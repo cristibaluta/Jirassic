@@ -64,7 +64,6 @@ extension CreateReport {
         var previousTaskOriginalEndDate = tasks.first!.endDate
         
         for task in tasks {
-            previousTaskOriginalEndDate = task.endDate
             if isTrackingAllowed(taskType: task.taskType) {
                 var tempTask = task
                 tempTask.endDate = task.endDate.addingTimeInterval(-untrackedDuration)
@@ -72,6 +71,7 @@ extension CreateReport {
             } else {
                 untrackedDuration += task.endDate.timeIntervalSince(previousTaskOriginalEndDate)
             }
+            previousTaskOriginalEndDate = task.endDate
         }
         return arr
     }
@@ -79,7 +79,7 @@ extension CreateReport {
     private func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double?) -> [Task] {
         
         // How many tasks should be adjusted
-        let numberOfTasksToAdjust = tasks.filter({ isRoundingAllowed(taskType: $0.taskType) }).count
+        let numberOfTasksToAdjust = tasks.filter({ isAdjustable(taskType: $0.taskType) }).count
         
         guard numberOfTasksToAdjust > 0 else {
             return tasks
@@ -103,7 +103,7 @@ extension CreateReport {
             
             task = tasks[i]
             
-            if targetHoursInDay != nil && isRoundingAllowed(taskType: task.taskType) {
+            if targetHoursInDay != nil && isAdjustable(taskType: task.taskType) {
                 extraTimeToAdd += extraTimePerTask
             }
             
@@ -222,7 +222,8 @@ extension CreateReport {
         }
     }
     
-    private func isRoundingAllowed (taskType: TaskType) -> Bool {
+    /// Returns if the duration of this task type is adjustable
+    private func isAdjustable (taskType: TaskType) -> Bool {
         switch taskType {
             case .startDay, .scrum, .meeting, .learning: return false
             default: return true
