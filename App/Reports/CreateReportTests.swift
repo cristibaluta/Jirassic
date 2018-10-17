@@ -19,46 +19,17 @@ class CreateReportTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let t0 = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 10), type: .startDay)
-
-		var t1 = Task()
-		t1.endDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 25)
-        t1.taskNumber = "coderev"
-        t1.notes = "Code reviews part 1"
-        
-        var scrum = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 10, minute: 47), type: .scrum)
-        scrum.startDate = Date(year: 2015, month: 6, day: 1, hour: 10, minute: 30)
-        
-        var lunch = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 13, minute: 51), type: .lunch)
-        lunch.startDate = Date(year: 2015, month: 6, day: 1, hour: 12, minute: 45)
-        
-        // t1_1 begins before the scrum but ends after the scrum. Subtract the scrum duration
-		var t1_1 = Task()
-        t1_1.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 5)
-        t1_1.taskNumber = "IOS-2"
-        t1_1.notes = "Note 2"
-
-		var t1_2 = Task()
-        t1_2.endDate = Date(year: 2015, month: 6, day: 1, hour: 14, minute: 50)
-        t1_2.taskNumber = "IOS-3"
-        t1_2.notes = "Note 3"
-		
-		var t1_3 = Task()
-        t1_3.endDate = Date(year: 2015, month: 6, day: 1, hour: 15, minute: 6)
-        t1_3.taskNumber = "coderev"
-        t1_3.notes = "Code reviews part 2"
-        
-        var waste = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 16, minute: 36), type: .waste)
-        waste.startDate = Date(year: 2015, month: 6, day: 1, hour: 16, minute: 10)
-        
-		var t2 = Task()
-        t2.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0)
-        t2.taskNumber = "IOS-4"
-        t2.notes = "Note 6"
-		
-        let tEnd = Task(endDate: Date(year: 2015, month: 6, day: 1, hour: 18, minute: 0), type: .endDay)
-        
-		tasks = [t0, t1, scrum, lunch, t1_1, t1_2, t1_3, waste, t2, tEnd]
+        let str = "|10.10||||1;" +
+            "|10.25|Code reviews part 1|coderev||8;" +
+            "10.30|10.47||||2;" +
+            "12.45|13.51||||3;" +
+            "|14.5|Note 2|APP-2||0;" +// begins before the scrum but ends after the scrum. Subtract the scrum duration
+            "|14.50|Note 3|APP-3||0;" +
+            "|15.6|Code reviews part 2|coderev||8;" +
+            "16.10|16.36||||6;" +//waste
+            "|18.0|Note 6|APP-4||0;" +
+            "|18.0||||9"
+        tasks = buildTasks(str)
     }
     
     override func tearDown() {
@@ -93,10 +64,9 @@ class CreateReportTests: XCTestCase {
     
 	func testRoundMoreThan8HoursOfWork() {
 		
-		var t3 = Task()
-		t3.endDate = Date(year: 2015, month: 6, day: 1, hour: 19, minute: 30)
 		var tasks = self.tasks
-		tasks.append(t3)
+        tasks.removeLast()
+        tasks += buildTasks("|19.30||||0")
         
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
 		
@@ -110,12 +80,9 @@ class CreateReportTests: XCTestCase {
     
     func testDoNotRoundMeetings() {
         
-        var t3 = Task()
-        t3.endDate = Date(year: 2015, month: 6, day: 1, hour: 18, minute: 20)
-        t3.taskNumber = "learning"
-        t3.taskType = .learning
-        t3.notes = "Learning time"
-        let tasks = self.tasks + [t3]
+        var tasks = self.tasks
+        tasks.removeLast()
+        tasks += buildTasks("|18.20|Learning time|learning||7")
         
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         
@@ -130,59 +97,60 @@ class CreateReportTests: XCTestCase {
     
     func testRealSituationWhereDurationCanBeMessedUp() {
         
-        let t0 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 8, minute: 59), type: .startDay)
-        
-        var t1 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 11, minute: 10), type: .meeting)
-        t1.startDate = Date(year: 2018, month: 4, day: 3, hour: 10, minute: 4)
-        t1.taskNumber = "meeting"
-        t1.notes = "Meeting 1"
-        
-        var lunch = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 12, minute: 22), type: .lunch)
-        lunch.startDate = Date(year: 2018, month: 4, day: 3, hour: 11, minute: 39)
-        
-        var t2 = Task()
-        t2.endDate = Date(year: 2018, month: 4, day: 3, hour: 13, minute: 4)
-        t2.taskNumber = "3730"
-        t2.notes = "Note 1"
-        
-        var t3 = Task()
-        t3.endDate = Date(year: 2018, month: 4, day: 3, hour: 13, minute: 19)
-        t3.taskNumber = "3730"
-        t3.notes = "Note 2"
-        
-        var t4 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 13, minute: 29), type: .coderev)
-        t4.startDate = Date(year: 2018, month: 4, day: 3, hour: 13, minute: 20)
-        t4.taskNumber = "coderev"
-        t4.notes = "1"
-        var t4_2 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 14, minute: 21), type: .coderev)
-        t4_2.startDate = Date(year: 2018, month: 4, day: 3, hour: 14, minute: 13)
-        t4_2.taskNumber = "coderev"
-        t4_2.notes = "2"
-        var t4_3 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 16, minute: 7), type: .coderev)
-        t4_3.startDate = Date(year: 2018, month: 4, day: 3, hour: 16, minute: 4)
-        t4_3.taskNumber = "coderev"
-        t4_3.notes = "3"
-        var t4_4 = Task(endDate: Date(year: 2018, month: 4, day: 3, hour: 16, minute: 59), type: .coderev)
-        t4_4.startDate = Date(year: 2018, month: 4, day: 3, hour: 16, minute: 56)
-        t4_4.taskNumber = "coderev"
-        t4_4.notes = "4"
-        
-        var t5 = Task()
-        t5.endDate = Date(year: 2018, month: 4, day: 3, hour: 17, minute: 42)
-        t5.taskNumber = "3730"
-        t5.notes = "Note 3"
-        
-        tasks = [t0, t1, lunch, t2, t3, t4, t4_2, t4_3, t4_4, t5]
+        let str = "|8.59||||1;" +
+            "10.4|11.10|Meeting 1|meeting||4;" +
+            "11.39|12.22||||3;" +
+            "|13.4|Note 1|APP-3730||0;" +
+            "|13.19|Note 2|APP-3730||0;" +
+            "13.20|13.29|coderev 1|coderev||8;" +
+            "14.13|14.21|coderev 2|coderev||8;" +
+            "16.4|16.7|coderev 3|coderev||8;" +
+            "16.56|16.59|coderev 4|coderev||8;" +
+            "|17.42|Note 3|APP-3730||0"
+        tasks = buildTasks(str)
         
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         XCTAssert(reports.count == 3, "There should be only 3 unique task numbers. Lunch is ignored")
-        XCTAssertFalse(reports[0].duration > 0, "Duration should always greater than 0")
-        XCTAssertFalse(reports[1].duration > 0, "Duration should always greater than 0")
-        XCTAssertFalse(reports[2].duration > 0, "Duration should always greater than 0")
+        XCTAssert(reports[0].duration > 0, "Duration should always greater than 0")
+        XCTAssert(reports[1].duration > 0, "Duration should always greater than 0")
+        XCTAssert(reports[2].duration > 0, "Duration should always greater than 0")
         var totalDuration = 0.0
         for report in reports {
             totalDuration += report.duration
         }
         XCTAssert(totalDuration == targetHoursInDay)
+    }
+    
+    private func buildTasks(_ str: String) -> [Task] {
+        var tasks = [Task]()
+        // startDate: Date? | endDate: Date | notes: String? | taskNumber: String? | taskTitle: String? | taskType: TaskType
+        let lines =  str.components(separatedBy: ";")
+        for line in lines {
+            let comps = line.components(separatedBy: "|")
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY.MM.dd.HH.mm"
+            let endDate = dateFormatter.date(from: "2018.10.10." + comps[1])
+            
+            var task = Task(endDate: endDate!, type: TaskType(rawValue: Int(comps[5])!)!)
+            
+            if comps[0] != "" {
+                task.startDate = dateFormatter.date(from: "2018.10.10." + comps[0])
+            }
+            // notes
+            if comps[2] != "" {
+                task.notes = comps[2]
+            }
+            // taskNumber
+            if comps[3] != "" {
+                task.taskNumber = comps[3]
+            }
+            // taskTitle
+            if comps[4] != "" {
+                task.taskTitle = comps[4]
+            }
+            tasks.append(task)
+        }
+        return tasks
     }
 }
