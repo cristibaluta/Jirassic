@@ -45,6 +45,10 @@ class SettingsViewController: NSViewController {
         
         presenter!.checkExtensions()
         presenter!.showSettings()
+
+        inputsScrollView?.onPurchasePressed = { [weak self] in
+            self?.presenter?.selectTab(.store)
+        }
         
         #if !APPSTORE
             butBackup.isEnabled = false

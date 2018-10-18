@@ -10,8 +10,9 @@ import Cocoa
 
 class InputsScrollView: NSScrollView {
     
-    @IBOutlet fileprivate var tableView: NSTableView!
+    @IBOutlet private var tableView: NSTableView!
     var dataSource: InputsTableViewDataSource?// If not declared, the reference is released
+    var onPurchasePressed: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,9 +22,11 @@ class InputsScrollView: NSScrollView {
         tableView.intercellSpacing = NSSize(width: 0, height: 30)
         
         dataSource = InputsTableViewDataSource(tableView: tableView)
+        dataSource?.onPurchasePressed = { [weak self] in
+            self?.onPurchasePressed?()
+        }
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
-        
         tableView.reloadData()
     }
 

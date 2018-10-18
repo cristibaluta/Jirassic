@@ -16,7 +16,6 @@ protocol GitPresenterInput: class {
     func enableGit (_ enabled: Bool)
     func refresh (withCommand command: String)
     func pickPath()
-    func purchase()
     func save (emails: String, paths: String)
 }
 
@@ -169,10 +168,6 @@ extension GitPresenter: GitPresenterInput {
     func save (emails: String, paths: String) {
         saveEmails(emails)
         savePaths(paths)
-    }
-    
-    func purchase() {
-        
     }
     
     private func saveEmails (_ emails: String) {

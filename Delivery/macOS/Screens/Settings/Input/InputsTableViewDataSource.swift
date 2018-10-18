@@ -20,15 +20,16 @@ enum InputType {
 
 class InputsTableViewDataSource: NSObject {
     
-    fileprivate let tableView: NSTableView
-    fileprivate let cells: [InputType] = InputType.all
+    private let tableView: NSTableView
+    private let cells: [InputType] = InputType.all
     var shellCell: ShellCell?
     var jirassicCell: JirassicCell?
     var jitCell: JitCell?
     var gitCell: GitCell?
     var browserCell: BrowserCell?
     var calendarCell: CalendarCell?
-    
+    var onPurchasePressed: (() -> Void)?
+
     init (tableView: NSTableView) {
         self.tableView = tableView
         super.init()
@@ -46,6 +47,10 @@ class InputsTableViewDataSource: NSObject {
         gitCell = GitCell.instantiate(in: self.tableView)
         browserCell = BrowserCell.instantiate(in: self.tableView)
         calendarCell = CalendarCell.instantiate(in: self.tableView)
+
+        gitCell?.onPurchasePressed = { [weak self] in
+            self?.onPurchasePressed?()
+        }
     }
 
     func showSettingsBrowser (_ settings: SettingsBrowser) {

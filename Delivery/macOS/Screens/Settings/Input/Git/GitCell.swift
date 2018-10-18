@@ -23,6 +23,7 @@ class GitCell: NSTableRowView, Saveable {
     @IBOutlet private var butPick: NSButton!
 
     var presenter: GitPresenterInput = GitPresenter()
+    var onPurchasePressed: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +47,7 @@ class GitCell: NSTableRowView, Saveable {
     }
     
     @IBAction func handlePurchaseButton (_ sender: NSButton) {
-        presenter.purchase()
+        onPurchasePressed?()
     }
     
     @IBAction func handleEnableButton (_ sender: NSButton) {
