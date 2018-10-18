@@ -204,6 +204,10 @@
 		285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
+		285465A7217858790052CB6A /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A6217858790052CB6A /* StoreView.swift */; };
+		285465A8217858790052CB6A /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A6217858790052CB6A /* StoreView.swift */; };
+		285465AD217858AF0052CB6A /* StoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285465AC217858AF0052CB6A /* StoreView.xib */; };
+		285465AE217858AF0052CB6A /* StoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285465AC217858AF0052CB6A /* StoreView.xib */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -595,6 +599,8 @@
 		2845B15C206AE467006EFB3B /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
 		2845B15D206AE467006EFB3B /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
 		285465A1216C84E10052CB6A /* CreateMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReport.swift; sourceTree = "<group>"; };
+		285465A6217858790052CB6A /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		285465AC217858AF0052CB6A /* StoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreView.xib; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -987,6 +993,15 @@
 				2845B153206AE467006EFB3B /* TaskCell */,
 			);
 			path = AllTasks;
+			sourceTree = "<group>";
+		};
+		285465A5217858120052CB6A /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				285465A6217858790052CB6A /* StoreView.swift */,
+				285465AC217858AF0052CB6A /* StoreView.xib */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		28577EA01E8ADBBD002B07FD /* sqlite */ = {
@@ -1489,6 +1504,7 @@
 				4065D3731DD3B44200B73201 /* SettingsInteractor.swift */,
 				28A283962037975600DDCB63 /* Saveable.swift */,
 				40E092401DE385E4001EF5DA /* Settings.storyboard */,
+				285465A5217858120052CB6A /* Store */,
 				287195232022FEA4001C237E /* Tracking */,
 				28FB264E20224DEB00AEA38D /* Output */,
 				28FB264D20224DE200AEA38D /* Input */,
@@ -1979,6 +1995,7 @@
 				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
 				2845B168206AE468006EFB3B /* FooterCell.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
+				285465AD217858AF0052CB6A /* StoreView.xib in Resources */,
 				2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				569C4C73202319EE0049FBF1 /* JitCell.xib in Resources */,
 			);
@@ -2002,6 +2019,7 @@
 				2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
 				2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */,
+				285465AE217858AF0052CB6A /* StoreView.xib in Resources */,
 				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
@@ -2111,6 +2129,7 @@
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
 				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
+				285465A7217858790052CB6A /* StoreView.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
 				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				28FE18A5207B369800DF796E /* CocoaHookupCell.swift in Sources */,
@@ -2335,6 +2354,7 @@
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				28FE18A6207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
+				285465A8217858790052CB6A /* StoreView.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,

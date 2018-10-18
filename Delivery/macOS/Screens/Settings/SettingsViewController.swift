@@ -12,24 +12,27 @@ enum SettingsTab: Int {
     case tracking = 0
     case input = 1
     case output = 2
+    case store = 3
 }
 
 class SettingsViewController: NSViewController {
     
-    @IBOutlet fileprivate var segmentedControl: NSSegmentedControl!
-    @IBOutlet fileprivate var container: NSBox!
-    @IBOutlet fileprivate var butBackup: NSButton!
-    @IBOutlet fileprivate var butEnableLaunchAtStartup: NSButton!
+    @IBOutlet private var segmentedControl: NSSegmentedControl!
+    @IBOutlet private var container: NSBox!
+    @IBOutlet private var butBackup: NSButton!
+    @IBOutlet private var butEnableLaunchAtStartup: NSButton!
     // Tracking tab
-    fileprivate var trackingView: TrackingView?
+    private var trackingView: TrackingView?
     // Input tab
-    fileprivate var inputsScrollView: InputsScrollView?
+    private var inputsScrollView: InputsScrollView?
     // Output tab
-    fileprivate var outputsScrollView: OutputsScrollView?
+    private var outputsScrollView: OutputsScrollView?
+    // Store tab
+    private var storeView: StoreView?
     
     weak var appWireframe: AppWireframe?
     var presenter: SettingsPresenterInput?
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private let localPreferences = RCPreferences<LocalPreferences>()
 	
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -38,6 +41,7 @@ class SettingsViewController: NSViewController {
         trackingView = TrackingView.instantiateFromXib()
         inputsScrollView = InputsScrollView.instantiateFromXib()
         outputsScrollView = OutputsScrollView.instantiateFromXib()
+        storeView = StoreView.instantiateFromXib()
         
         presenter!.checkExtensions()
         presenter!.showSettings()
@@ -73,6 +77,7 @@ class SettingsViewController: NSViewController {
         trackingView!.removeFromSuperview()
         inputsScrollView!.removeFromSuperview()
         outputsScrollView!.removeFromSuperview()
+        storeView!.removeFromSuperview()
     }
 }
 
@@ -168,6 +173,9 @@ extension SettingsViewController: SettingsPresenterOutput {
         case .output:
             container.addSubview(outputsScrollView!)
             outputsScrollView!.constrainToSuperview()
+        case .store:
+            container.addSubview(storeView!)
+            storeView!.constrainToSuperview()
         }
     }
 }

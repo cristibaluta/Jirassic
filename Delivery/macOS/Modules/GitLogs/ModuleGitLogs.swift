@@ -141,7 +141,7 @@ extension ModuleGitLogs {
     
     func getGitBranch (at path: String, containing commitNumber: String, completion: @escaping (String) -> Void) {
         
-        //        let command = "git -C \(path) log \(commitNumber)..HEAD --ancestry-path --merges --oneline | tail -n 1"
+        // let command = "git -C \(path) log \(commitNumber)..HEAD --ancestry-path --merges --oneline | tail -n 1"
         let command = "git -C \(path) branch --contains \(commitNumber)"
         extensions.run (command: command, completion: { result in
             if let result = result {

@@ -33,9 +33,12 @@ protocol GitPresenterOutput: class {
 }
 
 enum GitCellState {
+    // First thing to do is purchase it
     case needsPurchase
-    case needsShellSupport
+    // After purchasing you need to install the apple scripts
+    case needsShellScript
     case needsGitScript
+    // When purchased and reachable via shell you have the option to enable or disable
     case disabled
     case enabled
 }
@@ -59,17 +62,23 @@ class GitPresenter {
     
     private func refresh() {
         
+        userInterface?.setPaths(localPreferences.string(.settingsGitPaths),
+                               enabled: localPreferences.bool(.enableGit))
+        
+        userInterface?.setEmails(localPreferences.string(.settingsGitAuthors),
+                                enabled: localPreferences.bool(.enableGit))
+        
+        guard store.isGitPurchased else {
+            refresh(state: .needsPurchase)
+            return
+        }
         gitModule.checkIfGitInstalled(completion: { [weak self] commandInstalled in
             
-            guard let wself = self, let userInterface = wself.userInterface else {
-                return
-            }
-            guard wself.store.isGitPurchased else {
-                wself.refresh(state: .needsPurchase)
+            guard let wself = self else {
                 return
             }
             guard wself.isShellScriptInstalled == true else {
-                wself.refresh(state: .needsShellSupport)
+                wself.refresh(state: .needsShellScript)
                 return
             }
             guard commandInstalled else {
@@ -78,45 +87,37 @@ class GitPresenter {
             }
             
             wself.refresh(state: wself.localPreferences.bool(.enableGit) ? .enabled : .disabled)
-            
-            userInterface.setPaths(wself.localPreferences.string(.settingsGitPaths),
-                                   enabled: wself.localPreferences.bool(.enableGit))
-            
-            userInterface.setEmails(wself.localPreferences.string(.settingsGitAuthors),
-                                    enabled: wself.localPreferences.bool(.enableGit))
         })
     }
     
     private func refresh (state: GitCellState) {
+        guard let userInterface = self.userInterface else {
+            return
+        }
         switch state {
         case .needsPurchase:
-            userInterface?.setStatusImage(NSImage.Name.statusUnavailable)
-            userInterface?.setStatusText("Purchase git support for 6 months")
-            userInterface?.setDescriptionText("This In App Purchase gives you the ability to see commits made with git in  the reports. This is one time purchase and when it expires needs to be purchased again.")
-            userInterface?.setButInstall(enabled: false)
-            userInterface?.setButPurchase(enabled: true)
-            userInterface?.setButEnable(on: false, enabled: false)
-            store.getProduct(.git) { skProduct in
-                if let product = skProduct {
-                    DispatchQueue.main.async {
-                        self.userInterface?.setStatusText("Purchase git support for \(product.localizedPrice() ?? "$x") for 6 months")
-                    }
-                }
-            }
-        case .needsShellSupport:
-            userInterface?.setStatusImage(NSImage.Name.statusUnavailable)
-            userInterface?.setStatusText("Not possible to use Git, please install shell support first!")
-            userInterface?.setButInstall(enabled: true)
-            userInterface?.setButPurchase(enabled: false)
+            userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+            userInterface.setStatusText("Purchase git support for 6 months")
+            userInterface.setDescriptionText("This In App Purchase gives you the ability to see commits made with git in  the reports. This is one time purchase and when it expires needs to be purchased again.")
+            userInterface.setButInstall(enabled: false)
+            userInterface.setButPurchase(enabled: true)
+            userInterface.setButEnable(on: false, enabled: false)
+            // Redirect to store
+            
+        case .needsShellScript:
+            userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+            userInterface.setStatusText("Not possible to use Git, please install shell support first!")
+            userInterface.setButInstall(enabled: true)
+            userInterface.setButPurchase(enabled: false)
         case .needsGitScript:
-            userInterface?.setStatusImage(NSImage.Name.statusPartiallyAvailable)
-            userInterface?.setStatusText("Git is not installed.")
-            userInterface?.setButInstall(enabled: true)
-            userInterface?.setButPurchase(enabled: false)
+            userInterface.setStatusImage(NSImage.Name.statusPartiallyAvailable)
+            userInterface.setStatusText("Git is not installed.")
+            userInterface.setButInstall(enabled: true)
+            userInterface.setButPurchase(enabled: false)
         case .disabled:
-            userInterface?.setButEnable(on: false, enabled: true)
+            userInterface.setButEnable(on: false, enabled: true)
         case .enabled:
-            userInterface?.setButEnable(on: true, enabled: true)
+            userInterface.setButEnable(on: true, enabled: true)
         }
     }
 }
@@ -171,11 +172,7 @@ extension GitPresenter: GitPresenterInput {
     }
     
     func purchase() {
-        store.purchase(product: .git) { [weak self] (success) in
-            if success {
-                self?.refresh(state: self?.localPreferences.bool(.enableGit) == true ? .enabled : .disabled)
-            }
-        }
+        
     }
     
     private func saveEmails (_ emails: String) {
