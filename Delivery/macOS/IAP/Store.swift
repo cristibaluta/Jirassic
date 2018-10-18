@@ -58,6 +58,8 @@ class Store {
     private func getProducts(_ completion: @escaping (Bool) -> Void) {
         
         var productIdentifiers = Set<ProductIdentifier>()
+        productIdentifiers.insert(StoreProduct.git.rawValue)
+        productIdentifiers.insert(StoreProduct.jiraTempo.rawValue)
         productIdentifiers.insert(StoreProduct.full.rawValue)
         
         IAP.requestProducts(productIdentifiers) { (response, error) in
@@ -65,7 +67,6 @@ class Store {
                 self.products = products
                 RCLog(products)
                 completion(true)
-                
             } else if let _ = response?.invalidProductIdentifiers {
                 completion(false)
             } else {
