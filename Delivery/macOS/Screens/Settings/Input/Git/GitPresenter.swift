@@ -93,16 +93,14 @@ class GitPresenter {
         guard let userInterface = self.userInterface else {
             return
         }
+        userInterface.setDescriptionText("With this you will see commits made with Git right in the reports.\nPlease provide the project details.")
         switch state {
         case .needsPurchase:
             userInterface.setStatusImage(NSImage.Name.statusUnavailable)
-            userInterface.setStatusText("Purchase git support for 6 months")
-            userInterface.setDescriptionText("This In App Purchase gives you the ability to see commits made with git in  the reports. This is one time purchase and when it expires needs to be purchased again.")
+            userInterface.setStatusText("Purchase Git support")
             userInterface.setButInstall(enabled: false)
             userInterface.setButPurchase(enabled: true)
             userInterface.setButEnable(on: false, enabled: false)
-            // Redirect to store
-            
         case .needsShellScript:
             userInterface.setStatusImage(NSImage.Name.statusUnavailable)
             userInterface.setStatusText("Not possible to use Git, please install shell support first!")
@@ -114,9 +112,15 @@ class GitPresenter {
             userInterface.setButInstall(enabled: true)
             userInterface.setButPurchase(enabled: false)
         case .disabled:
+            userInterface.setStatusText("Git support is ready to use")
             userInterface.setButEnable(on: false, enabled: true)
+            userInterface.setButInstall(enabled: false)
+            userInterface.setButPurchase(enabled: false)
         case .enabled:
+            userInterface.setStatusText("Git support is ready to use")
             userInterface.setButEnable(on: true, enabled: true)
+            userInterface.setButInstall(enabled: false)
+            userInterface.setButPurchase(enabled: false)
         }
     }
 }

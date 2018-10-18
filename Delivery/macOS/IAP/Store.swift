@@ -8,14 +8,14 @@ import StoreKit
 
 enum StoreProduct: String, RCPreferencesProtocol {
     
-//    case git = "com.jirassic.macos.git.6months"
-//    case jiraTempo = "com.jirassic.macos.jiratempo.6months"
+    case git = "com.jirassic.macos.git.6months"
+    case jiraTempo = "com.jirassic.macos.jiratempo.6months"
     case full = "com.jirassic.macos.full.6months"
     
     func defaultValue() -> Any {
         switch self {
-//        case .git:           return false
-//        case .jiraTempo:     return false
+        case .git:           return false
+        case .jiraTempo:     return false
         case .full:          return false
         }
     }
@@ -32,12 +32,12 @@ class Store {
     }
     
     var isGitPurchased: Bool {
-//        return true
-        return localPref.bool(.full)// || localPref.bool(.git)
+        return true
+        return localPref.bool(.full) || localPref.bool(.git)
     }
     
     var isJiraTempoPurchased: Bool {
-        return localPref.bool(.full)// || localPref.bool(.jiraTempo)
+        return localPref.bool(.full) || localPref.bool(.jiraTempo)
     }
     
     func getProduct(_ product: StoreProduct, _ completion: @escaping (SKProduct?) -> Void) {
