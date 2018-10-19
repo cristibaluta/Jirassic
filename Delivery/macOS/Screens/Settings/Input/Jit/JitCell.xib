@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box autoresizesSubviews="NO" borderType="line" title="Jit CLI support" translatesAutoresizingMaskIntoConstraints="NO" id="LH9-Gr-LTu">
+                <box autoresizesSubviews="NO" borderType="line" title="Jit CLI" translatesAutoresizingMaskIntoConstraints="NO" id="LH9-Gr-LTu">
                     <rect key="frame" x="-3" y="-4" width="486" height="139"/>
                     <view key="contentView" id="Ns2-hK-EP5">
                         <rect key="frame" x="1" y="1" width="484" height="123"/>

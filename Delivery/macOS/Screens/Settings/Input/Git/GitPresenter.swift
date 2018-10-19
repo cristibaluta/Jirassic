@@ -103,21 +103,21 @@ class GitPresenter {
             userInterface.setButEnable(on: false, enabled: false)
         case .needsShellScript:
             userInterface.setStatusImage(NSImage.Name.statusUnavailable)
-            userInterface.setStatusText("Not possible to use Git, please install shell support first!")
+            userInterface.setStatusText("Not possible to use Git, please install shell scripts first!")
             userInterface.setButInstall(enabled: true)
             userInterface.setButPurchase(enabled: false)
         case .needsGitScript:
             userInterface.setStatusImage(NSImage.Name.statusPartiallyAvailable)
-            userInterface.setStatusText("Git is not installed.")
+            userInterface.setStatusText("Git plugin is not installed, please install.")
             userInterface.setButInstall(enabled: true)
             userInterface.setButPurchase(enabled: false)
         case .disabled:
-            userInterface.setStatusText("Git support is ready to use")
+            userInterface.setStatusText("Git plugin is installed and ready to use, please enable.")
             userInterface.setButEnable(on: false, enabled: true)
             userInterface.setButInstall(enabled: false)
             userInterface.setButPurchase(enabled: false)
         case .enabled:
-            userInterface.setStatusText("Git support is ready to use")
+            userInterface.setStatusText("Git plugin is installed and ready to use.")
             userInterface.setButEnable(on: true, enabled: true)
             userInterface.setButInstall(enabled: false)
             userInterface.setButPurchase(enabled: false)
