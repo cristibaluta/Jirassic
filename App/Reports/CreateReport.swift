@@ -225,7 +225,7 @@ extension CreateReport {
     /// Returns if the duration of this task type is adjustable
     private func isAdjustable (taskType: TaskType) -> Bool {
         switch taskType {
-            case .startDay, .scrum, .meeting, .learning: return false
+            case .startDay, .scrum, .meeting, .learning, .calendar: return false
             default: return true
         }
     }
