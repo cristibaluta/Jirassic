@@ -24,14 +24,17 @@ class ModuleGitLogs {
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(onDate: date, paths: paths, previousCommits: []) { commits in
             for commit in commits {
-                let branchParser = ParseGitBranch(branchName: commit.branchName ?? "")
+                let str = commit.branchName != "" ? commit.branchName : commit.message
+                let branchParser = ParseGitBranch(branchName: str ?? "")
                 let taskTitle = branchParser.taskTitle()
                 let taskNumber = branchParser.taskNumber() ?? taskTitle
+                // Remove task number from the beginning of a commit message
+                let message = commit.message.replacingOccurrences(of: taskNumber, with: "").trimmingCharacters(in: NSCharacterSet.whitespaces)
                 
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
                                 endDate: commit.date,
-                                notes: commit.message,
+                                notes: message,
                                 taskNumber: taskNumber,
                                 taskTitle: taskTitle,
                                 taskType: .gitCommit,

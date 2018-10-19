@@ -26,6 +26,13 @@ class ParseGitBranchTests: XCTestCase {
         XCTAssert(parser.taskTitle() == "some branch name")
     }
     
+    func testCommitMessage() {
+        
+        let parser = ParseGitBranch(branchName: "APP-1234 Some commit message")
+        XCTAssert(parser.taskNumber() == "APP-1234")
+        XCTAssert(parser.taskTitle() == "Some commit message")
+    }
+    
     func testMergeCommitMessage() {
         
         let parser = ParseGitBranch(branchName: "Merge pull request #619 in MYAPP/proj from AA-1234_some_branch_name to master;")
