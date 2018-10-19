@@ -19,6 +19,7 @@ class MergeTasksInteractorTests: XCTestCase {
         ]
         let gitTasks = [Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
                         Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 16, minute: 30, second: 50), type: .gitCommit),
+                        Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 16, minute: 30, second: 50), type: .gitCommit),// Duplicate provided by git cmd
                         Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 18, minute: 0, second: 0), type: .gitCommit)
         ]
         

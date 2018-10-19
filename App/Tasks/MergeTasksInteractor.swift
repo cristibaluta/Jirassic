@@ -16,9 +16,27 @@ class MergeTasksInteractor {
         var arr = [Task]()
         arr += tasks
         arr.mergeElements(newElements: gitTasks)
-        arr.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
-        
-        return arr
+
+        // Remove duplicates
+        var buffer = [Task]()
+        var added = [Task]()
+        for elem in arr {
+            var duplicateHasTaskNumber = false
+            if !added.contains(where: {
+                let isDuplicate = abs(elem.endDate.timeIntervalSince($0.endDate)) < 5.0
+                if isDuplicate {
+                    duplicateHasTaskNumber = $0.taskNumber?.count ?? 0 > 0
+                }
+                return isDuplicate
+            }) {
+                buffer.append(elem)
+                added.append(elem)
+            }
+        }
+
+        buffer.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
+
+        return buffer
     }
 }
 
