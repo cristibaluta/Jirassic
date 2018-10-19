@@ -10,33 +10,39 @@ import Foundation
 
 class MergeTasksInteractor {
     
-    /// Merge the two list of tasks, avoid duplicates, and sort ascending
+    /// Merge the two list of tasks, remove duplicates, and sort ascending
     func merge (tasks: [Task], with gitTasks: [Task]) -> [Task] {
         
-        var arr = [Task]()
-        arr += tasks
-        arr.mergeElements(newElements: gitTasks)
-
+        let all = tasks + gitTasks
+        
         // Remove duplicates
-        var buffer = [Task]()
-        var added = [Task]()
-        for elem in arr {
+        var unique = [Task]()
+        for task in all {
+            var originalHasTaskNumber = false
             var duplicateHasTaskNumber = false
-            if !added.contains(where: {
-                let isDuplicate = abs(elem.endDate.timeIntervalSince($0.endDate)) < 5.0
+            if !unique.contains(where: {
+                originalHasTaskNumber = task.taskNumber?.count ?? 0 > 0
+                let isDuplicate = abs(task.endDate.timeIntervalSince($0.endDate)) < 5.0
                 if isDuplicate {
                     duplicateHasTaskNumber = $0.taskNumber?.count ?? 0 > 0
                 }
                 return isDuplicate
             }) {
-                buffer.append(elem)
-                added.append(elem)
+                if !duplicateHasTaskNumber {
+                    unique.append(task)
+                }
+            } else {
+                if originalHasTaskNumber && !duplicateHasTaskNumber {
+                    unique.removeAll(where: { abs(task.endDate.timeIntervalSince($0.endDate)) < 5.0 })
+                    unique.append(task)
+                }
             }
         }
+        
+        // Sort by date
+        unique.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
 
-        buffer.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
-
-        return buffer
+        return unique
     }
 }
 
