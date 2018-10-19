@@ -14,6 +14,10 @@ class StoreView: NSView {
     @IBOutlet private var butBuyJiraTempo: NSButton!
     @IBOutlet private var butBuyAll: NSButton!
     @IBOutlet private var butRestore: NSButton!
+    @IBOutlet private var progressIndicatorGit: NSProgressIndicator!
+    @IBOutlet private var progressIndicatorJiraTempo: NSProgressIndicator!
+    @IBOutlet private var progressIndicatorAll: NSProgressIndicator!
+    @IBOutlet private var progressIndicatorRestore: NSProgressIndicator!
     @IBOutlet private var descriptionGitTextField: NSTextField!
     @IBOutlet private var descriptionJiraTempoTextField: NSTextField!
     @IBOutlet private var descriptionAllTextField: NSTextField!
@@ -23,32 +27,43 @@ class StoreView: NSView {
     
     @IBAction func handleBuyGitButton (_ sender: NSButton) {
         store.purchase(product: .git) { [weak self] (success) in
-            if success {
-                
+            DispatchQueue.main.async {
+                if success {
+                    
+                }
             }
         }
     }
     
     @IBAction func handleBuyJiraTempoButton (_ sender: NSButton) {
         store.purchase(product: .jiraTempo) { [weak self] (success) in
-            if success {
-                
+            DispatchQueue.main.async {
+                if success {
+                    
+                }
             }
         }
     }
     
     @IBAction func handleBuyAllButton (_ sender: NSButton) {
         store.purchase(product: .full) { [weak self] (success) in
-            if success {
-                
+            DispatchQueue.main.async {
+                if success {
+                    
+                }
             }
         }
     }
     
     @IBAction func handleRestoreButton (_ sender: NSButton) {
+        butRestore.isHidden = true
+        progressIndicatorRestore.startAnimation(sender)
         store.restore() { [weak self] (success) in
-            if success {
-                
+            DispatchQueue.main.async {
+                if success {
+                    self?.butRestore.isHidden = false
+                    self?.progressIndicatorRestore.stopAnimation(nil)
+                }
             }
         }
     }

@@ -54,6 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             })
         }
+        _ = Store.shared
         #else
         RCLog("Icloud is not supported in this target, continuing without...")
         #endif
