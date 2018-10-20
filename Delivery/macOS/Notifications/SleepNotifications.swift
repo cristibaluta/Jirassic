@@ -13,6 +13,7 @@ class SleepNotifications: NSObject {
 	var computerWentToSleep: (() -> ())?
 	var computerWakeUp: (() -> ())?
 	var lastSleepDate: Date?
+    var lastWakeDate: Date?
 	
 	override init() {
 		super.init()
@@ -54,6 +55,7 @@ class SleepNotifications: NSObject {
 	
 	@objc func receiveWakeNotification (_ notif: Notification) {
 		RCLogO(notif)
+        lastWakeDate = Date()
 		computerWakeUp?()
 	}
 }

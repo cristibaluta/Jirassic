@@ -72,9 +72,12 @@ class NewTaskCommand: NSScriptCommand {
     
     private func startDay() {
         
-        let settings: Settings = SettingsInteractor().getAppSettings()
-        let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
-        let comps = startDate.components()
+        var startDate = AppDelegate.sharedApp().sleep.lastWakeDate
+        if startDate == nil {
+            let settings: Settings = SettingsInteractor().getAppSettings()
+            startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
+        }
+        let comps = startDate!.components()
         let startDayMark = Task(endDate: Date(hour: comps.hour, minute: comps.minute), type: TaskType.startDay)
         
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)

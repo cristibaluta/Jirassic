@@ -17,9 +17,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var window: NSWindow?
     var activePopover: NSPopover?
-    var appWireframe = AppWireframe()
-    private var sleep = SleepNotifications()
-    private var browser = BrowserNotification()
+    let appWireframe = AppWireframe()
+    let sleep = SleepNotifications()
+    private let browser = BrowserNotification()
     let theme = AppTheme()
     let menu = MenuBarController()
     private let localPreferences = RCPreferences<LocalPreferences>()
