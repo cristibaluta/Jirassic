@@ -17,7 +17,7 @@ enum OutputType {
 class OutputTableViewDataSource: NSObject {
     
     fileprivate let tableView: NSTableView
-    fileprivate let cells: [OutputType] = [.jiraTempo, .cliHookup, .cocoaHookup]
+    fileprivate let cells: [OutputType] = [.jiraTempo]
     var jiraCell: JiraTempoCell?
     var cliHookupCell: HookupCell?
     var cocoaHookupCell: CocoaHookupCell?
@@ -27,12 +27,12 @@ class OutputTableViewDataSource: NSObject {
         super.init()
         
         JiraTempoCell.register(in: tableView)
-        HookupCell.register(in: tableView)
-        CocoaHookupCell.register(in: tableView)
+//        HookupCell.register(in: tableView)
+//        CocoaHookupCell.register(in: tableView)
         
         jiraCell = JiraTempoCell.instantiate(in: self.tableView)
-        cliHookupCell = HookupCell.instantiate(in: self.tableView)
-        cocoaHookupCell = CocoaHookupCell.instantiate(in: self.tableView)
+//        cliHookupCell = HookupCell.instantiate(in: self.tableView)
+//        cocoaHookupCell = CocoaHookupCell.instantiate(in: self.tableView)
     }
 }
 
