@@ -93,7 +93,9 @@ extension TasksDataSource: NSTableViewDelegate {
                 }
             }
             cell.didAddTask = { [weak self] in
-                self?.didAddRow!(tableView.numberOfRows - 1)
+                if let wself = self {
+                    wself.didAddRow!(wself.tasks.count - 1)
+                }
             }
             cell.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
             

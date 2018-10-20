@@ -251,7 +251,9 @@ extension TasksPresenter: TasksPresenterInput {
     func insertTaskAfterRow (_ row: Int) {
         
         guard currentTasks.count > row + 1 else {
-            ui!.presentNewTaskController(withInitialDate: Date())
+            let taskBefore = currentTasks[row]
+            let nextDate = taskBefore.endDate.isSameDayAs(Date()) ? Date() : taskBefore.endDate.addingTimeInterval(3600)
+            ui!.presentNewTaskController(withInitialDate: nextDate)
             return
         }
         let taskBefore = currentTasks[row]
