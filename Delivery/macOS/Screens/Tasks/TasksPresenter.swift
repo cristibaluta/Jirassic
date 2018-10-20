@@ -102,10 +102,10 @@ extension TasksPresenter: TasksPresenterInput {
                 return
             }
             self.fetchGitLogs(day) {
-            self.fetchCalendarEvents(day) {
-                self.displayTasks (self.currentTasks)
-                self.ui!.showLoadingIndicator(false)
-            }
+                self.fetchCalendarEvents(day) {
+                    self.displayTasks (self.currentTasks)
+                    self.ui!.showLoadingIndicator(false)
+                }
             }
         }
     }

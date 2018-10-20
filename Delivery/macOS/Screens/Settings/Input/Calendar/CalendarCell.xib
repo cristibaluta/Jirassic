@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,7 +53,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U0o-hB-0FO">
-                                <rect key="frame" x="454" y="145" width="22" height="18"/>
+                                <rect key="frame" x="10" y="145" width="22" height="18"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="a8i-lq-vV3">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -94,8 +93,8 @@
                             <constraint firstItem="soa-Mf-B56" firstAttribute="top" secondItem="bAm-pg-lwW" secondAttribute="top" constant="20" id="I1j-nR-ahD"/>
                             <constraint firstItem="c9X-tX-mPm" firstAttribute="top" secondItem="7Et-wb-aOF" secondAttribute="bottom" constant="17" id="JQS-62-BV9"/>
                             <constraint firstAttribute="trailing" secondItem="c9X-tX-mPm" secondAttribute="trailing" id="NTb-Tm-yw3"/>
-                            <constraint firstAttribute="trailing" secondItem="U0o-hB-0FO" secondAttribute="trailing" constant="10" id="POF-Sc-fND"/>
                             <constraint firstItem="U0o-hB-0FO" firstAttribute="centerY" secondItem="y1X-Wf-3ng" secondAttribute="centerY" id="S5x-AY-5qS"/>
+                            <constraint firstItem="U0o-hB-0FO" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="12" id="Tnp-wc-yFA"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
                             <constraint firstAttribute="bottom" secondItem="c9X-tX-mPm" secondAttribute="bottom" id="cXO-fJ-ChF"/>

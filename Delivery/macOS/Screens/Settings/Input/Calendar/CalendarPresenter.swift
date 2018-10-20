@@ -74,6 +74,6 @@ extension CalendarPresenter: CalendarPresenterInput {
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         }
         userInterface!.setCalendars(calendarModule.allCalendarsTitles(), selected: calendarModule.selectedCalendars)
-        userInterface!.enable(pref.bool(.enableCalendar))
+        userInterface!.enable(calendarModule.isAuthorized && pref.bool(.enableCalendar))
     }
 }

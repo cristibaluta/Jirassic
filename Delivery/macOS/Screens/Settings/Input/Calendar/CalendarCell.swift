@@ -78,6 +78,7 @@ extension CalendarCell: CalendarPresenterOutput {
     }
     
     func setCalendarStatus (authorized: Bool, enabled: Bool) {
+        statusImageView.isHidden = authorized
         butAuthorize.isHidden = authorized
         butEnable.isHidden = !authorized
         butEnable.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
