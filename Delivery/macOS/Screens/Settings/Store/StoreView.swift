@@ -10,7 +10,8 @@ import Cocoa
 
 class StoreView: NSView {
 
-    @IBOutlet private var butBuyAll: NSButton!
+    @IBOutlet private var butBuy: NSButton!
+    @IBOutlet private var butCancel: NSButton!
     @IBOutlet private var butRestore: NSButton!
     @IBOutlet private var progressIndicatorAll: NSProgressIndicator!
     @IBOutlet private var progressIndicatorRestore: NSProgressIndicator!
@@ -27,8 +28,8 @@ class StoreView: NSView {
         refresh()
     }
     
-    @IBAction func handleBuyAllButton (_ sender: NSButton) {
-        butBuyAll.isHidden = true
+    @IBAction func handleBuyButton (_ sender: NSButton) {
+        butBuy.isHidden = true
         progressIndicatorAll.isHidden = false
         progressIndicatorAll.startAnimation(sender)
         store.purchase(product: .full) { [weak self] (success) in
@@ -39,6 +40,13 @@ class StoreView: NSView {
                     self?.refresh()
                 }
             }
+        }
+    }
+    
+    @IBAction func handleCancelButton (_ sender: NSButton) {
+        if let url = URL(string: "https://apps.apple.com/account/subscriptions"),
+            NSWorkspace.shared.open(url) {
+            RCLog("default browser was successfully opened")
         }
     }
     
@@ -58,7 +66,8 @@ class StoreView: NSView {
     }
     
     private func refresh() {
-        butBuyAll.isHidden = store.isGitPurchased && store.isJiraTempoPurchased
+        butBuy.isHidden = store.isGitPurchased && store.isJiraTempoPurchased
+        butCancel.isHidden = !butBuy.isHidden
         butRestore.isHidden = store.isGitPurchased && store.isJiraTempoPurchased
         descriptionAllTextField.stringValue = "Try for 30 days for free, after that you will be charged every 6 months. The subscription can be disabled from your App Store account.\n\nWhat's included in the subscription:\n• Git plugin will let you see commits made with Git in the daily reports\n• Jira Tempo plugin will let you save daily reports directly to Jira Tempo"
         

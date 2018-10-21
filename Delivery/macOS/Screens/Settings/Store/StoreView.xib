@@ -20,6 +20,14 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Jqo-6U-U3f">
+                    <rect key="frame" x="18" y="253" width="444" height="17"/>
+                    <textFieldCell key="cell" selectable="YES" title="$" id="g9v-a5-AUU">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="YFV-j0-u7b">
                     <rect key="frame" x="444" y="286" width="16" height="16"/>
                 </progressIndicator>
@@ -33,7 +41,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="handleBuyAllButton:" target="c22-O7-iKe" id="xuV-CA-rXh"/>
+                        <action selector="handleBuyButton:" target="c22-O7-iKe" id="wIR-TK-LfT"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3e5-0l-KIc">
@@ -57,14 +65,16 @@
                         <action selector="handleRestoreButton:" target="c22-O7-iKe" id="1z4-69-mUJ"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Jqo-6U-U3f">
-                    <rect key="frame" x="18" y="253" width="444" height="17"/>
-                    <textFieldCell key="cell" selectable="YES" title="$" id="g9v-a5-AUU">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UrJ-hk-HHW">
+                    <rect key="frame" x="326" y="281" width="134" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="Cancel subscription" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mIG-da-1p6">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleCancelButton:" target="c22-O7-iKe" id="1ma-6j-N36"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="awB-nn-Xtk" firstAttribute="top" secondItem="Jqo-6U-U3f" secondAttribute="bottom" constant="8" id="4Su-OY-4Ju"/>
@@ -72,6 +82,7 @@
                 <constraint firstItem="3rx-h7-sf6" firstAttribute="top" secondItem="3e5-0l-KIc" secondAttribute="top" constant="8" id="HyK-e2-BwN"/>
                 <constraint firstItem="YFV-j0-u7b" firstAttribute="centerY" secondItem="3rx-h7-sf6" secondAttribute="centerY" id="IVF-Xi-HeG"/>
                 <constraint firstAttribute="trailing" secondItem="awB-nn-Xtk" secondAttribute="trailing" constant="20" id="IaB-QL-u3u"/>
+                <constraint firstItem="UrJ-hk-HHW" firstAttribute="centerY" secondItem="3rx-h7-sf6" secondAttribute="centerY" id="PRw-Ss-xR1"/>
                 <constraint firstItem="Jqo-6U-U3f" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="Rjx-o1-Uzo"/>
                 <constraint firstAttribute="trailing" secondItem="3rx-h7-sf6" secondAttribute="trailing" constant="20" id="SHw-h9-Jji"/>
                 <constraint firstAttribute="trailing" secondItem="Jqo-6U-U3f" secondAttribute="trailing" constant="20" id="Thy-I8-Xht"/>
@@ -79,13 +90,15 @@
                 <constraint firstItem="35M-5i-yFZ" firstAttribute="centerY" secondItem="g1H-aj-wut" secondAttribute="centerY" id="frT-ML-Rcn"/>
                 <constraint firstItem="3e5-0l-KIc" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="18" id="fxU-iz-pYb"/>
                 <constraint firstItem="Jqo-6U-U3f" firstAttribute="top" secondItem="3e5-0l-KIc" secondAttribute="bottom" constant="7" id="hW6-9P-g5D"/>
+                <constraint firstItem="UrJ-hk-HHW" firstAttribute="trailing" secondItem="3rx-h7-sf6" secondAttribute="trailing" id="jsF-1a-yCv"/>
                 <constraint firstItem="awB-nn-Xtk" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="nOF-ZF-XSj"/>
                 <constraint firstItem="3e5-0l-KIc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="50" id="nwi-V3-khj"/>
                 <constraint firstAttribute="bottom" secondItem="g1H-aj-wut" secondAttribute="bottom" constant="20" id="orz-D7-vp9"/>
                 <constraint firstItem="g1H-aj-wut" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="vXb-0e-Ou4"/>
             </constraints>
             <connections>
-                <outlet property="butBuyAll" destination="3rx-h7-sf6" id="axo-5V-oto"/>
+                <outlet property="butBuy" destination="3rx-h7-sf6" id="1b2-el-sT5"/>
+                <outlet property="butCancel" destination="UrJ-hk-HHW" id="4f5-3B-5g0"/>
                 <outlet property="butRestore" destination="g1H-aj-wut" id="MaI-bL-3w3"/>
                 <outlet property="descriptionAllTextField" destination="awB-nn-Xtk" id="cXW-wB-aL4"/>
                 <outlet property="priceTextField" destination="Jqo-6U-U3f" id="nVO-YT-23z"/>
