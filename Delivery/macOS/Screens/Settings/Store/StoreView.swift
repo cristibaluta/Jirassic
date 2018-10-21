@@ -10,46 +10,33 @@ import Cocoa
 
 class StoreView: NSView {
 
-    @IBOutlet private var butBuyGit: NSButton!
-    @IBOutlet private var butBuyJiraTempo: NSButton!
     @IBOutlet private var butBuyAll: NSButton!
     @IBOutlet private var butRestore: NSButton!
-    @IBOutlet private var progressIndicatorGit: NSProgressIndicator!
-    @IBOutlet private var progressIndicatorJiraTempo: NSProgressIndicator!
     @IBOutlet private var progressIndicatorAll: NSProgressIndicator!
     @IBOutlet private var progressIndicatorRestore: NSProgressIndicator!
-    @IBOutlet private var descriptionGitTextField: NSTextField!
-    @IBOutlet private var descriptionJiraTempoTextField: NSTextField!
+    @IBOutlet private var priceTextField: NSTextField!
     @IBOutlet private var descriptionAllTextField: NSTextField!
     
     private let localPreferences = RCPreferences<LocalPreferences>()
     private let store = Store.shared
     
-    @IBAction func handleBuyGitButton (_ sender: NSButton) {
-        store.purchase(product: .git) { [weak self] (success) in
-            DispatchQueue.main.async {
-                if success {
-                    
-                }
-            }
-        }
-    }
-    
-    @IBAction func handleBuyJiraTempoButton (_ sender: NSButton) {
-        store.purchase(product: .jiraTempo) { [weak self] (success) in
-            DispatchQueue.main.async {
-                if success {
-                    
-                }
-            }
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        progressIndicatorAll.isHidden = true
+        progressIndicatorRestore.isHidden = true
+        refresh()
     }
     
     @IBAction func handleBuyAllButton (_ sender: NSButton) {
+        butBuyAll.isHidden = true
+        progressIndicatorAll.isHidden = false
+        progressIndicatorAll.startAnimation(sender)
         store.purchase(product: .full) { [weak self] (success) in
             DispatchQueue.main.async {
                 if success {
-                    
+                    self?.progressIndicatorAll.isHidden = true
+                    self?.progressIndicatorAll.stopAnimation(nil)
+                    self?.refresh()
                 }
             }
         }
@@ -57,43 +44,28 @@ class StoreView: NSView {
     
     @IBAction func handleRestoreButton (_ sender: NSButton) {
         butRestore.isHidden = true
+        progressIndicatorRestore.isHidden = false
         progressIndicatorRestore.startAnimation(sender)
         store.restore() { [weak self] (success) in
             DispatchQueue.main.async {
                 if success {
                     self?.butRestore.isHidden = false
+                    self?.progressIndicatorRestore.isHidden = true
                     self?.progressIndicatorRestore.stopAnimation(nil)
                 }
             }
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    private func refresh() {
+        butBuyAll.isHidden = store.isGitPurchased && store.isJiraTempoPurchased
+        butRestore.isHidden = store.isGitPurchased && store.isJiraTempoPurchased
+        descriptionAllTextField.stringValue = "Try for 30 days for free, after that you will be charged every 6 months. The subscription can be disabled from your App Store account.\n\nWhat's included in the subscription:\n• Git plugin will let you see commits made with Git in the daily reports\n• Jira Tempo plugin will let you save daily reports directly to Jira Tempo"
         
-        descriptionGitTextField.stringValue = "Git support will let you see commits made with Git in the daily reports"
-        descriptionJiraTempoTextField.stringValue = "Jira Tempo support will let you save daily reports directly to Jira Tempo"
-        descriptionAllTextField.stringValue = "Subscription to Git and Jira Tempo support for 6 months. This purchase will renew automatically and can be disabled from your App Store account."
-        
-        store.getProduct(.full) { skProduct in
+        store.getProduct(.full) { [weak self] skProduct in
             if let product = skProduct {
                 DispatchQueue.main.async {
-                    self.butBuyAll.title = "Buy for \(product.localizedPrice() ?? "$x")"
-                }
-                
-                self.store.getProduct(.git) { skProduct in
-                    if let product = skProduct {
-                        DispatchQueue.main.async {
-                            self.butBuyGit.title = "Buy for \(product.localizedPrice() ?? "$x")"
-                        }
-                    }
-                }
-                self.store.getProduct(.jiraTempo) { skProduct in
-                    if let product = skProduct {
-                        DispatchQueue.main.async {
-                            self.butBuyJiraTempo.title = "Buy for \(product.localizedPrice() ?? "$x")"
-                        }
-                    }
+                    self?.priceTextField.stringValue = product.localizedPrice() ?? ""
                 }
             }
         }
