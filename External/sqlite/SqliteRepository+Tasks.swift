@@ -24,20 +24,6 @@ extension SqliteRepository: RepositoryTasks {
         }
     }
     
-    func queryTasksInDay (_ day: Date) -> [Task] {
-
-        let tasks = tasksBetween (startDate: day.startOfDay(), endDate: day.endOfDay())
-        return tasks
-    }
-    
-    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
-
-        queue.async {
-            let tasks = self.queryTasksInDay(day)
-            completion(tasks, nil)
-        }
-    }
-    
     func queryUnsyncedTasks() -> [Task] {
 
         #if !CMD
@@ -105,7 +91,7 @@ extension SqliteRepository: RepositoryTasks {
 
 extension SqliteRepository {
 
-    fileprivate func tasksBetween (startDate: Date, endDate: Date) -> [Task] {
+    private func tasksBetween (startDate: Date, endDate: Date) -> [Task] {
 
         let startDate = startDate.YYYYMMddHHmmssGMT()
         let endDate = endDate.YYYYMMddHHmmssGMT()
@@ -116,7 +102,7 @@ extension SqliteRepository {
         return tasks
     }
 
-    fileprivate func taskFromSTask (_ stask: STask) -> Task {
+    private func taskFromSTask (_ stask: STask) -> Task {
         
         return Task(lastModifiedDate: stask.lastModifiedDate,
                     startDate: stask.startDate,
@@ -129,7 +115,7 @@ extension SqliteRepository {
         )
     }
     
-    fileprivate func tasksFromSTasks (_ rtasks: [STask]) -> [Task] {
+    private func tasksFromSTasks (_ rtasks: [STask]) -> [Task] {
         
         var tasks = [Task]()
         for rtask in rtasks {
@@ -139,7 +125,7 @@ extension SqliteRepository {
         return tasks
     }
     
-    fileprivate func staskFromTask (_ task: Task) -> STask {
+    private func staskFromTask (_ task: Task) -> STask {
         
         let taskPredicate = "objectId == '\(task.objectId)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
@@ -153,7 +139,7 @@ extension SqliteRepository {
     }
     
     // Update only updatable properties. objectId can't be updated
-    fileprivate func updatedSTask (_ stask: STask, withTask task: Task) -> STask {
+    private func updatedSTask (_ stask: STask, withTask task: Task) -> STask {
         
         stask.taskNumber = task.taskNumber
         stask.taskType = task.taskType.rawValue

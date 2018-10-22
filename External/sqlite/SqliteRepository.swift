@@ -10,9 +10,9 @@ import Foundation
 
 class SqliteRepository {
     
-    fileprivate let appName = "Jirassic"
-    fileprivate let databaseName = "Jirassic"
-    fileprivate var db: SQLiteDB!
+    private let appName = "Jirassic"
+    private let databaseName = "Jirassic"
+    private var db: SQLiteDB!
     internal let queue = DispatchQueue(label: "fetch_tasks", attributes: [])
     
     init() {

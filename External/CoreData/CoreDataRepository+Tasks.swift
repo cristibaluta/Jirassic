@@ -23,16 +23,6 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks, nil)
     }
     
-    func queryTasksInDay (_ day: Date) -> [Task] {
-
-        let tasks = tasksBetween(startDate: day.startOfDay(), endDate: day.endOfDay())
-        return tasks
-    }
-    
-    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
-        completion(queryTasksInDay(day), nil)
-    }
-    
     func queryUnsyncedTasks() -> [Task] {
         
         var subpredicates = [

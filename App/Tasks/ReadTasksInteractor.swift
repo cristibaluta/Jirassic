@@ -10,25 +10,13 @@ import Foundation
 
 class ReadTasksInteractor: RepositoryInteractor {
 	
-//    func tasksAtPage (_ page: Int, completion: @escaping ([Task]) -> Void) {
-//
-//        self.repository.queryTasks(page, completion: { (tasks, error) in
-//            completion(tasks)
-//
-////            remoteRepository?.queryTasks(page, completion: { (tasks, error) in
-////
-////            })
-//        })
-//    }
-
     // Return a list of tasks sorted by date
     func tasksInDay (_ date: Date) -> [Task] {
-        return self.repository.queryTasksInDay(date)
+        return self.repository.queryTasks(startDate: date.startOfDay(), endDate: date.endOfDay())
     }
 
+    // Return a list of tasks sorted by date
     func tasksInMonth (_ date: Date) -> [Task] {
-        let startDate = date.startOfMonth()
-        let endDate = date.endOfMonth()
-        return self.repository.queryTasks(startDate: startDate, endDate: endDate)
+        return self.repository.queryTasks(startDate: date.startOfMonth(), endDate: date.endOfMonth())
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Base class for any Interactor that wishes to use the repository
 class RepositoryInteractor {
     
     var repository: Repository!

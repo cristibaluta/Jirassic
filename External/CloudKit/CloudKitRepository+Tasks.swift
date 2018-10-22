@@ -12,7 +12,7 @@ import CloudKit
 extension CloudKitRepository: RepositoryTasks {
 
     func queryTasks (startDate: Date, endDate: Date) -> [Task] {
-        return []
+        fatalError("This method is not applicable to CloudKitRepository")
     }
 
     func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
@@ -20,14 +20,6 @@ extension CloudKitRepository: RepositoryTasks {
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in
             completion(self.tasksFromRecords(records ?? []), nil)
         }
-    }
-    
-    func queryTasksInDay (_ day: Date) -> [Task] {
-        return []
-    }
-    
-    func queryTasksInDay (_ day: Date, completion: @escaping ([Task], NSError?) -> Void) {
-        queryTasks(startDate: day.startOfDay(), endDate: day.endOfDay(), completion: completion)
     }
     
     func queryUnsyncedTasks() -> [Task] {
@@ -131,7 +123,7 @@ extension CloudKitRepository {
         }
     }
     
-    fileprivate func tasksFromRecords (_ records: [CKRecord]) -> [Task] {
+    private func tasksFromRecords (_ records: [CKRecord]) -> [Task] {
         
         var tasks = [Task]()
         for record in records {
@@ -141,7 +133,7 @@ extension CloudKitRepository {
         return tasks
     }
     
-    fileprivate func taskFromRecord (_ record: CKRecord) -> Task {
+    private func taskFromRecord (_ record: CKRecord) -> Task {
         
         return Task(lastModifiedDate: record["modificationDate"] as? Date,
                     startDate: record["startDate"] as? Date,
@@ -154,7 +146,7 @@ extension CloudKitRepository {
         )
     }
     
-    fileprivate func updatedRecord (_ record: CKRecord, withTask task: Task) -> CKRecord {
+    private func updatedRecord (_ record: CKRecord, withTask task: Task) -> CKRecord {
         
         record["startDate"] = task.startDate as CKRecordValue?
         record["endDate"] = task.endDate as CKRecordValue
@@ -167,7 +159,7 @@ extension CloudKitRepository {
         return record
     }
     
-    fileprivate func stringIdsFromCKRecordIds (_ ckrecords: [CKRecordID]) -> [String] {
+    private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecordID]) -> [String] {
         
         var ids = [String]()
         for ckrecord in ckrecords {
