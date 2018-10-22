@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Represents a week in the calendar
 class Week {
 	
 	let date: Date

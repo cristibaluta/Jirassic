@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Git commit read from the command line
 struct GitCommit {
     
     var commitNumber: String

@@ -8,9 +8,12 @@
 
 import Foundation
 
+// Represents a day in the calendar.
 class Day {
 
+    /// The date of the first task in the day
 	let dateStart: Date
+    /// The date of the last task in the day if it was finished
     let dateEnd: Date?
 	
     init (dateStart: Date, dateEnd: Date?) {

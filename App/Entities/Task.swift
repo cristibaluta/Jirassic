@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Never change the indexes since will break existing tasks
+// Never change the indexes because they are stored in the database
 enum TaskType: Int {
 	
 	case issue = 0
