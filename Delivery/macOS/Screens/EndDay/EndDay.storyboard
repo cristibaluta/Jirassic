@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -53,7 +51,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DJx-8o-bWg">
-                                <rect key="frame" x="18" y="126" width="196" height="18"/>
+                                <rect key="frame" x="18" y="106" width="196" height="18"/>
                                 <buttonCell key="cell" type="check" title="Save worklogs to Jira Tempo" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Qc2-9K-nvB">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -62,17 +60,7 @@ Gw
                                     <action selector="handleJiraButton:" target="LR9-OL-5Y4" id="1YZ-9j-0Y9"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVj-Yj-wgF">
-                                <rect key="frame" x="18" y="98" width="205" height="18"/>
-                                <buttonCell key="cell" type="check" title="Send end event to the hookup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rr6-eU-hiV">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleHookupButton:" target="LR9-OL-5Y4" id="Jg2-NY-JVE"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e3H-Wf-oUT">
+                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3H-Wf-oUT">
                                 <rect key="frame" x="18" y="72" width="108" height="18"/>
                                 <buttonCell key="cell" type="check" title="Round to 8hrs" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CDM-8b-1hm">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -85,6 +73,14 @@ Gw
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-ZA-8OA">
                                 <rect key="frame" x="169" y="23" width="16" height="16"/>
                             </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NII-4l-3AP">
+                                <rect key="frame" x="236" y="106" width="246" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Jira tempo error" id="dMu-sV-zHf">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" red="0.29921834723827678" green="0.67359528979985772" blue="0.17200419567309094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTz-me-jZu">
                                 <rect key="frame" x="18" y="342" width="470" height="36"/>
                                 <constraints>
@@ -97,7 +93,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dyl-se-zFG">
-                                <rect key="frame" x="238" y="125" width="48" height="19"/>
+                                <rect key="frame" x="238" y="105" width="48" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iFy-zt-lMz">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -106,14 +102,6 @@ Gw
                                     <action selector="handleJiraSetupButton:" target="LR9-OL-5Y4" id="kzC-Cw-Una"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NII-4l-3AP">
-                                <rect key="frame" x="236" y="127" width="246" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Jira tempo error" id="dMu-sV-zHf">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-1W-QW0">
                                 <rect key="frame" x="18" y="283" width="79" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="1lA-Hz-gX5">
@@ -130,31 +118,24 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OM5-SU-HEV">
-                                <rect key="frame" x="397" y="99" width="85" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Hookup error" id="5bK-h0-ANe">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="wvv-Ec-CGM">
-                                <rect key="frame" x="20" y="163" width="460" height="114"/>
+                                <rect key="frame" x="20" y="143" width="460" height="134"/>
                                 <view key="contentView" id="3nh-dS-MCD">
-                                    <rect key="frame" x="1" y="1" width="458" height="112"/>
+                                    <rect key="frame" x="1" y="1" width="458" height="132"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqu-Zg-xM9">
-                                            <rect key="frame" x="0.0" y="0.0" width="458" height="112"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="458" height="132"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Jdu-Ay-7Ab">
-                                                <rect key="frame" x="0.0" y="0.0" width="458" height="112"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="458" height="132"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="wK7-5f-7YU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="458" height="112"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="458" height="132"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="458" height="112"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <size key="minSize" width="458" height="132"/>
                                                         <size key="maxSize" width="466" height="10000000"/>
                                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     </textView>
@@ -166,7 +147,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="5Yq-da-2Pg">
-                                                <rect key="frame" x="442" y="0.0" width="16" height="112"/>
+                                                <rect key="frame" x="442" y="0.0" width="16" height="132"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -189,7 +170,7 @@ Gw
                                             <rect key="frame" x="3" y="0.0" width="47" height="20"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="8.0" id="leb-Pd-auw">
                                                 <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -208,15 +189,11 @@ Gw
                             </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="sVj-Yj-wgF" firstAttribute="leading" secondItem="DJx-8o-bWg" secondAttribute="leading" id="102-17-Kea"/>
                             <constraint firstAttribute="bottom" secondItem="jhb-VM-Iem" secondAttribute="bottom" constant="20" id="2OV-9w-laU"/>
                             <constraint firstItem="6MC-ZA-8OA" firstAttribute="leading" secondItem="jhb-VM-Iem" secondAttribute="trailing" constant="8" id="4PM-aR-ybc"/>
                             <constraint firstItem="jsv-ba-jIY" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="67" id="4pZ-aZ-Qa8"/>
                             <constraint firstItem="NII-4l-3AP" firstAttribute="centerY" secondItem="DJx-8o-bWg" secondAttribute="centerY" id="BEx-LC-Kk5"/>
-                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="leading" secondItem="sVj-Yj-wgF" secondAttribute="leading" id="CTx-Se-kEo"/>
-                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="top" secondItem="sVj-Yj-wgF" secondAttribute="bottom" constant="12" id="FYK-Gz-NGa"/>
                             <constraint firstItem="dTz-me-jZu" firstAttribute="top" secondItem="xUO-DE-YPz" secondAttribute="top" constant="17" id="HTj-Ic-vbB"/>
-                            <constraint firstAttribute="trailing" secondItem="OM5-SU-HEV" secondAttribute="trailing" constant="20" id="MOo-FR-ezr"/>
                             <constraint firstAttribute="trailing" secondItem="wvv-Ec-CGM" secondAttribute="trailing" constant="20" id="NQn-tP-2Un"/>
                             <constraint firstItem="dyl-se-zFG" firstAttribute="leading" secondItem="DJx-8o-bWg" secondAttribute="trailing" constant="26" id="TWN-2q-6Xk"/>
                             <constraint firstAttribute="trailing" secondItem="dTz-me-jZu" secondAttribute="trailing" constant="14" id="U2s-Kk-429"/>
@@ -224,20 +201,19 @@ Gw
                             <constraint firstItem="G1R-uM-dDo" firstAttribute="top" secondItem="e3H-Wf-oUT" secondAttribute="bottom" constant="11" id="dXz-ss-Dur"/>
                             <constraint firstItem="Ohz-Z1-Kou" firstAttribute="leading" secondItem="Sch-1W-QW0" secondAttribute="leading" id="dvE-V6-Nar"/>
                             <constraint firstItem="dyl-se-zFG" firstAttribute="centerY" secondItem="DJx-8o-bWg" secondAttribute="centerY" id="g9g-BP-jW0"/>
-                            <constraint firstItem="OM5-SU-HEV" firstAttribute="centerY" secondItem="sVj-Yj-wgF" secondAttribute="centerY" id="kcC-uH-E77"/>
                             <constraint firstItem="Ohz-Z1-Kou" firstAttribute="centerY" secondItem="jsv-ba-jIY" secondAttribute="centerY" id="kiP-Q1-lJR"/>
                             <constraint firstItem="jsv-ba-jIY" firstAttribute="leading" secondItem="Ohz-Z1-Kou" secondAttribute="trailing" constant="16" id="mYN-q8-GNW"/>
                             <constraint firstItem="DJx-8o-bWg" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="n4X-qT-lkL"/>
                             <constraint firstItem="6MC-ZA-8OA" firstAttribute="centerY" secondItem="jhb-VM-Iem" secondAttribute="centerY" id="oX1-MF-Gns"/>
                             <constraint firstItem="wvv-Ec-CGM" firstAttribute="top" secondItem="Sch-1W-QW0" secondAttribute="bottom" constant="6" id="oz6-L6-UI5"/>
                             <constraint firstItem="DJx-8o-bWg" firstAttribute="top" secondItem="wvv-Ec-CGM" secondAttribute="bottom" constant="21" id="pyX-eF-s9m"/>
-                            <constraint firstItem="sVj-Yj-wgF" firstAttribute="top" secondItem="DJx-8o-bWg" secondAttribute="bottom" constant="14" id="qm7-fL-HUz"/>
                             <constraint firstItem="wvv-Ec-CGM" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="rNf-0A-dfR"/>
                             <constraint firstAttribute="trailing" secondItem="NII-4l-3AP" secondAttribute="trailing" constant="20" id="rRA-Zi-Qj0"/>
                             <constraint firstAttribute="bottom" secondItem="G1R-uM-dDo" secondAttribute="bottom" constant="62" id="rXW-sM-eDL"/>
                             <constraint firstItem="jhb-VM-Iem" firstAttribute="leading" secondItem="8Hy-HX-Oze" secondAttribute="trailing" constant="12" id="reg-5S-ARk"/>
                             <constraint firstItem="Sch-1W-QW0" firstAttribute="leading" secondItem="wvv-Ec-CGM" secondAttribute="leading" id="sJ0-n6-Dy3"/>
                             <constraint firstAttribute="bottom" secondItem="8Hy-HX-Oze" secondAttribute="bottom" constant="20" id="tcA-Mi-7dR"/>
+                            <constraint firstItem="e3H-Wf-oUT" firstAttribute="top" secondItem="DJx-8o-bWg" secondAttribute="bottom" constant="20" id="tg6-jZ-Btn"/>
                             <constraint firstItem="dTz-me-jZu" firstAttribute="leading" secondItem="xUO-DE-YPz" secondAttribute="leading" constant="20" id="v2F-Im-dY2"/>
                             <constraint firstAttribute="trailing" secondItem="G1R-uM-dDo" secondAttribute="trailing" constant="20" id="v59-je-XFi"/>
                             <constraint firstItem="wvv-Ec-CGM" firstAttribute="top" secondItem="jsv-ba-jIY" secondAttribute="bottom" constant="29" id="zn4-GD-Kpo"/>
@@ -245,14 +221,12 @@ Gw
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="butHookup" destination="sVj-Yj-wgF" id="hMP-M1-MUd"/>
                         <outlet property="butJira" destination="DJx-8o-bWg" id="nis-T2-YJw"/>
                         <outlet property="butJiraSetup" destination="dyl-se-zFG" id="QNT-n7-drp"/>
                         <outlet property="butRound" destination="e3H-Wf-oUT" id="NSb-qd-3q0"/>
                         <outlet property="butSave" destination="jhb-VM-Iem" id="6Ov-Fp-hgl"/>
                         <outlet property="dateTextField" destination="dTz-me-jZu" id="3wB-X0-3KT"/>
                         <outlet property="durationTextField" destination="V7N-JC-Ex3" id="vea-qt-T6t"/>
-                        <outlet property="hookupErrorTextField" destination="OM5-SU-HEV" id="icS-Ks-C9H"/>
                         <outlet property="jiraErrorTextField" destination="NII-4l-3AP" id="lnB-OC-xvv"/>
                         <outlet property="progressIndicator" destination="6MC-ZA-8OA" id="5Y9-gL-iEP"/>
                         <outlet property="worklogTextView" destination="wK7-5f-7YU" id="06y-Ez-hrO"/>

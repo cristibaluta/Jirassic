@@ -10,17 +10,15 @@ import Cocoa
 
 class EndDayViewController: NSViewController {
     
-    @IBOutlet fileprivate var dateTextField: NSTextField!
-    @IBOutlet fileprivate var durationTextField: NSTextField!
-    @IBOutlet fileprivate var worklogTextView: NSTextView!
-    @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
-    @IBOutlet fileprivate var butJira: NSButton!
-    @IBOutlet fileprivate var butJiraSetup: NSButton!
-    @IBOutlet fileprivate var jiraErrorTextField: NSTextField!
-    @IBOutlet fileprivate var butHookup: NSButton!
-    @IBOutlet fileprivate var hookupErrorTextField: NSTextField!
-    @IBOutlet fileprivate var butRound: NSButton!
-    @IBOutlet fileprivate var butSave: NSButton!
+    @IBOutlet private var dateTextField: NSTextField!
+    @IBOutlet private var durationTextField: NSTextField!
+    @IBOutlet private var worklogTextView: NSTextView!
+    @IBOutlet private var progressIndicator: NSProgressIndicator!
+    @IBOutlet private var butJira: NSButton!
+    @IBOutlet private var butJiraSetup: NSButton!
+    @IBOutlet private var jiraErrorTextField: NSTextField!
+    @IBOutlet private var butRound: NSButton!
+    @IBOutlet private var butSave: NSButton!
     
     var onSave: (() -> Void)?
     var onCancel: (() -> Void)?
@@ -34,7 +32,6 @@ class EndDayViewController: NSViewController {
         
         dateTextField.stringValue = date!.EEEEMMMdd()
         jiraErrorTextField.stringValue = ""
-        hookupErrorTextField.stringValue = ""
         
         worklogTextView.drawsBackground = false
         worklogTextView.backgroundColor = NSColor.clear
@@ -58,11 +55,7 @@ class EndDayViewController: NSViewController {
         RCPreferences<LocalPreferences>().set(SettingsTab.output.rawValue, forKey: .settingsActiveTab)
         appWireframe!.flipToSettingsController()
     }
-    
-    @IBAction func handleHookupButton (_ sender: NSButton) {
-        presenter!.enableHookup(sender.state == .on)
-    }
-    
+
     @IBAction func handleRoundButton (_ sender: NSButton) {
         presenter!.enableRounding(sender.state == .on)
     }
@@ -75,12 +68,7 @@ extension EndDayViewController: EndDayPresenterOutput {
         butJira.state = enabled ? .on : .off
         butJiraSetup.isHidden = available
     }
-    
-    func showHookup (enabled: Bool, available: Bool) {
-        butHookup.isEnabled = available
-        butHookup.state = enabled ? .on : .off
-    }
-    
+
     func showRounding (enabled: Bool, title: String) {
         butRound.state = enabled ? .on : .off
         butRound.title = title
@@ -102,11 +90,6 @@ extension EndDayViewController: EndDayPresenterOutput {
     
     func showJiraMessage (_ message: String, isError: Bool) {
         jiraErrorTextField.stringValue = message
-        jiraErrorTextField.textColor = isError ? NSColor.red : NSColor.green
-    }
-    
-    func showHookupMessage (_ message: String, isError: Bool) {
-        hookupErrorTextField.stringValue = message
-        hookupErrorTextField.textColor = isError ? NSColor.red : NSColor.green
+        jiraErrorTextField.textColor = isError ? NSColor.red : NSColor(red: 76/255, green: 172/255, blue: 44/255, alpha: 1.0)
     }
 }
