@@ -69,7 +69,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         lastSelectedDay = day
         selectedListType = listType
-        interactor?.reloadTasksOnDay(day)
+        interactor?.reloadTasks(inDay: day)
     }
 
     func updateNoTasksState() {

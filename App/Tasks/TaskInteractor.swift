@@ -37,7 +37,7 @@ class TaskInteractor: RepositoryInteractor {
         })
     }
     
-    fileprivate func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
+    private func syncTask (_ task: Task, completion: @escaping (_ uploadedTask: Task) -> Void) {
         
         #if !CMD
         if let remoteRepository = self.remoteRepository {

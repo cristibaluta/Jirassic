@@ -77,7 +77,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                     selectSegment(atIndex: index)
                     // If selected segment is meeting, try to see if the meeting is a calendar event and populate with that data
                     if type == .meeting {
-                        moduleCalendar.events(onDate: startDate) { (tasks) in
+                        moduleCalendar.events(dateStart: startDate, dateEnd: startDate.endOfDay()) { (tasks) in
                             for task in tasks {
                                 if task.startDate!.isAlmostSameHourAs(startDate) &&
                                     task.endDate.isAlmostSameHourAs(endSleepDate!, devianceSeconds: 30.0.minToSec) {

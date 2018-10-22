@@ -12,22 +12,14 @@ class ReadDaysInteractor: RepositoryInteractor {
 	
 	private var tasks = [Task]()
 	
-    override init (repository: Repository, remoteRepository: Repository?) {
-        super.init(repository: repository, remoteRepository: remoteRepository)
-	}
-    
-    /*
-     Query the objects from the local repository then from remote if enabled
-     completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
-     */
-    func query (_ completion: @escaping (_ weeks: [Week]) -> Void) {
+    /// Query all objects from the local repository then from remote if enabled
+    /// completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
+    func queryAll (_ completion: @escaping (_ weeks: [Week]) -> Void) {
         query(startingDate: Date(timeIntervalSince1970: 0), completion: completion)
     }
 
-    /*
-     Query the objects from the local repository then from remote if enabled
-     completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
-     */
+    /// Query the objects from the local repository then from remote if enabled
+    /// completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
     func query (startingDate: Date, completion: @escaping (_ weeks: [Week]) -> Void) {
 
         queryLocalTasks(startDate: startingDate, endDate: Date()) { [weak self] (tasks: [Task]) in

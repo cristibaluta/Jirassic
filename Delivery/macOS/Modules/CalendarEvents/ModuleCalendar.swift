@@ -45,16 +45,13 @@ class ModuleCalendar {
         return allCalendars().map({$0.title})
     }
 
-    func events (onDate date: Date, completion: @escaping (([Task]) -> Void)) {
+    func events (dateStart: Date, dateEnd: Date, completion: @escaping (([Task]) -> Void)) {
         
         guard isAuthorized else {
             completion([])
             return
         }
         
-        let startDate = date.startOfDay()
-        let endDate = date.endOfDay()
-
         var tasks = [Task]()
 
         authorize { (granted) in
@@ -67,7 +64,7 @@ class ModuleCalendar {
                 
                 if self.selectedCalendars.contains(calendar.title) {
                     
-                    let eventsPredicate = self.eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [calendar])
+                    let eventsPredicate = self.eventStore.predicateForEvents(withStart: dateStart, end: dateEnd, calendars: [calendar])
                     let events: [EKEvent] = self.eventStore.events(matching: eventsPredicate)
                     
                     for event in events {

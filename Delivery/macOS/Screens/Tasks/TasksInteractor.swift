@@ -11,8 +11,8 @@ import Foundation
 protocol TasksInteractorInput: class {
 
     func reloadCalendar()
-    func reloadTasksOnDay (_ day: Day)
-    func reloadTasksOnMonth (_ day: Day)
+    func reloadTasks (inDay day: Day)
+    func reloadTasks (inMonth day: Day)
 }
 
 protocol TasksInteractorOutput: class {
@@ -54,40 +54,57 @@ extension TasksInteractor: TasksInteractorInput {
         }
     }
 
-    func reloadTasksOnDay (_ day: Day) {
+    func reloadTasks (inDay day: Day) {
 
-        self.fetchLocalTasks(day) {
+        let dateStart = day.dateStart
+        let dateEnd = dateStart.endOfDay()
+        
+        self.fetchLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
             guard !self.currentTasks.isEmpty else {
                 self.presenter!.tasksDidLoad (self.currentTasks)
                 return
             }
-            self.fetchGitLogs(day) {
-                self.fetchCalendarEvents(day) {
+            self.fetchGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
+                self.fetchCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
                     self.presenter!.tasksDidLoad (self.currentTasks)
                 }
             }
         }
     }
 
-    func reloadTasksOnMonth (_ day: Day) {
+    func reloadTasks (inMonth day: Day) {
 
+        let dateStart = day.dateStart.startOfMonth()
+        let dateEnd = dateStart.endOfMonth()
+        
+        self.fetchLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
+            guard !self.currentTasks.isEmpty else {
+                self.presenter!.tasksDidLoad (self.currentTasks)
+                return
+            }
+            self.fetchGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
+                self.fetchCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
+                    self.presenter!.tasksDidLoad (self.currentTasks)
+                }
+            }
+        }
     }
 
-    private func fetchLocalTasks(_ day: Day, completion: () -> Void) {
+    private func fetchLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        let localTasks = reader.tasksInDay(day.dateStart)
+        let localTasks = reader.tasksInDay(dateStart)
         currentTasks = localTasks
         completion()
     }
 
-    private func fetchGitLogs (_ day: Day, completion: @escaping () -> Void) {
+    private func fetchGitLogs (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
 
         guard pref.bool(.enableGit) else {
             completion()
             return
         }
 
-        moduleGit.logs(onDate: day.dateStart) { [weak self] gitTasks in
+        moduleGit.logs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
             guard let wself = self else {
                 return
@@ -111,14 +128,14 @@ extension TasksInteractor: TasksInteractorInput {
         }
     }
 
-    private func fetchCalendarEvents (_ day: Day, completion: @escaping () -> Void) {
+    private func fetchCalendarEvents (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
 
         guard pref.bool(.enableCalendar) else {
             completion()
             return
         }
 
-        moduleCalendar.events(onDate: day.dateStart) { [weak self] (calendarTasks) in
+        moduleCalendar.events(dateStart: dateStart, dateEnd: dateEnd) { [weak self] (calendarTasks) in
 
             guard let wself = self,
                 let startOfDayDate = wself.currentTasks.first?.endDate else {
