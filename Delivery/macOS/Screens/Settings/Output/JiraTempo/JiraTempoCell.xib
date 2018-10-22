@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,17 +9,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView identifier="JiraTempoCell" id="c22-O7-iKe" customClass="JiraTempoCell" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="511" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="511" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box autoresizesSubviews="NO" borderType="line" title="Jira Tempo" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-h3-hcI">
-                    <rect key="frame" x="-3" y="-4" width="517" height="204"/>
+                    <rect key="frame" x="-3" y="-4" width="517" height="254"/>
                     <view key="contentView" id="gTj-S0-GSV">
-                        <rect key="frame" x="1" y="1" width="515" height="188"/>
+                        <rect key="frame" x="1" y="1" width="515" height="238"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJj-ST-mgw">
-                                <rect key="frame" x="11" y="100" width="73" height="17"/>
+                                <rect key="frame" x="11" y="129" width="73" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Credentials" id="f18-jK-DWj">
                                     <font key="font" metaFont="system"/>
@@ -30,7 +28,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="168-V1-bw4">
-                                <rect key="frame" x="11" y="129" width="78" height="17"/>
+                                <rect key="frame" x="11" y="158" width="78" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira base url" id="J0h-N5-RBr">
                                     <font key="font" metaFont="system"/>
@@ -39,18 +37,18 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sac-XU-YOc">
-                                <rect key="frame" x="110" y="97" width="180" height="22"/>
+                                <rect key="frame" x="110" y="126" width="180" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="gch-lX-jiT"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="User" bezelStyle="round" id="pEb-he-QBb">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-B9-4w3">
-                                <rect key="frame" x="110" y="127" width="385" height="22"/>
+                                <rect key="frame" x="110" y="156" width="385" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Base url" bezelStyle="round" id="wMy-gy-TCi">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -74,16 +72,16 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-XD-xeR">
-                                <rect key="frame" x="11" y="159" width="405" height="17"/>
+                                <rect key="frame" x="11" y="201" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Save worklogs to Jira Tempo from the 'End Day' screen" id="BeJ-Kq-eHi">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Save daily worklogs to Jira Tempo from the 'End Day' screen" id="BeJ-Kq-eHi">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6l-NZ-sMH">
-                                <rect key="frame" x="11" y="64" width="405" height="17"/>
+                                <rect key="frame" x="11" y="84" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Error" id="6TL-Ue-k0c">
                                     <font key="font" metaFont="smallSystem"/>
@@ -139,29 +137,41 @@
                                 </connections>
                             </popUpButton>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-oi-lgq">
-                                <rect key="frame" x="13" y="65" width="16" height="16"/>
+                                <rect key="frame" x="13" y="85" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rsL-Fg-y5y">
-                                <rect key="frame" x="303" y="97" width="192" height="22"/>
+                                <rect key="frame" x="303" y="126" width="192" height="22"/>
                                 <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="K3o-5p-cpk">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <allowedInputSourceLocales>
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                             </secureTextField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="apg-zS-b6p">
+                                <rect key="frame" x="427" y="199" width="67" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Purchase" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Snc-aP-0bE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handlePurchaseButton:" target="c22-O7-iKe" id="Mds-Vr-Z3V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CuW-rz-EzX" secondAttribute="trailing" constant="12" id="15m-bS-tAR"/>
                             <constraint firstItem="sac-XU-YOc" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="110" id="4br-0t-eIK"/>
                             <constraint firstItem="sAK-lu-hJn" firstAttribute="centerY" secondItem="DK6-8B-zU7" secondAttribute="centerY" id="4lg-Tf-dLH"/>
+                            <constraint firstAttribute="trailing" secondItem="apg-zS-b6p" secondAttribute="trailing" constant="21" id="6rg-tA-pfb"/>
                             <constraint firstItem="sac-XU-YOc" firstAttribute="top" secondItem="CyJ-B9-4w3" secondAttribute="bottom" constant="8" id="7xE-GW-gSS"/>
                             <constraint firstItem="CuW-rz-EzX" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="12" id="Gq0-Qp-5F2"/>
                             <constraint firstItem="rsL-Fg-y5y" firstAttribute="leading" secondItem="sac-XU-YOc" secondAttribute="trailing" constant="13" id="HiH-RJ-exW"/>
                             <constraint firstAttribute="trailing" secondItem="lWn-53-lCO" secondAttribute="trailing" constant="20" id="Jho-md-2Ke"/>
+                            <constraint firstItem="apg-zS-b6p" firstAttribute="top" secondItem="gTj-S0-GSV" secondAttribute="top" constant="20" id="PZN-w6-yxZ"/>
                             <constraint firstAttribute="trailing" secondItem="rsL-Fg-y5y" secondAttribute="trailing" constant="20" id="Z7P-Es-F9W"/>
                             <constraint firstItem="CyJ-B9-4w3" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="110" id="aHi-Dl-LqN"/>
                             <constraint firstItem="32U-E8-26L" firstAttribute="centerY" secondItem="lWn-53-lCO" secondAttribute="centerY" id="fab-In-Jps"/>
@@ -170,7 +180,7 @@
                             <constraint firstAttribute="trailing" secondItem="CyJ-B9-4w3" secondAttribute="trailing" constant="20" id="nkc-2p-q0g"/>
                             <constraint firstItem="rsL-Fg-y5y" firstAttribute="top" secondItem="CyJ-B9-4w3" secondAttribute="bottom" constant="8" id="ofg-KM-fs5"/>
                             <constraint firstItem="DK6-8B-zU7" firstAttribute="top" secondItem="CuW-rz-EzX" secondAttribute="bottom" constant="15" id="puv-rT-nn2"/>
-                            <constraint firstItem="CyJ-B9-4w3" firstAttribute="top" secondItem="gTj-S0-GSV" secondAttribute="top" constant="39" id="q3H-Ya-5zF"/>
+                            <constraint firstItem="CyJ-B9-4w3" firstAttribute="top" secondItem="gTj-S0-GSV" secondAttribute="top" constant="60" id="q3H-Ya-5zF"/>
                             <constraint firstAttribute="bottom" secondItem="CuW-rz-EzX" secondAttribute="bottom" constant="53" id="sqs-KE-wdd"/>
                             <constraint firstItem="32U-E8-26L" firstAttribute="centerY" secondItem="sAK-lu-hJn" secondAttribute="centerY" id="t0G-LM-GZI"/>
                             <constraint firstItem="DK6-8B-zU7" firstAttribute="leading" secondItem="gTj-S0-GSV" secondAttribute="leading" constant="13" id="tO6-TE-LTX"/>
@@ -186,6 +196,7 @@
             </constraints>
             <connections>
                 <outlet property="baseUrlTextField" destination="CyJ-B9-4w3" id="JSp-IA-c8g"/>
+                <outlet property="butPurchase" destination="apg-zS-b6p" id="ezC-Ea-cwl"/>
                 <outlet property="errorTextField" destination="u6l-NZ-sMH" id="5bI-aO-BMD"/>
                 <outlet property="passwordTextField" destination="rsL-Fg-y5y" id="Udo-c2-eFM"/>
                 <outlet property="progressIndicator" destination="xNx-oi-lgq" id="gMc-22-FKl"/>

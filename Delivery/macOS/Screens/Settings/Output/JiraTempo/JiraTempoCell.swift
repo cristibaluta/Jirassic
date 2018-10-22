@@ -10,19 +10,21 @@ import Cocoa
 
 class JiraTempoCell: NSTableRowView {
     
-    static let height = CGFloat(200)
+    static let height = CGFloat(250)
     
-    @IBOutlet fileprivate var baseUrlTextField: NSTextField!
-    @IBOutlet fileprivate var userTextField: NSTextField!
-    @IBOutlet fileprivate var passwordTextField: NSTextField!
-    @IBOutlet fileprivate var errorTextField: NSTextField!
-    @IBOutlet fileprivate var projectNamePopup: NSPopUpButton!
-    @IBOutlet fileprivate var projectIssueNamePopup: NSPopUpButton!
-    @IBOutlet fileprivate var progressIndicator: NSProgressIndicator!
+    @IBOutlet private var butPurchase: NSButton!
+    @IBOutlet private var baseUrlTextField: NSTextField!
+    @IBOutlet private var userTextField: NSTextField!
+    @IBOutlet private var passwordTextField: NSTextField!
+    @IBOutlet private var errorTextField: NSTextField!
+    @IBOutlet private var projectNamePopup: NSPopUpButton!
+    @IBOutlet private var projectIssueNamePopup: NSPopUpButton!
+    @IBOutlet private var progressIndicator: NSProgressIndicator!
     
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private let localPreferences = RCPreferences<LocalPreferences>()
     var presenter: JiraTempoPresenterInput = JiraTempoPresenter()
-    
+    var onPurchasePressed: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -51,6 +53,10 @@ class JiraTempoCell: NSTableRowView {
                        password: passwordTextField.stringValue)
     }
     
+    @IBAction func handlePurchaseButton (_ sender: NSButton) {
+        onPurchasePressed?()
+    }
+    
     @IBAction func projectNamePopupSelected (_ sender: NSPopUpButton) {
         if let title = sender.selectedItem?.title {
             localPreferences.set(title, forKey: .settingsJiraProjectKey)
@@ -64,6 +70,15 @@ class JiraTempoCell: NSTableRowView {
 }
 
 extension JiraTempoCell: JiraTempoPresenterOutput {
+    
+    func setPurchased (_ purchased: Bool) {
+        butPurchase.isHidden = purchased
+        baseUrlTextField.isEnabled = purchased
+        userTextField.isEnabled = purchased
+        passwordTextField.isEnabled = purchased
+        projectNamePopup.isEnabled = purchased
+        projectIssueNamePopup.isEnabled = purchased
+    }
     
     func enableProgressIndicator (_ enabled: Bool) {
         enabled

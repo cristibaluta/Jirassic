@@ -29,6 +29,9 @@ class Store {
     
     init() {
         getProducts { (success) in }
+        
+        let receiptUrl = Bundle.main.appStoreReceiptURL
+        RCLog(receiptUrl)
     }
     
     var isGitPurchased: Bool {
@@ -37,6 +40,7 @@ class Store {
     }
     
     var isJiraTempoPurchased: Bool {
+//        return true
         return localPref.bool(.full) || localPref.bool(.jiraTempo)
     }
     

@@ -77,6 +77,10 @@ class WizardJiraView: NSView {
 
 extension WizardJiraView: JiraTempoPresenterOutput {
     
+    func setPurchased (_ purchased: Bool) {
+        
+    }
+    
     func enableProgressIndicator (_ enabled: Bool) {
         enabled
             ? progressIndicator.startAnimation(nil)

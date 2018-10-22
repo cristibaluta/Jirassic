@@ -12,7 +12,8 @@ class OutputsScrollView: NSScrollView {
     
     @IBOutlet fileprivate var tableView: NSTableView!
     var dataSource: OutputTableViewDataSource?// If not declared, the reference is released
-    
+    var onPurchasePressed: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -21,6 +22,9 @@ class OutputsScrollView: NSScrollView {
         tableView.intercellSpacing = NSSize(width: 0, height: 30)
         
         dataSource = OutputTableViewDataSource(tableView: tableView)
+        dataSource?.onPurchasePressed = { [weak self] in
+            self?.onPurchasePressed?()
+        }
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         

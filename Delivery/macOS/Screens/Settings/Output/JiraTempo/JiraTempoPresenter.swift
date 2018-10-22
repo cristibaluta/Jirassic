@@ -19,6 +19,7 @@ protocol JiraTempoPresenterInput: class {
 
 protocol JiraTempoPresenterOutput: class {
     
+    func setPurchased (_ purchased: Bool)
     func enableProgressIndicator (_ enabled: Bool)
     func showProjects (_ projects: [String], selectedProject: String)
     func showProjectIssues (_ issues: [String], selectedIssue: String)
@@ -28,9 +29,10 @@ protocol JiraTempoPresenterOutput: class {
 class JiraTempoPresenter {
     
     weak var userInterface: JiraTempoPresenterOutput?
-    fileprivate var moduleJira = ModuleJiraTempo()
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
-    fileprivate var existingPassword = ""
+    private var moduleJira = ModuleJiraTempo()
+    private let store = Store.shared
+    private let localPreferences = RCPreferences<LocalPreferences>()
+    private var existingPassword = ""
 }
 
 extension JiraTempoPresenter: JiraTempoPresenterInput {
@@ -41,6 +43,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     
     func setupUserInterface() {
         
+        userInterface!.setPurchased(store.isJiraTempoPurchased)
         userInterface!.showErrorMessage("")
         existingPassword = Keychain.getPassword()
         
@@ -55,6 +58,9 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     
     func loadProjects() {
         
+        guard store.isJiraTempoPurchased else {
+            return
+        }
         userInterface!.enableProgressIndicator(true)
         userInterface!.showErrorMessage("")
         

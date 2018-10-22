@@ -16,12 +16,13 @@ enum OutputType {
 
 class OutputTableViewDataSource: NSObject {
     
-    fileprivate let tableView: NSTableView
-    fileprivate let cells: [OutputType] = [.jiraTempo]
+    private let tableView: NSTableView
+    private let cells: [OutputType] = [.jiraTempo]
     var jiraCell: JiraTempoCell?
     var cliHookupCell: HookupCell?
     var cocoaHookupCell: CocoaHookupCell?
-    
+    var onPurchasePressed: (() -> Void)?
+
     init (tableView: NSTableView) {
         self.tableView = tableView
         super.init()
@@ -33,6 +34,10 @@ class OutputTableViewDataSource: NSObject {
         jiraCell = JiraTempoCell.instantiate(in: self.tableView)
 //        cliHookupCell = HookupCell.instantiate(in: self.tableView)
 //        cocoaHookupCell = CocoaHookupCell.instantiate(in: self.tableView)
+        
+        jiraCell?.onPurchasePressed = { [weak self] in
+            self?.onPurchasePressed?()
+        }
     }
 }
 
