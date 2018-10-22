@@ -459,6 +459,8 @@
 		565E19F020A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		565E19F120A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		565E19F220A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
+		566B9FA7217DE67800EAF324 /* TasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B9FA6217DE67700EAF324 /* TasksInteractor.swift */; };
+		566B9FA8217DE67800EAF324 /* TasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B9FA6217DE67700EAF324 /* TasksInteractor.swift */; };
 		5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */; };
 		5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
@@ -787,6 +789,7 @@
 		565E19E220A5E245003A5E2A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		565E19E620A5E245003A5E2A /* RCHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCHttp.swift; sourceTree = "<group>"; };
 		565E19EF20A5E336003A5E2A /* RCSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCSync.swift; sourceTree = "<group>"; };
+		566B9FA6217DE67700EAF324 /* TasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksInteractor.swift; sourceTree = "<group>"; };
 		5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCalendar.swift; sourceTree = "<group>"; };
 		5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitLoginViewController.swift; sourceTree = "<group>"; };
 		5685C7641DE8721100CA545E /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -1518,8 +1521,10 @@
 				406384881DE388C5004795A4 /* Tasks.storyboard */,
 				4065D3851DD3B44200B73201 /* TasksViewController.swift */,
 				4065D3831DD3B44200B73201 /* TasksPresenter.swift */,
+				566B9FA6217DE67700EAF324 /* TasksInteractor.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
 				28A5F2811E586426002BE564 /* DataSource.swift */,
+				566B9FA5217DD96E00EAF324 /* MonthReports */,
 				2845B16F206C2888006EFB3B /* AllTasks */,
 				2845B141206AE2A4006EFB3B /* Reports */,
 			);
@@ -1679,6 +1684,13 @@
 				565E19E620A5E245003A5E2A /* RCHttp.swift */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		566B9FA5217DD96E00EAF324 /* MonthReports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MonthReports;
 			sourceTree = "<group>";
 		};
 		5683DC3C20ECDEA30000A138 /* CalendarEvents */ = {
@@ -2121,6 +2133,7 @@
 				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
 				280D71321ED6043D005D2689 /* Week.swift in Sources */,
+				566B9FA7217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				288BB67E2085252900CF720A /* WizardViewController.swift in Sources */,
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
@@ -2368,6 +2381,7 @@
 				28577EAF1E8ADC53002B07FD /* STask.swift in Sources */,
 				28A5F2821E586426002BE564 /* DataSource.swift in Sources */,
 				28A928931E91104B0022AB55 /* CloudKitRepository+Tasks.swift in Sources */,
+				566B9FA8217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
 				28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				565E19EE20A5E245003A5E2A /* RCHttp.swift in Sources */,

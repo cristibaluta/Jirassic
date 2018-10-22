@@ -10,15 +10,15 @@ import Cocoa
 
 class TasksViewController: NSViewController {
 	
-	@IBOutlet fileprivate weak var splitView: NSSplitView!
-	@IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView!
-	fileprivate var tasksScrollView: TasksScrollView?
-    @IBOutlet fileprivate weak var listSegmentedControl: NSSegmentedControl!
-    @IBOutlet fileprivate weak var butRefresh: NSButton!
-    @IBOutlet fileprivate weak var butSettings: NSButton!
-    @IBOutlet fileprivate weak var butQuit: NSButton!
-    @IBOutlet fileprivate weak var butMinimize: NSButton!
-    @IBOutlet fileprivate weak var refreshIndicator: NSProgressIndicator!
+	@IBOutlet private weak var splitView: NSSplitView!
+	@IBOutlet private weak var calendarScrollView: CalendarScrollView!
+	private var tasksScrollView: TasksScrollView?
+    @IBOutlet private weak var listSegmentedControl: NSSegmentedControl!
+    @IBOutlet private weak var butRefresh: NSButton!
+    @IBOutlet private weak var butSettings: NSButton!
+    @IBOutlet private weak var butQuit: NSButton!
+    @IBOutlet private weak var butMinimize: NSButton!
+    @IBOutlet private weak var refreshIndicator: NSProgressIndicator!
     
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
@@ -50,7 +50,7 @@ class TasksViewController: NSViewController {
 		NotificationCenter.default.removeObserver(self)
 	}
     
-    fileprivate func hideControls (_ hide: Bool) {
+    private func hideControls (_ hide: Bool) {
         butSettings.isHidden = hide
         butRefresh.isHidden = remoteRepository == nil ? true : hide
         butQuit.isHidden = hide
@@ -114,7 +114,7 @@ extension TasksViewController: TasksPresenterOutput {
         }
     }
     
-    func showDates (_ weeks: [Week]) {
+    func showCalendar (_ weeks: [Week]) {
         
         calendarScrollView.weeks = weeks
         calendarScrollView.reloadData()
@@ -172,6 +172,10 @@ extension TasksViewController: TasksPresenterOutput {
                 strongSelf.handleSegmentedControl(strongSelf.listSegmentedControl)
             }
         }
+    }
+
+    func showMonthReports (_ reports: [Report]) {
+
     }
     
     func selectDay (_ day: Day) {

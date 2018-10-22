@@ -27,34 +27,26 @@ protocol TasksPresenterOutput: class {
     
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
-    func showDates (_ weeks: [Week])
+    func showCalendar (_ weeks: [Week])
     func showTasks (_ tasks: [Task])
     func showReports (_ reports: [Report])
+    func showMonthReports (_ reports: [Report])
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
     func presentEndDayController (date: Date, tasks: [Task])
-}
-
-enum ListType: Int {
-    
-    case allTasks = 0
-    case report = 1
 }
 
 class TasksPresenter {
     
     weak var appWireframe: AppWireframe?
     weak var ui: TasksPresenterOutput?
+    var interactor: TasksInteractorInput?
     
     private var currentTasks = [Task]()
     private var currentReports = [Report]()
     private var selectedListType = ListType.allTasks
     private let pref = RCPreferences<LocalPreferences>()
     private var lastSelectedDay: Day?
-    private var interactor: ReadDaysInteractor?
-    private let moduleGit = ModuleGitLogs()
-    private let moduleCalendar = ModuleCalendar()
-    private let reportInteractor = CreateReport()
 }
 
 extension TasksPresenter: TasksPresenterInput {
@@ -70,127 +62,16 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func reloadData() {
-        
         ui!.showLoadingIndicator(true)
-        
-        let todayDay = Day(dateStart: Date(), dateEnd: nil)
-        interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        interactor?.query(startingDate: Date(timeIntervalSinceNow: -2.monthsToSec).startOfDay()) { [weak self] weeks in
-            DispatchQueue.main.async {
-                guard let wself = self, let ui = wself.ui else {
-                    return
-                }
-                ui.showLoadingIndicator(false)
-                ui.showDates(weeks)
-                ui.selectDay(todayDay)
-                wself.reloadTasksOnDay(todayDay, listType: wself.selectedListType)
-            }
-        }
+        interactor!.reloadCalendar()
     }
-    
-    func reloadTasksOnDay (_ day: Day, listType: ListType) {
 
+    func reloadTasksOnDay (_ day: Day, listType: ListType) {
         lastSelectedDay = day
         selectedListType = listType
-        
-        ui!.showLoadingIndicator(true)
-        
-        self.fetchLocalTasks(day) {
-            guard !self.currentTasks.isEmpty else {
-                self.displayTasks (self.currentTasks)
-                self.ui!.showLoadingIndicator(false)
-                return
-            }
-            self.fetchGitLogs(day) {
-                self.fetchCalendarEvents(day) {
-                    self.displayTasks (self.currentTasks)
-                    self.ui!.showLoadingIndicator(false)
-                }
-            }
-        }
+        interactor?.reloadTasksOnDay(day)
     }
-    
-    private func fetchLocalTasks(_ day: Day, completion: () -> Void) {
-        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        let localTasks = reader.tasksInDay(day.dateStart)
-        currentTasks = localTasks
-        completion()
-    }
-    
-    private func fetchGitLogs (_ day: Day, completion: @escaping () -> Void) {
-        
-        guard pref.bool(.enableGit) else {
-            completion()
-            return
-        }
-        
-        moduleGit.logs(onDate: day.dateStart) { [weak self] gitTasks in
-            
-            guard let wself = self else {
-                return
-            }
-            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: gitTasks)
-            // Filter git commits between start and end tasks
-            let startTask = wself.currentTasks.filter({ $0.taskType == .startDay }).first
-            let endTask = wself.currentTasks.filter({ $0.taskType == .endDay }).first
-            wself.currentTasks = wself.currentTasks.filter({
-                if startTask != nil && endTask != nil {
-                    return $0.endDate >= startTask!.endDate && $0.endDate <= endTask!.endDate
-                } else if startTask != nil {
-                    return $0.endDate >= startTask!.endDate
-                } else if endTask != nil {
-                    return $0.endDate <= endTask!.endDate
-                }
-                return false
-            })
-            
-            completion()
-        }
-    }
-    
-    private func fetchCalendarEvents (_ day: Day, completion: @escaping () -> Void) {
-        
-        guard pref.bool(.enableCalendar) else {
-            completion()
-            return
-        }
-        
-        moduleCalendar.events(onDate: day.dateStart) { [weak self] (calendarTasks) in
-            
-            guard let wself = self,
-                let startOfDayDate = wself.currentTasks.first?.endDate else {
-                completion()
-                return
-            }
-            // Keep calendar items between start of day and current date
-            let passedCalendarTasks = calendarTasks.filter({
-                $0.endDate.compare(Date()) == .orderedAscending &&
-                $0.endDate.compare(startOfDayDate) == .orderedDescending
-            })
 
-            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: passedCalendarTasks)
-            
-            completion()
-        }
-    }
-    
-    private func displayTasks (_ tasks: [Task]) {
-        
-        switch selectedListType {
-        case .report:
-            let settings = SettingsInteractor().getAppSettings()
-            let targetHoursInDay = pref.bool(.enableRoundingDay)
-                ? TimeInteractor(settings: settings).workingDayLength()
-                : nil
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
-            currentReports = reports.reversed()
-            ui!.showReports(currentReports)
-        case .allTasks:
-            ui!.showTasks(currentTasks)
-        }
-        updateNoTasksState()
-    }
-    
     func updateNoTasksState() {
         
         if currentTasks.count == 0 {
@@ -272,7 +153,54 @@ extension TasksPresenter: TasksPresenterInput {
         updateNoTasksState()
         if currentTasks.count == 0 {
             let reader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-            ui?.showDates(reader.weeks())
+            ui?.showCalendar(reader.weeks())
         }
+    }
+}
+
+extension TasksPresenter: TasksInteractorOutput {
+
+    func calendarDidLoad (_ weeks: [Week]) {
+
+        guard let ui = self.ui else {
+            return
+        }
+        let todayDay = Day(dateStart: Date(), dateEnd: nil)
+        ui.showCalendar(weeks)
+        ui.selectDay(todayDay)
+    }
+
+    func tasksDidLoad (_ tasks: [Task]) {
+
+        guard let ui = self.ui else {
+            return
+        }
+        ui.showLoadingIndicator(false)
+        currentTasks = tasks
+
+        switch selectedListType {
+        case .allTasks:
+            ui.showTasks(currentTasks)
+        case .report:
+            let settings = SettingsInteractor().getAppSettings()
+            let targetHoursInDay = pref.bool(.enableRoundingDay)
+                ? TimeInteractor(settings: settings).workingDayLength()
+                : nil
+            let reportInteractor = CreateReport()
+            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
+            currentReports = reports.reversed()
+            ui.showReports(currentReports)
+        case .monthlyReports:
+            let settings = SettingsInteractor().getAppSettings()
+            let targetHoursInDay = pref.bool(.enableRoundingDay)
+                ? TimeInteractor(settings: settings).workingDayLength()
+                : nil
+            let reportInteractor = CreateMonthReport()
+            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
+            currentReports = reports
+            ui.showMonthReports(currentReports)
+            break
+        }
+        updateNoTasksState()
     }
 }

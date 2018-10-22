@@ -62,11 +62,14 @@ class AppWireframe {
         
         let controller = TasksViewController.instantiateFromStoryboard("Tasks")
         let presenter = TasksPresenter()
+        let interactor = TasksInteractor()
         
-        controller.appWireframe = self
-        controller.presenter = presenter
         presenter.ui = controller
+        presenter.interactor = interactor
         presenter.appWireframe = self
+        interactor.presenter = presenter
+        controller.presenter = presenter
+        controller.appWireframe = self
         
         return controller
     }
