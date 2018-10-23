@@ -66,6 +66,7 @@ extension TasksPresenter: TasksPresenterInput {
     }
 
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
+        ui!.showLoadingIndicator(true)
         lastSelectedDay = day
         selectedListType = listType
         switch selectedListType {
@@ -169,6 +170,7 @@ extension TasksPresenter: TasksInteractorOutput {
         guard let ui = self.ui else {
             return
         }
+        ui.showLoadingIndicator(false)
         let todayDay = Day(dateStart: Date(), dateEnd: nil)
         ui.showCalendar(weeks)
         ui.selectDay(todayDay)
