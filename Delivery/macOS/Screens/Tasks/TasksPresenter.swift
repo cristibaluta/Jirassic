@@ -30,7 +30,6 @@ protocol TasksPresenterOutput: class {
     func showCalendar (_ weeks: [Week])
     func showTasks (_ tasks: [Task])
     func showReports (_ reports: [Report])
-    func showMonthReports (_ reports: [Report])
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
     func presentEndDayController (date: Date, tasks: [Task])
@@ -52,8 +51,8 @@ class TasksPresenter {
 extension TasksPresenter: TasksPresenterInput {
     
     func initUI() {
-        reloadData()
         ui!.showLoadingIndicator(false)
+        reloadData()
 //        updateNoTasksState()
     }
     
@@ -69,7 +68,12 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
         lastSelectedDay = day
         selectedListType = listType
-        interactor?.reloadTasks(inDay: day)
+        switch selectedListType {
+        case .allTasks, .report:
+            interactor?.reloadTasks(inDay: day)
+        case .monthlyReports:
+            interactor?.reloadTasks(inMonth: day)
+        }
     }
 
     func updateNoTasksState() {
@@ -198,7 +202,7 @@ extension TasksPresenter: TasksInteractorOutput {
             let reportInteractor = CreateMonthReport()
             let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
             currentReports = reports
-            ui.showMonthReports(currentReports)
+            ui.showReports(currentReports)
             break
         }
         updateNoTasksState()

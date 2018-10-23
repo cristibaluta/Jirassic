@@ -58,38 +58,32 @@ extension TasksInteractor: TasksInteractorInput {
 
         let dateStart = day.dateStart
         let dateEnd = dateStart.endOfDay()
-        
-        self.fetchLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
-            guard !self.currentTasks.isEmpty else {
-                self.presenter!.tasksDidLoad (self.currentTasks)
-                return
-            }
-            self.fetchGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
-                self.fetchCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
-                    self.presenter!.tasksDidLoad (self.currentTasks)
-                }
-            }
-        }
+        reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
 
     func reloadTasks (inMonth day: Day) {
 
         let dateStart = day.dateStart.startOfMonth()
         let dateEnd = dateStart.endOfMonth()
+        reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
+    }
+
+    private func reloadTasks (dateStart: Date, dateEnd: Date) {
         
+        self.currentTasks = []
         self.fetchLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
             guard !self.currentTasks.isEmpty else {
                 self.presenter!.tasksDidLoad (self.currentTasks)
                 return
             }
-            self.fetchGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
-                self.fetchCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
+            self.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
+                self.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
                     self.presenter!.tasksDidLoad (self.currentTasks)
                 }
             }
         }
     }
-
+    
     private func fetchLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let localTasks = reader.tasksInDay(dateStart)
@@ -97,7 +91,7 @@ extension TasksInteractor: TasksInteractorInput {
         completion()
     }
 
-    private func fetchGitLogs (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
+    private func addGitLogs (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
 
         guard pref.bool(.enableGit) else {
             completion()
@@ -128,7 +122,7 @@ extension TasksInteractor: TasksInteractorInput {
         }
     }
 
-    private func fetchCalendarEvents (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
+    private func addCalendarEvents (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
 
         guard pref.bool(.enableCalendar) else {
             completion()

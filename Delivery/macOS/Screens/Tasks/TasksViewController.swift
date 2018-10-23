@@ -173,10 +173,6 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
     }
-
-    func showMonthReports (_ reports: [Report]) {
-
-    }
     
     func selectDay (_ day: Day) {
         calendarScrollView.selectDay(day)
