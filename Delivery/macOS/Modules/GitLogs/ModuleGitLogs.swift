@@ -18,11 +18,36 @@ class ModuleGitLogs {
 //    }
     
     func logs (dateStart: Date, dateEnd: Date, completion: @escaping (([Task]) -> Void)) {
-        
-        var tasks = [Task]()
+        // Because of a bug in applescripts split the call into smaller chunks for months
+        if dateEnd.timeIntervalSince(dateStart) > 7*24.hoursToSec {
+            let chunks = ceil(dateEnd.timeIntervalSince(dateStart) / (7*24.hoursToSec))
+            var dates = [(dateStart: Date, dateEnd: Date)]()
+            for i in 0..<Int(chunks) {
+                var date = (dateStart: dateStart.addingTimeInterval(Double(i*7)*24.hoursToSec),
+                            dateEnd: dateStart.addingTimeInterval(Double((i+1)*7)*24.hoursToSec))
+                if date.dateEnd > dateEnd {
+                    date.dateEnd = dateEnd
+                }
+                dates.append(date)
+            }
+            logsChunk(dates: dates, completion: completion)
+        } else {
+            logsChunk(dates: [(dateStart: dateStart, dateEnd: dateEnd)], completion: completion)
+        }
+    }
+
+    private func logsChunk (dates: [(dateStart: Date, dateEnd: Date)], previousTasks: [Task] = [], completion: @escaping (([Task]) -> Void)) {
+
+        var tasks = previousTasks
+        var dates = dates
+        guard dates.count > 0 else {
+            completion(tasks)
+            return
+        }
+        let interval = dates.removeFirst()
         
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
-        logs(dateStart: dateStart, dateEnd: dateEnd, paths: paths, previousCommits: []) { commits in
+        logs(dateStart: interval.dateStart, dateEnd: interval.dateEnd, paths: paths, previousCommits: []) { commits in
             for commit in commits {
                 let str = commit.branchName != "" ? commit.branchName : commit.message
                 let branchParser = ParseGitBranch(branchName: str ?? "")
@@ -41,7 +66,7 @@ class ModuleGitLogs {
                                 objectId: String.random())
                 tasks.append(task)
             }
-            completion(tasks)
+            self.logsChunk(dates: dates, previousTasks: tasks, completion: completion)
             
         }
     }
