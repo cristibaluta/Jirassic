@@ -116,7 +116,7 @@ extension Date {
         f.dateFormat = "YYYY-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
-    
+    // TODO: if the date is right at the begining of the day the conversion returns the previous day because of the timezone
     func YYYYMMddT00() -> String {
         let f = DateFormatter()
         f.timeZone = TimeZone(abbreviation: "GMT")
@@ -317,7 +317,18 @@ extension Date {
         
         return gregorian.date(from: comps)!
     }
-    
+
+    func startOfNextDay() -> Date {
+
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+        comps.day = comps.day! + 1
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
+
+        return gregorian.date(from: comps)!
+    }
+
     func endOfDay() -> Date {
         
         var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)

@@ -57,7 +57,7 @@ extension TasksInteractor: TasksInteractorInput {
     func reloadTasks (inDay day: Day) {
 
         let dateStart = day.dateStart
-        let dateEnd = dateStart.endOfDay()
+        let dateEnd = dateStart.addingTimeInterval(24.hoursToSec)
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
 
