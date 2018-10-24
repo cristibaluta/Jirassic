@@ -70,7 +70,7 @@ class TasksScrollView: NSScrollView {
         let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
         headerView.workedTime = localPreferences.bool(.usePercents)
             ? "\(Date.secondsToPercentTime(totalTime))"
-            : Date(timeIntervalSince1970: totalTime).HHmmGMT()
+            : totalTime.secToHoursAndMinutesFormatted
         tableView!.headerView = headerView
         
         self.dataSource = dataSource
