@@ -112,21 +112,31 @@ class ReadDaysInteractor: RepositoryInteractor {
 	private func days (ofWeek week: Week) -> [Day] {
 		
 		var objects = [Day]()
-        var obj: Day?
+        var activeDay: Day?
 		var referenceDate = Date.distantFuture
-        var endDate: Date?
 		
         // Tasks are sorted descending
 		for task in tasks {
             if task.endDate.isSameWeekAs(week.date) {
-                if !task.endDate.isSameDayAs(referenceDate) {
+                if task.endDate.isSameDayAs(referenceDate) {
+                    // Check if we reached the begining of the day and recreate the object with the real startDate
+                    if task.taskType == .startDay {
+                        if objects.count > 0 {
+                            let tempDay = objects.removeLast()
+                            activeDay = Day(dateStart: task.endDate, dateEnd: tempDay.dateEnd)
+                        } else {
+                            activeDay = Day(dateStart: task.endDate, dateEnd: nil)
+                        }
+                        objects.append(activeDay!)
+                    }
+                } else {
+                    var endDate: Date?
                     if task.taskType == .endDay {
                         endDate = task.endDate
                     }
                     referenceDate = task.endDate
-                    obj = Day(dateStart: task.endDate, dateEnd: endDate)
-                    objects.append(obj!)
-                    endDate = nil
+                    activeDay = Day(dateStart: task.endDate, dateEnd: endDate)
+                    objects.append(activeDay!)
                 }
             }
 		}
