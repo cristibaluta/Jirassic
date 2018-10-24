@@ -67,4 +67,15 @@ class CreateMonthReport {
 
         return Array(reportsByTaskNumber.values)
     }
+    
+    func joinReports (_ reports: [Report]) -> (notes: String, totalDuration: Double) {
+        
+        var notes = ""
+        var totalDuration = 0.0
+        for report in reports {
+            totalDuration += report.duration
+            notes += "• \(report.taskNumber)\(report.title) (" + report.duration.secToHoursAndMinutesFormatted + ")\n"
+        }
+        return (notes: notes, totalDuration: totalDuration)
+    }
 }

@@ -129,15 +129,14 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
     print("")
     
     let tasks = reader.tasksInMonth(date)
+    let reportsInteractor = CreateMonthReport()
     let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
-    var totalDuration = 0.0
-    let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: duration)
+    let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
     if reports.count > 0 {
-        for report in reports {
-            totalDuration += report.duration
-            print("• \(report.taskNumber)\(report.title) (" + report.duration.secToHoursAndMinutesFormatted + ")")
-        }
-        print("Total duration: \(totalDuration.secToHoursAndMinutesFormatted)")
+        let joined = reportsInteractor.joinReports(reports)
+        print(joined.notes)
+        print("")
+        print("Total duration: \(joined.totalDuration.secToHoursAndMinutesFormatted)")
     } else {
         print("No tasks!")
     }
