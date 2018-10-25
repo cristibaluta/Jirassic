@@ -153,7 +153,7 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView!.isHidden = false
     }
     
-    func showReports (_ reports: [Report]) {
+    func showReports (_ reports: [Report], type: ListType) {
         
         if tasksScrollView != nil {
             tasksScrollView?.removeFromSuperview()
@@ -161,7 +161,7 @@ extension TasksViewController: TasksPresenterOutput {
         }
         var r = splitView.subviews[SplitViewColumn.tasks.rawValue].frame
         r.origin = NSPoint.zero
-        tasksScrollView = TasksScrollView(reports: reports)
+        tasksScrollView = TasksScrollView(reports: reports, type: type)
         tasksScrollView!.frame = r
         splitView!.subviews[SplitViewColumn.tasks.rawValue].addSubview(tasksScrollView!)
         tasksScrollView!.constrainToSuperview()

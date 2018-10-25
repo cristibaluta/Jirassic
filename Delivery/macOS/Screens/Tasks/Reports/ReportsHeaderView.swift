@@ -14,7 +14,7 @@ class ReportsHeaderView: NSTableHeaderView {
     fileprivate var butPercents: NSButton
     fileprivate var totalTimeTextField: NSTextField
     fileprivate let localPreferences = RCPreferences<LocalPreferences>()
-    var didChangeSettings: (() -> ())?
+    var didChangeSettings: (() -> Void)?
     // In hours
     var workedTime: String {
         get {
@@ -36,17 +36,17 @@ class ReportsHeaderView: NSTableHeaderView {
     
     init() {
         
-        butRound = NSButton()
-        butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
-        butRound.setButtonType(.switch)
-        butRound.state = localPreferences.bool(.enableRoundingDay) ? NSControl.StateValue.on : NSControl.StateValue.off
-        butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
-        
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
         butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: attributes)
         butPercents.setButtonType(.switch)
         butPercents.state = localPreferences.bool(.usePercents) ? NSControl.StateValue.on : NSControl.StateValue.off
+        
+        butRound = NSButton()
+        butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
+        butRound.setButtonType(.switch)
+        butRound.state = localPreferences.bool(.enableRoundingDay) ? NSControl.StateValue.on : NSControl.StateValue.off
+        butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
         
         totalTimeTextField = NSTextField()
         totalTimeTextField.alignment = NSTextAlignment.right

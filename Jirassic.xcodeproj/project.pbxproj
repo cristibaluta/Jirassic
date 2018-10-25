@@ -274,6 +274,8 @@
 		2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
 		2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
 		2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
+		2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
+		2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -634,6 +636,7 @@
 		2892E80A208D9B42004E5298 /* InputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputsScrollView.xib; sourceTree = "<group>"; };
 		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
 		2892E810208E6275004E5298 /* LocalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferences.swift; sourceTree = "<group>"; };
+		2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportsHeaderView.swift; sourceTree = "<group>"; };
 		28A283932037874600DDCB63 /* ModuleGitLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogs.swift; sourceTree = "<group>"; };
 		28A283962037975600DDCB63 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		28A2839920382BBB00DDCB63 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
@@ -1092,6 +1095,14 @@
 			path = Jira;
 			sourceTree = "<group>";
 		};
+		2898D3A62181905600CF5AD4 /* MonthReports */ = {
+			isa = PBXGroup;
+			children = (
+				2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */,
+			);
+			path = MonthReports;
+			sourceTree = "<group>";
+		};
 		28A28392203786F600DDCB63 /* GitLogs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,6 +1535,7 @@
 				566B9FA6217DE67700EAF324 /* TasksInteractor.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
 				28A5F2811E586426002BE564 /* DataSource.swift */,
+				2898D3A62181905600CF5AD4 /* MonthReports */,
 				2845B16F206C2888006EFB3B /* AllTasks */,
 				2845B141206AE2A4006EFB3B /* Reports */,
 			);
@@ -2229,6 +2241,7 @@
 				280D71811ED6043D005D2689 /* DataSource.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
+				2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
 				2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */,
@@ -2315,6 +2328,7 @@
 				28AA500B1EDCD51300AAF03D /* CoreDataRepository+User.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
+				2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */,

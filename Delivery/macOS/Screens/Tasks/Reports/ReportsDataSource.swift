@@ -10,9 +10,9 @@ import Cocoa
 
 class ReportsDataSource: NSObject {
     
-    fileprivate let tableView: NSTableView
+    private let tableView: NSTableView
+    private var tempCell: ReportCell?
     var reports: [Report] = []
-    fileprivate var tempCell: ReportCell?
     
     init (tableView: NSTableView, reports: [Report]) {
         self.tableView = tableView

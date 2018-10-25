@@ -10,9 +10,9 @@ import Cocoa
 
 class TasksScrollView: NSScrollView {
 	
-    fileprivate var tableView: NSTableView!
-    fileprivate var dataSource: DataSource?
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private var tableView: NSTableView!
+    private var dataSource: DataSource?
+    private let localPreferences = RCPreferences<LocalPreferences>()
 	
 	var didAddRow: ((_ row: Int) -> ())?
     var didRemoveRow: ((_ row: Int) -> ())?
@@ -49,7 +49,7 @@ class TasksScrollView: NSScrollView {
         self.dataSource = dataSource
     }
     
-    convenience init (reports: [Report]) {
+    convenience init (reports: [Report], type: ListType) {
         self.init(frame: NSRect.zero)
         self.setup()
         
@@ -60,23 +60,40 @@ class TasksScrollView: NSScrollView {
             tableView!.usesAutomaticRowHeights = true
         }
         
-        let headerView = ReportsHeaderView()
+        let settings = SettingsInteractor().getAppSettings()
+        let workingDayLength = TimeInteractor(settings: settings).workingDayLength()
+        let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
+        
+        var headerView: ReportsHeaderView!
+        switch type {
+        case .report:
+            headerView = ReportsHeaderView()
+        case .monthlyReports:
+            let monthHeaderView = MonthReportsHeaderView()
+            monthHeaderView.didCopyAll = {
+                let interactor = CreateMonthReport()
+                let joined = interactor.joinReports(reports)
+                let string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMinutesFormatted
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
+            }
+            headerView = monthHeaderView
+        default:
+            break
+        }
+        headerView.workdayTime = Date.secondsToPercentTime(workingDayLength)
+        headerView.workedTime = localPreferences.bool(.usePercents)
+            ? String(describing: Date.secondsToPercentTime(totalTime))
+            : totalTime.secToHoursAndMinutesFormatted
         headerView.didChangeSettings = { [weak self] in
             self?.didChangeSettings!()
         }
-        
-        let settings = SettingsInteractor().getAppSettings()
-        headerView.workdayTime = Date.secondsToPercentTime( TimeInteractor(settings: settings).workingDayLength() )
-        let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
-        headerView.workedTime = localPreferences.bool(.usePercents)
-            ? "\(Date.secondsToPercentTime(totalTime))"
-            : totalTime.secToHoursAndMinutesFormatted
         tableView!.headerView = headerView
         
         self.dataSource = dataSource
     }
     
-    fileprivate func setup() {        
+    private func setup() {
         
         self.automaticallyAdjustsContentInsets = false
         self.contentInsets = NSEdgeInsetsMake(0, 0, 0, 0)

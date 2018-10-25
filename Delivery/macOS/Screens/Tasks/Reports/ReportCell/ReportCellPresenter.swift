@@ -29,7 +29,7 @@ class ReportCellPresenter: NSObject {
         let localPreferences = RCPreferences<LocalPreferences>()
         cell.duration = localPreferences.bool(.usePercents) 
             ? "\(Date.secondsToPercentTime(theReport.duration))"
-            : Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
+            : theReport.duration.secToHoursAndMinutesFormatted// Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell.statusImage?.image = NSImage(named: NSImage.Name.statusAvailable)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
     }
