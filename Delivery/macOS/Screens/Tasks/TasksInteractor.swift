@@ -57,7 +57,7 @@ extension TasksInteractor: TasksInteractorInput {
     func reloadTasks (inDay day: Day) {
 
         let dateStart = day.dateStart
-        let dateEnd = dateStart.addingTimeInterval(24.hoursToSec)
+        let dateEnd = day.dateEnd ?? dateStart.endOfDay()
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
 
@@ -71,7 +71,7 @@ extension TasksInteractor: TasksInteractorInput {
     private func reloadTasks (dateStart: Date, dateEnd: Date) {
         
         self.currentTasks = []
-        self.fetchLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
+        self.addLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
             guard !self.currentTasks.isEmpty else {
                 self.presenter!.tasksDidLoad (self.currentTasks)
                 return
@@ -84,7 +84,7 @@ extension TasksInteractor: TasksInteractorInput {
         }
     }
     
-    private func fetchLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
+    private func addLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
         let localTasks = reader.tasksInDay(dateStart)
         currentTasks = localTasks
@@ -97,27 +97,12 @@ extension TasksInteractor: TasksInteractorInput {
             completion()
             return
         }
-
         moduleGit.logs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
             guard let wself = self else {
                 return
             }
             wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: gitTasks)
-            // Filter git commits between start and end tasks
-            let startTask = wself.currentTasks.filter({ $0.taskType == .startDay }).first
-            let endTask = wself.currentTasks.filter({ $0.taskType == .endDay }).first
-            wself.currentTasks = wself.currentTasks.filter({
-                if startTask != nil && endTask != nil {
-                    return $0.endDate >= startTask!.endDate && $0.endDate <= endTask!.endDate
-                } else if startTask != nil {
-                    return $0.endDate >= startTask!.endDate
-                } else if endTask != nil {
-                    return $0.endDate <= endTask!.endDate
-                }
-                return false
-            })
-
             completion()
         }
     }
@@ -128,21 +113,12 @@ extension TasksInteractor: TasksInteractorInput {
             completion()
             return
         }
-
         moduleCalendar.events(dateStart: dateStart, dateEnd: dateEnd) { [weak self] (calendarTasks) in
 
             guard let wself = self else {
-                completion()
                 return
             }
-            // Keep calendar items between start of day and current date
-            let passedCalendarTasks = calendarTasks.filter({
-                $0.endDate.compare(dateEnd) == .orderedAscending &&
-                $0.endDate.compare(dateStart) == .orderedDescending
-            })
-
-            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: passedCalendarTasks)
-
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: calendarTasks)
             completion()
         }
     }

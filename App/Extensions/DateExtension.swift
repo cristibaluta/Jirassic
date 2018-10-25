@@ -121,7 +121,10 @@ extension Date {
         let f = DateFormatter()
         f.timeZone = TimeZone(abbreviation: "GMT")
         f.dateFormat = "YYYY-MM-dd"
-        return f.string(from: self) + "T00:00:00.000+0000"
+        let day = f.string(from: self)
+        f.dateFormat = "HH:mm"
+        let hour = f.string(from: self)
+        return day + "T" + hour + ":00.000+0000"
     }
     
     func YY() -> String {

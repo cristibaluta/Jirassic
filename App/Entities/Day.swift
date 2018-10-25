@@ -9,7 +9,7 @@
 import Foundation
 
 // Represents a day in the calendar.
-class Day {
+class Day: CustomStringConvertible {
 
     /// The date of the first task in the day
 	let dateStart: Date
@@ -20,4 +20,8 @@ class Day {
 		self.dateStart = dateStart
         self.dateEnd = dateEnd
 	}
+
+    var description: String {
+        return "<Day dateStart: \(dateStart), dateEnd: \(String(describing: dateEnd))>"
+    }
 }
