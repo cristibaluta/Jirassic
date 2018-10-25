@@ -51,7 +51,10 @@ extension EndDayPresenter: EndDayPresenterInput {
         
         let lines = reports.map({ (_ report: Report) -> String in
             let title = self.title(from: report)
-            let body = report.notes
+            let notes = report.notes.map { (note) -> String in
+                return "• \(note)"
+            }
+            let body = notes.joined(separator: "\n")
             return title + "\n" + body
         })
         let message = lines.joined(separator: "\n\n")

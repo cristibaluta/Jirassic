@@ -47,20 +47,22 @@ class CreateMonthReport {
 
         // Group reports by task number
         // Acumulate durations
-        // Do not add notes
+        // Join notes but only for meetings
         var reportsByTaskNumber = [String: Report]()
         for day in reportsByDay {
-//            print(day)
             for report in day {
-                var r = reportsByTaskNumber[report.taskNumber]
-                if r == nil {
+                var monthReport = reportsByTaskNumber[report.taskNumber]
+                if monthReport == nil {
                     reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
                                                                     title: report.title,
-                                                                    notes: "",
+                                                                    notes: report.taskNumber == "meeting" ? report.notes : [],
                                                                     duration: report.duration)
                 } else {
-                    r?.duration += report.duration
-                    reportsByTaskNumber[report.taskNumber] = r
+                    if report.taskNumber == "meeting" {
+                        monthReport!.notes = Array(Set(monthReport!.notes + report.notes))
+                    }
+                    monthReport!.duration += report.duration
+                    reportsByTaskNumber[report.taskNumber] = monthReport
                 }
             }
         }

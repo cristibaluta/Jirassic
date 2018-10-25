@@ -168,23 +168,31 @@ extension CreateReport {
                 var report = reportsMap[taskNumber]
                 
                 if report == nil {
-                    
+                    // New reports
                     var title = task.taskTitle
                     let comps = title?.components(separatedBy: taskNumber)
                     title = comps?.last
                     title = title?.replacingOccurrences(of: "_", with: " ")
                     title = title?.replacingOccurrences(of: "-", with: " ")
-                    
+                    var notes = [String]()
+                    if let taskNotes = task.notes {
+                        notes = [taskNotes]
+                    }
                     report = Report(
                         taskNumber: taskNumber,
                         title: title ?? "",
-                        notes: "• \(task.notes ?? "")",
+                        notes: notes,
                         duration: task.endDate.timeIntervalSince(startDate)
                     )
                 } else {
+                    // Update existing reports
                     report!.duration += task.endDate.timeIntervalSince(task.startDate!)
-                    if !report!.notes.contains(task.notes ?? "") {
-                        report!.notes = "\(report!.notes)\n• \(task.notes ?? "")"
+                    if let taskNotes = task.notes {
+                        var notes = report!.notes
+                        if !notes.contains(taskNotes) {
+                            notes.append(taskNotes)
+                            report!.notes = notes
+                        }
                     }
                 }
                 reportsMap[taskNumber] = report

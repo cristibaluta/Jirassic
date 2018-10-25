@@ -18,12 +18,16 @@ class ReportCellPresenter: NSObject {
     }
     
     func present (theReport: Report) {
-        
+
+        let notes = theReport.notes.map { (note) -> String in
+            return "• \(note)"
+        }
+        let notesJoined = notes.joined(separator: "\n")
         cell.data = (
             dateStart: nil,
             dateEnd: Date(),
             taskNumber: theReport.taskNumber + " - " + theReport.title.replacingOccurrences(of: "_", with: " "),
-            notes: theReport.notes,
+            notes: notesJoined,
             taskType: .issue
         )
         let localPreferences = RCPreferences<LocalPreferences>()
