@@ -49,6 +49,11 @@ class ModuleGitLogs {
         let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(dateStart: interval.dateStart, dateEnd: interval.dateEnd, paths: paths, previousCommits: []) { commits in
             for commit in commits {
+                // Sometimes git returns commits that are not in the provided interval, filter them out
+                guard interval.dateStart <= commit.date && commit.date <= interval.dateEnd else {
+                    RCLog("Something went wrong, this commit is not in the provided interval, ignoring... \(commit)")
+                    continue
+                }
                 let str = commit.branchName != "" ? commit.branchName : commit.message
                 let branchParser = ParseGitBranch(branchName: str ?? "")
                 let taskTitle = branchParser.taskTitle()
