@@ -86,8 +86,7 @@ extension TasksInteractor: TasksInteractorInput {
     
     private func addLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        let localTasks = reader.tasksInDay(dateStart)
-        currentTasks = localTasks
+        currentTasks = reader.tasks(between: dateStart, and: dateEnd)
         completion()
     }
 
