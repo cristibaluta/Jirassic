@@ -45,6 +45,9 @@ class MonthReportsHeaderView: ReportsHeaderView {
         
         butCopyAll.target = self
         butCopyAll.action = #selector(self.handleCopyAllButton)
+        
+        self.addSubview(butCopyAll)
+        self.addSubview(totalDaysTextField)
     }
     
     required init?(coder: NSCoder) {
@@ -53,11 +56,7 @@ class MonthReportsHeaderView: ReportsHeaderView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        
-        self.addSubview(butCopyAll)
-        
         totalDaysTextField.frame = NSRect(x: dirtyRect.size.width - 216, y: 60, width: 200, height: 20)
-        self.addSubview(totalDaysTextField)
     }
 }
 

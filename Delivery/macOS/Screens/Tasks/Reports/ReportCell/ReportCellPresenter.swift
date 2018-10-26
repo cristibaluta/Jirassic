@@ -23,17 +23,21 @@ class ReportCellPresenter: NSObject {
             return "• \(note)"
         }
         let notesJoined = notes.joined(separator: "\n")
+        var taskNumber = theReport.taskNumber == "coderev" ? "Code reviews" : theReport.taskNumber
+        taskNumber = taskNumber == "learning" ? "Learning" : taskNumber
+        taskNumber = taskNumber == "meeting" ? "Meetings" : taskNumber
+        let title = theReport.title.replacingOccurrences(of: "_", with: " ").trimmingCharacters(in: .whitespacesAndNewlines)
         cell.data = (
             dateStart: nil,
             dateEnd: Date(),
-            taskNumber: theReport.taskNumber + " - " + theReport.title.replacingOccurrences(of: "_", with: " "),
+            taskNumber: taskNumber + "  " + title,
             notes: notesJoined,
             taskType: .issue
         )
         let localPreferences = RCPreferences<LocalPreferences>()
         cell.duration = localPreferences.bool(.usePercents) 
             ? "\(Date.secondsToPercentTime(theReport.duration))"
-            : theReport.duration.secToHoursAndMinutesFormatted// Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
+            : theReport.duration.secToHoursAndMin// Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell.statusImage?.image = NSImage(named: NSImage.Name.statusAvailable)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
     }

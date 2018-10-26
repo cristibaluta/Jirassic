@@ -74,7 +74,7 @@ class TasksScrollView: NSScrollView {
             monthHeaderView.didCopyAll = {
                 let interactor = CreateMonthReport()
                 let joined = interactor.joinReports(reports)
-                let string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMinutesFormatted
+                let string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
             }
@@ -85,7 +85,7 @@ class TasksScrollView: NSScrollView {
         headerView.workdayTime = Date.secondsToPercentTime(workingDayLength)
         headerView.workedTime = localPreferences.bool(.usePercents)
             ? String(describing: Date.secondsToPercentTime(totalTime))
-            : totalTime.secToHoursAndMinutesFormatted
+            : totalTime.secToHoursAndMin
         headerView.didChangeSettings = { [weak self] in
             self?.didChangeSettings!()
         }

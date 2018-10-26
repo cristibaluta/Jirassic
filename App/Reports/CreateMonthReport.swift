@@ -72,10 +72,10 @@ class CreateMonthReport {
                 if monthReport == nil {
                     reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
                                                                     title: report.title,
-                                                                    notes: report.taskNumber == "meeting" ? report.notes : [],
+                                                                    notes: ["meeting", "learning"].contains(report.taskNumber) ? report.notes : [],
                                                                     duration: report.duration)
                 } else {
-                    if report.taskNumber == "meeting" {
+                    if ["meeting", "learning"].contains(report.taskNumber)  {
                         monthReport!.notes = Array(Set(monthReport!.notes + report.notes))
                     }
                     monthReport!.duration += report.duration
@@ -93,7 +93,7 @@ class CreateMonthReport {
         var totalDuration = 0.0
         for report in reports {
             totalDuration += report.duration
-            notes += "• \(report.taskNumber)\(report.title) (" + report.duration.secToHoursAndMinutesFormatted + ")\n"
+            notes += "• \(report.taskNumber)\(report.title) (" + report.duration.secToHoursAndMin + ")\n"
         }
         return (notes: notes, totalDuration: totalDuration)
     }

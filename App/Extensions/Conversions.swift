@@ -27,12 +27,12 @@ extension Double {
     }
     
     // Transforms a number of seconds into hours:minutes. The hours can be over 24
-    var secToHoursAndMinutesFormatted: String {
+    var secToHoursAndMin: String {
         let h = floor(self / 3600)
         let secondsRemaining = self - h * 3600
         let m = secondsRemaining / 60
-        let hours = Int(h)// h < 10 ? "0\(Int(h))" : "\(Int(h))"
-        let minutes = Int(m)// m < 10 ? "0\(Int(m))" : "\(Int(m))"
+        let hours = Int(h)
+        let minutes = Int(m)
         return "\(hours)h \(minutes)m"
     }
 }

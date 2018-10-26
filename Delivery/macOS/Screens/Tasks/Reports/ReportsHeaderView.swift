@@ -66,6 +66,10 @@ class ReportsHeaderView: NSTableHeaderView {
         butRound.action = #selector(self.handleRoundButton)
         butPercents.target = self
         butPercents.action = #selector(self.handlePercentsButton)
+        
+        self.addSubview(butPercents)
+        self.addSubview(butRound)
+        self.addSubview(totalTimeTextField)
     }
     
     required init?(coder: NSCoder) {
@@ -75,12 +79,7 @@ class ReportsHeaderView: NSTableHeaderView {
     override func draw(_ dirtyRect: NSRect) {
         NSColor.darkGray.set()
         dirtyRect.fill()
-        
-        self.addSubview(butPercents)
-        self.addSubview(butRound)
-        
         totalTimeTextField.frame = NSRect(x: dirtyRect.size.width - 80, y: 22, width: 64, height: 20)
-        self.addSubview(totalTimeTextField)
     }
 }
 
