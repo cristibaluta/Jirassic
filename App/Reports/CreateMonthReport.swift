@@ -17,23 +17,40 @@ class CreateMonthReport {
     /// tasks - All tasks in a month
     func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
 
-        guard var referenceDate = tasks.first?.endDate else {
+        guard tasks.count > 1 else {
             return []
         }
+        // When we find a startDay we keep its date and start adding tasks in that day till endDay found or new startDay found
+        // Tasks between end and start are invalid
+        var startDayDate: Date?
 
         // Group tasks by days
         var tasksByDay = [[Task]]()
         var tasksInDay = [Task]()
         for task in tasks {
-            if referenceDate.isSameDayAs(task.endDate) {
-                tasksInDay.append(task)
+            if let date = startDayDate {
+                // Start of day already found
+                // Iterate till endDay or new day found
+                if task.taskType == .endDay {
+                    tasksInDay.append(task)
+                    tasksByDay.append(tasksInDay)
+                    tasksInDay = []
+                    startDayDate = nil
+                } else if !date.isSameDayAs(task.endDate) {
+                    tasksByDay.append(tasksInDay)
+                    tasksInDay = [task]
+                    startDayDate = task.endDate
+                } else {
+                    tasksInDay.append(task)
+                }
             } else {
-                tasksByDay.append(tasksInDay)
-                tasksInDay = []
-                tasksInDay.append(task)
-                referenceDate = task.endDate
+                // If no start of day found yet iterate till found
+                if task.taskType == .startDay {
+                    startDayDate = task.endDate
+                    tasksInDay = [task]
+                }
             }
-            if task.objectId == tasks.last?.objectId {
+            if task.objectId == tasks.last?.objectId && tasksInDay.count > 0 {
                 tasksByDay.append(tasksInDay)
             }
         }

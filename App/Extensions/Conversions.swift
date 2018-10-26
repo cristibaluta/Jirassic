@@ -33,6 +33,6 @@ extension Double {
         let m = secondsRemaining / 60
         let hours = Int(h)// h < 10 ? "0\(Int(h))" : "\(Int(h))"
         let minutes = Int(m)// m < 10 ? "0\(Int(m))" : "\(Int(m))"
-        return "\(hours)h:\(minutes)m"
+        return "\(hours)h \(minutes)m"
     }
 }
