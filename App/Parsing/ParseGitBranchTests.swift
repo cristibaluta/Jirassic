@@ -38,6 +38,11 @@ class ParseGitBranchTests: XCTestCase {
         let parser = ParseGitBranch(branchName: "Merge pull request #619 in MYAPP/proj from AA-1234_some_branch_name to master;")
         XCTAssert(parser.taskNumber() == "AA-1234")
         XCTAssert(parser.taskTitle() == "some branch name")
+
+        // TODO: Not sur ethis case exists
+//        parser = ParseGitBranch(branchName: "Merge pull request #619 in MYAPP/proj from origin/AA-1234_some_branch_name to master;")
+//        XCTAssert(parser.taskNumber() == "AA-1234")
+//        XCTAssert(parser.taskTitle() == "some branch name")
     }
     
     func testBranchesGivenByGitLog() {
@@ -51,6 +56,10 @@ class ParseGitBranchTests: XCTestCase {
         XCTAssert(parser.taskTitle() == "some branch name")
         
         parser = ParseGitBranch(branchName: "origin/bugfix/AA-1234_some_branch_name")
+        XCTAssert(parser.taskNumber() == "AA-1234")
+        XCTAssert(parser.taskTitle() == "some branch name")
+
+        parser = ParseGitBranch(branchName: "bugfix/AA-1234_some_branch_name")
         XCTAssert(parser.taskNumber() == "AA-1234")
         XCTAssert(parser.taskTitle() == "some branch name")
     }

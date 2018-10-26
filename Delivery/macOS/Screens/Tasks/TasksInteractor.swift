@@ -43,8 +43,12 @@ extension TasksInteractor: TasksInteractorInput {
 
     func reloadCalendar() {
 
+        let startRequestDate = Date()
         reader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        reader?.query(startingDate: Date(timeIntervalSinceNow: -2.monthsToSec).startOfDay()) { [weak self] weeks in
+        reader?.query(startingDate: Date(timeIntervalSinceNow: -12.monthsToSec).endOfDay()) { [weak self] weeks in
+            let endRequestDate = Date()
+            RCLog(endRequestDate.timeIntervalSince(startRequestDate))
+            // Measured times: 0.36 for 2 months, 3.3 for 12 months
             DispatchQueue.main.async {
                 guard let wself = self else {
                     return

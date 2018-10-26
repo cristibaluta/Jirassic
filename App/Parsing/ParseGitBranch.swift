@@ -17,15 +17,17 @@ class ParseGitBranch {
     var branchName: String
     
     init(branchName: String) {
-        
+
         self.branchName = branchName
         
-        if let branch = self.parseGitLog(branchName) {
+        if let branch = self.parseGitMerge(branchName) {
             self.branchName = branch
         }
-        else if let branch = self.parseGitMerge(branchName) {
-            self.branchName = branch
-        }
+        // Eliminate folders
+        self.branchName = self.branchName.components(separatedBy: "/").last?.components(separatedBy: ",").first ?? self.branchName
+//        else if let branch = self.parseGitLog(branchName) {
+//            self.branchName = branch
+//        }
     }
     
     private func parseGitLog(_ branchName: String) -> String? {
