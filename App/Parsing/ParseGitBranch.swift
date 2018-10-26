@@ -10,9 +10,9 @@ import Foundation
 
 class ParseGitBranch {
     
-    fileprivate let taskIdEreg = "(([A-Z])+-([0-9])+)"
-    fileprivate let branchFromGitLogEreg = "origin(/([A-Za-z0-9_-])+)"
-    fileprivate let branchFromGitMergeEreg = "from ([A-Za-z0-9_-])+ to"
+    private let taskIdEreg = "(([A-Z])+-([0-9])+)"
+    private let branchFromGitLogEreg = "origin(/([A-Za-z0-9_-])+)"
+    private let branchFromGitMergeEreg = "from ([A-Za-z0-9_-])+ to"
     
     var branchName: String
     
@@ -34,9 +34,10 @@ class ParseGitBranch {
             return nil
         }
         let match = regex.firstMatch(in: branchName, options: [], range: NSRange(location: 0, length: branchName.count))
-        if let match = match {
-            return (branchName as NSString).substring(with: match.range)
-                    .replacingOccurrences(of: "origin/", with: "")
+        if let _ = match {
+            // TODO: try this with ereg to eliminate the folders before a branch name and ignore what follows after spaces
+            return branchName.components(separatedBy: "/").last?.components(separatedBy: ", ").first
+//            return (branchName as NSString).substring(with: match.range).replacingOccurrences(of: "origin/", with: "")
         }
         return nil
     }

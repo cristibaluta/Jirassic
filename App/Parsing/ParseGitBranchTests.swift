@@ -49,5 +49,9 @@ class ParseGitBranchTests: XCTestCase {
         parser = ParseGitBranch(branchName: "origin/AA-1234_some_branch_name")
         XCTAssert(parser.taskNumber() == "AA-1234")
         XCTAssert(parser.taskTitle() == "some branch name")
+        
+        parser = ParseGitBranch(branchName: "origin/bugfix/AA-1234_some_branch_name")
+        XCTAssert(parser.taskNumber() == "AA-1234")
+        XCTAssert(parser.taskTitle() == "some branch name")
     }
 }
