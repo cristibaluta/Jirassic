@@ -15,10 +15,10 @@ class CreateMonthReport {
     /// Returns reports collected from all days in the month
     /// @parameters
     /// tasks - All tasks in a month
-    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
+    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> (byDays: [[Report]], byTasks: [Report]) {
 
         guard tasks.count > 1 else {
-            return []
+            return (byDays: [], byTasks: [])
         }
         // When we find a startDay we keep its date and start adding tasks in that day till endDay found or new startDay found
         // Tasks between end and start are invalid
@@ -84,7 +84,7 @@ class CreateMonthReport {
             }
         }
 
-        return Array(reportsByTaskNumber.values)
+        return (byDays: reportsByDay, byTasks: Array(reportsByTaskNumber.values))
     }
     
     func joinReports (_ reports: [Report]) -> (notes: String, totalDuration: Double) {

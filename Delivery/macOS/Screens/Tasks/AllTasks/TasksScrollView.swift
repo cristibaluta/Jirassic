@@ -49,7 +49,7 @@ class TasksScrollView: NSScrollView {
         self.dataSource = dataSource
     }
     
-    convenience init (reports: [Report], type: ListType) {
+    convenience init (reports: [Report], numberOfDays: Int, type: ListType) {
         self.init(frame: NSRect.zero)
         self.setup()
         
@@ -67,9 +67,10 @@ class TasksScrollView: NSScrollView {
         var headerView: ReportsHeaderView!
         switch type {
         case .report:
-            headerView = ReportsHeaderView()
+            headerView = ReportsHeaderView(height: CGFloat(60))
         case .monthlyReports:
-            let monthHeaderView = MonthReportsHeaderView()
+            let monthHeaderView = MonthReportsHeaderView(height: CGFloat(100))
+            monthHeaderView.numberOfDays = numberOfDays
             monthHeaderView.didCopyAll = {
                 let interactor = CreateMonthReport()
                 let joined = interactor.joinReports(reports)

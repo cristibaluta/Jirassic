@@ -29,7 +29,7 @@ protocol TasksPresenterOutput: class {
     func showMessage (_ message: MessageViewModel)
     func showCalendar (_ weeks: [Week])
     func showTasks (_ tasks: [Task])
-    func showReports (_ reports: [Report], type: ListType)
+    func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
     func presentEndDayController (date: Date, tasks: [Task])
@@ -195,7 +195,7 @@ extension TasksPresenter: TasksInteractorOutput {
             let reportInteractor = CreateReport()
             let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
             currentReports = reports.reversed()
-            ui.showReports(currentReports, type: selectedListType)
+            ui.showReports(currentReports, numberOfDays: 1, type: selectedListType)
         case .monthlyReports:
             let settings = SettingsInteractor().getAppSettings()
             let targetHoursInDay = pref.bool(.enableRoundingDay)
@@ -203,8 +203,8 @@ extension TasksPresenter: TasksInteractorOutput {
                 : nil
             let reportInteractor = CreateMonthReport()
             let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
-            currentReports = reports
-            ui.showReports(currentReports, type: selectedListType)
+            currentReports = reports.byTasks
+            ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: selectedListType)
             break
         }
         updateNoTasksState()

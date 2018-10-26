@@ -11,18 +11,37 @@ import Cocoa
 class MonthReportsHeaderView: ReportsHeaderView {
     
     private let butCopyAll: NSButton
+    private var totalDaysTextField: NSTextField
     var didCopyAll: (() -> Void)?
     
-    override init() {
+    var numberOfDays: Int {
+        get {
+            return 0
+        }
+        set {
+            totalDaysTextField.stringValue = "Number of days: \(newValue)"
+        }
+    }
+    
+    override init(height: CGFloat) {
         
         butCopyAll = NSButton()
-        butCopyAll.frame = NSRect(x: 15, y: 40, width: 100, height: 20)
+        butCopyAll.frame = NSRect(x: 15, y: 60, width: 80, height: 20)
         butCopyAll.setButtonType(.momentaryPushIn)
         butCopyAll.bezelStyle = .texturedRounded
         butCopyAll.title = "Copy all"
         butCopyAll.toolTip = "Copy all reports to clipboard."
         
-        super.init()
+        totalDaysTextField = NSTextField()
+        totalDaysTextField.alignment = NSTextAlignment.right
+        totalDaysTextField.drawsBackground = false
+        totalDaysTextField.isBordered = false
+        totalDaysTextField.isEnabled = false
+        totalDaysTextField.focusRingType = .none
+        totalDaysTextField.textColor = NSColor.white
+        totalDaysTextField.backgroundColor = NSColor.clear
+        
+        super.init(height: height)
         
         butCopyAll.target = self
         butCopyAll.action = #selector(self.handleCopyAllButton)
@@ -34,11 +53,16 @@ class MonthReportsHeaderView: ReportsHeaderView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+        
         self.addSubview(butCopyAll)
+        
+        totalDaysTextField.frame = NSRect(x: dirtyRect.size.width - 216, y: 60, width: 200, height: 20)
+        self.addSubview(totalDaysTextField)
     }
 }
 
 extension MonthReportsHeaderView {
+    
     @objc func handleCopyAllButton (_ sender: NSButton) {
         didCopyAll?()
     }

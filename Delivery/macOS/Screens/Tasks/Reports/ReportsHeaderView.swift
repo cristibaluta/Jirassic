@@ -10,10 +10,10 @@ import Cocoa
 
 class ReportsHeaderView: NSTableHeaderView {
     
-    fileprivate var butRound: NSButton
-    fileprivate var butPercents: NSButton
-    fileprivate var totalTimeTextField: NSTextField
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private var butRound: NSButton
+    private var butPercents: NSButton
+    private var totalTimeTextField: NSTextField
+    private let localPreferences = RCPreferences<LocalPreferences>()
     var didChangeSettings: (() -> Void)?
     // In hours
     var workedTime: String {
@@ -32,9 +32,9 @@ class ReportsHeaderView: NSTableHeaderView {
             butRound.attributedTitle = NSAttributedString(string: "Round to \(newValue) hours", attributes: attributes)
         }
     }
-    fileprivate let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
+    private let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
     
-    init() {
+    init (height: CGFloat) {
         
         butPercents = NSButton()
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
@@ -57,7 +57,7 @@ class ReportsHeaderView: NSTableHeaderView {
         totalTimeTextField.textColor = NSColor.white
         totalTimeTextField.backgroundColor = NSColor.clear
         
-        super.init(frame: NSRect(x: 0, y: 0, width: 0, height: 60))
+        super.init(frame: NSRect(x: 0, y: 0, width: 0, height: height))
         
         self.workedTime = ""
         self.workdayTime = 0.0

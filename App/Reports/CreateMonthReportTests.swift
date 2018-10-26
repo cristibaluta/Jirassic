@@ -59,12 +59,13 @@ class CreateMonthReportTests: XCTestCase {
 
         let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
         var totalDuration = 0.0
-        XCTAssert(reports.count == 8, "There should be only 8 unique task numbers. Lunch and waste are ignored")
-        for i1 in 0..<reports.count {
-            totalDuration += reports[i1].duration
-            for i2 in 0..<reports.count {
+        XCTAssert(reports.byDays.count == 3, "There should be only 8 unique task numbers. Lunch and waste are ignored")
+        XCTAssert(reports.byTasks.count == 8, "There should be only 8 unique task numbers. Lunch and waste are ignored")
+        for i1 in 0..<reports.byTasks.count {
+            totalDuration += reports.byTasks[i1].duration
+            for i2 in 0..<reports.byTasks.count {
                 if i1 != i2 {
-                    XCTAssertFalse(reports[i1].taskNumber == reports[i2].taskNumber, "Duplicate taskNumber found, they should be unique")
+                    XCTAssertFalse(reports.byTasks[i1].taskNumber == reports.byTasks[i2].taskNumber, "Duplicate taskNumber found, they should be unique")
                 }
             }
         }
