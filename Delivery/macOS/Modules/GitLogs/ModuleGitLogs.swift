@@ -54,7 +54,8 @@ class ModuleGitLogs {
                     RCLog("Something went wrong, this commit is not in the provided interval, ignoring... \(commit)")
                     continue
                 }
-                let str = commit.branchName != "" ? commit.branchName : commit.message
+                // If the branch sounds like invalid (empty or master) try to obtain the task number from commit message
+                let str = commit.branchName != "" && commit.branchName != "master" ? commit.branchName : commit.message
                 let branchParser = ParseGitBranch(branchName: str ?? "")
                 let taskTitle = branchParser.taskTitle()
                 let taskNumber = branchParser.taskNumber() ?? taskTitle
