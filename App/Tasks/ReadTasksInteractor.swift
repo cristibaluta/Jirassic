@@ -12,16 +12,16 @@ class ReadTasksInteractor: RepositoryInteractor {
 	
     // Return a list of tasks sorted by date
     func tasksInDay (_ date: Date) -> [Task] {
-        return self.repository.queryTasks(startDate: date.startOfDay(), endDate: date.endOfDay())
+        return self.repository.queryTasks(startDate: date.startOfDay(), endDate: date.endOfDay(), predicate: nil)
     }
 
     // Return a list of tasks sorted by date
     func tasksInMonth (_ date: Date) -> [Task] {
-        return self.repository.queryTasks(startDate: date.startOfMonth(), endDate: date.endOfMonth())
+        return self.repository.queryTasks(startDate: date.startOfMonth(), endDate: date.endOfMonth(), predicate: nil)
     }
 
     // Return a list of tasks sorted by date
     func tasks (between dateStart: Date, and dateEnd: Date) -> [Task] {
-        return self.repository.queryTasks(startDate: dateStart, endDate: dateEnd)
+        return self.repository.queryTasks(startDate: dateStart, endDate: dateEnd, predicate: nil)
     }
 }

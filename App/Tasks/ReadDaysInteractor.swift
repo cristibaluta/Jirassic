@@ -8,18 +8,25 @@
 
 import Foundation
 
+// Interactor responsible for querying and building Days snd Weeks.
+// Only start and end tasks will be queried for performance reasons
 class ReadDaysInteractor: RepositoryInteractor {
 	
 	private var tasks = [Task]()
 	
-    /// Query all objects from the local repository then from remote if enabled
+    /// Query all startDay and endDay objects from the local repository
+    /// Then do a sync with the remote if enabled and query the local objects again
+    /// @parameters
     /// completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
     func queryAll (_ completion: @escaping (_ weeks: [Week]) -> Void) {
         query(startingDate: Date(timeIntervalSince1970: 0), completion: completion)
     }
 
-    /// Query the objects from the local repository then from remote if enabled
-    /// completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
+    /// Query all startDay and endDay objects from the local repository
+    /// Then do a sync with the remote if enabled and query the local objects again
+    /// @parameters
+    /// startingDate - Query between this date and current date
+    /// completion block - will be called once with local tasks and once with updated tasks if remote had any changes to download
     func query (startingDate: Date, completion: @escaping (_ weeks: [Week]) -> Void) {
 
         queryLocalTasks(startDate: startingDate, endDate: Date()) { [weak self] (tasks: [Task]) in
@@ -38,11 +45,8 @@ class ReadDaysInteractor: RepositoryInteractor {
                     guard let _self = self, hasIncomingChanges else {
                         return
                     }
-                    _self.queryLocalTasks(startDate: startingDate, endDate: Date()) { [weak self] (tasks: [Task]) in
-
-                        guard let _self = self else {
-                            return
-                        }
+                    // Fetch again the local tasks if they were updated
+                    _self.queryLocalTasks(startDate: startingDate, endDate: Date()) { (tasks: [Task]) in
                         _self.tasks = tasks
                         completion(_self.weeks())
                     }
@@ -53,7 +57,9 @@ class ReadDaysInteractor: RepositoryInteractor {
 
     private func queryLocalTasks (startDate: Date, endDate: Date, _ completion: @escaping (_ tasks: [Task]) -> Void) {
         
-        repository.queryTasks(startDate: startDate, endDate: endDate, completion: { [weak self] (tasks, error) in
+        let predicateWithStartAndEndDays = NSPredicate(format: "taskType == %i || taskType == %i", TaskType.startDay.rawValue, TaskType.endDay.rawValue)
+        
+        repository.queryTasks(startDate: startDate, endDate: endDate, predicate: predicateWithStartAndEndDays, completion: { [weak self] (tasks, error) in
             
             guard let _self = self else {
                 return

@@ -11,11 +11,11 @@ import CloudKit
 
 extension CloudKitRepository: RepositoryTasks {
 
-    func queryTasks (startDate: Date, endDate: Date) -> [Task] {
+    func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
         fatalError("This method is not applicable to CloudKitRepository")
     }
 
-    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+    func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil, completion: @escaping ([Task], NSError?) -> Void) {
         let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", startDate as CVarArg, endDate as CVarArg)
         fetchRecords(ofType: "Task", predicate: predicate) { (records) in
             completion(self.tasksFromRecords(records ?? []), nil)

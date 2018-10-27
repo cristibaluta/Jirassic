@@ -10,16 +10,16 @@ import Foundation
 
 extension SqliteRepository: RepositoryTasks {
 
-    func queryTasks (startDate: Date, endDate: Date) -> [Task] {
+    func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
 
-        let tasks = self.tasksBetween (startDate: startDate, endDate: endDate)
+        let tasks = self.tasksBetween (startDate: startDate, endDate: endDate, predicate: predicate)
         return tasks
     }
 
-    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void) {
+    func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil, completion: @escaping ([Task], NSError?) -> Void) {
 
         queue.async {
-            let tasks = self.queryTasks (startDate: startDate, endDate: endDate)
+            let tasks = self.queryTasks (startDate: startDate, endDate: endDate, predicate: predicate)
             completion(tasks, nil)
         }
     }
@@ -91,12 +91,18 @@ extension SqliteRepository: RepositoryTasks {
 
 extension SqliteRepository {
 
-    private func tasksBetween (startDate: Date, endDate: Date) -> [Task] {
+    private func tasksBetween (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
 
         let startDate = startDate.YYYYMMddHHmmssGMT()
         let endDate = endDate.YYYYMMddHHmmssGMT()
-        let predicate = "datetime(endDate) BETWEEN datetime('\(startDate)') AND datetime('\(endDate)') AND markedForDeletion == 0"
-        let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: "endDate")
+        var predicateComponents = ["datetime(endDate) BETWEEN datetime('\(startDate)') AND datetime('\(endDate)')",
+                                    "markedForDeletion == 0"]
+        if let p = predicate {
+            predicateComponents.append("(\(p.predicateFormat))")
+        }
+        let sqlPredicate = predicateComponents.joined(separator: " AND ")
+        
+        let results: [STask] = queryWithPredicate(sqlPredicate, sortingKeyPath: "endDate")
         let tasks = tasksFromSTasks(results)
 
         return tasks

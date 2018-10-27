@@ -19,8 +19,8 @@ protocol RepositoryUser {
 
 protocol RepositoryTasks {
 
-    func queryTasks (startDate: Date, endDate: Date) -> [Task]
-    func queryTasks (startDate: Date, endDate: Date, completion: @escaping ([Task], NSError?) -> Void)
+    func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate?) -> [Task]
+    func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate?, completion: @escaping ([Task], NSError?) -> Void)
     func queryUnsyncedTasks() -> [Task]
     func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void)
     func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void)
