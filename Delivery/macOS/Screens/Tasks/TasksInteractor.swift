@@ -21,22 +21,22 @@ protocol TasksInteractorOutput: class {
     func tasksDidLoad (_ tasks: [Task])
 }
 
-enum ListType: Int {
-
-    case allTasks = 0
-    case report = 1
-    case monthlyReports = 2
-}
-
 class TasksInteractor {
 
     weak var presenter: TasksPresenter?
     
-    private var reader: ReadDaysInteractor?
+    private let daysReader: ReadDaysInteractor!
+    private let tasksReader: ReadTasksInteractor!
     private let moduleGit = ModuleGitLogs()
     private let moduleCalendar = ModuleCalendar()
     private let pref = RCPreferences<LocalPreferences>()
     private var currentTasks = [Task]()
+    private var currentDateStart: Date?
+    
+    init() {
+        daysReader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        tasksReader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
+    }
 }
 
 extension TasksInteractor: TasksInteractorInput {
@@ -44,11 +44,9 @@ extension TasksInteractor: TasksInteractorInput {
     func reloadCalendar() {
 
         let startRequestDate = Date()
-        reader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        reader?.query(startingDate: Date(timeIntervalSinceNow: -12.monthsToSec).endOfDay()) { [weak self] weeks in
+        daysReader.query(startingDate: Date(timeIntervalSinceNow: -12.monthsToSec).endOfDay()) { [weak self] weeks in
             let endRequestDate = Date()
             RCLog(endRequestDate.timeIntervalSince(startRequestDate))
-            // Measured times: 0.36 for 2 months, 3.3 for 12 months
             DispatchQueue.main.async {
                 guard let wself = self else {
                     return
@@ -62,6 +60,7 @@ extension TasksInteractor: TasksInteractorInput {
 
         let dateStart = day.dateStart
         let dateEnd = day.dateEnd ?? dateStart.endOfDay()
+        currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
 
@@ -69,28 +68,28 @@ extension TasksInteractor: TasksInteractorInput {
 
         let dateStart = day.dateStart.startOfMonth()
         let dateEnd = dateStart.endOfMonth()
+        currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
 
     private func reloadTasks (dateStart: Date, dateEnd: Date) {
         
         self.currentTasks = []
-        self.addLocalTasks(dateStart: dateStart, dateEnd: dateEnd) {
-            guard !self.currentTasks.isEmpty else {
-                self.presenter!.tasksDidLoad (self.currentTasks)
+        self.addLocalTasks(dateStart: dateStart, dateEnd: dateEnd) { [weak self] in
+            guard let wself = self, !wself.currentTasks.isEmpty else {
+                self?.presenter!.tasksDidLoad([])
                 return
             }
-            self.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
-                self.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
-                    self.presenter!.tasksDidLoad (self.currentTasks)
+            self?.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
+                self?.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
+                    self?.presenter!.tasksDidLoad(wself.currentTasks)
                 }
             }
         }
     }
     
     private func addLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
-        let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        currentTasks = reader.tasks(between: dateStart, and: dateEnd)
+        currentTasks = tasksReader.tasks(between: dateStart, and: dateEnd)
         completion()
     }
 
@@ -102,7 +101,8 @@ extension TasksInteractor: TasksInteractorInput {
         }
         moduleGit.logs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
-            guard let wself = self else {
+            guard let wself = self, wself.currentDateStart == dateStart else {
+                RCLog("Different day was selected than the one loading")
                 return
             }
             wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: gitTasks)
@@ -118,7 +118,8 @@ extension TasksInteractor: TasksInteractorInput {
         }
         moduleCalendar.events(dateStart: dateStart, dateEnd: dateEnd) { [weak self] (calendarTasks) in
 
-            guard let wself = self else {
+            guard let wself = self, wself.currentDateStart == dateStart else {
+                RCLog("Different day was selected than the one loading")
                 return
             }
             wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: calendarTasks)

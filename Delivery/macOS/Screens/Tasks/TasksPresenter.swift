@@ -36,6 +36,13 @@ protocol TasksPresenterOutput: class {
     func presentEndDayController (date: Date, tasks: [Task])
 }
 
+enum ListType: Int {
+    
+    case allTasks = 0
+    case report = 1
+    case monthlyReports = 2
+}
+
 class TasksPresenter {
     
     weak var appWireframe: AppWireframe?
@@ -187,6 +194,7 @@ extension TasksPresenter: TasksInteractorOutput {
             return
         }
         ui.showLoadingIndicator(false)
+        ui.removeTasksController()
         currentTasks = tasks
 
         switch selectedListType {
