@@ -94,7 +94,7 @@ extension CreateReport {
         var roundedTasks = [Task]()
         
         var task = tasks.first!
-        task.endDate = task.endDate.round()
+        task.endDate = targetHoursInDay == nil ? task.endDate : task.endDate.round()
         roundedTasks.append(task)
         var previousDate = task.endDate
         var extraTimeToAdd = 0.0
@@ -107,7 +107,9 @@ extension CreateReport {
                 extraTimeToAdd += extraTimePerTask
             }
             
-            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
+            task.endDate = targetHoursInDay == nil
+                ? task.endDate.addingTimeInterval(extraTimeToAdd)
+                : task.endDate.addingTimeInterval(extraTimeToAdd).round()
             task.startDate = previousDate
             previousDate = task.endDate
             
