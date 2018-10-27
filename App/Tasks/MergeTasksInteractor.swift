@@ -10,6 +10,8 @@ import Foundation
 
 class MergeTasksInteractor {
     
+    private let secondsAllowed = 5.0
+    
     /// Merge the two list of tasks, remove duplicates, and sort ascending
     func merge (tasks: [Task], with gitTasks: [Task]) -> [Task] {
         
@@ -20,22 +22,19 @@ class MergeTasksInteractor {
         for task in all {
             var originalHasTaskNumber = false
             var duplicateHasTaskNumber = false
-            if !unique.contains(where: {
+            let isUnique = !unique.contains(where: {
                 originalHasTaskNumber = task.taskNumber?.count ?? 0 > 0
-                let isDuplicate = abs(task.endDate.timeIntervalSince($0.endDate)) < 5.0
+                let isDuplicate = task.taskType == $0.taskType && abs(task.endDate.timeIntervalSince($0.endDate)) < secondsAllowed
                 if isDuplicate {
                     duplicateHasTaskNumber = $0.taskNumber?.count ?? 0 > 0
                 }
                 return isDuplicate
-            }) {
-                if !duplicateHasTaskNumber {
-                    unique.append(task)
-                }
-            } else {
-                if originalHasTaskNumber && !duplicateHasTaskNumber {
-                    unique.removeAll(where: { abs(task.endDate.timeIntervalSince($0.endDate)) < 5.0 })
-                    unique.append(task)
-                }
+            })
+            if isUnique {
+                unique.append(task)
+            } else if originalHasTaskNumber && !duplicateHasTaskNumber {
+                unique.removeAll(where: { abs(task.endDate.timeIntervalSince($0.endDate)) < secondsAllowed })
+                unique.append(task)
             }
         }
         
@@ -46,14 +45,14 @@ class MergeTasksInteractor {
     }
 }
 
-fileprivate extension Array where Element == Task {
-
-    fileprivate mutating func mergeElements<C : Collection>(newElements: C) where C.Iterator.Element == Element {
-        
-        let filteredList = newElements.filter( {
-            let gitTask = $0
-            return !self.contains(where: { gitTask.endDate.compare($0.endDate) == .orderedSame })
-        })
-        self += filteredList
-    }
-}
+//fileprivate extension Array where Element == Task {
+//
+//    fileprivate mutating func mergeElements<C : Collection>(newElements: C) where C.Iterator.Element == Element {
+//
+//        let filteredList = newElements.filter( {
+//            let gitTask = $0
+//            return !self.contains(where: { gitTask.endDate.compare($0.endDate) == .orderedSame })
+//        })
+//        self += filteredList
+//    }
+//}

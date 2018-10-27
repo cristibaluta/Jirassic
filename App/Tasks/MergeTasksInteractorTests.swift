@@ -23,7 +23,8 @@ class MergeTasksInteractorTests: XCTestCase {
                      Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 9, minute: 30, second: 50), type: .issue),
                      Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 13, minute: 10, second: 0), type: .lunch),
                      Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
-                     gitWithoutTaskNumber
+                     gitWithoutTaskNumber,
+                     Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 18, minute: 0, second: 30), type: .endDay)
         ]
         let gitTasks = [Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),// duplicate
                         gitWithTaskNumber,// duplicate
@@ -35,7 +36,7 @@ class MergeTasksInteractorTests: XCTestCase {
         var mergedTasks = MergeTasksInteractor().merge(tasks: tasks, with: gitTasks)
         mergedTasks = MergeTasksInteractor().merge(tasks: mergedTasks, with: calendarTasks)
         
-        XCTAssert(mergedTasks.count == 7)
+        XCTAssert(mergedTasks.count == 8)
         XCTAssert(mergedTasks[0].objectId == tasks[0].objectId, "Should be start of the day")
         XCTAssert(mergedTasks[1].objectId == tasks[1].objectId, "Should be issue 1")
         XCTAssert(mergedTasks[2].objectId == scrum.objectId, "Should be scrum")
@@ -44,6 +45,7 @@ class MergeTasksInteractorTests: XCTestCase {
         XCTAssert(mergedTasks[5].objectId == gitWithTaskNumber.objectId, "Between identical git should be the one with a valid taskNumber")
         XCTAssert(mergedTasks[5].taskNumber == "APP-1")
         XCTAssert(mergedTasks[6].objectId == gitTasks[3].objectId, "Should be last git")
+        XCTAssert(mergedTasks[7].objectId == tasks[5].objectId, "Should be end of day")
         
         // Test sorting
         let _ = mergedTasks.sorted { (t1, t2) -> Bool in

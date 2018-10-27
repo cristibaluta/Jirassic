@@ -28,8 +28,6 @@ class ReadDaysInteractorTests: XCTestCase {
         interactor.queryAll { (weeks) in
             XCTAssertTrue(weeks.first!.days.count == 2)
         }
-        let days = interactor.days()
-        XCTAssertTrue(days.count == 2)
     }
 
 }
