@@ -69,7 +69,7 @@ class ReadDaysInteractor: RepositoryInteractor {
         })
     }
 	
-	func weeks() -> [Week] {
+	private func weeks() -> [Week] {
 		
 		var objects = [Week]()
 		var referenceDate = Date.distantFuture
@@ -86,7 +86,7 @@ class ReadDaysInteractor: RepositoryInteractor {
 		return objects
 	}
 	
-	func days() -> [Day] {
+	private func days() -> [Day] {
 		
 		var objects = [Day]()
         var obj: Day?

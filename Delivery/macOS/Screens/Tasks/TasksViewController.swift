@@ -135,14 +135,14 @@ extension TasksViewController: TasksPresenterOutput {
         tasksScrollView!.didRemoveRow = { [weak self] (row: Int) in
             RCLogO("Remove item at row \(row)")
             if row >= 0 {
-                self?.presenter!.removeTaskAtRow(row)
-                self?.tasksScrollView!.removeTaskAtRow(row)
+                self?.presenter!.removeTask(at: row)
+                self?.tasksScrollView!.removeTask(at: row)
             }
         }
         tasksScrollView!.didAddRow = { [weak self] (row: Int) -> Void in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
-                self?.presenter!.insertTaskAfterRow(row)
+                self?.presenter!.insertTask(after: row)
             }
         }
         tasksScrollView!.didEndDay = { [weak self] (_ tasks: [Task]) -> Void in

@@ -11,7 +11,7 @@ import Cocoa
 class TasksScrollView: NSScrollView {
 	
     private var tableView: NSTableView!
-    private var dataSource: DataSource?
+    private var dataSource: DataSource!
     private let localPreferences = RCPreferences<LocalPreferences>()
 	
 	var didAddRow: ((_ row: Int) -> ())?
@@ -33,8 +33,8 @@ class TasksScrollView: NSScrollView {
         self.setup()
         
         let dataSource = TasksDataSource(tableView: tableView, tasks: tasks)
-        tableView!.dataSource = dataSource
-        tableView!.delegate = dataSource
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
         
         dataSource.didAddRow = { [weak self] (row: Int) -> Void in
             self?.didAddRow!(row)
@@ -54,8 +54,8 @@ class TasksScrollView: NSScrollView {
         self.setup()
         
         let dataSource = ReportsDataSource(tableView: tableView, reports: reports)
-        tableView!.dataSource = dataSource
-        tableView!.delegate = dataSource
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
         if #available(OSX 10.13, *) {
             tableView!.usesAutomaticRowHeights = true
         }
@@ -89,7 +89,7 @@ class TasksScrollView: NSScrollView {
         headerView.didChangeSettings = { [weak self] in
             self?.didChangeSettings!()
         }
-        tableView!.headerView = headerView
+        tableView.headerView = headerView
         
         self.dataSource = dataSource
     }
@@ -102,9 +102,9 @@ class TasksScrollView: NSScrollView {
         self.hasVerticalScroller = true
         
         tableView = NSTableView(frame: self.frame)
-        tableView!.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
-        tableView!.backgroundColor = NSColor.clear
-        tableView!.headerView = nil
+        tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
+        tableView.backgroundColor = NSColor.clear
+        tableView.headerView = nil
         
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "taskColumn"))
         column.width = 400
@@ -120,9 +120,9 @@ class TasksScrollView: NSScrollView {
     
     func reloadReports (_ reports: [Report]) {
         dataSource = ReportsDataSource(tableView: tableView, reports: reports)
-        tableView!.dataSource = dataSource
-        tableView!.delegate = dataSource
-        tableView!.reloadData()
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+        tableView.reloadData()
     }
 	
 	func addTask (_ task: Task) {
@@ -131,9 +131,15 @@ class TasksScrollView: NSScrollView {
         }
 	}
 	
-    func removeTaskAtRow (_ row: Int) {
+    func removeTask (at row: Int) {
         if let dataSource = tableView.dataSource as? TasksDataSource {
-            dataSource.removeTaskAtRow(row)
+            dataSource.removeTask(at: row)
+            var rowsToRemoveFromTable = IndexSet(integer: row)
+            // Remove the last row with buttons when there  is only 1 task,  which means there are 2 rows
+            if tableView.numberOfRows == 2 {
+                rowsToRemoveFromTable = IndexSet(integersIn: 0...1)
+            }
+            tableView.removeRows(at: rowsToRemoveFromTable, withAnimation: .effectFade)
         }
 	}
 }

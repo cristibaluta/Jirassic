@@ -19,8 +19,8 @@ protocol TasksPresenterInput: class {
     func startDay()
     func endDay()
     func insertTaskWithData (_ taskData: TaskCreationData)
-    func insertTaskAfterRow (_ row: Int)
-    func removeTaskAtRow (_ row: Int)
+    func insertTask (after row: Int)
+    func removeTask (at row: Int)
 }
 
 protocol TasksPresenterOutput: class {
@@ -134,7 +134,7 @@ extension TasksPresenter: TasksPresenterInput {
         })
     }
     
-    func insertTaskAfterRow (_ row: Int) {
+    func insertTask (after row: Int) {
         
         guard currentTasks.count > row + 1 else {
             let taskBefore = currentTasks[row]
@@ -149,7 +149,7 @@ extension TasksPresenter: TasksPresenterInput {
         ui!.presentNewTaskController(withInitialDate: middleDate)
     }
     
-    func removeTaskAtRow (_ row: Int) {
+    func removeTask (at row: Int) {
         
         let task = currentTasks[row]
         currentTasks.remove(at: row)
@@ -157,8 +157,10 @@ extension TasksPresenter: TasksPresenterInput {
         deleteInteractor.deleteTask(task)
         updateNoTasksState()
         if currentTasks.count == 0 {
-            let reader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-            ui?.showCalendar(reader.weeks())
+            let reader = ReadDaysInteractor(repository: localRepository, remoteRepository: nil)
+            reader.queryAll { [weak self] (weeks) in
+                self?.ui?.showCalendar(weeks)
+            }
         }
     }
 }

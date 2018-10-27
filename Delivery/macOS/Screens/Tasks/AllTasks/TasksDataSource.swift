@@ -17,8 +17,8 @@ let kCellLeftPadding = CGFloat(10.0)
 
 class TasksDataSource: NSObject {
     
-    fileprivate let tableView: NSTableView
-    fileprivate var tasks: [Task] = []
+    private let tableView: NSTableView
+    private var tasks: [Task] = []
     var didAddRow: ((_ row: Int) -> Void)?
     var didRemoveRow: ((_ row: Int) -> Void)?
     var didEndDay: ((_ tasks: [Task]) -> Void)?
@@ -33,7 +33,7 @@ class TasksDataSource: NSObject {
         FooterCell.register(in: tableView)
     }
     
-    fileprivate func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
+    private func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
         
         var cell: CellProtocol? = nil
         switch taskType {
@@ -52,9 +52,8 @@ class TasksDataSource: NSObject {
         tasks.insert(task, at: 0)
     }
     
-    func removeTaskAtRow (_ row: Int) {
+    func removeTask (at row: Int) {
         tasks.remove(at: row)
-        tableView.removeRows(at: IndexSet(integer: row), withAnimation: .effectFade)
     }
 }
 
@@ -87,7 +86,7 @@ extension TasksDataSource: NSTableViewDelegate {
         guard row < tasks.count else {
             
             let cell = FooterCell.instantiate(in: self.tableView)
-            cell.didEndDay = { [weak self] () in
+            cell.didEndDay = { [weak self] in
                 if let wself = self {
                     wself.didEndDay!(wself.tasks)
                 }
