@@ -140,9 +140,18 @@
                                             <constraint firstAttribute="trailing" secondItem="TP3-Rr-lmx" secondAttribute="trailing" id="tJA-af-5i1"/>
                                         </constraints>
                                     </customView>
-                                    <customView fixedFrame="YES" id="JZx-xW-wh2">
+                                    <customView id="JZx-xW-wh2">
                                         <rect key="frame" x="111" y="0.0" width="368" height="380"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="85r-Gq-mow">
+                                                <rect key="frame" x="176" y="182" width="16" height="16"/>
+                                            </progressIndicator>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="85r-Gq-mow" firstAttribute="centerX" secondItem="JZx-xW-wh2" secondAttribute="centerX" id="CHC-AY-j8C"/>
+                                            <constraint firstItem="85r-Gq-mow" firstAttribute="centerY" secondItem="JZx-xW-wh2" secondAttribute="centerY" id="uLY-lI-OJ8"/>
+                                        </constraints>
                                     </customView>
                                 </subviews>
                                 <holdingPriorities>
@@ -231,8 +240,9 @@
                         <outlet property="butSettings" destination="sOM-pv-IVs" id="kgx-pV-DJa"/>
                         <outlet property="calendarScrollView" destination="TP3-Rr-lmx" id="Zzl-gR-bBE"/>
                         <outlet property="listSegmentedControl" destination="95a-7I-VNJ" id="8E8-Sc-7fh"/>
-                        <outlet property="refreshIndicator" destination="lYQ-Lm-GnG" id="cFZ-25-jJR"/>
+                        <outlet property="loadingTasksIndicator" destination="85r-Gq-mow" id="x3D-ic-FGi"/>
                         <outlet property="splitView" destination="pVs-CS-Pcx" id="cl7-Lo-9AU"/>
+                        <outlet property="syncIndicator" destination="lYQ-Lm-GnG" id="0L3-eP-npg"/>
                     </connections>
                 </viewController>
                 <customObject id="PVZ-YR-gJH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

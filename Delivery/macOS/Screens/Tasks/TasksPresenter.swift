@@ -30,6 +30,7 @@ protocol TasksPresenterOutput: class {
     func showCalendar (_ weeks: [Week])
     func showTasks (_ tasks: [Task])
     func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
+    func removeTasksController()
     func selectDay (_ day: Day)
     func presentNewTaskController (withInitialDate date: Date)
     func presentEndDayController (date: Date, tasks: [Task])
@@ -61,11 +62,13 @@ extension TasksPresenter: TasksPresenterInput {
     }
     
     func reloadData() {
+        ui!.removeTasksController()
         ui!.showLoadingIndicator(true)
         interactor!.reloadCalendar()
     }
 
     func reloadTasksOnDay (_ day: Day, listType: ListType) {
+        ui!.removeTasksController()
         ui!.showLoadingIndicator(true)
         lastSelectedDay = day
         selectedListType = listType
