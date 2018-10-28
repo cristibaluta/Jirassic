@@ -421,7 +421,6 @@
 		4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */; };
 		4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */; };
-		4065D4221DD4562900B73201 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31C1DD3B44200B73201 /* TaskTests.swift */; };
 		4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3211DD3B44200B73201 /* DateExtensionTests.swift */; };
 		4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32C1DD3B44200B73201 /* CreateReportTests.swift */; };
 		4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3311DD3B44200B73201 /* TaskFinderTests.swift */; };
@@ -706,7 +705,6 @@
 		4065D3191DD3B44200B73201 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		4065D31A1DD3B44200B73201 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4065D31B1DD3B44200B73201 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		4065D31C1DD3B44200B73201 /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		4065D31D1DD3B44200B73201 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4065D31E1DD3B44200B73201 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		4065D3201DD3B44200B73201 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -1320,7 +1318,6 @@
 				4065D3191DD3B44200B73201 /* Report.swift */,
 				4065D31A1DD3B44200B73201 /* Settings.swift */,
 				4065D31B1DD3B44200B73201 /* Task.swift */,
-				4065D31C1DD3B44200B73201 /* TaskTests.swift */,
 				4065D31D1DD3B44200B73201 /* User.swift */,
 				4065D31E1DD3B44200B73201 /* Week.swift */,
 				28A2839920382BBB00DDCB63 /* GitCommit.swift */,
@@ -2478,7 +2475,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
-				4065D4221DD4562900B73201 /* TaskTests.swift in Sources */,
 				56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */,
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,

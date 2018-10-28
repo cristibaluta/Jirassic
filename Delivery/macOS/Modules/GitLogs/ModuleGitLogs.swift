@@ -69,7 +69,7 @@ class ModuleGitLogs {
                                 taskNumber: taskNumber,
                                 taskTitle: taskTitle,
                                 taskType: .gitCommit,
-                                objectId: String.random())
+                                objectId: String.generateId())
                 tasks.append(task)
             }
             self.logsChunk(dates: dates, previousTasks: tasks, completion: completion)

@@ -146,4 +146,8 @@ class TasksScrollView: NSScrollView {
     func frameOfCell (atRow row: Int) -> NSRect {
         return tableView.frameOfCell(atColumn: 0, row: row)
     }
+    
+    func view() -> NSTableView {
+        return self.tableView
+    }
 }

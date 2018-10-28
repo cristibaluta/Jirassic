@@ -206,7 +206,7 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
         popover.contentViewController = controller
-        popover.show(relativeTo: rectToDisplayPopoverAt!, of: self.tasksScrollView!, preferredEdge: NSRectEdge.maxY)
+        popover.show(relativeTo: rectToDisplayPopoverAt!, of: self.tasksScrollView!.view(), preferredEdge: NSRectEdge.maxY)
         // Add data
         controller.dateStart = nil// TODO Add scrum start date when around scrum date
         controller.dateEnd = date

@@ -28,18 +28,6 @@ class TaskSuggestionPresenter {
     private let startWorkText = "Good morning, ready to start work?"
     private let moduleCalendar = ModuleCalendar()
     
-    private func taskSubtype (forIndex index: Int) -> TaskSubtype {
-        
-        switch index {
-            case 0: return .scrumEnd
-            case 1: return .meetingEnd
-            case 2: return .lunchEnd
-            case 3: return .wasteEnd
-            case 4: return .learningEnd
-            default: return .issueEnd
-        }
-    }
-    
     private func taskType (forIndex index: Int) -> TaskType {
         
         switch index {
@@ -121,14 +109,13 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         var task: Task
         
         if isStartOfDay {
-            task = Task(endDate: endSleepDate!, type: TaskType.startDay)
+            task = Task(endDate: endSleepDate!, type: .startDay)
         } else {
-            let type = taskSubtype(forIndex: selectedSegment)
-            task = Task(subtype: type)
+            let type = taskType(forIndex: selectedSegment)
+            task = Task(endDate: endSleepDate!, type: type)
             task.notes = notes
             task.taskNumber = type.defaultTaskNumber
             task.startDate = startSleepDate
-            task.endDate = endSleepDate!
         }
         
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)

@@ -116,8 +116,7 @@ extension TasksPresenter: TasksPresenterInput {
     
     func startDay() {
         
-        let now = Date()
-        let task = Task(endDate: now, type: TaskType.startDay)
+        let task = Task(endDate: Date(), type: .startDay)
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
             self?.reloadData()
@@ -131,7 +130,7 @@ extension TasksPresenter: TasksPresenterInput {
 
     func insertTaskWithData (_ taskData: TaskCreationData) {
         
-        var task = Task(subtype: TaskSubtype.issueEnd)
+        var task = Task()
         task.notes = taskData.notes
         task.taskNumber = taskData.taskNumber
         task.startDate = taskData.dateStart

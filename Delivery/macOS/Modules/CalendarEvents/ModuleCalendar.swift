@@ -72,10 +72,10 @@ class ModuleCalendar {
                                         startDate: event.startDate,
                                         endDate: event.endDate,
                                         notes: event.title,
-                                        taskNumber: TaskSubtype.calendarEnd.defaultTaskNumber,
+                                        taskNumber: TaskType.calendar.defaultTaskNumber,
                                         taskTitle: event.title,
                                         taskType: .calendar,
-                                        objectId: String.random())
+                                        objectId: String.generateId())
                         tasks.append(task)
                     }
                     DispatchQueue.main.async {

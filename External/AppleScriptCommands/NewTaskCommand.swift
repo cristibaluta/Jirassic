@@ -56,7 +56,7 @@ class NewTaskCommand: NSScriptCommand {
             taskNumber: taskNumber,
             taskTitle: taskTitle,
             taskType: taskType,
-            objectId: String.random()
+            objectId: String.generateId()
         )
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in

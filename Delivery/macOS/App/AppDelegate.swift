@@ -152,7 +152,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskNumber: "coderev",
                 taskTitle: "",
                 taskType: .coderev,
-                objectId: String.random()
+                objectId: String.generateId()
             )
             let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
@@ -169,10 +169,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 startDate: self.browser.startDate,
                 endDate: self.browser.endDate!,
                 notes: nil,
-                taskNumber: TaskSubtype.wasteEnd.defaultTaskNumber,
+                taskNumber: TaskType.waste.defaultTaskNumber,
                 taskTitle: "",
                 taskType: .waste,
-                objectId: String.random()
+                objectId: String.generateId()
             )
             let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
