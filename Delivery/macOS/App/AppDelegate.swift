@@ -168,7 +168,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 lastModifiedDate: nil,
                 startDate: self.browser.startDate,
                 endDate: self.browser.endDate!,
-                notes: TaskSubtype.wasteEnd.defaultNotes,
+                notes: nil,
                 taskNumber: TaskSubtype.wasteEnd.defaultTaskNumber,
                 taskTitle: "",
                 taskType: .waste,

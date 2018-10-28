@@ -165,9 +165,9 @@ extension NewTaskViewController {
     
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
         
-        let subtype = selectedTaskSubtype()
-        issueIdTextField.stringValue = subtype.defaultTaskNumber ?? ""
-        notesTextField.stringValue = subtype.defaultNotes
+        let type = selectedTaskType()
+        issueIdTextField.stringValue = ""//type.defaultTaskNumber ?? ""
+        notesTextField.stringValue = type.defaultNotes
         issueIdTextField.isEnabled = sender.selectedSegment == 0
     }
     

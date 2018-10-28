@@ -19,41 +19,30 @@ class TaskCellPresenter: NSObject {
 	
 	func present (previousTask: Task?, currentTask theTask: Task) {
 		
-//		var duration = ""
 		var statusImage: NSImage?
 		
-        if let _ = previousTask {
-            // When we have a previous item to compare dates with
-            switch theTask.taskType {
-                
-                case .issue:
-//                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
-//                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
-                    statusImage = NSImage(named: NSImage.Name.statusAvailable)
-                    break
-                    
-                case .gitCommit:
-//                    let diff = theTask.endDate.timeIntervalSince(thePreviosData.endDate as Date)
-//                    duration = Date(timeIntervalSince1970: diff).HHmmGMT()
-                    statusImage = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
-                    break
-                
-                case .coderev:
-                    cell.color = NSColor.lightGray
-                    statusImage = nil
-                case .startDay:
-                    cell.color = NSColor.orange
-                    statusImage = nil
-                case .endDay:
-                    cell.color = NSColor.orange
-                    statusImage = nil
-                case .calendar:
-                    statusImage = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
-                
-                default:
-                    statusImage = nil//NSImage(named: NSImage.Name.statusUnavailable)
-            }
-        } else {
+        switch theTask.taskType {
+            
+        case .issue:
+            statusImage = NSImage(named: NSImage.Name.statusAvailable)
+            break
+            
+        case .gitCommit:
+            statusImage = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
+            break
+            
+        case .coderev:
+            cell.color = NSColor.lightGray
+            statusImage = nil
+            
+        case .startDay, .endDay:
+            cell.color = NSColor.blue
+            statusImage = nil
+            
+        case .calendar:
+            statusImage = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
+            
+        default:
             statusImage = nil
         }
 		
@@ -61,10 +50,9 @@ class TaskCellPresenter: NSObject {
             dateStart: theTask.startDate,
             dateEnd: theTask.endDate,
 			taskNumber: theTask.taskNumber ?? "",
-			notes: theTask.notes ?? "",
+			notes: theTask.notes ?? theTask.taskType.defaultNotes,
 			taskType: .issue
 		)
-//		cell.duration = duration
         cell.statusImage?.image = statusImage
         cell.isDark = AppDelegate.sharedApp().theme.isDark
         cell.isEditable = theTask.taskType != .gitCommit

@@ -22,6 +22,20 @@ enum TaskType: Int {
     case coderev = 8
     case endDay = 9
     case calendar = 10
+    
+    var defaultNotes: String {
+        switch self {
+        case .startDay: return "Working day started"
+        case .scrum: return "Scrum meeting"
+        case .lunch: return "Lunch break"
+        case .meeting: return "Meeting"
+        case .waste: return "Social & Media"
+        case .learning: return "Learning session"
+        case .coderev: return "Reviewing and fixing code reviews"
+        case .calendar: return "Calendar event"
+        default: return ""
+        }
+    }
 }
 
 enum TaskSubtype: Int {
@@ -56,18 +70,6 @@ enum TaskSubtype: Int {
             default: return nil
         }
     }
-    var defaultNotes: String {
-        switch self {
-            case .scrumEnd: return "Scrum meeting"
-            case .lunchEnd: return "Lunch break"
-            case .meetingEnd: return "Meeting"
-            case .wasteEnd: return "Social & Media"
-            case .learningEnd: return "Learning time"
-            case .coderevEnd: return "Code reviews"
-            case .calendarEnd: return "Calendar event"
-            default: return ""
-        }
-    }
 }
 
 struct Task {
@@ -100,8 +102,8 @@ extension Task {
 		
 		switch (type) {
 			case TaskType.issue:	subtype = .issueEnd
-			case TaskType.startDay:	self.notes = "Working day started"
-            case TaskType.endDay:   self.notes = "Working day ended"
+			case TaskType.startDay:	break
+            case TaskType.endDay:   break
 			case TaskType.scrum:	subtype = .scrumEnd
 			case TaskType.lunch:	subtype = .lunchEnd
 			case TaskType.meeting:	subtype = .meetingEnd
@@ -113,7 +115,6 @@ extension Task {
         }
         if let s = subtype {
             self.taskNumber = s.defaultTaskNumber
-            self.notes = s.defaultNotes
         }
 	}
 	
@@ -121,7 +122,6 @@ extension Task {
 		
         self.endDate = Date()
         self.objectId = String.random()
-        self.notes = subtype.defaultNotes
         self.taskNumber = subtype.defaultTaskNumber
         
 		switch (subtype) {

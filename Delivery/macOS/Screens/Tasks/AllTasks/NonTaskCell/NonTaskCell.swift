@@ -65,7 +65,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 			return ""
 		}
         set {
-            
+            fatalError("Not available")
         }
     }
     var isDark: Bool = false

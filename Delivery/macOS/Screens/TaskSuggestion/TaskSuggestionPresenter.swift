@@ -40,6 +40,18 @@ class TaskSuggestionPresenter {
         }
     }
     
+    private func taskType (forIndex index: Int) -> TaskType {
+        
+        switch index {
+        case 0: return .scrum
+        case 1: return .meeting
+        case 2: return .lunch
+        case 3: return .waste
+        case 4: return .learning
+        default: return .issue
+        }
+    }
+    
     private func selectedSegment (forTaskType taskType: TaskType) -> Int {
         
         switch taskType {
@@ -99,7 +111,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
     
     func selectSegment (atIndex index: Int) {
         
-        let type = taskSubtype(forIndex: index)
+        let type = taskType(forIndex: index)
         userInterface!.setNotes(type.defaultNotes)
         userInterface!.selectSegment(atIndex: index)
     }
