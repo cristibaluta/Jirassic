@@ -23,6 +23,7 @@ class TasksViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
+    private var rectToDisplayPopoverAt: NSRect?
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -145,6 +146,7 @@ extension TasksViewController: TasksPresenterOutput {
         scrollView.didAddRow = { [weak self] (row: Int) -> Void in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
+                self?.rectToDisplayPopoverAt = scrollView.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
             }
         }
@@ -185,33 +187,29 @@ extension TasksViewController: TasksPresenterOutput {
         calendarScrollView.selectDay(day)
     }
     
-    func presentNewTaskController (withInitialDate date: Date) {
+    func presentNewTaskController (date: Date) {
         
-        splitView.isHidden = true
-        appWireframe!.removePlaceholder()
-        hideControls(true)
-        
-        let controller = appWireframe!.presentNewTaskController()
-        controller.dateStart = nil// TODO Add scrum start date when around scrum date
-        controller.dateEnd = date
+        let popover = NSPopover()
+        let controller = NewTaskViewController.instantiateFromStoryboard("Components")
         controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
             if let strongSelf = self {
                 strongSelf.presenter!.insertTaskWithData(taskData)
                 strongSelf.presenter!.updateNoTasksState()
                 strongSelf.presenter!.reloadData()
-                strongSelf.appWireframe!.removeNewTaskController()
-                strongSelf.splitView.isHidden = false
-                strongSelf.hideControls(false)
+                popover.performClose(nil)
             }
         }
         controller.onCancel = { [weak self] in
             if let strongSelf = self {
-                strongSelf.appWireframe!.removeNewTaskController()
-                strongSelf.splitView.isHidden = false
+                popover.performClose(nil)
                 strongSelf.presenter!.updateNoTasksState()
-                strongSelf.hideControls(false)
             }
         }
+        popover.contentViewController = controller
+        popover.show(relativeTo: rectToDisplayPopoverAt!, of: self.tasksScrollView!, preferredEdge: NSRectEdge.maxY)
+        // Add data
+        controller.dateStart = nil// TODO Add scrum start date when around scrum date
+        controller.dateEnd = date
     }
 
     func presentEndDayController (date: Date, tasks: [Task]) {

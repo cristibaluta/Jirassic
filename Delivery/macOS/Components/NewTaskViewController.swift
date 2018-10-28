@@ -10,7 +10,7 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
     
-    @IBOutlet private weak var taskTypeSegmentedControl: NSSegmentedControl!
+    @IBOutlet private weak var taskTypeSelector: NSPopUpButton!
 	@IBOutlet private weak var issueIdTextField: NSTextField!
 	@IBOutlet private weak var notesTextField: NSTextField!
 	@IBOutlet private weak var endDateTextField: NSTextField!
@@ -38,7 +38,7 @@ class NewTaskViewController: NSViewController {
         }
         set {
             if let startDate = newValue {
-                self.startDateTextField?.stringValue = startDate.HHmm()
+                self.startDateTextField.stringValue = startDate.HHmm()
             }
         }
     }
@@ -50,61 +50,49 @@ class NewTaskViewController: NSViewController {
 		}
 		set {
             self.initialDate = newValue
-            self.endDateTextField?.stringValue = newValue.HHmm()
+            self.endDateTextField.stringValue = newValue.HHmm()
             self.estimateTaskType()
 		}
 	}
     var duration: TimeInterval {
         get {
-            if self.startDateTextField!.stringValue == "" {
+            if self.startDateTextField.stringValue == "" {
                 return 0.0
             }
-            let hm = Date.parseHHmm(self.startDateTextField!.stringValue)
+            let hm = Date.parseHHmm(self.startDateTextField.stringValue)
             return Double(hm.min).minToSec + Double(hm.hour).hoursToSec
         }
     }
 	var notes: String {
 		get {
-			return notesTextField!.stringValue
+			return notesTextField.stringValue
 		}
 		set {
-			self.notesTextField?.stringValue = newValue
+			self.notesTextField.stringValue = newValue
 		}
 	}
 	var taskNumber: String {
 		get {
-			return issueIdTextField!.stringValue
+			return issueIdTextField.stringValue
 		}
 		set {
-			self.issueIdTextField?.stringValue = newValue
+			self.issueIdTextField.stringValue = newValue
 		}
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskTypeSegmentedControl.selectedSegment = 0
+        taskTypeSelector.removeAllItems()
+        taskTypeSelector.addItems(withTitles: ["Task", "Scrum", "Meeting", "Food", "Social & Media", "Learning", "Code review"])
+        taskTypeSelector.selectItem(at: 0)
         setupStartDateButtonTitle()
         startDateTextField.toolTip = "Predictive Time Typing (use digits and backspace):\n • First digit if between 2 and 9 means AM hours.\n • Leaving minutes empty, defaults to 00.\n • Last digit replaces itself, no need to delete."
         endDateTextField.toolTip = startDateTextField.toolTip
     }
     
-    private func selectedTaskSubtype() -> TaskSubtype {
-        
-        switch taskTypeSegmentedControl.selectedSegment {
-            case 0: return .issueEnd
-            case 1: return .scrumEnd
-            case 2: return .meetingEnd
-            case 3: return .lunchEnd
-            case 4: return .wasteEnd
-            case 5: return .learningEnd
-            case 6: return .coderevEnd
-            default: return .issueEnd
-        }
-    }
-    
     private func selectedTaskType() -> TaskType {
         
-        switch taskTypeSegmentedControl.selectedSegment {
+        switch taskTypeSelector.indexOfSelectedItem {
             case 0: return .issue
             case 1: return .scrum
             case 2: return .meeting
@@ -122,8 +110,8 @@ class NewTaskViewController: NSViewController {
         let settings = SettingsInteractor().getAppSettings()
         let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(initialDate, withSettings: settings)
         if estimatedType == .scrum {
-            taskTypeSegmentedControl.selectedSegment = 1
-            handleSegmentedControl(taskTypeSegmentedControl)
+            taskTypeSelector.selectItem(at: 1)
+            handleTaskTypeSelector(taskTypeSelector)
             
             let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
             self.dateStart = self.initialDate.dateByUpdating(hour: settingsScrumTime.hour!, minute: settingsScrumTime.minute!)
@@ -131,7 +119,7 @@ class NewTaskViewController: NSViewController {
     }
     
     private func setupStartDateButtonTitle() {
-        startDateButton.title = localPreferences.bool(.useDuration) ? "Duration:" : "Started at:"
+        startDateButton.title = localPreferences.bool(.useDuration) ? "Duration" : "Date start"
     }
 }
 
@@ -163,12 +151,12 @@ extension NewTaskViewController: NSTextFieldDelegate {
 
 extension NewTaskViewController {
     
-    @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
+    @IBAction func handleTaskTypeSelector (_ sender: NSPopUpButton) {
         
         let type = selectedTaskType()
         issueIdTextField.stringValue = ""//type.defaultTaskNumber ?? ""
         notesTextField.stringValue = type.defaultNotes
-        issueIdTextField.isEnabled = sender.selectedSegment == 0
+        issueIdTextField.isEnabled = sender.indexOfSelectedItem == 0
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {

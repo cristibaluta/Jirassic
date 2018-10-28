@@ -15,11 +15,10 @@ enum SplitViewColumn: Int {
 
 class AppWireframe {
 
-    fileprivate var _appViewController: AppViewController?
-    fileprivate var currentController: NSViewController?
-    fileprivate var _placeholderViewController: PlaceholderViewController?
-    fileprivate var _newTaskViewController: NewTaskViewController?
-    fileprivate var _endDayViewController: EndDayViewController?
+    private var _appViewController: AppViewController?
+    private var currentController: NSViewController?
+    private var _placeholderViewController: PlaceholderViewController?
+    private var _endDayViewController: EndDayViewController?
     
     var appViewController: AppViewController {
         
@@ -31,7 +30,7 @@ class AppWireframe {
         return _appViewController!
     }
     
-    fileprivate var welcomeViewController: WelcomeViewController {
+    private var welcomeViewController: WelcomeViewController {
         
         let controller = WelcomeViewController.instantiateFromStoryboard("Welcome")
         controller.appWireframe = self
@@ -39,7 +38,7 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var wizardViewController: WizardViewController {
+    private var wizardViewController: WizardViewController {
         
         let controller = WizardViewController.instantiateFromStoryboard("Welcome")
         controller.appWireframe = self
@@ -47,7 +46,7 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var loginViewController: LoginViewController {
+    private var loginViewController: LoginViewController {
         
         let controller = LoginViewController.instantiateFromStoryboard("Login")
         let presenter = LoginPresenter()
@@ -58,7 +57,7 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var tasksViewController: TasksViewController {
+    private var tasksViewController: TasksViewController {
         
         let controller = TasksViewController.instantiateFromStoryboard("Tasks")
         let presenter = TasksPresenter()
@@ -74,7 +73,7 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var taskSuggestionViewController: TaskSuggestionViewController {
+    private var taskSuggestionViewController: TaskSuggestionViewController {
         
         let controller = TaskSuggestionViewController.instantiateFromStoryboard("Tasks")
         let presenter = TaskSuggestionPresenter()
@@ -85,11 +84,7 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var newTaskViewController: NewTaskViewController {
-        return NewTaskViewController.instantiateFromStoryboard("NewTask")
-    }
-    
-    fileprivate var settingsViewController: SettingsViewController {
+    private var settingsViewController: SettingsViewController {
         
         let controller = SettingsViewController.instantiateFromStoryboard("Settings")
         let presenter = SettingsPresenter()
@@ -105,11 +100,11 @@ class AppWireframe {
         return controller
     }
     
-    fileprivate var placeholderViewController: PlaceholderViewController {
+    private var placeholderViewController: PlaceholderViewController {
         return PlaceholderViewController.instantiateFromStoryboard("Placeholder")
     }
 
-    fileprivate var endDayViewController: EndDayViewController {
+    private var endDayViewController: EndDayViewController {
 
         let controller = EndDayViewController.instantiateFromStoryboard("EndDay")
         let presenter = EndDayPresenter()
@@ -142,18 +137,18 @@ extension AppWireframe {
         }
     }
     
-	fileprivate func addController (_ controller: NSViewController) {
+	private func addController (_ controller: NSViewController) {
         appViewController.addChildViewController(controller)
         appViewController.view.addSubview(controller.view)
         controller.view.constrainToSuperview()
 	}
     
-    fileprivate func removeController (_ controller: NSViewController) {
+    private func removeController (_ controller: NSViewController) {
         controller.removeFromParentViewController()
         controller.view.removeFromSuperview()
     }
     
-    fileprivate func layerToAnimate() -> CALayer {
+    private func layerToAnimate() -> CALayer {
         return appViewController.view.superview!.layer!
     }
 }
@@ -232,24 +227,6 @@ extension AppWireframe {
         if let controller = _placeholderViewController {
             removeController(controller)
             _placeholderViewController = nil
-        }
-    }
-
-    // NewTask
-    func presentNewTaskController() -> NewTaskViewController {
-        
-        let controller = self.newTaskViewController
-        addController(controller)
-        controller.view.constrainToSuperview()
-        _newTaskViewController = controller
-        
-        return controller
-    }
-    
-    func removeNewTaskController() {
-        if let controller = _newTaskViewController {
-            removeController(controller)
-            _newTaskViewController = nil
         }
     }
 

@@ -172,8 +172,6 @@
 		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B139206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
 		2845B13A206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
-		2845B13C206832A1006EFB3B /* NewTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2845B13B206832A1006EFB3B /* NewTask.storyboard */; };
-		2845B13D206832A1006EFB3B /* NewTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2845B13B206832A1006EFB3B /* NewTask.storyboard */; };
 		2845B13F2068351F006EFB3B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B13E2068351F006EFB3B /* TableViewCell.swift */; };
 		2845B1402068351F006EFB3B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B13E2068351F006EFB3B /* TableViewCell.swift */; };
 		2845B149206AE3A8006EFB3B /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B144206AE3A8006EFB3B /* ReportCell.swift */; };
@@ -593,7 +591,6 @@
 		2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
 		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		2845B13B206832A1006EFB3B /* NewTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTask.storyboard; sourceTree = "<group>"; };
 		2845B13E2068351F006EFB3B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		2845B144206AE3A8006EFB3B /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
 		2845B145206AE3A8006EFB3B /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
@@ -886,6 +883,7 @@
 				2801388E205F86460051B532 /* TimeBox.swift */,
 				2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */,
 				2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */,
+				4065D3711DD3B44200B73201 /* NewTaskViewController.swift */,
 				2898D3AD2184ED3000CF5AD4 /* Components.storyboard */,
 			);
 			path = Components;
@@ -1505,21 +1503,11 @@
 				405B155F1DEF3CE20009871C /* TaskSuggestion */,
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
-				4065D3701DD3B44200B73201 /* NewTask */,
 				564E55F12028839F00CE4C76 /* EndDay */,
 				2845B142206AE342006EFB3B /* Calendar */,
 				4065D3761DD3B44200B73201 /* Tasks */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		4065D3701DD3B44200B73201 /* NewTask */ = {
-			isa = PBXGroup;
-			children = (
-				4065D3711DD3B44200B73201 /* NewTaskViewController.swift */,
-				2845B13B206832A1006EFB3B /* NewTask.storyboard */,
-			);
-			path = NewTask;
 			sourceTree = "<group>";
 		};
 		4065D3721DD3B44200B73201 /* Settings */ = {
@@ -2002,7 +1990,6 @@
 				2892E80B208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				28EE1F6120EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
-				2845B13C206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				2898D3AE2184ED3000CF5AD4 /* Components.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
@@ -2053,7 +2040,6 @@
 				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
-				2845B13D206832A1006EFB3B /* NewTask.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
 				2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,

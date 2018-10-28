@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cristian Baluta. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 protocol TasksPresenterInput: class {
     
@@ -32,7 +32,7 @@ protocol TasksPresenterOutput: class {
     func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
     func removeTasksController()
     func selectDay (_ day: Day)
-    func presentNewTaskController (withInitialDate date: Date)
+    func presentNewTaskController (date: Date)
     func presentEndDayController (date: Date, tasks: [Task])
 }
 
@@ -110,7 +110,7 @@ extension TasksPresenter: TasksPresenterInput {
         if currentTasks.count == 0 {
             startDay()
         } else {
-            ui!.presentNewTaskController(withInitialDate: Date())
+            ui!.presentNewTaskController(date: Date())
         }
     }
     
@@ -149,14 +149,14 @@ extension TasksPresenter: TasksPresenterInput {
         guard currentTasks.count > row + 1 else {
             let taskBefore = currentTasks[row]
             let nextDate = taskBefore.endDate.isSameDayAs(Date()) ? Date() : taskBefore.endDate.addingTimeInterval(3600)
-            ui!.presentNewTaskController(withInitialDate: nextDate)
+            ui!.presentNewTaskController(date: nextDate)
             return
         }
         let taskBefore = currentTasks[row]
         let taskAfter = currentTasks[row+1]
         let middleTimestamp = taskAfter.endDate.timeIntervalSince(taskBefore.endDate) / 2
         let middleDate = taskBefore.endDate.addingTimeInterval(middleTimestamp)
-        ui!.presentNewTaskController(withInitialDate: middleDate)
+        ui!.presentNewTaskController(date: middleDate)
     }
     
     func removeTask (at row: Int) {

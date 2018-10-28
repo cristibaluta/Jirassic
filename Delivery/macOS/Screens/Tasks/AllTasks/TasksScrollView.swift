@@ -142,4 +142,8 @@ class TasksScrollView: NSScrollView {
             tableView.removeRows(at: rowsToRemoveFromTable, withAnimation: .effectFade)
         }
 	}
+    
+    func frameOfCell (atRow row: Int) -> NSRect {
+        return tableView.frameOfCell(atColumn: 0, row: row)
+    }
 }
