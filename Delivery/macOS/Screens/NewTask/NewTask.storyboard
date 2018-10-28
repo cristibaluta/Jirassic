@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,7 +82,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="062-p9-Ntt">
-                                <rect key="frame" x="22" y="120" width="157" height="36"/>
+                                <rect key="frame" x="22" y="73" width="157" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="153" id="tga-R0-QC0"/>
                                     <constraint firstAttribute="height" constant="36" id="uxr-VV-36A"/>
@@ -95,7 +94,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="Predictive time typing. Just start typing numbers even if end reached" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPg-gd-JXL">
-                                <rect key="frame" x="185" y="120" width="295" height="36"/>
+                                <rect key="frame" x="185" y="73" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="iE8-jD-Mtz"/>
                                 </constraints>
@@ -109,7 +108,7 @@
                                 </connections>
                             </textField>
                             <textField toolTip="Predictive time typing. Just start typing numbers even if end reached" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-cb-Hab">
-                                <rect key="frame" x="185" y="73" width="295" height="36"/>
+                                <rect key="frame" x="185" y="119" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="e1n-Kk-PGQ"/>
                                 </constraints>
@@ -160,7 +159,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fLj-PP-dAI">
-                                <rect key="frame" x="22" y="73" width="157" height="36"/>
+                                <rect key="frame" x="22" y="119" width="157" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="K0l-hC-62p"/>
                                     <constraint firstAttribute="height" constant="36" id="ZMO-JJ-gOK"/>
@@ -175,11 +174,9 @@ Gw
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="mxx-cb-Hab" firstAttribute="top" secondItem="DPg-gd-JXL" secondAttribute="bottom" constant="11" id="03O-vP-1W3"/>
                             <constraint firstAttribute="bottom" secondItem="auP-Xn-Vxm" secondAttribute="bottom" constant="20" id="0gt-C8-INU"/>
                             <constraint firstItem="y40-BP-zYc" firstAttribute="leading" secondItem="xtF-se-LHC" secondAttribute="trailing" constant="10" id="1jB-jH-g1Y"/>
                             <constraint firstItem="Zcb-sO-3NH" firstAttribute="centerX" secondItem="2VI-8P-899" secondAttribute="centerX" id="3Ut-HA-Ykx"/>
-                            <constraint firstItem="fLj-PP-dAI" firstAttribute="top" secondItem="062-p9-Ntt" secondAttribute="bottom" constant="11" id="5kO-XW-qwC"/>
                             <constraint firstItem="juH-D0-Zmt" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="12" id="7qg-Ff-X5g"/>
                             <constraint firstItem="xtF-se-LHC" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="20" id="8oH-eg-O6k"/>
                             <constraint firstAttribute="trailing" secondItem="juH-D0-Zmt" secondAttribute="trailing" constant="13" id="97I-tR-Dhp"/>
@@ -189,9 +186,8 @@ Gw
                             <constraint firstItem="fLj-PP-dAI" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="22" id="DG8-lS-CvA"/>
                             <constraint firstAttribute="trailing" secondItem="DPg-gd-JXL" secondAttribute="trailing" constant="13" id="KUU-xs-Arj"/>
                             <constraint firstItem="mxx-cb-Hab" firstAttribute="leading" secondItem="fLj-PP-dAI" secondAttribute="trailing" constant="8" id="LWb-Vv-VYn"/>
-                            <constraint firstItem="juH-D0-Zmt" firstAttribute="top" secondItem="fLj-PP-dAI" secondAttribute="bottom" constant="10" id="Ljn-sN-sm3"/>
                             <constraint firstAttribute="trailing" secondItem="ist-jg-ccy" secondAttribute="trailing" constant="13" id="N1X-1Z-8FL"/>
-                            <constraint firstItem="juH-D0-Zmt" firstAttribute="top" secondItem="mxx-cb-Hab" secondAttribute="bottom" constant="10" id="Tef-tv-2Uc"/>
+                            <constraint firstItem="062-p9-Ntt" firstAttribute="centerY" secondItem="DPg-gd-JXL" secondAttribute="centerY" id="T9R-nd-CTr"/>
                             <constraint firstItem="y40-BP-zYc" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="70" id="WmT-d4-MM3"/>
                             <constraint firstItem="Zcb-sO-3NH" firstAttribute="top" secondItem="2VI-8P-899" secondAttribute="top" constant="20" id="XFE-Om-xUy"/>
                             <constraint firstItem="062-p9-Ntt" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="24" id="Yag-dG-pd3"/>
@@ -199,6 +195,9 @@ Gw
                             <constraint firstItem="ggD-HO-BYa" firstAttribute="top" secondItem="xtF-se-LHC" secondAttribute="bottom" constant="14" id="bFB-BT-hO4"/>
                             <constraint firstAttribute="bottom" secondItem="juH-D0-Zmt" secondAttribute="bottom" constant="62" id="eKk-xw-2DM"/>
                             <constraint firstItem="ist-jg-ccy" firstAttribute="top" secondItem="xtF-se-LHC" secondAttribute="bottom" constant="14" id="fhs-NQ-KzR"/>
+                            <constraint firstItem="062-p9-Ntt" firstAttribute="top" secondItem="fLj-PP-dAI" secondAttribute="bottom" constant="10" id="frR-qO-E6v"/>
+                            <constraint firstItem="fLj-PP-dAI" firstAttribute="centerY" secondItem="mxx-cb-Hab" secondAttribute="centerY" id="fvA-OM-Mbu"/>
+                            <constraint firstItem="juH-D0-Zmt" firstAttribute="top" secondItem="062-p9-Ntt" secondAttribute="bottom" constant="10" id="hoG-26-UVt"/>
                             <constraint firstItem="Udr-Tx-Jyo" firstAttribute="leading" secondItem="auP-Xn-Vxm" secondAttribute="trailing" constant="12" id="irU-rZ-tUw"/>
                             <constraint firstItem="ist-jg-ccy" firstAttribute="leading" secondItem="2VI-8P-899" secondAttribute="leading" constant="130" id="n1q-yr-JcY"/>
                             <constraint firstAttribute="trailing" secondItem="y40-BP-zYc" secondAttribute="trailing" id="q7p-ky-fiq"/>
