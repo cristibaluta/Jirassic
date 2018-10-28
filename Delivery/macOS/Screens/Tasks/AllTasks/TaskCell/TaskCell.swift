@@ -13,21 +13,22 @@ class TaskCell: NSTableRowView, CellProtocol {
     @IBOutlet var contentView: NSView!
     
 	@IBOutlet var statusImage: NSImageView?
-	@IBOutlet fileprivate var dateEndTextField: TimeBox!
-	@IBOutlet fileprivate var issueNrTextField: NSTextField!
-    @IBOutlet fileprivate var notesTextField: NSTextField!
-    @IBOutlet fileprivate var notesTextFieldRightConstrain: NSLayoutConstraint!
+	@IBOutlet private var dateEndTextField: TimeBox!
+	@IBOutlet private var issueNrTextField: NSTextField!
+    @IBOutlet private var notesTextField: NSTextField!
+    @IBOutlet private var notesTextFieldRightConstrain: NSLayoutConstraint!
     
-    @IBOutlet fileprivate var butAdd: NSButton!
-	@IBOutlet fileprivate var butRemove: NSButton!
+    @IBOutlet private var butAdd: NSButton!
+	@IBOutlet private var butRemove: NSButton!
     
-    @IBOutlet fileprivate var line1: NSBox!
-    @IBOutlet fileprivate var line2: NSBox!
+    @IBOutlet private var line1: NSBox!
+    @IBOutlet private var line2: NSBox!
 	
-	fileprivate var isEditing = false
-	fileprivate var wasEdited = false
-	fileprivate var mouseInside = false
-	fileprivate var trackingArea: NSTrackingArea?
+	private var isEditing = false
+	private var wasEdited = false
+	private var mouseInside = false
+	private var trackingArea: NSTrackingArea?
+    private var activeTimeboxPopover: NSPopover?
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
@@ -84,10 +85,35 @@ class TaskCell: NSTableRowView, CellProtocol {
         super.awakeFromNib()
 		showMouseOverControls(false)
         notesTextFieldRightConstrain.constant = 0
-        dateEndTextField.didEndEditing = {
-            self.didEndEditingCell?(self)
+        dateEndTextField.onClick = {
+            self.createTimeboxPopover(timebox: self.dateEndTextField)
         }
 	}
+    
+    private func createTimeboxPopover (timebox: TimeBox) {
+        guard activeTimeboxPopover == nil else {
+            return
+        }
+        let popover = NSPopover()
+        let view = TimeBoxViewController.instantiateFromStoryboard("Components")
+        view.didSave = {
+            let hasChanges = timebox.stringValue != view.stringValue
+            timebox.stringValue = view.stringValue
+            popover.performClose(nil)
+            if hasChanges {
+                self.didEndEditingCell?(self)
+            }
+        }
+        view.didCancel = {
+            popover.performClose(nil)
+            self.activeTimeboxPopover = nil
+        }
+        popover.contentViewController = view
+        popover.show(relativeTo: timebox.frame, of: self, preferredEdge: NSRectEdge.maxY)
+        view.stringValue = timebox.stringValue
+        
+        activeTimeboxPopover = popover
+    }
 }
 
 extension TaskCell {
@@ -129,12 +155,14 @@ extension TaskCell {
 	}
 	
 	override func mouseEntered (with theEvent: NSEvent) {
+        super.mouseEntered(with: theEvent)
 		self.mouseInside = true
 		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplay(self.frame)
 	}
 	
     override func mouseExited (with theEvent: NSEvent) {
+        super.mouseExited(with: theEvent)
 		self.mouseInside = false
 		self.showMouseOverControls(self.mouseInside)
 		self.setNeedsDisplay(self.frame)

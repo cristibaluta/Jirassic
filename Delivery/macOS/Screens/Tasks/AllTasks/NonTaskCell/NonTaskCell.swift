@@ -11,23 +11,24 @@ import Cocoa
 class NonTaskCell: NSTableRowView, CellProtocol {
 
     @IBOutlet var statusImage: NSImageView?
-    @IBOutlet fileprivate var statusImageWidthContraint: NSLayoutConstraint!
-    @IBOutlet fileprivate var dateStartTextField: TimeBox!
-    @IBOutlet fileprivate var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
-	@IBOutlet fileprivate var dateEndTextField: TimeBox!
-	@IBOutlet fileprivate var notesTextField: NSTextField!
-	@IBOutlet fileprivate var notesTextFieldTrailingContraint: NSLayoutConstraint!
-	@IBOutlet fileprivate var butRemove: NSButton!
-	@IBOutlet fileprivate var butAdd: NSButton!
+    @IBOutlet private var statusImageWidthContraint: NSLayoutConstraint!
+    @IBOutlet private var dateStartTextField: TimeBox!
+    @IBOutlet private var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
+	@IBOutlet private var dateEndTextField: TimeBox!
+	@IBOutlet private var notesTextField: NSTextField!
+	@IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
+	@IBOutlet private var butRemove: NSButton!
+	@IBOutlet private var butAdd: NSButton!
     
-    fileprivate var trackingArea: NSTrackingArea?
+    private var trackingArea: NSTrackingArea?
+    private var activeTimeboxPopover: NSPopover?
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
 	var didAddCell: ((_ cell: CellProtocol) -> ())?
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
     
-    fileprivate var _data: TaskCreationData?
+    private var _data: TaskCreationData?
 	var data: TaskCreationData {
 		get {
             if let dateStart = _data?.dateStart {
@@ -84,11 +85,11 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		butRemove.isHidden = true
 		butAdd.isHidden = true
         butRemove.wantsLayer = true
-        dateStartTextField.didEndEditing = {
-            self.didEndEditingCell?(self)
+        dateStartTextField.onClick = {
+            self.createTimeboxPopover(timebox: self.dateStartTextField)
         }
-        dateEndTextField.didEndEditing = {
-            self.didEndEditingCell?(self)
+        dateEndTextField.onClick = {
+            self.createTimeboxPopover(timebox: self.dateEndTextField)
         }
         if AppDelegate.sharedApp().theme.isDark {
             notesTextField!.textColor = NSColor.white
@@ -101,6 +102,31 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 		let selectionPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
 		selectionPath.fill()
 	}
+    
+    private func createTimeboxPopover (timebox: TimeBox) {
+        guard activeTimeboxPopover == nil else {
+            return
+        }
+        let popover = NSPopover()
+        let view = TimeBoxViewController.instantiateFromStoryboard("Components")
+        view.didSave = {
+            let hasChanges = timebox.stringValue != view.stringValue
+            timebox.stringValue = view.stringValue
+            popover.performClose(nil)
+            if hasChanges {
+                self.didEndEditingCell?(self)
+            }
+        }
+        view.didCancel = {
+            popover.performClose(nil)
+            self.activeTimeboxPopover = nil
+        }
+        popover.contentViewController = view
+        popover.show(relativeTo: timebox.frame, of: self, preferredEdge: NSRectEdge.maxY)
+        view.stringValue = timebox.stringValue
+        
+        activeTimeboxPopover = popover
+    }
 }
 
 extension NonTaskCell {
@@ -117,6 +143,7 @@ extension NonTaskCell {
 extension NonTaskCell {
     
 	override func mouseEntered (with theEvent: NSEvent) {
+        super.mouseEntered(with: theEvent)
         
 		self.butRemove.isHidden = false
         self.butAdd.isHidden = false
@@ -137,6 +164,7 @@ extension NonTaskCell {
 //    }
     
 	override func mouseExited (with theEvent: NSEvent) {
+        super.mouseExited(with: theEvent)
         
 		self.butRemove.isHidden = true
         self.butAdd.isHidden = true

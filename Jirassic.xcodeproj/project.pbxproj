@@ -276,6 +276,12 @@
 		2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
 		2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
 		2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
+		2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */; };
+		2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */; };
+		2898D3AE2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
+		2898D3AF2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
+		2898D3B12185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
+		2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -637,6 +643,9 @@
 		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
 		2892E810208E6275004E5298 /* LocalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferences.swift; sourceTree = "<group>"; };
 		2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportsHeaderView.swift; sourceTree = "<group>"; };
+		2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBoxViewController.swift; sourceTree = "<group>"; };
+		2898D3AD2184ED3000CF5AD4 /* Components.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Components.storyboard; sourceTree = "<group>"; };
+		2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeBox.swift; sourceTree = "<group>"; };
 		28A283932037874600DDCB63 /* ModuleGitLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogs.swift; sourceTree = "<group>"; };
 		28A283962037975600DDCB63 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		28A2839920382BBB00DDCB63 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
@@ -875,6 +884,9 @@
 			isa = PBXGroup;
 			children = (
 				2801388E205F86460051B532 /* TimeBox.swift */,
+				2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */,
+				2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */,
+				2898D3AD2184ED3000CF5AD4 /* Components.storyboard */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1991,6 +2003,7 @@
 				28EE1F6120EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
 				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				2845B13C206832A1006EFB3B /* NewTask.storyboard in Resources */,
+				2898D3AE2184ED3000CF5AD4 /* Components.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
 				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
@@ -2029,6 +2042,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2898D3AF2184ED3000CF5AD4 /* Components.storyboard in Resources */,
 				569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				288BB6822087152B00CF720A /* WizardAppleScriptView.xib in Resources */,
 				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
@@ -2132,6 +2146,7 @@
 				280D712D1ED6043D005D2689 /* Report.swift in Sources */,
 				28EE1F6420EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				280D712E1ED6043D005D2689 /* Settings.swift in Sources */,
+				2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
 				287195312025C360001C237E /* CSettings.swift in Sources */,
 				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
@@ -2212,6 +2227,7 @@
 				28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */,
 				287195332025C367001C237E /* CUser.swift in Sources */,
 				280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */,
+				2898D3B12185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
 				2845B149206AE3A8006EFB3B /* ReportCell.swift in Sources */,
 				2892B29E1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				280D71701ED6043D005D2689 /* ExtensionsInteractor.swift in Sources */,
@@ -2310,6 +2326,7 @@
 				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
 				2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
+				2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
 				4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */,
 				569C4C5F202319630049FBF1 /* JitCell.swift in Sources */,
@@ -2320,6 +2337,7 @@
 				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
+				2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Time Box View Controller-->
+        <scene sceneID="bf9-Yh-ewM">
+            <objects>
+                <viewController storyboardIdentifier="TimeBoxViewController" id="clr-qn-UDB" customClass="TimeBoxViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DLb-3j-LjV">
+                        <rect key="frame" x="0.0" y="0.0" width="278" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zpe-WX-jdh">
+                                <rect key="frame" x="38" y="55" width="202" height="37"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="center" title="00:00" placeholderString="00:00" id="36R-23-SMb">
+                                    <font key="font" size="30" name="HelveticaNeue-Bold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="clr-qn-UDB" id="l8U-Bq-gJT"/>
+                                </connections>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hr8-KW-SK0">
+                                <rect key="frame" x="10" y="7" width="53" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rmu-eQ-W98">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleCancelButton:" target="clr-qn-UDB" id="Djc-RP-Xsj"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-MY-FcK">
+                                <rect key="frame" x="226" y="7" width="42" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="z7t-Rn-4ZE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleSaveButton:" target="clr-qn-UDB" id="Rnq-Um-Qqc"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Z2O-sK-4ts">
+                                <rect key="frame" x="8" y="34" width="262" height="13"/>
+                                <textFieldCell key="cell" enabled="NO" title="Time predicting typer:" id="znZ-Ie-Qz2">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j8b-jG-TNc">
+                                <rect key="frame" x="9" y="55" width="13" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qhn-jY-8CD">
+                                    <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleDisclosureButton:" target="clr-qn-UDB" id="yly-GX-lf6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Z2O-sK-4ts" firstAttribute="top" secondItem="Zpe-WX-jdh" secondAttribute="bottom" constant="8" id="4Nv-Sq-eMH"/>
+                            <constraint firstAttribute="trailing" secondItem="Zpe-WX-jdh" secondAttribute="trailing" constant="40" id="AT2-sP-zQ6"/>
+                            <constraint firstItem="hr8-KW-SK0" firstAttribute="top" secondItem="Z2O-sK-4ts" secondAttribute="bottom" constant="8" id="Cnz-P9-ij7"/>
+                            <constraint firstAttribute="trailing" secondItem="cbV-MY-FcK" secondAttribute="trailing" constant="10" id="F0n-2q-Zzh"/>
+                            <constraint firstItem="hr8-KW-SK0" firstAttribute="leading" secondItem="DLb-3j-LjV" secondAttribute="leading" constant="10" id="JUr-Gy-oLJ"/>
+                            <constraint firstAttribute="bottom" secondItem="cbV-MY-FcK" secondAttribute="bottom" constant="8" id="TzT-ud-yab"/>
+                            <constraint firstAttribute="bottom" secondItem="hr8-KW-SK0" secondAttribute="bottom" constant="8" id="Zgn-ac-Fo9"/>
+                            <constraint firstItem="Z2O-sK-4ts" firstAttribute="leading" secondItem="DLb-3j-LjV" secondAttribute="leading" constant="10" id="fdT-o8-rWb"/>
+                            <constraint firstAttribute="trailing" secondItem="Z2O-sK-4ts" secondAttribute="trailing" constant="10" id="ite-f9-kJF"/>
+                            <constraint firstItem="Zpe-WX-jdh" firstAttribute="leading" secondItem="DLb-3j-LjV" secondAttribute="leading" constant="40" id="pyH-iu-1Gy"/>
+                            <constraint firstItem="Zpe-WX-jdh" firstAttribute="top" secondItem="DLb-3j-LjV" secondAttribute="top" constant="10" id="uUO-Cj-HVS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="disclosureButton" destination="j8b-jG-TNc" id="wwu-IN-YjU"/>
+                        <outlet property="instructionsTextField" destination="Z2O-sK-4ts" id="FIb-Uz-cHz"/>
+                        <outlet property="timeTextField" destination="Zpe-WX-jdh" id="mRs-16-JYL"/>
+                    </connections>
+                </viewController>
+                <customObject id="XDs-oo-fi2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="519" y="-164.5"/>
+        </scene>
+    </scenes>
+</document>

@@ -10,7 +10,24 @@ import Cocoa
 
 class TimeBox: NSBox {
     
-    private var timeTextField: NSTextField?
+    internal var timeTextField: NSTextField?
+    
+    var stringValue: String {
+        get {
+            return timeTextField!.stringValue
+        }
+        set {
+            timeTextField!.stringValue = newValue
+        }
+    }
+    
+    var isEditable: Bool = true {
+        didSet {
+            timeTextField?.isEditable = isEditable
+        }
+    }
+    
+    var onClick: (() -> Void)?
     
     init() {
         super.init(frame: NSRect.zero)
@@ -36,10 +53,10 @@ class TimeBox: NSBox {
         timeTextField?.alignment = .center
         timeTextField?.focusRingType = .none
         timeTextField?.placeholderString = "00:00"
-        timeTextField?.delegate = self
+        timeTextField?.isEnabled = false
         
         self.addSubview(timeTextField!)
-        
+
         timeTextField?.translatesAutoresizingMaskIntoConstraints = false
         let viewsDictionary = ["view": timeTextField!]
         self.addConstraints(NSLayoutConstraint.constraints(
@@ -48,82 +65,25 @@ class TimeBox: NSBox {
             withVisualFormat: "V:|-(-3)-[view]-(-5)-|", options: [], metrics: nil, views: viewsDictionary))
     }
     
-    var stringValue: String {
-        get {
-            return timeTextField!.stringValue
-        }
-        set {
-            timeTextField!.stringValue = newValue
+    override func mouseDown(with event: NSEvent) {
+        if isEditable {
+            onClick?()
         }
     }
     
-    var isEditable: Bool = true {
-        didSet {
-            timeTextField?.isEditable = isEditable
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+        
+        let trackingArea = NSTrackingArea(rect: NSZeroRect,
+                                          options: [
+                                            NSTrackingArea.Options.inVisibleRect,
+                                            NSTrackingArea.Options.activeAlways,
+                                            NSTrackingArea.Options.mouseEnteredAndExited
+            ],
+                                          owner: self,
+                                          userInfo: nil)
+        if !self.trackingAreas.contains(trackingArea) {
+            self.addTrackingArea(trackingArea)
         }
     }
-    
-    var isEditing = false
-    var wasEdited = false
-    var didEndEditing: (() -> Void)?
-    
-    private var partialValue = ""
-    private let predictor = PredictiveTimeTyping()
-}
-
-extension TimeBox: NSTextFieldDelegate {
-
-    public func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
-        isEditing = true
-        partialValue = stringValue
-        self.borderColor = NSColor.darkGray
-        timeTextField?.textColor = NSColor.black
-
-        return true
-    }
-
-    public func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
-        if wasEdited {
-            wasEdited = false
-            didEndEditing?()
-        }
-        self.borderColor = NSColor.white
-        timeTextField?.textColor = NSColor.darkGray
-
-        return true
-    }
-
-    public func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-
-        // Detect Enter key
-        if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
-            didEndEditing?()
-            wasEdited = false
-        }
-        return false
-    }
-
-//    override func controlTextDidBeginEditing (_ obj: Notification) {
-//        isEditing = true
-//        partialValue = stringValue
-//        self.borderColor = NSColor.darkGray
-//        timeTextField?.textColor = NSColor.black
-//    }
-
-    override func controlTextDidChange (_ obj: Notification) {
-        wasEdited = true
-        let comps = stringValue.components(separatedBy: partialValue)
-        let newDigit = (comps.count == 1 && partialValue != "") ? "" : comps.last
-        partialValue = predictor.timeByAdding(newDigit!, to: partialValue)
-        stringValue = partialValue
-    }
-    
-//    override func controlTextDidEndEditing (_ obj: Notification) {
-//        if wasEdited {
-//            wasEdited = false
-//            didEndEditing?()
-//        }
-//        self.borderColor = NSColor.white
-//        timeTextField?.textColor = NSColor.darkGray
-//    }
 }

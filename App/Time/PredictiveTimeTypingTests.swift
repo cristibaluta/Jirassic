@@ -61,7 +61,7 @@ class PredictiveTimeTypingTests: XCTestCase {
 		XCTAssert(predictor.timeByAdding("9", to: "05:1") == "05:19", "")
 		XCTAssert(predictor.timeByAdding("9", to: "05:18") == "05:19", "")
 		XCTAssert(predictor.timeByAdding("6", to: "05:09") == "05:06", "When the time is complete but you still add digits, replace the last digit with new value")
-		XCTAssert(predictor.timeByAdding("", to: "05:09") == "05:0", "")
+		XCTAssert(predictor.timeByAdding("", to: "05:09") == "05:", "Deleting minutes deletes both digits")
 		XCTAssert(predictor.timeByAdding("", to: "05:0") == "05:", "")
 	}
 }

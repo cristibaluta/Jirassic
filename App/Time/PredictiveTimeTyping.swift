@@ -16,7 +16,7 @@ class PredictiveTimeTyping {
 		
         guard string != "" else {
             // Deal with backspace
-			let charsToDelete = to.count == 3 ? 2 : 1
+			let charsToDelete = to.count == 3 || to.count == 5 ? 2 : 1
 			let rangeToKeep = to.startIndex..<to.index(to.endIndex, offsetBy: -charsToDelete)
             return String(to[rangeToKeep])
         }
@@ -25,10 +25,11 @@ class PredictiveTimeTyping {
             return to
         }
 		
+        // Separate hours from minutes
 		let timeComps = to.components(separatedBy: ":")
 		let hr: String = timeComps.first!
 		
-		// Deal with minutes
+		// If it contains minutes
         if timeComps.count == 2 {
 			var m = 0
 			let min = timeComps.last!
