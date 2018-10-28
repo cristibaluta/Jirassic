@@ -134,7 +134,14 @@ extension TaskCell {
         let width = dirtyRect.size.width - kCellLeftPadding * 2
         let height = dirtyRect.size.height - kGapBetweenCells - 2
         
-		if self.mouseInside {
+        if isEditing {
+            notesTextFieldRightConstrain!.constant = 90
+            let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
+            NSColor.red.setStroke()
+            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
+            selectionPath.stroke()
+        }
+		else if self.mouseInside {
             notesTextFieldRightConstrain!.constant = 90
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
@@ -143,7 +150,8 @@ extension TaskCell {
 			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
 //			selectionPath.fill()
 			selectionPath.stroke()
-		} else {
+		}
+        else {
             notesTextFieldRightConstrain!.constant = 0
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 //            NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
@@ -196,4 +204,38 @@ extension TaskCell {
 			self.addTrackingArea(self.trackingArea!)
 		}
 	}
+}
+
+extension TaskCell: NSTextFieldDelegate {
+    
+    public func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
+        isEditing = true
+        self.setNeedsDisplay(self.frame)
+        return true
+    }
+    
+    public func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        if wasEdited {
+            wasEdited = false
+            isEditing = false
+            didEndEditingCell?(self)
+            self.setNeedsDisplay(self.frame)
+        }
+        return true
+    }
+    
+    public func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        // Detect Enter key
+        if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            wasEdited = false
+            isEditing = false
+            didEndEditingCell?(self)
+            self.setNeedsDisplay(self.frame)
+        }
+        return false
+    }
+    
+    override func controlTextDidChange (_ obj: Notification) {
+        wasEdited = true
+    }
 }

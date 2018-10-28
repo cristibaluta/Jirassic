@@ -20,6 +20,8 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	@IBOutlet private var butRemove: NSButton!
 	@IBOutlet private var butAdd: NSButton!
     
+    private var isEditing = false
+    private var wasEdited = false
     private var trackingArea: NSTrackingArea?
     private var activeTimeboxPopover: NSPopover?
 	
@@ -196,4 +198,33 @@ extension NonTaskCell {
 			self.addTrackingArea(self.trackingArea!)
 		}
 	}
+}
+
+extension NonTaskCell: NSTextFieldDelegate {
+    
+    public func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
+        isEditing = true
+        return true
+    }
+    
+    public func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        if wasEdited {
+            wasEdited = false
+            didEndEditingCell?(self)
+        }
+        return true
+    }
+    
+    public func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        // Detect Enter key
+        if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            didEndEditingCell?(self)
+            wasEdited = false
+        }
+        return false
+    }
+    
+    override func controlTextDidChange (_ obj: Notification) {
+        wasEdited = true
+    }
 }
