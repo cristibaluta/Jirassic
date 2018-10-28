@@ -24,7 +24,7 @@ class MergeTasksInteractorTests: XCTestCase {
                      Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 13, minute: 10, second: 0), type: .lunch),
                      Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),
                      gitWithoutTaskNumber,
-                     Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 18, minute: 0, second: 30), type: .endDay)
+                     Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 18, minute: 0, second: 0), type: .endDay)
         ]
         let gitTasks = [Task(endDate: Date(year: 2018, month: 2, day: 20, hour: 14, minute: 30, second: 30), type: .gitCommit),// duplicate
                         gitWithTaskNumber,// duplicate
@@ -50,7 +50,7 @@ class MergeTasksInteractorTests: XCTestCase {
         // Test sorting
         let _ = mergedTasks.sorted { (t1, t2) -> Bool in
             // t1 is the second object and t2 the first from the mergedTasks
-            XCTAssert(t1.endDate.compare(t2.endDate) == .orderedDescending)
+            XCTAssert(t1.endDate >= t2.endDate)
             return true
         }
     }

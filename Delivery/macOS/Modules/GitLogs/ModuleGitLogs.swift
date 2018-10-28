@@ -51,7 +51,7 @@ class ModuleGitLogs {
             for commit in commits {
                 // Sometimes git returns commits that are not in the provided interval, filter them out
                 guard interval.dateStart <= commit.date && commit.date <= interval.dateEnd else {
-                    RCLog("Something went wrong, this commit is not in the provided interval, ignoring... \(commit)")
+                    RCLog("This commit is not in the provided interval, ignoring... \(commit)")
                     continue
                 }
                 // If the branch sounds like invalid (empty or master) try to obtain the task number from commit message
@@ -98,9 +98,6 @@ class ModuleGitLogs {
             rawCommits = rawCommits.filter({ allowedAuthors.contains($0.authorEmail) })
             
             // Obtain branch names where missing
-            // 1)
-
-            // 2) 
             self.getBranchName(at: path, previousCommits: rawCommits, completion: { commitsWithBranches in
                 commits += commitsWithBranches
                 self.logs(dateStart: dateStart, dateEnd: dateEnd, paths: paths, previousCommits: commits, completion: completion)
@@ -157,8 +154,9 @@ extension ModuleGitLogs {
         // error "fatal: Not a git repository (or any of the parent directories): .git" number 128
         // do shell script git -C ~/Documents/proj log --after="2018-2-6" --before="2018-2-7" --pretty=format:"%at;%ae;%s;%D"
         
-        let startDate = dateStart.YYYYMMddT00()
-        let endDate = dateEnd.YYYYMMddT00()
+        // Getting git logs based on dates looks unreliable, fetch all logs in a day and filter later
+        let startDate = dateStart.startOfDay().YYYYMMddT00()
+        let endDate = dateEnd.endOfDay().addingTimeInterval(1).YYYYMMddT00()
         let command = "git -C \(path) log --reflog --after=\"\(startDate)\" --before=\"\(endDate)\" --pretty=format:\"%h;%at;%ae;%s;%D\""
         extensions.run (command: command, completion: { result in
             if let result = result {

@@ -39,7 +39,14 @@ class MergeTasksInteractor {
         }
         
         // Sort by date
-        unique.sort(by: { $0.endDate.compare($1.endDate) == .orderedAscending })
+        unique.sort(by: {
+            // If tasks have the same date might be the end of the day compared with the last task
+            // In this case endDay should be the latter task
+            guard $0.endDate != $1.endDate else {
+                return $1.taskType == .endDay
+            }
+            return $0.endDate < $1.endDate
+        })
 
         return unique
     }

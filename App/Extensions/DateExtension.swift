@@ -116,14 +116,15 @@ extension Date {
         f.dateFormat = "YYYY-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
-    // TODO: if the date is right at the begining of the day the conversion returns the previous day because of the timezone
+    
+    #warning("if the date is right at the begining of the day the conversion returns the previous day because of the timezone")
     func YYYYMMddT00() -> String {
         let f = DateFormatter()
-        f.timeZone = TimeZone(abbreviation: "GMT")
+//        f.timeZone = TimeZone(abbreviation: "GMT")
         f.dateFormat = "YYYY-MM-dd"
         let day = f.string(from: self)
-        f.dateFormat = "HH:mm"
-        let hour = f.string(from: self)
+//        f.dateFormat = "HH:mm"
+        let hour = "00:00"//f.string(from: self)
         return day + "T" + hour + ":00.000+0000"
     }
     
