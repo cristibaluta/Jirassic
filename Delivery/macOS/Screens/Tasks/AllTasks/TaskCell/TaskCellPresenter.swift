@@ -19,31 +19,26 @@ class TaskCellPresenter: NSObject {
 	
 	func present (previousTask: Task?, currentTask theTask: Task) {
 		
-		var statusImage: NSImage?
-		
+        cell.statusImage?.image = nil
+        
         switch theTask.taskType {
-            
         case .issue:
-            statusImage = NSImage(named: NSImage.Name.statusAvailable)
-            break
+            cell.statusImage?.image = NSImage(named: NSImage.Name.statusAvailable)
             
         case .gitCommit:
-            statusImage = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
-            break
+            cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
             
         case .coderev:
             cell.color = NSColor.lightGray
-            statusImage = nil
             
         case .startDay, .endDay:
             cell.color = NSColor.blue
-            statusImage = nil
             
         case .calendar:
-            statusImage = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
+            cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
             
         default:
-            statusImage = nil
+            break
         }
 		
 		cell.data = (
@@ -51,11 +46,10 @@ class TaskCellPresenter: NSObject {
             dateEnd: theTask.endDate,
 			taskNumber: theTask.taskNumber ?? "",
 			notes: theTask.notes ?? theTask.taskType.defaultNotes,
-			taskType: .issue
+			taskType: theTask.taskType
 		)
-        cell.statusImage?.image = statusImage
         cell.isDark = AppDelegate.sharedApp().theme.isDark
-        cell.isEditable = theTask.taskType != .gitCommit
+        cell.isEditable = theTask.taskType != .gitCommit && theTask.taskType != .calendar
         cell.isIgnored = theTask.taskType == .lunch || theTask.taskType == .waste
 	}
 }

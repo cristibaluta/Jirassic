@@ -130,6 +130,7 @@
             <connections>
                 <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
                 <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
+                <outlet property="butRemoveWidthConstraint" destination="sLm-Pa-cG9" id="tL8-cV-zpG"/>
                 <outlet property="contentView" destination="nlM-Fp-eXf" id="Mbb-tX-J7N"/>
                 <outlet property="dateEndTextField" destination="UTX-pz-ZnX" id="aub-uX-L1y"/>
                 <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>

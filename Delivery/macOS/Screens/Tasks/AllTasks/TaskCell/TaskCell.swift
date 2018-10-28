@@ -20,6 +20,7 @@ class TaskCell: NSTableRowView, CellProtocol {
     
     @IBOutlet private var butAdd: NSButton!
 	@IBOutlet private var butRemove: NSButton!
+    @IBOutlet private var butRemoveWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet private var line1: NSBox!
     @IBOutlet private var line2: NSBox!
@@ -72,6 +73,7 @@ class TaskCell: NSTableRowView, CellProtocol {
             dateEndTextField.isEditable = isEditable
             issueNrTextField.isEditable = isEditable
             notesTextField.isEditable = isEditable
+            butRemove.isEnabled = isEditable
         }
     }
     var isIgnored: Bool = false
@@ -85,8 +87,10 @@ class TaskCell: NSTableRowView, CellProtocol {
         super.awakeFromNib()
 		showMouseOverControls(false)
         notesTextFieldRightConstrain.constant = 0
-        dateEndTextField.onClick = {
-            self.createTimeboxPopover(timebox: self.dateEndTextField)
+        dateEndTextField.onClick = { [weak self] in
+            if let wself = self {
+                wself.createTimeboxPopover(timebox: wself.dateEndTextField)
+            }
         }
 	}
     
@@ -135,14 +139,14 @@ extension TaskCell {
         let height = dirtyRect.size.height - kGapBetweenCells - 2
         
         if isEditing {
-            notesTextFieldRightConstrain!.constant = 90
             let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
             NSColor.red.setStroke()
             let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
             selectionPath.stroke()
         }
 		else if self.mouseInside {
-            notesTextFieldRightConstrain!.constant = 90
+            notesTextFieldRightConstrain!.constant = isEditable ? 90 : 45
+            butRemoveWidthConstraint.constant = isEditable ? 40 : 0
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
             AppDelegate.sharedApp().theme.highlightLineColor.setStroke()
@@ -177,11 +181,11 @@ extension TaskCell {
 	}
 	
 	func showMouseOverControls (_ show: Bool) {
-		self.butRemove.isHidden = !show
-		self.butAdd.isHidden = !show
+		butRemove.isHidden = !show
+		butAdd.isHidden = !show
         line1.isHidden = !show
         line2.isHidden = !show
-		self.dateEndTextField?.isEditable = isEditable && show
+		dateEndTextField?.isEditable = isEditable && show
 	}
 	
 	func ensureTrackingArea() {

@@ -24,6 +24,7 @@ class TasksViewController: NSViewController {
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
     private var rectToDisplayPopoverAt: NSRect?
+    private var activePopover: NSPopover?
 	
 	override func awakeFromNib() {
         super.awakeFromNib()
@@ -202,14 +203,16 @@ extension TasksViewController: TasksPresenterOutput {
         controller.onCancel = { [weak self] in
             if let strongSelf = self {
                 popover.performClose(nil)
+                strongSelf.activePopover = nil
                 strongSelf.presenter!.updateNoTasksState()
             }
         }
         popover.contentViewController = controller
         popover.show(relativeTo: rectToDisplayPopoverAt!, of: self.tasksScrollView!.view(), preferredEdge: NSRectEdge.maxY)
-        // Add data
+        // Add data after popover is presented
         controller.dateStart = nil// TODO Add scrum start date when around scrum date
         controller.dateEnd = date
+        activePopover = popover
     }
 
     func presentEndDayController (date: Date, tasks: [Task]) {
