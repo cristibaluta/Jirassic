@@ -10,19 +10,19 @@ import Cocoa
 
 class NewTaskViewController: NSViewController {
     
-    @IBOutlet fileprivate weak var taskTypeSegmentedControl: NSSegmentedControl!
-	@IBOutlet fileprivate weak var issueIdTextField: NSTextField!
-	@IBOutlet fileprivate weak var notesTextField: NSTextField!
-	@IBOutlet fileprivate weak var endDateTextField: NSTextField!
-    @IBOutlet fileprivate weak var startDateTextField: NSTextField!
-    @IBOutlet fileprivate weak var startDateButton: NSButton!
+    @IBOutlet private weak var taskTypeSegmentedControl: NSSegmentedControl!
+	@IBOutlet private weak var issueIdTextField: NSTextField!
+	@IBOutlet private weak var notesTextField: NSTextField!
+	@IBOutlet private weak var endDateTextField: NSTextField!
+    @IBOutlet private weak var startDateTextField: NSTextField!
+    @IBOutlet private weak var startDateButton: NSButton!
 	
 	var onSave: ((_ taskData: TaskCreationData) -> Void)?
 	var onCancel: (() -> Void)?
-    fileprivate var activeEditingTextFieldContent = ""
-    fileprivate var issueTypes = [String]()
-    fileprivate let predictor = PredictiveTimeTyping()
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private var activeEditingTextFieldContent = ""
+    private var issueTypes = [String]()
+    private let predictor = PredictiveTimeTyping()
+    private let localPreferences = RCPreferences<LocalPreferences>()
 	
     var dateStart: Date? {
         get {
@@ -84,9 +84,11 @@ class NewTaskViewController: NSViewController {
         super.viewDidLoad()
         taskTypeSegmentedControl.selectedSegment = 0
         setupStartDateButtonTitle()
+        startDateTextField.toolTip = "Predictive Time Typing (use digits and backspace):\n • First digit if between 2 and 9 means AM hours.\n • Leaving minutes empty, defaults to 00.\n • Last digit replaces itself, no need to delete."
+        endDateTextField.toolTip = startDateTextField.toolTip
     }
     
-    fileprivate func selectedTaskSubtype() -> TaskSubtype {
+    private func selectedTaskSubtype() -> TaskSubtype {
         
         switch taskTypeSegmentedControl.selectedSegment {
             case 0: return .issueEnd
@@ -100,7 +102,7 @@ class NewTaskViewController: NSViewController {
         }
     }
     
-    fileprivate func selectedTaskType() -> TaskType {
+    private func selectedTaskType() -> TaskType {
         
         switch taskTypeSegmentedControl.selectedSegment {
             case 0: return .issue
@@ -114,7 +116,7 @@ class NewTaskViewController: NSViewController {
         }
     }
     
-    fileprivate func estimateTaskType() {
+    private func estimateTaskType() {
         
         let typeEstimator = TaskTypeEstimator()
         let settings = SettingsInteractor().getAppSettings()
@@ -128,7 +130,7 @@ class NewTaskViewController: NSViewController {
         }
     }
     
-    fileprivate func setupStartDateButtonTitle() {
+    private func setupStartDateButtonTitle() {
         startDateButton.title = localPreferences.bool(.useDuration) ? "Duration:" : "Started at:"
     }
 }
