@@ -26,6 +26,7 @@ enum TaskType: Int {
     var defaultNotes: String {
         switch self {
         case .startDay: return "Working day started"
+        case .endDay: return "Working day ended"
         case .scrum: return "Scrum meeting"
         case .lunch: return "Lunch break"
         case .meeting: return "Meeting"
