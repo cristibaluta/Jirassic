@@ -22,6 +22,7 @@ protocol EndDayPresenterOutput: class {
     func showWorklog (_ worklog: String)
     func showProgressIndicator (_ show: Bool)
     func showJiraMessage (_ message: String, isError: Bool)
+    func saveSuccess()
 }
 
 class EndDayPresenter {
@@ -96,19 +97,13 @@ extension EndDayPresenter: EndDayPresenterInput {
     }
     
     func save (worklog: String) {
-        
-        let isJiraEnabled = localPreferences.bool(.enableJira) && store.isJiraTempoPurchased
-        let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
-        
         userInterface!.showJiraMessage("", isError: false)
 
         // Find if the day ended already
-        let currentEndDayTask: Task? = self.tasks.last
-        let endDayDate = currentEndDayTask?.endDate ?? Date()
-        let dayAlreadyEnded = currentEndDayTask?.taskType == .endDay
-        let endDayTask: Task = dayAlreadyEnded ? currentEndDayTask! : Task(endDate: endDayDate, type: .endDay)
-        
-        if !dayAlreadyEnded {
+        let endDayTask: Task? = self.tasks.filter({$0.taskType == .endDay}).first
+        if endDayTask == nil {
+            let endDayDate = tasks.last?.endDate ?? Date()
+            let endDayTask = Task(endDate: endDayDate, type: .endDay)
             let interactor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             interactor.saveTask(endDayTask, allowSyncing: true) { (savedTask) in
 
@@ -116,7 +111,10 @@ extension EndDayPresenter: EndDayPresenterInput {
         }
         
         // Save to jira tempo
-        if isJiraEnabled  && moduleJira.isReachable {
+        let isJiraEnabled = localPreferences.bool(.enableJira) && store.isJiraTempoPurchased
+        let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
+        
+        if isJiraEnabled && moduleJira.isReachable {
             userInterface!.showProgressIndicator(true)
             let duration = isRoundingEnabled ? workdayLength : workedLength
             moduleJira.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
@@ -126,9 +124,14 @@ extension EndDayPresenter: EndDayPresenterInput {
                         success
                             ? userInterface.showJiraMessage("Worklogs saved to Jira", isError: false)
                             : userInterface.showJiraMessage("Couldn't save the worklogs to Jira", isError: true)
+                        if success {
+                            userInterface.saveSuccess()
+                        }
                     }
                 }
             }
+        } else {
+            userInterface?.saveSuccess()
         }
     }
     

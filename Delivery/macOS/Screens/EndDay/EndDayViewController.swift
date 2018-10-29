@@ -92,4 +92,8 @@ extension EndDayViewController: EndDayPresenterOutput {
         jiraErrorTextField.stringValue = message
         jiraErrorTextField.textColor = isError ? NSColor.red : NSColor(red: 76/255, green: 172/255, blue: 44/255, alpha: 1.0)
     }
+    
+    func saveSuccess() {
+        self.onCancel?()
+    }
 }

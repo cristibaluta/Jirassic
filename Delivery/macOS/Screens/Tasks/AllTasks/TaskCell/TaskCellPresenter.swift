@@ -44,7 +44,7 @@ class TaskCellPresenter: NSObject {
 		cell.data = (
             dateStart: theTask.startDate,
             dateEnd: theTask.endDate,
-			taskNumber: theTask.taskNumber ?? "",
+			taskNumber: theTask.taskNumber ?? theTask.taskType.defaultNotes,
 			notes: theTask.notes ?? theTask.taskType.defaultNotes,
 			taskType: theTask.taskType
 		)
