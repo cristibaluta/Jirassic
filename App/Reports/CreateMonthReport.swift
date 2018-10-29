@@ -67,7 +67,9 @@ class CreateMonthReport {
         // Join notes but only for meetings
         var reportsByTaskNumber = [String: Report]()
         for day in reportsByDay {
+            var d = 0.0
             for report in day {
+                d += report.duration
                 var monthReport = reportsByTaskNumber[report.taskNumber]
                 if monthReport == nil {
                     reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
@@ -82,11 +84,15 @@ class CreateMonthReport {
                     reportsByTaskNumber[report.taskNumber] = monthReport
                 }
             }
+            if d < 28800.0 {
+                print("duration: \(d)")
+            }
         }
 
         return (byDays: reportsByDay, byTasks: Array(reportsByTaskNumber.values))
     }
-    
+
+    // List of reports by task number
     func joinReports (_ reports: [Report]) -> (notes: String, totalDuration: Double) {
         
         var notes = ""
@@ -94,6 +100,11 @@ class CreateMonthReport {
         for report in reports {
             totalDuration += report.duration
             notes += "• \(report.taskNumber)\(report.title) (" + report.duration.secToHoursAndMin + ")\n"
+            if report.notes.count > 0 {
+                for note in report.notes {
+                    notes += "    - \(note)\n"
+                }
+            }
         }
         return (notes: notes, totalDuration: totalDuration)
     }
