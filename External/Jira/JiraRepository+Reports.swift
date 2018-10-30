@@ -26,7 +26,8 @@ extension JiraRepository {
                       in project: JProject,
                       to issue: JProjectIssue,
                       date: Date,
-                      completion: ((_ success: Bool) -> Void)?) {
+                      success: @escaping (() -> Void),
+                      failure: @escaping (Error) -> Void) {
 
         let dateStarted = date.YYYYMMddT00()//"2017-07-03T00:00:00.000+0000"
         let path = "rest/tempo-timesheets/3/worklogs"
@@ -45,13 +46,13 @@ extension JiraRepository {
         request?.post(at: path, parameters: parameters, success: { (response) in
             
             if let _ = response as? [String: Any] {
-                completion?(true)
+                success()
             } else {
-                completion?(false)
+                RCLogErrorO("Respondse is not a json")
             }
             
         }, failure: { (err) in
-            completion?(false)
+            failure(err)
         })
     }
 }

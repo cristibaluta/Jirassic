@@ -11,7 +11,7 @@ import Foundation
 class ModuleJiraTempo {
     
     let repository: JiraRepository!
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private let localPreferences = RCPreferences<LocalPreferences>()
     var isReachable: Bool {
         return localPreferences.string(.settingsJiraUrl) != ""
             && localPreferences.string(.settingsJiraUser) != ""
@@ -34,7 +34,11 @@ class ModuleJiraTempo {
         repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
     }
     
-    func upload (worklog: String, duration: Double, date: Date, completion: @escaping (_ success: Bool) -> Void) {
+    func postWorklog (worklog: String,
+                      duration: Double,
+                      date: Date,
+                      success: @escaping () -> Void,
+                      failure: @escaping (Error) -> Void) {
         
         let project = JProject(id: localPreferences.string(.settingsJiraProjectId),
                                key: localPreferences.string(.settingsJiraProjectKey),
@@ -44,9 +48,11 @@ class ModuleJiraTempo {
                                          key: localPreferences.string(.settingsJiraProjectIssueKey),
                                          url: "")
 
-        repository.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date) { success in
-            completion(success)
-        }
+        repository.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date, success: {
+            success()
+        }, failure: { error in
+            failure(error)
+        })
     }
 
 //    func upload (reports: [Report]) {

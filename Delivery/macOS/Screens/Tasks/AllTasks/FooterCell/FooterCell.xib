@@ -19,9 +19,9 @@
                     </constraints>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
-                    <rect key="frame" x="178" y="20" width="100" height="22"/>
+                    <rect key="frame" x="152" y="20" width="150" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="LcH-xv-Khy"/>
+                        <constraint firstAttribute="width" constant="150" id="LcH-xv-Khy"/>
                         <constraint firstAttribute="height" constant="21" id="ZSP-mf-RSN"/>
                     </constraints>
                     <buttonCell key="cell" type="inline" title="View &amp; save worklogs" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyn-Uj-MYd">

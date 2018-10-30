@@ -153,4 +153,17 @@ class CreateReportTests: XCTestCase {
         }
         XCTAssert(totalDuration == targetHoursInDay)
     }
+    
+    func testRealSituation2() {
+        
+        let str = "|10.00||||1;" +
+            "13.0|13.10|socialmedia|waste||6;" +
+            "|18.45|task 1|APP-3730||0;" +
+            "|18.45||||9"
+        tasks = buildTasks(str)
+        
+        let reports = report.reports(fromTasks: tasks, targetHoursInDay: nil)
+        XCTAssert(reports.count == 1, "Only one valid task")
+        XCTAssert(reports[0].duration == 8 * 3600 + 35 * 60, "8h 35m")
+    }
 }

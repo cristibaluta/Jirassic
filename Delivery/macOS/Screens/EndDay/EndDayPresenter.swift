@@ -48,6 +48,7 @@ extension EndDayPresenter: EndDayPresenterInput {
     
     private func show (tasks: [Task]) {
         
+        // Find the real number of worked hours
         let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
         
         let lines = reports.map({ (_ report: Report) -> String in
@@ -63,8 +64,9 @@ extension EndDayPresenter: EndDayPresenterInput {
         let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
         workedLength = StatisticsInteractor().workedTime(fromReports: reports)
-
-        userInterface!.showDuration(Date.secondsToPercentTime(localPreferences.bool(.enableRoundingDay) ? workdayLength : workedLength))
+        let duration = Date.secondsToPercentTime(localPreferences.bool(.enableRoundingDay) ? workdayLength : workedLength)
+        
+        userInterface!.showDuration(duration)
         userInterface!.showWorklog(message)
         setupJiraButton()
         setupRoundingButton(workdayLength: Date.secondsToPercentTime(workdayLength),
@@ -117,19 +119,24 @@ extension EndDayPresenter: EndDayPresenterInput {
         if isJiraEnabled && moduleJira.isReachable {
             userInterface!.showProgressIndicator(true)
             let duration = isRoundingEnabled ? workdayLength : workedLength
-            moduleJira.upload(worklog: worklog, duration: duration, date: date!) { [weak self] success in
+            moduleJira.postWorklog(worklog: worklog, duration: duration, date: date!, success: { [weak self] in
+                
                 DispatchQueue.main.async {
                     if let userInterface = self?.userInterface {
                         userInterface.showProgressIndicator(false)
-                        success
-                            ? userInterface.showJiraMessage("Worklogs saved to Jira", isError: false)
-                            : userInterface.showJiraMessage("Couldn't save the worklogs to Jira", isError: true)
-                        if success {
-                            userInterface.saveSuccess()
-                        }
+                        userInterface.showJiraMessage("Worklogs saved to Jira", isError: false)
+                        userInterface.saveSuccess()
                     }
                 }
-            }
+            }, failure: { [weak self] error in
+                
+                DispatchQueue.main.async {
+                    if let userInterface = self?.userInterface {
+                        userInterface.showProgressIndicator(false)
+                        userInterface.showJiraMessage(error.localizedDescription, isError: true)
+                    }
+                }
+            })
         } else {
             userInterface?.saveSuccess()
         }
