@@ -95,6 +95,17 @@ extension CloudKitRepository: RepositoryTasks {
                     let uploadedTask = self.taskFromRecord(record)
                     completion(uploadedTask)
                 }
+                if let ckerror = error as? CKError {
+                    switch ckerror {
+                    case CKError.quotaExceeded:
+                        // The user has run out of iCloud storage space.
+                        // Prompt the user to go to iCloud Settings to manage storage.
+                        #warning("Present quotaExceeded message to the user")
+                        break
+                    default:
+                        break
+                    }
+                }
             })
         }
     }
