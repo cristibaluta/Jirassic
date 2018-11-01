@@ -30,18 +30,17 @@ class Store {
     init() {
         getProducts { (success) in }
         
-        let receiptUrl = Bundle.main.appStoreReceiptURL
-        RCLog(receiptUrl)
+//        let receiptUrl = Bundle.main.appStoreReceiptURL
     }
     
     var isGitPurchased: Bool {
-//        return true
-        return localPref.bool(.full) || localPref.bool(.git)
+        return true
+//        return localPref.bool(.full) || localPref.bool(.git)
     }
     
     var isJiraTempoPurchased: Bool {
-//        return true
-        return localPref.bool(.full) || localPref.bool(.jiraTempo)
+        return true
+//        return localPref.bool(.full) || localPref.bool(.jiraTempo)
     }
     
     func getProduct(_ product: StoreProduct, _ completion: @escaping (SKProduct?) -> Void) {

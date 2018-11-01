@@ -106,12 +106,21 @@ extension JiraTempoCell: JiraTempoPresenterOutput {
 extension JiraTempoCell: NSTextFieldDelegate {
     
     override func controlTextDidEndEditing(_ obj: Notification) {
-        save()
+        
         guard baseUrlTextField.stringValue != "",
             userTextField.stringValue != "",
             passwordTextField.stringValue != "" else {
+            // Fields are empty
+            save()
             return
         }
+        guard baseUrlTextField.stringValue != localPreferences.string(.settingsJiraUrl) ||
+            userTextField.stringValue != localPreferences.string(.settingsJiraUser) ||
+            passwordTextField.stringValue != Keychain.getPassword() else {
+            // No change to the fields
+            return
+        }
+        save()
         presenter.checkCredentials()
     }
 }

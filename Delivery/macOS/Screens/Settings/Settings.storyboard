@@ -60,14 +60,13 @@
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-yv-6JW">
-                                <rect key="frame" x="116" y="451" width="263" height="23"/>
+                                <rect key="frame" x="145" y="451" width="205" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="pn1-lj-JjN">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment label="Tracking"/>
                                         <segment label="Input" selected="YES" tag="1"/>
                                         <segment label="Output"/>
-                                        <segment label="Store"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>

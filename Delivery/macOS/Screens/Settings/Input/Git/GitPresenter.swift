@@ -93,7 +93,7 @@ class GitPresenter {
         guard let userInterface = self.userInterface else {
             return
         }
-        userInterface.setDescriptionText("With this you will see commits made with Git right in the reports.\nPlease provide the project details.")
+        userInterface.setDescriptionText("With Git plugin you will see commits made with Git right in the reports. They are saved to database only after closing the day.")
         switch state {
         case .needsPurchase:
             userInterface.setStatusImage(NSImage.Name.statusUnavailable)
