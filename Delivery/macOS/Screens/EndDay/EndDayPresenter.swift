@@ -11,12 +11,10 @@ import Foundation
 protocol EndDayPresenterInput: class {
     func setup (date: Date, tasks: [Task])
     func save (worklog: String)
-    func enableJira (_ enabled: Bool)
     func enableRounding (_ enabled: Bool)
 }
 
 protocol EndDayPresenterOutput: class {
-    func showJira (enabled: Bool, available: Bool)
     func showRounding (enabled: Bool, title: String)
     func showDuration (_ duration: Double)
     func showWorklog (_ worklog: String)
@@ -68,7 +66,6 @@ extension EndDayPresenter: EndDayPresenterInput {
         
         userInterface!.showDuration(duration)
         userInterface!.showWorklog(message)
-        setupJiraButton()
         setupRoundingButton(workdayLength: Date.secondsToPercentTime(workdayLength),
                             workedLength: Date.secondsToPercentTime(workedLength))
     }
@@ -87,12 +84,6 @@ extension EndDayPresenter: EndDayPresenterInput {
         }
     }
     
-    private func setupJiraButton() {
-        let isJiraAvailable = store.isJiraTempoPurchased && moduleJira.isReachable
-        let isJiraEnabled = isJiraAvailable && localPreferences.bool(.enableJira)
-        userInterface!.showJira(enabled: isJiraEnabled, available: isJiraAvailable)
-    }
-
     private func setupRoundingButton (workdayLength: TimeInterval, workedLength: TimeInterval) {
         userInterface!.showRounding(enabled: localPreferences.bool(.enableRoundingDay),
                                     title: "Round worklogs duration to \(String(describing: workdayLength)) hours")
@@ -142,10 +133,6 @@ extension EndDayPresenter: EndDayPresenterInput {
         }
     }
     
-    func enableJira (_ enabled: Bool) {
-        localPreferences.set(enabled, forKey: .enableJira)
-    }
-
     func enableRounding (_ enabled: Bool) {
         localPreferences.set(enabled, forKey: .enableRoundingDay)
         userInterface!.showDuration(Date.secondsToPercentTime(enabled ? workdayLength : workedLength))

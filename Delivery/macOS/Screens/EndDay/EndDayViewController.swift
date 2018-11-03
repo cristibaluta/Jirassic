@@ -14,8 +14,6 @@ class EndDayViewController: NSViewController {
     @IBOutlet private var durationTextField: NSTextField!
     @IBOutlet private var worklogTextView: NSTextView!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
-    @IBOutlet private var butJira: NSButton!
-    @IBOutlet private var butJiraSetup: NSButton!
     @IBOutlet private var jiraErrorTextField: NSTextField!
     @IBOutlet private var butRound: NSButton!
     @IBOutlet private var butSave: NSButton!
@@ -47,15 +45,6 @@ class EndDayViewController: NSViewController {
         presenter!.save(worklog: worklogTextView.string)
     }
     
-    @IBAction func handleJiraButton (_ sender: NSButton) {
-        presenter!.enableJira(sender.state == .on)
-    }
-    
-    @IBAction func handleJiraSetupButton (_ sender: NSButton) {
-        RCPreferences<LocalPreferences>().set(SettingsTab.output.rawValue, forKey: .settingsActiveTab)
-        appWireframe!.flipToSettingsController()
-    }
-
     @IBAction func handleRoundButton (_ sender: NSButton) {
         presenter!.enableRounding(sender.state == .on)
     }
@@ -63,12 +52,6 @@ class EndDayViewController: NSViewController {
 
 extension EndDayViewController: EndDayPresenterOutput {
     
-    func showJira (enabled: Bool, available: Bool) {
-        butJira.isEnabled = available
-        butJira.state = enabled ? .on : .off
-        butJiraSetup.isHidden = available
-    }
-
     func showRounding (enabled: Bool, title: String) {
         butRound.state = enabled ? .on : .off
         butRound.title = title
