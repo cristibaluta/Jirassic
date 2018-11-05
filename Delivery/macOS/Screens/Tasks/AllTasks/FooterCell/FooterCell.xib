@@ -30,7 +30,7 @@
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-uQ-oVI">
-                    <rect key="frame" x="125" y="19" width="84" height="22"/>
+                    <rect key="frame" x="125" y="20" width="84" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="84" id="aIF-Ua-EvT"/>
                         <constraint firstAttribute="height" constant="21" id="cUp-G5-Pf2"/>
@@ -92,7 +92,7 @@
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="hGd-uQ-oVI" firstAttribute="top" secondItem="fml-cT-5yK" secondAttribute="bottom" constant="17" id="6cZ-dP-phn"/>
+                <constraint firstItem="hGd-uQ-oVI" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="04F-ms-XJx"/>
                 <constraint firstItem="fml-cT-5yK" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="9Jz-X4-20q"/>
                 <constraint firstItem="fml-cT-5yK" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="4" id="ByD-hE-4uG"/>
                 <constraint firstItem="Stw-dH-hbh" firstAttribute="leading" secondItem="hGd-uQ-oVI" secondAttribute="trailing" constant="36" id="Nn8-rk-mg0"/>
