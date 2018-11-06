@@ -14,10 +14,10 @@ class TasksScrollView: NSScrollView {
     private var dataSource: DataSource!
     private let localPreferences = RCPreferences<LocalPreferences>()
 	
-	var didAddRow: ((_ row: Int) -> ())?
-    var didRemoveRow: ((_ row: Int) -> ())?
-    var didChangeSettings: (() -> ())?
-    var didEndDay: ((_ tasks: [Task]) -> ())?
+	var didAddRow: ((_ row: Int) -> Void)?
+    var didRemoveRow: ((_ row: Int) -> Void)?
+    var didChangeSettings: (() -> Void)?
+    var didCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -42,8 +42,8 @@ class TasksScrollView: NSScrollView {
         dataSource.didRemoveRow = { [weak self] (row: Int) -> Void in
             self?.didRemoveRow!(row)
         }
-        dataSource.didEndDay = { [weak self] (tasks: [Task]) -> Void in
-            self?.didEndDay!(tasks)
+        dataSource.didCloseDay = { [weak self] (tasks: [Task], shouldSaveToJira) -> Void in
+            self?.didCloseDay!(tasks, shouldSaveToJira)
         }
         
         self.dataSource = dataSource

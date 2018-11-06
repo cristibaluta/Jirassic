@@ -221,6 +221,8 @@
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
+		286BC00421909F85004D4CDD /* CloseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDay.swift */; };
+		286BC00521909F85004D4CDD /* CloseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDay.swift */; };
 		287195152022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
 		287195162022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
 		287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
@@ -616,6 +618,7 @@
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
+		286BC00321909F85004D4CDD /* CloseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDay.swift; sourceTree = "<group>"; };
 		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
 		287195172022E8BC001C237E /* OutputTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTableViewDataSource.swift; sourceTree = "<group>"; };
 		2871951A2022ECF7001C237E /* OutputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputsScrollView.swift; sourceTree = "<group>"; };
@@ -1367,6 +1370,7 @@
 			children = (
 				4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */,
 				280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */,
+				286BC00321909F85004D4CDD /* CloseDay.swift */,
 				4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */,
 				4065D3301DD3B44200B73201 /* TaskFinder.swift */,
 				4065D3311DD3B44200B73201 /* TaskFinderTests.swift */,
@@ -1500,7 +1504,7 @@
 				405B155F1DEF3CE20009871C /* TaskSuggestion */,
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
-				564E55F12028839F00CE4C76 /* EndDay */,
+				564E55F12028839F00CE4C76 /* Worklogs */,
 				2845B142206AE342006EFB3B /* Calendar */,
 				4065D3761DD3B44200B73201 /* Tasks */,
 			);
@@ -1638,14 +1642,14 @@
 			name = Welcome;
 			sourceTree = "<group>";
 		};
-		564E55F12028839F00CE4C76 /* EndDay */ = {
+		564E55F12028839F00CE4C76 /* Worklogs */ = {
 			isa = PBXGroup;
 			children = (
 				564E55F2202883DB00CE4C76 /* EndDayViewController.swift */,
 				564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */,
 				564E55F82028857300CE4C76 /* EndDay.storyboard */,
 			);
-			path = EndDay;
+			path = Worklogs;
 			sourceTree = "<group>";
 		};
 		565E19C220A5E007003A5E2A /* RCLog */ = {
@@ -2150,6 +2154,7 @@
 				28FE18A5207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
 				2871952B20241B25001C237E /* TrackingView.swift in Sources */,
+				286BC00421909F85004D4CDD /* CloseDay.swift in Sources */,
 				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				2812F61E2145031B008EE81E /* IAPHelper.swift in Sources */,
@@ -2321,6 +2326,7 @@
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
+				286BC00521909F85004D4CDD /* CloseDay.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,

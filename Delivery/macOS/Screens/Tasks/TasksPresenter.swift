@@ -17,7 +17,7 @@ protocol TasksPresenterInput: class {
     func updateNoTasksState()
     func messageButtonDidPress()
     func startDay()
-    func endDay()
+    func closeDay (shouldSaveToJira: Bool)
     func insertTaskWithData (_ taskData: TaskCreationData)
     func insertTask (after row: Int)
     func removeTask (at row: Int)
@@ -124,8 +124,13 @@ extension TasksPresenter: TasksPresenterInput {
         ModuleHookup().insert(task: task)
     }
 
-    func endDay() {
-        ui!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
+    func closeDay(shouldSaveToJira: Bool) {
+        
+        let closeDay = CloseDay()
+//        closeDay.close(with: currentTasks)
+        if shouldSaveToJira {
+            ui!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
+        }
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {
@@ -199,6 +204,7 @@ extension TasksPresenter: TasksInteractorOutput {
         switch selectedListType {
         case .allTasks:
             ui.showTasks(currentTasks)
+            
         case .report:
             let settings = SettingsInteractor().getAppSettings()
             let targetHoursInDay = pref.bool(.enableRoundingDay)
@@ -208,6 +214,7 @@ extension TasksPresenter: TasksInteractorOutput {
             let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
             currentReports = reports.reversed()
             ui.showReports(currentReports, numberOfDays: 1, type: selectedListType)
+            
         case .monthlyReports:
             let settings = SettingsInteractor().getAppSettings()
             let targetHoursInDay = pref.bool(.enableRoundingDay)

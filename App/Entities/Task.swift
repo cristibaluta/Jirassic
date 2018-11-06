@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Never change the indexes because they are stored in the database
+// Never change the indexes because they are already stored in the database
 enum TaskType: Int {
 	
 	case issue = 0
@@ -55,13 +55,19 @@ enum TaskType: Int {
 // Object representing a task
 struct Task {
     
+    /// Is the date when this object was last modified by the server (iCloud)
+    /// When created locally this field does not have a value.
     var lastModifiedDate: Date?
+    /// Start date of the task, needed by tasks like meetings which have a known start and end
     var startDate: Date?
 	var endDate: Date
 	var notes: String?
+    /// Task number is usually the task number from Jira (eg. AA-1234)
     var taskNumber: String?
+    /// Task title is usually the title that follows the task number in Jira
     var taskTitle: String?
 	var taskType: TaskType
+    /// Created locally and used for matching with the remote object
     var objectId: String
 }
 
@@ -82,6 +88,7 @@ extension Task {
 	}
 }
 
+/// The minimum data needed to be passed around for displaying or creating a task
 typealias TaskCreationData = (
     dateStart: Date?,
     dateEnd: Date,

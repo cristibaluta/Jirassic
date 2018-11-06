@@ -151,8 +151,8 @@ extension TasksViewController: TasksPresenterOutput {
                 self?.presenter!.insertTask(after: row)
             }
         }
-        scrollView.didEndDay = { [weak self] (_ tasks: [Task]) -> Void in
-            self?.presenter!.endDay()
+        scrollView.didCloseDay = { [weak self] (tasks, shouldSaveToJira) -> Void in
+            self?.presenter!.closeDay(shouldSaveToJira: shouldSaveToJira)
         }
         
         scrollView.reloadData()

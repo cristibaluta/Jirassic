@@ -25,6 +25,32 @@ class CreateReport {
         
         return sortReports(reports, withOrder: groups.order)
 	}
+    
+    func toString (_ reports: [Report]) -> String  {
+        let lines = reports.map({ (_ report: Report) -> String in
+            let title = self.title(from: report)
+            let notes = report.notes.map { (note) -> String in
+                return "• \(note)"
+            }
+            let body = notes.joined(separator: "\n")
+            return title + "\n" + body
+        })
+        return lines.joined(separator: "\n\n")
+    }
+    
+    private func title (from report: Report) -> String {
+        let taskNumber = report.taskNumber
+        let taskTitle = report.title
+        switch taskNumber {
+        case "meeting": return "Meetings:"
+        case "coderev": return ""
+        default:
+            switch taskTitle {
+            case "": return taskNumber
+            default: return taskNumber + " - " + taskTitle
+            }
+        }
+    }
 }
 
 extension CreateReport {

@@ -27,9 +27,8 @@ class EndDayPresenter {
     
     weak var userInterface: EndDayPresenterOutput?
     var date: Date?
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
     private var moduleJira = ModuleJiraTempo()
-    private var store = Store.shared
     private let reportsInteractor = CreateReport()
     private var workdayLength = 0.0
     private var workedLength = 0.0
@@ -48,21 +47,12 @@ extension EndDayPresenter: EndDayPresenterInput {
         
         // Find the real number of worked hours
         let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
-        
-        let lines = reports.map({ (_ report: Report) -> String in
-            let title = self.title(from: report)
-            let notes = report.notes.map { (note) -> String in
-                return "• \(note)"
-            }
-            let body = notes.joined(separator: "\n")
-            return title + "\n" + body
-        })
-        let message = lines.joined(separator: "\n\n")
+        let message = reportsInteractor.toString(reports)
         
         let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
         workedLength = StatisticsInteractor().workedTime(fromReports: reports)
-        let duration = Date.secondsToPercentTime(localPreferences.bool(.enableRoundingDay) ? workdayLength : workedLength)
+        let duration = Date.secondsToPercentTime(pref.bool(.enableRoundingDay) ? workdayLength : workedLength)
         
         userInterface!.showDuration(duration)
         userInterface!.showWorklog(message)
@@ -70,48 +60,21 @@ extension EndDayPresenter: EndDayPresenterInput {
                             workedLength: Date.secondsToPercentTime(workedLength))
     }
     
-    private func title (from report: Report) -> String {
-        let taskNumber = report.taskNumber
-        let taskTitle = report.title
-        switch taskNumber {
-        case "meeting": return "Meetings:"
-        case "coderev": return ""
-        default:
-            switch taskTitle {
-            case "": return taskNumber
-            default: return taskNumber + " - " + taskTitle
-            }
-        }
-    }
-    
     private func setupRoundingButton (workdayLength: TimeInterval, workedLength: TimeInterval) {
-        userInterface!.showRounding(enabled: localPreferences.bool(.enableRoundingDay),
+        userInterface!.showRounding(enabled: pref.bool(.enableRoundingDay),
                                     title: "Round worklogs duration to \(String(describing: workdayLength)) hours")
     }
     
     func save (worklog: String) {
         userInterface!.showJiraMessage("", isError: false)
 
-        // Find if the day ended already
-        let endDayTask: Task? = self.tasks.filter({$0.taskType == .endDay}).first
-        if endDayTask == nil {
-            let endDayDate = tasks.last?.endDate ?? Date()
-            let endDayTask = Task(endDate: endDayDate, type: .endDay)
-            let interactor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
-            interactor.saveTask(endDayTask, allowSyncing: true) { (savedTask) in
-
-            }
-        }
-        
         // Save to jira tempo
-        let isJiraEnabled = localPreferences.bool(.enableJira) && store.isJiraTempoPurchased
-        let isRoundingEnabled = localPreferences.bool(.enableRoundingDay)
+        let isRoundingEnabled = pref.bool(.enableRoundingDay)
         
-        if isJiraEnabled && moduleJira.isReachable {
-            userInterface!.showProgressIndicator(true)
-            let duration = isRoundingEnabled ? workdayLength : workedLength
-            moduleJira.postWorklog(worklog: worklog, duration: duration, date: date!, success: { [weak self] in
-                
+        userInterface!.showProgressIndicator(true)
+        let duration = isRoundingEnabled ? workdayLength : workedLength
+        moduleJira.postWorklog(worklog: worklog, duration: duration, date: date!, success: { [weak self] in
+            
                 DispatchQueue.main.async {
                     if let userInterface = self?.userInterface {
                         userInterface.showProgressIndicator(false)
@@ -127,14 +90,11 @@ extension EndDayPresenter: EndDayPresenterInput {
                         userInterface.showJiraMessage(error.localizedDescription, isError: true)
                     }
                 }
-            })
-        } else {
-            userInterface?.saveSuccess()
-        }
+        })
     }
     
     func enableRounding (_ enabled: Bool) {
-        localPreferences.set(enabled, forKey: .enableRoundingDay)
+        pref.set(enabled, forKey: .enableRoundingDay)
         userInterface!.showDuration(Date.secondsToPercentTime(enabled ? workdayLength : workedLength))
     }
 }

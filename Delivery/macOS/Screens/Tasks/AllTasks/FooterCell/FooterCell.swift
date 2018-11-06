@@ -22,7 +22,7 @@ class FooterCell: NSTableRowView {
     private var moduleJira = ModuleJiraTempo()
     private let pref = RCPreferences<LocalPreferences>()
     var didAddTask: (() -> Void)?
-    var didEndDay: (() -> Void)?
+    var didCloseDay: ((_ shouldSavetoJira: Bool) -> Void)?
     var isDayEnded: Bool? {
         didSet {
             self.butAdd.isHidden = isDayEnded!
@@ -41,7 +41,7 @@ class FooterCell: NSTableRowView {
     }
     
     @IBAction func handleCloseDayButton (_ sender: NSButton) {
-        didEndDay?()
+        didCloseDay?(butJira.state == .on)
     }
     
     @IBAction func handleJiraButton (_ sender: NSButton) {
