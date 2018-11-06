@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--End Day View Controller-->
+        <!--Worklogs View Controller-->
         <scene sceneID="Y9Q-wg-vcI">
             <objects>
-                <viewController storyboardIdentifier="EndDayViewController" id="LR9-OL-5Y4" customClass="EndDayViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorklogsViewController" id="LR9-OL-5Y4" customClass="WorklogsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="xUO-DE-YPz">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="395"/>
                         <autoresizingMask key="autoresizingMask"/>

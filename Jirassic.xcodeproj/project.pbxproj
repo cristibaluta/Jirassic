@@ -449,12 +449,12 @@
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
 		561153842065600D00EFCC4A /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
-		564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
-		564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* EndDayViewController.swift */; };
-		564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
-		564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */; };
-		564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* EndDay.storyboard */; };
-		564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* EndDay.storyboard */; };
+		564E55F3202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
+		564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
+		564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */; };
+		564E55F7202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */; };
+		564E55F92028857300CE4C76 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* Worklogs.storyboard */; };
+		564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* Worklogs.storyboard */; };
 		565E19CF20A5E007003A5E2A /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19C720A5E007003A5E2A /* RCLog.swift */; };
 		565E19D020A5E007003A5E2A /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19C720A5E007003A5E2A /* RCLog.swift */; };
 		565E19D820A5E192003A5E2A /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19D320A5E191003A5E2A /* RCPreferences.swift */; };
@@ -786,9 +786,9 @@
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
-		564E55F2202883DB00CE4C76 /* EndDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayViewController.swift; sourceTree = "<group>"; };
-		564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDayPresenter.swift; sourceTree = "<group>"; };
-		564E55F82028857300CE4C76 /* EndDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndDay.storyboard; sourceTree = "<group>"; };
+		564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
+		564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsPresenter.swift; sourceTree = "<group>"; };
+		564E55F82028857300CE4C76 /* Worklogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Worklogs.storyboard; sourceTree = "<group>"; };
 		565E19C320A5E007003A5E2A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		565E19C420A5E007003A5E2A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		565E19C720A5E007003A5E2A /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
@@ -1645,9 +1645,9 @@
 		564E55F12028839F00CE4C76 /* Worklogs */ = {
 			isa = PBXGroup;
 			children = (
-				564E55F2202883DB00CE4C76 /* EndDayViewController.swift */,
-				564E55F5202884DE00CE4C76 /* EndDayPresenter.swift */,
-				564E55F82028857300CE4C76 /* EndDay.storyboard */,
+				564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */,
+				564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */,
+				564E55F82028857300CE4C76 /* Worklogs.storyboard */,
 			);
 			path = Worklogs;
 			sourceTree = "<group>";
@@ -2001,7 +2001,7 @@
 				56D90CFE20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
 				280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */,
-				564E55F92028857300CE4C76 /* EndDay.storyboard in Resources */,
+				564E55F92028857300CE4C76 /* Worklogs.storyboard in Resources */,
 				2845B162206AE468006EFB3B /* TaskCell.xib in Resources */,
 				56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
@@ -2058,7 +2058,7 @@
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
 				56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */,
-				564E55FA2028857300CE4C76 /* EndDay.storyboard in Resources */,
+				564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */,
 				2845B169206AE468006EFB3B /* FooterCell.xib in Resources */,
 				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				28EE1F6220EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
@@ -2197,7 +2197,7 @@
 				2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
-				564E55F3202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
+				564E55F3202883DB00CE4C76 /* WorklogsViewController.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
 				28FE1887207A520B00DF796E /* NewTaskCommand.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
@@ -2288,7 +2288,7 @@
 				565E19F020A5E336003A5E2A /* RCSync.swift in Sources */,
 				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
-				564E55F6202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
+				564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */,
 				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
@@ -2365,7 +2365,7 @@
 				5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
-				564E55F4202883DB00CE4C76 /* EndDayViewController.swift in Sources */,
+				564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */,
 				288BB6852087157F00CF720A /* WizardAppleScriptView.swift in Sources */,
 				2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
@@ -2465,7 +2465,7 @@
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
 				2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
-				564E55F7202884DE00CE4C76 /* EndDayPresenter.swift in Sources */,
+				564E55F7202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
 				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */,

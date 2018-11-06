@@ -1,5 +1,5 @@
 //
-//  EndDayPresenter.swift
+//  WorklogsPresenter.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 05/02/2018.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol EndDayPresenterInput: class {
+protocol WorklogsPresenterInput: class {
     func setup (date: Date, tasks: [Task])
     func save (worklog: String)
     func enableRounding (_ enabled: Bool)
 }
 
-protocol EndDayPresenterOutput: class {
+protocol WorklogsPresenterOutput: class {
     func showRounding (enabled: Bool, title: String)
     func showDuration (_ duration: Double)
     func showWorklog (_ worklog: String)
@@ -23,9 +23,9 @@ protocol EndDayPresenterOutput: class {
     func saveSuccess()
 }
 
-class EndDayPresenter {
+class WorklogsPresenter {
     
-    weak var userInterface: EndDayPresenterOutput?
+    weak var userInterface: WorklogsPresenterOutput?
     var date: Date?
     private let pref = RCPreferences<LocalPreferences>()
     private var moduleJira = ModuleJiraTempo()
@@ -35,7 +35,7 @@ class EndDayPresenter {
     private var tasks: [Task] = []
 }
 
-extension EndDayPresenter: EndDayPresenterInput {
+extension WorklogsPresenter: WorklogsPresenterInput {
 
     func setup (date: Date, tasks: [Task]) {
         self.date = date

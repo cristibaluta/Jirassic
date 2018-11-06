@@ -18,7 +18,7 @@ class AppWireframe {
     private var _appViewController: AppViewController?
     private var currentController: NSViewController?
     private var _placeholderViewController: PlaceholderViewController?
-    private var _endDayViewController: EndDayViewController?
+    private var _worklogsViewController: WorklogsViewController?
     
     var appViewController: AppViewController {
         
@@ -104,10 +104,10 @@ class AppWireframe {
         return PlaceholderViewController.instantiateFromStoryboard("Placeholder")
     }
 
-    private var endDayViewController: EndDayViewController {
+    private var worklogsViewController: WorklogsViewController {
 
-        let controller = EndDayViewController.instantiateFromStoryboard("EndDay")
-        let presenter = EndDayPresenter()
+        let controller = WorklogsViewController.instantiateFromStoryboard("Worklogs")
+        let presenter = WorklogsPresenter()
 
         controller.presenter = presenter
         controller.appWireframe = self
@@ -231,22 +231,22 @@ extension AppWireframe {
     }
 
     // EndDay
-    func presentEndDayController (date: Date, tasks: [Task]) -> EndDayViewController {
+    func presentEndDayController (date: Date, tasks: [Task]) -> WorklogsViewController {
 
-        let controller = self.endDayViewController
+        let controller = self.worklogsViewController
         controller.date = date
         controller.tasks = tasks
         addController(controller)
         controller.view.constrainToSuperview()
-        _endDayViewController = controller
+        _worklogsViewController = controller
 
         return controller
     }
 
     func removeEndDayController() {
-        if let controller = _endDayViewController {
+        if let controller = _worklogsViewController {
             removeController(controller)
-            _endDayViewController = nil
+            _worklogsViewController = nil
         }
     }
 }

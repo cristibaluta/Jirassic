@@ -1,5 +1,5 @@
 //
-//  EndDayViewController.swift
+//  WorklogsViewController.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 05/02/2018.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class EndDayViewController: NSViewController {
+class WorklogsViewController: NSViewController {
     
     @IBOutlet private var dateTextField: NSTextField!
     @IBOutlet private var durationTextField: NSTextField!
@@ -20,7 +20,7 @@ class EndDayViewController: NSViewController {
     
     var onSave: (() -> Void)?
     var onCancel: (() -> Void)?
-    var presenter: EndDayPresenterInput?
+    var presenter: WorklogsPresenterInput?
     var date: Date?
     var tasks: [Task]?
     weak var appWireframe: AppWireframe?
@@ -50,7 +50,7 @@ class EndDayViewController: NSViewController {
     }
 }
 
-extension EndDayViewController: EndDayPresenterOutput {
+extension WorklogsViewController: WorklogsPresenterOutput {
     
     func showRounding (enabled: Bool, title: String) {
         butRound.state = enabled ? .on : .off
