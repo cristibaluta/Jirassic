@@ -10,6 +10,16 @@ import Foundation
 
 extension SqliteRepository: RepositoryTasks {
 
+    func queryTask (withId objectId: String) -> Task? {
+        
+        let taskPredicate = "objectId == '\(objectId)'"
+        let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
+        if let stask = tasks.first {
+            return taskFromSTask(stask)
+        }
+        return nil
+    }
+    
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
 
         let tasks = self.tasksBetween (startDate: startDate, endDate: endDate, predicate: predicate)

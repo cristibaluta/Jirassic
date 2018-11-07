@@ -11,6 +11,11 @@ import CoreData
 
 extension CoreDataRepository: RepositoryTasks {
 
+    func queryTask (withId objectId: String) -> Task? {
+        #warning("To be implemented for ios")
+        return nil
+    }
+    
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
 
         let tasks = tasksBetween(startDate: startDate, endDate: endDate)

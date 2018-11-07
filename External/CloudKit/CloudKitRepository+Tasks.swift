@@ -11,6 +11,10 @@ import CloudKit
 
 extension CloudKitRepository: RepositoryTasks {
 
+    func queryTask (withId objectId: String) -> Task? {
+        fatalError("This method is not applicable to CloudKitRepository")
+    }
+    
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
         fatalError("This method is not applicable to CloudKitRepository")
     }

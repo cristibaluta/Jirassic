@@ -19,6 +19,7 @@ protocol RepositoryUser {
 
 protocol RepositoryTasks {
 
+    func queryTask (withId objectId: String) -> Task?
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate?) -> [Task]
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate?, completion: @escaping ([Task], NSError?) -> Void)
     func queryUnsyncedTasks() -> [Task]
