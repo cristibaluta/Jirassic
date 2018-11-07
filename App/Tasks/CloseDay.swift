@@ -15,20 +15,23 @@ class CloseDay {
         guard tasks.count > 1 else {
             return
         }
-        let writer = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        let interactor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         
         // Find if the day ended already
         let endDayTask: Task? = tasks.filter({$0.taskType == .endDay}).first
+        // If not, end it now
         if endDayTask == nil {
             let endDayDate = tasks.last?.endDate ?? Date()
             let endDayTask = Task(endDate: endDayDate, type: .endDay)
-            writer.saveTask(endDayTask, allowSyncing: true) { (savedTask) in
+            interactor.saveTask(endDayTask, allowSyncing: true) { (savedTask) in
                 
             }
         }
-        
+        // Save to db only the tasks that are not already saved, like git commits and calendar events
         for task in tasks {
-            writer.saveTask(task, allowSyncing: true, completion: { task in })
+            if interactor.queryTask(withId: task.objectId) == nil {
+                interactor.saveTask(task, allowSyncing: true, completion: { task in })
+            }
         }
     }
 }

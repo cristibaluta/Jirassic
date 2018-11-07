@@ -10,6 +10,10 @@ import Foundation
 
 class TaskInteractor: RepositoryInteractor {
 
+    func queryTask (withId objectId: String) -> Task? {
+        return repository.queryTask(withId: objectId)
+    }
+    
     func saveTask (_ task: Task, allowSyncing: Bool, completion: @escaping (_ savedTask: Task) -> Void) {
         
         var task = task
