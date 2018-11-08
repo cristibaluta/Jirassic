@@ -84,7 +84,7 @@ extension CloudKitRepository: RepositoryTasks {
         fetchCKRecordOfTask(task) { (record) in
             var record: CKRecord? = record
             if record == nil {
-                let recordId = CKRecordID(recordName: task.objectId, zoneID: customZone.zoneID)
+                let recordId = CKRecordID(recordName: task.objectId!, zoneID: customZone.zoneID)
                 record = CKRecord(recordType: "Task", recordID: recordId)
             }
             record = self.updatedRecord(record!, withTask: task)
@@ -124,7 +124,7 @@ extension CloudKitRepository {
             return
         }
         
-        let predicate = NSPredicate(format: "objectId == %@", task.objectId as CVarArg)
+        let predicate = NSPredicate(format: "objectId == %@", task.objectId! as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)
         privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
             
@@ -157,7 +157,7 @@ extension CloudKitRepository {
                     taskNumber: record["taskNumber"] as? String,
                     taskTitle: record["taskTitle"] as? String,
                     taskType: TaskType(rawValue: (record["taskType"] as! NSNumber).intValue)!,
-                    objectId: record["objectId"] as! String
+                    objectId: record["objectId"] as? String
         )
     }
     
@@ -169,7 +169,7 @@ extension CloudKitRepository {
         record["taskNumber"] = task.taskNumber as CKRecordValue?
         record["taskTitle"] = task.taskTitle as CKRecordValue?
         record["taskType"] = task.taskType.rawValue as CKRecordValue
-        record["objectId"] = task.objectId as CKRecordValue
+        record["objectId"] = task.objectId as CKRecordValue?
         
         return record
     }

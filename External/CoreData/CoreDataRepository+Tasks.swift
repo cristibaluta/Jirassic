@@ -128,7 +128,7 @@ extension CoreDataRepository {
     
     fileprivate func ctaskFromTask (_ task: Task) -> CTask {
         
-        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId)
+        let taskPredicate = NSPredicate(format: "objectId == %@", task.objectId!)
         let tasks: [CTask] = queryWithPredicate(taskPredicate, sortDescriptors: nil)
         var ctask: CTask? = tasks.first
         if ctask == nil {

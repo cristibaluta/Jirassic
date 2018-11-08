@@ -17,7 +17,7 @@ class ModuleGitLogs {
 //        checkIfGitInstalled(completion: completion)
 //    }
     
-    func logs (dateStart: Date, dateEnd: Date, completion: @escaping (([Task]) -> Void)) {
+    func fetchLogs (dateStart: Date, dateEnd: Date, completion: @escaping (([Task]) -> Void)) {
         // Because of a bug in applescripts split the call into smaller chunks for months
         if dateEnd.timeIntervalSince(dateStart) > 7*24.hoursToSec {
             let chunks = ceil(dateEnd.timeIntervalSince(dateStart) / (7*24.hoursToSec))
@@ -60,8 +60,10 @@ class ModuleGitLogs {
                 let taskTitle = branchParser.taskTitle()
                 let taskNumber = branchParser.taskNumber() ?? taskTitle
                 // Remove task number from the beginning of a commit message
-                let message = commit.message.replacingOccurrences(of: taskNumber, with: "").trimmingCharacters(in: NSCharacterSet.whitespaces)
+                let message = commit.message.replacingOccurrences(of: taskNumber, with: "")
+                    .trimmingCharacters(in: NSCharacterSet.whitespaces)
                 
+                // Create a task without id, this will tell the app that is not saved in db
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
                                 endDate: commit.date,
@@ -69,7 +71,7 @@ class ModuleGitLogs {
                                 taskNumber: taskNumber,
                                 taskTitle: taskTitle,
                                 taskType: .gitCommit,
-                                objectId: String.generateId())
+                                objectId: nil)
                 tasks.append(task)
             }
             self.logsChunk(dates: dates, previousTasks: tasks, completion: completion)

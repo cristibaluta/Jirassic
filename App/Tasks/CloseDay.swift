@@ -23,14 +23,15 @@ class CloseDay {
         if endDayTask == nil {
             let endDayDate = tasks.last?.endDate ?? Date()
             let endDayTask = Task(endDate: endDayDate, type: .endDay)
-            interactor.saveTask(endDayTask, allowSyncing: true) { (savedTask) in
-                
-            }
+            interactor.saveTask(endDayTask, allowSyncing: true) { savedTask in }
         }
         // Save to db only the tasks that are not already saved, like git commits and calendar events
         for task in tasks {
-            if interactor.queryTask(withId: task.objectId) == nil {
-                interactor.saveTask(task, allowSyncing: true, completion: { task in })
+            if task.objectId == nil {
+                var task = task
+                RCLog("Unsaved task found \(task)")
+                task.objectId = String.generateId()
+                interactor.saveTask(task, allowSyncing: true) { savedTask in }
             }
         }
     }

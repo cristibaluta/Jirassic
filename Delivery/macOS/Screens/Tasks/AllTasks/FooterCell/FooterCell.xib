@@ -28,6 +28,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystemBold"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="handleWorklogsButton:" target="c22-O7-iKe" id="H4Y-Kf-aFK"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-uQ-oVI">
                     <rect key="frame" x="125" y="20" width="84" height="22"/>

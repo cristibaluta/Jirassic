@@ -127,7 +127,7 @@ extension TasksPresenter: TasksPresenterInput {
     func closeDay(shouldSaveToJira: Bool) {
         
         let closeDay = CloseDay()
-//        closeDay.close(with: currentTasks)
+        closeDay.close(with: currentTasks)
         if shouldSaveToJira {
             ui!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
         }

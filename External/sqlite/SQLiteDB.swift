@@ -34,7 +34,7 @@ class SQLiteDB: NSObject {
 	}
  
 	override var description: String {
-		return "SQLiteDB: \(path)"
+        return "SQLiteDB: \(String(describing: path))"
 	}
 	
 	func dbDate (dt: Date) -> String {

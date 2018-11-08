@@ -99,7 +99,7 @@ extension TasksInteractor: TasksInteractorInput {
             completion()
             return
         }
-        moduleGit.logs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
+        moduleGit.fetchLogs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
             guard let wself = self, wself.currentDateStart == dateStart else {
                 RCLog("Different day was selected than the one loading")

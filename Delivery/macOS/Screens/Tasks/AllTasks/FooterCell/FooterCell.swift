@@ -40,6 +40,10 @@ class FooterCell: NSTableRowView {
         didAddTask?()
     }
     
+    @IBAction func handleWorklogsButton (_ sender: NSButton) {
+        didCloseDay?(true)
+    }
+    
     @IBAction func handleCloseDayButton (_ sender: NSButton) {
         didCloseDay?(butJira.state == .on)
     }

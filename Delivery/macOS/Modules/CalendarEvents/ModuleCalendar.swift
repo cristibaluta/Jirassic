@@ -68,6 +68,7 @@ class ModuleCalendar {
                     let events: [EKEvent] = self.eventStore.events(matching: eventsPredicate)
                     
                     for event in events {
+                        // Create a task without id, this will tell the app that is not saved in db
                         let task = Task(lastModifiedDate: nil,
                                         startDate: event.startDate,
                                         endDate: event.endDate,
@@ -75,7 +76,7 @@ class ModuleCalendar {
                                         taskNumber: TaskType.calendar.defaultTaskNumber,
                                         taskTitle: event.title,
                                         taskType: .calendar,
-                                        objectId: String.generateId())
+                                        objectId: nil)
                         tasks.append(task)
                     }
                     DispatchQueue.main.async {

@@ -63,7 +63,7 @@ extension SqliteRepository: RepositoryTasks {
         
         queryDeletedTasks { (deletedTasks) in
             let unsyncedTasks = self.queryUnsyncedTasks()
-            let deletedTasksIds = deletedTasks.map{ $0.objectId }
+            let deletedTasksIds = deletedTasks.map{ $0.objectId! }
             completion(unsyncedTasks, deletedTasksIds, nil)
         }
     }
@@ -143,7 +143,7 @@ extension SqliteRepository {
     
     private func staskFromTask (_ task: Task) -> STask {
         
-        let taskPredicate = "objectId == '\(task.objectId)'"
+        let taskPredicate = "objectId == '\(task.objectId!)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
         var stask: STask? = tasks.first
         if stask == nil {
