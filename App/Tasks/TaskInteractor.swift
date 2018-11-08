@@ -16,6 +16,9 @@ class TaskInteractor: RepositoryInteractor {
     
     func saveTask (_ task: Task, allowSyncing: Bool, completion: @escaping (_ savedTask: Task) -> Void) {
         
+        guard task.objectId != nil else {
+            fatalError("Cannot save a task without objectId")
+        }
         var task = task
         task.lastModifiedDate = nil
         
@@ -29,6 +32,9 @@ class TaskInteractor: RepositoryInteractor {
     
     func deleteTask (_ task: Task) {
         
+        guard task.objectId != nil else {
+            fatalError("Cannot delete a task without objectId")
+        }
         self.repository.deleteTask(task, permanently: false, completion: { (success: Bool) -> Void in
             #if !CMD
             if let remoteRepository = self.remoteRepository {

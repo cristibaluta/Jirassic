@@ -49,7 +49,7 @@ class TaskCellPresenter: NSObject {
 			taskType: theTask.taskType
 		)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
-        cell.isEditable = theTask.taskType != .gitCommit && theTask.taskType != .calendar
+        cell.isEditable = theTask.objectId != nil
         cell.isIgnored = theTask.taskType == .lunch || theTask.taskType == .waste
 	}
 }
