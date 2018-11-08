@@ -80,6 +80,10 @@ extension TasksInteractor: TasksInteractorInput {
                 self?.presenter!.tasksDidLoad([])
                 return
             }
+            guard !wself.currentTasks.contains(where: { $0.taskType == .endDay }) else {
+                self?.presenter!.tasksDidLoad(wself.currentTasks)
+                return
+            }
             self?.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
                 self?.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
                     self?.presenter!.tasksDidLoad(wself.currentTasks)
