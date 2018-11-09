@@ -80,7 +80,8 @@ extension TasksInteractor: TasksInteractorInput {
                 self?.presenter!.tasksDidLoad([])
                 return
             }
-            guard !wself.currentTasks.contains(where: { $0.taskType == .endDay }) else {
+            let isMonthRead = dateEnd.timeIntervalSince(dateStart) > 24.hoursToSec
+            if isMonthRead || wself.currentTasks.contains(where: { $0.taskType == .endDay }) {
                 self?.presenter!.tasksDidLoad(wself.currentTasks)
                 return
             }
