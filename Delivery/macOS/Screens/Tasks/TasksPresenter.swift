@@ -81,9 +81,9 @@ extension TasksPresenter: TasksPresenterInput {
         selectedListType = listType
         switch selectedListType {
         case .allTasks, .report:
-            interactor?.reloadTasks(inDay: day)
+            interactor!.reloadTasks(inDay: day)
         case .monthlyReports:
-            interactor?.reloadTasks(inMonth: day)
+            interactor!.reloadTasks(inMonth: day)
         }
     }
 
@@ -130,6 +130,8 @@ extension TasksPresenter: TasksPresenterInput {
         closeDay.close(with: currentTasks)
         if shouldSaveToJira {
             ui!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
+        } else {
+            reloadData()
         }
     }
 
@@ -187,9 +189,9 @@ extension TasksPresenter: TasksInteractorOutput {
             return
         }
         ui.showLoadingIndicator(false)
-        let todayDay = Day(dateStart: Date(), dateEnd: nil)
+        let day = lastSelectedDay ?? Day(dateStart: Date(), dateEnd: nil)
         ui.showCalendar(weeks)
-        ui.selectDay(todayDay)
+        ui.selectDay(day)
     }
 
     func tasksDidLoad (_ tasks: [Task]) {

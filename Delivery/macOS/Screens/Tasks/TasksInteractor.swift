@@ -95,6 +95,15 @@ extension TasksInteractor: TasksInteractorInput {
     
     private func addLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         currentTasks = tasksReader.tasks(between: dateStart, and: dateEnd)
+        // Sort by date
+        currentTasks.sort(by: {
+            // If tasks have the same date might be the end of the day compared with the last task
+            // In this case endDay should be the latter task
+            guard $0.endDate != $1.endDate else {
+                return $1.taskType == .endDay
+            }
+            return $0.endDate < $1.endDate
+        })
         completion()
     }
 
