@@ -73,7 +73,11 @@ class TaskCell: NSTableRowView, CellProtocol {
             dateEndTextField.isEditable = isEditable
             issueNrTextField.isEditable = isEditable
             notesTextField.isEditable = isEditable
-            butRemove.isEnabled = isEditable
+        }
+    }
+    var isRemovable: Bool = true {
+        didSet {
+            butRemove.isEnabled = isRemovable
         }
     }
     var isIgnored: Bool = false
@@ -145,8 +149,8 @@ extension TaskCell {
             selectionPath.stroke()
         }
 		else if self.mouseInside {
-            notesTextFieldRightConstrain!.constant = isEditable ? 90 : 40
-            butRemoveWidthConstraint.constant = isEditable ? 40 : 0
+            notesTextFieldRightConstrain!.constant = isRemovable ? 90 : 40
+            butRemoveWidthConstraint.constant = isRemovable ? 40 : 0
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
             AppDelegate.sharedApp().theme.highlightLineColor.setStroke()

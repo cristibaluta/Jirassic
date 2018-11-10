@@ -15,6 +15,7 @@ protocol CellProtocol {
 	var duration: String {get set}
     var isDark: Bool {get set}
     var isEditable: Bool {get set}
+    var isRemovable: Bool {get set}
     var isIgnored: Bool {get set}
     var color: NSColor {get set}
 	

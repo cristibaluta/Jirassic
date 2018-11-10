@@ -60,7 +60,8 @@ class ReportCell: NSTableRowView, CellProtocol {
         }
     }
     var isDark: Bool = false
-    var isEditable: Bool = true
+    var isEditable: Bool = false
+    var isRemovable: Bool = false
     var isIgnored: Bool = false
     var color: NSColor = NSColor.black
     
