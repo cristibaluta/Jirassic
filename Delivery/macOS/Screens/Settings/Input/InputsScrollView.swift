@@ -46,23 +46,23 @@ class InputsScrollView: NSScrollView {
         dataSource?.calendarCell?.save()
     }
     
-    func setShellStatus (available: Bool, compatible: Bool) {
-        dataSource?.shellCell?.setShellStatus (available: available, compatible: compatible)
+    func setShellStatus (compatibility: Compatibility) {
+        dataSource?.shellCell?.setShellStatus (compatibility: compatibility)
     }
     
-    func setJirassicStatus (available: Bool, compatible: Bool) {
-        dataSource?.jirassicCell?.setJirassicStatus (available: available, compatible: compatible)
+    func setJirassicStatus (compatibility: Compatibility) {
+        dataSource?.jirassicCell?.setJirassicStatus (compatibility: compatibility)
     }
     
-    func setJitStatus (available: Bool, compatible: Bool) {
-        dataSource?.jitCell?.setJitStatus (available: available, compatible: compatible)
+    func setJitStatus (compatibility: Compatibility) {
+        dataSource?.jitCell?.setJitStatus (compatibility: compatibility)
     }
     
     func setGitStatus (available: Bool) {
         dataSource?.gitCell?.presenter.isShellScriptInstalled = available
     }
     
-    func setBrowserStatus (available: Bool, compatible: Bool) {
-        dataSource?.browserCell?.setBrowserStatus (available: available, compatible: compatible)
+    func setBrowserStatus (compatibility: Compatibility) {
+        dataSource?.browserCell?.setBrowserStatus (compatibility: compatibility)
     }
 }

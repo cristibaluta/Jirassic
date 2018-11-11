@@ -126,24 +126,24 @@ extension SettingsViewController: Animatable {
 
 extension SettingsViewController: SettingsPresenterOutput {
     
-    func setShellStatus (available: Bool, compatible: Bool) {
-        inputsScrollView?.setShellStatus (available: available, compatible: compatible)
+    func setShellStatus (compatibility: Compatibility) {
+        inputsScrollView?.setShellStatus (compatibility: compatibility)
     }
     
-    func setJirassicStatus (available: Bool, compatible: Bool) {
-        inputsScrollView?.setJirassicStatus (available: available, compatible: compatible)
+    func setJirassicStatus (compatibility: Compatibility) {
+        inputsScrollView?.setJirassicStatus (compatibility: compatibility)
     }
     
-    func setJitStatus (available: Bool, compatible: Bool) {
-        inputsScrollView?.setJitStatus (available: available, compatible: compatible)
+    func setJitStatus (compatibility: Compatibility) {
+        inputsScrollView?.setJitStatus (compatibility: compatibility)
     }
     
     func setGitStatus (available: Bool) {
         inputsScrollView?.setGitStatus (available: available)
     }
     
-    func setBrowserStatus (available: Bool, compatible: Bool) {
-        inputsScrollView?.setBrowserStatus (available: available, compatible: compatible)
+    func setBrowserStatus (compatibility: Compatibility) {
+        inputsScrollView?.setBrowserStatus (compatibility: compatibility)
     }
     
     func setHookupStatus (available: Bool) {

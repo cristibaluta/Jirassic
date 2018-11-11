@@ -29,25 +29,25 @@ class JitCell: NSTableRowView {
 
     }
     
-    func setJitStatus (available: Bool, compatible: Bool) {
+    func setJitStatus (compatibility: Compatibility) {
         
-        if available {
-            statusImageView.image = NSImage(named: compatible
+        if compatibility.available {
+            statusImageView.image = NSImage(named: compatibility.compatible
                 ? NSImage.Name.statusAvailable
                 : NSImage.Name.statusPartiallyAvailable)
             
-            textField.stringValue = compatible
-                ? "Installed, run 'jit' in Terminal for more info"
-                : "Jit is outdated or not installed, please install the latest version!"
+            textField.stringValue = compatibility.compatible
+                ? "Jit \(compatibility.currentVersion) installed, type 'jit' in Terminal for more info"
+                : "Version \(compatibility.currentVersion) installed, min required is \(compatibility.minVersion), please update"
             
             butEnable.state = prefs.bool(.enableJit) ? .on : .off
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             textField.stringValue = "Cannot determine Jit compatibility, install shell support first!"
         }
-        butInstall.isHidden = available && compatible
-        butEnable.isHidden = !(available && compatible)
-        statusImageView.isHidden = available && compatible
+        butInstall.isHidden = compatibility.available && compatibility.compatible
+        butEnable.isHidden = !(compatibility.available && compatibility.compatible)
+        statusImageView.isHidden = compatibility.available && compatibility.compatible
     }
 
     @IBAction func handleInstallButton (_ sender: NSButton) {

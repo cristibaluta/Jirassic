@@ -12,24 +12,18 @@ class BrowserCell: NSTableRowView {
 
     static let height = CGFloat(270)
     
-    @IBOutlet fileprivate var coderevImageView: NSImageView!
-    @IBOutlet fileprivate var coderevTextField: NSTextField!
-    @IBOutlet fileprivate var butInstallCoderev: NSButton!
-    @IBOutlet fileprivate var butTrackCodeReviews: NSButton!
-    @IBOutlet fileprivate var butTrackWastedTime: NSButton!
-    @IBOutlet fileprivate var codeReviewsLinkTextField: NSTextField!
-    @IBOutlet fileprivate var minCodeRevDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minCodeRevDurationSlider: NSSlider!
-    @IBOutlet fileprivate var wastedTimeLinksTextField: NSTextField!
-    @IBOutlet fileprivate var minWasteDurationLabel: NSTextField!
-    @IBOutlet fileprivate var minWasteDurationSlider: NSSlider!
+    @IBOutlet private var coderevImageView: NSImageView!
+    @IBOutlet private var coderevTextField: NSTextField!
+    @IBOutlet private var butInstallCoderev: NSButton!
+    @IBOutlet private var butTrackCodeReviews: NSButton!
+    @IBOutlet private var butTrackWastedTime: NSButton!
+    @IBOutlet private var codeReviewsLinkTextField: NSTextField!
+    @IBOutlet private var minCodeRevDurationLabel: NSTextField!
+    @IBOutlet private var minCodeRevDurationSlider: NSSlider!
+    @IBOutlet private var wastedTimeLinksTextField: NSTextField!
+    @IBOutlet private var minWasteDurationLabel: NSTextField!
+    @IBOutlet private var minWasteDurationSlider: NSSlider!
     
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     func showSettings (_ settings: SettingsBrowser) {
 
         butTrackCodeReviews.state = settings.trackCodeReviews ? NSControl.StateValue.on : NSControl.StateValue.off
@@ -59,22 +53,22 @@ class BrowserCell: NSTableRowView {
 
     }
     
-    func setBrowserStatus (available: Bool, compatible: Bool) {
+    func setBrowserStatus (compatibility: Compatibility) {
         
-        if available {
-            coderevImageView.image = NSImage(named: compatible
+        if compatibility.available {
+            coderevImageView.image = NSImage(named: compatibility.compatible
                 ? NSImage.Name.statusAvailable
                 : NSImage.Name.statusUnavailable)
-            coderevTextField.stringValue = compatible
+            coderevTextField.stringValue = compatibility.compatible
                 ? "Jirassic can read the url of your browser and it will log time based on it"
-                : (available
+                : (compatibility.available
                     ? "Browser support installed but outdated, please update!"
                     : "Browser support not installed, please install!")
         } else {
             coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             coderevTextField.stringValue = "Not installed yet"
         }
-        butInstallCoderev.isHidden = available && compatible
+        butInstallCoderev.isHidden = compatibility.available && compatibility.compatible
     }
     
     func enableCodeReview (_ enable: Bool) {

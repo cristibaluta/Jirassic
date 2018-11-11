@@ -11,29 +11,25 @@ import Cocoa
 class JirassicCell: NSTableRowView {
     
     static let height = CGFloat(60)
-    @IBOutlet fileprivate var statusImageView: NSImageView!
-    @IBOutlet fileprivate var textField: NSTextField!
-    @IBOutlet fileprivate var butInstall: NSButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
+    @IBOutlet private var statusImageView: NSImageView!
+    @IBOutlet private var textField: NSTextField!
+    @IBOutlet private var butInstall: NSButton!
     
-    func setJirassicStatus (available: Bool, compatible: Bool) {
+    func setJirassicStatus (compatibility: Compatibility) {
         
-        if available {
-            statusImageView.image = NSImage(named: compatible
+        if compatibility.available {
+            statusImageView.image = NSImage(named: compatibility.compatible
                 ? NSImage.Name.statusAvailable
                 : NSImage.Name.statusPartiallyAvailable)
-            textField.stringValue = compatible
-                ? "Installed, run 'jirassic' in Terminal for more info"
-                : "Outdated or not installed, please install the latest version!"
+            textField.stringValue = compatibility.compatible
+                ? "Jirassic \(compatibility.currentVersion) installed, type 'jirassic' in Terminal for more info"
+                : "Version \(compatibility.currentVersion) installed, min required is \(compatibility.minVersion), please update"
         } else {
             statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
             textField.stringValue = "Not installed, please follow instructions!"
         }
-        butInstall.isHidden = available && compatible
+        butInstall.isHidden = compatibility.available && compatibility.compatible
     }
     
     func save() {

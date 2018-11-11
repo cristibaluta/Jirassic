@@ -22,11 +22,11 @@ protocol SettingsPresenterInput: class {
 
 protocol SettingsPresenterOutput: class {
     
-    func setShellStatus (available: Bool, compatible: Bool)
-    func setJirassicStatus (available: Bool, compatible: Bool)
-    func setJitStatus (available: Bool, compatible: Bool)
+    func setShellStatus (compatibility: Compatibility)
+    func setJirassicStatus (compatibility: Compatibility)
+    func setJitStatus (compatibility: Compatibility)
     func setGitStatus (available: Bool)
-    func setBrowserStatus (available: Bool, compatible: Bool)
+    func setBrowserStatus (compatibility: Compatibility)
     func setHookupStatus (available: Bool)
     func showAppSettings (_ settings: Settings)
     func enableBackup (_ enabled: Bool, title: String)
@@ -36,13 +36,13 @@ protocol SettingsPresenterOutput: class {
 
 class SettingsPresenter {
     
-    fileprivate var extensions = ExtensionsInteractor()
+    private var extensions = ExtensionsInteractor()
     #if !APPSTORE
-    fileprivate var extensionsInstaller = ExtensionsInstallerInteractor()
+    private var extensionsInstaller = ExtensionsInstallerInteractor()
     #endif
     weak var userInterface: SettingsPresenterOutput?
     var interactor: SettingsInteractorInput?
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
 }
 
 extension SettingsPresenter: SettingsPresenterInput {
@@ -54,23 +54,19 @@ extension SettingsPresenter: SettingsPresenterInput {
             guard let userInterface = self?.userInterface else {
                 return
             }
-            let compatibility = Versioning.compatibilityMap(versions)
+            let compatibility = Versioning(versions: versions)
 
             // Setup shell script
-            userInterface.setShellStatus(available: versions.shellScript != "",
-                                         compatible: compatibility.shellScript)
+            userInterface.setShellStatus(compatibility: compatibility.shellScript)
 
             // Setup jirassic cmd
-            userInterface.setJirassicStatus(available: versions.jirassicCmd != "",
-                                            compatible: compatibility.jirassicCmd)
+            userInterface.setJirassicStatus(compatibility: compatibility.jirassic)
 
             // Setup jit cmd
-            userInterface.setJitStatus(available: versions.shellScript != "",
-                                       compatible: compatibility.jitCmd)
+            userInterface.setJitStatus(compatibility: compatibility.jit)
 
             // Setup browser script
-            userInterface.setBrowserStatus(available: versions.browserScript != "",
-                                           compatible: compatibility.browserScript)
+            userInterface.setBrowserStatus(compatibility: compatibility.browser)
             
             // Git requires extra call
             userInterface.setGitStatus(available: versions.shellScript != "")
@@ -83,14 +79,14 @@ extension SettingsPresenter: SettingsPresenterInput {
     func showSettings() {
         let settings = interactor!.getAppSettings()
         userInterface!.showAppSettings(settings)
-        userInterface!.enableLaunchAtStartup( localPreferences.bool(.launchAtStartup) )
+        userInterface!.enableLaunchAtStartup( pref.bool(.launchAtStartup) )
         enableBackup(settings.enableBackup)
-        let lastActiveSettingsTab = SettingsTab(rawValue: localPreferences.int(.settingsActiveTab))!
+        let lastActiveSettingsTab = SettingsTab(rawValue: pref.int(.settingsActiveTab))!
         selectTab(lastActiveSettingsTab)
     }
     
     func selectTab (_ tab: SettingsTab) {
-        localPreferences.set(tab.rawValue, forKey: .settingsActiveTab)
+        pref.set(tab.rawValue, forKey: .settingsActiveTab)
         userInterface!.selectTab(tab)
     }
     
@@ -125,7 +121,8 @@ extension SettingsPresenter: SettingsPresenterInput {
     func installJirassic() {
         #if !APPSTORE
         extensionsInstaller.installJirassic { (success) in
-            self.userInterface!.setJirassicStatus(available: success, compatible: true)
+            #warning("Update the compatibility object")
+//            self.userInterface!.setJirassicStatus(compatibility: <#T##Compatibility#>)
         }
         #endif
     }
@@ -133,7 +130,8 @@ extension SettingsPresenter: SettingsPresenterInput {
     func installJit() {
         #if !APPSTORE
         extensionsInstaller.installJit { (success) in
-            self.userInterface!.setJitStatus(available: success, compatible: true)
+            #warning("Update the compatibility object")
+//            self.userInterface!.setJitStatus(compatibility: <#T##Compatibility#>)
         }
         #endif
     }
