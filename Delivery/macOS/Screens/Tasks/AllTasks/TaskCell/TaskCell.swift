@@ -86,6 +86,12 @@ class TaskCell: NSTableRowView, CellProtocol {
             self.notesTextField!.textColor = color
         }
     }
+    var timeToolTip: String? {
+        didSet {
+            self.toolTip = nil
+            dateEndTextField.toolTip = timeToolTip
+        }
+    }
     
 	override func awakeFromNib() {
         super.awakeFromNib()

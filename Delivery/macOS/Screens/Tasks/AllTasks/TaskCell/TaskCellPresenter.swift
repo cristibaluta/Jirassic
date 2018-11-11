@@ -52,5 +52,6 @@ class TaskCellPresenter: NSObject {
         cell.isEditable = theTask.taskType != .gitCommit && theTask.taskType != .calendar
         cell.isRemovable = theTask.objectId != nil
         cell.isIgnored = theTask.taskType == .lunch || theTask.taskType == .waste
+        cell.timeToolTip = cell.isEditable ? "Click to edit" : "Git commits and calendar events times can't be edited"
 	}
 }

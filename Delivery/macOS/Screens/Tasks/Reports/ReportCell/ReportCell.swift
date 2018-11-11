@@ -64,6 +64,7 @@ class ReportCell: NSTableRowView, CellProtocol {
     var isRemovable: Bool = false
     var isIgnored: Bool = false
     var color: NSColor = NSColor.black
+    var timeToolTip: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

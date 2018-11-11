@@ -18,6 +18,7 @@ protocol CellProtocol {
     var isRemovable: Bool {get set}
     var isIgnored: Bool {get set}
     var color: NSColor {get set}
+    var timeToolTip: String? {get set}
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())? {get set}
 	var didRemoveCell: ((_ cell: CellProtocol) -> ())? {get set}
