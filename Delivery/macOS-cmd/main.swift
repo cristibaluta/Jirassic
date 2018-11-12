@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.10.12"
+let appVersion = "18.11.15"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -61,9 +61,9 @@ let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: 
 // Insert the task
 var arguments = ProcessInfo.processInfo.arguments
 //arguments.append("list")
-//arguments.append("2017.03.01")
-//arguments.append("reports")
-//arguments.append("2018.07")
+//arguments.append("2018.11.09")
+arguments.append("reports")
+arguments.append("2018.11.09")
 //arguments.append("6")
 //print(arguments)
 
@@ -78,7 +78,7 @@ func dayStarted() -> Bool {
     
     let currentTasks = reader.tasksInDay(Date())
     guard currentTasks.count > 0 else {
-        print("Working day was not started yet. Run jirassic start.")
+        print("Working day was not started yet, start it with 'jirassic start'")
         return false
     }
     return true
@@ -91,7 +91,8 @@ func list (dayOnDate date: Date) {
     if tasks.count > 0 {
         for task in tasks {
             let startTime = task.startDate != nil ? (task.startDate!.HHmm() + " ") : ""
-            print("• " + startTime + task.endDate.HHmm() + " " + task.notes!)
+            let notes = task.notes ?? task.taskType.defaultNotes
+            print("• " + startTime + task.endDate.HHmm() + " " + notes)
         }
     } else {
         print("No tasks!")
@@ -104,18 +105,14 @@ func reports (forDay date: Date, targetHoursInDay: Double?) {
     print("")
     let tasks = reader.tasksInDay(date)
     let reportsInteractor = CreateReport()
-    let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
-    var totalDuration = 0.0
+    let duration: Double? = targetHoursInDay != nil ? targetHoursInDay!.hoursToSec : nil
     let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
     if reports.count > 0 {
-        for report in reports {
-            totalDuration += report.duration
-            print("\(report.taskNumber) \(report.title) (" + report.duration.secToHoursAndMinutesFormatted + ")")
-            print(report.duration)
-            print(report.notes)
-            print("")
-        }
-        print("Total duration: \(totalDuration.secToHoursAndMinutesFormatted)")
+        let message = reportsInteractor.toString(reports)
+        print(message)
+        print("")
+        let workedLength = StatisticsInteractor().workedTime(fromReports: reports)
+        print("Total duration: \(workedLength.secToHoursAndMin)")
     } else {
         print("No tasks!")
     }
@@ -129,14 +126,14 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
     print("")
     
     let tasks = reader.tasksInMonth(date)
-    let reportsInteractor = CreateMonthReport()
-    let duration: Double? = targetHoursInDay != nil ? targetHoursInDay! * 3600 : nil
-    let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
-    if reports.count > 0 {
-        let joined = reportsInteractor.joinReports(reports)
+    let monthReportsInteractor = CreateMonthReport()
+    let duration: Double? = targetHoursInDay != nil ? targetHoursInDay!.hoursToSec : nil
+    let result = monthReportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
+    if result.byTasks.count > 0 {
+        let joined = monthReportsInteractor.joinReports(result.byTasks)
         print(joined.notes)
         print("")
-        print("Total duration: \(joined.totalDuration.secToHoursAndMinutesFormatted)")
+        print("Total duration: \(joined.totalDuration.secToHoursAndMin)")
     } else {
         print("No tasks!")
     }
@@ -188,7 +185,7 @@ func insertIssue (arguments: [String]) {
         taskNumber: taskNumber,
         taskTitle: nil,
         taskType: taskType,
-        objectId: String.random()
+        objectId: String.generateId()
     )
 //    print(task)
     let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
@@ -207,17 +204,17 @@ func insert (taskType: Command, arguments: [String]) {
     var task: Task?
     
     switch taskType {
-        case .scrum: task = Task(subtype: .scrumEnd)
+        case .scrum: task = Task(endDate: Date(), type: .scrum)
             break
-        case .lunch: task = Task(subtype: .lunchEnd)
+        case .lunch: task = Task(endDate: Date(), type: .lunch)
             break
-        case .meeting: task = Task(subtype: .meetingEnd)
+        case .meeting: task = Task(endDate: Date(), type: .meeting)
             break
-        case .waste: task = Task(subtype: .wasteEnd)
+        case .waste: task = Task(endDate: Date(), type: .waste)
             break
-        case .learning: task = Task(subtype: .learningEnd)
+        case .learning: task = Task(endDate: Date(), type: .learning)
             break
-        case .coderev: task = Task(subtype: .coderevEnd)
+        case .coderev: task = Task(endDate: Date(), type: .coderev)
             break
         default:
             return

@@ -84,9 +84,6 @@ class CreateMonthReport {
                     reportsByTaskNumber[report.taskNumber] = monthReport
                 }
             }
-            if d < 28800.0 {
-                print("duration: \(d)")
-            }
         }
 
         return (byDays: reportsByDay, byTasks: Array(reportsByTaskNumber.values))
