@@ -20,13 +20,6 @@ class TimeBox: NSBox {
             timeTextField!.stringValue = newValue
         }
     }
-    
-    var isEditable: Bool = true {
-        didSet {
-            timeTextField?.isEditable = isEditable
-        }
-    }
-    
     var onClick: (() -> Void)?
     
     init() {
@@ -54,6 +47,7 @@ class TimeBox: NSBox {
         timeTextField?.focusRingType = .none
         timeTextField?.placeholderString = "00:00"
         timeTextField?.isEnabled = false
+        timeTextField?.isEditable = false
         
         self.addSubview(timeTextField!)
 
@@ -66,9 +60,7 @@ class TimeBox: NSBox {
     }
     
     override func mouseDown(with event: NSEvent) {
-        if isEditable {
-            onClick?()
-        }
+        onClick?()
     }
     
     override func updateTrackingAreas() {

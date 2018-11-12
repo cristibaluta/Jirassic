@@ -69,7 +69,11 @@ class NonTaskCell: NSTableRowView, CellProtocol {
         }
     }
     var isDark: Bool = false
-    var isEditable: Bool = true
+    var isEditable: Bool = true {
+        didSet {
+            notesTextField.isEditable = isEditable
+        }
+    }
     var isRemovable: Bool = true
     var isIgnored: Bool = false {
         didSet {
@@ -113,7 +117,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
 	}
     
     private func createTimeboxPopover (timebox: TimeBox) {
-        guard activeTimeboxPopover == nil else {
+        guard activeTimeboxPopover == nil, isEditable else {
             return
         }
         let popover = NSPopover()
@@ -156,8 +160,6 @@ extension NonTaskCell {
         
 		self.butRemove.isHidden = false
         self.butAdd.isHidden = false
-        self.dateStartTextField.isEditable = true
-        self.dateEndTextField.isEditable = true
 		self.notesTextFieldTrailingContraint.constant = 80
 		self.setNeedsDisplay(self.frame)
 	}
@@ -177,8 +179,6 @@ extension NonTaskCell {
         
 		self.butRemove.isHidden = true
         self.butAdd.isHidden = true
-        self.dateStartTextField.isEditable = false
-        self.dateEndTextField.isEditable = false
 		self.notesTextFieldTrailingContraint.constant = 10
 		self.setNeedsDisplay(self.frame)
 	}

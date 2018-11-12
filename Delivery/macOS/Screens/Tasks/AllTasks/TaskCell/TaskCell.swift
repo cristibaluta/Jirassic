@@ -70,7 +70,6 @@ class TaskCell: NSTableRowView, CellProtocol {
     var isDark: Bool = false
     var isEditable: Bool = true {
         didSet {
-            dateEndTextField.isEditable = isEditable
             issueNrTextField.isEditable = isEditable
             notesTextField.isEditable = isEditable
         }
@@ -195,7 +194,6 @@ extension TaskCell {
 		butAdd.isHidden = !show
         line1.isHidden = !show
         line2.isHidden = !show
-		dateEndTextField?.isEditable = isEditable && show
 	}
 	
 	func ensureTrackingArea() {
