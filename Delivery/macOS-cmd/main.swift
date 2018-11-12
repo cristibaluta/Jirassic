@@ -62,8 +62,8 @@ let reader = ReadTasksInteractor(repository: localRepository, remoteRepository: 
 var arguments = ProcessInfo.processInfo.arguments
 //arguments.append("list")
 //arguments.append("2018.11.09")
-arguments.append("reports")
-arguments.append("2018.11.09")
+//arguments.append("reports")
+//arguments.append("2018.11.09")
 //arguments.append("6")
 //print(arguments)
 
