@@ -89,8 +89,14 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
                 guard let wself = self, let userInterface = wself.userInterface else {
                     return
                 }
+                var errorMessage = error.localizedDescription
+                switch error._code {
+                case -1001: errorMessage = "Server not reachable."
+                case 1: errorMessage = "Unknown error, please try to login via browser first, fixing captcha might be needed."
+                default: errorMessage = error.localizedDescription
+                }
                 userInterface.enableProgressIndicator(false)
-                userInterface.showErrorMessage("Error: \(error._code == -1001 ? "Server not reachable." : error.localizedDescription)")
+                userInterface.showErrorMessage("Error: \(errorMessage)")
             }
             
         })

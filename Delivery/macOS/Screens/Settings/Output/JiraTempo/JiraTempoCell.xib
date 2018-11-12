@@ -81,7 +81,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6l-NZ-sMH">
-                                <rect key="frame" x="11" y="84" width="405" height="17"/>
+                                <rect key="frame" x="11" y="84" width="485" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Error" id="6TL-Ue-k0c">
                                     <font key="font" metaFont="smallSystem"/>
