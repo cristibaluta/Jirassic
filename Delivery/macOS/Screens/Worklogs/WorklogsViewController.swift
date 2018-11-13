@@ -77,6 +77,6 @@ extension WorklogsViewController: WorklogsPresenterOutput {
     }
     
     func saveSuccess() {
-        self.onCancel?()
+        self.onSave?()
     }
 }

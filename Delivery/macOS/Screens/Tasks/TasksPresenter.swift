@@ -129,6 +129,7 @@ extension TasksPresenter: TasksPresenterInput {
         let closeDay = CloseDay()
         closeDay.close(with: currentTasks)
         if shouldSaveToJira {
+            // Reload data will be called after save with success
             ui!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
         } else {
             reloadData()

@@ -224,18 +224,18 @@ extension TasksViewController: TasksPresenterOutput {
         let controller = appWireframe!.presentEndDayController(date: date, tasks: tasks)
         controller.onSave = { [weak self] in
             if let strongSelf = self {
-                strongSelf.presenter!.updateNoTasksState()
                 strongSelf.appWireframe!.removeEndDayController()
                 strongSelf.splitView.isHidden = false
                 strongSelf.hideControls(false)
+                strongSelf.presenter!.reloadData()
             }
         }
         controller.onCancel = { [weak self] in
             if let strongSelf = self {
                 strongSelf.appWireframe!.removeEndDayController()
                 strongSelf.splitView.isHidden = false
-                strongSelf.presenter!.updateNoTasksState()
                 strongSelf.hideControls(false)
+                strongSelf.presenter!.updateNoTasksState()
             }
         }
     }
