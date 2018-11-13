@@ -16,6 +16,8 @@ class TasksViewController: NSViewController {
     @IBOutlet private weak var listSegmentedControl: NSSegmentedControl!
     @IBOutlet private weak var butRefresh: NSButton!
     @IBOutlet private weak var butSettings: NSButton!
+    @IBOutlet private weak var butWarning: NSButton!
+    @IBOutlet private weak var butWarningRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var butQuit: NSButton!
     @IBOutlet private weak var butMinimize: NSButton!
     @IBOutlet private weak var loadingTasksIndicator: NSProgressIndicator!
@@ -23,6 +25,7 @@ class TasksViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
+    /// Property to keep a reference to the active cell rect
     private var rectToDisplayPopoverAt: NSRect?
     private var activePopover: NSPopover?
 	
@@ -60,6 +63,7 @@ class TasksViewController: NSViewController {
     private func hideControls (_ hide: Bool) {
         butSettings.isHidden = hide
         butRefresh.isHidden = remoteRepository == nil ? true : hide
+        butWarning.isHidden = hide
         butQuit.isHidden = hide
         butMinimize.isHidden = hide
         listSegmentedControl.isHidden = hide
@@ -106,6 +110,7 @@ extension TasksViewController: TasksPresenterOutput {
     func showLoadingIndicator (_ show: Bool) {
         
         butRefresh.isHidden = remoteRepository == nil ? true : show
+        butWarningRightConstraint.constant = butRefresh.isHidden ? 0 : 22
         if show {
             loadingTasksIndicator.isHidden = false
             loadingTasksIndicator.startAnimation(nil)
@@ -113,6 +118,10 @@ extension TasksViewController: TasksPresenterOutput {
             loadingTasksIndicator.stopAnimation(nil)
             loadingTasksIndicator.isHidden = true
         }
+    }
+    
+    func showWarning (_ show: Bool) {
+        butWarning.isHidden = !show
     }
     
     func showMessage (_ message: MessageViewModel) {

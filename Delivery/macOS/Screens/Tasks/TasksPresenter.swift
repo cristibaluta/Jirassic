@@ -26,6 +26,7 @@ protocol TasksPresenterInput: class {
 protocol TasksPresenterOutput: class {
     
     func showLoadingIndicator (_ show: Bool)
+    func showWarning (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
     func showCalendar (_ weeks: [Week])
     func showTasks (_ tasks: [Task])
@@ -53,14 +54,27 @@ class TasksPresenter {
     private var currentReports = [Report]()
     private var selectedListType = ListType.allTasks
     private let pref = RCPreferences<LocalPreferences>()
+    private var extensions = ExtensionsInteractor()
     private var lastSelectedDay: Day?
 }
 
 extension TasksPresenter: TasksPresenterInput {
     
     func initUI() {
+        ui!.showWarning(false)
         ui!.showLoadingIndicator(false)
         reloadData()
+        extensions.getVersions { [weak self] (versions) in
+            guard let userInterface = self?.ui else {
+                return
+            }
+            let compatibility = Versioning(versions: versions)
+            if compatibility.shellScript.available {
+                userInterface.showWarning(!compatibility.jirassic.compatible || !compatibility.jit.compatible)
+            } else {
+                userInterface.showWarning(false)
+            }
+        }
 //        updateNoTasksState()
     }
     

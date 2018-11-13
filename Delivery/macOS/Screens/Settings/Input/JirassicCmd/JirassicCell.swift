@@ -19,9 +19,9 @@ class JirassicCell: NSTableRowView {
     func setJirassicStatus (compatibility: Compatibility) {
         
         if compatibility.available {
-            statusImageView.image = NSImage(named: compatibility.compatible
-                ? NSImage.Name.statusAvailable
-                : NSImage.Name.statusPartiallyAvailable)
+            statusImageView.image = compatibility.compatible
+                ? NSImage(named: NSImage.Name.statusAvailable)
+                : NSImage(named: NSImage.Name(rawValue: "WarningButton"))
             textField.stringValue = compatibility.compatible
                 ? "Jirassic \(compatibility.currentVersion) installed, type 'jirassic' in Terminal for more info"
                 : "Version \(compatibility.currentVersion) installed, min required is \(compatibility.minVersion), please update"

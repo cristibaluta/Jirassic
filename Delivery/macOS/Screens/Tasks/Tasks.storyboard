@@ -210,6 +210,21 @@
                                     <action selector="handleMinimizeAppButton:" target="wHU-IX-gfU" id="8JQ-19-WTf"/>
                                 </connections>
                             </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="AWO-mi-jqE">
+                                <rect key="frame" x="413" y="400" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="6Ea-jH-hJI"/>
+                                    <constraint firstAttribute="width" constant="22" id="XeN-vA-brM"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="WarningButton" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="NaV-bW-dGt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <accessibility description="Settings" identifier="Settings"/>
+                                <connections>
+                                    <action selector="handleSettingsButton:" target="wHU-IX-gfU" id="QKs-Xz-6b1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="lYQ-Lm-GnG" firstAttribute="centerY" secondItem="GOP-YB-kkJ" secondAttribute="centerY" id="1Vd-we-oBW"/>
@@ -217,7 +232,9 @@
                             <constraint firstItem="95a-7I-VNJ" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="BIc-JC-FRc"/>
                             <constraint firstItem="dKg-L3-iYb" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="22" id="EDa-6H-Km8"/>
                             <constraint firstAttribute="trailing" secondItem="sOM-pv-IVs" secondAttribute="trailing" constant="12" id="EDp-gv-hVw"/>
+                            <constraint firstItem="sOM-pv-IVs" firstAttribute="leading" secondItem="AWO-mi-jqE" secondAttribute="trailing" constant="22" id="HM3-hh-hbz"/>
                             <constraint firstItem="sOM-pv-IVs" firstAttribute="top" secondItem="FwC-dy-0bY" secondAttribute="top" constant="20" id="IOj-nH-o5u"/>
+                            <constraint firstItem="GOP-YB-kkJ" firstAttribute="centerY" secondItem="AWO-mi-jqE" secondAttribute="centerY" id="MmY-HK-Va4"/>
                             <constraint firstAttribute="trailing" secondItem="pVs-CS-Pcx" secondAttribute="trailing" id="Txh-8R-Xmj"/>
                             <constraint firstItem="uwg-ZV-XEf" firstAttribute="leading" secondItem="dKg-L3-iYb" secondAttribute="trailing" constant="10" id="Uqr-uo-mGH"/>
                             <constraint firstItem="SJz-Xr-YhG" firstAttribute="leading" secondItem="FwC-dy-0bY" secondAttribute="leading" constant="12" id="c6a-uG-6en"/>
@@ -238,6 +255,8 @@
                         <outlet property="butQuit" destination="dKg-L3-iYb" id="UTl-h4-8iX"/>
                         <outlet property="butRefresh" destination="GOP-YB-kkJ" id="okT-iV-BcZ"/>
                         <outlet property="butSettings" destination="sOM-pv-IVs" id="kgx-pV-DJa"/>
+                        <outlet property="butWarning" destination="AWO-mi-jqE" id="Z87-Is-xRG"/>
+                        <outlet property="butWarningRightConstraint" destination="HM3-hh-hbz" id="b0Q-vR-rBr"/>
                         <outlet property="calendarScrollView" destination="TP3-Rr-lmx" id="Zzl-gR-bBE"/>
                         <outlet property="listSegmentedControl" destination="95a-7I-VNJ" id="8E8-Sc-7fh"/>
                         <outlet property="loadingTasksIndicator" destination="85r-Gq-mow" id="x3D-ic-FGi"/>
@@ -360,5 +379,6 @@
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="WarningButton" width="30" height="30"/>
     </resources>
 </document>

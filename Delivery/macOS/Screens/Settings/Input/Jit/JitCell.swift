@@ -32,9 +32,9 @@ class JitCell: NSTableRowView {
     func setJitStatus (compatibility: Compatibility) {
         
         if compatibility.available {
-            statusImageView.image = NSImage(named: compatibility.compatible
-                ? NSImage.Name.statusAvailable
-                : NSImage.Name.statusPartiallyAvailable)
+            statusImageView.image = compatibility.compatible
+                ? NSImage(named: NSImage.Name.statusAvailable)
+                : NSImage(named: NSImage.Name(rawValue: "WarningButton"))
             
             textField.stringValue = compatibility.compatible
                 ? "Jit \(compatibility.currentVersion) installed, type 'jit' in Terminal for more info"
