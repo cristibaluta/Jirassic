@@ -148,9 +148,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 lastModifiedDate: nil,
                 startDate: self.browser.startDate,
                 endDate: self.browser.endDate!,
-                notes: "Code review" + (self.browser.reviewedTasks.count > 1 ? " for tasks: \(self.browser.reviewedTasks.joined(separator: ", "))" : ""),
-                taskNumber: "coderev",
-                taskTitle: "",
+                notes: self.browser.reviewedTasks.joined(separator: ", "),
+                taskNumber: nil,
+                taskTitle: nil,
                 taskType: .coderev,
                 objectId: String.generateId()
             )

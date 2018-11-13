@@ -40,12 +40,16 @@ class TaskCellPresenter: NSObject {
         default:
             break
         }
-		
+
+        var notes = theTask.notes ?? theTask.taskType.defaultNotes
+        if theTask.taskType == .coderev {
+            notes = "\(theTask.taskType.defaultNotes): \(notes)"
+        }
 		cell.data = (
             dateStart: theTask.startDate,
             dateEnd: theTask.endDate,
 			taskNumber: theTask.taskNumber ?? theTask.taskType.defaultNotes,
-            notes: theTask.notes ?? theTask.taskType.defaultNotes,
+            notes: notes,
 			taskType: theTask.taskType
 		)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
