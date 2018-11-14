@@ -210,7 +210,7 @@
                                     <action selector="handleMinimizeAppButton:" target="wHU-IX-gfU" id="8JQ-19-WTf"/>
                                 </connections>
                             </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="AWO-mi-jqE">
+                            <button toolTip="Some plugins needs updating." translatesAutoresizingMaskIntoConstraints="NO" id="AWO-mi-jqE">
                                 <rect key="frame" x="413" y="400" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="6Ea-jH-hJI"/>
