@@ -96,6 +96,11 @@ extension TasksViewController {
         appWireframe!.flipToSettingsController()
     }
     
+    @IBAction func handleWarningButton (_ sender: NSButton) {
+        RCPreferences<LocalPreferences>().set(SettingsTab.input.rawValue, forKey: .settingsActiveTab)
+        appWireframe!.flipToSettingsController()
+    }
+    
     @IBAction func handleQuitAppButton (_ sender: NSButton) {
         NSApplication.shared.terminate(nil)
     }

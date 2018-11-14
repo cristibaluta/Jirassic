@@ -222,7 +222,7 @@
                                 </buttonCell>
                                 <accessibility description="Settings" identifier="Settings"/>
                                 <connections>
-                                    <action selector="handleSettingsButton:" target="wHU-IX-gfU" id="QKs-Xz-6b1"/>
+                                    <action selector="handleWarningButton:" target="wHU-IX-gfU" id="UkX-8J-BTW"/>
                                 </connections>
                             </button>
                         </subviews>
