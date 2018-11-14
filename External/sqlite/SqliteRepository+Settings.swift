@@ -43,7 +43,7 @@ extension SqliteRepository: RepositorySettings {
     func saveSettings (_ settings: Settings) {
         
         let ssettings = ssettingsFromSettings(settings)
-        print(ssettings.save())
+        RCLog(ssettings.save())
     }
     
     fileprivate func settingsFromSSettings (_ ssettings: SSettings) -> Settings {
