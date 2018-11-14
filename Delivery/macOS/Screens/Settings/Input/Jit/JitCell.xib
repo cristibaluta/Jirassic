@@ -24,11 +24,10 @@
                                     <constraint firstAttribute="height" constant="18" id="17z-6c-lDC"/>
                                     <constraint firstAttribute="width" constant="18" id="ZHa-Mr-qjD"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="fIl-5O-cqT"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="WarningButton" id="fIl-5O-cqT"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-Sa-Pob">
-                                <rect key="frame" x="8" y="85" width="22" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5pv-Sa-Pob">
+                                <rect key="frame" x="10" y="85" width="22" height="18"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Zgx-ob-TCr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -46,7 +45,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZYg-1V-a4C">
-                                <rect key="frame" x="393" y="85" width="81" height="19"/>
+                                <rect key="frame" x="393" y="86" width="81" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LvH-GE-wFG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -66,15 +65,17 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="5pv-Sa-Pob" firstAttribute="centerY" secondItem="6xF-lx-omh" secondAttribute="centerY" id="68O-PK-2Rd"/>
                             <constraint firstItem="J2T-Jl-X5Z" firstAttribute="leading" secondItem="Ns2-hK-EP5" secondAttribute="leading" constant="8" id="KmN-JR-lqD"/>
                             <constraint firstItem="DyW-dA-ORD" firstAttribute="top" secondItem="6xF-lx-omh" secondAttribute="bottom" constant="20" id="O2D-5i-pbY"/>
                             <constraint firstAttribute="trailing" secondItem="ZYg-1V-a4C" secondAttribute="trailing" constant="10" id="QyI-WI-PQW"/>
-                            <constraint firstItem="6xF-lx-omh" firstAttribute="centerY" secondItem="J2T-Jl-X5Z" secondAttribute="centerY" id="W30-tw-4UU"/>
                             <constraint firstItem="J2T-Jl-X5Z" firstAttribute="top" secondItem="Ns2-hK-EP5" secondAttribute="top" constant="20" id="WLK-Xu-X04"/>
-                            <constraint firstItem="6xF-lx-omh" firstAttribute="leading" secondItem="J2T-Jl-X5Z" secondAttribute="trailing" constant="6" id="bBN-8x-n2I"/>
+                            <constraint firstItem="5pv-Sa-Pob" firstAttribute="leading" secondItem="J2T-Jl-X5Z" secondAttribute="trailing" constant="-14" id="hBO-5s-ZWt"/>
                             <constraint firstAttribute="bottom" secondItem="DyW-dA-ORD" secondAttribute="bottom" constant="20" id="j8u-vD-SE4"/>
                             <constraint firstItem="DyW-dA-ORD" firstAttribute="leading" secondItem="Ns2-hK-EP5" secondAttribute="leading" constant="32" id="kMn-aK-24L"/>
-                            <constraint firstItem="ZYg-1V-a4C" firstAttribute="centerY" secondItem="6xF-lx-omh" secondAttribute="centerY" id="uLz-8m-FUr"/>
+                            <constraint firstItem="5pv-Sa-Pob" firstAttribute="top" secondItem="Ns2-hK-EP5" secondAttribute="top" constant="22" id="mAF-uK-ZEO"/>
+                            <constraint firstItem="6xF-lx-omh" firstAttribute="leading" secondItem="5pv-Sa-Pob" secondAttribute="trailing" constant="2" id="n9u-mq-hzK"/>
+                            <constraint firstItem="ZYg-1V-a4C" firstAttribute="centerY" secondItem="6xF-lx-omh" secondAttribute="centerY" constant="-1" id="uLz-8m-FUr"/>
                             <constraint firstAttribute="trailing" secondItem="DyW-dA-ORD" secondAttribute="trailing" constant="10" id="wsO-f2-y4E"/>
                         </constraints>
                     </view>
@@ -90,12 +91,13 @@
                 <outlet property="butEnable" destination="5pv-Sa-Pob" id="0Ft-4p-NBx"/>
                 <outlet property="butInstall" destination="ZYg-1V-a4C" id="Whq-ZH-cbb"/>
                 <outlet property="statusImageView" destination="J2T-Jl-X5Z" id="dsS-tK-EW3"/>
+                <outlet property="statusImageViewGapToButEnableConstraint" destination="hBO-5s-ZWt" id="X5I-UM-TFw"/>
                 <outlet property="textField" destination="6xF-lx-omh" id="XcO-Rt-Ksk"/>
             </connections>
             <point key="canvasLocation" x="139" y="211.5"/>
         </customView>
     </objects>
     <resources>
-        <image name="NSStatusNone" width="16" height="16"/>
+        <image name="WarningButton" width="30" height="30"/>
     </resources>
 </document>
