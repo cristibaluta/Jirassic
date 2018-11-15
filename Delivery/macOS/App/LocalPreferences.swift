@@ -14,7 +14,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case usePercents = "usePercents"
     case useDuration = "useDuration"
     case firstLaunch = "firstLaunch"
-    case wizardStep = "wizardStep"
+    case wizardSteps = "wizardSteps"
     case settingsActiveTab = "settingsActiveTab"
     case settingsJiraUrl = "settingsJiraUrl"
     case settingsJiraUser = "settingsJiraUser"
@@ -41,7 +41,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .usePercents:              return true
         case .useDuration:              return false
         case .firstLaunch:              return true
-        case .wizardStep:               return WizardStep.shell.rawValue
+        case .wizardSteps:              return []
         case .settingsActiveTab:        return SettingsTab.tracking.rawValue
         case .settingsJiraUrl:          return ""
         case .settingsJiraUser:         return ""

@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Simulate a freshly installed app by resetting the preferences
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
-//        localPreferences.reset(.wizardStep)
-//        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
+        localPreferences.reset(.wizardSteps)
+        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
 //        localPreferences.set(0, forKey: .wizardStep)
 //        localPreferences.set(false, forKey: .enableGit)
         #endif
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             })
         }
-        _ = Store.shared
+//        _ = Store.shared
         #else
         RCLog("Icloud is not supported in this target, continuing without...")
         #endif
@@ -63,11 +63,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		menu.onOpen = {
             self.removeActivePopup()
             let isFirstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
-            let wizardStep = self.localPreferences.int(.wizardStep)
+            let wizardSteps: [Int] = self.localPreferences.get(.wizardSteps)
             if isFirstLaunch {
                 self.presentWelcomePopup()
             }
-            else if wizardStep != WizardStep.finished.rawValue {
+            else if wizardSteps.count < WizardStep.allCases.count {
                 self.presentWizard()
             }
             else {

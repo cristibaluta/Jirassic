@@ -8,13 +8,12 @@
 
 import Cocoa
 
-enum WizardStep: Int {
+enum WizardStep: Int, CaseIterable {
     case shell = 0
     case browser = 1
     case git = 2
     case calendar = 3
     case jira = 4
-    case finished = 5
 }
 
 class WizardViewController: NSViewController {
@@ -29,13 +28,20 @@ class WizardViewController: NSViewController {
     @IBOutlet private var levelIndicator: NSLevelIndicator!
     private let pref = RCPreferences<LocalPreferences>()
     private var step: WizardStep = WizardStep.shell
+    private let steps: [WizardStep] = [.shell, .browser, .git, .calendar, .jira]
+    private var stepsUnseen: [WizardStep] {
+        let stepsSaved: [Int] = pref.get(.wizardSteps)
+        let stepsSeen: [WizardStep] = stepsSaved.map({ WizardStep(rawValue: $0)! })
+        let unseen: [WizardStep] = steps.filter({ !stepsSeen.contains($0) })
+        return unseen
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createLayer()
-        levelIndicator.maxValue = 5
-        if let wizardStep = WizardStep(rawValue: self.pref.int(.wizardStep)) {
+        levelIndicator.maxValue = Double(WizardStep.allCases.count)
+        if let wizardStep = stepsUnseen.first {
             goTo(step: wizardStep)
         }
     }
@@ -132,9 +138,6 @@ class WizardViewController: NSViewController {
             containerViewHeightConstrain.constant = 114
             butSkip.title = "Finish setup"
             break
-        case .finished:
-            self.handleNextButton(self.butSkip)
-            break
         }
     }
 
@@ -149,16 +152,26 @@ class WizardViewController: NSViewController {
     }
     
     @IBAction func handleNextButton (_ sender: NSButton) {
-        if let nextStep = WizardStep(rawValue: step.rawValue + 1) {
+        var stepsUnseen = self.stepsUnseen
+        let stepSeen = stepsUnseen.removeFirst()
+        if let nextStep = stepsUnseen.first {
             goTo(step: nextStep)
-            pref.set(nextStep.rawValue, forKey: .wizardStep)
+            let stepsSaved: [Int] = pref.get(.wizardSteps)
+            var stepsSeen: [WizardStep] = stepsSaved.map({ WizardStep(rawValue: $0)! })
+            stepsSeen.append(stepSeen)
+            stepsSeen.sort { (w1, w2) -> Bool in
+                w1.rawValue < w2.rawValue
+            }
+            let stepsToSave: [Int] = stepsSeen.map({ $0.rawValue })
+            pref.set(stepsToSave, forKey: .wizardSteps)
         } else {
             handleSkipButton(sender)
         }
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
-        pref.set(WizardStep.finished.rawValue, forKey: .wizardStep)
+        let stepsToSave: [Int] = WizardStep.allCases.map({ $0.rawValue })
+        pref.set(stepsToSave, forKey: .wizardSteps)
         appWireframe!.flipToTasksController()
     }
     

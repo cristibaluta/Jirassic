@@ -30,7 +30,8 @@ class WelcomeViewController: NSViewController {
     
     @IBAction func handleStartButton (_ sender: NSButton) {
         localPreferences.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
-        localPreferences.set(WizardStep.finished.rawValue, forKey: .wizardStep)
+        let stepsToSave: [Int] = WizardStep.allCases.map({ $0.rawValue })
+        localPreferences.set(stepsToSave, forKey: .wizardSteps)
         appWireframe!.flipToTasksController()
     }
     
