@@ -783,7 +783,7 @@
 		40FCE4231DF7646F00D4FD45 /* ExtensionsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInteractor.swift; sourceTree = "<group>"; };
 		40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandboxedAppleScript.swift; sourceTree = "<group>"; };
 		40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSuggestionTests.swift; path = TaskSuggestion/TaskSuggestionTests.swift; sourceTree = "<group>"; };
-		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = Welcome/WelcomeViewController.swift; sourceTree = "<group>"; };
+		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
@@ -1078,8 +1078,9 @@
 		287B358520FBAD160022F43E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				288BB67D2085252900CF720A /* WizardViewController.swift */,
 				40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */,
+				40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */,
+				288BB67D2085252900CF720A /* WizardViewController.swift */,
 				288BB6832087157F00CF720A /* WizardAppleScriptView.swift */,
 				288BB6802087152B00CF720A /* WizardAppleScriptView.xib */,
 				56D90CFA20876F2B00F24442 /* WizardGitView.swift */,
@@ -1499,7 +1500,6 @@
 			isa = PBXGroup;
 			children = (
 				28279E9A1E8300E200EAF9FC /* Placeholder */,
-				40FCE42A1DFC3F4F00D4FD45 /* Welcome */,
 				287B358520FBAD160022F43E /* Onboarding */,
 				405B155F1DEF3CE20009871C /* TaskSuggestion */,
 				5685C7621DE8721100CA545E /* Account */,
@@ -1632,14 +1632,6 @@
 				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */,
 			);
 			path = External;
-			sourceTree = "<group>";
-		};
-		40FCE42A1DFC3F4F00D4FD45 /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */,
-			);
-			name = Welcome;
 			sourceTree = "<group>";
 		};
 		564E55F12028839F00CE4C76 /* Worklogs */ = {
