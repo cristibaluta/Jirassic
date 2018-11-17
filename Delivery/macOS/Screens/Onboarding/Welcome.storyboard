@@ -199,8 +199,77 @@
                                 </constraints>
                                 <color key="borderColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </box>
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="p4S-ON-7S6">
+                                <rect key="frame" x="97" y="139" width="364" height="87"/>
+                                <view key="contentView" id="GfQ-OY-qPo">
+                                    <rect key="frame" x="1" y="1" width="362" height="85"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-3g-ZSB">
+                                            <rect key="frame" x="18" y="43" width="326" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="What's new" id="rJM-JN-Qub">
+                                                <font key="font" metaFont="systemBold" size="18"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-1j-Pwp">
+                                            <rect key="frame" x="18" y="20" width="326" height="17"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="what's new " id="44P-Lb-sys">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="yFw-iW-0pS">
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="85"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="pgH-Tb-psY">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="handleWhatsNewButton:" target="JD0-O4-EsS" id="K1g-IV-k8g"/>
+                                            </connections>
+                                        </button>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="uBO-pP-xIA">
+                                            <rect key="frame" x="322" y="22" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="5VC-gZ-BsQ"/>
+                                                <constraint firstAttribute="width" constant="30" id="Ohs-rE-TPE"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vjY-WF-xG1">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="handleWhatsNewButton:" target="JD0-O4-EsS" id="h6c-Rh-HPv"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="e4P-1j-Pwp" firstAttribute="top" secondItem="yfK-3g-ZSB" secondAttribute="bottom" constant="6" id="0sg-5C-VYI"/>
+                                        <constraint firstItem="yfK-3g-ZSB" firstAttribute="top" secondItem="GfQ-OY-qPo" secondAttribute="top" constant="20" id="5B4-qu-Q79"/>
+                                        <constraint firstItem="yFw-iW-0pS" firstAttribute="leading" secondItem="GfQ-OY-qPo" secondAttribute="leading" id="8Pr-Pz-KnT"/>
+                                        <constraint firstItem="e4P-1j-Pwp" firstAttribute="leading" secondItem="GfQ-OY-qPo" secondAttribute="leading" constant="20" id="CMp-0v-bfl"/>
+                                        <constraint firstAttribute="trailing" secondItem="e4P-1j-Pwp" secondAttribute="trailing" constant="20" id="JSj-Jm-ODA"/>
+                                        <constraint firstItem="yfK-3g-ZSB" firstAttribute="leading" secondItem="GfQ-OY-qPo" secondAttribute="leading" constant="20" id="MHX-p2-Trz"/>
+                                        <constraint firstAttribute="bottom" secondItem="e4P-1j-Pwp" secondAttribute="bottom" constant="20" id="V0u-g5-u0E"/>
+                                        <constraint firstItem="yFw-iW-0pS" firstAttribute="top" secondItem="GfQ-OY-qPo" secondAttribute="top" id="a4O-0B-VNK"/>
+                                        <constraint firstAttribute="bottom" secondItem="yFw-iW-0pS" secondAttribute="bottom" id="cf6-XI-oHJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="uBO-pP-xIA" secondAttribute="trailing" constant="10" id="hLt-NI-cg5"/>
+                                        <constraint firstAttribute="trailing" secondItem="yFw-iW-0pS" secondAttribute="trailing" id="mtf-Un-IAK"/>
+                                        <constraint firstAttribute="bottom" secondItem="uBO-pP-xIA" secondAttribute="bottom" constant="22" id="pi6-tG-IeR"/>
+                                        <constraint firstAttribute="trailing" secondItem="yfK-3g-ZSB" secondAttribute="trailing" constant="20" id="vQZ-ae-iNr"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="364" id="M83-sz-H4R"/>
+                                </constraints>
+                                <color key="borderColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </box>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="p4S-ON-7S6" firstAttribute="centerX" secondItem="vMb-6z-kGp" secondAttribute="centerX" id="6SP-1H-vVk"/>
                             <constraint firstItem="ERS-BC-qGc" firstAttribute="centerY" secondItem="vMb-6z-kGp" secondAttribute="centerY" id="86N-e6-fiH"/>
                             <constraint firstItem="Pcq-Wr-CsI" firstAttribute="leading" secondItem="vMb-6z-kGp" secondAttribute="leading" id="9Z5-QL-WIS"/>
                             <constraint firstItem="mlH-It-Zam" firstAttribute="centerX" secondItem="vMb-6z-kGp" secondAttribute="centerX" id="COc-Wj-roy"/>
@@ -218,8 +287,15 @@
                             <constraint firstItem="epJ-lR-g9d" firstAttribute="leading" secondItem="vMb-6z-kGp" secondAttribute="leading" id="nxL-FW-UWH"/>
                             <constraint firstItem="LIy-LY-WEx" firstAttribute="leading" secondItem="vMb-6z-kGp" secondAttribute="leading" constant="12" id="qMQ-qh-wOO"/>
                             <constraint firstItem="epJ-lR-g9d" firstAttribute="top" secondItem="3oK-tV-cbq" secondAttribute="bottom" constant="10" id="xn7-VU-d12"/>
+                            <constraint firstItem="p4S-ON-7S6" firstAttribute="centerY" secondItem="vMb-6z-kGp" secondAttribute="centerY" constant="60" id="yf4-Ob-EeX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="boxSetupOthers" destination="mlH-It-Zam" id="9hJ-im-VTf"/>
+                        <outlet property="boxSetupProgrammers" destination="ERS-BC-qGc" id="ExP-1C-iJl"/>
+                        <outlet property="boxWhatsNew" destination="p4S-ON-7S6" id="8z4-7p-K1v"/>
+                        <outlet property="whatsNewTextField" destination="e4P-1j-Pwp" id="3eu-6x-VPs"/>
+                    </connections>
                 </viewController>
                 <customObject id="uLi-kL-Wm3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
