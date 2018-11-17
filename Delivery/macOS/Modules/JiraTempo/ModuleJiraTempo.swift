@@ -10,28 +10,33 @@ import Foundation
 
 class ModuleJiraTempo {
     
-    let repository: JiraRepository!
-    private let localPreferences = RCPreferences<LocalPreferences>()
-    var isReachable: Bool {
-        return localPreferences.string(.settingsJiraUrl) != ""
-            && localPreferences.string(.settingsJiraUser) != ""
+    private var repository: JiraRepository?
+    private let pref = RCPreferences<LocalPreferences>()
+    /// Returns true if credentials are all setup
+    var isConfigured: Bool {
+        return pref.string(.settingsJiraUrl) != ""
+            && pref.string(.settingsJiraUser) != ""
             && Keychain.getPassword() != ""
-            && localPreferences.string(.settingsJiraProjectKey) != ""
-            && localPreferences.string(.settingsJiraProjectIssueKey) != ""
+    }
+    var isProjectConfigured: Bool {
+        return pref.string(.settingsJiraProjectKey) != ""
+            && pref.string(.settingsJiraProjectIssueKey) != ""
     }
     
-    init() {
-        repository = JiraRepository(url: localPreferences.string(.settingsJiraUrl),
-                                    user: localPreferences.string(.settingsJiraUser),
+    func initRepository() {
+        repository = JiraRepository(url: pref.string(.settingsJiraUrl),
+                                    user: pref.string(.settingsJiraUser),
                                     password: Keychain.getPassword())
     }
     
     func fetchProjects (success: @escaping ([JProject]) -> Void, failure: @escaping (Error) -> Void) {
-        repository.fetchProjects(success: success, failure: failure)
+        initRepository()
+        repository!.fetchProjects(success: success, failure: failure)
     }
     
     func fetchProjectIssues (projectKey: String, completion: @escaping (([JProjectIssue]?) -> Void)) {
-        repository.fetchProjectIssues(projectKey: projectKey, completion: completion)
+        initRepository()
+        repository!.fetchProjectIssues(projectKey: projectKey, completion: completion)
     }
     
     func postWorklog (worklog: String,
@@ -40,15 +45,16 @@ class ModuleJiraTempo {
                       success: @escaping () -> Void,
                       failure: @escaping (Error) -> Void) {
         
-        let project = JProject(id: localPreferences.string(.settingsJiraProjectId),
-                               key: localPreferences.string(.settingsJiraProjectKey),
+        let project = JProject(id: pref.string(.settingsJiraProjectId),
+                               key: pref.string(.settingsJiraProjectKey),
                                name: "",
                                url: "")
         let projectIssue = JProjectIssue(id: "",
-                                         key: localPreferences.string(.settingsJiraProjectIssueKey),
+                                         key: pref.string(.settingsJiraProjectIssueKey),
                                          url: "")
 
-        repository.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date, success: {
+        initRepository()
+        repository!.postWorklog(worklog, duration: duration, in: project, to: projectIssue, date: date, success: {
             success()
         }, failure: { error in
             failure(error)

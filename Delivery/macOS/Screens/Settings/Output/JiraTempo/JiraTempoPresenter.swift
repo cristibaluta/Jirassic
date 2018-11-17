@@ -58,7 +58,8 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     
     func loadProjects() {
         
-        guard store.isJiraTempoPurchased else {
+        // Start loading only if credentials are all setup
+        guard store.isJiraTempoPurchased && moduleJira.isConfigured else {
             return
         }
         userInterface!.enableProgressIndicator(true)

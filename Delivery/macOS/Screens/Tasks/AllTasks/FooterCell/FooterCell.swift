@@ -63,7 +63,7 @@ class FooterCell: NSTableRowView {
     }
     
     private func setupJiraButton() {
-        let available = store.isJiraTempoPurchased && moduleJira.isReachable
+        let available = store.isJiraTempoPurchased && moduleJira.isConfigured && moduleJira.isProjectConfigured
         let enabled = available && pref.bool(.enableJira)
         butJira.isEnabled = available
         butJira.state = enabled ? .on : .off

@@ -19,9 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activePopover: NSPopover?
     let appWireframe = AppWireframe()
     let sleep = SleepNotifications()
-    private let browser = BrowserNotification()
     let theme = AppTheme()
     let menu = MenuBarController()
+    private let browser = BrowserNotification()
     private let pref = RCPreferences<LocalPreferences>()
     private var animatesOpen = true
 	
@@ -36,9 +36,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Simulate a freshly installed app by resetting the preferences
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
-        pref.reset(.wizardSteps)
-        pref.set("", forKey: .appVersion)
-        UserDefaults.standard.set(5, forKey: "wizardStep")
+//        pref.reset(.wizardSteps)
+//        pref.set("", forKey: .appVersion)
+//        UserDefaults.standard.set(5, forKey: "wizardStep")
 //        localPreferences.set(false, forKey: .enableGit)
         #endif
         
