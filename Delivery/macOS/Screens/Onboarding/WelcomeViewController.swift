@@ -25,11 +25,16 @@ class WelcomeViewController: NSViewController {
        // }
         
         // Do we need to display  what's new box?
-        if true {
+        // When app is an update from previous version
+        let isFirstLaunchOfThisVersion = pref.string(.appVersion) != Versioning.appVersion
+        #warning("This is deprecated preference")
+        let wizardStep = UserDefaults.standard.integer(forKey: "wizardStep")
+        let isAnUpdateFromAnotherVersion = pref.string(.appVersion) != "" || wizardStep > 0
+        if isFirstLaunchOfThisVersion && isAnUpdateFromAnotherVersion {
             boxWhatsNew.isHidden = false
             boxSetupProgrammers.isHidden = true
             boxSetupOthers.isHidden = true
-            whatsNewTextField.stringValue = "-- Include Calendar.app events in the reports\n-- Create monthly reports\n-- Fixes tasks not being editable. Git commits and calendar events are not editable but they can be deleted after the day is closed\n-- Various UI improvements and fixes"
+            whatsNewTextField.stringValue = "• Add meetings from Calendar.app to the reports\n• Create monthly reports\n• Fixes bug in editing tasks. Git commits and calendar meetings are not editable, they can only be deleted after the day is closed\n• Extended calendar history to one year\n• Various UI improvements and fixes"
         } else {
             boxWhatsNew.isHidden = true
             boxSetupProgrammers.isHidden = false
@@ -43,14 +48,14 @@ class WelcomeViewController: NSViewController {
     
     @IBAction func handleSetupProgrammersButton (_ sender: NSButton) {
         // Set that we saw this version of the app launch
-        pref.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
+        pref.set(Versioning.appVersion, forKey: .appVersion)
         let stepsToSave: [Int] = []
         pref.set(stepsToSave, forKey: .wizardSteps)
         appWireframe!.flipToWizardController()
     }
     
     @IBAction func handleSetupOthersButton (_ sender: NSButton) {
-        pref.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
+        pref.set(Versioning.appVersion, forKey: .appVersion)
         let stepsSeen = [WizardStep.shell, WizardStep.browser, WizardStep.git]
         let stepsToSave: [Int] = stepsSeen.map({ $0.rawValue })
         pref.set(stepsToSave, forKey: .wizardSteps)
@@ -58,7 +63,7 @@ class WelcomeViewController: NSViewController {
     }
     
     @IBAction func handleWhatsNewButton (_ sender: NSButton) {
-        pref.set(false, forKey: .firstLaunch, version: Versioning.appVersion)
+        pref.set(Versioning.appVersion, forKey: .appVersion)
         let stepsSeen = [WizardStep.shell, WizardStep.browser, WizardStep.git, WizardStep.jira]
         let stepsToSave: [Int] = stepsSeen.map({ $0.rawValue })
         pref.set(stepsToSave, forKey: .wizardSteps)

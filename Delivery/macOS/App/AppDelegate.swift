@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let browser = BrowserNotification()
     let theme = AppTheme()
     let menu = MenuBarController()
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
     private var animatesOpen = true
 	
     class func sharedApp() -> AppDelegate {
@@ -36,9 +36,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Simulate a freshly installed app by resetting the preferences
 //        localPreferences.reset()
 //        UserDefaults.standard.serverChangeToken = nil
-        localPreferences.reset(.wizardSteps)
-        localPreferences.set(true, forKey: .firstLaunch, version: Versioning.appVersion)
-//        localPreferences.set(0, forKey: .wizardStep)
+        pref.reset(.wizardSteps)
+        pref.set("", forKey: .appVersion)
+        UserDefaults.standard.set(5, forKey: "wizardStep")
 //        localPreferences.set(false, forKey: .enableGit)
         #endif
         
@@ -62,9 +62,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.isDark = theme.isDark
 		menu.onOpen = {
             self.removeActivePopup()
-            let isFirstLaunch = self.localPreferences.bool(.firstLaunch, version: Versioning.appVersion)
-            let wizardSteps: [Int] = self.localPreferences.get(.wizardSteps)
-            if isFirstLaunch {
+            let isFirstLaunchOfThisVersion = self.pref.string(.appVersion) != Versioning.appVersion
+            let wizardSteps: [Int] = self.pref.get(.wizardSteps)
+            if isFirstLaunchOfThisVersion {
                 self.presentWelcomePopup()
             }
             else if wizardSteps.count < WizardStep.allCases.count {

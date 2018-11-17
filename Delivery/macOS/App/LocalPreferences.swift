@@ -13,7 +13,8 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case launchAtStartup = "launchAtStartup"
     case usePercents = "usePercents"
     case useDuration = "useDuration"
-    case firstLaunch = "firstLaunch"
+    // Currently installed app version. In case of an update this is the version of the previous app
+    case appVersion = "appVersion"
     case wizardSteps = "wizardSteps"
     case settingsActiveTab = "settingsActiveTab"
     case settingsJiraUrl = "settingsJiraUrl"
@@ -40,7 +41,7 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .launchAtStartup:          return false
         case .usePercents:              return true
         case .useDuration:              return false
-        case .firstLaunch:              return true
+        case .appVersion:               return ""
         case .wizardSteps:              return []
         case .settingsActiveTab:        return SettingsTab.tracking.rawValue
         case .settingsJiraUrl:          return ""
