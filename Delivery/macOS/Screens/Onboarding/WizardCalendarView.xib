@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -66,7 +66,7 @@
                 <constraint firstItem="NF3-oE-rpO" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="jkl-me-0L2"/>
             </constraints>
             <connections>
-                <outlet property="butPick" destination="K2r-LN-bzz" id="6rU-dQ-JLU"/>
+                <outlet property="butAuthorize" destination="K2r-LN-bzz" id="j7Y-Jl-18X"/>
                 <outlet property="butSkip" destination="EFe-aL-uim" id="2CE-Pd-av3"/>
                 <outlet property="scrollView" destination="NF3-oE-rpO" id="LKo-sz-ESh"/>
             </connections>

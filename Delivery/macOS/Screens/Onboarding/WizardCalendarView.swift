@@ -11,12 +11,11 @@ import Cocoa
 class WizardCalendarView: NSView {
     
     @IBOutlet private var scrollView: NSScrollView!
-    @IBOutlet fileprivate var butPick: NSButton!
+    @IBOutlet private var butAuthorize: NSButton!
     @IBOutlet var butSkip: NSButton!
     var onSkip: (() -> Void)?
-    fileprivate let pref = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
     private var calendarsButtons = [NSButton]()
-    
     private var presenter: CalendarPresenterInput = CalendarPresenter()
     
     override func awakeFromNib() {
@@ -59,6 +58,7 @@ class WizardCalendarView: NSView {
 extension WizardCalendarView: CalendarPresenterOutput {
     
     func enable (_ enabled: Bool) {
+        butAuthorize.isHidden = enabled
     }
     
     func setStatusImage (_ imageName: NSImage.Name) {

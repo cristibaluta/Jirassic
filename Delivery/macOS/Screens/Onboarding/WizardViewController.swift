@@ -63,10 +63,10 @@ class WizardViewController: NSViewController {
         switch step {
         case .shell:
             titleLabel.stringValue = "Shell Support"
-            subtitleLabel.stringValue = "Jirassic needs shell support to communicate with Git and the Browser.\nShell is accessed through the AppleScript which for security reasons you need to install manually."
+            subtitleLabel.stringValue = "Jirassic needs shell support to communicate with Git and the Browser.\nThe shell is accessed through an AppleScript which for security reasons you need to install manually."
             let applescriptView = WizardAppleScriptView.instantiateFromXib()
             applescriptView.titleLabel.stringValue = "Install ShellSupport.scpt"
-            applescriptView.subtitle = "Go to jirassic.com, copy the install script and run it in your Terminal. We'll wait!"
+            applescriptView.subtitle = "Go to jirassic.com, copy the install script and run it in your Terminal.app. We'll wait!"
             applescriptView.scriptName = kShellSupportScriptName
             applescriptView.onSkip = { [weak self] in
                 if let wself = self {
@@ -97,7 +97,7 @@ class WizardViewController: NSViewController {
             break
         case .git:
             titleLabel.stringValue = "Git"
-            subtitleLabel.stringValue = "Include the git commits in the reports, to help you write more accurate worklogs. Chose the user and project you work on!"
+            subtitleLabel.stringValue = "Include git commits in reports, to help you write more accurate worklogs. Chose the users and projects you want to track!"
             let gitView = WizardGitView.instantiateFromXib()
             gitView.onSkip = { [weak self] in
                 if let wself = self {
@@ -111,7 +111,7 @@ class WizardViewController: NSViewController {
             break
         case .calendar:
             titleLabel.stringValue = "Calendar.app"
-            subtitleLabel.stringValue = "Includes calendar events in the reports as meetings."
+            subtitleLabel.stringValue = "Include calendar events in the reports and treat them as meetings. Please enable and select the calendars you use!"
             let calendarView = WizardCalendarView.instantiateFromXib()
             calendarView.onSkip = { [weak self] in
                 if let wself = self {

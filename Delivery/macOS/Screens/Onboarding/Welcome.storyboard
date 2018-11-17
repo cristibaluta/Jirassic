@@ -37,7 +37,7 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="epJ-lR-g9d">
                                 <rect key="frame" x="-2" y="332" width="562" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You are about to save lots of time and neurons, track your time at work automatically." id="xdp-k7-dJy">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You are about to save lots of time and neurons, track your time at work automatically" id="xdp-k7-dJy">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -59,14 +59,24 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IAt-rC-AWM">
                                             <rect key="frame" x="18" y="20" width="326" height="34"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Enable shell support to create reports from Git commits and detect code review sessions." id="g8z-Mj-eKj">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Enable shell support to create reports from Git commits and detect code review sessions" id="g8z-Mj-eKj">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="ukh-Na-jV3">
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="102"/>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1ny-3B-8rA">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="handleSetupProgrammersButton:" target="JD0-O4-EsS" id="AeD-j5-diP"/>
+                                            </connections>
+                                        </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="eSq-Dj-8s9">
-                                            <rect key="frame" x="318" y="56" width="30" height="30"/>
+                                            <rect key="frame" x="322" y="22" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="6Hu-TV-xuS"/>
                                                 <constraint firstAttribute="height" constant="30" id="RNy-FE-XfI"/>
@@ -79,16 +89,6 @@
                                                 <action selector="handleSetupProgrammersButton:" target="JD0-O4-EsS" id="gAt-uU-8lI"/>
                                             </connections>
                                         </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="ukh-Na-jV3">
-                                            <rect key="frame" x="0.0" y="0.0" width="362" height="102"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="1ny-3B-8rA">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="handleSetupProgrammersButton:" target="JD0-O4-EsS" id="AeD-j5-diP"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="IAt-rC-AWM" secondAttribute="trailing" constant="20" id="1Ke-G4-Sy7"/>
@@ -97,10 +97,10 @@
                                         <constraint firstAttribute="trailing" secondItem="ukh-Na-jV3" secondAttribute="trailing" id="AYZ-k4-UUQ"/>
                                         <constraint firstItem="ukh-Na-jV3" firstAttribute="leading" secondItem="vE6-Oq-Bat" secondAttribute="leading" id="RZq-bQ-4Mg"/>
                                         <constraint firstItem="ukh-Na-jV3" firstAttribute="top" secondItem="vE6-Oq-Bat" secondAttribute="top" id="SBb-1p-3gj"/>
-                                        <constraint firstItem="eSq-Dj-8s9" firstAttribute="top" secondItem="vE6-Oq-Bat" secondAttribute="top" constant="16" id="VUN-zB-4bQ"/>
                                         <constraint firstAttribute="bottom" secondItem="ukh-Na-jV3" secondAttribute="bottom" id="WeL-yd-dk2"/>
                                         <constraint firstItem="IAt-rC-AWM" firstAttribute="leading" secondItem="vE6-Oq-Bat" secondAttribute="leading" constant="20" id="Zbv-hV-QHb"/>
-                                        <constraint firstAttribute="trailing" secondItem="eSq-Dj-8s9" secondAttribute="trailing" constant="14" id="fd2-mp-Aw6"/>
+                                        <constraint firstAttribute="trailing" secondItem="eSq-Dj-8s9" secondAttribute="trailing" constant="10" id="fd2-mp-Aw6"/>
+                                        <constraint firstAttribute="bottom" secondItem="eSq-Dj-8s9" secondAttribute="bottom" constant="22" id="hyU-4I-sCh"/>
                                         <constraint firstAttribute="bottom" secondItem="IAt-rC-AWM" secondAttribute="bottom" constant="20" id="ioQ-Ya-RZE"/>
                                         <constraint firstItem="IAt-rC-AWM" firstAttribute="top" secondItem="5x2-Pv-4ob" secondAttribute="bottom" constant="6" id="ta0-xX-iYe"/>
                                         <constraint firstItem="5x2-Pv-4ob" firstAttribute="top" secondItem="vE6-Oq-Bat" secondAttribute="top" constant="20" id="zZA-4M-Tux"/>
@@ -145,6 +145,14 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Gum-Jb-IVQ">
+                                            <rect key="frame" x="18" y="20" width="326" height="34"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Enable the Calendar.app events to appear in your reports" id="kyY-gF-4lC">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Lq3-Tx-L59">
                                             <rect key="frame" x="0.0" y="0.0" width="362" height="102"/>
                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="YYt-yj-JsG">
@@ -155,16 +163,8 @@
                                                 <action selector="handleSetupOthersButton:" target="JD0-O4-EsS" id="gss-G6-8Z6"/>
                                             </connections>
                                         </button>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Gum-Jb-IVQ">
-                                            <rect key="frame" x="18" y="20" width="326" height="34"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Enable the Calendar.app events to appear in your reports" id="kyY-gF-4lC">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="o9l-77-QKP">
-                                            <rect key="frame" x="318" y="56" width="30" height="30"/>
+                                            <rect key="frame" x="322" y="22" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="aJ8-g1-rcW"/>
                                                 <constraint firstAttribute="width" constant="30" id="aNN-zc-AY1"/>
@@ -182,8 +182,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Gum-Jb-IVQ" secondAttribute="bottom" constant="20" id="4H8-7p-FrP"/>
                                         <constraint firstAttribute="trailing" secondItem="Lq3-Tx-L59" secondAttribute="trailing" id="6vD-Eb-e9Y"/>
                                         <constraint firstItem="Lq3-Tx-L59" firstAttribute="leading" secondItem="Off-R5-DBq" secondAttribute="leading" id="Duh-ao-LnG"/>
-                                        <constraint firstItem="o9l-77-QKP" firstAttribute="top" secondItem="Off-R5-DBq" secondAttribute="top" constant="16" id="EGE-mX-Ziy"/>
-                                        <constraint firstAttribute="trailing" secondItem="o9l-77-QKP" secondAttribute="trailing" constant="14" id="JjS-8E-jBz"/>
+                                        <constraint firstAttribute="trailing" secondItem="o9l-77-QKP" secondAttribute="trailing" constant="10" id="JjS-8E-jBz"/>
                                         <constraint firstAttribute="bottom" secondItem="Lq3-Tx-L59" secondAttribute="bottom" id="KgH-ER-JYd"/>
                                         <constraint firstItem="MYs-HJ-sfw" firstAttribute="leading" secondItem="Off-R5-DBq" secondAttribute="leading" constant="20" id="Kms-ay-Ibb"/>
                                         <constraint firstItem="MYs-HJ-sfw" firstAttribute="top" secondItem="Off-R5-DBq" secondAttribute="top" constant="20" id="Mm3-Vk-BSM"/>
@@ -191,6 +190,7 @@
                                         <constraint firstItem="Gum-Jb-IVQ" firstAttribute="top" secondItem="MYs-HJ-sfw" secondAttribute="bottom" constant="6" id="PHR-oP-2RF"/>
                                         <constraint firstItem="Gum-Jb-IVQ" firstAttribute="leading" secondItem="Off-R5-DBq" secondAttribute="leading" constant="20" id="PyA-Gw-ZGk"/>
                                         <constraint firstAttribute="trailing" secondItem="Gum-Jb-IVQ" secondAttribute="trailing" constant="20" id="egc-nS-3ne"/>
+                                        <constraint firstAttribute="bottom" secondItem="o9l-77-QKP" secondAttribute="bottom" constant="22" id="y4i-UG-jhI"/>
                                         <constraint firstAttribute="trailing" secondItem="MYs-HJ-sfw" secondAttribute="trailing" constant="20" id="zSf-qy-7hG"/>
                                     </constraints>
                                 </view>
