@@ -43,13 +43,13 @@ extension JiraRepository {
             "dateStarted": dateStarted,
             "timeSpentSeconds": duration
         ]
-        request?.post(at: path, parameters: parameters, success: { (response) in
+        request?.post(at: path, parameters: parameters, success: { responseData in
             
-            if let _ = response as? [String: Any] {
-                success()
-            } else {
-                RCLogErrorO("Respondse is not a json")
+            guard let _ = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else {
+                failure(RCHttpError(errorDescription: "Invalid json response"))
+                return
             }
+            success()
             
         }, failure: { (err) in
             failure(err)
