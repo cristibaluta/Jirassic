@@ -34,9 +34,9 @@ class ModuleJiraTempo {
         repository!.fetchProjects(success: success, failure: failure)
     }
     
-    func fetchProjectIssues (projectKey: String, completion: @escaping (([JProjectIssue]?) -> Void)) {
+    func fetchProjectIssues (projectKey: String, success: @escaping ([JProjectIssue]) -> Void, failure: @escaping (Error) -> Void) {
         initRepository()
-        repository!.fetchProjectIssues(projectKey: projectKey, completion: completion)
+        repository!.fetchProjectIssues(projectKey: projectKey, success: success, failure: failure)
     }
     
     func postWorklog (worklog: String,

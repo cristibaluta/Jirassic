@@ -108,7 +108,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
         userInterface!.enableProgressIndicator(true)
         userInterface!.showErrorMessage("")
         
-        moduleJira.fetchProjectIssues (projectKey: projectKey) { [weak self] (issues) in
+        moduleJira.fetchProjectIssues (projectKey: projectKey, success: { [weak self] (issues) in
             
             DispatchQueue.main.async {
                 
@@ -116,16 +116,28 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
                     return
                 }
                 userInterface.enableProgressIndicator(false)
-                
-                guard let issues = issues else {
-                    userInterface.showErrorMessage("Error: Server not reachable.")
-                    return
-                }
                 let titles = issues.map { $0.key }
-                
                 userInterface.showProjectIssues(titles, selectedIssue: wself.localPreferences.string(.settingsJiraProjectIssueKey))
             }
-        }
+            
+        }, failure: { [weak self] (error) in
+            
+            DispatchQueue.main.async {
+                
+                guard let wself = self, let userInterface = wself.userInterface else {
+                    return
+                }
+                var errorMessage = error.localizedDescription
+                switch error._code {
+                case -1001: errorMessage = "Server not reachable."
+                case 1: errorMessage = "Unknown error, please try to login via browser first, fixing captcha might be needed."
+                default: errorMessage = error.localizedDescription
+                }
+                userInterface.enableProgressIndicator(false)
+                userInterface.showErrorMessage("Error: \(errorMessage)")
+            }
+            
+        })
     }
     
     func save (url: String, user: String, password: String) {
