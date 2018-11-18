@@ -33,8 +33,8 @@ extension CoreDataRepository: RepositoryTasks {
         var subpredicates = [
             NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
         ]
-        if let sinceDate = UserDefaults.standard.localChangeDate {
-            subpredicates.append(NSPredicate(format: "lastModifiedDate == nil || lastModifiedDate > %@", sinceDate as CVarArg))
+        if let lastSyncDateWithRemote = UserDefaults.standard.lastSyncDateWithRemote {
+            subpredicates.append(NSPredicate(format: "lastModifiedDate == nil || lastModifiedDate > %@", lastSyncDateWithRemote as CVarArg))
         } else {
             subpredicates.append(NSPredicate(format: "lastModifiedDate == nil"))
         }

@@ -10,7 +10,7 @@ import Foundation
 
 public extension UserDefaults {
     
-    var localChangeDate: Date? {
+    var lastSyncDateWithRemote: Date? {
         get {
             return self.object(forKey: "localChangeDate") as? Date
         }

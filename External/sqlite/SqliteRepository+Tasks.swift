@@ -37,11 +37,11 @@ extension SqliteRepository: RepositoryTasks {
     func queryUnsyncedTasks() -> [Task] {
 
         #if !CMD
-        RCLogO("Query tasks since last sync date \(String(describing: UserDefaults.standard.localChangeDate))")
+        RCLogO("Query tasks since last sync date \(String(describing: UserDefaults.standard.lastSyncDateWithRemote))")
         #endif
         var sinceDatePredicate = ""
-        if let sinceDate = UserDefaults.standard.localChangeDate {
-            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(sinceDate.YYYYMMddHHmmssGMT())')"
+        if let lastSyncDateWithRemote = UserDefaults.standard.lastSyncDateWithRemote {
+            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(lastSyncDateWithRemote.YYYYMMddHHmmssGMT())')"
         }
         let predicate = "(lastModifiedDate is NULL\(sinceDatePredicate)) AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
