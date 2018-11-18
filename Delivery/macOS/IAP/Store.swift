@@ -28,7 +28,7 @@ class Store {
     private var products = [SKProduct]()
     
     init() {
-        getProducts { (success) in }
+//        getProducts { (success) in }
         
 //        let receiptUrl = Bundle.main.appStoreReceiptURL
     }

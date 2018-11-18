@@ -41,7 +41,7 @@ class SettingsViewController: NSViewController {
         trackingView = TrackingView.instantiateFromXib()
         inputsScrollView = InputsScrollView.instantiateFromXib()
         outputsScrollView = OutputsScrollView.instantiateFromXib()
-        storeView = StoreView.instantiateFromXib()
+//        storeView = StoreView.instantiateFromXib()
         
         presenter!.checkExtensions()
         presenter!.showSettings()
@@ -84,7 +84,7 @@ class SettingsViewController: NSViewController {
         trackingView!.removeFromSuperview()
         inputsScrollView!.removeFromSuperview()
         outputsScrollView!.removeFromSuperview()
-        storeView!.removeFromSuperview()
+//        storeView!.removeFromSuperview()
     }
 }
 
@@ -181,8 +181,9 @@ extension SettingsViewController: SettingsPresenterOutput {
             container.addSubview(outputsScrollView!)
             outputsScrollView!.constrainToSuperview()
         case .store:
-            container.addSubview(storeView!)
-            storeView!.constrainToSuperview()
+            break
+//            container.addSubview(storeView!)
+//            storeView!.constrainToSuperview()
         }
     }
 }
