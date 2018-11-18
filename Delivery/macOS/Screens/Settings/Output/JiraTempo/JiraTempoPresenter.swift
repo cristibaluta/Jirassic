@@ -31,8 +31,7 @@ class JiraTempoPresenter {
     weak var userInterface: JiraTempoPresenterOutput?
     private var moduleJira = ModuleJiraTempo()
     private let store = Store.shared
-    private let localPreferences = RCPreferences<LocalPreferences>()
-    private var existingPassword = ""
+    private let pref = RCPreferences<LocalPreferences>()
 }
 
 extension JiraTempoPresenter: JiraTempoPresenterInput {
@@ -45,20 +44,19 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
         
         userInterface!.setPurchased(store.isJiraTempoPurchased)
         userInterface!.showErrorMessage("")
-        existingPassword = Keychain.getPassword()
         
-        let selectedProjectName = localPreferences.string(.settingsJiraProjectKey)
+        let selectedProjectName = pref.string(.settingsJiraProjectKey)
         let projects = selectedProjectName != "" ? [selectedProjectName] : []
         userInterface!.showProjects(projects, selectedProject: selectedProjectName)
         
-        let selectedProjectIssueName = localPreferences.string(.settingsJiraProjectIssueKey)
+        let selectedProjectIssueName = pref.string(.settingsJiraProjectIssueKey)
         let issues = selectedProjectIssueName != "" ? [selectedProjectIssueName] : []
         userInterface!.showProjectIssues(issues, selectedIssue: selectedProjectIssueName)
     }
     
     func loadProjects() {
         
-        // Start loading only if credentials are all setup
+        // Start loading only if credentials are all setup, otherwise crashes will happen
         guard store.isJiraTempoPurchased && moduleJira.isConfigured else {
             return
         }
@@ -75,7 +73,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
                 userInterface.enableProgressIndicator(false)
                 
                 let titles = projects.map { $0.key }
-                let selectedProjectKey = wself.localPreferences.string(.settingsJiraProjectKey)
+                let selectedProjectKey = wself.pref.string(.settingsJiraProjectKey)
                 
                 userInterface.showProjects(titles, selectedProject: selectedProjectKey)
                 if projects.count > 0 && selectedProjectKey != "" {
@@ -86,18 +84,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
         }, failure: { [weak self] (error) in
             
             DispatchQueue.main.async {
-                
-                guard let wself = self, let userInterface = wself.userInterface else {
-                    return
-                }
-                var errorMessage = error.localizedDescription
-                switch error._code {
-                case -1001: errorMessage = "Server not reachable."
-                case 1: errorMessage = "Unknown error, please try to login via browser first, fixing captcha might be needed."
-                default: errorMessage = error.localizedDescription
-                }
-                userInterface.enableProgressIndicator(false)
-                userInterface.showErrorMessage("Error: \(errorMessage)")
+                self?.handleError(error)
             }
             
         })
@@ -117,36 +104,36 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
                 }
                 userInterface.enableProgressIndicator(false)
                 let titles = issues.map { $0.key }
-                userInterface.showProjectIssues(titles, selectedIssue: wself.localPreferences.string(.settingsJiraProjectIssueKey))
+                userInterface.showProjectIssues(titles, selectedIssue: wself.pref.string(.settingsJiraProjectIssueKey))
             }
             
         }, failure: { [weak self] (error) in
             
             DispatchQueue.main.async {
-                
-                guard let wself = self, let userInterface = wself.userInterface else {
-                    return
-                }
-                var errorMessage = error.localizedDescription
-                switch error._code {
-                case -1001: errorMessage = "Server not reachable."
-                case 1: errorMessage = "Unknown error, please try to login via browser first, fixing captcha might be needed."
-                default: errorMessage = error.localizedDescription
-                }
-                userInterface.enableProgressIndicator(false)
-                userInterface.showErrorMessage("Error: \(errorMessage)")
+                self?.handleError(error)
             }
             
         })
     }
     
+    private func handleError(_ error: Error) {
+        var errorMessage = error.localizedDescription
+        switch error._code {
+        case -1001: errorMessage = "Server not reachable."
+        case 1: errorMessage = "Unknown, please verify login via browser, solving captcha might be needed."
+        default: errorMessage = error.localizedDescription
+        }
+        userInterface!.enableProgressIndicator(false)
+        userInterface!.showErrorMessage("Error: \(errorMessage)")
+    }
+    
     func save (url: String, user: String, password: String) {
         
-        localPreferences.set(url, forKey: .settingsJiraUrl)
-        localPreferences.set(user, forKey: .settingsJiraUser)
-        if password != existingPassword {
+        pref.set(url, forKey: .settingsJiraUrl)
+        pref.set(user, forKey: .settingsJiraUser)
+        // Save password only if different than the existing one
+        if password != Keychain.getPassword() {
             Keychain.setPassword(password)
-            existingPassword = password
         }
     }
 }
