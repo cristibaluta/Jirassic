@@ -52,12 +52,12 @@ extension WorklogsPresenter: WorklogsPresenterInput {
         let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
         workedLength = StatisticsInteractor().duration(of: reports)
-        let duration = Date.secondsToPercentTime(pref.bool(.enableRoundingDay) ? workdayLength : workedLength)
+        let duration = (pref.bool(.enableRoundingDay) ? workdayLength : workedLength).secToPercent
         
         userInterface!.showDuration(duration)
         userInterface!.showWorklog(message)
-        setupRoundingButton(workdayLength: Date.secondsToPercentTime(workdayLength),
-                            workedLength: Date.secondsToPercentTime(workedLength))
+        setupRoundingButton(workdayLength: workdayLength.secToPercent,
+                            workedLength: workedLength.secToPercent)
     }
     
     private func setupRoundingButton (workdayLength: TimeInterval, workedLength: TimeInterval) {
@@ -95,6 +95,7 @@ extension WorklogsPresenter: WorklogsPresenterInput {
     
     func enableRounding (_ enabled: Bool) {
         pref.set(enabled, forKey: .enableRoundingDay)
-        userInterface!.showDuration(Date.secondsToPercentTime(enabled ? workdayLength : workedLength))
+        let duration = enabled ? workdayLength : workedLength
+        userInterface!.showDuration(duration.secToPercent)
     }
 }

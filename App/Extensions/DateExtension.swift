@@ -224,10 +224,6 @@ extension Date {
 		return gregorian.date(from: comps)!
 	}
 	
-	static func secondsToPercentTime (_ time: Double) -> Double {
-        return Double(Darwin.round((time / 3600) * 100) / 100)
-	}
-	
     func dateByUpdating (hour: Int, minute: Int, second: Int = 0) -> Date {
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)

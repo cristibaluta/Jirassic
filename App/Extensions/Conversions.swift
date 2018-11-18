@@ -26,7 +26,7 @@ extension Double {
         return self / 3600
     }
     
-    // Transforms a number of seconds into hours:minutes. The hours can be over 24
+    /// Transforms a number of seconds into 'hours minutes'. The hours can be over 24
     var secToHoursAndMin: String {
         let h = floor(self / 3600)
         let secondsRemaining = self - h * 3600
@@ -34,5 +34,10 @@ extension Double {
         let hours = Int(h)
         let minutes = Int(m)
         return "\(hours)h \(minutes)m"
+    }
+    
+    /// One hour equals to 1 percent
+    var secToPercent: Double {
+        return Double(Darwin.round((self / 3600) * 100) / 100)
     }
 }

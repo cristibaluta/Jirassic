@@ -11,6 +11,7 @@ import Cocoa
 class ReportCellPresenter: NSObject {
     
     var cell: CellProtocol!
+    private let pref = RCPreferences<LocalPreferences>()
     
     convenience init (cell: CellProtocol) {
         self.init()
@@ -34,9 +35,8 @@ class ReportCellPresenter: NSObject {
             notes: notesJoined,
             taskType: .issue
         )
-        let localPreferences = RCPreferences<LocalPreferences>()
-        cell.duration = localPreferences.bool(.usePercents) 
-            ? "\(Date.secondsToPercentTime(theReport.duration))"
+        cell.duration = pref.bool(.usePercents)
+            ? "\(theReport.duration.secToPercent)"
             : theReport.duration.secToHoursAndMin// Date(timeIntervalSince1970: theReport.duration).HHmmGMT()
         cell.statusImage?.image = NSImage(named: NSImage.Name.statusAvailable)
         cell.isDark = AppDelegate.sharedApp().theme.isDark

@@ -82,9 +82,9 @@ class TasksScrollView: NSScrollView {
         default:
             break
         }
-        headerView.workdayTime = Date.secondsToPercentTime(workingDayLength)
+        headerView.workdayTime = workingDayLength.secToPercent
         headerView.workedTime = localPreferences.bool(.usePercents)
-            ? String(describing: Date.secondsToPercentTime(totalTime))
+            ? String(describing: totalTime.secToPercent)
             : totalTime.secToHoursAndMin
         headerView.didChangeSettings = { [weak self] in
             self?.didChangeSettings!()
