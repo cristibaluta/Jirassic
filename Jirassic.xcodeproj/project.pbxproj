@@ -2838,7 +2838,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
@@ -2868,7 +2868,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "APPSTORE=1";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;

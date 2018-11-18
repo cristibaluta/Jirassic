@@ -49,6 +49,7 @@ class CoreDataRepository {
         let storeDescriptor = NSPersistentStoreDescription(url: url)
         storeDescriptor.shouldMigrateStoreAutomatically = true
         storeDescriptor.shouldInferMappingModelAutomatically = true
+        storeDescriptor.type = storeDescriptorType()
         
         let container = NSPersistentContainer(name: self.databaseName)
         container.persistentStoreDescriptions = [storeDescriptor]
@@ -60,6 +61,11 @@ class CoreDataRepository {
         container.viewContext.automaticallyMergesChangesFromParent = true
         return container
     }()
+    
+    // To be override by the tests with an in memory type
+    func storeDescriptorType() -> String {
+        return NSSQLiteStoreType
+    }
     
     func saveContext () {
         if let moc = self.managedObjectContext, moc.hasChanges {

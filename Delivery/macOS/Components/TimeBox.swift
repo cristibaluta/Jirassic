@@ -20,6 +20,12 @@ class TimeBox: NSBox {
             timeTextField!.stringValue = newValue
         }
     }
+    var isDark: Bool = false {
+        didSet {
+            self.fillColor = isDark ? NSColor.black : NSColor.white
+            self.timeTextField?.textColor = isDark ? NSColor.white : NSColor.darkGray
+        }
+    }
     var onClick: (() -> Void)?
     
     init() {
@@ -34,15 +40,14 @@ class TimeBox: NSBox {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.borderType = .lineBorder//.noBorder
+        self.borderType = .lineBorder
         self.borderColor = NSColor.white
         self.fillColor = NSColor.white
         
         timeTextField = NSTextField()
         timeTextField?.font = NSFont.boldSystemFont(ofSize: 10)
-        timeTextField?.textColor = NSColor.darkGray//AppDelegate.sharedApp().theme.textColor
-        timeTextField?.backgroundColor = NSColor.white
-        timeTextField?.drawsBackground = true
+        timeTextField?.textColor = NSColor.darkGray
+        timeTextField?.drawsBackground = false
         timeTextField?.alignment = .center
         timeTextField?.focusRingType = .none
         timeTextField?.placeholderString = "00:00"

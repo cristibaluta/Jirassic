@@ -67,7 +67,11 @@ class TaskCell: NSTableRowView, CellProtocol {
             fatalError("Not available")
         }
     }
-    var isDark: Bool = false
+    var isDark: Bool = false {
+        didSet {
+            dateEndTextField.isDark = isDark
+        }
+    }
     var isEditable: Bool = true {
         didSet {
             issueNrTextField.isEditable = isEditable
