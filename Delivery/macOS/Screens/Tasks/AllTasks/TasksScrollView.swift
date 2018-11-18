@@ -62,7 +62,7 @@ class TasksScrollView: NSScrollView {
         
         let settings = SettingsInteractor().getAppSettings()
         let workingDayLength = TimeInteractor(settings: settings).workingDayLength()
-        let totalTime = StatisticsInteractor().workedTime(fromReports: reports)
+        let totalTime = StatisticsInteractor().duration(of: reports)
         
         var headerView: ReportsHeaderView!
         switch type {

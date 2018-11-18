@@ -10,30 +10,21 @@ import Foundation
 
 class StatisticsInteractor {
     
-    func workedTime (fromTasks tasks: [Task], targetHoursInDay: Double?) -> Double {
+    func duration (of tasks: [Task]) -> Double {
         
         guard tasks.count > 1 else {
             return 0.0
         }
-        
-        let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
-//        let requiredHours = targetHoursInDay != nil ? targetHoursInDay! : workedTime
-//        let missingTime = requiredHours - workedTime
-        
-        return workedTime
+        let time = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
+        return time
     }
     
-    func workedTime (fromReports reports: [Report]) -> Double {
+    func duration (of reports: [Report]) -> Double {
         
-        guard reports.count > 0 else {
-            return 0.0
-        }
-        
-        var workedTime = 0.0
+        var time = 0.0
         for report in reports {
-            workedTime += report.duration
+            time += report.duration
         }
-        
-        return workedTime
+        return time
     }
 }

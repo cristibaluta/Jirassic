@@ -51,7 +51,7 @@ extension WorklogsPresenter: WorklogsPresenterInput {
         
         let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
-        workedLength = StatisticsInteractor().workedTime(fromReports: reports)
+        workedLength = StatisticsInteractor().duration(of: reports)
         let duration = Date.secondsToPercentTime(pref.bool(.enableRoundingDay) ? workdayLength : workedLength)
         
         userInterface!.showDuration(duration)
