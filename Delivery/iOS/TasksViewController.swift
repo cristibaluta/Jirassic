@@ -11,7 +11,7 @@ import UIKit
 class TasksViewController: UITableViewController {
 
 	var currentDay: Day?
-	var tasks = [Task]()
+	private var tasks = [Task]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -52,24 +52,7 @@ extension TasksViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		let theData = tasks[indexPath.row]
-		
-		if theData.taskType == .issue || theData.taskType == .gitCommit {
-			
-            return NSString(string: theData.taskTitle ?? "").boundingRect(
-                with: CGSize(width: self.view.frame.size.width - 48, height: 999),
-				options: NSStringDrawingOptions.usesLineFragmentOrigin,
-				attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)],
-				context: nil).size.height +
-                NSString(string: theData.notes ?? "").boundingRect(
-                    with: CGSize(width: self.view.frame.size.width - 48, height: 999),
-                    options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                    attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)],
-                    context: nil).size.height + 75
-		} else {
-			return 50
-		}
+		return UITableViewAutomaticDimension
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,23 +64,17 @@ extension TasksViewController {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
 			cell.taskNrLabel!.text = theData.taskNumber
             cell.dateLabel!.text = theData.endDate.HHmm()
-            cell.titleLabel!.text = (theData.taskTitle ?? "").replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: theData.taskNumber!, with: "")
-			cell.notesLabel!.text = theData.notes
+            cell.titleLabel!.text = (theData.taskTitle ?? "").replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: theData.taskNumber!, with: "").trimmingCharacters(in: .whitespaces)
+			cell.notesLabel!.text = theData.notes?.trimmingCharacters(in: .whitespaces)
 			return cell
 		}
 		else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "NonTaskCell", for: indexPath) as! NonTaskCell
-//			if theData.taskType == .startDay {
-//				cell.circleWhite?.isHidden = false
-//				cell.notesLabel!.text = theData.notes
-//			} else {
-				cell.circleWhite?.isHidden = true
-                if let startDate = theData.startDate {
-                    cell.notesLabel!.text = "\(startDate.HHmm()) - \(theData.endDate.HHmm()) \(theData.notes!)"
-                } else {
-                    cell.notesLabel!.text = "\(theData.endDate.HHmm()) \(theData.notes!)"
-                }
-//			}
+            if let startDate = theData.startDate {
+                cell.notesLabel!.text = "\(startDate.HHmm()) - \(theData.endDate.HHmm()) \(theData.notes!)"
+            } else {
+                cell.notesLabel!.text = "\(theData.endDate.HHmm()) \(theData.notes!)"
+            }
 			return cell
 		}
 	}

@@ -10,21 +10,11 @@ import UIKit
 
 class NonTaskCell: UITableViewCell {
 	
-	@IBOutlet var circleWhite: UIView!
-	@IBOutlet var circleDark: UIView!
 	@IBOutlet var dateLabel: UILabel?
-	@IBOutlet var notesBackgroundView: UIView!
 	@IBOutlet var notesLabel: UILabel!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
-		circleWhite.layer.cornerRadius = circleWhite!.frame.size.width / 2
-		circleDark.layer.cornerRadius = circleDark!.frame.size.width / 2
-		notesBackgroundView.layer.cornerRadius = circleDark.frame.size.width / 2
-        notesBackgroundView.layer.borderWidth = 1
-        notesBackgroundView.layer.borderColor = UIColor.lightGray.cgColor
-        notesBackgroundView.backgroundColor = UIColor.white
 	}
 
     override func setSelected (_ selected: Bool, animated: Bool) {

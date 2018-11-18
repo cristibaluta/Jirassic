@@ -10,7 +10,7 @@ import UIKit
 
 class DaysViewController: UITableViewController {
 
-	var days = [Day]()
+	var weeks = [Week]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -26,9 +26,9 @@ class DaysViewController: UITableViewController {
     @objc func reloadData() {
         
         let interactor = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        interactor.query { (weeks) in
+        interactor.queryAll { weeks in
             
-            self.days = interactor.days()
+            self.weeks = weeks
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
@@ -41,7 +41,7 @@ class DaysViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowTasksSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                (segue.destination as! TasksViewController).currentDay = days[indexPath.row]
+                (segue.destination as! TasksViewController).currentDay = weeks[indexPath.section].days[indexPath.row]
             }
         }
     }
@@ -50,18 +50,22 @@ class DaysViewController: UITableViewController {
 extension DaysViewController {
 	
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return weeks.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return weeks[section].date.weekInterval()
     }
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return days.count
+		return weeks[section].days.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
-		let object = days[indexPath.row]
-		cell.textLabel!.text = object.dateStart.EEEEMMMMdd()
+		let day = weeks[indexPath.section].days[indexPath.row]
+		cell.textLabel!.text = day.dateStart.EEEEMMMMdd()
 		return cell
 	}
 }
