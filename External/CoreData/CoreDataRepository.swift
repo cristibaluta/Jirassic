@@ -11,14 +11,14 @@ import CoreData
 
 class CoreDataRepository {
     
-    fileprivate let databaseName = "Jirassic"
+    private let databaseName = "Jirassic"
     
     lazy var applicationDocumentsDirectory: URL = {
         
         #if os(iOS)
             
             let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            return urls.last as URL!
+            return urls.last!
             
         #else
             
@@ -39,40 +39,31 @@ class CoreDataRepository {
         #endif
     }()
     
-    func persistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
-        let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = applicationDocumentsDirectory.appendingPathComponent("\(databaseName).coredata")
-        do {
-            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-            return coordinator
-        } catch _ {
-            return nil
-        }
-    }
-    
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = Bundle.main.url(forResource: self.databaseName, withExtension: "momd")
-        return NSManagedObjectModel(contentsOf: modelURL!)!
+    lazy var managedObjectContext: NSManagedObjectContext? = {
+        return self.persistentContainer.viewContext
     }()
     
-    lazy var managedObjectContext: NSManagedObjectContext? = {
-        guard let coordinator = self.persistentStoreCoordinator() else {
-            return nil
-        }
-        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = coordinator
-        return managedObjectContext
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("\(self.databaseName).coredata")
+        let storeDescriptor = NSPersistentStoreDescription(url: url)
+        storeDescriptor.shouldMigrateStoreAutomatically = true
+        storeDescriptor.shouldInferMappingModelAutomatically = true
+        
+        let container = NSPersistentContainer(name: self.databaseName)
+        container.persistentStoreDescriptions = [storeDescriptor]
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        return container
     }()
     
     func saveContext () {
-        if let moc = self.managedObjectContext {
-            if moc.hasChanges {
-                do {
-                    try moc.save()
-                } catch _ {
-                    
-                }
-            }
+        if let moc = self.managedObjectContext, moc.hasChanges {
+            try? moc.save()
         }
     }
     
