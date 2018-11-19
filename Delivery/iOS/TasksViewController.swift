@@ -57,23 +57,27 @@ extension TasksViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let theData = tasks[indexPath.row]
+		let theTask = tasks[indexPath.row]
 //        RCLog(theData)
 		
-		if theData.taskType == .issue || theData.taskType == .gitCommit {
+		if theTask.taskType == .issue || theTask.taskType == .gitCommit {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
-			cell.taskNrLabel!.text = theData.taskNumber
-            cell.dateLabel!.text = theData.endDate.HHmm()
-            cell.titleLabel!.text = (theData.taskTitle ?? "").replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: theData.taskNumber!, with: "").trimmingCharacters(in: .whitespaces)
-			cell.notesLabel!.text = theData.notes?.trimmingCharacters(in: .whitespaces)
+			cell.taskNrLabel!.text = theTask.taskNumber
+            cell.dateLabel!.text = theTask.endDate.HHmm()
+            cell.titleLabel!.text = (theTask.taskTitle ?? "").replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: theTask.taskNumber!, with: "").trimmingCharacters(in: .whitespaces)
+			cell.notesLabel!.text = theTask.notes?.trimmingCharacters(in: .whitespaces)
 			return cell
 		}
 		else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "NonTaskCell", for: indexPath) as! NonTaskCell
-            if let startDate = theData.startDate {
-                cell.notesLabel!.text = "\(startDate.HHmm()) - \(theData.endDate.HHmm()) \(theData.notes!)"
+            var notes = theTask.notes ?? theTask.taskType.defaultNotes
+            if theTask.taskType == .coderev {
+                notes = "\(theTask.taskType.defaultNotes): \(notes)"
+            }
+            if let startDate = theTask.startDate {
+                cell.notesLabel!.text = "\(startDate.HHmm()) - \(theTask.endDate.HHmm()) \(notes)"
             } else {
-                cell.notesLabel!.text = "\(theData.endDate.HHmm()) \(theData.notes!)"
+                cell.notesLabel!.text = "\(theTask.endDate.HHmm()) \(notes)"
             }
 			return cell
 		}
