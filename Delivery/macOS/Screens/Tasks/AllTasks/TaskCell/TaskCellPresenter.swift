@@ -32,7 +32,7 @@ class TaskCellPresenter: NSObject {
             cell.color = NSColor.lightGray
             
         case .startDay, .endDay:
-            cell.color = NSColor.blue
+            cell.color = AppDelegate.sharedApp().theme.isDark ? NSColor.systemBlue : NSColor.blue
             
         case .calendar:
             cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))

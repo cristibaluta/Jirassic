@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,11 +16,11 @@
                 <box autoresizesSubviews="NO" borderType="line" title="Jira Tempo" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-h3-hcI">
                     <rect key="frame" x="-3" y="-4" width="517" height="254"/>
                     <view key="contentView" id="gTj-S0-GSV">
-                        <rect key="frame" x="1" y="1" width="515" height="238"/>
+                        <rect key="frame" x="3" y="3" width="511" height="236"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJj-ST-mgw">
-                                <rect key="frame" x="11" y="129" width="73" height="17"/>
+                                <rect key="frame" x="11" y="127" width="73" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Credentials" id="f18-jK-DWj">
                                     <font key="font" metaFont="system"/>
@@ -28,7 +29,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="168-V1-bw4">
-                                <rect key="frame" x="11" y="158" width="78" height="17"/>
+                                <rect key="frame" x="11" y="156" width="78" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jira base url" id="J0h-N5-RBr">
                                     <font key="font" metaFont="system"/>
@@ -37,7 +38,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sac-XU-YOc">
-                                <rect key="frame" x="110" y="126" width="180" height="22"/>
+                                <rect key="frame" x="110" y="124" width="180" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="gch-lX-jiT"/>
                                 </constraints>
@@ -48,7 +49,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-B9-4w3">
-                                <rect key="frame" x="110" y="156" width="385" height="22"/>
+                                <rect key="frame" x="110" y="154" width="381" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Base url" bezelStyle="round" id="wMy-gy-TCi">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -64,7 +65,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32U-E8-26L">
-                                <rect key="frame" x="271" y="21" width="73" height="17"/>
+                                <rect key="frame" x="267" y="21" width="73" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Issue name" id="2XS-9S-G2g">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -72,7 +73,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-XD-xeR">
-                                <rect key="frame" x="11" y="201" width="405" height="17"/>
+                                <rect key="frame" x="11" y="199" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Let's you save daily worklogs to Jira Tempo when you close the day." id="BeJ-Kq-eHi">
                                     <font key="font" metaFont="smallSystem"/>
@@ -80,23 +81,23 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6l-NZ-sMH">
-                                <rect key="frame" x="11" y="84" width="485" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6l-NZ-sMH">
+                                <rect key="frame" x="11" y="62" width="485" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Error" id="6TL-Ue-k0c">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Error" id="6TL-Ue-k0c">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" red="0.82619418379999998" green="0.18153228830000001" blue="0.1534976841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CuW-rz-EzX">
-                                <rect key="frame" x="12" y="51" width="491" height="5"/>
+                                <rect key="frame" x="12" y="51" width="487" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="FgQ-JP-tJl"/>
                                 </constraints>
                             </box>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sAK-lu-hJn">
-                                <rect key="frame" x="106" y="16" width="145" height="26"/>
+                                <rect key="frame" x="106" y="16" width="145" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="glm-d7-gHE"/>
                                 </constraints>
@@ -116,7 +117,7 @@
                                 </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-53-lCO">
-                                <rect key="frame" x="353" y="16" width="145" height="26"/>
+                                <rect key="frame" x="349" y="16" width="145" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="2Lw-sn-lt0"/>
                                     <constraint firstAttribute="height" constant="21" id="vfu-LW-94d"/>
@@ -137,11 +138,11 @@
                                 </connections>
                             </popUpButton>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="xNx-oi-lgq">
-                                <rect key="frame" x="13" y="85" width="16" height="16"/>
+                                <rect key="frame" x="13" y="83" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rsL-Fg-y5y">
-                                <rect key="frame" x="303" y="126" width="192" height="22"/>
+                                <rect key="frame" x="303" y="124" width="188" height="22"/>
                                 <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="K3o-5p-cpk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +153,7 @@
                                 </secureTextFieldCell>
                             </secureTextField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="apg-zS-b6p">
-                                <rect key="frame" x="427" y="199" width="67" height="19"/>
+                                <rect key="frame" x="423" y="197" width="67" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Purchase" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Snc-aP-0bE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>

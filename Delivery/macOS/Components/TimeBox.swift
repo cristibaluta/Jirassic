@@ -22,7 +22,8 @@ class TimeBox: NSBox {
     }
     var isDark: Bool = false {
         didSet {
-            self.fillColor = isDark ? NSColor.black : NSColor.white
+            self.fillColor = isDark ? NSColor.darkGray : NSColor.white
+            self.borderColor = isDark ? NSColor.clear : NSColor.white
             self.timeTextField?.textColor = isDark ? NSColor.white : NSColor.darkGray
         }
     }

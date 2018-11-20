@@ -119,8 +119,8 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     private func handleError(_ error: Error) {
         var errorMessage = error.localizedDescription
         switch error._code {
-        case -1001: errorMessage = "Server not reachable."
-        case 1: errorMessage = "Unknown, please verify login via browser, solving captcha might be needed."
+        case -1001: errorMessage = "Server not reachable. Is your Jira limited to internal network?"
+        case 1: errorMessage = "Unknown, please verify login via browser. Possible cause is you're using an expired password which is causing Jira to ask for captcha."
         default: errorMessage = error.localizedDescription
         }
         userInterface!.enableProgressIndicator(false)
