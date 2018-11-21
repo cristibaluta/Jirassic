@@ -46,6 +46,10 @@ class TasksScrollView: NSScrollView {
             self?.didCloseDay!(tasks, shouldSaveToJira)
         }
         
+        // Add header
+        let headerView = TasksHeaderView(height: CGFloat(60))
+        tableView.headerView = headerView
+        
         self.dataSource = dataSource
     }
     
