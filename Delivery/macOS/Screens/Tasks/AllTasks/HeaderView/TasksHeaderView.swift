@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FooterCell: NSTableRowView {
+class TasksHeaderView: NSTableHeaderView {
 
     @IBOutlet private var butAdd: NSButton!
     @IBOutlet private var butWorklogs: NSButton!
@@ -32,7 +32,7 @@ class FooterCell: NSTableRowView {
     }
     
     override func draw (_ dirtyRect: NSRect) {
-        NSColor.clear.set()
+        NSColor.darkGray.set()
         dirtyRect.fill()
     }
     

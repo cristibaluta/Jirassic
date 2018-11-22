@@ -10,8 +10,6 @@ import Cocoa
 
 let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(90.0)
-let kFooterCellSmallHeight = CGFloat(70.0)
-let kFooterCellLargeHeight = CGFloat(135.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
@@ -30,7 +28,6 @@ class TasksDataSource: NSObject {
         
         TaskCell.register(in: tableView)
         NonTaskCell.register(in: tableView)
-        FooterCell.register(in: tableView)
     }
     
     private func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
@@ -60,16 +57,12 @@ class TasksDataSource: NSObject {
 extension TasksDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
-        return tasks.count == 0 ? 0 : (tasks.count + 1)
+        return tasks.count
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-
-        guard row < tasks.count else {
-            return kFooterCellSmallHeight
-        }
+        
         let theData = tasks[row]
-        // Return predefined height
         switch theData.taskType {
         case TaskType.issue, TaskType.gitCommit:
             return kTaskCellHeight
@@ -82,24 +75,6 @@ extension TasksDataSource: NSTableViewDataSource {
 extension TasksDataSource: NSTableViewDelegate {
     
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-
-        guard row < tasks.count else {
-            
-            let cell = FooterCell.instantiate(in: self.tableView)
-            cell.didCloseDay = { [weak self] shouldSaveToJira in
-                if let wself = self {
-                    wself.didCloseDay!(wself.tasks, shouldSaveToJira)
-                }
-            }
-            cell.didAddTask = { [weak self] in
-                if let wself = self {
-                    wself.didAddRow!(wself.tasks.count - 1)
-                }
-            }
-            cell.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
-            
-            return cell
-        }
 
         var theData = tasks[row]
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]

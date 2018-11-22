@@ -191,10 +191,10 @@
 		2845B163206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
 		2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
 		2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
-		2845B166206AE468006EFB3B /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* FooterCell.swift */; };
-		2845B167206AE468006EFB3B /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* FooterCell.swift */; };
-		2845B168206AE468006EFB3B /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* FooterCell.xib */; };
-		2845B169206AE468006EFB3B /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* FooterCell.xib */; };
+		2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* TasksHeaderView.swift */; };
+		2845B167206AE468006EFB3B /* TasksHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* TasksHeaderView.swift */; };
+		2845B168206AE468006EFB3B /* TasksHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* TasksHeaderView.xib */; };
+		2845B169206AE468006EFB3B /* TasksHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* TasksHeaderView.xib */; };
 		2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
 		2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
 		2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
@@ -252,8 +252,6 @@
 		287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
 		287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
-		287B943621A5324D00FFC4A5 /* TasksHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B943521A5324D00FFC4A5 /* TasksHeaderView.swift */; };
-		287B943721A5324D00FFC4A5 /* TasksHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B943521A5324D00FFC4A5 /* TasksHeaderView.swift */; };
 		288BB67E2085252900CF720A /* WizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB67D2085252900CF720A /* WizardViewController.swift */; };
 		288BB67F2085252900CF720A /* WizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288BB67D2085252900CF720A /* WizardViewController.swift */; };
 		288BB6812087152B00CF720A /* WizardAppleScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288BB6802087152B00CF720A /* WizardAppleScriptView.xib */; };
@@ -604,8 +602,8 @@
 		2845B155206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		2845B156206AE467006EFB3B /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		2845B157206AE467006EFB3B /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
-		2845B159206AE467006EFB3B /* FooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
-		2845B15A206AE467006EFB3B /* FooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
+		2845B159206AE467006EFB3B /* TasksHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksHeaderView.swift; sourceTree = "<group>"; };
+		2845B15A206AE467006EFB3B /* TasksHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksHeaderView.xib; sourceTree = "<group>"; };
 		2845B15C206AE467006EFB3B /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
 		2845B15D206AE467006EFB3B /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
 		285465A1216C84E10052CB6A /* CreateMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReport.swift; sourceTree = "<group>"; };
@@ -631,7 +629,6 @@
 		287195352027CAD9001C237E /* TimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInteractor.swift; sourceTree = "<group>"; };
 		287B358620FBAFC40022F43E /* WizardCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardCalendarView.swift; sourceTree = "<group>"; };
 		287B358920FBAFD60022F43E /* WizardCalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardCalendarView.xib; sourceTree = "<group>"; };
-		287B943521A5324D00FFC4A5 /* TasksHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksHeaderView.swift; sourceTree = "<group>"; };
 		288BB67D2085252900CF720A /* WizardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardViewController.swift; sourceTree = "<group>"; };
 		288BB6802087152B00CF720A /* WizardAppleScriptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardAppleScriptView.xib; sourceTree = "<group>"; };
 		288BB6832087157F00CF720A /* WizardAppleScriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardAppleScriptView.swift; sourceTree = "<group>"; };
@@ -947,7 +944,7 @@
 			isa = PBXGroup;
 			children = (
 				2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */,
-				2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */,
+				287B943B21A690C100FFC4A5 /* HeaderView */,
 				2845B143206AE3A8006EFB3B /* ReportCell */,
 			);
 			path = Reports;
@@ -982,13 +979,13 @@
 			path = TaskCell;
 			sourceTree = "<group>";
 		};
-		2845B158206AE467006EFB3B /* FooterCell */ = {
+		2845B158206AE467006EFB3B /* HeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				2845B159206AE467006EFB3B /* FooterCell.swift */,
-				2845B15A206AE467006EFB3B /* FooterCell.xib */,
+				2845B159206AE467006EFB3B /* TasksHeaderView.swift */,
+				2845B15A206AE467006EFB3B /* TasksHeaderView.xib */,
 			);
-			path = FooterCell;
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		2845B15B206AE467006EFB3B /* NonTaskCell */ = {
@@ -1005,9 +1002,8 @@
 			children = (
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
-				287B943521A5324D00FFC4A5 /* TasksHeaderView.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
-				2845B158206AE467006EFB3B /* FooterCell */,
+				2845B158206AE467006EFB3B /* HeaderView */,
 				2845B15B206AE467006EFB3B /* NonTaskCell */,
 				2845B153206AE467006EFB3B /* TaskCell */,
 			);
@@ -1093,6 +1089,14 @@
 				56D90D0020876F4900F24442 /* WizardJiraView.xib */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		287B943B21A690C100FFC4A5 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */,
+			);
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		2892B2961F0949D70085BAC2 /* Jira */ = {
@@ -2004,7 +2008,7 @@
 				2845B14B206AE3A8006EFB3B /* ReportCell.xib in Resources */,
 				28FE18A8207B36CB00DF796E /* CocoaHookupCell.xib in Resources */,
 				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
-				2845B168206AE468006EFB3B /* FooterCell.xib in Resources */,
+				2845B168206AE468006EFB3B /* TasksHeaderView.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
 				285465AD217858AF0052CB6A /* StoreView.xib in Resources */,
 				2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */,
@@ -2053,7 +2057,7 @@
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
 				56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */,
-				2845B169206AE468006EFB3B /* FooterCell.xib in Resources */,
+				2845B169206AE468006EFB3B /* TasksHeaderView.xib in Resources */,
 				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				28EE1F6220EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
 			);
@@ -2256,7 +2260,7 @@
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
 				2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
-				2845B166206AE468006EFB3B /* FooterCell.swift in Sources */,
+				2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				280D719F1ED6043D005D2689 /* SqliteRepository+User.swift in Sources */,
 				28EE1F5E20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
@@ -2276,7 +2280,6 @@
 				280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */,
-				287B943621A5324D00FFC4A5 /* TasksHeaderView.swift in Sources */,
 				569C4C5E202319630049FBF1 /* JitCell.swift in Sources */,
 				28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
@@ -2322,7 +2325,6 @@
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				286BC00521909F85004D4CDD /* CloseDay.swift in Sources */,
-				287B943721A5324D00FFC4A5 /* TasksHeaderView.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
@@ -2417,7 +2419,7 @@
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
-				2845B167206AE468006EFB3B /* FooterCell.swift in Sources */,
+				2845B167206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,

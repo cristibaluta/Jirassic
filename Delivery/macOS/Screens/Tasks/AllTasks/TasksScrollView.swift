@@ -47,7 +47,20 @@ class TasksScrollView: NSScrollView {
         }
         
         // Add header
-        let headerView = TasksHeaderView(height: CGFloat(60))
+        
+        let headerView = TasksHeaderView.instantiateFromXib()
+        headerView.didCloseDay = { [weak self] shouldSaveToJira in
+            if let wself = self {
+//                wself.didCloseDay!(wself.tasks, shouldSaveToJira)
+            }
+        }
+        headerView.didAddTask = { [weak self] in
+            if let wself = self {
+//                wself.didAddRow!(wself.tasks.count - 1)
+            }
+        }
+//        headerView.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
+        
         tableView.headerView = headerView
         
         self.dataSource = dataSource
