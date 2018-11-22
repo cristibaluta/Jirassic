@@ -12,7 +12,7 @@ class TasksScrollView: NSScrollView {
 	
     private var tableView: NSTableView!
     private var dataSource: DataSource!
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
 	
 	var didAddRow: ((_ row: Int) -> Void)?
     var didRemoveRow: ((_ row: Int) -> Void)?
@@ -56,7 +56,7 @@ class TasksScrollView: NSScrollView {
         }
         headerView.didAddTask = { [weak self] in
             if let wself = self {
-                wself.didAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView))
+                wself.didAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1)
             }
         }
 //        headerView.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
@@ -100,7 +100,7 @@ class TasksScrollView: NSScrollView {
             break
         }
         headerView.workdayTime = workingDayLength.secToPercent
-        headerView.workedTime = localPreferences.bool(.usePercents)
+        headerView.workedTime = pref.bool(.usePercents)
             ? String(describing: totalTime.secToPercent)
             : totalTime.secToHoursAndMin
         headerView.didChangeSettings = { [weak self] in
@@ -151,11 +151,7 @@ class TasksScrollView: NSScrollView {
     func removeTask (at row: Int) {
         if let dataSource = tableView.dataSource as? TasksDataSource {
             dataSource.removeTask(at: row)
-            var rowsToRemoveFromTable = IndexSet(integer: row)
-            // Remove the last row with buttons when there  is only 1 task,  which means there are 2 rows
-            if tableView.numberOfRows == 2 {
-                rowsToRemoveFromTable = IndexSet(integersIn: 0...1)
-            }
+            let rowsToRemoveFromTable = IndexSet(integer: row)
             tableView.removeRows(at: rowsToRemoveFromTable, withAnimation: .effectFade)
         }
 	}

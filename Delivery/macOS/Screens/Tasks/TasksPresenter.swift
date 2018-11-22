@@ -168,11 +168,13 @@ extension TasksPresenter: TasksPresenterInput {
     func insertTask (after row: Int) {
         
         guard currentTasks.count > row + 1 else {
+            // Insert task at the end
             let taskBefore = currentTasks[row]
             let nextDate = taskBefore.endDate.isSameDayAs(Date()) ? Date() : taskBefore.endDate.addingTimeInterval(3600)
             ui!.presentNewTaskController(date: nextDate)
             return
         }
+        // Insert task between 2 other tasks
         let taskBefore = currentTasks[row]
         let taskAfter = currentTasks[row+1]
         let middleTimestamp = taskAfter.endDate.timeIntervalSince(taskBefore.endDate) / 2
