@@ -22,9 +22,11 @@ class TimeBox: NSBox {
     }
     var isDark: Bool = false {
         didSet {
-            self.fillColor = true ? NSColor.darkGray : NSColor.white
-            self.borderColor = true ? NSColor.clear : NSColor.white
-            self.timeTextField?.textColor = true ? NSColor.white : NSColor.darkGray
+            let isDark = true// self.isDark
+            self.fillColor = isDark ? NSColor.darkGray : NSColor.white
+            self.borderColor = isDark ? NSColor.clear : NSColor.white
+            self.timeTextField?.textColor = isDark ? NSColor.white : NSColor.darkGray
+            self.timeTextField?.backgroundColor = isDark ? NSColor.darkGray : NSColor.darkGray
         }
     }
     var onClick: (() -> Void)?

@@ -56,7 +56,7 @@ class TasksScrollView: NSScrollView {
         }
         headerView.didAddTask = { [weak self] in
             if let wself = self {
-//                wself.didAddRow!(wself.tasks.count - 1)
+                wself.didAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView))
             }
         }
 //        headerView.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
