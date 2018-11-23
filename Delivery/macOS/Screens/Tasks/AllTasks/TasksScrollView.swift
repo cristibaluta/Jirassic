@@ -42,16 +42,13 @@ class TasksScrollView: NSScrollView {
         dataSource.didRemoveRow = { [weak self] (row: Int) -> Void in
             self?.didRemoveRow!(row)
         }
-        dataSource.didCloseDay = { [weak self] (tasks: [Task], shouldSaveToJira) -> Void in
-            self?.didCloseDay!(tasks, shouldSaveToJira)
-        }
         
         // Add header
         
         let headerView = TasksHeaderView.instantiateFromXib()
-        headerView.didCloseDay = { [weak self] shouldSaveToJira in
+        headerView.didCloseDay = { [weak self] in
             if let wself = self {
-//                wself.didCloseDay!(wself.tasks, shouldSaveToJira)
+                wself.didCloseDay!(dataSource.tasks, false)
             }
         }
         headerView.didAddTask = { [weak self] in
@@ -59,7 +56,12 @@ class TasksScrollView: NSScrollView {
                 wself.didAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1)
             }
         }
-//        headerView.isDayEnded = self.tasks.contains(where: { $0.taskType == .endDay })
+        headerView.didSaveWorklogs = { [weak self] in
+            if let wself = self {
+                wself.didCloseDay!(dataSource.tasks, true)
+            }
+        }
+        headerView.isDayEnded = dataSource.isDayEnded
         
         tableView.headerView = headerView
         

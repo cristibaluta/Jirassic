@@ -16,10 +16,12 @@ let kCellLeftPadding = CGFloat(10.0)
 class TasksDataSource: NSObject {
     
     private let tableView: NSTableView
-    private var tasks: [Task] = []
+    var tasks: [Task] = []
     var didAddRow: ((_ row: Int) -> Void)?
     var didRemoveRow: ((_ row: Int) -> Void)?
-    var didCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
+    var isDayEnded: Bool {
+        return self.tasks.contains(where: { $0.taskType == .endDay })
+    }
     
     init (tableView: NSTableView, tasks: [Task]) {
         

@@ -29,7 +29,6 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsSelectedCalendars = "settingsSelectedCalendars"
     case enableGit = "enableGit"
     case enableJit = "enableJit"
-    case enableJira = "enableJira"
     case enableRoundingDay = "enableRoundingDay"
     case enableHookup = "enableHookup"
     case enableCocoaHookup = "enableCocoaHookup"
@@ -56,7 +55,6 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .settingsSelectedCalendars:return "Work,Calendar"
         case .enableGit:                return false
         case .enableJit:                return true
-        case .enableJira:               return true
         case .enableRoundingDay:        return false
         case .enableHookup:             return false
         case .enableCocoaHookup:        return false

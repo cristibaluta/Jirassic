@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
-                    <rect key="frame" x="152" y="20" width="150" height="22"/>
+                    <rect key="frame" x="20" y="20" width="150" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="LcH-xv-Khy"/>
                         <constraint firstAttribute="height" constant="21" id="ZSP-mf-RSN"/>
@@ -41,71 +41,46 @@
                         <action selector="handleAddButton:" target="c22-O7-iKe" id="xPX-St-Za4"/>
                     </connections>
                 </button>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Stw-dH-hbh">
-                    <rect key="frame" x="140" y="0.0" width="314" height="63"/>
-                    <subviews>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kJK-ht-Cpj">
-                            <rect key="frame" x="98" y="23" width="148" height="18"/>
-                            <buttonCell key="cell" type="check" title="Save worklogs to Jira Tempo" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2BM-E9-6UJ">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="miniSystem"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleJiraButton:" target="c22-O7-iKe" id="uA3-Q1-dSS"/>
-                            </connections>
-                        </button>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-jr-se2">
-                            <rect key="frame" x="0.0" y="20" width="84" height="22"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="1EQ-yN-ZBK"/>
-                                <constraint firstAttribute="width" constant="84" id="gDa-WP-xPg"/>
-                            </constraints>
-                            <buttonCell key="cell" type="inline" title="Close day" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TQ5-EY-xdp">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="smallSystemBold"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleCloseDayButton:" target="c22-O7-iKe" id="ntd-ay-WNX"/>
-                            </connections>
-                        </button>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mpy-Nv-lYn">
-                            <rect key="frame" x="254" y="22" width="40" height="19"/>
-                            <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mLC-pf-tpN">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="miniSystem"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleJiraSetupButton:" target="c22-O7-iKe" id="9f2-ae-Npn"/>
-                            </connections>
-                        </button>
-                    </subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-jr-se2">
+                    <rect key="frame" x="350" y="20" width="84" height="22"/>
                     <constraints>
-                        <constraint firstItem="Mpy-Nv-lYn" firstAttribute="centerY" secondItem="kJK-ht-Cpj" secondAttribute="centerY" id="1Fe-tH-4wg"/>
-                        <constraint firstItem="uAc-jr-se2" firstAttribute="centerY" secondItem="Stw-dH-hbh" secondAttribute="centerY" id="BoT-GY-WPl"/>
-                        <constraint firstItem="kJK-ht-Cpj" firstAttribute="leading" secondItem="uAc-jr-se2" secondAttribute="trailing" constant="16" id="ICs-ge-y7Z"/>
-                        <constraint firstItem="kJK-ht-Cpj" firstAttribute="centerY" secondItem="uAc-jr-se2" secondAttribute="centerY" id="O1n-ZS-fnH"/>
-                        <constraint firstItem="uAc-jr-se2" firstAttribute="leading" secondItem="Stw-dH-hbh" secondAttribute="leading" id="U4A-CC-8qf"/>
-                        <constraint firstItem="Mpy-Nv-lYn" firstAttribute="leading" secondItem="kJK-ht-Cpj" secondAttribute="trailing" constant="10" id="fCO-No-Qnn"/>
+                        <constraint firstAttribute="height" constant="21" id="1EQ-yN-ZBK"/>
+                        <constraint firstAttribute="width" constant="84" id="gDa-WP-xPg"/>
                     </constraints>
-                </customView>
+                    <buttonCell key="cell" type="inline" title="Close day" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TQ5-EY-xdp">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleCloseDayButton:" target="c22-O7-iKe" id="ntd-ay-WNX"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mpy-Nv-lYn">
+                    <rect key="frame" x="178" y="22" width="50" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mLC-pf-tpN">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleJiraSetupButton:" target="c22-O7-iKe" id="9f2-ae-Npn"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="04F-ms-XJx"/>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="5KR-F5-HAg"/>
-                <constraint firstItem="Stw-dH-hbh" firstAttribute="leading" secondItem="hGd-uQ-oVI" secondAttribute="trailing" constant="36" id="Nn8-rk-mg0"/>
-                <constraint firstAttribute="bottom" secondItem="Stw-dH-hbh" secondAttribute="bottom" id="WfT-Zp-drz"/>
-                <constraint firstAttribute="trailing" secondItem="Stw-dH-hbh" secondAttribute="trailing" id="lwD-9l-Afe"/>
-                <constraint firstItem="Stw-dH-hbh" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="m2g-F7-EWQ"/>
-                <constraint firstItem="Ca7-bt-zzl" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="sSl-2c-0RA"/>
+                <constraint firstItem="uAc-jr-se2" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="A67-H0-a3l"/>
+                <constraint firstItem="Mpy-Nv-lYn" firstAttribute="leading" secondItem="Ca7-bt-zzl" secondAttribute="trailing" constant="8" id="OhW-Qc-w9Q"/>
+                <constraint firstItem="Mpy-Nv-lYn" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="cDs-UT-aDY"/>
+                <constraint firstAttribute="trailing" secondItem="uAc-jr-se2" secondAttribute="trailing" constant="20" id="fla-hf-sWR"/>
+                <constraint firstItem="Ca7-bt-zzl" firstAttribute="leading" secondItem="hGd-uQ-oVI" secondAttribute="leading" id="t2C-Lh-hmH"/>
                 <constraint firstItem="Ca7-bt-zzl" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="tBT-qw-lNA"/>
             </constraints>
             <connections>
                 <outlet property="butAdd" destination="hGd-uQ-oVI" id="3iX-M6-W2m"/>
                 <outlet property="butCloseDay" destination="uAc-jr-se2" id="KdB-3P-8a6"/>
-                <outlet property="butJira" destination="kJK-ht-Cpj" id="qAF-W1-KsF"/>
                 <outlet property="butJiraSetup" destination="Mpy-Nv-lYn" id="a0T-TH-aWu"/>
                 <outlet property="butWorklogs" destination="Ca7-bt-zzl" id="OPQ-12-3Lv"/>
-                <outlet property="closeDayView" destination="Stw-dH-hbh" id="92X-54-hr0"/>
             </connections>
             <point key="canvasLocation" x="126" y="63.5"/>
         </customView>
