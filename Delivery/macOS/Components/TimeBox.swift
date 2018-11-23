@@ -22,11 +22,16 @@ class TimeBox: NSBox {
     }
     var isDark: Bool = false {
         didSet {
-            let isDark = true// self.isDark
-            self.fillColor = isDark ? NSColor.darkGray : NSColor.white
-            self.borderColor = isDark ? NSColor.clear : NSColor.white
-            self.timeTextField?.textColor = isDark ? NSColor.white : NSColor.darkGray
-            self.timeTextField?.backgroundColor = isDark ? NSColor.darkGray : NSColor.darkGray
+            let isDark = self.isDark
+            if #available(OSX 10.14, *) {
+                self.fillColor = isDark ? NSColor.white : NSColor.darkGray
+                self.timeTextField?.textColor = isDark ? NSColor.darkGray : NSColor.white
+            } else {
+                self.fillColor = isDark ? NSColor.darkGray : NSColor.white
+//                self.borderColor = isDark ? NSColor.clear : NSColor.white
+                self.timeTextField?.textColor = isDark ? NSColor.white : NSColor.darkGray
+//                self.timeTextField?.backgroundColor = isDark ? NSColor.darkGray : NSColor.darkGray
+            }
         }
     }
     var onClick: (() -> Void)?
@@ -43,13 +48,12 @@ class TimeBox: NSBox {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.borderType = .lineBorder
-        self.borderColor = NSColor.white
-        self.fillColor = NSColor.white
+        self.borderType = .noBorder
         
         timeTextField = NSTextField()
         timeTextField?.font = NSFont.boldSystemFont(ofSize: 10)
         timeTextField?.textColor = NSColor.darkGray
+        timeTextField?.backgroundColor = NSColor.clear
         timeTextField?.drawsBackground = false
         timeTextField?.alignment = .center
         timeTextField?.focusRingType = .none

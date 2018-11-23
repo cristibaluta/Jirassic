@@ -29,16 +29,17 @@ class TaskCellPresenter: NSObject {
             cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
             
         case .coderev:
-            cell.color = NSColor.lightGray
+            cell.color = NSColor.systemGray
             
         case .startDay, .endDay:
-            cell.color = AppDelegate.sharedApp().theme.isDark ? NSColor.systemBlue : NSColor.blue
+            cell.color = NSColor.systemBlue
             
         case .calendar:
+            cell.color = NSColor.systemGray
             cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
             
         default:
-            break
+            cell.color = NSColor.systemGray
         }
 
         var notes = theTask.notes ?? theTask.taskType.defaultNotes
