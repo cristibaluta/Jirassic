@@ -31,6 +31,7 @@ class CreateMonthReport {
             if let date = startDayDate {
                 // Start of day already found
                 // Iterate till endDay or new day found
+                // Days without a .startDay are ignored
                 if task.taskType == .endDay {
                     tasksInDay.append(task)
                     tasksByDay.append(tasksInDay)
@@ -39,7 +40,7 @@ class CreateMonthReport {
                 } else if !date.isSameDayAs(task.endDate) {
                     tasksByDay.append(tasksInDay)
                     tasksInDay = [task]
-                    startDayDate = task.endDate
+                    startDayDate = task.taskType == .startDay ? task.endDate : nil
                 } else {
                     tasksInDay.append(task)
                 }

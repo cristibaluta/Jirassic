@@ -19,6 +19,9 @@ class CreateReport {
         }
         var processedTasks = splitOverlappingTasks(filteredTasks)
         processedTasks = removeUntrackableTasks(processedTasks)
+        guard  processedTasks.count > 1 else {
+            return []
+        }
         processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
         let groups = groupByTaskNumber(processedTasks)
         let reports = reportsFromGroups(groups.groups)
@@ -125,6 +128,7 @@ extension CreateReport {
         var previousDate = task.endDate
         var extraTimeToAdd = 0.0
         
+        // First task is start of the day and should not be modified
         for i in 1..<tasks.count-1 {
             
             task = tasks[i]
