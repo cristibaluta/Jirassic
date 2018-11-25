@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +40,7 @@
                                 <rect key="frame" x="-2" y="332" width="562" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You are about to save lots of time and neurons, track your time at work automatically" id="xdp-k7-dJy">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -332,7 +333,7 @@
                                 </constraints>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LWS-Sc-Yau">
-                                <rect key="frame" x="386" y="31" width="74" height="19"/>
+                                <rect key="frame" x="386" y="30" width="74" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Skip setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="U4c-wv-yEQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -342,11 +343,9 @@
                                 </connections>
                             </button>
                             <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bul-Rz-Luj">
-                                <rect key="frame" x="98" y="34" width="180" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="179" id="uSX-7J-dju"/>
-                                </constraints>
-                                <levelIndicatorCell key="cell" alignment="left" doubleValue="1" maxValue="4" warningValue="2" criticalValue="2" id="Zn3-qo-pvX"/>
+                                <rect key="frame" x="98" y="34" width="48" height="12"/>
+                                <levelIndicatorCell key="cell" alignment="left" doubleValue="1" maxValue="4" levelIndicatorStyle="rating" id="Zn3-qo-pvX"/>
+                                <color key="fillColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                             </levelIndicator>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jEi-lE-OZv">
                                 <rect key="frame" x="38" y="341" width="482" height="17"/>
@@ -387,9 +386,9 @@
                             <constraint firstItem="dLe-ZF-F9D" firstAttribute="top" secondItem="hxG-ku-CMn" secondAttribute="top" constant="22" id="K0J-ZJ-U1I"/>
                             <constraint firstItem="cHg-Ny-SMJ" firstAttribute="leading" secondItem="hxG-ku-CMn" secondAttribute="leading" id="Lku-ei-MQQ"/>
                             <constraint firstAttribute="trailing" secondItem="jEi-lE-OZv" secondAttribute="trailing" constant="40" id="UdE-lA-jyr"/>
-                            <constraint firstAttribute="bottom" secondItem="LWS-Sc-Yau" secondAttribute="bottom" constant="32" id="Z6o-hh-FZr"/>
                             <constraint firstItem="jEi-lE-OZv" firstAttribute="top" secondItem="cHg-Ny-SMJ" secondAttribute="bottom" constant="20" id="aHQ-hF-vH5"/>
                             <constraint firstItem="bul-Rz-Luj" firstAttribute="leading" secondItem="YWu-lk-2KH" secondAttribute="leading" id="c8f-7P-QWA"/>
+                            <constraint firstItem="bul-Rz-Luj" firstAttribute="centerY" secondItem="LWS-Sc-Yau" secondAttribute="centerY" id="ciP-7m-NEa"/>
                             <constraint firstAttribute="bottom" secondItem="bul-Rz-Luj" secondAttribute="bottom" constant="34" id="ehx-sS-Qdi"/>
                             <constraint firstItem="b3I-CK-kNW" firstAttribute="centerX" secondItem="hxG-ku-CMn" secondAttribute="centerX" id="ewW-OA-mJG"/>
                             <constraint firstItem="LWS-Sc-Yau" firstAttribute="trailing" secondItem="YWu-lk-2KH" secondAttribute="trailing" id="off-JS-LUp"/>
