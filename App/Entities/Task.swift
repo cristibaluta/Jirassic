@@ -38,6 +38,7 @@ enum TaskType: Int {
         }
     }
     
+    // Used to group reports
     var defaultTaskNumber: String? {
         switch self {
         case .scrum: return "scrum"
@@ -62,34 +63,40 @@ struct Task {
     var startDate: Date?
 	var endDate: Date
 	var notes: String?
-    /// Task number is usually the task number from Jira (eg. AA-1234)
+    /// Task number is the issue number from Jira (eg. AA-1234)
+    /// For other type of tasks should be nil
     var taskNumber: String?
     /// Task title is usually the title that follows the task number in Jira
     var taskTitle: String?
 	var taskType: TaskType
     /// Created locally and used for matching with the remote object
-    /// If objectId is missing means the task is not saved to db nor to server (unsaved git and calendar items)
+    /// If objectId is missing means the task is not saved to db nor to server (eg. unsaved git and calendar items)
     var objectId: String?
 }
 
 extension Task {
 	
     init () {
-        self.endDate = Date()
-        self.taskType = .issue
-        self.objectId = String.generateId()
+        self.init (endDate: Date(), type: .issue)
     }
     
 	init (endDate: Date, type: TaskType) {
 		
 		self.endDate = endDate
         self.taskType = type
-        self.taskNumber = type.defaultTaskNumber
         self.objectId = String.generateId()
 	}
+    
+    init (startDate: Date?, endDate: Date, type: TaskType) {
+        
+        self.startDate = startDate
+        self.endDate = endDate
+        self.taskType = type
+        self.objectId = String.generateId()
+    }
 }
 
-/// The minimum data needed to be passed around for displaying or creating a task
+/// Object used to pass task data to and from the cell, for displaying and editing
 typealias TaskCreationData = (
     dateStart: Date?,
     dateEnd: Date,

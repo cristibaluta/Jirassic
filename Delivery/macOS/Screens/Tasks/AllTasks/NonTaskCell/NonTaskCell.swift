@@ -42,7 +42,9 @@ class NonTaskCell: NSTableRowView, CellProtocol {
             let dateEnd = _data!.dateEnd.dateByUpdating(hour: newHM.hour, minute: newHM.min)
             _data?.dateEnd = dateEnd
             
-            _data?.notes = self.notesTextField.stringValue
+            if self.notesTextField.stringValue != "" {
+                _data?.notes = self.notesTextField.stringValue
+            }
             
             return _data!
 		}

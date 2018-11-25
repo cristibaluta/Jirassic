@@ -163,7 +163,9 @@ extension CreateReport {
             guard isDisplayingAllowed(taskType: task.taskType) else {
                 continue
             }
-            let taskNumber = task.taskNumber != nil && task.taskNumber != "" ? task.taskNumber! : (task.taskType.defaultTaskNumber ?? "")
+            let taskNumber = task.taskNumber != nil && task.taskNumber != ""
+                ? task.taskNumber!
+                : (task.taskType.defaultTaskNumber ?? "")
             // Save to dictionary
             var tgroup: [Task]? = groups[taskNumber]
             if tgroup == nil {

@@ -114,7 +114,6 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
             let type = taskType(forIndex: selectedSegment)
             task = Task(endDate: endSleepDate!, type: type)
             task.notes = notes
-            task.taskNumber = type.defaultTaskNumber
             task.startDate = startSleepDate
         }
         

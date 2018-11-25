@@ -22,11 +22,11 @@ class NewTaskViewController: NSViewController {
     private var activeEditingTextFieldContent = ""
     private var issueTypes = [String]()
     private let predictor = PredictiveTimeTyping()
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
 	
     var dateStart: Date? {
         get {
-            if localPreferences.bool(.useDuration) {
+            if pref.bool(.useDuration) {
                 return self.duration > 0 ? self.dateEnd.addingTimeInterval(-self.duration) : nil
             } else {
                 if self.startDateTextField!.stringValue == "" {
@@ -119,7 +119,7 @@ class NewTaskViewController: NSViewController {
     }
     
     private func setupStartDateButtonTitle() {
-        startDateButton.title = localPreferences.bool(.useDuration) ? "Duration" : "Date start"
+        startDateButton.title = pref.bool(.useDuration) ? "Duration" : "Date start"
     }
 }
 
@@ -152,11 +152,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
 extension NewTaskViewController {
     
     @IBAction func handleTaskTypeSelector (_ sender: NSPopUpButton) {
-        
-        let type = selectedTaskType()
-        issueIdTextField.stringValue = ""//type.defaultTaskNumber ?? ""
-        notesTextField.stringValue = type.defaultNotes
-        issueIdTextField.isEnabled = sender.indexOfSelectedItem == 0
+        issueIdTextField.isEnabled = selectedTaskType() == .issue
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
@@ -164,8 +160,8 @@ extension NewTaskViewController {
         let taskData = TaskCreationData(
             dateStart: self.dateStart,
             dateEnd: self.dateEnd,
-            taskNumber: self.taskNumber,
-            notes: self.notes,
+            taskNumber: self.taskNumber != "" ? self.taskNumber : nil,
+            notes: self.notes != "" ? self.notes : nil,
             taskType: selectedTaskType()
         )
         self.onSave?(taskData)
@@ -177,7 +173,7 @@ extension NewTaskViewController {
     
     @IBAction func handleDurationButton (_ sender: NSButton) {
         
-        localPreferences.set(!localPreferences.bool(.useDuration), forKey: .useDuration)
+        pref.set(!pref.bool(.useDuration), forKey: .useDuration)
         setupStartDateButtonTitle()
     }
 }
@@ -185,6 +181,6 @@ extension NewTaskViewController {
 extension NewTaskViewController {
     
     override func mouseDown(with event: NSEvent) {
-        RCLog(event)
+//        RCLog(event)
     }
 }

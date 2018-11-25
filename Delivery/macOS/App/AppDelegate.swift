@@ -164,16 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         browser.wastingTimeDidEnd = {
             RCLog("End wasting time \(Date())")
-            let task = Task(
-                lastModifiedDate: nil,
-                startDate: self.browser.startDate,
-                endDate: self.browser.endDate!,
-                notes: nil,
-                taskNumber: TaskType.waste.defaultTaskNumber,
-                taskTitle: "",
-                taskType: .waste,
-                objectId: String.generateId()
-            )
+            let task = Task(startDate: self.browser.startDate, endDate: self.browser.endDate!, type: .waste)
             let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
                 

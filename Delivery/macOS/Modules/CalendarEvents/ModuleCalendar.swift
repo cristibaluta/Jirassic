@@ -73,7 +73,7 @@ class ModuleCalendar {
                                         startDate: event.startDate,
                                         endDate: event.endDate,
                                         notes: event.title,
-                                        taskNumber: TaskType.calendar.defaultTaskNumber,
+                                        taskNumber: nil,
                                         taskTitle: event.title,
                                         taskType: .calendar,
                                         objectId: nil)
