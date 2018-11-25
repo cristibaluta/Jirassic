@@ -121,7 +121,7 @@ class TasksScrollView: NSScrollView {
             case .monthlyReports:
                 let monthHeaderView = MonthReportsHeaderView(height: CGFloat(100))
                 monthHeaderView.numberOfDays = dataSource.numberOfDays
-                monthHeaderView.didClickCopyAll = {
+                monthHeaderView.didClickCopyAll = { asHtml in
                     let interactor = CreateMonthReport()
                     let joined = interactor.joinReports(dataSource.reports)
                     let string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin

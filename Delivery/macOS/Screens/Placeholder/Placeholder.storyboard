@@ -16,15 +16,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vXy-HK-p1X">
-                                <rect key="frame" x="183" y="104" width="84" height="22"/>
+                                <rect key="frame" x="183" y="88" width="84" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="U3c-3g-yGf"/>
-                                    <constraint firstAttribute="height" constant="21" id="dy9-u4-0of"/>
+                                    <constraint firstAttribute="height" constant="30" id="dy9-u4-0of"/>
                                 </constraints>
-                                <buttonCell key="cell" type="inline" title="Start day" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FGE-Fq-6Z5">
+                                <buttonCell key="cell" type="inline" title="Start day" bezelStyle="inline" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FGE-Fq-6Z5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystemBold"/>
                                 </buttonCell>
+                                <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="handleStartButton:" target="eiK-MM-LiK" id="Pxp-zE-b0E"/>
                                 </connections>
@@ -49,7 +50,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pqi-kL-eQt" secondAttribute="trailing" id="EqZ-EB-3Hd"/>
                             <constraint firstAttribute="centerX" secondItem="vXy-HK-p1X" secondAttribute="centerX" id="Jjz-id-Bhj"/>
-                            <constraint firstItem="Icp-io-OfB" firstAttribute="bottom" secondItem="vXy-HK-p1X" secondAttribute="bottom" constant="-34" id="QXN-Xc-iD9"/>
+                            <constraint firstItem="Icp-io-OfB" firstAttribute="bottom" secondItem="vXy-HK-p1X" secondAttribute="bottom" constant="-50" id="QXN-Xc-iD9"/>
                             <constraint firstItem="Icp-io-OfB" firstAttribute="leading" secondItem="o3K-nw-a6h" secondAttribute="leading" constant="20" id="Qwy-xs-YxL"/>
                             <constraint firstItem="Icp-io-OfB" firstAttribute="top" secondItem="pqi-kL-eQt" secondAttribute="bottom" constant="8" id="c0N-1H-Xrc"/>
                             <constraint firstAttribute="trailing" secondItem="Icp-io-OfB" secondAttribute="trailing" constant="20" id="nab-tg-Fuv"/>

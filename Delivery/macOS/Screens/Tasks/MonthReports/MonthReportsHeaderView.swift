@@ -11,8 +11,9 @@ import Cocoa
 class MonthReportsHeaderView: ReportsHeaderView {
     
     private let butCopyAll: NSButton
+    private var butCopyAsHtml: NSButton
     private var totalDaysTextField: NSTextField
-    var didClickCopyAll: (() -> Void)?
+    var didClickCopyAll: ((Bool) -> Void)?
     
     var numberOfDays: Int {
         get {
@@ -32,6 +33,10 @@ class MonthReportsHeaderView: ReportsHeaderView {
         butCopyAll.title = "Copy all"
         butCopyAll.toolTip = "Copy all reports to clipboard."
         
+        butCopyAsHtml = NSButton()
+        butCopyAsHtml.frame = NSRect(x: 110, y: 60, width: 100, height: 20)
+        butCopyAsHtml.setButtonType(.switch)
+        
         totalDaysTextField = NSTextField()
         totalDaysTextField.alignment = NSTextAlignment.right
         totalDaysTextField.drawsBackground = false
@@ -45,8 +50,13 @@ class MonthReportsHeaderView: ReportsHeaderView {
         
         butCopyAll.target = self
         butCopyAll.action = #selector(self.handleCopyAllButton)
+        butCopyAsHtml.attributedTitle = NSAttributedString(string: "Copy as html", attributes: attributes)
+        butCopyAsHtml.target = self
+        butCopyAsHtml.action = #selector(self.handleHtmlButton)
+        butCopyAsHtml.state = pref.bool(.copyWorklogsAsHtml) ? .on : .off
         
         self.addSubview(butCopyAll)
+        self.addSubview(butCopyAsHtml)
         self.addSubview(totalDaysTextField)
     }
     
@@ -63,6 +73,10 @@ class MonthReportsHeaderView: ReportsHeaderView {
 extension MonthReportsHeaderView {
     
     @objc func handleCopyAllButton (_ sender: NSButton) {
-        didClickCopyAll?()
+        didClickCopyAll?(pref.bool(.copyWorklogsAsHtml))
+    }
+    
+    @objc func handleHtmlButton (_ sender: NSButton) {
+        pref.set(sender.state == .on, forKey: .copyWorklogsAsHtml)
     }
 }

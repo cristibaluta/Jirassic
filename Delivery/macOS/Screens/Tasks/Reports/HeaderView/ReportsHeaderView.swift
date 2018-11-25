@@ -13,7 +13,9 @@ class ReportsHeaderView: NSTableHeaderView {
     private var butRound: NSButton
     private var butPercents: NSButton
     private var totalTimeTextField: NSTextField
-    private let pref = RCPreferences<LocalPreferences>()
+    internal let pref = RCPreferences<LocalPreferences>()
+    internal let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
+    
     var didChangeSettings: (() -> Void)?
     // In hours
     var workedTime: String {
@@ -32,7 +34,6 @@ class ReportsHeaderView: NSTableHeaderView {
             butRound.attributedTitle = NSAttributedString(string: "Round to \(newValue) hours", attributes: attributes)
         }
     }
-    private let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
     
     init (height: CGFloat) {
         

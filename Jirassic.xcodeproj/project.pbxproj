@@ -1542,9 +1542,9 @@
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
 				28A5F2811E586426002BE564 /* DataSource.swift */,
-				2898D3A62181905600CF5AD4 /* MonthReports */,
 				2845B16F206C2888006EFB3B /* AllTasks */,
 				2845B141206AE2A4006EFB3B /* Reports */,
+				2898D3A62181905600CF5AD4 /* MonthReports */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
