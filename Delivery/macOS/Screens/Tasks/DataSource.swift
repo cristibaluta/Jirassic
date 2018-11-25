@@ -8,4 +8,10 @@
 
 import Cocoa
 
-typealias DataSource = NSTableViewDataSource & NSTableViewDelegate
+protocol TasksAndReportsDataSource {
+    var tableView: NSTableView! {get set}
+    func addTask (_ task: Task, at row: Int)
+    func removeTask (at row: Int)
+}
+
+typealias DataSource = NSTableViewDataSource & NSTableViewDelegate & TasksAndReportsDataSource

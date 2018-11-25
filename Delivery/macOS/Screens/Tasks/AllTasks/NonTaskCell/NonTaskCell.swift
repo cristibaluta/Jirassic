@@ -145,6 +145,10 @@ class NonTaskCell: NSTableRowView, CellProtocol {
         
         activeTimeboxPopover = popover
     }
+    
+    override func accessibilityCell(forColumn column: Int, row: Int) -> Any? {
+        return nil
+    }
 }
 
 extension NonTaskCell {

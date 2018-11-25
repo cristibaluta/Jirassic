@@ -8,17 +8,31 @@
 
 import Cocoa
 
-class ReportsDataSource: NSObject {
+class ReportsDataSource: NSObject, TasksAndReportsDataSource {
     
-    private let tableView: NSTableView
+    var tableView: NSTableView! {
+        didSet {
+            if #available(OSX 10.13, *) {
+                tableView.usesAutomaticRowHeights = true
+            }
+            ReportCell.register(in: tableView)
+        }
+    }
     private var tempCell: ReportCell?
-    var reports: [Report] = []
+    let numberOfDays: Int
+    var reports: [Report]
     
-    init (tableView: NSTableView, reports: [Report]) {
-        self.tableView = tableView
+    init (reports: [Report], numberOfDays: Int) {
         self.reports = reports
+        self.numberOfDays = numberOfDays
+    }
+    
+    func addTask (_ task: Task, at row: Int) {
         
-        ReportCell.register(in: tableView)
+    }
+    
+    func removeTask (at row: Int) {
+        
     }
 }
 

@@ -13,42 +13,37 @@ let kTaskCellHeight = CGFloat(90.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
-class TasksDataSource: NSObject {
+class TasksDataSource: NSObject, TasksAndReportsDataSource {
     
-    private let tableView: NSTableView
-    var tasks: [Task] = []
-    var didAddRow: ((_ row: Int) -> Void)?
-    var didRemoveRow: ((_ row: Int) -> Void)?
+    var tableView: NSTableView! {
+        didSet {
+            TaskCell.register(in: tableView)
+            NonTaskCell.register(in: tableView)
+        }
+    }
+    var tasks: [Task]
+    var didClickAddRow: ((_ row: Int) -> Void)?
+    var didClickRemoveRow: ((_ row: Int) -> Void)?
     var isDayEnded: Bool {
         return self.tasks.contains(where: { $0.taskType == .endDay })
     }
     
-    init (tableView: NSTableView, tasks: [Task]) {
-        
-        self.tableView = tableView
+    init (tasks: [Task]) {
         self.tasks = tasks
-        
-        TaskCell.register(in: tableView)
-        NonTaskCell.register(in: tableView)
     }
     
     private func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
         
-        var cell: CellProtocol? = nil
         switch taskType {
         case TaskType.issue, TaskType.gitCommit:
-            cell = TaskCell.instantiate(in: self.tableView)
-            break
+            return TaskCell.instantiate(in: self.tableView)
         default:
-            cell = NonTaskCell.instantiate(in: self.tableView)
-            break
+            return NonTaskCell.instantiate(in: self.tableView)
         }
-        
-        return cell!
     }
     
-    func addTask (_ task: Task) {
-        tasks.insert(task, at: 0)
+    func addTask (_ task: Task, at row: Int) {
+        tasks.insert(task, at: row)
     }
     
     func removeTask (at row: Int) {
@@ -90,7 +85,9 @@ extension TasksDataSource: NSTableViewDelegate {
             theData.notes = updatedData.notes
             theData.startDate = updatedData.dateStart
             theData.endDate = updatedData.dateEnd
-            self?.tasks[row] = theData// save the changes locally because the struct is passed by copying
+            // Save to local variable
+            self?.tasks[row] = theData
+            // Save to db and server
             let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(theData, allowSyncing: true, completion: { savedTask in
                 tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
@@ -100,7 +97,7 @@ extension TasksDataSource: NSTableViewDelegate {
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViews({ (rowView, rowIndex) -> Void in
                 if rowView.subviews.first! == cell as! NSTableRowView {
-                    self?.didRemoveRow!(rowIndex)
+                    self?.didClickRemoveRow!(rowIndex)
                     return
                 }
             })
@@ -109,7 +106,7 @@ extension TasksDataSource: NSTableViewDelegate {
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViews( { rowView, rowIndex in
                 if rowView.subviews.first! == cell as! NSTableRowView {
-                    self?.didAddRow!(rowIndex)
+                    self?.didClickAddRow!(rowIndex)
                     return
                 }
             })

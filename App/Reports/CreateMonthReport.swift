@@ -38,6 +38,7 @@ class CreateMonthReport {
                     tasksInDay = []
                     startDayDate = nil
                 } else if !date.isSameDayAs(task.endDate) {
+                    // This task is from the next day
                     tasksByDay.append(tasksInDay)
                     tasksInDay = [task]
                     startDayDate = task.taskType == .startDay ? task.endDate : nil

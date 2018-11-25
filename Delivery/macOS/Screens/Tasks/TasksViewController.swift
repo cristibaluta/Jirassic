@@ -10,18 +10,18 @@ import Cocoa
 
 class TasksViewController: NSViewController {
 	
-	@IBOutlet private weak var splitView: NSSplitView!
-	@IBOutlet private weak var calendarScrollView: CalendarScrollView!
+	@IBOutlet private var splitView: NSSplitView!
+	@IBOutlet private var calendarScrollView: CalendarScrollView!
 	private var tasksScrollView: TasksScrollView?
-    @IBOutlet private weak var listSegmentedControl: NSSegmentedControl!
-    @IBOutlet private weak var butRefresh: NSButton!
-    @IBOutlet private weak var butSettings: NSButton!
-    @IBOutlet private weak var butWarning: NSButton!
-    @IBOutlet private weak var butWarningRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var butQuit: NSButton!
-    @IBOutlet private weak var butMinimize: NSButton!
-    @IBOutlet private weak var loadingTasksIndicator: NSProgressIndicator!
-    @IBOutlet private weak var syncIndicator: NSProgressIndicator!
+    @IBOutlet private var listSegmentedControl: NSSegmentedControl!
+    @IBOutlet private var butRefresh: NSButton!
+    @IBOutlet private var butSettings: NSButton!
+    @IBOutlet private var butWarning: NSButton!
+    @IBOutlet private var butWarningRightConstraint: NSLayoutConstraint!
+    @IBOutlet private var butQuit: NSButton!
+    @IBOutlet private var butMinimize: NSButton!
+    @IBOutlet private var loadingTasksIndicator: NSProgressIndicator!
+    @IBOutlet private var syncIndicator: NSProgressIndicator!
     
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
@@ -145,26 +145,28 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showTasks (_ tasks: [Task]) {
         
-        var frame = splitView!.subviews[SplitViewColumn.tasks.rawValue].frame
-        frame.origin = NSPoint.zero
-        let scrollView = TasksScrollView(tasks: tasks)
-        scrollView.frame = frame
-        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(scrollView)
-        scrollView.constrainToSuperview()
-        scrollView.didRemoveRow = { [weak self] (row: Int) in
+        let dataSource = TasksDataSource(tasks: tasks)
+        dataSource.didClickAddRow = { [weak self] row in
             RCLogO("Remove item at row \(row)")
             if row >= 0 {
                 self?.presenter!.removeTask(at: row)
                 self?.tasksScrollView!.removeTask(at: row)
             }
         }
-        scrollView.didAddRow = { [weak self] (row: Int) -> Void in
+        dataSource.didClickRemoveRow = { [weak self] row in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
-                self?.rectToDisplayPopoverAt = scrollView.frameOfCell(atRow: row)
+                self?.rectToDisplayPopoverAt = self?.tasksScrollView?.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
             }
         }
+        
+        var frame = splitView!.subviews[SplitViewColumn.tasks.rawValue].frame
+        frame.origin = NSPoint.zero
+        let scrollView = TasksScrollView(dataSource: dataSource, listType: .allTasks)
+        scrollView.frame = frame
+        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(scrollView)
+        scrollView.constrainToSuperview()
         scrollView.didCloseDay = { [weak self] (tasks, shouldSaveToJira) -> Void in
             self?.presenter!.closeDay(shouldSaveToJira: shouldSaveToJira)
         }
@@ -175,9 +177,11 @@ extension TasksViewController: TasksPresenterOutput {
     
     func showReports (_ reports: [Report], numberOfDays: Int, type: ListType) {
         
+        let dataSource = ReportsDataSource(reports: reports, numberOfDays: numberOfDays)
+        
         var frame = splitView.subviews[SplitViewColumn.tasks.rawValue].frame
         frame.origin = NSPoint.zero
-        let scrollView = TasksScrollView(reports: reports, numberOfDays: numberOfDays, type: type)
+        let scrollView = TasksScrollView(dataSource: dataSource, listType: type)
         scrollView.frame = frame
         splitView!.subviews[SplitViewColumn.tasks.rawValue].addSubview(scrollView)
         scrollView.constrainToSuperview()
