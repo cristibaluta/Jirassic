@@ -24,10 +24,11 @@ class TasksHeaderView: NSTableHeaderView {
     var didClickSaveWorklogs: (() -> Void)?
     var isDayEnded: Bool = false {
         didSet {
+            let isJiraAvailable = store.isJiraTempoPurchased && moduleJira.isConfigured && moduleJira.isProjectConfigured
             self.butAdd.isHidden = isDayEnded
             self.butCloseDay.isHidden = isDayEnded
             self.butWorklogs.isHidden = !isDayEnded
-            let isJiraAvailable = store.isJiraTempoPurchased && moduleJira.isConfigured && moduleJira.isProjectConfigured
+            self.butWorklogs.isEnabled = isJiraAvailable
             self.butJiraSetup.isHidden = isDayEnded ? isJiraAvailable : true
         }
     }
