@@ -72,7 +72,7 @@ extension CloudKitRepository: RepositoryTasks {
         
     }
     
-    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task?) -> Void)) {
         RCLogO("1. Save to cloudkit \(task)")
         
         guard let customZone = self.customZone, let privateDB = self.privateDB else {
@@ -81,8 +81,9 @@ extension CloudKitRepository: RepositoryTasks {
         }
         
         // Query for the task from server if exists
-        fetchCKRecordOfTask(task) { (record) in
+        fetchCKRecordOfTask(task) { record in
             var record: CKRecord? = record
+            // No record found on server, creating one now
             if record == nil {
                 let recordId = CKRecordID(recordName: task.objectId!, zoneID: customZone.zoneID)
                 record = CKRecord(recordType: "Task", recordID: recordId)
@@ -109,6 +110,7 @@ extension CloudKitRepository: RepositoryTasks {
                     default:
                         break
                     }
+                    completion(nil)
                 }
             })
         }

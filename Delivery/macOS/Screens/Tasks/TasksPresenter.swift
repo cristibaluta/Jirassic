@@ -138,7 +138,7 @@ extension TasksPresenter: TasksPresenterInput {
         ModuleHookup().insert(task: task)
     }
 
-    func closeDay(shouldSaveToJira: Bool) {
+    func closeDay (shouldSaveToJira: Bool) {
         
         let closeDay = CloseDay()
         closeDay.close(with: currentTasks)

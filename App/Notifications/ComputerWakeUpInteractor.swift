@@ -75,7 +75,10 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
     internal func save (task: Task) {
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: self.remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
-            InternalNotifications.notifyAboutNewlyAddedTask(savedTask)
+            guard let task = savedTask else {
+                return
+            }
+            InternalNotifications.notifyAboutNewlyAddedTask(task)
         })
     }
 }

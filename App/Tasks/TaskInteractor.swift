@@ -14,7 +14,7 @@ class TaskInteractor: RepositoryInteractor {
         return repository.queryTask(withId: objectId)
     }
     
-    func saveTask (_ task: Task, allowSyncing: Bool, completion: @escaping (_ savedTask: Task) -> Void) {
+    func saveTask (_ task: Task, allowSyncing: Bool, completion: @escaping (_ savedTask: Task?) -> Void) {
         
         guard task.objectId != nil else {
             fatalError("Cannot save a task without objectId")
@@ -22,11 +22,16 @@ class TaskInteractor: RepositoryInteractor {
         var task = task
         task.lastModifiedDate = nil
         
-        self.repository.saveTask(task, completion: { [weak self] (savedTask: Task) -> Void in
-            if allowSyncing {
-                self?.syncTask(savedTask, completion: { (task) in })
+        self.repository.saveTask(task, completion: { [weak self] savedTask in
+            guard let localTask = savedTask else {
+                completion(nil)
+                return
             }
-            completion(savedTask)
+            if allowSyncing {
+                // We don't care if the task doesn't get saved to server
+                self?.syncTask(localTask, completion: { (task) in })
+            }
+            completion(localTask)
         })
     }
     

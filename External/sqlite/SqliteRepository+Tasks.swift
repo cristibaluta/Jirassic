@@ -90,12 +90,16 @@ extension SqliteRepository: RepositoryTasks {
         }
     }
     
-    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task?) -> Void)) {
         
-//        RCLog("save to sqlite \(task)")
         let stask = staskFromTask(task)
-        let _ = stask.save()
-        completion( taskFromSTask(stask))
+        let saved = stask.save()
+        RCLog("Saved to sqlite \(saved) \(task)")
+        if saved == 1 {
+            completion( taskFromSTask(stask))
+        } else {
+            completion(nil)
+        }
     }
 }
 

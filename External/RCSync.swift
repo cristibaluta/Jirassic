@@ -60,11 +60,20 @@ class RCSync<T> {
     func saveTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         RCLog("1.1 >>> Save \(task)")
-        _ = remoteRepository.saveTask(task) { (uploadedTask) in
+        _ = remoteRepository.saveTask(task) { uploadedTask in
+            guard let uploadedTask = uploadedTask else {
+                completion(false)
+                return
+            }
             RCLog("1.1 Save <<< uploadedTask \(String(describing: uploadedTask.objectId))")
             // After task was saved to server update it to local datastore
-            _ = self.localRepository.saveTask(uploadedTask, completion: { (task) in
-                completion(true)
+            _ = self.localRepository.saveTask(uploadedTask, completion: { savedTask in
+                // If task was saved locally successful update the last sync date
+                // Otherwise last sync date will be an older date than the tasks last modified date
+                if let savedTask = savedTask {
+                    UserDefaults.standard.lastSyncDateWithRemote = savedTask.lastModifiedDate
+                }
+                completion(savedTask != nil)
             })
         }
     }
@@ -87,7 +96,7 @@ class RCSync<T> {
             RCLog("2. Number of changes: \(changedTasks.count)")
             for task in changedTasks {
                 self.localRepository.saveTask(task, completion: { (task) in
-                    RCLog("2. Saved to local db \(String(describing: task.objectId))")
+                    RCLog("2. Saved to local db \(String(describing: task?.objectId))")
                 })
             }
             RCLog("2. Number of deletes: \(deletedTasksIds.count)")

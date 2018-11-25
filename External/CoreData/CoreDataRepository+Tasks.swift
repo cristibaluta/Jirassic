@@ -79,7 +79,7 @@ extension CoreDataRepository: RepositoryTasks {
         
     }
     
-    func saveTask (_ task: Task, completion: @escaping ((_ task: Task) -> Void)) {
+    func saveTask (_ task: Task, completion: @escaping ((_ task: Task?) -> Void)) {
         
         let ctask = ctaskFromTask(task)
         saveContext()
