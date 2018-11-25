@@ -55,8 +55,8 @@ class TaskCell: NSTableRowView, CellProtocol {
             _dateEnd = newValue.dateEnd
             _dateEndHHmm = _dateEnd.HHmm()
             dateEndTextField.stringValue = _dateEndHHmm
-			issueNrTextField.stringValue = newValue.taskNumber
-			notesTextField.stringValue = newValue.notes
+			issueNrTextField.stringValue = newValue.taskNumber ?? ""
+			notesTextField.stringValue = newValue.notes ?? ""
 		}
 	}
     var duration: String {

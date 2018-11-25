@@ -30,7 +30,7 @@ class ComputerWakeUpInteractor: RepositoryInteractor {
                 if settings.settingsTracking.trackStartOfDay {
                     let startDate = settings.settingsTracking.startOfDayTime.dateByKeepingTime()
                     if currentDate > startDate {
-                        let task = Task(endDate: currentDate, type: TaskType.startDay)
+                        let task = Task(endDate: currentDate, type: .startDay)
                         save(task: task)
                     }
                 }

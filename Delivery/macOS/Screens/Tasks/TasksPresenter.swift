@@ -106,7 +106,7 @@ extension TasksPresenter: TasksPresenterInput {
         if currentTasks.count == 0 {
             ui!.showMessage((
                 title: "Good morning!",
-                message: "Ready to begin your working day?",
+                message: "Ready to start working today?",
                 buttonTitle: "Start day"))
         }
         else if currentTasks.count == 1, selectedListType == .report {

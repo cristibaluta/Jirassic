@@ -57,7 +57,7 @@ class NonTaskCell: NSTableRowView, CellProtocol {
                 self.dateStartTextFieldLeadingContraint.constant = 14 - 36 - 4
             }
             self.dateEndTextField.stringValue = newValue.dateEnd.HHmm()
-			self.notesTextField.stringValue = newValue.notes
+			self.notesTextField.stringValue = newValue.notes ?? ""
 		}
 	}
 	var duration: String {

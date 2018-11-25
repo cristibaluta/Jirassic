@@ -35,8 +35,8 @@ class ReportCell: NSTableRowView, CellProtocol {
             )
         }
         set {
-            self.taskNrTextField!.stringValue = newValue.taskNumber
-            self.notesTextField!.stringValue = newValue.notes
+            self.taskNrTextField!.stringValue = newValue.taskNumber ?? ""
+            self.notesTextField!.stringValue = newValue.notes ?? ""
         }
     }
     var duration: String {
@@ -117,16 +117,18 @@ extension ReportCell {
         super.updateTrackingAreas()
         
         self.ensureTrackingArea()
-        if (!(self.trackingAreas as NSArray).contains(self.trackingArea!)) {
+        if !(self.trackingAreas as NSArray).contains(self.trackingArea!) {
             self.addTrackingArea(self.trackingArea!);
         }
     }
     
     func ensureTrackingArea() {
-        if (trackingArea == nil) {
+        if trackingArea == nil {
             trackingArea = NSTrackingArea(
                 rect: self.bounds,
-                options: [NSTrackingArea.Options.inVisibleRect, NSTrackingArea.Options.activeAlways, NSTrackingArea.Options.mouseEnteredAndExited],
+                options: [NSTrackingArea.Options.inVisibleRect,
+                          NSTrackingArea.Options.activeAlways,
+                          NSTrackingArea.Options.mouseEnteredAndExited],
                 owner: self,
                 userInfo: nil
             )
