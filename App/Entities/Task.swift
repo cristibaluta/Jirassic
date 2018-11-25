@@ -32,7 +32,7 @@ enum TaskType: Int {
         case .meeting: return "Meeting"
         case .waste: return "Social & Media"
         case .learning: return "Learning session"
-        case .coderev: return "Reviewing and fixing code reviews"
+        case .coderev: return "Reviewing and fixing code"
         case .calendar: return "Calendar event"
         default: return ""
         }
@@ -93,7 +93,7 @@ extension Task {
 typealias TaskCreationData = (
     dateStart: Date?,
     dateEnd: Date,
-    taskNumber: String,
-    notes: String,
+    taskNumber: String?,
+    notes: String?,
     taskType: TaskType
 )

@@ -19,9 +19,9 @@ class TasksHeaderView: NSTableHeaderView {
     private var store = Store.shared
     private var moduleJira = ModuleJiraTempo()
     private let pref = RCPreferences<LocalPreferences>()
-    var didAddTask: (() -> Void)?
-    var didCloseDay: (() -> Void)?
-    var didSaveWorklogs: (() -> Void)?
+    var didClickAddTask: (() -> Void)?
+    var didClickCloseDay: (() -> Void)?
+    var didClickSaveWorklogs: (() -> Void)?
     var isDayEnded: Bool = false {
         didSet {
             self.butAdd.isHidden = isDayEnded
@@ -38,15 +38,15 @@ class TasksHeaderView: NSTableHeaderView {
     }
     
     @IBAction func handleAddButton (_ sender: NSButton) {
-        didAddTask?()
+        didClickAddTask?()
     }
     
     @IBAction func handleCloseDayButton (_ sender: NSButton) {
-        didCloseDay?()
+        didClickCloseDay?()
     }
     
     @IBAction func handleWorklogsButton (_ sender: NSButton) {
-        didSaveWorklogs?()
+        didClickSaveWorklogs?()
     }
     
     @IBAction func handleJiraSetupButton (_ sender: NSButton) {

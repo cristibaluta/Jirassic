@@ -42,8 +42,12 @@ class TaskCellPresenter: NSObject {
             cell.color = NSColor.systemGray
         }
 
-        var notes = theTask.notes ?? theTask.taskType.defaultNotes
-        if theTask.taskType == .coderev {
+        var notes = theTask.notes ?? ""
+        if notes == "" {
+            notes = theTask.taskType.defaultNotes
+        }
+        // The codereview notes is a list of tasks that were reviewed
+        if theTask.taskType == .coderev && theTask.notes != nil && theTask.notes != "" {
             notes = "\(theTask.taskType.defaultNotes): \(notes)"
         }
 		cell.data = (

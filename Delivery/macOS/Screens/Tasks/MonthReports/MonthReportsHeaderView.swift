@@ -12,7 +12,7 @@ class MonthReportsHeaderView: ReportsHeaderView {
     
     private let butCopyAll: NSButton
     private var totalDaysTextField: NSTextField
-    var didCopyAll: (() -> Void)?
+    var didClickCopyAll: (() -> Void)?
     
     var numberOfDays: Int {
         get {
@@ -63,6 +63,6 @@ class MonthReportsHeaderView: ReportsHeaderView {
 extension MonthReportsHeaderView {
     
     @objc func handleCopyAllButton (_ sender: NSButton) {
-        didCopyAll?()
+        didClickCopyAll?()
     }
 }

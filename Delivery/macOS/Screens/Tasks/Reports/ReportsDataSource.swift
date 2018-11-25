@@ -18,6 +18,8 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
             ReportCell.register(in: tableView)
         }
     }
+    var didClickAddRow: ((_ row: Int) -> Void)?
+    var didClickRemoveRow: ((_ row: Int) -> Void)?
     private var tempCell: ReportCell?
     let numberOfDays: Int
     var reports: [Report]

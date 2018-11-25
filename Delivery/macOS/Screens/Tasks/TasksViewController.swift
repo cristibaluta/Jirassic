@@ -146,20 +146,6 @@ extension TasksViewController: TasksPresenterOutput {
     func showTasks (_ tasks: [Task]) {
         
         let dataSource = TasksDataSource(tasks: tasks)
-        dataSource.didClickAddRow = { [weak self] row in
-            RCLogO("Add item after row \(row)")
-            if row >= 0 {
-                self?.rectToDisplayPopoverAt = self?.tasksScrollView?.frameOfCell(atRow: row)
-                self?.presenter!.insertTask(after: row)
-            }
-        }
-        dataSource.didClickRemoveRow = { [weak self] row in
-            RCLogO("Remove item at row \(row)")
-            if row >= 0 {
-                self?.presenter!.removeTask(at: row)
-                self?.tasksScrollView!.removeTask(at: row)
-            }
-        }
         
         var frame = splitView!.subviews[SplitViewColumn.tasks.rawValue].frame
         frame.origin = NSPoint.zero
@@ -167,7 +153,21 @@ extension TasksViewController: TasksPresenterOutput {
         scrollView.frame = frame
         splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(scrollView)
         scrollView.constrainToSuperview()
-        scrollView.didCloseDay = { [weak self] (tasks, shouldSaveToJira) -> Void in
+        scrollView.didClickAddRow = { [weak self] row in
+            RCLogO("Add item after row \(row)")
+            if row >= 0 {
+                self?.rectToDisplayPopoverAt = self?.tasksScrollView?.frameOfCell(atRow: row)
+                self?.presenter!.insertTask(after: row)
+            }
+        }
+        scrollView.didClickRemoveRow = { [weak self] row in
+            RCLogO("Remove item at row \(row)")
+            if row >= 0 {
+                self?.presenter!.removeTask(at: row)
+                self?.tasksScrollView!.removeTask(at: row)
+            }
+        }
+        scrollView.didClickCloseDay = { [weak self] (tasks, shouldSaveToJira) in
             self?.presenter!.closeDay(shouldSaveToJira: shouldSaveToJira)
         }
         

@@ -17,8 +17,8 @@ class TasksScrollView: NSScrollView {
     
 	var didClickAddRow: ((_ row: Int) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
+    var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
-    var didCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -46,6 +46,13 @@ class TasksScrollView: NSScrollView {
         tableView.dataSource = self.dataSource
         tableView.delegate = self.dataSource
         addHeader()
+        
+        self.dataSource.didClickAddRow = { [weak self] row in
+            self?.didClickAddRow!(row)
+        }
+        self.dataSource.didClickRemoveRow = { [weak self] row in
+            self?.didClickRemoveRow!(row)
+        }
     }
     
     private func setupTableView() {
@@ -79,20 +86,16 @@ class TasksScrollView: NSScrollView {
                 return
             }
             let headerView = TasksHeaderView.instantiateFromXib()
-            headerView.didCloseDay = { [weak self] in
-                if let wself = self {
-                    wself.didCloseDay!(dataSource.tasks, false)
-                }
+            headerView.didClickCloseDay = { [weak self] in
+                self?.didClickCloseDay!(dataSource.tasks, false)
             }
-            headerView.didAddTask = { [weak self] in
+            headerView.didClickAddTask = { [weak self] in
                 if let wself = self {
                     wself.didClickAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1)
                 }
             }
-            headerView.didSaveWorklogs = { [weak self] in
-                if let wself = self {
-                    wself.didCloseDay!(dataSource.tasks, true)
-                }
+            headerView.didClickSaveWorklogs = { [weak self] in
+                self?.didClickCloseDay!(dataSource.tasks, true)
             }
             headerView.isDayEnded = dataSource.isDayEnded
             
@@ -118,7 +121,7 @@ class TasksScrollView: NSScrollView {
             case .monthlyReports:
                 let monthHeaderView = MonthReportsHeaderView(height: CGFloat(100))
                 monthHeaderView.numberOfDays = dataSource.numberOfDays
-                monthHeaderView.didCopyAll = {
+                monthHeaderView.didClickCopyAll = {
                     let interactor = CreateMonthReport()
                     let joined = interactor.joinReports(dataSource.reports)
                     let string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin

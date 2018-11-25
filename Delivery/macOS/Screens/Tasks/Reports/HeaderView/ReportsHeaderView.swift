@@ -13,7 +13,7 @@ class ReportsHeaderView: NSTableHeaderView {
     private var butRound: NSButton
     private var butPercents: NSButton
     private var totalTimeTextField: NSTextField
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
     var didChangeSettings: (() -> Void)?
     // In hours
     var workedTime: String {
@@ -40,12 +40,12 @@ class ReportsHeaderView: NSTableHeaderView {
         butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
         butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: attributes)
         butPercents.setButtonType(.switch)
-        butPercents.state = localPreferences.bool(.usePercents) ? NSControl.StateValue.on : NSControl.StateValue.off
+        butPercents.state = pref.bool(.usePercents) ? .on : .off
         
         butRound = NSButton()
         butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
         butRound.setButtonType(.switch)
-        butRound.state = localPreferences.bool(.enableRoundingDay) ? NSControl.StateValue.on : NSControl.StateValue.off
+        butRound.state = pref.bool(.enableRoundingDay) ? .on : .off
         butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
         
         totalTimeTextField = NSTextField()
@@ -86,12 +86,12 @@ class ReportsHeaderView: NSTableHeaderView {
 extension ReportsHeaderView {
     
     @objc func handleRoundButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == NSControl.StateValue.on, forKey: .enableRoundingDay)
+        pref.set(sender.state == .on, forKey: .enableRoundingDay)
         didChangeSettings?()
     }
     
     @objc func handlePercentsButton (_ sender: NSButton) {
-        localPreferences.set(sender.state == NSControl.StateValue.on, forKey: .usePercents)
+        pref.set(sender.state == .on, forKey: .usePercents)
         didChangeSettings?()
     }
 }

@@ -10,6 +10,8 @@ import Cocoa
 
 protocol TasksAndReportsDataSource {
     var tableView: NSTableView! {get set}
+    var didClickAddRow: ((_ row: Int) -> Void)? {get set}
+    var didClickRemoveRow: ((_ row: Int) -> Void)? {get set}
     func addTask (_ task: Task, at row: Int)
     func removeTask (at row: Int)
 }
