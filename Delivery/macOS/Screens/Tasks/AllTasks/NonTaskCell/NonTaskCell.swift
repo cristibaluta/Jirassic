@@ -26,8 +26,8 @@ class NonTaskCell: NSTableRowView, CellProtocol {
     private var activeTimeboxPopover: NSPopover?
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
-	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
-	var didAddCell: ((_ cell: CellProtocol) -> ())?
+	var didClickRemoveCell: ((_ cell: CellProtocol) -> ())?
+	var didClickAddCell: ((_ cell: CellProtocol) -> ())?
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
     
     private var _data: TaskCreationData?
@@ -145,20 +145,16 @@ class NonTaskCell: NSTableRowView, CellProtocol {
         
         activeTimeboxPopover = popover
     }
-    
-    override func accessibilityCell(forColumn column: Int, row: Int) -> Any? {
-        return nil
-    }
 }
 
 extension NonTaskCell {
 	
 	@IBAction func handleRemoveButton (_ sender: NSButton) {
-		self.didRemoveCell?(self)
+		didClickRemoveCell?(self)
 	}
 	
 	@IBAction func handleAddButton (_ sender: NSButton) {
-		self.didAddCell?(self)
+		didClickAddCell?(self)
 	}
 }
 

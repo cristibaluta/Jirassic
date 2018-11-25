@@ -147,17 +147,17 @@ extension TasksViewController: TasksPresenterOutput {
         
         let dataSource = TasksDataSource(tasks: tasks)
         dataSource.didClickAddRow = { [weak self] row in
-            RCLogO("Remove item at row \(row)")
-            if row >= 0 {
-                self?.presenter!.removeTask(at: row)
-                self?.tasksScrollView!.removeTask(at: row)
-            }
-        }
-        dataSource.didClickRemoveRow = { [weak self] row in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
                 self?.rectToDisplayPopoverAt = self?.tasksScrollView?.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
+            }
+        }
+        dataSource.didClickRemoveRow = { [weak self] row in
+            RCLogO("Remove item at row \(row)")
+            if row >= 0 {
+                self?.presenter!.removeTask(at: row)
+                self?.tasksScrollView!.removeTask(at: row)
             }
         }
         

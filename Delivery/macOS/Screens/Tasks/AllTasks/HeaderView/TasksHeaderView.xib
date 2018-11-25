@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
-                    <rect key="frame" x="20" y="20" width="150" height="22"/>
+                    <rect key="frame" x="16" y="20" width="150" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="LcH-xv-Khy"/>
                         <constraint firstAttribute="height" constant="21" id="ZSP-mf-RSN"/>
@@ -28,7 +28,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-uQ-oVI">
-                    <rect key="frame" x="20" y="20" width="84" height="22"/>
+                    <rect key="frame" x="16" y="20" width="84" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="84" id="aIF-Ua-EvT"/>
                         <constraint firstAttribute="height" constant="21" id="cUp-G5-Pf2"/>
@@ -56,7 +56,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mpy-Nv-lYn">
-                    <rect key="frame" x="178" y="22" width="50" height="19"/>
+                    <rect key="frame" x="174" y="22" width="50" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mLC-pf-tpN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -68,7 +68,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="04F-ms-XJx"/>
-                <constraint firstItem="hGd-uQ-oVI" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="5KR-F5-HAg"/>
+                <constraint firstItem="hGd-uQ-oVI" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="5KR-F5-HAg"/>
                 <constraint firstItem="uAc-jr-se2" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="A67-H0-a3l"/>
                 <constraint firstItem="Mpy-Nv-lYn" firstAttribute="leading" secondItem="Ca7-bt-zzl" secondAttribute="trailing" constant="8" id="OhW-Qc-w9Q"/>
                 <constraint firstItem="Mpy-Nv-lYn" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="cDs-UT-aDY"/>

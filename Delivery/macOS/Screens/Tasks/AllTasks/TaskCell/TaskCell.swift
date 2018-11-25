@@ -32,8 +32,8 @@ class TaskCell: NSTableRowView, CellProtocol {
     private var activeTimeboxPopover: NSPopover?
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
-	var didRemoveCell: ((_ cell: CellProtocol) -> ())?
-	var didAddCell: ((_ cell: CellProtocol) -> ())?
+	var didClickRemoveCell: ((_ cell: CellProtocol) -> ())?
+	var didClickAddCell: ((_ cell: CellProtocol) -> ())?
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
 	
 	// Sets data to the cell
@@ -136,11 +136,11 @@ class TaskCell: NSTableRowView, CellProtocol {
 extension TaskCell {
 	
 	@IBAction func handleRemoveButton (_ sender: NSButton) {
-		didRemoveCell?(self)
+		didClickRemoveCell?(self)
 	}
 	
 	@IBAction func handleAddButton (_ sender: NSButton) {
-		didAddCell?(self)
+		didClickAddCell?(self)
 	}
 }
 

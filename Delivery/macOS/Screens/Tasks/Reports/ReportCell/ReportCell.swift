@@ -20,8 +20,8 @@ class ReportCell: NSTableRowView, CellProtocol {
     fileprivate var bgColor: NSColor = NSColor.clear
     
     var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
-    var didRemoveCell: ((_ cell: CellProtocol) -> ())?
-    var didAddCell: ((_ cell: CellProtocol) -> ())?
+    var didClickRemoveCell: ((_ cell: CellProtocol) -> ())?
+    var didClickAddCell: ((_ cell: CellProtocol) -> ())?
     var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
     
     var data: TaskCreationData {

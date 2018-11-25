@@ -21,7 +21,7 @@ protocol CellProtocol {
     var timeToolTip: String? {get set}
 	
 	var didEndEditingCell: ((_ cell: CellProtocol) -> ())? {get set}
-	var didRemoveCell: ((_ cell: CellProtocol) -> ())? {get set}
-	var didAddCell: ((_ cell: CellProtocol) -> ())? {get set}
+	var didClickRemoveCell: ((_ cell: CellProtocol) -> ())? {get set}
+	var didClickAddCell: ((_ cell: CellProtocol) -> ())? {get set}
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())? {get set}
 }

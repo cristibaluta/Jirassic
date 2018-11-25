@@ -93,7 +93,7 @@ extension TasksDataSource: NSTableViewDelegate {
                 tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
             })
         }
-        cell.didRemoveCell = { [weak self] (cell: CellProtocol) in
+        cell.didClickRemoveCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViews({ (rowView, rowIndex) -> Void in
                 if rowView.subviews.first! == cell as! NSTableRowView {
@@ -102,7 +102,7 @@ extension TasksDataSource: NSTableViewDelegate {
                 }
             })
         }
-        cell.didAddCell = { [weak self] (cell: CellProtocol) in
+        cell.didClickAddCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came
             tableView.enumerateAvailableRowViews( { rowView, rowIndex in
                 if rowView.subviews.first! == cell as! NSTableRowView {
