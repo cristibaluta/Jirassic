@@ -107,4 +107,24 @@ class CreateMonthReport {
         }
         return (notes: notes, totalDuration: totalDuration)
     }
+    
+    func htmlReports (_ reports: [Report]) -> String {
+        
+        var notes = ""
+        var totalDuration = 0.0
+        for report in reports {
+            totalDuration += report.duration
+            var note = "\(report.taskNumber) \(report.title)"
+            if report.notes.count > 0 {
+                note = "<p>\(note)</p>"
+                note += "<ul>"
+                for n in report.notes {
+                    note += "<li>\(n)</li>"
+                }
+                note += "</ul>"
+            }
+            notes += "<tr><td style=\"text-align: left; padding-left: 10px;\">\(note)</td><td>\(report.duration.secToHoursAndMin)</td></tr>\n"
+        }
+        return notes
+    }
 }

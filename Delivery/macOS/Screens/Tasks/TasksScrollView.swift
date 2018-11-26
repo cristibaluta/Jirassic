@@ -18,6 +18,7 @@ class TasksScrollView: NSScrollView {
 	var didClickAddRow: ((_ row: Int) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
     var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
+    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
 	
     required init?(coder: NSCoder) {
@@ -122,11 +123,7 @@ class TasksScrollView: NSScrollView {
                 let monthHeaderView = MonthReportsHeaderView(height: CGFloat(100))
                 monthHeaderView.numberOfDays = dataSource.numberOfDays
                 monthHeaderView.didClickCopyAll = { asHtml in
-                    let interactor = CreateMonthReport()
-                    let joined = interactor.joinReports(dataSource.reports)
-                    let string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
-                    NSPasteboard.general.clearContents()
-                    NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
+                    self.didClickCopyMonthlyReport?(asHtml)
                 }
                 headerView = monthHeaderView
             default:
