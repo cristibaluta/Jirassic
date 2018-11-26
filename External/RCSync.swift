@@ -23,6 +23,10 @@ class RCSync<T> {
     func start (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         
         RCLog("1. Start iCloud sync")
+        guard objectsToSave.count == 0 || objectsToDelete.count == 0 else {
+            RCLog("1. Sync already in progress, not starting it again")
+            return
+        }
         objectsToSave = localRepository.queryUnsyncedTasks()
         RCLog("1. Nr of unsynced tasks: \(objectsToSave.count)")
         localRepository.queryDeletedTasks { deletedTasks in
