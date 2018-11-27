@@ -58,9 +58,9 @@ class TaskCellPresenter: NSObject {
 			taskType: theTask.taskType
 		)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
-        cell.isEditable = theTask.taskType != .gitCommit && theTask.taskType != .calendar
+        cell.isEditable = theTask.objectId != nil
         cell.isRemovable = theTask.objectId != nil
         cell.isIgnored = theTask.taskType == .lunch || theTask.taskType == .waste
-        cell.timeToolTip = cell.isEditable ? "Click to edit" : "Git commits and calendar events times can't be edited"
+        cell.timeToolTip = theTask.objectId != nil ? "Click to edit" : "Item can be edited after the day is closed"
 	}
 }

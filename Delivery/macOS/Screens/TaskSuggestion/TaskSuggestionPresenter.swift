@@ -25,7 +25,7 @@ class TaskSuggestionPresenter {
     
     weak var userInterface: TaskSuggestionPresenterOutput?
     private var isStartOfDay = false
-    private let startWorkText = "Good morning, ready to start work?"
+    private let startWorkText = "Good morning, ready to start working?"
     private let moduleCalendar = ModuleCalendar()
     
     private func taskType (forIndex index: Int) -> TaskType {
