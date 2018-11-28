@@ -34,7 +34,7 @@ class WelcomeViewController: NSViewController {
             boxWhatsNew.isHidden = false
             boxSetupProgrammers.isHidden = true
             boxSetupOthers.isHidden = true
-            whatsNewTextField.stringValue = "• Import meetings from Calendar.app\n• Create monthly reports\n• Fixes bug in editing tasks. Git commits and calendar meetings are not editable, they can only be deleted after the day is closed\n• Extended calendar history to one year\n• Various UI improvements and fixes"
+            whatsNewTextField.stringValue = "• Import meetings from Calendar.app\n• Create monthly reports\n• Fixes bug in editing tasks. Git commits and calendar meetings can be edited after the day is closed\n• Extended calendar history to one year\n• Various UI improvements and fixes"
         } else {
             boxWhatsNew.isHidden = true
             boxSetupProgrammers.isHidden = false

@@ -10,11 +10,10 @@ import Cocoa
 
 class ReportsHeaderView: NSTableHeaderView {
     
-    private var butRound: NSButton
-    private var butPercents: NSButton
-    private var totalTimeTextField: NSTextField
+    @IBOutlet private var butPercents: NSButton!
+    @IBOutlet private var butRound: NSButton!
+    @IBOutlet private var totalTimeTextField: NSTextField!
     internal let pref = RCPreferences<LocalPreferences>()
-    internal let attributes = [NSAttributedStringKey.foregroundColor: NSColor.white]
     
     var didChangeSettings: (() -> Void)?
     // In hours
@@ -31,67 +30,34 @@ class ReportsHeaderView: NSTableHeaderView {
             return 0.0
         }
         set {
-            butRound.attributedTitle = NSAttributedString(string: "Round to \(newValue) hours", attributes: attributes)
+            butRound.title = "Round to \(newValue) hours"
         }
     }
     
-    init (height: CGFloat) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        butPercents = NSButton()
-        butPercents.frame = NSRect(x: 15, y: 20, width: 200, height: 20)
-        butPercents.attributedTitle = NSAttributedString(string: "Show time in percents", attributes: attributes)
-        butPercents.setButtonType(.switch)
+        butPercents.title = "Show time in percents"
         butPercents.state = pref.bool(.usePercents) ? .on : .off
         
-        butRound = NSButton()
-        butRound.frame = NSRect(x: 200, y: 20, width: 200, height: 20)
-        butRound.setButtonType(.switch)
         butRound.state = pref.bool(.enableRoundingDay) ? .on : .off
         butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
-        
-        totalTimeTextField = NSTextField()
-        totalTimeTextField.alignment = NSTextAlignment.right
-        totalTimeTextField.drawsBackground = false
-        totalTimeTextField.isBordered = false
-        totalTimeTextField.isEnabled = false
-        totalTimeTextField.focusRingType = .none
-        totalTimeTextField.textColor = NSColor.white
-        totalTimeTextField.backgroundColor = NSColor.clear
-        
-        super.init(frame: NSRect(x: 0, y: 0, width: 0, height: height))
-        
-        self.workedTime = ""
-        self.workdayTime = 0.0
-        
-        butRound.target = self
-        butRound.action = #selector(self.handleRoundButton)
-        butPercents.target = self
-        butPercents.action = #selector(self.handlePercentsButton)
-        
-        self.addSubview(butPercents)
-        self.addSubview(butRound)
-        self.addSubview(totalTimeTextField)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ dirtyRect: NSRect) {
-        NSColor.darkGray.set()
-        dirtyRect.fill()
-        totalTimeTextField.frame = NSRect(x: dirtyRect.size.width - 80, y: 22, width: 64, height: 20)
+    override func headerRect(ofColumn column: Int) -> NSRect {
+        // This will prevent for a label to appear  in the middle of the header
+        return NSRect.zero
     }
 }
 
 extension ReportsHeaderView {
     
-    @objc func handleRoundButton (_ sender: NSButton) {
+    @IBAction func handleRoundButton (_ sender: NSButton) {
         pref.set(sender.state == .on, forKey: .enableRoundingDay)
         didChangeSettings?()
     }
     
-    @objc func handlePercentsButton (_ sender: NSButton) {
+    @IBAction func handlePercentsButton (_ sender: NSButton) {
         pref.set(sender.state == .on, forKey: .usePercents)
         didChangeSettings?()
     }

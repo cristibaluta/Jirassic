@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="ReportsHeaderView" id="c22-O7-iKe" customClass="ReportsHeaderView" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="454" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
+                    <rect key="frame" x="14" y="21" width="157" height="18"/>
+                    <buttonCell key="cell" type="check" title="Show time in percents" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jyn-Uj-MYd">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handlePercentsButton:" target="c22-O7-iKe" id="OSs-vC-5Xq"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mpy-Nv-lYn">
+                    <rect key="frame" x="187" y="21" width="138" height="18"/>
+                    <buttonCell key="cell" type="check" title="Round to 8.0 hours" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mLC-pf-tpN">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleRoundButton:" target="c22-O7-iKe" id="eS9-wA-rEj"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nzw-0j-cKu">
+                    <rect key="frame" x="416" y="22" width="24" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="8.0" id="M0j-5S-fes">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Ca7-bt-zzl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="5tt-yf-WIb"/>
+                <constraint firstItem="Mpy-Nv-lYn" firstAttribute="leading" secondItem="Ca7-bt-zzl" secondAttribute="trailing" constant="20" id="OhW-Qc-w9Q"/>
+                <constraint firstItem="Mpy-Nv-lYn" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="cDs-UT-aDY"/>
+                <constraint firstItem="Nzw-0j-cKu" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="dGf-tx-All"/>
+                <constraint firstAttribute="trailing" secondItem="Nzw-0j-cKu" secondAttribute="trailing" constant="16" id="hJe-bR-kX1"/>
+                <constraint firstItem="Ca7-bt-zzl" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="tBT-qw-lNA"/>
+            </constraints>
+            <connections>
+                <outlet property="butPercents" destination="Ca7-bt-zzl" id="vM5-71-Srn"/>
+                <outlet property="butRound" destination="Mpy-Nv-lYn" id="rdX-W9-fEm"/>
+                <outlet property="totalTimeTextField" destination="Nzw-0j-cKu" id="50m-UJ-5NS"/>
+            </connections>
+            <point key="canvasLocation" x="126" y="63"/>
+        </customView>
+    </objects>
+</document>

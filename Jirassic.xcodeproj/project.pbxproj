@@ -327,6 +327,10 @@
 		28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
 		28AA50101EDCD52300AAF03D /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
 		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
+		28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
+		28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
+		28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
+		28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
 		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
@@ -670,6 +674,8 @@
 		28A928941E9110980022AB55 /* CloudKitRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+User.swift"; sourceTree = "<group>"; };
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
+		28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
+		28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthReportsHeaderView.xib; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
 		28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranchTests.swift; sourceTree = "<group>"; };
@@ -1094,6 +1100,7 @@
 			isa = PBXGroup;
 			children = (
 				2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */,
+				28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */,
 			);
 			path = HeaderView;
 			sourceTree = "<group>";
@@ -1116,6 +1123,7 @@
 			isa = PBXGroup;
 			children = (
 				2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */,
+				28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */,
 			);
 			path = MonthReports;
 			sourceTree = "<group>";
@@ -1993,6 +2001,7 @@
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
 				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
+				28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
 				287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
@@ -2003,6 +2012,7 @@
 				2845B162206AE468006EFB3B /* TaskCell.xib in Resources */,
 				56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
+				28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */,
 				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				2845B14B206AE3A8006EFB3B /* ReportCell.xib in Resources */,
@@ -2040,6 +2050,7 @@
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
+				28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */,
 				2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
@@ -2055,6 +2066,7 @@
 				2845B163206AE468006EFB3B /* TaskCell.xib in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
+				28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
 				56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */,
 				2845B169206AE468006EFB3B /* TasksHeaderView.xib in Resources */,

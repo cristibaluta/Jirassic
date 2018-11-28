@@ -118,9 +118,9 @@ class TasksScrollView: NSScrollView {
             var headerView: ReportsHeaderView!
             switch listType! {
             case .report:
-                headerView = ReportsHeaderView(height: CGFloat(60))
+                headerView = ReportsHeaderView.instantiateFromXib()
             case .monthlyReports:
-                let monthHeaderView = MonthReportsHeaderView(height: CGFloat(100))
+                let monthHeaderView = MonthReportsHeaderView.instantiateFromXib()
                 monthHeaderView.numberOfDays = dataSource.numberOfDays
                 monthHeaderView.didClickCopyAll = { asHtml in
                     self.didClickCopyMonthlyReport?(asHtml)

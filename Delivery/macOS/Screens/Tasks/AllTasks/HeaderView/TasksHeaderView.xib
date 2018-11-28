@@ -9,17 +9,17 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="FooterCell" id="c22-O7-iKe" customClass="TasksHeaderView" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="454" height="63"/>
+        <customView identifier="TasksHeaderView" id="c22-O7-iKe" customClass="TasksHeaderView" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="454" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
-                    <rect key="frame" x="16" y="20" width="150" height="22"/>
+                    <rect key="frame" x="16" y="19" width="180" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="LcH-xv-Khy"/>
+                        <constraint firstAttribute="width" constant="180" id="LcH-xv-Khy"/>
                         <constraint firstAttribute="height" constant="21" id="ZSP-mf-RSN"/>
                     </constraints>
-                    <buttonCell key="cell" type="inline" title="View &amp; save worklogs" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyn-Uj-MYd">
+                    <buttonCell key="cell" type="inline" title="View &amp; save worklogs to Jira" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyn-Uj-MYd">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystemBold"/>
                     </buttonCell>
@@ -28,7 +28,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-uQ-oVI">
-                    <rect key="frame" x="16" y="20" width="84" height="22"/>
+                    <rect key="frame" x="16" y="19" width="84" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="84" id="aIF-Ua-EvT"/>
                         <constraint firstAttribute="height" constant="21" id="cUp-G5-Pf2"/>
@@ -42,7 +42,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-jr-se2">
-                    <rect key="frame" x="350" y="20" width="84" height="22"/>
+                    <rect key="frame" x="350" y="19" width="84" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1EQ-yN-ZBK"/>
                         <constraint firstAttribute="width" constant="84" id="gDa-WP-xPg"/>
@@ -56,7 +56,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mpy-Nv-lYn">
-                    <rect key="frame" x="174" y="22" width="50" height="19"/>
+                    <rect key="frame" x="204" y="20" width="50" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mLC-pf-tpN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>

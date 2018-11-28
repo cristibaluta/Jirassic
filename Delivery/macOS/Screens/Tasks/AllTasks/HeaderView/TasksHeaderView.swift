@@ -33,10 +33,14 @@ class TasksHeaderView: NSTableHeaderView {
         }
     }
     
-    override func draw (_ dirtyRect: NSRect) {
-        NSColor.darkGray.set()
-        dirtyRect.fill()
+    override func headerRect(ofColumn column: Int) -> NSRect {
+        // This will prevent for a label to appear  in the middle of the header
+        return NSRect.zero
     }
+//    override func draw (_ dirtyRect: NSRect) {
+//        NSColor.darkGray.set()
+//        dirtyRect.fill()
+//    }
     
     @IBAction func handleAddButton (_ sender: NSButton) {
         didClickAddTask?()

@@ -18,7 +18,7 @@ class Versioning {
         "17.06.14": (shellScript: "1.0", browserScript: "1.0", jirassicCmd: "17.06.14", jitCmd: "17.06.14"),
         "18.04.04": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "17.06.14", jitCmd: "17.06.14"),
         "18.04.25": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "18.04.25", jitCmd: "18.04.25"),
-        "18.11.15": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "18.11.15", jitCmd: "18.11.15")
+        "18.12.01": (shellScript: "1.0", browserScript: "1.1", jirassicCmd: "18.12.01", jitCmd: "18.12.01")
         // Add a new compatibility for each app version that needs one
     ]
     private let versions: Versions
