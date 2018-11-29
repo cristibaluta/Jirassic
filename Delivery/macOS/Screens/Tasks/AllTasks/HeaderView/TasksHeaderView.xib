@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,9 @@
             <rect key="frame" x="0.0" y="0.0" width="454" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="G3y-Gc-Fo0">
+                    <rect key="frame" x="0.0" y="0.0" width="454" height="60"/>
+                </visualEffectView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
                     <rect key="frame" x="16" y="19" width="180" height="22"/>
                     <constraints>
@@ -69,10 +72,14 @@
             <constraints>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="04F-ms-XJx"/>
                 <constraint firstItem="hGd-uQ-oVI" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="5KR-F5-HAg"/>
+                <constraint firstItem="G3y-Gc-Fo0" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="6rH-J1-1Qe"/>
                 <constraint firstItem="uAc-jr-se2" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="A67-H0-a3l"/>
+                <constraint firstAttribute="trailing" secondItem="G3y-Gc-Fo0" secondAttribute="trailing" id="Ena-xg-kyW"/>
                 <constraint firstItem="Mpy-Nv-lYn" firstAttribute="leading" secondItem="Ca7-bt-zzl" secondAttribute="trailing" constant="8" id="OhW-Qc-w9Q"/>
+                <constraint firstAttribute="bottom" secondItem="G3y-Gc-Fo0" secondAttribute="bottom" id="bBM-JF-X6s"/>
                 <constraint firstItem="Mpy-Nv-lYn" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="cDs-UT-aDY"/>
                 <constraint firstAttribute="trailing" secondItem="uAc-jr-se2" secondAttribute="trailing" constant="20" id="fla-hf-sWR"/>
+                <constraint firstItem="G3y-Gc-Fo0" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="iTa-k4-tZH"/>
                 <constraint firstItem="Ca7-bt-zzl" firstAttribute="leading" secondItem="hGd-uQ-oVI" secondAttribute="leading" id="t2C-Lh-hmH"/>
                 <constraint firstItem="Ca7-bt-zzl" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="tBT-qw-lNA"/>
             </constraints>
@@ -82,7 +89,7 @@
                 <outlet property="butJiraSetup" destination="Mpy-Nv-lYn" id="a0T-TH-aWu"/>
                 <outlet property="butWorklogs" destination="Ca7-bt-zzl" id="OPQ-12-3Lv"/>
             </connections>
-            <point key="canvasLocation" x="126" y="63.5"/>
+            <point key="canvasLocation" x="126" y="63"/>
         </customView>
     </objects>
 </document>

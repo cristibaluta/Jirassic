@@ -43,6 +43,9 @@ class ReportsHeaderView: NSTableHeaderView {
         butRound.state = pref.bool(.enableRoundingDay) ? .on : .off
         butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
     }
+
+    override func draw (_ dirtyRect: NSRect) {
+    }
     
     override func headerRect(ofColumn column: Int) -> NSRect {
         // This will prevent for a label to appear  in the middle of the header

@@ -38,17 +38,17 @@ class TasksHeaderView: NSTableHeaderView {
         return NSRect.zero
     }
     
-//    override func draw (_ dirtyRect: NSRect) {
+    override func draw (_ dirtyRect: NSRect) {
 //        if #available(OSX 10.14, *) {
 //            // This version of osx has a nice blurry background
 //            super.draw(dirtyRect)
 //        } else {
 //            // Previous versions of osx have transparent background
-//            NSColor.white.set()
-//            dirtyRect.fill()
+////            AppDelegate.sharedApp().theme.isDark ? NSColor.black.set() : NSColor.white.set()
+////            dirtyRect.fill()
 //        }
-//    }
-    
+    }
+
     @IBAction func handleAddButton (_ sender: NSButton) {
         didClickAddTask?()
     }

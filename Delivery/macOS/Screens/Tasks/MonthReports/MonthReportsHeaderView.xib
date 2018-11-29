@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,9 @@
             <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="headerView" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="DSw-pl-rG3">
+                    <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
+                </visualEffectView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ca7-bt-zzl">
                     <rect key="frame" x="14" y="64" width="157" height="18"/>
                     <buttonCell key="cell" type="check" title="Show time in percents" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jyn-Uj-MYd">
@@ -79,11 +82,15 @@
                 <constraint firstItem="Ca7-bt-zzl" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="5tt-yf-WIb"/>
                 <constraint firstAttribute="bottom" secondItem="SgF-Of-wi3" secondAttribute="bottom" constant="20" id="9Xp-tl-rEe"/>
                 <constraint firstItem="Nzw-0j-cKu" firstAttribute="centerY" secondItem="Mpy-Nv-lYn" secondAttribute="centerY" id="FtJ-Lv-HyU"/>
+                <constraint firstItem="DSw-pl-rG3" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="Kik-nC-aaV"/>
                 <constraint firstItem="Mpy-Nv-lYn" firstAttribute="leading" secondItem="Ca7-bt-zzl" secondAttribute="trailing" constant="20" id="OhW-Qc-w9Q"/>
                 <constraint firstItem="9ci-eL-n8B" firstAttribute="centerY" secondItem="6FX-aq-vD0" secondAttribute="centerY" id="P2d-yB-TMQ"/>
+                <constraint firstAttribute="trailing" secondItem="DSw-pl-rG3" secondAttribute="trailing" id="PHa-Vq-Cvs"/>
+                <constraint firstItem="DSw-pl-rG3" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Q6M-Hf-VWK"/>
                 <constraint firstItem="Ca7-bt-zzl" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="QuN-EN-IbL"/>
                 <constraint firstItem="SgF-Of-wi3" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="Z6Q-7v-8ht"/>
                 <constraint firstItem="Mpy-Nv-lYn" firstAttribute="centerY" secondItem="Ca7-bt-zzl" secondAttribute="centerY" id="b8V-Vd-t8l"/>
+                <constraint firstAttribute="bottom" secondItem="DSw-pl-rG3" secondAttribute="bottom" id="b8d-Ij-qJe"/>
                 <constraint firstAttribute="trailing" secondItem="Nzw-0j-cKu" secondAttribute="trailing" constant="16" id="hJe-bR-kX1"/>
                 <constraint firstItem="6FX-aq-vD0" firstAttribute="leading" secondItem="SgF-Of-wi3" secondAttribute="trailing" constant="20" id="rXy-Xd-Qwe"/>
                 <constraint firstItem="6FX-aq-vD0" firstAttribute="centerY" secondItem="SgF-Of-wi3" secondAttribute="centerY" id="vEj-VP-q2N"/>
