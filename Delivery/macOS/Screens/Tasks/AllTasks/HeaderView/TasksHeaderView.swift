@@ -37,9 +37,16 @@ class TasksHeaderView: NSTableHeaderView {
         // This will prevent for a label to appear  in the middle of the header
         return NSRect.zero
     }
+    
 //    override func draw (_ dirtyRect: NSRect) {
-//        NSColor.darkGray.set()
-//        dirtyRect.fill()
+//        if #available(OSX 10.14, *) {
+//            // This version of osx has a nice blurry background
+//            super.draw(dirtyRect)
+//        } else {
+//            // Previous versions of osx have transparent background
+//            NSColor.white.set()
+//            dirtyRect.fill()
+//        }
 //    }
     
     @IBAction func handleAddButton (_ sender: NSButton) {
