@@ -91,6 +91,7 @@ extension WizardCalendarView: CalendarPresenterOutput {
             scrollView.addSubview(but)
             self.calendarsButtons.append(but)
         }
+        self.needsLayout = true
     }
     
     @objc func didClickCalendarButton (_ sender: NSButton) {
