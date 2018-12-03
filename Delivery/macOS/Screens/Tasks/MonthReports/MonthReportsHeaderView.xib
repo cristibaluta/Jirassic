@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -96,6 +96,7 @@
                 <constraint firstItem="6FX-aq-vD0" firstAttribute="centerY" secondItem="SgF-Of-wi3" secondAttribute="centerY" id="vEj-VP-q2N"/>
             </constraints>
             <connections>
+                <outlet property="backgroundView" destination="DSw-pl-rG3" id="SyJ-WD-w16"/>
                 <outlet property="butCopyAll" destination="SgF-Of-wi3" id="T5U-jL-eYQ"/>
                 <outlet property="butCopyAsHtml" destination="6FX-aq-vD0" id="o6r-Og-E9r"/>
                 <outlet property="butPercents" destination="Ca7-bt-zzl" id="vM5-71-Srn"/>

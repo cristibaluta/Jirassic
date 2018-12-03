@@ -10,6 +10,7 @@ import Cocoa
 
 class TasksHeaderView: NSTableHeaderView {
 
+    @IBOutlet private var backgroundView: NSVisualEffectView!
     @IBOutlet private var butAdd: NSButton!
     @IBOutlet private var butCloseDay: NSButton!
     @IBOutlet private var butWorklogs: NSButton!
@@ -33,21 +34,22 @@ class TasksHeaderView: NSTableHeaderView {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if #available(OSX 10.14, *) {
+            // In OS14 there is  already a default blurry background
+            backgroundView.isHidden = true
+        }
+    }
+    
     override func headerRect(ofColumn column: Int) -> NSRect {
         // This will prevent for a label to appear  in the middle of the header
         return NSRect.zero
     }
     
-    override func draw (_ dirtyRect: NSRect) {
-//        if #available(OSX 10.14, *) {
-//            // This version of osx has a nice blurry background
-//            super.draw(dirtyRect)
-//        } else {
-//            // Previous versions of osx have transparent background
-////            AppDelegate.sharedApp().theme.isDark ? NSColor.black.set() : NSColor.white.set()
-////            dirtyRect.fill()
-//        }
-    }
+    // Overriding this in OS14 removes default blurry background and the custom one adds ugly edges to buttons
+//    override func draw (_ dirtyRect: NSRect) {
+//    }
 
     @IBAction func handleAddButton (_ sender: NSButton) {
         didClickAddTask?()

@@ -10,6 +10,7 @@ import Cocoa
 
 class ReportsHeaderView: NSTableHeaderView {
     
+    @IBOutlet private var backgroundView: NSVisualEffectView!
     @IBOutlet private var butPercents: NSButton!
     @IBOutlet private var butRound: NSButton!
     @IBOutlet private var totalTimeTextField: NSTextField!
@@ -42,10 +43,16 @@ class ReportsHeaderView: NSTableHeaderView {
         
         butRound.state = pref.bool(.enableRoundingDay) ? .on : .off
         butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
+        
+        if #available(OSX 10.14, *) {
+            // In OS14 there is  already a default blurry background
+            backgroundView.isHidden = true
+        }
     }
 
-    override func draw (_ dirtyRect: NSRect) {
-    }
+    // Overriding this in OS14 removes default blurry background and the custom one adds ugly edges to buttons
+//    override func draw (_ dirtyRect: NSRect) {
+//    }
     
     override func headerRect(ofColumn column: Int) -> NSRect {
         // This will prevent for a label to appear  in the middle of the header

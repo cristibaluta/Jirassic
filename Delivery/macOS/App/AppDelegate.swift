@@ -40,6 +40,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        pref.set("", forKey: .appVersion)
 //        UserDefaults.standard.set(5, forKey: "wizardStep")
 //        localPreferences.set(false, forKey: .enableGit)
+        #else
+        RCLog.disableTraces()
         #endif
         
         self.window?.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
