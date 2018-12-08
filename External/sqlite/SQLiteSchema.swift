@@ -20,7 +20,8 @@ class SQLiteSchema {
         
         if db.version != expectedVersion.rawValue {
             migrate(db: db, toVersion: expectedVersion)
-            UserDefaults.standard.serverChangeToken = nil
+            #warning("This should not be here")
+//            UserDefaults.standard.serverChangeToken = nil
         }
     }
 }

@@ -132,11 +132,6 @@
 		280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
 		280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
-		280D71B11ED6043D005D2689 /* CloudKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38A1DD3B44200B73201 /* CloudKitRepository.swift */; };
-		280D71B21ED6043D005D2689 /* CloudKitRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */; };
-		280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */; };
-		280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928941E9110980022AB55 /* CloudKitRepository+User.swift */; };
-		280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		280D71B61ED6043D005D2689 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
@@ -1901,7 +1896,7 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -2287,17 +2282,12 @@
 				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
 				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
-				280D71B11ED6043D005D2689 /* CloudKitRepository.swift in Sources */,
-				280D71B21ED6043D005D2689 /* CloudKitRepository+Tasks.swift in Sources */,
 				28279AD121BBF08C00376304 /* InMemoryCoreDataRepository.swift in Sources */,
-				280D71B31ED6043D005D2689 /* CloudKitRepository+Settings.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
-				280D71B41ED6043D005D2689 /* CloudKitRepository+User.swift in Sources */,
 				569C4C5E202319630049FBF1 /* JitCell.swift in Sources */,
 				28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				565E19F020A5E336003A5E2A /* RCSync.swift in Sources */,
-				280D71B51ED6043D005D2689 /* UserDefaults+token.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
 				564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */,
 				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
@@ -2649,7 +2639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
@@ -2657,7 +2647,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic X";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -2669,8 +2659,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
@@ -2678,7 +2668,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic X";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "jirassic distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
