@@ -153,10 +153,10 @@ extension TasksViewController: TasksPresenterOutput {
         scrollView.frame = frame
         splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(scrollView)
         scrollView.constrainToSuperview()
-        scrollView.didClickAddRow = { [weak self] row in
+        scrollView.didClickAddRow = { [weak self] (row, rect) in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
-                self?.rectToDisplayPopoverAt = self?.tasksScrollView?.frameOfCell(atRow: row)
+                self?.rectToDisplayPopoverAt = rect ?? self?.tasksScrollView?.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
             }
         }

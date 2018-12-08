@@ -15,7 +15,7 @@ class TasksScrollView: NSScrollView {
     private var listType: ListType!
     private let pref = RCPreferences<LocalPreferences>()
     
-	var didClickAddRow: ((_ row: Int) -> Void)?
+    var didClickAddRow: ((_ row: Int, _ rect: CGRect?) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
     var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
     var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
@@ -49,7 +49,7 @@ class TasksScrollView: NSScrollView {
         addHeader()
         
         self.dataSource.didClickAddRow = { [weak self] row in
-            self?.didClickAddRow!(row)
+            self?.didClickAddRow!(row, nil)
         }
         self.dataSource.didClickRemoveRow = { [weak self] row in
             self?.didClickRemoveRow!(row)
@@ -92,7 +92,8 @@ class TasksScrollView: NSScrollView {
             }
             headerView.didClickAddTask = { [weak self] in
                 if let wself = self {
-                    wself.didClickAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1)
+                    wself.didClickAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1,
+                                          CGRect(x: 60, y: headerView.frame.size.height + wself.contentView.documentVisibleRect.origin.y, width: 1, height: 1))
                 }
             }
             headerView.didClickSaveWorklogs = { [weak self] in
