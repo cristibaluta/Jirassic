@@ -8,3 +8,8 @@ cache: bundler
 xcode_project: Jirassic.xcodeproj # path to your xcodeproj folder
 xcode_scheme: Jirassic macOS
 xcode_destination: platform=macOS
+script:
+  - xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic macOS"
+before_script:
+  - chmod a+x ./scripts/add-key.sh
+  - sh ./scripts/add-key.sh
