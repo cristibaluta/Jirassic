@@ -37,7 +37,7 @@ extension SqliteRepository: RepositoryTasks {
     func queryUnsyncedTasks() -> [Task] {
 
         #if !CMD
-        RCLogO("Query tasks since last sync date \(String(describing: UserDefaults.standard.lastSyncDateWithRemote))")
+        RCLog("Query tasks since last sync date: \(String(describing: UserDefaults.standard.lastSyncDateWithRemote))")
         #endif
         var sinceDatePredicate = ""
         if let lastSyncDateWithRemote = UserDefaults.standard.lastSyncDateWithRemote {

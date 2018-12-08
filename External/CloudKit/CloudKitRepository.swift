@@ -55,11 +55,11 @@ extension CloudKitRepository {
         let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
         
         op.recordChangedBlock = { record in
-            RCLog(record)
+            RCLog("Changed record: \(record)")
             changedRecords.append(record)
         }
         op.recordWithIDWasDeletedBlock = { recordID in
-            RCLog(recordID)
+            RCLog("Deleted recordID: \(recordID)")
             deletedRecordsIds.append(recordID)
         }
         op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
