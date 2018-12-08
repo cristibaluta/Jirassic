@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.11.15"
+let appVersion = "18.12.12"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -111,7 +111,7 @@ func reports (forDay date: Date, targetHoursInDay: Double?) {
         let message = reportsInteractor.toString(reports)
         print(message)
         print("")
-        let workedLength = StatisticsInteractor().workedTime(fromReports: reports)
+        let workedLength = StatisticsInteractor().duration(of: reports)
         print("Total duration: \(workedLength.secToHoursAndMin)")
     } else {
         print("No tasks!")

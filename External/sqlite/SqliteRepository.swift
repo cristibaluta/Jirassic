@@ -32,7 +32,9 @@ class SqliteRepository {
             try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
         }
         let dbUrl = url.appendingPathComponent("\(databaseName).sqlite")
+        #if !CMD
         RCLog(dbUrl)
+        #endif
         
         db = SQLiteDB(url: dbUrl)
         _ = SQLiteSchema(db: db)

@@ -94,7 +94,9 @@ extension SqliteRepository: RepositoryTasks {
         
         let stask = staskFromTask(task)
         let saved = stask.save()
+        #if !CMD
         RCLog("Saved to sqlite \(saved) \(task)")
+        #endif
         if saved == 1 {
             completion( taskFromSTask(stask))
         } else {
