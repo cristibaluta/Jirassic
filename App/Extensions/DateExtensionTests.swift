@@ -62,25 +62,6 @@ class DateTests: XCTestCase {
 		XCTAssertTrue(date.round().compare(Date(hour: 14, minute: 0)) == .orderedSame, "")
 	}
 	
-    func testSecondsToPercent() {
-        XCTAssertTrue(Date.secondsToPercentTime(15*60) == 0.25, "")
-		XCTAssertTrue(Date.secondsToPercentTime(1800) == 0.5, "")
-		XCTAssertTrue(Date.secondsToPercentTime(3600) == 1, "")
-		XCTAssertTrue(Date.secondsToPercentTime(3600+1800) == 1.5, "")
-		XCTAssertTrue(Date.secondsToPercentTime(7200) == 2, "")
-	}
-    
-    func test8Hours() {
-        let t1 = Date.secondsToPercentTime(3600*1.5)//1.5
-        let t2 = Date.secondsToPercentTime(3600*4.0)//4
-        let t3 = Date.secondsToPercentTime(15*60.0)//0.25
-        let t4 = Date.secondsToPercentTime(45*60.0)//0.75
-        let t5 = Date.secondsToPercentTime(1800.0)//0.5
-        let t6 = Date.secondsToPercentTime(30*60.0)//0.5
-        let t7 = Date.secondsToPercentTime(30*60.0)//0.5
-        XCTAssert(t1+t2+t3+t4+t5+t6+t7 == 8, "The sum should be 8 hours")
-    }
-    
 	func testWeek() {
 		let date = Date(year: 2016, month: 1, day: 9, hour: 10, minute: 0)
 		let weekBounds = date.weekBounds()

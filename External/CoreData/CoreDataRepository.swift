@@ -11,9 +11,9 @@ import CoreData
 
 class CoreDataRepository {
     
-    private let databaseName = "Jirassic"
+    internal let databaseName = "Jirassic"
     
-    lazy var applicationDocumentsDirectory: URL = {
+    internal lazy var applicationDocumentsDirectory: URL = {
         
         #if os(iOS)
             
@@ -44,12 +44,15 @@ class CoreDataRepository {
     }()
     
     lazy var persistentContainer: NSPersistentContainer = {
-        
+        return container()
+    }()
+    
+    internal func container() -> NSPersistentContainer {
         let url = self.applicationDocumentsDirectory.appendingPathComponent("\(self.databaseName).coredata")
         let storeDescriptor = NSPersistentStoreDescription(url: url)
         storeDescriptor.shouldMigrateStoreAutomatically = true
         storeDescriptor.shouldInferMappingModelAutomatically = true
-        storeDescriptor.type = storeDescriptorType()
+        storeDescriptor.type = NSSQLiteStoreType
         
         let container = NSPersistentContainer(name: self.databaseName)
         container.persistentStoreDescriptions = [storeDescriptor]
@@ -60,11 +63,6 @@ class CoreDataRepository {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
         return container
-    }()
-    
-    // To be override by the tests with an in memory type
-    func storeDescriptorType() -> String {
-        return NSSQLiteStoreType
     }
     
     func saveContext () {
