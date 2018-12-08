@@ -36,7 +36,7 @@ class WizardGitView: NSView {
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
-        // If git was not setup, disable it
+        // If git was not setup completely, disable it
         if emailsTextField.stringValue == "" || pathsTextField.stringValue == "" {
             localPreferences.set(false, forKey: .enableGit)
         }
