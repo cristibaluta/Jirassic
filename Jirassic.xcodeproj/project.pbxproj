@@ -286,7 +286,6 @@
 		28A283982037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
 		28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839920382BBB00DDCB63 /* GitCommit.swift */; };
 		28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839920382BBB00DDCB63 /* GitCommit.swift */; };
-		28A2839D203839E000DDCB63 /* ModuleGitLogsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */; };
 		28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */; };
 		28A283A020385BE000DDCB63 /* GitCommitsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */; };
 		28A283A220385F8C00DDCB63 /* GitCommitsParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */; };
@@ -494,6 +493,10 @@
 		569C4C77202319FC0049FBF1 /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C75202319FC0049FBF1 /* GitCell.xib */; };
 		569C4C7920231A0B0049FBF1 /* BrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C7820231A0B0049FBF1 /* BrowserCell.xib */; };
 		569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569C4C7820231A0B0049FBF1 /* BrowserCell.xib */; };
+		56ADBF6A21C3F625008350A6 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6921C3F625008350A6 /* GitUser.swift */; };
+		56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6921C3F625008350A6 /* GitUser.swift */; };
+		56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */; };
+		56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */; };
 		56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */; };
 		56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */; };
 		56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D90CF720876F1100F24442 /* WizardJiraView.swift */; };
@@ -647,7 +650,6 @@
 		28A283932037874600DDCB63 /* ModuleGitLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogs.swift; sourceTree = "<group>"; };
 		28A283962037975600DDCB63 /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
 		28A2839920382BBB00DDCB63 /* GitCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
-		28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGitLogsTests.swift; sourceTree = "<group>"; };
 		28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitsParser.swift; sourceTree = "<group>"; };
 		28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitsParserTests.swift; sourceTree = "<group>"; };
 		28A283A42038AFB100DDCB63 /* JirassicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JirassicCell.swift; sourceTree = "<group>"; };
@@ -816,6 +818,8 @@
 		569C4C72202319EE0049FBF1 /* JitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JitCell.xib; sourceTree = "<group>"; };
 		569C4C75202319FC0049FBF1 /* GitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GitCell.xib; sourceTree = "<group>"; };
 		569C4C7820231A0B0049FBF1 /* BrowserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowserCell.xib; sourceTree = "<group>"; };
+		56ADBF6921C3F625008350A6 /* GitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
+		56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUserParser.swift; sourceTree = "<group>"; };
 		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
 		56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReportTests.swift; sourceTree = "<group>"; };
 		56D90CF720876F1100F24442 /* WizardJiraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardJiraView.swift; sourceTree = "<group>"; };
@@ -1128,9 +1132,9 @@
 			isa = PBXGroup;
 			children = (
 				28A283932037874600DDCB63 /* ModuleGitLogs.swift */,
-				28A2839C203839E000DDCB63 /* ModuleGitLogsTests.swift */,
 				28A2839E20385BE000DDCB63 /* GitCommitsParser.swift */,
 				28A283A120385F8C00DDCB63 /* GitCommitsParserTests.swift */,
+				56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */,
 				28A283AA203A93AB00DDCB63 /* GitBranchParser.swift */,
 				28A283AD203C069F00DDCB63 /* GitBranchParserTests.swift */,
 			);
@@ -1334,6 +1338,7 @@
 				4065D31D1DD3B44200B73201 /* User.swift */,
 				4065D31E1DD3B44200B73201 /* Week.swift */,
 				28A2839920382BBB00DDCB63 /* GitCommit.swift */,
+				56ADBF6921C3F625008350A6 /* GitUser.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -2142,6 +2147,7 @@
 				2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
 				287195312025C360001C237E /* CSettings.swift in Sources */,
+				56ADBF6A21C3F625008350A6 /* GitUser.swift in Sources */,
 				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
 				280D71321ED6043D005D2689 /* Week.swift in Sources */,
@@ -2149,6 +2155,7 @@
 				288BB67E2085252900CF720A /* WizardViewController.swift in Sources */,
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
+				56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
 				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
@@ -2316,6 +2323,7 @@
 				2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
 				28279AD321BBF09900376304 /* Jirassic.xcdatamodeld in Sources */,
+				56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */,
 				2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
 				4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */,
@@ -2424,6 +2432,7 @@
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
+				56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */,
 				2845B167206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
@@ -2492,7 +2501,6 @@
 				28CBB59A20474755006F9D3A /* ParseGitBranchTests.swift in Sources */,
 				40FCE4291DFC1CB400D4FD45 /* TaskSuggestionTests.swift in Sources */,
 				4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */,
-				28A2839D203839E000DDCB63 /* ModuleGitLogsTests.swift in Sources */,
 				28A283A220385F8C00DDCB63 /* GitCommitsParserTests.swift in Sources */,
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
 				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,

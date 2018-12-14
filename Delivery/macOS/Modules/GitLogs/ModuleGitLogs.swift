@@ -11,7 +11,7 @@ import Foundation
 class ModuleGitLogs {
     
     private let extensions = ExtensionsInteractor()
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
     
 //    func isReachable (completion: @escaping (Bool) -> Void) {
 //        checkIfGitInstalled(completion: completion)
@@ -36,6 +36,33 @@ class ModuleGitLogs {
         }
     }
 
+    /// Returns a list of commiters emails
+    func fetchUsers(completion: @escaping (([GitUser]) -> Void)) {
+
+        let paths = pref.string(.settingsGitPaths).split(separator: ",").map { String($0) }
+        users(paths: paths, previousUsers: []) { gitUsers in
+            completion(gitUsers)
+        }
+    }
+
+    private func users (paths: [String], previousUsers: [GitUser], completion: @escaping (([GitUser]) -> Void)) {
+
+        var gitUsers = previousUsers
+        var paths = paths
+
+        guard let path = paths.first else {
+            completion(gitUsers)
+            return
+        }
+        paths.removeFirst()
+
+        getGitUsers(at: path) { rawResults in
+            let parser = GitUserParser(raw: rawResults)
+            gitUsers += parser.toGitUsers()
+            self.users(paths: paths, previousUsers: gitUsers, completion: completion)
+        }
+    }
+
     private func logsChunk (dates: [(dateStart: Date, dateEnd: Date)], previousTasks: [Task] = [], completion: @escaping (([Task]) -> Void)) {
 
         var tasks = previousTasks
@@ -46,7 +73,7 @@ class ModuleGitLogs {
         }
         let interval = dates.removeFirst()
         
-        let paths = localPreferences.string(.settingsGitPaths).split(separator: ",").map { String($0) }
+        let paths = pref.string(.settingsGitPaths).split(separator: ",").map { String($0) }
         logs(dateStart: interval.dateStart, dateEnd: interval.dateEnd, paths: paths, previousCommits: []) { commits in
             for commit in commits {
                 // Sometimes git returns commits that are not in the provided interval, filter them out
@@ -90,7 +117,7 @@ class ModuleGitLogs {
         }
         paths.removeFirst()
         
-        let allowedAuthors: [String] = localPreferences.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
+        let allowedAuthors: [String] = pref.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
         
         getGitLogs(at: path, dateStart: dateStart, dateEnd: dateEnd, completion: { rawResults in
             
@@ -180,6 +207,23 @@ extension ModuleGitLogs {
         extensions.run (command: command, completion: { result in
             if let result = result {
                 completion(result)
+            } else {
+                completion("")
+            }
+        })
+    }
+
+    // Returns the raw response for users
+    private func getGitUsers (at path: String, completion: @escaping (String) -> Void) {
+        // git log --pretty="%an %ae%n%cn %ce" | sort | uniq
+        let command = "git -C \(path) log --pretty=format:\"%cn;%ce\" | sort | uniq"
+        extensions.run (command: command, completion: { result in
+            if let result = result {
+                if result.contains("fatal: Not a git repository (or any of the parent directories): .git") {
+                    completion("")
+                } else {
+                    completion(result)
+                }
             } else {
                 completion("")
             }

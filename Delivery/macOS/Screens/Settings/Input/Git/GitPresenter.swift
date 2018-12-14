@@ -87,6 +87,9 @@ class GitPresenter {
             
             wself.refresh(state: wself.localPreferences.bool(.enableGit) ? .enabled : .disabled)
         })
+        gitModule.fetchUsers { users in
+            RCLog(users)
+        }
     }
     
     private func refresh (state: GitCellState) {
