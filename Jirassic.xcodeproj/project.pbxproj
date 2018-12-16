@@ -156,6 +156,8 @@
 		28279AD121BBF08C00376304 /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
 		28279AD221BBF08E00376304 /* InMemoryCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3931DD3B44200B73201 /* InMemoryCoreDataRepository.swift */; };
 		28279AD321BBF09900376304 /* Jirassic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2818847F21A4A2F800B33B9C /* Jirassic.xcdatamodeld */; };
+		28279AD521C6245700376304 /* GitUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279AD421C6245700376304 /* GitUsersViewController.swift */; };
+		28279AD621C6245700376304 /* GitUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279AD421C6245700376304 /* GitUsersViewController.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
 		284192D72018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
 		284192D82018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
@@ -586,6 +588,7 @@
 		2812F61D2145031A008EE81E /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2818848021A4A2F800B33B9C /* Jirassic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jirassic.xcdatamodel; sourceTree = "<group>"; };
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
+		28279AD421C6245700376304 /* GitUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUsersViewController.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
@@ -889,6 +892,7 @@
 				2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */,
 				2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */,
 				4065D3711DD3B44200B73201 /* NewTaskViewController.swift */,
+				28279AD421C6245700376304 /* GitUsersViewController.swift */,
 				2898D3AD2184ED3000CF5AD4 /* Components.storyboard */,
 			);
 			path = Components;
@@ -2193,6 +2197,7 @@
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
+				28279AD521C6245700376304 /* GitUsersViewController.swift in Sources */,
 				287195322025C364001C237E /* CTask.swift in Sources */,
 				5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
 				2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */,
@@ -2318,6 +2323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2803A0CA1EC184FF005F9389 /* BrowserNotification.swift in Sources */,
+				28279AD621C6245700376304 /* GitUsersViewController.swift in Sources */,
 				4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */,
 				4065D3AB1DD3B44200B73201 /* ComputerWakeUpInteractor.swift in Sources */,
 				2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */,

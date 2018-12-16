@@ -24,6 +24,7 @@ class GitCell: NSTableRowView, Saveable {
 
     var presenter: GitPresenterInput = GitPresenter()
     var onPurchasePressed: (() -> Void)?
+    private var emailClickGestureRecognizer: NSClickGestureRecognizer?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +33,16 @@ class GitCell: NSTableRowView, Saveable {
         butPurchase.isHidden = true
         emailsTextField.delegate = self
         pathsTextField.delegate = self
+        
+        let emailClickGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(GitCell.emailTextFieldClicked))
+        emailsTextField.addGestureRecognizer(emailClickGestureRecognizer)
+        self.emailClickGestureRecognizer = emailClickGestureRecognizer
+    }
+    
+    deinit {
+        if  let gesture = emailClickGestureRecognizer {
+            emailsTextField.removeGestureRecognizer(gesture)
+        }
     }
     
     func save() {
@@ -56,6 +67,17 @@ class GitCell: NSTableRowView, Saveable {
     
     @IBAction func handlePickButton (_ sender: NSButton) {
         presenter.pickPath()
+    }
+    
+    @objc func emailTextFieldClicked() {
+        let popover = NSPopover()
+        let view = GitUsersViewController.instantiateFromStoryboard("Components")
+        view.onDone = {
+            popover.performClose(nil)
+            self.presenter.isShellScriptInstalled = true
+        }
+        popover.contentViewController = view
+        popover.show(relativeTo: emailsTextField.frame, of: self, preferredEdge: NSRectEdge.maxY)
     }
 }
 
