@@ -25,6 +25,7 @@ class GitCell: NSTableRowView, Saveable {
     var presenter: GitPresenterInput = GitPresenter()
     var onPurchasePressed: (() -> Void)?
     private var emailClickGestureRecognizer: NSClickGestureRecognizer?
+    private var gitUsersPopover: NSPopover?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -70,14 +71,20 @@ class GitCell: NSTableRowView, Saveable {
     }
     
     @objc func emailTextFieldClicked() {
+        guard gitUsersPopover == nil else {
+            return
+        }
         let popover = NSPopover()
         let view = GitUsersViewController.instantiateFromStoryboard("Components")
         view.onDone = {
-            popover.performClose(nil)
+            self.gitUsersPopover?.performClose(nil)
+            self.gitUsersPopover = nil
             self.presenter.isShellScriptInstalled = true
         }
         popover.contentViewController = view
-        popover.show(relativeTo: emailsTextField.frame, of: self, preferredEdge: NSRectEdge.maxY)
+        let rect = CGRect(origin: CGPoint(x: emailsTextField.frame.origin.x, y: GitCell.height-45), size: emailsTextField.frame.size)
+        popover.show(relativeTo: rect, of: self, preferredEdge: NSRectEdge.minY)
+        gitUsersPopover = popover
     }
 }
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,11 +16,11 @@
                 <box autoresizesSubviews="NO" borderType="line" title="Git plugin" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-ST-fW3">
                     <rect key="frame" x="-3" y="-4" width="486" height="199"/>
                     <view key="contentView" id="bAm-pg-lwW">
-                        <rect key="frame" x="1" y="1" width="484" height="183"/>
+                        <rect key="frame" x="3" y="3" width="480" height="181"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="soa-Mf-B56">
-                                <rect key="frame" x="8" y="145" width="18" height="18"/>
+                                <rect key="frame" x="8" y="143" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="UD3-CQ-0Cq"/>
                                     <constraint firstAttribute="width" constant="18" id="WP7-bD-H6R"/>
@@ -27,7 +28,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="g96-Mm-inb"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaJ-WV-hc1">
-                                <rect key="frame" x="30" y="146" width="111" height="17"/>
+                                <rect key="frame" x="30" y="144" width="111" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Checking git cmd" id="ASn-hr-APm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -35,7 +36,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-Wf-3ng">
-                                <rect key="frame" x="393" y="144" width="81" height="19"/>
+                                <rect key="frame" x="389" y="142" width="81" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Instructions" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HFX-xw-W3U">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -45,7 +46,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ndj-0G-pnP">
-                                <rect key="frame" x="436" y="26" width="38" height="19"/>
+                                <rect key="frame" x="432" y="61" width="38" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Pick" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yOb-N1-jfv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -55,7 +56,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWM-Qg-ewd">
-                                <rect key="frame" x="11" y="65" width="59" height="17"/>
+                                <rect key="frame" x="11" y="26" width="59" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Git users" id="kAp-st-pbb">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -63,7 +64,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-Pe-PXu">
-                                <rect key="frame" x="105" y="62" width="369" height="22"/>
+                                <rect key="frame" x="105" y="23" width="365" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. me@email.com,me2@email.com" bezelStyle="round" id="WAw-xv-jpg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -71,7 +72,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Et-wb-aOF">
-                                <rect key="frame" x="31" y="99" width="445" height="28"/>
+                                <rect key="frame" x="31" y="97" width="441" height="28"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="icW-RF-Xg3">
                                     <font key="font" metaFont="smallSystem"/>
                                     <string key="title">Commits made with Git are loaded in Jirassic on demand, meaning that they don't get saved to local database or synced over iCloud. If you wish to save them use Jit</string>
@@ -80,7 +81,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PbW-vi-SiM">
-                                <rect key="frame" x="11" y="28" width="75" height="17"/>
+                                <rect key="frame" x="11" y="63" width="75" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Git projects" id="mji-eX-EsZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -88,7 +89,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-mX-fgI">
-                                <rect key="frame" x="105" y="25" width="323" height="22"/>
+                                <rect key="frame" x="105" y="60" width="319" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="eg. ~/Documents/Project1,~/Documents/Project2" bezelStyle="round" id="DYZ-2W-Nvk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -96,7 +97,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U0o-hB-0FO">
-                                <rect key="frame" x="10" y="145" width="22" height="18"/>
+                                <rect key="frame" x="10" y="143" width="22" height="18"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="a8i-lq-vV3">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -106,7 +107,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4bE-gv-9uR">
-                                <rect key="frame" x="407" y="144" width="67" height="19"/>
+                                <rect key="frame" x="403" y="142" width="67" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Purchase" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pkq-VQ-bKH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
@@ -125,11 +126,11 @@
                             <constraint firstItem="Teq-Pe-PXu" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="105" id="MzN-47-ObN"/>
                             <constraint firstItem="ndj-0G-pnP" firstAttribute="centerY" secondItem="pe2-mX-fgI" secondAttribute="centerY" id="OBS-s1-lZA"/>
                             <constraint firstAttribute="trailing" secondItem="Teq-Pe-PXu" secondAttribute="trailing" constant="10" id="QKJ-yE-dBF"/>
+                            <constraint firstItem="pe2-mX-fgI" firstAttribute="top" secondItem="7Et-wb-aOF" secondAttribute="bottom" constant="15" id="RYB-lg-nkT"/>
                             <constraint firstItem="U0o-hB-0FO" firstAttribute="centerY" secondItem="y1X-Wf-3ng" secondAttribute="centerY" id="S5x-AY-5qS"/>
                             <constraint firstItem="U0o-hB-0FO" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="12" id="UXE-Z0-hnh"/>
                             <constraint firstItem="PbW-vi-SiM" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="13" id="Xqf-UW-0Yb"/>
                             <constraint firstItem="cWM-Qg-ewd" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="13" id="ZOq-Hd-4XN"/>
-                            <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="7Et-wb-aOF" secondAttribute="bottom" constant="15" id="aS4-Fs-9Vw"/>
                             <constraint firstItem="soa-Mf-B56" firstAttribute="leading" secondItem="bAm-pg-lwW" secondAttribute="leading" constant="8" id="c5n-pB-uts"/>
                             <constraint firstItem="y1X-Wf-3ng" firstAttribute="top" secondItem="soa-Mf-B56" secondAttribute="top" id="cMm-zD-JqY"/>
                             <constraint firstItem="pe2-mX-fgI" firstAttribute="leading" secondItem="Teq-Pe-PXu" secondAttribute="leading" id="cUM-b9-bvW"/>
@@ -139,7 +140,7 @@
                             <constraint firstItem="cWM-Qg-ewd" firstAttribute="centerY" secondItem="Teq-Pe-PXu" secondAttribute="centerY" id="hPf-oh-FLx"/>
                             <constraint firstItem="4bE-gv-9uR" firstAttribute="centerY" secondItem="y1X-Wf-3ng" secondAttribute="centerY" id="iNC-NR-qmb"/>
                             <constraint firstItem="PbW-vi-SiM" firstAttribute="centerY" secondItem="pe2-mX-fgI" secondAttribute="centerY" id="jCo-aS-WaG"/>
-                            <constraint firstItem="pe2-mX-fgI" firstAttribute="top" secondItem="Teq-Pe-PXu" secondAttribute="bottom" constant="15" id="kxT-OC-8sg"/>
+                            <constraint firstItem="Teq-Pe-PXu" firstAttribute="top" secondItem="pe2-mX-fgI" secondAttribute="bottom" constant="15" id="pP7-XB-w5z"/>
                             <constraint firstItem="ndj-0G-pnP" firstAttribute="leading" secondItem="pe2-mX-fgI" secondAttribute="trailing" constant="8" id="ug3-c4-5fq"/>
                             <constraint firstItem="7Et-wb-aOF" firstAttribute="top" secondItem="y1X-Wf-3ng" secondAttribute="bottom" constant="18" id="wmC-yn-XDa"/>
                         </constraints>

@@ -26,6 +26,7 @@ class GitUsersViewController: NSViewController {
             self?.users = users
             self?.tableView.reloadData()
         }
+        tableView.headerView = nil
     }
     
     @IBAction func handleDoneButton(_ sender: NSButton) {
