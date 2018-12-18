@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,18 +24,18 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="heA-pk-yTN">
-                    <rect key="frame" x="20" y="100" width="440" height="22"/>
+                    <rect key="frame" x="20" y="68" width="440" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Commiter's Email" bezelStyle="round" id="344-jC-08b">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KmP-MI-NIp">
-                    <rect key="frame" x="20" y="68" width="440" height="22"/>
+                    <rect key="frame" x="20" y="100" width="440" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Project's path" bezelStyle="round" id="oqg-Jp-NXL">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -54,15 +54,14 @@
                 <constraint firstAttribute="trailing" secondItem="EFe-aL-uim" secondAttribute="trailing" constant="20" id="1FC-DL-Rr6"/>
                 <constraint firstAttribute="trailing" secondItem="KmP-MI-NIp" secondAttribute="trailing" constant="20" id="49l-Lb-wij"/>
                 <constraint firstItem="KmP-MI-NIp" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="64j-RB-RZF"/>
-                <constraint firstItem="KmP-MI-NIp" firstAttribute="top" secondItem="heA-pk-yTN" secondAttribute="bottom" constant="10" id="6Iu-mv-ocY"/>
                 <constraint firstAttribute="bottom" secondItem="K2r-LN-bzz" secondAttribute="bottom" constant="20" id="8Lj-1W-Hb5"/>
+                <constraint firstItem="heA-pk-yTN" firstAttribute="top" secondItem="KmP-MI-NIp" secondAttribute="bottom" constant="10" id="M10-OX-18s"/>
                 <constraint firstItem="heA-pk-yTN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="MXu-h4-5Fk"/>
                 <constraint firstItem="K2r-LN-bzz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="QQi-EM-VaD"/>
                 <constraint firstAttribute="bottom" secondItem="EFe-aL-uim" secondAttribute="bottom" constant="20" id="TSa-PY-HiA"/>
-                <constraint firstItem="heA-pk-yTN" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="30" id="esR-Tn-sQv"/>
                 <constraint firstAttribute="trailing" secondItem="heA-pk-yTN" secondAttribute="trailing" constant="20" id="fpc-k9-coL"/>
-                <constraint firstItem="EFe-aL-uim" firstAttribute="top" secondItem="KmP-MI-NIp" secondAttribute="bottom" constant="30" id="ieb-iN-jWg"/>
-                <constraint firstItem="KmP-MI-NIp" firstAttribute="top" secondItem="heA-pk-yTN" secondAttribute="bottom" constant="10" id="wEh-g1-Oc6"/>
+                <constraint firstItem="EFe-aL-uim" firstAttribute="top" secondItem="heA-pk-yTN" secondAttribute="bottom" constant="30" id="lei-JE-pId"/>
+                <constraint firstItem="KmP-MI-NIp" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="30" id="y4H-EL-Zsl"/>
             </constraints>
             <connections>
                 <outlet property="butPick" destination="K2r-LN-bzz" id="6rU-dQ-JLU"/>
