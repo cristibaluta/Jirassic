@@ -8,10 +8,10 @@ cache: bundler
 xcode_project: Jirassic.xcodeproj # path to your xcodeproj folder
 xcode_scheme: Jirassic macOS
 xcode_destination: platform=macOS
+before_script:
+  - chmod a+x ./scripts/add-key.sh
+  - sh ./scripts/add-key.sh
 script:
 #  - xcodebuild clean test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" -project Jirassic.xcodeproj -scheme "Jirassic macOS"
 #  - xcodebuild clean test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" -project Jirassic.xcodeproj -scheme "Jirassic iOS" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1'
   - xcodebuild clean test -project Jirassic.xcodeproj -scheme "Jirassic macOS"
-# before_script:
-  - chmod a+x ./scripts/add-key.sh
-  - sh ./scripts/add-key.sh
