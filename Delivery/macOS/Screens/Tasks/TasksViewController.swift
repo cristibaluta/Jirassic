@@ -136,7 +136,17 @@ extension TasksViewController: TasksPresenterOutput {
             self.presenter?.messageButtonDidPress()
         }
     }
-    
+
+    func showProjects (_ projects: [Project]) {
+
+        var frame = splitView!.subviews[SplitViewColumn.projects.rawValue].frame
+        frame.origin = NSPoint.zero
+        let projectsView = ProjectsViewController.instantiateFromStoryboard("Projects")
+        projectsView.view.frame = frame
+        splitView.subviews[SplitViewColumn.projects.rawValue].addSubview(projectsView.view)
+        projectsView.view.constrainToSuperview()
+    }
+
     func showCalendar (_ weeks: [Week]) {
         
         calendarScrollView.weeks = weeks

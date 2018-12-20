@@ -29,6 +29,7 @@ protocol TasksPresenterOutput: class {
     func showWarning (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
     func showCalendar (_ weeks: [Week])
+    func showProjects (_ projects: [Project])
     func showTasks (_ tasks: [Task])
     func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
     func removeTasksController()
@@ -209,6 +210,8 @@ extension TasksPresenter: TasksInteractorOutput {
         let day = lastSelectedDay ?? Day(dateStart: Date(), dateEnd: nil)
         ui.showCalendar(weeks)
         ui.selectDay(day)
+        
+        ui.showProjects([])
     }
 
     func tasksDidLoad (_ tasks: [Task]) {

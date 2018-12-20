@@ -449,6 +449,14 @@
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
+		5623914A21CBC6A10031B882 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914921CBC6A10031B882 /* ProjectsViewController.swift */; };
+		5623914B21CBC6A10031B882 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914921CBC6A10031B882 /* ProjectsViewController.swift */; };
+		5623914D21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */; };
+		5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */; };
+		5623915021CBC6CD0031B882 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
+		5623915121CBC6CD0031B882 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
+		5623915321CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
+		5623915421CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
 		564E55F3202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
 		564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
 		564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */; };
@@ -791,6 +799,10 @@
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		5623914921CBC6A10031B882 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
+		5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
+		5623914F21CBC6CD0031B882 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		5623915221CBC9750031B882 /* Projects.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Projects.storyboard; sourceTree = "<group>"; };
 		564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
 		564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsPresenter.swift; sourceTree = "<group>"; };
 		564E55F82028857300CE4C76 /* Worklogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Worklogs.storyboard; sourceTree = "<group>"; };
@@ -1343,6 +1355,7 @@
 				4065D31E1DD3B44200B73201 /* Week.swift */,
 				28A2839920382BBB00DDCB63 /* GitCommit.swift */,
 				56ADBF6921C3F625008350A6 /* GitUser.swift */,
+				5623914F21CBC6CD0031B882 /* Project.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1523,6 +1536,7 @@
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
 				564E55F12028839F00CE4C76 /* Worklogs */,
+				5623914821CBC66C0031B882 /* Projects */,
 				2845B142206AE342006EFB3B /* Calendar */,
 				4065D3761DD3B44200B73201 /* Tasks */,
 			);
@@ -1651,6 +1665,16 @@
 				40FCE4241DF7646F00D4FD45 /* SandboxedAppleScript.swift */,
 			);
 			path = External;
+			sourceTree = "<group>";
+		};
+		5623914821CBC66C0031B882 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				5623914921CBC6A10031B882 /* ProjectsViewController.swift */,
+				5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */,
+				5623915221CBC9750031B882 /* Projects.storyboard */,
+			);
+			path = Projects;
 			sourceTree = "<group>";
 		};
 		564E55F12028839F00CE4C76 /* Worklogs */ = {
@@ -2009,6 +2033,7 @@
 				28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
 				287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
+				5623915321CBC9750031B882 /* Projects.storyboard in Resources */,
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
 				56D90CFE20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
@@ -2065,6 +2090,7 @@
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				28FE18A9207B36CB00DF796E /* CocoaHookupCell.xib in Resources */,
 				569C4C77202319FC0049FBF1 /* GitCell.xib in Resources */,
+				5623915421CBC9750031B882 /* Projects.storyboard in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				56D90D0220876F4900F24442 /* WizardJiraView.xib in Resources */,
 				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
@@ -2162,6 +2188,7 @@
 				56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
+				5623914D21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */,
 				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				285465A7217858790052CB6A /* StoreView.swift in Sources */,
@@ -2203,6 +2230,7 @@
 				2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
+				5623914A21CBC6A10031B882 /* ProjectsViewController.swift in Sources */,
 				2845B14D206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
 				2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */,
 				280D715F1ED6043D005D2689 /* AppTheme.swift in Sources */,
@@ -2278,6 +2306,7 @@
 				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
 				2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
+				5623915021CBC6CD0031B882 /* Project.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
@@ -2370,6 +2399,7 @@
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
 				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
+				5623914B21CBC6A10031B882 /* ProjectsViewController.swift in Sources */,
 				2812F61F2145031B008EE81E /* IAPHelper.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
 				28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
@@ -2395,6 +2425,7 @@
 				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				28FE18A6207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
+				5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */,
 				285465A8217858790052CB6A /* StoreView.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
 				569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
@@ -2453,6 +2484,7 @@
 				56D90CFC20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				565E19D020A5E007003A5E2A /* RCLog.swift in Sources */,
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
+				5623915121CBC6CD0031B882 /* Project.swift in Sources */,
 				28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,

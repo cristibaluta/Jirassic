@@ -9,7 +9,7 @@
 import Cocoa
 
 enum SplitViewColumn: Int {
-    case calendar = 0
+    case projects = 0
     case tasks = 1
 }
 

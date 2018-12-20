@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UzK-Pe-bIz">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Projects View Controller-->
+        <scene sceneID="GL3-G6-vqW">
+            <objects>
+                <viewController storyboardIdentifier="ProjectsViewController" id="UzK-Pe-bIz" customClass="ProjectsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="eyC-SU-pWE">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="407"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H3c-Gr-hAE">
+                                <rect key="frame" x="-2" y="390" width="164" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="rhc-LJ-B6I"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Projects:" id="QoU-Qc-aCx">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BhK-8O-28o">
+                                <rect key="frame" x="12" y="366" width="80" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="Bosch eBike" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="zR2-EN-4xE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47d-zO-hQ5">
+                                <rect key="frame" x="12" y="342" width="92" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="inline" title="Electric castle" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="TiI-Dv-Sdr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystemBold"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="H3c-Gr-hAE" firstAttribute="top" secondItem="eyC-SU-pWE" secondAttribute="top" id="P7n-od-O5x"/>
+                            <constraint firstItem="H3c-Gr-hAE" firstAttribute="leading" secondItem="eyC-SU-pWE" secondAttribute="leading" id="fC3-jZ-Jfx"/>
+                            <constraint firstAttribute="trailing" secondItem="H3c-Gr-hAE" secondAttribute="trailing" id="tdE-Xs-gI8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="zIG-jN-vJi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="187.5"/>
+        </scene>
+    </scenes>
+</document>
