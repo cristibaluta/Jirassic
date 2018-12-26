@@ -85,7 +85,7 @@ extension CloudKitRepository: RepositoryTasks {
             var record: CKRecord? = record
             // No record found on server, creating one now
             if record == nil {
-                let recordId = CKRecordID(recordName: task.objectId!, zoneID: customZone.zoneID)
+                let recordId = CKRecord.ID(recordName: task.objectId!, zoneID: customZone.zoneID)
                 record = CKRecord(recordType: "Task", recordID: recordId)
             }
             record = self.updatedRecord(record!, withTask: task)
@@ -176,7 +176,7 @@ extension CloudKitRepository {
         return record
     }
     
-    private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecordID]) -> [String] {
+    private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecord.ID]) -> [String] {
         
         var ids = [String]()
         for ckrecord in ckrecords {

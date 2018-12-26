@@ -23,10 +23,10 @@ class TaskCellPresenter: NSObject {
         
         switch theTask.taskType {
         case .issue:
-            cell.statusImage?.image = NSImage(named: NSImage.Name.statusAvailable)
+            cell.statusImage?.image = NSImage(named: NSImage.statusAvailableName)
             
         case .gitCommit:
-            cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "GitIcon"))
+            cell.statusImage?.image = NSImage(named: "GitIcon")
             
         case .coderev:
             cell.color = NSColor.systemGray
@@ -36,7 +36,7 @@ class TaskCellPresenter: NSObject {
             
         case .calendar:
             cell.color = NSColor.systemGray
-            cell.statusImage?.image = NSImage(named: NSImage.Name(rawValue: "CalendarIcon"))
+            cell.statusImage?.image = NSImage(named: "CalendarIcon")
             
         default:
             cell.color = NSColor.systemGray

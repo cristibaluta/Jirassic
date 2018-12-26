@@ -105,7 +105,7 @@ extension JiraTempoCell: JiraTempoPresenterOutput {
 
 extension JiraTempoCell: NSTextFieldDelegate {
     
-    override func controlTextDidEndEditing(_ obj: Notification) {
+    func controlTextDidEndEditing(_ obj: Notification) {
         
         guard baseUrlTextField.stringValue != "",
             userTextField.stringValue != "",

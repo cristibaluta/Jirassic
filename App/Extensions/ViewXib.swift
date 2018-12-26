@@ -20,13 +20,13 @@ extension AView {
         return  instantiateFromXib(type: self)
     }
     
-    fileprivate class func instantiateFromXib<T> (type: T.Type) -> T {
+    private class func instantiateFromXib<T> (type: T.Type) -> T {
         #if os(iOS)
 //        return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
         var view: T?
         var views: NSArray?
-        Bundle.main.loadNibNamed(NSNib.Name(rawValue: String(describing: T.self)),
+        Bundle.main.loadNibNamed(String(describing: T.self),
                                  owner: nil,
                                  topLevelObjects: &views)
         if let v = views {

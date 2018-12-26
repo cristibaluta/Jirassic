@@ -52,9 +52,9 @@ class ExtensionsInstallerInteractor: ExtensionsInteractor {
                                               relativeTo: nil,
                                               bookmarkDataIsStale: &stale) {
                             
-                            let _ = url?.startAccessingSecurityScopedResource()
-                            self.uninstallScript(atUrl: url!, completion)
-                            url?.stopAccessingSecurityScopedResource()
+                            let _ = url.startAccessingSecurityScopedResource()
+                            self.uninstallScript(atUrl: url, completion)
+                            url.stopAccessingSecurityScopedResource()
                         }
                     }
                     

@@ -121,7 +121,6 @@ extension SettingsPresenter: SettingsPresenterInput {
     func installJirassic() {
         #if !APPSTORE
         extensionsInstaller.installJirassic { (success) in
-            #warning("Update the compatibility object")
 //            self.userInterface!.setJirassicStatus(compatibility: <#T##Compatibility#>)
         }
         #endif
@@ -130,7 +129,6 @@ extension SettingsPresenter: SettingsPresenterInput {
     func installJit() {
         #if !APPSTORE
         extensionsInstaller.installJit { (success) in
-            #warning("Update the compatibility object")
 //            self.userInterface!.setJitStatus(compatibility: <#T##Compatibility#>)
         }
         #endif

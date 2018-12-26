@@ -57,15 +57,15 @@ class BrowserCell: NSTableRowView {
         
         if compatibility.available {
             coderevImageView.image = NSImage(named: compatibility.compatible
-                ? NSImage.Name.statusAvailable
-                : NSImage.Name.statusUnavailable)
+                ? NSImage.statusAvailableName
+                : NSImage.statusUnavailableName)
             coderevTextField.stringValue = compatibility.compatible
                 ? "Jirassic can read the url of your browser and it will log time based on it"
                 : (compatibility.available
                     ? "Browser support installed but outdated, please update!"
                     : "Browser support not installed, please install!")
         } else {
-            coderevImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            coderevImageView.image = NSImage(named: NSImage.statusUnavailableName)
             coderevTextField.stringValue = "Not installed yet"
         }
         butInstallCoderev.isHidden = compatibility.available && compatibility.compatible
