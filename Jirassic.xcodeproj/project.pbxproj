@@ -329,6 +329,8 @@
 		28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
 		28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
 		28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
+		28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
+		28C6A38521D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
 		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
@@ -677,6 +679,7 @@
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
 		28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
 		28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthReportsHeaderView.xib; sourceTree = "<group>"; };
+		28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicate.swift; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
 		28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranchTests.swift; sourceTree = "<group>"; };
@@ -1400,6 +1403,7 @@
 				4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */,
 				28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */,
 				28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */,
+				28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -2260,6 +2264,7 @@
 				28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
 				287195152022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				280D71811ED6043D005D2689 /* DataSource.swift in Sources */,
+				28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
 				2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
@@ -2379,6 +2384,7 @@
 				2845B14A206AE3A8006EFB3B /* ReportCell.swift in Sources */,
 				288BB6882087169F00CF720A /* ViewXib.swift in Sources */,
 				5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
+				28C6A38521D359E60036DB29 /* RemoveDuplicate.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
 				564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */,
