@@ -1947,7 +1947,7 @@
 						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
-						TestTargetID = 4065D3031DD3A1AA00B73201;
+						TestTargetID = 280D711C1ED5EE7F005D2689;
 					};
 					4065D40F1DD4534C00B73201 = {
 						CreatedOnToolsVersion = 8.1;
@@ -2920,7 +2920,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Debug;
 		};
@@ -2939,7 +2939,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Release;
 		};
