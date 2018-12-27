@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
-               BuildableName = "Jirassic X.app"
+               BuildableName = "Jirassic no cloud.app"
                BlueprintName = "Jirassic macOS"
                ReferencedContainer = "container:Jirassic.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
-            BuildableName = "Jirassic X.app"
+            BuildableName = "Jirassic no cloud.app"
             BlueprintName = "Jirassic macOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
@@ -67,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
-            BuildableName = "Jirassic X.app"
+            BuildableName = "Jirassic no cloud.app"
             BlueprintName = "Jirassic macOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "280D711C1ED5EE7F005D2689"
-            BuildableName = "Jirassic X.app"
+            BuildableName = "Jirassic no cloud.app"
             BlueprintName = "Jirassic macOS"
             ReferencedContainer = "container:Jirassic.xcodeproj">
          </BuildableReference>
