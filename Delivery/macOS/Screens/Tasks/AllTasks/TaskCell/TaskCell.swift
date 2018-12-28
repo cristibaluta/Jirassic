@@ -251,7 +251,7 @@ extension TaskCell: NSTextFieldDelegate {
         return false
     }
     
-    override func controlTextDidChange (_ obj: Notification) {
+    func controlTextDidChange (_ obj: Notification) {
         wasEdited = true
     }
 }

@@ -63,7 +63,7 @@ extension EditableTimeBox: NSTextFieldDelegate {
     //        timeTextField?.textColor = NSColor.black
     //    }
     
-    override func controlTextDidChange (_ obj: Notification) {
+    func controlTextDidChange (_ obj: Notification) {
         wasEdited = true
         let comps = stringValue.components(separatedBy: partialValue)
         let newDigit = (comps.count == 1 && partialValue != "") ? "" : comps.last

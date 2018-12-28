@@ -34,8 +34,8 @@ class JitCell: NSTableRowView {
         
         if compatibility.available {
             statusImageView.image = compatibility.compatible
-                ? NSImage(named: NSImage.Name.statusAvailable)
-                : NSImage(named: NSImage.Name(rawValue: "WarningButton"))
+                ? NSImage(named: NSImage.statusAvailableName)
+                : NSImage(named: "WarningButton")
             statusImageViewGapToButEnableConstraint.constant = compatibility.compatible ? -14 : 5
             
             textField.stringValue = compatibility.compatible
@@ -44,7 +44,7 @@ class JitCell: NSTableRowView {
             
             butEnable.state = prefs.bool(.enableJit) ? .on : .off
         } else {
-            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            statusImageView.image = NSImage(named: NSImage.statusUnavailableName)
             textField.stringValue = "Cannot determine Jit compatibility, install shell support first!"
         }
         butInstall.isHidden = compatibility.available && compatibility.compatible

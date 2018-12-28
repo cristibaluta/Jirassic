@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Jirassic
+@testable import Jirassic_no_cloud
 
 class GitCommitsParserTests: XCTestCase {
 

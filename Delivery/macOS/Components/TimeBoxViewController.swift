@@ -76,7 +76,7 @@ extension TimeBoxViewController: NSTextFieldDelegate {
         return false
     }
     
-    override func controlTextDidChange (_ obj: Notification) {
+    func controlTextDidChange (_ obj: Notification) {
         wasEdited = true
         let comps = stringValue.components(separatedBy: partialValue)
         // The difference between original string and new string is the last digit

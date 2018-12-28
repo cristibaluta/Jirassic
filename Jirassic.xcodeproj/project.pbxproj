@@ -135,7 +135,6 @@
 		280D71B61ED6043D005D2689 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
-		280D71BD1ED6068E005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9287C1E9030BA0022AB55 /* CloudKit.framework */; };
 		280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
 		280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
@@ -329,6 +328,8 @@
 		28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
 		28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
 		28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
+		28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
+		28C6A38521D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
 		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
@@ -588,7 +589,7 @@
 		280D70FD1ED20CBE005D2689 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		280D70FF1ED21989005D2689 /* Jirassic Scrum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic Scrum.entitlements"; sourceTree = "<group>"; };
 		280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadDaysInteractorTests.swift; sourceTree = "<group>"; };
-		280D711D1ED5EE7F005D2689 /* Jirassic X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jirassic no cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		280D71BA1ED60677005D2689 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		280F507A1EC8541D007416AB /* ExtensionsInstallerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsInstallerInteractor.swift; sourceTree = "<group>"; };
 		280F507C1EC868B0007416AB /* StringArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArray.swift; sourceTree = "<group>"; };
@@ -685,6 +686,7 @@
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
 		28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
 		28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthReportsHeaderView.xib; sourceTree = "<group>"; };
+		28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicate.swift; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
 		28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranchTests.swift; sourceTree = "<group>"; };
@@ -857,7 +859,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */,
-				280D71BD1ED6068E005D2689 /* CloudKit.framework in Frameworks */,
 				280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1323,7 +1324,7 @@
 				4065D4101DD4534C00B73201 /* jirassic */,
 				4055B1231E0D802300279430 /* JirassicLauncher.app */,
 				280D70B61ECFE06A005D2689 /* Jirassic iOS.app */,
-				280D711D1ED5EE7F005D2689 /* Jirassic X.app */,
+				280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1413,6 +1414,7 @@
 				4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */,
 				28A283AF203CB1A100DDCB63 /* MergeTasksInteractor.swift */,
 				28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */,
+				28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1825,7 +1827,7 @@
 			);
 			name = "Jirassic macOS";
 			productName = "Jirassic no cloud";
-			productReference = 280D711D1ED5EE7F005D2689 /* Jirassic X.app */;
+			productReference = 280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4055B1221E0D802300279430 /* JirassicLauncher */ = {
@@ -1908,7 +1910,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
@@ -1969,7 +1971,7 @@
 						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
-						TestTargetID = 4065D3031DD3A1AA00B73201;
+						TestTargetID = 280D711C1ED5EE7F005D2689;
 					};
 					4065D40F1DD4534C00B73201 = {
 						CreatedOnToolsVersion = 8.1;
@@ -2288,6 +2290,7 @@
 				28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
 				287195152022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				280D71811ED6043D005D2689 /* DataSource.swift in Sources */,
+				28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
 				2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
@@ -2409,6 +2412,7 @@
 				2845B14A206AE3A8006EFB3B /* ReportCell.swift in Sources */,
 				288BB6882087169F00CF720A /* ViewXib.swift in Sources */,
 				5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
+				28C6A38521D359E60036DB29 /* RemoveDuplicate.swift in Sources */,
 				284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				28A928971E9110BF0022AB55 /* CloudKitRepository+Settings.swift in Sources */,
 				564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */,
@@ -2692,11 +2696,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
-				PRODUCT_NAME = "Jirassic X";
+				PRODUCT_NAME = "Jirassic no cloud";
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2713,11 +2717,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
-				PRODUCT_NAME = "Jirassic X";
+				PRODUCT_NAME = "Jirassic no cloud";
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -2903,7 +2907,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2929,7 +2933,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic appstore";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -2947,8 +2951,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Debug;
 		};
@@ -2966,8 +2970,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic.app/Contents/MacOS/Jirassic";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Release;
 		};

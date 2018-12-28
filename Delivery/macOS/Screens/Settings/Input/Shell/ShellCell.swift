@@ -24,13 +24,13 @@ class ShellCell: NSTableRowView {
         
         if compatibility.available {
             statusImageView.image = NSImage(named: compatibility.compatible
-                ? NSImage.Name.statusAvailable
-                : NSImage.Name.statusPartiallyAvailable)
+                ? NSImage.statusAvailableName
+                : NSImage.statusPartiallyAvailableName)
             textField.stringValue = compatibility.compatible
                 ? "Version \(compatibility.currentVersion) installed, Jirassic is now able to communicate with the shell."
                 : "Outdated, please update!"
         } else {
-            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            statusImageView.image = NSImage(named: NSImage.statusUnavailableName)
             textField.stringValue = "Not installed yet"
         }
         butInstall.isHidden = compatibility.available && compatibility.compatible

@@ -20,13 +20,13 @@ class JirassicCell: NSTableRowView {
         
         if compatibility.available {
             statusImageView.image = compatibility.compatible
-                ? NSImage(named: NSImage.Name.statusAvailable)
-                : NSImage(named: NSImage.Name(rawValue: "WarningButton"))
+                ? NSImage(named: NSImage.statusAvailableName)
+                : NSImage(named: "WarningButton")
             textField.stringValue = compatibility.compatible
                 ? "Jirassic \(compatibility.currentVersion) installed, type 'jirassic' in Terminal for more info"
                 : "Version \(compatibility.currentVersion) installed, min required is \(compatibility.minVersion), please update"
         } else {
-            statusImageView.image = NSImage(named: NSImage.Name.statusUnavailable)
+            statusImageView.image = NSImage(named: NSImage.statusUnavailableName)
             textField.stringValue = "Not installed, please follow instructions!"
         }
         butInstall.isHidden = compatibility.available && compatibility.compatible

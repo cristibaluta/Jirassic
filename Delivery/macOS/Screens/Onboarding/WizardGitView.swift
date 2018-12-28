@@ -15,16 +15,28 @@ class WizardGitView: NSView {
     @IBOutlet fileprivate var butPick: NSButton!
     @IBOutlet var butSkip: NSButton!
     var onSkip: (() -> Void)?
-    fileprivate let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
+    private var emailClickGestureRecognizer: NSClickGestureRecognizer?
+    private var gitUsersPopover: NSPopover?
     
     var presenter: GitPresenterInput = GitPresenter()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Git is disabled by default, we need to enable in order to be able to make changes
-        localPreferences.set(true, forKey: .enableGit)
+        pref.set(true, forKey: .enableGit)
         (presenter as! GitPresenter).userInterface = self
         presenter.isShellScriptInstalled = true
+        
+        let emailClickGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(GitCell.emailTextFieldClicked))
+        emailsTextField.addGestureRecognizer(emailClickGestureRecognizer)
+        self.emailClickGestureRecognizer = emailClickGestureRecognizer
+    }
+    
+    deinit {
+        if  let gesture = emailClickGestureRecognizer {
+            emailsTextField.removeGestureRecognizer(gesture)
+        }
     }
     
     func save() {
@@ -38,10 +50,27 @@ class WizardGitView: NSView {
     @IBAction func handleSkipButton (_ sender: NSButton) {
         // If git was not setup completely, disable it
         if emailsTextField.stringValue == "" || pathsTextField.stringValue == "" {
-            localPreferences.set(false, forKey: .enableGit)
+            pref.set(false, forKey: .enableGit)
         }
         save()
         onSkip?()
+    }
+    
+    @objc func emailTextFieldClicked() {
+        guard gitUsersPopover == nil else {
+            return
+        }
+        let popover = NSPopover()
+        let view = GitUsersViewController.instantiateFromStoryboard("Components")
+        view.onDone = {
+            self.gitUsersPopover?.performClose(nil)
+            self.gitUsersPopover = nil
+            self.presenter.isShellScriptInstalled = true
+        }
+        popover.contentViewController = view
+        let rect = CGRect(origin: CGPoint(x: emailsTextField.frame.origin.x, y: emailsTextField.frame.origin.y), size: emailsTextField.frame.size)
+        popover.show(relativeTo: rect, of: self, preferredEdge: NSRectEdge.minY)
+        gitUsersPopover = popover
     }
 }
 

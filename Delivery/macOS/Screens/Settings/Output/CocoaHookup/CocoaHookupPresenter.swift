@@ -50,10 +50,10 @@ class CocoaHookupPresenter {
                 return
             }
             if wself.isShellScriptInstalled == true {
-                userInterface.setStatusImage(appInstalled ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+                userInterface.setStatusImage(appInstalled ? NSImage.statusAvailableName : NSImage.statusPartiallyAvailableName)
                 userInterface.setStatusText(appInstalled ? "Start/Stop AppleScripts will be sent to the selected Cocoa app" : "App not reachable")
             } else {
-                userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+                userInterface.setStatusImage(NSImage.statusUnavailableName)
                 userInterface.setStatusText("Not possible to use hookups, please install shell support first!")
             }
             userInterface.setApp(appName: wself.localPreferences.string(.settingsHookupAppName),

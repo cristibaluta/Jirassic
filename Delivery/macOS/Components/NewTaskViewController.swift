@@ -125,7 +125,7 @@ class NewTaskViewController: NSViewController {
 
 extension NewTaskViewController: NSTextFieldDelegate {
     
-    override func controlTextDidBeginEditing (_ obj: Notification) {
+    func controlTextDidBeginEditing (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
             guard textField == endDateTextField || textField == startDateTextField else {
@@ -135,7 +135,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
         }
     }
     
-    override func controlTextDidChange (_ obj: Notification) {
+    func controlTextDidChange (_ obj: Notification) {
         
         if let textField = obj.object as? NSTextField {
             guard textField == endDateTextField || textField == startDateTextField else {

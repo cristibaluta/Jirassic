@@ -27,9 +27,9 @@ extension TableViewCell {
 //            return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
             let className = String(describing: self)
-            assert(NSNib(nibNamed: NSNib.Name(rawValue: className), bundle: Bundle.main) != nil, "err")
+            assert(NSNib(nibNamed: className, bundle: Bundle.main) != nil, "err")
             
-            if let nib = NSNib(nibNamed: NSNib.Name(rawValue: className), bundle: Bundle.main) {
+            if let nib = NSNib(nibNamed: className, bundle: Bundle.main) {
                 tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier(rawValue: className))
             }
         #endif

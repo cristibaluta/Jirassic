@@ -41,8 +41,8 @@ extension CloudKitRepository {
     
     func fetchChangedRecords (token: CKServerChangeToken?, 
                               previousRecords: [CKRecord], 
-                              previousDeletedRecordsIds: [CKRecordID], 
-                              completion: @escaping ((_ changedRecords: [CKRecord], _ deletedRecordsIds: [CKRecordID]) -> Void)) {
+                              previousDeletedRecordsIds: [CKRecord.ID],
+                              completion: @escaping ((_ changedRecords: [CKRecord], _ deletedRecordsIds: [CKRecord.ID]) -> Void)) {
         
         guard let customZone = self.customZone, let privateDB = self.privateDB else {
             RCLog("Not logged in")
@@ -52,18 +52,22 @@ extension CloudKitRepository {
         var changedRecords = previousRecords
         var deletedRecordsIds = previousDeletedRecordsIds
         
-        let op = CKFetchRecordChangesOperation(recordZoneID: customZone.zoneID, previousServerChangeToken: token)
+        let options = CKFetchRecordZoneChangesOperation.ZoneOptions()
+        options.previousServerChangeToken = token
+        
+        //        let op = CKFetchRecordZoneChangesOperation(recordZoneIDs: [customZone.zoneID], previousServerChangeToken: token)
+        let op = CKFetchRecordZoneChangesOperation(recordZoneIDs: [customZone.zoneID], optionsByRecordZoneID: [customZone.zoneID: options])
+        op.fetchAllChanges = true
+//        let op = CKFetchDatabaseChangesOperation(previousServerChangeToken: token)
         
         op.recordChangedBlock = { record in
             RCLog("Changed record: \(record)")
             changedRecords.append(record)
         }
-        op.recordWithIDWasDeletedBlock = { recordID in
-            RCLog("Deleted recordID: \(recordID)")
-            deletedRecordsIds.append(recordID)
-        }
-        op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
+        op.recordZoneChangeTokensUpdatedBlock = { zoneId, serverChangeToken, data in
             
+        }
+        op.recordZoneFetchCompletionBlock = { zoneId, serverChangeToken, data, moreComing, error in
             RCLogO(serverChangeToken)
             RCLogO(data)
             RCLogErrorO(error)
@@ -88,15 +92,26 @@ extension CloudKitRepository {
             }
             UserDefaults.standard.serverChangeToken = serverChangeToken
             
-            if op.moreComing {
-                self.fetchChangedRecords(token: serverChangeToken, 
-                                         previousRecords: changedRecords, 
-                                         previousDeletedRecordsIds: deletedRecordsIds, 
+            if moreComing {
+                self.fetchChangedRecords(token: serverChangeToken,
+                                         previousRecords: changedRecords,
+                                         previousDeletedRecordsIds: deletedRecordsIds,
                                          completion: completion)
             } else {
                 completion(changedRecords, deletedRecordsIds)
             }
         }
+        op.fetchRecordZoneChangesCompletionBlock = { error in
+            
+        }
+        op.recordWithIDWasDeletedBlock = { recordID, recordType in
+            RCLog("Deleted recordID: \(recordID)")
+            deletedRecordsIds.append(recordID)
+        }
+//        op.fetchRecordChangesCompletionBlock = { serverChangeToken, data, error in
+//            
+//            
+//        }
         
         privateDB.add(op)
     }

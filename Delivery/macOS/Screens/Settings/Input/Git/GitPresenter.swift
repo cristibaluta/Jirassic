@@ -96,18 +96,18 @@ class GitPresenter {
         userInterface.setDescriptionText("You will see git commits right in the reports. They are saved to database and synced with iCloud only after closing the day. Note: Git commits are not always 100% reliable")
         switch state {
         case .needsPurchase:
-            userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+            userInterface.setStatusImage(NSImage.statusUnavailableName)
             userInterface.setStatusText("Purchase Git support")
             userInterface.setButInstall(enabled: false)
             userInterface.setButPurchase(enabled: true)
             userInterface.setButEnable(on: false, enabled: false)
         case .needsShellScript:
-            userInterface.setStatusImage(NSImage.Name.statusUnavailable)
+            userInterface.setStatusImage(NSImage.statusUnavailableName)
             userInterface.setStatusText("Not possible to use Git, please install shell scripts first!")
             userInterface.setButInstall(enabled: true)
             userInterface.setButPurchase(enabled: false)
         case .needsGitScript:
-            userInterface.setStatusImage(NSImage.Name.statusPartiallyAvailable)
+            userInterface.setStatusImage(NSImage.statusPartiallyAvailableName)
             userInterface.setStatusText("Git plugin is not installed, please install.")
             userInterface.setButInstall(enabled: true)
             userInterface.setButPurchase(enabled: false)

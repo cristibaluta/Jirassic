@@ -138,13 +138,13 @@ extension AppWireframe {
     }
     
 	private func addController (_ controller: NSViewController) {
-        appViewController.addChildViewController(controller)
+        appViewController.addChild(controller)
         appViewController.view.addSubview(controller.view)
         controller.view.constrainToSuperview()
 	}
     
     private func removeController (_ controller: NSViewController) {
-        controller.removeFromParentViewController()
+        controller.removeFromParent()
         controller.view.removeFromSuperview()
     }
     
@@ -213,7 +213,7 @@ extension AppWireframe {
         
         if controller == nil {
             controller = self.placeholderViewController
-            appViewController.addChildViewController(controller!)
+            appViewController.addChild(controller!)
             _placeholderViewController = controller
         }
         splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(controller!.view)

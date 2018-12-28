@@ -64,12 +64,12 @@ extension CalendarPresenter: CalendarPresenterInput {
     func refresh() {
         
         if calendarModule.isAuthorizationDetermined {
-            userInterface!.setStatusImage(calendarModule.isAuthorized ? NSImage.Name.statusAvailable : NSImage.Name.statusPartiallyAvailable)
+            userInterface!.setStatusImage(calendarModule.isAuthorized ? NSImage.statusAvailableName : NSImage.statusPartiallyAvailableName)
             userInterface!.setStatusText(calendarModule.isAuthorized ? "Calendar.app is accessible and ready to use" : "Calendar.app is not authorized")
             userInterface!.setDescriptionText(calendarModule.isAuthorized ? "Events from the selected calendars will appear in Jirassic as tasks" : "Authorize from: System Preferences / Security&Privacy / Privacy / Calendars")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         } else {
-            userInterface!.setStatusImage(NSImage.Name.statusUnavailable)
+            userInterface!.setStatusImage(NSImage.statusUnavailableName)
             userInterface!.setStatusText("Calendar.app was not authorized yet")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         }

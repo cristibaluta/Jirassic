@@ -7,7 +7,7 @@
 //
 
 import CoreData
-//@testable import Jirassic
+//@testable import Jirassic_no_cloud
 
 // TODO  try  to configure this so the model does not need to be in the Jirassic Appstore target but in the tests target
 class InMemoryCoreDataRepository: CoreDataRepository {

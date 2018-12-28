@@ -90,7 +90,7 @@ class GitCell: NSTableRowView, Saveable {
 
 extension GitCell: NSTextFieldDelegate {
     
-    override func controlTextDidEndEditing(_ obj: Notification) {
+    func controlTextDidEndEditing(_ obj: Notification) {
         save()
     }
 }
