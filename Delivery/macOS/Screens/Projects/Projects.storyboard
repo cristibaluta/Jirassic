@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UzK-Pe-bIz">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UzK-Pe-bIz">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,10 +10,58 @@
         <scene sceneID="GL3-G6-vqW">
             <objects>
                 <viewController storyboardIdentifier="ProjectsViewController" id="UzK-Pe-bIz" customClass="ProjectsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="eyC-SU-pWE">
+                    <view key="view" focusRingType="none" id="eyC-SU-pWE">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="407"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJD-NA-rPP">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="407"/>
+                                <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="Wrb-N3-hUn">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="407"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="dop-v8-QZI" id="jyt-y4-p1I">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="382"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="0.0" height="2"/>
+                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn identifier="name" editable="NO" width="160" minWidth="160" maxWidth="160" id="9Ok-ZQ-i0k">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="email" id="Pwj-Mg-ekR">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="UzK-Pe-bIz" id="ghu-XA-pBU"/>
+                                                <outlet property="delegate" destination="UzK-Pe-bIz" id="E5s-we-sCn"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" horizontal="YES" id="JzX-RS-S2m">
+                                    <rect key="frame" x="-100" y="-100" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="e3y-5O-2DW">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" hidden="YES" focusRingType="none" id="dop-v8-QZI">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H3c-Gr-hAE">
                                 <rect key="frame" x="-2" y="390" width="164" height="17"/>
                                 <constraints>
@@ -25,29 +73,21 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BhK-8O-28o">
-                                <rect key="frame" x="12" y="366" width="80" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="inline" title="Bosch eBike" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="zR2-EN-4xE">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47d-zO-hQ5">
-                                <rect key="frame" x="12" y="342" width="92" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="inline" title="Electric castle" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="TiI-Dv-Sdr">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="gJD-NA-rPP" firstAttribute="leading" secondItem="eyC-SU-pWE" secondAttribute="leading" id="Fy3-os-9Me"/>
                             <constraint firstItem="H3c-Gr-hAE" firstAttribute="top" secondItem="eyC-SU-pWE" secondAttribute="top" id="P7n-od-O5x"/>
+                            <constraint firstItem="gJD-NA-rPP" firstAttribute="top" secondItem="eyC-SU-pWE" secondAttribute="top" id="UZh-Sl-c59"/>
+                            <constraint firstAttribute="bottom" secondItem="gJD-NA-rPP" secondAttribute="bottom" id="aLg-Zn-u6f"/>
                             <constraint firstItem="H3c-Gr-hAE" firstAttribute="leading" secondItem="eyC-SU-pWE" secondAttribute="leading" id="fC3-jZ-Jfx"/>
+                            <constraint firstAttribute="trailing" secondItem="gJD-NA-rPP" secondAttribute="trailing" id="hpD-lP-48i"/>
                             <constraint firstAttribute="trailing" secondItem="H3c-Gr-hAE" secondAttribute="trailing" id="tdE-Xs-gI8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="gJD-NA-rPP" id="eqS-hA-LHk"/>
+                        <outlet property="tableView" destination="jyt-y4-p1I" id="mzc-aS-vl5"/>
+                    </connections>
                 </viewController>
                 <customObject id="zIG-jN-vJi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
