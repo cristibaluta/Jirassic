@@ -109,9 +109,9 @@ extension SqliteRepository {
 
     private func tasksBetween (startDate: Date, endDate: Date, predicate: NSPredicate? = nil) -> [Task] {
 
-        let startDate = startDate.YYYYMMddHHmmssGMT()
-        let endDate = endDate.YYYYMMddHHmmssGMT()
-        var predicateComponents = ["datetime(endDate) BETWEEN datetime('\(startDate)') AND datetime('\(endDate)')",
+        let startDateString = startDate.YYYYMMddHHmmssGMT()
+        let endDateString = endDate.YYYYMMddHHmmssGMT()
+        var predicateComponents = ["datetime(endDate) BETWEEN datetime('\(startDateString)') AND datetime('\(endDateString)')",
                                     "markedForDeletion == 0"]
         if let p = predicate {
             predicateComponents.append("(\(p.predicateFormat))")

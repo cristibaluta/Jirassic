@@ -106,14 +106,14 @@ extension Date {
     
     func YYYYMMddHHmmss() -> String {
         let f = DateFormatter()
-        f.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        f.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
     
     func YYYYMMddHHmmssGMT() -> String {
         let f = DateFormatter()
         f.timeZone = TimeZone(abbreviation: "GMT")
-        f.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        f.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
     
