@@ -57,7 +57,7 @@ class TaskInteractor: RepositoryInteractor {
         #if !CMD
         if let remoteRepository = self.remoteRepository {
             let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
-            sync.saveTask(task, completion: { (success) in
+            sync.uploadTask(task, completion: { (success) in
                 DispatchQueue.main.async {
                     completion(task)
                 }

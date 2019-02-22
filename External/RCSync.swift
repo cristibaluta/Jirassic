@@ -12,7 +12,7 @@ class RCSync<T> {
     
     private let localRepository: Repository!
     private let remoteRepository: Repository!
-    private var objectsToSave = [Task]()
+    private var objectsToUpload = [Task]()
     private var objectsToDelete = [Task]()
     
     init (localRepository: Repository, remoteRepository: Repository) {
@@ -23,12 +23,12 @@ class RCSync<T> {
     func start (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         
         RCLog("1. Start iCloud sync")
-        guard objectsToSave.count == 0 || objectsToDelete.count == 0 else {
+        guard objectsToUpload.count == 0 || objectsToDelete.count == 0 else {
             RCLog("1. Sync already in progress, not starting it again")
             return
         }
-        objectsToSave = localRepository.queryUnsyncedTasks()
-        RCLog("1. Nr of unsynced tasks: \(objectsToSave.count)")
+        objectsToUpload = localRepository.queryUnsyncedTasks()
+        RCLog("1. Nr of unsynced tasks: \(objectsToUpload.count)")
         localRepository.queryDeletedTasks { deletedTasks in
             RCLog("1. Nr of deleted tasks: \(deletedTasks.count)")
             self.objectsToDelete = deletedTasks
@@ -41,10 +41,10 @@ class RCSync<T> {
     // Send to CloudKit the changes recursivelly then call the completion block
     private func syncNext (_ completion: @escaping ((_ success: Bool) -> Void)) {
         
-        var task = objectsToSave.first
+        var task = objectsToUpload.first
         if task != nil {
-            objectsToSave.remove(at: 0)
-            saveTask(task!, completion: { (success) in
+            objectsToUpload.remove(at: 0)
+            uploadTask(task!, completion: { (success) in
                 self.syncNext(completion)
             })
         } else {
@@ -61,7 +61,7 @@ class RCSync<T> {
         }
     }
     
-    func saveTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
+    func uploadTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         RCLog("1.1 >>> Save \(task)")
         _ = remoteRepository.saveTask(task) { uploadedTask in
