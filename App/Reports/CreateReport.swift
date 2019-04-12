@@ -19,7 +19,7 @@ class CreateReport {
         }
         var processedTasks = splitOverlappingTasks(filteredTasks)
         processedTasks = removeUntrackableTasks(processedTasks)
-        guard  processedTasks.count > 1 else {
+        guard processedTasks.count > 1 else {
             return []
         }
         processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
@@ -123,7 +123,7 @@ extension CreateReport {
         var roundedTasks = [Task]()
         
         var task = tasks.first!
-        task.endDate = targetHoursInDay == nil ? task.endDate : task.endDate.round()
+        task.endDate = targetHoursInDay == nil ? task.endDate : task.endDate.roundToQuarter()
         roundedTasks.append(task)
         var previousDate = task.endDate
         var extraTimeToAdd = 0.0
@@ -139,7 +139,7 @@ extension CreateReport {
             
             task.endDate = targetHoursInDay == nil
                 ? task.endDate.addingTimeInterval(extraTimeToAdd)
-                : task.endDate.addingTimeInterval(extraTimeToAdd).round()
+                : task.endDate.addingTimeInterval(extraTimeToAdd).roundToQuarter()
             task.startDate = previousDate
             previousDate = task.endDate
             

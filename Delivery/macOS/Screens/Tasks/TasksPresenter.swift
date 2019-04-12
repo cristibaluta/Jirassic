@@ -240,7 +240,7 @@ extension TasksPresenter: TasksInteractorOutput {
                 ? TimeInteractor(settings: settings).workingDayLength()
                 : nil
             let reportInteractor = CreateMonthReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
+            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay, roundHours: true)
             currentReports = reports.byTasks
             ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: selectedListType)
             break

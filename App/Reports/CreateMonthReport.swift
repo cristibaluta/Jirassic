@@ -15,7 +15,9 @@ class CreateMonthReport {
     /// Returns reports collected from all days in the month
     /// @parameters
     /// tasks - All tasks in a month
-    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> (byDays: [[Report]], byTasks: [Report]) {
+    /// targetHoursInDay - How many hours in a day
+    /// roundHours - Round the reports to fixed hours
+    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?, roundHours: Bool) -> (byDays: [[Report]], byTasks: [Report]) {
 
         guard tasks.count > 1 else {
             return (byDays: [], byTasks: [])
