@@ -212,22 +212,11 @@ extension Date {
 		let comps = gregorian.dateComponents([Calendar.Component.weekOfYear], from: self)
 		return comps.weekOfYear!
 	}
-	
-	func roundToFixedHour() -> Date {
-		
-		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
-		let hm = roundToNearestFixedHour(comps.minute!)
-		comps.hour = comps.hour! + hm.hour
-		comps.minute = hm.min
-		comps.second = 0
-		
-		return gregorian.date(from: comps)!
-	}
 
-    func roundToQuarter() -> Date {
+    func round (minutesPrecision precision: Int = 6) -> Date {
 
         var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
-        let hm = roundToNearestQuarter(comps.minute!)
+        let hm = minutesToHours(minutes: comps.minute!, resultingMinutesPrecision: precision)
         comps.hour = comps.hour! + hm.hour
         comps.minute = hm.min
         comps.second = 0
@@ -357,21 +346,11 @@ extension Date {
 
 extension Date {
     
-    private func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
+    private func minutesToHours (minutes: Int, resultingMinutesPrecision precision: Int) -> (hour: Int, min: Int) {
+
+        let rest = minutes % precision
+        let newMin = rest == 0 ? minutes : (minutes + precision - rest)
         
-        let divisions = 6
-        let rest = min % divisions
-        let newMin = rest == 0 ? min : (min + divisions - rest)
-        
-        return (newMin >= 60 ? 1 : 0, newMin >= 60 ? 0 : newMin)
-    }
-
-    private func roundToNearestFixedHour (_ min: Int) -> (hour: Int, min: Int) {
-
-        let divisions = 6
-        let rest = min % divisions
-        let newMin = rest == 0 ? min : (min + divisions - rest)
-
         return (newMin >= 60 ? 1 : 0, newMin >= 60 ? 0 : newMin)
     }
 }
