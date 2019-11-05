@@ -79,17 +79,17 @@ extension TasksInteractor: TasksInteractorInput {
         self.currentTasks = []
         self.addLocalTasks(dateStart: dateStart, dateEnd: dateEnd) { [weak self] in
             guard let wself = self, !wself.currentTasks.isEmpty else {
-                self?.presenter!.tasksDidLoad([])
+                self?.presenter?.tasksDidLoad([])
                 return
             }
             let isMonthRead = dateEnd.timeIntervalSince(dateStart) > 24.hoursToSec
             if isMonthRead || wself.currentTasks.contains(where: { $0.taskType == .endDay }) {
-                self?.presenter!.tasksDidLoad(wself.currentTasks)
+                self?.presenter?.tasksDidLoad(wself.currentTasks)
                 return
             }
             self?.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
                 self?.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
-                    self?.presenter!.tasksDidLoad(wself.currentTasks)
+                    self?.presenter?.tasksDidLoad(wself.currentTasks)
                 }
             }
         }
