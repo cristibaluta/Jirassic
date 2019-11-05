@@ -8,6 +8,8 @@
 
 import Foundation
 import ServiceManagement
+import RCPreferences
+import RCLog
 
 protocol SettingsInteractorInput: class {
     

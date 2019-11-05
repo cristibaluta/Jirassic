@@ -5,6 +5,8 @@
 
 import Foundation
 import StoreKit
+import RCPreferences
+import RCLog
 
 enum StoreProduct: String, RCPreferencesProtocol {
     

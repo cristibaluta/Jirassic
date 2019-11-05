@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RCLog
 
 extension SqliteRepository: RepositoryTasks {
 

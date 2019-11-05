@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import RCPreferences
+import RCLog
 
 enum SettingsTab: Int {
     case tracking = 0

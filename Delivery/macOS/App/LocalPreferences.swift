@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RCPreferences
 
 enum LocalPreferences: String, RCPreferencesProtocol {
     

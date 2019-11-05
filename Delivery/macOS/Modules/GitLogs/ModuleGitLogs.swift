@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RCPreferences
+import RCLog
 
 class ModuleGitLogs {
     

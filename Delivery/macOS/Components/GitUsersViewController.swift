@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RCPreferences
 
 class GitUsersViewController: NSViewController {
     

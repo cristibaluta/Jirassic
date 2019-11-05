@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import RCPreferences
+import RCLog
 
 enum WizardStep: Int, CaseIterable {
     case shell = 0

@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import RCPreferences
+import RCLog
 
 class WelcomeViewController: NSViewController {
     
