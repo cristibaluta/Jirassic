@@ -164,10 +164,6 @@
 		284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
 		284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
 		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
-		2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152120A6547E009F3EE1 /* KeychainWrapper.swift */; };
-		2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152120A6547E009F3EE1 /* KeychainWrapper.swift */; };
-		2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */; };
-		2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */; };
 		2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B139206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
@@ -247,6 +243,9 @@
 		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
+		2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */; };
+		2879EC942375339C00CE18D9 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC932375339C00CE18D9 /* RCLog */; };
+		2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */; };
 		287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
@@ -591,9 +590,6 @@
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
-		2845152120A6547E009F3EE1 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
-		2845152220A6547E009F3EE1 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
-		2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
 		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		2845B13E2068351F006EFB3B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -835,6 +831,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */,
+				2879EC942375339C00CE18D9 /* RCLog in Frameworks */,
+				2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */,
 				28A1B79E23714AA10040968B /* RCPreferences in Frameworks */,
 				280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */,
 				28A1B7A32371759A0040968B /* RCHttp in Frameworks */,
@@ -858,6 +856,7 @@
 				28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */,
 				4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */,
 				28A1B7A12371758B0040968B /* RCHttp in Frameworks */,
+				2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -916,24 +915,6 @@
 				28E896621E830D6700722032 /* Placeholder.storyboard */,
 			);
 			path = Placeholder;
-			sourceTree = "<group>";
-		};
-		2845151820A6547E009F3EE1 /* Keychain */ = {
-			isa = PBXGroup;
-			children = (
-				2845152020A6547E009F3EE1 /* SwiftKeychainWrapper */,
-			);
-			path = Keychain;
-			sourceTree = "<group>";
-		};
-		2845152020A6547E009F3EE1 /* SwiftKeychainWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				2845152120A6547E009F3EE1 /* KeychainWrapper.swift */,
-				2845152220A6547E009F3EE1 /* SwiftKeychainWrapper.h */,
-				2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */,
-			);
-			path = SwiftKeychainWrapper;
 			sourceTree = "<group>";
 		};
 		2845B137206703A8006EFB3B /* Keychain */ = {
@@ -1620,7 +1601,6 @@
 		4065D3991DD3B44200B73201 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				2845151820A6547E009F3EE1 /* Keychain */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -1749,6 +1729,8 @@
 			packageProductDependencies = (
 				28A1B79D23714AA10040968B /* RCPreferences */,
 				28A1B7A22371759A0040968B /* RCHttp */,
+				2879EC932375339C00CE18D9 /* RCLog */,
+				2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */,
 			);
 			productName = "Jirassic no cloud";
 			productReference = 280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */;
@@ -1790,6 +1772,7 @@
 				28A1B76D2370781C0040968B /* RCLog */,
 				28A1B79B2370E10F0040968B /* RCPreferences */,
 				28A1B7A02371758B0040968B /* RCHttp */,
+				2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */,
 			);
 			productName = Jirassic;
 			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
@@ -1924,6 +1907,7 @@
 				28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */,
 				28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */,
 				28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */,
+				2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 4065D3051DD3A1AA00B73201 /* Products */;
 			projectDirPath = "";
@@ -2178,7 +2162,6 @@
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
 				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
 				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
-				2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
 				2812F6202145031B008EE81E /* Store.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */,
@@ -2234,7 +2217,6 @@
 				280D719D1ED6043D005D2689 /* SqliteRepository.swift in Sources */,
 				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
-				2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
@@ -2411,7 +2393,6 @@
 				28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
-				2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
 				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
 				28FE18AC207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
@@ -2435,7 +2416,6 @@
 				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
-				2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
 				564E55F7202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
 				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
@@ -3036,6 +3016,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ralcr/SwiftKeychainWrapper";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ralcr/RCLog";
@@ -3063,6 +3051,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		2879EC932375339C00CE18D9 /* RCLog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
+			productName = RCLog;
+		};
+		2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
 		28A1B76D2370781C0040968B /* RCLog */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;

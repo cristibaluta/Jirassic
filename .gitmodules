@@ -1,3 +1,0 @@
-[submodule "Vendor/Keychain"]
-	path = Vendor/Keychain
-	url = https://github.com/jrendel/SwiftKeychainWrapper.git
