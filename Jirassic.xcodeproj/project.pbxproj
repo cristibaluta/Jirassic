@@ -465,6 +465,7 @@
 		565E19F220A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		566B9FA7217DE67800EAF324 /* TasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B9FA6217DE67700EAF324 /* TasksInteractor.swift */; };
 		566B9FA8217DE67800EAF324 /* TasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B9FA6217DE67700EAF324 /* TasksInteractor.swift */; };
+		567FF91323799BB60086A640 /* CloudKitGDPR in Frameworks */ = {isa = PBXBuildFile; productRef = 567FF91223799BB60086A640 /* CloudKitGDPR */; };
 		5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */; };
 		5683DC3F20ECDED30000A138 /* ModuleCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */; };
 		5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */; };
@@ -850,6 +851,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567FF91323799BB60086A640 /* CloudKitGDPR in Frameworks */,
 				28A1B76E2370781C0040968B /* RCLog in Frameworks */,
 				28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */,
 				28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */,
@@ -1773,6 +1775,7 @@
 				28A1B79B2370E10F0040968B /* RCPreferences */,
 				28A1B7A02371758B0040968B /* RCHttp */,
 				2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */,
+				567FF91223799BB60086A640 /* CloudKitGDPR */,
 			);
 			productName = Jirassic;
 			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
@@ -1908,6 +1911,7 @@
 				28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */,
 				28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */,
 				2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				567FF91123799BB60086A640 /* XCRemoteSwiftPackageReference "CloudKitGDPR" */,
 			);
 			productRefGroup = 4065D3051DD3A1AA00B73201 /* Products */;
 			projectDirPath = "";
@@ -3048,6 +3052,14 @@
 				kind = branch;
 			};
 		};
+		567FF91123799BB60086A640 /* XCRemoteSwiftPackageReference "CloudKitGDPR" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/arturgrigor/CloudKitGDPR.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3090,6 +3102,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
 			productName = RCHttp;
+		};
+		567FF91223799BB60086A640 /* CloudKitGDPR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 567FF91123799BB60086A640 /* XCRemoteSwiftPackageReference "CloudKitGDPR" */;
+			productName = CloudKitGDPR;
 		};
 /* End XCSwiftPackageProductDependency section */
 

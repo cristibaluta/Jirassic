@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CloudKitGDPR",
+        "repositoryURL": "https://github.com/arturgrigor/CloudKitGDPR.git",
+        "state": {
+          "branch": null,
+          "revision": "003b8903cca063e41a49067ce92751bb9fb78edd",
+          "version": "2.1.0"
+        }
+      },
+      {
         "package": "RCHttp",
         "repositoryURL": "https://github.com/ralcr/RCHttp",
         "state": {
