@@ -11,7 +11,6 @@ import XCTest
 
 class CreateMonthReportTests: XCTestCase {
 
-    let report = CreateMonthReport()
     var tasks = [Task]()
     let kLunchLength = Double(2760)//46min ~ 45min
     let targetHoursInDay = 8.0.hoursToSec
@@ -57,7 +56,7 @@ class CreateMonthReportTests: XCTestCase {
 
     func testGroupByTaskNumber() {
 
-        let reports = report.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+        let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay, roundHours: false)
         var totalDuration = 0.0
         XCTAssert(reports.byDays.count == 3, "There should be only 8 unique task numbers. Lunch and waste are ignored")
         XCTAssert(reports.byTasks.count == 8, "There should be only 8 unique task numbers. Lunch and waste are ignored")

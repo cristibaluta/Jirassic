@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RCPreferences
 
 protocol WorklogsPresenterInput: class {
     func setup (date: Date, tasks: [Task])

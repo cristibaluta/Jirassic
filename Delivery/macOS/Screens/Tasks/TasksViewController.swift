@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import RCPreferences
+import RCLog
 
 class TasksViewController: NSViewController {
 	

@@ -19,7 +19,7 @@ class CreateReport {
         }
         var processedTasks = splitOverlappingTasks(filteredTasks)
         processedTasks = removeUntrackableTasks(processedTasks)
-        guard  processedTasks.count > 1 else {
+        guard processedTasks.count > 1 else {
             return []
         }
         processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)

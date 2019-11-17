@@ -14,11 +14,11 @@ let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
 
 extension Date {
 	
-	init (hour: Int, minute: Int, second: Int=0) {
+	init (hour: Int, minute: Int, second: Int = 0) {
 		self.init(date: Date(), hour: hour, minute: minute, second: second)
 	}
 	
-	init (date: Date, hour: Int, minute: Int, second: Int=0) {
+	init (date: Date, hour: Int, minute: Int, second: Int = 0) {
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
 		comps.hour = hour
@@ -28,7 +28,7 @@ extension Date {
 		self.init(timeInterval: 0, since: gregorian.date(from: comps)!)
 	}
 	
-	init (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int=0) {
+	init (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int = 0) {
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: Date())
 		comps.year = year
@@ -106,14 +106,14 @@ extension Date {
     
     func YYYYMMddHHmmss() -> String {
         let f = DateFormatter()
-        f.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        f.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
     
     func YYYYMMddHHmmssGMT() -> String {
         let f = DateFormatter()
         f.timeZone = TimeZone(abbreviation: "GMT")
-        f.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        f.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return f.string(from: self)
     }
     
@@ -212,18 +212,18 @@ extension Date {
 		let comps = gregorian.dateComponents([Calendar.Component.weekOfYear], from: self)
 		return comps.weekOfYear!
 	}
-	
-	func round() -> Date {
-		
-		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
-		let hm = roundToNearestQuarter(comps.minute!)
-		comps.hour = comps.hour! + hm.hour
-		comps.minute = hm.min
-		comps.second = 0
-		
-		return gregorian.date(from: comps)!
-	}
-	
+
+    func round (minutesPrecision precision: Int = 6) -> Date {
+
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+        let hm = minutesToHours(minutes: comps.minute!, resultingMinutesPrecision: precision)
+        comps.hour = comps.hour! + hm.hour
+        comps.minute = hm.min
+        comps.second = 0
+
+        return gregorian.date(from: comps)!
+    }
+
     func dateByUpdating (hour: Int, minute: Int, second: Int = 0) -> Date {
 		
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
@@ -346,24 +346,11 @@ extension Date {
 
 extension Date {
     
-    fileprivate func roundToNearestQuarter (_ min: Int) -> (hour: Int, min: Int) {
-        
-        let divisions = 6
-        let rest = min % divisions
-        let newMin = rest == 0 ? min : (min + divisions - rest)
+    private func minutesToHours (minutes: Int, resultingMinutesPrecision precision: Int) -> (hour: Int, min: Int) {
+
+        let rest = minutes % precision
+        let newMin = rest == 0 ? minutes : (minutes + precision - rest)
         
         return (newMin >= 60 ? 1 : 0, newMin >= 60 ? 0 : newMin)
-        
-//        if min < 8 {
-//            return (0, 0)
-//        } else if min < 22 {
-//            return (0, 15)
-//        } else if min < 38 {
-//            return (0, 30)
-//        } else if min < 52 {
-//            return (0, 45)
-//        } else {
-//            return (1, 0)
-//        }
     }
 }

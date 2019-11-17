@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -164,10 +164,6 @@
 		284192DB2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
 		284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
 		284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */; };
-		2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152120A6547E009F3EE1 /* KeychainWrapper.swift */; };
-		2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152120A6547E009F3EE1 /* KeychainWrapper.swift */; };
-		2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */; };
-		2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */; };
 		2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */; };
 		2845B139206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
@@ -247,6 +243,9 @@
 		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
+		2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */; };
+		2879EC942375339C00CE18D9 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC932375339C00CE18D9 /* RCLog */; };
+		2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */; };
 		287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
@@ -281,6 +280,11 @@
 		2898D3AF2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
 		2898D3B12185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
 		2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
+		28A1B76E2370781C0040968B /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B76D2370781C0040968B /* RCLog */; };
+		28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B79B2370E10F0040968B /* RCPreferences */; };
+		28A1B79E23714AA10040968B /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B79D23714AA10040968B /* RCPreferences */; };
+		28A1B7A12371758B0040968B /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B7A02371758B0040968B /* RCHttp */; };
+		28A1B7A32371759A0040968B /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B7A22371759A0040968B /* RCHttp */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -464,14 +468,6 @@
 		564E55F7202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */; };
 		564E55F92028857300CE4C76 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* Worklogs.storyboard */; };
 		564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 564E55F82028857300CE4C76 /* Worklogs.storyboard */; };
-		565E19CF20A5E007003A5E2A /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19C720A5E007003A5E2A /* RCLog.swift */; };
-		565E19D020A5E007003A5E2A /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19C720A5E007003A5E2A /* RCLog.swift */; };
-		565E19D820A5E192003A5E2A /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19D320A5E191003A5E2A /* RCPreferences.swift */; };
-		565E19D920A5E192003A5E2A /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19D320A5E191003A5E2A /* RCPreferences.swift */; };
-		565E19DE20A5E1D3003A5E2A /* RCPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19D320A5E191003A5E2A /* RCPreferences.swift */; };
-		565E19DF20A5E1D8003A5E2A /* RCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19C720A5E007003A5E2A /* RCLog.swift */; };
-		565E19ED20A5E245003A5E2A /* RCHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19E620A5E245003A5E2A /* RCHttp.swift */; };
-		565E19EE20A5E245003A5E2A /* RCHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19E620A5E245003A5E2A /* RCHttp.swift */; };
 		565E19F020A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		565E19F120A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		565E19F220A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
@@ -602,9 +598,6 @@
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
-		2845152120A6547E009F3EE1 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
-		2845152220A6547E009F3EE1 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
-		2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		2845B1342066C6E6006EFB3B /* AppleScriptProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptProtocol.swift; sourceTree = "<group>"; };
 		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		2845B13E2068351F006EFB3B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -808,15 +801,6 @@
 		564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
 		564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsPresenter.swift; sourceTree = "<group>"; };
 		564E55F82028857300CE4C76 /* Worklogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Worklogs.storyboard; sourceTree = "<group>"; };
-		565E19C320A5E007003A5E2A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		565E19C420A5E007003A5E2A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		565E19C720A5E007003A5E2A /* RCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCLog.swift; sourceTree = "<group>"; };
-		565E19D220A5E191003A5E2A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		565E19D320A5E191003A5E2A /* RCPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCPreferences.swift; sourceTree = "<group>"; };
-		565E19D420A5E191003A5E2A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		565E19E120A5E245003A5E2A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		565E19E220A5E245003A5E2A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		565E19E620A5E245003A5E2A /* RCHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCHttp.swift; sourceTree = "<group>"; };
 		565E19EF20A5E336003A5E2A /* RCSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCSync.swift; sourceTree = "<group>"; };
 		566B9FA6217DE67700EAF324 /* TasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksInteractor.swift; sourceTree = "<group>"; };
 		5683DC3D20ECDED30000A138 /* ModuleCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCalendar.swift; sourceTree = "<group>"; };
@@ -859,7 +843,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */,
+				2879EC942375339C00CE18D9 /* RCLog in Frameworks */,
+				2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */,
+				28A1B79E23714AA10040968B /* RCPreferences in Frameworks */,
 				280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */,
+				28A1B7A32371759A0040968B /* RCHttp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,9 +862,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A1B76E2370781C0040968B /* RCLog in Frameworks */,
 				28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */,
+				28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */,
 				28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */,
 				4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */,
+				28A1B7A12371758B0040968B /* RCHttp in Frameworks */,
+				2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,24 +927,6 @@
 				28E896621E830D6700722032 /* Placeholder.storyboard */,
 			);
 			path = Placeholder;
-			sourceTree = "<group>";
-		};
-		2845151820A6547E009F3EE1 /* Keychain */ = {
-			isa = PBXGroup;
-			children = (
-				2845152020A6547E009F3EE1 /* SwiftKeychainWrapper */,
-			);
-			path = Keychain;
-			sourceTree = "<group>";
-		};
-		2845152020A6547E009F3EE1 /* SwiftKeychainWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				2845152120A6547E009F3EE1 /* KeychainWrapper.swift */,
-				2845152220A6547E009F3EE1 /* SwiftKeychainWrapper.h */,
-				2845152320A6547E009F3EE1 /* KeychainItemAccessibility.swift */,
-			);
-			path = SwiftKeychainWrapper;
 			sourceTree = "<group>";
 		};
 		2845B137206703A8006EFB3B /* Keychain */ = {
@@ -1641,10 +1615,6 @@
 		4065D3991DD3B44200B73201 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				2845151820A6547E009F3EE1 /* Keychain */,
-				565E19E020A5E245003A5E2A /* RCHttp */,
-				565E19D120A5E191003A5E2A /* RCPreferences */,
-				565E19C220A5E007003A5E2A /* RCLog */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -1687,52 +1657,6 @@
 				564E55F82028857300CE4C76 /* Worklogs.storyboard */,
 			);
 			path = Worklogs;
-			sourceTree = "<group>";
-		};
-		565E19C220A5E007003A5E2A /* RCLog */ = {
-			isa = PBXGroup;
-			children = (
-				565E19C320A5E007003A5E2A /* LICENSE */,
-				565E19C420A5E007003A5E2A /* README.md */,
-				565E19C520A5E007003A5E2A /* src */,
-			);
-			path = RCLog;
-			sourceTree = "<group>";
-		};
-		565E19C520A5E007003A5E2A /* src */ = {
-			isa = PBXGroup;
-			children = (
-				565E19C720A5E007003A5E2A /* RCLog.swift */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		565E19D120A5E191003A5E2A /* RCPreferences */ = {
-			isa = PBXGroup;
-			children = (
-				565E19D220A5E191003A5E2A /* LICENSE */,
-				565E19D320A5E191003A5E2A /* RCPreferences.swift */,
-				565E19D420A5E191003A5E2A /* README.md */,
-			);
-			path = RCPreferences;
-			sourceTree = "<group>";
-		};
-		565E19E020A5E245003A5E2A /* RCHttp */ = {
-			isa = PBXGroup;
-			children = (
-				565E19E120A5E245003A5E2A /* LICENSE */,
-				565E19E220A5E245003A5E2A /* README.md */,
-				565E19E320A5E245003A5E2A /* src */,
-			);
-			path = RCHttp;
-			sourceTree = "<group>";
-		};
-		565E19E320A5E245003A5E2A /* src */ = {
-			isa = PBXGroup;
-			children = (
-				565E19E620A5E245003A5E2A /* RCHttp.swift */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		5683DC3C20ECDEA30000A138 /* CalendarEvents */ = {
@@ -1826,6 +1750,12 @@
 			dependencies = (
 			);
 			name = "Jirassic macOS";
+			packageProductDependencies = (
+				28A1B79D23714AA10040968B /* RCPreferences */,
+				28A1B7A22371759A0040968B /* RCHttp */,
+				2879EC932375339C00CE18D9 /* RCLog */,
+				2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */,
+			);
 			productName = "Jirassic no cloud";
 			productReference = 280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */;
 			productType = "com.apple.product-type.application";
@@ -1862,6 +1792,12 @@
 			dependencies = (
 			);
 			name = "Jirassic AppStore";
+			packageProductDependencies = (
+				28A1B76D2370781C0040968B /* RCLog */,
+				28A1B79B2370E10F0040968B /* RCPreferences */,
+				28A1B7A02371758B0040968B /* RCHttp */,
+				2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */,
+			);
 			productName = Jirassic;
 			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
 			productType = "com.apple.product-type.application";
@@ -1986,10 +1922,17 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = 4065D2FB1DD3A1AA00B73201;
+			packageReferences = (
+				28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */,
+				28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */,
+				28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */,
+				2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 4065D3051DD3A1AA00B73201 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2147,9 +2090,7 @@
 				280D70E01ECFE88F005D2689 /* CoreDataRepository+Tasks.swift in Sources */,
 				280D70E31ECFE88F005D2689 /* CSettings.swift in Sources */,
 				280D70DC1ECFE84C005D2689 /* ReadTasksInteractor.swift in Sources */,
-				565E19DF20A5E1D8003A5E2A /* RCLog.swift in Sources */,
 				280D70EB1ECFE8B9005D2689 /* UserDefaults+token.swift in Sources */,
-				565E19DE20A5E1D3003A5E2A /* RCPreferences.swift in Sources */,
 				280D70F11ECFE8D0005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D70D01ECFE5EA005D2689 /* TaskCell.swift in Sources */,
 				280D70D81ECFE82E005D2689 /* ViewAutolayout.swift in Sources */,
@@ -2215,8 +2156,6 @@
 				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
-				565E19ED20A5E245003A5E2A /* RCHttp.swift in Sources */,
-				565E19D820A5E192003A5E2A /* RCPreferences.swift in Sources */,
 				2845B160206AE468006EFB3B /* TaskCell.swift in Sources */,
 				28FE18AB207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
@@ -2251,7 +2190,6 @@
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
 				2871952E2025C356001C237E /* CoreDataRepository+Tasks.swift in Sources */,
 				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
-				2845155020A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
 				2812F6202145031B008EE81E /* Store.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
 				56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */,
@@ -2302,14 +2240,11 @@
 				280D718D1ED6043D005D2689 /* InternalNotifications.swift in Sources */,
 				280D718E1ED6043D005D2689 /* UserNotifications.swift in Sources */,
 				280D718F1ED6043D005D2689 /* SleepNotifications.swift in Sources */,
-				565E19CF20A5E007003A5E2A /* RCLog.swift in Sources */,
 				2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				280D71901ED6043D005D2689 /* BrowserNotification.swift in Sources */,
 				280D719D1ED6043D005D2689 /* SqliteRepository.swift in Sources */,
 				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
-				2845154E20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
-				5623915021CBC6CD0031B882 /* Project.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
@@ -2447,7 +2382,6 @@
 				566B9FA8217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
 				28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
-				565E19EE20A5E245003A5E2A /* RCHttp.swift in Sources */,
 				284192D82018841700E64A9A /* JProject.swift in Sources */,
 				56D90CF920876F1100F24442 /* WizardJiraView.swift in Sources */,
 				28279AD221BBF08E00376304 /* InMemoryCoreDataRepository.swift in Sources */,
@@ -2468,7 +2402,6 @@
 				4065D3A81DD3B44200B73201 /* ViewControllerStoryboard.swift in Sources */,
 				28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */,
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
-				565E19D920A5E192003A5E2A /* RCPreferences.swift in Sources */,
 				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
@@ -2486,13 +2419,11 @@
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
 				56D90CFC20876F2B00F24442 /* WizardGitView.swift in Sources */,
-				565E19D020A5E007003A5E2A /* RCLog.swift in Sources */,
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
 				5623915121CBC6CD0031B882 /* Project.swift in Sources */,
 				28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
-				2845155120A6547E009F3EE1 /* KeychainItemAccessibility.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
 				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
 				28FE18AC207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
@@ -2516,7 +2447,6 @@
 				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
 				405B15611DEF3D080009871C /* TaskSuggestionViewController.swift in Sources */,
-				2845154F20A6547E009F3EE1 /* KeychainWrapper.swift in Sources */,
 				564E55F7202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */,
 				28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */,
 				28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
@@ -2651,7 +2581,10 @@
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2672,7 +2605,10 @@
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2693,7 +2629,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
@@ -2714,7 +2653,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
@@ -2737,7 +2679,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2761,7 +2706,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2876,7 +2824,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -2897,7 +2846,10 @@
 					"APPSTORE=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
@@ -2924,7 +2876,10 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = "APPSTORE=1";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
@@ -2945,7 +2900,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2964,7 +2923,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3082,6 +3045,84 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ralcr/SwiftKeychainWrapper";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ralcr/RCLog";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ralcr/RCPreferences";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ralcr/RCHttp";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		2879EC932375339C00CE18D9 /* RCLog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
+			productName = RCLog;
+		};
+		2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		28A1B76D2370781C0040968B /* RCLog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
+			productName = RCLog;
+		};
+		28A1B79B2370E10F0040968B /* RCPreferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */;
+			productName = RCPreferences;
+		};
+		28A1B79D23714AA10040968B /* RCPreferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */;
+			productName = RCPreferences;
+		};
+		28A1B7A02371758B0040968B /* RCHttp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
+			productName = RCHttp;
+		};
+		28A1B7A22371759A0040968B /* RCHttp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
+			productName = RCHttp;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2818847F21A4A2F800B33B9C /* Jirassic.xcdatamodeld */ = {

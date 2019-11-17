@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import RCPreferences
+import RCLog
 
 var localRepository: Repository!
 var remoteRepository: Repository?

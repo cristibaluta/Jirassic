@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import RCLog
 
 extension CloudKitRepository: RepositoryTasks {
 
@@ -152,7 +153,7 @@ extension CloudKitRepository {
     
     private func taskFromRecord (_ record: CKRecord) -> Task {
         
-        return Task(lastModifiedDate: record["modificationDate"] as? Date,
+        return Task(lastModifiedDate: record.modificationDate,
                     startDate: record["startDate"] as? Date,
                     endDate: record["endDate"] as! Date,
                     notes: record["notes"] as? String,

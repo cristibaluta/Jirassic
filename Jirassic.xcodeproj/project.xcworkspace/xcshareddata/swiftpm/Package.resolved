@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "RCHttp",
+        "repositoryURL": "https://github.com/ralcr/RCHttp",
+        "state": {
+          "branch": "master",
+          "revision": "eb5fbb823105f356eb38b10d70202b532831cd0e",
+          "version": null
+        }
+      },
+      {
+        "package": "RCLog",
+        "repositoryURL": "https://github.com/ralcr/RCLog",
+        "state": {
+          "branch": "master",
+          "revision": "f3166aa52b66e2278523ce8eef40bf31a37ddaad",
+          "version": null
+        }
+      },
+      {
+        "package": "RCPreferences",
+        "repositoryURL": "https://github.com/ralcr/RCPreferences",
+        "state": {
+          "branch": "master",
+          "revision": "d8a2750659ebff18429489d43a933c5560e8367a",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftKeychainWrapper",
+        "repositoryURL": "https://github.com/ralcr/SwiftKeychainWrapper",
+        "state": {
+          "branch": "develop",
+          "revision": "c746065ce51300883497de28b6ff278f6cc40b52",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -91,6 +91,32 @@ class DateTests: XCTestCase {
         date1 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 00)
         date2 = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 1)
         XCTAssert(date1.isAlmostSameHourAs(date2, devianceSeconds: 60.0))
-        
+    }
+
+    func testRoundTo6() {
+        let date = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 14)
+        let roundedDate = date.round()
+        let components = gregorian.dateComponents(ymdhmsUnitFlags, from: roundedDate)
+
+        XCTAssertTrue(components.hour == 12)
+        XCTAssertTrue(components.minute == 18)
+    }
+
+    func testRoundTo30() {
+        let date = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 8)
+        let roundedDate = date.round(minutesPrecision: 30)
+        let components = gregorian.dateComponents(ymdhmsUnitFlags, from: roundedDate)
+
+        XCTAssertTrue(components.hour == 12)
+        XCTAssertTrue(components.minute == 30)
+    }
+
+    func testRoundToNextHour() {
+        let date = Date(year: 2016, month: 1, day: 9, hour: 12, minute: 48)
+        let roundedDate = date.round(minutesPrecision: 30)
+        let components = gregorian.dateComponents(ymdhmsUnitFlags, from: roundedDate)
+
+        XCTAssertTrue(components.hour == 13)
+        XCTAssertTrue(components.minute == 0)
     }
 }

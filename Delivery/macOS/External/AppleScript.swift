@@ -9,6 +9,7 @@
 import Foundation
 import CoreServices
 import Carbon.OpenScripting
+import RCLog
 
 fileprivate let commandRunShellScript = "runShellScript"
 fileprivate let commandGetScriptVersion = "getScriptVersion"

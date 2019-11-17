@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RCPreferences
+import RCLog
 
 protocol JiraTempoPresenterInput: class {
     
@@ -117,6 +119,7 @@ extension JiraTempoPresenter: JiraTempoPresenterInput {
     }
     
     private func handleError(_ error: Error) {
+        RCLog(error)
         var errorMessage = error.localizedDescription
         switch error._code {
         case -1001: errorMessage = "Server not reachable. Is your Jira limited to internal network?"

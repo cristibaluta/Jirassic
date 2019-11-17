@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RCLog
 
 typealias MessageViewModel = (title: String?, message: String?, buttonTitle: String?)
 
