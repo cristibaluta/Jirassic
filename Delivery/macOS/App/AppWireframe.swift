@@ -256,7 +256,7 @@ extension AppWireframe {
     func flipToTasksController() {
         
         let tasksController = self.tasksViewController
-        let flip = FlipAnimation()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
             self.addController(tasksController)
@@ -269,7 +269,7 @@ extension AppWireframe {
     func flipToSettingsController() {
         
         let settingsController = self.settingsViewController
-        let flip = FlipAnimation()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
             self.removePlaceholder()
@@ -284,7 +284,7 @@ extension AppWireframe {
     func flipToLoginController() {
         
         let loginController = self.loginViewController
-        let flip = FlipAnimation()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeController(self.currentController!)
             self.addController(loginController)
@@ -297,7 +297,7 @@ extension AppWireframe {
     func flipToWizardController() {
         
         let wizardController = self.wizardViewController
-        let flip = FlipAnimation()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
             self.removePlaceholder()

@@ -158,6 +158,8 @@
 		28279AD521C6245700376304 /* GitUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279AD421C6245700376304 /* GitUsersViewController.swift */; };
 		28279AD621C6245700376304 /* GitUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279AD421C6245700376304 /* GitUsersViewController.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
+		2828B04E2381D04E0005B188 /* NoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828B04D2381D04E0005B188 /* NoAnimation.swift */; };
+		2828B04F2381D04E0005B188 /* NoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828B04D2381D04E0005B188 /* NoAnimation.swift */; };
 		284192D72018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
 		284192D82018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
 		284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
@@ -458,7 +460,6 @@
 		5623914B21CBC6A10031B882 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914921CBC6A10031B882 /* ProjectsViewController.swift */; };
 		5623914D21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */; };
 		5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */; };
-		5623915021CBC6CD0031B882 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
 		5623915121CBC6CD0031B882 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
 		5623915321CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
 		5623915421CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
@@ -595,6 +596,7 @@
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279AD421C6245700376304 /* GitUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUsersViewController.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
+		2828B04D2381D04E0005B188 /* NoAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAnimation.swift; sourceTree = "<group>"; };
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
@@ -1463,6 +1465,7 @@
 			isa = PBXGroup;
 			children = (
 				4065D3521DD3B44200B73201 /* FlipAnimation.swift */,
+				2828B04D2381D04E0005B188 /* NoAnimation.swift */,
 				40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */,
 			);
 			path = Animations;
@@ -2273,6 +2276,7 @@
 				287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
+				2828B04E2381D04E0005B188 /* NoAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2298,6 +2302,7 @@
 				28279AD321BBF09900376304 /* Jirassic.xcdatamodeld in Sources */,
 				56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */,
 				2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
+				2828B04F2381D04E0005B188 /* NoAnimation.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
 				4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */,
 				569C4C5F202319630049FBF1 /* JitCell.swift in Sources */,
