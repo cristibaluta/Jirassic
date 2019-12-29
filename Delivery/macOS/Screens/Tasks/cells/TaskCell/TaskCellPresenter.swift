@@ -50,6 +50,9 @@ class TaskCellPresenter: NSObject {
         if theTask.taskType == .coderev && theTask.notes != nil && theTask.notes != "" {
             notes = "\(theTask.taskType.defaultNotes): \(notes)"
         }
+        if theTask.taskType == .lunch {
+            notes = theTask.taskType.defaultNotes
+        }
 		cell.data = (
             dateStart: theTask.startDate,
             dateEnd: theTask.endDate,

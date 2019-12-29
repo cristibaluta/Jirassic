@@ -12,22 +12,19 @@ import RCLog
 
 protocol TasksInteractorInput: class {
 
-    func reloadCalendar()
     func reloadTasks (inDay day: Day)
     func reloadTasks (inMonth day: Day)
 }
 
 protocol TasksInteractorOutput: class {
 
-    func calendarDidLoad (_ weeks: [Week])
     func tasksDidLoad (_ tasks: [Task])
 }
 
 class TasksInteractor {
 
-    weak var presenter: TasksPresenter?
+    weak var presenter: TasksInteractorOutput?
     
-    private let daysReader: ReadDaysInteractor!
     private let tasksReader: ReadTasksInteractor!
     private let moduleGit = ModuleGitLogs()
     private let moduleCalendar = ModuleCalendar()
@@ -36,28 +33,12 @@ class TasksInteractor {
     private var currentDateStart: Date?
     
     init() {
-        daysReader = ReadDaysInteractor(repository: localRepository, remoteRepository: remoteRepository)
         tasksReader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
     }
 }
 
 extension TasksInteractor: TasksInteractorInput {
-
-    func reloadCalendar() {
-
-        let startRequestDate = Date()
-        daysReader.query(startingDate: Date(timeIntervalSinceNow: -12.monthsToSec).endOfDay()) { [weak self] weeks in
-            let endRequestDate = Date()
-            RCLog(endRequestDate.timeIntervalSince(startRequestDate))
-            DispatchQueue.main.async {
-                guard let wself = self else {
-                    return
-                }
-                wself.presenter?.calendarDidLoad(weeks)
-            }
-        }
-    }
-
+    
     func reloadTasks (inDay day: Day) {
 
         let dateStart = day.dateStart
@@ -65,7 +46,7 @@ extension TasksInteractor: TasksInteractorInput {
         currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
-
+    
     func reloadTasks (inMonth day: Day) {
 
         let dateStart = day.dateStart.startOfMonth()
@@ -73,7 +54,7 @@ extension TasksInteractor: TasksInteractorInput {
         currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
-
+    
     private func reloadTasks (dateStart: Date, dateEnd: Date) {
         
         self.currentTasks = []

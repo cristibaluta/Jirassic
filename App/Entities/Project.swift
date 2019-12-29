@@ -9,15 +9,17 @@
 import Foundation
 
 struct Project {
-
+    
+    var objectId: String?
     var lastModifiedDate: Date?
     var title: String
     var jiraBaseUrl: String?
     var jiraUser: String?
     var jiraProject: String?
     var jiraIssue: String?
-    var gitBaseUrl: String?
+    
+    var gitBaseUrls: [String]
+    var gitUsers: [String]
     /// Git commits with this prefix are considered part of the project automatically
     var taskNumberPrefix: String?
-    var objectId: String?
 }

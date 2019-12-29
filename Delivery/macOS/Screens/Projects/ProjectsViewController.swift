@@ -8,36 +8,72 @@
 
 import Cocoa
 
-class ProjectsViewController: NSViewController {
-    @IBOutlet private weak var scrollView: NSScrollView!
-    @IBOutlet private weak var tableView: NSTableView!
-    var projects = ["Bosch Ebike", "Electric castle"]
-}
-
-extension ProjectsViewController: NSTableViewDataSource {
+class ProjectsViewController: NSSplitViewController {
     
-    func numberOfRows (in aTableView: NSTableView) -> Int {
-        return projects.count
+    weak var appWireframe: AppWireframe?
+    var presenter: ProjectsPresenterInput?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.focusRingType = .none
+        self.splitViewItems.first?.minimumThickness = 120
+        
+        presenter!.reloadProjects()
+    }
+    
+    private func setupControllers() {
+        
+        guard self.splitViewItems.count == 0 else {
+            return
+        }
+        let c1 = ProjectsListViewController.instantiateFromStoryboard("Projects")
+        let c2 = ProjectDetailsViewController.instantiateFromStoryboard("Projects")
+        let c2Presenter = ProjectDetailsPresenter()
+        c2.presenter = c2Presenter
+        c2Presenter.ui = c2
+        let s1 = NSSplitViewItem(viewController: c1)
+        s1.minimumThickness = 120
+        let s2 = NSSplitViewItem(viewController: c2)
+        self.splitViewItems = [s1, s2]
     }
 }
 
-extension ProjectsViewController: NSTableViewDelegate {
+extension ProjectsViewController: ProjectsPresenterOutput {
     
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+    func showMessage (_ message: MessageViewModel) {
         
-        if (tableColumn?.identifier)?.rawValue == "isSelected" {
-            return nil
+        self.splitViewItems = []
+        
+        let controller = appWireframe!.presentPlaceholder(message, in: self.view)
+        controller.didPressButton = {
+            self.presenter?.addProject()
         }
-        if (tableColumn?.identifier)?.rawValue == "name" {
-            return projects[row]
-        }
-        return nil
     }
     
-    func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+    func hideMessage() {
+        appWireframe!.removePlaceholder()
+    }
+    
+    func projectsDidLoad(_ projects: [Project]) {
         
-        if (tableColumn?.identifier)?.rawValue == "isSelected" {
+        setupControllers()
+        
+        guard let controller = self.splitViewItems.first?.viewController as? ProjectsListViewController else {
+            return
+        }
+        controller.projects = projects
+        controller.didSelectProject = { project in
             
+            guard let controller = self.splitViewItems.last?.viewController as? ProjectDetailsViewController else {
+                return
+            }
+            controller.project = project
+        }
+        controller.didSelectAddProject = {
+            self.presenter?.addProject()
+        }
+        controller.didSelectRemoveProject = { project in
+            self.presenter?.removeProject(project)
         }
     }
 }

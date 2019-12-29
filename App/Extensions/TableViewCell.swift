@@ -45,7 +45,7 @@ extension TableViewCell {
 //            return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
             guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: className), owner: self) as? T else {
-                fatalError("Cell \(className) might not be registered in thsi tableView")
+                fatalError("Cell \(className) might not be registered in this tableView")
             }
             return cell
         #endif

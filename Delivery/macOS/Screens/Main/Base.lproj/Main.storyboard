@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -660,5 +661,169 @@
             </objects>
             <point key="canvasLocation" x="77" y="-780"/>
         </scene>
+        <!--Main View Controller-->
+        <scene sceneID="ba3-7X-OCD">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="Ei8-gb-fmb" customClass="MainViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="hnv-dN-B2T" customClass="TasksView" customModule="Jirassic" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="491" height="440"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-dX-oiy">
+                                <rect key="frame" x="457" y="398" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="hGh-fH-eCW"/>
+                                    <constraint firstAttribute="width" constant="22" id="p8i-Kl-9Iu"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W4Q-te-r5C">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <accessibility description="Settings" identifier="Settings"/>
+                                <connections>
+                                    <action selector="handleSettingsButton:" target="Ei8-gb-fmb" id="m4O-xC-4F7"/>
+                                </connections>
+                            </button>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="IFH-Wb-PqU">
+                                <rect key="frame" x="12" y="377" width="467" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fxV-rH-2TE"/>
+                                </constraints>
+                            </box>
+                            <splitView focusRingType="none" arrangesAllSubviews="NO" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="P9L-JP-qk3">
+                                <rect key="frame" x="12" y="0.0" width="467" height="378"/>
+                                <subviews>
+                                    <customView id="Jry-Vv-ZhD">
+                                        <rect key="frame" x="0.0" y="0.0" width="467" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="Fjr-V5-JcY"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView fixedFrame="YES" id="5dn-nD-A6Q">
+                                        <rect key="frame" x="0.0" y="73" width="467" height="305"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </customView>
+                                </subviews>
+                                <holdingPriorities>
+                                    <real value="248"/>
+                                    <real value="250"/>
+                                </holdingPriorities>
+                            </splitView>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdW-Tc-S7d">
+                                <rect key="frame" x="146" y="397" width="200" height="23"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="qk7-el-7e4">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Tasks"/>
+                                        <segment label="Reports" selected="YES" tag="1"/>
+                                        <segment label="Projects"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="handleSegmentedControl:" target="Ei8-gb-fmb" id="Uhu-nI-5Qy"/>
+                                </connections>
+                            </segmentedControl>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IXD-dp-bQ5">
+                                <rect key="frame" x="438" y="401" width="16" height="16"/>
+                            </progressIndicator>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zsc-26-fMG">
+                                <rect key="frame" x="435" y="398" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Skd-bS-S8k"/>
+                                    <constraint firstAttribute="width" constant="22" id="eA5-kF-fya"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="TYN-Ke-0YZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleRefreshButton:" target="Ei8-gb-fmb" id="X7F-ri-Hun"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NdI-Sk-tpg">
+                                <rect key="frame" x="12" y="399" width="38" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yBN-CN-uFP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="label" size="12"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleQuitAppButton:" target="Ei8-gb-fmb" id="UAV-BP-pqe"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-It-0Ig">
+                                <rect key="frame" x="60" y="399" width="20" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="^" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T8n-oJ-tue">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="label" size="12"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleMinimizeAppButton:" target="Ei8-gb-fmb" id="Cgd-8l-UTq"/>
+                                </connections>
+                            </button>
+                            <button toolTip="Some plugins needs updating." translatesAutoresizingMaskIntoConstraints="NO" id="7eX-HA-FPc">
+                                <rect key="frame" x="413" y="398" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="5pZ-HY-d1f"/>
+                                    <constraint firstAttribute="height" constant="22" id="zaZ-cU-Cdv"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="WarningButton" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="T1p-wn-MMS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <accessibility description="Settings" identifier="Settings"/>
+                                <connections>
+                                    <action selector="handleWarningButton:" target="Ei8-gb-fmb" id="5j6-VJ-WcK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="NZQ-It-0Ig" firstAttribute="centerY" secondItem="NdI-Sk-tpg" secondAttribute="centerY" id="54c-SD-R2F"/>
+                            <constraint firstItem="IXD-dp-bQ5" firstAttribute="centerX" secondItem="Zsc-26-fMG" secondAttribute="centerX" id="5er-eY-Wo5"/>
+                            <constraint firstItem="IFH-Wb-PqU" firstAttribute="top" secondItem="hnv-dN-B2T" secondAttribute="top" constant="60" id="689-PE-o4M"/>
+                            <constraint firstAttribute="bottom" secondItem="P9L-JP-qk3" secondAttribute="bottom" id="A09-Jd-d6i"/>
+                            <constraint firstItem="NZQ-It-0Ig" firstAttribute="leading" secondItem="NdI-Sk-tpg" secondAttribute="trailing" constant="10" id="BAG-QV-sgm"/>
+                            <constraint firstItem="Zsc-26-fMG" firstAttribute="top" secondItem="TJ8-dX-oiy" secondAttribute="top" id="BJN-yX-tqw"/>
+                            <constraint firstItem="Zsc-26-fMG" firstAttribute="centerY" secondItem="7eX-HA-FPc" secondAttribute="centerY" id="F3H-rV-jMU"/>
+                            <constraint firstItem="P9L-JP-qk3" firstAttribute="top" secondItem="hnv-dN-B2T" secondAttribute="top" constant="62" id="F40-tr-iXx"/>
+                            <constraint firstItem="P9L-JP-qk3" firstAttribute="leading" secondItem="hnv-dN-B2T" secondAttribute="leading" constant="12" id="Hve-BK-E6h"/>
+                            <constraint firstItem="GdW-Tc-S7d" firstAttribute="top" secondItem="hnv-dN-B2T" secondAttribute="top" constant="20" id="Pa9-DO-cQY"/>
+                            <constraint firstItem="NdI-Sk-tpg" firstAttribute="leading" secondItem="hnv-dN-B2T" secondAttribute="leading" constant="12" id="V1F-2B-DUb"/>
+                            <constraint firstAttribute="trailing" secondItem="TJ8-dX-oiy" secondAttribute="trailing" constant="12" id="WCf-22-Vzk"/>
+                            <constraint firstItem="IFH-Wb-PqU" firstAttribute="leading" secondItem="hnv-dN-B2T" secondAttribute="leading" constant="12" id="WOm-Cp-YQY"/>
+                            <constraint firstItem="TJ8-dX-oiy" firstAttribute="leading" secondItem="7eX-HA-FPc" secondAttribute="trailing" constant="22" id="dBv-7s-XBd"/>
+                            <constraint firstAttribute="trailing" secondItem="P9L-JP-qk3" secondAttribute="trailing" constant="12" id="hew-R0-C5I"/>
+                            <constraint firstItem="IXD-dp-bQ5" firstAttribute="centerY" secondItem="Zsc-26-fMG" secondAttribute="centerY" id="j2u-aJ-13x"/>
+                            <constraint firstAttribute="trailing" secondItem="IFH-Wb-PqU" secondAttribute="trailing" constant="12" id="kjM-1g-xAz"/>
+                            <constraint firstItem="GdW-Tc-S7d" firstAttribute="centerX" secondItem="hnv-dN-B2T" secondAttribute="centerX" id="lld-FN-eQc"/>
+                            <constraint firstItem="NdI-Sk-tpg" firstAttribute="top" secondItem="hnv-dN-B2T" secondAttribute="top" constant="22" id="ts2-ug-fGn"/>
+                            <constraint firstItem="TJ8-dX-oiy" firstAttribute="leading" secondItem="Zsc-26-fMG" secondAttribute="trailing" id="umq-es-Pht"/>
+                            <constraint firstItem="TJ8-dX-oiy" firstAttribute="top" secondItem="hnv-dN-B2T" secondAttribute="top" constant="20" id="xlx-DA-tFb"/>
+                        </constraints>
+                    </customView>
+                    <connections>
+                        <outlet property="butMinimize" destination="NZQ-It-0Ig" id="2SY-d8-2Ra"/>
+                        <outlet property="butQuit" destination="NdI-Sk-tpg" id="cWd-lh-Wor"/>
+                        <outlet property="butRefresh" destination="Zsc-26-fMG" id="Zwh-xo-rt8"/>
+                        <outlet property="butSettings" destination="TJ8-dX-oiy" id="2hS-XH-S3F"/>
+                        <outlet property="butWarning" destination="7eX-HA-FPc" id="anX-1G-gl5"/>
+                        <outlet property="butWarningRightConstraint" destination="dBv-7s-XBd" id="iRS-DR-GdY"/>
+                        <outlet property="listSegmentedControl" destination="GdW-Tc-S7d" id="bB8-5T-4oe"/>
+                        <outlet property="splitBottomView" destination="5dn-nD-A6Q" id="4Bc-Wv-Xad"/>
+                        <outlet property="splitTopView" destination="Jry-Vv-ZhD" id="EeP-1c-1u2"/>
+                        <outlet property="splitTopViewHeightConstraint" destination="Fjr-V5-JcY" id="fkb-rB-Dji"/>
+                        <outlet property="splitView" destination="P9L-JP-qk3" id="dAQ-Pu-myf"/>
+                        <outlet property="syncIndicator" destination="IXD-dp-bQ5" id="XKF-d2-UaM"/>
+                    </connections>
+                </viewController>
+                <customObject id="ljm-Gn-HTa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="608" y="-710"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="WarningButton" width="15" height="15"/>
+    </resources>
 </document>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,7 +11,7 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="J1c-ZL-C5e" customClass="SettingsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JAR-dh-Pss">
-                        <rect key="frame" x="0.0" y="0.0" width="494" height="494"/>
+                        <rect key="frame" x="0.0" y="0.0" width="596" height="494"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aR4-jV-fsE">
@@ -36,9 +37,9 @@
                                 </connections>
                             </button>
                             <box translatesAutoresizingMaskIntoConstraints="NO" id="PxN-df-6xl">
-                                <rect key="frame" x="7" y="87" width="480" height="362"/>
+                                <rect key="frame" x="7" y="87" width="582" height="362"/>
                                 <view key="contentView" id="8TK-hA-zVh">
-                                    <rect key="frame" x="2" y="2" width="476" height="345"/>
+                                    <rect key="frame" x="3" y="3" width="576" height="344"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
@@ -46,7 +47,7 @@
                                 </constraints>
                             </box>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="nlR-CY-a5k">
-                                <rect key="frame" x="458" y="450" width="24" height="24"/>
+                                <rect key="frame" x="560" y="450" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="4g4-ML-oQZ"/>
                                     <constraint firstAttribute="height" constant="24" id="E7I-QJ-lJh"/>
@@ -60,7 +61,7 @@
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-yv-6JW">
-                                <rect key="frame" x="145" y="451" width="205" height="23"/>
+                                <rect key="frame" x="201.5" y="451" width="194" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="pn1-lj-JjN">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -77,7 +78,7 @@
                                 <rect key="frame" x="12" y="453" width="38" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fze-b8-HZ5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
+                                    <font key="font" metaFont="label" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleQuitAppButton:" target="J1c-ZL-C5e" id="cS6-mT-WmX"/>
@@ -87,7 +88,7 @@
                                 <rect key="frame" x="60" y="453" width="20" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="^" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ghA-S2-xyZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
+                                    <font key="font" metaFont="label" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleMinimizeAppButton:" target="J1c-ZL-C5e" id="hZX-uF-dti"/>
@@ -118,7 +119,7 @@
                 </viewController>
                 <customObject id="C7k-Vd-XtM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="770"/>
+            <point key="canvasLocation" x="150" y="770"/>
         </scene>
     </scenes>
     <resources>

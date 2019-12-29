@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="TaskCell" id="c22-O7-iKe" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
+        <customView id="c22-O7-iKe" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="345" height="90"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -141,6 +142,110 @@
                 <outlet property="statusImage" destination="iAi-8T-Cme" id="kez-tX-mzz"/>
             </connections>
             <point key="canvasLocation" x="224.5" y="289"/>
+        </customView>
+        <customView identifier="TaskCell" id="Fct-Jr-LTk" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="341" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EdN-h3-iZx">
+                    <rect key="frame" x="122" y="11" width="211" height="13"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Notes" id="Cwb-4l-hca">
+                        <font key="font" metaFont="systemBold" size="10"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="Fct-Jr-LTk" id="i8q-Bd-2WR"/>
+                    </connections>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zu0-vm-aku">
+                    <rect key="frame" x="62" y="11" width="54" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="KBT-VQ-VbG"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="APP-100" id="AaZ-al-N46">
+                        <font key="font" metaFont="systemBold" size="10"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="Fct-Jr-LTk" id="FFX-HF-5dS"/>
+                    </connections>
+                </textField>
+                <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LEN-4d-BK7" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
+                    <rect key="frame" x="20" y="10" width="36" height="14"/>
+                    <view key="contentView" id="aoz-5f-rYe">
+                        <rect key="frame" x="1" y="1" width="34" height="12"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="FRL-fl-Ns2"/>
+                        <constraint firstAttribute="height" constant="14" id="Wln-oR-Ai1"/>
+                    </constraints>
+                </box>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="35p-5Y-Yxo">
+                    <rect key="frame" x="309" y="10" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="GS8-Cr-1rY"/>
+                        <constraint firstAttribute="width" constant="16" id="saZ-da-aB7"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="a1Y-5v-7XG">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleRemoveButton:" target="Fct-Jr-LTk" id="JeY-XX-jl1"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="Iln-jw-lsu">
+                    <rect key="frame" x="284" y="10" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="2Ot-Eb-UNq"/>
+                        <constraint firstAttribute="width" constant="16" id="edR-Hh-7b9"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="oWc-BU-uyb">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleAddButton:" target="Fct-Jr-LTk" id="zdK-NX-xa3"/>
+                    </connections>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HIn-Os-QKU">
+                    <rect key="frame" x="0.0" y="9" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="dcu-Vl-BFB"/>
+                        <constraint firstAttribute="width" constant="16" id="huD-GE-r2n"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="7XR-i6-OyZ"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="HIn-Os-QKU" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="0mt-mz-O8o"/>
+                <constraint firstItem="Zu0-vm-aku" firstAttribute="leading" secondItem="LEN-4d-BK7" secondAttribute="trailing" constant="8" id="9c7-Zb-DHt"/>
+                <constraint firstItem="LEN-4d-BK7" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="CFQ-bO-98b"/>
+                <constraint firstItem="EdN-h3-iZx" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="TNG-6U-sL9"/>
+                <constraint firstItem="HIn-Os-QKU" firstAttribute="leading" secondItem="Fct-Jr-LTk" secondAttribute="leading" id="afo-yc-ZLf"/>
+                <constraint firstItem="EdN-h3-iZx" firstAttribute="leading" secondItem="Zu0-vm-aku" secondAttribute="trailing" constant="10" id="hFb-OW-s5I"/>
+                <constraint firstAttribute="trailing" secondItem="EdN-h3-iZx" secondAttribute="trailing" constant="10" id="lma-ft-Oc9"/>
+                <constraint firstItem="35p-5Y-Yxo" firstAttribute="leading" secondItem="Iln-jw-lsu" secondAttribute="trailing" constant="9" id="mNP-qH-was"/>
+                <constraint firstItem="Zu0-vm-aku" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="nLq-RJ-VTE"/>
+                <constraint firstAttribute="trailing" secondItem="35p-5Y-Yxo" secondAttribute="trailing" constant="16" id="ovn-PS-qoY"/>
+                <constraint firstAttribute="centerY" secondItem="Iln-jw-lsu" secondAttribute="centerY" constant="0.5" id="pas-77-j1v"/>
+                <constraint firstItem="LEN-4d-BK7" firstAttribute="leading" secondItem="Fct-Jr-LTk" secondAttribute="leading" constant="20" id="vJ2-C6-Sn8"/>
+                <constraint firstAttribute="centerY" secondItem="35p-5Y-Yxo" secondAttribute="centerY" constant="1" id="xZ5-df-J79"/>
+            </constraints>
+            <connections>
+                <outlet property="butAdd" destination="Iln-jw-lsu" id="iaq-M4-3h3"/>
+                <outlet property="butRemove" destination="35p-5Y-Yxo" id="8IP-Jw-yV1"/>
+                <outlet property="butRemoveWidthConstraint" destination="GS8-Cr-1rY" id="dz4-EC-WJp"/>
+                <outlet property="dateEndTextField" destination="LEN-4d-BK7" id="Iti-Vc-CxM"/>
+                <outlet property="issueNrTextField" destination="Zu0-vm-aku" id="eHj-ZH-qOW"/>
+                <outlet property="notesTextField" destination="EdN-h3-iZx" id="x1S-kM-nSZ"/>
+                <outlet property="notesTextFieldRightConstrain" destination="lma-ft-Oc9" id="wW2-eg-gK7"/>
+                <outlet property="statusImage" destination="HIn-Os-QKU" id="nvf-My-tm7"/>
+            </connections>
+            <point key="canvasLocation" x="226.5" y="165"/>
         </customView>
     </objects>
     <resources>

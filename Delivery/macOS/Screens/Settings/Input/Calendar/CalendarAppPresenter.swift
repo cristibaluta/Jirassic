@@ -10,7 +10,7 @@ import Foundation
 import Cocoa
 import RCPreferences
 
-protocol CalendarPresenterInput: class {
+protocol CalendarAppPresenterInput: class {
     
     func enable (_ enabled: Bool)
     func enableCalendar (_ calendarTitle: String)
@@ -19,7 +19,7 @@ protocol CalendarPresenterInput: class {
     func authorize()
 }
 
-protocol CalendarPresenterOutput: class {
+protocol CalendarAppPresenterOutput: class {
     
     func enable (_ enabled: Bool)
     func setStatusImage (_ imageName: NSImage.Name)
@@ -29,14 +29,14 @@ protocol CalendarPresenterOutput: class {
     func setCalendars (_ calendars: [String], selected: [String])
 }
 
-class CalendarPresenter {
+class CalendarAppPresenter {
     
-    weak var userInterface: CalendarPresenterOutput?
+    weak var userInterface: CalendarAppPresenterOutput?
     private let calendarModule = ModuleCalendar()
     private let pref = RCPreferences<LocalPreferences>()
 }
 
-extension CalendarPresenter: CalendarPresenterInput {
+extension CalendarAppPresenter: CalendarAppPresenterInput {
 
     func enable (_ enabled: Bool) {
         pref.set(enabled, forKey: .enableCalendar)

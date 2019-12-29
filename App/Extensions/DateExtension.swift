@@ -12,6 +12,7 @@ let ymdUnitFlags: Set<Calendar.Component> = [.year, .month, .day]
 let ymdhmsUnitFlags: Set<Calendar.Component> = [.year, .month, .weekday, .day, .hour, .minute, .second]
 let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
 
+/// Instantiate a date
 extension Date {
 	
 	init (hour: Int, minute: Int, second: Int = 0) {
@@ -51,6 +52,7 @@ extension Date {
     }
 }
 
+/// Format the date
 extension Date {
 	
 	func HHmmddMM() -> String {
@@ -90,6 +92,12 @@ extension Date {
 		return f.string(from: self)
 	}
 	
+    func E() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "E"
+        return f.string(from: self)
+    }
+    
     // eg. Thursday, February 01
 	func EEEEMMMMdd() -> String {
 		let f = DateFormatter()
@@ -139,6 +147,12 @@ extension Date {
         f.dateFormat = "YYYY"
         return f.string(from: self)
     }
+    
+    func MMMyyyy() -> String {
+        let f = DateFormatter()
+        f.dateFormat = "MMM yyyy"
+        return f.string(from: self)
+    }
 }
 
 extension Date {
@@ -182,10 +196,8 @@ extension Date {
     }
 	
 	func daysInMonth() -> Int {
-		
-		let daysRange = gregorian.range(of: Calendar.Component.day, in: Calendar.Component.month, for: self)
-		
-		return daysRange!.count as Int
+		let daysRange = gregorian.range(of: .day, in: .month, for: self)
+		return daysRange?.count ?? 0
 	}
     
     func components() -> (hour: Int, minute: Int) {
@@ -234,9 +246,21 @@ extension Date {
 		return gregorian.date(from: comps)!
 	}
     
+    func dateByUpdating (day: Int) -> Date {
+        
+        var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
+        comps.day = day
+        
+        return gregorian.date(from: comps)!
+    }
+    
     func dateByKeepingTime() -> Date {
         let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
         return Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
+    }
+    
+    func dateByAddingMonths(_ numberOfMonths: Int) -> Date {
+        return Calendar.current.date(byAdding: .month, value: numberOfMonths, to: self) ?? self
     }
 	
 	static func parseHHmm (_ hhmm: String) -> (hour: Int, min: Int) {

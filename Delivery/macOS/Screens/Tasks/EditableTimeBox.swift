@@ -21,6 +21,7 @@ class EditableTimeBox: TimeBox {
     override func awakeFromNib() {
         super.awakeFromNib()
         timeTextField?.delegate = self
+//        backgroundBox?.fillColor = .darkGray
     }
 }
 
@@ -29,8 +30,8 @@ extension EditableTimeBox: NSTextFieldDelegate {
     public func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
         isEditing = true
         partialValue = stringValue
-        self.borderColor = NSColor.darkGray
-        timeTextField?.textColor = NSColor.black
+//        backgroundBox?.borderColor = .darkGray
+        timeTextField?.textColor = .black
         
         return true
     }
@@ -40,8 +41,8 @@ extension EditableTimeBox: NSTextFieldDelegate {
             wasEdited = false
             didEndEditing?()
         }
-        self.borderColor = NSColor.white
-        timeTextField?.textColor = NSColor.darkGray
+//        backgroundBox?.borderColor = .white
+        timeTextField?.textColor = .darkGray
         
         return true
     }

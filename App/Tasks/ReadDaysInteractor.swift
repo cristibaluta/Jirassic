@@ -19,7 +19,7 @@ class ReadDaysInteractor: RepositoryInteractor {
     /// @parameters
     /// completion block will be called once with local tasks and once with updated tasks if remote had any changes to download
     func queryAll (_ completion: @escaping (_ weeks: [Week]) -> Void) {
-        query(startingDate: Date(timeIntervalSince1970: 0), completion: completion)
+        query(startingDate: Date(timeIntervalSince1970: 0), endingDate: Date(), completion: completion)
     }
 
     /// Query all startDay and endDay objects from the local repository
@@ -27,31 +27,32 @@ class ReadDaysInteractor: RepositoryInteractor {
     /// @parameters
     /// startingDate - Query between this date and current date
     /// completion block - will be called once with local tasks and once with updated tasks if remote had any changes to download
-    func query (startingDate: Date, completion: @escaping (_ weeks: [Week]) -> Void) {
+    func query (startingDate: Date, endingDate: Date, completion: @escaping (_ weeks: [Week]) -> Void) {
 
-        queryLocalTasks(startDate: startingDate, endDate: Date()) { [weak self] (tasks: [Task]) in
+        queryLocalTasks(startDate: startingDate, endDate: endingDate) { [weak self] (tasks: [Task]) in
             
-            guard let _self = self else {
+            guard let self = self else {
                 return
             }
-            _self.tasks = tasks
-            completion(_self.weeks())
+            self.tasks = tasks
+            completion(self.createWeeks())
             
-            if let remoteRepository = _self.remoteRepository {
+            guard let remoteRepository = self.remoteRepository else {
+                return
+            }
                 
-                let sync = RCSync<Task>(localRepository: _self.repository, remoteRepository: remoteRepository)
-                sync.start { [weak self] hasIncomingChanges in
-                    
-                    guard let _self = self, hasIncomingChanges else {
-                        return
-                    }
-                    // Delete dusplicate start day
-                    RemoveDuplicate(repository: _self.repository, remoteRepository: _self.remoteRepository, date: Date()).execute()
-                    // Fetch again the local tasks if they were updated
-                    _self.queryLocalTasks(startDate: startingDate, endDate: Date()) { (tasks: [Task]) in
-                        _self.tasks = tasks
-                        completion(_self.weeks())
-                    }
+            let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
+            sync.start { [weak self] hasIncomingChanges in
+                
+                guard let self = self, hasIncomingChanges else {
+                    return
+                }
+                // Delete dusplicate start day
+                RemoveDuplicate(repository: self.repository, remoteRepository: self.remoteRepository, date: Date()).execute()
+                // Fetch again the local tasks if they were updated
+                self.queryLocalTasks(startDate: startingDate, endDate: Date()) { (tasks: [Task]) in
+                    self.tasks = tasks
+                    completion(self.createWeeks())
                 }
             }
         }
@@ -71,50 +72,75 @@ class ReadDaysInteractor: RepositoryInteractor {
         })
     }
 	
-	private func weeks() -> [Week] {
+	private func createWeeks() -> [Week] {
 		
-		var objects = [Week]()
+		var weeks = [Week]()
 		var referenceDate = Date.distantFuture
 		
 		for task in tasks {
             if !task.endDate.isSameWeekAs(referenceDate) {
                 referenceDate = task.endDate
-                let obj = Week(date: task.endDate)
-                obj.days = days(ofWeek: obj)
-                objects.append(obj)
+                let week = Week(date: task.endDate)
+                week.days = createDaysFromAscendingTasks(ofWeek: week)
+                weeks.append(week)
             }
 		}
 		
-		return objects
+		return weeks
 	}
 	
-	private func days() -> [Day] {
-		
-		var objects = [Day]()
-        var obj: Day?
-		var referenceDate = Date.distantFuture
-		
-		for task in tasks {
-            if task.endDate.isSameDayAs(referenceDate) {
-                if task.taskType == .endDay {
-                    let tempObj = objects.removeLast()
-                    obj = Day(dateStart: tempObj.dateStart, dateEnd: task.endDate)
-                    objects.append(obj!)
-                }
-            } else {
-                referenceDate = task.endDate
-                obj = Day(dateStart: task.endDate, dateEnd: nil)
-                objects.append(obj!)
+//	private func createDays() -> [Day] {
+//
+//		var objects = [Day]()
+//        var obj: Day?
+//		var referenceDate = Date.distantFuture
+//
+//		for task in tasks {
+//            if task.endDate.isSameDayAs(referenceDate) {
+//                if task.taskType == .endDay {
+//                    let tempObj = objects.removeLast()
+//                    obj = Day(dateStart: tempObj.dateStart, dateEnd: task.endDate)
+//                    objects.append(obj!)
+//                }
+//            } else {
+//                referenceDate = task.endDate
+//                obj = Day(dateStart: task.endDate, dateEnd: nil)
+//                objects.append(obj!)
+//            }
+//		}
+//
+//		return objects
+//	}
+	
+    private func createDaysFromAscendingTasks (ofWeek week: Week) -> [Day] {
+        
+        var days = [Day]()
+        var activeDay: Day?
+        var referenceDate = Date.distantFuture
+        
+        for task in tasks {
+            guard task.endDate.isSameWeekAs(week.date) else {
+                continue
             }
-		}
-		
-		return objects
-	}
-	
-    private func sorted (tasks: [Task]) -> [Task] {
-        return tasks.sorted { (task1: Task, task2: Task) -> Bool in
-            return task1.endDate.compare(task2.endDate) == .orderedDescending
+            switch task.taskType {
+                case .startDay:
+                    // New day found
+                    referenceDate = task.endDate
+                    activeDay = Day(dateStart: referenceDate, dateEnd: nil)
+                    days.append(activeDay!)
+                case .endDay:
+                    // End of day found.
+                    guard task.endDate.isSameDayAs(referenceDate) else {
+                        continue
+                    }
+                    let tempDay = days.removeLast()
+                    activeDay = Day(dateStart: tempDay.dateStart, dateEnd: task.endDate)
+                    days.append(activeDay!)
+                default: break
+            }
         }
+        
+        return days
     }
     
 	private func days (ofWeek week: Week) -> [Day] {
@@ -151,4 +177,10 @@ class ReadDaysInteractor: RepositoryInteractor {
 		
 		return objects
 	}
+    
+    private func sorted (tasks: [Task]) -> [Task] {
+        return tasks.sorted { (task1: Task, task2: Task) -> Bool in
+            return task1.endDate.compare(task2.endDate) == .orderedAscending
+        }
+    }
 }

@@ -22,6 +22,6 @@ class TaskTypeSelection {
         if let type = ListType(rawValue: UserDefaults.standard.integer(forKey: kLastSelectedTabKey)) {
             return type
         }
-        return ListType.allTasks
+        return ListType.tasks
     }
 }

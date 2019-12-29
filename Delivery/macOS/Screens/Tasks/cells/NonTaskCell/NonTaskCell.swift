@@ -14,11 +14,12 @@ class NonTaskCell: NSTableRowView, CellProtocol {
     @IBOutlet private var statusImageWidthContraint: NSLayoutConstraint!
     @IBOutlet private var dateStartTextField: TimeBox!
     @IBOutlet private var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
-	@IBOutlet private var dateEndTextField: TimeBox!
-	@IBOutlet private var notesTextField: NSTextField!
-	@IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
-	@IBOutlet private var butRemove: NSButton!
-	@IBOutlet private var butAdd: NSButton!
+    @IBOutlet private var bullet: NSTextField!
+    @IBOutlet private var dateEndTextField: TimeBox!
+    @IBOutlet private var notesTextField: NSTextField!
+    @IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
+    @IBOutlet private var butRemove: NSButton!
+    @IBOutlet private var butAdd: NSButton!
     
     private var isEditing = false
     private var wasEdited = false
@@ -53,10 +54,12 @@ class NonTaskCell: NSTableRowView, CellProtocol {
             if let dateStart = newValue.dateStart {
                 self.dateStartTextField.stringValue = dateStart.HHmm()
                 self.dateStartTextField.isHidden = false
-                self.dateStartTextFieldLeadingContraint.constant = 14
+                self.bullet.isHidden = false
+                self.dateStartTextFieldLeadingContraint.constant = 20
             } else {
                 self.dateStartTextField.isHidden = true
-                self.dateStartTextFieldLeadingContraint.constant = 14 - 36 - 4
+                self.bullet.isHidden = true
+                self.dateStartTextFieldLeadingContraint.constant = 20 - 36 - 8
             }
             self.dateEndTextField.stringValue = newValue.dateEnd.HHmm()
 			self.notesTextField.stringValue = newValue.notes ?? ""

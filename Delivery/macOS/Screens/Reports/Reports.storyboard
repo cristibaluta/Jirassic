@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reports View Controller-->
+        <scene sceneID="vU1-8h-Qor">
+            <objects>
+                <viewController storyboardIdentifier="ReportsViewController" id="dfw-UR-E3q" customClass="ReportsViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="Dnd-T8-ERk" customClass="TasksView" customModule="Jirassic" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="491" height="440"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0Ox-ku-nsK">
+                                <rect key="frame" x="238" y="212" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="0Ox-ku-nsK" firstAttribute="centerY" secondItem="Dnd-T8-ERk" secondAttribute="centerY" id="azM-Hy-Djs"/>
+                            <constraint firstItem="0Ox-ku-nsK" firstAttribute="centerX" secondItem="Dnd-T8-ERk" secondAttribute="centerX" id="imB-T4-1qX"/>
+                        </constraints>
+                    </customView>
+                    <connections>
+                        <outlet property="loadingTasksIndicator" destination="0Ox-ku-nsK" id="t1p-YM-MNt"/>
+                    </connections>
+                </viewController>
+                <customObject id="atY-6w-9sl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="-264"/>
+        </scene>
+    </scenes>
+</document>

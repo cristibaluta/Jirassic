@@ -20,6 +20,9 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
     }
     var didClickAddRow: ((_ row: Int) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
+    var didClickCloseDay: ((_ tasks: [Task]) -> Void)?
+    var didClickSaveWorklogs: (() -> Void)?
+    var didClickSetupJira: (() -> Void)?
     private var tempCell: ReportCell?
     let numberOfDays: Int
     var reports: [Report]

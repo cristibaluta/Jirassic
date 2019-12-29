@@ -19,8 +19,10 @@ class TasksScrollView: NSScrollView {
     var didClickAddRow: ((_ row: Int, _ rect: CGRect?) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
     var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
-    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
-    var didChangeSettings: (() -> Void)?
+    var didClickSaveWorklogs: (() -> Void)?
+    var didClickSetupJira: (() -> Void)?
+//    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
+//    var didChangeSettings: (() -> Void)?
 	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -47,14 +49,22 @@ class TasksScrollView: NSScrollView {
         self.dataSource.tableView = tableView
         tableView.dataSource = self.dataSource
         tableView.delegate = self.dataSource
-        addHeader()
         
-        self.dataSource.didClickAddRow = { [weak self] row in
-            self?.didClickAddRow!(row, nil)
-        }
-        self.dataSource.didClickRemoveRow = { [weak self] row in
-            self?.didClickRemoveRow!(row)
-        }
+//        self.dataSource.didClickAddRow = { [weak self] row in
+//            self?.didClickAddRow!(row, nil)
+//        }
+//        self.dataSource.didClickRemoveRow = { [weak self] row in
+//            self?.didClickRemoveRow!(row)
+//        }
+//        self.dataSource.didClickCloseDay = { [weak self] tasks in
+//            self?.didClickCloseDay!(tasks, false)
+//        }
+//        self.dataSource.didClickSaveWorklogs = { [weak self] in
+//            self?.didClickSaveWorklogs!()
+//        }
+//        self.dataSource.didClickSetupJira = { [weak self] in
+//            self?.didClickSetupJira!()
+//        }
     }
     
     private func setupTableView() {
@@ -76,76 +86,9 @@ class TasksScrollView: NSScrollView {
         self.documentView = tableView!
 	}
     
-    private func addHeader() {
-        
-        if let dataSource = self.dataSource as? TasksDataSource {
-            
-            guard dataSource.tasks.count > 0 else {
-                tableView.headerView = nil
-                return
-            }
-            guard tableView.headerView == nil else {
-                return
-            }
-            let headerView = TasksHeaderView.instantiateFromXib()
-            headerView.didClickCloseDay = { [weak self] in
-                self?.didClickCloseDay!(dataSource.tasks, false)
-            }
-            headerView.didClickAddTask = { [weak self] in
-                if let wself = self {
-                    wself.didClickAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1,
-                                          CGRect(x: 60, y: headerView.frame.size.height + wself.contentView.documentVisibleRect.origin.y, width: 1, height: 1))
-                }
-            }
-            headerView.didClickSaveWorklogs = { [weak self] in
-                self?.didClickCloseDay!(dataSource.tasks, true)
-            }
-            headerView.isDayEnded = dataSource.isDayEnded
-            
-            tableView.headerView = headerView
-        }
-        else if let dataSource = self.dataSource as? ReportsDataSource {
-            
-            guard dataSource.reports.count > 0 else {
-                tableView.headerView = nil
-                return
-            }
-            guard tableView.headerView == nil else {
-                return
-            }
-            let settings = SettingsInteractor().getAppSettings()
-            let workingDayLength = TimeInteractor(settings: settings).workingDayLength()
-            let totalTime = StatisticsInteractor().duration(of: dataSource.reports)
-            
-            var headerView: ReportsHeaderView!
-            switch listType! {
-            case .report:
-                headerView = ReportsHeaderView.instantiateFromXib()
-            case .monthlyReports:
-                let monthHeaderView = MonthReportsHeaderView.instantiateFromXib()
-                monthHeaderView.numberOfDays = dataSource.numberOfDays
-                monthHeaderView.didClickCopyAll = { asHtml in
-                    self.didClickCopyMonthlyReport?(asHtml)
-                }
-                headerView = monthHeaderView
-            default:
-                break
-            }
-            headerView.workdayTime = workingDayLength.secToPercent
-            headerView.workedTime = pref.bool(.usePercents)
-                ? String(describing: totalTime.secToPercent)
-                : totalTime.secToHoursAndMin
-            headerView.didChangeSettings = { [weak self] in
-                self?.didChangeSettings!()
-            }
-            tableView.headerView = headerView
-        }
-    }
-	
 	func addTask (_ task: Task, at row: Int) {
         if let dataSource = tableView.dataSource as? TasksDataSource {
             dataSource.addTask(task, at: row)
-            addHeader()
         }
 	}
 	
@@ -154,7 +97,6 @@ class TasksScrollView: NSScrollView {
             dataSource.removeTask(at: row)
             let rowsToRemoveFromTable = IndexSet(integer: row)
             tableView.removeRows(at: rowsToRemoveFromTable, withAnimation: .effectFade)
-            addHeader()
         }
 	}
     

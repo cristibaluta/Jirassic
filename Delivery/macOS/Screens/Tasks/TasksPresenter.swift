@@ -7,43 +7,28 @@
 //
 
 import Cocoa
-import RCPreferences
 
 protocol TasksPresenterInput: class {
     
-    func initUI()
-    func syncData()
-    func reloadData()
-    func reloadTasksOnDay (_ day: Day, listType: ListType)
+    func reloadLastSelectedDay()
+    func reloadTasksOnDay (_ day: Day)
     func updateNoTasksState()
-    func messageButtonDidPress()
-    func startDay()
-    func closeDay (shouldSaveToJira: Bool)
+    func closeDay (showWorklogs: Bool)
     func insertTaskWithData (_ taskData: TaskCreationData)
     func insertTask (after row: Int)
     func removeTask (at row: Int)
+    func didClickSaveWorklogs()
 }
 
 protocol TasksPresenterOutput: class {
     
     func showLoadingIndicator (_ show: Bool)
-    func showWarning (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
-    func showCalendar (_ weeks: [Week])
-    func showProjects (_ projects: [Project])
     func showTasks (_ tasks: [Task])
-    func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
-    func removeTasksController()
-    func selectDay (_ day: Day)
     func presentNewTaskController (date: Date)
     func presentEndDayController (date: Date, tasks: [Task])
-}
-
-enum ListType: Int {
-    
-    case allTasks = 0
-    case report = 1
-    case monthlyReports = 2
+    func removeTasks()
+    func removeEndDayController()
 }
 
 class TasksPresenter {
@@ -53,54 +38,21 @@ class TasksPresenter {
     var interactor: TasksInteractorInput?
     
     private var currentTasks = [Task]()
-    private var currentReports = [Report]()
-    private var selectedListType = ListType.allTasks
-    private let pref = RCPreferences<LocalPreferences>()
-    private var extensions = ExtensionsInteractor()
-    private var lastSelectedDay: Day?
+    private var lastSelectedDay: Day = Day(dateStart: Date(), dateEnd: nil)
 }
 
 extension TasksPresenter: TasksPresenterInput {
     
-    func initUI() {
-        ui!.showWarning(false)
-        ui!.showLoadingIndicator(false)
-        reloadData()
-        extensions.getVersions { [weak self] (versions) in
-            guard let userInterface = self?.ui else {
-                return
-            }
-            let compatibility = Versioning(versions: versions)
-            if compatibility.shellScript.available {
-                userInterface.showWarning(!compatibility.jirassic.compatible || !compatibility.jit.compatible)
-            } else {
-                userInterface.showWarning(false)
-            }
-        }
-//        updateNoTasksState()
+    func reloadLastSelectedDay() {
+        reloadTasksOnDay(lastSelectedDay)
     }
     
-    func syncData() {
-        reloadData()
-    }
-    
-    func reloadData() {
-        ui!.removeTasksController()
-        ui!.showLoadingIndicator(true)
-        interactor!.reloadCalendar()
-    }
-
-    func reloadTasksOnDay (_ day: Day, listType: ListType) {
-        ui!.removeTasksController()
-        ui!.showLoadingIndicator(true)
+    func reloadTasksOnDay (_ day: Day) {
         lastSelectedDay = day
-        selectedListType = listType
-        switch selectedListType {
-        case .allTasks, .report:
-            interactor!.reloadTasks(inDay: day)
-        case .monthlyReports:
-            interactor!.reloadTasks(inMonth: day)
-        }
+        ui!.removeTasks()
+        ui!.removeEndDayController()
+        ui!.showLoadingIndicator(true)
+        interactor!.reloadTasks(inDay: day)
     }
 
     func updateNoTasksState() {
@@ -110,12 +62,6 @@ extension TasksPresenter: TasksPresenterInput {
                 title: "Good morning!",
                 message: "Ready to start working today?",
                 buttonTitle: "Start day"))
-        }
-        else if currentTasks.count == 1, selectedListType == .report {
-            ui!.showMessage((
-                title: "No task yet",
-                message: "Go to 'All tasks' tab and log some work first!",
-                buttonTitle: nil))
         } else {
             appWireframe!.removePlaceholder()
         }
@@ -135,21 +81,27 @@ extension TasksPresenter: TasksPresenterInput {
         let task = Task(endDate: Date(), type: .startDay)
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
-            self?.reloadData()
+            self?.reloadLastSelectedDay()
         })
         ModuleHookup().insert(task: task)
     }
-
-    func closeDay (shouldSaveToJira: Bool) {
+    
+    func closeDay (showWorklogs: Bool) {
         
-        let closeDay = CloseDay()
+        let closeDay = CloseDayInteractor()
         closeDay.close(with: currentTasks)
-        if shouldSaveToJira {
-            // Reload data will be called after save with success
-            ui!.presentEndDayController(date: lastSelectedDay?.dateStart ?? Date(), tasks: currentTasks)
+        
+        if showWorklogs {
+            didClickSaveWorklogs()
         } else {
-            reloadData()
+            reloadLastSelectedDay()
         }
+    }
+    
+    func didClickSaveWorklogs() {
+        // Reload data will be called after save with success
+        ui!.removeTasks()
+        ui!.presentEndDayController(date: lastSelectedDay.dateStart, tasks: currentTasks)
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {
@@ -191,29 +143,14 @@ extension TasksPresenter: TasksPresenterInput {
         let deleteInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         deleteInteractor.deleteTask(task)
         updateNoTasksState()
+        
         if currentTasks.count == 0 {
-            let reader = ReadDaysInteractor(repository: localRepository, remoteRepository: nil)
-            reader.queryAll { [weak self] (weeks) in
-                self?.ui?.showCalendar(weeks)
-            }
+            
         }
     }
 }
 
 extension TasksPresenter: TasksInteractorOutput {
-
-    func calendarDidLoad (_ weeks: [Week]) {
-
-        guard let ui = self.ui else {
-            return
-        }
-        ui.showLoadingIndicator(false)
-        let day = lastSelectedDay ?? Day(dateStart: Date(), dateEnd: nil)
-        ui.showCalendar(weeks)
-        ui.selectDay(day)
-        
-        ui.showProjects([])
-    }
 
     func tasksDidLoad (_ tasks: [Task]) {
 
@@ -221,34 +158,8 @@ extension TasksPresenter: TasksInteractorOutput {
             return
         }
         ui.showLoadingIndicator(false)
-        ui.removeTasksController()
         currentTasks = tasks
-
-        switch selectedListType {
-        case .allTasks:
-            ui.showTasks(currentTasks)
-            
-        case .report:
-            let settings = SettingsInteractor().getAppSettings()
-            let targetHoursInDay = pref.bool(.enableRoundingDay)
-                ? TimeInteractor(settings: settings).workingDayLength()
-                : nil
-            let reportInteractor = CreateReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
-            currentReports = reports.reversed()
-            ui.showReports(currentReports, numberOfDays: 1, type: selectedListType)
-            
-        case .monthlyReports:
-            let settings = SettingsInteractor().getAppSettings()
-            let targetHoursInDay = pref.bool(.enableRoundingDay)
-                ? TimeInteractor(settings: settings).workingDayLength()
-                : nil
-            let reportInteractor = CreateMonthReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay, roundHours: true)
-            currentReports = reports.byTasks
-            ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: selectedListType)
-            break
-        }
+        ui.showTasks(currentTasks)
         updateNoTasksState()
     }
 }

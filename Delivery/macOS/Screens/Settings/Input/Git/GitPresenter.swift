@@ -16,8 +16,6 @@ protocol GitPresenterInput: class {
     
     func enableGit (_ enabled: Bool)
     func refresh (withCommand command: String)
-    func pickPath()
-    func save (emails: String, paths: String)
 }
 
 protocol GitPresenterOutput: class {
@@ -28,8 +26,6 @@ protocol GitPresenterOutput: class {
     func setButInstall (enabled: Bool)
     func setButPurchase (enabled: Bool)
     func setButEnable (on: Bool?, enabled: Bool?)
-    func setPaths (_ paths: String?, enabled: Bool?)
-    func setEmails (_ emails: String?, enabled: Bool?)
 }
 
 enum GitCellState {
@@ -61,12 +57,6 @@ class GitPresenter {
     }
     
     private func refresh() {
-        
-        userInterface?.setPaths(localPreferences.string(.settingsGitPaths),
-                               enabled: localPreferences.bool(.enableGit))
-        
-        userInterface?.setEmails(localPreferences.string(.settingsGitAuthors),
-                                enabled: localPreferences.bool(.enableGit))
         
         guard store.isGitPurchased else {
             refresh(state: .needsPurchase)
@@ -130,8 +120,6 @@ extension GitPresenter: GitPresenterInput {
     
     func enableGit (_ enabled: Bool) {
         localPreferences.set(enabled, forKey: .enableGit)
-        userInterface?.setPaths(nil, enabled: enabled)
-        userInterface?.setEmails(nil, enabled: enabled)
         userInterface?.setButEnable(on: enabled, enabled: nil)
     }
     
@@ -141,44 +129,5 @@ extension GitPresenter: GitPresenterInput {
         refresh()
     }
     
-    func pickPath() {
-        
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = false
-        panel.message = "Select the root of the git project you want to track"
-        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
-        panel.begin { [weak self] (result) -> Void in
-            
-            guard let wself = self, let userInterface = wself.userInterface else {
-                return
-            }
-            if result.rawValue == NSFileHandlingPanelOKButton {
-                if let url = panel.urls.first {
-                    var path = url.absoluteString
-                    path = path.replacingOccurrences(of: "file://", with: "")
-                    path.removeLast()
-                    // TODO: Validate if the picked project is a git project
-                    
-                    let existingPaths = wself.localPreferences.string(.settingsGitPaths)
-                    let updatedPaths = existingPaths == "" ? path : (existingPaths + "," + path)
-                    wself.savePaths(updatedPaths)
-                    userInterface.setPaths(updatedPaths, enabled: wself.localPreferences.bool(.enableGit))
-                }
-            }
-        }
-    }
     
-    func save (emails: String, paths: String) {
-        saveEmails(emails)
-        savePaths(paths)
-    }
-    
-    private func saveEmails (_ emails: String) {
-        localPreferences.set(emails, forKey: .settingsGitAuthors)
-    }
-    private func savePaths (_ paths: String) {
-        localPreferences.set(paths, forKey: .settingsGitPaths)
-    }
 }

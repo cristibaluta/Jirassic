@@ -229,7 +229,7 @@ extension AppDelegate {
         popover.contentViewController = appWireframe.appViewController
         popover.animates = true
         appWireframe.removeCurrentController()
-        _ = appWireframe.presentTasksController()
+        _ = appWireframe.presentMainController()
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     

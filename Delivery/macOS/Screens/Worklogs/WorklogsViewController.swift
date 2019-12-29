@@ -10,7 +10,6 @@ import Cocoa
 
 class WorklogsViewController: NSViewController {
     
-    @IBOutlet private var dateTextField: NSTextField!
     @IBOutlet private var durationTextField: NSTextField!
     @IBOutlet private var worklogTextView: NSTextView!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
@@ -21,14 +20,13 @@ class WorklogsViewController: NSViewController {
     var onSave: (() -> Void)?
     var onCancel: (() -> Void)?
     var presenter: WorklogsPresenterInput?
+    weak var appWireframe: AppWireframe?
     var date: Date?
     var tasks: [Task]?
-    weak var appWireframe: AppWireframe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateTextField.stringValue = date!.EEEEMMMdd()
         jiraErrorTextField.stringValue = ""
         
         worklogTextView.drawsBackground = false

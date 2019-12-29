@@ -9,7 +9,7 @@
 import Foundation
 import RCLog
 
-class CloseDay {
+class CloseDayInteractor {
     
     func close (with tasks: [Task]) {
         

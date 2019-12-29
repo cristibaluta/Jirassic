@@ -76,21 +76,21 @@ extension WorklogsPresenter: WorklogsPresenterInput {
         let duration = isRoundingEnabled ? workdayLength : workedLength
         moduleJira.postWorklog(worklog: worklog, duration: duration, date: date!, success: { [weak self] in
             
-                DispatchQueue.main.async {
-                    if let userInterface = self?.userInterface {
-                        userInterface.showProgressIndicator(false)
-                        userInterface.showJiraMessage("Worklogs saved to Jira", isError: false)
-                        userInterface.saveSuccess()
-                    }
+            DispatchQueue.main.async {
+                if let userInterface = self?.userInterface {
+                    userInterface.showProgressIndicator(false)
+                    userInterface.showJiraMessage("Worklogs saved to Jira", isError: false)
+                    userInterface.saveSuccess()
                 }
-            }, failure: { [weak self] error in
-                
-                DispatchQueue.main.async {
-                    if let userInterface = self?.userInterface {
-                        userInterface.showProgressIndicator(false)
-                        userInterface.showJiraMessage(error.localizedDescription, isError: true)
-                    }
+            }
+        }, failure: { [weak self] error in
+            
+            DispatchQueue.main.async {
+                if let userInterface = self?.userInterface {
+                    userInterface.showProgressIndicator(false)
+                    userInterface.showJiraMessage(error.localizedDescription, isError: true)
                 }
+            }
         })
     }
     

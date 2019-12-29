@@ -10,6 +10,7 @@ import Cocoa
 
 class TimeBox: NSBox {
     
+    internal var backgroundBox: NSBox?
     internal var timeTextField: NSTextField?
     
     var stringValue: String {
@@ -24,10 +25,10 @@ class TimeBox: NSBox {
         didSet {
             let isDark = self.isDark
             if #available(OSX 10.14, *) {
-                self.fillColor = isDark ? NSColor.white : NSColor.darkGray
-                self.timeTextField?.textColor = isDark ? NSColor.darkGray : NSColor.white
+//                self.fillColor = .clear //isDark ? .white : .darkGray
+                self.timeTextField?.textColor = .labelColor //isDark ? .darkGray : .white
             } else {
-                self.fillColor = isDark ? NSColor.darkGray : NSColor.white
+//                self.fillColor = isDark ? NSColor.darkGray : NSColor.white
 //                self.borderColor = isDark ? NSColor.clear : NSColor.white
                 self.timeTextField?.textColor = isDark ? NSColor.white : NSColor.darkGray
 //                self.timeTextField?.backgroundColor = isDark ? NSColor.darkGray : NSColor.darkGray
@@ -38,6 +39,8 @@ class TimeBox: NSBox {
     
     init() {
         super.init(frame: NSRect.zero)
+        self.wantsLayer = true
+        self.layer?.backgroundColor = NSColor.clear.cgColor
         stringValue = ""
     }
     
@@ -48,13 +51,19 @@ class TimeBox: NSBox {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.borderType = .noBorder
+        backgroundBox = NSBox()
+        backgroundBox?.borderType = .noBorder
+        backgroundBox?.cornerRadius = 7
+        backgroundBox?.boxType = .custom
+        backgroundBox?.fillColor = .clear
+//        self.addSubview(backgroundBox!)
+//        backgroundBox?.constrainToSuperview()
         
         timeTextField = NSTextField()
-        timeTextField?.font = NSFont.boldSystemFont(ofSize: 10)
-        timeTextField?.textColor = NSColor.darkGray
-        timeTextField?.backgroundColor = NSColor.clear
-        timeTextField?.drawsBackground = false
+        timeTextField?.font = NSFont.systemFont(ofSize: 10)
+        timeTextField?.textColor = .darkGray
+        timeTextField?.backgroundColor = .clear
+//        timeTextField?.drawsBackground = false
         timeTextField?.alignment = .center
         timeTextField?.focusRingType = .none
         timeTextField?.placeholderString = "00:00"
@@ -68,7 +77,7 @@ class TimeBox: NSBox {
         self.addConstraints(NSLayoutConstraint.constraints(
             withVisualFormat: "H:|-(-5)-[view]-(-5)-|", options: [], metrics: nil, views: viewsDictionary))
         self.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-(-3)-[view]-(-5)-|", options: [], metrics: nil, views: viewsDictionary))
+            withVisualFormat: "V:|-(-3)-[view]-(-6)-|", options: [], metrics: nil, views: viewsDictionary))
     }
     
     override func mouseDown(with event: NSEvent) {

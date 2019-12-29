@@ -10,8 +10,6 @@ import Cocoa
 
 class TaskCell: NSTableRowView, CellProtocol {
     
-    @IBOutlet var contentView: NSView!
-    
 	@IBOutlet var statusImage: NSImageView?
 	@IBOutlet private var dateEndTextField: TimeBox!
 	@IBOutlet private var issueNrTextField: NSTextField!
@@ -22,9 +20,6 @@ class TaskCell: NSTableRowView, CellProtocol {
 	@IBOutlet private var butRemove: NSButton!
     @IBOutlet private var butRemoveWidthConstraint: NSLayoutConstraint!
     
-    @IBOutlet private var line1: NSBox!
-    @IBOutlet private var line2: NSBox!
-	
 	private var isEditing = false
 	private var wasEdited = false
 	private var mouseInside = false
@@ -145,7 +140,7 @@ extension TaskCell {
 }
 
 extension TaskCell {
-
+/*
 	override func drawBackground (in dirtyRect: NSRect) {
 		
         let width = dirtyRect.size.width - kCellLeftPadding * 2
@@ -158,8 +153,8 @@ extension TaskCell {
             selectionPath.stroke()
         }
 		else if self.mouseInside {
-            notesTextFieldRightConstrain!.constant = isRemovable ? 90 : 40
-            butRemoveWidthConstraint.constant = isRemovable ? 40 : 0
+            notesTextFieldRightConstrain!.constant = isRemovable ? 36 : 0
+            butRemoveWidthConstraint.constant = isRemovable ? 16 : 0
 			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
 			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
             AppDelegate.sharedApp().theme.highlightLineColor.setStroke()
@@ -178,7 +173,7 @@ extension TaskCell {
             selectionPath.stroke()
 		}
 	}
-	
+	*/
 	override func mouseEntered (with theEvent: NSEvent) {
         super.mouseEntered(with: theEvent)
 		self.mouseInside = true
@@ -196,8 +191,8 @@ extension TaskCell {
 	func showMouseOverControls (_ show: Bool) {
 		butRemove.isHidden = !show
 		butAdd.isHidden = !show
-        line1.isHidden = !show
-        line2.isHidden = !show
+        //line1.isHidden = !show
+        //line2.isHidden = !show
 	}
 	
 	func ensureTrackingArea() {
