@@ -13,7 +13,7 @@ import RCLog
 protocol TasksInteractorInput: class {
 
     func reloadTasks (inDay day: Day)
-    func reloadTasks (inMonth day: Day)
+    func reloadTasks (inMonth date: Date)
 }
 
 protocol TasksInteractorOutput: class {
@@ -47,10 +47,10 @@ extension TasksInteractor: TasksInteractorInput {
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
     
-    func reloadTasks (inMonth day: Day) {
+    func reloadTasks (inMonth date: Date) {
 
-        let dateStart = day.dateStart.startOfMonth()
-        let dateEnd = dateStart.endOfMonth()
+        let dateStart = date.startOfMonth()
+        let dateEnd = date.endOfMonth()
         currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }

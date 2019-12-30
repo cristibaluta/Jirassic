@@ -12,10 +12,9 @@ import RCPreferences
 protocol ReportsPresenterInput: class {
     
     func viewDidLoad()
-    func reloadData()
+    func reloadLastSelectedMonth()
     func reloadReportsOnDay (_ day: Day)
     func reloadReportsInMonth (_ date: Date)
-    func updateNoTasksState()
 }
 
 protocol ReportsPresenterOutput: class {
@@ -23,46 +22,23 @@ protocol ReportsPresenterOutput: class {
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
     func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
+    func removeReports()
 }
 
 class ReportsPresenter {
     
     weak var appWireframe: AppWireframe?
     weak var ui: ReportsPresenterOutput?
-    var interactor: ReportsInteractorInput?
+    var interactor: TasksInteractorInput?
     
     private var currentTasks = [Task]()
     private var currentReports = [Report]()
     private let pref = RCPreferences<LocalPreferences>()
     private var extensions = ExtensionsInteractor()
     private var lastSelectedDay: Day?
-}
-
-extension ReportsPresenter: ReportsPresenterInput {
+    private var lastSelectedMonth: Date = Date()
     
-    func viewDidLoad() {
-        ui!.showLoadingIndicator(true)
-        reloadData()
-    }
     
-    func reloadData() {
-        ui!.showLoadingIndicator(true)
-    }
-    
-    func reloadReportsOnDay (_ day: Day) {
-        
-    }
-    
-    func reloadReportsInMonth (_ date: Date) {
-    
-    }
-
-    func reloadTasksOnDay (_ day: Day, listType: ListType) {
-        ui!.showLoadingIndicator(true)
-        lastSelectedDay = day
-        interactor!.reloadTasks(inDay: day)
-    }
-
     func updateNoTasksState() {
         
         if currentTasks.count == 1 {
@@ -73,6 +49,28 @@ extension ReportsPresenter: ReportsPresenterInput {
         } else {
             appWireframe!.removePlaceholder()
         }
+    }
+}
+
+extension ReportsPresenter: ReportsPresenterInput {
+    
+    func viewDidLoad() {
+        ui!.showLoadingIndicator(true)
+        reloadLastSelectedMonth()
+    }
+    
+    func reloadLastSelectedMonth() {
+        reloadReportsInMonth(lastSelectedMonth)
+    }
+    
+    func reloadReportsOnDay (_ day: Day) {
+        // TODO
+    }
+    
+    func reloadReportsInMonth (_ date: Date) {
+        ui!.removeReports()
+        ui!.showLoadingIndicator(true)
+        interactor!.reloadTasks(inMonth: date)
     }
     
     func messageButtonDidPress() {
@@ -87,13 +85,13 @@ extension ReportsPresenter: ReportsPresenterInput {
         let task = Task(endDate: Date(), type: .startDay)
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
-            self?.reloadData()
+            self?.reloadLastSelectedMonth()
         })
         ModuleHookup().insert(task: task)
     }
 }
 
-extension ReportsPresenter: ReportsInteractorOutput {
+extension ReportsPresenter: TasksInteractorOutput {
 
     func tasksDidLoad (_ tasks: [Task]) {
 
@@ -110,7 +108,7 @@ extension ReportsPresenter: ReportsInteractorOutput {
         let reportInteractor = CreateMonthReport()
         let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay, roundHours: true)
         currentReports = reports.byTasks
-//        ui.showReports(currentReports, numberOfDays: reports.byDays.count)
+        ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: .reports)
 
         
 //        let settings = SettingsInteractor().getAppSettings()

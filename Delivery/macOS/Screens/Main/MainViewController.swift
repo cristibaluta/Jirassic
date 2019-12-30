@@ -197,7 +197,7 @@ extension MainViewController: MainPresenterOutput {
         
         let controller = ReportsViewController.instantiateFromStoryboard("Reports")
         let presenter = ReportsPresenter()
-        let interactor = ReportsInteractor()
+        let interactor = TasksInteractor()
 
         presenter.ui = controller
         presenter.interactor = interactor

@@ -245,8 +245,6 @@
 		2863492D23B5EF9C009F81D7 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */; };
 		2863492F23B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */; };
 		2863493023B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */; };
-		2863493223B5EFE6009F81D7 /* ReportsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493123B5EFE6009F81D7 /* ReportsInteractor.swift */; };
-		2863493323B5EFE6009F81D7 /* ReportsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493123B5EFE6009F81D7 /* ReportsInteractor.swift */; };
 		2863493523B790B1009F81D7 /* ProjectsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493423B790B1009F81D7 /* ProjectsListViewController.swift */; };
 		2863493623B790B1009F81D7 /* ProjectsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493423B790B1009F81D7 /* ProjectsListViewController.swift */; };
 		2863493823B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */; };
@@ -672,7 +670,6 @@
 		2863492823B5EF87009F81D7 /* Reports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reports.storyboard; sourceTree = "<group>"; };
 		2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPresenter.swift; sourceTree = "<group>"; };
-		2863493123B5EFE6009F81D7 /* ReportsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsInteractor.swift; sourceTree = "<group>"; };
 		2863493423B790B1009F81D7 /* ProjectsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListViewController.swift; sourceTree = "<group>"; };
 		2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsPresenter.swift; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
@@ -1102,7 +1099,6 @@
 				2863492823B5EF87009F81D7 /* Reports.storyboard */,
 				2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */,
 				2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */,
-				2863493123B5EFE6009F81D7 /* ReportsInteractor.swift */,
 				2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */,
 				2845B141206AE2A4006EFB3B /* cells */,
 				2898D3A62181905600CF5AD4 /* MonthReports */,
@@ -1934,7 +1930,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
@@ -1954,7 +1950,7 @@
 					280D711C1ED5EE7F005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -1976,7 +1972,7 @@
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1993,7 +1989,7 @@
 					4065D4011DD4532100B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 						TestTargetID = 280D711C1ED5EE7F005D2689;
 					};
@@ -2367,7 +2363,6 @@
 				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				28279AD121BBF08C00376304 /* InMemoryCoreDataRepository.swift in Sources */,
-				2863493223B5EFE6009F81D7 /* ReportsInteractor.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				569C4C5E202319630049FBF1 /* JitCell.swift in Sources */,
 				28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */,
@@ -2417,7 +2412,6 @@
 				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
-				2863493323B5EFE6009F81D7 /* ReportsInteractor.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				286BC00521909F85004D4CDD /* CloseDay.swift in Sources */,
@@ -2749,6 +2743,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2760,7 +2755,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2773,6 +2768,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2784,7 +2780,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2799,6 +2795,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2845,6 +2842,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2903,6 +2901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2960,6 +2959,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2980,7 +2980,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3009,7 +3009,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic appstore";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3031,7 +3031,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Debug;
@@ -3054,7 +3054,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Release;

@@ -16,9 +16,6 @@ class ReportsViewController: NSViewController {
     
     weak var appWireframe: AppWireframe?
     var presenter: ReportsPresenterInput?
-    /// Property to keep a reference to the active cell rect
-    private var rectToDisplayPopoverAt: NSRect?
-    private var activePopover: NSPopover?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,12 +74,11 @@ extension ReportsViewController: ReportsPresenterOutput {
         tasksScrollView = scrollView
     }
     
-    func removeTasksController() {
+    func removeReports() {
         
         if tasksScrollView != nil {
             tasksScrollView?.removeFromSuperview()
             tasksScrollView = nil
         }
     }
-    
 }

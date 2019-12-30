@@ -30,7 +30,7 @@ class NewTaskCommand: NSScriptCommand {
         guard let data = validJson.data(using: String.Encoding.utf8) else {
             return nil
         }
-        guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String], let dict = jdict else {
+        guard let jdict = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]) as [String : String]??), let dict = jdict else {
             return nil
         }
         RCLog(dict)

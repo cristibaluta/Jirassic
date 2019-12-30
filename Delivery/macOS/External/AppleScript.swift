@@ -96,7 +96,7 @@ class AppleScript: AppleScriptProtocol {
                 let validJson = rawJson.replacingOccurrences(of: "'", with: "\"")
                 var dict: [String: String] = [:]
                 if let data = validJson.data(using: String.Encoding.utf8) {
-                    if let d = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                    if let d = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]) as [String : String]??) {
                         if let _d = d {
                             dict = _d
                         }
