@@ -8,7 +8,6 @@
 
 import Cocoa
 
-let kNonTaskCellHeight = CGFloat(40.0)
 let kTaskCellHeight = CGFloat(40.0)
 let kCloseDayCellHeight = CGFloat(90.0)
 let kGapBetweenCells = CGFloat(16.0)
@@ -25,7 +24,6 @@ class TasksDataSource: NSObject, TasksAndReportsDataSource {
     internal var tableView: NSTableView! {
         didSet {
             TaskCell.register(in: tableView)
-            NonTaskCell.register(in: tableView)
             CloseDayCell.register(in: tableView)
             ClosedDayCell.register(in: tableView)
         }
@@ -37,16 +35,6 @@ class TasksDataSource: NSObject, TasksAndReportsDataSource {
     
     init (tasks: [Task]) {
         self.tasks = tasks
-    }
-    
-    private func cellForTaskType (_ taskType: TaskType) -> CellProtocol {
-        
-        switch taskType {
-        case .issue, .gitCommit:
-            return TaskCell.instantiate(in: tableView)
-        default:
-            return NonTaskCell.instantiate(in: tableView)
-        }
     }
     
     func addTask (_ task: Task, at row: Int) {
@@ -69,13 +57,7 @@ extension TasksDataSource: NSTableViewDataSource {
         guard row < tasks.count else {
             return kCloseDayCellHeight
         }
-        let theData = tasks[row]
-        switch theData.taskType {
-        case TaskType.issue, TaskType.gitCommit:
-            return kTaskCellHeight
-        default:
-            return kNonTaskCellHeight
-        }
+        return kTaskCellHeight
     }
 }
 
@@ -107,22 +89,22 @@ extension TasksDataSource: NSTableViewDelegate {
         
         var theData = tasks[row]
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
-        var cell: CellProtocol = self.cellForTaskType(theData.taskType)
+        var cell: CellProtocol = TaskCell.instantiate(in: tableView)
         TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
         
-        cell.didEndEditingCell = { [weak self] (cell: CellProtocol) in
-            let updatedData = cell.data
-            theData.taskNumber = updatedData.taskNumber
-            theData.notes = updatedData.notes
-            theData.startDate = updatedData.dateStart
-            theData.endDate = updatedData.dateEnd
-            // Save to local variable
-            self?.tasks[row] = theData
-            // Save to db and server
-            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
-            saveInteractor.saveTask(theData, allowSyncing: true, completion: { savedTask in
-                tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
-            })
+        cell.didClickEditCell = { [weak self] (cell: CellProtocol) in
+//            let updatedData = cell.data
+//            theData.taskNumber = updatedData.taskNumber
+//            theData.notes = updatedData.notes
+//            theData.startDate = updatedData.dateStart
+//            theData.endDate = updatedData.dateEnd
+//            // Save to local variable
+//            self?.tasks[row] = theData
+//            // Save to db and server
+//            let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+//            saveInteractor.saveTask(theData, allowSyncing: true, completion: { savedTask in
+//                tableView.reloadData(forRowIndexes: [row], columnIndexes: [0])
+//            })
         }
         cell.didClickRemoveCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came

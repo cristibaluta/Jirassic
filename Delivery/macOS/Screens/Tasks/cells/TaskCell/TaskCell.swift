@@ -1,84 +1,96 @@
 //
-//  TaskCell.swift
+//  NonTaskCell.swift
 //  Jirassic
 //
-//  Created by Baluta Cristian on 28/03/15.
+//  Created by Baluta Cristian on 07/05/15.
 //  Copyright (c) 2015 Cristian Baluta. All rights reserved.
 //
 
 import Cocoa
 
 class TaskCell: NSTableRowView, CellProtocol {
-    
-	@IBOutlet var statusImage: NSImageView?
-	@IBOutlet private var dateEndTextField: TimeBox!
-	@IBOutlet private var issueNrTextField: NSTextField!
+
+    @IBOutlet var statusImage: NSImageView?
+    @IBOutlet private var statusImageWidthContraint: NSLayoutConstraint!
+    @IBOutlet private var dateStartTextField: TimeBox!
+    @IBOutlet private var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
+    @IBOutlet private var bullet: NSTextField!
+    @IBOutlet private var dateEndTextField: TimeBox!
     @IBOutlet private var notesTextField: NSTextField!
-    @IBOutlet private var notesTextFieldRightConstrain: NSLayoutConstraint!
-    
+    @IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
+    @IBOutlet private var butRemove: NSButton!
     @IBOutlet private var butAdd: NSButton!
-	@IBOutlet private var butRemove: NSButton!
-    @IBOutlet private var butRemoveWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private var butAEdit: NSButton!
     
-	private var isEditing = false
-	private var wasEdited = false
-	private var mouseInside = false
-	private var trackingArea: NSTrackingArea?
+    private var isEditing = false
+    private var wasEdited = false
+    private var trackingArea: NSTrackingArea?
     private var activeTimeboxPopover: NSPopover?
 	
-	var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
+	var didClickEditCell: ((_ cell: CellProtocol) -> ())?
 	var didClickRemoveCell: ((_ cell: CellProtocol) -> ())?
 	var didClickAddCell: ((_ cell: CellProtocol) -> ())?
 	var didCopyContentCell: ((_ cell: CellProtocol) -> ())?
-	
-	// Sets data to the cell
-    var _dateEnd = Date()
-	var _dateEndHHmm = ""
+    
+    private var _data: TaskCreationData?
 	var data: TaskCreationData {
 		get {
-            let hm = Date.parseHHmm(self.dateEndTextField!.stringValue)
-            let date = _dateEnd.dateByUpdating(hour: hm.hour, minute: hm.min)
-			return (
-                dateStart: nil,
-                dateEnd: date,
-                taskNumber: self.issueNrTextField.stringValue,
-                notes: self.notesTextField.stringValue,
-                taskType: .issue
-            )
+            if let dateStart = _data?.dateStart {
+                let newHM = Date.parseHHmm(self.dateStartTextField.stringValue)
+                let date = dateStart.dateByUpdating(hour: newHM.hour, minute: newHM.min)
+                _data?.dateStart = date
+            }
+            let newHM = Date.parseHHmm(self.dateEndTextField.stringValue)
+            let dateEnd = _data!.dateEnd.dateByUpdating(hour: newHM.hour, minute: newHM.min)
+            _data?.dateEnd = dateEnd
+            
+            if self.notesTextField.stringValue != "" {
+                _data?.notes = self.notesTextField.stringValue
+            }
+            
+            return _data!
 		}
-		set {
-            _dateEnd = newValue.dateEnd
-            _dateEndHHmm = _dateEnd.HHmm()
-            dateEndTextField.stringValue = _dateEndHHmm
-			issueNrTextField.stringValue = newValue.taskNumber ?? ""
-			notesTextField.stringValue = newValue.notes ?? ""
+        set {
+            _data = newValue
+            if let dateStart = newValue.dateStart {
+                self.dateStartTextField.stringValue = dateStart.HHmm()
+                self.dateStartTextField.isHidden = false
+                self.bullet.isHidden = false
+                self.dateStartTextFieldLeadingContraint.constant = 20
+            } else {
+                self.dateStartTextField.isHidden = true
+                self.bullet.isHidden = true
+                self.dateStartTextFieldLeadingContraint.constant = 20 - 36 - 8
+            }
+            self.dateEndTextField.stringValue = newValue.dateEnd.HHmm()
+			self.notesTextField.stringValue = (newValue.taskNumber ?? "") + " - " + (newValue.notes ?? "")
 		}
 	}
-    var duration: String {
-        get {
-            return ""
-        }
+	var duration: String {
+		get {
+			return ""
+		}
         set {
             fatalError("Not available")
         }
     }
     var isDark: Bool = false {
         didSet {
+            dateStartTextField.isDark = isDark
             dateEndTextField.isDark = isDark
         }
     }
     var isEditable: Bool = true {
         didSet {
-            issueNrTextField.isEditable = isEditable
             notesTextField.isEditable = isEditable
         }
     }
-    var isRemovable: Bool = true {
+    var isRemovable: Bool = true
+    var isIgnored: Bool = false {
         didSet {
-            butRemove.isEnabled = isRemovable
+            self.notesTextField!.alphaValue = isIgnored ? 0.5 : 1.0
         }
     }
-    var isIgnored: Bool = false
     var color: NSColor = NSColor.black {
         didSet {
             self.notesTextField!.textColor = color
@@ -86,34 +98,47 @@ class TaskCell: NSTableRowView, CellProtocol {
     }
     var timeToolTip: String? {
         didSet {
-            self.toolTip = nil
+            dateStartTextField.toolTip = timeToolTip
             dateEndTextField.toolTip = timeToolTip
         }
     }
-    
+	
 	override func awakeFromNib() {
         super.awakeFromNib()
-		showMouseOverControls(false)
-        notesTextFieldRightConstrain.constant = 0
-        dateEndTextField.onClick = { [weak self] in
-            if let wself = self {
-                wself.createTimeboxPopover(timebox: wself.dateEndTextField)
-            }
+        
+		butRemove.isHidden = true
+		butAdd.isHidden = true
+        butRemove.wantsLayer = true
+        dateStartTextField.onClick = {
+            self.createTimeboxPopover(timebox: self.dateStartTextField)
         }
+        dateEndTextField.onClick = {
+            self.createTimeboxPopover(timebox: self.dateEndTextField)
+        }
+        if AppDelegate.sharedApp().theme.isDark {
+            notesTextField!.textColor = NSColor.white
+        }
+	}
+	
+	override func drawBackground (in dirtyRect: NSRect) {
+        
+		NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
+		let selectionPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
+		selectionPath.fill()
 	}
     
     private func createTimeboxPopover (timebox: TimeBox) {
-        guard activeTimeboxPopover == nil else {
+        guard activeTimeboxPopover == nil, isEditable else {
             return
         }
         let popover = NSPopover()
-        let view = TimeBoxViewController.instantiateFromStoryboard("Components")
+        let view = TimeBoxViewController.instantiateFromStoryboard("Tasks")
         view.didSave = {
             let hasChanges = timebox.stringValue != view.stringValue
             timebox.stringValue = view.stringValue
             popover.performClose(nil)
             if hasChanges {
-                self.didEndEditingCell?(self)
+                self.didClickEditCell?(self)
             }
         }
         view.didCancel = {
@@ -137,79 +162,50 @@ extension TaskCell {
 	@IBAction func handleAddButton (_ sender: NSButton) {
 		didClickAddCell?(self)
 	}
+    
+    @IBAction func handleEditButton (_ sender: NSButton) {
+        didClickEditCell?(self)
+    }
 }
 
+/// Mouse tracking
 extension TaskCell {
-/*
-	override func drawBackground (in dirtyRect: NSRect) {
-		
-        let width = dirtyRect.size.width - kCellLeftPadding * 2
-        let height = dirtyRect.size.height - kGapBetweenCells - 2
-        
-        if isEditing {
-            let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
-            NSColor.red.setStroke()
-            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-            selectionPath.stroke()
-        }
-		else if self.mouseInside {
-            notesTextFieldRightConstrain!.constant = isRemovable ? 36 : 0
-            butRemoveWidthConstraint.constant = isRemovable ? 16 : 0
-			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
-			//NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
-            AppDelegate.sharedApp().theme.highlightLineColor.setStroke()
-//			NSColor(calibratedRed: 0.3, green: 0.1, blue: 0.1, alpha: 1.0).setStroke()
-			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-//			selectionPath.fill()
-			selectionPath.stroke()
-		}
-        else {
-            notesTextFieldRightConstrain!.constant = 0
-			let selectionRect = NSRect(x: kCellLeftPadding, y: 2, width: width, height: height)
-//            NSColor(calibratedWhite: 1.0, alpha: 1.0).setFill()
-            AppDelegate.sharedApp().theme.lineColor.setStroke()
-			let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 6, yRadius: 6)
-//            selectionPath.fill()
-            selectionPath.stroke()
-		}
-	}
-	*/
+    
 	override func mouseEntered (with theEvent: NSEvent) {
         super.mouseEntered(with: theEvent)
-		self.mouseInside = true
-		self.showMouseOverControls(self.mouseInside)
+        
+		self.butRemove.isHidden = false
+        self.butAdd.isHidden = false
+		self.notesTextFieldTrailingContraint.constant = 80
 		self.setNeedsDisplay(self.frame)
 	}
 	
-    override func mouseExited (with theEvent: NSEvent) {
+	override func mouseExited (with theEvent: NSEvent) {
         super.mouseExited(with: theEvent)
-		self.mouseInside = false
-		self.showMouseOverControls(self.mouseInside)
+        
+		self.butRemove.isHidden = true
+        self.butAdd.isHidden = true
+		self.notesTextFieldTrailingContraint.constant = 10
 		self.setNeedsDisplay(self.frame)
-	}
-	
-	func showMouseOverControls (_ show: Bool) {
-		butRemove.isHidden = !show
-		butAdd.isHidden = !show
-        //line1.isHidden = !show
-        //line2.isHidden = !show
 	}
 	
 	func ensureTrackingArea() {
+        
 		if trackingArea == nil {
-			trackingArea = NSTrackingArea(
-				rect: NSZeroRect,
-				options: [NSTrackingArea.Options.inVisibleRect,
-                          NSTrackingArea.Options.activeAlways,
-                          NSTrackingArea.Options.mouseEnteredAndExited],
+			trackingArea = NSTrackingArea(rect: NSZeroRect,
+				options: [
+                    NSTrackingArea.Options.inVisibleRect,
+                    NSTrackingArea.Options.activeAlways,
+                    NSTrackingArea.Options.mouseEnteredAndExited
+                ],
 				owner: self,
-				userInfo: nil
-			)
+				userInfo: nil)
 		}
 	}
 	
 	override func updateTrackingAreas() {
 		super.updateTrackingAreas()
+        
 		self.ensureTrackingArea()
 		if !self.trackingAreas.contains(self.trackingArea!) {
 			self.addTrackingArea(self.trackingArea!)
@@ -221,16 +217,13 @@ extension TaskCell: NSTextFieldDelegate {
     
     public func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
         isEditing = true
-        self.setNeedsDisplay(self.frame)
         return true
     }
     
     public func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
         if wasEdited {
             wasEdited = false
-            isEditing = false
-            didEndEditingCell?(self)
-            self.setNeedsDisplay(self.frame)
+            didClickEditCell?(self)
         }
         return true
     }
@@ -238,10 +231,8 @@ extension TaskCell: NSTextFieldDelegate {
     public func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         // Detect Enter key
         if wasEdited && commandSelector == #selector(NSResponder.insertNewline(_:)) {
+            didClickEditCell?(self)
             wasEdited = false
-            isEditing = false
-            didEndEditingCell?(self)
-            self.setNeedsDisplay(self.frame)
         }
         return false
     }

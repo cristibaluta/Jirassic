@@ -9,243 +9,121 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="345" height="90"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nlM-Fp-eXf">
-                    <rect key="frame" x="10" y="16" width="325" height="74"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-8T-Cme">
-                            <rect key="frame" x="4" y="52" width="16" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="8nF-e0-hw4"/>
-                        </imageView>
-                        <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="bpM-64-Faf">
-                            <rect key="frame" x="28" y="49" width="199" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Bd8-bF-FUz"/>
-                            </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="AA-0000" placeholderString="----------" id="dlI-ub-5hj">
-                                <font key="font" metaFont="systemBold"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" red="0.95654549870000005" green="0.87322156549999996" blue="0.28354544710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </textFieldCell>
-                            <connections>
-                                <outlet property="delegate" destination="c22-O7-iKe" id="vb7-vl-ZlY"/>
-                            </connections>
-                        </textField>
-                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="195" translatesAutoresizingMaskIntoConstraints="NO" id="tMm-ch-iIr">
-                            <rect key="frame" x="28" y="2" width="199" height="47"/>
-                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" title="Notes" placeholderString="What did you do in this task?" id="PIu-Xg-tz0">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <outlet property="delegate" destination="c22-O7-iKe" id="wBj-nC-xMX"/>
-                            </connections>
-                        </textField>
-                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mpD-Z5-CaT">
-                            <rect key="frame" x="243" y="5" width="5" height="64"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="1" id="Gr8-eT-92p"/>
-                            </constraints>
-                        </box>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="egw-SB-d18">
-                            <rect key="frame" x="244" y="0.0" width="40" height="74"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="sT2-bK-Lgt"/>
-                            </constraints>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="QSn-Zg-qm9">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleAddButton:" target="c22-O7-iKe" id="D81-SN-tJv"/>
-                            </connections>
-                        </button>
-                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="EWV-4g-F8D">
-                            <rect key="frame" x="284" y="5" width="5" height="64"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="1" id="u6K-AF-tb4"/>
-                            </constraints>
-                        </box>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="xar-Oo-330">
-                            <rect key="frame" x="285" y="0.0" width="40" height="74"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="sLm-Pa-cG9"/>
-                            </constraints>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="FC9-P2-mEo">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="handleRemoveButton:" target="c22-O7-iKe" id="oWe-AX-kJB"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="xar-Oo-330" secondAttribute="bottom" id="1qr-l8-df2"/>
-                        <constraint firstItem="tMm-ch-iIr" firstAttribute="trailing" secondItem="bpM-64-Faf" secondAttribute="trailing" id="8Ce-Qx-9Nt"/>
-                        <constraint firstAttribute="bottom" secondItem="EWV-4g-F8D" secondAttribute="bottom" constant="5" id="9z3-VD-G9h"/>
-                        <constraint firstItem="egw-SB-d18" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" id="A8C-VE-1z0"/>
-                        <constraint firstItem="egw-SB-d18" firstAttribute="leading" secondItem="mpD-Z5-CaT" secondAttribute="trailing" constant="-2" id="EHw-5b-Lpz"/>
-                        <constraint firstAttribute="trailing" secondItem="tMm-ch-iIr" secondAttribute="trailing" constant="100" id="GXk-TS-g3i"/>
-                        <constraint firstItem="tMm-ch-iIr" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" id="MER-UY-x06"/>
-                        <constraint firstAttribute="bottom" secondItem="mpD-Z5-CaT" secondAttribute="bottom" constant="5" id="SdS-02-fCE"/>
-                        <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="nlM-Fp-eXf" secondAttribute="leading" constant="30" id="UnF-KY-oDx"/>
-                        <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="egw-SB-d18" secondAttribute="trailing" constant="1" id="VTp-j8-otJ"/>
-                        <constraint firstItem="xar-Oo-330" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" id="Zxl-PT-glX"/>
-                        <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="5" id="i80-2L-3fg"/>
-                        <constraint firstAttribute="height" constant="74" id="jsx-bp-3Np"/>
-                        <constraint firstAttribute="bottom" secondItem="egw-SB-d18" secondAttribute="bottom" id="kC9-mp-4hd"/>
-                        <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="leading" id="kGG-Qr-vpT"/>
-                        <constraint firstItem="mpD-Z5-CaT" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="5" id="oMi-aE-8SP"/>
-                        <constraint firstItem="EWV-4g-F8D" firstAttribute="top" secondItem="nlM-Fp-eXf" secondAttribute="top" constant="5" id="qAM-Si-IO3"/>
-                        <constraint firstItem="xar-Oo-330" firstAttribute="leading" secondItem="EWV-4g-F8D" secondAttribute="trailing" constant="-2" id="uCo-7K-wSr"/>
-                        <constraint firstAttribute="trailing" secondItem="xar-Oo-330" secondAttribute="trailing" id="urD-PQ-AsU"/>
-                        <constraint firstAttribute="bottom" secondItem="tMm-ch-iIr" secondAttribute="bottom" constant="2" id="yz7-nz-o73"/>
-                    </constraints>
-                </customView>
-                <box boxType="custom" cornerRadius="7" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UTX-pz-ZnX" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
-                    <rect key="frame" x="14" y="0.0" width="36" height="14"/>
-                    <view key="contentView" id="EVi-OW-h99">
-                        <rect key="frame" x="1" y="1" width="34" height="12"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="36" id="Pn7-Qy-ohv"/>
-                        <constraint firstAttribute="height" constant="14" id="hqY-fV-JSI"/>
-                    </constraints>
-                </box>
-            </subviews>
-            <constraints>
-                <constraint firstItem="nlM-Fp-eXf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="5pK-hC-WL3"/>
-                <constraint firstItem="tMm-ch-iIr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="40" id="A3i-PF-oFz"/>
-                <constraint firstAttribute="bottom" secondItem="UTX-pz-ZnX" secondAttribute="bottom" id="ByP-aF-wgx"/>
-                <constraint firstItem="UTX-pz-ZnX" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="14" id="GHp-Kf-eDz"/>
-                <constraint firstItem="nlM-Fp-eXf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="ly0-hP-Uy0"/>
-                <constraint firstAttribute="trailing" secondItem="nlM-Fp-eXf" secondAttribute="trailing" constant="10" id="yya-mA-7J5"/>
-            </constraints>
-            <connections>
-                <outlet property="butAdd" destination="egw-SB-d18" id="lTV-j8-xOY"/>
-                <outlet property="butRemove" destination="xar-Oo-330" id="Af2-ho-QDb"/>
-                <outlet property="butRemoveWidthConstraint" destination="sLm-Pa-cG9" id="tL8-cV-zpG"/>
-                <outlet property="contentView" destination="nlM-Fp-eXf" id="Mbb-tX-J7N"/>
-                <outlet property="dateEndTextField" destination="UTX-pz-ZnX" id="aub-uX-L1y"/>
-                <outlet property="issueNrTextField" destination="bpM-64-Faf" id="9xX-zW-tPC"/>
-                <outlet property="line1" destination="mpD-Z5-CaT" id="C5p-dQ-v8c"/>
-                <outlet property="line2" destination="EWV-4g-F8D" id="EVg-sQ-hHA"/>
-                <outlet property="notesTextField" destination="tMm-ch-iIr" id="ryB-wU-IJs"/>
-                <outlet property="notesTextFieldRightConstrain" destination="GXk-TS-g3i" id="MiD-17-vyw"/>
-                <outlet property="statusImage" destination="iAi-8T-Cme" id="kez-tX-mzz"/>
-            </connections>
-            <point key="canvasLocation" x="224.5" y="289"/>
-        </customView>
-        <customView identifier="TaskCell" id="Fct-Jr-LTk" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
+        <customView identifier="TaskCell" id="c22-O7-iKe" customClass="TaskCell" customModule="Jirassic" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="341" height="34"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EdN-h3-iZx">
-                    <rect key="frame" x="122" y="11" width="211" height="13"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Notes" id="Cwb-4l-hca">
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
+                    <rect key="frame" x="106" y="11" width="227" height="13"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold" size="10"/>
                         <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
                     <connections>
-                        <outlet property="delegate" destination="Fct-Jr-LTk" id="i8q-Bd-2WR"/>
+                        <outlet property="delegate" destination="c22-O7-iKe" id="nXg-Io-bJL"/>
                     </connections>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zu0-vm-aku">
-                    <rect key="frame" x="62" y="11" width="54" height="13"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="KBT-VQ-VbG"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="APP-100" id="AaZ-al-N46">
+                <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-Yc-bPn">
+                    <rect key="frame" x="54" y="11" width="14" height="13"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="center" title="•" id="3NN-fF-kK5">
                         <font key="font" metaFont="systemBold" size="10"/>
                         <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
                     <connections>
-                        <outlet property="delegate" destination="Fct-Jr-LTk" id="FFX-HF-5dS"/>
+                        <outlet property="delegate" destination="c22-O7-iKe" id="JP7-vo-5xF"/>
                     </connections>
                 </textField>
-                <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LEN-4d-BK7" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
+                <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-P9-87l" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
                     <rect key="frame" x="20" y="10" width="36" height="14"/>
-                    <view key="contentView" id="aoz-5f-rYe">
+                    <view key="contentView" id="c4Y-B7-eQF">
                         <rect key="frame" x="1" y="1" width="34" height="12"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="width" constant="36" id="FRL-fl-Ns2"/>
-                        <constraint firstAttribute="height" constant="14" id="Wln-oR-Ai1"/>
+                        <constraint firstAttribute="height" constant="14" id="nmg-AQ-b8R"/>
+                        <constraint firstAttribute="width" constant="36" id="yMo-O7-t8n"/>
                     </constraints>
                 </box>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="35p-5Y-Yxo">
+                <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="nav-z1-PEs" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
+                    <rect key="frame" x="65" y="10" width="36" height="14"/>
+                    <view key="contentView" id="NLT-IZ-aoA">
+                        <rect key="frame" x="1" y="1" width="34" height="12"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="ZKL-Sd-Kms"/>
+                        <constraint firstAttribute="height" constant="14" id="ttD-Mo-CI8"/>
+                    </constraints>
+                </box>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="JnH-wo-pJy">
                     <rect key="frame" x="309" y="10" width="16" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="GS8-Cr-1rY"/>
-                        <constraint firstAttribute="width" constant="16" id="saZ-da-aB7"/>
+                        <constraint firstAttribute="height" constant="16" id="7MI-XH-Yv3"/>
+                        <constraint firstAttribute="width" constant="16" id="HJH-Sf-528"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="a1Y-5v-7XG">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="iIg-Ta-PA6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="handleRemoveButton:" target="Fct-Jr-LTk" id="JeY-XX-jl1"/>
+                        <action selector="handleRemoveButton:" target="c22-O7-iKe" id="TpF-le-3We"/>
                     </connections>
                 </button>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="Iln-jw-lsu">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="z4T-g2-tdS">
                     <rect key="frame" x="284" y="10" width="16" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="2Ot-Eb-UNq"/>
-                        <constraint firstAttribute="width" constant="16" id="edR-Hh-7b9"/>
+                        <constraint firstAttribute="width" constant="16" id="nqW-yh-9HU"/>
+                        <constraint firstAttribute="height" constant="16" id="u2a-dx-CSH"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="oWc-BU-uyb">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PPd-DR-pXH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="handleAddButton:" target="Fct-Jr-LTk" id="zdK-NX-xa3"/>
+                        <action selector="handleAddButton:" target="c22-O7-iKe" id="eaV-Iu-0RD"/>
                     </connections>
                 </button>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HIn-Os-QKU">
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-Mn-ATS">
                     <rect key="frame" x="0.0" y="9" width="16" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="dcu-Vl-BFB"/>
-                        <constraint firstAttribute="width" constant="16" id="huD-GE-r2n"/>
+                        <constraint firstAttribute="width" constant="16" id="7yW-fH-jqf"/>
+                        <constraint firstAttribute="height" constant="16" id="w6q-0t-ius"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="7XR-i6-OyZ"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="xFv-O5-zbJ"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="HIn-Os-QKU" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="0mt-mz-O8o"/>
-                <constraint firstItem="Zu0-vm-aku" firstAttribute="leading" secondItem="LEN-4d-BK7" secondAttribute="trailing" constant="8" id="9c7-Zb-DHt"/>
-                <constraint firstItem="LEN-4d-BK7" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="CFQ-bO-98b"/>
-                <constraint firstItem="EdN-h3-iZx" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="TNG-6U-sL9"/>
-                <constraint firstItem="HIn-Os-QKU" firstAttribute="leading" secondItem="Fct-Jr-LTk" secondAttribute="leading" id="afo-yc-ZLf"/>
-                <constraint firstItem="EdN-h3-iZx" firstAttribute="leading" secondItem="Zu0-vm-aku" secondAttribute="trailing" constant="10" id="hFb-OW-s5I"/>
-                <constraint firstAttribute="trailing" secondItem="EdN-h3-iZx" secondAttribute="trailing" constant="10" id="lma-ft-Oc9"/>
-                <constraint firstItem="35p-5Y-Yxo" firstAttribute="leading" secondItem="Iln-jw-lsu" secondAttribute="trailing" constant="9" id="mNP-qH-was"/>
-                <constraint firstItem="Zu0-vm-aku" firstAttribute="centerY" secondItem="Fct-Jr-LTk" secondAttribute="centerY" id="nLq-RJ-VTE"/>
-                <constraint firstAttribute="trailing" secondItem="35p-5Y-Yxo" secondAttribute="trailing" constant="16" id="ovn-PS-qoY"/>
-                <constraint firstAttribute="centerY" secondItem="Iln-jw-lsu" secondAttribute="centerY" constant="0.5" id="pas-77-j1v"/>
-                <constraint firstItem="LEN-4d-BK7" firstAttribute="leading" secondItem="Fct-Jr-LTk" secondAttribute="leading" constant="20" id="vJ2-C6-Sn8"/>
-                <constraint firstAttribute="centerY" secondItem="35p-5Y-Yxo" secondAttribute="centerY" constant="1" id="xZ5-df-J79"/>
+                <constraint firstItem="1gO-Mn-ATS" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="2WT-I3-hg1"/>
+                <constraint firstItem="NoN-P9-87l" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="7uC-nD-vV5"/>
+                <constraint firstItem="k7a-Yc-bPn" firstAttribute="leading" secondItem="c4Y-B7-eQF" secondAttribute="trailing" constant="1" id="8Y0-Jd-vGv"/>
+                <constraint firstItem="1gO-Mn-ATS" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="AQ4-xS-01a"/>
+                <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="1" id="BfB-re-cQN"/>
+                <constraint firstItem="k7a-Yc-bPn" firstAttribute="centerY" secondItem="c4Y-B7-eQF" secondAttribute="centerY" id="HwG-XC-Uv2"/>
+                <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
+                <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
+                <constraint firstItem="nav-z1-PEs" firstAttribute="leading" secondItem="NoN-P9-87l" secondAttribute="trailing" constant="9" id="NZk-ow-NIX"/>
+                <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
+                <constraint firstItem="NLT-IZ-aoA" firstAttribute="leading" secondItem="k7a-Yc-bPn" secondAttribute="trailing" id="P6i-Hd-nCa"/>
+                <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="nav-z1-PEs" secondAttribute="trailing" constant="7" id="Qh8-rK-sfk"/>
+                <constraint firstItem="mSe-2c-CEz" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Qz6-sT-SxZ"/>
+                <constraint firstItem="NoN-P9-87l" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="cCK-zP-e3r"/>
+                <constraint firstItem="nav-z1-PEs" firstAttribute="centerY" secondItem="NoN-P9-87l" secondAttribute="centerY" id="nwr-lr-J7p"/>
+                <constraint firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" constant="0.5" id="pLz-EK-2EF"/>
             </constraints>
             <connections>
-                <outlet property="butAdd" destination="Iln-jw-lsu" id="iaq-M4-3h3"/>
-                <outlet property="butRemove" destination="35p-5Y-Yxo" id="8IP-Jw-yV1"/>
-                <outlet property="butRemoveWidthConstraint" destination="GS8-Cr-1rY" id="dz4-EC-WJp"/>
-                <outlet property="dateEndTextField" destination="LEN-4d-BK7" id="Iti-Vc-CxM"/>
-                <outlet property="issueNrTextField" destination="Zu0-vm-aku" id="eHj-ZH-qOW"/>
-                <outlet property="notesTextField" destination="EdN-h3-iZx" id="x1S-kM-nSZ"/>
-                <outlet property="notesTextFieldRightConstrain" destination="lma-ft-Oc9" id="wW2-eg-gK7"/>
-                <outlet property="statusImage" destination="HIn-Os-QKU" id="nvf-My-tm7"/>
+                <outlet property="bullet" destination="k7a-Yc-bPn" id="gGf-yc-eOJ"/>
+                <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
+                <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>
+                <outlet property="dateEndTextField" destination="nav-z1-PEs" id="K31-HY-eEa"/>
+                <outlet property="dateStartTextField" destination="NoN-P9-87l" id="xEA-jb-Sgq"/>
+                <outlet property="dateStartTextFieldLeadingContraint" destination="7uC-nD-vV5" id="Isz-T6-Kde"/>
+                <outlet property="notesTextField" destination="mSe-2c-CEz" id="jmn-xA-2rK"/>
+                <outlet property="notesTextFieldTrailingContraint" destination="OxX-q5-0hQ" id="Rc7-3M-NaS"/>
+                <outlet property="statusImage" destination="1gO-Mn-ATS" id="3VV-os-nJr"/>
             </connections>
-            <point key="canvasLocation" x="226.5" y="165"/>
+            <point key="canvasLocation" x="256.5" y="173"/>
         </customView>
     </objects>
     <resources>

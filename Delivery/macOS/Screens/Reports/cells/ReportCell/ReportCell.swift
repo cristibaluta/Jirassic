@@ -19,7 +19,7 @@ class ReportCell: NSTableRowView, CellProtocol {
     fileprivate var trackingArea: NSTrackingArea?
     fileprivate var bgColor: NSColor = NSColor.clear
     
-    var didEndEditingCell: ((_ cell: CellProtocol) -> ())?
+    var didClickEditCell: ((_ cell: CellProtocol) -> ())?
     var didClickRemoveCell: ((_ cell: CellProtocol) -> ())?
     var didClickAddCell: ((_ cell: CellProtocol) -> ())?
     var didCopyContentCell: ((_ cell: CellProtocol) -> ())?

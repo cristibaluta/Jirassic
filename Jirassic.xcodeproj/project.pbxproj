@@ -180,17 +180,14 @@
 		2845B150206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
 		2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
 		2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
-		2845B160206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell.swift */; };
-		2845B161206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell.swift */; };
-		2845B162206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
-		2845B163206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
+		2845B160206AE468006EFB3B /* TaskCell_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell_.swift */; };
+		2845B161206AE468006EFB3B /* TaskCell_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell_.swift */; };
 		2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
 		2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
-		2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
-		2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
-		2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
-		2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
-		2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B154206AE467006EFB3B /* TaskCellTests.swift */; };
+		2845B16A206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* TaskCell.swift */; };
+		2845B16B206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* TaskCell.swift */; };
+		2845B16C206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* TaskCell.xib */; };
+		2845B16D206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* TaskCell.xib */; };
 		285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
@@ -643,12 +640,10 @@
 		2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCellPresenter.swift; sourceTree = "<group>"; };
 		2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
 		2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
-		2845B154206AE467006EFB3B /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTests.swift; sourceTree = "<group>"; };
-		2845B155206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		2845B156206AE467006EFB3B /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		2845B155206AE467006EFB3B /* TaskCell_.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell_.swift; sourceTree = "<group>"; };
 		2845B157206AE467006EFB3B /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
-		2845B15C206AE467006EFB3B /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
-		2845B15D206AE467006EFB3B /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
+		2845B15C206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		2845B15D206AE467006EFB3B /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		285465A1216C84E10052CB6A /* CreateMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReport.swift; sourceTree = "<group>"; };
 		285465A6217858790052CB6A /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		285465AC217858AF0052CB6A /* StoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreView.xib; sourceTree = "<group>"; };
@@ -1020,21 +1015,12 @@
 		2845B153206AE467006EFB3B /* TaskCell */ = {
 			isa = PBXGroup;
 			children = (
-				2845B155206AE467006EFB3B /* TaskCell.swift */,
-				2845B156206AE467006EFB3B /* TaskCell.xib */,
-				2845B154206AE467006EFB3B /* TaskCellTests.swift */,
+				2845B15C206AE467006EFB3B /* TaskCell.swift */,
+				2845B155206AE467006EFB3B /* TaskCell_.swift */,
 				2845B157206AE467006EFB3B /* TaskCellPresenter.swift */,
+				2845B15D206AE467006EFB3B /* TaskCell.xib */,
 			);
 			path = TaskCell;
-			sourceTree = "<group>";
-		};
-		2845B15B206AE467006EFB3B /* NonTaskCell */ = {
-			isa = PBXGroup;
-			children = (
-				2845B15C206AE467006EFB3B /* NonTaskCell.swift */,
-				2845B15D206AE467006EFB3B /* NonTaskCell.xib */,
-			);
-			path = NonTaskCell;
 			sourceTree = "<group>";
 		};
 		2845B16F206C2888006EFB3B /* cells */ = {
@@ -1043,7 +1029,6 @@
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
 				2863492023B3A941009F81D7 /* ClosedDayCell */,
 				2863491923B393A3009F81D7 /* CloseDayCell */,
-				2845B15B206AE467006EFB3B /* NonTaskCell */,
 				2845B153206AE467006EFB3B /* TaskCell */,
 			);
 			path = cells;
@@ -2089,7 +2074,6 @@
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
 				280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */,
 				564E55F92028857300CE4C76 /* Worklogs.storyboard in Resources */,
-				2845B162206AE468006EFB3B /* TaskCell.xib in Resources */,
 				2863492523B3A966009F81D7 /* ClosedDayCell.xib in Resources */,
 				56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
@@ -2101,7 +2085,7 @@
 				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
 				285465AD217858AF0052CB6A /* StoreView.xib in Resources */,
-				2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */,
+				2845B16C206AE468006EFB3B /* TaskCell.xib in Resources */,
 				569C4C73202319EE0049FBF1 /* JitCell.xib in Resources */,
 				2863492923B5EF87009F81D7 /* Reports.storyboard in Resources */,
 			);
@@ -2124,7 +2108,7 @@
 				569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				288BB6822087152B00CF720A /* WizardAppleScriptView.xib in Resources */,
 				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
-				2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */,
+				2845B16D206AE468006EFB3B /* TaskCell.xib in Resources */,
 				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
 				2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */,
 				285465AE217858AF0052CB6A /* StoreView.xib in Resources */,
@@ -2148,7 +2132,6 @@
 				5623915421CBC9750031B882 /* Projects.storyboard in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				56D90D0220876F4900F24442 /* WizardJiraView.xib in Resources */,
-				2845B163206AE468006EFB3B /* TaskCell.xib in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
 				28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
@@ -2269,7 +2252,7 @@
 				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
-				2845B160206AE468006EFB3B /* TaskCell.swift in Sources */,
+				2845B160206AE468006EFB3B /* TaskCell_.swift in Sources */,
 				28FE18AB207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
 				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
@@ -2352,7 +2335,7 @@
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
 				2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
-				2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */,
+				2845B16A206AE468006EFB3B /* TaskCell.swift in Sources */,
 				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */,
 				569C4C64202319870049FBF1 /* GitCell.swift in Sources */,
@@ -2561,7 +2544,7 @@
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
 				5623915121CBC6CD0031B882 /* Project.swift in Sources */,
 				28EE1F6520EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */,
-				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
+				2845B16B206AE468006EFB3B /* TaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
 				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
@@ -2573,7 +2556,7 @@
 				287195162022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
-				2845B161206AE468006EFB3B /* TaskCell.swift in Sources */,
+				2845B161206AE468006EFB3B /* TaskCell_.swift in Sources */,
 				28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
@@ -2605,7 +2588,6 @@
 				56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */,
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
-				2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
