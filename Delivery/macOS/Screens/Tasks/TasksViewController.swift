@@ -21,11 +21,6 @@ class TasksViewController: NSViewController {
     weak var appWireframe: AppWireframe?
     var presenter: TasksPresenterInput?
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter!.reloadLastSelectedDay()
-    }
-	
     deinit {
         RCLog(self)
 	}
@@ -48,7 +43,7 @@ extension TasksViewController: TasksPresenterOutput {
         
         let controller = appWireframe!.presentPlaceholder(message, in: self.view)
         controller.didPressButton = {
-//            self.presenter?.messageButtonDidPress()
+            self.presenter?.didClickStartDay()
         }
     }
     

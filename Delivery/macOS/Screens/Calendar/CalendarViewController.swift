@@ -20,7 +20,7 @@ class CalendarViewController: NSViewController {
     var didChangeDay: ((_ day: Day) -> Void)?
     var didChangeMonth: ((_ date: Date) -> Void)?
     
-    private var day: Day? = Day(dateStart: Date(), dateEnd: nil)
+    private var day: Day? = Day(dateStart: Date().startOfDay(), dateEnd: nil)
     var selectedDay: Day? {
         get {
             return day

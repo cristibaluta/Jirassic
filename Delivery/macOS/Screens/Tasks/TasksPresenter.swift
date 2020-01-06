@@ -17,6 +17,7 @@ protocol TasksPresenterInput: class {
     func insertTaskWithData (_ taskData: TaskCreationData)
     func insertTask (after row: Int)
     func removeTask (at row: Int)
+    func didClickStartDay()
     func didClickSaveWorklogs()
 }
 
@@ -67,7 +68,7 @@ extension TasksPresenter: TasksPresenterInput {
         }
     }
     
-    func messageButtonDidPress() {
+    func didClickStartDay() {
         
         if currentTasks.count == 0 {
             startDay()
@@ -159,6 +160,7 @@ extension TasksPresenter: TasksInteractorOutput {
         }
         ui.showLoadingIndicator(false)
         currentTasks = tasks
+        ui.removeTasks()
         ui.showTasks(currentTasks)
         updateNoTasksState()
     }
