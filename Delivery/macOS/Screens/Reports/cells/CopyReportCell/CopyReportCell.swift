@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class MonthReportsHeaderView: ReportsHeaderView {
+class CopyReportCell: NSTableRowView {
     
     @IBOutlet private var butCopyAll: NSButton!
     @IBOutlet private var butCopyAsHtml: NSButton!
@@ -27,18 +27,18 @@ class MonthReportsHeaderView: ReportsHeaderView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        butCopyAsHtml.state = pref.bool(.copyWorklogsAsHtml) ? .on : .off
+//        butCopyAsHtml.state = pref.bool(.copyWorklogsAsHtml) ? .on : .off
         butCopyAsHtml.toolTip = "This can be set in 'Settings/Tracking/Working between'"
     }
 }
 
-extension MonthReportsHeaderView {
+extension CopyReportCell {
     
     @IBAction func handleCopyAllButton (_ sender: NSButton) {
-        didClickCopyAll?(pref.bool(.copyWorklogsAsHtml))
+//        didClickCopyAll?(pref.bool(.copyWorklogsAsHtml))
     }
     
     @IBAction func handleHtmlButton (_ sender: NSButton) {
-        pref.set(sender.state == .on, forKey: .copyWorklogsAsHtml)
+//        pref.set(sender.state == .on, forKey: .copyWorklogsAsHtml)
     }
 }

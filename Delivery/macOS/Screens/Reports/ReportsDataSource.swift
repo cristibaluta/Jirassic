@@ -16,6 +16,7 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
                 tableView.usesAutomaticRowHeights = true
             }
             ReportCell.register(in: tableView)
+            CopyReportCell.register(in: tableView)
         }
     }
     var didClickAddRow: ((_ row: Int) -> Void)?

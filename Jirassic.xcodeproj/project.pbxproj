@@ -306,8 +306,8 @@
 		2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
 		2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
 		2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
-		2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
-		2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
+		2898D3A82181907700CF5AD4 /* CopyReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* CopyReportCell.swift */; };
+		2898D3A92181907700CF5AD4 /* CopyReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* CopyReportCell.swift */; };
 		2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */; };
 		2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */; };
 		2898D3AE2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
@@ -364,8 +364,8 @@
 		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
 		28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
-		28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
-		28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
+		28B116BB21AE6179004ACE01 /* CopyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* CopyReportCell.xib */; };
+		28B116BC21AE6179004ACE01 /* CopyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* CopyReportCell.xib */; };
 		28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
 		28C6A38521D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
 		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
@@ -695,7 +695,7 @@
 		2892E80A208D9B42004E5298 /* InputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputsScrollView.xib; sourceTree = "<group>"; };
 		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
 		2892E810208E6275004E5298 /* LocalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferences.swift; sourceTree = "<group>"; };
-		2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportsHeaderView.swift; sourceTree = "<group>"; };
+		2898D3A72181907700CF5AD4 /* CopyReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyReportCell.swift; sourceTree = "<group>"; };
 		2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBoxViewController.swift; sourceTree = "<group>"; };
 		2898D3AD2184ED3000CF5AD4 /* Components.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Components.storyboard; sourceTree = "<group>"; };
 		2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeBox.swift; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
 		28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
-		28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthReportsHeaderView.xib; sourceTree = "<group>"; };
+		28B116BA21AE6179004ACE01 /* CopyReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CopyReportCell.xib; sourceTree = "<group>"; };
 		28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicate.swift; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
@@ -983,6 +983,7 @@
 			children = (
 				287B943B21A690C100FFC4A5 /* HeaderView */,
 				2845B143206AE3A8006EFB3B /* ReportCell */,
+				2898D3A62181905600CF5AD4 /* CopyReportCell */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -1101,7 +1102,6 @@
 				2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */,
 				2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */,
 				2845B141206AE2A4006EFB3B /* cells */,
-				2898D3A62181905600CF5AD4 /* MonthReports */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -1183,13 +1183,13 @@
 			path = Jira;
 			sourceTree = "<group>";
 		};
-		2898D3A62181905600CF5AD4 /* MonthReports */ = {
+		2898D3A62181905600CF5AD4 /* CopyReportCell */ = {
 			isa = PBXGroup;
 			children = (
-				2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */,
-				28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */,
+				2898D3A72181907700CF5AD4 /* CopyReportCell.swift */,
+				28B116BA21AE6179004ACE01 /* CopyReportCell.xib */,
 			);
-			path = MonthReports;
+			path = CopyReportCell;
 			sourceTree = "<group>";
 		};
 		28A28392203786F600DDCB63 /* GitLogs */ = {
@@ -2060,7 +2060,7 @@
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
 				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
-				28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
+				28B116BB21AE6179004ACE01 /* CopyReportCell.xib in Resources */,
 				287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
 				2863491E23B393E1009F81D7 /* CloseDayCell.xib in Resources */,
@@ -2130,7 +2130,7 @@
 				56D90D0220876F4900F24442 /* WizardJiraView.xib in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
-				28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
+				28B116BC21AE6179004ACE01 /* CopyReportCell.xib in Resources */,
 				56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */,
 				2863491F23B393E1009F81D7 /* CloseDayCell.xib in Resources */,
@@ -2330,7 +2330,7 @@
 				28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
-				2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
+				2898D3A82181907700CF5AD4 /* CopyReportCell.swift in Sources */,
 				2845B16A206AE468006EFB3B /* TaskCell.swift in Sources */,
 				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */,
@@ -2423,7 +2423,7 @@
 				28AA500B1EDCD51300AAF03D /* CoreDataRepository+User.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
-				2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
+				2898D3A92181907700CF5AD4 /* CopyReportCell.swift in Sources */,
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */,
