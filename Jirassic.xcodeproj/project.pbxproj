@@ -178,8 +178,6 @@
 		2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */; };
 		2845B14F206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
 		2845B150206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
-		2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
-		2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
 		2845B160206AE468006EFB3B /* TaskCell_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell_.swift */; };
 		2845B161206AE468006EFB3B /* TaskCell_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell_.swift */; };
 		2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
@@ -362,8 +360,6 @@
 		28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
 		28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
 		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
-		28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
-		28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
 		28B116BB21AE6179004ACE01 /* CopyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* CopyReportCell.xib */; };
 		28B116BC21AE6179004ACE01 /* CopyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* CopyReportCell.xib */; };
 		28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
@@ -637,7 +633,6 @@
 		2845B145206AE3A8006EFB3B /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
 		2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCellPresenter.swift; sourceTree = "<group>"; };
 		2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
-		2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
 		2845B155206AE467006EFB3B /* TaskCell_.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell_.swift; sourceTree = "<group>"; };
 		2845B157206AE467006EFB3B /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
 		2845B15C206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -724,7 +719,6 @@
 		28A928941E9110980022AB55 /* CloudKitRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+User.swift"; sourceTree = "<group>"; };
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
 		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
-		28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
 		28B116BA21AE6179004ACE01 /* CopyReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CopyReportCell.xib; sourceTree = "<group>"; };
 		28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicate.swift; sourceTree = "<group>"; };
 		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
@@ -981,7 +975,6 @@
 		2845B141206AE2A4006EFB3B /* cells */ = {
 			isa = PBXGroup;
 			children = (
-				287B943B21A690C100FFC4A5 /* HeaderView */,
 				2845B143206AE3A8006EFB3B /* ReportCell */,
 				2898D3A62181905600CF5AD4 /* CopyReportCell */,
 			);
@@ -1158,15 +1151,6 @@
 				56D90D0020876F4900F24442 /* WizardJiraView.xib */,
 			);
 			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		287B943B21A690C100FFC4A5 /* HeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */,
-				28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */,
-			);
-			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		2892B2961F0949D70085BAC2 /* Jira */ = {
@@ -2073,7 +2057,6 @@
 				2863492523B3A966009F81D7 /* ClosedDayCell.xib in Resources */,
 				56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
-				28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */,
 				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				2845B14B206AE3A8006EFB3B /* ReportCell.xib in Resources */,
@@ -2113,7 +2096,6 @@
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
 				2863492A23B5EF87009F81D7 /* Reports.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
-				28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */,
 				2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				2863490F23B29979009F81D7 /* Main.storyboard in Resources */,
 				287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
@@ -2317,7 +2299,6 @@
 				28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */,
 				288BB6842087157F00CF720A /* WizardAppleScriptView.swift in Sources */,
-				2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
 				28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */,
 				2818848121A4A2F800B33B9C /* Jirassic.xcdatamodeld in Sources */,
@@ -2558,7 +2539,6 @@
 				288BB67F2085252900CF720A /* WizardViewController.swift in Sources */,
 				2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
-				2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
 				2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,

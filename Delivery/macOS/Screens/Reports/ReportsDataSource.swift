@@ -17,6 +17,7 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
             }
             ReportCell.register(in: tableView)
             CopyReportCell.register(in: tableView)
+            ClosedDayCell.register(in: tableView)
         }
     }
     var didClickAddRow: ((_ row: Int) -> Void)?
@@ -45,11 +46,15 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
 extension ReportsDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
-        return reports.count
+        return reports.count > 0 ? reports.count + 1 : 0
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        
+        print("\(row) < \(reports.count)")
+        guard row < reports.count else {
+            print("return 100")
+            return 100
+        }
         if #available(OSX 10.13, *) {
             // This version of osx supports cell autoresizing
             return CGFloat(50)
@@ -69,7 +74,16 @@ extension ReportsDataSource: NSTableViewDataSource {
 extension ReportsDataSource: NSTableViewDelegate {
     
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
+
+        guard row < reports.count else {
+            return ClosedDayCell.instantiate(in: tableView)
+            let cell = CopyReportCell.instantiate(in: tableView)
+            cell.didClickCopyAll = { isHtml in
+                //self.didClickCloseDay?(self.tasks)
+            }
+            return cell
+        }
+
         let theData = reports[row]
         let cell: CellProtocol = ReportCell.instantiate(in: self.tableView)
         ReportCellPresenter(cell: cell).present(theReport: theData)
