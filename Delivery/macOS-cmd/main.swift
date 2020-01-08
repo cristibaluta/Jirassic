@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.12.12"
+let appVersion = "20.01.08"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -20,6 +20,7 @@ enum ArgType {
 enum Command: String {
     case list = "list"
     case reports = "reports"
+    case start = "start"
     case insert = "insert"
     case scrum = "scrum"
     case lunch = "lunch"
@@ -32,11 +33,12 @@ enum Command: String {
 
 func printHelp() {
     print("")
-    print("jirassic \(appVersion) - (c)2018 Imagin soft")
+    print("jirassic \(appVersion) - (c)2020 Imagin soft")
     print("")
     print("Usage:")
     print("     list [yyyy.mm.dd]  If date is missing list tasks from today")
     print("     reports [yyyy.mm.dd|yyyy.mm] [hours per day]  If date is missing, list reports from today")
+    print("     start")
     print("     insert -nr <task number> -notes <notes> -duration <mm>")
     print("     scrum|lunch|meeting|waste|learning|coderev <duration>  Duration in minutes")
     print("")
@@ -128,7 +130,7 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
     let tasks = reader.tasksInMonth(date)
     let monthReportsInteractor = CreateMonthReport()
     let duration: Double? = targetHoursInDay != nil ? targetHoursInDay!.hoursToSec : nil
-    let result = monthReportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
+    let result = monthReportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration, roundHours: true)
     if result.byTasks.count > 0 {
         let joined = monthReportsInteractor.joinReports(result.byTasks)
         print(joined.notes)
@@ -204,20 +206,14 @@ func insert (taskType: Command, arguments: [String]) {
     var task: Task?
     
     switch taskType {
+        case .start: task = Task(endDate: Date(), type: .startDay)
         case .scrum: task = Task(endDate: Date(), type: .scrum)
-            break
         case .lunch: task = Task(endDate: Date(), type: .lunch)
-            break
         case .meeting: task = Task(endDate: Date(), type: .meeting)
-            break
         case .waste: task = Task(endDate: Date(), type: .waste)
-            break
         case .learning: task = Task(endDate: Date(), type: .learning)
-            break
         case .coderev: task = Task(endDate: Date(), type: .coderev)
-            break
-        default:
-            return
+        default: return
     }
     
     if let duration = arguments.first {
@@ -267,12 +263,12 @@ if let command = Command(rawValue: commandStr) {
             }
             reports (forDay: date, targetHoursInDay: duration)
             break
+        case .start:
+            insert (taskType: command, arguments: [])
         case .insert:
             insertIssue (arguments: arguments)
-            break
         case .scrum, .lunch, .meeting, .waste, .learning, .coderev:
             insert (taskType: command, arguments: arguments)
-            break
         case .version:
             print(appVersion)
     }
