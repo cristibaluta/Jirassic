@@ -59,10 +59,17 @@ extension TasksPresenter: TasksPresenterInput {
     func updateNoTasksState() {
         
         if currentTasks.count == 0 {
-            ui!.showMessage((
-                title: "Good morning!",
-                message: "Ready to start working today?",
+            if lastSelectedDay.dateStart.isToday() {
+                ui!.showMessage((
+                    title: "Good morning!",
+                    message: "Ready to start working today?",
+                    buttonTitle: "Start day"))
+            } else {
+                ui!.showMessage((
+                title: "Day was not started!",
+                message: "Do you want to start it now?",
                 buttonTitle: "Start day"))
+            }
         } else {
             appWireframe!.removePlaceholder()
         }
@@ -79,7 +86,14 @@ extension TasksPresenter: TasksPresenterInput {
     
     func startDay() {
         
-        let task = Task(endDate: Date(), type: .startDay)
+        /// The day will start
+        /// 1. current timestamp if day is today
+        /// 2. start  timestamp from settings if day is not today
+        let settings: Settings = SettingsInteractor().getAppSettings()
+        let startDate = lastSelectedDay.dateStart.isToday()
+            ? Date()
+            : lastSelectedDay.dateStart.dateByKeepingTime(from: settings.settingsTracking.startOfDayTime)
+        let task = Task(endDate: startDate, type: .startDay)
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
             self?.reloadLastSelectedDay()
@@ -115,9 +129,7 @@ extension TasksPresenter: TasksPresenterInput {
         task.taskType = taskData.taskType
         
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        saveInteractor.saveTask(task, allowSyncing: false, completion: { savedTask in
-            
-        })
+        saveInteractor.saveTask(task, allowSyncing: false, completion: { _ in })
     }
     
     func insertTask (after row: Int) {

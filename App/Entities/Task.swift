@@ -94,6 +94,10 @@ extension Task {
         self.taskType = type
         self.objectId = String.generateId()
     }
+    
+    var isSaved: Bool {
+        return objectId != nil
+    }
 }
 
 /// Object used to pass task data to and from the cell, for displaying and editing

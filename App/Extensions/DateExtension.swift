@@ -259,6 +259,11 @@ extension Date {
         return Date().dateByUpdating(hour: comps.hour!, minute: comps.minute!)
     }
     
+    func dateByKeepingTime(from date: Date) -> Date {
+        let comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
+        return self.dateByUpdating(hour: comps.hour!, minute: comps.minute!)
+    }
+    
     func dateByAddingMonths(_ numberOfMonths: Int) -> Date {
         return Calendar.current.date(byAdding: .month, value: numberOfMonths, to: self) ?? self
     }

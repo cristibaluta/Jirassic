@@ -61,9 +61,9 @@ class TaskCellPresenter: NSObject {
 			taskType: theTask.taskType
 		)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
-        cell.isEditable = theTask.objectId != nil
-        cell.isRemovable = theTask.objectId != nil
+        cell.isEditable = theTask.isSaved
+        cell.isRemovable = theTask.isSaved
         cell.isIgnored = theTask.taskType == .lunch || theTask.taskType == .waste
-        cell.timeToolTip = theTask.objectId != nil ? "Click to edit" : "Item can be edited after the day is closed"
+        cell.timeToolTip = theTask.isSaved ? "Click to edit" : "Item can be edited after the day is closed"
 	}
 }
