@@ -14,11 +14,12 @@ class CopyReportCell: NSTableRowView {
     @IBOutlet private var butCopyAll: NSButton!
     @IBOutlet private var butCopyAsHtml: NSButton!
     @IBOutlet private var totalDaysTextField: NSTextField!
-    @IBOutlet private var backgroundView: NSVisualEffectView!
     @IBOutlet private var butPercents: NSButton!
     @IBOutlet private var butRound: NSButton!
     @IBOutlet private var totalTimeTextField: NSTextField!
+
     internal let pref = RCPreferences<LocalPreferences>()
+
     var didClickCopyAll: ((Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
     // In hours
@@ -53,11 +54,12 @@ class CopyReportCell: NSTableRowView {
         butCopyAsHtml.state = pref.bool(.copyWorklogsAsHtml) ? .on : .off
         butCopyAsHtml.toolTip = "This can be set in 'Settings/Tracking/Working between'"
 
-        butPercents.title = "Show time in percents"
         butPercents.state = pref.bool(.usePercents) ? .on : .off
+        butPercents.title = "Show time in units"
+        butPercents.toolTip = "1 hour means 1 unit, 30 minutes meand 0.5 units"
 
         butRound.state = pref.bool(.enableRoundingDay) ? .on : .off
-        butRound.toolTip = "This can be set in 'Settings/Tracking/Working between'"
+        butRound.toolTip = "Time can be set in 'Settings/Tracking/Working between'"
     }
 }
 
@@ -73,11 +75,11 @@ extension CopyReportCell {
 
     @IBAction func handleRoundButton (_ sender: NSButton) {
         pref.set(sender.state == .on, forKey: .enableRoundingDay)
-        //didChangeSettings?()
+        didChangeSettings?()
     }
 
     @IBAction func handlePercentsButton (_ sender: NSButton) {
         pref.set(sender.state == .on, forKey: .usePercents)
-        //didChangeSettings?()
+        didChangeSettings?()
     }
 }

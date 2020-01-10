@@ -17,7 +17,7 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
             }
             ReportCell.register(in: tableView)
             CopyReportCell.register(in: tableView)
-            ClosedDayCell.register(in: tableView)
+            TaskCell.register(in: tableView)
         }
     }
     var didClickAddRow: ((_ row: Int) -> Void)?
@@ -25,6 +25,9 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
     var didClickCloseDay: ((_ tasks: [Task]) -> Void)?
     var didClickSaveWorklogs: (() -> Void)?
     var didClickSetupJira: (() -> Void)?
+    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
+    var didChangeSettings: (() -> Void)?
+
     private var tempCell: ReportCell?
     let numberOfDays: Int
     var reports: [Report]
@@ -50,13 +53,13 @@ extension ReportsDataSource: NSTableViewDataSource {
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        print("\(row) < \(reports.count)")
+
         guard row < reports.count else {
-            print("return 100")
-            return 100
+            // Doesn't seem to have effect, the cell will be resized based on constrains
+            return CGFloat(164)
         }
         if #available(OSX 10.13, *) {
-            // This version of osx supports cell autoresizing
+            // This version of osx supports cell autoresizing so it doesn't matter the height
             return CGFloat(50)
         }
         let theData = reports[row]
@@ -76,10 +79,13 @@ extension ReportsDataSource: NSTableViewDelegate {
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
         guard row < reports.count else {
-            return ClosedDayCell.instantiate(in: tableView)
             let cell = CopyReportCell.instantiate(in: tableView)
+            cell.numberOfDays = numberOfDays
             cell.didClickCopyAll = { isHtml in
-                //self.didClickCloseDay?(self.tasks)
+                self.didClickCopyMonthlyReport?(isHtml)
+            }
+            cell.didChangeSettings = {
+                self.didChangeSettings?()
             }
             return cell
         }

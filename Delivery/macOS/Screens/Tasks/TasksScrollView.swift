@@ -13,17 +13,7 @@ class TasksScrollView: NSScrollView {
 	
     private var tableView: NSTableView!
     private var dataSource: DataSource!
-    private var listType: ListType!
-    private let pref = RCPreferences<LocalPreferences>()
-    
-    var didClickAddRow: ((_ row: Int, _ rect: CGRect?) -> Void)?
-    var didClickRemoveRow: ((_ row: Int) -> Void)?
-    var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
-    var didClickSaveWorklogs: (() -> Void)?
-    var didClickSetupJira: (() -> Void)?
-//    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
-//    var didChangeSettings: (() -> Void)?
-	
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -33,10 +23,9 @@ class TasksScrollView: NSScrollView {
         setupTableView()
     }
     
-    convenience init (dataSource: DataSource, listType: ListType) {
+    convenience init (dataSource: DataSource) {
         self.init(frame: NSRect.zero)
         self.setupTableView()
-        self.listType = listType
         reloadDataSource(dataSource)
     }
     
@@ -49,22 +38,6 @@ class TasksScrollView: NSScrollView {
         self.dataSource.tableView = tableView
         tableView.dataSource = self.dataSource
         tableView.delegate = self.dataSource
-        
-//        self.dataSource.didClickAddRow = { [weak self] row in
-//            self?.didClickAddRow!(row, nil)
-//        }
-//        self.dataSource.didClickRemoveRow = { [weak self] row in
-//            self?.didClickRemoveRow!(row)
-//        }
-//        self.dataSource.didClickCloseDay = { [weak self] tasks in
-//            self?.didClickCloseDay!(tasks, false)
-//        }
-//        self.dataSource.didClickSaveWorklogs = { [weak self] in
-//            self?.didClickSaveWorklogs!()
-//        }
-//        self.dataSource.didClickSetupJira = { [weak self] in
-//            self?.didClickSetupJira!()
-//        }
     }
     
     private func setupTableView() {
@@ -80,7 +53,7 @@ class TasksScrollView: NSScrollView {
         tableView.headerView = nil
         
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "taskColumn"))
-        column.width = 400
+        column.width = self.frame.size.width
         tableView.addTableColumn(column)
         
         self.documentView = tableView!
@@ -102,9 +75,5 @@ class TasksScrollView: NSScrollView {
     
     func frameOfCell (atRow row: Int) -> NSRect {
         return tableView.frameOfCell(atColumn: 0, row: row)
-    }
-    
-    func view() -> NSTableView {
-        return self.tableView
     }
 }

@@ -20,6 +20,8 @@ class TasksDataSource: NSObject, TasksAndReportsDataSource {
     var didClickCloseDay: ((_ tasks: [Task]) -> Void)?
     var didClickSaveWorklogs: (() -> Void)?
     var didClickSetupJira: (() -> Void)?
+    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
+    var didChangeSettings: (() -> Void)?
     
     internal var tableView: NSTableView! {
         didSet {
@@ -49,6 +51,7 @@ class TasksDataSource: NSObject, TasksAndReportsDataSource {
 extension TasksDataSource: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
+        // Add an extra row at the end for 'Add task' and 'Close day' buttons
         return tasks.count > 0 ? tasks.count + 1 : 0
     }
     

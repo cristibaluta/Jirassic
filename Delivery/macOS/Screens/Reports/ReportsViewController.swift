@@ -44,33 +44,25 @@ extension ReportsViewController: ReportsPresenterOutput {
         
         let controller = appWireframe!.presentPlaceholder(message, in: self.view)
         controller.didPressButton = {
-//            self.presenter?.messageButtonDidPress()
+            self.presenter?.messageButtonDidPress()
         }
     }
     
-    func showReports (_ reports: [Report], numberOfDays: Int, type: ListType) {
+    func showReports (_ reports: [Report], numberOfDays: Int) {
         
         let dataSource = ReportsDataSource(reports: reports, numberOfDays: numberOfDays)
-        let scrollView = TasksScrollView(dataSource: dataSource, listType: type)
+        dataSource.didChangeSettings = { [weak self] in
+            self?.presenter?.reloadLastSelectedMonth()
+        }
+        dataSource.didClickCopyMonthlyReport = { [weak self] asHtml in
+            self?.presenter?.copyMonthlyReportsToClipboard(asHtml: asHtml)
+        }
+
+        let scrollView = TasksScrollView(dataSource: dataSource)
         self.view.addSubview(scrollView)
         scrollView.constrainToSuperview()
         scrollView.reloadData()
-//        scrollView.didChangeSettings = { [weak self] in
-//            
-//        }
-//        scrollView.didClickCopyMonthlyReport = { asHtml in
-//            var string = ""
-//            let interactor = CreateMonthReport()
-//            if asHtml {
-//                string = interactor.htmlReports(dataSource.reports)
-//            } else {
-//                let joined = interactor.joinReports(dataSource.reports)
-//                string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
-//            }
-//            NSPasteboard.general.clearContents()
-//            NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
-//        }
-        
+
         tasksScrollView = scrollView
     }
     

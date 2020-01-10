@@ -6,6 +6,7 @@
 //  Copyright © 2019 Imagin soft. All rights reserved.
 //
 
+import Foundation
 import Cocoa
 import RCPreferences
 
@@ -15,13 +16,15 @@ protocol ReportsPresenterInput: class {
     func reloadLastSelectedMonth()
     func reloadReportsOnDay (_ day: Day)
     func reloadReportsInMonth (_ date: Date)
+    func copyMonthlyReportsToClipboard(asHtml: Bool)
+    func messageButtonDidPress()
 }
 
 protocol ReportsPresenterOutput: class {
     
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
-    func showReports (_ reports: [Report], numberOfDays: Int, type: ListType)
+    func showReports (_ reports: [Report], numberOfDays: Int)
     func removeReports()
 }
 
@@ -39,7 +42,7 @@ class ReportsPresenter {
     private var lastSelectedMonth: Date = Date()
     
     
-    func updateNoTasksState() {
+    private func updateNoTasksState() {
         
         if currentTasks.count == 1 {
             ui!.showMessage((
@@ -49,6 +52,16 @@ class ReportsPresenter {
         } else {
             appWireframe!.removePlaceholder()
         }
+    }
+
+    private func startDay() {
+
+        let task = Task(endDate: Date(), type: .startDay)
+        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
+            self?.reloadLastSelectedMonth()
+        })
+        ModuleHookup().insert(task: task)
     }
 }
 
@@ -79,15 +92,18 @@ extension ReportsPresenter: ReportsPresenterInput {
             startDay()
         }
     }
-    
-    func startDay() {
-        
-        let task = Task(endDate: Date(), type: .startDay)
-        let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
-        saveInteractor.saveTask(task, allowSyncing: true, completion: { [weak self] savedTask in
-            self?.reloadLastSelectedMonth()
-        })
-        ModuleHookup().insert(task: task)
+
+    func copyMonthlyReportsToClipboard(asHtml: Bool) {
+        var string = ""
+        let interactor = CreateMonthReport()
+        if asHtml {
+            string = interactor.htmlReports(currentReports)
+        } else {
+            let joined = interactor.joinReports(currentReports)
+            string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
+        }
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
     }
 }
 
@@ -106,9 +122,11 @@ extension ReportsPresenter: TasksInteractorOutput {
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
         let reportInteractor = CreateMonthReport()
-        let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay, roundHours: true)
+        let reports = reportInteractor.reports(fromTasks: currentTasks,
+                                               targetHoursInDay: targetHoursInDay,
+                                               roundHours: true)
         currentReports = reports.byTasks
-        ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: .reports)
+        ui.showReports(currentReports, numberOfDays: reports.byDays.count)
 
         
 //        let settings = SettingsInteractor().getAppSettings()

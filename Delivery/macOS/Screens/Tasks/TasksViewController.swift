@@ -74,7 +74,7 @@ extension TasksViewController: TasksPresenterOutput {
             self?.appWireframe!.flipToSettingsController()
         }
         
-        let scrollView = TasksScrollView(dataSource: dataSource, listType: .tasks)
+        let scrollView = TasksScrollView(dataSource: dataSource)
         self.view.addSubview(scrollView)
         scrollView.constrainToSuperview()
 //        scrollView.didClickAddRow = { [weak self] (row, rect) in
