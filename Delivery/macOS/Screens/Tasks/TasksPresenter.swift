@@ -27,9 +27,9 @@ protocol TasksPresenterOutput: class {
     func showMessage (_ message: MessageViewModel)
     func showTasks (_ tasks: [Task])
     func presentNewTaskController (date: Date)
-    func presentEndDayController (date: Date, tasks: [Task])
+    func showWorklogs (date: Date, tasks: [Task])
     func removeTasks()
-    func removeEndDayController()
+    func removeWorklogs()
 }
 
 class TasksPresenter {
@@ -51,7 +51,7 @@ extension TasksPresenter: TasksPresenterInput {
     func reloadTasksOnDay (_ day: Day) {
         lastSelectedDay = day
         ui!.removeTasks()
-        ui!.removeEndDayController()
+        ui!.removeWorklogs()
         ui!.showLoadingIndicator(true)
         interactor!.reloadTasks(inDay: day)
     }
@@ -116,7 +116,7 @@ extension TasksPresenter: TasksPresenterInput {
     func didClickSaveWorklogs() {
         // Reload data will be called after save with success
         ui!.removeTasks()
-        ui!.presentEndDayController(date: lastSelectedDay.dateStart, tasks: currentTasks)
+        ui!.showWorklogs(date: lastSelectedDay.dateStart, tasks: currentTasks)
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {

@@ -40,7 +40,8 @@ class WorklogsViewController: NSViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        presenter!.save(worklog: worklogTextView.string)
+        let duration = durationTextField.stringValue
+        presenter!.save(worklog: worklogTextView.string, duration: duration)
     }
     
     @IBAction func handleRoundButton (_ sender: NSButton) {

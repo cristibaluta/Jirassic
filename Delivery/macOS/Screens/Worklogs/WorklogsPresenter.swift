@@ -11,7 +11,7 @@ import RCPreferences
 
 protocol WorklogsPresenterInput: class {
     func setup (date: Date, tasks: [Task])
-    func save (worklog: String)
+    func save (worklog: String, duration: String)
     func enableRounding (_ enabled: Bool)
 }
 
@@ -53,7 +53,8 @@ extension WorklogsPresenter: WorklogsPresenterInput {
         let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
         workedLength = StatisticsInteractor().duration(of: reports)
-        let duration = (pref.bool(.enableRoundingDay) ? workdayLength : workedLength).secToPercent
+        let isRoundingEnabled = pref.bool(.enableRoundingDay)
+        let duration = (isRoundingEnabled ? workdayLength : workedLength).secToPercent
         
         userInterface!.showDuration(duration)
         userInterface!.showWorklog(message)
@@ -66,15 +67,15 @@ extension WorklogsPresenter: WorklogsPresenterInput {
                                     title: "Round worklogs duration to \(String(describing: workdayLength)) hours")
     }
     
-    func save (worklog: String) {
+    func save (worklog: String, duration: String) {
         userInterface!.showJiraMessage("", isError: false)
 
-        // Save to jira tempo
-        let isRoundingEnabled = pref.bool(.enableRoundingDay)
-        
+        guard let d = Double(duration) else {
+            return
+        }
         userInterface!.showProgressIndicator(true)
-        let duration = isRoundingEnabled ? workdayLength : workedLength
-        moduleJira.postWorklog(worklog: worklog, duration: duration, date: date!, success: { [weak self] in
+        /// Save to jira tempo
+        moduleJira.postWorklog(worklog: worklog, duration: d, date: date!, success: { [weak self] in
             
             DispatchQueue.main.async {
                 if let userInterface = self?.userInterface {

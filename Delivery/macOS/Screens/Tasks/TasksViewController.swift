@@ -15,7 +15,7 @@ class TasksViewController: NSViewController {
     private var tasksScrollView: TasksScrollView?
     private var worklogsViewController: WorklogsViewController?
     /// Property to keep a reference to the active cell rect
-    private var rectToDisplayPopoverAt: NSRect?
+    private var activeCellRect: NSRect?
     private var activePopover: NSPopover?
     
     weak var appWireframe: AppWireframe?
@@ -53,7 +53,7 @@ extension TasksViewController: TasksPresenterOutput {
         dataSource.didClickAddRow = { [weak self] row in
             RCLogO("Add item after row \(row)")
             if row >= 0 {
-                self?.rectToDisplayPopoverAt = self?.tasksScrollView?.frameOfCell(atRow: row)
+                self?.activeCellRect = self?.tasksScrollView?.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
             }
         }
@@ -62,6 +62,7 @@ extension TasksViewController: TasksPresenterOutput {
             if row >= 0 {
                 self?.presenter!.removeTask(at: row)
                 self?.tasksScrollView!.removeTask(at: row)
+                self?.tasksScrollView!.reloadFooter()
             }
         }
         dataSource.didClickCloseDay = { [weak self] tasks in
@@ -77,26 +78,6 @@ extension TasksViewController: TasksPresenterOutput {
         let scrollView = TasksScrollView(dataSource: dataSource)
         self.view.addSubview(scrollView)
         scrollView.constrainToSuperview()
-//        scrollView.didClickAddRow = { [weak self] (row, rect) in
-//            RCLogO("Add item after row \(row)")
-//            if row >= 0 {
-//                self?.rectToDisplayPopoverAt = rect ?? self?.tasksScrollView?.frameOfCell(atRow: row)
-//                self?.presenter!.insertTask(after: row)
-//            }
-//        }
-//        scrollView.didClickRemoveRow = { [weak self] row in
-//            RCLogO("Remove item at row \(row)")
-//            if row >= 0 {
-//                self?.presenter!.removeTask(at: row)
-//                self?.tasksScrollView!.removeTask(at: row)
-//            }
-//        }
-//        scrollView.didClickCloseDay = { [weak self] (tasks, shouldSaveToJira) in
-//            self?.presenter!.closeDay(shouldSaveToJira: shouldSaveToJira)
-//        }
-//        scrollView.didClickSaveWorklogs = { [weak self] in
-//
-//        }
         
         scrollView.reloadData()
         tasksScrollView = scrollView
@@ -131,7 +112,7 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
         popover.contentViewController = controller
-        popover.show(relativeTo: rectToDisplayPopoverAt!,
+        popover.show(relativeTo: activeCellRect!,
                      of: self.view,
                      preferredEdge: NSRectEdge.maxY)
         // Add data after popover is presented
@@ -140,7 +121,7 @@ extension TasksViewController: TasksPresenterOutput {
         activePopover = popover
     }
     
-    func presentEndDayController (date: Date, tasks: [Task]) {
+    func showWorklogs (date: Date, tasks: [Task]) {
         
         let controller = appWireframe!.createWorklogsViewController()
         controller.date = date
@@ -151,20 +132,18 @@ extension TasksViewController: TasksPresenterOutput {
             guard let self = self else {
                 return
             }
-            self.removeEndDayController()
             self.presenter!.reloadLastSelectedDay()
         }
         controller.onCancel = { [weak self] in
             guard let self = self else {
                 return
             }
-            self.removeEndDayController()
             self.presenter!.reloadLastSelectedDay()
         }
         worklogsViewController = controller
     }
     
-    func removeEndDayController() {
+    func removeWorklogs() {
         
         if worklogsViewController != nil {
             worklogsViewController?.removeFromSuperview()

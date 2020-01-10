@@ -32,6 +32,11 @@ class TasksScrollView: NSScrollView {
     func reloadData() {
         tableView!.reloadData()
     }
+
+    func reloadFooter() {
+        tableView!.reloadData(forRowIndexes: IndexSet(integer: tableView.numberOfRows - 1),
+                              columnIndexes: IndexSet(integer: 0))
+    }
     
     func reloadDataSource (_ dataSource: DataSource) {
         self.dataSource = dataSource
