@@ -10,6 +10,7 @@ import Cocoa
 
 class ProjectDetailsViewController: NSViewController {
     
+    @IBOutlet private var butCredentials: NSButton!
     @IBOutlet private var baseUrlTextField: NSTextField!
     @IBOutlet private var userTextField: NSTextField!
     @IBOutlet private var passwordTextField: NSTextField!
@@ -19,7 +20,9 @@ class ProjectDetailsViewController: NSViewController {
     @IBOutlet private var progressIndicator: NSProgressIndicator!
     @IBOutlet private var emailsTextField: NSTextField!
     @IBOutlet private var pathsTextField: NSTextField!
+    @IBOutlet private var taskNumberPrefixTextField: NSTextField!
     @IBOutlet private var butPick: NSButton!
+    @IBOutlet private var butDelete: NSButton!
     
     var project: Project? {
         didSet {
@@ -51,8 +54,20 @@ class ProjectDetailsViewController: NSViewController {
     
     func reloadData() {
         
-        baseUrlTextField.stringValue = project?.jiraBaseUrl ?? ""
-        userTextField.stringValue = project?.jiraUser ?? ""
+        guard let project = project else {
+            return
+        }
+        butCredentials.state = project.jiraBaseUrl == nil ? .on : .off
+        baseUrlTextField.stringValue = project.jiraBaseUrl ?? ""
+        userTextField.stringValue = project.jiraUser ?? ""
+        errorTextField.stringValue = ""
+        projectNamePopup.removeAllItems()
+        projectNamePopup.addItem(withTitle: project.jiraProject ?? "")
+        projectIssueNamePopup.removeAllItems()
+        projectIssueNamePopup.addItem(withTitle: project.jiraIssue ?? "")
+        pathsTextField.stringValue = project.gitBaseUrls.toString()
+        emailsTextField.stringValue = project.gitUsers.toString()
+        taskNumberPrefixTextField.stringValue = project.taskNumberPrefix ?? ""
     }
     
     
@@ -61,6 +76,14 @@ class ProjectDetailsViewController: NSViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
+        
+    }
+    
+    @IBAction func handleDeleteButton (_ sender: NSButton) {
+        
+    }
+    
+    @IBAction func handleCredentialsButton (_ sender: NSButton) {
         
     }
     

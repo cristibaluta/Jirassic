@@ -29,7 +29,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="name" editable="NO" width="160" minWidth="160" maxWidth="160" id="9Ok-ZQ-i0k">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -201,7 +201,7 @@
                                 <rect key="frame" x="29" y="446" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select this when all projects are on the same Jira account (in settings)" id="dqs-Ge-z6a">
-                                    <font key="font" metaFont="menu" size="11"/>
+                                    <font key="font" metaFont="label" size="11"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -210,7 +210,7 @@
                                 <rect key="frame" x="11" y="328" width="429" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Error" id="lXa-w2-thQ">
-                                    <font key="font" metaFont="menu" size="11"/>
+                                    <font key="font" metaFont="label" size="11"/>
                                     <color key="textColor" red="0.82619418379999998" green="0.18153228830000001" blue="0.1534976841" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -278,12 +278,15 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="handleCredentialsButton:" target="ntz-hH-ch5" id="mqh-6D-g1s"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ppi-tc-BLB">
                                 <rect key="frame" x="10" y="157" width="405" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tasks with this prefix are added automatically to this project" id="YV6-EO-BAb">
-                                    <font key="font" metaFont="menu" size="11"/>
+                                    <font key="font" metaFont="label" size="11"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -352,6 +355,9 @@
                                     <font key="font" size="9" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="handleDeleteButton:" target="ntz-hH-ch5" id="Bbd-7Q-pvy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -404,6 +410,8 @@
                     </view>
                     <connections>
                         <outlet property="baseUrlTextField" destination="2hp-Ua-ZqO" id="Jfu-Dk-e4H"/>
+                        <outlet property="butCredentials" destination="pPp-9a-8hL" id="vqu-69-HY7"/>
+                        <outlet property="butDelete" destination="xRw-rq-mxc" id="bnt-jc-7zc"/>
                         <outlet property="butPick" destination="FFQ-AT-obM" id="1lV-fT-ga6"/>
                         <outlet property="emailsTextField" destination="RE8-cb-wVw" id="zxC-vX-qoI"/>
                         <outlet property="errorTextField" destination="4GS-xw-Lbe" id="eDe-AJ-6Kf"/>
@@ -412,6 +420,7 @@
                         <outlet property="progressIndicator" destination="50g-kW-HsR" id="EOp-x6-SSW"/>
                         <outlet property="projectIssueNamePopup" destination="YV8-ct-95h" id="MEE-Gw-i5F"/>
                         <outlet property="projectNamePopup" destination="KU8-ZD-HhH" id="VCM-Zj-8NS"/>
+                        <outlet property="taskNumberPrefixTextField" destination="RCP-5c-b5z" id="ofW-Pc-Pee"/>
                         <outlet property="userTextField" destination="pnx-CG-foC" id="KmT-dy-q9h"/>
                     </connections>
                 </viewController>

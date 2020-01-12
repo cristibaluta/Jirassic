@@ -37,7 +37,6 @@
 		280D70DA1ECFE83F005D2689 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
 		280D70DC1ECFE84C005D2689 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
-		280D70DE1ECFE870005D2689 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		280D70DF1ECFE888005D2689 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
 		280D70E01ECFE88F005D2689 /* CoreDataRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */; };
 		280D70E11ECFE88F005D2689 /* CoreDataRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */; };
@@ -54,7 +53,6 @@
 		280D70F11ECFE8D0005D2689 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		280D70F41ECFE96F005D2689 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31A1DD3B44200B73201 /* Settings.swift */; };
 		280D70F51ECFE98C005D2689 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
-		280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
 		280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
 		280D70FA1ED0E7B0005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280D70F91ED0E7B0005D2689 /* CloudKit.framework */; };
 		280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
@@ -81,8 +79,6 @@
 		280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
 		280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */; };
 		280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */; };
-		280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
-		280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
 		280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
 		280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B15651DEF75660009871C /* AppViewController.swift */; };
@@ -247,6 +243,32 @@
 		2863493623B790B1009F81D7 /* ProjectsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493423B790B1009F81D7 /* ProjectsListViewController.swift */; };
 		2863493823B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */; };
 		2863493923B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */; };
+		2863493B23CB6B07009F81D7 /* ReadProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */; };
+		2863493C23CB6B08009F81D7 /* ReadProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */; };
+		2863494123CB6E9F009F81D7 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493E23CB6E9E009F81D7 /* UserInteractor.swift */; };
+		2863494223CB6E9F009F81D7 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493E23CB6E9E009F81D7 /* UserInteractor.swift */; };
+		2863494323CB6E9F009F81D7 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493E23CB6E9E009F81D7 /* UserInteractor.swift */; };
+		2863494723CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */; };
+		2863494823CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */; };
+		2863494923CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */; };
+		2863494B23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */; };
+		2863494C23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */; };
+		2863494D23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */; };
+		2863494F23CB73E4009F81D7 /* SProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494E23CB73E4009F81D7 /* SProject.swift */; };
+		2863495023CB73E4009F81D7 /* SProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494E23CB73E4009F81D7 /* SProject.swift */; };
+		2863495123CB73E4009F81D7 /* SProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494E23CB73E4009F81D7 /* SProject.swift */; };
+		2863495323CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */; };
+		2863495423CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */; };
+		2863495523CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */; };
+		2863495723CB7E4D009F81D7 /* CProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495623CB7E4D009F81D7 /* CProject.swift */; };
+		2863495823CB7E4D009F81D7 /* CProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495623CB7E4D009F81D7 /* CProject.swift */; };
+		2863495923CB7E4D009F81D7 /* CProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495623CB7E4D009F81D7 /* CProject.swift */; };
+		2863495B23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */; };
+		2863495C23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */; };
+		2863495D23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */; };
+		2863495F23CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
+		2863496023CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
+		2863496123CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
 		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		286BC00421909F85004D4CDD /* CloseDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDayInteractor.swift */; };
@@ -429,8 +451,6 @@
 		4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
 		4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */; };
 		4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */; };
-		4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
-		4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3521DD3B44200B73201 /* FlipAnimation.swift */; };
 		4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
 		4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
@@ -455,7 +475,6 @@
 		4065D4171DD4536200B73201 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3871DD3B44200B73201 /* main.swift */; };
 		4065D4181DD454C500B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
-		4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */; };
 		4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */; };
 		4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3211DD3B44200B73201 /* DateExtensionTests.swift */; };
 		4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32C1DD3B44200B73201 /* CreateReportTests.swift */; };
@@ -667,6 +686,16 @@
 		2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPresenter.swift; sourceTree = "<group>"; };
 		2863493423B790B1009F81D7 /* ProjectsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListViewController.swift; sourceTree = "<group>"; };
 		2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsPresenter.swift; sourceTree = "<group>"; };
+		2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProjectsInteractor.swift; sourceTree = "<group>"; };
+		2863493E23CB6E9E009F81D7 /* UserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
+		2863493F23CB6E9F009F81D7 /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractorTests.swift; sourceTree = "<group>"; };
+		2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
+		2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Projects.swift"; sourceTree = "<group>"; };
+		2863494E23CB73E4009F81D7 /* SProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SProject.swift; sourceTree = "<group>"; };
+		2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataRepository+Projects.swift"; sourceTree = "<group>"; };
+		2863495623CB7E4D009F81D7 /* CProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProject.swift; sourceTree = "<group>"; };
+		2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Projects.swift"; sourceTree = "<group>"; };
+		2863495E23CB9134009F81D7 /* ProjectInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInteractor.swift; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
 		286BC00321909F85004D4CDD /* CloseDayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDayInteractor.swift; sourceTree = "<group>"; };
 		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
@@ -781,9 +810,6 @@
 		4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeSelection.swift; sourceTree = "<group>"; };
 		4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTyping.swift; sourceTree = "<group>"; };
 		4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTypingTests.swift; sourceTree = "<group>"; };
-		4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
-		4065D33D1DD3B44200B73201 /* UserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
-		4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractorTests.swift; sourceTree = "<group>"; };
 		4065D3421DD3B44200B73201 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4065D3441DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4065D3461DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1041,9 +1067,11 @@
 				28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */,
 				28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */,
 				28A928861E910EA70022AB55 /* SqliteRepository+Settings.swift */,
+				2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */,
 				28577EA81E8ADC53002B07FD /* SSettings.swift */,
 				28577EA91E8ADC53002B07FD /* STask.swift */,
 				28577EAA1E8ADC53002B07FD /* SUser.swift */,
+				2863494E23CB73E4009F81D7 /* SProject.swift */,
 				28577EB31E8AF08F002B07FD /* SQLiteDB.swift */,
 				28577EB41E8AF08F002B07FD /* SQLTable.swift */,
 				28A928771E8F78580022AB55 /* SQLiteSchema.swift */,
@@ -1055,6 +1083,8 @@
 		286348FE23B237D9009F81D7 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
+				2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */,
+				2863495E23CB9134009F81D7 /* ProjectInteractor.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -1097,6 +1127,16 @@
 				2845B141206AE2A4006EFB3B /* cells */,
 			);
 			path = Reports;
+			sourceTree = "<group>";
+		};
+		2863493D23CB6E87009F81D7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */,
+				2863493E23CB6E9E009F81D7 /* UserInteractor.swift */,
+				2863493F23CB6E9F009F81D7 /* UserInteractorTests.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		28667B591FCADF4E007B98E3 /* Modules */ = {
@@ -1364,6 +1404,7 @@
 		4065D3161DD3B44200B73201 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2863493D23CB6E87009F81D7 /* User */,
 				4065D3171DD3B44200B73201 /* Entities */,
 				4065D31F1DD3B44200B73201 /* Extensions */,
 				4065D3271DD3B44200B73201 /* Notifications */,
@@ -1372,7 +1413,6 @@
 				4065D32D1DD3B44200B73201 /* Tasks */,
 				280300D41EDB5E6D000A763E /* Statistics */,
 				4065D3371DD3B44200B73201 /* Time */,
-				4065D33B1DD3B44200B73201 /* User */,
 				28CBB59420455467006F9D3A /* Parsing */,
 			);
 			path = App;
@@ -1460,16 +1500,6 @@
 				287195352027CAD9001C237E /* TimeInteractor.swift */,
 			);
 			path = Time;
-			sourceTree = "<group>";
-		};
-		4065D33B1DD3B44200B73201 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */,
-				4065D33D1DD3B44200B73201 /* UserInteractor.swift */,
-				4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		4065D3401DD3B44200B73201 /* Delivery */ = {
@@ -1648,6 +1678,7 @@
 				28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */,
 				28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */,
 				28A928941E9110980022AB55 /* CloudKitRepository+User.swift */,
+				2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */,
 				28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */,
 			);
 			path = CloudKit;
@@ -1660,9 +1691,11 @@
 				28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */,
 				28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */,
 				28A9288F1E910FF60022AB55 /* CoreDataRepository+User.swift */,
+				2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */,
 				4065D38D1DD3B44200B73201 /* CSettings.swift */,
 				4065D38E1DD3B44200B73201 /* CTask.swift */,
 				4065D38F1DD3B44200B73201 /* CUser.swift */,
+				2863495623CB7E4D009F81D7 /* CProject.swift */,
 				2818847F21A4A2F800B33B9C /* Jirassic.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -2136,15 +2169,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D70E51ECFE88F005D2689 /* CUser.swift in Sources */,
+				2863494323CB6E9F009F81D7 /* UserInteractor.swift in Sources */,
 				280D70F51ECFE98C005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				280D70E91ECFE8B9005D2689 /* CloudKitRepository+Settings.swift in Sources */,
+				2863495923CB7E4D009F81D7 /* CProject.swift in Sources */,
 				280D70D21ECFE7ED005D2689 /* Day.swift in Sources */,
 				280D70DA1ECFE83F005D2689 /* CreateReport.swift in Sources */,
 				280D70D71ECFE817005D2689 /* DateExtension.swift in Sources */,
+				2863495D23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */,
 				280D70F01ECFE8CC005D2689 /* Repository.swift in Sources */,
+				2863495523CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */,
 				286348FC23B237B1009F81D7 /* Project.swift in Sources */,
-				280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */,
-				280D70DE1ECFE870005D2689 /* UserInteractor.swift in Sources */,
+				2863494923CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */,
 				280D70E11ECFE88F005D2689 /* CoreDataRepository+Settings.swift in Sources */,
 				280D70C81ECFE5AC005D2689 /* AppDelegate.swift in Sources */,
 				280D70E21ECFE88F005D2689 /* CoreDataRepository+User.swift in Sources */,
@@ -2171,11 +2207,14 @@
 				280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */,
 				28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				280D70E41ECFE88F005D2689 /* CTask.swift in Sources */,
+				2863495123CB73E4009F81D7 /* SProject.swift in Sources */,
 				280D70D41ECFE7FF005D2689 /* Task.swift in Sources */,
+				2863494D23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
 				280D70D51ECFE803005D2689 /* User.swift in Sources */,
 				280D70D11ECFE5EE005D2689 /* TasksViewController.swift in Sources */,
 				280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */,
 				280D70D61ECFE807005D2689 /* Week.swift in Sources */,
+				2863496123CB9134009F81D7 /* ProjectInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2191,6 +2230,7 @@
 				2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
 				2863491B23B393CF009F81D7 /* CloseDayCell.swift in Sources */,
+				2863493B23CB6B07009F81D7 /* ReadProjectsInteractor.swift in Sources */,
 				287195312025C360001C237E /* CSettings.swift in Sources */,
 				56ADBF6A21C3F625008350A6 /* GitUser.swift in Sources */,
 				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
@@ -2199,6 +2239,7 @@
 				566B9FA7217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				288BB67E2085252900CF720A /* WizardViewController.swift in Sources */,
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
+				2863494B23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
 				2863492F23B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */,
@@ -2220,11 +2261,14 @@
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
+				2863494723CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */,
+				2863495F23CB9134009F81D7 /* ProjectInteractor.swift in Sources */,
 				280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
 				286348F523B136B3009F81D7 /* ProjectsInteractor.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
+				2863494123CB6E9F009F81D7 /* UserInteractor.swift in Sources */,
 				285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
 				56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */,
 				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
@@ -2233,8 +2277,6 @@
 				2845B160206AE468006EFB3B /* TaskCell_.swift in Sources */,
 				28FE18AB207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
-				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
-				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
 				28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
@@ -2285,7 +2327,9 @@
 				280D71701ED6043D005D2689 /* ExtensionsInteractor.swift in Sources */,
 				2845B13F2068351F006EFB3B /* TableViewCell.swift in Sources */,
 				288BB6872087169F00CF720A /* ViewXib.swift in Sources */,
+				2863494F23CB73E4009F81D7 /* SProject.swift in Sources */,
 				28A283972037975600DDCB63 /* Saveable.swift in Sources */,
+				2863495723CB7E4D009F81D7 /* CProject.swift in Sources */,
 				2863493523B790B1009F81D7 /* ProjectsListViewController.swift in Sources */,
 				280D71711ED6043D005D2689 /* ExtensionsInstallerInteractor.swift in Sources */,
 				280D71721ED6043D005D2689 /* AppleScript.swift in Sources */,
@@ -2322,6 +2366,7 @@
 				280D718E1ED6043D005D2689 /* UserNotifications.swift in Sources */,
 				280D718F1ED6043D005D2689 /* SleepNotifications.swift in Sources */,
 				2863490923B24C34009F81D7 /* CalendarInteractor.swift in Sources */,
+				2863495323CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */,
 				2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				280D71901ED6043D005D2689 /* BrowserNotification.swift in Sources */,
 				280D719D1ED6043D005D2689 /* SqliteRepository.swift in Sources */,
@@ -2338,6 +2383,7 @@
 				569C4C6A202319A20049FBF1 /* BrowserCell.swift in Sources */,
 				280D71A31ED6043D005D2689 /* SUser.swift in Sources */,
 				280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */,
+				2863495B23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */,
 				2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */,
 				280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */,
 				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
@@ -2381,6 +2427,7 @@
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
 				28279AD321BBF09900376304 /* Jirassic.xcdatamodeld in Sources */,
 				56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */,
+				2863495C23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */,
 				2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
 				2828B04F2381D04E0005B188 /* NoAnimation.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
@@ -2395,6 +2442,7 @@
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
+				2863494823CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */,
 				286BC00521909F85004D4CDD /* CloseDayInteractor.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
@@ -2421,9 +2469,11 @@
 				569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */,
 				2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
 				2823C9351E4F69970055D036 /* Versioning.swift in Sources */,
+				2863495823CB7E4D009F81D7 /* CProject.swift in Sources */,
+				2863494C23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
+				2863495423CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */,
 				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
-				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
 				5623914B21CBC6A10031B882 /* ProjectsViewController.swift in Sources */,
 				2812F61F2145031B008EE81E /* IAPHelper.swift in Sources */,
@@ -2452,7 +2502,6 @@
 				2845B1402068351F006EFB3B /* TableViewCell.swift in Sources */,
 				28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
-				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				28FE18A6207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */,
@@ -2479,9 +2528,11 @@
 				284192D82018841700E64A9A /* JProject.swift in Sources */,
 				56D90CF920876F1100F24442 /* WizardJiraView.swift in Sources */,
 				28279AD221BBF08E00376304 /* InMemoryCoreDataRepository.swift in Sources */,
+				2863495023CB73E4009F81D7 /* SProject.swift in Sources */,
 				28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */,
 				28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
+				2863494223CB6E9F009F81D7 /* UserInteractor.swift in Sources */,
 				2863491523B299DB009F81D7 /* MainPresenter.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
@@ -2491,6 +2542,7 @@
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
 				2863492D23B5EF9C009F81D7 /* ReportsViewController.swift in Sources */,
+				2863496023CB9134009F81D7 /* ProjectInteractor.swift in Sources */,
 				569C4C68202319930049FBF1 /* GitPresenter.swift in Sources */,
 				28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */,
 				2845B13A206703C5006EFB3B /* Keychain.swift in Sources */,
@@ -2504,6 +2556,7 @@
 				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
 				56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */,
 				286348F623B136B3009F81D7 /* ProjectsInteractor.swift in Sources */,
+				2863493C23CB6B08009F81D7 /* ReadProjectsInteractor.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
@@ -2572,7 +2625,6 @@
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
 				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,
 				28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */,
-				4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

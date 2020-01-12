@@ -117,7 +117,7 @@ extension CloudKitRepository {
         privateDB.add(op)
     }
     
-    func fetchRecords (ofType type: String, predicate: NSPredicate, completion: @escaping ((_ ctask: [CKRecord]?) -> Void)) {
+    func fetchRecords (ofType type: String, predicate: NSPredicate, completion: @escaping ((_ record: [CKRecord]?) -> Void)) {
         
         guard let customZone = self.customZone, let privateDB = self.privateDB else {
             RCLog("Not logged in")

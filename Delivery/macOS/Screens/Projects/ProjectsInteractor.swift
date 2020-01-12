@@ -39,8 +39,10 @@ extension ProjectsInteractor: ProjectsInteractorInput {
     }
     
     func reloadProjects() {
-//        presenter?.projectsDidLoad([])
-//        return;
+//        let interactor = ReadProjectsInteractor(repository: localRepository, remoteRepository: remoteRepository)
+//        let projects = interactor.allProjects()
+//        presenter?.projectsDidLoad(projects)
+
         presenter?.projectsDidLoad([
             Project(objectId: nil,
                     lastModifiedDate: nil,
@@ -57,8 +59,8 @@ extension ProjectsInteractor: ProjectsInteractorInput {
                     title: "Terma",
                     jiraBaseUrl: "https://jira.fortech.ro",
                     jiraUser: "cristianbal",
-                    jiraProject: "BOSCH",
-                    jiraIssue: "BOSCH-100",
+                    jiraProject: "TERMA",
+                    jiraIssue: "TERMA-001",
                     gitBaseUrls: [],
                     gitUsers: [],
                     taskNumberPrefix: "TERMA")

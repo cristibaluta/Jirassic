@@ -40,4 +40,13 @@ protocol RepositorySettings {
     
 }
 
-typealias Repository = RepositoryUser & RepositoryTasks & RepositorySettings
+protocol RepositoryProjects {
+    
+    func projects() -> [Project]
+    func queryProjects(_ completion: @escaping ((_ task: [Project]) -> Void))
+    func saveProject (_ project: Project, completion: @escaping ((_ task: Project?) -> Void))
+    func deleteProject (_ project: Project, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void))
+    
+}
+
+typealias Repository = RepositoryUser & RepositoryTasks & RepositorySettings & RepositoryProjects
