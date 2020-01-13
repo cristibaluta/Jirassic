@@ -49,4 +49,30 @@ protocol RepositoryProjects {
     
 }
 
-typealias Repository = RepositoryUser & RepositoryTasks & RepositorySettings & RepositoryProjects
+protocol RepositoryMetadata {
+    
+    func tasksLastSyncDate() -> Date?
+    func projectsLastSyncDate() -> Date?
+    func tasksLastSyncToken() -> String?
+    func projectsLastSyncToken() -> String?
+    func set(tasksLastSyncDate: Date?)
+    func set(projectsLastSyncDate: Date?)
+    func set(tasksLastSyncToken: String?)
+    func set(projectsLastSyncToken: String?)
+    
+}
+
+extension RepositoryMetadata {
+    
+    func tasksLastSyncDate() -> Date? { return nil }
+    func projectsLastSyncDate() -> Date? { return nil }
+    func tasksLastSyncToken() -> String? { return nil }
+    func projectsLastSyncToken() -> String? { return nil }
+    func set(tasksLastSyncDate: Date?) {}
+    func set(projectsLastSyncDate: Date?) {}
+    func set(tasksLastSyncToken: String?) {}
+    func set(projectsLastSyncToken: String?) {}
+    
+}
+
+typealias Repository = RepositoryUser & RepositoryTasks & RepositorySettings & RepositoryProjects & RepositoryMetadata

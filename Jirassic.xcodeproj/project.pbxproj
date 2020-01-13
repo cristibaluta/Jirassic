@@ -269,6 +269,12 @@
 		2863495F23CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
 		2863496023CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
 		2863496123CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
+		2863496323CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */; };
+		2863496423CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */; };
+		2863496623CCF311009F81D7 /* SMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496523CCF311009F81D7 /* SMetadata.swift */; };
+		2863496723CCF311009F81D7 /* SMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496523CCF311009F81D7 /* SMetadata.swift */; };
+		2863496923CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */; };
+		2863496A23CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */; };
 		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		286BC00421909F85004D4CDD /* CloseDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDayInteractor.swift */; };
@@ -696,6 +702,9 @@
 		2863495623CB7E4D009F81D7 /* CProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProject.swift; sourceTree = "<group>"; };
 		2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Projects.swift"; sourceTree = "<group>"; };
 		2863495E23CB9134009F81D7 /* ProjectInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInteractor.swift; sourceTree = "<group>"; };
+		2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Metadata.swift"; sourceTree = "<group>"; };
+		2863496523CCF311009F81D7 /* SMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMetadata.swift; sourceTree = "<group>"; };
+		2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Metadata.swift"; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
 		286BC00321909F85004D4CDD /* CloseDayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDayInteractor.swift; sourceTree = "<group>"; };
 		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
@@ -1068,10 +1077,12 @@
 				28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */,
 				28A928861E910EA70022AB55 /* SqliteRepository+Settings.swift */,
 				2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */,
+				2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */,
 				28577EA81E8ADC53002B07FD /* SSettings.swift */,
 				28577EA91E8ADC53002B07FD /* STask.swift */,
 				28577EAA1E8ADC53002B07FD /* SUser.swift */,
 				2863494E23CB73E4009F81D7 /* SProject.swift */,
+				2863496523CCF311009F81D7 /* SMetadata.swift */,
 				28577EB31E8AF08F002B07FD /* SQLiteDB.swift */,
 				28577EB41E8AF08F002B07FD /* SQLTable.swift */,
 				28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */,
@@ -1679,6 +1690,7 @@
 				28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */,
 				28A928941E9110980022AB55 /* CloudKitRepository+User.swift */,
 				2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */,
+				2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */,
 				28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */,
 			);
 			path = CloudKit;
@@ -2282,6 +2294,7 @@
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
 				28279AD521C6245700376304 /* GitUsersViewController.swift in Sources */,
+				2863496323CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */,
 				287195322025C364001C237E /* CTask.swift in Sources */,
 				5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
 				2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */,
@@ -2314,6 +2327,7 @@
 				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				2812F6202145031B008EE81E /* Store.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
+				2863496923CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */,
 				56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
 				2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */,
@@ -2389,6 +2403,7 @@
 				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
 				280D71A61ED6043D005D2689 /* UpdateSchemaInteractor.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
+				2863496623CCF311009F81D7 /* SMetadata.swift in Sources */,
 				28279AD121BBF08C00376304 /* InMemoryCoreDataRepository.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				569C4C5E202319630049FBF1 /* JitCell.swift in Sources */,
@@ -2523,6 +2538,7 @@
 				28A928931E91104B0022AB55 /* CloudKitRepository+Tasks.swift in Sources */,
 				566B9FA8217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
+				2863496423CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */,
 				28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				2863491823B354A0009F81D7 /* CalendarDayCellView.swift in Sources */,
 				284192D82018841700E64A9A /* JProject.swift in Sources */,
@@ -2555,7 +2571,9 @@
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
 				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
 				56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */,
+				2863496A23CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */,
 				286348F623B136B3009F81D7 /* ProjectsInteractor.swift in Sources */,
+				2863496723CCF311009F81D7 /* SMetadata.swift in Sources */,
 				2863493C23CB6B08009F81D7 /* ReadProjectsInteractor.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
