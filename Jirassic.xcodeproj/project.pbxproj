@@ -125,7 +125,7 @@
 		280D71A31ED6043D005D2689 /* SUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EAA1E8ADC53002B07FD /* SUser.swift */; };
 		280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB31E8AF08F002B07FD /* SQLiteDB.swift */; };
 		280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
-		280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
+		280D71A61ED6043D005D2689 /* UpdateSchemaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */; };
 		280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		280D71B61ED6043D005D2689 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
@@ -360,8 +360,8 @@
 		28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
-		28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
-		28A928791E8F78580022AB55 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
+		28A928781E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */; };
+		28A928791E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */; };
 		28A9287A1E8FA8E90022AB55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28A9287B1E8FC9B90022AB55 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9287C1E9030BA0022AB55 /* CloudKit.framework */; };
@@ -736,7 +736,7 @@
 		28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractorTests.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		28A928771E8F78580022AB55 /* SQLiteSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteSchema.swift; sourceTree = "<group>"; };
+		28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSchemaInteractor.swift; sourceTree = "<group>"; };
 		28A9287C1E9030BA0022AB55 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Tasks.swift"; sourceTree = "<group>"; };
 		28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+User.swift"; sourceTree = "<group>"; };
@@ -1074,7 +1074,7 @@
 				2863494E23CB73E4009F81D7 /* SProject.swift */,
 				28577EB31E8AF08F002B07FD /* SQLiteDB.swift */,
 				28577EB41E8AF08F002B07FD /* SQLTable.swift */,
-				28A928771E8F78580022AB55 /* SQLiteSchema.swift */,
+				28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */,
 				28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */,
 			);
 			path = sqlite;
@@ -2387,7 +2387,7 @@
 				2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */,
 				280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */,
 				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
-				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
+				280D71A61ED6043D005D2689 /* UpdateSchemaInteractor.swift in Sources */,
 				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				28279AD121BBF08C00376304 /* InMemoryCoreDataRepository.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
@@ -2575,7 +2575,7 @@
 				2845B16B206AE468006EFB3B /* TaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
-				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
+				28A928781E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */,
 				2863493623B790B1009F81D7 /* ProjectsListViewController.swift in Sources */,
 				28FE18AC207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
@@ -2661,7 +2661,7 @@
 				28577EB21E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */,
 				28577EB61E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
-				28A928791E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
+				28A928791E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */,
 				4065D4181DD454C500B73201 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

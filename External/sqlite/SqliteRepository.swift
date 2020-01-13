@@ -38,7 +38,7 @@ class SqliteRepository {
         #endif
         
         db = SQLiteDB(url: dbUrl)
-        _ = SQLiteSchema(db: db)
+        UpdateSchemaInteractor().execute(with: db)
     }
     
     internal func queryWithPredicate<T: SQLTable> (_ predicate: String?, sortingKeyPath: String?) -> [T] {
