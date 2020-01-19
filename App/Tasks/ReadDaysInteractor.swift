@@ -44,6 +44,8 @@ class ReadDaysInteractor: RepositoryInteractor {
             let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
             sync.start { [weak self] hasIncomingChanges in
                 
+                WriteMetadataInteractor().set(tasksLastSyncDate: Date())
+                
                 guard let self = self, hasIncomingChanges else {
                     return
                 }

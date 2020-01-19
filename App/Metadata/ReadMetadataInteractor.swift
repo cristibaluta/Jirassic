@@ -33,10 +33,9 @@ class ReadMetadataInteractor: RepositoryInteractor {
     
     private func token (from stringToken: String?) -> CKServerChangeToken? {
         
-        guard let data = stringToken?.data(using: .utf8) else {
-            return nil
-        }
-        guard let token = NSKeyedUnarchiver.unarchiveObject(with: data) as? CKServerChangeToken else {
+        guard let string = stringToken,
+            let data = Data(base64Encoded: string),
+            let token = NSKeyedUnarchiver.unarchiveObject(with: data) as? CKServerChangeToken else {
             return nil
         }
         

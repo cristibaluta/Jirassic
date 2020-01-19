@@ -35,9 +35,7 @@ class WriteMetadataInteractor: RepositoryInteractor {
             return nil
         }
         let data = NSKeyedArchiver.archivedData(withRootObject: token)
-        guard let string = String(data: data, encoding: .utf8) else {
-            return nil
-        }
+        let string = data.base64EncodedString()
         return string
     }
 }

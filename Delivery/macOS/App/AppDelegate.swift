@@ -49,6 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window?.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
         
         localRepository = SqliteRepository()
+        Migrator.migrate()
         #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()

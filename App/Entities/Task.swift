@@ -72,6 +72,7 @@ struct Task {
     /// Created locally and used for matching with the remote object
     /// If objectId is missing means the task is not saved to db nor to server (eg. unsaved git and calendar items)
     var objectId: String?
+    var projectId: String?
 }
 
 extension Task {

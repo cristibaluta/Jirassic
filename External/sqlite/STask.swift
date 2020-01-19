@@ -19,12 +19,13 @@ class STask: SQLTable {
     var taskTitle: String?
     var taskType: Int = 0
     var objectId: String?
+    var projectId: String?
     
     override func primaryKey() -> String {
         return "objectId"
     }
     
     override var description: String {
-        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate ?? nil)) \n markedForDeletion: \(markedForDeletion) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskTitle: \(String(describing: taskTitle)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId))>"
+        return "<STask: lastModifiedDate: \(String(describing: lastModifiedDate ?? nil)) \n markedForDeletion: \(markedForDeletion) \n startDate: \(String(describing: startDate)) \n endDate: \(String(describing: endDate)) \n notes: \(String(describing: notes)) \n taskNumber: \(String(describing: taskNumber)) \n taskTitle: \(String(describing: taskTitle)) \n taskType: \(String(describing: taskType)) \n objectId: \(String(describing: objectId)) \n projectId: \(String(describing: projectId))>"
     }
 }

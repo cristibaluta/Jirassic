@@ -35,6 +35,7 @@ extension CloudKitRepository: RepositoryUser {
     func logout() {
         user = nil
         privateDB = nil
-        customZone = nil
+        tasksZone = nil
+        projectsZone = nil
     }
 }

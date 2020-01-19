@@ -18,7 +18,7 @@ extension CloudKitRepository: RepositoryProjects {
     
     func queryProjects(_ completion: @escaping (_ projects: [Project]) -> Void) {
         let predicate = NSPredicate(value: true)
-        fetchRecords(ofType: "Project", predicate: predicate) { records in
+        projectsZone?.fetchRecords(ofType: "Project", predicate: predicate) { records in
             completion( self.projectsFromRecords(records ?? []) )
         }
     }
@@ -27,10 +27,10 @@ extension CloudKitRepository: RepositoryProjects {
         
         let changeToken = ReadMetadataInteractor().projectsLastSyncToken()
         
-        fetchChangedRecords(token: changeToken,
-                            previousRecords: [],
-                            previousDeletedRecordsIds: [],
-                            completion: { changedRecords, deletedRecordsIds in
+        projectsZone?.fetchChangedRecords(token: changeToken,
+                                          previousRecords: [],
+                                          previousDeletedRecordsIds: [],
+                                          completion: { changedRecords, deletedRecordsIds in
                             
             completion(self.projectsFromRecords(changedRecords), self.stringIdsFromCKRecordIds(deletedRecordsIds), nil)
         })
@@ -39,7 +39,7 @@ extension CloudKitRepository: RepositoryProjects {
     func saveProject (_ project: Project, completion: @escaping ((_ task: Project?) -> Void)) {
         RCLogO("1. Save to cloudkit \(project)")
         
-        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+        guard let zoneId = self.tasksZone?.zoneId, let privateDB = self.privateDB else {
             RCLog("Can't save, not logged in to iCloud")
             return
         }
@@ -49,7 +49,7 @@ extension CloudKitRepository: RepositoryProjects {
             var record: CKRecord? = record
             // No record found on server, creating one now
             if record == nil {
-                let recordId = CKRecord.ID(recordName: project.objectId!, zoneID: customZone.zoneID)
+                let recordId = CKRecord.ID(recordName: project.objectId!, zoneID: zoneId)
                 record = CKRecord(recordType: "Project", recordID: recordId)
             }
             record = self.updatedRecord(record!, withProject: project)
@@ -106,14 +106,14 @@ extension CloudKitRepository {
     
     func fetchCKRecordOfProject (_ project: Project, completion: @escaping ((_ cproject: CKRecord?) -> Void)) {
         
-        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+        guard let zoneId = self.tasksZone?.zoneId, let privateDB = self.privateDB else {
             RCLog("Not logged in")
             return
         }
         
         let predicate = NSPredicate(format: "objectId == %@", project.objectId! as CVarArg)
         let query = CKQuery(recordType: "Project", predicate: predicate)
-        privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
+        privateDB.perform(query, inZoneWith: zoneId) { (results: [CKRecord]?, error) in
             
             RCLogErrorO(error)
             

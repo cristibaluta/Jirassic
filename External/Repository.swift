@@ -22,7 +22,7 @@ protocol RepositoryTasks {
     func queryTask (withId objectId: String) -> Task?
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate?) -> [Task]
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate?, completion: @escaping ([Task], NSError?) -> Void)
-    func queryUnsyncedTasks() -> [Task]
+    func queryUnsyncedTasks (since lastSyncDate: Date?) -> [Task]
     func queryDeletedTasks (_ completion: @escaping ([Task]) -> Void)
     func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void)
     // Marks the Task as deleted. If permanently is true it will be removed from db
