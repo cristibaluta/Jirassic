@@ -34,6 +34,7 @@ class UpdateSchemaInteractor {
 
     private func migrate (db: SQLiteDB, toVersion version: SQLiteSchemaVersion) {
         
+        /// Note: TABLES MUST BE AT PLURAL
         switch version {
             case .v1:
             /// Tasks table
@@ -49,7 +50,7 @@ class UpdateSchemaInteractor {
             /// Projects table
             _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS sprojects (objectId varchar(30) PRIMARY KEY, lastModifiedDate DATETIME, title TEXT, jiraBaseUrl TEXT, jiraUser TEXT, jiraProject TEXT, jiraIssue TEXT, gitBaseUrls TEXT, gitUsers TEXT, taskNumberPrefix TEXT);")
             /// Metadata table
-            _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS smetadata (i INTEGER NOT NULL PRIMARY KEY, tasksLastSyncDate DATETIME, projectsLastSyncDate DATETIME, tasksLastSyncToken TEXT, projectsLastSyncToken TEXT);")
+            _ = db.execute(sql: "CREATE TABLE IF NOT EXISTS smetadatas (i INTEGER NOT NULL PRIMARY KEY, tasksLastSyncDate DATETIME, projectsLastSyncDate DATETIME, tasksLastSyncToken TEXT, projectsLastSyncToken TEXT);")
         }
         db.version = version.rawValue
     }

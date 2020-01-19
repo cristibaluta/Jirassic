@@ -275,6 +275,10 @@
 		2863496723CCF311009F81D7 /* SMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496523CCF311009F81D7 /* SMetadata.swift */; };
 		2863496923CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */; };
 		2863496A23CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */; };
+		2863496D23D21286009F81D7 /* ReadMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */; };
+		2863496E23D21287009F81D7 /* ReadMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */; };
+		2863497023D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */; };
+		2863497123D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */; };
 		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		286BC00421909F85004D4CDD /* CloseDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDayInteractor.swift */; };
@@ -705,6 +709,8 @@
 		2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Metadata.swift"; sourceTree = "<group>"; };
 		2863496523CCF311009F81D7 /* SMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMetadata.swift; sourceTree = "<group>"; };
 		2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Metadata.swift"; sourceTree = "<group>"; };
+		2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMetadataInteractor.swift; sourceTree = "<group>"; };
+		2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMetadataInteractor.swift; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
 		286BC00321909F85004D4CDD /* CloseDayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDayInteractor.swift; sourceTree = "<group>"; };
 		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
@@ -1150,6 +1156,15 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		2863496B23D21259009F81D7 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */,
+				2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */,
+			);
+			path = Metadata;
+			sourceTree = "<group>";
+		};
 		28667B591FCADF4E007B98E3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1415,6 +1430,7 @@
 		4065D3161DD3B44200B73201 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2863496B23D21259009F81D7 /* Metadata */,
 				2863493D23CB6E87009F81D7 /* User */,
 				4065D3171DD3B44200B73201 /* Entities */,
 				4065D31F1DD3B44200B73201 /* Extensions */,
@@ -2262,6 +2278,7 @@
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				285465A7217858790052CB6A /* StoreView.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
+				2863496D23D21286009F81D7 /* ReadMetadataInteractor.swift in Sources */,
 				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				28FE18A5207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
@@ -2270,6 +2287,7 @@
 				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				2812F61E2145031B008EE81E /* IAPHelper.swift in Sources */,
+				2863497023D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
@@ -2569,6 +2587,7 @@
 				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
+				2863497123D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */,
 				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
 				56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */,
 				2863496A23CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */,
@@ -2579,6 +2598,7 @@
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */,
+				2863496E23D21287009F81D7 /* ReadMetadataInteractor.swift in Sources */,
 				2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */,
 				2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,

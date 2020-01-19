@@ -78,7 +78,7 @@ extension CloudKitRepository {
                     switch ckerror {
                     case CKError.changeTokenExpired:
                         // Reset the token and try to do the request again
-                        UserDefaults.standard.serverChangeToken = nil
+                        WriteMetadataInteractor().set(tasksLastSyncToken: nil)
                         self.fetchChangedRecords(token: nil,
                                                  previousRecords: changedRecords,
                                                  previousDeletedRecordsIds: deletedRecordsIds,
@@ -91,7 +91,7 @@ extension CloudKitRepository {
                 completion(changedRecords, deletedRecordsIds)
                 return
             }
-            UserDefaults.standard.serverChangeToken = serverChangeToken
+            WriteMetadataInteractor().set(tasksLastSyncToken: serverChangeToken)
             
             if moreComing {
                 self.fetchChangedRecords(token: serverChangeToken,

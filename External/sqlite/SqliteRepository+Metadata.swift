@@ -14,6 +14,7 @@ extension SqliteRepository: RepositoryMetadata {
     func projectsLastSyncDate() -> Date? { return metadata().projectsLastSyncDate }
     func tasksLastSyncToken() -> String? { return metadata().tasksLastSyncToken }
     func projectsLastSyncToken() -> String? { return metadata().projectsLastSyncToken }
+    
     func set(tasksLastSyncDate: Date?) {
         let meta =  metadata()
         meta.tasksLastSyncDate = tasksLastSyncDate

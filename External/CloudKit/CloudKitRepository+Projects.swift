@@ -25,7 +25,7 @@ extension CloudKitRepository: RepositoryProjects {
     
     func queryUpdates (_ completion: @escaping ([Project], [String], NSError?) -> Void) {
         
-        let changeToken = UserDefaults.standard.serverChangeToken
+        let changeToken = ReadMetadataInteractor().projectsLastSyncToken()
         
         fetchChangedRecords(token: changeToken,
                             previousRecords: [],

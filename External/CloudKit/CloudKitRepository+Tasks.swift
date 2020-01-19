@@ -37,7 +37,7 @@ extension CloudKitRepository: RepositoryTasks {
     
     func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        let changeToken = UserDefaults.standard.serverChangeToken
+        let changeToken = ReadMetadataInteractor().tasksLastSyncToken()
         
         fetchChangedRecords(token: changeToken, 
                             previousRecords: [], 
