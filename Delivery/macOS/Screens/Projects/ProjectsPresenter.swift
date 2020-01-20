@@ -38,7 +38,7 @@ extension ProjectsPresenter: ProjectsPresenterInput {
     func addProject() {
         ui!.hideMessage()
 //        interactor!.addProject()
-        let newProject = Project(objectId: nil,
+        let newProject = Project(objectId: String.generateId(),
                                 lastModifiedDate: nil,
                                 title: "Project \(projects.count + 1)",
                                 jiraBaseUrl: "https://",

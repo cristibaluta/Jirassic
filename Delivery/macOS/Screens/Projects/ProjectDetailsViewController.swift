@@ -76,11 +76,20 @@ class ProjectDetailsViewController: NSViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-//        presenter!.saveProject(project)
+
+        project!.jiraBaseUrl = baseUrlTextField.stringValue
+        project!.jiraUser = userTextField.stringValue
+        project!.jiraProject = projectNamePopup.selectedItem?.title
+        project!.jiraIssue = projectIssueNamePopup.selectedItem?.title
+        project!.gitBaseUrls = pathsTextField.stringValue.toArray()
+        project!.gitUsers = emailsTextField.stringValue.toArray()
+        project!.taskNumberPrefix = taskNumberPrefixTextField.stringValue
+
+        presenter!.saveProject(project!)
     }
     
     @IBAction func handleDeleteButton (_ sender: NSButton) {
-        
+        presenter!.deleteProject(project!)
     }
     
     @IBAction func handleCredentialsButton (_ sender: NSButton) {

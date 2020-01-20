@@ -17,7 +17,7 @@ class ProjectInteractor: RepositoryInteractor {
     func saveProject (_ project: Project, allowSyncing: Bool, completion: @escaping (_ savedProject: Project?) -> Void) {
         
         guard project.objectId != nil else {
-            fatalError("Cannot save a task without objectId")
+            fatalError("Cannot save a project without objectId")
         }
         var project = project
         project.lastModifiedDate = nil

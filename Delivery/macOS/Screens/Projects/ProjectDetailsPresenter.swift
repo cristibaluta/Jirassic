@@ -14,6 +14,7 @@ protocol ProjectDetailsPresenterInput: class {
     func didPickUrl (_ url: URL)
     func save (emails: String, paths: String)
     func saveProject (_ project: Project)
+    func deleteProject (_ project: Project)
 }
 
 protocol ProjectDetailsPresenterOutput: class {
@@ -61,7 +62,17 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
     }
     
     func saveProject (_ project: Project) {
-        
+        if project.objectId == nil {
+            
+        }
+        let interactor = ProjectInteractor(repository: localRepository, remoteRepository: remoteRepository)
+        interactor.saveProject(project, allowSyncing: true) { savedProject in
+
+        }
+    }
+
+    func deleteProject (_ project: Project) {
+
     }
     
     private func saveEmails (_ emails: String) {

@@ -16,7 +16,7 @@ extension SqliteRepository: RepositoryTasks {
         let taskPredicate = "objectId == '\(objectId)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
         if let stask = tasks.first {
-            return taskFromSTask(stask)
+            return stask.toTask()
         }
         return nil
     }
@@ -100,7 +100,7 @@ extension SqliteRepository: RepositoryTasks {
         RCLog("Saved to sqlite \(saved) \(task)")
         #endif
         if saved == 1 {
-            completion( taskFromSTask(stask))
+            completion( stask.toTask() )
         } else {
             completion(nil)
         }
@@ -126,28 +126,8 @@ extension SqliteRepository {
         return tasks
     }
 
-    private func taskFromSTask (_ stask: STask) -> Task {
-        
-        return Task(lastModifiedDate: stask.lastModifiedDate,
-                    startDate: stask.startDate,
-                    endDate: stask.endDate!,
-                    notes: stask.notes,
-                    taskNumber: stask.taskNumber,
-                    taskTitle: stask.taskTitle,
-                    taskType: TaskType(rawValue: stask.taskType)!,
-                    objectId: stask.objectId!,
-                    projectId: stask.projectId
-        )
-    }
-    
-    private func tasksFromSTasks (_ rtasks: [STask]) -> [Task] {
-        
-        var tasks = [Task]()
-        for rtask in rtasks {
-            tasks.append( taskFromSTask(rtask) )
-        }
-        
-        return tasks
+    private func tasksFromSTasks (_ stasks: [STask]) -> [Task] {
+        return stasks.map({ $0.toTask() })
     }
     
     private func staskFromTask (_ task: Task) -> STask {
@@ -159,22 +139,8 @@ extension SqliteRepository {
             stask = STask()
             stask!.objectId = task.objectId
         }
+        stask!.update(with: task)
         
-        return updatedSTask(stask!, withTask: task)
-    }
-    
-    // Update only updatable properties. objectId can't be updated
-    private func updatedSTask (_ stask: STask, withTask task: Task) -> STask {
-        
-        stask.taskNumber = task.taskNumber
-        stask.taskType = task.taskType.rawValue
-        stask.taskTitle = task.taskTitle
-        stask.notes = task.notes
-        stask.startDate = task.startDate
-        stask.endDate = task.endDate
-        stask.lastModifiedDate = task.lastModifiedDate
-        stask.projectId = task.projectId
-        
-        return stask
+        return stask!
     }
 }

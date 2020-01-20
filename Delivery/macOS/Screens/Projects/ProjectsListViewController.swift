@@ -14,7 +14,7 @@ class ProjectsListViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var butAdd: NSButton!
     
-    private var selectedProject: Project?
+//    private var selectedProject: Project?
     
     var projects = [Project]() {
         didSet {
@@ -22,6 +22,7 @@ class ProjectsListViewController: NSViewController {
         }
     }
     var didSelectProject: ((Project) -> Void)?
+    var didUpdateProject: ((Project) -> Void)?
     var didSelectAddProject: (() -> Void)?
     var didSelectRemoveProject: ((Project) -> Void)?
     
@@ -48,9 +49,6 @@ extension ProjectsListViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         
         let project = projects[row]
-        if (tableColumn?.identifier)?.rawValue == "isSelected" {
-            return nil
-        }
         if (tableColumn?.identifier)?.rawValue == "name" {
             return project.title
         }
@@ -59,13 +57,14 @@ extension ProjectsListViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
         
-        if (tableColumn?.identifier)?.rawValue == "isSelected" {
-            
+        if (tableColumn?.identifier)?.rawValue == "name" {
+            projects[row].title = object as? String ?? ""
+            didUpdateProject?(projects[row])
         }
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        selectedProject = projects[row]
+//        selectedProject = projects[row]
         didSelectProject?(projects[row])
         return true
     }

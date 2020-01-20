@@ -27,10 +27,12 @@ class ProjectsViewController: NSSplitViewController {
             return
         }
         let c1 = ProjectsListViewController.instantiateFromStoryboard("Projects")
+
         let c2 = ProjectDetailsViewController.instantiateFromStoryboard("Projects")
         let c2Presenter = ProjectDetailsPresenter()
         c2.presenter = c2Presenter
         c2Presenter.ui = c2
+
         let s1 = NSSplitViewItem(viewController: c1)
         s1.minimumThickness = 120
         let s2 = NSSplitViewItem(viewController: c2)
@@ -68,6 +70,14 @@ extension ProjectsViewController: ProjectsPresenterOutput {
                 return
             }
             controller.project = project
+        }
+        controller.didUpdateProject = { project in
+
+            guard let controller = self.splitViewItems.last?.viewController as? ProjectDetailsViewController else {
+                return
+            }
+            /// In the list of projects only the title can change
+            controller.project?.title = project.title
         }
         controller.didSelectAddProject = {
             self.presenter?.addProject()

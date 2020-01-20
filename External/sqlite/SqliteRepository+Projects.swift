@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import RCLog
 
 extension SqliteRepository: RepositoryProjects {
     
     func projects() -> [Project] {
         
         let projects: [SProject] = queryWithPredicate(nil, sortingKeyPath: nil)
-        return projects.map({ projectFromSProject($0) })
+        return projects.map({ $0.toProject() })
     }
     
     func queryProjects(_ completion: @escaping ((_ projects: [Project]) -> Void)) {
@@ -21,44 +22,38 @@ extension SqliteRepository: RepositoryProjects {
     }
     
     func saveProject (_ project: Project, completion: @escaping ((_ project: Project?) -> Void)) {
-        
+
+        let sproject = project.toSProject()
+        let saved = sproject.save()
+        #if !CMD
+        RCLog("Project saved to sqlite \(saved) \(project)")
+        #endif
+        if saved == 1 {
+            completion( sproject.toProject() )
+        } else {
+            completion(nil)
+        }
     }
     
     func deleteProject (_ project: Project, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void)) {
-        
+
+        let sproject = project.toSProject()
+        if permanently {
+            completion( sproject.delete() )
+        } else {
+            sproject.markedForDeletion = true
+            completion( sproject.save() == 1 )
+        }
     }
-    
-    private func projectFromSProject (_ sproject: SProject) -> Project {
-        
-        return Project(
-            objectId: sproject.objectId,
-            lastModifiedDate: sproject.lastModifiedDate,
-            title: sproject.title ?? "",
-            jiraBaseUrl: sproject.jiraBaseUrl,
-            jiraUser: sproject.jiraUser,
-            jiraProject: sproject.jiraProject,
-            jiraIssue: sproject.jiraIssue,
-            
-            gitBaseUrls: (sproject.gitBaseUrls ?? "").toArray(),
-            gitUsers: (sproject.gitBaseUrls ?? "").toArray(),
-            taskNumberPrefix: sproject.taskNumberPrefix
-        )
-    }
-    
-    private func sprojectFromProject (_ project: Project) -> SProject {
-        
-        let sproject = SProject()
-        sproject.objectId = project.objectId
-        sproject.lastModifiedDate = project.lastModifiedDate
-        sproject.title = project.title
-        sproject.jiraBaseUrl = project.jiraBaseUrl
-        sproject.jiraUser = project.jiraUser
-        sproject.jiraProject = project.jiraProject
-        sproject.jiraIssue = project.jiraIssue
-        sproject.gitBaseUrls = project.gitBaseUrls.toString()
-        sproject.gitUsers = project.gitUsers.toString()
-        sproject.taskNumberPrefix = project.taskNumberPrefix
-        
-        return sproject
+
+    func deleteProject (objectId: String, completion: @escaping ((_ success: Bool) -> Void)) {
+
+        let projectPredicate = "objectId == '\(objectId)'"
+        let projects: [SProject] = queryWithPredicate(projectPredicate, sortingKeyPath: nil)
+        if let sproject = projects.first {
+            completion( sproject.delete() )
+        } else {
+            completion( false )
+        }
     }
 }
