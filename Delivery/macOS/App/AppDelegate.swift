@@ -53,11 +53,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()
-            remoteRepository?.getUser({ (user) in
+            remoteRepository?.getUser { user in
                 if user == nil {
                     remoteRepository = nil
                 }
-            })
+            }
         }
 //        _ = Store.shared
         #else
@@ -157,7 +157,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskNumber: nil,
                 taskTitle: nil,
                 taskType: .coderev,
-                objectId: String.generateId()
+                objectId: String.generateId(),
+                projectId: nil
             )
             let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
@@ -260,4 +261,3 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
         return true
     }
 }
-

@@ -11,14 +11,16 @@ import Foundation
 extension SqliteRepository: RepositoryProjects {
     
     func projects() -> [Project] {
-        return []
+        
+        let projects: [SProject] = queryWithPredicate(nil, sortingKeyPath: nil)
+        return projects.map({ projectFromSProject($0) })
     }
     
-    func queryProjects(_ completion: @escaping ((_ task: [Project]) -> Void)) {
-        
+    func queryProjects(_ completion: @escaping ((_ projects: [Project]) -> Void)) {
+        completion(projects())
     }
-       
-    func saveProject (_ project: Project, completion: @escaping ((_ task: Project?) -> Void)) {
+    
+    func saveProject (_ project: Project, completion: @escaping ((_ project: Project?) -> Void)) {
         
     }
     

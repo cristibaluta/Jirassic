@@ -86,9 +86,9 @@ class RCSync<T> {
     func deleteTask (_ task: Task, completion: @escaping ((_ success: Bool) -> Void)) {
         
         RCLog("1.1 Delete \(task)")
-        _ = remoteRepository.deleteTask(task, permanently: true) { (uploadedTask) in
+        _ = remoteRepository.deleteTask(task, permanently: true) { uploadedTask in
             // After task was marked as deleted to server, delete it permanently from local db
-            _ = self.localRepository.deleteTask(task, permanently: true, completion: { (task) in
+            _ = self.localRepository.deleteTask(task, permanently: true, completion: { task in
                 completion(true)
             })
         }
@@ -100,13 +100,13 @@ class RCSync<T> {
         remoteRepository.queryUpdates { changedTasks, deletedTasksIds, error in
             RCLog("2. Number of changes: \(changedTasks.count)")
             for task in changedTasks {
-                self.localRepository.saveTask(task, completion: { (task) in
+                self.localRepository.saveTask(task, completion: { task in
                     RCLog("2. Saved to local db \(String(describing: task?.objectId))")
                 })
             }
             RCLog("2. Number of deletes: \(deletedTasksIds.count)")
             for remoteId in deletedTasksIds {
-                self.localRepository.deleteTask(objectId: remoteId, completion: { (success) in
+                self.localRepository.deleteTask(objectId: remoteId, completion: { success in
                     RCLog("2. Deleted from local db: \(remoteId) \(success)")
                 })
             }

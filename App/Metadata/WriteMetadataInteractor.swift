@@ -15,17 +15,17 @@ class WriteMetadataInteractor: RepositoryInteractor {
         super.init(repository: localRepository, remoteRepository: nil)
     }
     
-    func set(tasksLastSyncDate: Date?) {
+    func set (tasksLastSyncDate: Date?) {
         repository.set(tasksLastSyncDate: tasksLastSyncDate)
     }
-    func set(projectsLastSyncDate: Date?) {
+    func set (projectsLastSyncDate: Date?) {
         repository.set(tasksLastSyncDate: projectsLastSyncDate)
     }
     
-    func set(tasksLastSyncToken: CKServerChangeToken?) {
+    func set (tasksLastSyncToken: CKServerChangeToken?) {
         repository.set(tasksLastSyncToken: string(from: tasksLastSyncToken))
     }
-    func set(projectsLastSyncToken: CKServerChangeToken?) {
+    func set (projectsLastSyncToken: CKServerChangeToken?) {
         repository.set(tasksLastSyncToken: string(from: projectsLastSyncToken))
     }
     
@@ -39,4 +39,3 @@ class WriteMetadataInteractor: RepositoryInteractor {
         return string
     }
 }
-

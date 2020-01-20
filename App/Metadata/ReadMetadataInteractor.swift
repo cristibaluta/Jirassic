@@ -1,5 +1,5 @@
 //
-//  ReadMetadata.swift
+//  ReadMetadataInteractor.swift
 //  Jirassic
 //
 //  Created by Cristian Baluta on 17/01/2020.

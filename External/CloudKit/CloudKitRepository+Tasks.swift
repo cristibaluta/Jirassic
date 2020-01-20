@@ -93,8 +93,7 @@ extension CloudKitRepository: RepositoryTasks {
             
             privateDB.save(record!, completionHandler: { savedRecord, error in
                 
-                RCLog("2. Record after saving to CloudKit")
-                RCLogO(savedRecord)
+                RCLog("2. Saved to CloudKit \(String(describing: savedRecord))")
                 RCLogErrorO(error)
                 
                 if let record = savedRecord {
@@ -142,13 +141,7 @@ extension CloudKitRepository {
     }
     
     private func tasksFromRecords (_ records: [CKRecord]) -> [Task] {
-        
-        var tasks = [Task]()
-        for record in records {
-            tasks.append( taskFromRecord(record) )
-        }
-        
-        return tasks
+        return records.map({ taskFromRecord($0) })
     }
     
     private func taskFromRecord (_ record: CKRecord) -> Task {
@@ -180,12 +173,6 @@ extension CloudKitRepository {
     }
     
     private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecord.ID]) -> [String] {
-        
-        var ids = [String]()
-        for ckrecord in ckrecords {
-            ids.append( ckrecord.recordName )
-        }
-        
-        return ids
+        return ckrecords.map({ $0.recordName })
     }
 }
