@@ -13,7 +13,6 @@ class ProjectsListViewController: NSViewController {
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var butAdd: NSButton!
-    @IBOutlet private weak var butRemove: NSButton!
     
     private var selectedProject: Project?
     
@@ -34,13 +33,6 @@ class ProjectsListViewController: NSViewController {
     
     @IBAction func handleAddButton (_ sender: NSButton) {
         didSelectAddProject?()
-    }
-    
-    @IBAction func handleRemoveButton (_ sender: NSButton) {
-        guard let project = selectedProject else {
-            return
-        }
-        didSelectRemoveProject?(project)
     }
 }
 

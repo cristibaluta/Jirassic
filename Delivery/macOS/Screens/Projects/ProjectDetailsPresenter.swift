@@ -13,6 +13,7 @@ protocol ProjectDetailsPresenterInput: class {
     
     func didPickUrl (_ url: URL)
     func save (emails: String, paths: String)
+    func saveProject (_ project: Project)
 }
 
 protocol ProjectDetailsPresenterOutput: class {
@@ -57,6 +58,10 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
     func save (emails: String, paths: String) {
         saveEmails(emails)
         savePaths(paths)
+    }
+    
+    func saveProject (_ project: Project) {
+        
     }
     
     private func saveEmails (_ emails: String) {

@@ -76,7 +76,7 @@ class ProjectDetailsViewController: NSViewController {
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        
+//        presenter!.saveProject(project)
     }
     
     @IBAction func handleDeleteButton (_ sender: NSButton) {
