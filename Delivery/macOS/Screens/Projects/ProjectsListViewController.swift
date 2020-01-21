@@ -35,6 +35,16 @@ class ProjectsListViewController: NSViewController {
     @IBAction func handleAddButton (_ sender: NSButton) {
         didSelectAddProject?()
     }
+    
+    func selectProject (_ project: Project) {
+        for i in 0...projects.count {
+            if projects[i].objectId == project.objectId {
+                let indexSet = IndexSet(integer: i)
+                tableView.selectRowIndexes(indexSet, byExtendingSelection: false)
+                break
+            }
+        }
+    }
 }
 
 extension ProjectsListViewController: NSTableViewDataSource {

@@ -12,6 +12,7 @@ protocol ProjectsPresenterInput: class {
     func reloadProjects()
     func addProject()
     func removeProject (_ project: Project)
+    func updateProject (_ project: Project)
 }
 
 protocol ProjectsPresenterOutput: class {
@@ -56,6 +57,15 @@ extension ProjectsPresenter: ProjectsPresenterInput {
     func removeProject (_ project: Project) {
         projects = projects.filter( { $0.title != project.title } )
         projectsDidLoad(projects)
+    }
+    
+    func updateProject (_ project: Project) {
+        for i in 0...projects.count {
+            if projects[i].objectId == project.objectId {
+                projects[i] = project
+                break
+            }
+        }
     }
 }
 

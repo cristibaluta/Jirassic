@@ -28,7 +28,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="name" width="160" minWidth="160" maxWidth="160" id="9Ok-ZQ-i0k">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -227,7 +227,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mIY-n6-kvu" id="eQQ-zn-caH">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="nLi-Ne-sEV">
                                         <items>
                                             <menuItem title="Item 1" state="on" id="mIY-n6-kvu"/>
@@ -245,7 +245,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="WhL-Y9-OMU" id="vNV-u8-gQz">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="HxF-pu-i4z">
                                         <items>
                                             <menuItem title="Item 1" state="on" id="WhL-Y9-OMU"/>
@@ -294,7 +294,7 @@
                                 <rect key="frame" x="452" y="118" width="38" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Pick" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tqp-FW-gi5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
+                                    <font key="font" metaFont="label" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handlePickerButton:" target="ntz-hH-ch5" id="VXn-gB-k9Q"/>
@@ -412,6 +412,7 @@
                         <outlet property="butCredentials" destination="pPp-9a-8hL" id="vqu-69-HY7"/>
                         <outlet property="butDelete" destination="xRw-rq-mxc" id="bnt-jc-7zc"/>
                         <outlet property="butPick" destination="FFQ-AT-obM" id="1lV-fT-ga6"/>
+                        <outlet property="butSave" destination="yEo-ah-PUw" id="PeU-Zp-f7y"/>
                         <outlet property="emailsTextField" destination="RE8-cb-wVw" id="zxC-vX-qoI"/>
                         <outlet property="errorTextField" destination="4GS-xw-Lbe" id="eDe-AJ-6Kf"/>
                         <outlet property="passwordTextField" destination="N2T-um-qk7" id="tNd-NT-dpC"/>

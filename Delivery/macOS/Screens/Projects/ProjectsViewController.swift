@@ -65,5 +65,14 @@ extension ProjectsViewController: ProjectsPresenterOutput {
         projectsList.didSelectAddProject = {
             self.presenter?.addProject()
         }
+        
+        projectDetails.projectDidSave = { project in
+            self.presenter!.updateProject(project)
+        }
+        
+        if let firstProject = projects.first {
+            projectsList.selectProject(firstProject)
+            projectDetails.project = firstProject
+        }
     }
 }

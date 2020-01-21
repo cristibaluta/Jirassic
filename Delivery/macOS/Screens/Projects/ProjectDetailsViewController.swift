@@ -22,6 +22,7 @@ class ProjectDetailsViewController: NSViewController {
     @IBOutlet private var pathsTextField: NSTextField!
     @IBOutlet private var taskNumberPrefixTextField: NSTextField!
     @IBOutlet private var butPick: NSButton!
+    @IBOutlet private var butSave: NSButton!
     @IBOutlet private var butDelete: NSButton!
     
     var project: Project? {
@@ -29,6 +30,7 @@ class ProjectDetailsViewController: NSViewController {
             presenter?.project = project
         }
     }
+    var projectDidSave: ((Project) -> Void)?
     
     var presenter: ProjectDetailsPresenterInput?
     
@@ -38,6 +40,10 @@ class ProjectDetailsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        baseUrlTextField.delegate = self
+        userTextField.delegate = self
+        passwordTextField.delegate = self
+        taskNumberPrefixTextField.delegate = self
         emailsTextField.delegate = self
         pathsTextField.delegate = self
         
@@ -90,7 +96,7 @@ class ProjectDetailsViewController: NSViewController {
         let popover = NSPopover()
         let view = GitUsersViewController.instantiateFromStoryboard("Components")
         view.onDone = {
-            self.project?.gitUsers = view.selectedUsers
+            self.presenter?.save(emails: view.selectedUsers.toString())
             self.gitUsersPopover?.performClose(nil)
             self.gitUsersPopover = nil
         }
@@ -156,11 +162,20 @@ extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
             emailsTextField.isEnabled = enabled
         }
     }
+    
+    func enableSaveButton (_ enable: Bool) {
+        butSave.isEnabled = enable
+    }
+    
+    func handleProjectDidSave (_ project: Project) {
+        projectDidSave?(project)
+    }
 }
 
 extension ProjectDetailsViewController: NSTextFieldDelegate {
     
     func controlTextDidEndEditing(_ obj: Notification) {
-//        save()
+        presenter!.save(emails: emailsTextField.stringValue)
+        presenter!.save(paths: pathsTextField.stringValue)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Project {
+struct Project: Equatable {
     
     var objectId: String?
     var lastModifiedDate: Date?

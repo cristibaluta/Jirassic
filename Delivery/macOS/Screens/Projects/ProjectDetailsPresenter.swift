@@ -13,7 +13,8 @@ protocol ProjectDetailsPresenterInput: class {
 
     var project: Project? {get set}
     func didPickUrl (_ url: URL)
-    func save (emails: String, paths: String)
+    func save (emails: String)
+    func save (paths: String)
     func saveProject (_ project: Project)
     func deleteProject (_ project: Project)
 }
@@ -24,6 +25,8 @@ protocol ProjectDetailsPresenterOutput: class {
     func show (_ project: Project)
     func setPaths (_ paths: String?, enabled: Bool?)
     func setEmails (_ emails: String?, enabled: Bool?)
+    func enableSaveButton (_ enable: Bool)
+    func handleProjectDidSave (_ project: Project)
 }
 
 class ProjectDetailsPresenter {
@@ -33,8 +36,15 @@ class ProjectDetailsPresenter {
 
     var project: Project? {
         didSet {
+            editedProject = project
             reloadData()
         }
+    }
+    /// Do all changes on the copy
+    var editedProject: Project?
+    
+    private func enableDisableSave() {
+        ui!.enableSaveButton(project != editedProject)
     }
 }
 
@@ -48,11 +58,12 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
         ui!.show(project)
         ui!.setPaths(project.gitBaseUrls.toString(), enabled: localPreferences.bool(.enableGit))
         ui!.setEmails(project.gitUsers.toString(), enabled: localPreferences.bool(.enableGit))
+        enableDisableSave()
     }
     
     func didPickUrl (_ url: URL) {
 
-        guard let project = project else {
+        guard var project = editedProject else {
             return
         }
         var path = url.absoluteString
@@ -62,13 +73,21 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
         
         var existingPaths = project.gitBaseUrls
         existingPaths.append(path)
+        project.gitBaseUrls = existingPaths
+        editedProject = project
 
         ui!.setPaths(existingPaths.toString(), enabled: localPreferences.bool(.enableGit))
+        enableDisableSave()
     }
     
-    func save (emails: String, paths: String) {
-        saveEmails(emails)
-        savePaths(paths)
+    func save (emails: String) {
+        editedProject?.gitUsers = emails.toArray()
+        enableDisableSave()
+    }
+    
+    func save (paths: String) {
+        editedProject?.gitBaseUrls = paths.toArray()
+        enableDisableSave()
     }
     
     func saveProject (_ project: Project) {
@@ -77,7 +96,12 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
 //        }
         let interactor = ProjectInteractor(repository: localRepository, remoteRepository: remoteRepository)
         interactor.saveProject(project, allowSyncing: true) { savedProject in
-
+            guard let project = savedProject else {
+                return
+            }
+            self.project = project
+            self.enableDisableSave()
+            self.ui!.handleProjectDidSave(project)
         }
     }
 
@@ -85,11 +109,11 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
 
     }
     
-    private func saveEmails (_ emails: String) {
-        
-    }
-    
-    private func savePaths (_ paths: String) {
-        
-    }
+//    private func saveEmails (_ emails: String) {
+//
+//    }
+//
+//    private func savePaths (_ paths: String) {
+//
+//    }
 }
