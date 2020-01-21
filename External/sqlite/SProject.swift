@@ -42,7 +42,7 @@ extension SProject {
             jiraIssue: self.jiraIssue,
 
             gitBaseUrls: (self.gitBaseUrls ?? "").toArray(),
-            gitUsers: (self.gitBaseUrls ?? "").toArray(),
+            gitUsers: (self.gitUsers ?? "").toArray(),
             taskNumberPrefix: self.taskNumberPrefix
         )
     }

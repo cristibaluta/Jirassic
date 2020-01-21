@@ -10,7 +10,8 @@ import Foundation
 import RCPreferences
 
 protocol ProjectDetailsPresenterInput: class {
-    
+
+    var project: Project? {get set}
     func didPickUrl (_ url: URL)
     func save (emails: String, paths: String)
     func saveProject (_ project: Project)
@@ -18,8 +19,9 @@ protocol ProjectDetailsPresenterInput: class {
 }
 
 protocol ProjectDetailsPresenterOutput: class {
-    
+
     func pickPath()
+    func show (_ project: Project)
     func setPaths (_ paths: String?, enabled: Bool?)
     func setEmails (_ emails: String?, enabled: Bool?)
 }
@@ -28,32 +30,40 @@ class ProjectDetailsPresenter {
     
     weak var ui: ProjectDetailsPresenterOutput?
     private let localPreferences = RCPreferences<LocalPreferences>()
-    
+
+    var project: Project? {
+        didSet {
+            reloadData()
+        }
+    }
 }
 
 extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
     
     func reloadData() {
-        
-        ui?.setPaths("",
-                    enabled: localPreferences.bool(.enableGit))
-        
-        ui?.setEmails("",
-                    enabled: localPreferences.bool(.enableGit))
-        
+
+        guard let project = project else {
+            return
+        }
+        ui!.show(project)
+        ui!.setPaths(project.gitBaseUrls.toString(), enabled: localPreferences.bool(.enableGit))
+        ui!.setEmails(project.gitUsers.toString(), enabled: localPreferences.bool(.enableGit))
     }
     
     func didPickUrl (_ url: URL) {
-        
+
+        guard let project = project else {
+            return
+        }
         var path = url.absoluteString
         path = path.replacingOccurrences(of: "file://", with: "")
         path.removeLast()
         // TODO: Validate if the picked project is a git project
         
-//        let existingPaths = wself.localPreferences.string(.settingsGitPaths)
-//        let updatedPaths = existingPaths == "" ? path : (existingPaths + "," + path)
-//        savePaths(updatedPaths)
-//        ui.setPaths(updatedPaths, enabled: localPreferences.bool(.enableGit))
+        var existingPaths = project.gitBaseUrls
+        existingPaths.append(path)
+
+        ui!.setPaths(existingPaths.toString(), enabled: localPreferences.bool(.enableGit))
     }
     
     func save (emails: String, paths: String) {
@@ -62,9 +72,9 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
     }
     
     func saveProject (_ project: Project) {
-        if project.objectId == nil {
-            
-        }
+//        if project.objectId == nil {
+//
+//        }
         let interactor = ProjectInteractor(repository: localRepository, remoteRepository: remoteRepository)
         interactor.saveProject(project, allowSyncing: true) { savedProject in
 

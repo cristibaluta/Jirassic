@@ -26,7 +26,7 @@ class ProjectDetailsViewController: NSViewController {
     
     var project: Project? {
         didSet {
-            reloadData()
+            presenter?.project = project
         }
     }
     
@@ -51,25 +51,7 @@ class ProjectDetailsViewController: NSViewController {
             emailsTextField.removeGestureRecognizer(gesture)
         }
     }
-    
-    func reloadData() {
-        
-        guard let project = project else {
-            return
-        }
-        butCredentials.state = project.jiraBaseUrl == nil ? .on : .off
-        baseUrlTextField.stringValue = project.jiraBaseUrl ?? ""
-        userTextField.stringValue = project.jiraUser ?? ""
-        errorTextField.stringValue = ""
-        projectNamePopup.removeAllItems()
-        projectNamePopup.addItem(withTitle: project.jiraProject ?? "")
-        projectIssueNamePopup.removeAllItems()
-        projectIssueNamePopup.addItem(withTitle: project.jiraIssue ?? "")
-        pathsTextField.stringValue = project.gitBaseUrls.toString()
-        emailsTextField.stringValue = project.gitUsers.toString()
-        taskNumberPrefixTextField.stringValue = project.taskNumberPrefix ?? ""
-    }
-    
+
     @IBAction func handlePickerButton (_ sender: NSButton) {
         pickPath()
     }
@@ -108,7 +90,7 @@ class ProjectDetailsViewController: NSViewController {
         let popover = NSPopover()
         let view = GitUsersViewController.instantiateFromStoryboard("Components")
         view.onDone = {
-            self.emailsTextField.stringValue = view.selectedUsers.joined(separator: ",")
+            self.project?.gitUsers = view.selectedUsers
             self.gitUsersPopover?.performClose(nil)
             self.gitUsersPopover = nil
         }
@@ -117,13 +99,28 @@ class ProjectDetailsViewController: NSViewController {
                           size: emailsTextField.frame.size)
         popover.show(relativeTo: rect, of: emailsTextField, preferredEdge: NSRectEdge.minY)
         gitUsersPopover = popover
-        // Set emails after popover is presented
-        view.selectedUsers = ["cristi.baluta@gmail.com"]
+        /// Set emails after popover is presented
+        view.selectedUsers = presenter?.project?.gitUsers ?? []
     }
 }
 
 extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
-    
+
+    func show (_ project: Project) {
+
+        butCredentials.state = project.jiraBaseUrl == nil ? .on : .off
+        baseUrlTextField.stringValue = project.jiraBaseUrl ?? ""
+        userTextField.stringValue = project.jiraUser ?? ""
+        errorTextField.stringValue = ""
+        projectNamePopup.removeAllItems()
+        projectNamePopup.addItem(withTitle: project.jiraProject ?? "")
+        projectIssueNamePopup.removeAllItems()
+        projectIssueNamePopup.addItem(withTitle: project.jiraIssue ?? "")
+        pathsTextField.stringValue = project.gitBaseUrls.toString()
+        emailsTextField.stringValue = project.gitUsers.toString()
+        taskNumberPrefixTextField.stringValue = project.taskNumberPrefix ?? ""
+    }
+
     func pickPath() {
         
         let panel = NSOpenPanel()
