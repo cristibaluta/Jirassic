@@ -76,15 +76,21 @@ class ProjectDetailsViewController: NSViewController {
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
 
-        project!.jiraBaseUrl = baseUrlTextField.stringValue
-        project!.jiraUser = userTextField.stringValue
-        project!.jiraProject = projectNamePopup.selectedItem?.title
-        project!.jiraIssue = projectIssueNamePopup.selectedItem?.title
-        project!.gitBaseUrls = pathsTextField.stringValue.toArray()
-        project!.gitUsers = emailsTextField.stringValue.toArray()
-        project!.taskNumberPrefix = taskNumberPrefixTextField.stringValue
+        /// Make a copy of the project. Directly editing the project will call reloadData for each change
+        guard var project = self.project else {
+            return
+        }
+        project.jiraBaseUrl = baseUrlTextField.stringValue
+        project.jiraUser = userTextField.stringValue
+        project.jiraProject = projectNamePopup.selectedItem?.title
+        project.jiraIssue = projectIssueNamePopup.selectedItem?.title
+        project.gitBaseUrls = pathsTextField.stringValue.toArray()
+        project.gitUsers = emailsTextField.stringValue.toArray()
+        project.taskNumberPrefix = taskNumberPrefixTextField.stringValue
 
-        presenter!.saveProject(project!)
+        self.project = project
+
+        presenter!.saveProject(project)
     }
     
     @IBAction func handleDeleteButton (_ sender: NSButton) {
