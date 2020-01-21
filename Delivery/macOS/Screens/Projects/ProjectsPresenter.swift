@@ -15,7 +15,8 @@ protocol ProjectsPresenterInput: class {
 }
 
 protocol ProjectsPresenterOutput: class {
-    func projectsDidLoad(_ projects: [Project])
+    func showProjects(_ projects: [Project])
+    func hideProjects()
     func showMessage (_ message: MessageViewModel)
     func hideMessage()
 }
@@ -32,16 +33,16 @@ class ProjectsPresenter {
 extension ProjectsPresenter: ProjectsPresenterInput {
     
     func reloadProjects() {
+        ui!.hideProjects()
         interactor!.reloadProjects()
     }
     
     func addProject() {
         ui!.hideMessage()
-//        interactor!.addProject()
         let newProject = Project(objectId: String.generateId(),
                                 lastModifiedDate: nil,
                                 title: "Project \(projects.count + 1)",
-                                jiraBaseUrl: "https://",
+                                jiraBaseUrl: nil,
                                 jiraUser: nil,
                                 jiraProject: nil,
                                 jiraIssue: nil,
@@ -53,9 +54,8 @@ extension ProjectsPresenter: ProjectsPresenterInput {
     }
     
     func removeProject (_ project: Project) {
-//        interactor!.removeProject(project)
-        let newProjects = projects.filter( { $0.title != project.title } )
-        projectsDidLoad(newProjects)
+        projects = projects.filter( { $0.title != project.title } )
+        projectsDidLoad(projects)
     }
 }
 
@@ -69,7 +69,7 @@ extension ProjectsPresenter: ProjectsInteractorOutput {
                 message: "Add your first project!",
                 buttonTitle: "Add"))
         } else {
-            ui!.projectsDidLoad(projects)
+            ui!.showProjects(projects)
         }
     }
 }

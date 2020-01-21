@@ -70,7 +70,6 @@ class ProjectDetailsViewController: NSViewController {
         taskNumberPrefixTextField.stringValue = project.taskNumberPrefix ?? ""
     }
     
-    
     @IBAction func handlePickerButton (_ sender: NSButton) {
         pickPath()
     }

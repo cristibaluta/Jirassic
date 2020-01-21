@@ -20,31 +20,11 @@ class ProjectsViewController: NSSplitViewController {
         
         presenter!.reloadProjects()
     }
-    
-    private func setupControllers() {
-        
-        guard self.splitViewItems.count == 0 else {
-            return
-        }
-        let c1 = ProjectsListViewController.instantiateFromStoryboard("Projects")
-
-        let c2 = ProjectDetailsViewController.instantiateFromStoryboard("Projects")
-        let c2Presenter = ProjectDetailsPresenter()
-        c2.presenter = c2Presenter
-        c2Presenter.ui = c2
-
-        let s1 = NSSplitViewItem(viewController: c1)
-        s1.minimumThickness = 120
-        let s2 = NSSplitViewItem(viewController: c2)
-        self.splitViewItems = [s1, s2]
-    }
 }
 
 extension ProjectsViewController: ProjectsPresenterOutput {
     
     func showMessage (_ message: MessageViewModel) {
-        
-        self.splitViewItems = []
         
         let controller = appWireframe!.presentPlaceholder(message, in: self.view)
         controller.didPressButton = {
@@ -56,34 +36,34 @@ extension ProjectsViewController: ProjectsPresenterOutput {
         appWireframe!.removePlaceholder()
     }
     
-    func projectsDidLoad(_ projects: [Project]) {
+    func hideProjects() {
+        self.splitViewItems = []
+    }
+    
+    func showProjects(_ projects: [Project]) {
         
-        setupControllers()
-        
-        guard let controller = self.splitViewItems.first?.viewController as? ProjectsListViewController else {
-            return
-        }
-        controller.projects = projects
-        controller.didSelectProject = { project in
-            
-            guard let controller = self.splitViewItems.last?.viewController as? ProjectDetailsViewController else {
-                return
-            }
-            controller.project = project
-        }
-        controller.didUpdateProject = { project in
+        let projectsList = ProjectsListViewController.instantiateFromStoryboard("Projects")
 
-            guard let controller = self.splitViewItems.last?.viewController as? ProjectDetailsViewController else {
-                return
-            }
+        let projectDetails = ProjectDetailsViewController.instantiateFromStoryboard("Projects")
+        let c2Presenter = ProjectDetailsPresenter()
+        projectDetails.presenter = c2Presenter
+        c2Presenter.ui = projectDetails
+
+        let s1 = NSSplitViewItem(viewController: projectsList)
+        s1.minimumThickness = 120
+        let s2 = NSSplitViewItem(viewController: projectDetails)
+        self.splitViewItems = [s1, s2]
+        
+        projectsList.projects = projects
+        projectsList.didSelectProject = { project in
+            projectDetails.project = project
+        }
+        projectsList.didUpdateProject = { project in
             /// In the list of projects only the title can change
-            controller.project?.title = project.title
+            projectDetails.project?.title = project.title
         }
-        controller.didSelectAddProject = {
+        projectsList.didSelectAddProject = {
             self.presenter?.addProject()
-        }
-        controller.didSelectRemoveProject = { project in
-            self.presenter?.removeProject(project)
         }
     }
 }
