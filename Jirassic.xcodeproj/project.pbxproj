@@ -515,6 +515,12 @@
 		5623915121CBC6CD0031B882 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
 		5623915321CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
 		5623915421CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
+		563FA91B23D72A880030E50D /* CKRecord+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91A23D72A880030E50D /* CKRecord+Task.swift */; };
+		563FA91C23D72A880030E50D /* CKRecord+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91A23D72A880030E50D /* CKRecord+Task.swift */; };
+		563FA91D23D72A880030E50D /* CKRecord+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91A23D72A880030E50D /* CKRecord+Task.swift */; };
+		563FA91F23D72C5D0030E50D /* CKRecord+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */; };
+		563FA92023D72C5D0030E50D /* CKRecord+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */; };
+		563FA92123D72C5D0030E50D /* CKRecord+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */; };
 		564E55F3202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
 		564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
 		564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */; };
@@ -875,6 +881,8 @@
 		5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
 		5623914F21CBC6CD0031B882 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5623915221CBC9750031B882 /* Projects.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Projects.storyboard; sourceTree = "<group>"; };
+		563FA91A23D72A880030E50D /* CKRecord+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Task.swift"; sourceTree = "<group>"; };
+		563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Project.swift"; sourceTree = "<group>"; };
 		564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
 		564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsPresenter.swift; sourceTree = "<group>"; };
 		564E55F82028857300CE4C76 /* Worklogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Worklogs.storyboard; sourceTree = "<group>"; };
@@ -1700,9 +1708,11 @@
 			children = (
 				4065D38A1DD3B44200B73201 /* CloudKitRepository.swift */,
 				28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */,
+				563FA91A23D72A880030E50D /* CKRecord+Task.swift */,
 				28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */,
 				28A928941E9110980022AB55 /* CloudKitRepository+User.swift */,
 				2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */,
+				563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */,
 				2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */,
 				2863497523D51825009F81D7 /* CloudKitZone.swift */,
 			);
@@ -2228,8 +2238,10 @@
 				280D70D91ECFE835005D2689 /* Conversions.swift in Sources */,
 				565E19F220A5E336003A5E2A /* RCSync.swift in Sources */,
 				280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */,
+				563FA92123D72C5D0030E50D /* CKRecord+Project.swift in Sources */,
 				28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				280D70E41ECFE88F005D2689 /* CTask.swift in Sources */,
+				563FA91D23D72A880030E50D /* CKRecord+Task.swift in Sources */,
 				2863495123CB73E4009F81D7 /* SProject.swift in Sources */,
 				280D70D41ECFE7FF005D2689 /* Task.swift in Sources */,
 				2863494D23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
@@ -2276,6 +2288,7 @@
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
 				2863496D23D21286009F81D7 /* ReadMetadataInteractor.swift in Sources */,
 				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
+				563FA91F23D72C5D0030E50D /* CKRecord+Project.swift in Sources */,
 				28FE18A5207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
 				2871952B20241B25001C237E /* TrackingView.swift in Sources */,
@@ -2322,6 +2335,7 @@
 				28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				286348F923B22775009F81D7 /* ProjectDetailsViewController.swift in Sources */,
 				280D71601ED6043D005D2689 /* MenuBarController.swift in Sources */,
+				563FA91B23D72A880030E50D /* CKRecord+Task.swift in Sources */,
 				280D71611ED6043D005D2689 /* MenuBarIconView.swift in Sources */,
 				569C4C67202319930049FBF1 /* GitPresenter.swift in Sources */,
 				2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
@@ -2536,6 +2550,7 @@
 				285465A8217858790052CB6A /* StoreView.swift in Sources */,
 				286348FA23B22775009F81D7 /* ProjectDetailsViewController.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
+				563FA91C23D72A880030E50D /* CKRecord+Task.swift in Sources */,
 				569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
 				2863493923B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */,
@@ -2607,6 +2622,7 @@
 				5623915121CBC6CD0031B882 /* Project.swift in Sources */,
 				28EE1F6520EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */,
 				2845B16B206AE468006EFB3B /* TaskCell.swift in Sources */,
+				563FA92023D72C5D0030E50D /* CKRecord+Project.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
 				28A928781E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */,

@@ -36,4 +36,8 @@ class CloudKitRepository {
         tasksZone = CloudKitZone(db: db, zoneName: "TasksZone")
         projectsZone = CloudKitZone(db: db, zoneName: "ProjectsZone")
     }
+
+    internal func stringIdsFromCKRecordIds (_ ckrecords: [CKRecord.ID]) -> [String] {
+        return ckrecords.map({ $0.recordName })
+    }
 }

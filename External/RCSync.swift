@@ -34,13 +34,13 @@ class RCSync<T> {
         localRepository.queryDeletedTasks { deletedTasks in
             RCLog("1. Nr of deleted tasks: \(deletedTasks.count)")
             self.objectsToDelete = deletedTasks
-            self.syncNext { (success) in
+            self.syncNext { success in
                 self.getLatestServerChanges(completion)
             }
         }
     }
     
-    // Send to CloudKit the changes recursivelly then call the completion block
+    /// Send to CloudKit the changes recursivelly then call the completion block
     private func syncNext (_ completion: @escaping ((_ success: Bool) -> Void)) {
         
         var task = objectsToUpload.first
@@ -71,10 +71,10 @@ class RCSync<T> {
                 return
             }
             RCLog("1.1 Save <<< uploadedTask \(String(describing: uploadedTask.objectId))")
-            // After task was saved to server update it to local datastore
+            /// After task was saved to server update it to local datastore
             _ = self.localRepository.saveTask(uploadedTask, completion: { savedTask in
-//                // If task was saved locally successful update the last sync date
-//                // Otherwise last sync date will be an older date than the tasks last modified date
+//                /// If task was saved locally successful update the last sync date
+//                /// Otherwise last sync date will be an older date than the tasks last modified date
 //                if let savedTask = savedTask {
 //                    UserDefaults.standard.lastSyncDateWithRemote = savedTask.lastModifiedDate
 //                }
@@ -87,7 +87,7 @@ class RCSync<T> {
         
         RCLog("1.1 Delete \(task)")
         _ = remoteRepository.deleteTask(task, permanently: true) { uploadedTask in
-            // After task was marked as deleted to server, delete it permanently from local db
+            /// After task was marked as deleted to server, delete it permanently from local db
             _ = self.localRepository.deleteTask(task, permanently: true, completion: { task in
                 completion(true)
             })
@@ -97,19 +97,20 @@ class RCSync<T> {
     private func getLatestServerChanges (_ completion: @escaping ((_ hasIncomingChanges: Bool) -> Void)) {
         
         RCLog("2. Request latest server changes")
-        remoteRepository.queryUpdates { changedTasks, deletedTasksIds, error in
-            RCLog("2. Number of changes: \(changedTasks.count)")
+        remoteRepository.queryUpdatedTasks { changedTasks, deletedTasksIds, error in
+            RCLog("2. Number of changes on server: \(changedTasks.count)")
             for task in changedTasks {
                 self.localRepository.saveTask(task, completion: { task in
-                    RCLog("2. Saved to local db \(String(describing: task?.objectId))")
+                    RCLog("2. Change saved to local db \(String(describing: task?.objectId))")
                 })
             }
-            RCLog("2. Number of deletes: \(deletedTasksIds.count)")
+            RCLog("2. Number of deletes on server: \(deletedTasksIds.count)")
             for remoteId in deletedTasksIds {
                 self.localRepository.deleteTask(objectId: remoteId, completion: { success in
                     RCLog("2. Deleted from local db: \(remoteId) \(success)")
                 })
             }
+            RCLog("3. Sync finished")
             completion(changedTasks.count > 0 || deletedTasksIds.count > 0)
         }
     }

@@ -54,7 +54,7 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdatedTasks (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
         let lastSyncDate = ReadMetadataInteractor().tasksLastSyncDate()
         let unsyncedTasks = queryUnsyncedTasks(since: lastSyncDate)

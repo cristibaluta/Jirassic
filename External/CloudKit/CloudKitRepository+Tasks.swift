@@ -35,7 +35,7 @@ extension CloudKitRepository: RepositoryTasks {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdatedTasks (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
         let changeToken = ReadMetadataInteractor().tasksLastSyncToken()
         
@@ -89,7 +89,7 @@ extension CloudKitRepository: RepositoryTasks {
                 let recordId = CKRecord.ID(recordName: task.objectId!, zoneID: zoneId)
                 record = CKRecord(recordType: "Task", recordID: recordId)
             }
-            record = self.updatedRecord(record!, withTask: task)
+            record!.update(with: task)
             
             privateDB.save(record!, completionHandler: { savedRecord, error in
                 
@@ -97,8 +97,8 @@ extension CloudKitRepository: RepositoryTasks {
                 RCLogErrorO(error)
                 
                 if let record = savedRecord {
-                    let uploadedTask = self.taskFromRecord(record)
-                    completion(uploadedTask)
+                    let task = record.toTask()
+                    completion(task)
                 }
                 if let ckerror = error as? CKError {
                     switch ckerror {
@@ -141,38 +141,6 @@ extension CloudKitRepository {
     }
     
     private func tasksFromRecords (_ records: [CKRecord]) -> [Task] {
-        return records.map({ taskFromRecord($0) })
-    }
-    
-    private func taskFromRecord (_ record: CKRecord) -> Task {
-        
-        return Task(lastModifiedDate: record.modificationDate,
-                    startDate: record["startDate"] as? Date,
-                    endDate: record["endDate"] as! Date,
-                    notes: record["notes"] as? String,
-                    taskNumber: record["taskNumber"] as? String,
-                    taskTitle: record["taskTitle"] as? String,
-                    taskType: TaskType(rawValue: (record["taskType"] as! NSNumber).intValue)!,
-                    objectId: record["objectId"] as? String,
-                    projectId: record["projectId"] as? String
-        )
-    }
-    
-    private func updatedRecord (_ record: CKRecord, withTask task: Task) -> CKRecord {
-        
-        record["startDate"] = task.startDate as CKRecordValue?
-        record["endDate"] = task.endDate as CKRecordValue
-        record["notes"] = task.notes as CKRecordValue?
-        record["taskNumber"] = task.taskNumber as CKRecordValue?
-        record["taskTitle"] = task.taskTitle as CKRecordValue?
-        record["taskType"] = task.taskType.rawValue as CKRecordValue
-        record["objectId"] = task.objectId as CKRecordValue?
-        record["projectId"] = task.projectId as CKRecordValue?
-        
-        return record
-    }
-    
-    private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecord.ID]) -> [String] {
-        return ckrecords.map({ $0.recordName })
+        return records.map({ $0.toTask() })
     }
 }

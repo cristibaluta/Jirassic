@@ -52,7 +52,7 @@ extension CloudKitRepository: RepositoryProjects {
                 let recordId = CKRecord.ID(recordName: project.objectId!, zoneID: zoneId)
                 record = CKRecord(recordType: "Project", recordID: recordId)
             }
-            record = self.updatedRecord(record!, withProject: project)
+            record!.update(with: project)
             
             privateDB.save(record!, completionHandler: { savedRecord, error in
                 
@@ -61,8 +61,8 @@ extension CloudKitRepository: RepositoryProjects {
                 RCLogErrorO(error)
                 
                 if let record = savedRecord {
-                    let uploadedProject = self.projectFromRecord(record)
-                    completion(uploadedProject)
+                    let project = record.toProject()
+                    completion(project)
                 }
                 if let ckerror = error as? CKError {
                     switch ckerror {
@@ -126,54 +126,6 @@ extension CloudKitRepository {
     }
     
     private func projectsFromRecords (_ records: [CKRecord]) -> [Project] {
-        
-        var projects = [Project]()
-        for record in records {
-            projects.append( projectFromRecord(record) )
-        }
-        
-        return projects
-    }
-    
-    private func projectFromRecord (_ record: CKRecord) -> Project {
-        
-        return Project(
-            objectId: record["objectId"] as? String,
-            lastModifiedDate: record["lastModifiedDate"] as? Date,
-            title: record["title"] as! String,
-            jiraBaseUrl: record["jiraBaseUrl"] as? String,
-            jiraUser: record["jiraUser"] as? String,
-            jiraProject: record["jiraProject"] as? String,
-            jiraIssue: record["jiraIssue"] as? String,
-            gitBaseUrls: (record["gitBaseUrls"] as? String ?? "").toArray(),
-            gitUsers: (record["gitUsers"] as? String ?? "").toArray(),
-            taskNumberPrefix: record["taskNumberPrefix"] as? String
-        )
-    }
-    
-    private func updatedRecord (_ record: CKRecord, withProject project: Project) -> CKRecord {
-        
-        record["objectId"] = project.objectId as CKRecordValue?
-        record["lastModifiedDate"] = project.lastModifiedDate as CKRecordValue?
-        record["title"] = project.title as CKRecordValue
-        record["jiraBaseUrl"] = project.jiraBaseUrl as CKRecordValue?
-        record["jiraUser"] = project.jiraUser as CKRecordValue?
-        record["jiraProject"] = project.jiraProject as CKRecordValue?
-        record["jiraIssue"] = project.jiraIssue as CKRecordValue?
-        record["gitBaseUrls"] = project.gitBaseUrls.toString() as CKRecordValue?
-        record["gitUsers"] = project.gitUsers.toString() as CKRecordValue?
-        record["taskNumberPrefix"] = project.taskNumberPrefix as CKRecordValue?
-        
-        return record
-    }
-    
-    private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecord.ID]) -> [String] {
-        
-        var ids = [String]()
-        for ckrecord in ckrecords {
-            ids.append( ckrecord.recordName )
-        }
-        
-        return ids
+        return records.map({ $0.toProject() })
     }
 }

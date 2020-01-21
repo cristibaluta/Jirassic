@@ -60,7 +60,7 @@ extension SqliteRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdatedTasks (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
         queryDeletedTasks { deletedTasks in
             let lastSyncDate = ReadMetadataInteractor().tasksLastSyncDate()
