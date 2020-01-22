@@ -12,6 +12,7 @@ import RCPreferences
 protocol ProjectDetailsPresenterInput: class {
 
     var project: Project? {get set}
+    var editedProject: Project? {get set}
     func didPickUrl (_ url: URL)
     func save (emails: String)
     func save (paths: String)
@@ -41,7 +42,11 @@ class ProjectDetailsPresenter {
         }
     }
     /// Do all changes on the copy
-    var editedProject: Project?
+    var editedProject: Project? {
+        didSet {
+            enableDisableSave()
+        }
+    }
     
     private func enableDisableSave() {
         ui!.enableSaveButton(project != editedProject)
@@ -77,17 +82,14 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
         editedProject = project
 
         ui!.setPaths(existingPaths.toString(), enabled: localPreferences.bool(.enableGit))
-        enableDisableSave()
     }
     
     func save (emails: String) {
         editedProject?.gitUsers = emails.toArray()
-        enableDisableSave()
     }
     
     func save (paths: String) {
         editedProject?.gitBaseUrls = paths.toArray()
-        enableDisableSave()
     }
     
     func saveProject (_ project: Project) {
@@ -102,18 +104,11 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
             self.project = project
             self.enableDisableSave()
             self.ui!.handleProjectDidSave(project)
+            self.enableDisableSave()
         }
     }
 
     func deleteProject (_ project: Project) {
 
     }
-    
-//    private func saveEmails (_ emails: String) {
-//
-//    }
-//
-//    private func savePaths (_ paths: String) {
-//
-//    }
 }

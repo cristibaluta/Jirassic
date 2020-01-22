@@ -33,6 +33,7 @@ class ProjectDetailsViewController: NSViewController {
     var projectDidSave: ((Project) -> Void)?
     
     var presenter: ProjectDetailsPresenterInput?
+    var jiraPresenter: JiraTempoPresenterInput = JiraTempoPresenter()
     
     private var emailClickGestureRecognizer: NSClickGestureRecognizer?
     private var gitUsersPopover: NSPopover?
@@ -87,6 +88,17 @@ class ProjectDetailsViewController: NSViewController {
     
     @IBAction func handleCredentialsButton (_ sender: NSButton) {
         
+    }
+    
+    @IBAction func projectNamePopupSelected (_ sender: NSPopUpButton) {
+        if let title = sender.selectedItem?.title {
+            presenter!.editedProject?.jiraProject = title
+            jiraPresenter.loadProjectIssues(for: title)
+        }
+    }
+    
+    @IBAction func projectIssueNamePopupSelected (_ sender: NSPopUpButton) {
+        presenter!.editedProject?.jiraIssue = sender.selectedItem?.title
     }
     
     @objc func emailTextFieldClicked() {
@@ -175,6 +187,12 @@ extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
 extension ProjectDetailsViewController: NSTextFieldDelegate {
     
     func controlTextDidEndEditing(_ obj: Notification) {
+        
+        presenter!.editedProject?.jiraBaseUrl = baseUrlTextField.stringValue
+        presenter!.editedProject?.jiraUser = userTextField.stringValue
+        presenter!.editedProject?.gitBaseUrls = pathsTextField.stringValue.toArray()
+//        project.gitUsers = emailsTextField.stringValue.toArray()
+//        project.taskNumberPrefix = taskNumberPrefixTextField.stringValue
         presenter!.save(emails: emailsTextField.stringValue)
         presenter!.save(paths: pathsTextField.stringValue)
     }

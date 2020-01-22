@@ -236,6 +236,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="projectNamePopupSelected:" target="ntz-hH-ch5" id="HcD-PT-h9O"/>
+                                </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YV8-ct-95h">
                                 <rect key="frame" x="106" y="219" width="145" height="25"/>
@@ -254,6 +257,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="projectIssueNamePopupSelected:" target="ntz-hH-ch5" id="jDK-Nt-Fm5"/>
+                                </connections>
                             </popUpButton>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="50g-kW-HsR">
                                 <rect key="frame" x="45" y="328" width="16" height="16"/>
