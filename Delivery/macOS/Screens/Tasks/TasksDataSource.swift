@@ -17,6 +17,7 @@ class TasksDataSource: NSObject, TasksAndReportsDataSource {
     
     var didClickAddRow: ((_ row: Int) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
+    var didClickEditRow: ((_ row: Int) -> Void)?
     var didClickCloseDay: ((_ tasks: [Task]) -> Void)?
     var didClickSaveWorklogs: (() -> Void)?
     var didClickSetupJira: (() -> Void)?
@@ -96,6 +97,13 @@ extension TasksDataSource: NSTableViewDelegate {
         TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
         
         cell.didClickEditCell = { [weak self] (cell: CellProtocol) in
+            // Ugly hack to find the row number from which the action came
+            tableView.enumerateAvailableRowViews( { (rowView, rowIndex) -> Void in
+                if rowView.subviews.first! == cell as! NSTableRowView {
+                    self?.didClickEditRow!(rowIndex)
+                    return
+                }
+            })
 //            let updatedData = cell.data
 //            theData.taskNumber = updatedData.taskNumber
 //            theData.notes = updatedData.notes

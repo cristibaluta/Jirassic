@@ -65,6 +65,13 @@ extension TasksViewController: TasksPresenterOutput {
                 self?.tasksScrollView!.reloadFooter()
             }
         }
+        dataSource.didClickEditRow = { [weak self] row in
+            RCLogO("Edit item after row \(row)")
+            if row >= 0 {
+                self?.activeCellRect = self?.tasksScrollView?.frameOfCell(atRow: row)
+                self?.presenter!.editTask(at: row)
+            }
+        }
         dataSource.didClickCloseDay = { [weak self] tasks in
             self?.presenter!.closeDay(showWorklogs: true)
         }
@@ -119,6 +126,38 @@ extension TasksViewController: TasksPresenterOutput {
         controller.dateStart = nil// TODO Add scrum start date when around scrum date
         controller.dateEnd = date
         activePopover = popover
+    }
+
+    func presentTaskEditor (task: Task) {
+
+        let popover = NSPopover()
+        let controller = NewTaskViewController.instantiateFromStoryboard("Tasks")
+        controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
+            guard let self = self else {
+                return
+            }
+            self.presenter?.updateTask(task, with: taskData)
+            self.presenter!.reloadLastSelectedDay()
+            popover.performClose(nil)
+        }
+        controller.onCancel = { [weak self] in
+            if let strongSelf = self {
+                popover.performClose(nil)
+                strongSelf.activePopover = nil
+                strongSelf.presenter!.updateNoTasksState()
+            }
+        }
+        popover.contentViewController = controller
+        popover.show(relativeTo: activeCellRect!,
+                     of: self.view,
+                     preferredEdge: NSRectEdge.maxY)
+        activePopover = popover
+
+        controller.notes = task.notes ?? ""
+        controller.taskNumber = task.taskNumber ?? ""
+        controller.dateStart = task.startDate
+        controller.dateEnd = task.endDate
+        controller.taskType = task.taskType
     }
     
     func showWorklogs (date: Date, tasks: [Task]) {

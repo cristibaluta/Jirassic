@@ -31,9 +31,6 @@
                         <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                     </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="c22-O7-iKe" id="JP7-vo-5xF"/>
-                    </connections>
                 </textField>
                 <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-P9-87l" customClass="TimeBox" customModule="Jirassic" customModuleProvider="target">
                     <rect key="frame" x="20" y="10" width="36" height="14"/>
@@ -82,7 +79,21 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="handleAddButton:" target="c22-O7-iKe" id="eaV-Iu-0RD"/>
+                        <action selector="handleAddButton:" target="c22-O7-iKe" id="01J-qg-rCV"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="f3q-ar-1TN">
+                    <rect key="frame" x="260" y="10" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="Lz8-W6-9Hy"/>
+                        <constraint firstAttribute="width" constant="16" id="hpx-ED-awK"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Afl-m8-d33">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleEditButton:" target="c22-O7-iKe" id="jJW-WI-OPO"/>
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-Mn-ATS">
@@ -98,9 +109,11 @@
                 <constraint firstItem="1gO-Mn-ATS" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="2WT-I3-hg1"/>
                 <constraint firstItem="NoN-P9-87l" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="7uC-nD-vV5"/>
                 <constraint firstItem="k7a-Yc-bPn" firstAttribute="leading" secondItem="c4Y-B7-eQF" secondAttribute="trailing" constant="1" id="8Y0-Jd-vGv"/>
+                <constraint firstItem="z4T-g2-tdS" firstAttribute="leading" secondItem="f3q-ar-1TN" secondAttribute="trailing" constant="8" id="9pI-7T-7Ud"/>
                 <constraint firstItem="1gO-Mn-ATS" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="AQ4-xS-01a"/>
                 <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="1" id="BfB-re-cQN"/>
                 <constraint firstItem="k7a-Yc-bPn" firstAttribute="centerY" secondItem="c4Y-B7-eQF" secondAttribute="centerY" id="HwG-XC-Uv2"/>
+                <constraint firstItem="f3q-ar-1TN" firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" id="Mid-a0-lzk"/>
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstItem="nav-z1-PEs" firstAttribute="leading" secondItem="NoN-P9-87l" secondAttribute="trailing" constant="9" id="NZk-ow-NIX"/>
@@ -115,6 +128,7 @@
             <connections>
                 <outlet property="bullet" destination="k7a-Yc-bPn" id="gGf-yc-eOJ"/>
                 <outlet property="butAdd" destination="z4T-g2-tdS" id="Abq-cd-a9h"/>
+                <outlet property="butEdit" destination="f3q-ar-1TN" id="jDU-PL-2uJ"/>
                 <outlet property="butRemove" destination="JnH-wo-pJy" id="DVY-pe-Va1"/>
                 <outlet property="dateEndTextField" destination="nav-z1-PEs" id="K31-HY-eEa"/>
                 <outlet property="dateStartTextField" destination="NoN-P9-87l" id="xEA-jb-Sgq"/>
@@ -127,6 +141,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>

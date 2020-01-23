@@ -8,9 +8,9 @@
 
 import Foundation
 
-// Never change the indexes because they are already stored in the database
 enum TaskType: Int {
-	
+
+    /// Never change the indexes because they are already stored in the database
 	case issue = 0
 	case startDay = 1
 	case scrum = 2
@@ -22,35 +22,54 @@ enum TaskType: Int {
     case coderev = 8
     case endDay = 9
     case calendar = 10
+    case support = 11
     
     var defaultNotes: String {
         switch self {
-        case .startDay: return "Working day started"
-        case .endDay: return "Working day ended"
-        case .scrum: return "Scrum meeting"
-        case .lunch: return "Lunch break 🥑🥑🥑"
-        case .meeting: return "Meeting"
-        case .waste: return "Social & Media 👤👤👤"
-        case .learning: return "Learning session"
-        case .coderev: return "Reviewing and fixing code"
-        case .calendar: return "Calendar event"
-        default: return ""
+            case .startDay: return "Working day started"
+            case .endDay: return "Working day ended"
+            case .scrum: return "Scrum meeting"
+            case .lunch: return "Lunch break 🥑🥑🥑"
+            case .meeting: return "Meeting"
+            case .waste: return "Social & Media 👤👤👤"
+            case .learning: return "Learning session"
+            case .coderev: return "Reviewing and fixing code"
+            case .calendar: return "Calendar event"
+            case .support: return "Support"
+            default: return ""
         }
     }
     
-    // Used to group reports
+    /// Used to group reports together
     var defaultTaskNumber: String? {
         switch self {
-        case .scrum: return "scrum"
-        case .lunch: return "lunch"
-        case .meeting: return "meeting"
-        case .waste: return "waste"
-        case .learning: return "learning"
-        case .coderev: return "coderev"
-        case .calendar: return "meeting"
-        default: return nil
+            case .scrum: return "scrum"
+            case .lunch: return "lunch"
+            case .meeting: return "meeting"
+            case .waste: return "waste"
+            case .learning: return "learning"
+            case .coderev: return "coderev"
+            case .calendar: return "meeting"
+            case .support: return "support"
+            default: return nil
         }
     }
+
+    var title: String {
+        switch self {
+            case .issue: return "Task"
+            case .scrum: return "Scrum"
+            case .lunch: return "Food"
+            case .meeting: return "Meeting"
+            case .waste: return "Social & Media"
+            case .learning: return "Learning"
+            case .coderev: return "Code review"
+            case .support: return "Support"
+            default: return ""
+        }
+    }
+
+    static var allValues: [TaskType] = []
 }
 
 // Object representing a task

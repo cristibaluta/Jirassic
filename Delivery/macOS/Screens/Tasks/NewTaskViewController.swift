@@ -81,18 +81,32 @@ class NewTaskViewController: NSViewController {
 			self.issueIdTextField.stringValue = newValue
 		}
 	}
+    var taskType: TaskType = .issue {
+        didSet {
+            for i in 0...taskTypes.count {
+                if taskTypes[i] == taskType {
+                    taskTypeSelector.selectItem(at: i)
+                    break
+                }
+            }
+        }
+    }
+    private let taskTypes: [TaskType] = [.issue, .scrum, .lunch, .meeting, .waste, .learning, .coderev, .support]
+//    var project: Project {
+//
+//    }
     var projects: [Project] = []
-	
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         projects = ReadProjectsInteractor(repository: localRepository, remoteRepository: nil).allProjects()
         projectSelector.removeAllItems()
         projectSelector.addItems(withTitles: projects.map({$0.title}))
         projectSelector.selectItem(at: 0)
-        
+
         taskTypeSelector.removeAllItems()
-        taskTypeSelector.addItems(withTitles: ["Task", "Scrum", "Meeting", "Food", "Social & Media", "Learning", "Code review"])
+        taskTypeSelector.addItems(withTitles: taskTypes.map({$0.title}))
         taskTypeSelector.selectItem(at: 0)
         
         setupStartDateButtonTitle()
@@ -111,6 +125,7 @@ class NewTaskViewController: NSViewController {
             case 4: return .waste
             case 5: return .learning
             case 6: return .coderev
+            case 7: return .support
             default: return .issue
         }
     }
@@ -127,13 +142,16 @@ class NewTaskViewController: NSViewController {
         let typeEstimator = TaskTypeEstimator()
         let settings = SettingsInteractor().getAppSettings()
         let estimatedType: TaskType = typeEstimator.taskTypeAroundDate(initialDate, withSettings: settings)
-        if estimatedType == .scrum {
-            taskTypeSelector.selectItem(at: 1)
-            handleTaskTypeSelector(taskTypeSelector)
-            
-            let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
-            self.dateStart = self.initialDate.dateByUpdating(hour: settingsScrumTime.hour!, minute: settingsScrumTime.minute!)
+        guard estimatedType == .scrum else {
+            return
         }
+        taskTypeSelector.selectItem(at: 1)
+        handleTaskTypeSelector(taskTypeSelector)
+
+        let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags,
+                                                         from: settings.settingsTracking.scrumTime)
+        self.dateStart = self.initialDate.dateByUpdating(hour: settingsScrumTime.hour!,
+                                                         minute: settingsScrumTime.minute!)
     }
     
     private func setupStartDateButtonTitle() {
@@ -154,15 +172,14 @@ extension NewTaskViewController: NSTextFieldDelegate {
     
     func controlTextDidChange (_ obj: Notification) {
         
-        if let textField = obj.object as? NSTextField {
-            guard textField == endDateTextField || textField == startDateTextField else {
-                return
-            }
-            let comps = textField.stringValue.map { String($0) }
-            let newDigit = activeEditingTextFieldContent.count > comps.count ? "" : comps.last
-            activeEditingTextFieldContent = predictor.timeByAdding(newDigit!, to: activeEditingTextFieldContent)
-            textField.stringValue = activeEditingTextFieldContent
+        guard let textField = obj.object as? NSTextField,
+            textField == endDateTextField || textField == startDateTextField else {
+            return
         }
+        let comps = textField.stringValue.map { String($0) }
+        let newDigit = activeEditingTextFieldContent.count > comps.count ? "" : comps.last
+        activeEditingTextFieldContent = predictor.timeByAdding(newDigit!, to: activeEditingTextFieldContent)
+        textField.stringValue = activeEditingTextFieldContent
     }
 }
 

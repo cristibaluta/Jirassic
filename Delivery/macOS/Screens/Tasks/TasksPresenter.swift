@@ -15,8 +15,10 @@ protocol TasksPresenterInput: class {
     func updateNoTasksState()
     func closeDay (showWorklogs: Bool)
     func insertTaskWithData (_ taskData: TaskCreationData)
+    func updateTask (_ task: Task, with taskData: TaskCreationData)
     func insertTask (after row: Int)
     func removeTask (at row: Int)
+    func editTask (at row: Int)
     func didClickStartDay()
     func didClickSaveWorklogs()
 }
@@ -27,6 +29,7 @@ protocol TasksPresenterOutput: class {
     func showMessage (_ message: MessageViewModel)
     func showTasks (_ tasks: [Task])
     func presentNewTaskController (date: Date)
+    func presentTaskEditor(task: Task)
     func showWorklogs (date: Date, tasks: [Task])
     func removeTasks()
     func removeWorklogs()
@@ -120,14 +123,18 @@ extension TasksPresenter: TasksPresenterInput {
     }
 
     func insertTaskWithData (_ taskData: TaskCreationData) {
-        
-        var task = Task()
+        updateTask(Task(), with: taskData)
+    }
+
+    func updateTask (_ task: Task, with taskData: TaskCreationData) {
+
+        var task = task
         task.notes = taskData.notes
         task.taskNumber = taskData.taskNumber
         task.startDate = taskData.dateStart
         task.endDate = taskData.dateEnd
         task.taskType = taskData.taskType
-        
+
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { _ in })
     }
@@ -160,6 +167,11 @@ extension TasksPresenter: TasksPresenterInput {
         if currentTasks.count == 0 {
             
         }
+    }
+
+    func editTask (at row: Int) {
+        let task = currentTasks[row]
+        ui!.presentTaskEditor(task: task)
     }
 }
 

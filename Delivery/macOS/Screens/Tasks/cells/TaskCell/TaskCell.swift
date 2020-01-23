@@ -20,7 +20,7 @@ class TaskCell: NSTableRowView, CellProtocol {
     @IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
     @IBOutlet private var butRemove: NSButton!
     @IBOutlet private var butAdd: NSButton!
-    @IBOutlet private var butAEdit: NSButton!
+    @IBOutlet private var butEdit: NSButton!
     
     private var isEditing = false
     private var wasEdited = false
@@ -108,6 +108,7 @@ class TaskCell: NSTableRowView, CellProtocol {
         
 		butRemove.isHidden = true
 		butAdd.isHidden = true
+        butEdit.isHidden = true
         butRemove.wantsLayer = true
         dateStartTextField.onClick = {
             self.createTimeboxPopover(timebox: self.dateStartTextField)
@@ -176,7 +177,8 @@ extension TaskCell {
         
 		self.butRemove.isHidden = false
         self.butAdd.isHidden = false
-		self.notesTextFieldTrailingContraint.constant = 80
+        self.butEdit.isHidden = false
+		self.notesTextFieldTrailingContraint.constant = 120
 		self.setNeedsDisplay(self.frame)
 	}
 	
@@ -185,6 +187,7 @@ extension TaskCell {
         
 		self.butRemove.isHidden = true
         self.butAdd.isHidden = true
+        self.butEdit.isHidden = true
 		self.notesTextFieldTrailingContraint.constant = 10
 		self.setNeedsDisplay(self.frame)
 	}
