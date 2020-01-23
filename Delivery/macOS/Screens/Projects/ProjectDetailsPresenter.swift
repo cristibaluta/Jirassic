@@ -13,6 +13,7 @@ protocol ProjectDetailsPresenterInput: class {
 
     var project: Project? {get set}
     var editedProject: Project? {get set}
+    func enableDefaultCredentials(_ enabled: Bool)
     func didPickUrl (_ url: URL)
     func save (emails: String)
     func save (paths: String)
@@ -24,6 +25,7 @@ protocol ProjectDetailsPresenterOutput: class {
 
     func pickPath()
     func show (_ project: Project)
+    func setCredentials(url: String, user: String, password: String, editable: Bool)
     func setPaths (_ paths: String?, enabled: Bool?)
     func setEmails (_ emails: String?, enabled: Bool?)
     func enableSaveButton (_ enable: Bool)
@@ -64,6 +66,18 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
         ui!.setPaths(project.gitBaseUrls.toString(), enabled: localPreferences.bool(.enableGit))
         ui!.setEmails(project.gitUsers.toString(), enabled: localPreferences.bool(.enableGit))
         enableDisableSave()
+    }
+    
+    func enableDefaultCredentials(_ enabled: Bool) {
+        
+        if enabled {
+            ui!.setCredentials(url: localPreferences.string(.settingsJiraUrl),
+                               user: localPreferences.string(.settingsJiraUser),
+                               password: "",
+                               editable: false)
+        } else {
+            ui!.setCredentials(url: "", user: "", password: "", editable: true)
+        }
     }
     
     func didPickUrl (_ url: URL) {

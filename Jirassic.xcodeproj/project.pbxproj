@@ -1774,13 +1774,13 @@
 		5623914821CBC66C0031B882 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
+				5623915221CBC9750031B882 /* Projects.storyboard */,
 				5623914921CBC6A10031B882 /* ProjectsViewController.swift */,
 				5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */,
 				286348F423B136B3009F81D7 /* ProjectsInteractor.swift */,
 				2863493423B790B1009F81D7 /* ProjectsListViewController.swift */,
 				286348F823B22775009F81D7 /* ProjectDetailsViewController.swift */,
 				2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */,
-				5623915221CBC9750031B882 /* Projects.storyboard */,
 			);
 			path = Projects;
 			sourceTree = "<group>";

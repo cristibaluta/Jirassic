@@ -87,7 +87,7 @@ class ProjectDetailsViewController: NSViewController {
     }
     
     @IBAction func handleCredentialsButton (_ sender: NSButton) {
-        
+        presenter!.enableDefaultCredentials(sender.state == .on)
     }
     
     @IBAction func projectNamePopupSelected (_ sender: NSPopUpButton) {
@@ -154,6 +154,16 @@ extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
             }
             self?.presenter?.didPickUrl(url)
         }
+    }
+    
+    func setCredentials(url: String, user: String, password: String, editable: Bool) {
+        
+        baseUrlTextField.stringValue = url
+        userTextField.stringValue = user
+        passwordTextField.stringValue = password
+        baseUrlTextField.isEditable = editable
+        userTextField.isEditable = editable
+        passwordTextField.isEditable = editable
     }
     
     func setPaths (_ paths: String?, enabled: Bool?) {
