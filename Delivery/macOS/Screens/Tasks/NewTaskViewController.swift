@@ -11,15 +11,16 @@ import RCPreferences
 
 class NewTaskViewController: NSViewController {
     
+    @IBOutlet private weak var projectSelector: NSPopUpButton!
     @IBOutlet private weak var taskTypeSelector: NSPopUpButton!
-	@IBOutlet private weak var issueIdTextField: NSTextField!
-	@IBOutlet private weak var notesTextField: NSTextField!
-	@IBOutlet private weak var endDateTextField: NSTextField!
+    @IBOutlet private weak var issueIdTextField: NSTextField!
+    @IBOutlet private weak var notesTextField: NSTextField!
+    @IBOutlet private weak var endDateTextField: NSTextField!
     @IBOutlet private weak var startDateTextField: NSTextField!
     @IBOutlet private weak var startDateButton: NSButton!
 	
-	var onSave: ((_ taskData: TaskCreationData) -> Void)?
-	var onCancel: (() -> Void)?
+    var onSave: ((_ taskData: TaskCreationData) -> Void)?
+    var onCancel: (() -> Void)?
     private var activeEditingTextFieldContent = ""
     private var issueTypes = [String]()
     private let predictor = PredictiveTimeTyping()
@@ -80,14 +81,23 @@ class NewTaskViewController: NSViewController {
 			self.issueIdTextField.stringValue = newValue
 		}
 	}
+    var projects: [Project] = []
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        projects = ReadProjectsInteractor(repository: localRepository, remoteRepository: nil).allProjects()
+        projectSelector.removeAllItems()
+        projectSelector.addItems(withTitles: projects.map({$0.title}))
+        projectSelector.selectItem(at: 0)
+        
         taskTypeSelector.removeAllItems()
         taskTypeSelector.addItems(withTitles: ["Task", "Scrum", "Meeting", "Food", "Social & Media", "Learning", "Code review"])
         taskTypeSelector.selectItem(at: 0)
+        
         setupStartDateButtonTitle()
         startDateTextField.toolTip = "Predictive Time Typing (use digits and backspace):\n • First digit if between 2 and 9 means AM hours.\n • Leaving minutes empty, defaults to 00.\n • Last digit replaces itself, no need to delete."
+        
         endDateTextField.toolTip = startDateTextField.toolTip
     }
     
@@ -103,6 +113,13 @@ class NewTaskViewController: NSViewController {
             case 6: return .coderev
             default: return .issue
         }
+    }
+    
+    private func selectedProject() -> Project? {
+        guard projects.count > 0 else {
+            return nil
+        }
+        return projects[projectSelector.indexOfSelectedItem]
     }
     
     private func estimateTaskType() {
@@ -128,12 +145,11 @@ extension NewTaskViewController: NSTextFieldDelegate {
     
     func controlTextDidBeginEditing (_ obj: Notification) {
         
-        if let textField = obj.object as? NSTextField {
-            guard textField == endDateTextField || textField == startDateTextField else {
-                return
-            }
-            activeEditingTextFieldContent = textField.stringValue
+        guard let textField = obj.object as? NSTextField,
+            textField == endDateTextField || textField == startDateTextField else {
+            return
         }
+        activeEditingTextFieldContent = textField.stringValue
     }
     
     func controlTextDidChange (_ obj: Notification) {
@@ -163,7 +179,8 @@ extension NewTaskViewController {
             dateEnd: self.dateEnd,
             taskNumber: self.taskNumber != "" ? self.taskNumber : nil,
             notes: self.notes != "" ? self.notes : nil,
-            taskType: selectedTaskType()
+            taskType: selectedTaskType(),
+            projectId: selectedProject()?.objectId
         )
         self.onSave?(taskData)
     }

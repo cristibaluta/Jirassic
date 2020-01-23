@@ -107,5 +107,6 @@ typealias TaskCreationData = (
     dateEnd: Date,
     taskNumber: String?,
     notes: String?,
-    taskType: TaskType
+    taskType: TaskType,
+    projectId: String?
 )

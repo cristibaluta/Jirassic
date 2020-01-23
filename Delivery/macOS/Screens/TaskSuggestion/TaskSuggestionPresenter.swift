@@ -11,13 +11,14 @@ import Foundation
 protocol TaskSuggestionPresenterInput: class {
     func setup (startSleepDate: Date?, endSleepDate: Date?)
     func selectSegment (atIndex index: Int)
-    func save (selectedSegment: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?)
+    func save (selectedSegment: Int, selectedProjectIndex: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?)
 }
 
 protocol TaskSuggestionPresenterOutput: class {
     func selectSegment (atIndex index: Int)
     func setTime (_ notes: String)
     func setNotes (_ notes: String)
+    func setProjects (_ projects: [String])
     func hideTaskTypes()
 }
 
@@ -27,6 +28,7 @@ class TaskSuggestionPresenter {
     private var isStartOfDay = false
     private let startWorkText = "Good morning, ready to start working?"
     private let moduleCalendar = ModuleCalendar()
+    var projects: [Project] = []
     
     private func taskType (forIndex index: Int) -> TaskType {
         
@@ -50,6 +52,13 @@ class TaskSuggestionPresenter {
             case .learning: return 4
             default: return -1
         }
+    }
+    
+    private func project(at index: Int) -> Project? {
+        guard projects.count > 0 else {
+            return nil
+        }
+        return projects[index]
     }
 }
 
@@ -90,6 +99,9 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
                     }
                 }
             }
+
+            projects = ReadProjectsInteractor(repository: localRepository, remoteRepository: nil).allProjects()
+            userInterface!.setProjects(projects.map({$0.title}))
         } else {
             isStartOfDay = true
             userInterface!.setNotes(startWorkText)
@@ -104,7 +116,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         userInterface!.selectSegment(atIndex: index)
     }
     
-    func save (selectedSegment: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?) {
+    func save (selectedSegment: Int, selectedProjectIndex: Int, notes: String, startSleepDate: Date?, endSleepDate: Date?) {
         
         var task: Task
         
@@ -115,6 +127,7 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
             task = Task(endDate: endSleepDate!, type: type)
             task.notes = notes
             task.startDate = startSleepDate
+            task.projectId = project(at: selectedProjectIndex)?.objectId
         }
         
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)

@@ -58,7 +58,8 @@ class TaskCellPresenter: NSObject {
             dateEnd: theTask.endDate,
 			taskNumber: theTask.taskNumber,
             notes: notes,
-			taskType: theTask.taskType
+			taskType: theTask.taskType,
+            projectId: theTask.projectId
 		)
         cell.isDark = AppDelegate.sharedApp().theme.isDark
         cell.isEditable = theTask.isSaved

@@ -34,7 +34,8 @@ class ReportCellPresenter: NSObject {
             dateEnd: Date(),
             taskNumber: taskNumber + "  " + title,
             notes: notesJoined,
-            taskType: .issue
+            taskType: .issue,
+            projectId: nil
         )
         cell.duration = pref.bool(.usePercents)
             ? "\(theReport.duration.secToPercent)"

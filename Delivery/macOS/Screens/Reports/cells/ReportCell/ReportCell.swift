@@ -31,7 +31,8 @@ class ReportCell: NSTableRowView, CellProtocol {
                 dateEnd: Date(),
                 taskNumber: self.taskNrTextField!.stringValue,
                 notes: self.notesTextField!.stringValue,
-                taskType: .issue
+                taskType: .issue,
+                projectId: nil
             )
         }
         set {
