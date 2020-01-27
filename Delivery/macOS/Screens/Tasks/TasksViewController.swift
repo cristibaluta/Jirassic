@@ -119,7 +119,9 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
         popover.contentViewController = controller
-        popover.show(relativeTo: activeCellRect!,
+        var rect = activeCellRect!
+        rect.origin.y = self.view.frame.height - rect.origin.y - rect.height
+        popover.show(relativeTo: rect,
                      of: self.view,
                      preferredEdge: NSRectEdge.maxY)
         // Add data after popover is presented
@@ -148,7 +150,9 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
         popover.contentViewController = controller
-        popover.show(relativeTo: activeCellRect!,
+        var rect = activeCellRect!
+        rect.origin.y = self.view.frame.height - rect.origin.y - rect.height/2
+        popover.show(relativeTo: rect,
                      of: self.view,
                      preferredEdge: NSRectEdge.maxY)
         activePopover = popover
