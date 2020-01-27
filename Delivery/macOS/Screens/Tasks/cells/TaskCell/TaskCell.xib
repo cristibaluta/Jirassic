@@ -14,11 +14,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-2c-CEz">
-                    <rect key="frame" x="106" y="11" width="227" height="13"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Scrum" id="V6V-UH-zIc">
+                    <rect key="frame" x="106" y="11" width="157" height="13"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" alignment="left" title="Notes" usesSingleLineMode="YES" id="V6V-UH-zIc">
                         <font key="font" metaFont="systemBold" size="10"/>
                         <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textFieldCell>
                     <connections>
                         <outlet property="delegate" destination="c22-O7-iKe" id="nXg-Io-bJL"/>
@@ -117,7 +117,7 @@
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstItem="nav-z1-PEs" firstAttribute="leading" secondItem="NoN-P9-87l" secondAttribute="trailing" constant="9" id="NZk-ow-NIX"/>
-                <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="10" id="OxX-q5-0hQ"/>
+                <constraint firstAttribute="trailing" secondItem="mSe-2c-CEz" secondAttribute="trailing" constant="80" id="OxX-q5-0hQ"/>
                 <constraint firstItem="NLT-IZ-aoA" firstAttribute="leading" secondItem="k7a-Yc-bPn" secondAttribute="trailing" id="P6i-Hd-nCa"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="leading" secondItem="nav-z1-PEs" secondAttribute="trailing" constant="7" id="Qh8-rK-sfk"/>
                 <constraint firstItem="mSe-2c-CEz" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Qz6-sT-SxZ"/>

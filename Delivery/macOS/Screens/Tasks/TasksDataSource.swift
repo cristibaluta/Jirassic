@@ -92,9 +92,12 @@ extension TasksDataSource: NSTableViewDelegate {
         }
         
         var theData = tasks[row]
+        let lastData = tasks.last
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
         var cell: CellProtocol = TaskCell.instantiate(in: tableView)
-        TaskCellPresenter(cell: cell).present(previousTask: thePreviousData, currentTask: theData)
+        TaskCellPresenter(cell: cell).present(previousTask: thePreviousData,
+                                              currentTask: theData,
+                                              lastTask: lastData)
         
         cell.didClickEditCell = { [weak self] (cell: CellProtocol) in
             // Ugly hack to find the row number from which the action came

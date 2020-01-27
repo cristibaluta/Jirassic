@@ -11,7 +11,6 @@ import Cocoa
 class TaskCell: NSTableRowView, CellProtocol {
 
     @IBOutlet var statusImage: NSImageView?
-    @IBOutlet private var statusImageWidthContraint: NSLayoutConstraint!
     @IBOutlet private var dateStartTextField: TimeBox!
     @IBOutlet private var dateStartTextFieldLeadingContraint: NSLayoutConstraint!
     @IBOutlet private var bullet: NSTextField!
@@ -178,7 +177,7 @@ extension TaskCell {
 		self.butRemove.isHidden = false
         self.butAdd.isHidden = false
         self.butEdit.isHidden = false
-		self.notesTextFieldTrailingContraint.constant = 120
+		self.notesTextFieldTrailingContraint.constant = 80
 		self.setNeedsDisplay(self.frame)
 	}
 	
