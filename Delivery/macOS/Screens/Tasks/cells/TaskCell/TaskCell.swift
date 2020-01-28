@@ -17,12 +17,14 @@ class TaskCell: NSTableRowView, CellProtocol {
     @IBOutlet private var dateEndTextField: TimeBox!
     @IBOutlet private var notesTextField: NSTextField!
     @IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
+    @IBOutlet private var notesTextFieldWidthContraint: NSLayoutConstraint!
     @IBOutlet private var butRemove: NSButton!
     @IBOutlet private var butAdd: NSButton!
     @IBOutlet private var butEdit: NSButton!
     
     private var isEditing = false
     private var wasEdited = false
+    private var isMouseOver = false
     private var trackingArea: NSTrackingArea?
     private var activeTimeboxPopover: NSPopover?
 	
@@ -118,14 +120,19 @@ class TaskCell: NSTableRowView, CellProtocol {
         if AppDelegate.sharedApp().theme.isDark {
             notesTextField!.textColor = NSColor.white
         }
-	}
-	
-	override func drawBackground (in dirtyRect: NSRect) {
-        
-		NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
-		let selectionPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
-		selectionPath.fill()
-	}
+    }
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        self.notesTextFieldWidthContraint.constant = dirtyRect.width - notesTextField.frame.origin.x - (isMouseOver ? 100 : 10)
+    }
+
+    override func drawBackground (in dirtyRect: NSRect) {
+
+        NSColor(calibratedWhite: 1.0, alpha: 0.0).setFill()
+        let selectionPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
+        selectionPath.fill()
+    }
     
     private func createTimeboxPopover (timebox: TimeBox) {
         guard activeTimeboxPopover == nil, isEditable else {
@@ -177,7 +184,7 @@ extension TaskCell {
 		self.butRemove.isHidden = false
         self.butAdd.isHidden = false
         self.butEdit.isHidden = false
-		self.notesTextFieldTrailingContraint.constant = 80
+        self.isMouseOver = true
 		self.setNeedsDisplay(self.frame)
 	}
 	
@@ -187,7 +194,7 @@ extension TaskCell {
 		self.butRemove.isHidden = true
         self.butAdd.isHidden = true
         self.butEdit.isHidden = true
-		self.notesTextFieldTrailingContraint.constant = 10
+        self.isMouseOver = false
 		self.setNeedsDisplay(self.frame)
 	}
 	

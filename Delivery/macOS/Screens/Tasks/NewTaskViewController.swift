@@ -83,7 +83,7 @@ class NewTaskViewController: NSViewController {
 	}
     var taskType: TaskType = .issue {
         didSet {
-            for i in 0...taskTypes.count {
+            for i in 0..<taskTypes.count {
                 if taskTypes[i] == taskType {
                     taskTypeSelector.selectItem(at: i)
                     break
