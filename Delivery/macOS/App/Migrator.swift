@@ -24,5 +24,12 @@ class Migrator {
             WriteMetadataInteractor().set(tasksLastSyncToken: token)
             UserDefaults.standard.removeObject(forKey: "ChangeToken")
         }
+
+        if let _ = UserDefaults.standard.object(forKey: "RCPreferences-settingsGitPaths") as? String {
+            UserDefaults.standard.removeObject(forKey: "RCPreferences-settingsGitPaths")
+        }
+        if let _ = UserDefaults.standard.object(forKey: "RCPreferences-settingsGitAuthors") as? String {
+            UserDefaults.standard.removeObject(forKey: "RCPreferences-settingsGitAuthors")
+        }
     }
 }

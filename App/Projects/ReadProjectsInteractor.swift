@@ -15,4 +15,12 @@ class ReadProjectsInteractor: RepositoryInteractor {
     func allProjects() -> [Project] {
         return self.repository.projects()
     }
+
+    func allGitPaths() -> [String] {
+        return allProjects().flatMap({$0.gitBaseUrls})
+    }
+
+    func allGitUsers() -> [String] {
+        return allProjects().flatMap({$0.gitUsers})
+    }
 }

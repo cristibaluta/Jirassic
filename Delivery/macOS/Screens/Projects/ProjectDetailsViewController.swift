@@ -155,8 +155,12 @@ extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
             self?.presenter?.didPickUrl(url)
         }
     }
-    
-    func setCredentials(url: String, user: String, password: String, editable: Bool) {
+
+    func setCredentialsCheckbox (enabled: Bool) {
+        butCredentials.state = enabled ? .on : .off
+    }
+
+    func setCredentials (url: String, user: String, password: String, editable: Bool) {
         
         baseUrlTextField.stringValue = url
         userTextField.stringValue = user
