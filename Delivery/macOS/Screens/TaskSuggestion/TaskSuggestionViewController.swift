@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RCLog
 
 class TaskSuggestionViewController: NSViewController {
     
@@ -18,7 +19,11 @@ class TaskSuggestionViewController: NSViewController {
     var presenter: TaskSuggestionPresenterInput?
     var startSleepDate: Date?
     var endSleepDate: Date?
-    
+
+    deinit {
+        RCLog("deinit")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter!.setup(startSleepDate: startSleepDate, endSleepDate: endSleepDate)

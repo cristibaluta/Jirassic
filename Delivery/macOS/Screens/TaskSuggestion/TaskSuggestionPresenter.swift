@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RCLog
 
 protocol TaskSuggestionPresenterInput: class {
     func setup (startSleepDate: Date?, endSleepDate: Date?)
@@ -29,7 +30,11 @@ class TaskSuggestionPresenter {
     private let startWorkText = "Good morning, ready to start working?"
     private let moduleCalendar = ModuleCalendar()
     var projects: [Project] = []
-    
+
+    deinit {
+        RCLog("deinit")
+    }
+
     private func taskType (forIndex index: Int) -> TaskType {
         
         switch index {
@@ -76,32 +81,33 @@ extension TaskSuggestionPresenter: TaskSuggestionPresenterInput {
         if let startDate = startSleepDate {
             let settings: Settings = SettingsInteractor().getAppSettings()
             let interactor = ComputerWakeUpInteractor(repository: localRepository, remoteRepository: remoteRepository, settings: settings)
-            if let type = interactor.estimationForDate(startDate, currentDate: endSleepDate ?? Date()) {
-                if type == .startDay {
-                    isStartOfDay = true
-                    userInterface!.setNotes(startWorkText)
-                    userInterface!.hideTaskTypes()
-                } else {
-                    let index = selectedSegment(forTaskType: type)
-                    selectSegment(atIndex: index)
-                    // If selected segment is meeting, try to see if the meeting is a calendar event and populate with that data
-                    if type == .meeting {
-                        moduleCalendar.events(dateStart: startDate, dateEnd: startDate.endOfDay()) { (tasks) in
-                            for task in tasks {
-                                if task.startDate!.isAlmostSameHourAs(startDate) &&
-                                    task.endDate.isAlmostSameHourAs(endSleepDate!, devianceSeconds: 30.0.minToSec) {
-                                    
-                                    self.userInterface!.setNotes(task.notes ?? "")
-                                    break
-                                }
+            guard let type = interactor.estimationForDate(startDate, currentDate: endSleepDate ?? Date()) else {
+                return
+            }
+            if type == .startDay {
+                isStartOfDay = true
+                userInterface!.setNotes(startWorkText)
+                userInterface!.hideTaskTypes()
+            } else {
+                let index = selectedSegment(forTaskType: type)
+                selectSegment(atIndex: index)
+                // If selected segment is meeting, try to see if the meeting is a calendar event and populate with that data
+                if type == .meeting {
+                    moduleCalendar.events(dateStart: startDate, dateEnd: startDate.endOfDay()) { (tasks) in
+                        for task in tasks {
+                            if task.startDate!.isAlmostSameHourAs(startDate) &&
+                                task.endDate.isAlmostSameHourAs(endSleepDate!, devianceSeconds: 30.0.minToSec) {
+
+                                self.userInterface!.setNotes(task.notes ?? "")
+                                break
                             }
                         }
                     }
                 }
+                projects = ReadProjectsInteractor(repository: localRepository, remoteRepository: nil).allProjects()
+                userInterface!.setProjects(projects.map({$0.title}))
             }
 
-            projects = ReadProjectsInteractor(repository: localRepository, remoteRepository: nil).allProjects()
-            userInterface!.setProjects(projects.map({$0.title}))
         } else {
             isStartOfDay = true
             userInterface!.setNotes(startWorkText)
