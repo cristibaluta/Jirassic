@@ -563,6 +563,8 @@
 		56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6921C3F625008350A6 /* GitUser.swift */; };
 		56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */; };
 		56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */; };
+		56B50A6C23E330BA002F35FD /* JiraUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B50A6B23E330BA002F35FD /* JiraUser.swift */; };
+		56B50A6D23E330BA002F35FD /* JiraUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B50A6B23E330BA002F35FD /* JiraUser.swift */; };
 		56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */; };
 		56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */; };
 		56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D90CF720876F1100F24442 /* WizardJiraView.swift */; };
@@ -906,6 +908,7 @@
 		569C4C7820231A0B0049FBF1 /* BrowserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowserCell.xib; sourceTree = "<group>"; };
 		56ADBF6921C3F625008350A6 /* GitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
 		56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUserParser.swift; sourceTree = "<group>"; };
+		56B50A6B23E330BA002F35FD /* JiraUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraUser.swift; sourceTree = "<group>"; };
 		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
 		56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReportTests.swift; sourceTree = "<group>"; };
 		56D90CF720876F1100F24442 /* WizardJiraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardJiraView.swift; sourceTree = "<group>"; };
@@ -1460,6 +1463,7 @@
 				4065D31E1DD3B44200B73201 /* Week.swift */,
 				28A2839920382BBB00DDCB63 /* GitCommit.swift */,
 				56ADBF6921C3F625008350A6 /* GitUser.swift */,
+				56B50A6B23E330BA002F35FD /* JiraUser.swift */,
 				5623914F21CBC6CD0031B882 /* Project.swift */,
 			);
 			path = Entities;
@@ -2259,6 +2263,7 @@
 			files = (
 				280D712C1ED6043D005D2689 /* Day.swift in Sources */,
 				2892B29B1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
+				56B50A6C23E330BA002F35FD /* JiraUser.swift in Sources */,
 				280D712D1ED6043D005D2689 /* Report.swift in Sources */,
 				28EE1F6420EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */,
 				280D712E1ED6043D005D2689 /* Settings.swift in Sources */,
@@ -2545,6 +2550,7 @@
 				2845B1402068351F006EFB3B /* TableViewCell.swift in Sources */,
 				284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28FE18A6207B369800DF796E /* CocoaHookupCell.swift in Sources */,
+				56B50A6D23E330BA002F35FD /* JiraUser.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
 				5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */,
 				285465A8217858790052CB6A /* StoreView.swift in Sources */,

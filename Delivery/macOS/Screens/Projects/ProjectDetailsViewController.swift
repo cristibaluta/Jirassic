@@ -24,6 +24,7 @@ class ProjectDetailsViewController: NSViewController {
     @IBOutlet private var butPick: NSButton!
     @IBOutlet private var butSave: NSButton!
     @IBOutlet private var butDelete: NSButton!
+    @IBOutlet private var butPurchase: NSButton!
     
     var project: Project? {
         didSet {
@@ -33,7 +34,7 @@ class ProjectDetailsViewController: NSViewController {
     var projectDidSave: ((Project) -> Void)?
     
     var presenter: ProjectDetailsPresenterInput?
-    var jiraPresenter: JiraTempoPresenterInput = JiraTempoPresenter()
+    private let jiraPresenter: JiraTempoPresenterInput = JiraTempoPresenter()
     
     private var emailClickGestureRecognizer: NSClickGestureRecognizer?
     private var gitUsersPopover: NSPopover?
@@ -51,6 +52,9 @@ class ProjectDetailsViewController: NSViewController {
         let gesture = NSClickGestureRecognizer(target: self, action: #selector(ProjectDetailsViewController.emailTextFieldClicked))
         emailsTextField.addGestureRecognizer(gesture)
         self.emailClickGestureRecognizer = gesture
+
+        (jiraPresenter as! JiraTempoPresenter).userInterface = self
+        jiraPresenter.setupUserInterface()
     }
     
     deinit {
@@ -139,6 +143,13 @@ extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
         pathsTextField.stringValue = project.gitBaseUrls.toString()
         emailsTextField.stringValue = project.gitUsers.toString()
         taskNumberPrefixTextField.stringValue = project.taskNumberPrefix ?? ""
+
+        let user = JiraUser(url: project.jiraBaseUrl ?? "",
+                            user: project.jiraUser ?? "",
+                            password: Keychain.getPassword(),
+                            project: project.jiraProject ?? "",
+                            issue: project.jiraIssue ?? "")
+        jiraPresenter.checkCredentials(user)
     }
 
     func pickPath() {
@@ -211,5 +222,39 @@ extension ProjectDetailsViewController: NSTextFieldDelegate {
 //        project.taskNumberPrefix = taskNumberPrefixTextField.stringValue
         presenter!.save(emails: emailsTextField.stringValue)
         presenter!.save(paths: pathsTextField.stringValue)
+    }
+}
+
+extension ProjectDetailsViewController: JiraTempoPresenterOutput {
+
+    func setPurchased (_ purchased: Bool) {
+        butPurchase.isHidden = purchased
+        baseUrlTextField.isEnabled = purchased
+        userTextField.isEnabled = purchased
+        passwordTextField.isEnabled = purchased
+        projectNamePopup.isEnabled = purchased
+        projectIssueNamePopup.isEnabled = purchased
+    }
+
+    func enableProgressIndicator (_ enabled: Bool) {
+        enabled
+            ? progressIndicator.startAnimation(nil)
+            : progressIndicator.stopAnimation(nil)
+    }
+
+    func showProjects (_ projects: [String], selectedProject: String) {
+        projectNamePopup.removeAllItems()
+        projectNamePopup.addItems(withTitles: projects)
+        projectNamePopup.selectItem(withTitle: selectedProject)
+    }
+
+    func showProjectIssues (_ issues: [String], selectedIssue: String) {
+        projectIssueNamePopup.removeAllItems()
+        projectIssueNamePopup.addItems(withTitles: issues)
+        projectIssueNamePopup.selectItem(withTitle: selectedIssue)
+    }
+
+    func showErrorMessage (_ message: String) {
+        errorTextField.stringValue = message
     }
 }

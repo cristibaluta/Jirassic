@@ -28,7 +28,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="name" width="160" minWidth="160" maxWidth="160" id="9Ok-ZQ-i0k">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -227,7 +227,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mIY-n6-kvu" id="eQQ-zn-caH">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="nLi-Ne-sEV">
                                         <items>
                                             <menuItem title="Item 1" state="on" id="mIY-n6-kvu"/>
@@ -248,7 +248,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="WhL-Y9-OMU" id="vNV-u8-gQz">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="HxF-pu-i4z">
                                         <items>
                                             <menuItem title="Item 1" state="on" id="WhL-Y9-OMU"/>
@@ -276,9 +276,8 @@
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                             </secureTextField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pPp-9a-8hL">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pPp-9a-8hL">
                                 <rect key="frame" x="11" y="465" width="233" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Use credentials from main account" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MhJ-0s-p3S">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -300,7 +299,7 @@
                                 <rect key="frame" x="452" y="118" width="38" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Pick" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tqp-FW-gi5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handlePickerButton:" target="ntz-hH-ch5" id="VXn-gB-k9Q"/>
@@ -364,6 +363,13 @@
                                     <action selector="handleDeleteButton:" target="ntz-hH-ch5" id="Bbd-7Q-pvy"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p7j-AF-ECI">
+                                <rect key="frame" x="423" y="464" width="67" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Purchase" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JQ2-Mf-aqL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="FFQ-AT-obM" firstAttribute="leading" secondItem="2oL-Ug-Cw8" secondAttribute="trailing" constant="8" id="2j3-Yg-Sub"/>
@@ -372,6 +378,7 @@
                             <constraint firstItem="YV8-ct-95h" firstAttribute="leading" secondItem="KU8-ZD-HhH" secondAttribute="leading" id="3fr-Bb-sjw"/>
                             <constraint firstAttribute="bottom" secondItem="yEo-ah-PUw" secondAttribute="bottom" constant="14" id="5Fi-6o-GhK"/>
                             <constraint firstItem="OZR-zv-Kzj" firstAttribute="centerY" secondItem="N2T-um-qk7" secondAttribute="centerY" id="63W-uA-Osh"/>
+                            <constraint firstItem="pPp-9a-8hL" firstAttribute="top" secondItem="Hcg-QX-aE7" secondAttribute="top" constant="15" id="6n7-Fd-qJl"/>
                             <constraint firstAttribute="trailing" secondItem="RE8-cb-wVw" secondAttribute="trailing" id="7iD-3O-2jc"/>
                             <constraint firstItem="2hp-Ua-ZqO" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="110" id="8AN-qg-Cun"/>
                             <constraint firstItem="dfF-Pm-A7U" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="13" id="8KU-bh-7FJ"/>
@@ -382,6 +389,7 @@
                             <constraint firstItem="RCP-5c-b5z" firstAttribute="leading" secondItem="YV8-ct-95h" secondAttribute="leading" id="B6V-v6-TWA"/>
                             <constraint firstItem="pnx-CG-foC" firstAttribute="trailing" secondItem="2hp-Ua-ZqO" secondAttribute="trailing" id="IMu-b6-J6a"/>
                             <constraint firstAttribute="trailing" secondItem="FFQ-AT-obM" secondAttribute="trailing" id="Kzg-ua-dve"/>
+                            <constraint firstItem="p7j-AF-ECI" firstAttribute="centerY" secondItem="pPp-9a-8hL" secondAttribute="centerY" id="Lkh-3t-zAh"/>
                             <constraint firstItem="WWt-u2-UhN" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="13" id="OLZ-mt-JJ6"/>
                             <constraint firstItem="2oL-Ug-Cw8" firstAttribute="leading" secondItem="RE8-cb-wVw" secondAttribute="leading" id="QGc-U4-OI0"/>
                             <constraint firstItem="YV8-ct-95h" firstAttribute="top" secondItem="KU8-ZD-HhH" secondAttribute="bottom" constant="18" id="T72-iC-CLu"/>
@@ -389,11 +397,13 @@
                             <constraint firstItem="CtF-Ud-6yP" firstAttribute="centerY" secondItem="2oL-Ug-Cw8" secondAttribute="centerY" id="W4u-C6-hMH"/>
                             <constraint firstItem="RCP-5c-b5z" firstAttribute="top" secondItem="YV8-ct-95h" secondAttribute="bottom" constant="21" id="X1O-C6-Btk"/>
                             <constraint firstItem="yEo-ah-PUw" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="13" id="Z1i-37-Ped"/>
+                            <constraint firstAttribute="trailing" secondItem="p7j-AF-ECI" secondAttribute="trailing" id="ZNL-kR-gEa"/>
                             <constraint firstItem="dfF-Pm-A7U" firstAttribute="centerY" secondItem="2hp-Ua-ZqO" secondAttribute="centerY" id="aZe-PP-Yrv"/>
                             <constraint firstAttribute="trailing" secondItem="2hp-Ua-ZqO" secondAttribute="trailing" id="bFQ-jz-mhH"/>
                             <constraint firstItem="N2T-um-qk7" firstAttribute="trailing" secondItem="pnx-CG-foC" secondAttribute="trailing" id="cXZ-gX-GKS"/>
                             <constraint firstAttribute="trailing" secondItem="EBA-3G-fL2" secondAttribute="trailing" id="det-eE-gf8"/>
                             <constraint firstItem="pnx-CG-foC" firstAttribute="leading" secondItem="2hp-Ua-ZqO" secondAttribute="leading" id="eGU-Wv-ehn"/>
+                            <constraint firstItem="pPp-9a-8hL" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="13" id="eo8-65-DNo"/>
                             <constraint firstItem="vWH-yk-ZLE" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="13" id="fHC-aY-Dtm"/>
                             <constraint firstItem="CtF-Ud-6yP" firstAttribute="leading" secondItem="Hcg-QX-aE7" secondAttribute="leading" constant="13" id="feO-qT-2jE"/>
                             <constraint firstItem="EWz-dv-lxW" firstAttribute="centerY" secondItem="KU8-ZD-HhH" secondAttribute="centerY" id="jfo-MI-Ihz"/>
@@ -418,6 +428,7 @@
                         <outlet property="butCredentials" destination="pPp-9a-8hL" id="vqu-69-HY7"/>
                         <outlet property="butDelete" destination="xRw-rq-mxc" id="bnt-jc-7zc"/>
                         <outlet property="butPick" destination="FFQ-AT-obM" id="1lV-fT-ga6"/>
+                        <outlet property="butPurchase" destination="p7j-AF-ECI" id="E8b-fG-zzY"/>
                         <outlet property="butSave" destination="yEo-ah-PUw" id="PeU-Zp-f7y"/>
                         <outlet property="emailsTextField" destination="RE8-cb-wVw" id="zxC-vX-qoI"/>
                         <outlet property="errorTextField" destination="4GS-xw-Lbe" id="eDe-AJ-6Kf"/>
