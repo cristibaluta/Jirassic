@@ -39,7 +39,7 @@ class TaskSuggestionViewController: NSViewController {
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
         presenter!.save(selectedSegment: segmentedControl != nil ? segmentedControl!.selectedSegment : -1,
-                        selectedProjectIndex: projectSelector.indexOfSelectedItem,
+                        selectedProjectIndex: projectSelector != nil ? projectSelector.indexOfSelectedItem : -1,
                         notes: notesTextField.stringValue,
                         startSleepDate: startSleepDate,
                         endSleepDate: endSleepDate)

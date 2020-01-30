@@ -36,7 +36,7 @@ protocol ProjectDetailsPresenterOutput: class {
 class ProjectDetailsPresenter {
     
     weak var ui: ProjectDetailsPresenterOutput?
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let prefs = RCPreferences<LocalPreferences>()
 
     var project: Project? {
         didSet {
@@ -64,8 +64,8 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
             return
         }
         ui!.show(project)
-        ui!.setPaths(project.gitBaseUrls.toString(), enabled: localPreferences.bool(.enableGit))
-        ui!.setEmails(project.gitUsers.toString(), enabled: localPreferences.bool(.enableGit))
+        ui!.setPaths(project.gitBaseUrls.toString(), enabled: prefs.bool(.enableGit))
+        ui!.setEmails(project.gitUsers.toString(), enabled: prefs.bool(.enableGit))
         enableDisableSave()
 
         let credentialsEnabled = (project.jiraBaseUrl ?? "") == "" && (project.jiraUser ?? "") == ""
@@ -76,8 +76,8 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
     func enableDefaultCredentials(_ enabled: Bool) {
         
         if enabled {
-            ui!.setCredentials(url: localPreferences.string(.settingsJiraUrl),
-                               user: localPreferences.string(.settingsJiraUser),
+            ui!.setCredentials(url: prefs.string(.settingsJiraUrl),
+                               user: prefs.string(.settingsJiraUser),
                                password: "",
                                editable: false)
         } else {
@@ -100,7 +100,7 @@ extension ProjectDetailsPresenter: ProjectDetailsPresenterInput {
         project.gitBaseUrls = existingPaths
         editedProject = project
 
-        ui!.setPaths(existingPaths.toString(), enabled: localPreferences.bool(.enableGit))
+        ui!.setPaths(existingPaths.toString(), enabled: prefs.bool(.enableGit))
     }
     
     func save (emails: String) {

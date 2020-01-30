@@ -108,9 +108,11 @@ class ProjectDetailsViewController: NSViewController {
         let popover = NSPopover()
         let view = GitUsersViewController.instantiateFromStoryboard("Components")
         view.onDone = {
-            self.presenter?.save(emails: view.selectedUsers.toString())
+            let emails = view.selectedUsers.toString()
+            self.presenter?.save(emails: emails)
             self.gitUsersPopover?.performClose(nil)
             self.gitUsersPopover = nil
+            self.emailsTextField.stringValue = emails
         }
         popover.contentViewController = view
         let rect = CGRect(origin: CGPoint(x: emailsTextField.frame.width/2, y: 0),

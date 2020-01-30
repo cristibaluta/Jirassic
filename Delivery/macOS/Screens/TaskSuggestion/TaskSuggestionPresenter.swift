@@ -59,8 +59,8 @@ class TaskSuggestionPresenter {
         }
     }
     
-    private func project(at index: Int) -> Project? {
-        guard projects.count > 0 else {
+    private func project (at index: Int) -> Project? {
+        guard projects.count > 0, index >= 0, index < projects.count else {
             return nil
         }
         return projects[index]
