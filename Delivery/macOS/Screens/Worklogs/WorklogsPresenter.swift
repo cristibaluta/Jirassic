@@ -75,7 +75,7 @@ extension WorklogsPresenter: WorklogsPresenterInput {
         }
         userInterface!.showProgressIndicator(true)
         /// Save to jira tempo
-        moduleJira.postWorklog(worklog: worklog, duration: d, date: date!, success: { [weak self] in
+        moduleJira.postWorklog(worklog: worklog, duration: d.hoursToSec, date: date!, success: { [weak self] in
             
             DispatchQueue.main.async {
                 if let userInterface = self?.userInterface {
