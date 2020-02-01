@@ -16,7 +16,6 @@ class TaskCell: NSTableRowView, CellProtocol {
     @IBOutlet private var bullet: NSTextField!
     @IBOutlet private var dateEndTextField: TimeBox!
     @IBOutlet private var notesTextField: NSTextField!
-    @IBOutlet private var notesTextFieldTrailingContraint: NSLayoutConstraint!
     @IBOutlet private var notesTextFieldWidthContraint: NSLayoutConstraint!
     @IBOutlet private var butRemove: NSButton!
     @IBOutlet private var butAdd: NSButton!
@@ -124,7 +123,7 @@ class TaskCell: NSTableRowView, CellProtocol {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        self.notesTextFieldWidthContraint.constant = dirtyRect.width - notesTextField.frame.origin.x - (isMouseOver ? 100 : 10)
+        self.notesTextFieldWidthContraint.constant = dirtyRect.width - notesTextField.frame.origin.x - (isMouseOver ? 70 : 10)
     }
 
     override func drawBackground (in dirtyRect: NSRect) {
@@ -181,27 +180,29 @@ extension TaskCell {
 	override func mouseEntered (with theEvent: NSEvent) {
         super.mouseEntered(with: theEvent)
         
-		self.butRemove.isHidden = false
-        self.butAdd.isHidden = false
-        self.butEdit.isHidden = false
-        self.isMouseOver = true
-		self.setNeedsDisplay(self.frame)
+		butRemove.isHidden = false
+        butAdd.isHidden = false
+        butEdit.isHidden = false
+        statusImage?.isHidden = true
+        isMouseOver = true
+		setNeedsDisplay(frame)
 	}
 	
 	override func mouseExited (with theEvent: NSEvent) {
         super.mouseExited(with: theEvent)
         
-		self.butRemove.isHidden = true
-        self.butAdd.isHidden = true
-        self.butEdit.isHidden = true
-        self.isMouseOver = false
-		self.setNeedsDisplay(self.frame)
+		butRemove.isHidden = true
+        butAdd.isHidden = true
+        butEdit.isHidden = true
+        statusImage?.isHidden = false
+        isMouseOver = false
+		setNeedsDisplay(frame)
 	}
 	
 	func ensureTrackingArea() {
         
 		if trackingArea == nil {
-			trackingArea = NSTrackingArea(rect: NSZeroRect,
+            trackingArea = NSTrackingArea(rect: self.frame,
 				options: [
                     NSTrackingArea.Options.inVisibleRect,
                     NSTrackingArea.Options.activeAlways,

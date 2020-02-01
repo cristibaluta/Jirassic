@@ -86,12 +86,12 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="f3q-ar-1TN">
-                    <rect key="frame" x="260" y="10" width="16" height="16"/>
+                    <rect key="frame" x="0.0" y="9" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="Lz8-W6-9Hy"/>
                         <constraint firstAttribute="width" constant="16" id="hpx-ED-awK"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Afl-m8-d33">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="EditIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Afl-m8-d33">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -112,11 +112,11 @@
                 <constraint firstItem="1gO-Mn-ATS" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="2WT-I3-hg1"/>
                 <constraint firstItem="NoN-P9-87l" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="7uC-nD-vV5"/>
                 <constraint firstItem="k7a-Yc-bPn" firstAttribute="leading" secondItem="c4Y-B7-eQF" secondAttribute="trailing" constant="1" id="8Y0-Jd-vGv"/>
-                <constraint firstItem="z4T-g2-tdS" firstAttribute="leading" secondItem="f3q-ar-1TN" secondAttribute="trailing" constant="8" id="9pI-7T-7Ud"/>
+                <constraint firstItem="f3q-ar-1TN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="977-I4-zh9"/>
                 <constraint firstItem="1gO-Mn-ATS" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="AQ4-xS-01a"/>
+                <constraint firstItem="f3q-ar-1TN" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="BKA-TU-2FR"/>
                 <constraint firstAttribute="centerY" secondItem="JnH-wo-pJy" secondAttribute="centerY" constant="1" id="BfB-re-cQN"/>
                 <constraint firstItem="k7a-Yc-bPn" firstAttribute="centerY" secondItem="c4Y-B7-eQF" secondAttribute="centerY" id="HwG-XC-Uv2"/>
-                <constraint firstItem="f3q-ar-1TN" firstAttribute="centerY" secondItem="z4T-g2-tdS" secondAttribute="centerY" id="Mid-a0-lzk"/>
                 <constraint firstItem="JnH-wo-pJy" firstAttribute="leading" secondItem="z4T-g2-tdS" secondAttribute="trailing" constant="9" id="NNh-nr-9GO"/>
                 <constraint firstAttribute="trailing" secondItem="JnH-wo-pJy" secondAttribute="trailing" constant="16" id="NYK-xv-SAy"/>
                 <constraint firstItem="nav-z1-PEs" firstAttribute="leading" secondItem="NoN-P9-87l" secondAttribute="trailing" constant="9" id="NZk-ow-NIX"/>
@@ -143,7 +143,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="EditIcon" width="16" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
