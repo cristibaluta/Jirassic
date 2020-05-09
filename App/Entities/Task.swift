@@ -57,6 +57,8 @@ enum TaskType: Int {
 
     var title: String {
         switch self {
+            case .startDay: return "Start of day"
+            case .endDay: return "End of day"
             case .issue: return "Task"
             case .scrum: return "Scrum"
             case .lunch: return "Food"
@@ -65,6 +67,7 @@ enum TaskType: Int {
             case .learning: return "Learning"
             case .coderev: return "Code review"
             case .support: return "Support"
+            case .gitCommit: return "Git commit"
             default: return ""
         }
     }

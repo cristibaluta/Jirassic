@@ -134,34 +134,32 @@ extension TasksViewController: TasksPresenterOutput {
 
         let popover = NSPopover()
         let controller = NewTaskViewController.instantiateFromStoryboard("Tasks")
-        controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
-            guard let self = self else {
-                return
-            }
-            self.presenter?.updateTask(task, with: taskData)
-            self.presenter!.reloadLastSelectedDay()
-            popover.performClose(nil)
+        controller.onSave = { [weak self] taskCreationData in
+            self?.presenter!.updateTask(task, with: taskCreationData)
+            self?.presenter!.reloadLastSelectedDay()
+            self?.closeTaskEditor()
         }
         controller.onCancel = { [weak self] in
-            if let strongSelf = self {
-                popover.performClose(nil)
-                strongSelf.activePopover = nil
-                strongSelf.presenter!.updateNoTasksState()
-            }
+            self?.closeTaskEditor()
+            self?.presenter!.updateNoTasksState()
         }
         popover.contentViewController = controller
         var rect = activeCellRect!
         rect.origin.y = self.view.frame.height - rect.origin.y - rect.height/2
-        popover.show(relativeTo: rect,
-                     of: self.view,
-                     preferredEdge: NSRectEdge.maxY)
+        popover.show(relativeTo: rect, of: self.view, preferredEdge: NSRectEdge.maxY)
         activePopover = popover
 
-        controller.notes = task.notes ?? ""
-        controller.taskNumber = task.taskNumber ?? ""
+        controller.notes = task.notes
+        controller.taskNumber = task.taskNumber
         controller.dateStart = task.startDate
         controller.dateEnd = task.endDate
         controller.taskType = task.taskType
+    }
+    
+    func closeTaskEditor() {
+        activePopover?.contentViewController = nil
+        activePopover?.performClose(nil)
+        activePopover = nil
     }
     
     func showWorklogs (date: Date, tasks: [Task]) {

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RCLog
 
 protocol TasksPresenterInput: class {
     
@@ -30,6 +31,7 @@ protocol TasksPresenterOutput: class {
     func showTasks (_ tasks: [Task])
     func presentNewTaskController (date: Date)
     func presentTaskEditor(task: Task)
+    func closeTaskEditor()
     func showWorklogs (date: Date, tasks: [Task])
     func removeTasks()
     func removeWorklogs()
@@ -171,6 +173,8 @@ extension TasksPresenter: TasksPresenterInput {
 
     func editTask (at row: Int) {
         let task = currentTasks[row]
+        RCLog("Star tediting task: \(task)")
+        ui!.closeTaskEditor()// Close current task editor if exists
         ui!.presentTaskEditor(task: task)
     }
 }
@@ -178,7 +182,7 @@ extension TasksPresenter: TasksPresenterInput {
 extension TasksPresenter: TasksInteractorOutput {
 
     func tasksDidLoad (_ tasks: [Task]) {
-
+        RCLog(tasks)
         guard let ui = self.ui else {
             return
         }

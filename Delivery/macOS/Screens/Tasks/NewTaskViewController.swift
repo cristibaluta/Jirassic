@@ -8,6 +8,7 @@
 
 import Cocoa
 import RCPreferences
+import RCLog
 
 class NewTaskViewController: NSViewController {
     
@@ -65,33 +66,56 @@ class NewTaskViewController: NSViewController {
             return Double(hm.min).minToSec + Double(hm.hour).hoursToSec
         }
     }
-	var notes: String {
+    // If no notes inserted return nil
+	var notes: String? {
 		get {
-			return notesTextField.stringValue
+            return notesTextField.stringValue != "" ? notesTextField.stringValue : nil
 		}
 		set {
-			self.notesTextField.stringValue = newValue
+			self.notesTextField.stringValue = newValue ?? ""
 		}
 	}
-	var taskNumber: String {
+	var taskNumber: String? {
 		get {
-			return issueIdTextField.stringValue
+			return issueIdTextField.stringValue != "" ? issueIdTextField.stringValue : nil
 		}
 		set {
-			self.issueIdTextField.stringValue = newValue
+			self.issueIdTextField.stringValue = newValue ?? ""
 		}
 	}
     var taskType: TaskType = .issue {
         didSet {
-            for i in 0..<taskTypes.count {
-                if taskTypes[i] == taskType {
+            taskTypeSelector.isEnabled = true
+            issueIdTextField.isEnabled = true
+            notesTextField.isEnabled = true
+            
+            for i in 0..<editableTaskTypes.count {
+                if editableTaskTypes[i] == taskType {
                     taskTypeSelector.selectItem(at: i)
-                    break
+                    return
                 }
             }
+            for i in 0..<fixedTaskTypes.count {
+                if fixedTaskTypes[i] == taskType {
+                    taskTypeSelector.removeAllItems()
+                    taskTypeSelector.addItem(withTitle: taskType.title)
+                    taskTypeSelector.selectItem(at: 0)
+                    taskTypeSelector.isEnabled = false
+                    return
+                }
+            }
+            // If we received an unsuported type show it as it is and disable the dropdown
+            taskTypeSelector.removeAllItems()
+            taskTypeSelector.addItem(withTitle: taskType.title)
+            taskTypeSelector.selectItem(at: 0)
+            taskTypeSelector.isEnabled = false
+            issueIdTextField.isEnabled = false
+            notesTextField.isEnabled = false
         }
     }
-    private let taskTypes: [TaskType] = [.issue, .scrum, .lunch, .meeting, .waste, .learning, .coderev, .support]
+    // Do not show start and end day in the drop down
+    private let editableTaskTypes: [TaskType] = [.issue, .scrum, .lunch, .meeting, .waste, .learning, .coderev, .support]
+    private let fixedTaskTypes: [TaskType] = [.gitCommit]
 //    var project: Project {
 //
 //    }
@@ -106,7 +130,7 @@ class NewTaskViewController: NSViewController {
         projectSelector.selectItem(at: 0)
 
         taskTypeSelector.removeAllItems()
-        taskTypeSelector.addItems(withTitles: taskTypes.map({$0.title}))
+        taskTypeSelector.addItems(withTitles: editableTaskTypes.map({$0.title}))
         taskTypeSelector.selectItem(at: 0)
         
         setupStartDateButtonTitle()
