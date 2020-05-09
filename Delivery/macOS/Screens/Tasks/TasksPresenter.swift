@@ -136,6 +136,8 @@ extension TasksPresenter: TasksPresenterInput {
         task.startDate = taskData.dateStart
         task.endDate = taskData.dateEnd
         task.taskType = taskData.taskType
+        task.projectId = taskData.projectId
+        RCLog("Edited task: \(task)")
 
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { _ in })

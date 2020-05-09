@@ -51,14 +51,14 @@ extension TasksViewController: TasksPresenterOutput {
         
         let dataSource = TasksDataSource(tasks: tasks)
         dataSource.didClickAddRow = { [weak self] row in
-            RCLogO("Add item after row \(row)")
+            RCLogO("Click add item after row \(row)")
             if row >= 0 {
                 self?.activeCellRect = self?.tasksScrollView?.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
             }
         }
         dataSource.didClickRemoveRow = { [weak self] row in
-            RCLogO("Remove item at row \(row)")
+            RCLogO("Click remove item at row \(row)")
             if row >= 0 {
                 self?.presenter!.removeTask(at: row)
                 self?.tasksScrollView!.removeTask(at: row)
@@ -66,7 +66,7 @@ extension TasksViewController: TasksPresenterOutput {
             }
         }
         dataSource.didClickEditRow = { [weak self] row in
-            RCLogO("Edit item after row \(row)")
+            RCLogO("Click edit item at row \(row)")
             if row >= 0 {
                 self?.activeCellRect = self?.tasksScrollView?.frameOfCell(atRow: row)
                 self?.presenter!.editTask(at: row)
@@ -154,6 +154,7 @@ extension TasksViewController: TasksPresenterOutput {
         controller.dateStart = task.startDate
         controller.dateEnd = task.endDate
         controller.taskType = task.taskType
+        controller.projectId = task.projectId
     }
     
     func closeTaskEditor() {

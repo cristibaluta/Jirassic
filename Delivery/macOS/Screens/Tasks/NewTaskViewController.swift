@@ -116,9 +116,16 @@ class NewTaskViewController: NSViewController {
     // Do not show start and end day in the drop down
     private let editableTaskTypes: [TaskType] = [.issue, .scrum, .lunch, .meeting, .waste, .learning, .coderev, .support]
     private let fixedTaskTypes: [TaskType] = [.gitCommit]
-//    var project: Project {
-//
-//    }
+    var projectId: String? {
+        didSet {
+            for i in 0..<projects.count {
+                if projects[i].objectId == projectId {
+                    projectSelector.selectItem(at: i)
+                    return
+                }
+            }
+        }
+    }
     var projects: [Project] = []
 
     override func viewDidLoad() {
@@ -210,7 +217,7 @@ extension NewTaskViewController: NSTextFieldDelegate {
 extension NewTaskViewController {
     
     @IBAction func handleTaskTypeSelector (_ sender: NSPopUpButton) {
-        issueIdTextField.isEnabled = selectedTaskType() == .issue
+        taskType = selectedTaskType()
     }
     
     @IBAction func handleSaveButton (_ sender: NSButton) {
@@ -220,7 +227,7 @@ extension NewTaskViewController {
             dateEnd: self.dateEnd,
             taskNumber: self.taskNumber != "" ? self.taskNumber : nil,
             notes: self.notes != "" ? self.notes : nil,
-            taskType: selectedTaskType(),
+            taskType: self.taskType,
             projectId: selectedProject()?.objectId
         )
         self.onSave?(taskData)
