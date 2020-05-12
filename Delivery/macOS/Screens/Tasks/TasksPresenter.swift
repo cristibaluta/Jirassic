@@ -15,7 +15,7 @@ protocol TasksPresenterInput: class {
     func reloadTasksOnDay (_ day: Day)
     func updateNoTasksState()
     func closeDay (showWorklogs: Bool)
-    func insertTaskWithData (_ taskData: TaskCreationData)
+    func saveNewTask (with taskData: TaskCreationData)
     func updateTask (_ task: Task, with taskData: TaskCreationData)
     func insertTask (after row: Int)
     func removeTask (at row: Int)
@@ -85,6 +85,7 @@ extension TasksPresenter: TasksPresenterInput {
         if currentTasks.count == 0 {
             startDay()
         } else {
+            ui!.closeTaskEditor()
             ui!.presentNewTaskController(date: Date())
         }
     }
@@ -124,7 +125,7 @@ extension TasksPresenter: TasksPresenterInput {
         ui!.showWorklogs(date: lastSelectedDay.dateStart, tasks: currentTasks)
     }
 
-    func insertTaskWithData (_ taskData: TaskCreationData) {
+    func saveNewTask (with taskData: TaskCreationData) {
         updateTask(Task(), with: taskData)
     }
 
@@ -149,6 +150,7 @@ extension TasksPresenter: TasksPresenterInput {
             // Insert task at the end
             let taskBefore = currentTasks[row]
             let nextDate = taskBefore.endDate.isSameDayAs(Date()) ? Date() : taskBefore.endDate.addingTimeInterval(3600)
+            ui!.closeTaskEditor()
             ui!.presentNewTaskController(date: nextDate)
             return
         }
@@ -157,6 +159,7 @@ extension TasksPresenter: TasksPresenterInput {
         let taskAfter = currentTasks[row+1]
         let middleTimestamp = taskAfter.endDate.timeIntervalSince(taskBefore.endDate) / 2
         let middleDate = taskBefore.endDate.addingTimeInterval(middleTimestamp)
+        ui!.closeTaskEditor()
         ui!.presentNewTaskController(date: middleDate)
     }
     

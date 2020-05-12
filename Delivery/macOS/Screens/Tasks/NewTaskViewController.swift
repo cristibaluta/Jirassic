@@ -151,8 +151,8 @@ class NewTaskViewController: NSViewController {
         switch taskTypeSelector.indexOfSelectedItem {
             case 0: return .issue
             case 1: return .scrum
-            case 2: return .meeting
-            case 3: return .lunch
+            case 2: return .lunch
+            case 3: return .meeting
             case 4: return .waste
             case 5: return .learning
             case 6: return .coderev

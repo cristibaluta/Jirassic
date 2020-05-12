@@ -102,28 +102,20 @@ extension TasksViewController: TasksPresenterOutput {
         
         let popover = NSPopover()
         let controller = NewTaskViewController.instantiateFromStoryboard("Tasks")
-        controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
-            guard let self = self else {
-                return
-            }
-            self.presenter?.insertTaskWithData(taskData)
-            self.presenter!.updateNoTasksState()
-            self.presenter!.reloadLastSelectedDay()
-            popover.performClose(nil)
+        controller.onSave = { [weak self] taskData in
+            self?.presenter!.saveNewTask(with: taskData)
+            self?.presenter!.updateNoTasksState()
+            self?.presenter!.reloadLastSelectedDay()
+            self?.closeTaskEditor()
         }
         controller.onCancel = { [weak self] in
-            if let strongSelf = self {
-                popover.performClose(nil)
-                strongSelf.activePopover = nil
-                strongSelf.presenter!.updateNoTasksState()
-            }
+            self?.closeTaskEditor()
+            self?.presenter!.updateNoTasksState()
         }
         popover.contentViewController = controller
         var rect = activeCellRect!
         rect.origin.y = self.view.frame.height - rect.origin.y - rect.height
-        popover.show(relativeTo: rect,
-                     of: self.view,
-                     preferredEdge: NSRectEdge.maxY)
+        popover.show(relativeTo: rect, of: self.view, preferredEdge: NSRectEdge.maxY)
         // Add data after popover is presented
         controller.dateStart = nil// TODO Add scrum start date when around scrum date
         controller.dateEnd = date
@@ -171,16 +163,10 @@ extension TasksViewController: TasksPresenterOutput {
         self.view.addSubview(controller.view)
         controller.view.constrainToSuperview()
         controller.onSave = { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.presenter!.reloadLastSelectedDay()
+            self?.presenter!.reloadLastSelectedDay()
         }
         controller.onCancel = { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.presenter!.reloadLastSelectedDay()
+            self?.presenter!.reloadLastSelectedDay()
         }
         worklogsViewController = controller
     }
