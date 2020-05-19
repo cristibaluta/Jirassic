@@ -16,8 +16,12 @@ extension JiraRepository {
     func fetchProjects (success: @escaping ([JProject]) -> Void, failure: @escaping (Error) -> Void) {
         
         let path = "rest/api/2/project"
-        request?.get(at: path, success: { responseData in
+        request?.get(at: path, success: { httpResponse, responseData in
             
+            guard httpResponse.statusCode != 403 else {
+                failure(RCHttpError(errorDescription: "Authentication failed. Please verify via browser, possible cause is expired password which is causing Jira to ask for captcha."))
+                return
+            }
             guard let responseJson = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
                 let projects = responseJson as? [[String: Any]] else {
                 failure(RCHttpError(errorDescription: "Invalid json response"))
@@ -44,7 +48,7 @@ extension JiraRepository {
     func fetchProjectIssues (projectKey: String, success: @escaping ([JProjectIssue]) -> Void, failure: @escaping (Error) -> Void) {
         
         let path = "rest/api/2/search?jql=project=\(projectKey)&fields=*none&maxResults=-1"
-        request?.get(at: path, success: { responseData in
+        request?.get(at: path, success: { httpResponse, responseData in
             
             guard let responseJson = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
                 let response = responseJson as? [String: Any],
