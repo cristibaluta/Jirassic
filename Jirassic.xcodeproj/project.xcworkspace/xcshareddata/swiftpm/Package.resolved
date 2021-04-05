@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/ralcr/RCHttp",
         "state": {
           "branch": "master",
-          "revision": "37271c188d92b40a9870f7662e6e98d76ad4d9d6",
+          "revision": "647df79192f7f56c5b474d92d3e792c852a8ab51",
           "version": null
         }
       },
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/ralcr/RCLog",
         "state": {
           "branch": "master",
-          "revision": "f3166aa52b66e2278523ce8eef40bf31a37ddaad",
+          "revision": "e5777165170c2b77562ceb22eaffec8cbc48a69f",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/ralcr/RCPreferences",
         "state": {
           "branch": "master",
-          "revision": "d8a2750659ebff18429489d43a933c5560e8367a",
+          "revision": "0fa2ff20175e7f2e745d25db7ba047e94eebe210",
           "version": null
         }
       },

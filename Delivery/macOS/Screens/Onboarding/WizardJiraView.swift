@@ -55,7 +55,12 @@ class WizardJiraView: NSView {
             passwordTextField.stringValue != "" else {
                 return
         }
-//        presenter.checkCredentials()
+        let user  = JiraUser(url: baseUrlTextField.stringValue,
+                             user: userTextField.stringValue,
+                             password: passwordTextField.stringValue,
+                             project: "",
+                             issue: "")
+        presenter.checkCredentials(user)
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {

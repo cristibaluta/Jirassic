@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -675,7 +675,7 @@
                                     <constraint firstAttribute="height" constant="22" id="hGh-fH-eCW"/>
                                     <constraint firstAttribute="width" constant="22" id="p8i-Kl-9Iu"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W4Q-te-r5C">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSSmartBadgeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W4Q-te-r5C">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -711,7 +711,7 @@
                                 </holdingPriorities>
                             </splitView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GdW-Tc-S7d">
-                                <rect key="frame" x="146" y="397" width="200" height="23"/>
+                                <rect key="frame" x="162" y="398" width="167" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="qk7-el-7e4">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -728,7 +728,7 @@
                                 <rect key="frame" x="438" y="401" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zsc-26-fMG">
-                                <rect key="frame" x="435" y="398" width="22" height="22"/>
+                                <rect key="frame" x="435" y="395.5" width="22.5" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Skd-bS-S8k"/>
                                     <constraint firstAttribute="width" constant="22" id="eA5-kF-fya"/>
@@ -745,17 +745,17 @@
                                 <rect key="frame" x="12" y="399" width="38" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yBN-CN-uFP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleQuitAppButton:" target="Ei8-gb-fmb" id="UAV-BP-pqe"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-It-0Ig">
-                                <rect key="frame" x="60" y="399" width="20" height="19"/>
+                                <rect key="frame" x="60" y="399" width="22" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="^" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T8n-oJ-tue">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleMinimizeAppButton:" target="Ei8-gb-fmb" id="Cgd-8l-UTq"/>
@@ -822,8 +822,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="WarningButton" width="15" height="15"/>
     </resources>
 </document>

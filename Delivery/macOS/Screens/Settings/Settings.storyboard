@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,7 +47,7 @@
                                 </constraints>
                             </box>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="nlR-CY-a5k">
-                                <rect key="frame" x="560" y="450" width="24" height="24"/>
+                                <rect key="frame" x="560" y="447" width="24.5" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="4g4-ML-oQZ"/>
                                     <constraint firstAttribute="height" constant="24" id="E7I-QJ-lJh"/>
@@ -61,7 +61,7 @@
                                 </connections>
                             </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-yv-6JW">
-                                <rect key="frame" x="201.5" y="451" width="194" height="23"/>
+                                <rect key="frame" x="218" y="452" width="160" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="pn1-lj-JjN">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -78,17 +78,17 @@
                                 <rect key="frame" x="12" y="453" width="38" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fze-b8-HZ5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleQuitAppButton:" target="J1c-ZL-C5e" id="cS6-mT-WmX"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JI6-hq-mSe">
-                                <rect key="frame" x="60" y="453" width="20" height="19"/>
+                                <rect key="frame" x="60" y="453" width="22" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="^" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ghA-S2-xyZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleMinimizeAppButton:" target="J1c-ZL-C5e" id="hZX-uF-dti"/>
@@ -123,6 +123,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSHomeTemplate" width="19" height="16"/>
     </resources>
 </document>

@@ -9,6 +9,7 @@
 import Cocoa
 import RCPreferences
 import RCLog
+import RCHttp
 
 var localRepository: Repository!
 var remoteRepository: Repository?
@@ -42,14 +43,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        pref.set("", forKey: .appVersion)
 //        UserDefaults.standard.set(5, forKey: "wizardStep")
 //        localPreferences.set(false, forKey: .enableGit)
+        RCHttp.loggingEnabled = true
         #else
         disableTraces()
+        RCHttp.loggingEnabled = false
         #endif
         
         self.window?.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
         
         localRepository = SqliteRepository()
         Migrator.migrate()
+        
         #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()

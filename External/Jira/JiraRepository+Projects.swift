@@ -11,8 +11,22 @@ import RCHttp
 
 extension JiraRepository {
     
-    // GET https://.../rest/api/2/project
-    // Returns an array of projects
+    /// GET https://.../rest/api/2/project
+    /// Returns an array of projects
+    /* Most common error is captcha
+    HTTP/1.1 403 Forbidden
+    Date: Mon, 05 Apr 2021 13:03:25 GMT
+    Server: Apache-Coyote/1.1
+    X-AREQUESTID: 963x1873889x1
+    X-ASEN: SEN-2826527
+    X-Seraph-LoginReason: AUTHENTICATION_DENIED
+    WWW-Authenticate: OAuth realm="https"
+    X-ASESSIONID: 6pk78p
+    X-Content-Type-Options: nosniff
+    X-Authentication-Denied-Reason: CAPTCHA_CHALLENGE; login-url=https://jira...../login.jsp
+    Content-Type: text/html;charset=UTF-8
+    Set-Cookie: JSESSIONID=CF54E3A2E1CAA26E3C36CBA7118A541B; Path=/; HttpOnly
+    Transfer-Encoding: chunked*/
     func fetchProjects (success: @escaping ([JProject]) -> Void, failure: @escaping (Error) -> Void) {
         
         let path = "rest/api/2/project"
