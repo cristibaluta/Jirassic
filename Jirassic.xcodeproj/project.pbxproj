@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -243,9 +243,6 @@
 		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
-		2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */; };
-		2879EC942375339C00CE18D9 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC932375339C00CE18D9 /* RCLog */; };
-		2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */; };
 		287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
@@ -280,11 +277,6 @@
 		2898D3AF2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
 		2898D3B12185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
 		2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
-		28A1B76E2370781C0040968B /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B76D2370781C0040968B /* RCLog */; };
-		28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B79B2370E10F0040968B /* RCPreferences */; };
-		28A1B79E23714AA10040968B /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B79D23714AA10040968B /* RCPreferences */; };
-		28A1B7A12371758B0040968B /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B7A02371758B0040968B /* RCHttp */; };
-		28A1B7A32371759A0040968B /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B7A22371759A0040968B /* RCHttp */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -506,6 +498,10 @@
 		56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D90CFD20876F3C00F24442 /* WizardGitView.xib */; };
 		56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D90D0020876F4900F24442 /* WizardJiraView.xib */; };
 		56D90D0220876F4900F24442 /* WizardJiraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D90D0020876F4900F24442 /* WizardJiraView.xib */; };
+		6D3702602BA83E9A002260D0 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */; };
+		6D3702622BA83EB9002260D0 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702612BA83EB9002260D0 /* RCLog */; };
+		6D3702642BA83EBF002260D0 /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702632BA83EBF002260D0 /* RCPreferences */; };
+		6D3702662BA83EC7002260D0 /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702652BA83EC7002260D0 /* RCHttp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -831,11 +827,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */,
-				2879EC942375339C00CE18D9 /* RCLog in Frameworks */,
-				2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */,
-				28A1B79E23714AA10040968B /* RCPreferences in Frameworks */,
 				280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */,
-				28A1B7A32371759A0040968B /* RCHttp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,13 +842,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28A1B76E2370781C0040968B /* RCLog in Frameworks */,
 				28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */,
-				28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */,
+				6D3702622BA83EB9002260D0 /* RCLog in Frameworks */,
 				28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */,
+				6D3702602BA83E9A002260D0 /* SwiftKeychainWrapper in Frameworks */,
+				6D3702662BA83EC7002260D0 /* RCHttp in Frameworks */,
+				6D3702642BA83EBF002260D0 /* RCPreferences in Frameworks */,
 				4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */,
-				28A1B7A12371758B0040968B /* RCHttp in Frameworks */,
-				2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1727,10 +1719,6 @@
 			);
 			name = "Jirassic macOS";
 			packageProductDependencies = (
-				28A1B79D23714AA10040968B /* RCPreferences */,
-				28A1B7A22371759A0040968B /* RCHttp */,
-				2879EC932375339C00CE18D9 /* RCLog */,
-				2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */,
 			);
 			productName = "Jirassic no cloud";
 			productReference = 280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */;
@@ -1769,10 +1757,10 @@
 			);
 			name = "Jirassic AppStore";
 			packageProductDependencies = (
-				28A1B76D2370781C0040968B /* RCLog */,
-				28A1B79B2370E10F0040968B /* RCPreferences */,
-				28A1B7A02371758B0040968B /* RCHttp */,
-				2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */,
+				6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */,
+				6D3702612BA83EB9002260D0 /* RCLog */,
+				6D3702632BA83EBF002260D0 /* RCPreferences */,
+				6D3702652BA83EC7002260D0 /* RCHttp */,
 			);
 			productName = Jirassic;
 			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
@@ -1852,9 +1840,7 @@
 					};
 					4055B1221E0D802300279430 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1863,9 +1849,7 @@
 					};
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1904,10 +1888,10 @@
 			);
 			mainGroup = 4065D2FB1DD3A1AA00B73201;
 			packageReferences = (
-				28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */,
-				28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */,
-				28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */,
-				2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				6D37025B2BA83DB0002260D0 /* XCRemoteSwiftPackageReference "RCLog" */,
+				6D37025C2BA83DDB002260D0 /* XCRemoteSwiftPackageReference "RCpreferences" */,
+				6D37025D2BA83DFE002260D0 /* XCRemoteSwiftPackageReference "RChttp" */,
+				6D37025E2BA83E9A002260D0 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 4065D3051DD3A1AA00B73201 /* Products */;
 			projectDirPath = "";
@@ -2643,8 +2627,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS-launcher/JirassicLauncher.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
@@ -2652,11 +2636,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3509678e-d1ba-4d07-bf3c-684b4c4fa932";
-				PROVISIONING_PROFILE_SPECIFIER = "jirassic launcher dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2679,7 +2663,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "19d0790c-3a77-4e31-8bbc-4f0b931c9e98";
@@ -2804,8 +2788,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppStoreIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -2819,12 +2803,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				PROVISIONING_PROFILE = "f679af74-4f51-4414-a117-26fcd2203fad";
-				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -2849,7 +2833,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
@@ -3016,79 +3000,59 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		6D37025B2BA83DB0002260D0 /* XCRemoteSwiftPackageReference "RCLog" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/SwiftKeychainWrapper";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-		28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/RCLog";
+			repositoryURL = "https://github.com/cristibaluta/RCLog";
 			requirement = {
 				branch = master;
 				kind = branch;
 			};
 		};
-		28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */ = {
+		6D37025C2BA83DDB002260D0 /* XCRemoteSwiftPackageReference "RCpreferences" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/RCPreferences";
+			repositoryURL = "https://github.com/cristibaluta/RCpreferences";
 			requirement = {
 				branch = master;
 				kind = branch;
 			};
 		};
-		28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */ = {
+		6D37025D2BA83DFE002260D0 /* XCRemoteSwiftPackageReference "RChttp" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/RCHttp";
+			repositoryURL = "https://github.com/cristibaluta/RChttp";
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		6D37025E2BA83E9A002260D0 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */ = {
+		6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			package = 6D37025E2BA83E9A002260D0 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
-		2879EC932375339C00CE18D9 /* RCLog */ = {
+		6D3702612BA83EB9002260D0 /* RCLog */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
+			package = 6D37025B2BA83DB0002260D0 /* XCRemoteSwiftPackageReference "RCLog" */;
 			productName = RCLog;
 		};
-		2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */ = {
+		6D3702632BA83EBF002260D0 /* RCPreferences */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
-			productName = SwiftKeychainWrapper;
-		};
-		28A1B76D2370781C0040968B /* RCLog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
-			productName = RCLog;
-		};
-		28A1B79B2370E10F0040968B /* RCPreferences */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */;
+			package = 6D37025C2BA83DDB002260D0 /* XCRemoteSwiftPackageReference "RCpreferences" */;
 			productName = RCPreferences;
 		};
-		28A1B79D23714AA10040968B /* RCPreferences */ = {
+		6D3702652BA83EC7002260D0 /* RCHttp */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */;
-			productName = RCPreferences;
-		};
-		28A1B7A02371758B0040968B /* RCHttp */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
-			productName = RCHttp;
-		};
-		28A1B7A22371759A0040968B /* RCHttp */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
+			package = 6D37025D2BA83DFE002260D0 /* XCRemoteSwiftPackageReference "RChttp" */;
 			productName = RCHttp;
 		};
 /* End XCSwiftPackageProductDependency section */

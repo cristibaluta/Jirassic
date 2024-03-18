@@ -108,7 +108,7 @@ extension HookupPresenter: HookupPresenterInput {
             guard let wself = self else {
                 return
             }
-            if result.rawValue == NSFileHandlingPanelOKButton {
+            if result == NSApplication.ModalResponse.OK {
                 if let url = panel.urls.first {
                     var path = url.absoluteString
                     path = path.replacingOccurrences(of: "file://", with: "")

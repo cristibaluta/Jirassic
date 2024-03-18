@@ -151,20 +151,20 @@ extension GitPresenter: GitPresenterInput {
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.begin { [weak self] (result) -> Void in
             
-            guard let wself = self, let userInterface = wself.userInterface else {
+            guard let self, let userInterface = self.userInterface else {
                 return
             }
-            if result.rawValue == NSFileHandlingPanelOKButton {
+            if result == NSApplication.ModalResponse.OK {
                 if let url = panel.urls.first {
                     var path = url.absoluteString
                     path = path.replacingOccurrences(of: "file://", with: "")
                     path.removeLast()
                     // TODO: Validate if the picked project is a git project
                     
-                    let existingPaths = wself.localPreferences.string(.settingsGitPaths)
+                    let existingPaths = self.localPreferences.string(.settingsGitPaths)
                     let updatedPaths = existingPaths == "" ? path : (existingPaths + "," + path)
-                    wself.savePaths(updatedPaths)
-                    userInterface.setPaths(updatedPaths, enabled: wself.localPreferences.bool(.enableGit))
+                    self.savePaths(updatedPaths)
+                    userInterface.setPaths(updatedPaths, enabled: self.localPreferences.bool(.enableGit))
                 }
             }
         }

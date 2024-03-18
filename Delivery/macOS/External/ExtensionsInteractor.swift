@@ -49,8 +49,8 @@ class ExtensionsInteractor {
             let jitVersion = dict["version"] ?? ""
             let versions = Versions(shellScript: shellSupportScriptVersion, 
                                     browserScript: browserSupportScriptVersion,
-                                    jitCmd: jitVersion, 
-                                    jirassicCmd: jirassicVersion
+                                    jirassicCmd: jirassicVersion,
+                                    jitCmd: jitVersion
             )
             completion(versions)
         })

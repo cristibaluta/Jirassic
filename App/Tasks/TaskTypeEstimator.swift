@@ -16,8 +16,8 @@ class TaskTypeEstimator {
     func taskTypeAroundDate (_ date: Date, withSettings settings: Settings) -> TaskType {
 		
 		// Check if the date is around scrum time
-        var settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
-		
+        let settingsScrumTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.scrumTime)
+
 		var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: date)
 		comps.hour = settingsScrumTime.hour
 		comps.minute = settingsScrumTime.minute
@@ -27,11 +27,10 @@ class TaskTypeEstimator {
         if date.isAlmostSameHourAs(scrumDate!, devianceSeconds: scrumVariationAllowed) {
             return TaskType.scrum
         }
-		
-		
+
         // Check if the date is around lunch break
-        var settingsLunchTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.lunchTime)
-		
+        let settingsLunchTime = gregorian.dateComponents(ymdhmsUnitFlags, from: settings.settingsTracking.lunchTime)
+
 		comps.hour = settingsLunchTime.hour
 		comps.minute = settingsLunchTime.minute
 		comps.second = 0

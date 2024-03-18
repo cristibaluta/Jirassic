@@ -96,17 +96,17 @@ extension CocoaHookupPresenter: CocoaHookupPresenterInput {
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.begin { [weak self] (result) -> Void in
             
-            guard let wself = self else {
+            guard let self else {
                 return
             }
-            if result.rawValue == NSFileHandlingPanelOKButton {
+            if result == NSApplication.ModalResponse.OK {
                 if let url = panel.urls.first {
                     let appName = url.absoluteString
                         .components(separatedBy: "/")
                         .last?
                         .replacingOccurrences(of: ".app", with: "")
                         .replacingOccurrences(of: "%20", with: " ")
-                    wself.refresh (withApp: appName ?? "")
+                    self.refresh (withApp: appName ?? "")
                 }
             }
         }
