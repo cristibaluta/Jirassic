@@ -811,6 +811,7 @@
 		56D90CFA20876F2B00F24442 /* WizardGitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardGitView.swift; sourceTree = "<group>"; };
 		56D90CFD20876F3C00F24442 /* WizardGitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardGitView.xib; sourceTree = "<group>"; };
 		56D90D0020876F4900F24442 /* WizardJiraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardJiraView.xib; sourceTree = "<group>"; };
+		6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic macOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1260,6 +1261,7 @@
 		4065D2FB1DD3A1AA00B73201 = {
 			isa = PBXGroup;
 			children = (
+				6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */,
 				4065D3161DD3B44200B73201 /* App */,
 				4065D3401DD3B44200B73201 /* Delivery */,
 				4065D3881DD3B44200B73201 /* External */,
@@ -1809,8 +1811,9 @@
 		4065D2FC1DD3A1AA00B73201 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1530;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
@@ -1830,7 +1833,7 @@
 					280D711C1ED5EE7F005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -1849,7 +1852,7 @@
 					};
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = "";
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1865,7 +1868,7 @@
 					4065D4011DD4532100B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Manual;
 						TestTargetID = 280D711C1ED5EE7F005D2689;
 					};
@@ -2533,11 +2536,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2557,11 +2561,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2577,16 +2582,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Jirassic macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
@@ -2601,16 +2609,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_ENTITLEMENTS = "Jirassic macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic distribution";
@@ -2630,13 +2641,15 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3509678e-d1ba-4d07-bf3c-684b4c4fa932";
@@ -2657,13 +2670,14 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "19d0790c-3a77-4e31-8bbc-4f0b931c9e98";
@@ -2677,6 +2691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2697,6 +2712,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2705,9 +2721,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2735,6 +2753,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2755,6 +2774,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2763,9 +2783,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2791,7 +2813,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2803,7 +2827,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D APPSTORE -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
@@ -2825,6 +2849,7 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = "APPSTORE=1";
@@ -2833,7 +2858,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
@@ -2851,6 +2876,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2858,7 +2884,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2874,6 +2900,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2881,7 +2908,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2894,6 +2921,7 @@
 		4065D4151DD4534C00B73201 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2905,6 +2933,7 @@
 					"CMD=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D CMD";
 				PRODUCT_NAME = jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
@@ -2916,6 +2945,7 @@
 		4065D4161DD4534C00B73201 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2923,6 +2953,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "CMD=1";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D CMD";
 				PRODUCT_NAME = jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
