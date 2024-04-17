@@ -31,7 +31,9 @@
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Needed in order to list meetings</string>
+	<string>Needed to list meetings</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Needed to list meetings</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Imagin Soft. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>

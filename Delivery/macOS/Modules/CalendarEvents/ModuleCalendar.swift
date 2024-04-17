@@ -12,7 +12,7 @@ import RCPreferences
 
 class ModuleCalendar {
 
-    private let eventStore = EKEventStore()
+    private var eventStore = EKEventStore()
     private let pref = RCPreferences<LocalPreferences>()
     
     var isAuthorizationDetermined: Bool {
@@ -20,7 +20,11 @@ class ModuleCalendar {
     }
     
     var isAuthorized: Bool {
-        return EKEventStore.authorizationStatus(for: .event) == .authorized
+        if #available(macOS 14.0, *) {
+            return EKEventStore.authorizationStatus(for: .event) == .fullAccess
+        } else {
+            return EKEventStore.authorizationStatus(for: .event) == .authorized
+        }
     }
     
     var selectedCalendars: [String] {
@@ -33,8 +37,16 @@ class ModuleCalendar {
     }
     
     func authorize(_ completion: @escaping (Bool) -> Void) {
-        eventStore.requestAccess(to: .event) { (granted, error) in
-            completion(granted)
+        if #available(macOS 14.0, *) {
+            eventStore.requestFullAccessToEvents { granted, error in
+                self.eventStore = EKEventStore()
+                completion(granted)
+            }
+        } else {
+            eventStore.requestAccess(to: .event) { granted, error in
+                self.eventStore = EKEventStore()
+                completion(granted)
+            }
         }
     }
     
@@ -87,4 +99,5 @@ class ModuleCalendar {
             }
         }
     }
+
 }
