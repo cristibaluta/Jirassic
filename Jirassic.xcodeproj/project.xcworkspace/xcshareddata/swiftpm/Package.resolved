@@ -1,43 +1,42 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "RCHttp",
-        "repositoryURL": "https://github.com/ralcr/RCHttp",
-        "state": {
-          "branch": "master",
-          "revision": "647df79192f7f56c5b474d92d3e792c852a8ab51",
-          "version": null
-        }
-      },
-      {
-        "package": "RCLog",
-        "repositoryURL": "https://github.com/ralcr/RCLog",
-        "state": {
-          "branch": "master",
-          "revision": "e5777165170c2b77562ceb22eaffec8cbc48a69f",
-          "version": null
-        }
-      },
-      {
-        "package": "RCPreferences",
-        "repositoryURL": "https://github.com/ralcr/RCPreferences",
-        "state": {
-          "branch": "master",
-          "revision": "0fa2ff20175e7f2e745d25db7ba047e94eebe210",
-          "version": null
-        }
-      },
-      {
-        "package": "SwiftKeychainWrapper",
-        "repositoryURL": "https://github.com/ralcr/SwiftKeychainWrapper",
-        "state": {
-          "branch": "develop",
-          "revision": "c746065ce51300883497de28b6ff278f6cc40b52",
-          "version": null
-        }
+  "originHash" : "63bc3e1363d6b6d18dc356b60ac504be39a3587819f597ee22b44a717292b934",
+  "pins" : [
+    {
+      "identity" : "rchttp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cristibaluta/RChttp",
+      "state" : {
+        "branch" : "master",
+        "revision" : "eb5fbb823105f356eb38b10d70202b532831cd0e"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "rclog",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cristibaluta/RCLog",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f3166aa52b66e2278523ce8eef40bf31a37ddaad"
+      }
+    },
+    {
+      "identity" : "rcpreferences",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cristibaluta/RCpreferences",
+      "state" : {
+        "branch" : "master",
+        "revision" : "d8a2750659ebff18429489d43a933c5560e8367a"
+      }
+    },
+    {
+      "identity" : "swiftkeychainwrapper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jrendel/SwiftKeychainWrapper",
+      "state" : {
+        "revision" : "185a3165346a03767101c4f62e9a545a0fe0530f",
+        "version" : "4.0.1"
+      }
+    }
+  ],
+  "version" : 3
 }

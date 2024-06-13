@@ -88,14 +88,20 @@ class ModuleGitLogs {
                 let taskTitle = branchParser.taskTitle()
                 let taskNumber = branchParser.taskNumber() ?? taskTitle
                 // Remove task number from the beginning of a commit message
-                let message = commit.message.replacingOccurrences(of: taskNumber, with: "")
-                    .trimmingCharacters(in: NSCharacterSet.whitespaces)
-                
+                var notes = ""
+                if commit.message.contains("Merge pull request #") {
+                    notes = "Merge pull request"
+                } else {
+                    notes = commit.message
+                        .replacingOccurrences(of: taskNumber, with: "")
+                        .trimmingCharacters(in: NSCharacterSet.whitespaces)
+                }
+
                 // Create a task without id, this will tell the app that is not saved in db
                 let task = Task(lastModifiedDate: nil,
                                 startDate: nil,
                                 endDate: commit.date,
-                                notes: message,
+                                notes: notes,
                                 taskNumber: taskNumber,
                                 taskTitle: taskTitle,
                                 taskType: .gitCommit,

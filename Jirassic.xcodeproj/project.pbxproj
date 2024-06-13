@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,7 @@
 		280D70DA1ECFE83F005D2689 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */; };
 		280D70DC1ECFE84C005D2689 /* ReadTasksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */; };
+		280D70DE1ECFE870005D2689 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		280D70DF1ECFE888005D2689 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38C1DD3B44200B73201 /* CoreDataRepository.swift */; };
 		280D70E01ECFE88F005D2689 /* CoreDataRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */; };
 		280D70E11ECFE88F005D2689 /* CoreDataRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */; };
@@ -48,11 +49,15 @@
 		280D70E81ECFE8B9005D2689 /* CloudKitRepository+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */; };
 		280D70E91ECFE8B9005D2689 /* CloudKitRepository+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */; };
 		280D70EA1ECFE8B9005D2689 /* CloudKitRepository+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928941E9110980022AB55 /* CloudKitRepository+User.swift */; };
+		280D70EB1ECFE8B9005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		280D70F01ECFE8CC005D2689 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		280D70F11ECFE8D0005D2689 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		280D70F41ECFE96F005D2689 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D31A1DD3B44200B73201 /* Settings.swift */; };
+		280D70F51ECFE98C005D2689 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
+		280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
 		280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3221DD3B44200B73201 /* StringIdGenerator.swift */; };
 		280D70FA1ED0E7B0005D2689 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280D70F91ED0E7B0005D2689 /* CloudKit.framework */; };
+		280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
 		280D71031ED35A3E005D2689 /* StringArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F507C1EC868B0007416AB /* StringArray.swift */; };
 		280D712C1ED6043D005D2689 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3181DD3B44200B73201 /* Day.swift */; };
 		280D712D1ED6043D005D2689 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3191DD3B44200B73201 /* Report.swift */; };
@@ -76,6 +81,8 @@
 		280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
 		280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */; };
 		280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */; };
+		280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
+		280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
 		280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
 		280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405B15651DEF75660009871C /* AppViewController.swift */; };
@@ -104,6 +111,7 @@
 		280D71781ED6043D005D2689 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3711DD3B44200B73201 /* NewTaskViewController.swift */; };
 		280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3851DD3B44200B73201 /* TasksViewController.swift */; };
 		280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3831DD3B44200B73201 /* TasksPresenter.swift */; };
+		280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3771DD3B44200B73201 /* CalendarScrollView.swift */; };
 		280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3841DD3B44200B73201 /* TasksScrollView.swift */; };
 		280D717E1ED6043D005D2689 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		280D71811ED6043D005D2689 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
@@ -122,11 +130,13 @@
 		280D71A31ED6043D005D2689 /* SUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EAA1E8ADC53002B07FD /* SUser.swift */; };
 		280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB31E8AF08F002B07FD /* SQLiteDB.swift */; };
 		280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
-		280D71A61ED6043D005D2689 /* UpdateSchemaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */; };
+		280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
+		280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		280D71B61ED6043D005D2689 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
 		280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4055B1381E0D82A900279430 /* ServiceManagement.framework */; };
+		280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E896621E830D6700722032 /* Placeholder.storyboard */; };
 		280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		280D71C21ED608D6005D2689 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5685C7641DE8721100CA545E /* Login.storyboard */; };
@@ -148,8 +158,6 @@
 		28279AD521C6245700376304 /* GitUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279AD421C6245700376304 /* GitUsersViewController.swift */; };
 		28279AD621C6245700376304 /* GitUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279AD421C6245700376304 /* GitUsersViewController.swift */; };
 		28279E9C1E8300E200EAF9FC /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */; };
-		2828B04E2381D04E0005B188 /* NoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828B04D2381D04E0005B188 /* NoAnimation.swift */; };
-		2828B04F2381D04E0005B188 /* NoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828B04D2381D04E0005B188 /* NoAnimation.swift */; };
 		284192D72018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
 		284192D82018841700E64A9A /* JProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D62018841700E64A9A /* JProject.swift */; };
 		284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284192D92018855B00E64A9A /* JiraRepository+Projects.swift */; };
@@ -170,14 +178,23 @@
 		2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */; };
 		2845B14F206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
 		2845B150206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */; };
-		2845B160206AE468006EFB3B /* TaskCell_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell_.swift */; };
-		2845B161206AE468006EFB3B /* TaskCell_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell_.swift */; };
+		2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
+		2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */; };
+		2845B160206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell.swift */; };
+		2845B161206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B155206AE467006EFB3B /* TaskCell.swift */; };
+		2845B162206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
+		2845B163206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B156206AE467006EFB3B /* TaskCell.xib */; };
 		2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
 		2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B157206AE467006EFB3B /* TaskCellPresenter.swift */; };
-		2845B16A206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* TaskCell.swift */; };
-		2845B16B206AE468006EFB3B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* TaskCell.swift */; };
-		2845B16C206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* TaskCell.xib */; };
-		2845B16D206AE468006EFB3B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* TaskCell.xib */; };
+		2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* TasksHeaderView.swift */; };
+		2845B167206AE468006EFB3B /* TasksHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B159206AE467006EFB3B /* TasksHeaderView.swift */; };
+		2845B168206AE468006EFB3B /* TasksHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* TasksHeaderView.xib */; };
+		2845B169206AE468006EFB3B /* TasksHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15A206AE467006EFB3B /* TasksHeaderView.xib */; };
+		2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
+		2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B15C206AE467006EFB3B /* NonTaskCell.swift */; };
+		2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
+		2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2845B15D206AE467006EFB3B /* NonTaskCell.xib */; };
+		2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B154206AE467006EFB3B /* TaskCellTests.swift */; };
 		285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
 		285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
@@ -198,91 +215,10 @@
 		28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EB41E8AF08F002B07FD /* SQLTable.swift */; };
 		28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
-		286348F523B136B3009F81D7 /* ProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286348F423B136B3009F81D7 /* ProjectsInteractor.swift */; };
-		286348F623B136B3009F81D7 /* ProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286348F423B136B3009F81D7 /* ProjectsInteractor.swift */; };
-		286348F923B22775009F81D7 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286348F823B22775009F81D7 /* ProjectDetailsViewController.swift */; };
-		286348FA23B22775009F81D7 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286348F823B22775009F81D7 /* ProjectDetailsViewController.swift */; };
-		286348FB23B23748009F81D7 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
-		286348FC23B237B1009F81D7 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
-		286348FD23B237B2009F81D7 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
-		2863490023B24335009F81D7 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286348FF23B24335009F81D7 /* Calendar.storyboard */; };
-		2863490123B24335009F81D7 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 286348FF23B24335009F81D7 /* Calendar.storyboard */; };
-		2863490323B24800009F81D7 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863490223B247FF009F81D7 /* CalendarViewController.swift */; };
-		2863490423B24800009F81D7 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863490223B247FF009F81D7 /* CalendarViewController.swift */; };
-		2863490623B24C22009F81D7 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863490523B24C22009F81D7 /* CalendarPresenter.swift */; };
-		2863490723B24C22009F81D7 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863490523B24C22009F81D7 /* CalendarPresenter.swift */; };
-		2863490923B24C34009F81D7 /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863490823B24C34009F81D7 /* CalendarInteractor.swift */; };
-		2863490A23B24C34009F81D7 /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863490823B24C34009F81D7 /* CalendarInteractor.swift */; };
-		2863490E23B29979009F81D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2863490C23B29979009F81D7 /* Main.storyboard */; };
-		2863490F23B29979009F81D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2863490C23B29979009F81D7 /* Main.storyboard */; };
-		2863491123B299C8009F81D7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491023B299C8009F81D7 /* MainViewController.swift */; };
-		2863491223B299C8009F81D7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491023B299C8009F81D7 /* MainViewController.swift */; };
-		2863491423B299DB009F81D7 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491323B299DB009F81D7 /* MainPresenter.swift */; };
-		2863491523B299DB009F81D7 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491323B299DB009F81D7 /* MainPresenter.swift */; };
-		2863491723B354A0009F81D7 /* CalendarDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491623B354A0009F81D7 /* CalendarDayCellView.swift */; };
-		2863491823B354A0009F81D7 /* CalendarDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491623B354A0009F81D7 /* CalendarDayCellView.swift */; };
-		2863491B23B393CF009F81D7 /* CloseDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491A23B393CF009F81D7 /* CloseDayCell.swift */; };
-		2863491C23B393CF009F81D7 /* CloseDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863491A23B393CF009F81D7 /* CloseDayCell.swift */; };
-		2863491E23B393E1009F81D7 /* CloseDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2863491D23B393E1009F81D7 /* CloseDayCell.xib */; };
-		2863491F23B393E1009F81D7 /* CloseDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2863491D23B393E1009F81D7 /* CloseDayCell.xib */; };
-		2863492223B3A95A009F81D7 /* ClosedDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492123B3A95A009F81D7 /* ClosedDayCell.swift */; };
-		2863492323B3A95A009F81D7 /* ClosedDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492123B3A95A009F81D7 /* ClosedDayCell.swift */; };
-		2863492523B3A966009F81D7 /* ClosedDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2863492423B3A966009F81D7 /* ClosedDayCell.xib */; };
-		2863492623B3A966009F81D7 /* ClosedDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2863492423B3A966009F81D7 /* ClosedDayCell.xib */; };
-		2863492923B5EF87009F81D7 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2863492823B5EF87009F81D7 /* Reports.storyboard */; };
-		2863492A23B5EF87009F81D7 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2863492823B5EF87009F81D7 /* Reports.storyboard */; };
-		2863492C23B5EF9C009F81D7 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */; };
-		2863492D23B5EF9C009F81D7 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */; };
-		2863492F23B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */; };
-		2863493023B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */; };
-		2863493523B790B1009F81D7 /* ProjectsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493423B790B1009F81D7 /* ProjectsListViewController.swift */; };
-		2863493623B790B1009F81D7 /* ProjectsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493423B790B1009F81D7 /* ProjectsListViewController.swift */; };
-		2863493823B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */; };
-		2863493923B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */; };
-		2863493B23CB6B07009F81D7 /* ReadProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */; };
-		2863493C23CB6B08009F81D7 /* ReadProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */; };
-		2863494123CB6E9F009F81D7 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493E23CB6E9E009F81D7 /* UserInteractor.swift */; };
-		2863494223CB6E9F009F81D7 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493E23CB6E9E009F81D7 /* UserInteractor.swift */; };
-		2863494323CB6E9F009F81D7 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863493E23CB6E9E009F81D7 /* UserInteractor.swift */; };
-		2863494723CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */; };
-		2863494823CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */; };
-		2863494923CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */; };
-		2863494B23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */; };
-		2863494C23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */; };
-		2863494D23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */; };
-		2863494F23CB73E4009F81D7 /* SProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494E23CB73E4009F81D7 /* SProject.swift */; };
-		2863495023CB73E4009F81D7 /* SProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494E23CB73E4009F81D7 /* SProject.swift */; };
-		2863495123CB73E4009F81D7 /* SProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863494E23CB73E4009F81D7 /* SProject.swift */; };
-		2863495323CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */; };
-		2863495423CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */; };
-		2863495523CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */; };
-		2863495723CB7E4D009F81D7 /* CProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495623CB7E4D009F81D7 /* CProject.swift */; };
-		2863495823CB7E4D009F81D7 /* CProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495623CB7E4D009F81D7 /* CProject.swift */; };
-		2863495923CB7E4D009F81D7 /* CProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495623CB7E4D009F81D7 /* CProject.swift */; };
-		2863495B23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */; };
-		2863495C23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */; };
-		2863495D23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */; };
-		2863495F23CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
-		2863496023CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
-		2863496123CB9134009F81D7 /* ProjectInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863495E23CB9134009F81D7 /* ProjectInteractor.swift */; };
-		2863496323CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */; };
-		2863496423CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */; };
-		2863496623CCF311009F81D7 /* SMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496523CCF311009F81D7 /* SMetadata.swift */; };
-		2863496723CCF311009F81D7 /* SMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496523CCF311009F81D7 /* SMetadata.swift */; };
-		2863496923CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */; };
-		2863496A23CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */; };
-		2863496D23D21286009F81D7 /* ReadMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */; };
-		2863496E23D21287009F81D7 /* ReadMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */; };
-		2863497023D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */; };
-		2863497123D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */; };
-		2863497323D4790B009F81D7 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863497223D4790B009F81D7 /* Migrator.swift */; };
-		2863497423D4790B009F81D7 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863497223D4790B009F81D7 /* Migrator.swift */; };
-		2863497623D51825009F81D7 /* CloudKitZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863497523D51825009F81D7 /* CloudKitZone.swift */; };
-		2863497723D51825009F81D7 /* CloudKitZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863497523D51825009F81D7 /* CloudKitZone.swift */; };
 		28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
 		28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */; };
-		286BC00421909F85004D4CDD /* CloseDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDayInteractor.swift */; };
-		286BC00521909F85004D4CDD /* CloseDayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDayInteractor.swift */; };
+		286BC00421909F85004D4CDD /* CloseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDay.swift */; };
+		286BC00521909F85004D4CDD /* CloseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BC00321909F85004D4CDD /* CloseDay.swift */; };
 		287195152022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
 		287195162022E1E2001C237E /* HookupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195142022E1E2001C237E /* HookupPresenter.swift */; };
 		287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195172022E8BC001C237E /* OutputTableViewDataSource.swift */; };
@@ -307,9 +243,6 @@
 		287195362027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287195372027CAD9001C237E /* TimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287195352027CAD9001C237E /* TimeInteractor.swift */; };
 		287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */; };
-		2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */; };
-		2879EC942375339C00CE18D9 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC932375339C00CE18D9 /* RCLog */; };
-		2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */; };
 		287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358820FBAFC40022F43E /* WizardCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287B358620FBAFC40022F43E /* WizardCalendarView.swift */; };
 		287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287B358920FBAFD60022F43E /* WizardCalendarView.xib */; };
@@ -336,19 +269,14 @@
 		2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */; };
 		2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
 		2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2892E810208E6275004E5298 /* LocalPreferences.swift */; };
-		2898D3A82181907700CF5AD4 /* CopyReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* CopyReportCell.swift */; };
-		2898D3A92181907700CF5AD4 /* CopyReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* CopyReportCell.swift */; };
+		2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
+		2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */; };
 		2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */; };
 		2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */; };
 		2898D3AE2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
 		2898D3AF2184ED3000CF5AD4 /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2898D3AD2184ED3000CF5AD4 /* Components.storyboard */; };
 		2898D3B12185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
 		2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */; };
-		28A1B76E2370781C0040968B /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B76D2370781C0040968B /* RCLog */; };
-		28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B79B2370E10F0040968B /* RCPreferences */; };
-		28A1B79E23714AA10040968B /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B79D23714AA10040968B /* RCPreferences */; };
-		28A1B7A12371758B0040968B /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B7A02371758B0040968B /* RCHttp */; };
-		28A1B7A32371759A0040968B /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1B7A22371759A0040968B /* RCHttp */; };
 		28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283932037874600DDCB63 /* ModuleGitLogs.swift */; };
 		28A283972037975600DDCB63 /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283962037975600DDCB63 /* Saveable.swift */; };
@@ -370,8 +298,8 @@
 		28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */; };
 		28A5F27E1E5789FC002BE564 /* TasksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */; };
 		28A5F2821E586426002BE564 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5F2811E586426002BE564 /* DataSource.swift */; };
-		28A928781E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */; };
-		28A928791E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */; };
+		28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
+		28A928791E8F78580022AB55 /* SQLiteSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A928771E8F78580022AB55 /* SQLiteSchema.swift */; };
 		28A9287A1E8FA8E90022AB55 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28577EB91E8AF379002B07FD /* libsqlite3.tbd */; };
 		28A9287B1E8FC9B90022AB55 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32B1DD3B44200B73201 /* CreateReport.swift */; };
 		28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A9287C1E9030BA0022AB55 /* CloudKit.framework */; };
@@ -391,10 +319,15 @@
 		28AA500C1EDCD51300AAF03D /* CSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38D1DD3B44200B73201 /* CSettings.swift */; };
 		28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38E1DD3B44200B73201 /* CTask.swift */; };
 		28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D38F1DD3B44200B73201 /* CUser.swift */; };
-		28B116BB21AE6179004ACE01 /* CopyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* CopyReportCell.xib */; };
-		28B116BC21AE6179004ACE01 /* CopyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* CopyReportCell.xib */; };
+		28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */; };
+		28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
+		28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */; };
+		28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
+		28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */; };
 		28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
 		28C6A38521D359E60036DB29 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */; };
+		28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
+		28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */; };
 		28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
 		28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
 		28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CBB595204554A2006F9D3A /* ParseGitBranch.swift */; };
@@ -410,8 +343,8 @@
 		28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */; };
 		28EE1F6120EE8D6100C5C1D6 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */; };
 		28EE1F6220EE8D6100C5C1D6 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */; };
-		28EE1F6420EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F6320EE92DA00C5C1D6 /* CalendarAppPresenter.swift */; };
-		28EE1F6520EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F6320EE92DA00C5C1D6 /* CalendarAppPresenter.swift */; };
+		28EE1F6420EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */; };
+		28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */; };
 		28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
 		28FB265220224E3A00AEA38D /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FB265020224E3A00AEA38D /* JiraTempoCell.swift */; };
 		28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FB265320224E5B00AEA38D /* JiraTempoCell.xib */; };
@@ -458,9 +391,12 @@
 		4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3341DD3B44200B73201 /* TaskTypeEstimator.swift */; };
 		4065D3B61DD3B44200B73201 /* TaskTypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */; };
 		4065D3B81DD3B44200B73201 /* PredictiveTimeTyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */; };
+		4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */; };
+		4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33D1DD3B44200B73201 /* UserInteractor.swift */; };
 		4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3521DD3B44200B73201 /* FlipAnimation.swift */; };
 		4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3541DD3B44200B73201 /* AppDelegate.swift */; };
 		4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3551DD3B44200B73201 /* AppWireframe.swift */; };
+		4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3591DD3B44200B73201 /* Main.storyboard */; };
 		4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4065D35B1DD3B44200B73201 /* Images.xcassets */; };
 		4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 4065D3611DD3B44200B73201 /* jirassic.sdef */; };
 		4065D3D61DD3B44200B73201 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3651DD3B44200B73201 /* MenuBarController.swift */; };
@@ -472,6 +408,7 @@
 		4065D3DF1DD3B44200B73201 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3731DD3B44200B73201 /* SettingsInteractor.swift */; };
 		4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3741DD3B44200B73201 /* SettingsPresenter.swift */; };
 		4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3751DD3B44200B73201 /* SettingsViewController.swift */; };
+		4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3771DD3B44200B73201 /* CalendarScrollView.swift */; };
 		4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3781DD3B44200B73201 /* CellProtocol.swift */; };
 		4065D3EE1DD3B44200B73201 /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3831DD3B44200B73201 /* TasksPresenter.swift */; };
 		4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3841DD3B44200B73201 /* TasksScrollView.swift */; };
@@ -482,6 +419,7 @@
 		4065D4171DD4536200B73201 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3871DD3B44200B73201 /* main.swift */; };
 		4065D4181DD454C500B73201 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3941DD3B44200B73201 /* Repository.swift */; };
 		4065D4191DD454CB00B73201 /* RepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3951DD3B44200B73201 /* RepositoryInteractor.swift */; };
+		4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */; };
 		4065D4211DD4562100B73201 /* PredictiveTimeTypingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */; };
 		4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D3211DD3B44200B73201 /* DateExtensionTests.swift */; };
 		4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065D32C1DD3B44200B73201 /* CreateReportTests.swift */; };
@@ -508,19 +446,6 @@
 		40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */; };
 		40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */; };
 		40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */; };
-		5623914A21CBC6A10031B882 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914921CBC6A10031B882 /* ProjectsViewController.swift */; };
-		5623914B21CBC6A10031B882 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914921CBC6A10031B882 /* ProjectsViewController.swift */; };
-		5623914D21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */; };
-		5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */; };
-		5623915121CBC6CD0031B882 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623914F21CBC6CD0031B882 /* Project.swift */; };
-		5623915321CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
-		5623915421CBC9750031B882 /* Projects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5623915221CBC9750031B882 /* Projects.storyboard */; };
-		563FA91B23D72A880030E50D /* CKRecord+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91A23D72A880030E50D /* CKRecord+Task.swift */; };
-		563FA91C23D72A880030E50D /* CKRecord+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91A23D72A880030E50D /* CKRecord+Task.swift */; };
-		563FA91D23D72A880030E50D /* CKRecord+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91A23D72A880030E50D /* CKRecord+Task.swift */; };
-		563FA91F23D72C5D0030E50D /* CKRecord+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */; };
-		563FA92023D72C5D0030E50D /* CKRecord+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */; };
-		563FA92123D72C5D0030E50D /* CKRecord+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */; };
 		564E55F3202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
 		564E55F4202883DB00CE4C76 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */; };
 		564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */; };
@@ -563,8 +488,6 @@
 		56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6921C3F625008350A6 /* GitUser.swift */; };
 		56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */; };
 		56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */; };
-		56B50A6C23E330BA002F35FD /* JiraUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B50A6B23E330BA002F35FD /* JiraUser.swift */; };
-		56B50A6D23E330BA002F35FD /* JiraUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B50A6B23E330BA002F35FD /* JiraUser.swift */; };
 		56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */; };
 		56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */; };
 		56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D90CF720876F1100F24442 /* WizardJiraView.swift */; };
@@ -575,6 +498,10 @@
 		56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D90CFD20876F3C00F24442 /* WizardGitView.xib */; };
 		56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D90D0020876F4900F24442 /* WizardJiraView.xib */; };
 		56D90D0220876F4900F24442 /* WizardJiraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D90D0020876F4900F24442 /* WizardJiraView.xib */; };
+		6D3702602BA83E9A002260D0 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */; };
+		6D3702622BA83EB9002260D0 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702612BA83EB9002260D0 /* RCLog */; };
+		6D3702642BA83EBF002260D0 /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702632BA83EBF002260D0 /* RCPreferences */; };
+		6D3702662BA83EC7002260D0 /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702652BA83EC7002260D0 /* RCHttp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -656,7 +583,6 @@
 		2823C9341E4F69970055D036 /* Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 		28279AD421C6245700376304 /* GitUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUsersViewController.swift; sourceTree = "<group>"; };
 		28279E9B1E8300E200EAF9FC /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
-		2828B04D2381D04E0005B188 /* NoAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAnimation.swift; sourceTree = "<group>"; };
 		284192D62018841700E64A9A /* JProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProject.swift; sourceTree = "<group>"; };
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		284192DC2018A8B200E64A9A /* ModuleJiraTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleJiraTempo.swift; sourceTree = "<group>"; };
@@ -667,10 +593,15 @@
 		2845B145206AE3A8006EFB3B /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
 		2845B146206AE3A8006EFB3B /* ReportCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCellPresenter.swift; sourceTree = "<group>"; };
 		2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDataSource.swift; sourceTree = "<group>"; };
-		2845B155206AE467006EFB3B /* TaskCell_.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell_.swift; sourceTree = "<group>"; };
+		2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsHeaderView.swift; sourceTree = "<group>"; };
+		2845B154206AE467006EFB3B /* TaskCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellTests.swift; sourceTree = "<group>"; };
+		2845B155206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		2845B156206AE467006EFB3B /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		2845B157206AE467006EFB3B /* TaskCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
-		2845B15C206AE467006EFB3B /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		2845B15D206AE467006EFB3B /* TaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		2845B159206AE467006EFB3B /* TasksHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksHeaderView.swift; sourceTree = "<group>"; };
+		2845B15A206AE467006EFB3B /* TasksHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TasksHeaderView.xib; sourceTree = "<group>"; };
+		2845B15C206AE467006EFB3B /* NonTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonTaskCell.swift; sourceTree = "<group>"; };
+		2845B15D206AE467006EFB3B /* NonTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NonTaskCell.xib; sourceTree = "<group>"; };
 		285465A1216C84E10052CB6A /* CreateMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReport.swift; sourceTree = "<group>"; };
 		285465A6217858790052CB6A /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		285465AC217858AF0052CB6A /* StoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreView.xib; sourceTree = "<group>"; };
@@ -682,44 +613,8 @@
 		28577EB41E8AF08F002B07FD /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		28577EB91E8AF379002B07FD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		28577EBB1E8AFB1B002B07FD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		286348F423B136B3009F81D7 /* ProjectsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsInteractor.swift; sourceTree = "<group>"; };
-		286348F823B22775009F81D7 /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
-		286348FF23B24335009F81D7 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
-		2863490223B247FF009F81D7 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		2863490523B24C22009F81D7 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
-		2863490823B24C34009F81D7 /* CalendarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInteractor.swift; sourceTree = "<group>"; };
-		2863490D23B29979009F81D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2863491023B299C8009F81D7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2863491323B299DB009F81D7 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		2863491623B354A0009F81D7 /* CalendarDayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCellView.swift; sourceTree = "<group>"; };
-		2863491A23B393CF009F81D7 /* CloseDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDayCell.swift; sourceTree = "<group>"; };
-		2863491D23B393E1009F81D7 /* CloseDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CloseDayCell.xib; sourceTree = "<group>"; };
-		2863492123B3A95A009F81D7 /* ClosedDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedDayCell.swift; sourceTree = "<group>"; };
-		2863492423B3A966009F81D7 /* ClosedDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClosedDayCell.xib; sourceTree = "<group>"; };
-		2863492823B5EF87009F81D7 /* Reports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reports.storyboard; sourceTree = "<group>"; };
-		2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
-		2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsPresenter.swift; sourceTree = "<group>"; };
-		2863493423B790B1009F81D7 /* ProjectsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListViewController.swift; sourceTree = "<group>"; };
-		2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsPresenter.swift; sourceTree = "<group>"; };
-		2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadProjectsInteractor.swift; sourceTree = "<group>"; };
-		2863493E23CB6E9E009F81D7 /* UserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
-		2863493F23CB6E9F009F81D7 /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractorTests.swift; sourceTree = "<group>"; };
-		2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
-		2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Projects.swift"; sourceTree = "<group>"; };
-		2863494E23CB73E4009F81D7 /* SProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SProject.swift; sourceTree = "<group>"; };
-		2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataRepository+Projects.swift"; sourceTree = "<group>"; };
-		2863495623CB7E4D009F81D7 /* CProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProject.swift; sourceTree = "<group>"; };
-		2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Projects.swift"; sourceTree = "<group>"; };
-		2863495E23CB9134009F81D7 /* ProjectInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInteractor.swift; sourceTree = "<group>"; };
-		2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Metadata.swift"; sourceTree = "<group>"; };
-		2863496523CCF311009F81D7 /* SMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMetadata.swift; sourceTree = "<group>"; };
-		2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Metadata.swift"; sourceTree = "<group>"; };
-		2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMetadataInteractor.swift; sourceTree = "<group>"; };
-		2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMetadataInteractor.swift; sourceTree = "<group>"; };
-		2863497223D4790B009F81D7 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
-		2863497523D51825009F81D7 /* CloudKitZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitZone.swift; sourceTree = "<group>"; };
 		28667B5C1FCB7017007B98E3 /* ModuleHookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleHookup.swift; sourceTree = "<group>"; };
-		286BC00321909F85004D4CDD /* CloseDayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDayInteractor.swift; sourceTree = "<group>"; };
+		286BC00321909F85004D4CDD /* CloseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDay.swift; sourceTree = "<group>"; };
 		287195142022E1E2001C237E /* HookupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookupPresenter.swift; sourceTree = "<group>"; };
 		287195172022E8BC001C237E /* OutputTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTableViewDataSource.swift; sourceTree = "<group>"; };
 		2871951A2022ECF7001C237E /* OutputsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputsScrollView.swift; sourceTree = "<group>"; };
@@ -741,7 +636,7 @@
 		2892E80A208D9B42004E5298 /* InputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputsScrollView.xib; sourceTree = "<group>"; };
 		2892E80D208D9DD0004E5298 /* OutputsScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutputsScrollView.xib; sourceTree = "<group>"; };
 		2892E810208E6275004E5298 /* LocalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPreferences.swift; sourceTree = "<group>"; };
-		2898D3A72181907700CF5AD4 /* CopyReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyReportCell.swift; sourceTree = "<group>"; };
+		2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportsHeaderView.swift; sourceTree = "<group>"; };
 		2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBoxViewController.swift; sourceTree = "<group>"; };
 		2898D3AD2184ED3000CF5AD4 /* Components.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Components.storyboard; sourceTree = "<group>"; };
 		2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeBox.swift; sourceTree = "<group>"; };
@@ -758,7 +653,7 @@
 		28A283B2203CB1B900DDCB63 /* MergeTasksInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTasksInteractorTests.swift; sourceTree = "<group>"; };
 		28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		28A5F2811E586426002BE564 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSchemaInteractor.swift; sourceTree = "<group>"; };
+		28A928771E8F78580022AB55 /* SQLiteSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteSchema.swift; sourceTree = "<group>"; };
 		28A9287C1E9030BA0022AB55 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+Tasks.swift"; sourceTree = "<group>"; };
 		28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SqliteRepository+User.swift"; sourceTree = "<group>"; };
@@ -769,8 +664,11 @@
 		28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Tasks.swift"; sourceTree = "<group>"; };
 		28A928941E9110980022AB55 /* CloudKitRepository+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+User.swift"; sourceTree = "<group>"; };
 		28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CloudKitRepository+Settings.swift"; sourceTree = "<group>"; };
-		28B116BA21AE6179004ACE01 /* CopyReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CopyReportCell.xib; sourceTree = "<group>"; };
+		28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+token.swift"; sourceTree = "<group>"; };
+		28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
+		28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthReportsHeaderView.xib; sourceTree = "<group>"; };
 		28C6A38321D359E60036DB29 /* RemoveDuplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicate.swift; sourceTree = "<group>"; };
+		28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+uploadToken.swift"; sourceTree = "<group>"; };
 		28CBB595204554A2006F9D3A /* ParseGitBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranch.swift; sourceTree = "<group>"; };
 		28CBB59920474755006F9D3A /* ParseGitBranchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGitBranchTests.swift; sourceTree = "<group>"; };
 		28DCA4542018B6E700DFAE29 /* JProjectIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JProjectIssue.swift; sourceTree = "<group>"; };
@@ -782,7 +680,7 @@
 		28EDE9381E59EC1500B360A4 /* TasksView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
-		28EE1F6320EE92DA00C5C1D6 /* CalendarAppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppPresenter.swift; sourceTree = "<group>"; };
+		28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
 		28FB265020224E3A00AEA38D /* JiraTempoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraTempoCell.swift; sourceTree = "<group>"; };
 		28FB265320224E5B00AEA38D /* JiraTempoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JiraTempoCell.xib; sourceTree = "<group>"; };
 		28FB265720224E9B00AEA38D /* HookupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HookupCell.xib; sourceTree = "<group>"; };
@@ -830,6 +728,9 @@
 		4065D3361DD3B44200B73201 /* TaskTypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTypeSelection.swift; sourceTree = "<group>"; };
 		4065D3391DD3B44200B73201 /* PredictiveTimeTyping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTyping.swift; sourceTree = "<group>"; };
 		4065D33A1DD3B44200B73201 /* PredictiveTimeTypingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveTimeTypingTests.swift; sourceTree = "<group>"; };
+		4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserInteractor.swift; sourceTree = "<group>"; };
+		4065D33D1DD3B44200B73201 /* UserInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
+		4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractorTests.swift; sourceTree = "<group>"; };
 		4065D3421DD3B44200B73201 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4065D3441DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4065D3461DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -842,6 +743,7 @@
 		4065D3521DD3B44200B73201 /* FlipAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
 		4065D3541DD3B44200B73201 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4065D3551DD3B44200B73201 /* AppWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
+		4065D35A1DD3B44200B73201 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4065D35B1DD3B44200B73201 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4065D35C1DD3B44200B73201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4065D3611DD3B44200B73201 /* jirassic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = jirassic.sdef; sourceTree = "<group>"; };
@@ -854,6 +756,7 @@
 		4065D3731DD3B44200B73201 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		4065D3741DD3B44200B73201 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		4065D3751DD3B44200B73201 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4065D3771DD3B44200B73201 /* CalendarScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarScrollView.swift; sourceTree = "<group>"; };
 		4065D3781DD3B44200B73201 /* CellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
 		4065D3831DD3B44200B73201 /* TasksPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
 		4065D3841DD3B44200B73201 /* TasksScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
@@ -879,12 +782,6 @@
 		40FCE42B1DFC3F8700D4FD45 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		40FCE42D1DFC576C00D4FD45 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
-		5623914921CBC6A10031B882 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
-		5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsPresenter.swift; sourceTree = "<group>"; };
-		5623914F21CBC6CD0031B882 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		5623915221CBC9750031B882 /* Projects.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Projects.storyboard; sourceTree = "<group>"; };
-		563FA91A23D72A880030E50D /* CKRecord+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Task.swift"; sourceTree = "<group>"; };
-		563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Project.swift"; sourceTree = "<group>"; };
 		564E55F2202883DB00CE4C76 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
 		564E55F5202884DE00CE4C76 /* WorklogsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsPresenter.swift; sourceTree = "<group>"; };
 		564E55F82028857300CE4C76 /* Worklogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Worklogs.storyboard; sourceTree = "<group>"; };
@@ -908,13 +805,13 @@
 		569C4C7820231A0B0049FBF1 /* BrowserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowserCell.xib; sourceTree = "<group>"; };
 		56ADBF6921C3F625008350A6 /* GitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
 		56ADBF6C21C3F94D008350A6 /* GitUserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUserParser.swift; sourceTree = "<group>"; };
-		56B50A6B23E330BA002F35FD /* JiraUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraUser.swift; sourceTree = "<group>"; };
 		56CD22BE1E72F89700F9CDB8 /* BuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
 		56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReportTests.swift; sourceTree = "<group>"; };
 		56D90CF720876F1100F24442 /* WizardJiraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardJiraView.swift; sourceTree = "<group>"; };
 		56D90CFA20876F2B00F24442 /* WizardGitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardGitView.swift; sourceTree = "<group>"; };
 		56D90CFD20876F3C00F24442 /* WizardGitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardGitView.xib; sourceTree = "<group>"; };
 		56D90D0020876F4900F24442 /* WizardJiraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardJiraView.xib; sourceTree = "<group>"; };
+		6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic macOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -931,11 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D71BE1ED6069A005D2689 /* ServiceManagement.framework in Frameworks */,
-				2879EC942375339C00CE18D9 /* RCLog in Frameworks */,
-				2879EC96237533A300CE18D9 /* SwiftKeychainWrapper in Frameworks */,
-				28A1B79E23714AA10040968B /* RCPreferences in Frameworks */,
 				280D71BC1ED60683005D2689 /* libsqlite3.tbd in Frameworks */,
-				28A1B7A32371759A0040968B /* RCHttp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,13 +843,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28A1B76E2370781C0040968B /* RCLog in Frameworks */,
 				28A9287D1E9030BA0022AB55 /* CloudKit.framework in Frameworks */,
-				28A1B79C2370E10F0040968B /* RCPreferences in Frameworks */,
+				6D3702622BA83EB9002260D0 /* RCLog in Frameworks */,
 				28577EBA1E8AF379002B07FD /* libsqlite3.tbd in Frameworks */,
+				6D3702602BA83E9A002260D0 /* SwiftKeychainWrapper in Frameworks */,
+				6D3702662BA83EC7002260D0 /* RCHttp in Frameworks */,
+				6D3702642BA83EBF002260D0 /* RCPreferences in Frameworks */,
 				4055B1391E0D82A900279430 /* ServiceManagement.framework in Frameworks */,
-				28A1B7A12371758B0040968B /* RCHttp in Frameworks */,
-				2879EC9223739F4500CE18D9 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,6 +874,10 @@
 		2801388D205F86250051B532 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2801388E205F86460051B532 /* TimeBox.swift */,
+				2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */,
+				2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */,
+				4065D3711DD3B44200B73201 /* NewTaskViewController.swift */,
 				28279AD421C6245700376304 /* GitUsersViewController.swift */,
 				2898D3AD2184ED3000CF5AD4 /* Components.storyboard */,
 			);
@@ -1021,23 +918,20 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
-		2845B141206AE2A4006EFB3B /* cells */ = {
+		2845B141206AE2A4006EFB3B /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */,
+				287B943B21A690C100FFC4A5 /* HeaderView */,
 				2845B143206AE3A8006EFB3B /* ReportCell */,
-				2898D3A62181905600CF5AD4 /* CopyReportCell */,
 			);
-			path = cells;
+			path = Reports;
 			sourceTree = "<group>";
 		};
 		2845B142206AE342006EFB3B /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				2863490223B247FF009F81D7 /* CalendarViewController.swift */,
-				2863490523B24C22009F81D7 /* CalendarPresenter.swift */,
-				2863490823B24C34009F81D7 /* CalendarInteractor.swift */,
-				2863491623B354A0009F81D7 /* CalendarDayCellView.swift */,
-				286348FF23B24335009F81D7 /* Calendar.storyboard */,
+				4065D3771DD3B44200B73201 /* CalendarScrollView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1055,23 +949,42 @@
 		2845B153206AE467006EFB3B /* TaskCell */ = {
 			isa = PBXGroup;
 			children = (
-				2845B15C206AE467006EFB3B /* TaskCell.swift */,
-				2845B155206AE467006EFB3B /* TaskCell_.swift */,
+				2845B155206AE467006EFB3B /* TaskCell.swift */,
+				2845B156206AE467006EFB3B /* TaskCell.xib */,
+				2845B154206AE467006EFB3B /* TaskCellTests.swift */,
 				2845B157206AE467006EFB3B /* TaskCellPresenter.swift */,
-				2845B15D206AE467006EFB3B /* TaskCell.xib */,
 			);
 			path = TaskCell;
 			sourceTree = "<group>";
 		};
-		2845B16F206C2888006EFB3B /* cells */ = {
+		2845B158206AE467006EFB3B /* HeaderView */ = {
 			isa = PBXGroup;
 			children = (
+				2845B159206AE467006EFB3B /* TasksHeaderView.swift */,
+				2845B15A206AE467006EFB3B /* TasksHeaderView.xib */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		2845B15B206AE467006EFB3B /* NonTaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				2845B15C206AE467006EFB3B /* NonTaskCell.swift */,
+				2845B15D206AE467006EFB3B /* NonTaskCell.xib */,
+			);
+			path = NonTaskCell;
+			sourceTree = "<group>";
+		};
+		2845B16F206C2888006EFB3B /* AllTasks */ = {
+			isa = PBXGroup;
+			children = (
+				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
 				4065D3781DD3B44200B73201 /* CellProtocol.swift */,
-				2863492023B3A941009F81D7 /* ClosedDayCell */,
-				2863491923B393A3009F81D7 /* CloseDayCell */,
+				2845B158206AE467006EFB3B /* HeaderView */,
+				2845B15B206AE467006EFB3B /* NonTaskCell */,
 				2845B153206AE467006EFB3B /* TaskCell */,
 			);
-			path = cells;
+			path = AllTasks;
 			sourceTree = "<group>";
 		};
 		285465A5217858120052CB6A /* Store */ = {
@@ -1090,86 +1003,15 @@
 				28A928801E910DA40022AB55 /* SqliteRepository+Tasks.swift */,
 				28A928831E910E5E0022AB55 /* SqliteRepository+User.swift */,
 				28A928861E910EA70022AB55 /* SqliteRepository+Settings.swift */,
-				2863494A23CB6F9E009F81D7 /* SqliteRepository+Projects.swift */,
-				2863496223CCF28B009F81D7 /* SqliteRepository+Metadata.swift */,
 				28577EA81E8ADC53002B07FD /* SSettings.swift */,
 				28577EA91E8ADC53002B07FD /* STask.swift */,
 				28577EAA1E8ADC53002B07FD /* SUser.swift */,
-				2863494E23CB73E4009F81D7 /* SProject.swift */,
-				2863496523CCF311009F81D7 /* SMetadata.swift */,
 				28577EB31E8AF08F002B07FD /* SQLiteDB.swift */,
 				28577EB41E8AF08F002B07FD /* SQLTable.swift */,
-				28A928771E8F78580022AB55 /* UpdateSchemaInteractor.swift */,
+				28A928771E8F78580022AB55 /* SQLiteSchema.swift */,
+				28C9C6211EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift */,
 			);
 			path = sqlite;
-			sourceTree = "<group>";
-		};
-		286348FE23B237D9009F81D7 /* Projects */ = {
-			isa = PBXGroup;
-			children = (
-				2863493A23CB6B07009F81D7 /* ReadProjectsInteractor.swift */,
-				2863495E23CB9134009F81D7 /* ProjectInteractor.swift */,
-			);
-			path = Projects;
-			sourceTree = "<group>";
-		};
-		2863490B23B2982A009F81D7 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				2863490C23B29979009F81D7 /* Main.storyboard */,
-				2863491023B299C8009F81D7 /* MainViewController.swift */,
-				2863491323B299DB009F81D7 /* MainPresenter.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		2863491923B393A3009F81D7 /* CloseDayCell */ = {
-			isa = PBXGroup;
-			children = (
-				2863491A23B393CF009F81D7 /* CloseDayCell.swift */,
-				2863491D23B393E1009F81D7 /* CloseDayCell.xib */,
-			);
-			path = CloseDayCell;
-			sourceTree = "<group>";
-		};
-		2863492023B3A941009F81D7 /* ClosedDayCell */ = {
-			isa = PBXGroup;
-			children = (
-				2863492123B3A95A009F81D7 /* ClosedDayCell.swift */,
-				2863492423B3A966009F81D7 /* ClosedDayCell.xib */,
-			);
-			path = ClosedDayCell;
-			sourceTree = "<group>";
-		};
-		2863492723B5EF31009F81D7 /* Reports */ = {
-			isa = PBXGroup;
-			children = (
-				2863492823B5EF87009F81D7 /* Reports.storyboard */,
-				2863492B23B5EF9B009F81D7 /* ReportsViewController.swift */,
-				2863492E23B5EFD1009F81D7 /* ReportsPresenter.swift */,
-				2845B147206AE3A8006EFB3B /* ReportsDataSource.swift */,
-				2845B141206AE2A4006EFB3B /* cells */,
-			);
-			path = Reports;
-			sourceTree = "<group>";
-		};
-		2863493D23CB6E87009F81D7 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				2863494023CB6E9F009F81D7 /* RegisterUserInteractor.swift */,
-				2863493E23CB6E9E009F81D7 /* UserInteractor.swift */,
-				2863493F23CB6E9F009F81D7 /* UserInteractorTests.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		2863496B23D21259009F81D7 /* Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				2863496C23D21286009F81D7 /* ReadMetadataInteractor.swift */,
-				2863496F23D22591009F81D7 /* WriteMetadataInteractor.swift */,
-			);
-			path = Metadata;
 			sourceTree = "<group>";
 		};
 		28667B591FCADF4E007B98E3 /* Modules */ = {
@@ -1226,6 +1068,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		287B943B21A690C100FFC4A5 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				2845B148206AE3A8006EFB3B /* ReportsHeaderView.swift */,
+				28B116B721AE5C45004ACE01 /* ReportsHeaderView.xib */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
 		2892B2961F0949D70085BAC2 /* Jira */ = {
 			isa = PBXGroup;
 			children = (
@@ -1240,13 +1091,13 @@
 			path = Jira;
 			sourceTree = "<group>";
 		};
-		2898D3A62181905600CF5AD4 /* CopyReportCell */ = {
+		2898D3A62181905600CF5AD4 /* MonthReports */ = {
 			isa = PBXGroup;
 			children = (
-				2898D3A72181907700CF5AD4 /* CopyReportCell.swift */,
-				28B116BA21AE6179004ACE01 /* CopyReportCell.xib */,
+				2898D3A72181907700CF5AD4 /* MonthReportsHeaderView.swift */,
+				28B116BA21AE6179004ACE01 /* MonthReportsHeaderView.xib */,
 			);
-			path = CopyReportCell;
+			path = MonthReports;
 			sourceTree = "<group>";
 		};
 		28A28392203786F600DDCB63 /* GitLogs */ = {
@@ -1284,7 +1135,7 @@
 			isa = PBXGroup;
 			children = (
 				28EE1F5D20EE8D1000C5C1D6 /* CalendarCell.swift */,
-				28EE1F6320EE92DA00C5C1D6 /* CalendarAppPresenter.swift */,
+				28EE1F6320EE92DA00C5C1D6 /* CalendarPresenter.swift */,
 				28EE1F6020EE8D6100C5C1D6 /* CalendarCell.xib */,
 			);
 			path = Calendar;
@@ -1390,7 +1241,6 @@
 				40FCE4281DFC1CB400D4FD45 /* TaskSuggestionTests.swift */,
 			);
 			name = TaskSuggestion;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		405B15641DEF66EE0009871C /* Resources */ = {
@@ -1411,6 +1261,7 @@
 		4065D2FB1DD3A1AA00B73201 = {
 			isa = PBXGroup;
 			children = (
+				6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */,
 				4065D3161DD3B44200B73201 /* App */,
 				4065D3401DD3B44200B73201 /* Delivery */,
 				4065D3881DD3B44200B73201 /* External */,
@@ -1437,16 +1288,14 @@
 		4065D3161DD3B44200B73201 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2863496B23D21259009F81D7 /* Metadata */,
-				2863493D23CB6E87009F81D7 /* User */,
 				4065D3171DD3B44200B73201 /* Entities */,
 				4065D31F1DD3B44200B73201 /* Extensions */,
 				4065D3271DD3B44200B73201 /* Notifications */,
 				4065D32A1DD3B44200B73201 /* Reports */,
-				286348FE23B237D9009F81D7 /* Projects */,
 				4065D32D1DD3B44200B73201 /* Tasks */,
 				280300D41EDB5E6D000A763E /* Statistics */,
 				4065D3371DD3B44200B73201 /* Time */,
+				4065D33B1DD3B44200B73201 /* User */,
 				28CBB59420455467006F9D3A /* Parsing */,
 			);
 			path = App;
@@ -1463,8 +1312,6 @@
 				4065D31E1DD3B44200B73201 /* Week.swift */,
 				28A2839920382BBB00DDCB63 /* GitCommit.swift */,
 				56ADBF6921C3F625008350A6 /* GitUser.swift */,
-				56B50A6B23E330BA002F35FD /* JiraUser.swift */,
-				5623914F21CBC6CD0031B882 /* Project.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1511,7 +1358,7 @@
 			children = (
 				4065D32E1DD3B44200B73201 /* ReadDaysInteractor.swift */,
 				280D71171ED4CFCB005D2689 /* ReadDaysInteractorTests.swift */,
-				286BC00321909F85004D4CDD /* CloseDayInteractor.swift */,
+				286BC00321909F85004D4CDD /* CloseDay.swift */,
 				4065D32F1DD3B44200B73201 /* ReadTasksInteractor.swift */,
 				4065D3301DD3B44200B73201 /* TaskFinder.swift */,
 				4065D3311DD3B44200B73201 /* TaskFinderTests.swift */,
@@ -1535,6 +1382,16 @@
 				287195352027CAD9001C237E /* TimeInteractor.swift */,
 			);
 			path = Time;
+			sourceTree = "<group>";
+		};
+		4065D33B1DD3B44200B73201 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4065D33C1DD3B44200B73201 /* RegisterUserInteractor.swift */,
+				4065D33D1DD3B44200B73201 /* UserInteractor.swift */,
+				4065D33E1DD3B44200B73201 /* UserInteractorTests.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		4065D3401DD3B44200B73201 /* Delivery */ = {
@@ -1587,7 +1444,6 @@
 			isa = PBXGroup;
 			children = (
 				4065D3521DD3B44200B73201 /* FlipAnimation.swift */,
-				2828B04D2381D04E0005B188 /* NoAnimation.swift */,
 				40FCE42F1DFD7C8D00D4FD45 /* Animatable.swift */,
 			);
 			path = Animations;
@@ -1596,6 +1452,7 @@
 		4065D3531DD3B44200B73201 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4065D3591DD3B44200B73201 /* Main.storyboard */,
 				4065D3541DD3B44200B73201 /* AppDelegate.swift */,
 				4065D3551DD3B44200B73201 /* AppWireframe.swift */,
 				405B15651DEF75660009871C /* AppViewController.swift */,
@@ -1603,7 +1460,6 @@
 				2823C9341E4F69970055D036 /* Versioning.swift */,
 				280D70B01ECC09D9005D2689 /* AppTheme.swift */,
 				2892E810208E6275004E5298 /* LocalPreferences.swift */,
-				2863497223D4790B009F81D7 /* Migrator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1631,16 +1487,14 @@
 		4065D36B1DD3B44200B73201 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2863490B23B2982A009F81D7 /* Main */,
 				28279E9A1E8300E200EAF9FC /* Placeholder */,
 				287B358520FBAD160022F43E /* Onboarding */,
+				405B155F1DEF3CE20009871C /* TaskSuggestion */,
 				5685C7621DE8721100CA545E /* Account */,
 				4065D3721DD3B44200B73201 /* Settings */,
 				564E55F12028839F00CE4C76 /* Worklogs */,
 				2845B142206AE342006EFB3B /* Calendar */,
 				4065D3761DD3B44200B73201 /* Tasks */,
-				2863492723B5EF31009F81D7 /* Reports */,
-				5623914821CBC66C0031B882 /* Projects */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1670,14 +1524,10 @@
 				566B9FA6217DE67700EAF324 /* TasksInteractor.swift */,
 				4065D3841DD3B44200B73201 /* TasksScrollView.swift */,
 				28EDE9381E59EC1500B360A4 /* TasksView.swift */,
-				28A5F27D1E5789FC002BE564 /* TasksDataSource.swift */,
 				28A5F2811E586426002BE564 /* DataSource.swift */,
-				4065D3711DD3B44200B73201 /* NewTaskViewController.swift */,
-				2898D3AA2184D1DB00CF5AD4 /* TimeBoxViewController.swift */,
-				2898D3B02185959300CF5AD4 /* EditableTimeBox.swift */,
-				2801388E205F86460051B532 /* TimeBox.swift */,
-				405B155F1DEF3CE20009871C /* TaskSuggestion */,
-				2845B16F206C2888006EFB3B /* cells */,
+				2845B16F206C2888006EFB3B /* AllTasks */,
+				2845B141206AE2A4006EFB3B /* Reports */,
+				2898D3A62181905600CF5AD4 /* MonthReports */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1712,13 +1562,9 @@
 			children = (
 				4065D38A1DD3B44200B73201 /* CloudKitRepository.swift */,
 				28A928921E91104B0022AB55 /* CloudKitRepository+Tasks.swift */,
-				563FA91A23D72A880030E50D /* CKRecord+Task.swift */,
 				28A928961E9110BF0022AB55 /* CloudKitRepository+Settings.swift */,
 				28A928941E9110980022AB55 /* CloudKitRepository+User.swift */,
-				2863495A23CB8003009F81D7 /* CloudKitRepository+Projects.swift */,
-				563FA91E23D72C5D0030E50D /* CKRecord+Project.swift */,
-				2863496823CCF53C009F81D7 /* CloudKitRepository+Metadata.swift */,
-				2863497523D51825009F81D7 /* CloudKitZone.swift */,
+				28AFE7301E9A594500BAAD8C /* UserDefaults+token.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -1730,11 +1576,9 @@
 				28A928891E910F4D0022AB55 /* CoreDataRepository+Tasks.swift */,
 				28A9288C1E910F970022AB55 /* CoreDataRepository+Settings.swift */,
 				28A9288F1E910FF60022AB55 /* CoreDataRepository+User.swift */,
-				2863495223CB7DFA009F81D7 /* CoreDataRepository+Projects.swift */,
 				4065D38D1DD3B44200B73201 /* CSettings.swift */,
 				4065D38E1DD3B44200B73201 /* CTask.swift */,
 				4065D38F1DD3B44200B73201 /* CUser.swift */,
-				2863495623CB7E4D009F81D7 /* CProject.swift */,
 				2818847F21A4A2F800B33B9C /* Jirassic.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -1775,20 +1619,6 @@
 			path = External;
 			sourceTree = "<group>";
 		};
-		5623914821CBC66C0031B882 /* Projects */ = {
-			isa = PBXGroup;
-			children = (
-				5623915221CBC9750031B882 /* Projects.storyboard */,
-				5623914921CBC6A10031B882 /* ProjectsViewController.swift */,
-				5623914C21CBC6B40031B882 /* ProjectsPresenter.swift */,
-				286348F423B136B3009F81D7 /* ProjectsInteractor.swift */,
-				2863493423B790B1009F81D7 /* ProjectsListViewController.swift */,
-				286348F823B22775009F81D7 /* ProjectDetailsViewController.swift */,
-				2863493723B7EA02009F81D7 /* ProjectDetailsPresenter.swift */,
-			);
-			path = Projects;
-			sourceTree = "<group>";
-		};
 		564E55F12028839F00CE4C76 /* Worklogs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1812,9 +1642,9 @@
 			children = (
 				5685C76B1DE8724400CA545E /* AccountViewController.swift */,
 				5685C7631DE8721100CA545E /* CloudKitLoginViewController.swift */,
+				5685C7641DE8721100CA545E /* Login.storyboard */,
 				5685C7651DE8721100CA545E /* LoginPresenter.swift */,
 				5685C7661DE8721100CA545E /* LoginViewController.swift */,
-				5685C7641DE8721100CA545E /* Login.storyboard */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1891,10 +1721,6 @@
 			);
 			name = "Jirassic macOS";
 			packageProductDependencies = (
-				28A1B79D23714AA10040968B /* RCPreferences */,
-				28A1B7A22371759A0040968B /* RCHttp */,
-				2879EC932375339C00CE18D9 /* RCLog */,
-				2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */,
 			);
 			productName = "Jirassic no cloud";
 			productReference = 280D711D1ED5EE7F005D2689 /* Jirassic no cloud.app */;
@@ -1933,10 +1759,10 @@
 			);
 			name = "Jirassic AppStore";
 			packageProductDependencies = (
-				28A1B76D2370781C0040968B /* RCLog */,
-				28A1B79B2370E10F0040968B /* RCPreferences */,
-				28A1B7A02371758B0040968B /* RCHttp */,
-				2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */,
+				6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */,
+				6D3702612BA83EB9002260D0 /* RCLog */,
+				6D3702632BA83EBF002260D0 /* RCPreferences */,
+				6D3702652BA83EC7002260D0 /* RCHttp */,
 			);
 			productName = Jirassic;
 			productReference = 4065D3041DD3A1AA00B73201 /* Jirassic.app */;
@@ -1985,8 +1811,9 @@
 		4065D2FC1DD3A1AA00B73201 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1530;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
@@ -2006,7 +1833,7 @@
 					280D711C1ED5EE7F005D2689 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -2016,9 +1843,7 @@
 					};
 					4055B1221E0D802300279430 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5NHDC5EV44;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -2027,9 +1852,7 @@
 					};
 					4065D3031DD3A1AA00B73201 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 1130;
-						ProvisioningStyle = Manual;
+						LastSwiftMigration = "";
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -2045,7 +1868,7 @@
 					4065D4011DD4532100B73201 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5NHDC5EV44;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Manual;
 						TestTargetID = 280D711C1ED5EE7F005D2689;
 					};
@@ -2068,10 +1891,10 @@
 			);
 			mainGroup = 4065D2FB1DD3A1AA00B73201;
 			packageReferences = (
-				28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */,
-				28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */,
-				28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */,
-				2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				6D37025B2BA83DB0002260D0 /* XCRemoteSwiftPackageReference "RCLog" */,
+				6D37025C2BA83DDB002260D0 /* XCRemoteSwiftPackageReference "RCpreferences" */,
+				6D37025D2BA83DFE002260D0 /* XCRemoteSwiftPackageReference "RChttp" */,
+				6D37025E2BA83E9A002260D0 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 4065D3051DD3A1AA00B73201 /* Products */;
 			projectDirPath = "";
@@ -2108,37 +1931,35 @@
 				28A283A82038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				288BB6812087152B00CF720A /* WizardAppleScriptView.xib in Resources */,
 				280D71C91ED60908005D2689 /* jirassic.sdef in Resources */,
-				2863490E23B29979009F81D7 /* Main.storyboard in Resources */,
 				2892E80B208D9B42004E5298 /* InputsScrollView.xib in Resources */,
 				28EE1F6120EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
-				2863490023B24335009F81D7 /* Calendar.storyboard in Resources */,
+				280D71BF1ED608D6005D2689 /* Main.storyboard in Resources */,
 				2898D3AE2184ED3000CF5AD4 /* Components.storyboard in Resources */,
 				280D71C01ED608D6005D2689 /* Placeholder.storyboard in Resources */,
 				280C1D441ED74EF900C126A1 /* ShellSupport.scpt in Resources */,
 				28FB265820224E9B00AEA38D /* HookupCell.xib in Resources */,
-				28B116BB21AE6179004ACE01 /* CopyReportCell.xib in Resources */,
+				28B116BB21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
 				287B358A20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				280D71C11ED608D6005D2689 /* Welcome.storyboard in Resources */,
-				2863491E23B393E1009F81D7 /* CloseDayCell.xib in Resources */,
-				5623915321CBC9750031B882 /* Projects.storyboard in Resources */,
 				280D71C21ED608D6005D2689 /* Login.storyboard in Resources */,
 				56D90CFE20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				280D71C31ED608D6005D2689 /* Settings.storyboard in Resources */,
 				280D71C41ED608D6005D2689 /* Tasks.storyboard in Resources */,
 				564E55F92028857300CE4C76 /* Worklogs.storyboard in Resources */,
-				2863492523B3A966009F81D7 /* ClosedDayCell.xib in Resources */,
+				2845B162206AE468006EFB3B /* TaskCell.xib in Resources */,
 				56D90D0120876F4900F24442 /* WizardJiraView.xib in Resources */,
 				280C1D431ED74EF900C126A1 /* BrowserSupport.scpt in Resources */,
+				28B116B821AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */,
 				2871952820241A6C001C237E /* TrackingView.xib in Resources */,
 				28FB265420224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
 				2845B14B206AE3A8006EFB3B /* ReportCell.xib in Resources */,
 				28FE18A8207B36CB00DF796E /* CocoaHookupCell.xib in Resources */,
 				569C4C76202319FC0049FBF1 /* GitCell.xib in Resources */,
+				2845B168206AE468006EFB3B /* TasksHeaderView.xib in Resources */,
 				280D71C81ED608D6005D2689 /* Images.xcassets in Resources */,
 				285465AD217858AF0052CB6A /* StoreView.xib in Resources */,
-				2845B16C206AE468006EFB3B /* TaskCell.xib in Resources */,
+				2845B16C206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				569C4C73202319EE0049FBF1 /* JitCell.xib in Resources */,
-				2863492923B5EF87009F81D7 /* Reports.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2154,40 +1975,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2863490123B24335009F81D7 /* Calendar.storyboard in Resources */,
 				2898D3AF2184ED3000CF5AD4 /* Components.storyboard in Resources */,
 				569C4C7A20231A0B0049FBF1 /* BrowserCell.xib in Resources */,
 				288BB6822087152B00CF720A /* WizardAppleScriptView.xib in Resources */,
 				569C4C74202319EE0049FBF1 /* JitCell.xib in Resources */,
-				2845B16D206AE468006EFB3B /* TaskCell.xib in Resources */,
+				2845B16D206AE468006EFB3B /* NonTaskCell.xib in Resources */,
 				2871952920241A6C001C237E /* TrackingView.xib in Resources */,
 				2892E80F208D9DD0004E5298 /* OutputsScrollView.xib in Resources */,
 				285465AE217858AF0052CB6A /* StoreView.xib in Resources */,
 				28FB265920224E9B00AEA38D /* HookupCell.xib in Resources */,
 				40FCE42E1DFC576C00D4FD45 /* Welcome.storyboard in Resources */,
 				5685C7681DE8721100CA545E /* Login.storyboard in Resources */,
-				2863492A23B5EF87009F81D7 /* Reports.storyboard in Resources */,
 				569C4C71202319DE0049FBF1 /* ShellCell.xib in Resources */,
+				28B116B921AE5C45004ACE01 /* ReportsHeaderView.xib in Resources */,
 				2892E80C208D9B42004E5298 /* InputsScrollView.xib in Resources */,
-				2863490F23B29979009F81D7 /* Main.storyboard in Resources */,
 				287B358B20FBAFD60022F43E /* WizardCalendarView.xib in Resources */,
 				4065D3CF1DD3B44200B73201 /* Images.xcassets in Resources */,
 				56CD22BF1E72F89700F9CDB8 /* BuildScript.sh in Resources */,
 				28FB265520224E5B00AEA38D /* JiraTempoCell.xib in Resources */,
-				2863492623B3A966009F81D7 /* ClosedDayCell.xib in Resources */,
 				2845B14C206AE3A8006EFB3B /* ReportCell.xib in Resources */,
 				406384891DE388C5004795A4 /* Tasks.storyboard in Resources */,
 				28FE18A9207B36CB00DF796E /* CocoaHookupCell.xib in Resources */,
 				569C4C77202319FC0049FBF1 /* GitCell.xib in Resources */,
-				5623915421CBC9750031B882 /* Projects.storyboard in Resources */,
 				28E896631E830D6700722032 /* Placeholder.storyboard in Resources */,
 				56D90D0220876F4900F24442 /* WizardJiraView.xib in Resources */,
+				4065D3CE1DD3B44200B73201 /* Main.storyboard in Resources */,
+				2845B163206AE468006EFB3B /* TaskCell.xib in Resources */,
 				4065D3D31DD3B44200B73201 /* jirassic.sdef in Resources */,
 				40E092411DE385E4001EF5DA /* Settings.storyboard in Resources */,
-				28B116BC21AE6179004ACE01 /* CopyReportCell.xib in Resources */,
+				28B116BC21AE6179004ACE01 /* MonthReportsHeaderView.xib in Resources */,
 				56D90CFF20876F3C00F24442 /* WizardGitView.xib in Resources */,
 				564E55FA2028857300CE4C76 /* Worklogs.storyboard in Resources */,
-				2863491F23B393E1009F81D7 /* CloseDayCell.xib in Resources */,
+				2845B169206AE468006EFB3B /* TasksHeaderView.xib in Resources */,
 				28A283A92038AFC500DDCB63 /* JirassicCell.xib in Resources */,
 				28EE1F6220EE8D6100C5C1D6 /* CalendarCell.xib in Resources */,
 			);
@@ -2208,17 +2027,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				280D70E51ECFE88F005D2689 /* CUser.swift in Sources */,
-				2863494323CB6E9F009F81D7 /* UserInteractor.swift in Sources */,
+				280D70F51ECFE98C005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				280D70E91ECFE8B9005D2689 /* CloudKitRepository+Settings.swift in Sources */,
-				2863495923CB7E4D009F81D7 /* CProject.swift in Sources */,
 				280D70D21ECFE7ED005D2689 /* Day.swift in Sources */,
 				280D70DA1ECFE83F005D2689 /* CreateReport.swift in Sources */,
 				280D70D71ECFE817005D2689 /* DateExtension.swift in Sources */,
-				2863495D23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */,
 				280D70F01ECFE8CC005D2689 /* Repository.swift in Sources */,
-				2863495523CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */,
-				286348FC23B237B1009F81D7 /* Project.swift in Sources */,
-				2863494923CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */,
+				280D70F61ECFE9B3005D2689 /* RegisterUserInteractor.swift in Sources */,
+				280D70DE1ECFE870005D2689 /* UserInteractor.swift in Sources */,
 				280D70E11ECFE88F005D2689 /* CoreDataRepository+Settings.swift in Sources */,
 				280D70C81ECFE5AC005D2689 /* AppDelegate.swift in Sources */,
 				280D70E21ECFE88F005D2689 /* CoreDataRepository+User.swift in Sources */,
@@ -2235,6 +2051,7 @@
 				280D70E01ECFE88F005D2689 /* CoreDataRepository+Tasks.swift in Sources */,
 				280D70E31ECFE88F005D2689 /* CSettings.swift in Sources */,
 				280D70DC1ECFE84C005D2689 /* ReadTasksInteractor.swift in Sources */,
+				280D70EB1ECFE8B9005D2689 /* UserDefaults+token.swift in Sources */,
 				280D70F11ECFE8D0005D2689 /* RepositoryInteractor.swift in Sources */,
 				280D70D01ECFE5EA005D2689 /* TaskCell.swift in Sources */,
 				280D70D81ECFE82E005D2689 /* ViewAutolayout.swift in Sources */,
@@ -2242,18 +2059,13 @@
 				280D70D91ECFE835005D2689 /* Conversions.swift in Sources */,
 				565E19F220A5E336003A5E2A /* RCSync.swift in Sources */,
 				280D70DB1ECFE847005D2689 /* ReadDaysInteractor.swift in Sources */,
-				563FA92123D72C5D0030E50D /* CKRecord+Project.swift in Sources */,
 				28CBB598204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				280D70E41ECFE88F005D2689 /* CTask.swift in Sources */,
-				563FA91D23D72A880030E50D /* CKRecord+Task.swift in Sources */,
-				2863495123CB73E4009F81D7 /* SProject.swift in Sources */,
 				280D70D41ECFE7FF005D2689 /* Task.swift in Sources */,
-				2863494D23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
 				280D70D51ECFE803005D2689 /* User.swift in Sources */,
 				280D70D11ECFE5EE005D2689 /* TasksViewController.swift in Sources */,
 				280D70F71ED0E6EC005D2689 /* StringIdGenerator.swift in Sources */,
 				280D70D61ECFE807005D2689 /* Week.swift in Sources */,
-				2863496123CB9134009F81D7 /* ProjectInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2263,16 +2075,12 @@
 			files = (
 				280D712C1ED6043D005D2689 /* Day.swift in Sources */,
 				2892B29B1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
-				56B50A6C23E330BA002F35FD /* JiraUser.swift in Sources */,
 				280D712D1ED6043D005D2689 /* Report.swift in Sources */,
-				28EE1F6420EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */,
+				28EE1F6420EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
 				280D712E1ED6043D005D2689 /* Settings.swift in Sources */,
 				2898D3AB2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
 				280D712F1ED6043D005D2689 /* Task.swift in Sources */,
-				2863491B23B393CF009F81D7 /* CloseDayCell.swift in Sources */,
-				2863493B23CB6B07009F81D7 /* ReadProjectsInteractor.swift in Sources */,
 				287195312025C360001C237E /* CSettings.swift in Sources */,
-				2863497623D51825009F81D7 /* CloudKitZone.swift in Sources */,
 				56ADBF6A21C3F625008350A6 /* GitUser.swift in Sources */,
 				287195302025C35C001C237E /* CoreDataRepository+User.swift in Sources */,
 				280D71311ED6043D005D2689 /* User.swift in Sources */,
@@ -2280,79 +2088,62 @@
 				566B9FA7217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				288BB67E2085252900CF720A /* WizardViewController.swift in Sources */,
 				28FB265E2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
-				2863494B23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
-				2863492F23B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */,
 				280D71331ED6043D005D2689 /* DateExtension.swift in Sources */,
 				56ADBF6D21C3F94D008350A6 /* GitUserParser.swift in Sources */,
 				280D71351ED6043D005D2689 /* StringIdGenerator.swift in Sources */,
 				280D71361ED6043D005D2689 /* StringArray.swift in Sources */,
-				5623914D21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */,
 				287195362027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				280D71371ED6043D005D2689 /* ViewAutolayout.swift in Sources */,
 				285465A7217858790052CB6A /* StoreView.swift in Sources */,
 				280D71381ED6043D005D2689 /* ViewController.swift in Sources */,
-				2863496D23D21286009F81D7 /* ReadMetadataInteractor.swift in Sources */,
 				2871951E2022FD14001C237E /* InputsScrollView.swift in Sources */,
-				563FA91F23D72C5D0030E50D /* CKRecord+Project.swift in Sources */,
 				28FE18A5207B369800DF796E /* CocoaHookupCell.swift in Sources */,
 				280D71391ED6043D005D2689 /* ViewControllerStoryboard.swift in Sources */,
 				2871952B20241B25001C237E /* TrackingView.swift in Sources */,
-				286BC00421909F85004D4CDD /* CloseDayInteractor.swift in Sources */,
+				286BC00421909F85004D4CDD /* CloseDay.swift in Sources */,
 				284192DD2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
 				28667B5D1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				2812F61E2145031B008EE81E /* IAPHelper.swift in Sources */,
-				2863497023D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */,
 				280D713A1ED6043D005D2689 /* Conversions.swift in Sources */,
 				280D713B1ED6043D005D2689 /* ComputerWakeUpInteractor.swift in Sources */,
 				280D713D1ED6043D005D2689 /* CreateReport.swift in Sources */,
-				2863494723CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */,
-				2863495F23CB9134009F81D7 /* ProjectInteractor.swift in Sources */,
 				280D713F1ED6043D005D2689 /* ReadDaysInteractor.swift in Sources */,
 				280D71411ED6043D005D2689 /* ReadTasksInteractor.swift in Sources */,
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
-				286348F523B136B3009F81D7 /* ProjectsInteractor.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
-				2863494123CB6E9F009F81D7 /* UserInteractor.swift in Sources */,
 				285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
 				56D90CF820876F1100F24442 /* WizardJiraView.swift in Sources */,
 				2801388F205F86460051B532 /* TimeBox.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
-				2845B160206AE468006EFB3B /* TaskCell_.swift in Sources */,
+				2845B160206AE468006EFB3B /* TaskCell.swift in Sources */,
 				28FE18AB207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
+				280D714C1ED6043D005D2689 /* RegisterUserInteractor.swift in Sources */,
+				280D714D1ED6043D005D2689 /* UserInteractor.swift in Sources */,
 				28FB265120224E3A00AEA38D /* JiraTempoCell.swift in Sources */,
 				280D71591ED6043D005D2689 /* AppDelegate.swift in Sources */,
 				280D715A1ED6043D005D2689 /* AppWireframe.swift in Sources */,
 				280D715B1ED6043D005D2689 /* AppViewController.swift in Sources */,
 				28279AD521C6245700376304 /* GitUsersViewController.swift in Sources */,
-				2863496323CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */,
 				287195322025C364001C237E /* CTask.swift in Sources */,
 				5683DC3E20ECDED30000A138 /* ModuleCalendar.swift in Sources */,
 				2892E811208E6275004E5298 /* LocalPreferences.swift in Sources */,
 				280D715D1ED6043D005D2689 /* AppLauncher.swift in Sources */,
 				280D715E1ED6043D005D2689 /* Versioning.swift in Sources */,
-				5623914A21CBC6A10031B882 /* ProjectsViewController.swift in Sources */,
 				2845B14D206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
 				2845B164206AE468006EFB3B /* TaskCellPresenter.swift in Sources */,
-				2863491123B299C8009F81D7 /* MainViewController.swift in Sources */,
 				280D715F1ED6043D005D2689 /* AppTheme.swift in Sources */,
 				28CBB596204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
-				286348F923B22775009F81D7 /* ProjectDetailsViewController.swift in Sources */,
 				280D71601ED6043D005D2689 /* MenuBarController.swift in Sources */,
-				563FA91B23D72A880030E50D /* CKRecord+Task.swift in Sources */,
 				280D71611ED6043D005D2689 /* MenuBarIconView.swift in Sources */,
 				569C4C67202319930049FBF1 /* GitPresenter.swift in Sources */,
 				2871951B2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
-				2863491423B299DB009F81D7 /* MainPresenter.swift in Sources */,
-				2863490623B24C22009F81D7 /* CalendarPresenter.swift in Sources */,
 				280D71621ED6043D005D2689 /* FlipAnimation.swift in Sources */,
 				280D71631ED6043D005D2689 /* Animatable.swift in Sources */,
-				2863490323B24800009F81D7 /* CalendarViewController.swift in Sources */,
 				564E55F3202883DB00CE4C76 /* WorklogsViewController.swift in Sources */,
 				280D71641ED6043D005D2689 /* PlaceholderViewController.swift in Sources */,
 				28FE1887207A520B00DF796E /* NewTaskCommand.swift in Sources */,
-				2863491723B354A0009F81D7 /* CalendarDayCellView.swift in Sources */,
 				280D71661ED6043D005D2689 /* WelcomeViewController.swift in Sources */,
 				280D71681ED6043D005D2689 /* TaskSuggestionViewController.swift in Sources */,
 				280D71691ED6043D005D2689 /* TaskSuggestionPresenter.swift in Sources */,
@@ -2360,14 +2151,12 @@
 				28A283B0203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				2812F6202145031B008EE81E /* Store.swift in Sources */,
 				280D716B1ED6043D005D2689 /* AccountViewController.swift in Sources */,
-				2863496923CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */,
 				56D90CFB20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				280D716C1ED6043D005D2689 /* CloudKitLoginViewController.swift in Sources */,
 				2871952D2025C353001C237E /* CoreDataRepository.swift in Sources */,
 				280D716E1ED6043D005D2689 /* LoginPresenter.swift in Sources */,
 				28FB265B20224EA700AEA38D /* HookupCell.swift in Sources */,
 				287195332025C367001C237E /* CUser.swift in Sources */,
-				2863497323D4790B009F81D7 /* Migrator.swift in Sources */,
 				280D716F1ED6043D005D2689 /* LoginViewController.swift in Sources */,
 				2898D3B12185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
 				2845B149206AE3A8006EFB3B /* ReportCell.swift in Sources */,
@@ -2375,26 +2164,24 @@
 				280D71701ED6043D005D2689 /* ExtensionsInteractor.swift in Sources */,
 				2845B13F2068351F006EFB3B /* TableViewCell.swift in Sources */,
 				288BB6872087169F00CF720A /* ViewXib.swift in Sources */,
-				2863494F23CB73E4009F81D7 /* SProject.swift in Sources */,
 				28A283972037975600DDCB63 /* Saveable.swift in Sources */,
-				2863495723CB7E4D009F81D7 /* CProject.swift in Sources */,
-				2863493523B790B1009F81D7 /* ProjectsListViewController.swift in Sources */,
 				280D71711ED6043D005D2689 /* ExtensionsInstallerInteractor.swift in Sources */,
 				280D71721ED6043D005D2689 /* AppleScript.swift in Sources */,
 				28A283A52038AFB100DDCB63 /* JirassicCell.swift in Sources */,
 				280D71731ED6043D005D2689 /* SandboxedAppleScript.swift in Sources */,
 				280D71741ED6043D005D2689 /* SettingsViewController.swift in Sources */,
-				2863493823B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */,
 				280D71751ED6043D005D2689 /* SettingsPresenter.swift in Sources */,
 				280D71761ED6043D005D2689 /* SettingsInteractor.swift in Sources */,
 				280D71781ED6043D005D2689 /* NewTaskViewController.swift in Sources */,
 				28A283942037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
 				280D717A1ED6043D005D2689 /* TasksViewController.swift in Sources */,
 				288BB6842087157F00CF720A /* WizardAppleScriptView.swift in Sources */,
+				2845B151206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
 				28A283AB203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				280D717B1ED6043D005D2689 /* TasksPresenter.swift in Sources */,
 				2818848121A4A2F800B33B9C /* Jirassic.xcdatamodeld in Sources */,
 				2845B14F206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */,
+				280D717C1ED6043D005D2689 /* CalendarScrollView.swift in Sources */,
 				280D717D1ED6043D005D2689 /* TasksScrollView.swift in Sources */,
 				280D717E1ED6043D005D2689 /* TasksDataSource.swift in Sources */,
 				28A2839F20385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
@@ -2403,25 +2190,22 @@
 				28C6A38421D359E60036DB29 /* RemoveDuplicate.swift in Sources */,
 				280D71821ED6043D005D2689 /* CellProtocol.swift in Sources */,
 				280D71831ED6043D005D2689 /* TasksView.swift in Sources */,
-				2898D3A82181907700CF5AD4 /* CopyReportCell.swift in Sources */,
-				2845B16A206AE468006EFB3B /* TaskCell.swift in Sources */,
+				2898D3A82181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
+				2845B16A206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				2845B1352066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				569C4C582023193B0049FBF1 /* ShellCell.swift in Sources */,
 				569C4C64202319870049FBF1 /* GitCell.swift in Sources */,
 				569C4C6D202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				280D718D1ED6043D005D2689 /* InternalNotifications.swift in Sources */,
-				286348FB23B23748009F81D7 /* Project.swift in Sources */,
 				280D718E1ED6043D005D2689 /* UserNotifications.swift in Sources */,
 				280D718F1ED6043D005D2689 /* SleepNotifications.swift in Sources */,
-				2863490923B24C34009F81D7 /* CalendarInteractor.swift in Sources */,
-				2863495323CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */,
 				2892B2981F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				280D71901ED6043D005D2689 /* BrowserNotification.swift in Sources */,
 				280D719D1ED6043D005D2689 /* SqliteRepository.swift in Sources */,
 				284192D72018841700E64A9A /* JProject.swift in Sources */,
 				280D719E1ED6043D005D2689 /* SqliteRepository+Tasks.swift in Sources */,
-				2863492223B3A95A009F81D7 /* ClosedDayCell.swift in Sources */,
 				2892B2A71F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
+				2845B166206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28DCA4552018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				280D719F1ED6043D005D2689 /* SqliteRepository+User.swift in Sources */,
 				28EE1F5E20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
@@ -2431,26 +2215,23 @@
 				569C4C6A202319A20049FBF1 /* BrowserCell.swift in Sources */,
 				280D71A31ED6043D005D2689 /* SUser.swift in Sources */,
 				280D71A41ED6043D005D2689 /* SQLiteDB.swift in Sources */,
-				2863495B23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */,
 				2871952F2025C359001C237E /* CoreDataRepository+Settings.swift in Sources */,
 				280D71A51ED6043D005D2689 /* SQLTable.swift in Sources */,
 				2845B139206703C5006EFB3B /* Keychain.swift in Sources */,
-				280D71A61ED6043D005D2689 /* UpdateSchemaInteractor.swift in Sources */,
-				2863496623CCF311009F81D7 /* SMetadata.swift in Sources */,
+				280D71A61ED6043D005D2689 /* SQLiteSchema.swift in Sources */,
+				280D71A71ED6043D005D2689 /* UserDefaults+uploadToken.swift in Sources */,
 				28279AD121BBF08C00376304 /* InMemoryCoreDataRepository.swift in Sources */,
 				287195182022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
 				569C4C5E202319630049FBF1 /* JitCell.swift in Sources */,
 				28A2839A20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				284192DA2018855B00E64A9A /* JiraRepository+Projects.swift in Sources */,
 				565E19F020A5E336003A5E2A /* RCSync.swift in Sources */,
-				2863492C23B5EF9C009F81D7 /* ReportsViewController.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
 				564E55F6202884DE00CE4C76 /* WorklogsPresenter.swift in Sources */,
 				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
-				2828B04E2381D04E0005B188 /* NoAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2475,11 +2256,8 @@
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
 				28279AD321BBF09900376304 /* Jirassic.xcdatamodeld in Sources */,
 				56ADBF6E21C3F94D008350A6 /* GitUserParser.swift in Sources */,
-				2863495C23CB8003009F81D7 /* CloudKitRepository+Projects.swift in Sources */,
 				2898D3B22185959300CF5AD4 /* EditableTimeBox.swift in Sources */,
-				2828B04F2381D04E0005B188 /* NoAnimation.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
-				2863491223B299C8009F81D7 /* MainViewController.swift in Sources */,
 				4065D3CA1DD3B44200B73201 /* AppWireframe.swift in Sources */,
 				569C4C5F202319630049FBF1 /* JitCell.swift in Sources */,
 				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
@@ -2490,9 +2268,7 @@
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
 				2898D3AC2184D1DB00CF5AD4 /* TimeBoxViewController.swift in Sources */,
-				2863494823CB6E9F009F81D7 /* RegisterUserInteractor.swift in Sources */,
-				2863497723D51825009F81D7 /* CloudKitZone.swift in Sources */,
-				286BC00521909F85004D4CDD /* CloseDayInteractor.swift in Sources */,
+				286BC00521909F85004D4CDD /* CloseDay.swift in Sources */,
 				28A928951E9110980022AB55 /* CloudKitRepository+User.swift in Sources */,
 				4065D3EF1DD3B44200B73201 /* TasksScrollView.swift in Sources */,
 				4065D3E01DD3B44200B73201 /* SettingsPresenter.swift in Sources */,
@@ -2501,7 +2277,7 @@
 				28AA500B1EDCD51300AAF03D /* CoreDataRepository+User.swift in Sources */,
 				4065D3D81DD3B44200B73201 /* InternalNotifications.swift in Sources */,
 				4065D3FA1DD3B44200B73201 /* RepositoryInteractor.swift in Sources */,
-				2898D3A92181907700CF5AD4 /* CopyReportCell.swift in Sources */,
+				2898D3A92181907700CF5AD4 /* MonthReportsHeaderView.swift in Sources */,
 				28DCA4562018B6E700DFAE29 /* JProjectIssue.swift in Sources */,
 				28A928871E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				28FE1888207A520B00DF796E /* NewTaskCommand.swift in Sources */,
@@ -2509,24 +2285,19 @@
 				2812F6212145031B008EE81E /* Store.swift in Sources */,
 				4065D3F91DD3B44200B73201 /* Repository.swift in Sources */,
 				4065D3B21DD3B44200B73201 /* TaskInteractor.swift in Sources */,
-				2863490723B24C22009F81D7 /* CalendarPresenter.swift in Sources */,
 				4065D3A21DD3B44200B73201 /* Week.swift in Sources */,
+				28AFE7311E9A594500BAAD8C /* UserDefaults+token.swift in Sources */,
 				4065D3F01DD3B44200B73201 /* TasksViewController.swift in Sources */,
 				5685C76A1DE8721100CA545E /* LoginViewController.swift in Sources */,
-				2863491C23B393CF009F81D7 /* CloseDayCell.swift in Sources */,
 				569C4C592023193B0049FBF1 /* ShellCell.swift in Sources */,
 				2845B14E206AE3A8006EFB3B /* ReportCellPresenter.swift in Sources */,
 				2823C9351E4F69970055D036 /* Versioning.swift in Sources */,
-				2863495823CB7E4D009F81D7 /* CProject.swift in Sources */,
-				2863494C23CB6F9E009F81D7 /* SqliteRepository+Projects.swift in Sources */,
-				2863495423CB7DFA009F81D7 /* CoreDataRepository+Projects.swift in Sources */,
 				4065D3A11DD3B44200B73201 /* User.swift in Sources */,
 				4065D3A71DD3B44200B73201 /* ViewController.swift in Sources */,
+				4065D3BB1DD3B44200B73201 /* UserInteractor.swift in Sources */,
 				4065D3E31DD3B44200B73201 /* CellProtocol.swift in Sources */,
-				5623914B21CBC6A10031B882 /* ProjectsViewController.swift in Sources */,
 				2812F61F2145031B008EE81E /* IAPHelper.swift in Sources */,
 				4065D3A61DD3B44200B73201 /* ViewAutolayout.swift in Sources */,
-				2863490A23B24C34009F81D7 /* CalendarInteractor.swift in Sources */,
 				28CBB597204554A2006F9D3A /* ParseGitBranch.swift in Sources */,
 				28667B5E1FCB7017007B98E3 /* ModuleHookup.swift in Sources */,
 				40FCE4271DF7646F00D4FD45 /* SandboxedAppleScript.swift in Sources */,
@@ -2541,25 +2312,20 @@
 				288BB6852087157F00CF720A /* WizardAppleScriptView.swift in Sources */,
 				2871951F2022FD14001C237E /* InputsScrollView.swift in Sources */,
 				4065D3E11DD3B44200B73201 /* SettingsViewController.swift in Sources */,
-				2863492323B3A95A009F81D7 /* ClosedDayCell.swift in Sources */,
 				4065D3C81DD3B44200B73201 /* FlipAnimation.swift in Sources */,
 				4065D39E1DD3B44200B73201 /* Settings.swift in Sources */,
 				28A283B1203CB1A100DDCB63 /* MergeTasksInteractor.swift in Sources */,
 				2892B29C1F094A760085BAC2 /* JiraRepository+Reports.swift in Sources */,
-				2863490423B24800009F81D7 /* CalendarViewController.swift in Sources */,
 				2845B1402068351F006EFB3B /* TableViewCell.swift in Sources */,
+				28C9C6221EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				284192DE2018A8B200E64A9A /* ModuleJiraTempo.swift in Sources */,
+				4065D3BA1DD3B44200B73201 /* RegisterUserInteractor.swift in Sources */,
 				28FE18A6207B369800DF796E /* CocoaHookupCell.swift in Sources */,
-				56B50A6D23E330BA002F35FD /* JiraUser.swift in Sources */,
 				4065D3B41DD3B44200B73201 /* TaskTypeEstimator.swift in Sources */,
-				5623914E21CBC6B40031B882 /* ProjectsPresenter.swift in Sources */,
 				285465A8217858790052CB6A /* StoreView.swift in Sources */,
-				286348FA23B22775009F81D7 /* ProjectDetailsViewController.swift in Sources */,
 				4065D3D91DD3B44200B73201 /* UserNotifications.swift in Sources */,
-				563FA91C23D72A880030E50D /* CKRecord+Task.swift in Sources */,
 				569C4C6E202319CA0049FBF1 /* BrowserPresenter.swift in Sources */,
 				4065D3A51DD3B44200B73201 /* StringIdGenerator.swift in Sources */,
-				2863493923B7EA02009F81D7 /* ProjectDetailsPresenter.swift in Sources */,
 				2845B150206AE3A8006EFB3B /* ReportsDataSource.swift in Sources */,
 				28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				28A283982037975600DDCB63 /* Saveable.swift in Sources */,
@@ -2572,18 +2338,13 @@
 				28A928931E91104B0022AB55 /* CloudKitRepository+Tasks.swift in Sources */,
 				566B9FA8217DE67800EAF324 /* TasksInteractor.swift in Sources */,
 				4065D3B01DD3B44200B73201 /* TaskFinder.swift in Sources */,
-				2863496423CCF28B009F81D7 /* SqliteRepository+Metadata.swift in Sources */,
 				28A283952037874600DDCB63 /* ModuleGitLogs.swift in Sources */,
-				2863491823B354A0009F81D7 /* CalendarDayCellView.swift in Sources */,
 				284192D82018841700E64A9A /* JProject.swift in Sources */,
 				56D90CF920876F1100F24442 /* WizardJiraView.swift in Sources */,
 				28279AD221BBF08E00376304 /* InMemoryCoreDataRepository.swift in Sources */,
-				2863495023CB73E4009F81D7 /* SProject.swift in Sources */,
 				28EDE9391E59EC1500B360A4 /* TasksView.swift in Sources */,
 				28A283AC203A93AB00DDCB63 /* GitBranchParser.swift in Sources */,
 				40FCE4301DFD7C8D00D4FD45 /* Animatable.swift in Sources */,
-				2863494223CB6E9F009F81D7 /* UserInteractor.swift in Sources */,
-				2863491523B299DB009F81D7 /* MainPresenter.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
 				285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
@@ -2591,8 +2352,6 @@
 				28A283A020385BE000DDCB63 /* GitCommitsParser.swift in Sources */,
 				4065D3DA1DD3B44200B73201 /* SleepNotifications.swift in Sources */,
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
-				2863492D23B5EF9C009F81D7 /* ReportsViewController.swift in Sources */,
-				2863496023CB9134009F81D7 /* ProjectInteractor.swift in Sources */,
 				569C4C68202319930049FBF1 /* GitPresenter.swift in Sources */,
 				28FB265C20224EA700AEA38D /* HookupCell.swift in Sources */,
 				2845B13A206703C5006EFB3B /* Keychain.swift in Sources */,
@@ -2602,45 +2361,36 @@
 				5685C7691DE8721100CA545E /* LoginPresenter.swift in Sources */,
 				2871952C20241B25001C237E /* TrackingView.swift in Sources */,
 				40FCE4261DF7646F00D4FD45 /* ExtensionsInteractor.swift in Sources */,
-				2863497423D4790B009F81D7 /* Migrator.swift in Sources */,
 				4051D5F91E0EA48A002042BB /* AppLauncher.swift in Sources */,
-				2863497123D22591009F81D7 /* WriteMetadataInteractor.swift in Sources */,
 				28EE1F5F20EE8D1000C5C1D6 /* CalendarCell.swift in Sources */,
 				56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */,
-				2863496A23CCF53C009F81D7 /* CloudKitRepository+Metadata.swift in Sources */,
-				286348F623B136B3009F81D7 /* ProjectsInteractor.swift in Sources */,
-				2863496723CCF311009F81D7 /* SMetadata.swift in Sources */,
-				2863493C23CB6B08009F81D7 /* ReadProjectsInteractor.swift in Sources */,
+				2845B167206AE468006EFB3B /* TasksHeaderView.swift in Sources */,
 				28AA500A1EDCD51300AAF03D /* CoreDataRepository+Settings.swift in Sources */,
 				280D70B11ECC09D9005D2689 /* AppTheme.swift in Sources */,
 				5685C7671DE8721100CA545E /* CloudKitLoginViewController.swift in Sources */,
 				28AA500E1EDCD51300AAF03D /* CUser.swift in Sources */,
-				2863496E23D21287009F81D7 /* ReadMetadataInteractor.swift in Sources */,
 				2845B165206AE468006EFB3B /* TaskCellPresenter.swift in Sources */,
 				2871951C2022ECF7001C237E /* OutputsScrollView.swift in Sources */,
 				2845B1362066C6E6006EFB3B /* AppleScriptProtocol.swift in Sources */,
 				28577EB11E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D3DE1DD3B44200B73201 /* NewTaskViewController.swift in Sources */,
 				4065D39C1DD3B44200B73201 /* Day.swift in Sources */,
-				2863493023B5EFD1009F81D7 /* ReportsPresenter.swift in Sources */,
 				56D90CFC20876F2B00F24442 /* WizardGitView.swift in Sources */,
 				40FCE42C1DFC3F8700D4FD45 /* WelcomeViewController.swift in Sources */,
-				5623915121CBC6CD0031B882 /* Project.swift in Sources */,
-				28EE1F6520EE92DA00C5C1D6 /* CalendarAppPresenter.swift in Sources */,
-				2845B16B206AE468006EFB3B /* TaskCell.swift in Sources */,
-				563FA92023D72C5D0030E50D /* CKRecord+Project.swift in Sources */,
+				28EE1F6520EE92DA00C5C1D6 /* CalendarPresenter.swift in Sources */,
+				2845B16B206AE468006EFB3B /* NonTaskCell.swift in Sources */,
 				4065D39D1DD3B44200B73201 /* Report.swift in Sources */,
 				40FCE4251DF7646F00D4FD45 /* AppleScript.swift in Sources */,
-				28A928781E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */,
-				2863493623B790B1009F81D7 /* ProjectsListViewController.swift in Sources */,
+				28A928781E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
 				28FE18AC207B375A00DF796E /* CocoaHookupPresenter.swift in Sources */,
 				4065D3AF1DD3B44200B73201 /* ReadTasksInteractor.swift in Sources */,
 				565E19F120A5E336003A5E2A /* RCSync.swift in Sources */,
 				28AA50091EDCD51300AAF03D /* CoreDataRepository+Tasks.swift in Sources */,
 				287195162022E1E2001C237E /* HookupPresenter.swift in Sources */,
 				2892E812208E6275004E5298 /* LocalPreferences.swift in Sources */,
+				4065D3E21DD3B44200B73201 /* CalendarScrollView.swift in Sources */,
 				4065D3AC1DD3B44200B73201 /* CreateReport.swift in Sources */,
-				2845B161206AE468006EFB3B /* TaskCell_.swift in Sources */,
+				2845B161206AE468006EFB3B /* TaskCell.swift in Sources */,
 				28FB265F2022DC2B00AEA38D /* JiraTempoPresenter.swift in Sources */,
 				287195222022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				28577EB71E8AF08F002B07FD /* SQLTable.swift in Sources */,
@@ -2648,6 +2398,7 @@
 				288BB67F2085252900CF720A /* WizardViewController.swift in Sources */,
 				2892B2A81F094C800085BAC2 /* JWorkAttribute.swift in Sources */,
 				5685C76C1DE8724400CA545E /* AccountViewController.swift in Sources */,
+				2845B152206AE3A8006EFB3B /* ReportsHeaderView.swift in Sources */,
 				2892B2991F094A170085BAC2 /* JiraRepository.swift in Sources */,
 				28A2839B20382BBB00DDCB63 /* GitCommit.swift in Sources */,
 				4065D3A91DD3B44200B73201 /* Conversions.swift in Sources */,
@@ -2671,6 +2422,7 @@
 				56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */,
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
+				2845B16E206AE46F006EFB3B /* TaskCellTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
 				28A283AE203C069F00DDCB63 /* GitBranchParserTests.swift in Sources */,
 				4065D4271DD4562900B73201 /* TaskTypeEstimatorTests.swift in Sources */,
@@ -2681,6 +2433,7 @@
 				4065D4251DD4562900B73201 /* TaskFinderTests.swift in Sources */,
 				4065D4261DD4562900B73201 /* TaskInteractorTests.swift in Sources */,
 				28A283B3203CB1B900DDCB63 /* MergeTasksInteractorTests.swift in Sources */,
+				4065D4201DD4561D00B73201 /* UserInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2688,6 +2441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C9C6231EAD37D0007EB3E6 /* UserDefaults+uploadToken.swift in Sources */,
 				28577EB81E8AF08F002B07FD /* SQLTable.swift in Sources */,
 				4065D42D1DD4576C00B73201 /* Day.swift in Sources */,
 				28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
@@ -2706,16 +2460,16 @@
 				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
 				4065D4171DD4536200B73201 /* main.swift in Sources */,
 				4065D42B1DD4576500B73201 /* Settings.swift in Sources */,
+				280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */,
 				4065D4281DD4574D00B73201 /* User.swift in Sources */,
 				4065D4311DD457B000B73201 /* DateExtension.swift in Sources */,
-				286348FD23B237B2009F81D7 /* Project.swift in Sources */,
 				28577EB01E8ADC53002B07FD /* STask.swift in Sources */,
 				4065D4291DD4575B00B73201 /* Week.swift in Sources */,
 				280D71031ED35A3E005D2689 /* StringArray.swift in Sources */,
 				28577EB21E8ADC53002B07FD /* SUser.swift in Sources */,
 				4065D42F1DD4579400B73201 /* TaskInteractor.swift in Sources */,
 				28577EB61E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
-				28A928791E8F78580022AB55 /* UpdateSchemaInteractor.swift in Sources */,
+				28A928791E8F78580022AB55 /* SQLiteSchema.swift in Sources */,
 				4065D4181DD454C500B73201 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2736,14 +2490,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2863490C23B29979009F81D7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2863490D23B29979009F81D7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		28E896731E83770D00722032 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2768,6 +2514,15 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		4065D3591DD3B44200B73201 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4065D35A1DD3B44200B73201 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -2781,11 +2536,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2805,11 +2561,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2825,9 +2582,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Jirassic macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
@@ -2835,13 +2594,13 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2850,9 +2609,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_ENTITLEMENTS = "Jirassic macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
@@ -2860,13 +2621,13 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -2877,9 +2638,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS-launcher/JirassicLauncher.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
@@ -2887,11 +2649,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3509678e-d1ba-4d07-bf3c-684b4c4fa932";
-				PROVISIONING_PROFILE_SPECIFIER = "jirassic launcher dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2908,13 +2670,14 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.launcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "19d0790c-3a77-4e31-8bbc-4f0b931c9e98";
@@ -2949,6 +2712,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2957,9 +2721,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -3008,6 +2774,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -3016,9 +2783,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3041,9 +2810,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppStoreIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -3053,20 +2823,21 @@
 					"APPSTORE=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D APPSTORE -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
 				PROVISIONING_PROFILE = "f679af74-4f51-4414-a117-26fcd2203fad";
-				PROVISIONING_PROFILE_SPECIFIER = "jirassic dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -3079,15 +2850,17 @@
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = "APPSTORE=1";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D APPSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = Jirassic;
@@ -3095,7 +2868,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "jirassic appstore";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -3105,6 +2878,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3112,12 +2886,12 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Debug;
@@ -3128,6 +2902,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3135,12 +2910,12 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jirassic no cloud.app/Contents/MacOS/Jirassic no cloud";
 			};
 			name = Release;
@@ -3148,6 +2923,7 @@
 		4065D4151DD4534C00B73201 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3159,6 +2935,7 @@
 					"CMD=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D CMD";
 				PRODUCT_NAME = jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
@@ -3170,6 +2947,7 @@
 		4065D4161DD4534C00B73201 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5NHDC5EV44;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3177,6 +2955,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "CMD=1";
 				INFOPLIST_FILE = "$(SRCROOT)/Delivery/macOS-cmd/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				OTHER_SWIFT_FLAGS = "-D CMD";
 				PRODUCT_NAME = jirassic;
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
@@ -3254,79 +3033,59 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		6D37025B2BA83DB0002260D0 /* XCRemoteSwiftPackageReference "RCLog" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/SwiftKeychainWrapper";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-		28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/RCLog";
+			repositoryURL = "https://github.com/cristibaluta/RCLog";
 			requirement = {
 				branch = master;
 				kind = branch;
 			};
 		};
-		28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */ = {
+		6D37025C2BA83DDB002260D0 /* XCRemoteSwiftPackageReference "RCpreferences" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/RCPreferences";
+			repositoryURL = "https://github.com/cristibaluta/RCpreferences";
 			requirement = {
 				branch = master;
 				kind = branch;
 			};
 		};
-		28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */ = {
+		6D37025D2BA83DFE002260D0 /* XCRemoteSwiftPackageReference "RChttp" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ralcr/RCHttp";
+			repositoryURL = "https://github.com/cristibaluta/RChttp";
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		6D37025E2BA83E9A002260D0 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2879EC9123739F4500CE18D9 /* SwiftKeychainWrapper */ = {
+		6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			package = 6D37025E2BA83E9A002260D0 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
 		};
-		2879EC932375339C00CE18D9 /* RCLog */ = {
+		6D3702612BA83EB9002260D0 /* RCLog */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
+			package = 6D37025B2BA83DB0002260D0 /* XCRemoteSwiftPackageReference "RCLog" */;
 			productName = RCLog;
 		};
-		2879EC95237533A300CE18D9 /* SwiftKeychainWrapper */ = {
+		6D3702632BA83EBF002260D0 /* RCPreferences */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2879EC9023739F4500CE18D9 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
-			productName = SwiftKeychainWrapper;
-		};
-		28A1B76D2370781C0040968B /* RCLog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B76C2370781C0040968B /* XCRemoteSwiftPackageReference "RCLog" */;
-			productName = RCLog;
-		};
-		28A1B79B2370E10F0040968B /* RCPreferences */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */;
+			package = 6D37025C2BA83DDB002260D0 /* XCRemoteSwiftPackageReference "RCpreferences" */;
 			productName = RCPreferences;
 		};
-		28A1B79D23714AA10040968B /* RCPreferences */ = {
+		6D3702652BA83EC7002260D0 /* RCHttp */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79A2370E10F0040968B /* XCRemoteSwiftPackageReference "RCPreferences" */;
-			productName = RCPreferences;
-		};
-		28A1B7A02371758B0040968B /* RCHttp */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
-			productName = RCHttp;
-		};
-		28A1B7A22371759A0040968B /* RCHttp */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28A1B79F2371758B0040968B /* XCRemoteSwiftPackageReference "RCHttp" */;
+			package = 6D37025D2BA83DFE002260D0 /* XCRemoteSwiftPackageReference "RChttp" */;
 			productName = RCHttp;
 		};
 /* End XCSwiftPackageProductDependency section */

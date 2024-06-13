@@ -128,6 +128,34 @@ extension GitPresenter: GitPresenterInput {
 //        localPreferences.set(command, forKey: .settingsHookupCmdName)
         refresh()
     }
-    
+
+    func pickPath() {
+        
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.message = "Select the root of the git project you want to track"
+        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
+        panel.begin { [weak self] (result) -> Void in
+            
+            guard let self, let userInterface = self.userInterface else {
+                return
+            }
+            if result == NSApplication.ModalResponse.OK {
+                if let url = panel.urls.first {
+                    var path = url.absoluteString
+                    path = path.replacingOccurrences(of: "file://", with: "")
+                    path.removeLast()
+                    // TODO: Validate if the picked project is a git project
+                    
+                    let existingPaths = self.localPreferences.string(.settingsGitPaths)
+                    let updatedPaths = existingPaths == "" ? path : (existingPaths + "," + path)
+                    self.savePaths(updatedPaths)
+                    userInterface.setPaths(updatedPaths, enabled: self.localPreferences.bool(.enableGit))
+                }
+            }
+        }
+    }
     
 }
