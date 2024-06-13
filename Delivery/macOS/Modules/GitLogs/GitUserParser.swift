@@ -23,19 +23,22 @@ class GitUserParser {
         let r = raw.replacingOccurrences(of: "\r", with: "\n")
         let results = r.split(separator: "\n").map { String($0) }
         for result in results {
-            if result != "" {
-                users.append( self.parseUser(result) )
+            if let user = parseUser(result) {
+                users.append(user)
             }
         }
 
         return users
     }
 
-    private func parseUser (_ user: String) -> GitUser {
+    private func parseUser (_ user: String) -> GitUser? {
 
         var comps = user.split(separator: ";").map { String($0) }
-        let name = comps.count > 0 ? comps.removeFirst() : ""
-        let email = comps.count > 0 ? comps.removeFirst() : ""
+        guard comps.count >= 2 else {
+            return nil
+        }
+        let name = comps.removeFirst()
+        let email = comps.removeFirst()
 
         return GitUser(name: name, email: email)
     }
