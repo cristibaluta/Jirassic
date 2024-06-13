@@ -21,14 +21,22 @@ class ReportCellPresenter: NSObject {
     
     func present (theReport: Report) {
 
-        let notes = theReport.notes.map { (note) -> String in
+        let notes: [String] = theReport.notes.compactMap { note in
+            guard note.count > 0 else {
+                return nil
+            }
             return "• \(note)"
         }
         let notesJoined = notes.joined(separator: "\n")
         var taskNumber = theReport.taskNumber == "coderev" ? "Code reviews" : theReport.taskNumber
         taskNumber = taskNumber == "learning" ? "Learning" : taskNumber
         taskNumber = taskNumber == "meeting" ? "Meetings" : taskNumber
-        let title = theReport.title.replacingOccurrences(of: "_", with: " ").trimmingCharacters(in: .whitespacesAndNewlines)
+        var title = theReport.title
+            .replacingOccurrences(of: "_", with: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        if theReport.taskNumber == "learning" || theReport.taskNumber == "meeting" {
+            title = ""
+        }
         cell.data = (
             dateStart: nil,
             dateEnd: Date(),

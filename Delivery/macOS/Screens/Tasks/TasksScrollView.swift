@@ -13,7 +13,16 @@ class TasksScrollView: NSScrollView {
 	
     private var tableView: NSTableView!
     private var dataSource: DataSource!
-
+    private var listType: ListType!
+    private let pref = RCPreferences<LocalPreferences>()
+    
+    var didClickAddRow: ((_ row: Int, _ rect: CGRect?) -> Void)?
+    var didClickRemoveRow: ((_ row: Int) -> Void)?
+    var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
+    var didClickCopyDailyReport: (() -> Void)?
+    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
+    var didChangeSettings: (() -> Void)?
+	
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -23,19 +32,15 @@ class TasksScrollView: NSScrollView {
         setupTableView()
     }
     
-    convenience init (dataSource: DataSource) {
+    convenience init (dataSource: DataSource, listType: ListType) {
         self.init(frame: NSRect.zero)
         self.setupTableView()
+        self.listType = listType
         reloadDataSource(dataSource)
     }
     
     func reloadData() {
         tableView!.reloadData()
-    }
-
-    func reloadFooter() {
-        tableView!.reloadData(forRowIndexes: IndexSet(integer: tableView.numberOfRows - 1),
-                              columnIndexes: IndexSet(integer: 0))
     }
     
     func reloadDataSource (_ dataSource: DataSource) {
@@ -43,6 +48,14 @@ class TasksScrollView: NSScrollView {
         self.dataSource.tableView = tableView
         tableView.dataSource = self.dataSource
         tableView.delegate = self.dataSource
+        addHeader()
+        
+        self.dataSource.didClickAddRow = { [weak self] row in
+            self?.didClickAddRow!(row, nil)
+        }
+        self.dataSource.didClickRemoveRow = { [weak self] row in
+            self?.didClickRemoveRow!(row)
+        }
     }
     
     private func setupTableView() {
@@ -58,15 +71,85 @@ class TasksScrollView: NSScrollView {
         tableView.headerView = nil
         
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "taskColumn"))
-        column.width = self.frame.size.width
+        column.width = 400
         tableView.addTableColumn(column)
         
         self.documentView = tableView!
 	}
     
+    private func addHeader() {
+        
+        if let dataSource = self.dataSource as? TasksDataSource {
+            
+            guard dataSource.tasks.count > 0 else {
+                tableView.headerView = nil
+                return
+            }
+            guard tableView.headerView == nil else {
+                return
+            }
+            let headerView = TasksHeaderView.instantiateFromXib()
+            headerView.didClickCloseDay = { [weak self] in
+                self?.didClickCloseDay!(dataSource.tasks, false)
+            }
+            headerView.didClickAddTask = { [weak self] in
+                if let wself = self {
+                    wself.didClickAddRow!(wself.dataSource.numberOfRows!(in: wself.tableView) - 1,
+                                          CGRect(x: 60, y: headerView.frame.size.height + wself.contentView.documentVisibleRect.origin.y, width: 1, height: 1))
+                }
+            }
+            headerView.didClickSaveWorklogs = { [weak self] in
+                self?.didClickCloseDay!(dataSource.tasks, true)
+            }
+            headerView.isDayEnded = dataSource.isDayEnded
+            
+            tableView.headerView = headerView
+        }
+        else if let dataSource = self.dataSource as? ReportsDataSource {
+            
+            guard dataSource.reports.count > 0 else {
+                tableView.headerView = nil
+                return
+            }
+            guard tableView.headerView == nil else {
+                return
+            }
+            let settings = SettingsInteractor().getAppSettings()
+            let workingDayLength = TimeInteractor(settings: settings).workingDayLength()
+            let totalTime = StatisticsInteractor().duration(of: dataSource.reports)
+            
+            var headerView: ReportsHeaderView!
+            switch listType! {
+            case .report:
+                headerView = ReportsHeaderView.instantiateFromXib()
+                headerView.didClickCopyAll = { asHtml in
+                    self.didClickCopyDailyReport?()
+                }
+            case .monthlyReports:
+                let monthHeaderView = MonthReportsHeaderView.instantiateFromXib()
+                monthHeaderView.numberOfDays = dataSource.numberOfDays
+                monthHeaderView.didClickCopyAll = { asHtml in
+                    self.didClickCopyMonthlyReport?(asHtml)
+                }
+                headerView = monthHeaderView
+            default:
+                break
+            }
+            headerView.workdayTime = workingDayLength.secToPercent
+            headerView.workedTime = pref.bool(.usePercents)
+                ? String(describing: totalTime.secToPercent)
+                : totalTime.secToHoursAndMin
+            headerView.didChangeSettings = { [weak self] in
+                self?.didChangeSettings!()
+            }
+            tableView.headerView = headerView
+        }
+    }
+	
 	func addTask (_ task: Task, at row: Int) {
         if let dataSource = tableView.dataSource as? TasksDataSource {
             dataSource.addTask(task, at: row)
+            addHeader()
         }
 	}
 	
@@ -75,10 +158,15 @@ class TasksScrollView: NSScrollView {
             dataSource.removeTask(at: row)
             let rowsToRemoveFromTable = IndexSet(integer: row)
             tableView.removeRows(at: rowsToRemoveFromTable, withAnimation: .effectFade)
+            addHeader()
         }
 	}
     
     func frameOfCell (atRow row: Int) -> NSRect {
         return tableView.frameOfCell(atColumn: 0, row: row)
+    }
+    
+    func view() -> NSTableView {
+        return self.tableView
     }
 }

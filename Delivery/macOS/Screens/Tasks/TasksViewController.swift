@@ -194,6 +194,13 @@ extension TasksViewController: TasksPresenterOutput {
                 strongSelf.handleSegmentedControl(strongSelf.listSegmentedControl)
             }
         }
+        scrollView.didClickCopyDailyReport = {
+            let interactor = CreateDayReport()
+            let string = interactor.stringReports(dataSource.reports)
+            print(string)
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
+        }
         scrollView.didClickCopyMonthlyReport = { asHtml in
             var string = ""
             let interactor = CreateMonthReport()

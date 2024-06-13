@@ -22,6 +22,8 @@ class CopyReportCell: NSTableRowView {
 
     var didClickCopyAll: ((Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
+    var didClickCopyAll: ((Bool) -> Void)?
+
     // In hours
     var workedTime: String {
         get {
@@ -81,5 +83,9 @@ extension CopyReportCell {
     @IBAction func handlePercentsButton (_ sender: NSButton) {
         pref.set(sender.state == .on, forKey: .usePercents)
         didChangeSettings?()
+    }
+
+    @IBAction func handleCopyAllButton (_ sender: NSButton) {
+        didClickCopyAll?(pref.bool(.copyWorklogsAsHtml))
     }
 }
