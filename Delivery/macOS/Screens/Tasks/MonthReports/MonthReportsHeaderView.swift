@@ -13,7 +13,6 @@ class MonthReportsHeaderView: ReportsHeaderView {
     @IBOutlet private var butCopyAll: NSButton!
     @IBOutlet private var butCopyAsHtml: NSButton!
     @IBOutlet private var totalDaysTextField: NSTextField!
-    var didClickCopyAll: ((Bool) -> Void)?
     
     var numberOfDays: Int {
         get {
@@ -33,11 +32,7 @@ class MonthReportsHeaderView: ReportsHeaderView {
 }
 
 extension MonthReportsHeaderView {
-    
-    @IBAction func handleCopyAllButton (_ sender: NSButton) {
-        didClickCopyAll?(pref.bool(.copyWorklogsAsHtml))
-    }
-    
+
     @IBAction func handleHtmlButton (_ sender: NSButton) {
         pref.set(sender.state == .on, forKey: .copyWorklogsAsHtml)
     }

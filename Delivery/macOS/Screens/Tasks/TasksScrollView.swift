@@ -19,6 +19,7 @@ class TasksScrollView: NSScrollView {
     var didClickAddRow: ((_ row: Int, _ rect: CGRect?) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
     var didClickCloseDay: ((_ tasks: [Task], _ shouldSaveToJira: Bool) -> Void)?
+    var didClickCopyDailyReport: (() -> Void)?
     var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
 	
@@ -121,6 +122,9 @@ class TasksScrollView: NSScrollView {
             switch listType! {
             case .report:
                 headerView = ReportsHeaderView.instantiateFromXib()
+                headerView.didClickCopyAll = { asHtml in
+                    self.didClickCopyDailyReport?()
+                }
             case .monthlyReports:
                 let monthHeaderView = MonthReportsHeaderView.instantiateFromXib()
                 monthHeaderView.numberOfDays = dataSource.numberOfDays

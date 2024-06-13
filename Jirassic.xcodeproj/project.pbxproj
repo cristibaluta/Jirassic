@@ -502,6 +502,9 @@
 		6D3702622BA83EB9002260D0 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702612BA83EB9002260D0 /* RCLog */; };
 		6D3702642BA83EBF002260D0 /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702632BA83EBF002260D0 /* RCPreferences */; };
 		6D3702662BA83EC7002260D0 /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702652BA83EC7002260D0 /* RCHttp */; };
+		6D5BC4C82C1B5BE6002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
+		6D5BC4C92C1B5BE6002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
+		6D5BC4CB2C1B5BF7002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -812,6 +815,7 @@
 		56D90CFD20876F3C00F24442 /* WizardGitView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardGitView.xib; sourceTree = "<group>"; };
 		56D90D0020876F4900F24442 /* WizardJiraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WizardJiraView.xib; sourceTree = "<group>"; };
 		6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic macOS.entitlements"; sourceTree = "<group>"; };
+		6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1347,6 +1351,7 @@
 			children = (
 				4065D32B1DD3B44200B73201 /* CreateReport.swift */,
 				4065D32C1DD3B44200B73201 /* CreateReportTests.swift */,
+				6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */,
 				285465A1216C84E10052CB6A /* CreateMonthReport.swift */,
 				56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */,
 			);
@@ -2231,6 +2236,7 @@
 				287195212022FD87001C237E /* InputsTableViewDataSource.swift in Sources */,
 				287B358720FBAFC40022F43E /* WizardCalendarView.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
+				6D5BC4C82C1B5BE6002DA29B /* CreateDayReport.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2262,6 +2268,7 @@
 				569C4C5F202319630049FBF1 /* JitCell.swift in Sources */,
 				4065D3C91DD3B44200B73201 /* AppDelegate.swift in Sources */,
 				405B15661DEF75660009871C /* AppViewController.swift in Sources */,
+				6D5BC4C92C1B5BE6002DA29B /* CreateDayReport.swift in Sources */,
 				569C4C65202319870049FBF1 /* GitCell.swift in Sources */,
 				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				287195192022E8BC001C237E /* OutputTableViewDataSource.swift in Sources */,
@@ -2458,6 +2465,7 @@
 				4065D42C1DD4576800B73201 /* Report.swift in Sources */,
 				280300D91EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
+				6D5BC4CB2C1B5BF7002DA29B /* CreateDayReport.swift in Sources */,
 				4065D4171DD4536200B73201 /* main.swift in Sources */,
 				4065D42B1DD4576500B73201 /* Settings.swift in Sources */,
 				280D71021ED35A25005D2689 /* UserDefaults+token.swift in Sources */,
