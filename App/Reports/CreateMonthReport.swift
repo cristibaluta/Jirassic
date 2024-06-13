@@ -17,7 +17,9 @@ class CreateMonthReport {
     /// tasks - All tasks in a month
     /// targetHoursInDay - How many hours in a day
     /// roundHours - Round the reports to fixed hours
-    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?, roundHours: Bool) -> (byDays: [[Report]], byTasks: [Report]) {
+    func reports (fromTasks tasks: [Task],
+                  targetHoursInDay: Double?,
+                  roundHours: Bool) -> (byDays: [[Report]], byTasks: [Report]) {
 
         guard tasks.count > 1 else {
             return (byDays: [], byTasks: [])
@@ -32,7 +34,7 @@ class CreateMonthReport {
         for task in tasks {
             if let date = startDayDate {
                 // Start of day already found
-                // Iterate till endDay or new day found
+                // Iterate till endDay or new startDay found
                 // Days without a .startDay are ignored
                 if task.taskType == .endDay {
                     tasksInDay.append(task)
@@ -128,5 +130,34 @@ class CreateMonthReport {
             notes += "<tr><td style=\"text-align: left; padding-left: 10px;\">\(note)</td><td>\(report.duration.secToHoursAndMin)</td></tr>\n"
         }
         return notes
+    }
+
+    func csvReports (_ reports: [Report]) -> String {
+
+        let headers = [
+            "Issue Key", "Issue summary", "Hours", "Work date", "Username", "Full name",
+            "Period", "Account Key", "Account Name", "Activity Name", "Component", "All Components",
+            "Version Name", "Issue Type", "Issue Status", "Project Key", "Project Name",
+            "Work Description", "Parent Key", "Reporter", "External Hours", "Billed Hours",
+            "Issue Original Estimate", "Issue Remaining Estimate", "Epic Link",
+            "Account [deprecated, this field is no longer being used]", "Office Space", "External issue ID",
+            "External issue ID", "Department", "Location", "External issue summary", "External Issue ID",
+            "External Issue ID"
+        ]
+        var csv = headers.joined(separator: ";") + "\n"
+        for report in reports {
+            var note = "\(report.taskNumber) \(report.title)"
+            var component = ""
+            if report.notes.count > 0 {
+                for n in report.notes {
+                    csv += ";;\(report.duration.secToHours);;;;;;;;\(component);;;;;;GS1.1_BOSCH_eBike;\(note);;;;;;;;;;;;;;;;"
+                    csv += "\n"
+                }
+            } else {
+                csv += ";;\(report.duration.secToHours);;;;;;;;;;;;;;GS1.1_BOSCH_eBike;\(note);;;;;;;;;;;;;;;;"
+                csv += "\n"
+            }
+        }
+        return csv
     }
 }

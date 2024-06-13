@@ -77,6 +77,7 @@ extension TasksViewController: Animatable {
     func createLayer() {
         view.layer = CALayer()
         view.wantsLayer = true
+        view.layer?.backgroundColor = .white
     }
 }
 
@@ -197,7 +198,8 @@ extension TasksViewController: TasksPresenterOutput {
             var string = ""
             let interactor = CreateMonthReport()
             if asHtml {
-                string = interactor.htmlReports(dataSource.reports)
+//                string = interactor.htmlReports(dataSource.reports)
+                string = interactor.csvReports(dataSource.reports)
             } else {
                 let joined = interactor.joinReports(dataSource.reports)
                 string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
@@ -226,18 +228,18 @@ extension TasksViewController: TasksPresenterOutput {
         let popover = NSPopover()
         let controller = NewTaskViewController.instantiateFromStoryboard("Components")
         controller.onSave = { [weak self] (taskData: TaskCreationData) -> Void in
-            if let strongSelf = self {
-                strongSelf.presenter!.insertTaskWithData(taskData)
-                strongSelf.presenter!.updateNoTasksState()
-                strongSelf.presenter!.reloadData()
+            if let self {
+                self.presenter!.insertTaskWithData(taskData)
+                self.presenter!.updateNoTasksState()
+                self.presenter!.reloadData()
                 popover.performClose(nil)
             }
         }
         controller.onCancel = { [weak self] in
-            if let strongSelf = self {
+            if let self {
                 popover.performClose(nil)
-                strongSelf.activePopover = nil
-                strongSelf.presenter!.updateNoTasksState()
+                self.activePopover = nil
+                self.presenter!.updateNoTasksState()
             }
         }
         popover.contentViewController = controller

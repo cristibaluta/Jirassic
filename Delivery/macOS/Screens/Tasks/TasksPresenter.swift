@@ -231,7 +231,8 @@ extension TasksPresenter: TasksInteractorOutput {
                 ? TimeInteractor(settings: settings).workingDayLength()
                 : nil
             let reportInteractor = CreateReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
+            let reports = reportInteractor.reports(fromTasks: currentTasks,
+                                                   targetHoursInDay: targetHoursInDay)
             currentReports = reports.reversed()
             ui.showReports(currentReports, numberOfDays: 1, type: selectedListType)
             
@@ -241,7 +242,9 @@ extension TasksPresenter: TasksInteractorOutput {
                 ? TimeInteractor(settings: settings).workingDayLength()
                 : nil
             let reportInteractor = CreateMonthReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay, roundHours: true)
+            let reports = reportInteractor.reports(fromTasks: currentTasks,
+                                                   targetHoursInDay: targetHoursInDay,
+                                                   roundHours: true)
             currentReports = reports.byTasks
             ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: selectedListType)
             break
