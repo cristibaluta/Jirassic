@@ -56,7 +56,7 @@ extension ReportsDataSource: NSTableViewDataSource {
 
         guard row < reports.count else {
             // Doesn't seem to have effect, the cell will be resized based on constrains
-            return CGFloat(164)
+            return CGFloat(100)
         }
         if #available(OSX 10.13, *) {
             // This version of osx supports cell autoresizing so it doesn't matter the height

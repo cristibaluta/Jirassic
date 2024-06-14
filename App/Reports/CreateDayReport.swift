@@ -22,7 +22,6 @@ class CreateDayReport {
                 }
                 return "• \(note)"
             }
-            let notesJoined = notes.joined(separator: "\n")
             var taskNumber = report.taskNumber == "coderev" ? "Code reviews and fixes" : report.taskNumber
             taskNumber = taskNumber == "learning" ? "Learning" : taskNumber
             taskNumber = taskNumber == "meeting" ? "Meetings" : taskNumber

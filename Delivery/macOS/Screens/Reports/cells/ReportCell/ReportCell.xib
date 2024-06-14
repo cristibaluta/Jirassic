@@ -21,7 +21,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-iB-3Ta">
-                    <rect key="frame" x="281" y="25" width="51" height="17"/>
+                    <rect key="frame" x="281" y="26" width="51" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="47" id="2nv-uf-Elb"/>
                         <constraint firstAttribute="height" constant="17" id="6CB-mp-rwI"/>
@@ -33,7 +33,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="caC-fV-ZwQ">
-                    <rect key="frame" x="11" y="18" width="49" height="25"/>
+                    <rect key="frame" x="11" y="21" width="49" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Copy" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fyr-x7-lVJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -58,13 +58,13 @@
             <constraints>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="4LC-Du-N7a"/>
                 <constraint firstItem="5uZ-oc-wrR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="5mO-XJ-c6e"/>
-                <constraint firstItem="HS2-iB-3Ta" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="CdD-BY-vkN"/>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="centerY" secondItem="HS2-iB-3Ta" secondAttribute="centerY" id="Bme-JN-PRn"/>
                 <constraint firstAttribute="trailing" secondItem="HS2-iB-3Ta" secondAttribute="trailing" constant="15" id="Cge-0e-uSq"/>
                 <constraint firstItem="bpM-64-Faf" firstAttribute="leading" secondItem="caC-fV-ZwQ" secondAttribute="trailing" id="DHh-0e-UNE"/>
                 <constraint firstItem="HS2-iB-3Ta" firstAttribute="leading" secondItem="bpM-64-Faf" secondAttribute="trailing" constant="8" id="GsV-4p-3AN"/>
                 <constraint firstAttribute="trailing" secondItem="5uZ-oc-wrR" secondAttribute="trailing" id="Kyq-c4-fAD"/>
                 <constraint firstItem="caC-fV-ZwQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="cZS-0S-iX6"/>
-                <constraint firstItem="caC-fV-ZwQ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="6" id="fxo-Oc-e8a"/>
+                <constraint firstItem="bpM-64-Faf" firstAttribute="centerY" secondItem="caC-fV-ZwQ" secondAttribute="centerY" id="d56-I3-U8f"/>
                 <constraint firstAttribute="bottom" secondItem="5uZ-oc-wrR" secondAttribute="bottom" constant="6" id="nKY-rU-Out"/>
                 <constraint firstItem="5uZ-oc-wrR" firstAttribute="top" secondItem="bpM-64-Faf" secondAttribute="bottom" constant="4" id="zsg-3g-1Ut"/>
             </constraints>

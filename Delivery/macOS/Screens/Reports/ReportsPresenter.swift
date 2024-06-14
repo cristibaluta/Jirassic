@@ -14,8 +14,9 @@ protocol ReportsPresenterInput: class {
     
     func viewDidLoad()
     func reloadLastSelectedMonth()
-    func reloadReportsOnDay (_ day: Day)
+    func reloadReportsInDay (_ day: Day)
     func reloadReportsInMonth (_ date: Date)
+    func copyDayReportToClipboard()
     func copyMonthlyReportsToClipboard(asHtml: Bool)
     func messageButtonDidPress()
 }
@@ -76,8 +77,10 @@ extension ReportsPresenter: ReportsPresenterInput {
         reloadReportsInMonth(lastSelectedMonth)
     }
     
-    func reloadReportsOnDay (_ day: Day) {
-        // TODO
+    func reloadReportsInDay (_ day: Day) {
+        ui!.removeReports()
+        ui!.showLoadingIndicator(true)
+        interactor!.reloadTasks(inDay: day)
     }
     
     func reloadReportsInMonth (_ date: Date) {
@@ -105,13 +108,20 @@ extension ReportsPresenter: ReportsPresenterInput {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
     }
+
+    func copyDayReportToClipboard() {
+        let interactor = CreateDayReport()
+        let string = interactor.stringReports(currentReports)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
+    }
 }
 
 extension ReportsPresenter: TasksInteractorOutput {
 
     func tasksDidLoad (_ tasks: [Task]) {
 
-        guard let ui = self.ui else {
+        guard let ui else {
             return
         }
         ui.showLoadingIndicator(false)
@@ -126,6 +136,7 @@ extension ReportsPresenter: TasksInteractorOutput {
                                                targetHoursInDay: targetHoursInDay,
                                                roundHours: true)
         currentReports = reports.byTasks
+        ui.removeReports()
         ui.showReports(currentReports, numberOfDays: reports.byDays.count)
 
         

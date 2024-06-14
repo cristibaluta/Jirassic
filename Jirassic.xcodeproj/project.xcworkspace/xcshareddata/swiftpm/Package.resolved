@@ -1,13 +1,13 @@
 {
-  "originHash" : "7020ad78b767db9b9db97f101b997a631f8aa8f62c0d10f437a73e2e9e5f51f5",
+  "originHash" : "f4d592b2f1f071124b48fbfc0bcfaacc016e845a7a2be356a047efdbe9217829",
   "pins" : [
     {
       "identity" : "rchttp",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cristibaluta/RCHttp",
+      "location" : "https://github.com/cristibaluta/RCHttp.git",
       "state" : {
         "branch" : "master",
-        "revision" : "560cb42"
+        "revision" : "560cb42769bad63d52961b07ac442b3d67fd48d6"
       }
     },
     {
@@ -16,16 +16,16 @@
       "location" : "https://github.com/cristibaluta/RCLog",
       "state" : {
         "branch" : "master",
-        "revision" : "f3166aa52b66e2278523ce8eef40bf31a37ddaad"
+        "revision" : "e5777165170c2b77562ceb22eaffec8cbc48a69f"
       }
     },
     {
       "identity" : "rcpreferences",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cristibaluta/RCPreferences",
+      "location" : "https://github.com/cristibaluta/RCpreferences",
       "state" : {
         "branch" : "master",
-        "revision" : "369cde5"
+        "revision" : "369cde53cbc4d44fd9f4ae74c67c18ec23176657"
       }
     },
     {

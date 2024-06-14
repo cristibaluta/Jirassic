@@ -155,10 +155,11 @@ extension MainViewController: MainPresenterOutput {
 
         calendarViewController = controller
         calendarViewController!.didChangeDay = { [weak self] day in
-            guard let controller = self?.tasksViewController else {
-                return
+            if let controller = self?.tasksViewController {
+                controller.presenter?.reloadTasksOnDay(day)
+            } else if let controller = self?.reportsViewController {
+                controller.presenter?.reloadReportsInDay(day)
             }
-            controller.presenter?.reloadTasksOnDay(day)
         }
         calendarViewController!.didChangeMonth = { [weak self] date in
             guard let controller = self?.reportsViewController else {
