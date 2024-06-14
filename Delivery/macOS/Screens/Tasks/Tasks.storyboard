@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23077.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,11 +10,11 @@
             <objects>
                 <viewController storyboardIdentifier="TaskSuggestionViewController" id="tRv-ep-RyQ" customClass="TaskSuggestionViewController" customModule="Jirassic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="F46-mC-JhQ">
-                        <rect key="frame" x="0.0" y="0.0" width="492" height="103"/>
+                        <rect key="frame" x="0.0" y="0.0" width="492" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="55W-A0-75h">
-                                <rect key="frame" x="412" y="0.0" width="80" height="51"/>
+                                <rect key="frame" x="412" y="0.0" width="80" height="52"/>
                                 <buttonCell key="cell" type="square" title="Save" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="bTq-7V-gcM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="systemBold"/>
@@ -26,7 +25,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xms-pO-x4G">
-                                <rect key="frame" x="412" y="51" width="80" height="52"/>
+                                <rect key="frame" x="412" y="52" width="80" height="52"/>
                                 <buttonCell key="cell" type="square" title="Ignore" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="pDT-IB-e1W">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -35,8 +34,8 @@
                                     <action selector="handleIgnoreButton:" target="tRv-ep-RyQ" id="nxo-VW-zvW"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ql7-Oz-1OK">
-                                <rect key="frame" x="18" y="77" width="344" height="17"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ql7-Oz-1OK">
+                                <rect key="frame" x="18" y="78" width="344" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12:30 - 13.25" id="XUG-df-poy">
                                     <font key="font" metaFont="systemBold"/>
@@ -45,14 +44,14 @@
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-JW-h3W">
-                                <rect key="frame" x="18" y="46" width="395" height="23"/>
+                                <rect key="frame" x="18" y="46" width="395" height="24"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="What did you do while away?" id="vVI-i0-CV1">
                                     <font key="font" metaFont="system" size="20"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-O7-hvq">
+                            <segmentedControl verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-O7-hvq">
                                 <rect key="frame" x="19" y="9" width="304" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="M3U-lw-qlU"/>
@@ -72,19 +71,19 @@
                                 </connections>
                             </segmentedControl>
                             <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CGp-Zh-lOB">
-                                <rect key="frame" x="409" y="0.0" width="5" height="103"/>
+                                <rect key="frame" x="409" y="0.0" width="5" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="7NW-pb-i5r"/>
                                 </constraints>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-Jn-pJP">
-                                <rect key="frame" x="413" y="49" width="79" height="5"/>
+                                <rect key="frame" x="413" y="50" width="79" height="5"/>
                             </box>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b9j-qf-eio">
+                            <popUpButton verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9j-qf-eio">
                                 <rect key="frame" x="330" y="9" width="67" height="19"/>
                                 <popUpButtonCell key="cell" type="roundRect" title="Project" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="pNo-1d-ZAR" id="38Q-v5-rtO">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <menu key="menu" id="MSM-0L-5em">
                                         <items>
                                             <menuItem title="Project" state="on" id="pNo-1d-ZAR"/>
@@ -210,7 +209,7 @@
                                 <rect key="frame" x="249" y="7" width="42" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="95U-QR-wBr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleSaveButton:" target="YqS-CN-cQo" id="V1c-nt-LvH"/>
@@ -218,12 +217,9 @@
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JLt-3O-tug">
                                 <rect key="frame" x="91" y="175" width="200" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="EAd-PR-0ns"/>
-                                </constraints>
                                 <popUpButtonCell key="cell" type="roundRect" title="Task" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="k6I-XQ-JDe" id="mxP-fa-RRG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <menu key="menu" id="eOI-DN-eUW">
                                         <items>
                                             <menuItem title="Task" state="on" id="k6I-XQ-JDe"/>
@@ -232,6 +228,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="EAd-PR-0ns"/>
+                                </constraints>
                                 <connections>
                                     <action selector="handleTaskTypeSelector:" target="YqS-CN-cQo" id="Ehd-qh-Oer"/>
                                 </connections>
@@ -240,13 +239,13 @@
                                 <rect key="frame" x="10" y="7" width="53" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="byZ-cA-hci">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleCancelButton:" target="YqS-CN-cQo" id="JVA-UL-FvO"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-k3-q3x">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-k3-q3x">
                                 <rect key="frame" x="8" y="177" width="70" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="1Di-yB-dhk"/>
@@ -257,7 +256,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xdU-O3-mhX">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xdU-O3-mhX">
                                 <rect key="frame" x="8" y="147" width="70" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="4bY-g8-KBs"/>
@@ -268,7 +267,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RpG-IZ-ykd">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RpG-IZ-ykd">
                                 <rect key="frame" x="8" y="117" width="70" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="g45-55-CVK"/>
@@ -288,7 +287,7 @@
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nmY-Zs-Y0X">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nmY-Zs-Y0X">
                                 <rect key="frame" x="160" y="42" width="58" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="End date" id="mAl-f7-3GO">
                                     <font key="font" metaFont="system"/>
@@ -298,25 +297,22 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdi-Za-B5D">
                                 <rect key="frame" x="10" y="42" width="66" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="A0n-eA-oip"/>
-                                </constraints>
                                 <buttonCell key="cell" type="bevel" title="Start date" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="6SE-yr-TTc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="A0n-eA-oip"/>
+                                </constraints>
                                 <connections>
                                     <action selector="handleDurationButton:" target="YqS-CN-cQo" id="lFU-y1-l3x"/>
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wMc-CS-E1h">
                                 <rect key="frame" x="91" y="206" width="200" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="FFN-SZ-aNJ"/>
-                                </constraints>
                                 <popUpButtonCell key="cell" type="roundRect" title="Project" bezelStyle="roundedRect" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="1zm-xu-9gw" id="ya1-76-HIf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <menu key="menu" id="lg6-gQ-fPg">
                                         <items>
                                             <menuItem title="Project" state="on" id="1zm-xu-9gw"/>
@@ -325,8 +321,11 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FFN-SZ-aNJ"/>
+                                </constraints>
                             </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nGD-V8-D9R">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nGD-V8-D9R">
                                 <rect key="frame" x="8" y="208" width="70" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="XAS-8R-06X"/>
@@ -410,7 +409,7 @@
                                 <rect key="frame" x="10" y="7" width="53" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a5X-wu-ggH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleCancelButton:" target="Lrk-nI-3SB" id="KXN-ho-GJZ"/>
@@ -420,13 +419,13 @@
                                 <rect key="frame" x="226" y="7" width="42" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVB-u7-oMy">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="handleSaveButton:" target="Lrk-nI-3SB" id="ujb-IX-Vdf"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-tO-CC7">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="y5b-tO-CC7">
                                 <rect key="frame" x="8" y="34" width="262" height="13"/>
                                 <textFieldCell key="cell" enabled="NO" title="Time predicting typer:" id="Cfu-4I-6KV">
                                     <font key="font" metaFont="system" size="10"/>
