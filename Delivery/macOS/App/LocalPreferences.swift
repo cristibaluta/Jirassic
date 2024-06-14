@@ -25,8 +25,6 @@ enum LocalPreferences: String, RCPreferencesProtocol {
     case settingsJiraProjectIssueKey = "settingsJiraProjectIssueKey"
     case settingsHookupCmdName = "settingsHookupCmdName"
     case settingsHookupAppName = "settingsHookupAppName"
-    case settingsGitPaths = "settingsGitPaths"
-    case settingsGitAuthors = "settingsGitAuthors"
     case settingsSelectedCalendars = "settingsSelectedCalendars"
     case enableGit = "enableGit"
     case enableJit = "enableJit"
@@ -52,8 +50,6 @@ enum LocalPreferences: String, RCPreferencesProtocol {
         case .settingsJiraProjectIssueKey:return ""
         case .settingsHookupCmdName:    return ""
         case .settingsHookupAppName:    return ""
-        case .settingsGitPaths:         return ""
-        case .settingsGitAuthors:       return ""
         case .settingsSelectedCalendars:return "Work,Calendar"
         case .enableGit:                return false
         case .enableJit:                return true

@@ -9,6 +9,7 @@
 import Cocoa
 import RCPreferences
 import RCLog
+import RCHttp
 
 var localRepository: Repository!
 var remoteRepository: Repository?
@@ -42,21 +43,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        pref.set("", forKey: .appVersion)
 //        UserDefaults.standard.set(5, forKey: "wizardStep")
 //        localPreferences.set(false, forKey: .enableGit)
+        RCHttp.loggingEnabled = true
         #else
         disableTraces()
+        RCHttp.loggingEnabled = false
         #endif
         
         self.window?.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
         
         localRepository = SqliteRepository()
+        Migrator.migrate()
+        
         #if APPSTORE
         if SettingsInteractor().getAppSettings().enableBackup {
             remoteRepository = CloudKitRepository()
-            remoteRepository?.getUser({ (user) in
+            remoteRepository?.getUser { user in
                 if user == nil {
                     remoteRepository = nil
                 }
-            })
+            }
         }
 //        _ = Store.shared
         #else
@@ -156,7 +161,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 taskNumber: nil,
                 taskTitle: nil,
                 taskType: .coderev,
-                objectId: String.generateId()
+                objectId: String.generateId(),
+                projectId: nil
             )
             let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
             saveInteractor.saveTask(task, allowSyncing: true, completion: { savedTask in
@@ -229,7 +235,7 @@ extension AppDelegate {
         popover.contentViewController = appWireframe.appViewController
         popover.animates = true
         appWireframe.removeCurrentController()
-        _ = appWireframe.presentTasksController()
+        _ = appWireframe.presentMainController()
         appWireframe.showPopover(popover, fromIcon: menu.iconView)
     }
     
@@ -259,4 +265,3 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
         return true
     }
 }
-

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import RCPreferences
 
 class GitUsersViewController: NSViewController {
     
@@ -15,16 +14,19 @@ class GitUsersViewController: NSViewController {
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var doneButton: NSButton!
     
-    var onDone: (() -> Void)?
-    
-    private let pref = RCPreferences<LocalPreferences>()
     private let gitModule = ModuleGitLogs()
-    private var users: [GitUser] = []
+    private var gitUsers: [GitUser] = []
+    var selectedUsers: [String] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var onDone: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gitModule.fetchUsers { [weak self] users in
-            self?.users = users
+            self?.gitUsers = users
             self?.tableView.reloadData()
         }
         tableView.headerView = nil
@@ -38,7 +40,7 @@ class GitUsersViewController: NSViewController {
 extension GitUsersViewController: NSTableViewDataSource {
     
     func numberOfRows (in aTableView: NSTableView) -> Int {
-        return users.count
+        return gitUsers.count
     }
 }
 
@@ -46,11 +48,10 @@ extension GitUsersViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         
-        let user = users[row]
+        let user = gitUsers[row]
         
         if (tableColumn?.identifier)?.rawValue == "isSelected" {
-            let allowedAuthors: [String] = pref.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
-            let isSelected = allowedAuthors.contains(user.email)
+            let isSelected = selectedUsers.contains(user.email)
             return NSNumber(booleanLiteral: isSelected)
         }
         if (tableColumn?.identifier)?.rawValue == "email" {
@@ -61,19 +62,17 @@ extension GitUsersViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
         
-        let user = users[row]
+        let user = gitUsers[row]
         
         if (tableColumn?.identifier)?.rawValue == "isSelected" {
-            var allowedAuthors: [String] = pref.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
             guard let isSelected = (object as? NSNumber)?.boolValue else {
                 return
             }
             if isSelected {
-                allowedAuthors.append(user.email)
+                selectedUsers.append(user.email)
             } else {
-                allowedAuthors = allowedAuthors.filter({$0 != user.email})
+                selectedUsers = selectedUsers.filter({$0 != user.email})
             }
-            pref.set(allowedAuthors.joined(separator: ","), forKey: .settingsGitAuthors)
         }
     }
 }

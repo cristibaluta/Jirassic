@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import RCPreferences
 import RCLog
 
 class ModuleGitLogs {
     
     private let extensions = ExtensionsInteractor()
-    private let pref = RCPreferences<LocalPreferences>()
+    private let projectsInteractor = ReadProjectsInteractor(repository: localRepository, remoteRepository: nil)
     
 //    func isReachable (completion: @escaping (Bool) -> Void) {
 //        checkIfGitInstalled(completion: completion)
@@ -39,9 +38,9 @@ class ModuleGitLogs {
     }
 
     /// Returns a list of commiters emails
-    func fetchUsers(completion: @escaping (([GitUser]) -> Void)) {
+    func fetchUsers (completion: @escaping (([GitUser]) -> Void)) {
 
-        let paths = pref.string(.settingsGitPaths).split(separator: ",").map { String($0) }
+        let paths = projectsInteractor.allGitPaths()
         users(paths: paths, previousUsers: []) { gitUsers in
             completion(gitUsers)
         }
@@ -75,7 +74,7 @@ class ModuleGitLogs {
         }
         let interval = dates.removeFirst()
         
-        let paths = pref.string(.settingsGitPaths).split(separator: ",").map { String($0) }
+        let paths = projectsInteractor.allGitPaths()
         logs(dateStart: interval.dateStart, dateEnd: interval.dateEnd, paths: paths, previousCommits: []) { commits in
             for commit in commits {
                 // Sometimes git returns commits that are not in the provided interval, filter them out
@@ -125,7 +124,7 @@ class ModuleGitLogs {
         }
         paths.removeFirst()
         
-        let allowedAuthors: [String] = pref.string(.settingsGitAuthors).split(separator: ",").map { String($0) }
+        let allowedAuthors = projectsInteractor.allGitUsers()
         
         getGitLogs(at: path, dateStart: dateStart, dateEnd: dateEnd, completion: { rawResults in
             

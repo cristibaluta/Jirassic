@@ -93,7 +93,7 @@ class SettingsViewController: NSViewController {
 extension SettingsViewController {
 	
     @IBAction func handleSaveButton (_ sender: NSButton) {
-        appWireframe!.flipToTasksController()
+        appWireframe!.flipToMainController()
     }
     
     @IBAction func handleBackupButton (_ sender: NSButton) {

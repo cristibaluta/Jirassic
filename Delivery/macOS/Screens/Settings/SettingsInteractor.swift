@@ -11,14 +11,14 @@ import ServiceManagement
 import RCPreferences
 import RCLog
 
-protocol SettingsInteractorInput: class {
+protocol SettingsInteractorInput: AnyObject {
     
     func getAppSettings() -> Settings
     func saveAppSettings (_ settings: Settings)
     func enabledLaunchAtStartup (_ enabled: Bool)
 }
 
-protocol SettingsInteractorOutput: class {
+protocol SettingsInteractorOutput: AnyObject {
     
 }
 
