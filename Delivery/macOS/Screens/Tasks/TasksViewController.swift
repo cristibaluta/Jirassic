@@ -13,7 +13,7 @@ import RCLog
 class TasksViewController: NSViewController {
 	
 	@IBOutlet private var splitView: NSSplitView!
-	@IBOutlet private var calendarScrollView: CalendarScrollView!
+//	@IBOutlet private var calendarScrollView: CalendarScrollView!
 	private var tasksScrollView: TasksScrollView?
     @IBOutlet private var listSegmentedControl: NSSegmentedControl!
     @IBOutlet private var butRefresh: NSButton!
@@ -43,18 +43,18 @@ class TasksViewController: NSViewController {
         listSegmentedControl!.selectedSegment = TaskTypeSelection().lastType().rawValue
         hideControls(false)
         
-        calendarScrollView!.didSelectDay = { [weak self] (day: Day) in
-            guard let strongSelf = self else {
-                return
-            }
-            let selectedListType = ListType(rawValue: strongSelf.listSegmentedControl!.selectedSegment)!
-            strongSelf.presenter!.reloadTasksOnDay(day, listType: selectedListType)
-        }
+//        calendarScrollView!.didSelectDay = { [weak self] (day: Day) in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            let selectedListType = ListType(rawValue: strongSelf.listSegmentedControl!.selectedSegment)!
+//            strongSelf.presenter!.reloadTasksOnDay(day, listType: selectedListType)
+//        }
     }
 	
 	override func viewDidAppear() {
 		super.viewDidAppear()
-        presenter!.initUI()
+//        presenter!.initUI()
 	}
 	
     deinit {

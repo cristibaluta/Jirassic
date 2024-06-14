@@ -52,7 +52,7 @@ class WelcomeViewController: NSViewController {
         // Set that we saw this version of the app launch
         pref.set(Versioning.appVersion, forKey: .appVersion)
         let stepsToSave: [Int] = []
-        pref.set(stepsToSave, forKey: .wizardSteps)
+//        pref.set(stepsToSave, forKey: .wizardSteps)
         appWireframe!.flipToWizardController()
     }
     
@@ -60,7 +60,7 @@ class WelcomeViewController: NSViewController {
         pref.set(Versioning.appVersion, forKey: .appVersion)
         let stepsSeen = [WizardStep.shell, WizardStep.browser, WizardStep.git]
         let stepsToSave: [Int] = stepsSeen.map({ $0.rawValue })
-        pref.set(stepsToSave, forKey: .wizardSteps)
+//        pref.set(stepsToSave, forKey: .wizardSteps)
         appWireframe!.flipToWizardController()
     }
     
@@ -68,7 +68,7 @@ class WelcomeViewController: NSViewController {
         pref.set(Versioning.appVersion, forKey: .appVersion)
         let stepsSeen = [WizardStep.shell, WizardStep.browser, WizardStep.git, WizardStep.jira]
         let stepsToSave: [Int] = stepsSeen.map({ $0.rawValue })
-        pref.set(stepsToSave, forKey: .wizardSteps)
+//        pref.set(stepsToSave, forKey: .wizardSteps)
         // Remove deprecated userdefault
         UserDefaults.standard.removeObject(forKey: "RCPreferences-wizardStep")
         appWireframe!.flipToWizardController()
