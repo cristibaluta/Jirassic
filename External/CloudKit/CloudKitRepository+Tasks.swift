@@ -22,12 +22,12 @@ extension CloudKitRepository: RepositoryTasks {
 
     func queryTasks (startDate: Date, endDate: Date, predicate: NSPredicate? = nil, completion: @escaping ([Task], NSError?) -> Void) {
         let predicate = NSPredicate(format: "endDate >= %@ AND endDate <= %@", startDate as CVarArg, endDate as CVarArg)
-        fetchRecords(ofType: "Task", predicate: predicate) { (records) in
+        tasksZone?.fetchRecords(ofType: "Task", predicate: predicate) { (records) in
             completion(self.tasksFromRecords(records ?? []), nil)
         }
     }
     
-    func queryUnsyncedTasks() -> [Task] {
+    func queryUnsyncedTasks(since lastSyncDate: Date?) -> [Task] {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
@@ -35,15 +35,15 @@ extension CloudKitRepository: RepositoryTasks {
         fatalError("This method is not applicable to CloudKitRepository")
     }
     
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdatedTasks (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        let changeToken = UserDefaults.standard.serverChangeToken
+        let changeToken = ReadMetadataInteractor().tasksLastSyncToken()
         
-        fetchChangedRecords(token: changeToken, 
-                            previousRecords: [], 
-                            previousDeletedRecordsIds: [], 
-                            completion: { (changedRecords, deletedRecordsIds) in
-                                
+        tasksZone?.fetchChangedRecords(token: changeToken,
+                                       previousRecords: [],
+                                       previousDeletedRecordsIds: [],
+                                       completion: { (changedRecords, deletedRecordsIds) in
+                                        
             completion(self.tasksFromRecords(changedRecords), self.stringIdsFromCKRecordIds(deletedRecordsIds), nil)
         })
     }
@@ -76,7 +76,7 @@ extension CloudKitRepository: RepositoryTasks {
     func saveTask (_ task: Task, completion: @escaping ((_ task: Task?) -> Void)) {
         RCLogO("1. Save to cloudkit \(task)")
         
-        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+        guard let zoneId = self.tasksZone?.zoneId, let privateDB = self.privateDB else {
             RCLog("Can't save, not logged in to iCloud")
             return
         }
@@ -86,20 +86,19 @@ extension CloudKitRepository: RepositoryTasks {
             var record: CKRecord? = record
             // No record found on server, creating one now
             if record == nil {
-                let recordId = CKRecord.ID(recordName: task.objectId!, zoneID: customZone.zoneID)
+                let recordId = CKRecord.ID(recordName: task.objectId!, zoneID: zoneId)
                 record = CKRecord(recordType: "Task", recordID: recordId)
             }
-            record = self.updatedRecord(record!, withTask: task)
+            record!.update(with: task)
             
             privateDB.save(record!, completionHandler: { savedRecord, error in
                 
-                RCLog("2. Record after saving to CloudKit")
-                RCLogO(savedRecord)
+                RCLog("2. Saved to CloudKit \(String(describing: savedRecord))")
                 RCLogErrorO(error)
                 
                 if let record = savedRecord {
-                    let uploadedTask = self.taskFromRecord(record)
-                    completion(uploadedTask)
+                    let task = record.toTask()
+                    completion(task)
                 }
                 if let ckerror = error as? CKError {
                     switch ckerror {
@@ -122,14 +121,14 @@ extension CloudKitRepository {
     
     func fetchCKRecordOfTask (_ task: Task, completion: @escaping ((_ ctask: CKRecord?) -> Void)) {
         
-        guard let customZone = self.customZone, let privateDB = self.privateDB else {
+        guard let zoneId = self.tasksZone?.zoneId, let privateDB = self.privateDB else {
             RCLog("Not logged in")
             return
         }
         
         let predicate = NSPredicate(format: "objectId == %@", task.objectId! as CVarArg)
         let query = CKQuery(recordType: "Task", predicate: predicate)
-        privateDB.perform(query, inZoneWith: customZone.zoneID) { (results: [CKRecord]?, error) in
+        privateDB.perform(query, inZoneWith: zoneId) { (results: [CKRecord]?, error) in
             
             RCLogErrorO(error)
             
@@ -142,48 +141,6 @@ extension CloudKitRepository {
     }
     
     private func tasksFromRecords (_ records: [CKRecord]) -> [Task] {
-        
-        var tasks = [Task]()
-        for record in records {
-            tasks.append( taskFromRecord(record) )
-        }
-        
-        return tasks
-    }
-    
-    private func taskFromRecord (_ record: CKRecord) -> Task {
-        
-        return Task(lastModifiedDate: record.modificationDate,
-                    startDate: record["startDate"] as? Date,
-                    endDate: record["endDate"] as! Date,
-                    notes: record["notes"] as? String,
-                    taskNumber: record["taskNumber"] as? String,
-                    taskTitle: record["taskTitle"] as? String,
-                    taskType: TaskType(rawValue: (record["taskType"] as! NSNumber).intValue)!,
-                    objectId: record["objectId"] as? String
-        )
-    }
-    
-    private func updatedRecord (_ record: CKRecord, withTask task: Task) -> CKRecord {
-        
-        record["startDate"] = task.startDate as CKRecordValue?
-        record["endDate"] = task.endDate as CKRecordValue
-        record["notes"] = task.notes as CKRecordValue?
-        record["taskNumber"] = task.taskNumber as CKRecordValue?
-        record["taskTitle"] = task.taskTitle as CKRecordValue?
-        record["taskType"] = task.taskType.rawValue as CKRecordValue
-        record["objectId"] = task.objectId as CKRecordValue?
-        
-        return record
-    }
-    
-    private func stringIdsFromCKRecordIds (_ ckrecords: [CKRecord.ID]) -> [String] {
-        
-        var ids = [String]()
-        for ckrecord in ckrecords {
-            ids.append( ckrecord.recordName )
-        }
-        
-        return ids
+        return records.map({ $0.toTask() })
     }
 }

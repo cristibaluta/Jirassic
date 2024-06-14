@@ -16,7 +16,7 @@ extension SqliteRepository: RepositoryTasks {
         let taskPredicate = "objectId == '\(objectId)'"
         let tasks: [STask] = queryWithPredicate(taskPredicate, sortingKeyPath: nil)
         if let stask = tasks.first {
-            return taskFromSTask(stask)
+            return stask.toTask()
         }
         return nil
     }
@@ -35,14 +35,14 @@ extension SqliteRepository: RepositoryTasks {
         }
     }
     
-    func queryUnsyncedTasks() -> [Task] {
+    func queryUnsyncedTasks (since lastSyncDate: Date?) -> [Task] {
 
         #if !CMD
-        RCLog("Query tasks since last sync date: \(String(describing: UserDefaults.standard.lastSyncDateWithRemote))")
+        RCLog("Query tasks since last sync date: \(String(describing: lastSyncDate))")
         #endif
         var sinceDatePredicate = ""
-        if let lastSyncDateWithRemote = UserDefaults.standard.lastSyncDateWithRemote {
-            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(lastSyncDateWithRemote.YYYYMMddHHmmssGMT())')"
+        if let date = lastSyncDate {
+            sinceDatePredicate = " OR datetime(lastModifiedDate) > datetime('\(date.YYYYMMddHHmmssGMT())')"
         }
         let predicate = "(lastModifiedDate is NULL\(sinceDatePredicate)) AND markedForDeletion == 0"
         let results: [STask] = queryWithPredicate(predicate, sortingKeyPath: nil)
@@ -60,10 +60,11 @@ extension SqliteRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdatedTasks (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        queryDeletedTasks { (deletedTasks) in
-            let unsyncedTasks = self.queryUnsyncedTasks()
+        queryDeletedTasks { deletedTasks in
+            let lastSyncDate = ReadMetadataInteractor().tasksLastSyncDate()
+            let unsyncedTasks = self.queryUnsyncedTasks(since: lastSyncDate)
             let deletedTasksIds = deletedTasks.map{ $0.objectId! }
             completion(unsyncedTasks, deletedTasksIds, nil)
         }
@@ -99,7 +100,7 @@ extension SqliteRepository: RepositoryTasks {
         RCLog("Saved to sqlite \(saved) \(task)")
         #endif
         if saved == 1 {
-            completion( taskFromSTask(stask))
+            completion( stask.toTask() )
         } else {
             completion(nil)
         }
@@ -125,27 +126,8 @@ extension SqliteRepository {
         return tasks
     }
 
-    private func taskFromSTask (_ stask: STask) -> Task {
-        
-        return Task(lastModifiedDate: stask.lastModifiedDate,
-                    startDate: stask.startDate,
-                    endDate: stask.endDate!,
-                    notes: stask.notes,
-                    taskNumber: stask.taskNumber,
-                    taskTitle: stask.taskTitle,
-                    taskType: TaskType(rawValue: stask.taskType)!,
-                    objectId: stask.objectId!
-        )
-    }
-    
-    private func tasksFromSTasks (_ rtasks: [STask]) -> [Task] {
-        
-        var tasks = [Task]()
-        for rtask in rtasks {
-            tasks.append( taskFromSTask(rtask) )
-        }
-        
-        return tasks
+    private func tasksFromSTasks (_ stasks: [STask]) -> [Task] {
+        return stasks.map({ $0.toTask() })
     }
     
     private func staskFromTask (_ task: Task) -> STask {
@@ -157,21 +139,8 @@ extension SqliteRepository {
             stask = STask()
             stask!.objectId = task.objectId
         }
+        stask!.update(with: task)
         
-        return updatedSTask(stask!, withTask: task)
-    }
-    
-    // Update only updatable properties. objectId can't be updated
-    private func updatedSTask (_ stask: STask, withTask task: Task) -> STask {
-        
-        stask.taskNumber = task.taskNumber
-        stask.taskType = task.taskType.rawValue
-        stask.taskTitle = task.taskTitle
-        stask.notes = task.notes
-        stask.startDate = task.startDate
-        stask.endDate = task.endDate
-        stask.lastModifiedDate = task.lastModifiedDate
-        
-        return stask
+        return stask!
     }
 }

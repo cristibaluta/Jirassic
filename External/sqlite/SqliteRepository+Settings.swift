@@ -46,7 +46,7 @@ extension SqliteRepository: RepositorySettings {
         _ = ssettings.save()
     }
     
-    fileprivate func settingsFromSSettings (_ ssettings: SSettings) -> Settings {
+    private func settingsFromSSettings (_ ssettings: SSettings) -> Settings {
         
         return Settings(enableBackup: ssettings.enableBackup,
                         settingsTracking: SettingsTracking(
@@ -73,7 +73,7 @@ extension SqliteRepository: RepositorySettings {
         )
     }
     
-    fileprivate func ssettingsFromSettings (_ settings: Settings) -> SSettings {
+    private func ssettingsFromSettings (_ settings: Settings) -> SSettings {
         
         let results: [SSettings] = queryWithPredicate(nil, sortingKeyPath: nil)
         var ssettings: SSettings? = results.first
