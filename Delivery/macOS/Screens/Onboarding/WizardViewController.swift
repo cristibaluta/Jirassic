@@ -165,7 +165,7 @@ class WizardViewController: NSViewController {
                 w1.rawValue < w2.rawValue
             }
             let stepsToSave: [Int] = stepsSeen.map({ $0.rawValue })
-            pref.set(stepsToSave, forKey: .wizardSteps)
+//            pref.set(stepsToSave, forKey: .wizardSteps)
         } else {
             handleSkipButton(sender)
         }
@@ -173,7 +173,7 @@ class WizardViewController: NSViewController {
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
         let stepsToSave: [Int] = WizardStep.allCases.map({ $0.rawValue })
-        pref.set(stepsToSave, forKey: .wizardSteps)
+//        pref.set(stepsToSave, forKey: .wizardSteps)
         appWireframe!.flipToMainController()
     }
     

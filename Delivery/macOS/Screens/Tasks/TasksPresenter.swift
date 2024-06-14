@@ -10,7 +10,7 @@ import Cocoa
 import RCLog
 
 protocol TasksPresenterInput: class {
-    
+
     func reloadLastSelectedDay()
     func reloadTasksOnDay (_ day: Day)
     func updateNoTasksState()
@@ -25,7 +25,7 @@ protocol TasksPresenterInput: class {
 }
 
 protocol TasksPresenterOutput: class {
-    
+
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
     func showTasks (_ tasks: [Task])
@@ -38,21 +38,21 @@ protocol TasksPresenterOutput: class {
 }
 
 class TasksPresenter {
-    
+
     weak var appWireframe: AppWireframe?
     weak var ui: TasksPresenterOutput?
     var interactor: TasksInteractorInput?
-    
+
     private var currentTasks = [Task]()
     private var lastSelectedDay: Day = Day(dateStart: Date(), dateEnd: nil)
 }
 
 extension TasksPresenter: TasksPresenterInput {
-    
+
     func reloadLastSelectedDay() {
         reloadTasksOnDay(lastSelectedDay)
     }
-    
+
     func reloadTasksOnDay (_ day: Day) {
         lastSelectedDay = day
         ui!.removeTasks()
@@ -62,7 +62,7 @@ extension TasksPresenter: TasksPresenterInput {
     }
 
     func updateNoTasksState() {
-        
+
         if currentTasks.count == 0 {
             if lastSelectedDay.dateStart.isToday() {
                 ui!.showMessage((
@@ -79,9 +79,9 @@ extension TasksPresenter: TasksPresenterInput {
             appWireframe!.removePlaceholder()
         }
     }
-    
+
     func didClickStartDay() {
-        
+
         if currentTasks.count == 0 {
             startDay()
         } else {
@@ -89,9 +89,9 @@ extension TasksPresenter: TasksPresenterInput {
             ui!.presentNewTaskController(date: Date())
         }
     }
-    
+
     func startDay() {
-        
+
         /// The day will start
         /// 1. current timestamp if day is today
         /// 2. start  timestamp from settings if day is not today
@@ -106,19 +106,19 @@ extension TasksPresenter: TasksPresenterInput {
         })
         ModuleHookup().insert(task: task)
     }
-    
+
     func closeDay (showWorklogs: Bool) {
-        
+
         let closeDay = CloseDayInteractor()
         closeDay.close(with: currentTasks)
-        
+
         if showWorklogs {
             didClickSaveWorklogs()
         } else {
             reloadLastSelectedDay()
         }
     }
-    
+
     func didClickSaveWorklogs() {
         // Reload data will be called after save with success
         ui!.removeTasks()
@@ -143,9 +143,9 @@ extension TasksPresenter: TasksPresenterInput {
         let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         saveInteractor.saveTask(task, allowSyncing: false, completion: { _ in })
     }
-    
+
     func insertTask (after row: Int) {
-        
+
         guard currentTasks.count > row + 1 else {
             // Insert task at the end
             let taskBefore = currentTasks[row]
@@ -162,17 +162,17 @@ extension TasksPresenter: TasksPresenterInput {
         ui!.closeTaskEditor()
         ui!.presentNewTaskController(date: middleDate)
     }
-    
+
     func removeTask (at row: Int) {
-        
+
         let task = currentTasks[row]
         currentTasks.remove(at: row)
         let deleteInteractor = TaskInteractor(repository: localRepository, remoteRepository: remoteRepository)
         deleteInteractor.deleteTask(task)
         updateNoTasksState()
-        
+
         if currentTasks.count == 0 {
-            
+
         }
     }
 
@@ -193,35 +193,8 @@ extension TasksPresenter: TasksInteractorOutput {
         }
         ui.showLoadingIndicator(false)
         currentTasks = tasks
-
-        switch selectedListType {
-        case .allTasks:
-            ui.showTasks(currentTasks)
-            
-        case .report:
-            let settings = SettingsInteractor().getAppSettings()
-            let targetHoursInDay = pref.bool(.enableRoundingDay)
-                ? TimeInteractor(settings: settings).workingDayLength()
-                : nil
-            let reportInteractor = CreateReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks,
-                                                   targetHoursInDay: targetHoursInDay)
-            currentReports = reports.reversed()
-            ui.showReports(currentReports, numberOfDays: 1, type: selectedListType)
-            
-        case .monthlyReports:
-            let settings = SettingsInteractor().getAppSettings()
-            let targetHoursInDay = pref.bool(.enableRoundingDay)
-                ? TimeInteractor(settings: settings).workingDayLength()
-                : nil
-            let reportInteractor = CreateMonthReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks,
-                                                   targetHoursInDay: targetHoursInDay,
-                                                   roundHours: true)
-            currentReports = reports.byTasks
-            ui.showReports(currentReports, numberOfDays: reports.byDays.count, type: selectedListType)
-            break
-        }
+        ui.removeTasks()
+        ui.showTasks(currentTasks)
         updateNoTasksState()
     }
 }

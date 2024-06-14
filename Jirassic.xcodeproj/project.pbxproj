@@ -347,7 +347,6 @@
 		6DAC60BE2C1C5DD9000D11A2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60392C1C5DD9000D11A2 /* DataSource.swift */; };
 		6DAC60BF2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBE2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift */; };
 		6DAC60C02C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC52C1C5DD9000D11A2 /* CalendarInteractor.swift */; };
-		6DAC60C12C1C5DD9000D11A2 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60342C1C5DD9000D11A2 /* MonthReportsHeaderView.swift */; };
 		6DAC60C22C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60132C1C5DD9000D11A2 /* JiraTempoCell.swift */; };
 		6DAC60C32C1C5DD9000D11A2 /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60172C1C5DD9000D11A2 /* OutputsScrollView.swift */; };
 		6DAC60C42C1C5DD9000D11A2 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5F952C1C5DD9000D11A2 /* AppViewController.swift */; };
@@ -356,7 +355,6 @@
 		6DAC60C72C1C5DD9000D11A2 /* AppleScriptProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5F9F2C1C5DD9000D11A2 /* AppleScriptProtocol.swift */; };
 		6DAC60C82C1C5DD9000D11A2 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC604A2C1C5DD9000D11A2 /* Worklogs.storyboard */; };
 		6DAC60C92C1C5DD9000D11A2 /* WizardJiraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD72C1C5DD9000D11A2 /* WizardJiraView.xib */; };
-		6DAC60CA2C1C5DD9000D11A2 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60362C1C5DD9000D11A2 /* ReportsHeaderView.xib */; };
 		6DAC60CB2C1C5DD9000D11A2 /* JitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60022C1C5DD9000D11A2 /* JitCell.xib */; };
 		6DAC60CC2C1C5DD9000D11A2 /* CloseDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60282C1C5DD9000D11A2 /* CloseDayCell.xib */; };
 		6DAC60CD2C1C5DD9000D11A2 /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FFB2C1C5DD9000D11A2 /* GitCell.xib */; };
@@ -396,7 +394,6 @@
 		6DAC60F02C1C5DD9000D11A2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBF2C1C5DD9000D11A2 /* Login.storyboard */; };
 		6DAC60F12C1C5DD9000D11A2 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC604A2C1C5DD9000D11A2 /* Worklogs.storyboard */; };
 		6DAC60F22C1C5DD9000D11A2 /* WizardJiraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD72C1C5DD9000D11A2 /* WizardJiraView.xib */; };
-		6DAC60F32C1C5DD9000D11A2 /* ReportsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60362C1C5DD9000D11A2 /* ReportsHeaderView.xib */; };
 		6DAC60F42C1C5DD9000D11A2 /* JitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60022C1C5DD9000D11A2 /* JitCell.xib */; };
 		6DAC60F52C1C5DD9000D11A2 /* CloseDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60282C1C5DD9000D11A2 /* CloseDayCell.xib */; };
 		6DAC60F62C1C5DD9000D11A2 /* GitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FFB2C1C5DD9000D11A2 /* GitCell.xib */; };
@@ -535,7 +532,6 @@
 		6DAC617F2C1C5DD9000D11A2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60392C1C5DD9000D11A2 /* DataSource.swift */; };
 		6DAC61802C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBE2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift */; };
 		6DAC61812C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC52C1C5DD9000D11A2 /* CalendarInteractor.swift */; };
-		6DAC61822C1C5DD9000D11A2 /* MonthReportsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60342C1C5DD9000D11A2 /* MonthReportsHeaderView.swift */; };
 		6DAC61832C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60132C1C5DD9000D11A2 /* JiraTempoCell.swift */; };
 		6DAC61842C1C5DD9000D11A2 /* OutputsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60172C1C5DD9000D11A2 /* OutputsScrollView.swift */; };
 		6DAC61852C1C5DD9000D11A2 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5F952C1C5DD9000D11A2 /* AppViewController.swift */; };
@@ -891,8 +887,6 @@
 		6DAC602F2C1C5DD9000D11A2 /* TaskCell_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell_.swift; sourceTree = "<group>"; };
 		6DAC60302C1C5DD9000D11A2 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
 		6DAC60322C1C5DD9000D11A2 /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
-		6DAC60342C1C5DD9000D11A2 /* MonthReportsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportsHeaderView.swift; sourceTree = "<group>"; };
-		6DAC60362C1C5DD9000D11A2 /* ReportsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportsHeaderView.xib; sourceTree = "<group>"; };
 		6DAC60392C1C5DD9000D11A2 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		6DAC603A2C1C5DD9000D11A2 /* EditableTimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeBox.swift; sourceTree = "<group>"; };
 		6DAC603B2C1C5DD9000D11A2 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -1784,36 +1778,10 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
-		6DAC60352C1C5DD9000D11A2 /* MonthReports */ = {
-			isa = PBXGroup;
-			children = (
-				6DAC60342C1C5DD9000D11A2 /* MonthReportsHeaderView.swift */,
-			);
-			path = MonthReports;
-			sourceTree = "<group>";
-		};
-		6DAC60372C1C5DD9000D11A2 /* HeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				6DAC60362C1C5DD9000D11A2 /* ReportsHeaderView.xib */,
-			);
-			path = HeaderView;
-			sourceTree = "<group>";
-		};
-		6DAC60382C1C5DD9000D11A2 /* Reports */ = {
-			isa = PBXGroup;
-			children = (
-				6DAC60372C1C5DD9000D11A2 /* HeaderView */,
-			);
-			path = Reports;
-			sourceTree = "<group>";
-		};
 		6DAC60452C1C5DD9000D11A2 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
 				6DAC60332C1C5DD9000D11A2 /* cells */,
-				6DAC60352C1C5DD9000D11A2 /* MonthReports */,
-				6DAC60382C1C5DD9000D11A2 /* Reports */,
 				6DAC60392C1C5DD9000D11A2 /* DataSource.swift */,
 				6DAC603A2C1C5DD9000D11A2 /* EditableTimeBox.swift */,
 				6DAC603B2C1C5DD9000D11A2 /* NewTaskViewController.swift */,
@@ -2132,7 +2100,6 @@
 			files = (
 				6DAC60F12C1C5DD9000D11A2 /* Worklogs.storyboard in Resources */,
 				6DAC60F22C1C5DD9000D11A2 /* WizardJiraView.xib in Resources */,
-				6DAC60F32C1C5DD9000D11A2 /* ReportsHeaderView.xib in Resources */,
 				6DAC60F42C1C5DD9000D11A2 /* JitCell.xib in Resources */,
 				6DAC60F52C1C5DD9000D11A2 /* CloseDayCell.xib in Resources */,
 				6DAC60F62C1C5DD9000D11A2 /* GitCell.xib in Resources */,
@@ -2187,7 +2154,6 @@
 			files = (
 				6DAC60C82C1C5DD9000D11A2 /* Worklogs.storyboard in Resources */,
 				6DAC60C92C1C5DD9000D11A2 /* WizardJiraView.xib in Resources */,
-				6DAC60CA2C1C5DD9000D11A2 /* ReportsHeaderView.xib in Resources */,
 				6DAC60CB2C1C5DD9000D11A2 /* JitCell.xib in Resources */,
 				6DAC60CC2C1C5DD9000D11A2 /* CloseDayCell.xib in Resources */,
 				6DAC60CD2C1C5DD9000D11A2 /* GitCell.xib in Resources */,
@@ -2407,7 +2373,6 @@
 				6DAC617F2C1C5DD9000D11A2 /* DataSource.swift in Sources */,
 				6DAC61802C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */,
 				6DAC61812C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */,
-				6DAC61822C1C5DD9000D11A2 /* MonthReportsHeaderView.swift in Sources */,
 				6DAC61832C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */,
 				6DAC61842C1C5DD9000D11A2 /* OutputsScrollView.swift in Sources */,
 				6DAC61852C1C5DD9000D11A2 /* AppViewController.swift in Sources */,
@@ -2660,7 +2625,6 @@
 				6DAC60BE2C1C5DD9000D11A2 /* DataSource.swift in Sources */,
 				6DAC60BF2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */,
 				6DAC60C02C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */,
-				6DAC60C12C1C5DD9000D11A2 /* MonthReportsHeaderView.swift in Sources */,
 				6DAC60C22C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */,
 				6DAC60C32C1C5DD9000D11A2 /* OutputsScrollView.swift in Sources */,
 				6DAC60C42C1C5DD9000D11A2 /* AppViewController.swift in Sources */,

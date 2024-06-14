@@ -24,21 +24,21 @@ protocol TasksInteractorOutput: class {
 class TasksInteractor {
 
     weak var presenter: TasksInteractorOutput?
-    
+
     private let tasksReader: ReadTasksInteractor!
     private let moduleGit = ModuleGitLogs()
     private let moduleCalendar = ModuleCalendar()
     private let pref = RCPreferences<LocalPreferences>()
     private var currentTasks = [Task]()
     private var currentDateStart: Date?
-    
+
     init() {
         tasksReader = ReadTasksInteractor(repository: localRepository, remoteRepository: remoteRepository)
     }
 }
 
 extension TasksInteractor: TasksInteractorInput {
-    
+
     func reloadTasks (inDay day: Day) {
 
         let dateStart = day.dateStart
@@ -46,7 +46,7 @@ extension TasksInteractor: TasksInteractorInput {
         currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
-    
+
     func reloadTasks (inMonth date: Date) {
 
         let dateStart = date.startOfMonth()
@@ -54,28 +54,28 @@ extension TasksInteractor: TasksInteractorInput {
         currentDateStart = dateStart
         reloadTasks(dateStart: dateStart, dateEnd: dateEnd)
     }
-    
+
     private func reloadTasks (dateStart: Date, dateEnd: Date) {
-        
+
         self.currentTasks = []
         self.addLocalTasks(dateStart: dateStart, dateEnd: dateEnd) { [weak self] in
-            guard let self, !self.currentTasks.isEmpty else {
+            guard let wself = self, !wself.currentTasks.isEmpty else {
                 self?.presenter?.tasksDidLoad([])
                 return
             }
             let isMonthRead = dateEnd.timeIntervalSince(dateStart) > 24.hoursToSec
-            if isMonthRead || self.currentTasks.contains(where: { $0.taskType == .endDay }) {
-                self.presenter?.tasksDidLoad(self.currentTasks)
+            if isMonthRead || wself.currentTasks.contains(where: { $0.taskType == .endDay }) {
+                self?.presenter?.tasksDidLoad(wself.currentTasks)
                 return
             }
-            self.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
-                self.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
-                    self.presenter?.tasksDidLoad(self.currentTasks)
+            self?.addGitLogs(dateStart: dateStart, dateEnd: dateEnd) {
+                self?.addCalendarEvents(dateStart: dateStart, dateEnd: dateEnd) {
+                    self?.presenter?.tasksDidLoad(wself.currentTasks)
                 }
             }
         }
     }
-    
+
     private func addLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         currentTasks = tasksReader.tasks(between: dateStart, and: dateEnd)
         // Sort by date
@@ -98,11 +98,11 @@ extension TasksInteractor: TasksInteractorInput {
         }
         moduleGit.fetchLogs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
-            guard let self, self.currentDateStart == dateStart else {
+            guard let wself = self, wself.currentDateStart == dateStart else {
                 RCLog("Different day was selected than the one loading")
                 return
             }
-            self.currentTasks = MergeTasksInteractor().merge(tasks: self.currentTasks, with: gitTasks)
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: gitTasks)
             completion()
         }
     }
@@ -113,13 +113,13 @@ extension TasksInteractor: TasksInteractorInput {
             completion()
             return
         }
-        moduleCalendar.events(dateStart: dateStart, dateEnd: dateEnd) { [weak self] calendarTasks in
+        moduleCalendar.events(dateStart: dateStart, dateEnd: dateEnd) { [weak self] (calendarTasks) in
 
-            guard let self, self.currentDateStart == dateStart else {
+            guard let wself = self, wself.currentDateStart == dateStart else {
                 RCLog("Different day was selected than the one loading")
                 return
             }
-            self.currentTasks = MergeTasksInteractor().merge(tasks: self.currentTasks, with: calendarTasks)
+            wself.currentTasks = MergeTasksInteractor().merge(tasks: wself.currentTasks, with: calendarTasks)
             completion()
         }
     }

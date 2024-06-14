@@ -11,15 +11,15 @@ import Cocoa
 import RCPreferences
 
 protocol GitPresenterInput: class {
-    
+
     var isShellScriptInstalled: Bool? {get set}
-    
+
     func enableGit (_ enabled: Bool)
     func refresh (withCommand command: String)
 }
 
 protocol GitPresenterOutput: class {
-    
+
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)
     func setDescriptionText (_ text: String)
@@ -40,30 +40,30 @@ enum GitCellState {
 }
 
 class GitPresenter {
-    
+
     weak var userInterface: GitPresenterOutput?
     private let gitModule = ModuleGitLogs()
     private let localPreferences = RCPreferences<LocalPreferences>()
     private let store = Store.shared
-    
+
     var isShellScriptInstalled: Bool? {
         didSet {
             refresh()
         }
     }
-    
+
     init() {
-        
+
     }
-    
+
     private func refresh() {
-        
+
         guard store.isGitPurchased else {
             refresh(state: .needsPurchase)
             return
         }
         gitModule.checkIfGitInstalled(completion: { [weak self] commandInstalled in
-            
+
             guard let wself = self else {
                 return
             }
@@ -75,11 +75,11 @@ class GitPresenter {
                 wself.refresh(state: .needsGitScript)
                 return
             }
-            
+
             wself.refresh(state: wself.localPreferences.bool(.enableGit) ? .enabled : .disabled)
         })
     }
-    
+
     private func refresh (state: GitCellState) {
         guard let userInterface = self.userInterface else {
             return
@@ -117,45 +117,15 @@ class GitPresenter {
 }
 
 extension GitPresenter: GitPresenterInput {
-    
+
     func enableGit (_ enabled: Bool) {
         localPreferences.set(enabled, forKey: .enableGit)
         userInterface?.setButEnable(on: enabled, enabled: nil)
     }
-    
+
     func refresh (withCommand command: String) {
         // Set the command to userDefaults and it will be read by the hokup module from there
 //        localPreferences.set(command, forKey: .settingsHookupCmdName)
         refresh()
     }
-
-    func pickPath() {
-        
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = false
-        panel.message = "Select the root of the git project you want to track"
-        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
-        panel.begin { [weak self] (result) -> Void in
-            
-            guard let self, let userInterface = self.userInterface else {
-                return
-            }
-            if result == NSApplication.ModalResponse.OK {
-                if let url = panel.urls.first {
-                    var path = url.absoluteString
-                    path = path.replacingOccurrences(of: "file://", with: "")
-                    path.removeLast()
-                    // TODO: Validate if the picked project is a git project
-                    
-                    let existingPaths = self.localPreferences.string(.settingsGitPaths)
-                    let updatedPaths = existingPaths == "" ? path : (existingPaths + "," + path)
-                    self.savePaths(updatedPaths)
-                    userInterface.setPaths(updatedPaths, enabled: self.localPreferences.bool(.enableGit))
-                }
-            }
-        }
-    }
-    
 }
