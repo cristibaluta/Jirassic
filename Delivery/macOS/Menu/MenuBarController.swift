@@ -34,7 +34,7 @@ class MenuBarController: NSObject {
 	override init() {
 		super.init()
 		
-		let length: CGFloat = -1 //NSVariableStatusItemLength
+        let length: CGFloat = NSStatusItem.squareLength
         item = bar.statusItem(withLength: length)
 		
 		iconView = MenuBarIconView(item: item)
