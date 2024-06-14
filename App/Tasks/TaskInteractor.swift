@@ -57,8 +57,11 @@ class TaskInteractor: RepositoryInteractor {
         #if !CMD
         if let remoteRepository = self.remoteRepository {
             let sync = RCSync<Task>(localRepository: self.repository, remoteRepository: remoteRepository)
-            sync.uploadTask(task, completion: { (success) in
+            sync.uploadTask(task, completion: { success, lastSyncDate in
                 DispatchQueue.main.async {
+                    if let date = lastSyncDate {
+                        WriteMetadataInteractor().set(tasksLastSyncDate: date)
+                    }
                     completion(task)
                 }
             })
