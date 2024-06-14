@@ -9,7 +9,7 @@ import Foundation
 
 var shouldKeepRunning = true
 let theRL = RunLoop.current
-let appVersion = "18.12.12"
+let appVersion = "20.01.08"
 //while shouldKeepRunning && theRL.run(mode: .defaultRunLoopMode, before: .distantFuture) {}
 
 enum ArgType {
@@ -20,6 +20,8 @@ enum ArgType {
 enum Command: String {
     case list = "list"
     case reports = "reports"
+    case start = "start"
+    case end = "end"
     case insert = "insert"
     case scrum = "scrum"
     case lunch = "lunch"
@@ -32,11 +34,12 @@ enum Command: String {
 
 func printHelp() {
     print("")
-    print("jirassic \(appVersion) - (c)2018 Imagin soft")
+    print("jirassic \(appVersion) - (c)2020 Imagin soft")
     print("")
     print("Usage:")
     print("     list [yyyy.mm.dd]  If date is missing list tasks from today")
     print("     reports [yyyy.mm.dd|yyyy.mm] [hours per day]  If date is missing, list reports from today")
+    print("     start|end  Current date is used")
     print("     insert -nr <task number> -notes <notes> -duration <mm>")
     print("     scrum|lunch|meeting|waste|learning|coderev <duration>  Duration in minutes")
     print("")
@@ -74,7 +77,7 @@ guard arguments.count > 0 else {
     exit(0)
 }
 
-func dayStarted() -> Bool {
+func isDayStarted() -> Bool {
     
     let currentTasks = reader.tasksInDay(Date())
     guard currentTasks.count > 0 else {
@@ -100,7 +103,7 @@ func list (dayOnDate date: Date) {
     print("")
 }
 
-func reports (forDay date: Date, targetHoursInDay: Double?) {
+func listReports (forDay date: Date, targetHoursInDay: Double?) {
     
     print("")
     let tasks = reader.tasksInDay(date)
@@ -119,7 +122,7 @@ func reports (forDay date: Date, targetHoursInDay: Double?) {
     print("")
 }
 
-func reports (forMonth date: Date, targetHoursInDay: Double?) {
+func listReports (forMonth date: Date, targetHoursInDay: Double?) {
 
     print("")
     print("Reports for the month of \(date.startOfMonth().MMMMdd()) - \(date.endOfMonth().MMMMdd()) \(date.YYYY())")
@@ -128,7 +131,7 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
     let tasks = reader.tasksInMonth(date)
     let monthReportsInteractor = CreateMonthReport()
     let duration: Double? = targetHoursInDay != nil ? targetHoursInDay!.hoursToSec : nil
-    let result = monthReportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration)
+    let result = monthReportsInteractor.reports(fromTasks: tasks, targetHoursInDay: duration, roundHours: true)
     if result.byTasks.count > 0 {
         let joined = monthReportsInteractor.joinReports(result.byTasks)
         print(joined.notes)
@@ -142,7 +145,7 @@ func reports (forMonth date: Date, targetHoursInDay: Double?) {
 
 func insertIssue (arguments: [String]) {
     
-    guard dayStarted() else {
+    guard isDayStarted() else {
         return
     }
     
@@ -198,26 +201,19 @@ func insertIssue (arguments: [String]) {
 
 func insert (taskType: Command, arguments: [String]) {
     
-    guard dayStarted() else {
+    guard isDayStarted() else {
         return
     }
     var task: Task?
     
     switch taskType {
         case .scrum: task = Task(endDate: Date(), type: .scrum)
-            break
         case .lunch: task = Task(endDate: Date(), type: .lunch)
-            break
         case .meeting: task = Task(endDate: Date(), type: .meeting)
-            break
         case .waste: task = Task(endDate: Date(), type: .waste)
-            break
         case .learning: task = Task(endDate: Date(), type: .learning)
-            break
         case .coderev: task = Task(endDate: Date(), type: .coderev)
-            break
-        default:
-            return
+        default: return
     }
     
     if let duration = arguments.first {
@@ -236,6 +232,24 @@ func insert (taskType: Command, arguments: [String]) {
     print(taskType.rawValue.capitalized + " saved")
 }
 
+func startDay() {
+    guard !isDayStarted() else {
+        let tasks = reader.tasksInDay(Date())
+        let startDate = tasks.filter({$0.taskType == .startDay}).first?.endDate
+        print("Day was already started at \(startDate?.HHmm() ?? "...")")
+        return
+    }
+    let task = Task(endDate: Date(), type: .startDay)
+    let saveInteractor = TaskInteractor(repository: localRepository, remoteRepository: nil)
+    saveInteractor.saveTask(task, allowSyncing: false, completion: { _ in })
+
+    print("Day was started")
+}
+
+func closeDay() {
+    print("Day cannot be closed because git commits and calendars will be lost, use the app to close the day!")
+}
+
 let commandStr = arguments.remove(at: 0)
 if let command = Command(rawValue: commandStr) {
     switch command {
@@ -246,7 +260,7 @@ if let command = Command(rawValue: commandStr) {
                 date = Date(YYYYMMddString: arg)
             }
             list (dayOnDate: date)
-            break
+
         case .reports:
             var date = Date()
             var duration: Double? = nil
@@ -254,25 +268,27 @@ if let command = Command(rawValue: commandStr) {
                 duration = Double(arguments[1])
             }
             if arguments.count > 0 {
-                let arg = arguments.remove(at: 0)
-                if arg.components(separatedBy: ".").count == 2 {
-                    // We have only year and month. Add a day and call the month reports
-                    date = Date(YYYYMMddString: "\(arg).01")
-                    reports (forMonth: date, targetHoursInDay: duration)
+                let dateString = arguments.remove(at: 0)
+                if dateString.components(separatedBy: ".").count == 2 {
+                    /// We have only year.month. Add a day and list the month reports
+                    date = Date(YYYYMMddString: "\(dateString).01")
+                    listReports (forMonth: date, targetHoursInDay: duration)
                     break
-                } else if arg.components(separatedBy: ".").count == 3 {
-                    // We have year, month and day
-                    date = Date(YYYYMMddString: arg)
+                } else if dateString.components(separatedBy: ".").count == 3 {
+                    /// We have year.month.day
+                    date = Date(YYYYMMddString: dateString)
                 }
             }
-            reports (forDay: date, targetHoursInDay: duration)
-            break
+            listReports (forDay: date, targetHoursInDay: duration)
+
+        case .start:
+            startDay()
+        case .end:
+            closeDay()
         case .insert:
             insertIssue (arguments: arguments)
-            break
         case .scrum, .lunch, .meeting, .waste, .learning, .coderev:
             insert (taskType: command, arguments: arguments)
-            break
         case .version:
             print(appVersion)
     }
