@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23077.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -671,14 +670,14 @@
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-dX-oiy">
                                 <rect key="frame" x="457" y="398" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="hGh-fH-eCW"/>
-                                    <constraint firstAttribute="width" constant="22" id="p8i-Kl-9Iu"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSSmartBadgeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="W4Q-te-r5C">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="hGh-fH-eCW"/>
+                                    <constraint firstAttribute="width" constant="22" id="p8i-Kl-9Iu"/>
+                                </constraints>
                                 <accessibility description="Settings" identifier="Settings"/>
                                 <connections>
                                     <action selector="handleSettingsButton:" target="Ei8-gb-fmb" id="m4O-xC-4F7"/>
@@ -729,14 +728,14 @@
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zsc-26-fMG">
                                 <rect key="frame" x="435" y="395.5" width="22.5" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Skd-bS-S8k"/>
-                                    <constraint firstAttribute="width" constant="22" id="eA5-kF-fya"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="TYN-Ke-0YZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Skd-bS-S8k"/>
+                                    <constraint firstAttribute="width" constant="22" id="eA5-kF-fya"/>
+                                </constraints>
                                 <connections>
                                     <action selector="handleRefreshButton:" target="Ei8-gb-fmb" id="X7F-ri-Hun"/>
                                 </connections>
@@ -763,14 +762,14 @@
                             </button>
                             <button toolTip="Some plugins needs updating." translatesAutoresizingMaskIntoConstraints="NO" id="7eX-HA-FPc">
                                 <rect key="frame" x="413" y="398" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="5pZ-HY-d1f"/>
-                                    <constraint firstAttribute="height" constant="22" id="zaZ-cU-Cdv"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="WarningButton" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="T1p-wn-MMS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="5pZ-HY-d1f"/>
+                                    <constraint firstAttribute="height" constant="22" id="zaZ-cU-Cdv"/>
+                                </constraints>
                                 <accessibility description="Settings" identifier="Settings"/>
                                 <connections>
                                     <action selector="handleWarningButton:" target="Ei8-gb-fmb" id="5j6-VJ-WcK"/>
@@ -822,7 +821,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSRefreshTemplate" width="18" height="21"/>
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="WarningButton" width="15" height="15"/>
     </resources>

@@ -54,7 +54,8 @@ class TasksScrollView: NSScrollView {
 
         tableView = NSTableView(frame: self.frame)
         tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
-        tableView.backgroundColor = NSColor.clear
+        tableView.style = .fullWidth
+        tableView.backgroundColor = .clear
         tableView.headerView = nil
 
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "taskColumn"))

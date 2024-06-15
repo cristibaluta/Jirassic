@@ -15,7 +15,6 @@ class ReportCell: NSTableRowView, CellProtocol {
     @IBOutlet fileprivate var taskNrTextField: NSTextField?
     @IBOutlet fileprivate var notesTextField: NSTextField?
     @IBOutlet fileprivate var butCopy: NSButton?
-    @IBOutlet fileprivate var butCopyWidthConstraint: NSLayoutConstraint?
     fileprivate var trackingArea: NSTrackingArea?
     fileprivate var bgColor: NSColor = NSColor.clear
     
@@ -69,7 +68,7 @@ class ReportCell: NSTableRowView, CellProtocol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        butCopyWidthConstraint?.constant = 0
+        butCopy?.isHidden = true
         taskNrTextField?.preferredMaxLayoutWidth = CGFloat(300)
         ensureTrackingArea()
     }
@@ -91,7 +90,7 @@ class ReportCell: NSTableRowView, CellProtocol {
 extension ReportCell {
     
     override func mouseEntered (with theEvent: NSEvent) {
-        butCopyWidthConstraint?.constant = 47
+        butCopy?.isHidden = false
         bgColor = NSColor.white
         butCopy!.needsLayout = true
         self.needsDisplay = true
@@ -103,7 +102,7 @@ extension ReportCell {
     }
     
     override func mouseExited (with theEvent: NSEvent) {
-        butCopyWidthConstraint?.constant = 0
+        butCopy?.isHidden = true
         bgColor = NSColor.clear
         butCopy!.needsLayout = true
         self.needsDisplay = true
