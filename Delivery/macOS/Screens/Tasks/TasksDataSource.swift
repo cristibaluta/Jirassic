@@ -13,15 +13,15 @@ let kCloseDayCellHeight = CGFloat(90.0)
 let kGapBetweenCells = CGFloat(16.0)
 let kCellLeftPadding = CGFloat(10.0)
 
-class TasksDataSource: NSObject, TasksAndReportsDataSource {
-    
+class TasksDataSource: NSObject, ListDataSource {
+
     var didClickAddRow: ((_ row: Int) -> Void)?
     var didClickRemoveRow: ((_ row: Int) -> Void)?
     var didClickEditRow: ((_ row: Int) -> Void)?
     var didClickCloseDay: ((_ tasks: [Task]) -> Void)?
     var didClickSaveWorklogs: (() -> Void)?
     var didClickSetupJira: (() -> Void)?
-    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
+    var didClickCopyReport: ((_ asHtml: Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
     
     internal var tableView: NSTableView! {
@@ -91,7 +91,7 @@ extension TasksDataSource: NSTableViewDelegate {
             }
         }
         
-        var theData = tasks[row]
+        let theData = tasks[row]
         let lastData = tasks.last
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
         var cell: CellProtocol = TaskCell.instantiate(in: tableView)

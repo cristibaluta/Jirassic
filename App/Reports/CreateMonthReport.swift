@@ -95,7 +95,7 @@ class CreateMonthReport {
         return (byDays: reportsByDay, byTasks: Array(reportsByTaskNumber.values))
     }
 
-    // List of reports by task number
+    /// List of reports by task number
     func joinReports (_ reports: [Report]) -> (notes: String, totalDuration: Double) {
         
         var notes = ""
@@ -146,17 +146,26 @@ class CreateMonthReport {
         ]
         var csv = headers.joined(separator: ";") + "\n"
         for report in reports {
-            var note = "\(report.taskNumber) \(report.title)"
-            var component = ""
-            if report.notes.count > 0 {
-                for n in report.notes {
-                    csv += ";;\(report.duration.secToHours);;;;;;;;\(component);;;;;;GS1.1_BOSCH_eBike;\(note);;;;;;;;;;;;;;;;"
-                    csv += "\n"
-                }
-            } else {
-                csv += ";;\(report.duration.secToHours);;;;;;;;;;;;;;GS1.1_BOSCH_eBike;\(note);;;;;;;;;;;;;;;;"
-                csv += "\n"
+            let dict = [
+                "Hours": "\(report.duration.secToHours)",
+                "Component": "",
+                "Project Name": "GS1.1_BOSCH_eBike",
+                "Work Description": "\(report.taskNumber) \(report.title)"
+            ]
+            var line = ""
+            for h in headers {
+                line += dict[h] ?? "" + ";"
             }
+            csv += line + "\n"
+//            if report.notes.count > 0 {
+//                for n in report.notes {
+//                    csv += ";;\(hours);;;;;;;;\(component);;;;;;\(project);\(note);;;;;;;;;;;;;;;;"
+//                    csv += "\n"
+//                }
+//            } else {
+//                csv += ";;\(hours);;;;;;;;;;;;;;\(project);\(note);;;;;;;;;;;;;;;;"
+//                csv += "\n"
+//            }
         }
         return csv
     }

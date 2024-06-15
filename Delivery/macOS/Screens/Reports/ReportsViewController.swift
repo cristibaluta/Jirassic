@@ -12,7 +12,7 @@ import RCLog
 class ReportsViewController: NSViewController {
     
     @IBOutlet private var loadingTasksIndicator: NSProgressIndicator!
-    private var tasksScrollView: TasksScrollView?
+    private var listView: ListView?
     
     weak var appWireframe: AppWireframe?
     var presenter: ReportsPresenterInput?
@@ -54,23 +54,23 @@ extension ReportsViewController: ReportsPresenterOutput {
         dataSource.didChangeSettings = { [weak self] in
             self?.presenter?.reloadLastSelectedMonth()
         }
-        dataSource.didClickCopyMonthlyReport = { [weak self] asHtml in
-            self?.presenter?.copyMonthlyReportsToClipboard(asHtml: asHtml)
+        dataSource.didClickCopyReport = { [weak self] asCsv in
+            self?.presenter?.copyReportToClipboard(asCsv: asCsv)
         }
 
-        let scrollView = TasksScrollView(dataSource: dataSource)
-        self.view.addSubview(scrollView)
-        scrollView.constrainToSuperview()
-        scrollView.reloadData()
+        let listView = ListView(dataSource: dataSource)
+        self.view.addSubview(listView)
+        listView.constrainToSuperview()
+        listView.reloadData()
 
-        tasksScrollView = scrollView
+        self.listView = listView
     }
     
     func removeReports() {
         
-        if tasksScrollView != nil {
-            tasksScrollView?.removeFromSuperview()
-            tasksScrollView = nil
+        if listView != nil {
+            listView?.removeFromSuperview()
+            listView = nil
         }
     }
 }

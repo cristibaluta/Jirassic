@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class ReportsDataSource: NSObject, TasksAndReportsDataSource {
-    
+class ReportsDataSource: NSObject, ListDataSource {
+
     var tableView: NSTableView! {
         didSet {
             if #available(OSX 10.13, *) {
@@ -25,7 +25,7 @@ class ReportsDataSource: NSObject, TasksAndReportsDataSource {
     var didClickCloseDay: ((_ tasks: [Task]) -> Void)?
     var didClickSaveWorklogs: (() -> Void)?
     var didClickSetupJira: (() -> Void)?
-    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)?
+    var didClickCopyReport: ((_ asHtml: Bool) -> Void)?
     var didChangeSettings: (() -> Void)?
 
     private var tempCell: ReportCell?
@@ -82,7 +82,7 @@ extension ReportsDataSource: NSTableViewDelegate {
             let cell = CopyReportCell.instantiate(in: tableView)
             cell.numberOfDays = numberOfDays
             cell.didClickCopyAll = { isHtml in
-                self.didClickCopyMonthlyReport?(isHtml)
+                self.didClickCopyReport?(isHtml)
             }
             cell.didChangeSettings = {
                 self.didChangeSettings?()
@@ -91,7 +91,7 @@ extension ReportsDataSource: NSTableViewDelegate {
         }
 
         let theData = reports[row]
-        let cell: CellProtocol = ReportCell.instantiate(in: self.tableView)
+        let cell: CellProtocol = ReportCell.instantiate(in: tableView)
         ReportCellPresenter(cell: cell).present(theReport: theData)
         
         return cell as? NSView

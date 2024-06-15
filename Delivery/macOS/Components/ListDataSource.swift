@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol TasksAndReportsDataSource {
+protocol ListDataSource {
 
     var tableView: NSTableView! {get set}
 
@@ -21,8 +21,8 @@ protocol TasksAndReportsDataSource {
     var didClickSaveWorklogs: (() -> Void)? {get set}
     var didClickSetupJira: (() -> Void)? {get set}
     // Used by reports
-    var didClickCopyMonthlyReport: ((_ asHtml: Bool) -> Void)? {get set}
+    var didClickCopyReport: ((_ asHtml: Bool) -> Void)? {get set}
     var didChangeSettings: (() -> Void)? {get set}
 }
 
-typealias DataSource = NSTableViewDataSource & NSTableViewDelegate & TasksAndReportsDataSource
+typealias DataSource = NSTableViewDataSource & NSTableViewDelegate & ListDataSource

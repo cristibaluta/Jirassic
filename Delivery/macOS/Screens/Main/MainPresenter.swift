@@ -51,13 +51,16 @@ class MainPresenter {
 extension MainPresenter: MainPresenterInput {
     
     func viewDidAppear() {
+
         ui!.showWarning(false)
         ui!.showCalendar()
+
         let lastType = TaskTypeSelection().lastType()
         select(listType: lastType)
         ui!.select(listType: lastType)
+
         // Check for compatibility of components
-        extensions.getVersions { [weak self] (versions) in
+        extensions.getVersions { [weak self] versions in
             guard let userInterface = self?.ui else {
                 return
             }
@@ -70,11 +73,14 @@ extension MainPresenter: MainPresenterInput {
         }
     }
     
-    func select(listType: ListType) {
+    func select (listType: ListType) {
+
         TaskTypeSelection().setType(listType)
+
         ui!.removeTasks()
         ui!.removeReports()
         ui!.removeProjects()
+        
         switch listType {
             case .tasks:
                 ui!.showCalendar()

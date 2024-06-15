@@ -9,6 +9,7 @@
 import Foundation
 import Cocoa
 import RCPreferences
+import RCLog
 
 protocol ReportsPresenterInput: class {
     
@@ -16,8 +17,7 @@ protocol ReportsPresenterInput: class {
     func reloadLastSelectedMonth()
     func reloadReportsInDay (_ day: Day)
     func reloadReportsInMonth (_ date: Date)
-    func copyDayReportToClipboard()
-    func copyMonthlyReportsToClipboard(asHtml: Bool)
+    func copyReportToClipboard(asCsv: Bool)
     func messageButtonDidPress()
 }
 
@@ -41,7 +41,7 @@ class ReportsPresenter {
     private var extensions = ExtensionsInteractor()
     private var lastSelectedDay: Day?
     private var lastSelectedMonth: Date = Date()
-    
+
     
     private func updateNoTasksState() {
         
@@ -64,6 +64,28 @@ class ReportsPresenter {
         })
         ModuleHookup().insert(task: task)
     }
+
+    private func copyMonthlyReportsToClipboard(asCsv: Bool) {
+        let interactor = CreateMonthReport()
+        var string = ""
+        if asCsv {
+            string = interactor.csvReports(currentReports)
+        } else {
+            let joined = interactor.joinReports(currentReports)
+            string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
+        }
+        RCLog(string)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
+    }
+
+    private func copyDayReportToClipboard() {
+        let interactor = CreateDayReport()
+        let string = interactor.stringReports(currentReports)
+        RCLog(string)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
+    }
 }
 
 extension ReportsPresenter: ReportsPresenterInput {
@@ -80,12 +102,14 @@ extension ReportsPresenter: ReportsPresenterInput {
     func reloadReportsInDay (_ day: Day) {
         ui!.removeReports()
         ui!.showLoadingIndicator(true)
+        lastSelectedDay = day
         interactor!.reloadTasks(inDay: day)
     }
     
     func reloadReportsInMonth (_ date: Date) {
         ui!.removeReports()
         ui!.showLoadingIndicator(true)
+        lastSelectedMonth = date
         interactor!.reloadTasks(inMonth: date)
     }
     
@@ -96,24 +120,12 @@ extension ReportsPresenter: ReportsPresenterInput {
         }
     }
 
-    func copyMonthlyReportsToClipboard(asHtml: Bool) {
-        var string = ""
-        let interactor = CreateMonthReport()
-        if asHtml {
-            string = interactor.htmlReports(currentReports)
+    func copyReportToClipboard(asCsv: Bool) {
+        if lastSelectedDay != nil {
+            copyDayReportToClipboard()
         } else {
-            let joined = interactor.joinReports(currentReports)
-            string = joined.notes + "\n\n" + joined.totalDuration.secToHoursAndMin
+            copyMonthlyReportsToClipboard(asCsv: asCsv)
         }
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
-    }
-
-    func copyDayReportToClipboard() {
-        let interactor = CreateDayReport()
-        let string = interactor.stringReports(currentReports)
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.writeObjects([string as NSPasteboardWriting])
     }
 }
 
@@ -131,24 +143,24 @@ extension ReportsPresenter: TasksInteractorOutput {
         let targetHoursInDay = pref.bool(.enableRoundingDay)
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
-        let reportInteractor = CreateMonthReport()
-        let reports = reportInteractor.reports(fromTasks: currentTasks,
-                                               targetHoursInDay: targetHoursInDay,
-                                               roundHours: true)
-        currentReports = reports.byTasks
-        ui.removeReports()
-        ui.showReports(currentReports, numberOfDays: reports.byDays.count)
 
-        
-//        let settings = SettingsInteractor().getAppSettings()
-//        let targetHoursInDay = pref.bool(.enableRoundingDay)
-//            ? TimeInteractor(settings: settings).workingDayLength()
-//            : nil
-//        let reportInteractor = CreateReport()
-//        let reports = reportInteractor.reports(fromTasks: currentTasks, targetHoursInDay: targetHoursInDay)
-//        currentReports = reports.reversed()
-//        ui.showReports(currentReports, numberOfDays: 1, type: selectedListType)
-        
+        if lastSelectedDay != nil {
+            let reportInteractor = CreateReport()
+            let reports = reportInteractor.reports(fromTasks: currentTasks,
+                                                   targetHoursInDay: targetHoursInDay)
+            currentReports = reports.reversed()
+            ui.removeReports()
+            ui.showReports(currentReports, numberOfDays: 1)
+        } else {
+            let reportInteractor = CreateMonthReport()
+            let reports = reportInteractor.reports(fromTasks: currentTasks,
+                                                   targetHoursInDay: targetHoursInDay,
+                                                   roundHours: true)
+            currentReports = reports.byTasks
+            ui.removeReports()
+            ui.showReports(currentReports, numberOfDays: reports.byDays.count)
+        }
+
         updateNoTasksState()
     }
 }

@@ -303,7 +303,7 @@
 		6DAC60922C1C5DD9000D11A2 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5F962C1C5DD9000D11A2 /* AppWireframe.swift */; };
 		6DAC60932C1C5DD9000D11A2 /* WizardAppleScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD02C1C5DD9000D11A2 /* WizardAppleScriptView.swift */; };
 		6DAC60942C1C5DD9000D11A2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC02C1C5DD9000D11A2 /* LoginPresenter.swift */; };
-		6DAC60952C1C5DD9000D11A2 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60402C1C5DD9000D11A2 /* TasksScrollView.swift */; };
+		6DAC60952C1C5DD9000D11A2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60402C1C5DD9000D11A2 /* ListView.swift */; };
 		6DAC60962C1C5DD9000D11A2 /* CalendarDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC42C1C5DD9000D11A2 /* CalendarDayCellView.swift */; };
 		6DAC60972C1C5DD9000D11A2 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC604C2C1C5DD9000D11A2 /* WorklogsViewController.swift */; };
 		6DAC60982C1C5DD9000D11A2 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FDE2C1C5DD9000D11A2 /* ProjectDetailsViewController.swift */; };
@@ -344,7 +344,7 @@
 		6DAC60BB2C1C5DD9000D11A2 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60302C1C5DD9000D11A2 /* TaskCellPresenter.swift */; };
 		6DAC60BC2C1C5DD9000D11A2 /* BrowserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FF42C1C5DD9000D11A2 /* BrowserPresenter.swift */; };
 		6DAC60BD2C1C5DD9000D11A2 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60442C1C5DD9000D11A2 /* TimeBoxViewController.swift */; };
-		6DAC60BE2C1C5DD9000D11A2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60392C1C5DD9000D11A2 /* DataSource.swift */; };
+		6DAC60BE2C1C5DD9000D11A2 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60392C1C5DD9000D11A2 /* ListDataSource.swift */; };
 		6DAC60BF2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBE2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift */; };
 		6DAC60C02C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC52C1C5DD9000D11A2 /* CalendarInteractor.swift */; };
 		6DAC60C22C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60132C1C5DD9000D11A2 /* JiraTempoCell.swift */; };
@@ -488,7 +488,7 @@
 		6DAC61532C1C5DD9000D11A2 /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5F962C1C5DD9000D11A2 /* AppWireframe.swift */; };
 		6DAC61542C1C5DD9000D11A2 /* WizardAppleScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD02C1C5DD9000D11A2 /* WizardAppleScriptView.swift */; };
 		6DAC61552C1C5DD9000D11A2 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC02C1C5DD9000D11A2 /* LoginPresenter.swift */; };
-		6DAC61562C1C5DD9000D11A2 /* TasksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60402C1C5DD9000D11A2 /* TasksScrollView.swift */; };
+		6DAC61562C1C5DD9000D11A2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60402C1C5DD9000D11A2 /* ListView.swift */; };
 		6DAC61572C1C5DD9000D11A2 /* CalendarDayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC42C1C5DD9000D11A2 /* CalendarDayCellView.swift */; };
 		6DAC61582C1C5DD9000D11A2 /* WorklogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC604C2C1C5DD9000D11A2 /* WorklogsViewController.swift */; };
 		6DAC61592C1C5DD9000D11A2 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FDE2C1C5DD9000D11A2 /* ProjectDetailsViewController.swift */; };
@@ -529,7 +529,7 @@
 		6DAC617C2C1C5DD9000D11A2 /* TaskCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60302C1C5DD9000D11A2 /* TaskCellPresenter.swift */; };
 		6DAC617D2C1C5DD9000D11A2 /* BrowserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FF42C1C5DD9000D11A2 /* BrowserPresenter.swift */; };
 		6DAC617E2C1C5DD9000D11A2 /* TimeBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60442C1C5DD9000D11A2 /* TimeBoxViewController.swift */; };
-		6DAC617F2C1C5DD9000D11A2 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60392C1C5DD9000D11A2 /* DataSource.swift */; };
+		6DAC617F2C1C5DD9000D11A2 /* ListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60392C1C5DD9000D11A2 /* ListDataSource.swift */; };
 		6DAC61802C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBE2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift */; };
 		6DAC61812C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC52C1C5DD9000D11A2 /* CalendarInteractor.swift */; };
 		6DAC61832C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC60132C1C5DD9000D11A2 /* JiraTempoCell.swift */; };
@@ -887,14 +887,14 @@
 		6DAC602F2C1C5DD9000D11A2 /* TaskCell_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell_.swift; sourceTree = "<group>"; };
 		6DAC60302C1C5DD9000D11A2 /* TaskCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellPresenter.swift; sourceTree = "<group>"; };
 		6DAC60322C1C5DD9000D11A2 /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
-		6DAC60392C1C5DD9000D11A2 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		6DAC60392C1C5DD9000D11A2 /* ListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSource.swift; sourceTree = "<group>"; };
 		6DAC603A2C1C5DD9000D11A2 /* EditableTimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTimeBox.swift; sourceTree = "<group>"; };
 		6DAC603B2C1C5DD9000D11A2 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		6DAC603C2C1C5DD9000D11A2 /* Tasks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
 		6DAC603D2C1C5DD9000D11A2 /* TasksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksDataSource.swift; sourceTree = "<group>"; };
 		6DAC603E2C1C5DD9000D11A2 /* TasksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksInteractor.swift; sourceTree = "<group>"; };
 		6DAC603F2C1C5DD9000D11A2 /* TasksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
-		6DAC60402C1C5DD9000D11A2 /* TasksScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScrollView.swift; sourceTree = "<group>"; };
+		6DAC60402C1C5DD9000D11A2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		6DAC60412C1C5DD9000D11A2 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		6DAC60422C1C5DD9000D11A2 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		6DAC60432C1C5DD9000D11A2 /* TimeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBox.swift; sourceTree = "<group>"; };
@@ -1380,6 +1380,8 @@
 			children = (
 				6DAC5F9B2C1C5DD9000D11A2 /* Components.storyboard */,
 				6DAC5F9C2C1C5DD9000D11A2 /* GitUsersViewController.swift */,
+				6DAC60402C1C5DD9000D11A2 /* ListView.swift */,
+				6DAC60392C1C5DD9000D11A2 /* ListDataSource.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1782,14 +1784,12 @@
 			isa = PBXGroup;
 			children = (
 				6DAC60332C1C5DD9000D11A2 /* cells */,
-				6DAC60392C1C5DD9000D11A2 /* DataSource.swift */,
 				6DAC603A2C1C5DD9000D11A2 /* EditableTimeBox.swift */,
 				6DAC603B2C1C5DD9000D11A2 /* NewTaskViewController.swift */,
 				6DAC603C2C1C5DD9000D11A2 /* Tasks.storyboard */,
 				6DAC603D2C1C5DD9000D11A2 /* TasksDataSource.swift */,
 				6DAC603E2C1C5DD9000D11A2 /* TasksInteractor.swift */,
 				6DAC603F2C1C5DD9000D11A2 /* TasksPresenter.swift */,
-				6DAC60402C1C5DD9000D11A2 /* TasksScrollView.swift */,
 				6DAC60412C1C5DD9000D11A2 /* TasksView.swift */,
 				6DAC60422C1C5DD9000D11A2 /* TasksViewController.swift */,
 				6DAC60432C1C5DD9000D11A2 /* TimeBox.swift */,
@@ -2329,7 +2329,7 @@
 				6DAC61542C1C5DD9000D11A2 /* WizardAppleScriptView.swift in Sources */,
 				6D3519202C1C6BB100B1AE2C /* WriteMetadataInteractor.swift in Sources */,
 				6DAC61552C1C5DD9000D11A2 /* LoginPresenter.swift in Sources */,
-				6DAC61562C1C5DD9000D11A2 /* TasksScrollView.swift in Sources */,
+				6DAC61562C1C5DD9000D11A2 /* ListView.swift in Sources */,
 				6DAC61572C1C5DD9000D11A2 /* CalendarDayCellView.swift in Sources */,
 				6DAC61582C1C5DD9000D11A2 /* WorklogsViewController.swift in Sources */,
 				6DAC61592C1C5DD9000D11A2 /* ProjectDetailsViewController.swift in Sources */,
@@ -2370,7 +2370,7 @@
 				6DAC617C2C1C5DD9000D11A2 /* TaskCellPresenter.swift in Sources */,
 				6DAC617D2C1C5DD9000D11A2 /* BrowserPresenter.swift in Sources */,
 				6DAC617E2C1C5DD9000D11A2 /* TimeBoxViewController.swift in Sources */,
-				6DAC617F2C1C5DD9000D11A2 /* DataSource.swift in Sources */,
+				6DAC617F2C1C5DD9000D11A2 /* ListDataSource.swift in Sources */,
 				6DAC61802C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */,
 				6DAC61812C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */,
 				6DAC61832C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */,
@@ -2578,7 +2578,7 @@
 				6DAC60922C1C5DD9000D11A2 /* AppWireframe.swift in Sources */,
 				6DAC60932C1C5DD9000D11A2 /* WizardAppleScriptView.swift in Sources */,
 				6DAC60942C1C5DD9000D11A2 /* LoginPresenter.swift in Sources */,
-				6DAC60952C1C5DD9000D11A2 /* TasksScrollView.swift in Sources */,
+				6DAC60952C1C5DD9000D11A2 /* ListView.swift in Sources */,
 				6DAC60962C1C5DD9000D11A2 /* CalendarDayCellView.swift in Sources */,
 				6DAC60972C1C5DD9000D11A2 /* WorklogsViewController.swift in Sources */,
 				6DAC60982C1C5DD9000D11A2 /* ProjectDetailsViewController.swift in Sources */,
@@ -2622,7 +2622,7 @@
 				6DAC60BB2C1C5DD9000D11A2 /* TaskCellPresenter.swift in Sources */,
 				6DAC60BC2C1C5DD9000D11A2 /* BrowserPresenter.swift in Sources */,
 				6DAC60BD2C1C5DD9000D11A2 /* TimeBoxViewController.swift in Sources */,
-				6DAC60BE2C1C5DD9000D11A2 /* DataSource.swift in Sources */,
+				6DAC60BE2C1C5DD9000D11A2 /* ListDataSource.swift in Sources */,
 				6DAC60BF2C1C5DD9000D11A2 /* CloudKitLoginViewController.swift in Sources */,
 				6DAC60C02C1C5DD9000D11A2 /* CalendarInteractor.swift in Sources */,
 				6DAC60C22C1C5DD9000D11A2 /* JiraTempoCell.swift in Sources */,

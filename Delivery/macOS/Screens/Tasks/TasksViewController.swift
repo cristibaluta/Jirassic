@@ -12,7 +12,7 @@ import RCLog
 class TasksViewController: NSViewController {
 
     @IBOutlet private var loadingTasksIndicator: NSProgressIndicator!
-    private var tasksScrollView: TasksScrollView?
+    private var listView: ListView?
     private var worklogsViewController: WorklogsViewController?
     /// Property to keep a reference to the active cell rect
     private var activeCellRect: NSRect?
@@ -53,7 +53,7 @@ extension TasksViewController: TasksPresenterOutput {
         dataSource.didClickAddRow = { [weak self] row in
             RCLogO("Click add item after row \(row)")
             if row >= 0 {
-                self?.activeCellRect = self?.tasksScrollView?.frameOfCell(atRow: row)
+                self?.activeCellRect = self?.listView?.frameOfCell(atRow: row)
                 self?.presenter!.insertTask(after: row)
             }
         }
@@ -61,14 +61,14 @@ extension TasksViewController: TasksPresenterOutput {
             RCLogO("Click remove item at row \(row)")
             if row >= 0 {
                 self?.presenter!.removeTask(at: row)
-                self?.tasksScrollView!.removeTask(at: row)
-                self?.tasksScrollView!.reloadFooter()
+                self?.listView!.removeTask(at: row)
+                self?.listView!.reloadFooter()
             }
         }
         dataSource.didClickEditRow = { [weak self] row in
             RCLogO("Click edit item at row \(row)")
             if row >= 0 {
-                self?.activeCellRect = self?.tasksScrollView?.frameOfCell(atRow: row)
+                self?.activeCellRect = self?.listView?.frameOfCell(atRow: row)
                 self?.presenter!.editTask(at: row)
             }
         }
@@ -82,19 +82,19 @@ extension TasksViewController: TasksPresenterOutput {
             self?.appWireframe!.flipToSettingsController()
         }
 
-        let scrollView = TasksScrollView(dataSource: dataSource)
+        let scrollView = ListView(dataSource: dataSource)
         self.view.addSubview(scrollView)
         scrollView.constrainToSuperview()
 
         scrollView.reloadData()
-        tasksScrollView = scrollView
+        listView = scrollView
     }
 
     func removeTasks() {
 
-        if tasksScrollView != nil {
-            tasksScrollView?.removeFromSuperview()
-            tasksScrollView = nil
+        if listView != nil {
+            listView?.removeFromSuperview()
+            listView = nil
         }
     }
 

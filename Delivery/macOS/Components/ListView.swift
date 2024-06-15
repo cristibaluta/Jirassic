@@ -9,7 +9,7 @@
 import Cocoa
 import RCPreferences
 
-class TasksScrollView: NSScrollView {
+class ListView: NSScrollView {
 
     private var tableView: NSTableView!
     private var dataSource: DataSource!
