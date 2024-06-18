@@ -21,9 +21,6 @@ class MainViewController: NSViewController {
     @IBOutlet private var butRefresh: NSButton!
     @IBOutlet private var butSettings: NSButton!
     @IBOutlet private var butWarning: NSButton!
-    @IBOutlet private var butWarningRightConstraint: NSLayoutConstraint!
-    @IBOutlet private var butQuit: NSButton!
-    @IBOutlet private var butMinimize: NSButton!
     
     private var calendarViewController: CalendarViewController?
     private var tasksViewController: TasksViewController?
@@ -58,8 +55,6 @@ class MainViewController: NSViewController {
         butSettings.isHidden = hide
         butRefresh.isHidden = remoteRepository == nil ? true : hide
         butWarning.isHidden = hide
-        butQuit.isHidden = hide
-        butMinimize.isHidden = hide
         listSegmentedControl.isHidden = hide
     }
 }
@@ -69,6 +64,7 @@ extension MainViewController: Animatable {
     func createLayer() {
         view.layer = CALayer()
         view.wantsLayer = true
+        view.layer?.backgroundColor = .white
     }
 }
 
@@ -84,40 +80,56 @@ extension MainViewController {
     }
     
     @IBAction func handleSettingsButton (_ sender: NSButton) {
-        appWireframe!.flipToSettingsController()
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Settings", action: #selector(handleOpenSettingsButton(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Rate app", action: #selector(handleRatingButton(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separator())  // Separator line
+        menu.addItem(NSMenuItem(title: "Minimize", action: #selector(handleMinimizeAppButton(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(handleQuitAppButton(_:)), keyEquivalent: ""))
+
+        // Show the menu
+        let location = sender.frame.origin
+        menu.popUp(positioning: nil, at: location, in: self.view)
     }
-    
+
     @IBAction func handleWarningButton (_ sender: NSButton) {
         RCPreferences<LocalPreferences>().set(SettingsTab.input.rawValue, forKey: .settingsActiveTab)
         appWireframe!.flipToSettingsController()
     }
-    
-    @IBAction func handleQuitAppButton (_ sender: NSButton) {
+
+    @objc func handleOpenSettingsButton (_ sender: NSMenuItem) {
+        appWireframe!.flipToSettingsController()
+    }
+
+    @objc func handleRatingButton (_ sender: NSMenuItem) {
+
+    }
+
+    @objc func handleQuitAppButton (_ sender: NSMenuItem) {
         NSApplication.shared.terminate(nil)
     }
     
-    @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
+    @objc func handleMinimizeAppButton (_ sender: NSMenuItem) {
         AppDelegate.sharedApp().menu.triggerClose()
     }
 }
 
 extension MainViewController: MainPresenterOutput {
     
-    func select(listType: ListType) {
+    func select (listType: ListType) {
         listSegmentedControl!.selectedSegment = listType.rawValue
     }
     
     func showLoadingIndicator (_ show: Bool) {
         
         butRefresh.isHidden = remoteRepository == nil ? true : show
-        butWarningRightConstraint.constant = butRefresh.isHidden ? 0 : 22
-//        if show {
-//            loadingTasksIndicator.isHidden = false
-//            loadingTasksIndicator.startAnimation(nil)
-//        } else {
-//            loadingTasksIndicator.stopAnimation(nil)
-//            loadingTasksIndicator.isHidden = true
-//        }
+        if show {
+            syncIndicator.isHidden = false
+            syncIndicator.startAnimation(nil)
+        } else {
+            syncIndicator.stopAnimation(nil)
+            syncIndicator.isHidden = true
+        }
     }
     
     func showWarning (_ show: Bool) {
@@ -194,7 +206,7 @@ extension MainViewController: MainPresenterOutput {
         controller.presenter?.reloadTasksOnDay(selectedDay)
     }
     
-    func showReports () {
+    func showReports() {
         
         let controller = ReportsViewController.instantiateFromStoryboard("Reports")
         let presenter = ReportsPresenter()

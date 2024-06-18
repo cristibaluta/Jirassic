@@ -84,6 +84,8 @@ class CalendarDayCellView: NSView {
         didSet {
             dayText.alphaValue = isStarted ? 1.0 : 0.4
             weekdayText.alphaValue = isStarted ? 1.0 : 0.4
+            dayText.font = NSFont.boldSystemFont(ofSize: 9)
+            weekdayText.font = NSFont.boldSystemFont(ofSize: 9)
         }
     }
     

@@ -213,42 +213,49 @@ extension AppleScript {
                           args: NSAppleEventDescriptor?,
                           completion: @escaping (NSAppleEventDescriptor?) -> Void) {
         
-        guard let scriptsDirectory = self.scriptsDirectory else {
-            completion(nil)
-            return
-        }
-        let scriptURL = scriptsDirectory.appendingPathComponent(scriptNamed + ".scpt")
-        
-        do {
-            var pid = ProcessInfo.processInfo.processIdentifier
-            
-            let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID,
-                                                          bytes: &pid,
-                                                          length: MemoryLayout.size(ofValue: pid))
-            
-            let theEvent = NSAppleEventDescriptor.appleEvent(withEventClass: AEEventClass(kASAppleScriptSuite),//kCoreEventClass,
-                eventID: AEEventID(kASSubroutineEvent),//kAEOpenDocuments,
-                targetDescriptor: targetDescriptor,
-                returnID: AEReturnID(kAutoGenerateReturnID),
-                transactionID: AETransactionID(kAnyTransactionID))
-            
-            let commandDescriptor = NSAppleEventDescriptor(string: command)
-            theEvent.setDescriptor(commandDescriptor, forKeyword: AEKeyword(keyASSubroutineName))
-            
-            if let args = args {
-                theEvent.setDescriptor(args, forKeyword: keyDirectObject)
-            }
-            
-            let result = try NSUserAppleScriptTask(url: scriptURL)
-            result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
-                //RCLogO(descriptor)
-                RCLogErrorO(error)
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let scriptsDirectory = self.scriptsDirectory else {
                 DispatchQueue.main.sync {
-                    completion(descriptor)
+                    completion(nil)
                 }
-            })
-        } catch {
-            completion(nil)
+                return
+            }
+            let scriptURL = scriptsDirectory.appendingPathComponent(scriptNamed + ".scpt")
+
+            do {
+                var pid = ProcessInfo.processInfo.processIdentifier
+
+                let targetDescriptor = NSAppleEventDescriptor(descriptorType: typeKernelProcessID,
+                                                              bytes: &pid,
+                                                              length: MemoryLayout.size(ofValue: pid))
+
+                let theEvent = NSAppleEventDescriptor.appleEvent(withEventClass: AEEventClass(kASAppleScriptSuite),//kCoreEventClass,
+                                                                 eventID: AEEventID(kASSubroutineEvent),//kAEOpenDocuments,
+                                                                 targetDescriptor: targetDescriptor,
+                                                                 returnID: AEReturnID(kAutoGenerateReturnID),
+                                                                 transactionID: AETransactionID(kAnyTransactionID))
+
+                let commandDescriptor = NSAppleEventDescriptor(string: command)
+                theEvent.setDescriptor(commandDescriptor, forKeyword: AEKeyword(keyASSubroutineName))
+
+                if let args = args {
+                    theEvent.setDescriptor(args, forKeyword: keyDirectObject)
+                }
+
+                let result = try NSUserAppleScriptTask(url: scriptURL)
+                result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
+                    //RCLogO(descriptor)
+                    RCLogErrorO(error)
+                    DispatchQueue.main.sync {
+                        completion(descriptor)
+                    }
+                })
+            } catch {
+                DispatchQueue.main.sync {
+                    completion(nil)
+                }
+            }
         }
     }
+
 }

@@ -98,9 +98,9 @@ extension ExtensionsInstallerInteractor {
         panel.message = "Please select: User / Library / Application Scripts / com.ralcr.Jirassic.osx"
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         
-        panel.begin { (result) in
+        panel.begin { result in
             
-            if result.rawValue == NSFileHandlingPanelOKButton {
+            if result == NSApplication.ModalResponse.OK {
                 
                 let scriptPath = Bundle.main.url(forResource: script, withExtension: ".scpt")
                 do {

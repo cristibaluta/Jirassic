@@ -11,7 +11,7 @@ import Cocoa
 class MenuBarController: NSObject {
 	
     fileprivate let bar = NSStatusBar.system
-    fileprivate var item: NSStatusItem!
+    var item: NSStatusItem!
 	var iconView: MenuBarIconView!
     
     var onOpen: (() -> ())?
@@ -46,8 +46,25 @@ class MenuBarController: NSObject {
             }
 		}
 		item.view = iconView
+        // item.button?.image = NSImage(named: "MenuBarIcon-Normal")!
+
+//        let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+//        statusItem.button?.action = #selector(handleClick(_:))
+//        statusItem.button?.target = self
+//        statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
 	}
-    
+
+    @objc func handleClick(_ sender: NSButton) {
+        let event = NSApp.currentEvent!
+        if event.type == NSEvent.EventType.rightMouseUp {
+            // Handle right-click
+            triggerClose()
+        } else {
+            // Handle left-click
+            triggerOpen()
+        }
+    }
+
     func handleQuitButton() {
         NSApplication.shared.terminate(nil)
     }

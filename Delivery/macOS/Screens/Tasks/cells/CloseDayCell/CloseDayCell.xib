@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23077.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,31 +13,31 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Or-RP-0kD">
-                    <rect key="frame" x="18" y="19" width="84" height="31"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="84" id="GLH-D4-fAS"/>
-                        <constraint firstAttribute="height" constant="30" id="qar-Iq-HwJ"/>
-                    </constraints>
+                    <rect key="frame" x="4" y="20" width="84" height="30"/>
                     <buttonCell key="cell" type="inline" title="Add task" bezelStyle="inline" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2A6-De-e4F">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystemBold"/>
                     </buttonCell>
                     <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="84" id="GLH-D4-fAS"/>
+                        <constraint firstAttribute="height" constant="30" id="qar-Iq-HwJ"/>
+                    </constraints>
                     <connections>
                         <action selector="handleAddButton:" target="c22-O7-iKe" id="td9-Xv-DNX"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="97e-S4-4v7">
-                    <rect key="frame" x="122" y="19" width="84" height="31"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="84" id="Rg7-hM-AzF"/>
-                        <constraint firstAttribute="height" constant="30" id="tjq-AG-QdE"/>
-                    </constraints>
+                    <rect key="frame" x="108" y="20" width="84" height="30"/>
                     <buttonCell key="cell" type="inline" title="Close day" bezelStyle="inline" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xb0-DV-xGH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystemBold"/>
                     </buttonCell>
                     <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="84" id="Rg7-hM-AzF"/>
+                        <constraint firstAttribute="height" constant="30" id="tjq-AG-QdE"/>
+                    </constraints>
                     <connections>
                         <action selector="handleCloseDayButton:" target="c22-O7-iKe" id="qst-JI-wFM"/>
                     </connections>
@@ -46,7 +45,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="7Or-RP-0kD" firstAttribute="centerY" secondItem="97e-S4-4v7" secondAttribute="centerY" id="MeA-j2-eKQ"/>
-                <constraint firstItem="7Or-RP-0kD" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="18" id="Mgx-mw-v4F"/>
+                <constraint firstItem="7Or-RP-0kD" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="Mgx-mw-v4F"/>
                 <constraint firstItem="97e-S4-4v7" firstAttribute="leading" secondItem="7Or-RP-0kD" secondAttribute="trailing" constant="20" id="dUe-a3-xtc"/>
                 <constraint firstAttribute="bottom" secondItem="7Or-RP-0kD" secondAttribute="bottom" constant="20" id="lIF-in-3og"/>
             </constraints>

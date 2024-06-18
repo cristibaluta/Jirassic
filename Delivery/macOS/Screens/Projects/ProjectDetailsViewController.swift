@@ -162,7 +162,7 @@ extension ProjectDetailsViewController: ProjectDetailsPresenterOutput {
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.begin { [weak self] result in
             
-            guard let url = panel.urls.first, result.rawValue == NSFileHandlingPanelOKButton else {
+            guard let url = panel.urls.first, result == NSApplication.ModalResponse.OK else {
                 return
             }
             self?.presenter?.didPickUrl(url)
