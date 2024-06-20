@@ -100,7 +100,7 @@ extension SettingsPresenter: SettingsPresenterInput {
         if enabled {
             // Init the global instance of remoteRepository in AppDelegate
             remoteRepository = CloudKitRepository()
-            remoteRepository?.getUser({ (user) in
+            remoteRepository?.getUser({ user in
                 if user == nil {
                     self.userInterface?.enableBackup(false, title: "Syncing with iCloud not possible, you are not logged into iCloud")
                     remoteRepository = nil

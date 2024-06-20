@@ -11,7 +11,7 @@ import Cocoa
 class InputsScrollView: NSScrollView {
     
     @IBOutlet private var tableView: NSTableView!
-    var dataSource: InputsTableViewDataSource?// If not declared, the reference is released
+    var dataSource: InputsTableViewDataSource?// If not declared, the instance is released
     var onPurchasePressed: (() -> Void)?
     
     override func awakeFromNib() {
@@ -31,38 +31,38 @@ class InputsScrollView: NSScrollView {
     }
 
     func showSettings (_ settings: SettingsBrowser) {
-        dataSource!.showSettingsBrowser(settings)
+        dataSource!.browserSettings = settings
     }
 
     func settings() -> SettingsBrowser {
-        return dataSource!.settingsBrowser()
+        return dataSource!.browserSettings!
     }
     
     func save() {
-        dataSource?.shellCell?.save()
-        dataSource?.jitCell?.save()
-        dataSource?.gitCell?.save()
-        dataSource?.browserCell?.save()
-        dataSource?.calendarCell?.save()
+//        dataSource?.shellCell.save()
+//        dataSource?.jitCell.save()
+//        dataSource?.gitCell.save()
+//        dataSource?.browserCell.save()
+//        dataSource?.calendarCell.save()
     }
     
     func setShellStatus (compatibility: Compatibility) {
-        dataSource?.shellCell?.setShellStatus (compatibility: compatibility)
+        dataSource?.shellCompatibility = compatibility
     }
     
     func setJirassicStatus (compatibility: Compatibility) {
-        dataSource?.jirassicCell?.setJirassicStatus (compatibility: compatibility)
+        dataSource?.jirassicCompatibility = compatibility
     }
     
     func setJitStatus (compatibility: Compatibility) {
-        dataSource?.jitCell?.setJitStatus (compatibility: compatibility)
+        dataSource?.jitCompatibility = compatibility
     }
     
     func setGitStatus (available: Bool) {
-        dataSource?.gitCell?.presenter.isShellScriptInstalled = available
+        dataSource?.gitAvailable = available
     }
     
     func setBrowserStatus (compatibility: Compatibility) {
-        dataSource?.browserCell?.setBrowserStatus (compatibility: compatibility)
+        dataSource?.browserCompatibility = compatibility
     }
 }

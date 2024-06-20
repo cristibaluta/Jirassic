@@ -71,7 +71,7 @@ extension TasksDataSource: NSTableViewDelegate {
         
         guard row < tasks.count else {
             if self.isDayEnded {
-                let cell = ClosedDayCell.instantiate(in: tableView)
+                let cell = ClosedDayCell.instantiateFromXib()//.instantiate(in: tableView)
                 cell.didClickSaveWorklogs = {
                     self.didClickSaveWorklogs?()
                 }
@@ -80,7 +80,7 @@ extension TasksDataSource: NSTableViewDelegate {
                 }
                 return cell
             } else {
-                let cell = CloseDayCell.instantiate(in: tableView)
+                let cell = CloseDayCell.instantiateFromXib()//instantiate(in: tableView)
                 cell.didClickAddTask = {
                     self.didClickAddRow?(self.tasks.count - 1)
                 }
@@ -94,7 +94,8 @@ extension TasksDataSource: NSTableViewDelegate {
         let theData = tasks[row]
         let lastData = tasks.last
         let thePreviousData: Task? = row == 0 ? nil : tasks[row-1]
-        var cell: CellProtocol = TaskCell.instantiate(in: tableView)
+        // TODO: reusing the cell causes the content to disappear, so we create a new instance every time
+        var cell: CellProtocol = TaskCell.instantiateFromXib()//instantiate(in: tableView)
         TaskCellPresenter(cell: cell).present(previousTask: thePreviousData,
                                               currentTask: theData,
                                               lastTask: lastData)

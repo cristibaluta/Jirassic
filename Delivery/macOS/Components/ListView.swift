@@ -54,7 +54,9 @@ class ListView: NSScrollView {
 
         tableView = NSTableView(frame: self.frame)
         tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
-        tableView.style = .fullWidth
+        if #available(macOS 11.0, *) {
+            tableView.style = .fullWidth
+        }
         tableView.backgroundColor = .clear
         tableView.headerView = nil
 

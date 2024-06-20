@@ -43,14 +43,14 @@ class ExtensionsInteractor {
         
         self.scripts.getScriptVersion (script: kShellSupportScriptName, completion: { shellSupportScriptVersion in
         self.scripts.getScriptVersion (script: kBrowserSupportScriptName, completion: { browserSupportScriptVersion in
-        self.scripts.getJirassicVersion (completion: { jirassicVersion in
-        self.scripts.getJitInfo (completion: { dict in
-            
-            let jitVersion = dict["version"] ?? ""
-            let versions = Versions(shellScript: shellSupportScriptVersion, 
+        self.scripts.getJirassicVersion (completion: { jirassicCliVersion in
+        self.scripts.getJitInfo (completion: { jitCliDict in
+
+            let jitCliVersion = jitCliDict["version"] ?? ""
+            let versions = Versions(shellScript: shellSupportScriptVersion,
                                     browserScript: browserSupportScriptVersion,
-                                    jirassicCmd: jirassicVersion,
-                                    jitCmd: jitVersion
+                                    jirassicCmd: jirassicCliVersion,
+                                    jitCmd: jitCliVersion
             )
             completion(versions)
         })

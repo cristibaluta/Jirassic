@@ -15,11 +15,12 @@ class ShellCell: NSTableRowView {
     @IBOutlet private var statusImageView: NSImageView!
     @IBOutlet private var textField: NSTextField!
     @IBOutlet private var butInstall: NSButton!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.toolTip = "Shell scripts are needed for communicating with the plugins: reading git logs, reading browser url, finding compatibility."
     }
+
     func setShellStatus (compatibility: Compatibility) {
         
         if compatibility.available {

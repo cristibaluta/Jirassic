@@ -38,7 +38,7 @@ extension TableViewCell {
     class func instantiate (in tableView: TableView) -> Self {
         return instantiate(in: tableView, type: self)
     }
-    
+
     private class func instantiate<T> (in tableView: TableView, type: T.Type) -> T {
         let className = String(describing: self)
         #if os(iOS)

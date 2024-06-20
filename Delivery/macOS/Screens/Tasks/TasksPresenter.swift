@@ -71,9 +71,9 @@ extension TasksPresenter: TasksPresenterInput {
                     buttonTitle: "Start day"))
             } else {
                 ui!.showMessage((
-                title: "Day was not started!",
-                message: "Do you want to start it now?",
-                buttonTitle: "Start day"))
+                    title: "Day was not started!",
+                    message: "Do you want to start it now?",
+                    buttonTitle: "Start day"))
             }
         } else {
             appWireframe!.removePlaceholder()

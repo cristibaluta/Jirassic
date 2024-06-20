@@ -44,7 +44,6 @@ extension SettingsInteractor: SettingsInteractorInput {
     }
     
     func enabledLaunchAtStartup (_ enabled: Bool) {
-        
         let launchAtStartup = SMLoginItemSetEnabled(launcherIdentifier as CFString, enabled)
         localPreferences.set(launchAtStartup ? enabled : false, forKey: .launchAtStartup)
     }

@@ -20,7 +20,7 @@ class CalendarCell: NSTableRowView {
     @IBOutlet private var scrollView: NSScrollView!
     private var calendarsButtons = [NSButton]()
     
-    private var  presenter: CalendarAppPresenterInput = CalendarAppPresenter()
+    private var presenter: CalendarAppPresenterInput = CalendarAppPresenter()
     
     override func awakeFromNib() {
         super.awakeFromNib()

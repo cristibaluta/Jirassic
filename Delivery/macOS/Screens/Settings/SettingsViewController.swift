@@ -91,11 +91,7 @@ class SettingsViewController: NSViewController {
 }
 
 extension SettingsViewController {
-	
-    @IBAction func handleSaveButton (_ sender: NSButton) {
-        appWireframe!.flipToMainController()
-    }
-    
+
     @IBAction func handleBackupButton (_ sender: NSButton) {
         presenter!.enableBackup(sender.state == NSControl.StateValue.on)
     }
@@ -107,14 +103,6 @@ extension SettingsViewController {
     @IBAction func handleSegmentedControl (_ sender: NSSegmentedControl) {
         let tab = SettingsTab(rawValue: sender.selectedSegment)!
         presenter!.selectTab(tab)
-    }
-    
-    @IBAction func handleQuitAppButton (_ sender: NSButton) {
-        NSApplication.shared.terminate(nil)
-    }
-    
-    @IBAction func handleMinimizeAppButton (_ sender: NSButton) {
-        AppDelegate.sharedApp().menu.triggerClose()
     }
 }
 

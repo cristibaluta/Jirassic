@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RCLog
 
 enum InputType {
     case shell
@@ -19,46 +20,49 @@ enum InputType {
 }
 
 class InputsTableViewDataSource: NSObject {
-    
-    private let tableView: NSTableView
+
     private let cells: [InputType] = InputType.all
-    var shellCell: ShellCell?
-    var jirassicCell: JirassicCell?
-    var jitCell: JitCell?
-    var gitCell: GitCell?
-    var browserCell: BrowserCell?
-    var calendarCell: CalendarCell?
+    private let tableView: NSTableView!
+
+    var shellCompatibility: Compatibility? {
+        didSet {
+            tableView.reloadData(forRowIndexes: IndexSet(integer: 0), columnIndexes: IndexSet(integer: 0))
+        }
+    }
+    var jirassicCompatibility: Compatibility? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var jitCompatibility: Compatibility? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var browserCompatibility: Compatibility? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var browserSettings: SettingsBrowser? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var gitAvailable: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     var onPurchasePressed: (() -> Void)?
 
     init (tableView: NSTableView) {
         self.tableView = tableView
         super.init()
-
-        ShellCell.register(in: tableView)
-        JirassicCell.register(in: tableView)
-        JitCell.register(in: tableView)
-        GitCell.register(in: tableView)
-        BrowserCell.register(in: tableView)
-        CalendarCell.register(in: tableView)
-        
-        shellCell = ShellCell.instantiate(in: self.tableView)
-        jirassicCell = JirassicCell.instantiate(in: self.tableView)
-        jitCell = JitCell.instantiate(in: self.tableView)
-        gitCell = GitCell.instantiate(in: self.tableView)
-        browserCell = BrowserCell.instantiate(in: self.tableView)
-        calendarCell = CalendarCell.instantiate(in: self.tableView)
-
-        gitCell?.onPurchasePressed = { [weak self] in
-            self?.onPurchasePressed?()
-        }
     }
 
-    func showSettingsBrowser (_ settings: SettingsBrowser) {
-        browserCell!.showSettings(settings)
-    }
-    
-    func settingsBrowser() -> SettingsBrowser {
-        return browserCell!.settings()
+    deinit {
+        RCLogO("deinit")
     }
 }
 
@@ -69,7 +73,7 @@ extension InputsTableViewDataSource: NSTableViewDataSource {
     }
     
     func tableView (_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        
+
         let inputType = cells[row]
         switch inputType {
         case .shell:
@@ -90,21 +94,50 @@ extension InputsTableViewDataSource: NSTableViewDataSource {
 
 extension InputsTableViewDataSource: NSTableViewDelegate {
     
-    func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
+    func tableView (_ tableView: NSTableView,
+                    viewFor tableColumn: NSTableColumn?,
+                    row: Int) -> NSView? {
+
         switch cells[row] {
         case .shell:
-            return shellCell!
+            let cell = ShellCell.instantiateFromXib()
+            if let shellCompatibility {
+                cell.setShellStatus(compatibility: shellCompatibility)
+            }
+            return cell
         case .jirassic:
-            return jirassicCell!
+            let cell = JirassicCell.instantiateFromXib()
+            if let jirassicCompatibility {
+                cell.setJirassicStatus(compatibility: jirassicCompatibility)
+            }
+            return cell
         case .git:
-            return gitCell!
+            let cell = GitCell.instantiateFromXib()
+//            if let gitCompatibility {
+//                cell.(compatibility: jitCompatibility)
+//            }
+            cell.onPurchasePressed = { [weak self] in
+                self?.onPurchasePressed?()
+            }
+            return cell
         case .jit:
-            return jitCell!
+            let cell = JitCell.instantiateFromXib()
+            if let jitCompatibility {
+                cell.setJitStatus(compatibility: jitCompatibility)
+            }
+            return cell
         case .browser:
-            return browserCell!
+            let cell = BrowserCell.instantiateFromXib()
+            if let browserCompatibility {
+                cell.setBrowserStatus(compatibility: browserCompatibility)
+            }
+            if let browserSettings {
+                cell.showSettings(browserSettings)
+            }
+            return cell
         case .calendar:
-            return calendarCell!
+            let cell = CalendarCell.instantiateFromXib()
+            return cell
         }
     }
 }

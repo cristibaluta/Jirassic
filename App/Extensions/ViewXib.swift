@@ -17,26 +17,22 @@ typealias AView = NSView
 extension AView {
     
     class func instantiateFromXib() -> Self {
-        return  instantiateFromXib(type: self)
+        return instantiateFromXib(type: self)
     }
     
     private class func instantiateFromXib<T> (type: T.Type) -> T {
         #if os(iOS)
 //        return UIStoryboard(name: name, bundle: nil).instantiateViewControllerWithIdentifier(self.className) as! T
         #else
-        var view: T?
+        let className = String(describing: T.self)
         var views: NSArray?
-        Bundle.main.loadNibNamed(String(describing: T.self),
-                                 owner: nil,
-                                 topLevelObjects: &views)
-        if let v = views {
-            for _v in v {
-                if let __v = _v as? T {
-                    view = __v
-                }
+        Bundle.main.loadNibNamed(className, owner: nil, topLevelObjects: &views)
+        for subview in views ?? [] {
+            if let s = subview as? T {
+                return s
             }
         }
-        return view!
+        fatalError("Nib or view \(className) not found")
         #endif
     }
 }

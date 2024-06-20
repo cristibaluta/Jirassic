@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,27 +38,13 @@
                             <box translatesAutoresizingMaskIntoConstraints="NO" id="PxN-df-6xl">
                                 <rect key="frame" x="7" y="87" width="582" height="362"/>
                                 <view key="contentView" id="8TK-hA-zVh">
-                                    <rect key="frame" x="3" y="3" width="576" height="344"/>
+                                    <rect key="frame" x="4" y="5" width="574" height="342"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="358" id="5cL-wi-gzh"/>
                                 </constraints>
                             </box>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="nlR-CY-a5k">
-                                <rect key="frame" x="560" y="447" width="24.5" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="4g4-ML-oQZ"/>
-                                    <constraint firstAttribute="height" constant="24" id="E7I-QJ-lJh"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSHomeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="9MX-x5-EW3">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleSaveButton:" target="J1c-ZL-C5e" id="eUr-xg-ou7"/>
-                                </connections>
-                            </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-yv-6JW">
                                 <rect key="frame" x="218" y="452" width="160" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="pn1-lj-JjN">
@@ -74,40 +59,14 @@
                                     <action selector="handleSegmentedControl:" target="J1c-ZL-C5e" id="wev-kc-A58"/>
                                 </connections>
                             </segmentedControl>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sOP-ZD-50a">
-                                <rect key="frame" x="12" y="453" width="38" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Quit" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fze-b8-HZ5">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleQuitAppButton:" target="J1c-ZL-C5e" id="cS6-mT-WmX"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JI6-hq-mSe">
-                                <rect key="frame" x="60" y="453" width="22" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="^" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ghA-S2-xyZ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleMinimizeAppButton:" target="J1c-ZL-C5e" id="hZX-uF-dti"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="sOP-ZD-50a" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="22" id="242-IV-jcI"/>
-                            <constraint firstItem="JI6-hq-mSe" firstAttribute="centerY" secondItem="sOP-ZD-50a" secondAttribute="centerY" id="8dv-Jg-hNO"/>
                             <constraint firstItem="PxN-df-6xl" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="10" id="F1s-2p-LIi"/>
-                            <constraint firstItem="sOP-ZD-50a" firstAttribute="leading" secondItem="JAR-dh-Pss" secondAttribute="leading" constant="12" id="MC1-7c-utL"/>
                             <constraint firstAttribute="bottom" secondItem="PxN-df-6xl" secondAttribute="bottom" constant="91" id="Mhh-04-lzW"/>
                             <constraint firstItem="SGn-yv-6JW" firstAttribute="centerX" secondItem="JAR-dh-Pss" secondAttribute="centerX" id="ZoM-gS-y3R"/>
-                            <constraint firstItem="JI6-hq-mSe" firstAttribute="leading" secondItem="sOP-ZD-50a" secondAttribute="trailing" constant="10" id="aLV-Bk-ZQg"/>
-                            <constraint firstAttribute="trailing" secondItem="nlR-CY-a5k" secondAttribute="trailing" constant="12" id="bBK-E5-Tw5"/>
                             <constraint firstItem="PxN-df-6xl" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="45" id="c7W-dQ-9er"/>
                             <constraint firstAttribute="trailing" secondItem="PxN-df-6xl" secondAttribute="trailing" constant="10" id="cPD-hz-qMV"/>
                             <constraint firstItem="SGn-yv-6JW" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="20" id="jSr-nR-Hgq"/>
-                            <constraint firstItem="nlR-CY-a5k" firstAttribute="top" secondItem="JAR-dh-Pss" secondAttribute="top" constant="20" id="tMc-D8-yEa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -122,7 +81,4 @@
             <point key="canvasLocation" x="150" y="770"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="NSHomeTemplate" width="19" height="16"/>
-    </resources>
 </document>

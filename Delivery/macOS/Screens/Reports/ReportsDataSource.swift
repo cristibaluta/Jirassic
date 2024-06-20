@@ -65,7 +65,7 @@ extension ReportsDataSource: NSTableViewDataSource {
         let theData = reports[row]
         // Calculate height to fit content
         if tempCell == nil {
-            tempCell = ReportCell.instantiate(in: tableView)
+            tempCell = ReportCell.instantiateFromXib()//.instantiate(in: tableView)
             tempCell?.frame = NSRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
         }
         ReportCellPresenter(cell: tempCell!).present(theReport: theData)
@@ -79,19 +79,19 @@ extension ReportsDataSource: NSTableViewDelegate {
     func tableView (_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
         guard row < reports.count else {
-            let cell = CopyReportCell.instantiate(in: tableView)
+            let cell = CopyReportCell.instantiateFromXib()//.instantiate(in: tableView)
             cell.numberOfDays = numberOfDays
-            cell.didClickCopyAll = { isHtml in
-                self.didClickCopyReport?(isHtml)
+            cell.didClickCopyAll = {  [weak self] isHtml in
+                self?.didClickCopyReport?(isHtml)
             }
-            cell.didChangeSettings = {
-                self.didChangeSettings?()
+            cell.didChangeSettings = { [weak self] in
+                self?.didChangeSettings?()
             }
             return cell
         }
 
         let theData = reports[row]
-        let cell: CellProtocol = ReportCell.instantiate(in: tableView)
+        let cell: CellProtocol = ReportCell.instantiateFromXib()//.instantiate(in: tableView)
         ReportCellPresenter(cell: cell).present(theReport: theData)
         
         return cell as? NSView
