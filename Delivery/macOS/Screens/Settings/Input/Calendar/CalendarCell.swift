@@ -20,11 +20,11 @@ class CalendarCell: NSTableRowView {
     @IBOutlet private var scrollView: NSScrollView!
     private var calendarsButtons = [NSButton]()
     
-    private var  presenter: CalendarPresenterInput = CalendarPresenter()
+    private var  presenter: CalendarAppPresenterInput = CalendarAppPresenter()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        (presenter as! CalendarPresenter).userInterface = self
+        (presenter as! CalendarAppPresenter).userInterface = self
         presenter.refresh()
     }
     
@@ -57,7 +57,7 @@ class CalendarCell: NSTableRowView {
     }
 }
 
-extension CalendarCell: CalendarPresenterOutput {
+extension CalendarCell: CalendarAppPresenterOutput {
     
     func enable (_ enabled: Bool) {
         for but in calendarsButtons {
@@ -81,7 +81,7 @@ extension CalendarCell: CalendarPresenterOutput {
         statusImageView.isHidden = authorized
         butAuthorize.isHidden = authorized
         butEnable.isHidden = !authorized
-        butEnable.state = enabled ? NSControl.StateValue.on : NSControl.StateValue.off
+        butEnable.state = enabled ? .on : .off
     }
 
     func setCalendars (_ calendars: [String], selected: [String]) {

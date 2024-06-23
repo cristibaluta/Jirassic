@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="ClosedDayCell" id="uO1-so-uQL" customClass="ClosedDayCell" customModule="Jirassic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lgc-La-Imi">
+                    <rect key="frame" x="18" y="19" width="120" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="BkB-W5-RAD"/>
+                        <constraint firstAttribute="height" constant="30" id="x3A-IJ-Hyp"/>
+                    </constraints>
+                    <buttonCell key="cell" type="inline" title="Save worklogs" bezelStyle="inline" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="atN-oi-z9r">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                    </buttonCell>
+                    <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                    <connections>
+                        <action selector="handleSaveWorklogsButton:" target="uO1-so-uQL" id="OJW-Fw-LiX"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x6l-yF-6c2">
+                    <rect key="frame" x="160" y="25" width="50" height="19"/>
+                    <buttonCell key="cell" type="roundRect" title="Setup" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3R0-NU-791">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleSetupJiraButton:" target="uO1-so-uQL" id="x2K-MW-ABO"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="x6l-yF-6c2" firstAttribute="leading" secondItem="Lgc-La-Imi" secondAttribute="trailing" constant="22" id="3zA-Kf-ggc"/>
+                <constraint firstItem="Lgc-La-Imi" firstAttribute="leading" secondItem="uO1-so-uQL" secondAttribute="leading" constant="18" id="5YF-Mt-P55"/>
+                <constraint firstItem="x6l-yF-6c2" firstAttribute="centerY" secondItem="Lgc-La-Imi" secondAttribute="centerY" id="lVl-4f-UAe"/>
+                <constraint firstAttribute="bottom" secondItem="Lgc-La-Imi" secondAttribute="bottom" constant="20" id="reX-MY-IRf"/>
+            </constraints>
+            <connections>
+                <outlet property="butSaveWorklogs" destination="Lgc-La-Imi" id="1eu-F8-vel"/>
+                <outlet property="butSetupJira" destination="x6l-yF-6c2" id="LHI-uJ-xRY"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="53"/>
+        </customView>
+    </objects>
+</document>

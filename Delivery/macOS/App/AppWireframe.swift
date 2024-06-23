@@ -8,11 +8,6 @@
 
 import Cocoa
 
-enum SplitViewColumn: Int {
-    case calendar = 0
-    case tasks = 1
-}
-
 class AppWireframe {
 
     private var _appViewController: AppViewController?
@@ -30,7 +25,7 @@ class AppWireframe {
         return _appViewController!
     }
     
-    private var welcomeViewController: WelcomeViewController {
+    private func createWelcomeViewController() -> WelcomeViewController {
         
         let controller = WelcomeViewController.instantiateFromStoryboard("Welcome")
         controller.appWireframe = self
@@ -38,7 +33,7 @@ class AppWireframe {
         return controller
     }
     
-    private var wizardViewController: WizardViewController {
+    private func createWizardViewController() -> WizardViewController {
         
         let controller = WizardViewController.instantiateFromStoryboard("Welcome")
         controller.appWireframe = self
@@ -46,7 +41,7 @@ class AppWireframe {
         return controller
     }
     
-    private var loginViewController: LoginViewController {
+    private func createLoginViewController() -> LoginViewController {
         
         let controller = LoginViewController.instantiateFromStoryboard("Login")
         let presenter = LoginPresenter()
@@ -57,23 +52,36 @@ class AppWireframe {
         return controller
     }
     
-    private var tasksViewController: TasksViewController {
+    private func createMainViewController() -> MainViewController {
         
-        let controller = TasksViewController.instantiateFromStoryboard("Tasks")
-        let presenter = TasksPresenter()
-        let interactor = TasksInteractor()
+        let controller = MainViewController.instantiateFromStoryboard("Main")
+        let presenter = MainPresenter()
         
         presenter.ui = controller
-        presenter.interactor = interactor
         presenter.appWireframe = self
-        interactor.presenter = presenter
         controller.presenter = presenter
         controller.appWireframe = self
         
         return controller
     }
     
-    private var taskSuggestionViewController: TaskSuggestionViewController {
+//    private var tasksViewController: TasksViewController {
+//
+//        let controller = TasksViewController.instantiateFromStoryboard("Tasks")
+//        let presenter = TasksPresenter()
+//        let interactor = TasksInteractor()
+//
+//        presenter.ui = controller
+//        presenter.interactor = interactor
+//        presenter.appWireframe = self
+//        interactor.presenter = presenter
+//        controller.presenter = presenter
+//        controller.appWireframe = self
+//
+//        return controller
+//    }
+    
+    private func createTaskSuggestionViewController() -> TaskSuggestionViewController {
         
         let controller = TaskSuggestionViewController.instantiateFromStoryboard("Tasks")
         let presenter = TaskSuggestionPresenter()
@@ -84,7 +92,7 @@ class AppWireframe {
         return controller
     }
     
-    private var settingsViewController: SettingsViewController {
+    private func createSettingsViewController() -> SettingsViewController {
         
         let controller = SettingsViewController.instantiateFromStoryboard("Settings")
         let presenter = SettingsPresenter()
@@ -100,11 +108,11 @@ class AppWireframe {
         return controller
     }
     
-    private var placeholderViewController: PlaceholderViewController {
+    private func createPlaceholderViewController() -> PlaceholderViewController {
         return PlaceholderViewController.instantiateFromStoryboard("Placeholder")
     }
-
-    private var worklogsViewController: WorklogsViewController {
+    
+    func createWorklogsViewController() -> WorklogsViewController {
 
         let controller = WorklogsViewController.instantiateFromStoryboard("Worklogs")
         let presenter = WorklogsPresenter()
@@ -115,7 +123,6 @@ class AppWireframe {
 
         return controller
     }
-
 }
 
 extension AppWireframe {
@@ -158,7 +165,7 @@ extension AppWireframe {
     func presentWelcomeController() -> WelcomeViewController {
         
         appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
-        let controller = self.welcomeViewController
+        let controller = createWelcomeViewController()
         addController(controller)
         currentController = controller
         
@@ -168,7 +175,7 @@ extension AppWireframe {
     func presentWizardController() -> WizardViewController {
         
         appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
-        let controller = self.wizardViewController
+        let controller = createWizardViewController()
         addController(controller)
         currentController = controller
         
@@ -177,17 +184,17 @@ extension AppWireframe {
     
     func presentLoginController() -> LoginViewController {
         
-        let controller = self.loginViewController
+        let controller = createLoginViewController()
         addController(controller)
         currentController = controller
         
         return controller
     }
     
-    func presentTasksController() -> TasksViewController {
+    func presentMainController() -> MainViewController {
         
-        appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 500))
-        let controller = self.tasksViewController
+        appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 560, height: 600))
+        let controller = createMainViewController()
         addController(controller)
         currentController = controller
         
@@ -197,7 +204,7 @@ extension AppWireframe {
     func presentTaskSuggestionController (startSleepDate: Date?, endSleepDate: Date) -> TaskSuggestionViewController {
         
         appViewController.view.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 450, height: 150))
-        let controller = self.taskSuggestionViewController
+        let controller = createTaskSuggestionViewController()
         controller.startSleepDate = startSleepDate
         controller.endSleepDate = endSleepDate
         addController(controller)
@@ -207,16 +214,16 @@ extension AppWireframe {
     }
 
     // Placeholder
-    func presentPlaceholder (_ message: MessageViewModel, intoSplitView splitView: NSSplitView) -> PlaceholderViewController {
+    func presentPlaceholder (_ message: MessageViewModel, in view: NSView) -> PlaceholderViewController {
         
         var controller = _placeholderViewController
         
         if controller == nil {
-            controller = self.placeholderViewController
+            controller = createPlaceholderViewController()
             appViewController.addChild(controller!)
             _placeholderViewController = controller
         }
-        splitView.subviews[SplitViewColumn.tasks.rawValue].addSubview(controller!.view)
+        view.addSubview(controller!.view)
         controller!.view.constrainToSuperview()
         controller!.viewModel = message
         
@@ -233,7 +240,7 @@ extension AppWireframe {
     // EndDay
     func presentEndDayController (date: Date, tasks: [Task]) -> WorklogsViewController {
 
-        let controller = self.worklogsViewController
+        let controller = createWorklogsViewController()
         controller.date = date
         controller.tasks = tasks
         addController(controller)
@@ -253,14 +260,14 @@ extension AppWireframe {
 
 extension AppWireframe {
     
-    func flipToTasksController() {
+    func flipToMainController() {
         
-        let tasksController = self.tasksViewController
-        let flip = FlipAnimation()
+        let mainController = createMainViewController()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
-            self.addController(tasksController)
-            self.currentController = tasksController
+            self.addController(mainController)
+            self.currentController = mainController
         }
         flip.animationFinished = {}
         flip.startWithLayer(layerToAnimate())
@@ -268,23 +275,27 @@ extension AppWireframe {
     
     func flipToSettingsController() {
         
-        let settingsController = self.settingsViewController
-        let flip = FlipAnimation()
-        flip.animationReachedMiddle = {
-            self.removeCurrentController()
-            self.removePlaceholder()
-            self.removeEndDayController()
-            self.addController(settingsController)
-            self.currentController = settingsController
-        }
-        flip.animationFinished = {}
-        flip.startWithLayer(layerToAnimate())
+        let settingsController = createSettingsViewController()
+        let window = NSWindow(contentViewController: settingsController)
+        window.title = "Jirassic settings"
+        window.level = .popUpMenu
+        window.makeKeyAndOrderFront(nil)
+//        let flip = NoAnimation()
+//        flip.animationReachedMiddle = {
+//            self.removeCurrentController()
+//            self.removePlaceholder()
+//            self.removeEndDayController()
+//            self.addController(settingsController)
+//            self.currentController = settingsController
+//        }
+//        flip.animationFinished = {}
+//        flip.startWithLayer(layerToAnimate())
     }
     
     func flipToLoginController() {
         
-        let loginController = self.loginViewController
-        let flip = FlipAnimation()
+        let loginController = createLoginViewController()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeController(self.currentController!)
             self.addController(loginController)
@@ -296,8 +307,8 @@ extension AppWireframe {
     
     func flipToWizardController() {
         
-        let wizardController = self.wizardViewController
-        let flip = FlipAnimation()
+        let wizardController = createWizardViewController()
+        let flip = NoAnimation()
         flip.animationReachedMiddle = {
             self.removeCurrentController()
             self.removePlaceholder()

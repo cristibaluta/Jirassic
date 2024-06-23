@@ -48,7 +48,7 @@ class ModuleHookup {
                     completion?(false)
                     return
                 }
-                guard let jdict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String],
+                guard let jdict = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String]) as [String : String]??),
                     let dict = jdict else {
                     completion?(false)
                     return

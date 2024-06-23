@@ -22,7 +22,7 @@ class JiraTempoCell: NSTableRowView {
     @IBOutlet private var projectIssueNamePopup: NSPopUpButton!
     @IBOutlet private var progressIndicator: NSProgressIndicator!
     
-    private let localPreferences = RCPreferences<LocalPreferences>()
+    private let pref = RCPreferences<LocalPreferences>()
     var presenter: JiraTempoPresenterInput = JiraTempoPresenter()
     var onPurchasePressed: (() -> Void)?
 
@@ -33,8 +33,8 @@ class JiraTempoCell: NSTableRowView {
         userTextField.delegate = self
         passwordTextField.delegate = self
         
-        baseUrlTextField.stringValue = localPreferences.string(.settingsJiraUrl)
-        userTextField.stringValue = localPreferences.string(.settingsJiraUser)
+        baseUrlTextField.stringValue = pref.string(.settingsJiraUrl)
+        userTextField.stringValue = pref.string(.settingsJiraUser)
         passwordTextField.stringValue = Keychain.getPassword()
         
         projectNamePopup.target = self
@@ -45,13 +45,29 @@ class JiraTempoCell: NSTableRowView {
         
         (presenter as! JiraTempoPresenter).userInterface = self
         presenter.setupUserInterface()
-        presenter.checkCredentials()
+        checkCredentials()
     }
-    
+
+    func checkCredentials() {
+        let user = JiraUser(url: pref.string(.settingsJiraUrl),
+                            user: pref.string(.settingsJiraUser),
+                            password: Keychain.getPassword(),
+                            project: pref.string(.settingsJiraProjectKey),
+                            issue: pref.string(.settingsJiraProjectIssueKey))
+        presenter.checkCredentials(user)
+    }
+
     func save() {
-        presenter.save(url: baseUrlTextField.stringValue,
-                       user: userTextField.stringValue,
-                       password: passwordTextField.stringValue)
+        saveCredentialsToPref()
+    }
+
+    func saveCredentialsToPref() {
+        pref.set(baseUrlTextField.stringValue, forKey: .settingsJiraUrl)
+        pref.set(userTextField.stringValue, forKey: .settingsJiraUser)
+        // Save password only if different than the existing one
+        if passwordTextField.stringValue != Keychain.getPassword() {
+            Keychain.setPassword(passwordTextField.stringValue)
+        }
     }
     
     @IBAction func handlePurchaseButton (_ sender: NSButton) {
@@ -60,13 +76,13 @@ class JiraTempoCell: NSTableRowView {
     
     @IBAction func projectNamePopupSelected (_ sender: NSPopUpButton) {
         if let title = sender.selectedItem?.title {
-            localPreferences.set(title, forKey: .settingsJiraProjectKey)
+            pref.set(title, forKey: .settingsJiraProjectKey)
             presenter.loadProjectIssues(for: title)
         }
     }
     
     @IBAction func projectIssueNamePopupSelected (_ sender: NSPopUpButton) {
-        localPreferences.set(sender.selectedItem?.title ?? "", forKey: .settingsJiraProjectIssueKey)
+        pref.set(sender.selectedItem?.title ?? "", forKey: .settingsJiraProjectIssueKey)
     }
 }
 
@@ -111,17 +127,17 @@ extension JiraTempoCell: NSTextFieldDelegate {
         guard baseUrlTextField.stringValue != "",
             userTextField.stringValue != "",
             passwordTextField.stringValue != "" else {
-            // Fields are empty
-            save()
+            /// Fields are empty
+            saveCredentialsToPref()
             return
         }
-        guard baseUrlTextField.stringValue != localPreferences.string(.settingsJiraUrl) ||
-            userTextField.stringValue != localPreferences.string(.settingsJiraUser) ||
+        guard baseUrlTextField.stringValue != pref.string(.settingsJiraUrl) ||
+            userTextField.stringValue != pref.string(.settingsJiraUser) ||
             passwordTextField.stringValue != Keychain.getPassword() else {
-            // No change to the fields
+            /// No change to the fields
             return
         }
-        save()
-        presenter.checkCredentials()
+        saveCredentialsToPref()
+        checkCredentials()
     }
 }

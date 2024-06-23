@@ -28,13 +28,13 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks, nil)
     }
     
-    func queryUnsyncedTasks() -> [Task] {
+    func queryUnsyncedTasks(since lastSyncDate: Date?) -> [Task] {
         
         var subpredicates = [
             NSPredicate(format: "markedForDeletion == NO || markedForDeletion == nil")
         ]
-        if let lastSyncDateWithRemote = UserDefaults.standard.lastSyncDateWithRemote {
-            subpredicates.append(NSPredicate(format: "lastModifiedDate == nil || lastModifiedDate > %@", lastSyncDateWithRemote as CVarArg))
+        if let date = lastSyncDate {
+            subpredicates.append(NSPredicate(format: "lastModifiedDate == nil || lastModifiedDate > %@", date as CVarArg))
         } else {
             subpredicates.append(NSPredicate(format: "lastModifiedDate == nil"))
         }
@@ -54,9 +54,11 @@ extension CoreDataRepository: RepositoryTasks {
         completion(tasks)
     }
     
-    func queryUpdates (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
+    func queryUpdatedTasks (_ completion: @escaping ([Task], [String], NSError?) -> Void) {
         
-        completion(queryUnsyncedTasks(), [], nil)
+        let lastSyncDate = ReadMetadataInteractor().tasksLastSyncDate()
+        let unsyncedTasks = queryUnsyncedTasks(since: lastSyncDate)
+        completion(unsyncedTasks, [], nil)
     }
     
     func deleteTask (_ task: Task, permanently: Bool, completion: @escaping ((_ success: Bool) -> Void)) {

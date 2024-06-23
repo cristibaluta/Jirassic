@@ -44,7 +44,7 @@ extension JiraRepository {
             "dateStarted": dateStarted,
             "timeSpentSeconds": duration
         ]
-        request?.post(at: path, parameters: parameters, success: { responseData in
+        request?.post(at: path, parameters: parameters, success: { httpResponse, responseData in
             
             guard let _ = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else {
                 failure(RCHttpError(errorDescription: "Invalid json response"))
@@ -52,7 +52,7 @@ extension JiraRepository {
             }
             success()
             
-        }, failure: { (err) in
+        }, failure: { err in
             failure(err)
         })
     }

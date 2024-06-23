@@ -174,7 +174,7 @@ class WizardViewController: NSViewController {
     @IBAction func handleSkipButton (_ sender: NSButton) {
         let stepsToSave: [Int] = WizardStep.allCases.map({ $0.rawValue })
         pref.set(stepsToSave, forKey: .wizardSteps)
-        appWireframe!.flipToTasksController()
+        appWireframe!.flipToMainController()
     }
     
     @IBAction func handleQuitAppButton (_ sender: NSButton) {

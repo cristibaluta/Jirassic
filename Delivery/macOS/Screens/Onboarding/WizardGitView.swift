@@ -17,8 +17,6 @@ class WizardGitView: NSView {
     @IBOutlet var butSkip: NSButton!
     var onSkip: (() -> Void)?
     private let pref = RCPreferences<LocalPreferences>()
-    private var emailClickGestureRecognizer: NSClickGestureRecognizer?
-    private var gitUsersPopover: NSPopover?
     
     var presenter: GitPresenterInput = GitPresenter()
     
@@ -28,24 +26,10 @@ class WizardGitView: NSView {
         pref.set(true, forKey: .enableGit)
         (presenter as! GitPresenter).userInterface = self
         presenter.isShellScriptInstalled = true
-        
-        let emailClickGestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(GitCell.emailTextFieldClicked))
-        emailsTextField.addGestureRecognizer(emailClickGestureRecognizer)
-        self.emailClickGestureRecognizer = emailClickGestureRecognizer
-    }
-    
-    deinit {
-        if  let gesture = emailClickGestureRecognizer {
-            emailsTextField.removeGestureRecognizer(gesture)
-        }
     }
     
     func save() {
-        presenter.save(emails: emailsTextField.stringValue, paths: pathsTextField.stringValue)
-    }
-    
-    @IBAction func handlePickButton (_ sender: NSButton) {
-        presenter.pickPath()
+        
     }
     
     @IBAction func handleSkipButton (_ sender: NSButton) {
@@ -55,23 +39,6 @@ class WizardGitView: NSView {
         }
         save()
         onSkip?()
-    }
-    
-    @objc func emailTextFieldClicked() {
-        guard gitUsersPopover == nil else {
-            return
-        }
-        let popover = NSPopover()
-        let view = GitUsersViewController.instantiateFromStoryboard("Components")
-        view.onDone = {
-            self.gitUsersPopover?.performClose(nil)
-            self.gitUsersPopover = nil
-            self.presenter.isShellScriptInstalled = true
-        }
-        popover.contentViewController = view
-        let rect = CGRect(origin: CGPoint(x: emailsTextField.frame.origin.x, y: emailsTextField.frame.origin.y), size: emailsTextField.frame.size)
-        popover.show(relativeTo: rect, of: self, preferredEdge: NSRectEdge.minY)
-        gitUsersPopover = popover
     }
 }
 
@@ -83,21 +50,4 @@ extension WizardGitView: GitPresenterOutput {
     func setButInstall (enabled: Bool) {}
     func setButPurchase(enabled: Bool) {}
     func setButEnable (on: Bool?, enabled: Bool?) {}
-    func setPaths (_ paths: String?, enabled: Bool?) {
-        if let paths = paths {
-            pathsTextField.stringValue = paths
-        }
-        if let enabled = enabled {
-            pathsTextField.isEnabled = enabled
-            butPick.isEnabled = enabled
-        }
-    }
-    func setEmails (_ emails: String?, enabled: Bool?) {
-        if let emails = emails {
-            emailsTextField.stringValue = emails
-        }
-        if let enabled = enabled {
-            emailsTextField.isEnabled = enabled
-        }
-    }
 }
