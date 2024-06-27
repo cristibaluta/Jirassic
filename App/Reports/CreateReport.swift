@@ -12,7 +12,7 @@ class CreateReport {
     
     func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
 		
-        // .endDay task is not part of reports
+        // .endDay task is not part of the report
         let filteredTasks = tasks.filter({ $0.taskType != .endDay })
 		guard filteredTasks.count > 1 else {
 			return []

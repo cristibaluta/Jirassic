@@ -44,18 +44,18 @@ extension CalendarAppPresenter: CalendarAppPresenterInput {
     }
 
     func enableCalendar (_ calendarTitle: String) {
-        var calendars = calendarModule.selectedCalendars
+        var calendars = calendarModule.selectedCalendarNames
         calendars.append(calendarTitle)
-        calendarModule.selectedCalendars = calendars
+        calendarModule.selectedCalendarNames = calendars
     }
 
     func disableCalendar (_ calendarTitle: String) {
-        let calendars = calendarModule.selectedCalendars.filter() { $0 != calendarTitle }
-        calendarModule.selectedCalendars = calendars
+        let calendars = calendarModule.selectedCalendarNames.filter() { $0 != calendarTitle }
+        calendarModule.selectedCalendarNames = calendars
     }
 
     func authorize() {
-        calendarModule.authorize { (authorized) in
+        calendarModule.authorize { authorized in
             DispatchQueue.main.async {
                 self.refresh()
             }
@@ -74,7 +74,7 @@ extension CalendarAppPresenter: CalendarAppPresenterInput {
             userInterface!.setStatusText("Calendar.app was not authorized yet")
             userInterface!.setCalendarStatus (authorized: calendarModule.isAuthorized, enabled: pref.bool(.enableCalendar))
         }
-        userInterface!.setCalendars(calendarModule.allCalendarsTitles(), selected: calendarModule.selectedCalendars)
+        userInterface!.setCalendars(calendarModule.allCalendarsTitles(), selected: calendarModule.selectedCalendarNames)
         userInterface!.enable(calendarModule.isAuthorized && pref.bool(.enableCalendar))
     }
 }

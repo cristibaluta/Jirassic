@@ -18,16 +18,8 @@ class ModuleCalendar {
     var isAuthorizationDetermined: Bool {
         return EKEventStore.authorizationStatus(for: .event) != .notDetermined
     }
-    
-    var isAuthorized: Bool {
-        if #available(macOS 14.0, *) {
-            return EKEventStore.authorizationStatus(for: .event) == .fullAccess
-        } else {
-            return EKEventStore.authorizationStatus(for: .event) == .authorized
-        }
-    }
-    
-    var selectedCalendars: [String] {
+
+    var selectedCalendarNames: [String] {
         get {
             return pref.string(.settingsSelectedCalendars).split(separator: ",").map({String($0)})
         }
@@ -35,7 +27,15 @@ class ModuleCalendar {
             pref.set(newValue.joined(separator: ","), forKey: .settingsSelectedCalendars)
         }
     }
-    
+
+    var isAuthorized: Bool {
+        if #available(macOS 14.0, *) {
+            return EKEventStore.authorizationStatus(for: .event) == .fullAccess
+        } else {
+            return EKEventStore.authorizationStatus(for: .event) == .authorized
+        }
+    }
+
     func authorize(_ completion: @escaping (Bool) -> Void) {
         if #available(macOS 14.0, *) {
             eventStore.requestFullAccessToEvents { granted, error in
@@ -50,12 +50,12 @@ class ModuleCalendar {
         }
     }
     
-    func allCalendars() -> [EKCalendar] {
-        return eventStore.calendars(for: .event)
+    var allCalendars: [EKCalendar] {
+        eventStore.calendars(for: .event)
     }
 
     func allCalendarsTitles() -> [String] {
-        return allCalendars().map({$0.title})
+        return allCalendars.map({ $0.title })
     }
 
     func events (dateStart: Date, dateEnd: Date, completion: @escaping (([Task]) -> Void)) {
@@ -64,38 +64,25 @@ class ModuleCalendar {
             completion([])
             return
         }
-        
-        var tasks = [Task]()
+        DispatchQueue.global(qos: .userInitiated).async {
+            let calendars = self.allCalendars.filter { self.selectedCalendarNames.contains($0.title) }
+            let eventsPredicate = self.eventStore.predicateForEvents(withStart: dateStart,
+                                                                     end: dateEnd,
+                                                                     calendars: calendars)
+            let events: [EKEvent] = self.eventStore.events(matching: eventsPredicate)
 
-        authorize { (granted) in
-            
-            guard granted else {
-                completion([])
-                return
+            let tasks: [Task] = events.map { event in
+                Task(lastModifiedDate: nil,
+                     startDate: event.startDate,
+                     endDate: event.endDate,
+                     notes: event.title,
+                     taskNumber: nil,
+                     taskTitle: event.title,
+                     taskType: .calendar,
+                     objectId: nil)// A task without id means that it's not saved in db
             }
-            for calendar in self.allCalendars() {
-                
-                if self.selectedCalendars.contains(calendar.title) {
-                    
-                    let eventsPredicate = self.eventStore.predicateForEvents(withStart: dateStart, end: dateEnd, calendars: [calendar])
-                    let events: [EKEvent] = self.eventStore.events(matching: eventsPredicate)
-                    
-                    for event in events {
-                        // Create a task without id, this will tell the app that is not saved in db
-                        let task = Task(lastModifiedDate: nil,
-                                        startDate: event.startDate,
-                                        endDate: event.endDate,
-                                        notes: event.title,
-                                        taskNumber: nil,
-                                        taskTitle: event.title,
-                                        taskType: .calendar,
-                                        objectId: nil)
-                        tasks.append(task)
-                    }
-                    DispatchQueue.main.async {
-                        completion(tasks)
-                    }
-                }
+            DispatchQueue.main.async {
+                completion(tasks)
             }
         }
     }

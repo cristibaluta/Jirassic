@@ -40,7 +40,7 @@ class CalendarViewController: NSViewController {
     
     func reloadData() {
         presenter!.reloadData()
-        didChangeDay?(day!)
+//        didChangeDay?(day!)
     }
     
     private func selectCell (day: Day) {
@@ -48,7 +48,13 @@ class CalendarViewController: NSViewController {
             cell.isSelected = cell.day == day.dateStart.day()
         }
     }
-    
+
+    private func unselectAllCells() {
+        for cell in cells {
+            cell.isSelected = false
+        }
+    }
+
     @IBAction func handlePrevMonth (_ sender: NSButton) {
         presenter!.goPrevMonth()
         didChangeMonth?(presenter!.selectedMonth)
@@ -73,9 +79,14 @@ extension CalendarViewController: CalendarPresenterOutput {
         cell.isStarted = isStarted
         cell.isEnded = day.dateEnd != nil
         cell.isToday = day.dateStart.isToday()
-        cell.onClick = {
-            self.selectCell(day: day)
-            self.didChangeDay?(day)
+        cell.onClick = { [weak self] in
+            if cell.isSelected {
+                self?.unselectAllCells()
+                self?.didChangeMonth?(day.dateStart)
+            } else {
+                self?.selectCell(day: day)
+                self?.didChangeDay?(day)
+            }
         }
         self.view.addSubview(cell)
         cells.append(cell)
