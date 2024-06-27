@@ -86,6 +86,10 @@ extension MainViewController {
         menu.addItem(NSMenuItem.separator())  // Separator line
         menu.addItem(NSMenuItem(title: "Minimize", action: #selector(handleMinimizeAppButton(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(handleQuitAppButton(_:)), keyEquivalent: ""))
+        // Add a target to the menu items, otherwise the menu appears unselectable
+        for menuItem in menu.items {
+            menuItem.target = self
+        }
 
         // Show the menu
         let location = sender.frame.origin

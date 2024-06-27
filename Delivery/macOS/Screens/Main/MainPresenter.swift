@@ -60,7 +60,7 @@ extension MainPresenter: MainPresenterInput {
         ui!.select(listType: lastType)
 
         // Check for compatibility of components
-        extensions.getVersions { [weak self] versions in
+        extensions.getAllVersions { [weak self] versions in
             guard let userInterface = self?.ui else {
                 return
             }

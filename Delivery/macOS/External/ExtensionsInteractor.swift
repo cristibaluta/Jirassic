@@ -39,23 +39,44 @@ class ExtensionsInteractor {
         scripts.run(command: command, completion: completion)
     }
     
-    func getVersions (completion: @escaping (_ versions: Versions) -> Void) {
-        
-        self.scripts.getScriptVersion (script: kShellSupportScriptName, completion: { shellSupportScriptVersion in
-        self.scripts.getScriptVersion (script: kBrowserSupportScriptName, completion: { browserSupportScriptVersion in
-        self.scripts.getJirassicVersion (completion: { jirassicCliVersion in
-        self.scripts.getJitInfo (completion: { jitCliDict in
+    func getShellScriptVersion (completion: @escaping (String) -> Void) {
+        scripts.getScriptVersion(script: kShellSupportScriptName) { version in
+            completion(version)
+        }
+    }
+    func getBrowserScriptVersion (completion: @escaping (String) -> Void) {
+        scripts.getScriptVersion(script: kBrowserSupportScriptName) { version in
+            completion(version)
+        }
+    }
+    func getJirassicCliVersion (completion: @escaping (String) -> Void) {
+        scripts.getJirassicVersion() { version in
+            completion(version)
+        }
+    }
+    func getJitCliVersion (completion: @escaping (String) -> Void) {
+        scripts.getJitInfo() { dict in
+            let version = dict["version"] ?? ""
+            completion(version)
+        }
+    }
 
-            let jitCliVersion = jitCliDict["version"] ?? ""
-            let versions = Versions(shellScript: shellSupportScriptVersion,
-                                    browserScript: browserSupportScriptVersion,
-                                    jirassicCmd: jirassicCliVersion,
-                                    jitCmd: jitCliVersion
+    func getAllVersions (completion: @escaping (_ versions: Versions) -> Void) {
+
+        self.getShellScriptVersion() { shellSupportScriptVersion in
+        self.getBrowserScriptVersion() { browserSupportScriptVersion in
+        self.getJirassicCliVersion() { jirassicCliVersion in
+        self.getJitCliVersion() { jitCliVersion in
+
+            completion(
+                Versions(shellScript: shellSupportScriptVersion,
+                         browserScript: browserSupportScriptVersion,
+                         jirassicCmd: jirassicCliVersion,
+                         jitCmd: jitCliVersion)
             )
-            completion(versions)
-        })
-        })
-        })
-        })
+        }
+        }
+        }
+        }
     }
 }

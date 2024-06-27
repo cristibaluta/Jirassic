@@ -50,7 +50,7 @@ extension SettingsPresenter: SettingsPresenterInput {
     
     func checkExtensions() {
         
-        extensions.getVersions { [weak self] (versions) in
+        extensions.getAllVersions { [weak self] (versions) in
             
             guard let userInterface = self?.userInterface else {
                 return
