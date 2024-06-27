@@ -243,6 +243,8 @@
 		6D35192C2C1C6BF000B1AE2C /* ReadProjectsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3519252C1C6BF000B1AE2C /* ReadProjectsInteractor.swift */; };
 		6D3702602BA83E9A002260D0 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 6D37025F2BA83E9A002260D0 /* SwiftKeychainWrapper */; };
 		6D3702622BA83EB9002260D0 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702612BA83EB9002260D0 /* RCLog */; };
+		6D420F702C2DCE0200E2B075 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6D420F6F2C2DCE0200E2B075 /* scripts */; };
+		6D420F712C2DCE0200E2B075 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6D420F6F2C2DCE0200E2B075 /* scripts */; };
 		6D5BC4C82C1B5BE6002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
 		6D5BC4C92C1B5BE6002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
 		6D5BC4CB2C1B5BF7002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
@@ -376,20 +378,17 @@
 		6DAC60DE2C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60182C1C5DD9000D11A2 /* OutputsScrollView.xib */; };
 		6DAC60DF2C1C5DD9000D11A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60522C1C5DD9000D11A2 /* Images.xcassets */; };
 		6DAC60E02C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD12C1C5DD9000D11A2 /* WizardAppleScriptView.xib */; };
-		6DAC60E12C1C5DD9000D11A2 /* ShellSupport.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60572C1C5DD9000D11A2 /* ShellSupport.scpt */; };
 		6DAC60E22C1C5DD9000D11A2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60532C1C5DD9000D11A2 /* Info.plist */; };
 		6DAC60E32C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60082C1C5DD9000D11A2 /* InputsScrollView.xib */; };
 		6DAC60E42C1C5DD9000D11A2 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FED2C1C5DD9000D11A2 /* Reports.storyboard */; };
 		6DAC60E52C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60142C1C5DD9000D11A2 /* JiraTempoCell.xib */; };
 		6DAC60E62C1C5DD9000D11A2 /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC601F2C1C5DD9000D11A2 /* TrackingView.xib */; };
-		6DAC60E72C1C5DD9000D11A2 /* BrowserSupport.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60502C1C5DD9000D11A2 /* BrowserSupport.scpt */; };
 		6DAC60E82C1C5DD9000D11A2 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60542C1C5DD9000D11A2 /* jirassic.sdef */; };
 		6DAC60E92C1C5DD9000D11A2 /* HookupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60102C1C5DD9000D11A2 /* HookupCell.xib */; };
 		6DAC60EA2C1C5DD9000D11A2 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FFF2C1C5DD9000D11A2 /* JirassicCell.xib */; };
 		6DAC60EB2C1C5DD9000D11A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FCA2C1C5DD9000D11A2 /* Main.storyboard */; };
 		6DAC60EC2C1C5DD9000D11A2 /* StoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC601C2C1C5DD9000D11A2 /* StoreView.xib */; };
 		6DAC60ED2C1C5DD9000D11A2 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC603C2C1C5DD9000D11A2 /* Tasks.storyboard */; };
-		6DAC60EE2C1C5DD9000D11A2 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60512C1C5DD9000D11A2 /* BuildScript.sh */; };
 		6DAC60EF2C1C5DD9000D11A2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC32C1C5DD9000D11A2 /* Calendar.storyboard */; };
 		6DAC60F02C1C5DD9000D11A2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBF2C1C5DD9000D11A2 /* Login.storyboard */; };
 		6DAC60F12C1C5DD9000D11A2 /* Worklogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC604A2C1C5DD9000D11A2 /* Worklogs.storyboard */; };
@@ -415,20 +414,17 @@
 		6DAC61072C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60182C1C5DD9000D11A2 /* OutputsScrollView.xib */; };
 		6DAC61082C1C5DD9000D11A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60522C1C5DD9000D11A2 /* Images.xcassets */; };
 		6DAC61092C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD12C1C5DD9000D11A2 /* WizardAppleScriptView.xib */; };
-		6DAC610A2C1C5DD9000D11A2 /* ShellSupport.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60572C1C5DD9000D11A2 /* ShellSupport.scpt */; };
 		6DAC610B2C1C5DD9000D11A2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60532C1C5DD9000D11A2 /* Info.plist */; };
 		6DAC610C2C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60082C1C5DD9000D11A2 /* InputsScrollView.xib */; };
 		6DAC610D2C1C5DD9000D11A2 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FED2C1C5DD9000D11A2 /* Reports.storyboard */; };
 		6DAC610E2C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60142C1C5DD9000D11A2 /* JiraTempoCell.xib */; };
 		6DAC610F2C1C5DD9000D11A2 /* TrackingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC601F2C1C5DD9000D11A2 /* TrackingView.xib */; };
-		6DAC61102C1C5DD9000D11A2 /* BrowserSupport.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60502C1C5DD9000D11A2 /* BrowserSupport.scpt */; };
 		6DAC61112C1C5DD9000D11A2 /* jirassic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60542C1C5DD9000D11A2 /* jirassic.sdef */; };
 		6DAC61122C1C5DD9000D11A2 /* HookupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60102C1C5DD9000D11A2 /* HookupCell.xib */; };
 		6DAC61132C1C5DD9000D11A2 /* JirassicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FFF2C1C5DD9000D11A2 /* JirassicCell.xib */; };
 		6DAC61142C1C5DD9000D11A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FCA2C1C5DD9000D11A2 /* Main.storyboard */; };
 		6DAC61152C1C5DD9000D11A2 /* StoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC601C2C1C5DD9000D11A2 /* StoreView.xib */; };
 		6DAC61162C1C5DD9000D11A2 /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC603C2C1C5DD9000D11A2 /* Tasks.storyboard */; };
-		6DAC61172C1C5DD9000D11A2 /* BuildScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60512C1C5DD9000D11A2 /* BuildScript.sh */; };
 		6DAC61182C1C5DD9000D11A2 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FC32C1C5DD9000D11A2 /* Calendar.storyboard */; };
 		6DAC61192C1C5DD9000D11A2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FBF2C1C5DD9000D11A2 /* Login.storyboard */; };
 		6DAC611A2C1C5DD9000D11A2 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC5FA42C1C5DD9000D11A2 /* IAPHelper.swift */; };
@@ -761,6 +757,7 @@
 		6D3519242C1C6BF000B1AE2C /* ProjectInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectInteractor.swift; sourceTree = "<group>"; };
 		6D3519252C1C6BF000B1AE2C /* ReadProjectsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadProjectsInteractor.swift; sourceTree = "<group>"; };
 		6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic macOS.entitlements"; sourceTree = "<group>"; };
+		6D420F6F2C2DCE0200E2B075 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayReport.swift; sourceTree = "<group>"; };
 		6DAC5F8E2C1C5DD9000D11A2 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		6DAC5F8F2C1C5DD9000D11A2 /* FlipAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
@@ -906,13 +903,10 @@
 		6DAC604B2C1C5DD9000D11A2 /* WorklogsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsPresenter.swift; sourceTree = "<group>"; };
 		6DAC604C2C1C5DD9000D11A2 /* WorklogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogsViewController.swift; sourceTree = "<group>"; };
 		6DAC604F2C1C5DD9000D11A2 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		6DAC60502C1C5DD9000D11A2 /* BrowserSupport.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrowserSupport.scpt; sourceTree = "<group>"; };
-		6DAC60512C1C5DD9000D11A2 /* BuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BuildScript.sh; sourceTree = "<group>"; };
 		6DAC60522C1C5DD9000D11A2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6DAC60532C1C5DD9000D11A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DAC60542C1C5DD9000D11A2 /* jirassic.sdef */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = jirassic.sdef; sourceTree = "<group>"; };
 		6DAC60552C1C5DD9000D11A2 /* Jirassic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jirassic.entitlements; sourceTree = "<group>"; };
-		6DAC60572C1C5DD9000D11A2 /* ShellSupport.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShellSupport.scpt; sourceTree = "<group>"; };
 		6DAC61892C1C5F03000D11A2 /* JiraUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraUser.swift; sourceTree = "<group>"; };
 		6DAC618E2C1C5F1B000D11A2 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		6DAC61932C1C5F63000D11A2 /* CloseDayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseDayInteractor.swift; sourceTree = "<group>"; };
@@ -1849,13 +1843,11 @@
 				6DAC5FBC2C1C5DD9000D11A2 /* Notifications */,
 				6DAC604E2C1C5DD9000D11A2 /* Screens */,
 				6DAC604F2C1C5DD9000D11A2 /* Bridging-Header.h */,
-				6DAC60502C1C5DD9000D11A2 /* BrowserSupport.scpt */,
-				6DAC60512C1C5DD9000D11A2 /* BuildScript.sh */,
+				6D420F6F2C2DCE0200E2B075 /* scripts */,
 				6DAC60522C1C5DD9000D11A2 /* Images.xcassets */,
 				6DAC60532C1C5DD9000D11A2 /* Info.plist */,
 				6DAC60542C1C5DD9000D11A2 /* jirassic.sdef */,
 				6DAC60552C1C5DD9000D11A2 /* Jirassic.entitlements */,
-				6DAC60572C1C5DD9000D11A2 /* ShellSupport.scpt */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -2121,20 +2113,18 @@
 				6DAC61072C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */,
 				6DAC61082C1C5DD9000D11A2 /* Images.xcassets in Resources */,
 				6DAC61092C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */,
-				6DAC610A2C1C5DD9000D11A2 /* ShellSupport.scpt in Resources */,
 				6DAC610B2C1C5DD9000D11A2 /* Info.plist in Resources */,
 				6DAC610C2C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */,
 				6DAC610D2C1C5DD9000D11A2 /* Reports.storyboard in Resources */,
 				6DAC610E2C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */,
 				6DAC610F2C1C5DD9000D11A2 /* TrackingView.xib in Resources */,
-				6DAC61102C1C5DD9000D11A2 /* BrowserSupport.scpt in Resources */,
 				6DAC61112C1C5DD9000D11A2 /* jirassic.sdef in Resources */,
 				6DAC61122C1C5DD9000D11A2 /* HookupCell.xib in Resources */,
 				6DAC61132C1C5DD9000D11A2 /* JirassicCell.xib in Resources */,
 				6DAC61142C1C5DD9000D11A2 /* Main.storyboard in Resources */,
 				6DAC61152C1C5DD9000D11A2 /* StoreView.xib in Resources */,
+				6D420F702C2DCE0200E2B075 /* scripts in Resources */,
 				6DAC61162C1C5DD9000D11A2 /* Tasks.storyboard in Resources */,
-				6DAC61172C1C5DD9000D11A2 /* BuildScript.sh in Resources */,
 				6DAC61182C1C5DD9000D11A2 /* Calendar.storyboard in Resources */,
 				6DAC61192C1C5DD9000D11A2 /* Login.storyboard in Resources */,
 			);
@@ -2175,20 +2165,18 @@
 				6DAC60DE2C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */,
 				6DAC60DF2C1C5DD9000D11A2 /* Images.xcassets in Resources */,
 				6DAC60E02C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */,
-				6DAC60E12C1C5DD9000D11A2 /* ShellSupport.scpt in Resources */,
 				6DAC60E22C1C5DD9000D11A2 /* Info.plist in Resources */,
 				6DAC60E32C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */,
 				6DAC60E42C1C5DD9000D11A2 /* Reports.storyboard in Resources */,
 				6DAC60E52C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */,
 				6DAC60E62C1C5DD9000D11A2 /* TrackingView.xib in Resources */,
-				6DAC60E72C1C5DD9000D11A2 /* BrowserSupport.scpt in Resources */,
 				6DAC60E82C1C5DD9000D11A2 /* jirassic.sdef in Resources */,
 				6DAC60E92C1C5DD9000D11A2 /* HookupCell.xib in Resources */,
 				6DAC60EA2C1C5DD9000D11A2 /* JirassicCell.xib in Resources */,
 				6DAC60EB2C1C5DD9000D11A2 /* Main.storyboard in Resources */,
 				6DAC60EC2C1C5DD9000D11A2 /* StoreView.xib in Resources */,
+				6D420F712C2DCE0200E2B075 /* scripts in Resources */,
 				6DAC60ED2C1C5DD9000D11A2 /* Tasks.storyboard in Resources */,
-				6DAC60EE2C1C5DD9000D11A2 /* BuildScript.sh in Resources */,
 				6DAC60EF2C1C5DD9000D11A2 /* Calendar.storyboard in Resources */,
 				6DAC60F02C1C5DD9000D11A2 /* Login.storyboard in Resources */,
 			);
