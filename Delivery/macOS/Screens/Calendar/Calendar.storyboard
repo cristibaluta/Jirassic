@@ -14,13 +14,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-53-bCs">
-                                <rect key="frame" x="-2" y="60" width="104" height="20"/>
+                                <rect key="frame" x="2" y="60" width="104" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="1iG-3Q-L24"/>
                                     <constraint firstAttribute="width" constant="100" id="Z8n-dP-Wn3"/>
                                 </constraints>
                                 <textFieldCell key="cell" selectable="YES" title="Dec 2019" id="MFl-yO-pJ1">
-                                    <font key="font" metaFont="systemBold"/>
+                                    <font key="font" metaFont="systemBold" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -49,7 +49,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="RQ5-53-bCs" firstAttribute="leading" secondItem="IUv-0m-GUc" secondAttribute="leading" id="5Fc-XS-LWD"/>
+                            <constraint firstItem="RQ5-53-bCs" firstAttribute="leading" secondItem="IUv-0m-GUc" secondAttribute="leading" constant="4" id="5Fc-XS-LWD"/>
                             <constraint firstItem="RQ5-53-bCs" firstAttribute="top" secondItem="IUv-0m-GUc" secondAttribute="top" constant="10" id="w5t-1d-MO3"/>
                         </constraints>
                     </view>

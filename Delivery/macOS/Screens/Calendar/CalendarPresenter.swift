@@ -26,7 +26,7 @@ class CalendarPresenter {
     weak var appWireframe: AppWireframe?
     weak var ui: CalendarPresenterOutput?
     var interactor: CalendarInteractorInput?
-    var selectedMonth: Date = Date() {
+    var selectedMonth: Date = Date().startOfMonth() {
         didSet {
             reloadData()
         }
@@ -54,17 +54,19 @@ extension CalendarPresenter: CalendarInteractorOutput {
     
     func calendarDidLoad(_ weeks: [Week]) {
         DispatchQueue.main.async {
-            let existingDays = weeks.flatMap({$0.days})
-            let firstDate = existingDays.first?.dateStart ?? self.selectedMonth
+            // Collect the days in the month
+            let startedDays = weeks.flatMap({$0.days})
+            let firstDate = startedDays.first?.dateStart ?? self.selectedMonth
             var days = [(Day, Bool)]()
             for i in 1...firstDate.daysInMonth() {
-                if let day = existingDays.filter({$0.dateStart.day() == i}).first {
+                if let day = startedDays.filter({$0.dateStart.day() == i}).first {
                     days.append((day, true))
                 } else {
                     let day = Day(dateStart: firstDate.dateByUpdating(day: i), dateEnd: nil)
                     days.append((day, false))
                 }
             }
+            // Add to UI the days except the weekends
             var i = 0
             var isWeekend = false
             for day in days {
@@ -77,7 +79,9 @@ extension CalendarPresenter: CalendarInteractorOutput {
                     continue
                 }
                 if day.0.dateStart.isWeekend() && !day.0.dateStart.isToday() {
-                    i += 1
+                    if i > 0 {
+                        i += 1
+                    }
                     isWeekend = true
                 } else {
                     self.ui!.addCell(at: i, day: day.0, isStarted: day.1)
@@ -86,4 +90,5 @@ extension CalendarPresenter: CalendarInteractorOutput {
             }
         }
     }
+
 }

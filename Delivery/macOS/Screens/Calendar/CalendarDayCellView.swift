@@ -27,21 +27,21 @@ class CalendarDayCellView: NSView {
         backgroundView.fillColor = .darkGray
         
         dayText = NSTextField(frame: NSRect(x: -4, y: 0, width: w+8, height: w))
-        dayText.font = NSFont.systemFont(ofSize: 9)
+        dayText.font = NSFont.boldSystemFont(ofSize: 11)
         dayText.alignment = .center
         dayText.backgroundColor = NSColor.clear
         dayText.isBordered = false
         dayText.isEditable = false
         
         weekdayText = NSTextField(frame: NSRect(x: 0, y: w, width: w, height: w))
-        weekdayText.font = NSFont.systemFont(ofSize: 9)
+        weekdayText.font = NSFont.boldSystemFont(ofSize: 11)
         weekdayText.alignment = .center
         weekdayText.backgroundColor = NSColor.clear
         weekdayText.isBordered = false
         weekdayText.isEditable = false
         
         bulletText = NSTextField(frame: NSRect(x: 0, y: -10, width: w, height: w))
-        bulletText.font = NSFont.systemFont(ofSize: 9)
+        bulletText.font = NSFont.boldSystemFont(ofSize: 11)
         bulletText.alignment = .center
         bulletText.backgroundColor = NSColor.clear
         bulletText.isBordered = false
@@ -74,7 +74,6 @@ class CalendarDayCellView: NSView {
         didSet {
 //            backgroundView.isHidden = !isSelected
             backgroundView.fillColor = isSelected ? .darkGray : .clear
-            dayText.font = isSelected ? NSFont.boldSystemFont(ofSize: 10) : NSFont.systemFont(ofSize: 9)
             dayText.textColor = isSelected ? .white : .labelColor
             weekdayText.textColor = isSelected ? .white : .labelColor
         }
@@ -82,10 +81,8 @@ class CalendarDayCellView: NSView {
     
     var isStarted: Bool = false {
         didSet {
-            dayText.alphaValue = isStarted ? 1.0 : 0.4
-            weekdayText.alphaValue = isStarted ? 1.0 : 0.4
-            dayText.font = NSFont.boldSystemFont(ofSize: 9)
-            weekdayText.font = NSFont.boldSystemFont(ofSize: 9)
+            dayText.alphaValue = isStarted ? 1.0 : 0.2
+            weekdayText.alphaValue = isStarted ? 1.0 : 0.2
         }
     }
     
