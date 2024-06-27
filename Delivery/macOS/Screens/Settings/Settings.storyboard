@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23077.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23077.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,8 +46,8 @@
                                 </constraints>
                             </box>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-yv-6JW">
-                                <rect key="frame" x="218" y="452" width="160" height="23"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="pn1-lj-JjN">
+                                <rect key="frame" x="212" y="455" width="172" height="20"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="pn1-lj-JjN">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment label="Tracking"/>
@@ -77,6 +77,21 @@
                     </connections>
                 </viewController>
                 <customObject id="C7k-Vd-XtM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Hec-gZ-vIg">
+                    <allowedToolbarItems>
+                        <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="8Px-MZ-NVN"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="B6Q-5i-7yY"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="BTo-8e-fwz"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1Zu-O7-km6"/>
+                        <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="CWI-wP-Zwq"/>
+                    </allowedToolbarItems>
+                    <defaultToolbarItems>
+                        <toolbarItem reference="CWI-wP-Zwq"/>
+                        <toolbarItem reference="8Px-MZ-NVN"/>
+                        <toolbarItem reference="B6Q-5i-7yY"/>
+                        <toolbarItem reference="BTo-8e-fwz"/>
+                    </defaultToolbarItems>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="150" y="770"/>
         </scene>

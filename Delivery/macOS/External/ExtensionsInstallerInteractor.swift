@@ -28,16 +28,18 @@ class ExtensionsInstallerInteractor: ExtensionsInteractor {
     
     func installJirassic (_ completion: @escaping (Bool) -> Void) {
         
-        scripts.downloadFile(from: "https://raw.githubusercontent.com/ralcr/Jit/master/build/jit", to: "/usr/local/bin/jirassic", completion: { success in
+        scripts.downloadFile(from: "https://raw.githubusercontent.com/cristibaluta/Jit/master/build/jit",
+                             to: "/usr/local/bin/jirassic") { success in
             completion(success)
-        })
+        }
     }
     
     func installJit (_ completion: @escaping (Bool) -> Void) {
         
-        scripts.downloadFile(from: "https://raw.githubusercontent.com/ralcr/Jit/master/build/jit", to: "/usr/local/bin/jit", completion: { success in
+        scripts.downloadFile(from: "https://raw.githubusercontent.com/cristibaluta/Jit/master/build/jit",
+                             to: "/usr/local/bin/jit") { success in
             completion(success)
-        })
+        }
     }
     
     func uninstallTools (_ completion: @escaping (Bool) -> Void) {

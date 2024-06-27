@@ -50,26 +50,28 @@ class AppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            if let descriptor = descriptor, let result = descriptor.stringValue {
+        run (command: commandRunShellScript,
+             scriptNamed: kShellSupportScriptName,
+             args: args) { descriptor in
+
+            if let result = descriptor?.stringValue {
                 RCLog("Result: \(result)")
                 RCLog("-------------------------------------------------")
                 completion(result)
             } else {
                 completion(nil)
             }
-        })
+        }
     }
     
     func getScriptVersion (script: String, completion: @escaping (String) -> Void) {
         
-        run (command: commandGetScriptVersion, scriptNamed: script, args: nil, completion: { descriptor in
-            if let descriptor = descriptor, let result = descriptor.stringValue {
-                completion(result)
-            } else {
-                completion("")
-            }
-        })
+        run (command: commandGetScriptVersion,
+             scriptNamed: script,
+             args: nil) { descriptor in
+
+            completion(descriptor?.stringValue ?? "")
+        }
     }
     
     func getJitInfo (completion: @escaping ([String: String]) -> Void) {
@@ -88,10 +90,12 @@ class AppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            
-            if let descriptor = descriptor, let rawJson = descriptor.stringValue {
-                
+        run (command: commandRunShellScript,
+             scriptNamed: kShellSupportScriptName,
+             args: args) { descriptor in
+
+            if let rawJson = descriptor?.stringValue {
+
                 // json received from jit contains ' instead " because otherwise is not valid when passed
                 let validJson = rawJson.replacingOccurrences(of: "'", with: "\"")
                 var dict: [String: String] = [:]
@@ -106,14 +110,14 @@ class AppleScript: AppleScriptProtocol {
             } else {
                 self.getJitInfo (paths: remainingPaths, completion: completion)
             }
-        })
+        }
     }
     
     func getJirassicVersion (completion: @escaping (String) -> Void) {
         getJirassicVersion(paths: binPaths, completion: completion)
     }
     
-    private  func getJirassicVersion (paths: [String], completion: @escaping (String) -> Void) {
+    private func getJirassicVersion (paths: [String], completion: @escaping (String) -> Void) {
         
         guard paths.count > 0 else {
             completion("")
@@ -125,13 +129,16 @@ class AppleScript: AppleScriptProtocol {
         let args = NSAppleEventDescriptor.list()
         args.insert(NSAppleEventDescriptor(string: command), at: 1)
         
-        run (command: commandRunShellScript, scriptNamed: kShellSupportScriptName, args: args, completion: { descriptor in
-            if let descriptor = descriptor, let result = descriptor.stringValue {
+        run (command: commandRunShellScript,
+             scriptNamed: kShellSupportScriptName,
+             args: args) { descriptor in
+
+            if let result = descriptor?.stringValue {
                 completion(result)
             } else {
                 self.getJirassicVersion(paths: remainingPaths, completion: completion)
             }
-        })
+        }
     }
     
     func getBrowserInfo (browserId: String, browserName: String, completion: @escaping (String, String) -> Void) {
@@ -140,8 +147,11 @@ class AppleScript: AppleScriptProtocol {
         args.insert(NSAppleEventDescriptor(string: browserId), at: 1)
         args.insert(NSAppleEventDescriptor(string: browserName), at: 2)
         
-        run (command: commandGetBrowserInfo, scriptNamed: kBrowserSupportScriptName, args: args, completion: { descriptor in
-            if let descriptor = descriptor {
+        run (command: commandGetBrowserInfo,
+             scriptNamed: kBrowserSupportScriptName,
+             args: args) { descriptor in
+
+            if let descriptor {
                 let url = descriptor.atIndex(1)?.stringValue ?? ""
                 let title = descriptor.atIndex(2)?.stringValue ?? ""
                 completion(url, title)
@@ -149,7 +159,7 @@ class AppleScript: AppleScriptProtocol {
                 RCLog("Cannot get browser info")
                 completion("", "")
             }
-        })
+        }
     }
     
     func downloadFile (from: String, to: String, completion: @escaping (Bool) -> Void) {
@@ -238,12 +248,12 @@ extension AppleScript {
                 let commandDescriptor = NSAppleEventDescriptor(string: command)
                 theEvent.setDescriptor(commandDescriptor, forKeyword: AEKeyword(keyASSubroutineName))
 
-                if let args = args {
+                if let args {
                     theEvent.setDescriptor(args, forKeyword: keyDirectObject)
                 }
 
                 let result = try NSUserAppleScriptTask(url: scriptURL)
-                result.execute(withAppleEvent: theEvent, completionHandler: { (descriptor, error) in
+                result.execute(withAppleEvent: theEvent, completionHandler: { descriptor, error in
                     //RCLogO(descriptor)
                     RCLogErrorO(error)
                     DispatchQueue.main.sync {

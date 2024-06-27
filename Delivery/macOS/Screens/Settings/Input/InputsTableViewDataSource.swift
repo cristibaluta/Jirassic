@@ -62,7 +62,7 @@ class InputsTableViewDataSource: NSObject {
     }
 
     deinit {
-        RCLogO("deinit")
+        RCLog("deinit")
     }
 }
 
@@ -113,9 +113,7 @@ extension InputsTableViewDataSource: NSTableViewDelegate {
             return cell
         case .git:
             let cell = GitCell.instantiateFromXib()
-//            if let gitCompatibility {
-//                cell.(compatibility: jitCompatibility)
-//            }
+            cell.presenter.isShellScriptInstalled = gitAvailable
             cell.onPurchasePressed = { [weak self] in
                 self?.onPurchasePressed?()
             }
