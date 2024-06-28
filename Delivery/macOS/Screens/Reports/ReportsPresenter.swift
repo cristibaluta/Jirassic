@@ -66,7 +66,7 @@ class ReportsPresenter {
     }
 
     private func copyMonthlyReportsToClipboard(asCsv: Bool) {
-        let interactor = CreateMonthReport()
+        let interactor = MonthReportFormatter()
         var string = ""
         if asCsv {
             string = interactor.csvReports(currentReports)
@@ -80,7 +80,7 @@ class ReportsPresenter {
     }
 
     private func copyDayReportToClipboard() {
-        let interactor = CreateDayReport()
+        let interactor = DayReportFormatter()
         let string = interactor.stringReports(currentReports)
         RCLog(string)
         NSPasteboard.general.clearContents()
@@ -140,22 +140,21 @@ extension ReportsPresenter: TasksInteractorOutput {
         currentTasks = tasks
         
         let settings = SettingsInteractor().getAppSettings()
-        let targetHoursInDay = pref.bool(.enableRoundingDay)
+        let targetSecondsInDay = pref.bool(.enableRoundingDay)
             ? TimeInteractor(settings: settings).workingDayLength()
             : nil
 
         if lastSelectedDay != nil {
             let reportInteractor = CreateReport()
             let reports = reportInteractor.reports(fromTasks: currentTasks,
-                                                   targetHoursInDay: targetHoursInDay)
+                                                   targetSeconds: targetSecondsInDay)
             currentReports = reports.reversed()
             ui.removeReports()
             ui.showReports(currentReports, numberOfDays: 1)
         } else {
-            let reportInteractor = CreateMonthReport()
-            let reports = reportInteractor.reports(fromTasks: currentTasks,
-                                                   targetHoursInDay: targetHoursInDay,
-                                                   roundHours: true)
+            let formatter = MonthReportFormatter()
+            let reports = formatter.reports(fromTasks: currentTasks,
+                                            targetSecondsInDay: targetSecondsInDay)
             currentReports = reports.byTasks
             ui.removeReports()
             ui.showReports(currentReports, numberOfDays: reports.byDays.count)

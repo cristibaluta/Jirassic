@@ -9,7 +9,7 @@
 import XCTest
 @testable import Jirassic_no_cloud
 
-class CreateMonthReportTests: XCTestCase {
+class MonthReportFormatterTests: XCTestCase {
 
     var tasks = [Task]()
     let kLunchLength = Double(2760)//46min ~ 45min
@@ -56,7 +56,7 @@ class CreateMonthReportTests: XCTestCase {
 
     func testGroupByTaskNumber() {
 
-        let reports = CreateMonthReport().reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay, roundHours: false)
+        let reports = MonthReportFormatter().reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay, roundHours: false)
         var totalDuration = 0.0
         XCTAssert(reports.byDays.count == 3, "There should be only 8 unique task numbers. Lunch and waste are ignored")
         XCTAssert(reports.byTasks.count == 8, "There should be only 8 unique task numbers. Lunch and waste are ignored")

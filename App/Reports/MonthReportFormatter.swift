@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CreateMonthReport {
+class MonthReportFormatter {
 
     private let createReport = CreateReport()
 
@@ -16,10 +16,8 @@ class CreateMonthReport {
     /// @parameters
     /// tasks - All tasks in a month
     /// targetHoursInDay - How many hours in a day
-    /// roundHours - Round the reports to fixed hours
     func reports (fromTasks tasks: [Task],
-                  targetHoursInDay: Double?,
-                  roundHours: Bool) -> (byDays: [[Report]], byTasks: [Report]) {
+                  targetSecondsInDay: Double?) -> (byDays: [[Report]], byTasks: [Report]) {
 
         guard tasks.count > 1 else {
             return (byDays: [], byTasks: [])
@@ -64,7 +62,7 @@ class CreateMonthReport {
         // Iterate over days and create reports
         var reportsByDay = [[Report]]()
         for tasks in tasksByDay {
-            let report = createReport.reports(fromTasks: tasks, targetHoursInDay: targetHoursInDay)
+            let report = createReport.reports(fromTasks: tasks, targetSeconds: targetSecondsInDay)
             reportsByDay.append(report)
         }
 

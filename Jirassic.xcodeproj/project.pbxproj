@@ -98,9 +98,9 @@
 		2845B13A206703C5006EFB3B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B138206703C5006EFB3B /* Keychain.swift */; };
 		2845B13F2068351F006EFB3B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B13E2068351F006EFB3B /* TableViewCell.swift */; };
 		2845B1402068351F006EFB3B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B13E2068351F006EFB3B /* TableViewCell.swift */; };
-		285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
-		285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
-		285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* CreateMonthReport.swift */; };
+		285465A2216C84E10052CB6A /* MonthReportFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* MonthReportFormatter.swift */; };
+		285465A3216C84E10052CB6A /* MonthReportFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* MonthReportFormatter.swift */; };
+		285465A4216C84E10052CB6A /* MonthReportFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285465A1216C84E10052CB6A /* MonthReportFormatter.swift */; };
 		28577EAB1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA71E8ADC53002B07FD /* SqliteRepository.swift */; };
 		28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28577EA81E8ADC53002B07FD /* SSettings.swift */; };
@@ -226,7 +226,7 @@
 		565E19F220A5E336003A5E2A /* RCSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E19EF20A5E336003A5E2A /* RCSync.swift */; };
 		56ADBF6A21C3F625008350A6 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6921C3F625008350A6 /* GitUser.swift */; };
 		56ADBF6B21C3F625008350A6 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBF6921C3F625008350A6 /* GitUser.swift */; };
-		56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */; };
+		56D069E1216CABCB000D051D /* MonthReportFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D069E0216CABCB000D051D /* MonthReportFormatterTests.swift */; };
 		6D3519162C1C69EC00B1AE2C /* RCHttp in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3519152C1C69EC00B1AE2C /* RCHttp */; };
 		6D3519182C1C69EC00B1AE2C /* RCPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3519172C1C69EC00B1AE2C /* RCPreferences */; };
 		6D35191C2C1C6BB100B1AE2C /* ReadMetadataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3519192C1C6BB100B1AE2C /* ReadMetadataInteractor.swift */; };
@@ -245,9 +245,9 @@
 		6D3702622BA83EB9002260D0 /* RCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3702612BA83EB9002260D0 /* RCLog */; };
 		6D420F702C2DCE0200E2B075 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6D420F6F2C2DCE0200E2B075 /* scripts */; };
 		6D420F712C2DCE0200E2B075 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6D420F6F2C2DCE0200E2B075 /* scripts */; };
-		6D5BC4C82C1B5BE6002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
-		6D5BC4C92C1B5BE6002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
-		6D5BC4CB2C1B5BF7002DA29B /* CreateDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */; };
+		6D5BC4C82C1B5BE6002DA29B /* DayReportFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* DayReportFormatter.swift */; };
+		6D5BC4C92C1B5BE6002DA29B /* DayReportFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* DayReportFormatter.swift */; };
+		6D5BC4CB2C1B5BF7002DA29B /* DayReportFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BC4C62C1B5B70002DA29B /* DayReportFormatter.swift */; };
 		6D5CECBE2C2E152200EAA23C /* CoreDataRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5CECBD2C2E150C00EAA23C /* CoreDataRepository+Metadata.swift */; };
 		6D5CECBF2C2E152200EAA23C /* CoreDataRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5CECBD2C2E150C00EAA23C /* CoreDataRepository+Metadata.swift */; };
 		6D5CECC02C2E152200EAA23C /* CoreDataRepository+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5CECBD2C2E150C00EAA23C /* CoreDataRepository+Metadata.swift */; };
@@ -672,7 +672,7 @@
 		284192D92018855B00E64A9A /* JiraRepository+Projects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JiraRepository+Projects.swift"; sourceTree = "<group>"; };
 		2845B138206703C5006EFB3B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		2845B13E2068351F006EFB3B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		285465A1216C84E10052CB6A /* CreateMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReport.swift; sourceTree = "<group>"; };
+		285465A1216C84E10052CB6A /* MonthReportFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportFormatter.swift; sourceTree = "<group>"; };
 		28577EA71E8ADC53002B07FD /* SqliteRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteRepository.swift; sourceTree = "<group>"; };
 		28577EA81E8ADC53002B07FD /* SSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSettings.swift; sourceTree = "<group>"; };
 		28577EA91E8ADC53002B07FD /* STask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STask.swift; sourceTree = "<group>"; };
@@ -767,14 +767,14 @@
 		4073184E1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerWakeUpInteractorTests.swift; sourceTree = "<group>"; };
 		565E19EF20A5E336003A5E2A /* RCSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCSync.swift; sourceTree = "<group>"; };
 		56ADBF6921C3F625008350A6 /* GitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
-		56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMonthReportTests.swift; sourceTree = "<group>"; };
+		56D069E0216CABCB000D051D /* MonthReportFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportFormatterTests.swift; sourceTree = "<group>"; };
 		6D3519192C1C6BB100B1AE2C /* ReadMetadataInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMetadataInteractor.swift; sourceTree = "<group>"; };
 		6D35191A2C1C6BB100B1AE2C /* WriteMetadataInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteMetadataInteractor.swift; sourceTree = "<group>"; };
 		6D3519242C1C6BF000B1AE2C /* ProjectInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectInteractor.swift; sourceTree = "<group>"; };
 		6D3519252C1C6BF000B1AE2C /* ReadProjectsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadProjectsInteractor.swift; sourceTree = "<group>"; };
 		6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jirassic macOS.entitlements"; sourceTree = "<group>"; };
 		6D420F6F2C2DCE0200E2B075 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
-		6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDayReport.swift; sourceTree = "<group>"; };
+		6D5BC4C62C1B5B70002DA29B /* DayReportFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayReportFormatter.swift; sourceTree = "<group>"; };
 		6D5CECBD2C2E150C00EAA23C /* CoreDataRepository+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataRepository+Metadata.swift"; sourceTree = "<group>"; };
 		6DAC5F8E2C1C5DD9000D11A2 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		6DAC5F8F2C1C5DD9000D11A2 /* FlipAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
@@ -1189,9 +1189,9 @@
 			children = (
 				4065D32B1DD3B44200B73201 /* CreateReport.swift */,
 				4065D32C1DD3B44200B73201 /* CreateReportTests.swift */,
-				6D5BC4C62C1B5B70002DA29B /* CreateDayReport.swift */,
-				285465A1216C84E10052CB6A /* CreateMonthReport.swift */,
-				56D069E0216CABCB000D051D /* CreateMonthReportTests.swift */,
+				6D5BC4C62C1B5B70002DA29B /* DayReportFormatter.swift */,
+				285465A1216C84E10052CB6A /* MonthReportFormatter.swift */,
+				56D069E0216CABCB000D051D /* MonthReportFormatterTests.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -2417,7 +2417,7 @@
 				280D71431ED6043D005D2689 /* TaskFinder.swift in Sources */,
 				6D35192A2C1C6BF000B1AE2C /* ReadProjectsInteractor.swift in Sources */,
 				280D71451ED6043D005D2689 /* TaskInteractor.swift in Sources */,
-				285465A2216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
+				285465A2216C84E10052CB6A /* MonthReportFormatter.swift in Sources */,
 				280D71471ED6043D005D2689 /* TaskTypeEstimator.swift in Sources */,
 				280D71491ED6043D005D2689 /* TaskTypeSelection.swift in Sources */,
 				280D714A1ED6043D005D2689 /* PredictiveTimeTyping.swift in Sources */,
@@ -2466,7 +2466,7 @@
 				565E19F020A5E336003A5E2A /* RCSync.swift in Sources */,
 				280D71B61ED6043D005D2689 /* Repository.swift in Sources */,
 				280D71B71ED6043D005D2689 /* RepositoryInteractor.swift in Sources */,
-				6D5BC4C82C1B5BE6002DA29B /* CreateDayReport.swift in Sources */,
+				6D5BC4C82C1B5BE6002DA29B /* DayReportFormatter.swift in Sources */,
 				280300D61EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2488,7 +2488,7 @@
 				2892B29F1F094B0D0085BAC2 /* JReport.swift in Sources */,
 				28A928811E910DA40022AB55 /* SqliteRepository+Tasks.swift in Sources */,
 				4065D39F1DD3B44200B73201 /* Task.swift in Sources */,
-				6D5BC4C92C1B5BE6002DA29B /* CreateDayReport.swift in Sources */,
+				6D5BC4C92C1B5BE6002DA29B /* DayReportFormatter.swift in Sources */,
 				287195372027CAD9001C237E /* TimeInteractor.swift in Sources */,
 				28577EAD1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28577EB51E8AF08F002B07FD /* SQLiteDB.swift in Sources */,
@@ -2657,7 +2657,7 @@
 				6DAC61C22C1C62A9000D11A2 /* CKRecord+Project.swift in Sources */,
 				4065D3F21DD3B44200B73201 /* CloudKitRepository.swift in Sources */,
 				4065D3AE1DD3B44200B73201 /* ReadDaysInteractor.swift in Sources */,
-				285465A3216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
+				285465A3216C84E10052CB6A /* MonthReportFormatter.swift in Sources */,
 				280F507D1EC868B0007416AB /* StringArray.swift in Sources */,
 				2845B13A206703C5006EFB3B /* Keychain.swift in Sources */,
 				28AA500D1EDCD51300AAF03D /* CTask.swift in Sources */,
@@ -2688,7 +2688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4065D4231DD4562900B73201 /* DateExtensionTests.swift in Sources */,
-				56D069E1216CABCB000D051D /* CreateMonthReportTests.swift in Sources */,
+				56D069E1216CABCB000D051D /* MonthReportFormatterTests.swift in Sources */,
 				287558451EFE5969009A2503 /* ReadDaysInteractorTests.swift in Sources */,
 				4065D4241DD4562900B73201 /* CreateReportTests.swift in Sources */,
 				4073184F1DE9B1B40046F409 /* ComputerWakeUpInteractorTests.swift in Sources */,
@@ -2714,7 +2714,7 @@
 				28577EAC1E8ADC53002B07FD /* SqliteRepository.swift in Sources */,
 				28577EAE1E8ADC53002B07FD /* SSettings.swift in Sources */,
 				28A9287B1E8FC9B90022AB55 /* CreateReport.swift in Sources */,
-				285465A4216C84E10052CB6A /* CreateMonthReport.swift in Sources */,
+				285465A4216C84E10052CB6A /* MonthReportFormatter.swift in Sources */,
 				4065D42E1DD4577D00B73201 /* StringIdGenerator.swift in Sources */,
 				28A928881E910EA70022AB55 /* SqliteRepository+Settings.swift in Sources */,
 				4065D4321DD457B500B73201 /* Conversions.swift in Sources */,
@@ -2726,7 +2726,7 @@
 				4065D42C1DD4576800B73201 /* Report.swift in Sources */,
 				280300D91EDB5ECA000A763E /* StatisticsInteractor.swift in Sources */,
 				4065D4301DD4579F00B73201 /* ReadTasksInteractor.swift in Sources */,
-				6D5BC4CB2C1B5BF7002DA29B /* CreateDayReport.swift in Sources */,
+				6D5BC4CB2C1B5BF7002DA29B /* DayReportFormatter.swift in Sources */,
 				4065D4171DD4536200B73201 /* main.swift in Sources */,
 				4065D42B1DD4576500B73201 /* Settings.swift in Sources */,
 				4065D4281DD4574D00B73201 /* User.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CreateDayReport {
+class DayReportFormatter {
 
     private let createReport = CreateReport()
 

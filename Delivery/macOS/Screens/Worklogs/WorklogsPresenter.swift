@@ -47,7 +47,7 @@ extension WorklogsPresenter: WorklogsPresenterInput {
     private func show (tasks: [Task]) {
         
         // Find the real number of worked hours
-        let reports = reportsInteractor.reports(fromTasks: tasks, targetHoursInDay: nil)
+        let reports = reportsInteractor.reports(fromTasks: tasks, targetSeconds: nil)
         let message = reportsInteractor.toString(reports)
         
         let settings = SettingsInteractor().getAppSettings()

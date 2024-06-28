@@ -10,19 +10,29 @@ import Foundation
 
 class CreateReport {
     
-    func reports (fromTasks tasks: [Task], targetHoursInDay: Double?) -> [Report] {
-		
+    func reports (fromTasks tasks: [Task], targetSeconds: Double?) -> [Report] {
+
+        var processedTasks = removeUnsavedTasksIfNeeded(tasks)
+
         // .endDay task is not part of the report
-        let filteredTasks = tasks.filter({ $0.taskType != .endDay })
-		guard filteredTasks.count > 1 else {
+        processedTasks = processedTasks.filter({ $0.taskType != .endDay })
+        // We need at least one task beside the startDay to create a report
+        guard processedTasks.count > 1 else {
 			return []
         }
-        var processedTasks = splitOverlappingTasks(filteredTasks)
+        processedTasks = flattenTasks(processedTasks)
         processedTasks = removeUntrackableTasks(processedTasks)
+        // We need at least one task beside the startDay to create a report
         guard processedTasks.count > 1 else {
             return []
         }
-        processedTasks = addExtraTimeToTasks(processedTasks, targetHoursInDay: targetHoursInDay)
+        if let targetSeconds {
+            processedTasks = addExtraTimeToTasks(processedTasks, targetSeconds: targetSeconds)
+        }
+        processedTasks = fillTasksWithStartDates(processedTasks)
+        // Remove .startDay because it is not part of the report
+        processedTasks = processedTasks.filter({ $0.taskType != .startDay })
+
         let groups = groupByTaskNumber(processedTasks)
         let reports = reportsFromGroups(groups.groups)
         
@@ -58,8 +68,17 @@ class CreateReport {
 
 extension CreateReport {
     
-    private func splitOverlappingTasks (_ tasks: [Task]) -> [Task] {
-        
+    private func removeUnsavedTasksIfNeeded (_ tasks: [Task]) -> [Task] {
+        // Eliminate unsaved tasks if the day was ended by the user
+        // Otherwise there might be duplicated calendar events
+        guard tasks.contains(where: { $0.taskType == .endDay }) else {
+            return tasks
+        }
+        return tasks.filter({ $0.objectId != nil })
+    }
+
+    private func flattenTasks (_ tasks: [Task]) -> [Task] {
+
         var arr = [Task]()
         var task = tasks.first!
         var previousEndDate = task.endDate
@@ -105,8 +124,8 @@ extension CreateReport {
         return arr
     }
     
-    private func addExtraTimeToTasks (_ tasks: [Task], targetHoursInDay: Double?) -> [Task] {
-        
+    private func addExtraTimeToTasks (_ tasks: [Task], targetSeconds: Double) -> [Task] {
+
         // How many tasks should be adjusted
         let numberOfTasksToAdjust = tasks.filter({ isAdjustable(taskType: $0.taskType) }).count
         
@@ -115,17 +134,15 @@ extension CreateReport {
         }
         
         // Calculate the diff to targetHoursInDay
-        let workedTime = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
-        let requiredHours = targetHoursInDay != nil ? targetHoursInDay! : workedTime
-        let missingTime = requiredHours - workedTime
-        let extraTimePerTask = ceil( Double( Int(missingTime) / numberOfTasksToAdjust))
-        
+        let workedSeconds = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
+        let requiredSeconds = targetSeconds
+        let missingSeconds = requiredSeconds - workedSeconds
+        let extraSecondsPerTask = ceil( Double( Int(missingSeconds) / numberOfTasksToAdjust))
+
         var roundedTasks = [Task]()
         
         var task = tasks.first!
-        task.endDate = targetHoursInDay == nil ? task.endDate : task.endDate.round()
         roundedTasks.append(task)
-        var previousDate = task.endDate
         var extraTimeToAdd = 0.0
         
         // First task is start of the day and should not be modified
@@ -133,28 +150,38 @@ extension CreateReport {
             
             task = tasks[i]
             
-            if targetHoursInDay != nil && isAdjustable(taskType: task.taskType) {
-                extraTimeToAdd += extraTimePerTask
+            if isAdjustable(taskType: task.taskType) {
+                extraTimeToAdd += extraSecondsPerTask
             }
             
-            task.endDate = targetHoursInDay == nil
-                ? task.endDate.addingTimeInterval(extraTimeToAdd)
-                : task.endDate.addingTimeInterval(extraTimeToAdd).round()
-            task.startDate = previousDate
-            previousDate = task.endDate
+            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
             
             roundedTasks.append(task)
         }
         
         // Handle the last task separately, add the remaining time till targetHoursInDay
         task = tasks.last!
-        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(requiredHours)
-        task.startDate = previousDate
+        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(requiredSeconds)
         roundedTasks.append(task)
         
         return roundedTasks
     }
-    
+
+    private func fillTasksWithStartDates (_ tasks: [Task]) -> [Task] {
+
+        var previousStartDate = tasks.first!.endDate
+
+        return tasks.map({
+            if $0.taskType == .startDay {
+                return $0
+            }
+            var task = $0
+            task.startDate = previousStartDate
+            previousStartDate = task.endDate
+            return task
+        })
+    }
+
     private func groupByTaskNumber (_ tasks: [Task]) -> (groups: [String: [Task]], order: [String]) {
         
         var order = [String]()
@@ -195,7 +222,8 @@ extension CreateReport {
                     continue
                 }
                 guard let startDate = task.startDate else {
-                    // This shouldn't happen. It can happen only if there's no start of the day
+                    // This shouldn't happen, all tasks are processed to have a start date.
+                    // It can happen only if there's no start of the day
                     continue
                 }
                 
