@@ -20,7 +20,7 @@ class TaskCell: NSTableRowView, CellProtocol {
     @IBOutlet private var butRemove: NSButton!
     @IBOutlet private var butAdd: NSButton!
     @IBOutlet private var butEdit: NSButton!
-    
+
     private var isEditing = false
     private var wasEdited = false
     private var isMouseOver = false
@@ -180,6 +180,9 @@ extension TaskCell {
 	override func mouseEntered (with theEvent: NSEvent) {
         super.mouseEntered(with: theEvent)
         
+        guard isEditable else {
+            return
+        }
 		butRemove.isHidden = false
         butAdd.isHidden = false
         butEdit.isHidden = false
@@ -190,7 +193,10 @@ extension TaskCell {
 	
 	override func mouseExited (with theEvent: NSEvent) {
         super.mouseExited(with: theEvent)
-        
+
+        guard isEditable else {
+            return
+        }
 		butRemove.isHidden = true
         butAdd.isHidden = true
         butEdit.isHidden = true
