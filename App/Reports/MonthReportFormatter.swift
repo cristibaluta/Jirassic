@@ -40,7 +40,6 @@ class MonthReportFormatter {
                 continue
             }
             if date.isSameDayAs(task.endDate) {
-                // This task is from the next day
                 tasksInDay.append(task)
             } else {
                 tasksByDay.append(tasksInDay)
@@ -86,12 +85,12 @@ class MonthReportFormatter {
                 if monthReport == nil {
                     reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
                                                                     title: report.title,
-                                                                    notes: ["meeting", "learning"].contains(report.taskNumber) ? report.notes : [],
+                                                                    notes: report.notes,//["meeting", "learning"].contains(report.taskNumber) ? report.notes : [],
                                                                     duration: report.duration)
                 } else {
                     if ["meeting", "learning"].contains(report.taskNumber)  {
-                        monthReport!.notes = Array(Set(monthReport!.notes + report.notes))
                     }
+                    monthReport!.notes = Array(Set(monthReport!.notes + report.notes))
                     monthReport!.duration += report.duration
                     reportsByTaskNumber[report.taskNumber] = monthReport
                 }

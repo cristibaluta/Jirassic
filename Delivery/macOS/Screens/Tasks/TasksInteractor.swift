@@ -94,10 +94,6 @@ extension TasksInteractor: TasksInteractorInput {
             completion()
             return
         }
-        guard !currentTasks.contains(where: { $0.taskType == .endDay }) else {
-            completion()
-            return
-        }
         moduleGit.fetchLogs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
             guard let self, self.currentDateStart == dateStart else {
@@ -112,10 +108,6 @@ extension TasksInteractor: TasksInteractorInput {
     private func loadAndAppendCalendarEvents (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
 
         guard pref.bool(.enableCalendar) else {
-            completion()
-            return
-        }
-        guard !currentTasks.contains(where: { $0.taskType == .endDay }) else {
             completion()
             return
         }

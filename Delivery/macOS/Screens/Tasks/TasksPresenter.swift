@@ -92,9 +92,9 @@ extension TasksPresenter: TasksPresenterInput {
 
     func startDay() {
 
-        /// The day will start
+        /// The day will start with
         /// 1. current timestamp if day is today
-        /// 2. start  timestamp from settings if day is not today
+        /// 2. start timestamp from settings if day is not today
         let settings: Settings = SettingsInteractor().getAppSettings()
         let startDate = lastSelectedDay.dateStart.isToday()
             ? Date()
@@ -149,7 +149,9 @@ extension TasksPresenter: TasksPresenterInput {
         guard currentTasks.count > row + 1 else {
             // Insert task at the end
             let taskBefore = currentTasks[row]
-            let nextDate = taskBefore.endDate.isSameDayAs(Date()) ? Date() : taskBefore.endDate.addingTimeInterval(3600)
+            let nextDate = taskBefore.endDate.isSameDayAs(Date())
+                ? Date()
+                : taskBefore.endDate.addingTimeInterval(3600)
             ui!.closeTaskEditor()
             ui!.presentNewTaskController(date: nextDate)
             return
@@ -191,8 +193,12 @@ extension TasksPresenter: TasksInteractorOutput {
         guard let ui = self.ui else {
             return
         }
+        // Remove unsaved tasks like calendar events and git commits if current day is closed
+        currentTasks = tasks.contains(where: { $0.taskType == .endDay })
+            ? tasks.filter({ $0.objectId != nil })
+            : tasks
+
         ui.showLoadingIndicator(false)
-        currentTasks = tasks
         ui.removeTasks()
         ui.showTasks(currentTasks)
         updateNoTasksState()
