@@ -387,7 +387,6 @@
 		6DAC60DE2C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60182C1C5DD9000D11A2 /* OutputsScrollView.xib */; };
 		6DAC60DF2C1C5DD9000D11A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60522C1C5DD9000D11A2 /* Images.xcassets */; };
 		6DAC60E02C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD12C1C5DD9000D11A2 /* WizardAppleScriptView.xib */; };
-		6DAC60E22C1C5DD9000D11A2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60532C1C5DD9000D11A2 /* Info.plist */; };
 		6DAC60E32C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60082C1C5DD9000D11A2 /* InputsScrollView.xib */; };
 		6DAC60E42C1C5DD9000D11A2 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FED2C1C5DD9000D11A2 /* Reports.storyboard */; };
 		6DAC60E52C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60142C1C5DD9000D11A2 /* JiraTempoCell.xib */; };
@@ -423,7 +422,6 @@
 		6DAC61072C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60182C1C5DD9000D11A2 /* OutputsScrollView.xib */; };
 		6DAC61082C1C5DD9000D11A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60522C1C5DD9000D11A2 /* Images.xcassets */; };
 		6DAC61092C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FD12C1C5DD9000D11A2 /* WizardAppleScriptView.xib */; };
-		6DAC610B2C1C5DD9000D11A2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60532C1C5DD9000D11A2 /* Info.plist */; };
 		6DAC610C2C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60082C1C5DD9000D11A2 /* InputsScrollView.xib */; };
 		6DAC610D2C1C5DD9000D11A2 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC5FED2C1C5DD9000D11A2 /* Reports.storyboard */; };
 		6DAC610E2C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DAC60142C1C5DD9000D11A2 /* JiraTempoCell.xib */; };
@@ -2006,7 +2004,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = "Imagin soft";
 				TargetAttributes = {
 					280D70B51ECFE06A005D2689 = {
@@ -2071,10 +2069,9 @@
 			};
 			buildConfigurationList = 4065D2FF1DD3A1AA00B73201 /* Build configuration list for PBXProject "Jirassic" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -2138,7 +2135,6 @@
 				6DAC61082C1C5DD9000D11A2 /* Images.xcassets in Resources */,
 				6DAC61092C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */,
 				6D5CECCA2C2E16CC00EAA23C /* JirassicLauncher.app in Resources */,
-				6DAC610B2C1C5DD9000D11A2 /* Info.plist in Resources */,
 				6DAC610C2C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */,
 				6DAC610D2C1C5DD9000D11A2 /* Reports.storyboard in Resources */,
 				6DAC610E2C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */,
@@ -2190,7 +2186,6 @@
 				6DAC60DE2C1C5DD9000D11A2 /* OutputsScrollView.xib in Resources */,
 				6DAC60DF2C1C5DD9000D11A2 /* Images.xcassets in Resources */,
 				6DAC60E02C1C5DD9000D11A2 /* WizardAppleScriptView.xib in Resources */,
-				6DAC60E22C1C5DD9000D11A2 /* Info.plist in Resources */,
 				6DAC60E32C1C5DD9000D11A2 /* InputsScrollView.xib in Resources */,
 				6DAC60E42C1C5DD9000D11A2 /* Reports.storyboard in Resources */,
 				6DAC60E52C1C5DD9000D11A2 /* JiraTempoCell.xib in Resources */,

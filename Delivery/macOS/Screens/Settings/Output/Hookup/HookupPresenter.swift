@@ -100,7 +100,7 @@ extension HookupPresenter: HookupPresenterInput {
         panel.canChooseDirectories = false
         panel.allowsMultipleSelection = false
         panel.showsHiddenFiles = true
-        panel.allowedFileTypes = [""]
+        panel.allowedContentTypes = []
         panel.message = "Please select a CLI app"
         panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         panel.begin { [weak self] (result) -> Void in

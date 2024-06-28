@@ -31,11 +31,10 @@ class WriteMetadataInteractor: RepositoryInteractor {
     
     private func string (from token: CKServerChangeToken?) -> String? {
         
-        guard let token = token else {
+        guard let token,
+              let data = try? NSKeyedArchiver.archivedData(withRootObject: token, requiringSecureCoding: false) else {
             return nil
         }
-        let data = NSKeyedArchiver.archivedData(withRootObject: token)
-        let string = data.base64EncodedString()
-        return string
+        return data.base64EncodedString()
     }
 }
