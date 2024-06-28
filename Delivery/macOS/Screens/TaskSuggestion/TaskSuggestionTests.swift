@@ -17,6 +17,7 @@ fileprivate class TaskSuggestionPresenterMock: TaskSuggestionPresenterOutput {
     func selectSegment (atIndex index: Int) { selectSegment_called = true }
     func setTime (_ notes: String) { setTime_called = true }
     func setNotes (_ notes: String) { setNotes_called = true }
+    func setProjects (_ projects: [String]) {}
     func hideTaskTypes() { hideTaskTypes_called = true }
 }
 
@@ -63,7 +64,11 @@ class TaskSuggestionTests: XCTestCase {
         let controller = TaskSuggestionPresenterMock()
         presenter.userInterface = controller
         
-        presenter.save (selectedSegment: 0, notes: "", startSleepDate: Date(), endSleepDate: Date())
+        presenter.save (selectedSegment: 0,
+                        selectedProjectIndex: 0,
+                        notes: "",
+                        startSleepDate: Date(),
+                        endSleepDate: Date())
 //        XCTAssert(controller.setNotes_called)
     }
 }
