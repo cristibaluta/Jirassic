@@ -48,8 +48,8 @@ extension WorklogsPresenter: WorklogsPresenterInput {
         
         // Find the real number of worked hours
         let reports = reportsInteractor.reports(fromTasks: tasks, targetSeconds: nil)
-        let message = reportsInteractor.toString(reports)
-        
+        let message = DayReportFormatter().toString(reports)
+
         let settings = SettingsInteractor().getAppSettings()
         workdayLength = TimeInteractor(settings: settings).workingDayLength()
         workedLength = StatisticsInteractor().duration(of: reports)

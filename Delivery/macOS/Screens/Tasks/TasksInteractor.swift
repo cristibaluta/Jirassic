@@ -58,7 +58,7 @@ extension TasksInteractor: TasksInteractorInput {
     private func reloadTasks (dateStart: Date, dateEnd: Date) {
 
         self.currentTasks = []
-        self.loadAndAppendLocalTasks(dateStart: dateStart, dateEnd: dateEnd) { [weak self] in
+        self.loadAndAppendSavedTasks(dateStart: dateStart, dateEnd: dateEnd) { [weak self] in
             guard let self, !self.currentTasks.isEmpty else {
                 self?.presenter?.tasksDidLoad([])
                 return
@@ -74,7 +74,7 @@ extension TasksInteractor: TasksInteractorInput {
         }
     }
 
-    private func loadAndAppendLocalTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
+    private func loadAndAppendSavedTasks (dateStart: Date, dateEnd: Date, completion: () -> Void) {
         currentTasks = tasksReader.tasks(between: dateStart, and: dateEnd)
         // Sort by date
         currentTasks.sort(by: {
@@ -94,6 +94,10 @@ extension TasksInteractor: TasksInteractorInput {
             completion()
             return
         }
+        guard !currentTasks.contains(where: { $0.taskType == .endDay }) else {
+            completion()
+            return
+        }
         moduleGit.fetchLogs(dateStart: dateStart, dateEnd: dateEnd) { [weak self] gitTasks in
 
             guard let self, self.currentDateStart == dateStart else {
@@ -108,6 +112,10 @@ extension TasksInteractor: TasksInteractorInput {
     private func loadAndAppendCalendarEvents (dateStart: Date, dateEnd: Date, completion: @escaping () -> Void) {
 
         guard pref.bool(.enableCalendar) else {
+            completion()
+            return
+        }
+        guard !currentTasks.contains(where: { $0.taskType == .endDay }) else {
             completion()
             return
         }

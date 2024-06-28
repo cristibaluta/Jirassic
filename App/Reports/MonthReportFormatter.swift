@@ -24,37 +24,45 @@ class MonthReportFormatter {
         }
         // When we find a startDay we keep its date and start adding tasks in that day till endDay found or new startDay found
         // Tasks between end and start are invalid
-        var startDayDate: Date?
+        var referenceDate: Date?
 
         // Group tasks by days
         var tasksByDay = [[Task]]()
         var tasksInDay = [Task]()
+
         for task in tasks {
-            if let date = startDayDate {
+            guard let date = referenceDate else {
+                // If no start of day found yet iterate till found
+                if task.taskType == .startDay {
+                    referenceDate = task.endDate
+                    tasksInDay = [task]
+                }
+                continue
+            }
+            if date.isSameDayAs(task.endDate) {
+                // This task is from the next day
+                tasksInDay.append(task)
+            } else {
+                tasksByDay.append(tasksInDay)
+                if task.taskType == .startDay {
+                    tasksInDay = [task]
+                    referenceDate = task.endDate
+                } else {
+                    tasksInDay = []
+                    referenceDate = nil
+                }
+            }
+
                 // Start of day already found
                 // Iterate till endDay or new startDay found
                 // Days without a .startDay are ignored
-                if task.taskType == .endDay {
-                    tasksInDay.append(task)
-                    tasksByDay.append(tasksInDay)
-                    tasksInDay = []
-                    startDayDate = nil
-                } else if !date.isSameDayAs(task.endDate) {
-                    // This task is from the next day
-                    tasksByDay.append(tasksInDay)
-                    tasksInDay = [task]
-                    startDayDate = task.taskType == .startDay ? task.endDate : nil
-                } else {
-                    tasksInDay.append(task)
-                }
-            } else {
-                // If no start of day found yet iterate till found
-                if task.taskType == .startDay {
-                    startDayDate = task.endDate
-                    tasksInDay = [task]
-                }
-            }
-            if task.objectId == tasks.last?.objectId && tasksInDay.count > 0 {
+//                if task.taskType == .endDay {
+//                    tasksInDay.append(task)
+//                    tasksByDay.append(tasksInDay)
+//                    tasksInDay = []
+//                    startDayDate = nil
+//                }
+            if task.objectId == tasks.last?.objectId && task.objectId != nil && tasksInDay.count > 0 {
                 tasksByDay.append(tasksInDay)
             }
         }
