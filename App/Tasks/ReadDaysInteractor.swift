@@ -31,7 +31,7 @@ class ReadDaysInteractor: RepositoryInteractor {
 
         queryLocalTasks(startDate: startingDate, endDate: endingDate) { [weak self] (tasks: [Task]) in
             
-            guard let self = self else {
+            guard let self else {
                 return
             }
             self.tasks = tasks
@@ -126,12 +126,16 @@ class ReadDaysInteractor: RepositoryInteractor {
             }
             switch task.taskType {
                 case .startDay:
-                    // New day found
+                    // Start of day found
+                    // If it's the same as the previously found day, remove the old day
+                    if task.endDate.isSameDayAs(referenceDate) {
+                        days.removeLast()
+                    }
                     referenceDate = task.endDate
                     activeDay = Day(dateStart: referenceDate, dateEnd: nil)
                     days.append(activeDay!)
                 case .endDay:
-                    // End of day found.
+                    // End of day found
                     guard task.endDate.isSameDayAs(referenceDate) else {
                         continue
                     }

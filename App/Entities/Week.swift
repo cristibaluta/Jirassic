@@ -9,12 +9,16 @@
 import Foundation
 
 // Represents a week in the calendar
-class Week {
-	
+class Week: CustomStringConvertible {
+
 	let date: Date
 	var days = [Day]()
 	
 	init (date: Date) {
 		self.date = date
 	}
+
+    var description: String {
+        return "<Week of date \(date), days: \(days.count)>"
+    }
 }

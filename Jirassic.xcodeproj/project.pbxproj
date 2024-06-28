@@ -1100,7 +1100,6 @@
 		4065D2FB1DD3A1AA00B73201 = {
 			isa = PBXGroup;
 			children = (
-				6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */,
 				4065D3161DD3B44200B73201 /* App */,
 				4065D3401DD3B44200B73201 /* Delivery */,
 				4065D3881DD3B44200B73201 /* External */,
@@ -1871,6 +1870,7 @@
 				6DAC60532C1C5DD9000D11A2 /* Info.plist */,
 				6DAC60542C1C5DD9000D11A2 /* jirassic.sdef */,
 				6DAC60552C1C5DD9000D11A2 /* Jirassic.entitlements */,
+				6D3702672BA84233002260D0 /* Jirassic macOS.entitlements */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -2862,7 +2862,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Jirassic macOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2890,7 +2890,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "Jirassic macOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Delivery/macOS/Jirassic macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2906,7 +2906,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos;
 				PRODUCT_NAME = "Jirassic no cloud";
-				PROVISIONING_PROFILE_SPECIFIER = "jirassic distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Delivery/macOS/Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.2;
@@ -3159,10 +3159,12 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3170,7 +3172,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -3184,10 +3186,12 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 5NHDC5EV44;
 				INFOPLIST_FILE = JirassicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3195,7 +3199,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ralcr.JirassicTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jirassic.macos.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

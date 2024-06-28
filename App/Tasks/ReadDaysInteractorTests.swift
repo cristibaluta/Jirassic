@@ -11,8 +11,8 @@ import XCTest
 
 class ReadDaysInteractorTests: XCTestCase {
     
-    func testSplitDays_coredata() {
-        
+    func testGivenMultipleStartDayTasksInADay_CreateASingleDayObjectForThem() {
+
         let repository = InMemoryCoreDataRepository()
         remoteRepository = nil
         
@@ -25,7 +25,7 @@ class ReadDaysInteractorTests: XCTestCase {
         
         let interactor = ReadDaysInteractor(repository: repository, remoteRepository: nil)
         // This is synchronous query
-        interactor.queryAll { (weeks) in
+        interactor.queryAll { weeks in
             XCTAssertTrue(weeks.first!.days.count == 2)
         }
     }
