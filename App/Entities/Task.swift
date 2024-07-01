@@ -72,6 +72,22 @@ enum TaskType: Int {
         }
     }
 
+    // Returns if this task is allowed to be added to the report
+    var isTrackable: Bool {
+        switch self {
+            case .lunch, .waste: return false
+            default: return true
+        }
+    }
+
+    /// Returns if the duration of this task type is adjustable
+    var isDurationAdjustable: Bool {
+        switch self {
+            case .startDay, .scrum, .meeting, .learning, .calendar, .lunch: return false
+            default: return true
+        }
+    }
+
     static var allValues: [TaskType] = []
 }
 

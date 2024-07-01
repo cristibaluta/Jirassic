@@ -37,6 +37,7 @@ class ReportsPresenter {
     
     private var currentTasks = [Task]()
     private var currentReports = [Report]()
+    private var currentReportsCsv = ""
     private let pref = RCPreferences<LocalPreferences>()
     private var extensions = ExtensionsInteractor()
     private var lastSelectedDay: Day?
@@ -156,6 +157,7 @@ extension ReportsPresenter: TasksInteractorOutput {
             let reports = formatter.reports(fromTasks: currentTasks,
                                             targetSecondsInDay: targetSecondsInDay)
             currentReports = reports.byTasks
+            currentReportsCsv = reports.csv
             ui.removeReports()
             ui.showReports(currentReports, numberOfDays: reports.byDays.count)
         }

@@ -13,10 +13,9 @@ class CreateReport {
     func reports (fromTasks tasks: [Task], targetSeconds: Double?) -> [Report] {
 
         var processedTasks = removeUnsavedTasksIfNeeded(tasks)
+        processedTasks = removeEndOfDay(processedTasks)
 
-        // .endDay task is not part of the report
-        processedTasks = processedTasks.filter({ $0.taskType != .endDay })
-        // We need at least one task beside the startDay to create a report
+        // We need at least one other task beside the startDay to create a report
         guard processedTasks.count > 1 else {
 			return []
         }
@@ -51,6 +50,18 @@ extension CreateReport {
         return tasks.filter({ $0.objectId != nil })
     }
 
+    // Removes the end of day and everything that follows after
+    private func removeEndOfDay (_ tasks: [Task]) -> [Task] {
+        var isEndFound = false
+        return tasks.filter({
+            if !isEndFound {
+                isEndFound = $0.taskType == .endDay
+            }
+            return !isEndFound
+        })
+    }
+
+    // Arrange the tasks in order and move overlappings
     private func flattenTasks (_ tasks: [Task]) -> [Task] {
 
         var arr = [Task]()
@@ -86,7 +97,7 @@ extension CreateReport {
         var previousTaskOriginalEndDate = tasks.first!.endDate
         
         for task in tasks {
-            if isTrackingAllowed(taskType: task.taskType) {
+            if task.taskType.isTrackable {
                 var tempTask = task
                 tempTask.endDate = task.endDate.addingTimeInterval(-untrackedDuration)
                 arr.append(tempTask)
@@ -101,8 +112,8 @@ extension CreateReport {
     private func addExtraTimeToTasks (_ tasks: [Task], targetSeconds: Double) -> [Task] {
 
         // How many tasks should be adjusted
-        let numberOfTasksToAdjust = tasks.filter({ isAdjustable(taskType: $0.taskType) }).count
-        
+        let numberOfTasksToAdjust = tasks.filter({ $0.taskType.isDurationAdjustable }).count
+
         guard numberOfTasksToAdjust > 0 else {
             return tasks
         }
@@ -115,21 +126,25 @@ extension CreateReport {
 
         var roundedTasks = [Task]()
         
+        // First task is start of the day and should not be modified
         var task = tasks.first!
         roundedTasks.append(task)
         var extraTimeToAdd = 0.0
         
-        // First task is start of the day and should not be modified
         for i in 1..<tasks.count-1 {
             
             task = tasks[i]
-            
-            if isAdjustable(taskType: task.taskType) {
-                extraTimeToAdd += extraSecondsPerTask
+            // Shift the date to the right
+            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd)
+
+
+            if task.taskType.isDurationAdjustable {
+                let initialEndDate = task.endDate
+                task.endDate = task.endDate.addingTimeInterval(extraSecondsPerTask).round()
+                let roundedExtraTime = task.endDate.timeIntervalSince(initialEndDate)
+                extraTimeToAdd += roundedExtraTime
             }
-            
-            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd).round()
-            
+
             roundedTasks.append(task)
         }
         
@@ -192,7 +207,7 @@ extension CreateReport {
             
             for task in tasks {
                 
-                guard isTrackingAllowed(taskType: task.taskType) else {
+                guard task.taskType.isTrackable else {
                     continue
                 }
                 guard let startDate = task.startDate else {
@@ -258,21 +273,6 @@ extension CreateReport {
 }
 
 extension CreateReport {
-    
-    private func isTrackingAllowed (taskType: TaskType) -> Bool {
-        switch taskType {
-            case .lunch, .waste: return false
-            default: return true
-        }
-    }
-    
-    /// Returns if the duration of this task type is adjustable
-    private func isAdjustable (taskType: TaskType) -> Bool {
-        switch taskType {
-            case .startDay, .scrum, .meeting, .learning, .calendar: return false
-            default: return true
-        }
-    }
     
     private func isDisplayingAllowed (taskType: TaskType) -> Bool {
         return taskType != .startDay

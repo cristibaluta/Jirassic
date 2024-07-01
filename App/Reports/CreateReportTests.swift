@@ -172,6 +172,32 @@ class CreateReportTests: XCTestCase {
         XCTAssert(reports[0].duration == 8 * 3600 + 35 * 60, "8h 35m")
     }
 
+    func testDurations() {
+
+        let str =   "|9.01||||1|;" +
+                    "9.12|9.22||||8|;" +// coderev
+                    "10.0|10.30||||10|"// calendar
+        tasks = buildTasks(str)
+
+        let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
+        XCTAssert(reports.count == 2)
+        XCTAssert(reports[0].duration == 8.hoursToSec - 1800, "Code rev should fill the remaining time")
+        XCTAssert(reports[1].duration == 1800, "Scrum should be 30min")
+    }
+
+    func testRoundingDurations() {
+
+        let str =   "|9.01||||1|;" +
+                    "9.12|9.22||||8|;" +// coderev
+                    "10.0|10.31||||10|"// calendar
+        tasks = buildTasks(str)
+
+        let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
+        XCTAssert(reports.count == 2)
+        XCTAssert(reports[0].duration == 8.hoursToSec - 1800, "Code rev should fill the remaining time")
+        XCTAssert(reports[1].duration == 1800, "Scrum should be 30min")
+    }
+
     func testGivenSavedAndUnsavedCalendarEventsInASavedDay_IgnoreTheUnsavedEvents() {
 
         let str = "|9.00||||1|;" +
@@ -183,5 +209,18 @@ class CreateReportTests: XCTestCase {
         let reports = report.reports(fromTasks: tasks, targetSeconds: nil)
         XCTAssert(reports.count == 1, "Only one valid task")
         XCTAssert(reports[0].duration == 2.hoursToSec, "2h 00m")
+    }
+
+    func testGivenTaskAfterDayEnds_IgnoreIt() {
+
+        let str = "|9.00||||1|;" +
+            "|12.0|Note 1|TASK-1||0|;" +
+            "|18.00||||9|;" +
+            "|19.0|Note 1|TASK-2||0|"
+        tasks = buildTasks(str)
+
+        let reports = report.reports(fromTasks: tasks, targetSeconds: nil)
+        XCTAssert(reports.count == 1, "Only one valid task")
+        XCTAssert(reports[0].duration == 3.hoursToSec, "3h 00m")
     }
 }

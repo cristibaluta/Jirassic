@@ -10,6 +10,17 @@ import Foundation
 
 class MonthReportFormatter {
 
+    private let headers = [
+        "Issue Key", "Issue summary", "Hours", "Work date", "Username", "Full name",
+        "Period", "Account Key", "Account Name", "Activity Name", "Component", "All Components",
+        "Version Name", "Issue Type", "Issue Status", "Project Key", "Project Name",
+        "Work Description", "Parent Key", "Reporter", "External Hours", "Billed Hours",
+        "Issue Original Estimate", "Issue Remaining Estimate", "Epic Link",
+        "Account [deprecated, this field is no longer being used]", "Office Space", "External issue ID",
+        "External issue ID", "Department", "Location", "External issue summary", "External Issue ID",
+        "External Issue ID"
+    ]
+
     private let createReport = CreateReport()
 
     /// Returns reports collected from all days in the month
@@ -17,20 +28,22 @@ class MonthReportFormatter {
     /// tasks - All tasks in a month
     /// targetHoursInDay - How many hours in a day
     func reports (fromTasks tasks: [Task],
-                  targetSecondsInDay: Double?) -> (byDays: [[Report]], byTasks: [Report]) {
+                  targetSecondsInDay: Double?) -> (byDays: [[Report]], byTasks: [Report], csv: String) {
 
         guard tasks.count > 1 else {
-            return (byDays: [], byTasks: [])
+            return (byDays: [], byTasks: [], csv: "")
         }
+        var csv = headers.joined(separator: ";") + "\n"
         // When we find a startDay we keep its date and start adding tasks in that day till endDay found or new startDay found
-        // Tasks between end and start are invalid
+        // Tasks between end and start of next day are invalid
         var referenceDate: Date?
 
         // Group tasks by days
         var tasksByDay = [[Task]]()
         var tasksInDay = [Task]()
 
-        for task in tasks {
+        for i in 0..<tasks.count {
+            let task = tasks[i]
             guard let date = referenceDate else {
                 // If no start of day found yet iterate till found
                 if task.taskType == .startDay {
@@ -42,7 +55,17 @@ class MonthReportFormatter {
             if date.isSameDayAs(task.endDate) {
                 tasksInDay.append(task)
             } else {
+                // We found a task that does not belong to the previous day
+                // If the previous day does not contain any task with adjustable duration
+                // Find the first task from one of the next days
+                let isAdjustable = tasksInDay.contains(where: { $0.taskType.isDurationAdjustable })
+                if !isAdjustable {
+                    if let adjustableTask = Array(tasks[i...]).first(where: { $0.taskType.isDurationAdjustable }) {
+                        tasksInDay.append(adjustableTask)
+                    }
+                }
                 tasksByDay.append(tasksInDay)
+
                 if task.taskType == .startDay {
                     tasksInDay = [task]
                     referenceDate = task.endDate
@@ -51,16 +74,7 @@ class MonthReportFormatter {
                     referenceDate = nil
                 }
             }
-
-                // Start of day already found
-                // Iterate till endDay or new startDay found
-                // Days without a .startDay are ignored
-//                if task.taskType == .endDay {
-//                    tasksInDay.append(task)
-//                    tasksByDay.append(tasksInDay)
-//                    tasksInDay = []
-//                    startDayDate = nil
-//                }
+            // We reach the end of all tasks so close the day
             if task.objectId == tasks.last?.objectId && task.objectId != nil && tasksInDay.count > 0 {
                 tasksByDay.append(tasksInDay)
             }
@@ -75,29 +89,31 @@ class MonthReportFormatter {
 
         // Group reports by task number
         // Acumulate durations
-        // Join notes but only for meetings
+        // Join notes
         var reportsByTaskNumber = [String: Report]()
+        var d = 0.0
         for day in reportsByDay {
-            var d = 0.0
+            var d1 = 0.0
             for report in day {
                 d += report.duration
-                var monthReport = reportsByTaskNumber[report.taskNumber]
-                if monthReport == nil {
+                d1 += report.duration
+                var taskReport = reportsByTaskNumber[report.taskNumber]
+                if taskReport == nil {
                     reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
                                                                     title: report.title,
                                                                     notes: report.notes,//["meeting", "learning"].contains(report.taskNumber) ? report.notes : [],
                                                                     duration: report.duration)
                 } else {
-                    if ["meeting", "learning"].contains(report.taskNumber)  {
-                    }
-                    monthReport!.notes = Array(Set(monthReport!.notes + report.notes))
-                    monthReport!.duration += report.duration
-                    reportsByTaskNumber[report.taskNumber] = monthReport
+                    taskReport!.notes = Array(Set(taskReport!.notes + report.notes))
+                    taskReport!.duration += report.duration
+                    reportsByTaskNumber[report.taskNumber] = taskReport
                 }
             }
+            print(">>>>>>>>>>> duration of day \(d1)")
         }
+        print(">>>>>>>>>>> duration of month \(d)")
 
-        return (byDays: reportsByDay, byTasks: Array(reportsByTaskNumber.values))
+        return (byDays: reportsByDay, byTasks: Array(reportsByTaskNumber.values), csv: csv)
     }
 
     /// List of reports by task number
@@ -116,62 +132,49 @@ class MonthReportFormatter {
         }
         return (notes: notes, totalDuration: totalDuration)
     }
-    
-    func htmlReports (_ reports: [Report]) -> String {
-        
-        var notes = ""
-        var totalDuration = 0.0
-        for report in reports {
-            totalDuration += report.duration
-            var note = "\(report.taskNumber) \(report.title)"
-            if report.notes.count > 0 {
-                note = "<p>\(note)</p>"
-                note += "<ul>"
-                for n in report.notes {
-                    note += "<li>\(n)</li>"
-                }
-                note += "</ul>"
-            }
-            notes += "<tr><td style=\"text-align: left; padding-left: 10px;\">\(note)</td><td>\(report.duration.secToHoursAndMin)</td></tr>\n"
-        }
-        return notes
-    }
 
     func csvReports (_ reports: [Report]) -> String {
 
-        let headers = [
-            "Issue Key", "Issue summary", "Hours", "Work date", "Username", "Full name",
-            "Period", "Account Key", "Account Name", "Activity Name", "Component", "All Components",
-            "Version Name", "Issue Type", "Issue Status", "Project Key", "Project Name",
-            "Work Description", "Parent Key", "Reporter", "External Hours", "Billed Hours",
-            "Issue Original Estimate", "Issue Remaining Estimate", "Epic Link",
-            "Account [deprecated, this field is no longer being used]", "Office Space", "External issue ID",
-            "External issue ID", "Department", "Location", "External issue summary", "External Issue ID",
-            "External Issue ID"
-        ]
         var csv = headers.joined(separator: ";") + "\n"
+        // Iterate over reports
         for report in reports {
-            let dict = [
-                "Hours": "\(report.duration.secToHours)",
-                "Component": "",
-                "Project Name": "GS1.1_BOSCH_eBike",
-                "Work Description": "\(report.taskNumber) \(report.title)"
-            ]
-            var line = ""
-            for h in headers {
-                line += dict[h] ?? "" + ";"
+            if report.notes.count > 0 {
+                var duration = report.duration.secToHours
+                for note in report.notes {
+                    csv += buildLine(duration: duration,
+                                     taskNumber: report.taskNumber,
+                                     title: report.title,
+                                     note: note)
+                    csv += "\n"
+                    duration = 0
+                }
+            } else {
+                csv += buildLine(duration: report.duration.secToHours,
+                                 taskNumber: report.taskNumber,
+                                 title: report.title,
+                                 note: "")
+                csv += "\n"
             }
-            csv += line + "\n"
-//            if report.notes.count > 0 {
-//                for n in report.notes {
-//                    csv += ";;\(hours);;;;;;;;\(component);;;;;;\(project);\(note);;;;;;;;;;;;;;;;"
-//                    csv += "\n"
-//                }
-//            } else {
-//                csv += ";;\(hours);;;;;;;;;;;;;;\(project);\(note);;;;;;;;;;;;;;;;"
-//                csv += "\n"
-//            }
         }
         return csv
+    }
+
+    private func buildLine(duration: Double, taskNumber: String, title: String, note: String) -> String {
+        var descr = "\(taskNumber) \(title == "" ? note : title)"
+        if taskNumber == "meeting" {
+            descr = note
+        }
+        let dict = [
+            "Hours": "\(duration)",
+            "Component": taskNumber == "meeting" ? "Meetings" : "",
+            "Project Name": "GS1.1_BOSCH_eBike",
+            "Work Description": descr
+        ]
+        var line = ""
+        for h in headers {
+            line += (dict[h] ?? "") + ";"
+        }
+
+        return line
     }
 }
