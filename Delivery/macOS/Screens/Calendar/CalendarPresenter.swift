@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol CalendarPresenterInput: class {
+protocol CalendarPresenterInput: AnyObject {
     func reloadData()
     func goPrevMonth()
     func goNextMonth()
     var selectedMonth: Date { get }
 }
 
-protocol CalendarPresenterOutput: class {
+protocol CalendarPresenterOutput: AnyObject {
     func addCell (at index: Int, day: Day, isStarted: Bool)
     func clearCells()
     func showMonthName (_ name: String)

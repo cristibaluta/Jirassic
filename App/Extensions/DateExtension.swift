@@ -225,7 +225,8 @@ extension Date {
 		return comps.weekOfYear!
 	}
 
-    func round (minutesPrecision precision: Int = 6) -> Date {
+    // Alter the time to use multiples of 'precision'
+    func round (minutesPrecision precision: Int = 15) -> Date {
 
         var comps = gregorian.dateComponents(ymdhmsUnitFlags, from: self)
         let hm = minutesToHours(minutes: comps.minute!, resultingMinutesPrecision: precision)

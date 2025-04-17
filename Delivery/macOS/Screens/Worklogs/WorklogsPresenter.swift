@@ -47,19 +47,19 @@ extension WorklogsPresenter: WorklogsPresenterInput {
     private func show (tasks: [Task]) {
         
         // Find the real number of worked hours
-        let reports = reportsInteractor.reports(fromTasks: tasks, targetSeconds: nil)
-        let message = DayReportFormatter().toString(reports)
-
-        let settings = SettingsInteractor().getAppSettings()
-        workdayLength = TimeInteractor(settings: settings).workingDayLength()
-        workedLength = StatisticsInteractor().duration(of: reports)
-        let isRoundingEnabled = pref.bool(.enableRoundingDay)
-        let duration = (isRoundingEnabled ? workdayLength : workedLength).secToPercent
-        
-        userInterface!.showDuration(duration)
-        userInterface!.showWorklog(message)
-        setupRoundingButton(workdayLength: workdayLength.secToPercent,
-                            workedLength: workedLength.secToPercent)
+//        let reports = reportsInteractor.reports(fromTasks: tasks, targetSeconds: nil)
+//        let message = DayReportFormatter().toString(reports)
+//
+//        let settings = SettingsInteractor().getAppSettings()
+//        workdayLength = TimeInteractor(settings: settings).workingDayLength()
+//        workedLength = StatisticsInteractor().duration(of: reports)
+//        let isRoundingEnabled = pref.bool(.enableRoundingDay)
+//        let duration = (isRoundingEnabled ? workdayLength : workedLength).secToPercent
+//        
+//        userInterface!.showDuration(duration)
+//        userInterface!.showWorklog(message)
+//        setupRoundingButton(workdayLength: workdayLength.secToPercent,
+//                            workedLength: workedLength.secToPercent)
     }
     
     private func setupRoundingButton (workdayLength: TimeInterval, workedLength: TimeInterval) {

@@ -10,7 +10,7 @@ import Foundation
 
 class CreateReport {
     
-    func reports (fromTasks tasks: [Task], targetSeconds: Double?) -> [Report] {
+    func reports (fromTasks tasks: [Task], targetSeconds: Double?) -> [CombinedReports] {
 
         var processedTasks = removeUnsavedTasksIfNeeded(tasks)
         processedTasks = removeEndOfDay(processedTasks)
@@ -43,7 +43,7 @@ extension CreateReport {
     
     private func removeUnsavedTasksIfNeeded (_ tasks: [Task]) -> [Task] {
         // Eliminate unsaved tasks if the day was ended by the user
-        // Otherwise there might be duplicated calendar events
+        // There might be duplicated calendar events
         guard tasks.contains(where: { $0.taskType == .endDay }) else {
             return tasks
         }
@@ -74,18 +74,14 @@ extension CreateReport {
             task = tasks[i]
             
             if let startDate = task.startDate {
-                // Tasks with begining and ending defined are inlined tasks.
+                // Tasks with start and end date are inlined tasks.
                 // Extract them in front of the overlapped task. This will take from the time of the actual task
                 let duration = task.endDate.timeIntervalSince(startDate)
                 task.startDate = nil
                 task.endDate = previousEndDate.addingTimeInterval(duration)
-                arr.append(task)
-                previousEndDate = task.endDate
-//                print("inlined \(startDate)")
-            } else {
-                arr.append(task)
-                previousEndDate = task.endDate
             }
+            arr.append(task)
+            previousEndDate = task.endDate
         }
         return arr
     }
@@ -112,46 +108,73 @@ extension CreateReport {
     private func addExtraTimeToTasks (_ tasks: [Task], targetSeconds: Double) -> [Task] {
 
         // How many tasks should be adjusted
-        let numberOfTasksToAdjust = tasks.filter({ $0.taskType.isDurationAdjustable }).count
-
-        guard numberOfTasksToAdjust > 0 else {
+        let nrOfAdjustableTasks = tasks.filter({ $0.taskType.isDurationAdjustable }).count
+        guard nrOfAdjustableTasks > 0 else {
             return tasks
         }
-        
+
+        // Calculate the nr of seconds of non-adjustable tasks
+//        var nonAdjustableTasksSeconds: Double = 0
+//        for i in 1..<tasks.count {
+//            if !tasks[i].taskType.isDurationAdjustable {
+//                nonAdjustableTasksSeconds += tasks[i].endDate.timeIntervalSince(tasks[i-1].endDate)
+//            }
+//        }
+
         // Calculate the diff to targetHoursInDay
         let workedSeconds = tasks.last!.endDate.timeIntervalSince(tasks.first!.endDate)
+//        let adjustableSeconds = workedSeconds - nonAdjustableTasksSeconds
         let requiredSeconds = targetSeconds
+//        let requiredAdjustableSeconds = requiredSeconds - nonAdjustableTasksSeconds
+        // Distribute the missing seconds equaly to the nr of adjustable tasks
         let missingSeconds = requiredSeconds - workedSeconds
-        let extraSecondsPerTask = ceil( Double( Int(missingSeconds) / numberOfTasksToAdjust))
+        let extraSecondsPerTask = ceil( Double( Int(missingSeconds) / nrOfAdjustableTasks))
+        print(">>>>> extraSecondsPerTask:\(extraSecondsPerTask) missingSeconds:\(missingSeconds)")
 
         var roundedTasks = [Task]()
         
         // First task is start of the day and should not be modified
-        var task = tasks.first!
-        roundedTasks.append(task)
-        var extraTimeToAdd = 0.0
-        
-        for i in 1..<tasks.count-1 {
-            
-            task = tasks[i]
-            // Shift the date to the right
-            task.endDate = task.endDate.addingTimeInterval(extraTimeToAdd)
+        var refTask = tasks.first!
+        roundedTasks.append(refTask)
+        var shiftedTime = 0.0
 
+        for i in 1..<tasks.count {
+            var task = tasks[i]
+            // Shift the date to the right
+            print(">>>>> original date \(i) \(task.endDate) shiftedTime:\(shiftedTime)")
+            task.endDate = task.endDate.addingTimeInterval(shiftedTime)
+            print(">>>>> new date after shifting \(i) \(task.endDate)")
 
             if task.taskType.isDurationAdjustable {
-                let initialEndDate = task.endDate
-                task.endDate = task.endDate.addingTimeInterval(extraSecondsPerTask).round()
-                let roundedExtraTime = task.endDate.timeIntervalSince(initialEndDate)
-                extraTimeToAdd += roundedExtraTime
+                let initialEndDate: Date = task.endDate
+                let newEndDate = task.endDate.addingTimeInterval(extraSecondsPerTask)
+//                newEndDate = newEndDate.round()
+                let roundedExtraTime = newEndDate.timeIntervalSince(initialEndDate)
+                shiftedTime += roundedExtraTime
+                task.endDate = newEndDate.round()
+                if task.endDate.timeIntervalSince(refTask.endDate) < 15.minToSec {
+                    task.endDate = task.endDate.addingTimeInterval(15.minToSec)
+                }
+                print(">>>>> adding time to editable task \(i) \(initialEndDate) \(newEndDate) rounded:\(task.endDate)")
             }
+            refTask = task
 
             roundedTasks.append(task)
         }
         
-        // Handle the last task separately, add the remaining time till targetHoursInDay
-        task = tasks.last!
-        task.endDate = roundedTasks.first!.endDate.addingTimeInterval(requiredSeconds)
-        roundedTasks.append(task)
+        // If target time was not reached or it surpased, find the first adjustable Task and adjust acordingly
+        let achievedSeconds = roundedTasks.last!.endDate.timeIntervalSince(roundedTasks.first!.endDate)
+        if achievedSeconds != requiredSeconds {
+            let surplusTime = achievedSeconds - requiredSeconds
+            var canAdjust = false
+            for i in 1..<roundedTasks.count {
+                if roundedTasks[i].taskType.isDurationAdjustable || canAdjust {
+                    roundedTasks[i].endDate = roundedTasks[i].endDate.addingTimeInterval(-surplusTime)
+                    canAdjust = true
+                }
+                print(">>>>> \(i) <<<<<< \(roundedTasks[i].endDate)")
+            }
+        }
         
         return roundedTasks
     }
@@ -253,10 +276,10 @@ extension CreateReport {
         return Array(reportsMap.values)
 	}
     
-    private func sortReports (_ reports: [Report], withOrder order: [String]) -> [Report] {
-        
-        var orderedReports = [Report]()
-        
+    private func sortReports (_ reports: [CombinedReports], withOrder order: [String]) -> [CombinedReports] {
+
+        var orderedReports = [CombinedReports]()
+
         // TODO: sort the array with short lambdas if possible
 //        let arr = reports.sorted { reports.index(of: $0) < order.index(of: $1.1) }
         

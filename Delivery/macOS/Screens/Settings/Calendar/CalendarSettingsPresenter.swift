@@ -10,8 +10,8 @@ import Foundation
 import Cocoa
 import RCPreferences
 
-protocol CalendarSettingsPresenterInput: class {
-    
+protocol CalendarSettingsPresenterInput: AnyObject {
+
     func enable (_ enabled: Bool)
     func enableCalendar (_ calendarTitle: String)
     func disableCalendar (_ calendarTitle: String)
@@ -19,8 +19,8 @@ protocol CalendarSettingsPresenterInput: class {
     func authorize()
 }
 
-protocol CalendarSettingsPresenterOutput: class {
-    
+protocol CalendarSettingsPresenterOutput: AnyObject {
+
     func enable (_ enabled: Bool)
     func setStatusImage (_ imageName: NSImage.Name)
     func setStatusText (_ text: String)

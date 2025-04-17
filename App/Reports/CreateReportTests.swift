@@ -127,10 +127,10 @@ class CreateReportTests: XCTestCase {
         XCTAssert(reports.count == 6)
         
         XCTAssert(reports[1].taskNumber == "scrum")
-        XCTAssert(reports[1].duration == 18.minToSec)
-        
+        XCTAssert(reports[1].duration == 17.minToSec)
+
         XCTAssert(reports[5].taskNumber == "learning")
-        XCTAssert(reports[5].duration == 16.minToSec)
+        XCTAssert(reports[5].duration == 20.minToSec)
     }
     
     func testRealSituationWhereDurationCanBeMessedUp() {
@@ -181,8 +181,8 @@ class CreateReportTests: XCTestCase {
 
         let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
         XCTAssert(reports.count == 2)
-        XCTAssert(reports[0].duration == 8.hoursToSec - 1800, "Code rev should fill the remaining time")
-        XCTAssert(reports[1].duration == 1800, "Scrum should be 30min")
+        XCTAssert(reports[0].duration == 8.hoursToSec - 30.minToSec, "Code rev should fill the remaining time")
+        XCTAssert(reports[1].duration == 30.minToSec, "Scrum should be 30min")
     }
 
     func testRoundingDurations() {
@@ -194,8 +194,8 @@ class CreateReportTests: XCTestCase {
 
         let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
         XCTAssert(reports.count == 2)
-        XCTAssert(reports[0].duration == 8.hoursToSec - 1800, "Code rev should fill the remaining time")
-        XCTAssert(reports[1].duration == 1800, "Scrum should be 30min")
+        XCTAssert(reports[0].duration == 8.hoursToSec - 1860, "Code rev should fill the remaining time")
+        XCTAssert(reports[1].duration == 1860, "Scrum should be rounded down to 30min")
     }
 
     func testGivenSavedAndUnsavedCalendarEventsInASavedDay_IgnoreTheUnsavedEvents() {
@@ -222,5 +222,54 @@ class CreateReportTests: XCTestCase {
         let reports = report.reports(fromTasks: tasks, targetSeconds: nil)
         XCTAssert(reports.count == 1, "Only one valid task")
         XCTAssert(reports[0].duration == 3.hoursToSec, "3h 00m")
+    }
+
+    func test_GivenVariousTasks_DurationShouldBePositive() {
+
+        let str = "|7.00||||1|;" +
+            "8.00|8.30||||10|;" + // calendar
+            "|8.57|Merge pull request|TASK-1||5|;" +
+            "|8.59|Merge pull request|TASK-1||5|;" +
+            "|12.50|Merge pull request|TASK-1||5|;" +
+            "|14.24|Merge pull request|TASK-1||5|;" +
+            "|14.25|Merge pull request|TASK-1||5|;" +
+            "|14.26|Merge pull request|TASK-2||5|"
+        tasks = buildTasks(str)
+
+        let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
+        XCTAssert(reports.count == 3, "")
+        for report in reports {
+            XCTAssert(report.duration > 0, "Time should be positive")
+        }
+    }
+
+    func test_GivenVariousTasks_DurationShouldBePositiveAndGreaterThan0() {
+
+        let str = "|7.00||||1|;" +
+            "7.00|7.30||||10|;" + // calendar
+            "|11.29|WIP on|stash||5|;" +
+            "|14.31||TASK-1||5|;" +
+            "|15.34|Merge pull request|tag||5|;" +
+            "|15.45||TASK-2||5|"
+        tasks = buildTasks(str)
+
+        let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
+        XCTAssert(reports.count == 5, "")
+        for report in reports {
+            XCTAssert(report.duration > 0, "Time should be positive")
+        }
+    }
+
+    func test_GivenCalendarAtTheEnd_MaintainOriginalDuration2() {
+
+        let str = "|7.00||||1|;" +
+            "|9.50|Note 1|TASK-1||0|;" +
+            "|9.51|Note 2|TASK-2||0|;" +
+            "10.00|10.30|Event|||10|"
+        tasks = buildTasks(str)
+
+        let reports = report.reports(fromTasks: tasks, targetSeconds: 8.hoursToSec)
+        XCTAssert(reports.count == 3, "")
+        XCTAssert(reports[2].duration == 0.5.hoursToSec, "0h 30m")
     }
 }

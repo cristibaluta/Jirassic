@@ -30,9 +30,9 @@ class ReportsDataSource: NSObject, ListDataSource {
 
     private var tempCell: ReportCell?
     let numberOfDays: Int
-    var reports: [Report]
-    
-    init (reports: [Report], numberOfDays: Int) {
+    var reports: [CombinedReports]
+
+    init (reports: [CombinedReports], numberOfDays: Int) {
         self.reports = reports
         self.numberOfDays = numberOfDays
     }

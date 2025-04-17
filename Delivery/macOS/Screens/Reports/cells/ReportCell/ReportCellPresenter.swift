@@ -19,7 +19,7 @@ class ReportCellPresenter: NSObject {
         self.cell = cell
     }
     
-    func present (theReport: Report) {
+    func present (theReport: CombinedReports) {
 
         let notes: [String] = theReport.notes.compactMap { note in
             guard note.count > 0 else {

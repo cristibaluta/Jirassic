@@ -48,8 +48,8 @@ extension ReportsViewController: ReportsPresenterOutput {
         }
     }
     
-    func showReports (_ reports: [Report], numberOfDays: Int) {
-        
+    func showReports (_ reports: [CombinedReports], numberOfDays: Int) {
+
         let dataSource = ReportsDataSource(reports: reports, numberOfDays: numberOfDays)
         dataSource.didChangeSettings = { [weak self] in
             self?.presenter?.reloadLastSelectedMonth()

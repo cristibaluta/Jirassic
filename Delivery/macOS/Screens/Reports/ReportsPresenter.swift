@@ -25,7 +25,7 @@ protocol ReportsPresenterOutput: AnyObject {
 
     func showLoadingIndicator (_ show: Bool)
     func showMessage (_ message: MessageViewModel)
-    func showReports (_ reports: [Report], numberOfDays: Int)
+    func showReports (_ reports: [CombinedReports], numberOfDays: Int)
     func removeReports()
 }
 
@@ -36,7 +36,7 @@ class ReportsPresenter {
     var interactor: TasksInteractorInput?
     
     private var currentTasks = [Task]()
-    private var currentReports = [Report]()
+    private var currentReports = [CombinedReports]()
     private var currentReportsCsv = ""
     private let pref = RCPreferences<LocalPreferences>()
     private var extensions = ExtensionsInteractor()

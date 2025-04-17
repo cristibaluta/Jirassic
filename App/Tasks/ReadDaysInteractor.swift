@@ -49,7 +49,7 @@ class ReadDaysInteractor: RepositoryInteractor {
                 guard let self = self, hasIncomingChanges else {
                     return
                 }
-                // Delete dusplicate start day
+                // Delete duplicate start day
                 RemoveDuplicate(repository: self.repository, remoteRepository: self.remoteRepository, date: Date()).execute()
                 // Fetch again the local tasks if they were updated
                 self.queryLocalTasks(startDate: startingDate, endDate: Date()) { (tasks: [Task]) in

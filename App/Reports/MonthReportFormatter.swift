@@ -28,7 +28,7 @@ class MonthReportFormatter {
     /// tasks - All tasks in a month
     /// targetHoursInDay - How many hours in a day
     func reports (fromTasks tasks: [Task],
-                  targetSecondsInDay: Double?) -> (byDays: [[Report]], byTasks: [Report], csv: String) {
+                  targetSecondsInDay: Double?) -> (byDays: [[CombinedReports]], byTasks: [CombinedReports], csv: String) {
 
         guard tasks.count > 1 else {
             return (byDays: [], byTasks: [], csv: "")
@@ -58,10 +58,14 @@ class MonthReportFormatter {
                 // We found a task that does not belong to the previous day
                 // If the previous day does not contain any task with adjustable duration
                 // Find the first task from one of the next days
-                let isAdjustable = tasksInDay.contains(where: { $0.taskType.isDurationAdjustable })
-                if !isAdjustable {
-                    if let adjustableTask = Array(tasks[i...]).first(where: { $0.taskType.isDurationAdjustable }) {
-                        tasksInDay.append(adjustableTask)
+                let isAnyTaskAdjustable = tasksInDay.contains(where: { $0.taskType.isDurationAdjustable })
+                if !isAnyTaskAdjustable {
+                    if var nextAdjustableTask = Array(tasks[i...]).first(where: { $0.taskType.isDurationAdjustable }) {
+                        // Change the date to the current day
+                        let startDate = tasksInDay.first!.endDate
+                        nextAdjustableTask.startDate = nil
+                        nextAdjustableTask.endDate = startDate.addingTimeInterval(9.hoursToSec)
+                        tasksInDay.append(nextAdjustableTask)
                     }
                 }
                 tasksByDay.append(tasksInDay)
@@ -74,31 +78,34 @@ class MonthReportFormatter {
                     referenceDate = nil
                 }
             }
-            // We reach the end of all tasks so close the day
-            if task.objectId == tasks.last?.objectId && task.objectId != nil && tasksInDay.count > 0 {
-                tasksByDay.append(tasksInDay)
-            }
+        }
+        // We reach the end of all tasks so add the last tasksInDay to the array
+        if tasksInDay.count > 0 {
+            tasksByDay.append(tasksInDay)
         }
 
         // Iterate over days and create reports
-        var reportsByDay = [[Report]]()
+        var reportsByDay = [[CombinedReports]]()
         for tasks in tasksByDay {
             let reports = createReport.reports(fromTasks: tasks, targetSeconds: targetSecondsInDay)
             reportsByDay.append(reports)
 
             for report in reports {
-                csv += buildCsvLine(duration: report.duration.secToHours,
-                                    taskNumber: report.taskNumber,
-                                    title: report.title,
-                                    note: report.notes)
-                csv += "\n"
+                let lines = buildCsvLines(duration: report.duration.secToHours,
+                                          taskNumber: report.taskNumber,
+                                          title: report.title,
+                                          notes: report.notes)
+                lines.forEach({ line in
+                    csv += line
+                    csv += "\n"
+                })
             }
         }
 
         // Group reports by task number
         // Acumulate durations
         // Join notes
-        var reportsByTaskNumber = [String: Report]()
+        var reportsByTaskNumber = [String: CombinedReports]()
         var d = 0.0
         for day in reportsByDay {
             var d1 = 0.0
@@ -107,10 +114,10 @@ class MonthReportFormatter {
                 d1 += report.duration
                 var taskReport = reportsByTaskNumber[report.taskNumber]
                 if taskReport == nil {
-                    reportsByTaskNumber[report.taskNumber] = Report(taskNumber: report.taskNumber,
-                                                                    title: report.title,
-                                                                    notes: report.notes,//["meeting", "learning"].contains(report.taskNumber) ? report.notes : [],
-                                                                    duration: report.duration)
+                    reportsByTaskNumber[report.taskNumber] = CombinedReports(taskNumber: report.taskNumber,
+                                                                             title: report.title,
+                                                                             notes: report.notes,//["meeting", "learning"].contains(report.taskNumber) ? report.notes : [],
+                                                                             duration: report.duration)
                 } else {
                     taskReport!.notes = Array(Set(taskReport!.notes + report.notes))
                     taskReport!.duration += report.duration
@@ -125,7 +132,7 @@ class MonthReportFormatter {
     }
 
     /// List of reports by task number
-    func joinReports (_ reports: [Report]) -> (notes: String, totalDuration: Double) {
+    func joinReports (_ reports: [CombinedReports]) -> (notes: String, totalDuration: Double) {
         
         var notes = ""
         var totalDuration = 0.0
@@ -141,7 +148,21 @@ class MonthReportFormatter {
         return (notes: notes, totalDuration: totalDuration)
     }
 
-    private func buildCsvLine(duration: Double, taskNumber: String, title: String, note: String) -> String {
+    // Create one entry for each note
+    // Duration is added only to the first entry, the rest are filled with 0, so the total will be as for all notes
+    private func buildCsvLines (duration: Double, taskNumber: String, title: String, notes: [String]) -> [String] {
+        print(">>>>> notes \(notes)")
+        var duration = duration
+        return notes.map {
+            defer {
+                duration = 0
+            }
+            return buildCsvLine(duration: duration, taskNumber: taskNumber, title: title, note: $0)
+        }
+    }
+
+    private func buildCsvLine (duration: Double, taskNumber: String, title: String, note: String) -> String {
+
         var descr = "\(taskNumber) \(title == "" ? note : title)"
         if taskNumber == "meeting" {
             descr = note
@@ -150,12 +171,13 @@ class MonthReportFormatter {
             "Hours": "\(duration)",
             "Component": taskNumber == "meeting" ? "Meetings" : "",
             "Project Name": "GS1.1_BOSCH_eBike",
-            "Work Description": descr
+            "Work Description": descr.replacingOccurrences(of: ";", with: " ")
         ]
         var line = ""
         for h in headers {
             line += (dict[h] ?? "") + ";"
         }
+        print(">>>>> line \(line)")
 
         return line
     }

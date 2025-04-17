@@ -17,7 +17,7 @@ struct Report {
     var duration: TimeInterval
 }
 
-/// All occurences of the same Report
+/// All occurences of the same Report. All notes are preserved and duration added
 struct CombinedReports {
 
     var taskNumber: String
